@@ -334,7 +334,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
   <a class="logo" href="{url(lang)}">whatif<b>stack</b></a>
   <div class="gsearch">{SEARCH_ICON}<input id="gs" type="search" autocomplete="off" aria-label="search"><div class="gres" id="gres"></div></div>
   <nav class="nav">{nav}</nav>
-  <a class="thm me" href="{url(lang, 'me')}" title="{esc(ME[lang]['nav'])}" aria-label="{esc(ME[lang]['nav'])}">☆<i id="mecount"></i></a>
+  <a class="thm me" href="{url(lang, 'me')}" title="{esc(ME[lang]['nav'])}" aria-label="{esc(ME[lang]['nav'])}">☆</a>
   <button class="thm" id="thm" type="button" aria-label="theme"><span class="m">☾</span><span class="s">☀</span></button>
   {lang_menu(lang, p)}
 </div></div>
@@ -1094,9 +1094,15 @@ def me_page(lang, ver):
     S, t = TR[lang], ME[lang]
     code, rate = hccy(lang)
     per = HB[lang]['per'].split('|')
-    body = (f'<h1>{esc(t["h1"])}</h1><p class="lead">{esc(t["d"])}</p>'
-            f'<div class="hl" id="metot"></div>'
-            f'<section class="section"><h2>{esc(t["plans"])}</h2><div id="plans"></div>'
+    hold = (f'<section class="section"><h2>💼 {esc(t["hold"])}</h2><div class="hl" id="htot"></div><div class="abar" id="abar"></div><div id="hold"><p class="muted">{esc(t["hempty"])}</p></div>'
+            f'<div class="card hcalc" id="holdform"><div class="hrow">'
+            f'<label class="f">{S["w"]["q_asset"]}<div class="inp"><input id="ha" list="palist" autocomplete="off" placeholder="Bitcoin"></div></label>'
+            f'<label class="f">&nbsp;<div class="inp"><select id="hmode"><option value="sum">{esc(t["by_sum"])}</option><option value="qty">{esc(t["by_qty"])}</option></select></div></label>'
+            f'<label class="f">{esc(t["amount"])}<div class="inp"><input id="hamt" type="number" min="0" step="any" value="{nice(100 * rate):.0f}"><span class="muted" id="hunit">{CCY_SYM.get(code, code)}</span></div></label>'
+            f'<label class="f">{esc(t["date"])}<div class="inp"><input id="hdate" type="month" value="{END}"></div></label></div>'
+            f'<button class="btn" id="hsave">{esc(t["add"])}</button></div></section>')
+    body = (f'<h1>{esc(t["h1"])}</h1><p class="lead">{esc(t["d"])}</p>{hold}'
+            f'<section class="section"><h2>📈 {esc(t["plans"])}</h2><div class="hl" id="metot"></div><div id="plans"></div>'
             f'<div class="card hcalc" id="planform"><div class="hrow">'
             f'<label class="f">{S["w"]["q_asset"]}<div class="inp"><input id="pa" list="palist" autocomplete="off" placeholder="Bitcoin"><datalist id="palist"></datalist></div></label>'
             f'<label class="f">{esc(t["amount"])}<div class="inp"><input id="pm" type="number" min="0" step="any" value="{nice(10 * rate):.0f}"><span class="muted">{CCY_SYM.get(code, code)}</span></div></label>'

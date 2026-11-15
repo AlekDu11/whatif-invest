@@ -23,3 +23,30 @@ ME = {k: dict(zip(K, v)) for k, v in {
  'fil': ('Aking account', 'Aking account: watchlist at DCA plans', 'I-save ang iyong coins at stocks, idagdag ang regular na investment plan, at tingnan araw-araw kung magkano na ito at paano ito kumpara sa S&P 500. Walang sign-up.', 'Watchlist', 'Pindutin ang ☆ sa tabi ng anumang asset para idagdag dito.', 'Mga DCA plan ko', 'Magdagdag ng plan', 'Halaga', 'Kita', 'Parehong pera sa S&P 500', 'Kabuuan', 'Alisin', 'Idagdag sa watchlist', 'Naka-save lang sa browser na ito. Kino-convert ang halaga sa iyong pera gamit ang palitan ngayon.', 'I-save ang plan', 'Mula'),
 }.items()}
 assert len(ME) == 20
+
+# simple portfolio: hold | add | by_sum | by_qty | date | qty | avg | share | empty
+K2 = 'hold add by_sum by_qty date qty avg share hempty'.split()
+ME2 = {k: dict(zip(K2, v)) for k, v in {
+ 'en': ('My portfolio', 'Add purchase', 'By amount', 'By quantity', 'Bought in', 'Quantity', 'Avg. price', 'Share', 'Add what you own — for example $100 in Bitcoin and $100 in ATOM — and see the whole picture.'),
+ 'uk': ('Мій портфель', 'Додати покупку', 'На суму', 'Кількість', 'Куплено в', 'Кількість', 'Середня ціна', 'Частка', 'Додай те, що в тебе є — наприклад $100 у біткоїні й $100 в ATOM — і дивись загальну картину.'),
+ 'ru': ('Мой портфель', 'Добавить покупку', 'На сумму', 'Количество', 'Куплено в', 'Количество', 'Средняя цена', 'Доля', 'Добавь то, что у тебя есть — например $100 в биткоине и $100 в ATOM — и смотри общую картину.'),
+ 'es': ('Mi cartera', 'Añadir compra', 'Por importe', 'Por cantidad', 'Comprado en', 'Cantidad', 'Precio medio', 'Peso', 'Añade lo que tienes —por ejemplo 100 $ en Bitcoin y 100 $ en ATOM— y ve la imagen completa.'),
+ 'pt': ('Minha carteira', 'Adicionar compra', 'Por valor', 'Por quantidade', 'Comprado em', 'Quantidade', 'Preço médio', 'Peso', 'Adicione o que você tem — por exemplo US$ 100 em Bitcoin e US$ 100 em ATOM — e veja o quadro completo.'),
+ 'de': ('Mein Portfolio', 'Kauf hinzufügen', 'Nach Betrag', 'Nach Menge', 'Gekauft im', 'Menge', 'Ø-Preis', 'Anteil', 'Füge hinzu, was du besitzt – z. B. 100 $ in Bitcoin und 100 $ in ATOM – und sieh das Gesamtbild.'),
+ 'fr': ('Mon portefeuille', 'Ajouter un achat', 'Par montant', 'Par quantité', 'Acheté en', 'Quantité', 'Prix moyen', 'Part', 'Ajoute ce que tu possèdes — par exemple 100 $ en Bitcoin et 100 $ en ATOM — et vois la vue d’ensemble.'),
+ 'it': ('Il mio portafoglio', 'Aggiungi acquisto', 'Per importo', 'Per quantità', 'Acquistato a', 'Quantità', 'Prezzo medio', 'Quota', 'Aggiungi ciò che possiedi — ad esempio 100 $ in Bitcoin e 100 $ in ATOM — e guarda il quadro completo.'),
+ 'pl': ('Mój portfel', 'Dodaj zakup', 'Kwotą', 'Ilością', 'Kupiono w', 'Ilość', 'Średnia cena', 'Udział', 'Dodaj to, co masz — np. 100 $ w Bitcoinie i 100 $ w ATOM — i zobacz pełny obraz.'),
+ 'tr': ('Portföyüm', 'Alım ekle', 'Tutara göre', 'Miktara göre', 'Alım tarihi', 'Miktar', 'Ort. fiyat', 'Pay', 'Sahip olduklarını ekle — örneğin Bitcoin’de 100 $ ve ATOM’da 100 $ — ve genel tabloyu gör.'),
+ 'nl': ('Mijn portefeuille', 'Aankoop toevoegen', 'Op bedrag', 'Op aantal', 'Gekocht in', 'Aantal', 'Gem. prijs', 'Aandeel', 'Voeg toe wat je bezit — bijvoorbeeld $100 in Bitcoin en $100 in ATOM — en zie het totaalbeeld.'),
+ 'id': ('Portofolio saya', 'Tambah pembelian', 'Berdasarkan nominal', 'Berdasarkan jumlah', 'Dibeli pada', 'Jumlah', 'Harga rata-rata', 'Porsi', 'Tambahkan yang kamu miliki — misalnya $100 di Bitcoin dan $100 di ATOM — dan lihat gambaran utuhnya.'),
+ 'vi': ('Danh mục của tôi', 'Thêm giao dịch mua', 'Theo số tiền', 'Theo số lượng', 'Mua vào', 'Số lượng', 'Giá TB', 'Tỷ trọng', 'Thêm những gì bạn có — ví dụ 100 $ Bitcoin và 100 $ ATOM — và xem bức tranh tổng thể.'),
+ 'th': ('พอร์ตของฉัน', 'เพิ่มการซื้อ', 'ตามจำนวนเงิน', 'ตามจำนวนเหรียญ', 'ซื้อเมื่อ', 'จำนวน', 'ราคาเฉลี่ย', 'สัดส่วน', 'เพิ่มสิ่งที่คุณมี เช่น บิตคอยน์ 100 ดอลลาร์ และ ATOM 100 ดอลลาร์ แล้วดูภาพรวมทั้งหมด'),
+ 'hi': ('मेरा पोर्टफ़ोलियो', 'खरीद जोड़ें', 'रकम से', 'मात्रा से', 'खरीदा', 'मात्रा', 'औसत कीमत', 'हिस्सा', 'जो आपके पास है जोड़ें — जैसे बिटकॉइन में $100 और ATOM में $100 — और पूरी तस्वीर देखें।'),
+ 'ja': ('マイポートフォリオ', '購入を追加', '金額で', '数量で', '購入月', '数量', '平均単価', '比率', '保有資産を追加しましょう（例：ビットコイン100ドル、ATOM100ドル）。全体像がひと目でわかります。'),
+ 'ko': ('내 포트폴리오', '매수 추가', '금액으로', '수량으로', '매수 시점', '수량', '평균 단가', '비중', '보유 자산을 추가하세요 — 예: 비트코인 100달러, ATOM 100달러 — 전체 현황을 한눈에.'),
+ 'zh': ('我的投资组合', '添加买入', '按金额', '按数量', '买入时间', '数量', '均价', '占比', '添加你持有的资产，例如比特币 100 美元、ATOM 100 美元，查看整体情况。'),
+ 'ar': ('محفظتي', 'إضافة شراء', 'حسب المبلغ', 'حسب الكمية', 'تاريخ الشراء', 'الكمية', 'متوسط السعر', 'الحصة', 'أضف ما تملكه — مثل 100 دولار في البيتكوين و100 دولار في ATOM — وشاهد الصورة الكاملة.'),
+ 'fil': ('Aking portfolio', 'Magdagdag ng bili', 'Ayon sa halaga', 'Ayon sa dami', 'Binili noong', 'Dami', 'Avg. presyo', 'Bahagi', 'Idagdag ang hawak mo — halimbawa $100 sa Bitcoin at $100 sa ATOM — at tingnan ang buong larawan.'),
+}.items()}
+for _k in ME:
+    ME[_k].update(ME2[_k])
