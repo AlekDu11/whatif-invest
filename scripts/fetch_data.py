@@ -130,7 +130,8 @@ def coingecko_meta():
         for c in d:
             sym = (c.get('symbol') or '').upper()
             if sym and sym not in meta:          # first = biggest market cap wins
-                meta[sym] = dict(name=c.get('name'), logo=c.get('image'), rank=c.get('market_cap_rank'), mcap=c.get('market_cap'))
+                meta[sym] = dict(name=c.get('name'), logo=c.get('image'), rank=c.get('market_cap_rank'), mcap=c.get('market_cap'),
+                                 ath=c.get('ath'), athd=(c.get('ath_date') or '')[:10] or None)
             if page == 1 and sym and c.get('current_price'):
                 r = lambda k: round(c[k] / 100, 5) if isinstance(c.get(k), (int, float)) else None
                 BUBLIST.append(dict(s=sym, n=c.get('name'), l=(c.get('image') or '').replace('/large/', '/small/'),
@@ -236,6 +237,23 @@ def fx_rates():
     rates = {c: d['rates'][c] for c in FIATS if c in d.get('rates', {})}
     return rates if len(rates) > 20 else None
 
+# ---------------- inflation (World Bank, annual CPI %) ----------------
+CPI_COUNTRIES = ('USA UKR ESP BRA DEU FRA ITA POL TUR NLD RUS IDN VNM THA IND JPN KOR CHN ARE PHL GBR MEX ARG KAZ CAN AUS').split()
+
+
+def inflation():
+    """{ISO3: {year: inflation %}} annual consumer price inflation. Saved to data/cpi.json."""
+    out = {}
+    for c in CPI_COUNTRIES:
+        d = get_json(f'https://api.worldbank.org/v2/country/{c}/indicator/FP.CPI.TOTL.ZG?format=json&per_page=80&date=1960:2030', tries=2)
+        if isinstance(d, list) and len(d) > 1 and d[1]:
+            v = {r['date']: round(r['value'], 3) for r in d[1] if r.get('value') is not None}
+            if v:
+                out[c] = v
+        time.sleep(0.3)
+    return out if len(out) > 10 else None
+
+
 # ---------------- main ----------------
 def main():
     quick = '--quick' in sys.argv
@@ -295,7 +313,7 @@ def main():
         if base in pinned_crypto:                      # long Yahoo history already; take live price + logo
             a = assets[pinned_crypto[base]]
             a['price'], a['chg'] = r['price'], r['chg']
-            a.update({k: v for k, v in (('logo', m.get('logo')), ('rank', m.get('rank'))) if v})
+            a.update({k: v for k, v in (('logo', m.get('logo')), ('rank', m.get('rank')), ('ath', m.get('ath')), ('athd', m.get('athd')), ('mcap', m.get('mcap'))) if v})
             s = binance_monthly(r['symbol'])         # use Binance if Yahoo failed or has a shorter history
             if s and ('p' not in a or s['start'] < a['start']):
                 a.update(s, src='binance')
@@ -309,7 +327,8 @@ def main():
             aid += '-token'
         nm = m.get('name') or base
         assets[aid] = dict(name={'uk': nm, 'en': nm}, tk=base, cat='crypto', src='binance', binance=r['symbol'],
-                           price=r['price'], chg=r['chg'], logo=m.get('logo'), rank=m.get('rank'), **s)
+                           price=r['price'], chg=r['chg'], logo=m.get('logo'), rank=m.get('rank'),
+                           **{k: m[k] for k in ('ath', 'athd', 'mcap') if m.get(k)}, **s)
         n += 1
 
     # 5) keep yesterday's data for anything that failed today; drop empties
@@ -340,6 +359,14 @@ def main():
             log(f"fx: {len(fx)} currencies")
     except Exception as e:
         log(f"fx failed: {e}")
+    try:
+        cpi = inflation()
+        if cpi:
+            json.dump({'updated': now.strftime('%Y-%m-%d'), 'source': 'World Bank FP.CPI.TOTL.ZG', 'c': cpi},
+                      open(os.path.join(ROOT, 'data/cpi.json'), 'w'), separators=(',', ':'))
+            log(f"cpi: {len(cpi)} countries")
+    except Exception as e:
+        log(f"cpi failed: {e}")
     try:
         g = market_global(cg)
         if BUBLIST:
