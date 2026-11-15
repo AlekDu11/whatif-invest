@@ -534,7 +534,7 @@ def home(lang, ver):
             cards.append(hl_card(lang, aid, nm(A[aid], lang), 'r5', S['sub5']))
     filt = f'<div class="toolbar"><div class="filter">{SEARCH_ICON}<input id="flt" type="search" autocomplete="off"></div></div>'
     top10, rest = table_block(lang, ids[:100], S['nav_rank'], interactive='top')
-    body = (hero + f'<section class="section toprank"><div class="tabs" id="tabs"></div>{filt}{top10}</section>'
+    body = (hero + f'<section class="section toprank"><div class="tabs" id="tabs"></div>{filt}{country_chips(lang)}{top10}</section>'
             f'<div class="wgrid">{w_mcap}{w_dom}{w_fng}{w_tr}</div>'
             f'{sections_strip(lang)}<div class="wgrid3">{w_up}{w_dn}{w_bat}</div>{banner}{habits_strip(lang)}{poll_block(lang)}{poly_block(lang)}'
             f'<section class="section"><div class="hl">{"".join(cards)}</div></section>'
@@ -1239,7 +1239,8 @@ def hub(lang, slug, ver):
 
 
 def country_chips(lang, cur=None):
-    ch = [(sl, f'{fl} {CTRY[lang][3][m][0]}') for m, (sl, fl) in MKTS.items() if has_page(lang, sl)]
+    mk = sorted(MKTS.items(), key=lambda kv: MKT_LANG.get(kv[0]) != lang)   # the visitor's own country first
+    ch = [(sl, f'{fl} {CTRY[lang][3][m][0]}') for m, (sl, fl) in mk if has_page(lang, sl)]
     if not ch:
         return ''
     return (f'<div class="cchips"><b>{esc(CTRY[lang][0])}:</b>' + ''.join(
