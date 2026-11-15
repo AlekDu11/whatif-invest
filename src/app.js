@@ -77,12 +77,14 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
       if(vx==null&&vy==null) return x.o-y.o; if(vx==null) return 1; if(vy==null) return -1;
       return (typeof vx==='string'?vx.localeCompare(vy):vx-vy)*sortDir });
     const total=rows.length; rows=rows.slice(0,shown);
-    $('#mthead').innerHTML='<tr>'+COLS.map(([c,l,cl])=>{ const s=(c===sortK||(c==='n'&&sortK==='o'));
+    const split=!!$('#mt2'), top=split?rows.slice(0,10):rows, rest=split?rows.slice(10):[];
+    const head='<tr>'+COLS.map(([c,l,cl])=>{ const s=(c===sortK||(c==='n'&&sortK==='o'));
       const sortable=!['buy','sp','go'].includes(c);
       return `<th class="${cl}${s?' sorted':''}" ${sortable?`data-k="${c}"`:''}>${l}${sortable&&l?`<span class="ar">${s?(sortDir>0?'↑':'↓'):'↕'}</span>`:''}</th>`}).join('')+'</tr>';
-    $$('#mthead th[data-k]').forEach(th=>th.onclick=()=>{ let kk=th.dataset.k; if(kk==='n') kk='o';
+    $('#mthead').innerHTML=head; if(split) $('#mthead2').innerHTML=head;
+    $$('#mthead th[data-k],#mthead2 th[data-k]').forEach(th=>th.onclick=()=>{ let kk=th.dataset.k; if(kk==='n') kk='o';
       if(sortK===kk) sortDir=-sortDir; else {sortK=kk; sortDir=(kk==='name'||kk==='o')?1:-1} draw() });
-    tb.innerHTML=rows.length?rows.map((a,i)=>`<tr>
+    const tr=(a,i)=>`<tr>
       <td class="l n hide-sm">${i+1}</td>
       <td class="l"><button class="star" data-s="${a.i}" aria-label="☆">☆</button><a class="asset" href="${url(a.i)}">${icon(a)}<span><span class="nm">${esc(nm(a))}</span><span class="tk">${esc(a.t)}</span></span></a></td>
       <td>${buyBtn(a)}</td>
@@ -92,10 +94,13 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
       <td class="num hide-sm ${cls(a.r3)}">${fmtPct(a.r3)}</td>
       <td><span class="pill ${cls(a.r5)}">${fmtPct(a.r5)}</span></td>
       <td class="hide-sm">${spark(a.sp)}</td>
-      <td class="hide-sm"><a class="calc" href="${url(a.i)}">${T.calc} →</a></td></tr>`).join('')
-      :`<tr><td colspan="10" class="empty">${T.nothing}</td></tr>`;
+      <td class="hide-sm"><a class="calc" href="${url(a.i)}">${T.calc} →</a></td></tr>`;
+    tb.innerHTML=top.length?top.map(tr).join(''):`<tr><td colspan="10" class="empty">${T.nothing}</td></tr>`;
+    if(split){ $('#mt2').innerHTML=rest.map((a,i)=>tr(a,i+10)).join(''); $('#rank2').hidden=!rest.length;
+      $('#mttop').innerHTML=total>10?`<a class="more" href="#rank2">${T.more} ↓</a>`:''; }
     $('#mtmore').innerHTML=total>shown?`<button class="more">${T.more} (${fmt(T.shown,{a:shown,b:total})})</button>`:'';
     const mb=$('#mtmore button'); if(mb) mb.onclick=()=>{shown+=100;draw()};
+    try{paintStars()}catch(e){}
   }
   draw();
 })();

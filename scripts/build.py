@@ -397,6 +397,13 @@ def table_block(lang, ids, title=None, interactive=True):
     th = ''.join(f'<th class="{c}">{h}</th>' for h, c in zip(head, hc))
     rows = ''.join(row_html(aid, lang, k + 1) for k, aid in enumerate(ids))
     ttl = f'<h2>{title}</h2>' if title else ''
+    if interactive == 'top':
+        rows = ''.join(row_html(aid, lang, k + 1) for k, aid in enumerate(ids[:10]))
+        rows2 = ''.join(row_html(aid, lang, k + 11) for k, aid in enumerate(ids[10:]))
+        top = f'<div class="tw"><table class="mt"><thead id="mthead"><tr>{th}</tr></thead><tbody id="mt">{rows}</tbody></table><div id="mttop"></div></div>'
+        rest = (f'<section class="section" id="rank2"><h2>{title}</h2><div class="tw"><table class="mt"><thead id="mthead2"><tr>{th}</tr></thead>'
+                f'<tbody id="mt2">{rows2}</tbody></table><div id="mtmore"></div></div></section>')
+        return top, rest
     if interactive:
         return f'{ttl}<div class="tw"><table class="mt"><thead id="mthead"><tr>{th}</tr></thead><tbody id="mt">{rows}</tbody></table><div id="mtmore"></div></div>'
     return f'{ttl}<div class="tw"><table class="mt"><thead><tr>{th}</tr></thead><tbody>{rows}</tbody></table></div>'
@@ -516,10 +523,12 @@ def home(lang, ver):
         if aid in A and len(cards) < 4:
             cards.append(hl_card(lang, aid, nm(A[aid], lang), 'r5', S['sub5']))
     filt = f'<div class="toolbar"><div class="filter">{SEARCH_ICON}<input id="flt" type="search" autocomplete="off"></div></div>'
-    body = (hero + f'<div class="wgrid">{w_mcap}{w_dom}{w_fng}{w_tr}</div>'
+    top10, rest = table_block(lang, ids[:100], S['nav_rank'], interactive='top')
+    body = (hero + f'<section class="section toprank"><div class="tabs" id="tabs"></div>{filt}{top10}</section>'
+            f'<div class="wgrid">{w_mcap}{w_dom}{w_fng}{w_tr}</div>'
             f'{sections_strip(lang)}<div class="wgrid3">{w_up}{w_dn}{w_bat}</div>{banner}{habits_strip(lang)}{poll_block(lang)}{poly_block(lang)}'
             f'<section class="section"><div class="hl">{"".join(cards)}</div></section>'
-            f'<div class="tabs" id="tabs"></div>{filt}{table_block(lang, ids[:100])}'
+            f'{rest}'
             f'<section class="card section faq"><h2>{S["faq"]}</h2><details open><summary>{esc(S["q3"])}</summary><p>{esc(S["a3"])}</p></details></section>')
     jsonld = [{"@context": "https://schema.org", "@type": "WebApplication", "name": BRAND, "url": SITE + url(lang),
                "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "inLanguage": S['loc'],
