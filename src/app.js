@@ -503,4 +503,28 @@ new MutationObserver(()=>{ clearTimeout(window._wiStar); window._wiStar=setTimeo
   let ht; document.addEventListener('wi:tick',()=>{ clearTimeout(ht); ht=setTimeout(drawHold,1500) });
   document.addEventListener('wi:watch',drawWatch); drawWatch(); drawPlans(); drawHold();
 })();
+/* ---------- memecoins: live DEX trending (GeckoTerminal) ---------- */
+(function(){
+  const box=$('#dexb'); if(!box||!PAGE.memes) return; const L=PAGE.memes.t; let net='solana';
+  const GMGN={solana:'sol',base:'base',bsc:'bsc',eth:'eth'};
+  const big=v=>{ v=+v||0; return v>=1e9?'$'+(v/1e9).toFixed(2)+'B':v>=1e6?'$'+(v/1e6).toFixed(2)+'M':v>=1e3?'$'+(v/1e3).toFixed(1)+'K':'$'+v.toFixed(0) };
+  let RT; try{ RT=new Intl.RelativeTimeFormat(T.intl||'en',{numeric:'auto',style:'short'}) }catch(e){}
+  const age=d=>{ const h=(Date.now()-Date.parse(d))/36e5; if(!isFinite(h)||!RT) return ''; return h<1?RT.format(-Math.round(h*60),'minute'):h<48?RT.format(-Math.round(h),'hour'):RT.format(-Math.round(h/24),'day') };
+  function load(){
+    fetch(`https://api.geckoterminal.com/api/v2/networks/${net}/trending_pools?page=1&include=base_token`).then(r=>r.json()).then(d=>{
+      const toks={}; (d.included||[]).forEach(x=>{ if(x.type==='token') toks[x.id]=x.attributes });
+      const rows=(d.data||[]).slice(0,20).map(p=>{ const a=p.attributes, bt=toks[(p.relationships&&p.relationships.base_token&&p.relationships.base_token.data||{}).id]||{};
+        const c1=+(a.price_change_percentage||{}).h1/100, c24=+(a.price_change_percentage||{}).h24/100, liq=+a.reserve_in_usd||0, vol=+(a.volume_usd||{}).h24||0;
+        const hrs=(Date.now()-Date.parse(a.pool_created_at))/36e5, flags=[];
+        if(hrs<72) flags.push(`<i class="rf">${esc(L.new)}</i>`); if(liq<50000) flags.push(`<i class="rf">${esc(L.lowliq)}</i>`); if(liq>0&&vol/liq>20) flags.push(`<i class="rf">${esc(L.hot)}</i>`);
+        const sym=bt.symbol||(a.name||'').split(' / ')[0], img=bt.image_url&&bt.image_url!=='missing.png'?bt.image_url:'';
+        const go=`/go/gmgn?from=${encodeURIComponent('memes:'+net+':'+(bt.address||''))}&l=${lang}`;
+        return `<tr><td class="l"><span class="asset">${img?`<span class="ic"><img src="${esc(img)}" alt="" loading="lazy" width="26" height="26"></span>`:`<span class="ic" style="background:#64748b">${esc(sym.slice(0,2))}</span>`}<span><span class="nm">${esc(bt.name||sym)}</span><span class="tk">${esc(sym)} ${flags.join('')}</span></span></span></td>
+          <td class="num">${fmtPrice(+a.base_token_price_usd)}</td><td class="num ${cls(c1)}">${fmtPct(c1)}</td><td class="num ${cls(c24)}">${fmtPct(c24)}</td>
+          <td class="num hide-sm">${big(vol)}</td><td class="num hide-sm">${big(liq)}</td><td class="num hide-sm">${age(a.pool_created_at)}</td>
+          <td><a class="buy" href="${go}" target="_blank" rel="sponsored nofollow noopener">${esc(L.trade)}</a></td></tr>` });
+      box.innerHTML=rows.join('')||'<tr><td colspan="8" class="empty">—</td></tr>' }).catch(()=>{ box.innerHTML='<tr><td colspan="8" class="empty">—</td></tr>' }) }
+  $$('#dexn button').forEach(b=>b.onclick=()=>{ net=b.dataset.n; $$('#dexn button').forEach(x=>x.classList.toggle('on',x===b)); box.innerHTML='<tr><td colspan="8" class="empty">…</td></tr>'; load() });
+  load(); setInterval(()=>{ if(!document.hidden) load() },60000);
+})();
 })();

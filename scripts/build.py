@@ -16,6 +16,7 @@ from i18n_n import N as NW, FOOT  # noqa: E402
 from i18n_p import P as POLL, OPTS as POLL_OPTS  # noqa: E402
 from i18n_ai import AI as AIS  # noqa: E402
 from i18n_me import ME  # noqa: E402
+from i18n_mem import MEM  # noqa: E402
 SOCIAL = []   # [(label, url)], e.g. ('Telegram', 'https://t.me/whatifstack'); the 'Follow us' column appears when filled
 from i18n_h import H as HB, PRICES as HPRICE, SCEN as HSCEN, UNITS as HUNITS, CONV as HCONV  # noqa: E402
 
@@ -34,7 +35,7 @@ UPDATED = market['updated']
 END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
-RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me'}
+RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes'}
 # asset ids that clash with a language folder or a section get a suffix (ko -> ko-stock, fil -> fil-crypto)
 _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
 # delisted or stale series (last price older than a month) are dropped: "today" numbers would be false
@@ -93,7 +94,7 @@ assert not (set(HUBS) | set(TOOLS) | {'blog', 'compare'}) & set(A), 'asset id co
 def has_page(lang, aid):
     if aid is None or aid == 'compare' or aid in HUBS or aid in TOOLS:
         return True
-    if aid in ('ai', 'me'):
+    if aid in ('ai', 'me', 'memes'):
         return True
     if aid in CALCS:
         if aid == 'about':
@@ -706,7 +707,7 @@ def tools_menu(lang):
     items = [('habits', HB[lang]['nav']), ('millionaire', t['g_nav']), ('compound-interest', t['c_nav'])]
     if CPI['c']:
         items.append(('inflation', t['i_nav']))
-    items += [('converter', HCONV[lang]), ('ath', t['a_nav']), ('bitcoin-halving', t['v_nav'])]
+    items += [('converter', HCONV[lang]), ('memes', MEM[lang]['nav']), ('ath', t['a_nav']), ('bitcoin-halving', t['v_nav'])]
     return items
 
 
@@ -1115,6 +1116,27 @@ def me_page(lang, ver):
     return shell(lang, 'me', f'{t["h1"]} | {BRAND}', t['d'], body, cfg, ver)
 
 
+MEME_IDS = [i for i in ('doge', 'shib', 'pepe', 'bonk', 'wif', 'floki', 'trump', 'pengu', 'neiro', 'bome', 'pnut') if i in A]
+
+
+def memes_page(lang, ver):
+    S, t, u = TR[lang], MEM[lang], TR[lang]['ui']
+    chains = [('solana', 'Solana'), ('base', 'Base'), ('bsc', 'BNB Chain'), ('eth', 'Ethereum')]
+    seg = ''.join(f'<button data-n="{k}"{" class=on" if k == "solana" else ""}>{v}</button>' for k, v in chains)
+    head = (f'<tr><th class="l">{u["name"]}</th><th>{u["price"]}</th><th>1h</th><th>{u["chg"]}</th><th class="hide-sm">{esc(t["vol"])}</th>'
+            f'<th class="hide-sm">{esc(t["liq"])}</th><th class="hide-sm">{esc(t["age"])}</th><th></th></tr>')
+    body = (f'<h1>{esc(t["h1"])}</h1><p class="lead">{esc(t["d"])}</p>'
+            f'<div class="warnbox">⚠️ {esc(t["warn"])}</div>'
+            f'<section class="section"><div class="charthead"><h2>🔥 {esc(t["live"])}</h2><span class="livebadge"><i></i>{S["w"]["live"]}</span></div>'
+            f'<div class="seg" id="dexn">{seg}</div><div class="tw" style="margin-top:10px"><table class="mt" id="dext"><thead>{head}</thead><tbody id="dexb"><tr><td colspan="8" class="empty">…</td></tr></tbody></table></div>'
+            f'<p class="muted" style="font-size:12px">{esc(t["src"])}</p></section>'
+            f'<section class="section">{table_block(lang, MEME_IDS, "🐸 " + t["est"], interactive=False)}</section>'
+            f'<section class="section"><div class="hgrid"><a class="card hcard" href="/go/gmgn?from=memes-card&l={lang}" target="_blank" rel="sponsored nofollow noopener"><span>🦎</span><b>GMGN</b><small>Memecoin trading · Wallet tracking</small></a>'
+            f'<a class="card hcard" href="{url(lang, "exchanges")}"><span>₿</span><b>{esc(EX[lang]["h1"])}</b></a><a class="card hcard" href="{url(lang, "ath")}"><span>📉</span><b>{esc(TT[lang]["a_h1"])}</b></a></div></section>')
+    cfg = dict(memes=dict(t=dict(trade=t['trade'], new=t['new'], lowliq=t['lowliq'], hot=t['hot'])))
+    return shell(lang, 'memes', f'{t["h1"]} | {BRAND}', t['d'], body, cfg, ver)
+
+
 def habits_strip(lang):
     h = HB[lang]
     code, _ = hccy(lang)
@@ -1430,6 +1452,8 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
         write(pre + 'exchanges/index.html', exchanges_page(lang, ver))
         write(pre + 'ai/index.html', ai_page(lang, ver))
         write(pre + 'me/index.html', me_page(lang, ver))
+        write(pre + 'memes/index.html', memes_page(lang, ver))
+        extra_pages.append('memes')
         extra_pages.append('ai')
         write(pre + 'news/index.html', news_page(lang, ver))
         for k in NEWS.get(lang, {}):

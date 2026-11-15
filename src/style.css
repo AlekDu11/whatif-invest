@@ -384,3 +384,7 @@ input.bad{outline:2px solid var(--bad)}
 .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px;vertical-align:middle}
 #hold td small{color:var(--muted)}
 #holdform{margin-top:10px}#holdform .btn{align-self:flex-start}
+
+.warnbox{background:var(--bad-soft);border:1px solid var(--bad);color:var(--text);border-radius:12px;padding:12px 14px;font-size:14px;margin:6px 0 4px}
+.rf{font-style:normal;font-size:10.5px;font-weight:700;color:var(--bad);border:1px solid var(--bad);border-radius:5px;padding:0 4px;margin-left:4px;white-space:nowrap}
+#dexn{margin-top:4px}
