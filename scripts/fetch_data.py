@@ -190,6 +190,28 @@ def sp500():
             for r in csv.DictReader(io.StringIO(txt))]
 
 
+
+# ---------------- market-wide widgets ----------------
+def market_global(cg_meta):
+    """Crypto market cap, BTC dominance, Fear & Greed, trending coins. Saved to data/global.json."""
+    g = {}
+    d = get_json('https://api.coingecko.com/api/v3/global', tries=2)
+    if d and 'data' in d:
+        x = d['data']
+        g['mcap'] = x.get('total_market_cap', {}).get('usd')
+        g['mcap_chg'] = x.get('market_cap_change_percentage_24h_usd')
+        g['vol'] = x.get('total_volume', {}).get('usd')
+        g['btc_dom'] = x.get('market_cap_percentage', {}).get('btc')
+        g['eth_dom'] = x.get('market_cap_percentage', {}).get('eth')
+        g['coins'] = x.get('active_cryptocurrencies')
+    f = get_json('https://api.alternative.me/fng/?limit=31', tries=2)
+    if f and f.get('data'):
+        g['fng'] = [int(v['value']) for v in f['data']]          # newest first
+    t = get_json('https://api.coingecko.com/api/v3/search/trending', tries=2)
+    if t and t.get('coins'):
+        g['trending'] = [c['item']['symbol'].upper() for c in t['coins'][:10]]
+    return g
+
 # ---------------- main ----------------
 def main():
     quick = '--quick' in sys.argv
@@ -237,7 +259,7 @@ def main():
     top = binance_top()
     log(f"Binance USDT pairs: {len(top)}")
     pinned_crypto = {a['tk']: a['id'] for a in pinned if a['cat'] == 'crypto'}
-    stock_tk = {a['tk'] for a in assets.values() if a['cat'] in ('stock', 'etf')} | {'MSTR', 'CRCL', 'SPCX', 'SOXL', 'SOXS', 'TQQQ', 'COIN', 'HOOD', 'KORU', 'BNC', 'BMNR', 'SKHY', 'SNXX', 'SNDK', 'QQQ', 'SPY', 'CRWV', 'PLTR'}
+    stock_tk = {a['tk'] for a in assets.values() if a['cat'] in ('stock', 'etf')} | {'DRAM', 'MSTR', 'CRCL', 'SPCX', 'SOXL', 'SOXS', 'TQQQ', 'COIN', 'HOOD', 'KORU', 'BNC', 'BMNR', 'SKHY', 'SNXX', 'SNDK', 'QQQ', 'SPY', 'CRWV', 'PLTR'}
     n = 0
     for r in top:
         if n >= (20 if quick else TOP_CRYPTO):
@@ -286,6 +308,17 @@ def main():
         if aid not in final and not quick and a.get('cat') != 'crypto':
             final[aid] = a
             kept += 1
+    try:
+        g = market_global(cg)
+        gp = os.path.join(ROOT, 'data/global.json')
+        if g:
+            old_g = json.load(open(gp)) if os.path.exists(gp) else {}
+            old_g.update({k: v for k, v in g.items() if v is not None})
+            old_g['updated'] = now.strftime('%Y-%m-%d %H:%M UTC')
+            json.dump(old_g, open(gp, 'w'), separators=(',', ':'))
+            log(f"global: {sorted(g)}")
+    except Exception as e:
+        log(f"global widgets failed: {e}")
     if len(final) < 0.5 * max(1, len(old)):
         log(f"Only {len(final)} assets vs {len(old)} before; refusing to overwrite.")
         return 1

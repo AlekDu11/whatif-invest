@@ -26,6 +26,18 @@ END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
 A = {aid: a for aid, a in market['assets'].items() if a.get('p')}
+_gp = os.path.join(ROOT, 'data/global.json')
+G = json.load(open(_gp, encoding='utf-8')) if os.path.exists(_gp) else {}
+TV_LOC = {'en': 'en', 'uk': 'uk', 'ru': 'ru', 'es': 'es', 'pt': 'br', 'de': 'de_DE', 'fr': 'fr', 'it': 'it', 'pl': 'pl', 'tr': 'tr',
+          'nl': 'nl_NL', 'id': 'id', 'vi': 'vi_VN', 'th': 'th_TH', 'hi': 'in', 'ja': 'ja', 'ko': 'kr', 'zh': 'zh_CN', 'ar': 'ar_AE', 'fil': 'en'}
+
+
+def tv_symbol(a):
+    if a['cat'] == 'crypto':
+        return f"BINANCE:{a['tk']}USDT"
+    if a['cat'] == 'metal':
+        return 'OANDA:XAUUSD' if a['tk'] == 'XAU' else 'OANDA:XAGUSD'
+    return a['tk'].replace('-', '.')
 
 
 def nm(a, lang):
@@ -191,7 +203,7 @@ def strip(lang):
     for aid, label in (('btc', 'BTC'), ('eth', 'ETH'), ('spy', 'S&P 500'), ('qqq', 'Nasdaq-100'), ('gold', S['gold']), ('silver', S['silver'])):
         if aid in A:
             m = METRICS[aid]
-            items.append(f'<a href="{aurl(lang, aid)}">{esc(label)} <b>{price(m["price"])}</b> <span class="{cls(m["chg"])}">{pct(m["chg"])}</span></a>')
+            items.append(f'<a href="{aurl(lang, aid)}">{esc(label)} <b data-p="{aid}">{price(m["price"])}</b> <span class="{cls(m["chg"])}" data-c="{aid}">{pct(m["chg"])}</span></a>')
     return (f'<div class="strip"><div class="in"><span>{S["assets_n"]} <b>{len(A)}</b></span>{"".join(items)}'
             f'<span>{S["updated"]} <b>{UPDATED}</b></span></div></div>')
 
@@ -274,8 +286,8 @@ def row_html(aid, lang, n):
     a, m = A[aid], METRICS[aid]
     href = aurl(lang, aid)
     return (f'<tr><td class="l n hide-sm">{n}</td><td class="l"><a class="asset" href="{href}">{icon(a)}<span><span class="nm">{esc(nm(a, lang))}</span>'
-            f'<span class="tk">{esc(a["tk"])}</span></span></a></td><td></td><td class="num">{price(m["price"])}</td>'
-            f'<td class="num {cls(m["chg"])}">{pct(m["chg"])}</td><td class="num hide-sm {cls(m["r1"])}">{pct(m["r1"])}</td>'
+            f'<span class="tk">{esc(a["tk"])}</span></span></a></td><td></td><td class="num" data-p="{aid}">{price(m["price"])}</td>'
+            f'<td class="num {cls(m["chg"])}" data-c="{aid}">{pct(m["chg"])}</td><td class="num hide-sm {cls(m["r1"])}">{pct(m["r1"])}</td>'
             f'<td class="num hide-sm {cls(m["r3"])}">{pct(m["r3"])}</td><td><span class="pill {cls(m["r5"])}">{pct(m["r5"])}</span></td>'
             f'<td class="hide-sm">{spark(m["spark"])}</td><td class="hide-sm"><a class="calc" href="{href}">→</a></td></tr>')
 
@@ -305,28 +317,133 @@ def hl_card(lang, aid, label, key, sub):
 TEN = '<em>$10</em>'
 
 
+def big_usd(v):
+    if v is None:
+        return '—'
+    return f"${v/1e12:.2f}T" if v >= 1e12 else f"${v/1e9:.1f}B"
+
+
+def mini_row(lang, aid, val_html):
+    a = A[aid]
+    return (f'<a class="mrow" href="{aurl(lang, aid)}">{icon(a)}<span class="mn"><b>{esc(a["tk"])}</b><span>{esc(nm(a, lang))}</span></span>'
+            f'<span class="mp" data-p="{aid}">{price(METRICS[aid]["price"])}</span>{val_html}</a>')
+
+
+def fng_gauge(v):
+    import math
+    if v is None:
+        return ''
+    ang = math.pi * (1 - v / 100)
+    x, y = 100 + 78 * math.cos(ang), 100 - 78 * math.sin(ang)
+    segs = ''
+    cols = ['#e5484d', '#f59e0b', '#eab308', '#84cc16', '#14a44d']
+    for k in range(5):
+        a0, a1 = math.pi * (1 - k / 5), math.pi * (1 - (k + 1) / 5)
+        x0, y0, x1, y1 = 100 + 78 * math.cos(a0), 100 - 78 * math.sin(a0), 100 + 78 * math.cos(a1), 100 - 78 * math.sin(a1)
+        segs += f'<path d="M{x0:.1f} {y0:.1f} A78 78 0 0 1 {x1:.1f} {y1:.1f}" stroke="{cols[k]}" stroke-width="14" fill="none" stroke-linecap="butt"/>'
+    return (f'<svg viewBox="0 0 200 110" width="180" height="99" id="fngsvg">{segs}'
+            f'<circle id="fngdot" cx="{x:.1f}" cy="{y:.1f}" r="8" fill="#fff" stroke="#161a23" stroke-width="3"/></svg>')
+
+
+def fng_label(lang, v):
+    labs = TR[lang]['w']['fng_l'].split('|')
+    return labs[0 if v < 25 else 1 if v < 45 else 2 if v < 56 else 3 if v < 76 else 4]
+
+
 def home(lang, ver):
-    S = TR[lang]
+    S, w = TR[lang], TR[lang]['w']
     ids = ORDERED
+    n = len(A)
+    title, desc = S['home_title'], S['home_desc'].format(n=n)
+    # --- hero with quick calculator
+    qopts = ''.join(f'<option value="{aid}"{" selected" if aid == "btc" else ""}>{esc(nm(A[aid], lang))} ({esc(A[aid]["tk"])})</option>' for aid in ids[:120])
+    yrs = ''.join(f'<button data-y="{y}" class="{"on" if y == 5 else ""}">{y}</button>' for y in (1, 3, 5, 10))
+    b5 = simulate('btc', END_I - 60) if 'btc' in A else None
+    cta_ref = f'<a class="btn" id="ctaBuy" href="{url(lang, "compare")}">{w["cta"]}</a>'
+    hero = (f'<section class="herox"><div class="hx"><h1>{S["home_h1"].format(ten=TEN)}</h1><p class="lead">{S["home_lead"].format(n=n)}</p>'
+            f'<div class="hxbtn">{cta_ref}<a class="btn ghost" href="{url(lang, "compare")}">{S["nav_cmp"]}</a></div></div>'
+            f'<div class="card qcalc" id="qcalc"><div class="qt">{w["quick"]}</div>'
+            f'<div class="qrow"><label class="f">{w["q_asset"]}<div class="inp"><select id="qa">{qopts}</select></div></label>'
+            f'<label class="f">{S["ui"]["amount"]}<div class="inp"><span>$</span><input id="qm" type="number" min="1" value="{AMOUNT}"></div></label></div>'
+            f'<label class="f">{w["q_years"]}</label><div class="seg" id="qy">{yrs}</div>'
+            f'<div class="qres"><div class="k">{w["q_have"]}</div><div class="v" id="qv">{usd(b5["val"]) if b5 else "—"}</div>'
+            f'<div class="s" id="qs">{pct(b5["roi"]) if b5 else ""} · {w["q_inv"]} {usd(b5["inv"]) if b5 else ""}</div><div id="qsp"></div></div>'
+            f'<a class="calc" id="qmore" href="{aurl(lang, "btc")}">{w["q_more"]}</a></div></section>')
+    # --- market widgets
+    fv = (G.get('fng') or [None])[0]
+    fhist = G.get('fng') or []
+    def fh(k, lab):
+        return f'<div class="fh"><span>{lab}</span><b>{fhist[k]}</b></div>' if len(fhist) > k else ''
+    dom = G.get('btc_dom'); edom = G.get('eth_dom')
+    w_mcap = (f'<div class="card wd"><div class="wt">{w["mcap"]}</div><div class="wv" id="gmcap">{big_usd(G.get("mcap"))}</div>'
+              f'<div class="ws"><span class="{cls((G.get("mcap_chg") or 0) / 100)}" id="gmchg">{pct((G.get("mcap_chg") or 0) / 100) if G.get("mcap_chg") is not None else "—"}</span> · {w["vol"]} <b id="gvol">{big_usd(G.get("vol"))}</b></div>'
+              f'{spark(METRICS["btc"]["spark"], 260, 44) if "btc" in A else ""}</div>')
+    w_dom = (f'<div class="card wd"><div class="wt">{w["dom"]}</div><div class="wv" id="gdom">{f"{dom:.1f}%" if dom else "—"}</div>'
+             f'<div class="dbar"><i style="width:{dom or 0:.1f}%;background:#f7931a"></i><i style="width:{edom or 0:.1f}%;background:#627eea"></i></div>'
+             f'<div class="ws">BTC {f"{dom:.1f}%" if dom else "—"} · ETH {f"{edom:.1f}%" if edom else "—"}</div></div>')
+    w_fng = (f'<div class="card wd fng"><div class="wt">{w["fng"]}</div><div class="fgw">{fng_gauge(fv)}<div class="fgv"><b id="fngv">{fv if fv is not None else "—"}</b>'
+             f'<span id="fngl">{fng_label(lang, fv) if fv is not None else ""}</span></div></div>'
+             f'<div class="fhs">{fh(1, w["yday"])}{fh(7, w["week"])}{fh(30, w["month"])}</div></div>')
+    trend = [s.lower() for s in (G.get('trending') or []) if s.lower() in A][:5]
+    if not trend:
+        trend = [i for i in ids if A[i]['cat'] == 'crypto'][:5]
+    w_tr = (f'<div class="card wd"><div class="wt">🔥 {w["trending"]}</div>' +
+            ''.join(mini_row(lang, i, f'<span class="mc {cls(METRICS[i]["chg"])}" data-c="{i}">{pct(METRICS[i]["chg"])}</span>') for i in trend) + '</div>')
+    movers = [i for i in ids if METRICS[i]['chg'] is not None and ORD[i] < 400]
+    up = sorted(movers, key=lambda i: -METRICS[i]['chg'])[:6]
+    dn = sorted(movers, key=lambda i: METRICS[i]['chg'])[:6]
+    w_up = f'<div class="card wd"><div class="wt">🚀 {w["gainers"]}</div>' + ''.join(mini_row(lang, i, f'<span class="mc good" data-c="{i}">{pct(METRICS[i]["chg"])}</span>') for i in up) + '</div>'
+    w_dn = f'<div class="card wd"><div class="wt">📉 {w["losers"]}</div>' + ''.join(mini_row(lang, i, f'<span class="mc bad" data-c="{i}">{pct(METRICS[i]["chg"])}</span>') for i in dn) + '</div>'
+    bat = [i for i in ('btc', 'eth', 'nvda', 'aapl', 'spy', 'qqq', 'gold', 'silver') if i in A and METRICS[i]['r5'] is not None]
+    bat.sort(key=lambda i: -METRICS[i]['r5'])
+    mx = max([simulate(i, END_I - 60)['val'] for i in bat] or [1])
+    rows = ''
+    for i in bat:
+        r = simulate(i, END_I - 60)
+        rows += (f'<a class="brow" href="{aurl(lang, i)}"><span class="bn">{icon(A[i])}{esc(nm(A[i], lang))}</span>'
+                 f'<span class="bb"><i style="width:{max(2, r["val"] / mx * 100):.1f}%" class="{cls(r["roi"])}"></i></span><b>{usd(r["val"])}</b></a>')
+    inv5 = usd(simulate(bat[0], END_I - 60)['inv']) if bat else ''
+    w_bat = f'<div class="card wd battle"><div class="wt">⚔️ {w["battle"]}</div><div class="ws">{w["q_inv"]}: {inv5}</div>{rows}</div>'
+    # heatmap top 30 crypto
+    hm_ids = [i for i in ids if A[i]['cat'] == 'crypto'][:30]
+    tiles = ''
+    for k, i in enumerate(hm_ids):
+        c = METRICS[i]['chg'] or 0
+        sz = 'h1' if k < 2 else 'h2' if k < 8 else 'h3'
+        tiles += (f'<a class="tile {sz}{" dk" if abs(c) > 0.04 else ""}" data-h="{i}" href="{aurl(lang, i)}" style="background:{heat_color(c)}"><b>{esc(A[i]["tk"])}</b>'
+                  f'<span data-c="{i}">{pct(METRICS[i]["chg"])}</span><small data-p="{i}">{price(METRICS[i]["price"])}</small></a>')
+    heat = f'<section class="section"><div class="charthead"><h2>{w["heat"]}</h2><span class="livebadge"><i></i>{w["live"]}</span></div><div class="heat">{tiles}</div></section>'
+    banner = (f'<section class="banner section"><div><b>{w["cta"]}</b><p>{w["cta_text"]}</p></div>'
+              f'<a class="btn" id="ctaBuy2" href="{url(lang, "compare")}">{w["cta"]} →</a></section>')
+    # DCA leaders cards (as before)
     cards = []
-    b1, b5 = best_by('r1', ids), best_by('r5', ids)
+    b1, b5l = best_by('r1', ids), best_by('r5', ids)
     bc = best_by('r1', [i for i in ids if A[i]['cat'] == 'crypto' and ORD[i] < 60])
     if b1: cards.append(hl_card(lang, b1[0], S['hl1'], 'r1', S['sub1']))
-    if b5: cards.append(hl_card(lang, b5[0], S['hl5'], 'r5', S['sub5']))
+    if b5l: cards.append(hl_card(lang, b5l[0], S['hl5'], 'r5', S['sub5']))
     if bc: cards.append(hl_card(lang, bc[0], S['hlc'], 'r1', S['sub1']))
     for aid in ('btc', 'spy', 'gold'):
         if aid in A and len(cards) < 4:
             cards.append(hl_card(lang, aid, nm(A[aid], lang), 'r5', S['sub5']))
-    n = len(A)
-    title, desc = S['home_title'], S['home_desc'].format(n=n)
     filt = f'<div class="toolbar"><div class="filter">{SEARCH_ICON}<input id="flt" type="search" autocomplete="off"></div></div>'
-    body = (f'<h1>{S["home_h1"].format(ten=TEN)}</h1><p class="lead">{S["home_lead"].format(n=n)}</p><div class="hl">{"".join(cards)}</div>'
+    body = (hero + f'<div class="wgrid">{w_mcap}{w_dom}{w_fng}{w_tr}</div>'
+            f'<div class="wgrid3">{w_up}{w_dn}{w_bat}</div>{heat}{banner}'
+            f'<section class="section"><div class="hl">{"".join(cards)}</div></section>'
             f'<div class="tabs" id="tabs"></div>{filt}{table_block(lang, ids[:100])}'
             f'<section class="card section faq"><h2>{S["faq"]}</h2><details open><summary>{esc(S["q3"])}</summary><p>{esc(S["a3"])}</p></details></section>')
     jsonld = [{"@context": "https://schema.org", "@type": "WebApplication", "name": "whatif.invest", "url": SITE + url(lang),
                "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "inLanguage": S['loc'],
                "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": desc}]
-    return shell(lang, None, title, desc, body, {}, ver, jsonld)
+    return shell(lang, None, title, desc, body, dict(home=True), ver, jsonld)
+
+
+def heat_color(c):
+    c = max(-0.1, min(0.1, c))
+    if c >= 0:
+        k = c / 0.1
+        return f"rgb({int(232 - 212 * k)},{int(246 - 82 * k)},{int(237 - 160 * k)})"
+    k = -c / 0.1
+    return f"rgb({int(253 - 24 * k)},{int(236 - 164 * k)},{int(236 - 159 * k)})"
 
 
 def compare(lang, ver):
@@ -392,8 +509,11 @@ def asset(aid, lang, ver):
     crumbs = f'<nav class="crumbs"><a href="{url(lang)}">{S["nav_rank"]}</a> / {esc(cat)} / {esc(n)}</nav>'
     badges = f'<span class="badge">{esc(tk)}</span> <span class="badge">{esc(cat)}</span>' + (f' <span class="badge">{esc(a["sector"])}</span>' if a.get('sector') else '')
     head = (f'{crumbs}<div class="ahead">{icon(a, True)}<div><h1>{S["a_h1"].format(**fe)}</h1><div style="margin-top:4px">{badges}</div></div>'
-            f'<div class="price"><span class="v">{price(m["price"])}</span><span class="pill {cls(m["chg"])}">{pct(m["chg"])}</span><span id="buyslot" data-id="{aid}"></span></div></div>')
-    body = (f'{head}<p class="lead" style="margin-top:10px">{S["a_lead"].format(**fe)}</p><div class="stats">{stat_cards}</div>{calc_block(lang)}'
+            f'<div class="price"><span class="v" data-p="{aid}">{price(m["price"])}</span><span class="pill {cls(m["chg"])}" data-c="{aid}">{pct(m["chg"])}</span><span id="buyslot" data-id="{aid}"></span></div></div>')
+    w = S['w']
+    tv = (f'<section class="card section tvcard"><div class="charthead"><h2>{w["live_chart"]} · {esc(tk)}</h2><span class="livebadge"><i></i>{w["live"]}</span></div>'
+          f'<div id="tv" data-sym="{esc(tv_symbol(a))}" data-loc="{TV_LOC.get(lang, "en")}"></div></section>')
+    body = (f'{head}<p class="lead" style="margin-top:10px">{S["a_lead"].format(**fe)}</p>{tv}<div class="stats">{stat_cards}</div>{calc_block(lang)}'
             f'<div class="cols2 section"><section class="card"><h2>{S["a_periods"].format(**fe)}</h2>{ptable}</section>'
             f'<section class="card faq"><h2>{S["faq"]}</h2>' + ''.join(f'<details><summary>{esc(q)}</summary><p>{esc(x)}</p></details>' for q, x in faq) + '</section></div>'
             f'<section class="section">{table_block(lang, sim, S["a_similar"] + ": " + esc(cat), interactive=False)}</section>'

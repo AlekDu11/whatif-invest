@@ -195,4 +195,74 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
   }
   assignColors(); chips(); render();
 })();
+
+/* ---------- referral CTA buttons on home ---------- */
+(function(){ const r=REF_DEFAULT.crypto; if(!r||!r.url) return;
+  ['#ctaBuy','#ctaBuy2'].forEach(s=>{const b=$(s); if(b){b.href=r.url; b.target='_blank'; b.rel='sponsored noopener'}}) })();
+
+/* ---------- quick DCA calculator (home hero) ---------- */
+(function(){
+  const box=$('#qcalc'); if(!box) return;
+  let years=5;
+  const ym2i=s=>{const [y,m]=s.split('-').map(Number);return y*12+m-1};
+  const END=WI.u.slice(0,7), END_DAY=+WI.u.slice(8,10), ENDI=ym2i(END);
+  const run=async()=>{ const id=$('#qa').value, amt=Math.max(1,+$('#qm').value||10);
+    let P; try{P=await fetch(`${BASE}/assets/p/${id}.json?v=${WI.v}`).then(r=>r.json())}catch(e){return}
+    const s0=ym2i(P.start), e=ym2i(P.end), from=Math.max(s0,ENDI-years*12);
+    let u=0,inv=0; const path=[];
+    for(let i=from;i<=e;i++){ let d=new Date(Math.floor(i/12),i%12+1,0).getDate(); if(i===ENDI) d=END_DAY;
+      const c=amt*d; u+=c/P.p[i-s0]; inv+=c; path.push(u*P.p[i-s0]) }
+    const val=u*P.p[e-s0], roi=val/inv-1;
+    $('#qv').textContent=fmtUsd(val); $('#qv').className='v '+cls(roi);
+    $('#qs').innerHTML=`<span class="${cls(roi)}">${fmtPct(roi)}</span> · ${esc(T.w_q_inv)} ${fmtUsd(inv)}`;
+    $('#qsp').innerHTML=spark(path,300,56); $('#qmore').href=url(id) };
+  $$('#qy button').forEach(b=>b.onclick=()=>{years=+b.dataset.y;$$('#qy button').forEach(x=>x.classList.toggle('on',x===b));run()});
+  $('#qa').onchange=run; $('#qm').oninput=run; run();
+})();
+
+/* ---------- live global widgets (CoinGecko, alternative.me) ---------- */
+(function(){
+  if(!PAGE.home) return;
+  const big=v=>v>=1e12?'$'+(v/1e12).toFixed(2)+'T':'$'+(v/1e9).toFixed(1)+'B';
+  fetch('https://api.coingecko.com/api/v3/global').then(r=>r.json()).then(d=>{ const x=d.data; if(!x) return;
+    $('#gmcap').textContent=big(x.total_market_cap.usd); $('#gvol').textContent=big(x.total_volume.usd);
+    const c=x.market_cap_change_percentage_24h_usd/100; const el=$('#gmchg'); el.textContent=fmtPct(c); el.className=cls(c);
+    $('#gdom').textContent=x.market_cap_percentage.btc.toFixed(1)+'%' }).catch(()=>{});
+  fetch('https://api.alternative.me/fng/?limit=1').then(r=>r.json()).then(d=>{ const v=+d.data[0].value; if(!isFinite(v)) return;
+    $('#fngv').textContent=v; const L=(T.w_fng_l||'').split('|'); $('#fngl').textContent=L[v<25?0:v<45?1:v<56?2:v<76?3:4]||'';
+    const a=Math.PI*(1-v/100), dot=$('#fngdot'); if(dot){dot.setAttribute('cx',100+78*Math.cos(a));dot.setAttribute('cy',100-78*Math.sin(a))} }).catch(()=>{});
+})();
+
+/* ---------- live crypto prices (Binance WebSocket) ---------- */
+(function(){
+  const sym={}; IDX.forEach(a=>{ if(a.c==='crypto') sym[a.t+'USDT']=a });
+  if(!('WebSocket' in window)) return;
+  const heat=c=>{ c=Math.max(-.1,Math.min(.1,c)); if(c>=0){const k=c/.1;return `rgb(${232-212*k|0},${246-82*k|0},${237-160*k|0})`} const k=-c/.1;return `rgb(${253-24*k|0},${236-164*k|0},${236-159*k|0})` };
+  let ws, tries=0;
+  function connect(){
+    try{ ws=new WebSocket('wss://data-stream.binance.vision/stream?streams=!miniTicker@arr') }catch(e){ return }
+    ws.onmessage=ev=>{ let m; try{m=JSON.parse(ev.data).data}catch(e){return} if(!Array.isArray(m)) return;
+      for(const k of m){ const a=sym[k.s]; if(!a) continue; const p=+k.c, o=+k.o; if(!p) continue;
+        const old=a.pr; a.pr=p; a.ch=o?p/o-1:a.ch;
+        document.querySelectorAll(`[data-p="${a.i}"]`).forEach(el=>{ el.textContent=fmtPrice(p);
+          if(old&&p!==old){ el.classList.remove('flash-up','flash-dn'); void el.offsetWidth; el.classList.add(p>old?'flash-up':'flash-dn') } });
+        document.querySelectorAll(`[data-c="${a.i}"]`).forEach(el=>{ el.textContent=fmtPct(a.ch); el.classList.remove('good','bad'); el.classList.add(cls(a.ch)) });
+        document.querySelectorAll(`[data-h="${a.i}"]`).forEach(el=>{ el.style.background=heat(a.ch); el.classList.toggle('dk',Math.abs(a.ch)>.04) });
+      } };
+    ws.onclose=()=>{ if(tries++<5) setTimeout(connect,3000*tries) };
+  }
+  if(document.querySelector('[data-p]')) connect();
+})();
+
+/* ---------- TradingView live chart (asset page) ---------- */
+(function(){
+  const el=$('#tv'); if(!el) return;
+  const mount=()=>{ const wrap=document.createElement('div'); wrap.className='tradingview-widget-container'; wrap.style.height='100%';
+    wrap.innerHTML='<div class="tradingview-widget-container__widget" style="height:100%"></div>';
+    const s=document.createElement('script'); s.src='https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js'; s.async=true;
+    s.textContent=JSON.stringify({autosize:true,symbol:el.dataset.sym,interval:'D',timezone:'Etc/UTC',theme:'light',style:'1',locale:el.dataset.loc||'en',
+      allow_symbol_change:false,hide_side_toolbar:true,withdateranges:true,save_image:false,support_host:'https://www.tradingview.com'});
+    wrap.appendChild(s); el.appendChild(wrap) };
+  if('IntersectionObserver' in window){ const io=new IntersectionObserver(es=>{ if(es.some(e=>e.isIntersecting)){io.disconnect();mount()} },{rootMargin:'300px'}); io.observe(el) } else mount();
+})();
 })();
