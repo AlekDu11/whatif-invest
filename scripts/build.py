@@ -28,7 +28,10 @@ END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
 RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news'}
 # asset ids that clash with a language folder or a section get a suffix (ko -> ko-stock, fil -> fil-crypto)
-A = {(f"{aid}-{a['cat']}" if aid in RESERVED else aid): a for aid, a in market['assets'].items() if a.get('p')}
+_END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
+# delisted or stale series (last price older than a month) are dropped: "today" numbers would be false
+A = {(f"{aid}-{a['cat']}" if aid in RESERVED else aid): a for aid, a in market['assets'].items()
+     if a.get('p') and (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(a['end']) >= _END_I0 - 1}
 _gp = os.path.join(ROOT, 'data/global.json')
 G = json.load(open(_gp, encoding='utf-8')) if os.path.exists(_gp) else {}
 _fp = os.path.join(ROOT, 'data/fx.json')
@@ -183,7 +186,8 @@ def hue(s):
 def icon(a, big=False):
     c = ' lg' if big else ''
     if a.get('logo'):
-        return f'<span class="ic{c}"><img src="{esc(a["logo"])}" alt="" loading="lazy" width="26" height="26"></span>'
+        return (f'<span class="ic{c}" style="background:hsl({hue(a["tk"])} 55% 52%)"><img src="{esc(a["logo"])}" alt="" loading="lazy" width="26" height="26" '
+                f'onerror="this.parentNode.textContent=\'{esc(a["tk"][:2])}\'"></span>')
     return f'<span class="ic{c}" style="background:hsl({hue(a["tk"])} 55% 52%)">{esc(a["tk"][:2])}</span>'
 
 
@@ -242,6 +246,9 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
            + ''.join(f'<a href="{url(lang, k)}">{v}</a>' for k, v in tl.items()) + '</div></details>'
            + f'<a href="{url(blog_l, "blog")}" class="{"on" if (p or "").startswith("blog") else ""}">{X["nav_blog"]}</a>')
     i18n = dict(S['ui'], months=S['months'], intl=S['intl'])
+    mnav = ''.join(f'<a href="{h}" class="{"on" if on else ""}"><span>{ic}</span>{esc(lb)}</a>' for h, ic, lb, on in (
+        (url(lang), '◎', S['nav_rank'], p is None), (url(lang, 'compare'), '⇅', S['nav_cmp'], p == 'compare'),
+        (url(lang, 'converter'), '⇄', X['conv_h1'].split()[0], p in TOOLS), (url(blog_l, 'blog'), '✎', X['nav_blog'], (p or '').startswith('blog'))))
     cfg = dict(cfg, lang=lang, base=BASE, prefix=url(lang).rstrip('/'), full=lang in FULL, topn=TOP_N,
                names={'gold': S['gold'], 'silver': S['silver']})
     return f"""<!DOCTYPE html>
@@ -269,14 +276,15 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
   <nav class="nav">{nav}</nav>
   {lang_menu(lang, p)}
 </div></div>
+<nav class="mnav">{mnav}</nav>
 <main class="wrap">
 {body}
 <footer><span>{BRAND} · {S['by']} <a href="https://mytimebox.app/">Timebox</a> · {S['sources']}</span><span>{S['disclaimer']}</span></footer>
 <nav class="langs">{' · '.join(f'<a href="{url(lg, p) if has_page(lg, p) else url(lg)}" hreflang="{TR[lg]["loc"]}">{esc(TR[lg]["name"])}</a>' for lg in ORDER)}</nav>
 </main>
 <script>window.PAGE={json.dumps(cfg, ensure_ascii=False)};window.I18N={json.dumps(i18n, ensure_ascii=False)};</script>
-<script src="{BASE}/assets/index.js?v={ver['index']}"></script>
-<script src="{BASE}/assets/ref.js?v={ver['ref']}"></script>
+<script src="{BASE}/assets/index.js?v={ver['index']}" defer></script>
+<script src="{BASE}/assets/ref.js?v={ver['ref']}" defer></script>
 <script src="{BASE}/assets/app.js?v={ver['js']}" defer></script>
 </body>
 </html>
@@ -850,6 +858,10 @@ def main():
     si += [f'<sitemap><loc>{SITE}{BASE}/sitemap-{lg}.xml</loc><lastmod>{UPDATED}</lastmod></sitemap>' for lg in ORDER]
     si.append('</sitemapindex>')
     write('sitemap.xml', '\n'.join(si))
+    nf = {'uk': ('Сторінку не знайдено', 'Можливо, актив перейменовано або видалено. Знайди його через пошук угорі або перейди до рейтингу.'),
+          'en': ('Page not found', 'The asset may have been renamed or removed. Use the search above or go to the ranking.')}
+    body404 = ''.join(f'<h1>{a}</h1><p class="lead">{b}</p><p><a class="btn" href="{url(lg)}">{TR[lg]["nav_rank"]} →</a></p>' for lg, (a, b) in nf.items())
+    write('404.html', shell('en', None, 'Page not found | ' + BRAND, nf['en'][1], body404, {}, ver).replace('<link rel="canonical"', '<meta name="robots" content="noindex"><link rel="canonical"'))
     write('robots.txt', f'User-agent: *\nAllow: /\nSitemap: {SITE}{BASE}/sitemap.xml\n')
     total = sum(len(p) for p in per_lang.values())
     print(f"built {total} pages in {len(ORDER)} languages · {len(A)} assets · data {UPDATED}")

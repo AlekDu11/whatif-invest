@@ -237,25 +237,25 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
     const a=Math.PI*(1-v/100), dot=$('#fngdot'); if(dot){dot.setAttribute('cx',100+78*Math.cos(a));dot.setAttribute('cy',100-78*Math.sin(a))} }).catch(()=>{});
 })();
 
-/* ---------- live crypto prices (Binance WebSocket) ---------- */
+/* ---------- live crypto prices (Binance WebSocket, only symbols shown on the page) ---------- */
 (function(){
-  const sym={}; IDX.forEach(a=>{ if(a.c==='crypto') sym[a.t+'USDT']=a });
   if(!('WebSocket' in window)) return;
   const heat=c=>{ c=Math.max(-.1,Math.min(.1,c)); if(c>=0){const k=c/.1;return `rgb(${232-212*k|0},${246-82*k|0},${237-160*k|0})`} const k=-c/.1;return `rgb(${253-24*k|0},${236-164*k|0},${236-159*k|0})` };
-  let ws, tries=0;
-  function connect(){
-    try{ ws=new WebSocket('wss://data-stream.binance.vision/stream?streams=!miniTicker@arr') }catch(e){ return }
-    ws.onmessage=ev=>{ let m; try{m=JSON.parse(ev.data).data}catch(e){return} if(!Array.isArray(m)) return;
-      for(const k of m){ const a=sym[k.s]; if(!a) continue; const p=+k.c, o=+k.o; if(!p) continue;
-        const old=a.pr; a.pr=p; a.ch=o?p/o-1:a.ch;
-        document.querySelectorAll(`[data-p="${a.i}"]`).forEach(el=>{ el.textContent=fmtPrice(p);
-          if(old&&p!==old){ el.classList.remove('flash-up','flash-dn'); void el.offsetWidth; el.classList.add(p>old?'flash-up':'flash-dn') } });
-        document.querySelectorAll(`[data-c="${a.i}"]`).forEach(el=>{ el.textContent=fmtPct(a.ch); el.classList.remove('good','bad'); el.classList.add(cls(a.ch)) });
-        document.querySelectorAll(`[data-h="${a.i}"]`).forEach(el=>{ el.style.background=heat(a.ch); el.classList.toggle('dk',Math.abs(a.ch)>.04) });
-      } };
-    ws.onclose=()=>{ if(tries++<5) setTimeout(connect,3000*tries) };
-  }
-  if(document.querySelector('[data-p]')) connect();
+  let ws=null, tries=0, want='';
+  function symbols(){ const ids=new Set($$('[data-p],[data-c],[data-h]').map(el=>el.dataset.p||el.dataset.c||el.dataset.h));
+    return [...ids].map(id=>BYID[id]).filter(a=>a&&a.c==='crypto').map(a=>a.t.toLowerCase()+'usdt@miniTicker').slice(0,200) }
+  function apply(k){ const a=IDX.find(x=>x.c==='crypto'&&x.t+'USDT'===k.s); if(!a) return; const p=+k.c, o=+k.o; if(!p) return;
+    const old=a.pr; a.pr=p; a.ch=o?p/o-1:a.ch;
+    $$(`[data-p="${a.i}"]`).forEach(el=>{ el.textContent=fmtPrice(p); if(old&&p!==old){ el.classList.remove('flash-up','flash-dn'); void el.offsetWidth; el.classList.add(p>old?'flash-up':'flash-dn') } });
+    $$(`[data-c="${a.i}"]`).forEach(el=>{ el.textContent=fmtPct(a.ch); el.classList.remove('good','bad'); el.classList.add(cls(a.ch)) });
+    $$(`[data-h="${a.i}"]`).forEach(el=>{ el.style.background=heat(a.ch); el.classList.toggle('dk',Math.abs(a.ch)>.04) });
+    document.dispatchEvent(new CustomEvent('wi:tick',{detail:a})) }
+  function connect(){ const s=symbols(); if(!s.length) return; want=s.join('/');
+    try{ ws=new WebSocket('wss://data-stream.binance.vision/stream?streams='+want) }catch(e){ return }
+    ws.onmessage=ev=>{ let m; try{m=JSON.parse(ev.data).data}catch(e){return} if(m&&m.s) apply(m) };
+    ws.onclose=()=>{ ws=null; if(!document.hidden&&tries++<5) setTimeout(connect,3000*tries) } }
+  document.addEventListener('visibilitychange',()=>{ if(document.hidden){ if(ws){ tries=99; ws.close() } } else if(!ws){ tries=0; connect() } });
+  if(!document.querySelector('.art')) connect();
 })();
 
 /* ---------- TradingView widgets (lazy) ---------- */
@@ -290,7 +290,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
     $('#cvrate').textContent=`1 ${lab(f)} = ${fmtN(r,isFiat(to))} ${lab(to)} · 1 ${lab(to)} = ${fmtN(1/r,isFiat(f))} ${lab(f)}${(isFiat(f)&&f!=='usd')||(isFiat(to)&&to!=='usd')?' · FX '+(WI.fxu||''):''}` };
   ['#cva','#cvf','#cvt'].forEach(s=>$(s).addEventListener('input',run));
   $('#cvsw').onclick=()=>{ const f=$('#cvf').value; $('#cvf').value=$('#cvt').value; $('#cvt').value=f; run() };
-  run(); setInterval(run,2000);
+  run(); document.addEventListener('wi:tick',run);
   fetch('https://open.er-api.com/v6/latest/USD').then(r=>r.json()).then(d=>{ if(d&&d.rates){ Object.keys(FX).forEach(c=>{ if(d.rates[c]) FX[c]=d.rates[c] }); WI.fxu=(d.time_last_update_utc||'').slice(5,16); run() } }).catch(()=>{});
 })();
 })();
