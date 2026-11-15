@@ -1,0 +1,962 @@
+[
+{
+"tk": "VOO",
+"yahoo": "VOO",
+"name": "Vanguard S&P 500 ETF",
+"cat": "etf"
+},
+{
+"tk": "IVV",
+"yahoo": "IVV",
+"name": "iShares Core S&P 500 ETF",
+"cat": "etf"
+},
+{
+"tk": "SPLG",
+"yahoo": "SPLG",
+"name": "SPDR Portfolio S&P 500 ETF",
+"cat": "etf"
+},
+{
+"tk": "VT",
+"yahoo": "VT",
+"name": "Vanguard Total World Stock ETF",
+"cat": "etf"
+},
+{
+"tk": "VXUS",
+"yahoo": "VXUS",
+"name": "Vanguard Total International Stock ETF",
+"cat": "etf"
+},
+{
+"tk": "VEA",
+"yahoo": "VEA",
+"name": "Vanguard FTSE Developed Markets ETF",
+"cat": "etf"
+},
+{
+"tk": "VWO",
+"yahoo": "VWO",
+"name": "Vanguard FTSE Emerging Markets ETF",
+"cat": "etf"
+},
+{
+"tk": "EEM",
+"yahoo": "EEM",
+"name": "iShares MSCI Emerging Markets ETF",
+"cat": "etf"
+},
+{
+"tk": "EFA",
+"yahoo": "EFA",
+"name": "iShares MSCI EAFE ETF",
+"cat": "etf"
+},
+{
+"tk": "SCHD",
+"yahoo": "SCHD",
+"name": "Schwab U.S. Dividend Equity ETF",
+"cat": "etf"
+},
+{
+"tk": "VIG",
+"yahoo": "VIG",
+"name": "Vanguard Dividend Appreciation ETF",
+"cat": "etf"
+},
+{
+"tk": "VYM",
+"yahoo": "VYM",
+"name": "Vanguard High Dividend Yield ETF",
+"cat": "etf"
+},
+{
+"tk": "JEPI",
+"yahoo": "JEPI",
+"name": "JPMorgan Equity Premium Income ETF",
+"cat": "etf"
+},
+{
+"tk": "JEPQ",
+"yahoo": "JEPQ",
+"name": "JPMorgan Nasdaq Equity Premium Income ETF",
+"cat": "etf"
+},
+{
+"tk": "DIA",
+"yahoo": "DIA",
+"name": "SPDR Dow Jones Industrial Average ETF",
+"cat": "etf"
+},
+{
+"tk": "IWM",
+"yahoo": "IWM",
+"name": "iShares Russell 2000 ETF",
+"cat": "etf"
+},
+{
+"tk": "QQQM",
+"yahoo": "QQQM",
+"name": "Invesco Nasdaq 100 ETF",
+"cat": "etf"
+},
+{
+"tk": "VUG",
+"yahoo": "VUG",
+"name": "Vanguard Growth ETF",
+"cat": "etf"
+},
+{
+"tk": "SCHG",
+"yahoo": "SCHG",
+"name": "Schwab U.S. Large-Cap Growth ETF",
+"cat": "etf"
+},
+{
+"tk": "VGT",
+"yahoo": "VGT",
+"name": "Vanguard Information Technology ETF",
+"cat": "etf"
+},
+{
+"tk": "XLK",
+"yahoo": "XLK",
+"name": "Technology Select Sector SPDR",
+"cat": "etf"
+},
+{
+"tk": "XLF",
+"yahoo": "XLF",
+"name": "Financial Select Sector SPDR",
+"cat": "etf"
+},
+{
+"tk": "XLE",
+"yahoo": "XLE",
+"name": "Energy Select Sector SPDR",
+"cat": "etf"
+},
+{
+"tk": "XLV",
+"yahoo": "XLV",
+"name": "Health Care Select Sector SPDR",
+"cat": "etf"
+},
+{
+"tk": "ITA",
+"yahoo": "ITA",
+"name": "iShares U.S. Aerospace & Defense ETF",
+"cat": "etf"
+},
+{
+"tk": "ARKK",
+"yahoo": "ARKK",
+"name": "ARK Innovation ETF",
+"cat": "etf"
+},
+{
+"tk": "KWEB",
+"yahoo": "KWEB",
+"name": "KraneShares CSI China Internet ETF",
+"cat": "etf"
+},
+{
+"tk": "URA",
+"yahoo": "URA",
+"name": "Global X Uranium ETF",
+"cat": "etf"
+},
+{
+"tk": "ICLN",
+"yahoo": "ICLN",
+"name": "iShares Global Clean Energy ETF",
+"cat": "etf"
+},
+{
+"tk": "VNQ",
+"yahoo": "VNQ",
+"name": "Vanguard Real Estate ETF",
+"cat": "etf"
+},
+{
+"tk": "BND",
+"yahoo": "BND",
+"name": "Vanguard Total Bond Market ETF",
+"cat": "etf"
+},
+{
+"tk": "AGG",
+"yahoo": "AGG",
+"name": "iShares Core U.S. Aggregate Bond ETF",
+"cat": "etf"
+},
+{
+"tk": "TLT",
+"yahoo": "TLT",
+"name": "iShares 20+ Year Treasury Bond ETF",
+"cat": "etf"
+},
+{
+"tk": "GLD",
+"yahoo": "GLD",
+"name": "SPDR Gold Shares",
+"cat": "etf"
+},
+{
+"tk": "SLV",
+"yahoo": "SLV",
+"name": "iShares Silver Trust",
+"cat": "etf"
+},
+{
+"tk": "IBIT",
+"yahoo": "IBIT",
+"name": "iShares Bitcoin Trust ETF",
+"cat": "etf"
+},
+{
+"tk": "FBTC",
+"yahoo": "FBTC",
+"name": "Fidelity Wise Origin Bitcoin Fund",
+"cat": "etf"
+},
+{
+"tk": "ETHA",
+"yahoo": "ETHA",
+"name": "iShares Ethereum Trust ETF",
+"cat": "etf"
+},
+{
+"tk": "EWG",
+"yahoo": "EWG",
+"name": "iShares MSCI Germany ETF",
+"cat": "etf"
+},
+{
+"tk": "EPOL",
+"yahoo": "EPOL",
+"name": "iShares MSCI Poland ETF",
+"cat": "etf"
+},
+{
+"tk": "KYIV",
+"yahoo": "KYIV",
+"name": "Kyivstar Group",
+"cat": "stock",
+"mkt": "ua",
+"sector": "Telecom"
+},
+{
+"tk": "SWMR",
+"yahoo": "SWMR",
+"name": "Swarmer",
+"cat": "stock",
+"mkt": "ua",
+"sector": "Defense tech"
+},
+{
+"tk": "VEON",
+"yahoo": "VEON",
+"name": "VEON",
+"cat": "stock",
+"mkt": "ua",
+"sector": "Telecom"
+},
+{
+"tk": "AST",
+"yahoo": "AST.WA",
+"name": "Astarta",
+"cat": "stock",
+"mkt": "ua",
+"sector": "Agriculture"
+},
+{
+"tk": "IMC",
+"yahoo": "IMC.WA",
+"name": "IMC (Industrial Milk Company)",
+"cat": "stock",
+"mkt": "ua",
+"sector": "Agriculture"
+},
+{
+"tk": "KER",
+"yahoo": "KER.WA",
+"name": "Kernel",
+"cat": "stock",
+"mkt": "ua",
+"sector": "Agriculture"
+},
+{
+"tk": "FXPO",
+"yahoo": "FXPO.L",
+"name": "Ferrexpo",
+"cat": "stock",
+"mkt": "ua",
+"sector": "Mining"
+},
+{
+"tk": "CLE",
+"yahoo": "CLE.WA",
+"name": "Coal Energy",
+"cat": "stock",
+"mkt": "ua",
+"sector": "Energy"
+},
+{
+"tk": "AGT",
+"yahoo": "AGT.WA",
+"name": "Agroton",
+"cat": "stock",
+"mkt": "ua",
+"sector": "Agriculture"
+},
+{
+"tk": "OVO",
+"yahoo": "OVO.WA",
+"name": "Ovostar Union",
+"cat": "stock",
+"mkt": "ua",
+"sector": "Agriculture"
+},
+{
+"tk": "MLK",
+"yahoo": "MLK.WA",
+"name": "Milkiland",
+"cat": "stock",
+"mkt": "ua",
+"sector": "Food"
+},
+{
+"tk": "KSG",
+"yahoo": "KSG.WA",
+"name": "KSG Agro",
+"cat": "stock",
+"mkt": "ua",
+"sector": "Agriculture"
+},
+{
+"tk": "PKO",
+"yahoo": "PKO.WA",
+"name": "PKO Bank Polski",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Banks"
+},
+{
+"tk": "PKN",
+"yahoo": "PKN.WA",
+"name": "Orlen",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Energy"
+},
+{
+"tk": "PZU",
+"yahoo": "PZU.WA",
+"name": "PZU",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Insurance"
+},
+{
+"tk": "PEO",
+"yahoo": "PEO.WA",
+"name": "Bank Pekao",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Banks"
+},
+{
+"tk": "KGH",
+"yahoo": "KGH.WA",
+"name": "KGHM Polska Miedź",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Mining"
+},
+{
+"tk": "LPP",
+"yahoo": "LPP.WA",
+"name": "LPP",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Retail"
+},
+{
+"tk": "DNP",
+"yahoo": "DNP.WA",
+"name": "Dino Polska",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Retail"
+},
+{
+"tk": "ALE",
+"yahoo": "ALE.WA",
+"name": "Allegro",
+"cat": "stock",
+"mkt": "pl",
+"sector": "E-commerce"
+},
+{
+"tk": "CDR",
+"yahoo": "CDR.WA",
+"name": "CD Projekt",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Gaming"
+},
+{
+"tk": "SPL",
+"yahoo": "SPL.WA",
+"name": "Santander Bank Polska",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Banks"
+},
+{
+"tk": "MBK",
+"yahoo": "MBK.WA",
+"name": "mBank",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Banks"
+},
+{
+"tk": "ING",
+"yahoo": "ING.WA",
+"name": "ING Bank Śląski",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Banks"
+},
+{
+"tk": "ALR",
+"yahoo": "ALR.WA",
+"name": "Alior Bank",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Banks"
+},
+{
+"tk": "PGE",
+"yahoo": "PGE.WA",
+"name": "PGE",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Utilities"
+},
+{
+"tk": "BDX",
+"yahoo": "BDX.WA",
+"name": "Budimex",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Construction"
+},
+{
+"tk": "KTY",
+"yahoo": "KTY.WA",
+"name": "Grupa Kęty",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Industrials"
+},
+{
+"tk": "KRU",
+"yahoo": "KRU.WA",
+"name": "Kruk",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Finance"
+},
+{
+"tk": "OPL",
+"yahoo": "OPL.WA",
+"name": "Orange Polska",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Telecom"
+},
+{
+"tk": "PCO",
+"yahoo": "PCO.WA",
+"name": "Pepco Group",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Retail"
+},
+{
+"tk": "ZAB",
+"yahoo": "ZAB.WA",
+"name": "Żabka Group",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Retail"
+},
+{
+"tk": "TXT",
+"yahoo": "TXT.WA",
+"name": "Text (LiveChat)",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Software"
+},
+{
+"tk": "CPS",
+"yahoo": "CPS.WA",
+"name": "Cyfrowy Polsat",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Media"
+},
+{
+"tk": "JSW",
+"yahoo": "JSW.WA",
+"name": "JSW",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Mining"
+},
+{
+"tk": "TPE",
+"yahoo": "TPE.WA",
+"name": "Tauron",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Utilities"
+},
+{
+"tk": "ENA",
+"yahoo": "ENA.WA",
+"name": "Enea",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Utilities"
+},
+{
+"tk": "ACP",
+"yahoo": "ACP.WA",
+"name": "Asseco Poland",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Software"
+},
+{
+"tk": "CCC",
+"yahoo": "CCC.WA",
+"name": "CCC (Modivo)",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Retail"
+},
+{
+"tk": "XTB",
+"yahoo": "XTB.WA",
+"name": "XTB",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Finance"
+},
+{
+"tk": "BFT",
+"yahoo": "BFT.WA",
+"name": "Benefit Systems",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Services"
+},
+{
+"tk": "APR",
+"yahoo": "APR.WA",
+"name": "Auto Partner",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Retail"
+},
+{
+"tk": "GPP",
+"yahoo": "GPP.WA",
+"name": "Grupa Pracuj",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Internet"
+},
+{
+"tk": "11B",
+"yahoo": "11B.WA",
+"name": "11 bit studios",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Gaming"
+},
+{
+"tk": "DOM",
+"yahoo": "DOM.WA",
+"name": "Dom Development",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Real estate"
+},
+{
+"tk": "MIL",
+"yahoo": "MIL.WA",
+"name": "Bank Millennium",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Banks"
+},
+{
+"tk": "BHW",
+"yahoo": "BHW.WA",
+"name": "Citi Handlowy",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Banks"
+},
+{
+"tk": "ATT",
+"yahoo": "ATT.WA",
+"name": "Grupa Azoty",
+"cat": "stock",
+"mkt": "pl",
+"sector": "Chemicals"
+},
+{
+"tk": "SAP",
+"yahoo": "SAP.DE",
+"name": "SAP",
+"cat": "stock",
+"mkt": "de",
+"sector": "Software"
+},
+{
+"tk": "SIE",
+"yahoo": "SIE.DE",
+"name": "Siemens",
+"cat": "stock",
+"mkt": "de",
+"sector": "Industrials"
+},
+{
+"tk": "ALV",
+"yahoo": "ALV.DE",
+"name": "Allianz",
+"cat": "stock",
+"mkt": "de",
+"sector": "Insurance"
+},
+{
+"tk": "DTE",
+"yahoo": "DTE.DE",
+"name": "Deutsche Telekom",
+"cat": "stock",
+"mkt": "de",
+"sector": "Telecom"
+},
+{
+"tk": "AIR",
+"yahoo": "AIR.DE",
+"name": "Airbus",
+"cat": "stock",
+"mkt": "de",
+"sector": "Aerospace"
+},
+{
+"tk": "MBG",
+"yahoo": "MBG.DE",
+"name": "Mercedes-Benz Group",
+"cat": "stock",
+"mkt": "de",
+"sector": "Autos"
+},
+{
+"tk": "BMW",
+"yahoo": "BMW.DE",
+"name": "BMW",
+"cat": "stock",
+"mkt": "de",
+"sector": "Autos"
+},
+{
+"tk": "VOW3",
+"yahoo": "VOW3.DE",
+"name": "Volkswagen",
+"cat": "stock",
+"mkt": "de",
+"sector": "Autos"
+},
+{
+"tk": "P911",
+"yahoo": "P911.DE",
+"name": "Porsche AG",
+"cat": "stock",
+"mkt": "de",
+"sector": "Autos"
+},
+{
+"tk": "PAH3",
+"yahoo": "PAH3.DE",
+"name": "Porsche SE",
+"cat": "stock",
+"mkt": "de",
+"sector": "Autos"
+},
+{
+"tk": "BAS",
+"yahoo": "BAS.DE",
+"name": "BASF",
+"cat": "stock",
+"mkt": "de",
+"sector": "Chemicals"
+},
+{
+"tk": "BAYN",
+"yahoo": "BAYN.DE",
+"name": "Bayer",
+"cat": "stock",
+"mkt": "de",
+"sector": "Healthcare"
+},
+{
+"tk": "MUV2",
+"yahoo": "MUV2.DE",
+"name": "Munich Re",
+"cat": "stock",
+"mkt": "de",
+"sector": "Insurance"
+},
+{
+"tk": "DBK",
+"yahoo": "DBK.DE",
+"name": "Deutsche Bank",
+"cat": "stock",
+"mkt": "de",
+"sector": "Banks"
+},
+{
+"tk": "CBK",
+"yahoo": "CBK.DE",
+"name": "Commerzbank",
+"cat": "stock",
+"mkt": "de",
+"sector": "Banks"
+},
+{
+"tk": "DB1",
+"yahoo": "DB1.DE",
+"name": "Deutsche Börse",
+"cat": "stock",
+"mkt": "de",
+"sector": "Finance"
+},
+{
+"tk": "IFX",
+"yahoo": "IFX.DE",
+"name": "Infineon",
+"cat": "stock",
+"mkt": "de",
+"sector": "Semiconductors"
+},
+{
+"tk": "ADS",
+"yahoo": "ADS.DE",
+"name": "Adidas",
+"cat": "stock",
+"mkt": "de",
+"sector": "Consumer"
+},
+{
+"tk": "RHM",
+"yahoo": "RHM.DE",
+"name": "Rheinmetall",
+"cat": "stock",
+"mkt": "de",
+"sector": "Defense"
+},
+{
+"tk": "MTX",
+"yahoo": "MTX.DE",
+"name": "MTU Aero Engines",
+"cat": "stock",
+"mkt": "de",
+"sector": "Aerospace"
+},
+{
+"tk": "HEN3",
+"yahoo": "HEN3.DE",
+"name": "Henkel",
+"cat": "stock",
+"mkt": "de",
+"sector": "Consumer"
+},
+{
+"tk": "BEI",
+"yahoo": "BEI.DE",
+"name": "Beiersdorf",
+"cat": "stock",
+"mkt": "de",
+"sector": "Consumer"
+},
+{
+"tk": "DHL",
+"yahoo": "DHL.DE",
+"name": "DHL Group",
+"cat": "stock",
+"mkt": "de",
+"sector": "Logistics"
+},
+{
+"tk": "EOAN",
+"yahoo": "EOAN.DE",
+"name": "E.ON",
+"cat": "stock",
+"mkt": "de",
+"sector": "Utilities"
+},
+{
+"tk": "RWE",
+"yahoo": "RWE.DE",
+"name": "RWE",
+"cat": "stock",
+"mkt": "de",
+"sector": "Utilities"
+},
+{
+"tk": "ENR",
+"yahoo": "ENR.DE",
+"name": "Siemens Energy",
+"cat": "stock",
+"mkt": "de",
+"sector": "Energy"
+},
+{
+"tk": "SHL",
+"yahoo": "SHL.DE",
+"name": "Siemens Healthineers",
+"cat": "stock",
+"mkt": "de",
+"sector": "Healthcare"
+},
+{
+"tk": "MRK",
+"yahoo": "MRK.DE",
+"name": "Merck KGaA",
+"cat": "stock",
+"mkt": "de",
+"sector": "Healthcare"
+},
+{
+"tk": "FRE",
+"yahoo": "FRE.DE",
+"name": "Fresenius",
+"cat": "stock",
+"mkt": "de",
+"sector": "Healthcare"
+},
+{
+"tk": "FME",
+"yahoo": "FME.DE",
+"name": "Fresenius Medical Care",
+"cat": "stock",
+"mkt": "de",
+"sector": "Healthcare"
+},
+{
+"tk": "HNR1",
+"yahoo": "HNR1.DE",
+"name": "Hannover Re",
+"cat": "stock",
+"mkt": "de",
+"sector": "Insurance"
+},
+{
+"tk": "CON",
+"yahoo": "CON.DE",
+"name": "Continental",
+"cat": "stock",
+"mkt": "de",
+"sector": "Autos"
+},
+{
+"tk": "DTG",
+"yahoo": "DTG.DE",
+"name": "Daimler Truck",
+"cat": "stock",
+"mkt": "de",
+"sector": "Autos"
+},
+{
+"tk": "SY1",
+"yahoo": "SY1.DE",
+"name": "Symrise",
+"cat": "stock",
+"mkt": "de",
+"sector": "Chemicals"
+},
+{
+"tk": "ZAL",
+"yahoo": "ZAL.DE",
+"name": "Zalando",
+"cat": "stock",
+"mkt": "de",
+"sector": "E-commerce"
+},
+{
+"tk": "VNA",
+"yahoo": "VNA.DE",
+"name": "Vonovia",
+"cat": "stock",
+"mkt": "de",
+"sector": "Real estate"
+},
+{
+"tk": "HEI",
+"yahoo": "HEI.DE",
+"name": "Heidelberg Materials",
+"cat": "stock",
+"mkt": "de",
+"sector": "Materials"
+},
+{
+"tk": "QIA",
+"yahoo": "QIA.DE",
+"name": "Qiagen",
+"cat": "stock",
+"mkt": "de",
+"sector": "Healthcare"
+},
+{
+"tk": "BNR",
+"yahoo": "BNR.DE",
+"name": "Brenntag",
+"cat": "stock",
+"mkt": "de",
+"sector": "Chemicals"
+},
+{
+"tk": "G1A",
+"yahoo": "G1A.DE",
+"name": "GEA Group",
+"cat": "stock",
+"mkt": "de",
+"sector": "Industrials"
+},
+{
+"tk": "HAG",
+"yahoo": "HAG.DE",
+"name": "Hensoldt",
+"cat": "stock",
+"mkt": "de",
+"sector": "Defense"
+},
+{
+"tk": "RENK",
+"yahoo": "R3NK.DE",
+"name": "Renk Group",
+"cat": "stock",
+"mkt": "de",
+"sector": "Defense"
+}
+]

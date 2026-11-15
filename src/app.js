@@ -264,7 +264,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
   let ws=null, tries=0, want='';
   function symbols(){ const ids=new Set($$('[data-p],[data-c],[data-h]').map(el=>el.dataset.p||el.dataset.c||el.dataset.h));
     if($('#hold')) try{ JSON.parse(localStorage.getItem('wi_hold')||'[]').forEach(x=>ids.add(x.id)) }catch(e){}
-    return [...ids].map(id=>BYID[id]).filter(a=>a&&a.c==='crypto').map(a=>a.t.toLowerCase()+'usdt@miniTicker').slice(0,200) }
+    return [...ids].map(id=>BYID[id]).filter(a=>a&&a.c==='crypto'&&a.bn).map(a=>a.t.toLowerCase()+'usdt@miniTicker').slice(0,200) }
   function apply(k){ const a=IDX.find(x=>x.c==='crypto'&&x.t+'USDT'===k.s); if(!a) return; const p=+k.c, o=+k.o; if(!p) return;
     const old=a.pr; a.pr=p; a.ch=o?p/o-1:a.ch;
     $$(`[data-p="${a.i}"]`).forEach(el=>{ el.textContent=fmtPrice(p); if(old&&p!==old){ el.classList.remove('flash-up','flash-dn'); void el.offsetWidth; el.classList.add(p>old?'flash-up':'flash-dn') } });

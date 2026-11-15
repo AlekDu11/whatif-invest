@@ -12,7 +12,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from i18n import LANGS as TR, ORDER, FULL, DEFAULT  # noqa: E402
 from i18n_t import T as TT  # noqa: E402
 from i18n_e import E as EX  # noqa: E402
-from i18n_n import N as NW, FOOT, SHARE, HOT  # noqa: E402
+from i18n_n import N as NW, FOOT, SHARE, HOT
+from i18n_ctry import C as CTRY, MKTS, MKT_LANG, CCY_SIGN  # noqa: E402  # noqa: E402
 from i18n_p import P as POLL, OPTS as POLL_OPTS  # noqa: E402
 from i18n_ai import AI as AIS  # noqa: E402
 from i18n_me import ME  # noqa: E402
@@ -35,7 +36,7 @@ UPDATED = market['updated']
 END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
-RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes'}
+RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany'}
 # asset ids that clash with a language folder or a section get a suffix (ko -> ko-stock, fil -> fil-crypto)
 _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
 # delisted or stale series (last price older than a month) are dropped: "today" numbers would be false
@@ -53,9 +54,14 @@ TV_LOC = {'en': 'en', 'uk': 'uk', 'ru': 'ru', 'es': 'es', 'pt': 'br', 'de': 'de_
 
 def tv_symbol(a):
     if a['cat'] == 'crypto':
-        return f"BINANCE:{a['tk']}USDT"
+        ex = {'gate': 'GATEIO', 'mexc': 'MEXC', 'okx': 'OKX'}.get(a.get('src'), 'BINANCE')
+        return f"{ex}:{a['tk']}USDT"
     if a['cat'] == 'metal':
         return 'OANDA:XAUUSD' if a['tk'] == 'XAU' else 'OANDA:XAGUSD'
+    y = a.get('yahoo') or ''
+    for suf, ex in (('.WA', 'GPW'), ('.DE', 'XETR'), ('.L', 'LSE')):
+        if y.endswith(suf):
+            return f"{ex}:{y[:-len(suf)]}"
     return a['tk'].replace('-', '.')
 
 
@@ -85,6 +91,7 @@ TOP = set(ORDERED[:TOP_N])
 
 
 HUBS = {'crypto': 'crypto', 'stocks': 'stock', 'etfs': 'etf', 'metals': 'metal'}
+CSLUG = {v[0]: k for k, v in MKTS.items()}   # 'stocks-poland' -> 'pl'
 TOOLS = ['converter']
 CALCS = ['millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'news', 'about']
 BLOG_LANGS = {l for l in ORDER if os.path.isdir(os.path.join(ROOT, 'content/blog', l)) and any(f.endswith('.md') for f in os.listdir(os.path.join(ROOT, 'content/blog', l)))}  # a language gets a blog once it has a post
@@ -96,6 +103,8 @@ def has_page(lang, aid):
         return True
     if aid in ('ai', 'me', 'memes'):
         return True
+    if aid in CSLUG:
+        return any(a.get('mkt') == CSLUG[aid] for a in A.values())
     if aid in CALCS:
         if aid == 'about':
             return lang in ABOUT
@@ -106,7 +115,7 @@ def has_page(lang, aid):
         return aid[5:] in NEWS.get(lang, {})
     if aid == 'blog' or (aid or '').startswith('blog/'):
         return lang in BLOG_LANGS and (aid == 'blog' or aid[5:] in POSTS.get(lang, {}))
-    return lang in FULL or aid in TOP
+    return lang in FULL or aid in TOP or (aid in A and MKT_LANG.get(A[aid].get('mkt')) == lang)
 
 
 # ---------------- math (mirrors src/app.js) ----------------
@@ -277,6 +286,7 @@ def footer_cols(lang):
     blog_l = lang if lang in BLOG_LANGS else 'en'
     pop = [(aurl(lang, i), nm(A[i], lang)) for i in ('btc', 'eth', 'sol', 'xrp', 'nvda', 'aapl', 'tsla', 'gold', 'spy', 'qqq') if i in A]
     mk = [(url(lang), S['nav_rank']), (url(lang, 'compare'), S['nav_cmp'])] + [(url(lang, k), S['cat_' + v]) for k, v in HUBS.items()]
+    mk += [(url(lang, sl), f'{fl} {CTRY[lang][3][m][0]}') for m, (sl, fl) in MKTS.items() if has_page(lang, sl)]
     tools = [(url(lang, k), v) for k, v in [x for x in tools_menu(lang) if x]]
     ins = [(url(lang, 'news'), n['n_nav']), (url(blog_l, 'blog'), n['i_nav']), (url(blog_l, 'blog') + 'rss.xml', 'RSS'),
            (url(lang, 'exchanges'), EX[lang]['nav']), (url(lang if lang in ABOUT else 'en', 'about'), n['about'])]
@@ -556,6 +566,14 @@ def bench(aid):
             yield b
 
 
+def local_price(a, lang):
+    if not a.get('lp') or a.get('ccy', 'USD') == 'USD':
+        return ''
+    v, c = a['lp'], a['ccy']
+    t = f"{v:,.2f}".replace(',', ' ') + ' ' + CCY_SIGN.get(c, c)
+    return f'<span class="lp" title="{esc(CTRY[lang][2])}">{esc(CTRY[lang][2])}: <b>{t}</b></span>'
+
+
 def asset(aid, lang, ver):
     S, u = TR[lang], TR[lang]['ui']
     a, m = A[aid], METRICS[aid]
@@ -611,7 +629,7 @@ def asset(aid, lang, ver):
     crumbs = f'<nav class="crumbs"><a href="{url(lang)}">{S["nav_rank"]}</a> / {esc(cat)} / {esc(n)}</nav>'
     badges = f'<span class="badge">{esc(tk)}</span> <span class="badge">{esc(cat)}</span>' + (f' <span class="badge">{esc(a["sector"])}</span>' if a.get('sector') else '')
     head = (f'{crumbs}<div class="ahead">{icon(a, True)}<div><h1>{S["a_h1"].format(**fe)}</h1><div style="margin-top:4px">{badges}</div></div>'
-            f'<div class="price"><span class="v" data-p="{aid}">{price(m["price"])}</span><span class="pill {cls(m["chg"])}" data-c="{aid}">{pct(m["chg"])}</span><span id="buyslot" data-id="{aid}"></span><button class="star big" data-s="{aid}" title="{esc(ME[lang]["star"])}">☆</button></div></div>')
+            f'<div class="price"><span class="v" data-p="{aid}">{price(m["price"])}</span><span class="pill {cls(m["chg"])}" data-c="{aid}">{pct(m["chg"])}</span>{local_price(a, lang)}<span id="buyslot" data-id="{aid}"></span><button class="star big" data-s="{aid}" title="{esc(ME[lang]["star"])}">☆</button></div></div>')
     w = S['w']
     loc = TV_LOC.get(lang, 'en')
     tv = (f'<section class="card section tvcard"><div class="charthead"><h2>{w["live_chart"]} · {esc(tk)}</h2><span class="livebadge"><i></i>{w["live"]}</span></div>'
@@ -628,7 +646,7 @@ def asset(aid, lang, ver):
                       + tvw('financials', dict(isTransparent=True, displayMode='regular', width='100%', height='100%', colorTheme='light', symbol=tv_symbol(a), locale=loc), 520)
                       + f'</section><section class="card"><h2>{X["prof"]} · {esc(tk)}</h2>'
                       + tvw('symbol-profile', dict(width='100%', height='100%', isTransparent=True, colorTheme='light', symbol=tv_symbol(a), locale=loc), 520) + '</section></div>')
-    body = (f'{head}<p class="lead" style="margin-top:10px">{S["a_lead"].format(**fe)}</p>{hot_block(lang, aid)}{tv}<div class="stats">{stat_cards}</div><div class="stats">{lump_cards}</div>{calc_block(lang)}{tech_news}'
+    body = (f'{head}<p class="lead" style="margin-top:10px">{S["a_lead"].format(**fe)}</p>{hot_block(lang, aid)}{tv}{hot_more(lang, aid)}<div class="stats">{stat_cards}</div><div class="stats">{lump_cards}</div>{calc_block(lang)}{tech_news}'
             f'<div class="cols2 section"><section class="card"><h2>{S["a_periods"].format(**fe)}</h2>{ptable}</section>'
             f'<section class="card faq"><h2>{S["faq"]}</h2>' + ''.join(f'<details><summary>{esc(q)}</summary><p>{esc(x)}</p></details>' for q, x in faq) + '</section></div>'
             f'<section class="section">{table_block(lang, sim, S["a_similar"] + ": " + esc(cat), interactive=False)}</section>'
@@ -985,12 +1003,25 @@ def news_tl(lang):
     return dict(zip(NEWS_TAGS, [HOT[lang][0]] + NW[lang]['tags'].split('|') + [AIS[lang]['nav']]))
 
 
+def hot_items(lang, aid):
+    return [(k, m) for k, m in news_items(lang) if aid in m.get('assets', [])][:20]
+
+
 def hot_block(lang, aid):
-    items = [(k, m) for k, m in news_items(lang) if aid in m.get('assets', [])][:4]
+    items = hot_items(lang, aid)[:1]
     if not items:
         return ''
     tl = news_tl(lang)
     return (f'<section class="section hot"><h2>{esc(HOT[lang][1].format(name=nm(A[aid], lang)))}</h2><div class="card nlist own">'
+            + ''.join(news_row(lang, k, m, tl) for k, m in items) + '</div></section>')
+
+
+def hot_more(lang, aid):
+    items = hot_items(lang, aid)[1:]
+    if not items:
+        return ''
+    tl = news_tl(lang)
+    return (f'<section class="section hotmore"><h2>{esc(NW[lang]["own"])} · {esc(A[aid]["tk"])}</h2><div class="card nlist own nscroll">'
             + ''.join(news_row(lang, k, m, tl) for k, m in items) + '</div></section>')
 
 
@@ -1203,8 +1234,36 @@ def hub(lang, slug, ver):
     cards = ''.join(hl_card(lang, i, nm(A[i], lang), 'r5', S['sub5']) for i in b5)
     filt = f'<div class="toolbar"><div class="filter">{SEARCH_ICON}<input id="flt" type="search" autocomplete="off"></div></div>'
     body = (f'<nav class="crumbs"><a href="{url(lang)}">{S["nav_rank"]}</a> / {esc(label)}</nav><h1>{esc(X["hub_h1"].format(cat=label))}</h1>'
-            f'<p class="lead">{esc(desc)}</p><div class="hl">{cards}</div><div class="tabs" id="tabs"></div>{filt}{table_block(lang, ids[:150])}')
+            f'<p class="lead">{esc(desc)}</p>{country_chips(lang) if cat == "stock" else ""}<div class="hl">{cards}</div><div class="tabs" id="tabs"></div>{filt}{table_block(lang, ids[:150])}')
     return shell(lang, slug, title, desc, body, dict(tab=cat), ver)
+
+
+def country_chips(lang, cur=None):
+    ch = [(sl, f'{fl} {CTRY[lang][3][m][0]}') for m, (sl, fl) in MKTS.items() if has_page(lang, sl)]
+    if not ch:
+        return ''
+    return (f'<div class="cchips"><b>{esc(CTRY[lang][0])}:</b>' + ''.join(
+        f'<a class="chip{" on" if sl == cur else ""}" href="{url(lang, sl)}">{esc(t)}</a>' for sl, t in ch) + '</div>')
+
+
+def country_page(lang, slug, ver):
+    S = TR[lang]
+    mkt = CSLUG[slug]
+    name, h1 = CTRY[lang][3][mkt]
+    ids = [i for i in ORDERED if A[i].get('mkt') == mkt]
+    key = 'r5' if sum(METRICS[i]['r5'] is not None for i in ids) >= 4 else 'r1'
+    best = best_by(key, ids)[:4]
+    cards = ''.join(hl_card(lang, i, nm(A[i], lang), key, S['sub5' if key == 'r5' else 'sub1']) for i in best)
+    lead = CTRY[lang][1].format(n=len(ids))
+    desc = f'{h1}. {lead}'
+    body = (f'<nav class="crumbs"><a href="{url(lang)}">{S["nav_rank"]}</a> / <a href="{url(lang, "stocks")}">{esc(S["cat_stock"])}</a> / {esc(name)}</nav>'
+            f'<h1>{esc(h1)}</h1><p class="lead">{esc(lead)}</p>{country_chips(lang, slug)}'
+            + (f'<div class="hl">{cards}</div>' if cards else '')
+            + f'<section class="section">{table_block(lang, ids, None, interactive=False)}</section>'
+            f'<p class="note">{esc(TR[lang]["x"]["hub_d"].format(n=len(ids), cat=S["ui"]["stock"].lower()))}</p>')
+    jsonld = [{"@context": "https://schema.org", "@type": "ItemList", "name": h1, "numberOfItems": len(ids),
+               "itemListElement": [{"@type": "ListItem", "position": k + 1, "name": nm(A[i], lang), "url": SITE + aurl(lang, i)} for k, i in enumerate(ids[:50])]}]
+    return shell(lang, slug, f'{h1} | {BRAND}', desc[:300], body, {}, ver, jsonld)
 
 
 LOCAL_CCY = {'uk': 'fx:UAH', 'ru': 'fx:RUB', 'pl': 'fx:PLN', 'de': 'fx:EUR', 'fr': 'fx:EUR', 'es': 'fx:EUR', 'it': 'fx:EUR', 'nl': 'fx:EUR',
@@ -1448,6 +1507,8 @@ def main():
             e['ne'] = nm(a, 'en')
         if a.get('logo'):
             e['l'] = a['logo']
+        if a.get('binance') or (a['cat'] == 'crypto' and a.get('src') == 'yahoo'):
+            e['bn'] = 1
         idx.append({k: (round(v, 4) if isinstance(v, float) and k in ('ch', 'r1', 'r3', 'r5') else v) for k, v in e.items() if v is not None})
         write(f'assets/p/{aid}.json', json.dumps({'start': a['start'], 'end': a['end'], 'p': a['p']}, separators=(',', ':')))
     index_js = 'window.WI=' + json.dumps({'u': UPDATED, 'v': dv, 'a': idx, 'fx': FX.get('rates', {}), 'fxu': FX.get('updated')}, ensure_ascii=False, separators=(',', ':')) + ';'
@@ -1474,12 +1535,17 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
     for lang in ORDER:
         pre = '' if lang == DEFAULT else lang + '/'
         assets_ = [aid for aid in ORDERED if has_page(lang, aid)]
+        extra_pages_c = []
         write(pre + 'index.html', home(lang, ver))
         write(pre + 'compare/index.html', compare(lang, ver))
         for aid in assets_:
             write(f'{pre}{aid}/index.html', asset(aid, lang, ver))
         for slug in HUBS:
             write(f'{pre}{slug}/index.html', hub(lang, slug, ver))
+        for slug in CSLUG:
+            if has_page(lang, slug):
+                write(f'{pre}{slug}/index.html', country_page(lang, slug, ver))
+                extra_pages_c.append(slug)
         for slug in TOOLS:
             write(f'{pre}{slug}/index.html', tool(lang, slug, ver))
         extra_pages = ['habits'] + ['habits/' + HSLUG[k] for k in HSCEN] + [c for c in CALCS if has_page(lang, c)]
@@ -1510,7 +1576,7 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
             for s in POSTS[lang]:
                 write(f'{pre}blog/{s}/index.html', blog_post(lang, s, ver))
             extra_pages += ['blog'] + ['blog/' + s for s in POSTS[lang]]
-        per_lang[lang] = [None, 'compare'] + list(HUBS) + TOOLS + extra_pages + assets_
+        per_lang[lang] = [None, 'compare'] + list(HUBS) + extra_pages_c + TOOLS + extra_pages + assets_
     # sitemaps: one per language + index
     for lang, pages in per_lang.items():
         sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']

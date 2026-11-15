@@ -6,7 +6,7 @@ on:
   workflow_dispatch: {}
   push:
     branches: [main]
-    paths: ['scripts/fetch_data.py', 'data/assets.json', '.github/workflows/update-prices.yml']
+    paths: ['scripts/fetch_data.py', 'data/assets.json', 'data/markets.json', '.github/workflows/update-prices.yml']
 
 permissions:
   contents: write
@@ -18,7 +18,7 @@ concurrency:
 jobs:
   fetch:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 75
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

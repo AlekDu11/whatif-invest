@@ -441,3 +441,9 @@ h1 em{color:inherit}
 .hot .nlist{border-left:3px solid var(--gold)}
 a.more{text-align:center;text-decoration:none}
 .toprank{margin-bottom:28px}
+.cchips{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0 6px;font-size:14px}
+.cchips b{font-weight:600;color:var(--muted);margin-right:2px}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:var(--text);background:var(--card);font-weight:500}
+.chip:hover{border-color:var(--accent)}.chip.on{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
+.price .lp{font-size:13px;color:var(--muted)}
+.nscroll{max-height:330px;overflow-y:auto;scrollbar-width:thin}

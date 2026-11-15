@@ -21,7 +21,11 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PINNED = os.path.join(ROOT, 'data/assets.json')
 OUT = os.path.join(ROOT, 'data/market.json')
 MIN_START = '2000-01'
-TOP_CRYPTO = 200
+TOP_CRYPTO = 1000
+MARKETS = os.path.join(ROOT, 'data/markets.json')   # ETFs + national stocks (Ukraine, Poland, Germany...)
+FX_TICKER = {'PLN': 'PLN=X', 'EUR': 'EUR=X', 'GBP': 'GBP=X'}   # Yahoo: units of currency per 1 USD
+SUFFIX_CCY = {'.WA': 'PLN', '.DE': 'EUR', '.L': 'GBp'}
+WRAPPED = ('wrapped', 'staked', 'bridged', 'restaked', 'liquid staking', 'tokenized', 'binance-peg', 'savings', 'usd')
 BINANCE = 'https://data-api.binance.vision/api/v3'
 SP500_CSV = 'https://raw.githubusercontent.com/datasets/s-and-p-500-companies/main/data/constituents.csv'
 STABLE = set('USDT USDC FDUSD TUSD USDP DAI BUSD EUR EURI AEUR USDE PYUSD XUSD USD1 BFUSD RLUSD UST USTC GBP TRY BRL '
@@ -112,12 +116,43 @@ def binance_monthly(symbol):
     return to_series(pts)
 
 
+def other_monthly(base):
+    """Monthly USDT history for a coin not on Binance: Gate.io, then MEXC, then OKX."""
+    d = get_json(f"https://api.gateio.ws/api/v4/spot/candlesticks?currency_pair={base}_USDT&interval=30d&limit=1000", tries=1)
+    if isinstance(d, list) and d:
+        return to_series((datetime.fromtimestamp(int(r[0]), timezone.utc).strftime('%Y-%m'), r[2]) for r in d), 'gate'
+    d = get_json(f"https://api.mexc.com/api/v3/klines?symbol={base}USDT&interval=1M&limit=1000", tries=1)
+    if isinstance(d, list) and d:
+        return to_series((datetime.fromtimestamp(r[0] / 1000, timezone.utc).strftime('%Y-%m'), r[4]) for r in d), 'mexc'
+    d = get_json(f"https://www.okx.com/api/v5/market/history-candles?instId={base}-USDT&bar=1Mutc&limit=100", tries=1)
+    if isinstance(d, dict) and d.get('data'):
+        return to_series((datetime.fromtimestamp(int(r[0]) / 1000, timezone.utc).strftime('%Y-%m'), r[4]) for r in d['data']), 'okx'
+    return None, None
+
+
+def to_usd(series, ccy, fxm):
+    """Convert a monthly local-currency series to USD with monthly FX (units per USD)."""
+    if not series or ccy == 'USD':
+        return series
+    div = 100.0 if ccy == 'GBp' else 1.0
+    fx = fxm.get(FX_TICKER.get(ccy.upper() if ccy != 'GBp' else 'GBP'))
+    if not fx:
+        return None
+    f0 = ym2i(fx['start'])
+    out = []
+    for k, v in enumerate(series['p']):
+        j = min(max(ym2i(series['start']) + k - f0, 0), len(fx['p']) - 1)
+        out.append(float(f"{v / div / fx['p'][j]:.6g}"))
+    return dict(series, p=out)
+
+
 def looks_stable(series):
     p = series['p'][-12:]
     return len(p) >= 3 and all(0.97 < x < 1.03 for x in p)
 
 
 # ---------------- CoinGecko (names/logos) ----------------
+CG_LIST = []   # symbols of the top coins by market cap, biggest first
 BUBLIST = []   # top coins by market cap with 1h/24h/7d/30d/1y change, for the bubble map
 
 
@@ -131,7 +166,9 @@ def coingecko_meta():
             sym = (c.get('symbol') or '').upper()
             if sym and sym not in meta:          # first = biggest market cap wins
                 meta[sym] = dict(name=c.get('name'), logo=c.get('image'), rank=c.get('market_cap_rank'), mcap=c.get('market_cap'),
-                                 ath=c.get('ath'), athd=(c.get('ath_date') or '')[:10] or None)
+                                 ath=c.get('ath'), athd=(c.get('ath_date') or '')[:10] or None,
+                                 price=c.get('current_price'), chg=(c['price_change_percentage_24h'] / 100 if isinstance(c.get('price_change_percentage_24h'), (int, float)) else None))
+                CG_LIST.append(sym)
             if page == 1 and sym and c.get('current_price'):
                 r = lambda k: round(c[k] / 100, 5) if isinstance(c.get(k), (int, float)) else None
                 BUBLIST.append(dict(s=sym, n=c.get('name'), l=(c.get('image') or '').replace('/large/', '/small/'),
@@ -271,7 +308,7 @@ def fetch_logos(assets):
         if a.get('cat') == 'crypto':
             urls.append(f'https://bin.bnbstatic.com/static/assets/logos/{tk}.png')
         elif a.get('cat') in ('stock', 'etf'):
-            urls.append(f'https://financialmodelingprep.com/image-stock/{tk.replace("-", ".")}.png')
+            urls.append(f'https://financialmodelingprep.com/image-stock/{(a.get("yahoo") if a.get("mkt") else tk.replace("-", "."))}.png')
         for u in urls:
             b = get_bytes(u)
             if not b or len(b) < 200:
@@ -342,12 +379,35 @@ def main():
                 assets[a['id']]['sp500'] = True
                 assets[a['id']]['sector'] = next(r['sector'] for r in lst if r['tk'] == a['tk'])
 
-    # 3) daily price/24h change for every Yahoo asset
-    ys = [a['yahoo'] for a in assets.values()]
+    # 2b) ETFs and national stocks (data/markets.json), prices converted to USD
+    fxm = {}
+    if not quick and os.path.exists(MARKETS):
+        mk = json.load(open(MARKETS, encoding='utf-8'))
+        fxm = yahoo_monthly(list(FX_TICKER.values()))
+        log(f"markets.json: {len(mk)} assets; fx series: {sorted(fxm)}")
+        mm = yahoo_monthly([r['yahoo'] for r in mk])
+        for r in mk:
+            ccy = next((c for suf, c in SUFFIX_CCY.items() if r['yahoo'].endswith(suf)), 'USD')
+            aid = r['tk'].lower().replace('.', '-')
+            if aid in assets or (aid in old and old[aid].get('yahoo') != r['yahoo']):
+                aid = f"{aid}-{r.get('mkt') or 'etf'}"
+            if aid in assets:
+                continue
+            ser = to_usd(mm.get(r['yahoo']), ccy, fxm)
+            assets[aid] = dict(name={'uk': r['name'], 'en': r['name']}, tk=r['tk'], cat=r['cat'], yahoo=r['yahoo'], src='yahoo', ccy=ccy,
+                               **{k: r[k] for k in ('mkt', 'sector') if r.get(k)}, **(ser or {}))
+
+    # 3) daily price/24h change for every Yahoo asset (local currency -> USD)
+    ys = [a['yahoo'] for a in assets.values()] + list(FX_TICKER.values())
     yd = yahoo_daily(ys)
     for a in assets.values():
         if a['yahoo'] in yd:
             a['price'], a['chg'] = yd[a['yahoo']]
+            ccy = a.get('ccy', 'USD')
+            if ccy != 'USD':
+                rate = (yd.get(FX_TICKER['GBP' if ccy == 'GBp' else ccy]) or [None])[0] or (fxm.get(FX_TICKER['GBP' if ccy == 'GBp' else ccy], {}).get('p') or [None])[-1]
+                a['lp'] = a['price']
+                a['price'] = a['price'] / (100.0 if ccy == 'GBp' else 1.0) / rate if rate else None
 
     # 4) crypto via Binance (+ CoinGecko names/logos)
     cg = coingecko_meta()
@@ -355,34 +415,50 @@ def main():
     log(f"Binance USDT pairs: {len(top)}")
     pinned_crypto = {a['tk']: a['id'] for a in pinned if a['cat'] == 'crypto'}
     stock_tk = {a['tk'] for a in assets.values() if a['cat'] in ('stock', 'etf')} | {'DRAM', 'MSTR', 'CRCL', 'SPCX', 'SOXL', 'SOXS', 'TQQQ', 'COIN', 'HOOD', 'KORU', 'BNC', 'BMNR', 'SKHY', 'SNXX', 'SNDK', 'QQQ', 'SPY', 'CRWV', 'PLTR'}
-    n = 0
-    for r in top:
+    bmap = {r['base']: r for r in top}
+    order = CG_LIST or [r['base'] for r in top]          # by market cap; Binance volume if CoinGecko failed
+    log(f"crypto candidates: {len(order)}")
+    n, other = 0, 0
+    for base in order:
         if n >= (20 if quick else TOP_CRYPTO):
             break
-        base = r['base']
-        m = cg.get(base, {})
-        if ('USD' in base and not m) or (base.endswith('B') and base[:-1] in stock_tk):
+        m, r = cg.get(base, {}), bmap.get(base)
+        low = (m.get('name') or base).lower()
+        if base in STABLE or not base.isalnum() or any(w in low for w in WRAPPED + ('xstock',)):
+            continue
+        if ('USD' in base) or (base.endswith('B') and base[:-1] in stock_tk):
             continue                                    # yield stablecoins and Binance tokenized stocks (NVDAB...)
         if base in pinned_crypto:                      # long Yahoo history already; take live price + logo
             a = assets[pinned_crypto[base]]
-            a['price'], a['chg'] = r['price'], r['chg']
+            if r:
+                a['price'], a['chg'] = r['price'], r['chg']
             a.update({k: v for k, v in (('logo', m.get('logo')), ('rank', m.get('rank')), ('ath', m.get('ath')), ('athd', m.get('athd')), ('mcap', m.get('mcap'))) if v})
-            s = binance_monthly(r['symbol'])         # use Binance if Yahoo failed or has a shorter history
+            s = binance_monthly(r['symbol']) if r else None   # use Binance if Yahoo failed or has a shorter history
             if s and ('p' not in a or s['start'] < a['start']):
                 a.update(s, src='binance')
             continue
-        s = binance_monthly(r['symbol'])
-        time.sleep(0.15)
+        if r:
+            s, src = binance_monthly(r['symbol']), 'binance'
+        elif quick:
+            continue
+        else:
+            s, src = other_monthly(base)
+        time.sleep(0.12)
         if not s or looks_stable(s):
             continue
+        if not r and m.get('price') and not (m['price'] / 3 < s['p'][-1] < m['price'] * 3):
+            continue                                    # same ticker, different coin on that exchange
         aid = base.lower()
         if aid in assets:
             aid += '-token'
         nm = m.get('name') or base
-        assets[aid] = dict(name={'uk': nm, 'en': nm}, tk=base, cat='crypto', src='binance', binance=r['symbol'],
-                           price=r['price'], chg=r['chg'], logo=m.get('logo'), rank=m.get('rank'),
+        assets[aid] = dict(name={'uk': nm, 'en': nm}, tk=base, cat='crypto', src=src,
+                           price=r['price'] if r else m.get('price'), chg=r['chg'] if r else m.get('chg'),
+                           logo=m.get('logo'), rank=m.get('rank'), **({'binance': r['symbol']} if r else {}),
                            **{k: m[k] for k in ('ath', 'athd', 'mcap') if m.get(k)}, **s)
         n += 1
+        other += not r
+    log(f"crypto: {n} coins ({other} with history from Gate/MEXC/OKX)")
 
     # 5) keep yesterday's data for anything that failed today; drop empties
     final, kept, dropped = {}, 0, 0
