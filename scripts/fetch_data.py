@@ -237,14 +237,14 @@ def main():
     top = binance_top()
     log(f"Binance USDT pairs: {len(top)}")
     pinned_crypto = {a['tk']: a['id'] for a in pinned if a['cat'] == 'crypto'}
-    stock_tk = {a['tk'] for a in assets.values() if a['cat'] in ('stock', 'etf')} | {'MSTR', 'CRCL', 'SPCX', 'SOXL', 'TQQQ', 'COIN', 'HOOD'}
+    stock_tk = {a['tk'] for a in assets.values() if a['cat'] in ('stock', 'etf')} | {'MSTR', 'CRCL', 'SPCX', 'SOXL', 'SOXS', 'TQQQ', 'COIN', 'HOOD', 'KORU', 'BNC', 'BMNR', 'SKHY', 'SNXX', 'SNDK', 'QQQ', 'SPY', 'CRWV', 'PLTR'}
     n = 0
     for r in top:
         if n >= (20 if quick else TOP_CRYPTO):
             break
         base = r['base']
         m = cg.get(base, {})
-        if not m and (('USD' in base) or (base.endswith('B') and base[:-1] in stock_tk)):
+        if ('USD' in base and not m) or (base.endswith('B') and base[:-1] in stock_tk):
             continue                                    # yield stablecoins and Binance tokenized stocks (NVDAB...)
         if base in pinned_crypto:                      # long Yahoo history already; take live price + logo
             a = assets[pinned_crypto[base]]
