@@ -317,7 +317,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
   const sm=u=>(u||'').replace('/large/','/small/');
   const mo=(sp,k)=>sp&&sp.length>k?sp[sp.length-1]/sp[sp.length-1-k]-1:null;
   function items(){ const N=W<640?Math.min(box.dataset.n,60):+box.dataset.n||100;
-    if(cat==='crypto'&&CG&&CG.length) return CG.slice(0,N).map(c=>{ const a=BYT[c.s]; return {k:c.s,id:a&&a.i,t:c.s,n:c.n,l:sm(c.l)||sm(a&&a.l),pr:a&&a.pr||c.pr,mc:c.mc,h:c.h,d:a&&a.ch!=null?a.ch:c.d,w:c.w,m:c.m,y:c.y,dca:a&&a.r1} });
+    if(cat==='crypto'&&CG&&CG.length) return CG.filter(c=>!(c.pr>.97&&c.pr<1.03&&Math.abs(c.y||0)<.05)&&!/wrapped|staked|bridged|liquid staking|restaked/i.test(c.n||'')&&!/^(W|ST|WST|CB|WE|R|M|J)?(ETH|BTC|SOL)$/.test(c.s)||c.s==='ETH'||c.s==='BTC'||c.s==='SOL').slice(0,N).map(c=>{ const a=BYT[c.s]; return {k:c.s,id:a&&a.i,t:c.s,n:c.n,l:sm(c.l)||sm(a&&a.l),pr:a&&a.pr||c.pr,mc:c.mc,h:c.h,d:a&&a.ch!=null?a.ch:c.d,w:c.w,m:c.m,y:c.y,dca:a&&a.r1} });
     return IDX.filter(a=>cat==='crypto'?a.c==='crypto':(a.c==='stock'||a.c==='etf')).sort((x,y)=>x.o-y.o).slice(0,N)
       .map(a=>({k:a.t,id:a.i,t:a.t,n:nm(a),l:sm(a.l),pr:a.pr,mc:null,h:null,d:a.ch,w:null,m:mo(a.sp,1),y:mo(a.sp,12),dca:a.r1}));
   }
