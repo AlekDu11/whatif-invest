@@ -33,5 +33,12 @@ Content: 2–3 blog posts a week on trending queries (content/blog/<lang>/), wee
 - src/app.js, src/style.css — front-end; src/ref.js — referral links
 - Before pushing: run `python3 scripts/build.py` and check pages in a headless browser.
 
+## Partner links
+src/ref.js (buy buttons) and PARTNERS / POLY in scripts/build.py (/exchanges/ page, Polymarket block).
+
+## Content automation
+Scheduled tasks: daily Insights article (6 or 20 languages, category analytics/guides), monthly market report on the 1st (category reports).
+News aggregator: api/news.js (Vercel function, RSS headlines only, links to originals).
+
 ## Waiting on the owner
-referral links, analytics choice (Vercel Web Analytics or GA).
+Enable Vercel Web Analytics in the project settings (script already in pages); a stock broker referral link.
