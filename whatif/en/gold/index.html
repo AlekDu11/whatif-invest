@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What if I invested $10 a day in Gold (XAU)? DCA calculator</title>
+<meta name="description" content="$10 a day in Gold since January 2022: $17,780 invested, worth $28,083 today (+57.9%). Run your own scenario and compare Gold with 47 other assets.">
+<link rel="canonical" href="https://mytimebox.app/whatif/en/gold/">
+<link rel="alternate" hreflang="uk" href="https://mytimebox.app/whatif/gold/"><link rel="alternate" hreflang="en" href="https://mytimebox.app/whatif/en/gold/"><link rel="alternate" hreflang="x-default" href="https://mytimebox.app/whatif/en/gold/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="What if I invested $10 a day in Gold (XAU)? DCA calculator">
+<meta property="og:description" content="$10 a day in Gold since January 2022: $17,780 invested, worth $28,083 today (+57.9%). Run your own scenario and compare Gold with 47 other assets.">
+<meta property="og:url" content="https://mytimebox.app/whatif/en/gold/">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#0b0d12">
+<link rel="icon" href="/whatif/assets/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/whatif/assets/style.css?v=5f284407">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "How much would I have if I invested $10 a day in Gold since January 2022?", "acceptedAnswer": {"@type": "Answer", "text": "You would have invested $17,780, and as of November 2026 it would be worth $28,083, which is +57.9%. Based on monthly closing prices, before fees and taxes."}}, {"@type": "Question", "name": "Which was better to buy daily over the last 5 years: Gold or Bitcoin?", "acceptedAnswer": {"@type": "Answer", "text": "$10 a day over the last 5 years would have returned +59.9% for Gold and +49.8% for Bitcoin. Past performance does not guarantee future results."}}, {"@type": "Question", "name": "What is DCA (dollar-cost averaging)?", "acceptedAnswer": {"@type": "Answer", "text": "DCA means buying an asset for the same amount at regular intervals, whatever the price. You buy more when the price is low and less when it is high, which smooths out volatility and removes the need to time the market."}}]}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "whatif.invest", "item": "https://mytimebox.app/whatif/en/"}, {"@type": "ListItem", "position": 2, "name": "Gold", "item": "https://mytimebox.app/whatif/en/gold/"}]}</script>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <a class="logo" href="/whatif/en/">what<b>if</b>.invest</a>
+    <nav class="lang"><a href="/whatif/gold/" class="" hreflang="uk">UA</a><a href="/whatif/en/gold/" class="on" hreflang="en">EN</a></nav>
+  </header>
+  <nav class="crumbs"><a href="/whatif/en/">All assets</a> / Gold</nav>
+  <h1>What if I invested <em>$10</em> a day in Gold (XAU)?</h1>
+  <p class="sub">If you had bought $10 of Gold every day since January 2022, you would have put in <b>$17,780</b> and it would be worth <b>$28,083</b> today (+57.9%). Change the amount, frequency or start date and compare with other assets.</p>
+  
+  <div class="card">
+    <div class="controls">
+      <div><label class="f" data-t="amount">Amount</label>
+        <div class="inp"><span>$</span><input id="amt" type="number" min="1" step="1" value="10" aria-label="Amount"></div></div>
+      <div><label class="f" data-t="freq">How often</label>
+        <div class="seg" id="freq"><button data-v="d" class="on" data-t="daily">Daily</button><button data-v="w" data-t="weekly">Weekly</button><button data-v="m" data-t="monthly">Monthly</button></div></div>
+      <div><label class="f" data-t="since">Starting from</label>
+        <div class="inp"><select id="since" aria-label="Starting from"></select></div></div>
+    </div>
+    <label class="f" data-t="assets">Assets on the chart (up to 10)</label>
+    <div class="assets" id="assets"></div>
+    <div class="picker"><div class="pickhead"><div class="inp search"><span>⌕</span><input id="q" type="search" autocomplete="off"></div><div class="cats" id="cats"></div></div><div class="pool" id="pool"></div></div>
+  </div>
+  <div class="hero" id="hero"></div>
+  <div class="card chartcard">
+    <div class="charthead"><h2 class="h3" data-t="chartTitle">Portfolio value over time</h2><button class="toggle" id="logBtn" data-t="log">Log scale</button></div>
+    <div id="chart"></div><div class="tip" id="tip"></div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="tablewrap"><table id="tbl"></table></div>
+    <div class="share"><p id="shareText"></p><button class="btn" id="copyBtn" data-t="copy">Copy</button></div>
+  </div>
+  <div class="card" style="margin-top:14px">
+    <div class="charthead"><h2 class="h3" id="lbTitle"></h2><span class="muted" id="lbSub"></span></div>
+    <div class="lb" id="lb"></div>
+  </div>
+  <section class="card seo"><h2>$10 a day in Gold: results by period</h2><table class="static"><thead><tr><th>Period</th><th>Invested</th><th>Now</th><th>Result</th></tr></thead><tbody><tr><td class="a">1 year (Nov 2025)</td><td>$3,780</td><td>$3,361</td><td class="bad">−11.1%</td></tr><tr><td class="a">3 years (Nov 2023)</td><td>$11,090</td><td>$14,061</td><td class="good">+26.8%</td></tr><tr><td class="a">5 years (Nov 2021)</td><td>$18,390</td><td>$29,402</td><td class="good">+59.9%</td></tr><tr><td class="a">10 years (Nov 2016)</td><td>$36,650</td><td>$78,782</td><td class="good">+115.0%</td></tr><tr><td class="a">Since data starts (Jan 2013)</td><td>$50,650</td><td>$122,263</td><td class="good">+141.4%</td></tr></tbody></table></section><section class="card seo faq"><h2>FAQ</h2><details><summary>How much would I have if I invested $10 a day in Gold since January 2022?</summary><p>You would have invested $17,780, and as of November 2026 it would be worth $28,083, which is +57.9%. Based on monthly closing prices, before fees and taxes.</p></details><details><summary>Which was better to buy daily over the last 5 years: Gold or Bitcoin?</summary><p>$10 a day over the last 5 years would have returned +59.9% for Gold and +49.8% for Bitcoin. Past performance does not guarantee future results.</p></details><details><summary>What is DCA (dollar-cost averaging)?</summary><p>DCA means buying an asset for the same amount at regular intervals, whatever the price. You buy more when the price is low and less when it is high, which smooths out volatility and removes the need to time the market.</p></details></section>
+  <section class="links"><h2>A calculator for every asset</h2><h3>Crypto</h3><div class="linkgrid"><a href="/whatif/en/btc/">$10 in Bitcoin <span>BTC</span></a><a href="/whatif/en/eth/">$10 in Ethereum <span>ETH</span></a><a href="/whatif/en/sol/">$10 in Solana <span>SOL</span></a><a href="/whatif/en/bnb/">$10 in BNB <span>BNB</span></a><a href="/whatif/en/xrp/">$10 in XRP <span>XRP</span></a><a href="/whatif/en/ada/">$10 in Cardano <span>ADA</span></a><a href="/whatif/en/avax/">$10 in Avalanche <span>AVAX</span></a><a href="/whatif/en/dot/">$10 in Polkadot <span>DOT</span></a><a href="/whatif/en/ltc/">$10 in Litecoin <span>LTC</span></a><a href="/whatif/en/near/">$10 in NEAR <span>NEAR</span></a><a href="/whatif/en/atom/">$10 in Cosmos <span>ATOM</span></a></div><h3>Stocks</h3><div class="linkgrid"><a href="/whatif/en/nvda/">$10 in Nvidia <span>NVDA</span></a><a href="/whatif/en/aapl/">$10 in Apple <span>AAPL</span></a><a href="/whatif/en/msft/">$10 in Microsoft <span>MSFT</span></a><a href="/whatif/en/goog/">$10 in Alphabet (Google) <span>GOOG</span></a><a href="/whatif/en/amzn/">$10 in Amazon <span>AMZN</span></a><a href="/whatif/en/meta/">$10 in Meta <span>META</span></a><a href="/whatif/en/tsla/">$10 in Tesla <span>TSLA</span></a><a href="/whatif/en/nflx/">$10 in Netflix <span>NFLX</span></a><a href="/whatif/en/avgo/">$10 in Broadcom <span>AVGO</span></a><a href="/whatif/en/tsm/">$10 in TSMC <span>TSM</span></a><a href="/whatif/en/amd/">$10 in AMD <span>AMD</span></a><a href="/whatif/en/intc/">$10 in Intel <span>INTC</span></a><a href="/whatif/en/mu/">$10 in Micron <span>MU</span></a><a href="/whatif/en/mrvl/">$10 in Marvell <span>MRVL</span></a><a href="/whatif/en/lrcx/">$10 in Lam Research <span>LRCX</span></a><a href="/whatif/en/orcl/">$10 in Oracle <span>ORCL</span></a><a href="/whatif/en/crm/">$10 in Salesforce <span>CRM</span></a><a href="/whatif/en/adbe/">$10 in Adobe <span>ADBE</span></a><a href="/whatif/en/intu/">$10 in Intuit <span>INTU</span></a><a href="/whatif/en/sap/">$10 in SAP <span>SAP</span></a><a href="/whatif/en/acn/">$10 in Accenture <span>ACN</span></a><a href="/whatif/en/dell/">$10 in Dell <span>DELL</span></a><a href="/whatif/en/pltr/">$10 in Palantir <span>PLTR</span></a><a href="/whatif/en/uber/">$10 in Uber <span>UBER</span></a><a href="/whatif/en/sofi/">$10 in SoFi <span>SOFI</span></a><a href="/whatif/en/nu/">$10 in Nu Holdings <span>NU</span></a><a href="/whatif/en/ionq/">$10 in IonQ <span>IONQ</span></a><a href="/whatif/en/rklb/">$10 in Rocket Lab <span>RKLB</span></a><a href="/whatif/en/crwv/">$10 in CoreWeave <span>CRWV</span></a><a href="/whatif/en/nbis/">$10 in Nebius <span>NBIS</span></a><a href="/whatif/en/rmd/">$10 in ResMed <span>RMD</span></a></div><h3>ETFs & indices</h3><div class="linkgrid"><a href="/whatif/en/qqq/">$10 in Nasdaq-100 <span>QQQ</span></a><a href="/whatif/en/vti/">$10 in US Total Market <span>VTI</span></a><a href="/whatif/en/smh/">$10 in Semiconductors (VanEck) <span>SMH</span></a><a href="/whatif/en/soxx/">$10 in Semiconductors (iShares) <span>SOXX</span></a></div><h3>Metals</h3><div class="linkgrid"><a href="/whatif/en/gold/" class="cur">$10 in Gold <span>XAU</span></a><a href="/whatif/en/silver/">$10 in Silver <span>XAG</span></a></div></section>
+  <p class="note" data-t="note"></p>
+  <footer>A project by <a href="https://mytimebox.app/">Timebox</a> · Not investment advice. Past performance does not guarantee future results. Calculations exclude fees, taxes and dividends.</footer>
+</div>
+<script>window.PAGE={"lang": "en", "sel": ["gold", "btc", "qqq"], "since": "2022-01", "staticH1": true};</script>
+<script src="/whatif/assets/data.js?v=ab2d7cb4"></script>
+<script src="/whatif/assets/ref.js?v=cb0ef0fa"></script>
+<script src="/whatif/assets/app.js?v=4988352b"></script>
+</body>
+</html>

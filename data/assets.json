@@ -1,0 +1,585 @@
+[
+ {
+  "id": "btc",
+  "name": {
+   "uk": "Bitcoin",
+   "en": "Bitcoin"
+  },
+  "tk": "BTC",
+  "cat": "crypto",
+  "yahoo": "BTC-USD",
+  "dp": 6
+ },
+ {
+  "id": "eth",
+  "name": {
+   "uk": "Ethereum",
+   "en": "Ethereum"
+  },
+  "tk": "ETH",
+  "cat": "crypto",
+  "yahoo": "ETH-USD",
+  "dp": 4
+ },
+ {
+  "id": "sol",
+  "name": {
+   "uk": "Solana",
+   "en": "Solana"
+  },
+  "tk": "SOL",
+  "cat": "crypto",
+  "yahoo": "SOL-USD",
+  "dp": 2
+ },
+ {
+  "id": "bnb",
+  "name": {
+   "uk": "BNB",
+   "en": "BNB"
+  },
+  "tk": "BNB",
+  "cat": "crypto",
+  "yahoo": "BNB-USD",
+  "dp": 3
+ },
+ {
+  "id": "xrp",
+  "name": {
+   "uk": "XRP",
+   "en": "XRP"
+  },
+  "tk": "XRP",
+  "cat": "crypto",
+  "yahoo": "XRP-USD",
+  "dp": 0
+ },
+ {
+  "id": "doge",
+  "name": {
+   "uk": "Dogecoin",
+   "en": "Dogecoin"
+  },
+  "tk": "DOGE",
+  "cat": "crypto",
+  "yahoo": "DOGE-USD",
+  "dp": 0
+ },
+ {
+  "id": "ada",
+  "name": {
+   "uk": "Cardano",
+   "en": "Cardano"
+  },
+  "tk": "ADA",
+  "cat": "crypto",
+  "yahoo": "ADA-USD",
+  "dp": 0
+ },
+ {
+  "id": "ton",
+  "name": {
+   "uk": "Toncoin",
+   "en": "Toncoin"
+  },
+  "tk": "TON",
+  "cat": "crypto",
+  "yahoo": "TON11419-USD",
+  "dp": 1
+ },
+ {
+  "id": "trx",
+  "name": {
+   "uk": "TRON",
+   "en": "TRON"
+  },
+  "tk": "TRX",
+  "cat": "crypto",
+  "yahoo": "TRX-USD",
+  "dp": 0
+ },
+ {
+  "id": "avax",
+  "name": {
+   "uk": "Avalanche",
+   "en": "Avalanche"
+  },
+  "tk": "AVAX",
+  "cat": "crypto",
+  "yahoo": "AVAX-USD",
+  "dp": 1
+ },
+ {
+  "id": "link",
+  "name": {
+   "uk": "Chainlink",
+   "en": "Chainlink"
+  },
+  "tk": "LINK",
+  "cat": "crypto",
+  "yahoo": "LINK-USD",
+  "dp": 1
+ },
+ {
+  "id": "dot",
+  "name": {
+   "uk": "Polkadot",
+   "en": "Polkadot"
+  },
+  "tk": "DOT",
+  "cat": "crypto",
+  "yahoo": "DOT-USD",
+  "dp": 1
+ },
+ {
+  "id": "ltc",
+  "name": {
+   "uk": "Litecoin",
+   "en": "Litecoin"
+  },
+  "tk": "LTC",
+  "cat": "crypto",
+  "yahoo": "LTC-USD",
+  "dp": 2
+ },
+ {
+  "id": "near",
+  "name": {
+   "uk": "NEAR",
+   "en": "NEAR"
+  },
+  "tk": "NEAR",
+  "cat": "crypto",
+  "yahoo": "NEAR-USD",
+  "dp": 1
+ },
+ {
+  "id": "atom",
+  "name": {
+   "uk": "Cosmos",
+   "en": "Cosmos"
+  },
+  "tk": "ATOM",
+  "cat": "crypto",
+  "yahoo": "ATOM-USD",
+  "dp": 1
+ },
+ {
+  "id": "gold",
+  "name": {
+   "uk": "Золото",
+   "en": "Gold"
+  },
+  "tk": "XAU",
+  "cat": "metal",
+  "yahoo": "GC=F",
+  "dp": 3
+ },
+ {
+  "id": "silver",
+  "name": {
+   "uk": "Срібло",
+   "en": "Silver"
+  },
+  "tk": "XAG",
+  "cat": "metal",
+  "yahoo": "SI=F",
+  "dp": 2
+ },
+ {
+  "id": "nvda",
+  "name": {
+   "uk": "Nvidia",
+   "en": "Nvidia"
+  },
+  "tk": "NVDA",
+  "cat": "stock",
+  "yahoo": "NVDA",
+  "dp": 2
+ },
+ {
+  "id": "aapl",
+  "name": {
+   "uk": "Apple",
+   "en": "Apple"
+  },
+  "tk": "AAPL",
+  "cat": "stock",
+  "yahoo": "AAPL",
+  "dp": 2
+ },
+ {
+  "id": "msft",
+  "name": {
+   "uk": "Microsoft",
+   "en": "Microsoft"
+  },
+  "tk": "MSFT",
+  "cat": "stock",
+  "yahoo": "MSFT",
+  "dp": 2
+ },
+ {
+  "id": "goog",
+  "name": {
+   "uk": "Alphabet (Google)",
+   "en": "Alphabet (Google)"
+  },
+  "tk": "GOOG",
+  "cat": "stock",
+  "yahoo": "GOOG",
+  "dp": 2
+ },
+ {
+  "id": "amzn",
+  "name": {
+   "uk": "Amazon",
+   "en": "Amazon"
+  },
+  "tk": "AMZN",
+  "cat": "stock",
+  "yahoo": "AMZN",
+  "dp": 2
+ },
+ {
+  "id": "meta",
+  "name": {
+   "uk": "Meta",
+   "en": "Meta"
+  },
+  "tk": "META",
+  "cat": "stock",
+  "yahoo": "META",
+  "dp": 2
+ },
+ {
+  "id": "tsla",
+  "name": {
+   "uk": "Tesla",
+   "en": "Tesla"
+  },
+  "tk": "TSLA",
+  "cat": "stock",
+  "yahoo": "TSLA",
+  "dp": 2
+ },
+ {
+  "id": "nflx",
+  "name": {
+   "uk": "Netflix",
+   "en": "Netflix"
+  },
+  "tk": "NFLX",
+  "cat": "stock",
+  "yahoo": "NFLX",
+  "dp": 2
+ },
+ {
+  "id": "avgo",
+  "name": {
+   "uk": "Broadcom",
+   "en": "Broadcom"
+  },
+  "tk": "AVGO",
+  "cat": "stock",
+  "yahoo": "AVGO",
+  "dp": 2
+ },
+ {
+  "id": "tsm",
+  "name": {
+   "uk": "TSMC",
+   "en": "TSMC"
+  },
+  "tk": "TSM",
+  "cat": "stock",
+  "yahoo": "TSM",
+  "dp": 2
+ },
+ {
+  "id": "amd",
+  "name": {
+   "uk": "AMD",
+   "en": "AMD"
+  },
+  "tk": "AMD",
+  "cat": "stock",
+  "yahoo": "AMD",
+  "dp": 2
+ },
+ {
+  "id": "intc",
+  "name": {
+   "uk": "Intel",
+   "en": "Intel"
+  },
+  "tk": "INTC",
+  "cat": "stock",
+  "yahoo": "INTC",
+  "dp": 2
+ },
+ {
+  "id": "mu",
+  "name": {
+   "uk": "Micron",
+   "en": "Micron"
+  },
+  "tk": "MU",
+  "cat": "stock",
+  "yahoo": "MU",
+  "dp": 2
+ },
+ {
+  "id": "mrvl",
+  "name": {
+   "uk": "Marvell",
+   "en": "Marvell"
+  },
+  "tk": "MRVL",
+  "cat": "stock",
+  "yahoo": "MRVL",
+  "dp": 2
+ },
+ {
+  "id": "lrcx",
+  "name": {
+   "uk": "Lam Research",
+   "en": "Lam Research"
+  },
+  "tk": "LRCX",
+  "cat": "stock",
+  "yahoo": "LRCX",
+  "dp": 2
+ },
+ {
+  "id": "orcl",
+  "name": {
+   "uk": "Oracle",
+   "en": "Oracle"
+  },
+  "tk": "ORCL",
+  "cat": "stock",
+  "yahoo": "ORCL",
+  "dp": 2
+ },
+ {
+  "id": "crm",
+  "name": {
+   "uk": "Salesforce",
+   "en": "Salesforce"
+  },
+  "tk": "CRM",
+  "cat": "stock",
+  "yahoo": "CRM",
+  "dp": 2
+ },
+ {
+  "id": "adbe",
+  "name": {
+   "uk": "Adobe",
+   "en": "Adobe"
+  },
+  "tk": "ADBE",
+  "cat": "stock",
+  "yahoo": "ADBE",
+  "dp": 2
+ },
+ {
+  "id": "intu",
+  "name": {
+   "uk": "Intuit",
+   "en": "Intuit"
+  },
+  "tk": "INTU",
+  "cat": "stock",
+  "yahoo": "INTU",
+  "dp": 2
+ },
+ {
+  "id": "sap",
+  "name": {
+   "uk": "SAP",
+   "en": "SAP"
+  },
+  "tk": "SAP",
+  "cat": "stock",
+  "yahoo": "SAP",
+  "dp": 2
+ },
+ {
+  "id": "acn",
+  "name": {
+   "uk": "Accenture",
+   "en": "Accenture"
+  },
+  "tk": "ACN",
+  "cat": "stock",
+  "yahoo": "ACN",
+  "dp": 2
+ },
+ {
+  "id": "dell",
+  "name": {
+   "uk": "Dell",
+   "en": "Dell"
+  },
+  "tk": "DELL",
+  "cat": "stock",
+  "yahoo": "DELL",
+  "dp": 2
+ },
+ {
+  "id": "pltr",
+  "name": {
+   "uk": "Palantir",
+   "en": "Palantir"
+  },
+  "tk": "PLTR",
+  "cat": "stock",
+  "yahoo": "PLTR",
+  "dp": 2
+ },
+ {
+  "id": "uber",
+  "name": {
+   "uk": "Uber",
+   "en": "Uber"
+  },
+  "tk": "UBER",
+  "cat": "stock",
+  "yahoo": "UBER",
+  "dp": 2
+ },
+ {
+  "id": "sofi",
+  "name": {
+   "uk": "SoFi",
+   "en": "SoFi"
+  },
+  "tk": "SOFI",
+  "cat": "stock",
+  "yahoo": "SOFI",
+  "dp": 2
+ },
+ {
+  "id": "nu",
+  "name": {
+   "uk": "Nu Holdings",
+   "en": "Nu Holdings"
+  },
+  "tk": "NU",
+  "cat": "stock",
+  "yahoo": "NU",
+  "dp": 2
+ },
+ {
+  "id": "ionq",
+  "name": {
+   "uk": "IonQ",
+   "en": "IonQ"
+  },
+  "tk": "IONQ",
+  "cat": "stock",
+  "yahoo": "IONQ",
+  "dp": 2
+ },
+ {
+  "id": "rklb",
+  "name": {
+   "uk": "Rocket Lab",
+   "en": "Rocket Lab"
+  },
+  "tk": "RKLB",
+  "cat": "stock",
+  "yahoo": "RKLB",
+  "dp": 2
+ },
+ {
+  "id": "crwv",
+  "name": {
+   "uk": "CoreWeave",
+   "en": "CoreWeave"
+  },
+  "tk": "CRWV",
+  "cat": "stock",
+  "yahoo": "CRWV",
+  "dp": 2
+ },
+ {
+  "id": "nbis",
+  "name": {
+   "uk": "Nebius",
+   "en": "Nebius"
+  },
+  "tk": "NBIS",
+  "cat": "stock",
+  "yahoo": "NBIS",
+  "dp": 2
+ },
+ {
+  "id": "rmd",
+  "name": {
+   "uk": "ResMed",
+   "en": "ResMed"
+  },
+  "tk": "RMD",
+  "cat": "stock",
+  "yahoo": "RMD",
+  "dp": 2
+ },
+ {
+  "id": "qqq",
+  "name": {
+   "uk": "Nasdaq-100",
+   "en": "Nasdaq-100"
+  },
+  "tk": "QQQ",
+  "cat": "etf",
+  "yahoo": "QQQ",
+  "dp": 2
+ },
+ {
+  "id": "spy",
+  "name": {
+   "uk": "S&P 500",
+   "en": "S&P 500"
+  },
+  "tk": "SPY",
+  "cat": "etf",
+  "yahoo": "SPY",
+  "dp": 2
+ },
+ {
+  "id": "vti",
+  "name": {
+   "uk": "Весь ринок США",
+   "en": "US Total Market"
+  },
+  "tk": "VTI",
+  "cat": "etf",
+  "yahoo": "VTI",
+  "dp": 2
+ },
+ {
+  "id": "smh",
+  "name": {
+   "uk": "Напівпровідники (VanEck)",
+   "en": "Semiconductors (VanEck)"
+  },
+  "tk": "SMH",
+  "cat": "etf",
+  "yahoo": "SMH",
+  "dp": 2
+ },
+ {
+  "id": "soxx",
+  "name": {
+   "uk": "Напівпровідники (iShares)",
+   "en": "Semiconductors (iShares)"
+  },
+  "tk": "SOXX",
+  "cat": "etf",
+  "yahoo": "SOXX",
+  "dp": 2
+ }
+]
