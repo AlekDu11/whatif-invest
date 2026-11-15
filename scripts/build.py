@@ -12,6 +12,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from i18n import LANGS as TR, ORDER, FULL, DEFAULT  # noqa: E402
 from i18n_t import T as TT  # noqa: E402
 from i18n_e import E as EX  # noqa: E402
+from i18n_n import N as NW  # noqa: E402
 from i18n_h import H as HB, PRICES as HPRICE, SCEN as HSCEN, UNITS as HUNITS, CONV as HCONV  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -80,7 +81,7 @@ TOP = set(ORDERED[:TOP_N])
 
 HUBS = {'crypto': 'crypto', 'stocks': 'stock', 'etfs': 'etf', 'metals': 'metal'}
 TOOLS = ['converter']
-CALCS = ['millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges']
+CALCS = ['millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'news', 'about']
 BLOG_LANGS = {l for l in ORDER if os.path.isdir(os.path.join(ROOT, 'content/blog', l)) and any(f.endswith('.md') for f in os.listdir(os.path.join(ROOT, 'content/blog', l)))}  # a language gets a blog once it has a post
 assert not (set(HUBS) | set(TOOLS) | {'blog', 'compare'}) & set(A), 'asset id collides with a section slug'
 
@@ -89,6 +90,8 @@ def has_page(lang, aid):
     if aid is None or aid == 'compare' or aid in HUBS or aid in TOOLS:
         return True
     if aid in CALCS:
+        if aid == 'about':
+            return lang in ABOUT
         return aid != 'inflation' or bool(CPI['c'])
     if aid == 'habits' or (aid or '').startswith('habits/'):
         return True
@@ -263,14 +266,18 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
     X = S['x']
     blog_l = lang if lang in BLOG_LANGS else 'en'
     nav = (''.join(f'<a href="{url(lang, k)}" class="{"on" if k == p else ""}">{v}</a>' for k, v in ((None, S['nav_rank']), ('compare', S['nav_cmp'])))
-           + f'<details class="dd"><summary class="{"on" if p in TOOLS or (p in CALCS and p != "exchanges") or (p or "").startswith("habits") else ""}">{X["nav_tools"]}</summary><div>'
+           + f'<details class="dd"><summary class="{"on" if p in TOOLS or (p in CALCS and p not in ("exchanges", "news", "about")) or (p or "").startswith("habits") else ""}">{X["nav_tools"]}</summary><div>'
            + ''.join(f'<a href="{url(lang, k)}">{v}</a>' for k, v in tools_menu(lang)) + '</div></details>'
            + f'<a href="{url(lang, "exchanges")}" class="{"on" if p == "exchanges" else ""}">{EX[lang]["nav"]}</a>'
-           + f'<a href="{url(blog_l, "blog")}" class="{"on" if (p or "").startswith("blog") else ""}">{X["nav_blog"]}</a>')
+           + f'<a href="{url(lang, "news")}" class="{"on" if p == "news" else ""}">{NW[lang]["n_nav"]}</a>'
+           + f'<a href="{url(blog_l, "blog")}" class="{"on" if (p or "").startswith("blog") else ""}">{NW[lang]["i_nav"]}</a>')
     i18n = dict(S['ui'], months=S['months'], intl=S['intl'])
     mnav = ''.join(f'<a href="{h}" class="{"on" if on else ""}"><span>{ic}</span>{esc(lb)}</a>' for h, ic, lb, on in (
-        (url(lang), '◎', S['nav_rank'], p is None), (url(lang, 'compare'), '⇅', S['nav_cmp'], p == 'compare'),
-        (url(lang, 'converter'), '⇄', HCONV[lang], p in TOOLS), (url(lang, 'exchanges'), '₿', EX[lang]['nav'], p == 'exchanges'), (url(blog_l, 'blog'), '✎', X['nav_blog'], (p or '').startswith('blog'))))
+        (url(lang), '◎', S['nav_rank'], p is None), (url(lang, 'news'), '▤', NW[lang]['n_nav'], p == 'news'),
+        (url(lang, 'exchanges'), '₿', EX[lang]['nav'], p == 'exchanges'), (url(blog_l, 'blog'), '✎', NW[lang]['i_nav'], (p or '').startswith('blog'))))
+    mnav += f'<button type="button" id="mmore"><span>☰</span>{esc(X["nav_tools"])}</button>'
+    msheet = ('<div class="msheet" id="msheet" hidden>' + ''.join(f'<a href="{url(lang, k)}">{esc(v)}</a>' for k, v in
+              [('compare', S['nav_cmp'])] + tools_menu(lang)) + '</div>')
     cfg = dict(cfg, lang=lang, base=BASE, prefix=url(lang).rstrip('/'), full=lang in FULL, topn=TOP_N,
                names={'gold': S['gold'], 'silver': S['silver']})
     return f"""<!DOCTYPE html>
@@ -301,10 +308,10 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
   <button class="thm" id="thm" type="button" aria-label="theme"><span class="m">☾</span><span class="s">☀</span></button>
   {lang_menu(lang, p)}
 </div></div>
-<nav class="mnav">{mnav}</nav>
+<nav class="mnav">{mnav}</nav>{msheet}
 <main class="wrap">
 {body}
-<footer><span>{BRAND} · {S['by']} <a href="https://mytimebox.app/">Timebox</a> · {S['sources']}</span><span>{S['disclaimer']}</span></footer>
+<footer><span>{BRAND} · {S['by']} <a href="https://mytimebox.app/">Timebox</a> · {S['sources']} · <a href="{url(lang if lang in ABOUT else 'en', 'about')}">{NW[lang]['about']}</a></span><span>{S['disclaimer']}</span></footer>
 <nav class="langs">{' · '.join(f'<a href="{url(lg, p) if has_page(lg, p) else url(lg)}" hreflang="{TR[lg]["loc"]}">{esc(TR[lg]["name"])}</a>' for lg in ORDER)}</nav>
 </main>
 <script>window.PAGE={json.dumps(cfg, ensure_ascii=False)};window.I18N={json.dumps(i18n, ensure_ascii=False)};</script>
@@ -931,6 +938,43 @@ def exchanges_page(lang, ver):
     return shell(lang, 'exchanges', f'{e["h1"]} | {BRAND}', e['d'], body, {}, ver)
 
 
+NEWS_TAGS = ['bitcoin', 'ethereum', 'etf', 'regulation', 'defi', 'stablecoins', 'solana', 'xrp', 'markets', 'hacks']
+
+
+def news_page(lang, ver):
+    n = NW[lang]
+    tl = n['tags'].split('|')
+    chips = f'<button class="on" data-t="">{esc(n["n_all"])}</button>' + ''.join(f'<button data-t="{k}">{esc(v)}</button>' for k, v in zip(NEWS_TAGS, tl))
+    body = (f'<h1>{esc(n["n_h1"])}</h1><p class="lead">{esc(n["n_d"])}</p><div class="seg nchips" id="ntags">{chips}</div>'
+            f'<div class="card nlist" id="nlist"><div class="bload"><i></i></div></div><button class="toggle" id="nmore" hidden>{esc(n["more"])}</button>'
+            f'<p class="muted" style="font-size:13px">{esc(n["n_note"])}</p>{poly_block(lang)}')
+    cfg = dict(news=dict(tags=dict(zip(NEWS_TAGS, tl))))
+    return shell(lang, 'news', f'{n["n_h1"]} | {BRAND}', n['n_d'], body, cfg, ver)
+
+
+ABOUT = {
+ 'en': ('About WhatIfStack and our methodology', [
+   ('Who we are', 'WhatIfStack is an independent markets site for ordinary investors. We show in plain language what regular (DCA) investing in crypto, stocks, ETFs and gold would have returned, with real prices, in 20 languages.'),
+   ('Where the data comes from', 'Crypto prices: Binance public market data and CoinGecko (names, logos, market cap, all-time highs). Stocks, ETFs and metals: Yahoo Finance. Fear & Greed index: alternative.me. Exchange rates: open.er-api.com. Inflation: World Bank consumer price data. Prediction odds: Polymarket. Prices update daily, live crypto prices stream from Binance.'),
+   ('How we calculate', 'DCA results use monthly closing prices: each month we buy the daily amount times the number of days in that month at the month’s close. Stock and ETF prices are adjusted for splits and include reinvested dividends. Fees and taxes are not included. Historical returns do not guarantee future results.'),
+   ('How our articles are made', 'Articles are written by the WhatIfStack Research team with the help of AI tools. Every news fact is taken from the sources linked at the end of the article; numbers come from our own data and update automatically. We do not give buy or sell recommendations.'),
+   ('Partner links', 'Some links to exchanges and services are partner (referral) links: we may earn a commission when you sign up, at no extra cost to you. This never changes the data or the rankings.')]),
+ 'uk': ('Про WhatIfStack і методологію', [
+   ('Хто ми', 'WhatIfStack — незалежний сайт про ринки для звичайних інвесторів. Ми простою мовою показуємо, що дали б регулярні (DCA) інвестиції в крипту, акції, ETF і золото, на реальних цінах і 20 мовами.'),
+   ('Звідки дані', 'Ціни крипти: публічні дані Binance і CoinGecko (назви, логотипи, капіталізація, історичні максимуми). Акції, ETF і метали: Yahoo Finance. Індекс страху й жадібності: alternative.me. Курси валют: open.er-api.com. Інфляція: дані Світового банку про споживчі ціни. Ймовірності прогнозів: Polymarket. Ціни оновлюються щодня, живі ціни крипти — з Binance.'),
+   ('Як ми рахуємо', 'Результати DCA рахуються за місячними цінами закриття: щомісяця купуємо денну суму, помножену на кількість днів місяця, за ціною закриття місяця. Ціни акцій і ETF скориговані на спліти й враховують реінвестовані дивіденди. Комісії й податки не враховуються. Минулі результати не гарантують майбутніх.'),
+   ('Як створюються статті', 'Статті пише команда WhatIfStack Research за допомогою інструментів штучного інтелекту. Кожен факт із новин взято з джерел, посилання на які є в кінці статті; цифри — з наших власних даних і оновлюються автоматично. Ми не даємо порад купувати чи продавати.'),
+   ('Партнерські посилання', 'Частина посилань на біржі й сервіси — партнерські (реферальні): ми можемо отримати комісію, якщо ти зареєструєшся, для тебе це нічого не коштує. Це ніколи не впливає на дані чи рейтинги.')]),
+}
+
+
+def about_page(lang, ver):
+    h1, secs = ABOUT[lang]
+    body = f'<article class="art"><h1>{esc(h1)}</h1><div class="artbody">' + ''.join(f'<h2>{esc(h)}</h2><p>{esc(t)}</p>' for h, t in secs) + '</div></article>'
+    org = {"@context": "https://schema.org", "@type": "Organization", "name": BRAND, "url": SITE + '/', "logo": SITE + '/assets/icon-512.png'}
+    return shell(lang, 'about', f'{h1} | {BRAND}', secs[0][1], body, {}, ver, [org])
+
+
 def habits_strip(lang):
     h = HB[lang]
     code, _ = hccy(lang)
@@ -1139,11 +1183,15 @@ def post_meta_title(meta, lang):
 def blog_index(lang, ver):
     X = TR[lang]['x']
     items = sorted(POSTS.get(lang, {}).items(), key=lambda kv: kv[1].get('date', ''), reverse=True)
+    cl = NW[lang]['cats'].split('|')
+    cmap = dict(zip(('analytics', 'guides', 'reports'), cl[1:]))
+    cats = [c for c in ('analytics', 'guides', 'reports') if any(m.get('category', 'analytics') == c for _, m in items)]
+    tabs = (f'<div class="seg nchips" id="bcats"><button class="on" data-c="">{esc(cl[0])}</button>' + ''.join(f'<button data-c="{c}">{esc(cmap[c])}</button>' for c in cats) + '</div>') if len(cats) > 1 else ''
     cards = ''.join(
-        f'<a class="card post" href="{url(lang, "blog/" + slug)}"><div class="muted">{esc(m.get("date", ""))}</div><h2>{esc(post_meta_title(m, lang))}</h2>'
+        f'<a class="card post" data-c="{m.get("category", "analytics")}" href="{url(lang, "blog/" + slug)}"><div class="muted"><span class="badge">{esc(cmap.get(m.get("category", "analytics"), ""))}</span> {esc(m.get("date", ""))}</div><h2>{esc(post_meta_title(m, lang))}</h2>'
         f'<p>{esc(post_meta_title(dict(title=m.get("description", "")), lang))}</p>'
         + ''.join(f'<span class="badge">{esc(A[i]["tk"])}</span> ' for i in m['assets']) + '</a>' for slug, m in items)
-    body = f'<h1>{esc(X["blog_h1"])}</h1><p class="lead">{esc(X["blog_d"])}</p><div class="posts">{cards}</div>'
+    body = f'<h1>{esc(NW[lang]["i_nav"])}</h1><p class="lead">{esc(X["blog_d"])}</p>{tabs}<div class="posts">{cards}</div>'
     return shell(lang, 'blog', X['blog_h1'] + ' | ' + BRAND, X['blog_d'], body, {}, ver)
 
 
@@ -1157,14 +1205,15 @@ def blog_post(lang, slug, ver):
     rel_html = ''.join(f'<a class="card post" href="{url(lang, "blog/" + s)}"><h3>{esc(post_meta_title(POSTS[lang][s], lang))}</h3></a>' for s in rel)
     cards = ''.join(sc_block('card', [i], lang) for i in m['assets'][:4])
     w = S['w']
-    body = (f'<nav class="crumbs"><a href="{url(lang, "blog")}">{X["nav_blog"]}</a></nav><article class="art"><h1>{esc(title)}</h1>'
-            f'<div class="muted">{esc(m.get("date", ""))} · {S["updated"]} {UPDATED}</div><div class="artbody">{html_body}</div></article>'
+    body = (f'<nav class="crumbs"><a href="{url(lang, "blog")}">{NW[lang]["i_nav"]}</a></nav><article class="art"><h1>{esc(title)}</h1>'
+            f'<div class="muted byline"><a href="{url(lang if lang in ABOUT else "en", "about")}">WhatIfStack Research</a> · {esc(m.get("date", ""))} · {S["updated"]} {UPDATED}</div><div class="artbody">{html_body}</div></article>'
             f'<div class="postcards">{cards}</div>'
             f'<section class="banner section"><div><b>{w["cta"]}</b><p>{w["cta_text"]}</p></div><a class="btn" id="ctaBuy2" href="{url(lang, "compare")}">{w["cta"]} →</a></section>'
             + (f'<section class="section"><h2>{X["related"]}</h2><div class="posts">{rel_html}</div></section>' if rel else ''))
     jsonld = [{"@context": "https://schema.org", "@type": "Article", "headline": title, "description": desc, "inLanguage": S['loc'],
                "datePublished": m.get('date'), "dateModified": UPDATED, "mainEntityOfPage": SITE + url(lang, 'blog/' + slug),
-               "author": {"@type": "Organization", "name": BRAND}, "publisher": {"@type": "Organization", "name": BRAND}}]
+               "author": {"@type": "Organization", "name": "WhatIfStack Research", "url": SITE + url(lang if lang in ABOUT else 'en', 'about')},
+               "publisher": {"@type": "Organization", "name": BRAND, "logo": {"@type": "ImageObject", "url": SITE + '/assets/icon-512.png'}}}]
     return shell(lang, 'blog/' + slug, title, desc, body, {}, ver, jsonld)
 
 
@@ -1238,6 +1287,9 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
         write(pre + 'ath/index.html', ath_page(lang, ver))
         write(pre + 'bitcoin-halving/index.html', halving_page(lang, ver))
         write(pre + 'exchanges/index.html', exchanges_page(lang, ver))
+        write(pre + 'news/index.html', news_page(lang, ver))
+        if lang in ABOUT:
+            write(pre + 'about/index.html', about_page(lang, ver))
         write(pre + 'habits/index.html', habits_hub(lang, ver))
         for k in HSCEN:
             write(f'{pre}habits/{HSLUG[k]}/index.html', habit_page(lang, k, ver))

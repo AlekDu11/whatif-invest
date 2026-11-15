@@ -55,16 +55,6 @@
       "source": "/:lang/heatmap",
       "destination": "/:lang/",
       "permanent": true
-    },
-    {
-      "source": "/news",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/:lang/news",
-      "destination": "/:lang/",
-      "permanent": true
     }
   ],
   "headers": [

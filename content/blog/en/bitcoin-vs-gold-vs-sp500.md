@@ -2,6 +2,7 @@
 title: Bitcoin vs gold vs the S&P 500: what is better to buy every month?
 description: Comparing recurring investments in Bitcoin, gold, silver, the S&P 500 and Nasdaq-100 over 1, 5 and 10 years. Numbers update daily.
 date: 2026-11-15
+category: analytics
 assets: btc, gold, spy, qqq
 ---
 Three classic stores of wealth: crypto, gold and the broad stock market. We calculated what **identical recurring purchases** in each would have produced.

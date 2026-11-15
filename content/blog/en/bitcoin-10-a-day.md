@@ -2,6 +2,7 @@
 title: $10 a day in Bitcoin for 5 years is now worth {{dca:btc:5}}
 description: What you would have if you had bought $10 of Bitcoin every day for the last 5 years. Real numbers, the worst moments and the lessons, updated daily.
 date: 2026-11-15
+category: analytics
 assets: btc, eth, spy, gold
 ---
 The most common beginner question in crypto is "when should I buy?". The honest answer: nobody knows. So we ran a different scenario — buying **$10 of Bitcoin every single day**, ignoring the price.
