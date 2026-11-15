@@ -25,6 +25,8 @@ TOP_CRYPTO = 1000
 MARKETS = os.path.join(ROOT, 'data/markets.json')   # ETFs + national stocks (Ukraine, Poland, Germany...)
 FX_TICKER = {'PLN': 'PLN=X', 'EUR': 'EUR=X', 'GBP': 'GBP=X'}   # Yahoo: units of currency per 1 USD
 SUFFIX_CCY = {'.WA': 'PLN', '.DE': 'EUR', '.L': 'GBp'}
+CMDTY_T = {'brent': 'BZ=F', 'ng': 'NG=F', 'copper': 'HG=F'}   # for the world-assets page
+CMDTY = {}
 INFO_KEYS = ('ath', 'athd', 'mcap', 'cgid', 'circ', 'supply', 'maxs', 'fdv', 'vol', 'atl', 'atld')
 COININFO = os.path.join(ROOT, 'data/coininfo.json')    # links/description per coin, filled a few hundred per day
 STOCKINFO = os.path.join(ROOT, 'data/stockinfo.json')  # website/sector/summary per stock, filled gradually
@@ -492,8 +494,9 @@ def main():
                                **{k: r[k] for k in ('mkt', 'sector') if r.get(k)}, **(ser or {}))
 
     # 3) daily price/24h change for every Yahoo asset (local currency -> USD)
-    ys = [a['yahoo'] for a in assets.values()] + list(FX_TICKER.values())
+    ys = [a['yahoo'] for a in assets.values()] + list(FX_TICKER.values()) + list(CMDTY_T.values())
     yd = yahoo_daily(ys)
+    CMDTY.update({k: round(yd[t][0], 4) for k, t in CMDTY_T.items() if t in yd})
     for a in assets.values():
         if a['yahoo'] in yd:
             a['price'], a['chg'] = yd[a['yahoo']]
@@ -607,6 +610,8 @@ def main():
         g = market_global(cg)
         if BUBLIST:
             g['bub'] = BUBLIST
+        if CMDTY:
+            g['cmdty'] = CMDTY
         gp = os.path.join(ROOT, 'data/global.json')
         if g:
             old_g = json.load(open(gp)) if os.path.exists(gp) else {}

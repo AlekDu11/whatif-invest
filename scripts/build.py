@@ -15,6 +15,7 @@ from i18n_e import E as EX  # noqa: E402
 from i18n_n import N as NW, FOOT, SHARE, HOT
 from i18n_s import S as SEA  # noqa: E402
 from i18n_i import I as INF  # noqa: E402
+from i18n_world import W as WA, WN  # noqa: E402
 from i18n_ctry import C as CTRY, MKTS, MKT_LANG, CCY_SIGN  # noqa: E402  # noqa: E402
 from i18n_p import P as POLL, OPTS as POLL_OPTS  # noqa: E402
 from i18n_ai import AI as AIS  # noqa: E402
@@ -38,7 +39,7 @@ UPDATED = market['updated']
 END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
-RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany'}
+RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets'}
 # asset ids that clash with a language folder or a section get a suffix (ko -> ko-stock, fil -> fil-crypto)
 _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
 # delisted or stale series (last price older than a month) are dropped: "today" numbers would be false
@@ -103,7 +104,7 @@ assert not (set(HUBS) | set(TOOLS) | {'blog', 'compare'}) & set(A), 'asset id co
 def has_page(lang, aid):
     if aid is None or aid == 'compare' or aid in HUBS or aid in TOOLS:
         return True
-    if aid in ('ai', 'me', 'memes'):
+    if aid in ('ai', 'me', 'memes', 'world-assets'):
         return True
     if aid in CSLUG:
         return any(a.get('mkt') == CSLUG[aid] for a in A.values())
@@ -822,7 +823,7 @@ def tools_menu(lang):
     items = [('compare', S['nav_cmp']) if (S := TR[lang]) else None, ('habits', HB[lang]['nav']), ('millionaire', t['g_nav']), ('compound-interest', t['c_nav'])]
     if CPI['c']:
         items.append(('inflation', t['i_nav']))
-    items += [('converter', HCONV[lang]), ('memes', MEM[lang]['nav']), ('ath', t['a_nav']), ('bitcoin-halving', t['v_nav'])]
+    items += [('world-assets', WA[lang]['nav']), ('converter', HCONV[lang]), ('memes', MEM[lang]['nav']), ('ath', t['a_nav']), ('bitcoin-halving', t['v_nav'])]
     return items
 
 
@@ -1326,6 +1327,61 @@ def hub(lang, slug, ver):
     return shell(lang, slug, title, desc, body, dict(tab=cat), ver)
 
 
+# ---------- world's largest assets ----------
+OZ_PER_T = 32150.7466
+WORLD_SRC = [  # (key, value or formula input, source label, url)
+    ('re', 393.3e12, 'Savills, global real estate value at the start of 2025', 'https://www.savills.co.uk/insight-and-opinion/savills-news/381209/world-s-real-estate-worth-$393.3-trillion-and-is-the-world-s-largest-store-of-wealth'),
+    ('gold', 224200, 'World Gold Council, above-ground stock end-Q3 2026: 224,200 t', 'https://www.gold.org/goldhub/data/above-ground-stocks'),
+    ('silver', 19.3e9, 'Silver Institute, total above-ground silver end-2023: 19.3 bn oz', 'https://silverinstitute.org/new-report-analyzes-the-complexity-of-above-ground-silver-stocks/'),
+    ('oil', 1732.4e9, 'Energy Institute Statistical Review, proved oil reserves (end-2020): 1,732 bn barrels', 'https://www.energyinst.org/statistical-review'),
+    ('gas', 188.1e12, 'Energy Institute Statistical Review, proved gas reserves (end-2020): 188 tcm', 'https://www.energyinst.org/statistical-review'),
+    ('usd', 23.4139e12, 'Federal Reserve H.6, US M2 September 2026: $23.41 tn', 'https://fred.stlouisfed.org/series/M2SL'),
+    ('cny', 359.63e12, 'People\'s Bank of China, M2 end-September 2026: 359.63 tn yuan', 'https://www.pbc.gov.cn/en/'),
+]
+
+
+def world_items(lang):
+    names = WN[lang].split('|')
+    src = {k: v for k, v, _, _ in WORLD_SRC}
+    cm = G.get('cmdty') or {}
+    out = [(WA[lang]['types'].split('|')[0], src['re'], 0, None, '🏠')]
+    if 'gold' in A: out.append((names[4], src['gold'] * OZ_PER_T * METRICS['gold']['price'], 1, 'gold', None))
+    if 'silver' in A: out.append((names[5], src['silver'] * METRICS['silver']['price'], 1, 'silver', None))
+    if cm.get('brent'): out.append((names[0], src['oil'] * cm['brent'], 1, None, '🛢️'))
+    if cm.get('ng'): out.append((names[1], src['gas'] * 35.3147 * 0.001037 * cm['ng'], 1, None, '🔥'))
+    out.append((names[2], src['usd'], 2, None, '💵'))
+    cny = (FX.get('rates') or {}).get('CNY')
+    if cny: out.append((names[3], src['cny'] / cny, 2, None, '💴'))
+    seen = set()
+    for aid in ORDERED:
+        a = A[aid]
+        if a['cat'] == 'stock':
+            mc = (STOCKINFO.get(a.get('yahoo') or '', {}) or {}).get('mcap')
+            if mc and mc > 2e11 and a['tk'] not in seen:
+                seen.add(a['tk']); out.append((nm(a, lang), mc, 3, aid, None))
+        elif a['cat'] == 'crypto' and (a.get('mcap') or 0) > 5e10:
+            out.append((nm(a, lang), a['mcap'], 4, aid, None))
+    return sorted(out, key=lambda x: -x[1])
+
+
+def world_page(lang, ver):
+    S, w = TR[lang], WA[lang]
+    types = w['types'].split('|')
+    items = world_items(lang)
+    rows = ''
+    for k, (n, v, t, aid, emo) in enumerate(items[:100]):
+        ic = icon(A[aid]) if aid else f'<span class="wic">{emo}</span>'
+        name = f'<a class="asset" href="{aurl(lang, aid)}">{ic}<span class="nm">{esc(n)}</span></a>' if aid else f'<span class="asset">{ic}<span class="nm">{esc(n)}</span></span>'
+        rows += f'<tr><td class="n">{k + 1}</td><td class="l">{name}</td><td class="num"><b>{fbig(v)}</b></td><td class="hide-sm"><span class="badge t{t}">{esc(types[t])}</span></td></tr>'
+    src = ''.join(f'<li><a href="{esc(u)}" target="_blank" rel="nofollow noopener">{esc(l)}</a></li>' for _, _, l, u in WORLD_SRC)
+    body = (f'<h1>{esc(w["h1"])}</h1><p class="lead">{esc(w["lead"])}</p>'
+            f'<section class="section"><div class="tw"><table class="mt wtab"><thead><tr><th class="l n">#</th><th class="l">{esc(w["asset"])}</th><th>{esc(w["value"])}</th><th class="hide-sm">{esc(w["type"])}</th></tr></thead><tbody>{rows}</tbody></table></div></section>'
+            f'<section class="card section faq"><p>{esc(w["note"])}</p><ul class="wsrc">{src}</ul><p class="muted" style="font-size:13px">{UPDATED}</p></section>')
+    jsonld = [{"@context": "https://schema.org", "@type": "ItemList", "name": w['h1'], "numberOfItems": min(100, len(items)),
+               "itemListElement": [{"@type": "ListItem", "position": k + 1, "name": it[0]} for k, it in enumerate(items[:50])]}]
+    return shell(lang, 'world-assets', f'{w["h1"]} | {BRAND}', w['lead'], body, {}, ver, jsonld)
+
+
 def country_chips(lang, cur=None):
     mk = sorted(MKTS.items(), key=lambda kv: MKT_LANG.get(kv[0]) != lang)   # the visitor's own country first
     ch = [(sl, f'{fl} {CTRY[lang][3][m][0]}') for m, (sl, fl) in mk if has_page(lang, sl)]
@@ -1648,6 +1704,8 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
         write(pre + 'ai/index.html', ai_page(lang, ver))
         write(pre + 'me/index.html', me_page(lang, ver))
         write(pre + 'memes/index.html', memes_page(lang, ver))
+        write(pre + 'world-assets/index.html', world_page(lang, ver))
+        extra_pages.append('world-assets')
         extra_pages.append('memes')
         extra_pages.append('ai')
         write(pre + 'news/index.html', news_page(lang, ver))
