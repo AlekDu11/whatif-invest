@@ -237,20 +237,22 @@ def main():
     top = binance_top()
     log(f"Binance USDT pairs: {len(top)}")
     pinned_crypto = {a['tk']: a['id'] for a in pinned if a['cat'] == 'crypto'}
+    stock_tk = {a['tk'] for a in assets.values() if a['cat'] in ('stock', 'etf')} | {'MSTR', 'CRCL', 'SPCX', 'SOXL', 'TQQQ', 'COIN', 'HOOD'}
     n = 0
     for r in top:
         if n >= (20 if quick else TOP_CRYPTO):
             break
         base = r['base']
         m = cg.get(base, {})
+        if not m and (('USD' in base) or (base.endswith('B') and base[:-1] in stock_tk)):
+            continue                                    # yield stablecoins and Binance tokenized stocks (NVDAB...)
         if base in pinned_crypto:                      # long Yahoo history already; take live price + logo
             a = assets[pinned_crypto[base]]
             a['price'], a['chg'] = r['price'], r['chg']
             a.update({k: v for k, v in (('logo', m.get('logo')), ('rank', m.get('rank'))) if v})
-            if 'p' not in a:                           # Yahoo failed -> Binance history
-                s = binance_monthly(r['symbol'])
-                if s:
-                    a.update(s, src='binance')
+            s = binance_monthly(r['symbol'])         # use Binance if Yahoo failed or has a shorter history
+            if s and ('p' not in a or s['start'] < a['start']):
+                a.update(s, src='binance')
             continue
         s = binance_monthly(r['symbol'])
         time.sleep(0.15)
@@ -274,6 +276,9 @@ def main():
             dropped += 1
             continue
         a.setdefault('price', a['p'][-1])
+        a['price'] = float(f"{a['price']:.6g}")
+        if a.get('chg') is not None:
+            a['chg'] = round(a['chg'], 5)
         a.setdefault('chg', None)
         a = {k: v for k, v in a.items() if v is not None}
         final[aid] = a
