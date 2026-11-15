@@ -270,18 +270,27 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
   else els.forEach(mount);
 })();
 
-/* ---------- converter ---------- */
+/* ---------- converter (crypto, stocks, metals, 45 fiat currencies) ---------- */
 (function(){
   if(!$('#cvres')) return;
-  const px=id=>id==='usd'?1:(BYID[id]&&BYID[id].pr);
-  const lab=id=>id==='usd'?'USD':BYID[id].t;
+  const FX=Object.assign({},WI.fx||{});
+  let DN; try{DN=new Intl.DisplayNames([T.intl||'en'],{type:'currency'})}catch(e){}
+  const SYM='$ € ₴ zł £ ¥';
+  $$('#cvf optgroup,#cvt optgroup').forEach(g=>{ g.label=g.dataset.g==='fiat'?SYM:g.dataset.g==='crypto'?T.crypto:`${T.stock} · ${T.etf} · ${T.metal}` });
+  $$('#cvf option,#cvt option').forEach(o=>{ const v=o.value; const c=v==='usd'?'USD':v.startsWith('fx:')?v.slice(3):null;
+    if(c&&DN){ try{ const n=DN.of(c); o.textContent=`${n.charAt(0).toUpperCase()+n.slice(1)} (${c})` }catch(e){} } });
+  const def=$('#cvt').dataset.def; if(def&&[...$('#cvt').options].some(o=>o.value===def)) $('#cvt').value=def;
+  const isFiat=id=>id==='usd'||id.startsWith('fx:');
+  const px=id=>id==='usd'?1:id.startsWith('fx:')?(FX[id.slice(3)]?1/FX[id.slice(3)]:null):(BYID[id]&&BYID[id].pr);
+  const lab=id=>id==='usd'?'USD':id.startsWith('fx:')?id.slice(3):BYID[id].t;
+  const fmtN=(x,fiat)=>fiat?x.toLocaleString(T.intl||'en-US',{minimumFractionDigits:2,maximumFractionDigits:2}):x>=1?x.toLocaleString('en-US',{maximumFractionDigits:4}):x.toLocaleString('en-US',{maximumSignificantDigits:6});
   const run=()=>{ const a=+$('#cva').value||0, f=$('#cvf').value, to=$('#cvt').value, pf=px(f), pt=px(to); if(!pf||!pt) return;
     const v=a*pf/pt, r=pf/pt;
-    const fmtN=x=>x>=1?x.toLocaleString('en-US',{maximumFractionDigits:4}):x.toPrecision(6);
-    $('#cvres').innerHTML=`<b>${fmtN(a)} ${esc(lab(f))}</b> = <b class="big">${fmtN(v)} ${esc(lab(to))}</b>`;
-    $('#cvrate').textContent=`1 ${lab(f)} = ${fmtN(r)} ${lab(to)} · 1 ${lab(to)} = ${fmtN(1/r)} ${lab(f)}` };
+    $('#cvres').innerHTML=`<b>${fmtN(a,false)} ${esc(lab(f))}</b> = <b class="big">${fmtN(v,isFiat(to))} ${esc(lab(to))}</b>`;
+    $('#cvrate').textContent=`1 ${lab(f)} = ${fmtN(r,isFiat(to))} ${lab(to)} · 1 ${lab(to)} = ${fmtN(1/r,isFiat(f))} ${lab(f)}${(isFiat(f)&&f!=='usd')||(isFiat(to)&&to!=='usd')?' · FX '+(WI.fxu||''):''}` };
   ['#cva','#cvf','#cvt'].forEach(s=>$(s).addEventListener('input',run));
   $('#cvsw').onclick=()=>{ const f=$('#cvf').value; $('#cvf').value=$('#cvt').value; $('#cvt').value=f; run() };
   run(); setInterval(run,2000);
+  fetch('https://open.er-api.com/v6/latest/USD').then(r=>r.json()).then(d=>{ if(d&&d.rates){ Object.keys(FX).forEach(c=>{ if(d.rates[c]) FX[c]=d.rates[c] }); WI.fxu=(d.time_last_update_utc||'').slice(5,16); run() } }).catch(()=>{});
 })();
 })();

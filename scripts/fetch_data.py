@@ -212,6 +212,20 @@ def market_global(cg_meta):
         g['trending'] = [c['item']['symbol'].upper() for c in t['coins'][:10]]
     return g
 
+
+# ---------------- fiat exchange rates ----------------
+FIATS = ('EUR UAH PLN GBP CHF CZK HUF RON SEK NOK DKK TRY RUB KZT GEL MDL BRL MXN ARS COP CLP INR IDR VND THB PHP '
+         'MYR SGD JPY KRW CNY HKD TWD AED SAR ILS EGP NGN ZAR KES CAD AUD NZD PKR BDT').split()
+
+
+def fx_rates():
+    """Units of each currency per 1 USD (open.er-api.com, free, no key). Saved to data/fx.json."""
+    d = get_json('https://open.er-api.com/v6/latest/USD', tries=3)
+    if not d or d.get('result') != 'success':
+        return None
+    rates = {c: d['rates'][c] for c in FIATS if c in d.get('rates', {})}
+    return rates if len(rates) > 20 else None
+
 # ---------------- main ----------------
 def main():
     quick = '--quick' in sys.argv
@@ -308,6 +322,14 @@ def main():
         if aid not in final and not quick and a.get('cat') != 'crypto':
             final[aid] = a
             kept += 1
+    try:
+        fx = fx_rates()
+        if fx:
+            json.dump({'updated': now.strftime('%Y-%m-%d'), 'source': 'open.er-api.com', 'rates': fx},
+                      open(os.path.join(ROOT, 'data/fx.json'), 'w'), separators=(',', ':'))
+            log(f"fx: {len(fx)} currencies")
+    except Exception as e:
+        log(f"fx failed: {e}")
     try:
         g = market_global(cg)
         gp = os.path.join(ROOT, 'data/global.json')

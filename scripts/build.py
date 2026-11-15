@@ -31,6 +31,8 @@ RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs'
 A = {(f"{aid}-{a['cat']}" if aid in RESERVED else aid): a for aid, a in market['assets'].items() if a.get('p')}
 _gp = os.path.join(ROOT, 'data/global.json')
 G = json.load(open(_gp, encoding='utf-8')) if os.path.exists(_gp) else {}
+_fp = os.path.join(ROOT, 'data/fx.json')
+FX = json.load(open(_fp, encoding='utf-8')) if os.path.exists(_fp) else {'rates': {}}
 TV_LOC = {'en': 'en', 'uk': 'uk', 'ru': 'ru', 'es': 'es', 'pt': 'br', 'de': 'de_DE', 'fr': 'fr', 'it': 'it', 'pl': 'pl', 'tr': 'tr',
           'nl': 'nl_NL', 'id': 'id', 'vi': 'vi_VN', 'th': 'th_TH', 'hi': 'in', 'ja': 'ja', 'ko': 'kr', 'zh': 'zh_CN', 'ar': 'ar_AE', 'fil': 'en'}
 
@@ -588,6 +590,11 @@ def hub(lang, slug, ver):
     return shell(lang, slug, title, desc, body, dict(tab=cat), ver)
 
 
+LOCAL_CCY = {'uk': 'fx:UAH', 'ru': 'fx:RUB', 'pl': 'fx:PLN', 'de': 'fx:EUR', 'fr': 'fx:EUR', 'es': 'fx:EUR', 'it': 'fx:EUR', 'nl': 'fx:EUR',
+             'pt': 'fx:BRL', 'tr': 'fx:TRY', 'id': 'fx:IDR', 'vi': 'fx:VND', 'th': 'fx:THB', 'hi': 'fx:INR', 'ja': 'fx:JPY',
+             'ko': 'fx:KRW', 'zh': 'fx:CNY', 'ar': 'fx:AED', 'fil': 'fx:PHP', 'en': 'usd'}
+
+
 def tool(lang, slug, ver):
     S, X, u = TR[lang], TR[lang]['x'], TR[lang]['ui']
     loc = TV_LOC.get(lang, 'en')
@@ -607,11 +614,14 @@ def tool(lang, slug, ver):
         inner = '<div class="card">' + tvw('timeline', dict(feedMode='all_symbols', isTransparent=True, displayMode='regular', width='100%', height='100%',
                                                              colorTheme='light', locale=loc), 900) + '</div>'
     else:
-        opts = '<option value="usd">US Dollar (USD)</option>' + ''.join(f'<option value="{i}">{esc(nm(A[i], lang))} ({esc(A[i]["tk"])})</option>' for i in ORDERED)
+        fiat = ''.join(f'<option value="fx:{c}">{c}</option>' for c in FX.get('rates', {}))
+        opts = (f'<optgroup label="Fiat" data-g="fiat"><option value="usd">US Dollar (USD)</option>{fiat}</optgroup>'
+                f'<optgroup label="Crypto" data-g="crypto">' + ''.join(f'<option value="{i}">{esc(nm(A[i], lang))} ({esc(A[i]["tk"])})</option>' for i in ORDERED if A[i]['cat'] == 'crypto') + '</optgroup>'
+                f'<optgroup label="Stocks, ETFs, metals" data-g="other">' + ''.join(f'<option value="{i}">{esc(nm(A[i], lang))} ({esc(A[i]["tk"])})</option>' for i in ORDERED if A[i]['cat'] != 'crypto') + '</optgroup>')
         inner = (f'<div class="card conv"><div class="cvrow"><label class="f">{X["conv_from"]}<div class="inp"><input id="cva" type="number" value="1" min="0" step="any"></div></label>'
                  f'<label class="f">&nbsp;<div class="inp"><select id="cvf">{opts.replace(chr(34) + "btc" + chr(34), chr(34) + "btc" + chr(34) + " selected", 1)}</select></div></label>'
                  f'<button class="toggle" id="cvsw" aria-label="swap">⇄</button>'
-                 f'<label class="f">{X["conv_to"]}<div class="inp"><select id="cvt">{opts}</select></div></label></div>'
+                 f'<label class="f">{X["conv_to"]}<div class="inp"><select id="cvt" data-def="{LOCAL_CCY.get(lang, "usd")}">{opts}</select></div></label></div>'
                  f'<div class="cvres" id="cvres"></div><div class="muted" id="cvrate"></div></div>')
     body = f'<h1>{esc(h1)}</h1><p class="lead">{esc(d)}</p>{inner}'
     return shell(lang, slug, f'{h1} | {BRAND}', d, body, dict(tool=slug), ver)
@@ -804,7 +814,7 @@ def main():
             e['l'] = a['logo']
         idx.append({k: (round(v, 4) if isinstance(v, float) and k in ('ch', 'r1', 'r3', 'r5') else v) for k, v in e.items() if v is not None})
         write(f'assets/p/{aid}.json', json.dumps({'start': a['start'], 'end': a['end'], 'p': a['p']}, separators=(',', ':')))
-    index_js = 'window.WI=' + json.dumps({'u': UPDATED, 'v': dv, 'a': idx}, ensure_ascii=False, separators=(',', ':')) + ';'
+    index_js = 'window.WI=' + json.dumps({'u': UPDATED, 'v': dv, 'a': idx, 'fx': FX.get('rates', {}), 'fxu': FX.get('updated')}, ensure_ascii=False, separators=(',', ':')) + ';'
     write('assets/index.js', index_js); write('assets/style.css', css); write('assets/app.js', js); write('assets/ref.js', ref)
     shutil.copy(os.path.join(ROOT, 'src/favicon.svg'), os.path.join(OUT, 'assets/favicon.svg'))
     ver = dict(css=h8(css), js=h8(js), ref=h8(ref), index=h8(index_js))
