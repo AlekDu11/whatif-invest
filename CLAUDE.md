@@ -38,6 +38,7 @@ src/ref.js (buy buttons) and PARTNERS / POLY in scripts/build.py (/exchanges/ pa
 
 ## Content automation
 Scheduled tasks: daily Insights article (6 or 20 languages, category analytics/guides), monthly market report on the 1st (category reports).
+Movers rubric «What's happening with X» (tag `movers`): twice a day 10:47/19:47 Kyiv, scripts/movers.py lists candidates, briefs in en/uk/ru/es show on the asset page.
 News aggregator: api/news.js (Vercel function, RSS headlines only, links to originals).
 
 ## Waiting on the owner
