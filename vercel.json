@@ -1,17 +1,15 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "python3 scripts/build.py",
+  "outputDirectory": "dist",
+  "installCommand": "true",
+  "framework": null,
   "trailingSlash": true,
   "redirects": [
     { "source": "/", "destination": "/whatif/", "permanent": false }
   ],
   "headers": [
-    {
-      "source": "/whatif/assets/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
-    },
-    {
-      "source": "/whatif/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400" }]
-    }
+    { "source": "/whatif/assets/p/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600, s-maxage=86400" }] },
+    { "source": "/whatif/assets/(.*)\\.(css|js|svg)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] }
   ]
 }

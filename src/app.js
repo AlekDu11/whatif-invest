@@ -1,205 +1,220 @@
-// whatif.invest calculator. Data comes from data.js (window.WHATIF_DATA), page config from window.PAGE.
-const DATA = window.WHATIF_DATA, PRICES = DATA.prices, PAGE = window.PAGE || {};
-
-// Partner links live in ref.js (window.REF, window.REF_DEFAULT).
-const REF = window.REF || {};
-const PALETTE=['#f7931a','#76b900','#e6c15a','#b8c2cc','#8f7bff','#ff5a5f','#3fa9f5','#22d3c5','#ff8fd1','#a3e635'];
-const UNIT={stock:{uk:'акцій',en:'shares'},etf:{uk:'паїв',en:'shares'},metal:{uk:'унцій',en:'oz'}};
-const ASSETS = DATA.assets.filter(a=>PRICES[a.id]).map(a=>({...a,unit:UNIT[a.cat]||{uk:a.tk,en:a.tk}}));
-const AMAP=Object.fromEntries(ASSETS.map(a=>[a.id,a]));
-const REF_DEFAULT = window.REF_DEFAULT || {};
+/* whatif.invest — front-end. Data: window.WI (index of all assets, from index.js),
+   page config: window.PAGE, referral links: window.REF / window.REF_DEFAULT (ref.js).
+   Price series are loaded on demand from /whatif/assets/p/<id>.json. */
+(function(){
+const WI = window.WI, PAGE = window.PAGE || {}, BASE = '/whatif';
+const lang = PAGE.lang || 'uk';
+const $ = (s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
+const IDX = WI.a, BYID = Object.fromEntries(IDX.map(a=>[a.i,a]));
+const REF = window.REF||{}, REF_DEFAULT = window.REF_DEFAULT||{};
 
 const T = {
-  uk:{
-    h1:'Що якби я щодня вкладав <em>$10</em>?',
-    sub:'Обери активи й дату старту — і подивись, скільки б у тебе було зараз. Реальні історичні ціни: 48 активів — крипта, акції, ETF, золото і срібло.',
-    amount:'Сума', freq:'Як часто', daily:'Щодня', weekly:'Щотижня', monthly:'Щомісяця',
-    since:'Починаючи з', assets:'Активи на графіку (до 10)', chartTitle:'Вартість портфеля в часі',
-    log:'Лог. шкала', invested:'Вкладено', best:'Найкращий результат', worst:'Найгірший результат',
-    asset:'Актив', value:'Зараз', profit:'Прибуток', got:'Накопичив', buy:'Купити', aff:'партнерське посилання',
-    investedLine:'Вкладено', copy:'Копіювати', copied:'Скопійовано ✓',
-    per:{d:'щодня',w:'щотижня',m:'щомісяця'},
-    share:(a,amt,per,since,val,pct)=>`Якби я вкладав $${amt} ${per} у ${a} з ${since}, зараз у мене було б ${val} (${pct}).`,
-    note:`<b>Як рахуємо:</b> для кожного місяця беремо ціну закриття і купуємо на суму всіх внесків за цей місяць (щоденні внески = сума × кількість днів). Без комісій, податків і дивідендів. Ціни: Yahoo Finance та відкриті датасети, з урахуванням сплітів; золото і срібло — ф'ючерси. Дані оновлено: ${DATA.updated}. <b>Це не інвестиційна порада.</b> Минулі результати не гарантують майбутніх.`,
-    cats:{all:'Усі',crypto:'Крипта',stock:'Акції',etf:'ETF',metal:'Метали'}, nothing:'Нічого не знайдено',
-    lbTitle:s=>`Рейтинг: найкращі активи для DCA з ${s}`, lbSub:n=>`${n} активів · натисни, щоб додати на графік`,
-    months:['січ','лют','бер','кві','тра','чер','лип','сер','вер','жов','лис','гру']
-  },
-  en:{
-    h1:'What if I invested <em>$10</em> every day?',
-    sub:'Pick assets and a start date to see what you would have today. Real historical prices for 48 assets: crypto, stocks, ETFs, gold and silver.',
-    amount:'Amount', freq:'How often', daily:'Daily', weekly:'Weekly', monthly:'Monthly',
-    since:'Starting from', assets:'Assets on the chart (up to 10)', chartTitle:'Portfolio value over time',
-    log:'Log scale', invested:'Invested', best:'Best result', worst:'Worst result',
-    asset:'Asset', value:'Now', profit:'Profit', got:'Accumulated', buy:'Buy', aff:'affiliate link',
-    investedLine:'Invested', copy:'Copy', copied:'Copied ✓',
-    per:{d:'every day',w:'every week',m:'every month'},
-    share:(a,amt,per,since,val,pct)=>`If I had invested $${amt} ${per} in ${a} since ${since}, I would have ${val} today (${pct}).`,
-    note:`<b>Method:</b> for each month we take the closing price and buy with all contributions for that month (daily = amount × days in month). No fees, taxes or dividends. Prices: Yahoo Finance and open datasets, split-adjusted; gold and silver are futures prices. Data updated: ${DATA.updated}. <b>Not investment advice.</b> Past performance does not guarantee future results.`,
-    cats:{all:'All',crypto:'Crypto',stock:'Stocks',etf:'ETFs',metal:'Metals'}, nothing:'Nothing found',
-    lbTitle:s=>`Leaderboard: best assets to DCA since ${s}`, lbSub:n=>`${n} assets · tap to add to the chart`,
-    months:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+  uk:{all:'Усі',crypto:'Крипта',stock:'Акції',etf:'ETF',metal:'Метали',lead:'Лідери DCA',lag:'Аутсайдери',
+      filter:'Фільтр: назва або тікер…',search:'Пошук активу: Bitcoin, Apple, золото…',nothing:'Нічого не знайдено',
+      name:'Назва',price:'Ціна',chg:'24г',d1:'DCA 1 рік',d3:'DCA 3 роки',d5:'DCA 5 років',spark:'Ціна за рік',
+      buy:'Купити',calc:'Калькулятор',more:'Показати ще',shown:(a,b)=>`Показано ${a} з ${b}`,
+      amount:'Сума',freq:'Як часто',daily:'Щодня',weekly:'Щотижня',monthly:'Щомісяця',since:'Починаючи з',
+      onchart:'Активи на графіку',add:'+ Додати актив',invested:'Вкладено',best:'Найкращий результат',worst:'Найгірший результат',
+      chartTitle:'Вартість портфеля в часі',log:'Лог. шкала',asset:'Актив',value:'Зараз',profit:'Прибуток',got:'Накопичив',
+      aff:'партнерське',copy:'Копіювати',copied:'Скопійовано ✓',investedLine:'Вкладено',loading:'Завантаження…',
+      per:{d:'щодня',w:'щотижня',m:'щомісяця'},from:'з',diffStart:'різні дати старту',
+      share:(a,amt,per,since,val,pct)=>`Якби я вкладав $${amt} ${per} у ${a} з ${since}, зараз у мене було б ${val} (${pct}).`,
+      units:{stock:'акцій',etf:'паїв',metal:'унцій'},
+      months:['січ','лют','бер','кві','тра','чер','лип','сер','вер','жов','лис','гру']},
+  en:{all:'All',crypto:'Crypto',stock:'Stocks',etf:'ETFs',metal:'Metals',lead:'DCA leaders',lag:'DCA laggards',
+      filter:'Filter by name or ticker…',search:'Search an asset: Bitcoin, Apple, gold…',nothing:'Nothing found',
+      name:'Name',price:'Price',chg:'24h',d1:'DCA 1Y',d3:'DCA 3Y',d5:'DCA 5Y',spark:'Price, 1Y',
+      buy:'Buy',calc:'Calculator',more:'Show more',shown:(a,b)=>`Showing ${a} of ${b}`,
+      amount:'Amount',freq:'How often',daily:'Daily',weekly:'Weekly',monthly:'Monthly',since:'Starting from',
+      onchart:'Assets on the chart',add:'+ Add asset',invested:'Invested',best:'Best result',worst:'Worst result',
+      chartTitle:'Portfolio value over time',log:'Log scale',asset:'Asset',value:'Now',profit:'Profit',got:'Accumulated',
+      aff:'affiliate',copy:'Copy',copied:'Copied ✓',investedLine:'Invested',loading:'Loading…',
+      per:{d:'every day',w:'every week',m:'every month'},from:'from',diffStart:'different start dates',
+      share:(a,amt,per,since,val,pct)=>`If I had invested $${amt} ${per} in ${a} since ${since}, I would have ${val} today (${pct}).`,
+      units:{stock:'shares',etf:'shares',metal:'oz'},
+      months:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']}
+}[lang];
+
+/* ---------- helpers ---------- */
+const nm = a => (lang==='en' && a.ne) ? a.ne : a.n;
+const url = id => `${BASE}${lang==='en'?'/en':''}/${id}/`;
+const esc = s => String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function fmtUsd(v){ if(v==null) return '—'; const a=Math.abs(v); let s;
+  if(a>=1e9) s=(a/1e9).toFixed(2)+'B'; else if(a>=1e6) s=(a/1e6).toFixed(2)+'M'; else if(a>=1e4) s=Math.round(a).toLocaleString('en-US');
+  else s=a.toLocaleString('en-US',{maximumFractionDigits:2}); return (v<0?'−$':'$')+s }
+function fmtPrice(v){ if(v==null) return '—'; const d=v>=1000?2:v>=1?2:v>=0.01?4:8;
+  return '$'+v.toLocaleString('en-US',{minimumFractionDigits:v>=1?2:0,maximumFractionDigits:d}) }
+function fmtPct(p,dec){ if(p==null||!isFinite(p)) return '—'; const a=Math.abs(p*100);
+  return (p>=0?'+':'−')+a.toLocaleString('en-US',{maximumFractionDigits:dec!=null?dec:(a>=100?0:a>=10?1:2)})+'%' }
+const cls = p => p==null?'':p>=0?'good':'bad';
+function hue(s){let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))%360;return h}
+function icon(a,big){ const c=big?' lg':'';
+  if(a.l) return `<span class="ic${c}"><img src="${esc(a.l)}" alt="" loading="lazy" width="26" height="26"></span>`;
+  return `<span class="ic${c}" style="background:hsl(${hue(a.t)} 55% 52%)">${esc(a.t.slice(0,2))}</span>` }
+function spark(arr,w=110,h=34){ if(!arr||arr.length<2) return '';
+  const mn=Math.min(...arr),mx=Math.max(...arr),r=mx-mn||1, up=arr[arr.length-1]>=arr[0];
+  const pts=arr.map((v,i)=>`${(i/(arr.length-1)*w).toFixed(1)},${(h-2-(v-mn)/r*(h-4)).toFixed(1)}`).join(' ');
+  return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"><polyline points="${pts}" fill="none" stroke="${up?'#14a44d':'#e5484d'}" stroke-width="1.6" stroke-linejoin="round"/></svg>` }
+function refFor(a){ const r=REF[a.i]||REF_DEFAULT[a.c]; return r&&r.url?r:null }
+function buyBtn(a){ const r=refFor(a); return r?`<a class="buy" href="${esc(r.url)}" target="_blank" rel="sponsored noopener" title="${esc(r.where)} · ${T.aff}">${T.buy}</a>`:'' }
+window.WIX={T,nm,url,esc,fmtUsd,fmtPrice,fmtPct,cls,icon,spark,buyBtn,BYID,IDX,lang};
+const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.dataset.id]); if(r) bs.innerHTML=`<a class="btn" href="${esc(r.url)}" target="_blank" rel="sponsored noopener">${T.buy} ${esc(BYID[bs.dataset.id].t)} · ${esc(r.where)}</a>` }
+
+/* ---------- global search (header) ---------- */
+(function(){
+  const inp=$('#gs'), box=$('#gres'); if(!inp) return;
+  inp.placeholder=T.search; let sel=0, items=[];
+  const run=()=>{ const q=inp.value.trim().toLowerCase(); if(!q){box.style.display='none';return}
+    items=IDX.filter(a=>a.t.toLowerCase().startsWith(q)||nm(a).toLowerCase().includes(q))
+      .sort((x,y)=>(y.t.toLowerCase()===q)-(x.t.toLowerCase()===q)||x.o-y.o).slice(0,8);
+    sel=0;
+    box.innerHTML=items.length?items.map((a,k)=>`<a href="${url(a.i)}" class="${k?'':'on'}">${icon(a)}<span>${esc(nm(a))} <span class="t">${esc(a.t)}</span></span><span class="t" style="margin-left:auto">${fmtPrice(a.pr)}</span></a>`).join(''):`<div class="empty">${T.nothing}</div>`;
+    box.style.display='block' };
+  inp.addEventListener('input',run);
+  inp.addEventListener('keydown',e=>{ const ls=$$('a',box);
+    if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault(); if(!ls.length) return; ls[sel].classList.remove('on'); sel=(sel+(e.key==='ArrowDown'?1:-1)+ls.length)%ls.length; ls[sel].classList.add('on')}
+    if(e.key==='Enter'&&ls[sel]) location.href=ls[sel].getAttribute('href');
+    if(e.key==='Escape') box.style.display='none' });
+  document.addEventListener('click',e=>{ if(!e.target.closest('.gsearch')) box.style.display='none' });
+})();
+
+/* ---------- main table (home) ---------- */
+(function(){
+  const tb=$('#mt'); if(!tb) return;
+  let tab=PAGE.tab||'all', q='', sortK=PAGE.sort||'o', sortDir=1, shown=100;
+  const TABS=['all','crypto','stock','etf','metal','lead','lag'];
+  $('#tabs').innerHTML=TABS.map(t=>`<button data-t="${t}" class="${t===tab?'on':''}">${T[t]}</button>`).join('');
+  $$('#tabs button').forEach(b=>b.onclick=()=>{tab=b.dataset.t; $$('#tabs button').forEach(x=>x.classList.toggle('on',x===b));
+    if(tab==='lead'){sortK='r5';sortDir=-1} else if(tab==='lag'){sortK='r5';sortDir=1} else if(sortK==='r5'&&(sortDir)){sortK='o';sortDir=1}
+    shown=100; draw()});
+  const f=$('#flt'); f.placeholder=T.filter; f.oninput=()=>{q=f.value.trim().toLowerCase(); shown=100; draw()};
+  const COLS=[['n','#','l n hide-sm'],['name',T.name,'l'],['buy','',''],['pr',T.price,''],['ch',T.chg,''],['r1',T.d1,'hide-sm'],['r3',T.d3,'hide-sm'],['r5',T.d5,''],['sp',T.spark,'hide-sm'],['go','','hide-sm']];
+  function draw(){
+    let rows=IDX.filter(a=>{
+      if(tab==='crypto'||tab==='stock'||tab==='etf'||tab==='metal'){ if(a.c!==tab) return false }
+      if((tab==='lead'||tab==='lag')&&a.r5==null) return false;
+      return !q||a.t.toLowerCase().includes(q)||nm(a).toLowerCase().includes(q) });
+    const k=sortK==='n'?'o':sortK;
+    rows.sort((x,y)=>{ const vx=k==='name'?nm(x):x[k], vy=k==='name'?nm(y):y[k];
+      if(vx==null&&vy==null) return x.o-y.o; if(vx==null) return 1; if(vy==null) return -1;
+      return (typeof vx==='string'?vx.localeCompare(vy):vx-vy)*sortDir });
+    const total=rows.length; rows=rows.slice(0,shown);
+    $('#mthead').innerHTML='<tr>'+COLS.map(([c,l,cl])=>{ const s=(c===sortK||(c==='n'&&sortK==='o'));
+      const sortable=!['buy','sp','go'].includes(c);
+      return `<th class="${cl}${s?' sorted':''}" ${sortable?`data-k="${c}"`:''}>${l}${sortable&&l?`<span class="ar">${s?(sortDir>0?'↑':'↓'):'↕'}</span>`:''}</th>`}).join('')+'</tr>';
+    $$('#mthead th[data-k]').forEach(th=>th.onclick=()=>{ let kk=th.dataset.k; if(kk==='n') kk='o';
+      if(sortK===kk) sortDir=-sortDir; else {sortK=kk; sortDir=(kk==='name'||kk==='o')?1:-1} draw() });
+    tb.innerHTML=rows.length?rows.map((a,i)=>`<tr>
+      <td class="l n hide-sm">${i+1}</td>
+      <td class="l"><a class="asset" href="${url(a.i)}">${icon(a)}<span><span class="nm">${esc(nm(a))}</span><span class="tk">${esc(a.t)}</span></span></a></td>
+      <td>${buyBtn(a)}</td>
+      <td class="num">${fmtPrice(a.pr)}</td>
+      <td class="num ${cls(a.ch)}">${fmtPct(a.ch)}</td>
+      <td class="num hide-sm ${cls(a.r1)}">${fmtPct(a.r1)}</td>
+      <td class="num hide-sm ${cls(a.r3)}">${fmtPct(a.r3)}</td>
+      <td><span class="pill ${cls(a.r5)}">${fmtPct(a.r5)}</span></td>
+      <td class="hide-sm">${spark(a.sp)}</td>
+      <td class="hide-sm"><a class="calc" href="${url(a.i)}">${T.calc} →</a></td></tr>`).join('')
+      :`<tr><td colspan="10" class="empty">${T.nothing}</td></tr>`;
+    $('#mtmore').innerHTML=total>shown?`<button class="more">${T.more} (${T.shown(shown,total)})</button>`:'';
+    const mb=$('#mtmore button'); if(mb) mb.onclick=()=>{shown+=100;draw()};
   }
-};
+  draw();
+})();
 
-let lang=PAGE.lang||'uk', freq='d', logScale=false;
-let selected=(PAGE.sel||['btc','nvda','gold','silver','atom']).filter(id=>PRICES[id]); const colorOf={}; let cat='all';
-const MAXSEL=10;
-function assignColors(){const used=new Set(selected.map(id=>colorOf[id]).filter(Boolean));selected.forEach(id=>{if(!colorOf[id]){colorOf[id]=PALETTE.find(c=>!used.has(c))||'#999';used.add(colorOf[id])}});Object.keys(colorOf).forEach(id=>{if(!selected.includes(id))delete colorOf[id]})}
-function toggleAsset(id){const k=selected.indexOf(id);if(k>=0){if(selected.length>1)selected.splice(k,1)}else{if(selected.length>=MAXSEL)selected.shift();selected.push(id)}assignColors();buildChips();render()}
-const END=DATA.updated.slice(0,7), END_DAY=+DATA.updated.slice(8,10);
+/* ---------- calculator ---------- */
+(function(){
+  if(!$('#calc')) return;
+  const PALETTE=['#1a6dff','#f59e0b','#14a44d','#e5484d','#8b5cf6','#0ea5e9','#ec4899','#64748b','#84cc16','#f97316'];
+  const END=WI.u.slice(0,7), END_DAY=+WI.u.slice(8,10), MAXSEL=8;
+  const cache={};
+  let freq='d', logScale=false, selected=(PAGE.sel||['btc']).filter(id=>BYID[id]); const colorOf={};
+  const ym2i=s=>{const [y,m]=s.split('-').map(Number);return y*12+m-1};
+  const i2ym=i=>`${Math.floor(i/12)}-${String(i%12+1).padStart(2,'0')}`;
+  const mlabel=s=>{const [y,m]=s.split('-').map(Number);return `${T.months[m-1]} ${y}`};
+  const daysIn=(y,m)=>new Date(y,m,0).getDate();
+  const load=id=>cache[id]||(cache[id]=fetch(`${BASE}/assets/p/${id}.json?v=${WI.v}`).then(r=>r.json()));
+  function assignColors(){const used=new Set(selected.map(id=>colorOf[id]).filter(Boolean));selected.forEach(id=>{if(!colorOf[id]){colorOf[id]=PALETTE.find(c=>!used.has(c))||'#999';used.add(colorOf[id])}})}
+  function perMonth(i){ let d=daysIn(Math.floor(i/12),i%12+1); if(i2ym(i)===END) d=END_DAY;
+    return freq==='d'?d:freq==='w'?d/7:(i2ym(i)===END?0:1) }
+  function simulate(P,startI,amt){ const s0=ym2i(P.start), e=ym2i(P.end), from=Math.max(startI,s0);
+    let u=0,inv=0; const pts=[]; for(let i=from;i<=e;i++){ const c=amt*perMonth(i); u+=c/P.p[i-s0]; inv+=c; pts.push({i,inv,val:u*P.p[i-s0]}) }
+    return {units:u,inv,val:u*P.p[e-s0],pts,from} }
 
-const $=s=>document.querySelector(s);
-const ym2i=s=>{const [y,m]=s.split('-').map(Number);return y*12+m-1};
-const i2ym=i=>`${Math.floor(i/12)}-${String(i%12+1).padStart(2,'0')}`;
-const nm=a=>typeof a.name==='string'?a.name:a.name[lang];
-const fmt$=v=>{const a=Math.abs(v);const s=a>=1e6?(a/1e6).toFixed(2)+'M':a>=1e4?Math.round(a).toLocaleString('en-US'):a.toLocaleString('en-US',{maximumFractionDigits:2});return (v<0?'−$':'$')+s};
-const fmtPct=p=>(p>=0?'+':'−')+Math.abs(p*100).toLocaleString('en-US',{maximumFractionDigits:p>9.99?0:1})+'%';
-const monthLabel=s=>{const [y,m]=s.split('-').map(Number);return `${T[lang].months[m-1]} ${y}`};
-const daysIn=(y,m)=>new Date(y,m,0).getDate();
+  // since select
+  const sel=$('#since');
+  for(let i=ym2i(END)-1;i>=ym2i('2000-01');i--){ if(i%12!==0&&i%6!==0&&i<ym2i(END)-24) continue;
+    const o=document.createElement('option'); o.value=i2ym(i); o.textContent=mlabel(i2ym(i)); sel.appendChild(o) }
+  sel.value=[...sel.options].some(o=>o.value===PAGE.since)?PAGE.since:'2021-01';
 
-function perMonth(i){
-  const y=Math.floor(i/12), m=i%12+1;
-  let days=daysIn(y,m); if(i2ym(i)===END) days=END_DAY;
-  return freq==='d'?days:freq==='w'?days/7:(i2ym(i)===END?0:1);
-}
+  function toggle(id){ const k=selected.indexOf(id); if(k>=0){ if(selected.length>1){selected.splice(k,1);delete colorOf[id]} }
+    else { if(selected.length>=MAXSEL){delete colorOf[selected.shift()]} selected.push(id) } assignColors(); chips(); render() }
+  function chips(){
+    $('#chips').innerHTML=selected.map(id=>{const a=BYID[id];return `<button class="chip" style="--c:${colorOf[id]}" data-id="${id}"><i></i>${esc(nm(a))} <span class="muted">${esc(a.t)}</span><span class="x">×</span></button>`}).join('')+`<button class="chip add" id="addBtn">${T.add}</button>`;
+    $$('#chips .chip[data-id]').forEach(b=>b.onclick=()=>toggle(b.dataset.id));
+    $('#addBtn').onclick=()=>{ $('#picker').classList.toggle('open'); $('#pq').focus(); pool() } }
+  function pool(){ const q=$('#pq').value.trim().toLowerCase();
+    const list=IDX.filter(a=>!selected.includes(a.i)&&(!q||a.t.toLowerCase().includes(q)||nm(a).toLowerCase().includes(q))).sort((x,y)=>x.o-y.o).slice(0,40);
+    $('#pool').innerHTML=list.map(a=>`<button data-id="${a.i}">${esc(nm(a))} <span class="muted">${esc(a.t)}</span></button>`).join('')||`<span class="muted">${T.nothing}</span>`;
+    $$('#pool button').forEach(b=>b.onclick=()=>{toggle(b.dataset.id); $('#pq').value=''; pool()}) }
+  $('#pq').placeholder=T.filter; $('#pq').oninput=pool;
+  $$('#freq button').forEach(b=>b.onclick=()=>{freq=b.dataset.v;$$('#freq button').forEach(x=>x.classList.toggle('on',x===b));render()});
+  $('#amt').oninput=render; sel.onchange=render;
+  $('#logBtn').onclick=()=>{logScale=!logScale;$('#logBtn').classList.toggle('on',logScale);render()};
+  $('#copyBtn').onclick=async()=>{try{await navigator.clipboard.writeText($('#shareText').textContent);$('#copyBtn').textContent=T.copied;setTimeout(()=>$('#copyBtn').textContent=T.copy,1600)}catch(e){}};
+  let rz; addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(render,150)});
 
-function simulate(id,startI,amt){
-  const P=PRICES[id], s0=ym2i(P.start), e=ym2i(P.end);
-  const from=Math.max(startI,s0);
-  let units=0,inv=0; const pts=[];
-  for(let i=from;i<=e;i++){
-    const price=P.p[i-s0], c=amt*perMonth(i);
-    units+=c/price; inv+=c;
-    pts.push({i,inv,val:units*price});
+  let seq=0;
+  async function render(){
+    const my=++seq, amt=Math.max(1,+$('#amt').value||10), startI=ym2i(sel.value);
+    const series=await Promise.all(selected.map(id=>load(id).catch(()=>null))); if(my!==seq) return;
+    const res=selected.map((id,k)=>series[k]?{a:BYID[id],c:colorOf[id],...simulate(series[k],startI,amt)}:null).filter(r=>r&&r.inv>0)
+      .sort((x,y)=>y.val/y.inv-x.val/x.inv);
+    if(!res.length) return;
+    const best=res[0], worst=res[res.length-1], full=res.filter(r=>r.from===startI);
+    const h=(k,v,s,c='')=>`<div class="card"><div class="k">${k}</div><div class="v ${c}">${v}</div><div class="s">${s}</div></div>`;
+    $('#hero').innerHTML=h(T.invested,fmtUsd((full[0]||best).inv),full.length?`${mlabel(i2ym(startI))} → ${mlabel(END)}`:T.diffStart)+
+      h(`${T.best}: ${esc(nm(best.a))}`,fmtUsd(best.val),fmtPct(best.val/best.inv-1),cls(best.val-best.inv))+
+      (res.length>1?h(`${T.worst}: ${esc(nm(worst.a))}`,fmtUsd(worst.val),fmtPct(worst.val/worst.inv-1),cls(worst.val-worst.inv)):h('&nbsp;','',''));
+    $('#rt').innerHTML=`<tr><th>${T.asset}</th><th class="hide-sm">${T.invested}</th><th>${T.value}</th><th>${T.profit}</th><th class="hide-sm">${T.got}</th><th></th></tr>`+
+      res.map(r=>{ const p=r.val-r.inv, u=T.units[r.a.c]||r.a.t, late=r.from>startI?`<div class="muted" style="font:500 11px Inter">${T.from} ${mlabel(i2ym(r.from))}</div>`:'';
+        return `<tr><td class="a" style="--c:${r.c}"><i></i><a href="${url(r.a.i)}" style="text-decoration:none">${esc(nm(r.a))}</a>${late}</td><td class="hide-sm">${fmtUsd(r.inv)}</td><td>${fmtUsd(r.val)}</td><td class="${cls(p)}">${fmtUsd(p)}<br><span style="font-size:11px">${fmtPct(r.val/r.inv-1)}</span></td><td class="hide-sm">${(+r.units.toPrecision(5)).toLocaleString('en-US')} ${esc(u)}</td><td>${buyBtn(r.a)}</td></tr>` }).join('');
+    $('#shareText').textContent=T.share(nm(best.a),amt,T.per[freq],mlabel(i2ym(best.from)),fmtUsd(best.val),fmtPct(best.val/best.inv-1));
+    chart(res);
   }
-  return {id,units,inv,val:units*P.p[e-s0],pts,from};
-}
-
-function buildSince(){
-  const sel=$('#since'), prev=sel.value||PAGE.since||'2018-01';
-  sel.innerHTML='';
-  for(let i=ym2i(END)-1;i>=ym2i('2000-01');i--){
-    if(i%12!==0 && i%6!==0 && i<ym2i(END)-24) continue;
-    const o=document.createElement('option');o.value=i2ym(i);o.textContent=monthLabel(i2ym(i));sel.appendChild(o);
+  function niceStep(x){const p=10**Math.floor(Math.log10(x)),n=x/p;return (n<1.5?1:n<3?2:n<7?5:10)*p}
+  function shortUsd(v){return v>=1e6?'$'+(+(v/1e6).toFixed(1))+'M':v>=1e3?'$'+(+(v/1e3).toFixed(1))+'k':'$'+Math.round(v)}
+  function chart(res){
+    const narrow=($('#chart').clientWidth||1000)<600, W=narrow?420:1000,H=narrow?320:400,L=narrow?46:60,R=10,Tp=12,B=28;
+    const x0=Math.min(...res.map(r=>r.from)), x1=ym2i(END);
+    const all=res.flatMap(r=>r.pts.flatMap(p=>[p.val,p.inv]));
+    const maxV=Math.max(...all)*1.05, minV=logScale?Math.max(1,Math.min(...all.filter(v=>v>0))):0;
+    const fy=v=>logScale?Tp+(H-Tp-B)*(1-(Math.log10(Math.max(v,minV))-Math.log10(minV))/(Math.log10(maxV)-Math.log10(minV)||1)):Tp+(H-Tp-B)*(1-v/maxV);
+    const fx=i=>L+(W-L-R)*(x1===x0?0:(i-x0)/(x1-x0));
+    let g=''; const ticks=[];
+    if(logScale){for(let e=Math.floor(Math.log10(minV));e<=Math.ceil(Math.log10(maxV));e++)[1,3].forEach(k=>{const v=k*10**e;if(v>=minV&&v<=maxV)ticks.push(v)})}
+    else{const st=niceStep(maxV/5);for(let v=0;v<=maxV;v+=st)ticks.push(v)}
+    ticks.forEach(v=>{const y=fy(v);g+=`<line x1="${L}" x2="${W-R}" y1="${y}" y2="${y}" stroke="#eef0f3"/><text x="${L-8}" y="${y+4}" fill="#9aa1ad" font-size="11.5" text-anchor="end" font-family="JetBrains Mono">${shortUsd(v)}</text>`});
+    const yrs=(x1-x0)/12, every=yrs>16?(narrow?4:2):yrs>8&&narrow?2:1;
+    for(let i=x0;i<=x1;i++) if(i%12===0&&Math.floor(i/12)%every===0) g+=`<text x="${fx(i)}" y="${H-8}" fill="#9aa1ad" font-size="11.5" text-anchor="middle">${Math.floor(i/12)}</text>`;
+    const ref=res.reduce((a,b)=>a.pts.length>=b.pts.length?a:b);
+    g+=`<path d="${ref.pts.map((p,k)=>(k?'L':'M')+fx(p.i).toFixed(1)+' '+fy(p.inv).toFixed(1)).join('')}" fill="none" stroke="#9aa1ad" stroke-width="1.4" stroke-dasharray="5 5"/>`;
+    res.slice().reverse().forEach(r=>{g+=`<path d="${r.pts.map((p,k)=>(k?'L':'M')+fx(p.i).toFixed(1)+' '+fy(p.val).toFixed(1)).join('')}" fill="none" stroke="${r.c}" stroke-width="2.2" stroke-linejoin="round"/>`});
+    g+=`<line id="hl" x1="0" x2="0" y1="${Tp}" y2="${H-B}" stroke="#c4c9d2" style="display:none"/>`;
+    $('#chart').innerHTML=`<svg viewBox="0 0 ${W} ${H}" id="svg">${g}<rect x="${L}" y="${Tp}" width="${W-L-R}" height="${H-Tp-B}" fill="transparent" id="hit"/></svg>`;
+    const svg=$('#svg'),tip=$('#tip'),hl=$('#hl'),hit=$('#hit');
+    const move=ev=>{ const rect=svg.getBoundingClientRect(), px=(ev.touches?ev.touches[0].clientX:ev.clientX)-rect.left;
+      let i=Math.round(x0+(px*W/rect.width-L)/(W-L-R)*(x1-x0)); i=Math.max(x0,Math.min(x1,i));
+      hl.setAttribute('x1',fx(i));hl.setAttribute('x2',fx(i));hl.style.display='';
+      const rows=res.map(r=>{const p=r.pts.find(q=>q.i===i);return p?{c:r.c,n:nm(r.a),v:p.val}:null}).filter(Boolean).sort((a,b)=>b.v-a.v);
+      const ip=ref.pts.find(q=>q.i===i);
+      tip.innerHTML=`<div class="d">${mlabel(i2ym(i))}</div>`+rows.map(r=>`<div class="row"><span><span style="color:${r.c}">●</span> ${esc(r.n)}</span><b>${fmtUsd(r.v)}</b></div>`).join('')+(ip?`<div class="row muted" style="margin-top:4px"><span>${T.investedLine}</span><span>${fmtUsd(ip.inv)}</span></div>`:'');
+      tip.style.display='block'; const cw=$('#chartcard').getBoundingClientRect();
+      let left=rect.left-cw.left+px+14; if(left+200>cw.width) left=rect.left-cw.left+px-210;
+      tip.style.left=left+'px'; tip.style.top=(rect.top-cw.top+16)+'px' };
+    hit.addEventListener('mousemove',move); hit.addEventListener('touchmove',move,{passive:true});
+    hit.addEventListener('mouseleave',()=>{tip.style.display='none';hl.style.display='none'});
   }
-  sel.value=[...sel.options].some(o=>o.value===prev)?prev:sel.options[sel.options.length-1].value;
-}
-
-function buildChips(){
-  const box=$('#assets');box.innerHTML='';
-  selected.forEach(id=>{const a=AMAP[id];
-    const b=document.createElement('button');b.className='chip on';b.style.setProperty('--c',colorOf[id]);
-    b.innerHTML=`<i></i>${nm(a)} <span style="opacity:.55">${a.tk}</span><span class="x">×</span>`;
-    b.onclick=()=>toggleAsset(id);box.appendChild(b)});
-  buildPool();
-}
-function buildPool(){
-  const q=($('#q').value||'').trim().toLowerCase(), t=T[lang];
-  $('#cats').innerHTML=['all','crypto','stock','etf','metal'].map(c=>`<button data-c="${c}" class="${c===cat?'on':''}">${t.cats[c]}</button>`).join('');
-  $('#cats').querySelectorAll('button').forEach(b=>b.onclick=()=>{cat=b.dataset.c;buildPool()});
-  const list=ASSETS.filter(a=>!selected.includes(a.id)&&(cat==='all'||a.cat===cat)&&(!q||(nm(a)+' '+a.tk+' '+(a.name.en||'')).toLowerCase().includes(q)));
-  $('#pool').innerHTML=list.length?list.map(a=>`<button data-id="${a.id}"><b>+</b>${nm(a)} <span style="opacity:.6">${a.tk}</span></button>`).join(''):`<div class="empty">${t.nothing}</div>`;
-  $('#pool').querySelectorAll('button').forEach(b=>b.onclick=()=>toggleAsset(b.dataset.id));
-}
-
-function applyText(){
-  document.documentElement.lang=lang;
-  $('#q').placeholder=lang==='uk'?'Пошук: Apple, ETH, золото…':'Search: Apple, ETH, gold…';
-  document.querySelectorAll('[data-t]').forEach(el=>{el.innerHTML=T[lang][el.dataset.t]});
-  const amt=$('#amt').value||10;
-  if(PAGE.staticH1) return;
-  $('h1').innerHTML=T[lang].h1.replace('$10','$'+amt);
-  if(freq!=='d') $('h1').innerHTML=lang==='uk'
-    ? `Що якби я ${T.uk.per[freq]} вкладав <em>$${amt}</em>?`
-    : `What if I invested <em>$${amt}</em> ${T.en.per[freq]}?`;
-}
-
-function render(){
-  applyText();
-  const amt=Math.max(1,+$('#amt').value||10);
-  const startI=ym2i($('#since').value);
-  const res=selected.map(id=>({a:{...AMAP[id],c:colorOf[id]},...simulate(id,startI,amt)}))
-    .sort((x,y)=>(y.val/y.inv)-(x.val/x.inv));
-  const t=T[lang];
-
-  // hero
-  const best=res[0], worst=res[res.length-1];
-  const full=res.filter(r=>r.from===startI);
-  const sameStart=full.length>0;
-  const invShown=sameStart?fmt$(full[0].inv):fmt$(Math.max(...res.map(r=>r.inv)));
-  const h=(k,v,s,cls='')=>`<div class="card stat"><div class="k">${k}</div><div class="v ${cls}">${v}</div><div class="s">${s}</div></div>`;
-  $('#hero').innerHTML=
-    h(t.invested,invShown,sameStart?`${monthLabel(i2ym(startI))} → ${monthLabel(END)}`:(lang==='uk'?'різні дати старту':'different start dates'))+
-    h(t.best+': '+nm(best.a),fmt$(best.val),fmtPct(best.val/best.inv-1),best.val>=best.inv?'good':'bad')+
-    (res.length>1?h(t.worst+': '+nm(worst.a),fmt$(worst.val),fmtPct(worst.val/worst.inv-1),worst.val>=worst.inv?'good':'bad'):h('—','',''));
-
-  // table
-  $('#tbl').innerHTML=`<tr><th>${t.asset}</th><th class="hide-sm">${t.invested}</th><th>${t.value}</th><th>${t.profit}</th><th class="hide-sm">${t.got}</th><th class="hide-sm"></th></tr>`+
-    res.map(r=>{
-      const p=r.val-r.inv, cls=p>=0?'good':'bad', ref=REF[r.id]||REF_DEFAULT[r.a.cat];
-      const cta=ref&&ref.url?`<a class="cta" href="${ref.url}" rel="sponsored noopener" target="_blank">${t.buy} ${r.a.tk}</a><span class="aff">${ref.where} · ${t.aff}</span>`:'';
-      const late=r.from>startI?`<div style="font:500 11px Inter;color:var(--muted)">${lang==='uk'?'з':'from'} ${monthLabel(i2ym(r.from))}</div>`:'';
-      return `<tr><td class="a" style="--c:${r.a.c}"><i></i>${nm(r.a)}${late}${cta?`<div class="show-sm">${cta}</div>`:''}</td><td class="hide-sm">${fmt$(r.inv)}</td><td>${fmt$(r.val)}</td><td class="${cls}">${fmt$(p)}<br><span style="font-size:11px">${fmtPct(r.val/r.inv-1)}</span></td><td class="hide-sm">${r.units.toLocaleString('en-US',{maximumFractionDigits:r.a.dp})} ${r.a.unit[lang]}</td><td class="hide-sm">${cta}</td></tr>`;
-    }).join('');
-
-  $('#shareText').textContent=t.share(nm(best.a),amt,t.per[freq],monthLabel(i2ym(best.from)),fmt$(best.val),fmtPct(best.val/best.inv-1));
-  drawChart(res,startI);
-  // leaderboard: every asset that has data from the chosen start
-  const lb=ASSETS.filter(a=>ym2i(PRICES[a.id].start)<=startI).map(a=>{const s=simulate(a.id,startI,amt);return {a,roi:s.val/s.inv-1}}).sort((x,y)=>y.roi-x.roi);
-  $('#lbTitle').textContent=t.lbTitle(monthLabel(i2ym(startI)));
-  $('#lbSub').textContent=t.lbSub(lb.length);
-  $('#lb').innerHTML=lb.map((x,k)=>{const sel=selected.includes(x.a.id);return `<button class="lbi${sel?' sel':''}" style="--c:${colorOf[x.a.id]||'transparent'}" data-id="${x.a.id}"><span class="k">${k+1}</span><span class="n">${nm(x.a)}<small>${x.a.tk}</small></span><span class="r ${x.roi>=0?'good':'bad'}">${fmtPct(x.roi)}</span></button>`}).join('');
-  $('#lb').querySelectorAll('button').forEach(b=>b.onclick=()=>{toggleAsset(b.dataset.id);window.scrollTo({top:0,behavior:'smooth'})});
-}
-
-function drawChart(res,startI){
-  const narrow=($('#chart').clientWidth||1000)<600; const W=narrow?420:1000,H=narrow?320:420,L=narrow?46:62,R=narrow?8:14,Tp=14,B=30;
-  const x0=Math.min(...res.map(r=>r.from)), x1=ym2i(END);
-  const all=res.flatMap(r=>r.pts.map(p=>p.val)).concat(res.flatMap(r=>r.pts.map(p=>p.inv)));
-  let maxV=Math.max(...all)*1.05, minV=logScale?Math.max(1,Math.min(...all.filter(v=>v>0))):0;
-  const fy=v=>logScale?Tp+(H-Tp-B)*(1-(Math.log10(Math.max(v,minV))-Math.log10(minV))/(Math.log10(maxV)-Math.log10(minV))):Tp+(H-Tp-B)*(1-v/maxV);
-  const fx=i=>L+(W-L-R)*(x1===x0?0:(i-x0)/(x1-x0));
-  let g='';
-  // grid
-  const ticks=[];
-  if(logScale){for(let e=Math.floor(Math.log10(minV));e<=Math.ceil(Math.log10(maxV));e++){[1,3].forEach(k=>{const v=k*10**e;if(v>=minV&&v<=maxV)ticks.push(v)})}}
-  else{const step=niceStep(maxV/5);for(let v=0;v<=maxV;v+=step)ticks.push(v)}
-  ticks.forEach(v=>{const y=fy(v);g+=`<line x1="${L}" x2="${W-R}" y1="${y}" y2="${y}" stroke="#252a36"/><text x="${L-8}" y="${y+4}" fill="#8a91a3" font-size="12" text-anchor="end" font-family="JetBrains Mono">${shortUsd(v)}</text>`});
-  for(let i=x0;i<=x1;i++){ if(i%12===0 && (!narrow||(x1-x0)<=72||Math.floor(i/12)%2===0)){const x=fx(i);g+=`<text x="${x}" y="${H-10}" fill="#8a91a3" font-size="12" text-anchor="middle">${Math.floor(i/12)}</text><line x1="${x}" x2="${x}" y1="${H-B}" y2="${H-B+5}" stroke="#3a4050"/>`}}
-  // invested line (from earliest start)
-  const ref=res.reduce((a,b)=>a.pts.length>=b.pts.length?a:b);
-  g+=`<path d="${ref.pts.map((p,k)=>(k?'L':'M')+fx(p.i).toFixed(1)+' '+fy(p.inv).toFixed(1)).join('')}" fill="none" stroke="#e8ebf2" stroke-width="1.5" stroke-dasharray="5 5" opacity=".6"/>`;
-  res.slice().reverse().forEach(r=>{
-    g+=`<path d="${r.pts.map((p,k)=>(k?'L':'M')+fx(p.i).toFixed(1)+' '+fy(p.val).toFixed(1)).join('')}" fill="none" stroke="${r.a.c}" stroke-width="2.4" stroke-linejoin="round"/>`;
-  });
-  g+=`<line id="hl" x1="0" x2="0" y1="${Tp}" y2="${H-B}" stroke="#8a91a3" stroke-width="1" style="display:none"/>`;
-  $('#chart').innerHTML=`<svg viewBox="0 0 ${W} ${H}" id="svg">${g}<rect x="${L}" y="${Tp}" width="${W-L-R}" height="${H-Tp-B}" fill="transparent" id="hit"/></svg>`;
-
-  const svg=$('#svg'),tip=$('#tip'),hl=$('#hl');
-  const move=ev=>{
-    const rect=svg.getBoundingClientRect(), px=(ev.touches?ev.touches[0].clientX:ev.clientX)-rect.left;
-    const vx=px*W/rect.width; let i=Math.round(x0+(vx-L)/(W-L-R)*(x1-x0)); i=Math.max(x0,Math.min(x1,i));
-    hl.setAttribute('x1',fx(i));hl.setAttribute('x2',fx(i));hl.style.display='';
-    const rows=res.map(r=>{const p=r.pts.find(q=>q.i===i);return p?{c:r.a.c,n:nm(r.a),v:p.val}:null}).filter(Boolean).sort((a,b)=>b.v-a.v);
-    const ip=ref.pts.find(q=>q.i===i);
-    tip.innerHTML=`<div class="d">${monthLabel(i2ym(i))}</div>`+rows.map(r=>`<div class="row"><span><span style="color:${r.c}">●</span> ${r.n}</span><b>${fmt$(r.v)}</b></div>`).join('')+(ip?`<div class="row" style="color:var(--muted);margin-top:4px"><span>${T[lang].investedLine}</span><span>${fmt$(ip.inv)}</span></div>`:'');
-    tip.style.display='block';
-    const cw=svg.parentElement.parentElement.getBoundingClientRect();
-    let left=rect.left-cw.left+px+14; if(left+190>cw.width) left=rect.left-cw.left+px-200;
-    tip.style.left=left+'px'; tip.style.top=(rect.top-cw.top+20)+'px';
-  };
-  const hit=$('#hit');
-  hit.addEventListener('mousemove',move);hit.addEventListener('touchmove',move,{passive:true});
-  hit.addEventListener('mouseleave',()=>{tip.style.display='none';hl.style.display='none'});
-}
-function niceStep(x){const p=10**Math.floor(Math.log10(x)),n=x/p;return (n<1.5?1:n<3?2:n<7?5:10)*p}
-function shortUsd(v){return v>=1e6?'$'+(v/1e6).toFixed(v%1e6?1:0)+'M':v>=1e3?'$'+(v/1e3).toFixed(v%1e3?1:0)+'k':'$'+Math.round(v)}
-
-document.querySelectorAll('#freq button').forEach(b=>b.onclick=()=>{freq=b.dataset.v;document.querySelectorAll('#freq button').forEach(x=>x.classList.toggle('on',x===b));render()});
-$('#amt').oninput=render; $('#q').oninput=buildPool; $('#since').onchange=render;
-$('#logBtn').onclick=()=>{logScale=!logScale;$('#logBtn').classList.toggle('on',logScale);render()};
-$('#copyBtn').onclick=async()=>{try{await navigator.clipboard.writeText($('#shareText').textContent);$('#copyBtn').textContent=T[lang].copied;setTimeout(()=>$('#copyBtn').textContent=T[lang].copy,1600)}catch(e){}};
-
-let rz;window.addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(render,150)});
-assignColors();buildSince();buildChips();render();
+  assignColors(); chips(); render();
+})();
+})();
