@@ -325,15 +325,14 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="{SITE}/assets/og.jpg"><meta name="theme-color" content="#ffffff">
 <script>(function(){{try{{var t=localStorage.getItem('wi_theme')}}catch(e){{}}if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';if(t==='dark'){{document.documentElement.dataset.theme='dark';document.querySelector('meta[name=theme-color]').content='#0e1014'}}}})()</script>
 <link rel="icon" href="{BASE}/assets/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="{BASE}/assets/icon-192.png"><link rel="manifest" href="{BASE}/manifest.webmanifest">
-<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="preload" href="{BASE}/assets/onest.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="{BASE}/assets/geologica-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{BASE}/assets/style.css?v={ver['css']}">
 {ld}
 </head>
 <body>
 {strip(lang)}
 <div class="top"><div class="in">
-  <a class="logo" href="{url(lang)}">whatif<b>stack</b></a>
+  <a class="logo" href="{url(lang)}"><svg class="mk" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="15" width="18" height="5" rx="2.5" fill="var(--gold)"/><rect x="5" y="9.5" width="14" height="4.5" rx="2.25" fill="var(--accent)"/><rect x="7.5" y="4" width="9" height="4.5" rx="2.25" fill="var(--text)"/></svg><span>whatif<b>stack</b></span></a>
   <div class="gsearch">{SEARCH_ICON}<input id="gs" type="search" autocomplete="off" aria-label="search"><div class="gres" id="gres"></div></div>
   <nav class="nav">{nav}</nav>
   <a class="thm me" href="{url(lang, 'me')}" title="{esc(ME[lang]['nav'])}" aria-label="{esc(ME[lang]['nav'])}">☆</a>
@@ -1138,12 +1137,15 @@ def memes_page(lang, ver):
     return shell(lang, 'memes', f'{t["h1"]} | {BRAND}', t['d'], body, cfg, ver)
 
 
+SEC_ICON = {'memes': '<path d="M4 15c0-4.4 3.6-8 8-8s8 3.6 8 8v1a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3z"/><circle cx="9" cy="12" r="1.2"/><circle cx="15" cy="12" r="1.2"/>', 'ai': '<rect x="5" y="7" width="14" height="11" rx="3"/><path d="M12 3v4M9 12h.01M15 12h.01M9.5 15.5h5"/>', 'me': '<path d="m12 4 2.4 5 5.4.6-4 3.7 1.1 5.3L12 16l-4.9 2.6 1.1-5.3-4-3.7 5.4-.6z"/>', 'news': '<rect x="4" y="5" width="16" height="14" rx="2"/><path d="M8 9h8M8 12h8M8 15h5"/>', 'exchanges': '<path d="M7 7h11l-3-3M17 17H6l3 3"/>', 'habits': '<path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5zM16 10h1.5a2.5 2.5 0 0 1 0 5H16M8 3v3M11 3v3"/>'}
+
+
 def sections_strip(lang):
     S = TR[lang]
     items = [('memes', '🐸', MEM[lang]['nav'], MEM[lang]['live']), ('ai', '🤖', AIS[lang]['nav'], AIS[lang]['stocks'] + ' · ' + AIS[lang]['crypto']),
              ('me', '☆', ME[lang]['nav'], ME[lang]['hold'] + ' · ' + ME[lang]['plans']), ('news', '📰', NW[lang]['n_nav'], NW[lang]['own']),
              ('exchanges', '₿', EX[lang]['nav'], EX[lang]['cex']), ('habits', '☕', HB[lang]['nav'], HB[lang]['h1'])]
-    cards = ''.join(f'<a class="card sec" href="{url(lang, k)}"><span>{ic}</span><div><b>{esc(t)}</b><small>{esc(d)}</small></div></a>' for k, ic, t, d in items)
+    cards = ''.join(f'<a class="card sec" href="{url(lang, k)}"><span class="si"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">{SEC_ICON[k]}</svg></span><div><b>{esc(t)}</b><small>{esc(d)}</small></div></a>' for k, ic, t, d in items)
     return f'<section class="section"><div class="secgrid">{cards}</div></section>'
 
 
@@ -1424,7 +1426,7 @@ def main():
     write('assets/index.js', index_js); write('assets/style.css', css); write('assets/app.js', js); write('assets/ref.js', ref)
     if _LOGOS:
         shutil.copytree(LOGO_DIR, os.path.join(OUT, 'assets/logo'))
-    for f in ('favicon.svg', 'icon-192.png', 'icon-512.png', 'og.jpg'):
+    for f in ('favicon.svg', 'icon-192.png', 'icon-512.png', 'og.jpg', 'onest.woff2', 'geologica-600.woff2', 'geologica-700.woff2'):
         shutil.copy(os.path.join(ROOT, 'src', f), os.path.join(OUT, 'assets', f))
     write('manifest.webmanifest', json.dumps({
         'name': 'WhatIfStack — DCA calculator & markets', 'short_name': 'WhatIfStack', 'start_url': '/', 'scope': '/',
