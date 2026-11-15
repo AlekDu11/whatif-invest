@@ -354,3 +354,4 @@ html[data-theme=dark] select{color-scheme:dark}
 .nlist .bload i{width:30px;height:30px;border-radius:50%;border:3px solid var(--line);border-top-color:var(--accent);animation:spin 1s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .byline a{color:var(--accent);text-decoration:none;font-weight:600}
+.nlist.own{min-height:0}

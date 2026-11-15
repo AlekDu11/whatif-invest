@@ -408,7 +408,8 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
   function draw(){ const L=items.filter(x=>!tag||(x.g||[]).includes(tag));
     box.innerHTML=L.slice(0,shown).map(x=>`<a class="nrow" href="${esc(x.u)}" target="_blank" rel="noopener"><b>${esc(x.t)}</b><span class="muted">${esc(x.s)} · ${ago(x.d)}${(x.g||[]).map(g=>` <i class="badge">${esc(TG[g]||g)}</i>`).join('')}</span></a>`).join('')||'<p class="muted">—</p>';
     $('#nmore').hidden=L.length<=shown }
-  $$('#ntags button').forEach(b=>b.onclick=()=>{ tag=b.dataset.t; shown=40; $$('#ntags button').forEach(x=>x.classList.toggle('on',x===b)); draw() });
+  $$('#ntags button').forEach(b=>b.onclick=()=>{ tag=b.dataset.t; shown=40; $$('#ntags button').forEach(x=>x.classList.toggle('on',x===b));
+    $$('.nlist.own .nrow').forEach(r=>r.hidden=!!tag&&!(r.dataset.g||'').split(' ').includes(tag)); draw() });
   $('#nmore').onclick=()=>{ shown+=40; draw() };
   const load=()=>fetch('/api/news/').then(r=>r.json()).then(d=>{ items=d.items||[]; draw() }).catch(()=>{ box.innerHTML='<p class="muted">—</p>' });
   load(); setInterval(()=>{ if(!document.hidden) load() },300000);

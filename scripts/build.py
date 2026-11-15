@@ -949,7 +949,8 @@ def news_items(lang):
 
 def news_row(lang, slug, m, tl):
     tags = ''.join(f' <i class="badge">{esc(tl.get(t, t))}</i>' for t in (x.strip() for x in m.get('tags', '').split(',')) if t)
-    return (f'<a class="nrow" href="{url(lang, "news/" + slug)}"><b>{esc(m.get("title", ""))}</b>'
+    g = ' '.join(x.strip() for x in m.get('tags', '').split(',') if x.strip())
+    return (f'<a class="nrow" data-g="{esc(g)}" href="{url(lang, "news/" + slug)}"><b>{esc(m.get("title", ""))}</b>'
             f'<span class="muted">WhatIfStack · <time data-t="{esc(m.get("date", ""))}">{esc(m.get("date", "")[:16])}</time>{tags}</span></a>')
 
 
@@ -959,8 +960,8 @@ def news_page(lang, ver):
     chips = f'<button class="on" data-t="">{esc(n["n_all"])}</button>' + ''.join(f'<button data-t="{k}">{esc(v)}</button>' for k, v in tl.items())
     own = news_items(lang)[:60]
     own_html = (f'<section class="section"><h2>{esc(n["own"])}</h2><div class="card nlist own">' + ''.join(news_row(lang, k, m, tl) for k, m in own) + '</div></section>') if own else ''
-    body = (f'<h1>{esc(n["n_h1"])}</h1><p class="lead">{esc(n["n_d"])}</p>{own_html}'
-            f'<section class="section"><h2>{esc(n["live"])}</h2><div class="seg nchips" id="ntags">{chips}</div>'
+    body = (f'<h1>{esc(n["n_h1"])}</h1><p class="lead">{esc(n["n_d"])}</p><div class="seg nchips" id="ntags">{chips}</div>{own_html}'
+            f'<section class="section"><h2>{esc(n["live"])}</h2>'
             f'<div class="card nlist" id="nlist"><div class="bload"><i></i></div></div><button class="toggle" id="nmore" hidden>{esc(n["more"])}</button>'
             f'<p class="muted" style="font-size:13px">{esc(n["n_note"])}</p></section>{poly_block(lang)}')
     cfg = dict(news=dict(tags=tl))
