@@ -19,7 +19,7 @@ in one place, fast, no ad clutter, focused on regular (DCA) investing.
 7. Money without hurting users — referrals, one honest Pro plan, native ads only; never become worse than competitors.
 
 ## Roadmap (next phase starts only when the previous gate is met)
-1. Foundation (Nov–Dec 2026): domain whatifstack.com (done), analytics + Search Console, dark theme, PWA, local currencies, OG share images, referral links. Gate: site indexed.
+1. Foundation (Nov–Dec 2026): domain whatifstack.com (done), Search Console (done 2026-11-15: domain property verified via Vercel DNS TXT, sitemap submitted), analytics, dark theme, PWA, local currencies, OG share images, referral links. Gate: site indexed.
 2. Retention (Jan–Feb 2027): accounts, watchlist, price alerts (email/Telegram), portfolio tracker + backtest. Gate: 10k visitors/month.
 3. Pro (Mar–Apr 2027): Pro ~$5/mo or $39/yr (ad-free, unlimited alerts, backtests, AI helper), exchange/broker ranking, dividends. Gate: 50k/month, 100 paying.
 4. Scale (May 2027+): API + embeddable widgets, mobile app, native ads. Gate: 200k/month.
@@ -34,4 +34,4 @@ Content: 2–3 blog posts a week on trending queries (content/blog/<lang>/), wee
 - Before pushing: run `python3 scripts/build.py` and check pages in a headless browser.
 
 ## Waiting on the owner
-referral links, Search Console / analytics access.
+referral links, analytics choice (Vercel Web Analytics or GA).
