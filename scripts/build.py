@@ -14,6 +14,7 @@ from i18n_t import T as TT  # noqa: E402
 from i18n_e import E as EX  # noqa: E402
 from i18n_n import N as NW, FOOT, SHARE, HOT
 from i18n_s import S as SEA  # noqa: E402
+from i18n_i import I as INF  # noqa: E402
 from i18n_ctry import C as CTRY, MKTS, MKT_LANG, CCY_SIGN  # noqa: E402  # noqa: E402
 from i18n_p import P as POLL, OPTS as POLL_OPTS  # noqa: E402
 from i18n_ai import AI as AIS  # noqa: E402
@@ -567,6 +568,84 @@ def bench(aid):
             yield b
 
 
+def _jload(name):
+    f = os.path.join(ROOT, 'data', name)
+    return json.load(open(f, encoding='utf-8')) if os.path.exists(f) else {}
+
+
+COININFO, STOCKINFO = _jload('coininfo.json'), _jload('stockinfo.json')
+
+
+def fbig(v):
+    if v is None:
+        return '—'
+    for d, u in ((1e12, 'T'), (1e9, 'B'), (1e6, 'M'), (1e3, 'K')):
+        if abs(v) >= d:
+            return f"${v / d:,.2f}{u}"
+    return f"${v:,.0f}"
+
+
+def fnum(v):
+    if v is None:
+        return '—'
+    for d, u in ((1e12, 'T'), (1e9, 'B'), (1e6, 'M')):
+        if v >= d:
+            return f"{v / d:,.2f}{u}"
+    return f"{v:,.0f}"
+
+
+def info_block(lang, aid):
+    a, t = A[aid], INF[lang]
+    rows, links, desc = [], [], None
+    def row(k, v, sub=''):
+        rows.append(f'<div class="ir"><span>{esc(k)}</span><b>{v}</b>{sub}</div>')
+    pr = METRICS[aid]['price']
+    if a['cat'] == 'crypto':
+        ci = COININFO.get(a.get('cgid') or '', {})
+        if a.get('mcap'): row(t['mcap'], fbig(a['mcap']))
+        if a.get('fdv'): row(t['fdv'], fbig(a['fdv']))
+        if a.get('vol'):
+            row(t['vol'], fbig(a['vol']))
+            if a.get('mcap'): row(t['volm'], f"{a['vol'] / a['mcap']:.4f}")
+        if a.get('circ'):
+            bar = ''
+            if a.get('maxs'):
+                k = min(1, a['circ'] / a['maxs'])
+                bar = f'<div class="ibar"><i style="width:{k * 100:.1f}%"></i></div><small class="muted">{k * 100:.1f}% / {esc(t["max"].lower())}</small>'
+            row(t['circ'], f"{fnum(a['circ'])} {esc(a['tk'])}", bar)
+        if a.get('supply'): row(t['total'], f"{fnum(a['supply'])} {esc(a['tk'])}")
+        row(t['max'], f"{fnum(a['maxs'])} {esc(a['tk'])}" if a.get('maxs') else '∞')
+        if a.get('ath'):
+            row(t['ath'], f"{price(a['ath'])} <small class=\"muted\">{esc(a.get('athd') or '')}</small>", f'<small class="{cls(pr / a["ath"] - 1)}">{pct(pr / a["ath"] - 1)}</small>')
+        if a.get('atl'):
+            row(t['atl'], f"{price(a['atl'])} <small class=\"muted\">{esc(a.get('atld') or '')}</small>", f'<small class="good">{pct(pr / a["atl"] - 1)}</small>')
+        L = ci.get('l', {})
+        for k, lab in (('web', t['web']), ('wp', t['wp']), ('exp', t['exp']), ('x', 'X'), ('tg', 'Telegram'), ('rd', 'Reddit'), ('gh', t['src'])):
+            if L.get(k):
+                links.append((L[k], lab))
+        ds = ci.get('ds', {})
+        desc = ds.get(lang) or ds.get('en')
+    else:
+        si = STOCKINFO.get(a.get('yahoo') or '', {})
+        if si.get('mcap'): row(t['mcap'], fbig(si['mcap']))
+        if si.get('sec') or a.get('sector'): row(t['sector'], esc(si.get('sec') or a.get('sector')))
+        if si.get('ind'): row(t['industry'], esc(si['ind']))
+        if si.get('cty'): row(t['country'], esc(si['cty']))
+        if si.get('emp'): row(t['emp'], f"{si['emp']:,}".replace(',', ' '))
+        if si.get('web'): links.append((si['web'], t['web']))
+        desc = (si.get('ds') or {}).get('en')
+    if not rows and not links and not desc:
+        return ''
+    lk = ''.join(f'<a class="chip" href="{esc(u)}" target="_blank" rel="nofollow noopener">{esc(l)} ↗</a>' for u, l in links)
+    about = ''
+    if desc or lk:
+        about = (f'<section class="card iabout"><h2>{esc(t["about"])} {esc(nm(a, lang))}</h2>'
+                 + (f'<details class="idesc"><summary><span class="ip">{esc(desc[:220])}{"…" if len(desc) > 220 else ""}</span><span class="im">{esc(t["more"])}</span></summary><p>{esc(desc)}</p></details>' if desc else '')
+                 + (f'<h3>{esc(t["links"])}</h3><div class="ilinks">{lk}</div>' if lk else '') + '</section>')
+    stats = f'<section class="card istats"><h2>{esc(t["title"])}</h2>{"".join(rows)}</section>' if rows else ''
+    return f'<div class="cols2 section info">{stats}{about}</div>'
+
+
 def seas_block(lang, aid):
     a, t = A[aid], SEA[lang]
     cfg = esc(json.dumps(dict(id=aid, bn=(a.get('binance') or (a['tk'] + 'USDT' if a['cat'] == 'crypto' and a.get('src') == 'yahoo' else '')), t=t), ensure_ascii=False))
@@ -655,7 +734,7 @@ def asset(aid, lang, ver):
                       + tvw('financials', dict(isTransparent=True, displayMode='regular', width='100%', height='100%', colorTheme='light', symbol=tv_symbol(a), locale=loc), 520)
                       + f'</section><section class="card"><h2>{X["prof"]} · {esc(tk)}</h2>'
                       + tvw('symbol-profile', dict(width='100%', height='100%', isTransparent=True, colorTheme='light', symbol=tv_symbol(a), locale=loc), 520) + '</section></div>')
-    body = (f'{head}<p class="lead" style="margin-top:10px">{S["a_lead"].format(**fe)}</p>{hot_block(lang, aid)}{tv}{hot_more(lang, aid)}<div class="stats">{stat_cards}</div><div class="stats">{lump_cards}</div>{seas_block(lang, aid)}{calc_block(lang)}{tech_news}'
+    body = (f'{head}<p class="lead" style="margin-top:10px">{S["a_lead"].format(**fe)}</p>{hot_block(lang, aid)}{tv}{info_block(lang, aid)}{hot_more(lang, aid)}<div class="stats">{stat_cards}</div><div class="stats">{lump_cards}</div>{seas_block(lang, aid)}{calc_block(lang)}{tech_news}'
             f'<div class="cols2 section"><section class="card"><h2>{S["a_periods"].format(**fe)}</h2>{ptable}</section>'
             f'<section class="card faq"><h2>{S["faq"]}</h2>' + ''.join(f'<details><summary>{esc(q)}</summary><p>{esc(x)}</p></details>' for q, x in faq) + '</section></div>'
             f'<section class="section">{table_block(lang, sim, S["a_similar"] + ": " + esc(cat), interactive=False)}</section>'

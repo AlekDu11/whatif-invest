@@ -462,3 +462,10 @@ a.more{text-align:center;text-decoration:none}
 .seast td.open{outline:2px dashed currentColor;outline-offset:-3px;opacity:.85}
 .seast tr.med td,.seast tr.med th{border-top:0}.seast tr.med th{color:var(--muted)}
 .seast tbody th,.seast thead th:first-child{position:sticky;left:0;background:var(--card);z-index:1}
+.info .card{padding:18px 20px}.info h2{margin:0 0 10px}.info h3{font-size:14px;margin:14px 0 8px;color:var(--muted)}
+.ir{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:9px 0;border-bottom:1px solid var(--line2);font-size:14px}
+.ir:last-child{border-bottom:0}.ir span{color:var(--muted)}.ir b{font-family:var(--fn);font-variant-numeric:tabular-nums;text-align:right}
+.ir>small,.ir>.ibar{grid-column:1/-1;text-align:right}.ibar{height:6px;border-radius:6px;background:var(--line);overflow:hidden;margin-top:4px}.ibar i{display:block;height:100%;background:var(--accent)}
+.idesc summary{list-style:none;cursor:pointer;line-height:1.55}.idesc summary::-webkit-details-marker{display:none}
+.idesc .im{display:block;color:var(--accent);font-weight:600;font-size:14px;margin-top:6px}.idesc[open] summary .ip{display:none}.idesc[open] summary .im{display:none}.idesc p{margin:0;line-height:1.6}
+.ilinks{display:flex;flex-wrap:wrap;gap:8px}
