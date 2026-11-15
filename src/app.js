@@ -548,4 +548,53 @@ new MutationObserver(()=>{ clearTimeout(window._wiStar); window._wiStar=setTimeo
     bar.querySelector('[data-copy]').onclick=e=>{ navigator.clipboard&&navigator.clipboard.writeText(page+'?utm_source=copy&utm_medium=share'); e.currentTarget.textContent='✓' };
   });
 })();
+
+/* ---------- returns heatmap on asset pages (day / month / quarter) ---------- */
+(function(){
+  const box=$('#seas'); if(!box) return;
+  const C=JSON.parse(box.dataset.cfg), t=C.t, loc=lang==='zh'?'zh-CN':lang==='fil'?'fil-PH':lang;
+  let dn=null; try{ dn=new Intl.DisplayNames([loc],{type:'dateTimeField'}) }catch(e){}
+  const cap=s=>s?s[0].toLocaleUpperCase(loc)+s.slice(1):s, L=(k,f)=>cap(dn?dn.of(k):f);
+  const MN=Array.from({length:12},(_,i)=>new Date(2021,i,15).toLocaleString(loc,{month:'short'}));
+  const pc=v=>v==null?'':(v>=0?'+':'−')+(Math.abs(v)*100).toFixed(Math.abs(v)>=10?0:Math.abs(v)>=1?1:2)+'%';
+  const cell=(v,open)=>v==null?'<td></td>':`<td class="${v>0.001?'up':v<-0.001?'dn':'fl'}${open?' open':''}" style="--a:${Math.min(1,.35+Math.abs(v)*3).toFixed(2)}" ${open?`title="${esc(t.open)}"`:''}>${pc(v)}</td>`;
+  const med=a=>{ if(!a.length) return null; const s=[...a].sort((x,y)=>x-y), k=s.length>>1; return s.length%2?s[k]:(s[k-1]+s[k])/2 };
+  const modes=[...(C.bn?[['d',L('day','Day')]]:[]),['m',L('month','Month')],['q',L('quarter','Quarter')]];
+  let mode='m', P=null, D=null;
+  $('#seasm').innerHTML=modes.map(([k,l])=>`<button data-m="${k}" class="${k===mode?'on':''}">${esc(l)}</button>`).join('');
+  $$('#seasm button').forEach(b=>b.onclick=async()=>{ mode=b.dataset.m; $$('#seasm button').forEach(x=>x.classList.toggle('on',x===b)); draw() });
+  const ym=s=>{ const [y,m]=s.split('-').map(Number); return y*12+m-1 };
+  function monthly(){ const s0=ym(P.start), rows={};
+    P.p.forEach((v,i)=>{ if(!i) return; const k=s0+i, y=Math.floor(k/12), m=k%12; (rows[y]=rows[y]||{})[m]=v/P.p[i-1]-1 });
+    const yr={}; for(const y in rows){ const endI=Math.min(P.p.length-1,(+y)*12+11-s0), stI=(+y)*12-1-s0; if(stI>=0) yr[y]=P.p[endI]/P.p[stI]-1 }
+    return {rows,yr,last:s0+P.p.length-1} }
+  function qrows(){ const s0=ym(P.start), last=s0+P.p.length-1, rows={}; const px=k=>P.p[k-s0];
+    for(let y=Math.floor(s0/12);y<=Math.floor(last/12);y++) for(let q=0;q<4;q++){ const e=Math.min(y*12+q*3+2,last), b=y*12+q*3-1;
+      if(b<s0||e<y*12+q*3) continue; (rows[y]=rows[y]||{})[q]=px(e)/px(b)-1 }
+    return {rows,last} }
+  function cards(M){ const now=M.last, y=Math.floor(now/12), m=now%12, ys=Object.keys(M.rows).map(Number).filter(x=>x<y);
+    const mtd=M.rows[y]&&M.rows[y][m], mm=ys.map(x=>M.rows[x][m]).filter(v=>v!=null);
+    const Q=qrows(), q=Math.floor(m/3), qtd=Q.rows[y]&&Q.rows[y][q], qq=ys.map(x=>Q.rows[x]&&Q.rows[x][q]).filter(v=>v!=null);
+    const ytd=M.yr[y], yy=ys.map(x=>M.yr[x]).filter(v=>v!=null);
+    const c=(lab,v,arr)=>`<div class="card stat"><div class="k">${esc(lab)}</div><div class="v ${cls(v)}">${v==null?'—':pc(v)}</div><div class="s muted">${esc(t.med)} ${arr.length?pc(med(arr)):'—'} · ${esc(t.up)}: ${arr.filter(v=>v>0).length}/${arr.length}</div></div>`;
+    $('#seasc').innerHTML=`<div class="stats">${c(t.mtd+' · '+MN[m],mtd,mm)}${c(t.qtd+' · Q'+(q+1),qtd,qq)}${c(t.ytd+' · '+y,ytd,yy)}</div>` }
+  async function draw(){ const g=$('#seasg');
+    if(!P){ try{ P=await fetch(`${BASE}/assets/p/${C.id}.json?v=${WI.v}`).then(r=>r.json()) }catch(e){ g.innerHTML=''; return } }
+    const M=monthly(); cards(M);
+    if(mode==='m'){ const ys=Object.keys(M.rows).map(Number).sort((a,b)=>b-a);
+      g.innerHTML=`<table class="seast"><thead><tr><th></th>${MN.map(x=>`<th>${esc(x)}</th>`).join('')}<th>${esc(L('year','Year'))}</th></tr></thead><tbody>`+
+        ys.map(y=>`<tr><th>${y}</th>${MN.map((_,m)=>cell(M.rows[y][m], y*12+m===M.last)).join('')}${cell(M.yr[y], y===Math.floor(M.last/12))}</tr>`).join('')+
+        `<tr class="med"><th>${esc(t.med)}</th>${MN.map((_,m)=>{ const a=ys.filter(y=>y*12+m<M.last).map(y=>M.rows[y][m]).filter(v=>v!=null); return cell(a.length?med(a):null) }).join('')}<td></td></tr></tbody></table>`; return }
+    if(mode==='q'){ const Q=qrows(), ys=Object.keys(Q.rows).map(Number).sort((a,b)=>b-a);
+      g.innerHTML=`<table class="seast q"><thead><tr><th></th>${[1,2,3,4].map(q=>`<th>Q${q}</th>`).join('')}<th>${esc(L('year','Year'))}</th></tr></thead><tbody>`+
+        ys.map(y=>`<tr><th>${y}</th>${[0,1,2,3].map(q=>cell(Q.rows[y][q], y*12+q*3+2>Q.last)).join('')}${cell(M.yr[y], y===Math.floor(M.last/12))}</tr>`).join('')+'</tbody></table>'; return }
+    if(!D){ g.innerHTML='<div class="bload"><i></i></div>';
+      try{ D=await fetch(`https://data-api.binance.vision/api/v3/klines?symbol=${C.bn}&interval=1d&limit=400`).then(r=>r.json()) }catch(e){ D=[] } }
+    const by={}; D.forEach((k,i)=>{ if(!i) return; const d=new Date(k[0]), key=d.getUTCFullYear()*12+d.getUTCMonth(); (by[key]=by[key]||{})[d.getUTCDate()]=k[4]/D[i-1][4]-1 });
+    const keys=Object.keys(by).map(Number).sort((a,b)=>b-a).slice(0,12), today=new Date();
+    g.innerHTML=`<table class="seast d"><thead><tr><th></th>${Array.from({length:31},(_,i)=>`<th>${i+1}</th>`).join('')}</tr></thead><tbody>`+
+      keys.map(k=>`<tr><th>${esc(MN[k%12])} ${String(Math.floor(k/12)).slice(2)}</th>${Array.from({length:31},(_,i)=>cell(by[k][i+1], k===today.getUTCFullYear()*12+today.getUTCMonth()&&i+1===today.getUTCDate())).join('')}</tr>`).join('')+
+      `</tbody></table><p class="muted" style="font-size:12px;margin:8px 0 0">${esc(t.dnote)}</p>` }
+  const io=new IntersectionObserver(es=>{ if(es.some(e=>e.isIntersecting)){ io.disconnect(); draw() } },{rootMargin:'400px'}); io.observe(box);
+})();
 })();

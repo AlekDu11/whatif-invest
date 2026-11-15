@@ -447,3 +447,18 @@ a.more{text-align:center;text-decoration:none}
 .chip:hover{border-color:var(--accent)}.chip.on{border-color:var(--accent);color:var(--accent);background:var(--accent-soft)}
 .price .lp{font-size:13px;color:var(--muted)}
 .nscroll{max-height:330px;overflow-y:auto;scrollbar-width:thin}
+.seasbox{padding:18px 18px 14px}
+.seash{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}.seash h2{margin:0}
+.seasw{overflow-x:auto;position:relative;min-height:120px}
+.seast{border-collapse:separate;border-spacing:4px;width:100%;min-width:760px;font-family:var(--fn);font-size:13px}
+.seast.q{min-width:420px}.seast.d{min-width:1100px;font-size:11px}
+.seast th{font-weight:600;color:var(--muted);font-size:12px;padding:4px;text-align:center;white-space:nowrap}
+.seast tbody th{text-align:left;color:var(--text)}
+.seast td{text-align:center;padding:9px 4px;border-radius:8px;font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+.seast.d td{padding:6px 2px;border-radius:5px}
+.seast td.up{background:rgba(22,163,94,var(--a));color:#fff}
+.seast td.dn{background:rgba(229,72,77,var(--a));color:#fff}
+.seast td.fl{background:var(--line);color:var(--text)}
+.seast td.open{outline:2px dashed currentColor;outline-offset:-3px;opacity:.85}
+.seast tr.med td,.seast tr.med th{border-top:0}.seast tr.med th{color:var(--muted)}
+.seast tbody th,.seast thead th:first-child{position:sticky;left:0;background:var(--card);z-index:1}

@@ -13,6 +13,7 @@ from i18n import LANGS as TR, ORDER, FULL, DEFAULT  # noqa: E402
 from i18n_t import T as TT  # noqa: E402
 from i18n_e import E as EX  # noqa: E402
 from i18n_n import N as NW, FOOT, SHARE, HOT
+from i18n_s import S as SEA  # noqa: E402
 from i18n_ctry import C as CTRY, MKTS, MKT_LANG, CCY_SIGN  # noqa: E402  # noqa: E402
 from i18n_p import P as POLL, OPTS as POLL_OPTS  # noqa: E402
 from i18n_ai import AI as AIS  # noqa: E402
@@ -566,6 +567,14 @@ def bench(aid):
             yield b
 
 
+def seas_block(lang, aid):
+    a, t = A[aid], SEA[lang]
+    cfg = esc(json.dumps(dict(id=aid, bn=(a.get('binance') or (a['tk'] + 'USDT' if a['cat'] == 'crypto' and a.get('src') == 'yahoo' else '')), t=t), ensure_ascii=False))
+    return (f'<section class="section seas" id="seas" data-cfg="{cfg}"><div class="seasc" id="seasc"></div><div class="card seasbox">'
+            f'<div class="seash"><h2>{esc(t["title"].format(name=nm(a, lang) + " (" + a["tk"] + ")"))}</h2><div class="seg" id="seasm"></div></div>'
+            f'<div class="seasw" id="seasg"><div class="bload"><i></i></div></div></div></section>')
+
+
 def local_price(a, lang):
     if not a.get('lp') or a.get('ccy', 'USD') == 'USD':
         return ''
@@ -646,7 +655,7 @@ def asset(aid, lang, ver):
                       + tvw('financials', dict(isTransparent=True, displayMode='regular', width='100%', height='100%', colorTheme='light', symbol=tv_symbol(a), locale=loc), 520)
                       + f'</section><section class="card"><h2>{X["prof"]} · {esc(tk)}</h2>'
                       + tvw('symbol-profile', dict(width='100%', height='100%', isTransparent=True, colorTheme='light', symbol=tv_symbol(a), locale=loc), 520) + '</section></div>')
-    body = (f'{head}<p class="lead" style="margin-top:10px">{S["a_lead"].format(**fe)}</p>{hot_block(lang, aid)}{tv}{hot_more(lang, aid)}<div class="stats">{stat_cards}</div><div class="stats">{lump_cards}</div>{calc_block(lang)}{tech_news}'
+    body = (f'{head}<p class="lead" style="margin-top:10px">{S["a_lead"].format(**fe)}</p>{hot_block(lang, aid)}{tv}{hot_more(lang, aid)}<div class="stats">{stat_cards}</div><div class="stats">{lump_cards}</div>{seas_block(lang, aid)}{calc_block(lang)}{tech_news}'
             f'<div class="cols2 section"><section class="card"><h2>{S["a_periods"].format(**fe)}</h2>{ptable}</section>'
             f'<section class="card faq"><h2>{S["faq"]}</h2>' + ''.join(f'<details><summary>{esc(q)}</summary><p>{esc(x)}</p></details>' for q, x in faq) + '</section></div>'
             f'<section class="section">{table_block(lang, sim, S["a_similar"] + ": " + esc(cat), interactive=False)}</section>'
