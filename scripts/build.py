@@ -74,7 +74,7 @@ TOP = set(ORDERED[:TOP_N])
 
 
 HUBS = {'crypto': 'crypto', 'stocks': 'stock', 'etfs': 'etf', 'metals': 'metal'}
-TOOLS = ['bubbles', 'screener', 'converter', 'calendar', 'heatmap', 'news']
+TOOLS = ['screener', 'converter', 'calendar', 'heatmap', 'news']
 BLOG_LANGS = {'uk', 'en'}
 assert not (set(HUBS) | set(TOOLS) | {'blog', 'compare'}) & set(A), 'asset id collides with a section slug'
 
@@ -239,7 +239,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
     alts += f'<link rel="alternate" hreflang="x-default" href="{SITE + url("en", p)}">'
     ld = ''.join(f'<script type="application/ld+json">{json.dumps(j, ensure_ascii=False)}</script>' for j in jsonld)
     X = S['x']
-    tl = {'bubbles': X['bub_h1'], 'screener': X['scr_h1'], 'converter': X['conv_h1'], 'calendar': X['cal_h1'], 'heatmap': X['heat_h1'], 'news': X['news_h1']}
+    tl = {'screener': X['scr_h1'], 'converter': X['conv_h1'], 'calendar': X['cal_h1'], 'heatmap': X['heat_h1'], 'news': X['news_h1']}
     blog_l = lang if lang in BLOG_LANGS else 'en'
     nav = (''.join(f'<a href="{url(lang, k)}" class="{"on" if k == p else ""}">{v}</a>' for k, v in ((None, S['nav_rank']), ('compare', S['nav_cmp'])))
            + f'<details class="dd"><summary class="{"on" if p in TOOLS else ""}">{X["nav_tools"]}</summary><div>'
@@ -443,8 +443,6 @@ def home(lang, ver):
     inv5 = usd(simulate(bat[0], END_I - 60)['inv']) if bat else ''
     w_bat = f'<div class="card wd battle"><div class="wt">⚔️ {w["battle"]}</div><div class="ws">{w["q_inv"]}: {inv5}</div>{rows}</div>'
     X_ = S['x']
-    bub = (f'<section class="section"><div class="charthead"><h2>{X_["bub_h1"]}</h2><a class="calc" href="{url(lang, "bubbles")}">{X_["bub_h1"]} →</a></div>'
-           f'{bubbles_block(lang, full=False)}</section>')
     banner = (f'<section class="banner section"><div><b>{w["cta"]}</b><p>{w["cta_text"]}</p></div>'
               f'<a class="btn" id="ctaBuy2" href="{url(lang, "compare")}">{w["cta"]} →</a></section>')
     # DCA leaders cards (as before)
@@ -461,7 +459,7 @@ def home(lang, ver):
     body = (hero + f'<div class="wgrid">{w_mcap}{w_dom}{w_fng}{w_tr}</div>'
             f'<div class="wgrid3">{w_up}{w_dn}{w_bat}</div>{banner}'
             f'<section class="section"><div class="hl">{"".join(cards)}</div></section>'
-            f'<div class="tabs" id="tabs"></div>{filt}{table_block(lang, ids[:100])}{bub}'
+            f'<div class="tabs" id="tabs"></div>{filt}{table_block(lang, ids[:100])}'
             f'<section class="card section faq"><h2>{S["faq"]}</h2><details open><summary>{esc(S["q3"])}</summary><p>{esc(S["a3"])}</p></details></section>')
     jsonld = [{"@context": "https://schema.org", "@type": "WebApplication", "name": BRAND, "url": SITE + url(lang),
                "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "inLanguage": S['loc'],
@@ -597,26 +595,12 @@ LOCAL_CCY = {'uk': 'fx:UAH', 'ru': 'fx:RUB', 'pl': 'fx:PLN', 'de': 'fx:EUR', 'fr
              'ko': 'fx:KRW', 'zh': 'fx:CNY', 'ar': 'fx:AED', 'fil': 'fx:PHP', 'en': 'usd'}
 
 
-def bubbles_block(lang, full):
-    u = TR[lang]['ui']
-    bp = u['bp'].split('|')
-    per = ''.join(f'<button data-v="{v}"{" class=\"on\"" if v == "d" else ""}>{esc(t)}</button>' for v, t in zip(('h', 'd', 'w', 'm', 'y', 'mc'), bp))
-    per = f'<div class="seg bseg" id="bper">{per}<button data-v="dca">{esc(u["d1"])}</button></div>'
-    cat = f'<div class="seg bseg" id="bcat"><button data-v="crypto" class="on">{u["crypto"]}</button><button data-v="stock">{u["stock"]}</button></div>'
-    return (f'<div class="bubwrap"><div class="bubbar">{per}{cat}</div>'
-            f'<div class="bub{" full" if full else ""}" data-n="{150 if full else 100}"><canvas></canvas><div class="btip" hidden></div>'
-            f'<div class="bload"><i></i></div></div>'
-            f'<div class="bsrc">CoinGecko · Binance · Yahoo Finance</div></div>')
-
-
 def tool(lang, slug, ver):
     S, X, u = TR[lang], TR[lang]['x'], TR[lang]['ui']
     loc = TV_LOC.get(lang, 'en')
-    h1, d = {'bubbles': (X['bub_h1'], X['bub_d']), 'screener': (X['scr_h1'], X['scr_d']), 'converter': (X['conv_h1'], X['conv_d']), 'calendar': (X['cal_h1'], X['cal_d']),
+    h1, d = {'screener': (X['scr_h1'], X['scr_d']), 'converter': (X['conv_h1'], X['conv_d']), 'calendar': (X['cal_h1'], X['cal_d']),
              'heatmap': (X['heat_h1'], X['heat_d']), 'news': (X['news_h1'], X['news_d'])}[slug]
-    if slug == 'bubbles':
-        inner = bubbles_block(lang, full=True)
-    elif slug == 'calendar':
+    if slug == 'calendar':
         inner = '<div class="card">' + tvw('events', dict(colorTheme='light', isTransparent=True, width='100%', height='100%', locale=loc,
                                                            importanceFilter='0,1', countryFilter='us,eu,gb,cn,jp,de,ua'), 760) + '</div>'
     elif slug == 'heatmap':
@@ -838,7 +822,6 @@ def main():
         idx.append({k: (round(v, 4) if isinstance(v, float) and k in ('ch', 'r1', 'r3', 'r5') else v) for k, v in e.items() if v is not None})
         write(f'assets/p/{aid}.json', json.dumps({'start': a['start'], 'end': a['end'], 'p': a['p']}, separators=(',', ':')))
     index_js = 'window.WI=' + json.dumps({'u': UPDATED, 'v': dv, 'a': idx, 'fx': FX.get('rates', {}), 'fxu': FX.get('updated')}, ensure_ascii=False, separators=(',', ':')) + ';'
-    write('assets/bub.json', json.dumps({'u': G.get('updated'), 'a': G.get('bub', [])}, separators=(',', ':')))
     write('assets/index.js', index_js); write('assets/style.css', css); write('assets/app.js', js); write('assets/ref.js', ref)
     for f in ('favicon.svg', 'icon-192.png', 'icon-512.png', 'og.jpg'):
         shutil.copy(os.path.join(ROOT, 'src', f), os.path.join(OUT, 'assets', f))

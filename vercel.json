@@ -15,6 +15,16 @@
       "source": "/whatif/:path*",
       "destination": "/:path*",
       "permanent": true
+    },
+    {
+      "source": "/bubbles",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/:lang/bubbles",
+      "destination": "/:lang/",
+      "permanent": true
     }
   ],
   "headers": [

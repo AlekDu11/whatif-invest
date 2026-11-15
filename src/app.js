@@ -253,7 +253,6 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
   const heat=c=>{ c=Math.max(-.1,Math.min(.1,c)); if(c>=0){const k=c/.1;return `rgb(${232-212*k|0},${246-82*k|0},${237-160*k|0})`} const k=-c/.1;return `rgb(${253-24*k|0},${236-164*k|0},${236-159*k|0})` };
   let ws=null, tries=0, want='';
   function symbols(){ const ids=new Set($$('[data-p],[data-c],[data-h]').map(el=>el.dataset.p||el.dataset.c||el.dataset.h));
-    if($('.bub')) IDX.filter(a=>a.c==='crypto').slice(0,120).forEach(a=>ids.add(a.i));
     return [...ids].map(id=>BYID[id]).filter(a=>a&&a.c==='crypto').map(a=>a.t.toLowerCase()+'usdt@miniTicker').slice(0,200) }
   function apply(k){ const a=IDX.find(x=>x.c==='crypto'&&x.t+'USDT'===k.s); if(!a) return; const p=+k.c, o=+k.o; if(!p) return;
     const old=a.pr; a.pr=p; a.ch=o?p/o-1:a.ch;
@@ -306,107 +305,4 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
   fetch('https://open.er-api.com/v6/latest/USD').then(r=>r.json()).then(d=>{ if(d&&d.rates){ Object.keys(FX).forEach(c=>{ if(d.rates[c]) FX[c]=d.rates[c] }); WI.fxu=(d.time_last_update_utc||'').slice(5,16); run() } }).catch(()=>{});
 })();
 
-/* ---------- market bubbles (CryptoBubbles-style canvas; CoinGecko periods, Binance live ticks) ---------- */
-(function(){
-  const box=$('.bub'); if(!box) return;
-  const cv=box.querySelector('canvas'), ctx=cv.getContext('2d'), tip=box.querySelector('.btip'), N=+box.dataset.n||100;
-  const BP=(T.bp||'Hour|Day|Week|Month|Year|Market cap').split('|');
-  let per='d', cat='crypto', bs=[], W=0, H=0, hover=null, drag=null, vis=false, raf=0, dpr=Math.min(2,window.devicePixelRatio||1);
-  let CG=null;                                   // [{s,n,l,pr,mc,h,d,w,m,y}]
-  const imgs={}, BYT={}; IDX.forEach(a=>{ if(a.c==='crypto'&&!BYT[a.t]) BYT[a.t]=a });
-  const sm=u=>(u||'').replace('/large/','/small/');
-  const mo=(sp,k)=>sp&&sp.length>k?sp[sp.length-1]/sp[sp.length-1-k]-1:null;
-  function items(){ const N=W<640?Math.min(box.dataset.n,60):+box.dataset.n||100;
-    if(cat==='crypto'&&CG&&CG.length) return CG.filter(c=>!(c.pr>.97&&c.pr<1.03&&Math.abs(c.y||0)<.05)&&!/wrapped|staked|bridged|liquid staking|restaked/i.test(c.n||'')&&!/^(W|ST|WST|CB|WE|R|M|J)?(ETH|BTC|SOL)$/.test(c.s)||c.s==='ETH'||c.s==='BTC'||c.s==='SOL').slice(0,N).map(c=>{ const a=BYT[c.s]; return {k:c.s,id:a&&a.i,t:c.s,n:c.n,l:sm(c.l)||sm(a&&a.l),pr:a&&a.pr||c.pr,mc:c.mc,h:c.h,d:a&&a.ch!=null?a.ch:c.d,w:c.w,m:c.m,y:c.y,dca:a&&a.r1} });
-    return IDX.filter(a=>cat==='crypto'?a.c==='crypto':(a.c==='stock'||a.c==='etf')).sort((x,y)=>x.o-y.o).slice(0,N)
-      .map(a=>({k:a.t,id:a.i,t:a.t,n:nm(a),l:sm(a.l),pr:a.pr,mc:null,h:null,d:a.ch,w:null,m:mo(a.sp,1),y:mo(a.sp,12),dca:a.r1}));
-  }
-  const val=b=>per==='mc'?b.d:b[per];
-  const has=p=>bs.length?bs.some(b=>(p==='mc'?b.mc:b[p])!=null):true;
-  function size(){ const r=box.getBoundingClientRect(); W=r.width; H=r.height; cv.width=W*dpr; cv.height=H*dpr; cv.style.width=W+'px'; cv.style.height=H+'px'; ctx.setTransform(dpr,0,0,dpr,0,0) }
-  function radii(){
-    const raw=bs.map(b=>{ if(per==='mc') return b.mc?Math.pow(b.mc,.3):0; const v=Math.abs(val(b)??0), cap={h:.08,d:.25,w:.5,m:1,y:3,dca:2}[per]||1;
-      return Math.sqrt(Math.min(v,cap)+cap*.02) });
-    const tot=raw.reduce((s,r)=>s+r*r,0)||1, k=Math.sqrt(W*H*.6/(Math.PI*tot)), mx=Math.min(W,H)/3.2, mn=Math.max(9,Math.min(W,H)/60);
-    bs.forEach((b,i)=>{ b.tr=Math.max(mn,Math.min(mx,raw[i]*k)) }) }
-  function settle(n){ for(let i=0;i<n;i++) step(true) }
-  function build(){
-    const keep=Object.fromEntries(bs.map(b=>[b.k,b])), list=items(); let nw=0;
-    bs=list.map((it,i)=>{ const o=keep[it.k]; if(o){ Object.assign(o,it); return o }
-      const ang=i*2.39996, rad=Math.sqrt(i+1)/Math.sqrt(list.length)*Math.min(W,H)*.48;
-      nw++; return Object.assign(it,{x:W/2+Math.cos(ang)*rad,y:H/2+Math.sin(ang)*rad,vx:0,vy:0,r:0,nw:1}) });
-    bs.forEach(b=>{ if(b.l&&!(b.k in imgs)){ imgs[b.k]=null; const im=new Image(); im.decoding='async'; im.onload=()=>{imgs[b.k]=im}; im.src=b.l } });
-    $$('#bper button').forEach(x=>{ x.disabled=!has(x.dataset.v); });
-    if(!has(per)){ per='d'; $$('#bper button').forEach(x=>x.classList.toggle('on',x.dataset.v==='d')) }
-    radii(); if(nw){ bs.forEach(b=>{ if(b.nw||nw>bs.length*.2) b.r=b.tr; b.nw=0 }); settle(nw>bs.length*.2?220:60) }
-    box.classList.add('ready'); if(!vis) draw() }
-  function step(quiet){
-    const cx=W/2, cy=H/2;
-    for(const b of bs){ if(!quiet) b.r+=(b.tr-b.r)*.1; if(b===drag) continue;
-      b.vx+=(cx-b.x)*.001*(H/W); b.vy+=(cy-b.y)*.001; if(!quiet){ b.vx+=(Math.random()-.5)*.03; b.vy+=(Math.random()-.5)*.03 } }
-    for(let i=0;i<bs.length;i++){ const p=bs[i]; for(let j=i+1;j<bs.length;j++){ const q=bs[j];
-      const dx=q.x-p.x, dy=q.y-p.y, m=p.r+q.r+2; if(Math.abs(dx)>m||Math.abs(dy)>m) continue; const d=Math.hypot(dx,dy)||.01;
-      if(d<m){ const o=(m-d)/d*.5, ox=dx*o, oy=dy*o, wp=p===drag?0:1, wq=q===drag?0:1, s=wp+wq||1;
-        p.x-=ox*2*wp/s; p.y-=oy*2*wp/s; q.x+=ox*2*wq/s; q.y+=oy*2*wq/s; p.vx-=ox*.03*wp; p.vy-=oy*.03*wp; q.vx+=ox*.03*wq; q.vy+=oy*.03*wq } } }
-    for(const b of bs){ if(b===drag) continue; b.vx*=.86; b.vy*=.86; b.x+=b.vx; b.y+=b.vy;
-      if(b.x<b.r){b.x=b.r;b.vx=Math.abs(b.vx)*.5} if(b.x>W-b.r){b.x=W-b.r;b.vx=-Math.abs(b.vx)*.5}
-      if(b.y<b.r){b.y=b.r;b.vy=Math.abs(b.vy)*.5} if(b.y>H-b.r){b.y=H-b.r;b.vy=-Math.abs(b.vy)*.5} } }
-  const pctTxt=v=>v==null?'—':(v>0?'+':'')+(Math.abs(v)>=10?Math.round(v*100).toLocaleString(T.intl||'en'):(v*100).toFixed(1))+'%';
-  function draw(){ ctx.clearRect(0,0,W,H);
-    for(const b of bs){ const v=val(b), up=(v||0)>=0, k=Math.min(1,Math.abs(v||0)/({h:.03,d:.1,w:.2,m:.3,y:1,dca:.5}[per]||.1)), r=b.r;
-      const c=v==null||Math.abs(v)<.0005?'140,148,160':up?'46,204,113':'240,72,72';
-      const g=ctx.createRadialGradient(b.x,b.y,r*.55,b.x,b.y,r);
-      g.addColorStop(0,`rgba(${c},${.04+.08*k})`); g.addColorStop(.85,`rgba(${c},${.22+.3*k})`); g.addColorStop(1,`rgba(${c},${.6+.35*k})`);
-      ctx.beginPath(); ctx.arc(b.x,b.y,r,0,6.2832); ctx.fillStyle=g; ctx.fill();
-      ctx.lineWidth=b===hover?3:1.6; ctx.strokeStyle=`rgba(${c},${b===hover?1:.9})`; ctx.stroke();
-      const im=imgs[b.k];
-      if(r<15){ if(im){ const s=r*1.1; ctx.drawImage(im,b.x-s/2,b.y-s/2,s,s) } continue }
-      const fs=Math.min(30,r*.36), t=b.t.length>6?b.t.slice(0,6):b.t;
-      ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.fillStyle='#fff';
-      if(im&&r>=24){ const s=r*.46; ctx.drawImage(im,b.x-s/2,b.y-r*.56-s/2+s*.1,s,s) }
-      ctx.font=`700 ${fs}px Inter,system-ui,sans-serif`; ctx.fillText(t,b.x,im&&r>=24?b.y+r*.06:b.y-(r>=20?fs*.3:0),r*1.8);
-      if(r>=20){ ctx.font=`600 ${fs*.62}px Inter,system-ui,sans-serif`; ctx.fillStyle='rgba(255,255,255,.92)'; ctx.fillText(per==='mc'?pctTxt(b.d):pctTxt(v),b.x,(im&&r>=24?b.y+r*.06:b.y-fs*.3)+fs*.85,r*1.8) } } }
-  function loop(){ step(false); draw(); raf=vis&&!document.hidden?requestAnimationFrame(loop):0 }
-  const start=()=>{ if(!raf&&vis&&!document.hidden) raf=requestAnimationFrame(loop) };
-  /* tooltip, click, drag */
-  const pos=e=>{ const r=cv.getBoundingClientRect(); return [e.clientX-r.left,e.clientY-r.top] };
-  const at=(x,y)=>{ for(let i=bs.length-1;i>=0;i--){ const b=bs[i]; if(Math.hypot(b.x-x,b.y-y)<b.r) return b } return null };
-  function showTip(b,x,y,link){ if(!b){ tip.hidden=true; return }
-    const ch=['h','d','w','m','y'].map((p,i)=>b[p]==null?'':`<span class="${cls(b[p])}"><small>${BP[i]}</small>${pctTxt(b[p])}</span>`).join('');
-    tip.innerHTML=`<b>${b.l?`<img src="${b.l}" alt="" width="20" height="20">`:''}${b.n||b.t} <small>${b.t}</small></b><div class="bp">${b.pr?fmtPrice(b.pr):''}</div><div class="bc">${ch}</div>${link&&b.id?`<a href="${url(b.id)}">→ ${T.calc||'DCA'}</a>`:''}`;
-    tip.hidden=false; const tw=tip.offsetWidth, th=tip.offsetHeight;
-    tip.style.left=Math.max(4,Math.min(W-tw-4,x+14))+'px'; tip.style.top=Math.max(4,Math.min(H-th-4,y+14))+'px' }
-  let down=null;
-  cv.addEventListener('pointerdown',e=>{ const [x,y]=pos(e), b=at(x,y); down={x,y,b,t:e.pointerType,moved:false}; if(b&&e.pointerType==='mouse'){ drag=b; cv.setPointerCapture(e.pointerId) } });
-  cv.addEventListener('pointermove',e=>{ const [x,y]=pos(e);
-    if(down&&Math.hypot(x-down.x,y-down.y)>5) down.moved=true;
-    if(drag){ drag.x=x; drag.y=y; drag.vx=drag.vy=0; return }
-    if(e.pointerType!=='mouse') return; hover=at(x,y); cv.style.cursor=hover?'pointer':'default'; showTip(hover,x,y,false); if(!raf) draw() });
-  cv.addEventListener('pointerleave',()=>{ if(!drag){ hover=null; tip.hidden=true } });
-  addEventListener('pointerup',e=>{ if(!down) return; const d=down; down=null; drag=null;
-    if(d.moved||!d.b) { if(!d.moved) tip.hidden=true; return }
-    if(d.t==='mouse'){ if(d.b.id) location.href=url(d.b.id) } else { const [x,y]=pos(e); hover=d.b; showTip(d.b,x,y,true) } });
-  $$('#bper button').forEach(b=>b.onclick=()=>{ if(b.disabled) return; per=b.dataset.v; $$('#bper button').forEach(x=>x.classList.toggle('on',x===b)); radii(); start(); if(!raf) draw() });
-  $$('#bcat button').forEach(b=>b.onclick=()=>{ cat=b.dataset.v; $$('#bcat button').forEach(x=>x.classList.toggle('on',x===b)); bs=[]; build(); start() });
-  /* live data */
-  document.addEventListener('wi:tick',e=>{ const a=e.detail, b=bs.find(x=>x.id===a.i); if(b){ b.d=a.ch; b.pr=a.pr; if(per==='d'||per==='mc') radii() } });
-  function loadCG(){
-    let c; try{ c=JSON.parse(sessionStorage.getItem('wi_cg')||'null') }catch(e){}
-    if(c&&Date.now()-c.t<120000){ CG=c.a; build(); return }
-    fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=${Math.min(250,Math.max(N,100))}&page=1&price_change_percentage=1h,24h,7d,30d,1y`)
-      .then(r=>r.ok?r.json():Promise.reject()).then(d=>{ if(!Array.isArray(d)) return;
-        const q=v=>typeof v==='number'?v/100:null;
-        CG=d.filter(x=>x.current_price).map(x=>({s:(x.symbol||'').toUpperCase(),n:x.name,l:x.image,pr:x.current_price,mc:x.market_cap,
-          h:q(x.price_change_percentage_1h_in_currency),d:q(x.price_change_percentage_24h_in_currency),w:q(x.price_change_percentage_7d_in_currency),
-          m:q(x.price_change_percentage_30d_in_currency),y:q(x.price_change_percentage_1y_in_currency)}));
-        try{ sessionStorage.setItem('wi_cg',JSON.stringify({t:Date.now(),a:CG})) }catch(e){}
-        if(cat==='crypto') build() }).catch(()=>{}) }
-  function init(){ size(); build(); start();
-    fetch(`${BASE}/assets/bub.json`).then(r=>r.json()).then(d=>{ if(!CG&&d.a&&d.a.length){ CG=d.a; if(cat==='crypto') build() } }).catch(()=>{}).finally(loadCG);
-    setInterval(()=>{ if(vis&&!document.hidden) loadCG() },120000) }
-  let inited=false;
-  new IntersectionObserver(es=>{ vis=es[0].isIntersecting; if(vis&&!inited){ inited=true; init() } if(vis) start() },{rootMargin:'200px'}).observe(box);
-  document.addEventListener('visibilitychange',start);
-  let rt; addEventListener('resize',()=>{ clearTimeout(rt); rt=setTimeout(()=>{ if(!inited) return; const ow=W,oh=H; size(); bs.forEach(b=>{ b.x*=W/ow; b.y*=H/oh }); radii() },150) });
-})();
 })();
