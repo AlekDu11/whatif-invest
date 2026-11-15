@@ -170,3 +170,11 @@ footer a{color:var(--text)}
   .price{margin-left:0;width:100%}
   .mt td,.mt th{padding:10px 8px}
 }
+.langsel{height:34px;border:1px solid var(--line);border-radius:8px;background:#fff;font:600 13px Inter;color:var(--text);padding:0 8px;flex:none;max-width:140px}
+.langs{margin-top:14px;font-size:12.5px;color:var(--muted);line-height:2}
+.langs a{color:var(--muted);text-decoration:none}.langs a:hover{color:var(--accent)}
+[dir=rtl] .mt th,[dir=rtl] .mt td,[dir=rtl] .rt th,[dir=rtl] .rt td{text-align:left}
+[dir=rtl] .mt th.l,[dir=rtl] .mt td.l,[dir=rtl] .rt th:first-child,[dir=rtl] .rt td:first-child{text-align:right}
+[dir=rtl] .gsearch svg,[dir=rtl] .filter svg{left:auto;right:12px}
+[dir=rtl] .gsearch input,[dir=rtl] .filter input{padding:0 38px 0 14px}
+[dir=rtl] .price{margin-left:0;margin-right:auto}

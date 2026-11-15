@@ -8,36 +8,13 @@ const $ = (s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySele
 const IDX = WI.a, BYID = Object.fromEntries(IDX.map(a=>[a.i,a]));
 const REF = window.REF||{}, REF_DEFAULT = window.REF_DEFAULT||{};
 
-const T = {
-  uk:{all:'Усі',crypto:'Крипта',stock:'Акції',etf:'ETF',metal:'Метали',lead:'Лідери DCA',lag:'Аутсайдери',
-      filter:'Фільтр: назва або тікер…',search:'Пошук активу: Bitcoin, Apple, золото…',nothing:'Нічого не знайдено',
-      name:'Назва',price:'Ціна',chg:'24г',d1:'DCA 1 рік',d3:'DCA 3 роки',d5:'DCA 5 років',spark:'Ціна за рік',
-      buy:'Купити',calc:'Калькулятор',more:'Показати ще',shown:(a,b)=>`Показано ${a} з ${b}`,
-      amount:'Сума',freq:'Як часто',daily:'Щодня',weekly:'Щотижня',monthly:'Щомісяця',since:'Починаючи з',
-      onchart:'Активи на графіку',add:'+ Додати актив',invested:'Вкладено',best:'Найкращий результат',worst:'Найгірший результат',
-      chartTitle:'Вартість портфеля в часі',log:'Лог. шкала',asset:'Актив',value:'Зараз',profit:'Прибуток',got:'Накопичив',
-      aff:'партнерське',copy:'Копіювати',copied:'Скопійовано ✓',investedLine:'Вкладено',loading:'Завантаження…',
-      per:{d:'щодня',w:'щотижня',m:'щомісяця'},from:'з',diffStart:'різні дати старту',
-      share:(a,amt,per,since,val,pct)=>`Якби я вкладав $${amt} ${per} у ${a} з ${since}, зараз у мене було б ${val} (${pct}).`,
-      units:{stock:'акцій',etf:'паїв',metal:'унцій'},
-      months:['січ','лют','бер','кві','тра','чер','лип','сер','вер','жов','лис','гру']},
-  en:{all:'All',crypto:'Crypto',stock:'Stocks',etf:'ETFs',metal:'Metals',lead:'DCA leaders',lag:'DCA laggards',
-      filter:'Filter by name or ticker…',search:'Search an asset: Bitcoin, Apple, gold…',nothing:'Nothing found',
-      name:'Name',price:'Price',chg:'24h',d1:'DCA 1Y',d3:'DCA 3Y',d5:'DCA 5Y',spark:'Price, 1Y',
-      buy:'Buy',calc:'Calculator',more:'Show more',shown:(a,b)=>`Showing ${a} of ${b}`,
-      amount:'Amount',freq:'How often',daily:'Daily',weekly:'Weekly',monthly:'Monthly',since:'Starting from',
-      onchart:'Assets on the chart',add:'+ Add asset',invested:'Invested',best:'Best result',worst:'Worst result',
-      chartTitle:'Portfolio value over time',log:'Log scale',asset:'Asset',value:'Now',profit:'Profit',got:'Accumulated',
-      aff:'affiliate',copy:'Copy',copied:'Copied ✓',investedLine:'Invested',loading:'Loading…',
-      per:{d:'every day',w:'every week',m:'every month'},from:'from',diffStart:'different start dates',
-      share:(a,amt,per,since,val,pct)=>`If I had invested $${amt} ${per} in ${a} since ${since}, I would have ${val} today (${pct}).`,
-      units:{stock:'shares',etf:'shares',metal:'oz'},
-      months:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']}
-}[lang];
+const T = window.I18N || {};
+const fmt = (s,o)=>String(s).replace(/\{(\w+)\}/g,(m,k)=>o[k]!=null?o[k]:m);
 
 /* ---------- helpers ---------- */
-const nm = a => (lang==='en' && a.ne) ? a.ne : a.n;
-const url = id => `${BASE}${lang==='en'?'/en':''}/${id}/`;
+const NAMES=PAGE.names||{};
+const nm = a => (a.c==='metal'&&NAMES[a.i]) ? NAMES[a.i] : lang==='uk' ? a.n : (a.ne||a.n);
+const url = id => { const a=BYID[id]; return (PAGE.full||(a&&a.o<PAGE.topn)) ? `${PAGE.prefix}/${id}/` : `${BASE}/en/${id}/` };
 const esc = s => String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 function fmtUsd(v){ if(v==null) return '—'; const a=Math.abs(v); let s;
   if(a>=1e9) s=(a/1e9).toFixed(2)+'B'; else if(a>=1e6) s=(a/1e6).toFixed(2)+'M'; else if(a>=1e4) s=Math.round(a).toLocaleString('en-US');
@@ -116,7 +93,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
       <td class="hide-sm">${spark(a.sp)}</td>
       <td class="hide-sm"><a class="calc" href="${url(a.i)}">${T.calc} →</a></td></tr>`).join('')
       :`<tr><td colspan="10" class="empty">${T.nothing}</td></tr>`;
-    $('#mtmore').innerHTML=total>shown?`<button class="more">${T.more} (${T.shown(shown,total)})</button>`:'';
+    $('#mtmore').innerHTML=total>shown?`<button class="more">${T.more} (${fmt(T.shown,{a:shown,b:total})})</button>`:'';
     const mb=$('#mtmore button'); if(mb) mb.onclick=()=>{shown+=100;draw()};
   }
   draw();
@@ -131,7 +108,8 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
   let freq='d', logScale=false, selected=(PAGE.sel||['btc']).filter(id=>BYID[id]); const colorOf={};
   const ym2i=s=>{const [y,m]=s.split('-').map(Number);return y*12+m-1};
   const i2ym=i=>`${Math.floor(i/12)}-${String(i%12+1).padStart(2,'0')}`;
-  const mlabel=s=>{const [y,m]=s.split('-').map(Number);return `${T.months[m-1]} ${y}`};
+  let DTF; try{DTF=new Intl.DateTimeFormat(T.intl||'en-US',{month:'short',year:'numeric'})}catch(e){}
+  const mlabel=s=>{const [y,m]=s.split('-').map(Number);return DTF?DTF.format(new Date(y,m-1,15)):`${T.months[m-1]} ${y}`};
   const daysIn=(y,m)=>new Date(y,m,0).getDate();
   const load=id=>cache[id]||(cache[id]=fetch(`${BASE}/assets/p/${id}.json?v=${WI.v}`).then(r=>r.json()));
   function assignColors(){const used=new Set(selected.map(id=>colorOf[id]).filter(Boolean));selected.forEach(id=>{if(!colorOf[id]){colorOf[id]=PALETTE.find(c=>!used.has(c))||'#999';used.add(colorOf[id])}})}
@@ -177,9 +155,9 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
       h(`${T.best}: ${esc(nm(best.a))}`,fmtUsd(best.val),fmtPct(best.val/best.inv-1),cls(best.val-best.inv))+
       (res.length>1?h(`${T.worst}: ${esc(nm(worst.a))}`,fmtUsd(worst.val),fmtPct(worst.val/worst.inv-1),cls(worst.val-worst.inv)):h('&nbsp;','',''));
     $('#rt').innerHTML=`<tr><th>${T.asset}</th><th class="hide-sm">${T.invested}</th><th>${T.value}</th><th>${T.profit}</th><th class="hide-sm">${T.got}</th><th></th></tr>`+
-      res.map(r=>{ const p=r.val-r.inv, u=T.units[r.a.c]||r.a.t, late=r.from>startI?`<div class="muted" style="font:500 11px Inter">${T.from} ${mlabel(i2ym(r.from))}</div>`:'';
+      res.map(r=>{ const p=r.val-r.inv, u=T['u_'+r.a.c]||r.a.t, late=r.from>startI?`<div class="muted" style="font:500 11px Inter">${T.frm} ${mlabel(i2ym(r.from))}</div>`:'';
         return `<tr><td class="a" style="--c:${r.c}"><i></i><a href="${url(r.a.i)}" style="text-decoration:none">${esc(nm(r.a))}</a>${late}</td><td class="hide-sm">${fmtUsd(r.inv)}</td><td>${fmtUsd(r.val)}</td><td class="${cls(p)}">${fmtUsd(p)}<br><span style="font-size:11px">${fmtPct(r.val/r.inv-1)}</span></td><td class="hide-sm">${(+r.units.toPrecision(5)).toLocaleString('en-US')} ${esc(u)}</td><td>${buyBtn(r.a)}</td></tr>` }).join('');
-    $('#shareText').textContent=T.share(nm(best.a),amt,T.per[freq],mlabel(i2ym(best.from)),fmtUsd(best.val),fmtPct(best.val/best.inv-1));
+    $('#shareText').textContent=fmt(T.share,{asset:nm(best.a),amt,per:T['per_'+freq],since:mlabel(i2ym(best.from)),val:fmtUsd(best.val),pct:fmtPct(best.val/best.inv-1)});
     chart(res);
   }
   function niceStep(x){const p=10**Math.floor(Math.log10(x)),n=x/p;return (n<1.5?1:n<3?2:n<7?5:10)*p}

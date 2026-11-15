@@ -1,19 +1,23 @@
 """Generate the static whatif.invest site into ./dist/whatif/ (Vercel runs this on every deploy).
 
-Input:  data/market.json (prices, from scripts/fetch_data.py), data/assets.json (curated list, UA names)
-Output: home + compare + one page per asset per language, index.js, per-asset price files, sitemap.
+Input:  data/market.json (prices, from scripts/fetch_data.py), data/assets.json (curated list),
+        scripts/i18n*.py (20 languages).
+Output: per language — home, compare and asset pages; index.js, per-asset price files, sitemaps.
 Only the Python standard library is used, so it runs in Vercel's build image as is.
 Run: python3 scripts/build.py
 """
-import calendar, hashlib, html, json, os, shutil
+import calendar, hashlib, html, json, os, shutil, sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from i18n import LANGS as TR, ORDER, FULL, DEFAULT  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIST = os.path.join(ROOT, 'dist')
 OUT = os.path.join(DIST, 'whatif')
 BASE = '/whatif'
 SITE = 'https://mytimebox.app'
-LANGS = ['uk', 'en']
 AMOUNT = 10
+TOP_N = 200            # asset pages in languages outside FULL
 
 market = json.load(open(os.path.join(ROOT, 'data/market.json'), encoding='utf-8'))
 pinned = json.load(open(os.path.join(ROOT, 'data/assets.json'), encoding='utf-8'))
@@ -21,11 +25,17 @@ UPDATED = market['updated']
 END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
+A = {aid: a for aid, a in market['assets'].items() if a.get('p')}
 
-A = {}
-for aid, a in market['assets'].items():
-    if 'p' in a and a['p']:
-        A[aid] = a
+
+def nm(a, lang):
+    n = a['name']
+    if a['tk'] in ('XAU', 'XAG') and a.get('cat') == 'metal':
+        return TR[lang]['gold' if a['tk'] == 'XAU' else 'silver']
+    if not isinstance(n, dict):
+        return n
+    return n.get(lang) or n.get('en') or a['tk']
+
 
 def order_key(item):
     aid, a = item
@@ -37,25 +47,32 @@ def order_key(item):
         return (2, 0, a['tk'])
     return (3, 0, nm(a, 'en').lower())
 
-def nm(a, lang):
-    n = a['name']
-    return n.get(lang) or n.get('en') or a['tk'] if isinstance(n, dict) else n
 
 ORDERED = [aid for aid, _ in sorted(A.items(), key=order_key)]
 ORD = {aid: k for k, aid in enumerate(ORDERED)}
+TOP = set(ORDERED[:TOP_N])
+
+
+def has_page(lang, aid):
+    return aid is None or aid == 'compare' or lang in FULL or aid in TOP
+
 
 # ---------------- math (mirrors src/app.js) ----------------
 def ym2i(s):
     y, m = map(int, s.split('-'))
     return y * 12 + m - 1
 
+
 def i2ym(i):
     return f"{i // 12}-{i % 12 + 1:02d}"
 
+
 END_I = ym2i(END)
+
 
 def per_month(i):
     return END_DAY if i2ym(i) == END else calendar.monthrange(i // 12, i % 12 + 1)[1]
+
 
 def simulate(aid, start_i, amt=AMOUNT):
     P = A[aid]
@@ -69,28 +86,23 @@ def simulate(aid, start_i, amt=AMOUNT):
     val = units * P['p'][e - s0]
     return dict(inv=inv, val=val, roi=(val / inv - 1) if inv else None, frm=frm)
 
+
 def dca_roi(aid, years):
     st = END_I - years * 12
-    if ym2i(A[aid]['start']) > st:
-        return None
-    return simulate(aid, st)['roi']
+    return None if ym2i(A[aid]['start']) > st else simulate(aid, st)['roi']
 
-METRICS = {}
-for aid, a in A.items():
-    p = a['p']
-    METRICS[aid] = dict(r1=dca_roi(aid, 1), r3=dca_roi(aid, 3), r5=dca_roi(aid, 5), r10=dca_roi(aid, 10),
-                        spark=p[-13:], price=a.get('price', p[-1]), chg=a.get('chg'))
+
+METRICS = {aid: dict(r1=dca_roi(aid, 1), r3=dca_roi(aid, 3), r5=dca_roi(aid, 5), spark=a['p'][-13:],
+                     price=a.get('price', a['p'][-1]), chg=a.get('chg')) for aid, a in A.items()}
+
 
 # ---------------- formatting ----------------
-MON = {'uk': ['січ', 'лют', 'бер', 'кві', 'тра', 'чер', 'лип', 'сер', 'вер', 'жов', 'лис', 'гру'],
-       'en': ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']}
-MON_GEN = ['січня', 'лютого', 'березня', 'квітня', 'травня', 'червня', 'липня', 'серпня', 'вересня', 'жовтня', 'листопада', 'грудня']
-
 def mlabel(ym, lang, long=False):
     y, m = map(int, ym.split('-'))
-    if long:
-        return f"{MON_GEN[m-1]} {y}" if lang == 'uk' else f"{calendar.month_name[m]} {y}"
-    return f"{MON[lang][m-1]} {y}"
+    S = TR[lang]
+    mon = (S['since_months'] if long else S['months'])[m - 1]
+    return S['date'].format(m=mon, y=y)
+
 
 def usd(v):
     if v is None:
@@ -99,12 +111,14 @@ def usd(v):
     s = f"{a/1e9:.2f}B" if a >= 1e9 else f"{a/1e6:.2f}M" if a >= 1e6 else f"{a:,.0f}" if a >= 1e4 else f"{a:,.2f}".rstrip('0').rstrip('.')
     return ('−$' if v < 0 else '$') + s
 
+
 def price(v):
     if v is None:
         return '—'
     if v >= 1:
         return f"${v:,.2f}"
     return f"${v:.4f}" if v >= 0.01 else f"${v:.8f}".rstrip('0')
+
 
 def pct(p):
     if p is None:
@@ -113,14 +127,24 @@ def pct(p):
     s = f"{a:,.0f}" if a >= 100 else f"{a:.1f}" if a >= 10 else f"{a:.2f}"
     return ('+' if p >= 0 else '−') + s + '%'
 
+
 def cls(p):
     return '' if p is None else ('good' if p >= 0 else 'bad')
+
 
 def esc(s):
     return html.escape(str(s), quote=True)
 
-def url(lang, aid=None):
-    return BASE + ('/en' if lang == 'en' else '') + '/' + (aid + '/' if aid else '')
+
+def url(lang, p=None):
+    pre = BASE + ('' if lang == DEFAULT else '/' + lang)
+    return pre + '/' + (p + '/' if p else '')
+
+
+def aurl(lang, aid):
+    """Asset link: same language if that page exists, else English."""
+    return url(lang if has_page(lang, aid) else 'en', aid)
+
 
 def hue(s):
     h = 0
@@ -128,11 +152,13 @@ def hue(s):
         h = (h * 31 + ord(c)) % 360
     return h
 
+
 def icon(a, big=False):
     c = ' lg' if big else ''
     if a.get('logo'):
         return f'<span class="ic{c}"><img src="{esc(a["logo"])}" alt="" loading="lazy" width="26" height="26"></span>'
     return f'<span class="ic{c}" style="background:hsl({hue(a["tk"])} 55% 52%)">{esc(a["tk"][:2])}</span>'
+
 
 def spark(arr, w=110, h=34):
     if not arr or len(arr) < 2:
@@ -143,8 +169,6 @@ def spark(arr, w=110, h=34):
     col = '#14a44d' if arr[-1] >= arr[0] else '#e5484d'
     return f'<svg width="{w}" height="{h}" viewBox="0 0 {w} {h}"><polyline points="{pts}" fill="none" stroke="{col}" stroke-width="1.6" stroke-linejoin="round"/></svg>'
 
-CAT = {'uk': {'crypto': 'Криптовалюта', 'stock': 'Акція', 'etf': 'ETF', 'metal': 'Метал'},
-       'en': {'crypto': 'Cryptocurrency', 'stock': 'Stock', 'etf': 'ETF', 'metal': 'Metal'}}
 
 # ---------------- page shell ----------------
 def write(rel, content):
@@ -153,37 +177,42 @@ def write(rel, content):
     with open(full, 'w', encoding='utf-8') as f:
         f.write(content)
 
+
 def h8(s):
     return hashlib.md5(s.encode()).hexdigest()[:8]
 
+
 SEARCH_ICON = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>'
 
+
 def strip(lang):
+    S = TR[lang]
     items = []
-    for aid, label in (('btc', 'BTC'), ('eth', 'ETH'), ('spy', 'S&P 500'), ('qqq', 'Nasdaq-100'), ('gold', 'Gold' if lang == 'en' else 'Золото'), ('silver', 'Silver' if lang == 'en' else 'Срібло')):
+    for aid, label in (('btc', 'BTC'), ('eth', 'ETH'), ('spy', 'S&P 500'), ('qqq', 'Nasdaq-100'), ('gold', S['gold']), ('silver', S['silver'])):
         if aid in A:
             m = METRICS[aid]
-            items.append(f'<a href="{url(lang, aid)}">{label} <b>{price(m["price"])}</b> <span class="{cls(m["chg"])}">{pct(m["chg"])}</span></a>')
-    n = len(A)
-    lead = (f'Активів <b>{n}</b>' if lang == 'uk' else f'Assets <b>{n}</b>')
-    upd = (f'Оновлено <b>{UPDATED}</b>' if lang == 'uk' else f'Updated <b>{UPDATED}</b>')
-    return f'<div class="strip"><div class="in"><span>{lead}</span>{"".join(items)}<span>{upd}</span></div></div>'
+            items.append(f'<a href="{aurl(lang, aid)}">{esc(label)} <b>{price(m["price"])}</b> <span class="{cls(m["chg"])}">{pct(m["chg"])}</span></a>')
+    return (f'<div class="strip"><div class="in"><span>{S["assets_n"]} <b>{len(A)}</b></span>{"".join(items)}'
+            f'<span>{S["updated"]} <b>{UPDATED}</b></span></div></div>')
 
-def shell(lang, path_id, title, desc, body, cfg, ver, jsonld=(), alt_path=None):
-    """path_id: url suffix ('' for home, 'compare', or asset id)."""
-    p = path_id or None
+
+def lang_menu(lang, p):
+    opts = ''.join(f'<option value="{url(lg, p) if has_page(lg, p) else url(lg)}"{" selected" if lg == lang else ""}>{esc(TR[lg]["name"])}</option>' for lg in ORDER)
+    return f'<select class="langsel" aria-label="Language" onchange="location.href=this.value">{opts}</select>'
+
+
+def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
+    S = TR[lang]
     canon = SITE + url(lang, p)
-    alts = ''.join(f'<link rel="alternate" hreflang="{lg}" href="{SITE + url(lg, p)}">' for lg in LANGS)
+    alts = ''.join(f'<link rel="alternate" hreflang="{TR[lg]["loc"]}" href="{SITE + url(lg, p)}">' for lg in ORDER if has_page(lg, p))
     alts += f'<link rel="alternate" hreflang="x-default" href="{SITE + url("en", p)}">'
     ld = ''.join(f'<script type="application/ld+json">{json.dumps(j, ensure_ascii=False)}</script>' for j in jsonld)
-    navs = [('', 'Рейтинг DCA' if lang == 'uk' else 'DCA ranking'), ('compare', 'Порівняти' if lang == 'uk' else 'Compare')]
-    nav = ''.join(f'<a href="{url(lang, k or None)}" class="{"on" if k == (path_id or "") else ""}">{v}</a>' for k, v in navs)
-    by = 'Проєкт' if lang == 'uk' else 'A project by'
-    disc = ('Це не інвестиційна порада. Минулі результати не гарантують майбутніх. Розрахунки за місячними цінами закриття, без комісій, податків і дивідендів.'
-            if lang == 'uk' else 'Not investment advice. Past performance does not guarantee future results. Calculations use monthly closes and exclude fees, taxes and dividends.')
-    src = ('Дані: Binance, Yahoo Finance, CoinGecko.' if lang == 'uk' else 'Data: Binance, Yahoo Finance, CoinGecko.')
+    nav = ''.join(f'<a href="{url(lang, k)}" class="{"on" if k == p else ""}">{v}</a>' for k, v in ((None, S['nav_rank']), ('compare', S['nav_cmp'])))
+    i18n = dict(S['ui'], months=S['months'], intl=S['intl'])
+    cfg = dict(cfg, lang=lang, prefix=url(lang).rstrip('/'), full=lang in FULL, topn=TOP_N,
+               names={'gold': S['gold'], 'silver': S['silver']})
     return f"""<!DOCTYPE html>
-<html lang="{lang}">
+<html lang="{S['loc']}" dir="{S['dir']}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -191,7 +220,7 @@ def shell(lang, path_id, title, desc, body, cfg, ver, jsonld=(), alt_path=None):
 <meta name="description" content="{esc(desc)}">
 <link rel="canonical" href="{canon}">
 {alts}
-<meta property="og:type" content="website"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{canon}"><meta property="og:locale" content="{'uk_UA' if lang == 'uk' else 'en_US'}">
+<meta property="og:type" content="website"><meta property="og:site_name" content="whatif.invest"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{canon}"><meta property="og:locale" content="{S['intl'].replace('-', '_')}">
 <meta name="twitter:card" content="summary"><meta name="theme-color" content="#ffffff">
 <link rel="icon" href="{BASE}/assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -205,13 +234,14 @@ def shell(lang, path_id, title, desc, body, cfg, ver, jsonld=(), alt_path=None):
   <a class="logo" href="{url(lang)}">what<b>if</b>.invest</a>
   <div class="gsearch">{SEARCH_ICON}<input id="gs" type="search" autocomplete="off" aria-label="search"><div class="gres" id="gres"></div></div>
   <nav class="nav">{nav}</nav>
-  <nav class="lang"><a href="{url('uk', p)}" class="{'on' if lang == 'uk' else ''}" hreflang="uk">UA</a><a href="{url('en', p)}" class="{'on' if lang == 'en' else ''}" hreflang="en">EN</a></nav>
+  {lang_menu(lang, p)}
 </div></div>
 <main class="wrap">
 {body}
-<footer><span>{by} <a href="{SITE}/">Timebox</a> · {src}</span><span>{disc}</span></footer>
+<footer><span>{S['by']} <a href="{SITE}/">Timebox</a> · {S['sources']}</span><span>{S['disclaimer']}</span></footer>
+<nav class="langs">{' · '.join(f'<a href="{url(lg, p) if has_page(lg, p) else url(lg)}" hreflang="{TR[lg]["loc"]}">{esc(TR[lg]["name"])}</a>' for lg in ORDER)}</nav>
 </main>
-<script>window.PAGE={json.dumps(cfg)};</script>
+<script>window.PAGE={json.dumps(cfg, ensure_ascii=False)};window.I18N={json.dumps(i18n, ensure_ascii=False)};</script>
 <script src="{BASE}/assets/index.js?v={ver['index']}"></script>
 <script src="{BASE}/assets/ref.js?v={ver['ref']}"></script>
 <script src="{BASE}/assets/app.js?v={ver['js']}" defer></script>
@@ -219,109 +249,92 @@ def shell(lang, path_id, title, desc, body, cfg, ver, jsonld=(), alt_path=None):
 </html>
 """
 
+
 def calc_block(lang):
-    t = {'uk': dict(amount='Сума', freq='Як часто', d='Щодня', w='Щотижня', m='Щомісяця', since='Починаючи з', on='Активи на графіку',
-                    chart='Вартість портфеля в часі', log='Лог. шкала', copy='Копіювати'),
-         'en': dict(amount='Amount', freq='How often', d='Daily', w='Weekly', m='Monthly', since='Starting from', on='Assets on the chart',
-                    chart='Portfolio value over time', log='Log scale', copy='Copy')}[lang]
+    u = TR[lang]['ui']
     return f"""<div id="calc">
 <div class="card">
   <div class="controls">
-    <div><label class="f">{t['amount']}</label><div class="inp"><span>$</span><input id="amt" type="number" min="1" step="1" value="{AMOUNT}" aria-label="{t['amount']}"></div></div>
-    <div><label class="f">{t['freq']}</label><div class="seg" id="freq"><button data-v="d" class="on">{t['d']}</button><button data-v="w">{t['w']}</button><button data-v="m">{t['m']}</button></div></div>
-    <div><label class="f">{t['since']}</label><div class="inp"><select id="since" aria-label="{t['since']}"></select></div></div>
+    <div><label class="f">{u['amount']}</label><div class="inp"><span>$</span><input id="amt" type="number" min="1" step="1" value="{AMOUNT}" aria-label="{u['amount']}"></div></div>
+    <div><label class="f">{u['freq']}</label><div class="seg" id="freq"><button data-v="d" class="on">{u['daily']}</button><button data-v="w">{u['weekly']}</button><button data-v="m">{u['monthly']}</button></div></div>
+    <div><label class="f">{u['since']}</label><div class="inp"><select id="since" aria-label="{u['since']}"></select></div></div>
   </div>
-  <label class="f">{t['on']}</label>
+  <label class="f">{u['onchart']}</label>
   <div class="chips" id="chips"></div>
   <div class="picker" id="picker"><div class="filter">{SEARCH_ICON}<input id="pq" type="search" autocomplete="off"></div><div class="pool" id="pool"></div></div>
 </div>
 <div class="hero" id="hero"></div>
-<div class="card chartcard" id="chartcard"><div class="charthead"><h2>{t['chart']}</h2><button class="toggle" id="logBtn">{t['log']}</button></div><div id="chart"></div><div class="tip" id="tip"></div></div>
+<div class="card chartcard" id="chartcard"><div class="charthead"><h2>{u['chartTitle']}</h2><button class="toggle" id="logBtn">{u['log']}</button></div><div id="chart"></div><div class="tip" id="tip"></div></div>
 <div class="card section"><div style="overflow-x:auto"><table class="rt" id="rt"></table></div>
-<div class="share"><p id="shareText"></p><button class="btn ghost" id="copyBtn">{t['copy']}</button></div></div>
+<div class="share"><p id="shareText"></p><button class="btn ghost" id="copyBtn">{u['copy']}</button></div></div>
 </div>"""
+
 
 def row_html(aid, lang, n):
     a, m = A[aid], METRICS[aid]
-    return (f'<tr><td class="l n hide-sm">{n}</td><td class="l"><a class="asset" href="{url(lang, aid)}">{icon(a)}<span><span class="nm">{esc(nm(a, lang))}</span>'
+    href = aurl(lang, aid)
+    return (f'<tr><td class="l n hide-sm">{n}</td><td class="l"><a class="asset" href="{href}">{icon(a)}<span><span class="nm">{esc(nm(a, lang))}</span>'
             f'<span class="tk">{esc(a["tk"])}</span></span></a></td><td></td><td class="num">{price(m["price"])}</td>'
             f'<td class="num {cls(m["chg"])}">{pct(m["chg"])}</td><td class="num hide-sm {cls(m["r1"])}">{pct(m["r1"])}</td>'
             f'<td class="num hide-sm {cls(m["r3"])}">{pct(m["r3"])}</td><td><span class="pill {cls(m["r5"])}">{pct(m["r5"])}</span></td>'
-            f'<td class="hide-sm">{spark(m["spark"])}</td><td class="hide-sm"><a class="calc" href="{url(lang, aid)}">→</a></td></tr>')
+            f'<td class="hide-sm">{spark(m["spark"])}</td><td class="hide-sm"><a class="calc" href="{href}">→</a></td></tr>')
+
 
 def table_block(lang, ids, title=None, interactive=True):
-    head = {'uk': ['#', 'Назва', '', 'Ціна', '24г', 'DCA 1 рік', 'DCA 3 роки', 'DCA 5 років', 'Ціна за рік', ''],
-            'en': ['#', 'Name', '', 'Price', '24h', 'DCA 1Y', 'DCA 3Y', 'DCA 5Y', 'Price, 1Y', '']}[lang]
+    u = TR[lang]['ui']
+    head = ['#', u['name'], '', u['price'], u['chg'], u['d1'], u['d3'], u['d5'], u['spark'], '']
     hc = ['l n hide-sm', 'l', '', '', '', 'hide-sm', 'hide-sm', '', 'hide-sm', 'hide-sm']
     th = ''.join(f'<th class="{c}">{h}</th>' for h, c in zip(head, hc))
     rows = ''.join(row_html(aid, lang, k + 1) for k, aid in enumerate(ids))
-    tid = ' id="mt"' if interactive else ''
-    hid = ' id="mthead"' if interactive else ''
-    more = '<div id="mtmore"></div>' if interactive else ''
     ttl = f'<h2>{title}</h2>' if title else ''
-    return f'{ttl}<div class="tw"><table class="mt"><thead{hid}><tr>{th}</tr></thead><tbody{tid}>{rows}</tbody></table>{more}</div>'
+    if interactive:
+        return f'{ttl}<div class="tw"><table class="mt"><thead id="mthead"><tr>{th}</tr></thead><tbody id="mt">{rows}</tbody></table><div id="mtmore"></div></div>'
+    return f'{ttl}<div class="tw"><table class="mt"><thead><tr>{th}</tr></thead><tbody>{rows}</tbody></table></div>'
 
-# ---------------- pages ----------------
-def best_by(key, ids, reverse=True):
-    xs = [i for i in ids if METRICS[i][key] is not None]
-    return sorted(xs, key=lambda i: METRICS[i][key], reverse=reverse)
+
+def best_by(key, ids):
+    return sorted([i for i in ids if METRICS[i][key] is not None], key=lambda i: -METRICS[i][key])
+
 
 def hl_card(lang, aid, label, key, sub):
     m = METRICS[aid]
-    return (f'<a class="card" href="{url(lang, aid)}"><div class="k">{label}<span>{esc(A[aid]["tk"])}</span></div>'
+    return (f'<a class="card" href="{aurl(lang, aid)}"><div class="k">{esc(label)}<span>{esc(A[aid]["tk"])}</span></div>'
             f'<div class="v {cls(m[key])}">{pct(m[key])}</div><div class="s">{esc(nm(A[aid], lang))} · {sub}</div>{spark(m["spark"], 220, 40)}</a>')
 
+
+TEN = '<em>$10</em>'
+
+
 def home(lang, ver):
+    S = TR[lang]
     ids = ORDERED
-    b1 = best_by('r1', ids)
-    b5 = best_by('r5', ids)
-    big = [i for i in ids if A[i]['cat'] == 'crypto' and ORD[i] < 60]
-    bc = best_by('r1', big)
-    sub1 = '$10/день, 1 рік' if lang == 'uk' else '$10/day, 1 year'
-    sub5 = '$10/день, 5 років' if lang == 'uk' else '$10/day, 5 years'
     cards = []
-    if b1: cards.append(hl_card(lang, b1[0], 'Лідер DCA за рік' if lang == 'uk' else 'Top DCA, 1 year', 'r1', sub1))
-    if b5: cards.append(hl_card(lang, b5[0], 'Лідер DCA за 5 років' if lang == 'uk' else 'Top DCA, 5 years', 'r5', sub5))
-    if bc: cards.append(hl_card(lang, bc[0], 'Найкраща велика крипта' if lang == 'uk' else 'Best large-cap crypto', 'r1', sub1))
+    b1, b5 = best_by('r1', ids), best_by('r5', ids)
+    bc = best_by('r1', [i for i in ids if A[i]['cat'] == 'crypto' and ORD[i] < 60])
+    if b1: cards.append(hl_card(lang, b1[0], S['hl1'], 'r1', S['sub1']))
+    if b5: cards.append(hl_card(lang, b5[0], S['hl5'], 'r5', S['sub5']))
+    if bc: cards.append(hl_card(lang, bc[0], S['hlc'], 'r1', S['sub1']))
     for aid in ('btc', 'spy', 'gold'):
         if aid in A and len(cards) < 4:
-            cards.append(hl_card(lang, aid, nm(A[aid], lang), 'r5', sub5))
+            cards.append(hl_card(lang, aid, nm(A[aid], lang), 'r5', S['sub5']))
     n = len(A)
-    if lang == 'uk':
-        title = 'Що якби я щодня вкладав $10? Рейтинг DCA для крипти, акцій і золота'
-        desc = f'Скільки б ти мав, якби регулярно купував Bitcoin, Nvidia, Apple, золото чи ще {n} активів. Рейтинг DCA за 1, 3 і 5 років, калькулятор, щоденне оновлення.'
-        h1 = 'Що якби я щодня вкладав <em>$10</em>?'
-        lead = f'Рейтинг <b>{n} активів</b> за результатом регулярних покупок (DCA): крипта, акції S&P 500, ETF, золото і срібло. Колонки DCA показують дохідність, якби ти купував на $10 щодня протягом 1, 3 чи 5 років.'
-    else:
-        title = 'What if I invested $10 a day? DCA ranking for crypto, stocks and gold'
-        desc = f'See what you would have if you had regularly bought Bitcoin, Nvidia, Apple, gold or {n} other assets. DCA returns over 1, 3 and 5 years, calculator, updated daily.'
-        h1 = 'What if I invested <em>$10</em> every day?'
-        lead = f'<b>{n} assets</b> ranked by dollar-cost averaging results: crypto, S&P 500 stocks, ETFs, gold and silver. DCA columns show the return of buying $10 every day for 1, 3 or 5 years.'
+    title, desc = S['home_title'], S['home_desc'].format(n=n)
     filt = f'<div class="toolbar"><div class="filter">{SEARCH_ICON}<input id="flt" type="search" autocomplete="off"></div></div>'
-    body = (f'<h1>{h1}</h1><p class="lead">{lead}</p><div class="hl">{"".join(cards)}</div>'
-            f'<div class="tabs" id="tabs"></div>{filt}{table_block(lang, ids[:100])}')
+    body = (f'<h1>{S["home_h1"].format(ten=TEN)}</h1><p class="lead">{S["home_lead"].format(n=n)}</p><div class="hl">{"".join(cards)}</div>'
+            f'<div class="tabs" id="tabs"></div>{filt}{table_block(lang, ids[:100])}'
+            f'<section class="card section faq"><h2>{S["faq"]}</h2><details open><summary>{esc(S["q3"])}</summary><p>{esc(S["a3"])}</p></details></section>')
     jsonld = [{"@context": "https://schema.org", "@type": "WebApplication", "name": "whatif.invest", "url": SITE + url(lang),
-               "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "inLanguage": lang,
+               "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "inLanguage": S['loc'],
                "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": desc}]
-    return shell(lang, '', title, desc, body, dict(lang=lang), ver, jsonld)
+    return shell(lang, None, title, desc, body, {}, ver, jsonld)
+
 
 def compare(lang, ver):
+    S = TR[lang]
     sel = [i for i in ('btc', 'nvda', 'gold', 'spy', 'eth') if i in A]
-    if lang == 'uk':
-        title = 'Порівняти DCA: Bitcoin, акції, золото — калькулятор регулярних інвестицій'
-        desc = 'Порівняй, скільки б ти заробив, регулярно купуючи до 8 активів одночасно: крипту, акції, ETF, золото і срібло.'
-        h1 = 'Порівняти регулярні інвестиції'
-        lead = 'Обери суму, частоту і дату старту, додай до 8 активів і подивись, як росла б вартість кожного портфеля.'
-    else:
-        title = 'Compare DCA: Bitcoin, stocks, gold — recurring investment calculator'
-        desc = 'Compare what you would have earned by regularly buying up to 8 assets at once: crypto, stocks, ETFs, gold and silver.'
-        h1 = 'Compare recurring investments'
-        lead = 'Pick an amount, frequency and start date, add up to 8 assets and see how each portfolio would have grown.'
-    body = f'<h1>{h1}</h1><p class="lead">{lead}</p>{calc_block(lang)}'
-    return shell(lang, 'compare', title, desc, body, dict(lang=lang, sel=sel, since=f"{END_I // 12 - 5}-01"), ver)
+    body = f'<h1>{S["cmp_h1"]}</h1><p class="lead">{S["cmp_lead"]}</p>{calc_block(lang)}'
+    return shell(lang, 'compare', S['cmp_title'], S['cmp_desc'], body, dict(sel=sel, since=f"{END_I // 12 - 5}-01"), ver)
 
-PERIODS = [(1, {'uk': '1 рік', 'en': '1 year'}), (3, {'uk': '3 роки', 'en': '3 years'}),
-           (5, {'uk': '5 років', 'en': '5 years'}), (10, {'uk': '10 років', 'en': '10 years'})]
 
 def default_since(aid):
     s0 = ym2i(A[aid]['start'])
@@ -329,88 +342,70 @@ def default_since(aid):
     y = (st + 11) // 12
     return f"{y}-01" if y * 12 < END_I - 6 else i2ym(s0)
 
+
 def bench(aid):
     for b in ('btc', 'spy', 'qqq', 'gold'):
         if b != aid and b in A:
             yield b
 
+
 def asset(aid, lang, ver):
+    S, u = TR[lang], TR[lang]['ui']
     a, m = A[aid], METRICS[aid]
     n, tk = nm(a, lang), a['tk']
     since = default_since(aid)
     r = simulate(aid, ym2i(since))
-    since_long = mlabel(i2ym(r['frm']), lang, long=True)
+    since_l = mlabel(i2ym(r['frm']), lang, long=True)
     upd = mlabel(END, lang, long=True)
     b1 = next(bench(aid))
     s5 = END_I - 60
     ra5 = simulate(aid, max(s5, ym2i(a['start'])))
     rb5 = simulate(b1, max(s5, ym2i(A[b1]['start'])))
-    # period stats
-    stats, rows = [], []
     s0 = ym2i(a['start'])
-    for yrs, lab in PERIODS:
+    stats = []
+    for yrs, key in ((1, 'p1'), (3, 'p3'), (5, 'p5'), (10, 'p10')):
         st = END_I - yrs * 12
-        if st < s0:
-            continue
-        x = simulate(aid, st)
-        stats.append((lab[lang], x))
-    full = simulate(aid, s0)
-    lab_all = ('Від ' if lang == 'uk' else 'Since ') + mlabel(i2ym(s0), lang)
-    rows = stats + [(lab_all, full)]
+        if st >= s0:
+            stats.append((S[key], simulate(aid, st)))
+    rows = stats + [(S['p_since'].format(since=mlabel(i2ym(s0), lang)), simulate(aid, s0))]
+    show = stats if len(stats) >= 2 else rows[-4:]
     stat_cards = ''.join(
-        f'<div class="card stat"><div class="k">DCA $10/{"день" if lang == "uk" else "day"} · {lab}</div><div class="v">{usd(x["val"])}</div>'
-        f'<div class="s {cls(x["roi"])}">{pct(x["roi"])} <span class="muted">· {"вкладено" if lang == "uk" else "invested"} {usd(x["inv"])}</span></div></div>'
-        for lab, x in (stats[:4] if len(stats) >= 2 else rows[-4:]))
-    hh = ['Період', 'Вкладено', 'Зараз', 'Результат'] if lang == 'uk' else ['Period', 'Invested', 'Now', 'Result']
-    ptable = ('<table class="rt"><tr>' + ''.join(f'<th>{h}</th>' for h in hh) + '</tr>' +
+        f'<div class="card stat"><div class="k">{S["stat"].format(p=lab)}</div><div class="v">{usd(x["val"])}</div>'
+        f'<div class="s {cls(x["roi"])}">{pct(x["roi"])} <span class="muted">· {S["invested_lc"]} {usd(x["inv"])}</span></div></div>' for lab, x in show)
+    ptable = (f'<table class="rt"><tr><th>{S["period"]}</th><th>{u["invested"]}</th><th>{S["now"]}</th><th>{S["result"]}</th></tr>' +
               ''.join(f'<tr><td class="a">{lab}</td><td>{usd(x["inv"])}</td><td>{usd(x["val"])}</td><td class="{cls(x["roi"])}">{pct(x["roi"])}</td></tr>' for lab, x in rows) +
               '</table>')
-    if lang == 'uk':
-        title = f"$10 щодня в {n} ({tk}): скільки б ти мав зараз? DCA-калькулятор"
-        desc = f"$10 щодня в {n} з {since_long}: вкладено {usd(r['inv'])}, зараз {usd(r['val'])} ({pct(r['roi'])}). Ціна {tk}, DCA за 1, 3, 5 і 10 років і порівняння з {len(A) - 1} активами."
-        h1 = f"Що якби я щодня вкладав <em>$10</em> у {esc(n)}?"
-        lead = (f"Якби ти з {since_long} щодня купував {esc(n)} на $10, то вклав би <b>{usd(r['inv'])}</b>, а зараз мав би <b>{usd(r['val'])}</b> "
-                f"(<span class=\"{cls(r['roi'])}\">{pct(r['roi'])}</span>). Зміни суму, частоту чи дату старту і порівняй з іншими активами.")
-        h2p, h2s, h2f = f"$10 щодня в {esc(n)}: результати за періоди", f"Схожі активи: {CAT[lang][a['cat']].lower()}", 'Часті питання'
-        faq = [(f"Скільки б я мав, якби вкладав $10 щодня в {n} з {since_long}?",
-                f"Ти вклав би {usd(r['inv'])}, а станом на {upd} мав би {usd(r['val'])} ({pct(r['roi'])}). Розрахунок за місячними цінами закриття, без комісій і податків."),
-               (f"Що вигідніше для щоденних покупок за 5 років: {n} чи {nm(A[b1], lang)}?",
-                f"$10 щодня протягом останніх 5 років дали б {pct(ra5['roi'])} для {n} і {pct(rb5['roi'])} для {nm(A[b1], lang)}. Минулі результати не гарантують майбутніх."),
-               ("Що таке DCA (усереднення вартості)?",
-                "DCA — це регулярна покупка активу на однакову суму незалежно від ціни. Коли ціна низька, купуєш більше, коли висока — менше. Так згладжується волатильність і не треба вгадувати момент входу.")]
-    else:
-        title = f"$10 a day in {n} ({tk}): what would it be worth now? DCA calculator"
-        desc = f"$10 a day in {n} since {since_long}: {usd(r['inv'])} invested, worth {usd(r['val'])} today ({pct(r['roi'])}). {tk} price, DCA returns over 1, 3, 5 and 10 years, compared with {len(A) - 1} assets."
-        h1 = f"What if I invested <em>$10</em> a day in {esc(n)}?"
-        lead = (f"If you had bought $10 of {esc(n)} every day since {since_long}, you would have put in <b>{usd(r['inv'])}</b> and it would be worth <b>{usd(r['val'])}</b> today "
-                f"(<span class=\"{cls(r['roi'])}\">{pct(r['roi'])}</span>). Change the amount, frequency or start date and compare with other assets.")
-        h2p, h2s, h2f = f"$10 a day in {esc(n)}: results by period", f"Similar assets: {CAT[lang][a['cat']].lower()}", 'FAQ'
-        faq = [(f"How much would I have if I invested $10 a day in {n} since {since_long}?",
-                f"You would have invested {usd(r['inv'])}, and as of {upd} it would be worth {usd(r['val'])} ({pct(r['roi'])}). Based on monthly closing prices, before fees and taxes."),
-               (f"Which was better to buy daily over the last 5 years: {n} or {nm(A[b1], lang)}?",
-                f"$10 a day over the last 5 years would have returned {pct(ra5['roi'])} for {n} and {pct(rb5['roi'])} for {nm(A[b1], lang)}. Past performance does not guarantee future results."),
-               ("What is DCA (dollar-cost averaging)?",
-                "DCA means buying an asset for the same amount at regular intervals, whatever the price. You buy more when it is cheap and less when it is expensive, which smooths volatility and removes the need to time the market.")]
+    f = dict(name=n, tk=tk, since=since_l, inv=usd(r['inv']), val=usd(r['val']), roi=pct(r['roi']), n=len(A) - 1, upd=upd,
+             bench=nm(A[b1], lang), ra=pct(ra5['roi']), rb=pct(rb5['roi']), r1=pct(m['r1']), r5=pct(m['r5']), ten=TEN)
+    title, desc = S['a_title'].format(**f), S['a_desc'].format(**f)
+    fe = dict(f, name=esc(n), roi=f'<span class="{cls(r["roi"])}">{pct(r["roi"])}</span>')
+    faq = [(S['q1'].format(**f), S['a1'].format(**f)), (S['q2'].format(**f), S['a2'].format(**f)),
+           (S['q4'].format(**f), S['a4'].format(**f)), (S['q3'], S['a3'])]
+    if m['r1'] is None or m['r5'] is None:
+        faq.pop(2)
     sim = [i for i in ORDERED if A[i]['cat'] == a['cat'] and i != aid]
     if a.get('sector'):
         same = [i for i in sim if A[i].get('sector') == a['sector']]
         sim = same + [i for i in sim if i not in same]
     sim = sim[:10]
-    crumbs = f'<nav class="crumbs"><a href="{url(lang)}">{"Рейтинг DCA" if lang == "uk" else "DCA ranking"}</a> / {esc(CAT[lang][a["cat"]])} / {esc(n)}</nav>'
-    badges = f'<span class="badge">{esc(tk)}</span> <span class="badge">{esc(CAT[lang][a["cat"]])}</span>' + (f' <span class="badge">{esc(a["sector"])}</span>' if a.get('sector') else '')
-    head = (f'{crumbs}<div class="ahead">{icon(a, True)}<div><h1>{h1}</h1><div style="margin-top:4px">{badges}</div></div>'
+    cat = S['cat_' + a['cat']]
+    crumbs = f'<nav class="crumbs"><a href="{url(lang)}">{S["nav_rank"]}</a> / {esc(cat)} / {esc(n)}</nav>'
+    badges = f'<span class="badge">{esc(tk)}</span> <span class="badge">{esc(cat)}</span>' + (f' <span class="badge">{esc(a["sector"])}</span>' if a.get('sector') else '')
+    head = (f'{crumbs}<div class="ahead">{icon(a, True)}<div><h1>{S["a_h1"].format(**fe)}</h1><div style="margin-top:4px">{badges}</div></div>'
             f'<div class="price"><span class="v">{price(m["price"])}</span><span class="pill {cls(m["chg"])}">{pct(m["chg"])}</span><span id="buyslot" data-id="{aid}"></span></div></div>')
-    body = (f'{head}<p class="lead" style="margin-top:10px">{lead}</p><div class="stats">{stat_cards}</div>{calc_block(lang)}'
-            f'<div class="cols2 section"><section class="card"><h2>{h2p}</h2>{ptable}</section>'
-            f'<section class="card faq"><h2>{h2f}</h2>' + ''.join(f'<details><summary>{esc(q)}</summary><p>{esc(x)}</p></details>' for q, x in faq) + '</section></div>'
-            f'<section class="section">{table_block(lang, sim, h2s, interactive=False)}</section>')
-    jsonld = [{"@context": "https://schema.org", "@type": "FAQPage",
+    body = (f'{head}<p class="lead" style="margin-top:10px">{S["a_lead"].format(**fe)}</p><div class="stats">{stat_cards}</div>{calc_block(lang)}'
+            f'<div class="cols2 section"><section class="card"><h2>{S["a_periods"].format(**fe)}</h2>{ptable}</section>'
+            f'<section class="card faq"><h2>{S["faq"]}</h2>' + ''.join(f'<details><summary>{esc(q)}</summary><p>{esc(x)}</p></details>' for q, x in faq) + '</section></div>'
+            f'<section class="section">{table_block(lang, sim, S["a_similar"] + ": " + esc(cat), interactive=False)}</section>'
+            f'<p class="note">{esc(S["about"].format(**f))}</p>')
+    jsonld = [{"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": S['loc'],
                "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": x}} for q, x in faq]},
               {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
                   {"@type": "ListItem", "position": 1, "name": "whatif.invest", "item": SITE + url(lang)},
                   {"@type": "ListItem", "position": 2, "name": n, "item": SITE + url(lang, aid)}]}]
     sel = [aid] + list(bench(aid))[:2]
-    return shell(lang, aid, title, desc, body, dict(lang=lang, sel=sel, since=since, asset=aid), ver, jsonld)
+    return shell(lang, aid, title, desc, body, dict(sel=sel, since=since, asset=aid), ver, jsonld)
+
 
 # ---------------- build ----------------
 def main():
@@ -420,7 +415,7 @@ def main():
     css = open(os.path.join(ROOT, 'src/style.css'), encoding='utf-8').read()
     js = open(os.path.join(ROOT, 'src/app.js'), encoding='utf-8').read()
     ref = open(os.path.join(ROOT, 'src/ref.js'), encoding='utf-8').read()
-    dv = h8(json.dumps(market['assets'], sort_keys=True))[:8]
+    dv = h8(json.dumps(market['assets'], sort_keys=True))
     idx = []
     for aid in ORDERED:
         a, m = A[aid], METRICS[aid]
@@ -430,31 +425,37 @@ def main():
             e['ne'] = nm(a, 'en')
         if a.get('logo'):
             e['l'] = a['logo']
-        e = {k: (round(v, 4) if isinstance(v, float) and k in ('ch', 'r1', 'r3', 'r5') else v) for k, v in e.items() if v is not None}
-        idx.append(e)
+        idx.append({k: (round(v, 4) if isinstance(v, float) and k in ('ch', 'r1', 'r3', 'r5') else v) for k, v in e.items() if v is not None})
         write(f'assets/p/{aid}.json', json.dumps({'start': a['start'], 'end': a['end'], 'p': a['p']}, separators=(',', ':')))
     index_js = 'window.WI=' + json.dumps({'u': UPDATED, 'v': dv, 'a': idx}, ensure_ascii=False, separators=(',', ':')) + ';'
     write('assets/index.js', index_js); write('assets/style.css', css); write('assets/app.js', js); write('assets/ref.js', ref)
     shutil.copy(os.path.join(ROOT, 'src/favicon.svg'), os.path.join(OUT, 'assets/favicon.svg'))
     ver = dict(css=h8(css), js=h8(js), ref=h8(ref), index=h8(index_js))
-    urls = []
-    for lang in LANGS:
-        pre = 'en/' if lang == 'en' else ''
-        write(pre + 'index.html', home(lang, ver)); urls.append((None, lang))
-        write(pre + 'compare/index.html', compare(lang, ver)); urls.append(('compare', lang))
-        for aid in ORDERED:
-            write(f'{pre}{aid}/index.html', asset(aid, lang, ver)); urls.append((aid, lang))
-    sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
-    for p, lang in urls:
-        alts = ''.join(f'<xhtml:link rel="alternate" hreflang="{lg}" href="{SITE + url(lg, p)}"/>' for lg in LANGS)
-        sm.append(f'<url><loc>{SITE + url(lang, p)}</loc><lastmod>{UPDATED}</lastmod>{alts}</url>')
-    sm.append('</urlset>')
-    write('sitemap.xml', '\n'.join(sm))
+    per_lang = {}
+    for lang in ORDER:
+        pre = '' if lang == DEFAULT else lang + '/'
+        pages = [None, 'compare'] + [aid for aid in ORDERED if has_page(lang, aid)]
+        write(pre + 'index.html', home(lang, ver))
+        write(pre + 'compare/index.html', compare(lang, ver))
+        for aid in pages[2:]:
+            write(f'{pre}{aid}/index.html', asset(aid, lang, ver))
+        per_lang[lang] = pages
+    # sitemaps: one per language + index
+    for lang, pages in per_lang.items():
+        sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
+        for p in pages:
+            alts = ''.join(f'<xhtml:link rel="alternate" hreflang="{TR[lg]["loc"]}" href="{SITE + url(lg, p)}"/>' for lg in ORDER if has_page(lg, p))
+            sm.append(f'<url><loc>{SITE + url(lang, p)}</loc><lastmod>{UPDATED}</lastmod>{alts}</url>')
+        sm.append('</urlset>')
+        write(f'sitemap-{lang}.xml', '\n'.join(sm))
+    si = ['<?xml version="1.0" encoding="UTF-8"?>', '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    si += [f'<sitemap><loc>{SITE}{BASE}/sitemap-{lg}.xml</loc><lastmod>{UPDATED}</lastmod></sitemap>' for lg in ORDER]
+    si.append('</sitemapindex>')
+    write('sitemap.xml', '\n'.join(si))
     write('robots.txt', f'User-agent: *\nAllow: /\nSitemap: {SITE}{BASE}/sitemap.xml\n')
-    cats = {}
-    for a in A.values():
-        cats[a['cat']] = cats.get(a['cat'], 0) + 1
-    print(f"built {len(urls)} pages · {len(A)} assets {cats} · data {UPDATED}")
+    total = sum(len(p) for p in per_lang.values())
+    print(f"built {total} pages in {len(ORDER)} languages · {len(A)} assets · data {UPDATED}")
+
 
 if __name__ == '__main__':
     main()
