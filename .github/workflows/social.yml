@@ -1,0 +1,32 @@
+name: Post to Telegram and X
+
+on:
+  push:
+    branches: [main]
+    paths: ['content/news/**', 'content/blog/**']
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 50
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Wait for Vercel to deploy the new pages
+        run: sleep 150
+      - name: Post new articles
+        env:
+          BEFORE: ${{ github.event.before }}
+          AFTER: ${{ github.sha }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_UK: ${{ secrets.TELEGRAM_CHAT_UK }}
+          TELEGRAM_CHAT_EN: ${{ secrets.TELEGRAM_CHAT_EN }}
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_SECRET: ${{ secrets.X_API_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_SECRET: ${{ secrets.X_ACCESS_SECRET }}
+        run: python scripts/social.py
