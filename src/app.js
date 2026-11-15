@@ -331,19 +331,19 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
     bs.forEach((b,i)=>{ b.tr=Math.max(mn,Math.min(mx,raw[i]*k)) }) }
   function settle(n){ for(let i=0;i<n;i++) step(true) }
   function build(){
-    const keep=Object.fromEntries(bs.map(b=>[b.k,b])), list=items(), fresh=!bs.length;
+    const keep=Object.fromEntries(bs.map(b=>[b.k,b])), list=items(); let nw=0;
     bs=list.map((it,i)=>{ const o=keep[it.k]; if(o){ Object.assign(o,it); return o }
       const ang=i*2.39996, rad=Math.sqrt(i+1)/Math.sqrt(list.length)*Math.min(W,H)*.48;
-      return Object.assign(it,{x:W/2+Math.cos(ang)*rad,y:H/2+Math.sin(ang)*rad,vx:0,vy:0,r:4}) });
+      nw++; return Object.assign(it,{x:W/2+Math.cos(ang)*rad,y:H/2+Math.sin(ang)*rad,vx:0,vy:0,r:0,nw:1}) });
     bs.forEach(b=>{ if(b.l&&!(b.k in imgs)){ imgs[b.k]=null; const im=new Image(); im.decoding='async'; im.onload=()=>{imgs[b.k]=im}; im.src=b.l } });
     $$('#bper button').forEach(x=>{ x.disabled=!has(x.dataset.v); });
     if(!has(per)){ per='d'; $$('#bper button').forEach(x=>x.classList.toggle('on',x.dataset.v==='d')) }
-    radii(); if(fresh){ bs.forEach(b=>b.r=b.tr); settle(220) }
+    radii(); if(nw){ bs.forEach(b=>{ if(b.nw||nw>bs.length*.2) b.r=b.tr; b.nw=0 }); settle(nw>bs.length*.2?220:60) }
     box.classList.add('ready'); if(!vis) draw() }
   function step(quiet){
     const cx=W/2, cy=H/2;
     for(const b of bs){ if(!quiet) b.r+=(b.tr-b.r)*.1; if(b===drag) continue;
-      b.vx+=(cx-b.x)*.0006*(H/W); b.vy+=(cy-b.y)*.0006; if(!quiet){ b.vx+=(Math.random()-.5)*.03; b.vy+=(Math.random()-.5)*.03 } }
+      b.vx+=(cx-b.x)*.001*(H/W); b.vy+=(cy-b.y)*.001; if(!quiet){ b.vx+=(Math.random()-.5)*.03; b.vy+=(Math.random()-.5)*.03 } }
     for(let i=0;i<bs.length;i++){ const p=bs[i]; for(let j=i+1;j<bs.length;j++){ const q=bs[j];
       const dx=q.x-p.x, dy=q.y-p.y, m=p.r+q.r+2; if(Math.abs(dx)>m||Math.abs(dy)>m) continue; const d=Math.hypot(dx,dy)||.01;
       if(d<m){ const o=(m-d)/d*.5, ox=dx*o, oy=dy*o, wp=p===drag?0:1, wq=q===drag?0:1, s=wp+wq||1;
