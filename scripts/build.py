@@ -65,8 +65,18 @@ ORD = {aid: k for k, aid in enumerate(ORDERED)}
 TOP = set(ORDERED[:TOP_N])
 
 
+HUBS = {'crypto': 'crypto', 'stocks': 'stock', 'etfs': 'etf', 'metals': 'metal'}
+TOOLS = ['converter', 'calendar', 'heatmap', 'news']
+BLOG_LANGS = {'uk', 'en'}
+assert not (set(HUBS) | set(TOOLS) | {'blog', 'compare'}) & set(A), 'asset id collides with a section slug'
+
+
 def has_page(lang, aid):
-    return aid is None or aid == 'compare' or lang in FULL or aid in TOP
+    if aid is None or aid == 'compare' or aid in HUBS or aid in TOOLS:
+        return True
+    if aid == 'blog' or (aid or '').startswith('blog/'):
+        return lang in BLOG_LANGS and (aid == 'blog' or aid[5:] in POSTS.get(lang, {}))
+    return lang in FULL or aid in TOP
 
 
 # ---------------- math (mirrors src/app.js) ----------------
@@ -219,7 +229,13 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
     alts = ''.join(f'<link rel="alternate" hreflang="{TR[lg]["loc"]}" href="{SITE + url(lg, p)}">' for lg in ORDER if has_page(lg, p))
     alts += f'<link rel="alternate" hreflang="x-default" href="{SITE + url("en", p)}">'
     ld = ''.join(f'<script type="application/ld+json">{json.dumps(j, ensure_ascii=False)}</script>' for j in jsonld)
-    nav = ''.join(f'<a href="{url(lang, k)}" class="{"on" if k == p else ""}">{v}</a>' for k, v in ((None, S['nav_rank']), ('compare', S['nav_cmp'])))
+    X = S['x']
+    tl = {'converter': X['conv_h1'], 'calendar': X['cal_h1'], 'heatmap': X['heat_h1'], 'news': X['news_h1']}
+    blog_l = lang if lang in BLOG_LANGS else 'en'
+    nav = (''.join(f'<a href="{url(lang, k)}" class="{"on" if k == p else ""}">{v}</a>' for k, v in ((None, S['nav_rank']), ('compare', S['nav_cmp'])))
+           + f'<details class="dd"><summary class="{"on" if p in TOOLS else ""}">{X["nav_tools"]}</summary><div>'
+           + ''.join(f'<a href="{url(lang, k)}">{v}</a>' for k, v in tl.items()) + '</div></details>'
+           + f'<a href="{url(blog_l, "blog")}" class="{"on" if (p or "").startswith("blog") else ""}">{X["nav_blog"]}</a>')
     i18n = dict(S['ui'], months=S['months'], intl=S['intl'])
     cfg = dict(cfg, lang=lang, prefix=url(lang).rstrip('/'), full=lang in FULL, topn=TOP_N,
                names={'gold': S['gold'], 'silver': S['silver']})
@@ -262,13 +278,18 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
 """
 
 
+def tvw(kind, cfg, height):
+    return f'<div class="tvw" style="height:{height}px" data-w="{kind}" data-cfg="{esc(json.dumps(cfg))}"></div>'
+
+
 def calc_block(lang):
     u = TR[lang]['ui']
     return f"""<div id="calc">
 <div class="card">
+  <div class="seg modeseg" id="mode"><button data-v="dca" class="on">{u['x_mode_dca']}</button><button data-v="lump">{u['x_mode_lump']}</button></div>
   <div class="controls">
     <div><label class="f">{u['amount']}</label><div class="inp"><span>$</span><input id="amt" type="number" min="1" step="1" value="{AMOUNT}" aria-label="{u['amount']}"></div></div>
-    <div><label class="f">{u['freq']}</label><div class="seg" id="freq"><button data-v="d" class="on">{u['daily']}</button><button data-v="w">{u['weekly']}</button><button data-v="m">{u['monthly']}</button></div></div>
+    <div id="freqbox"><label class="f">{u['freq']}</label><div class="seg" id="freq"><button data-v="d" class="on">{u['daily']}</button><button data-v="w">{u['weekly']}</button><button data-v="m">{u['monthly']}</button></div></div>
     <div><label class="f">{u['since']}</label><div class="inp"><select id="since" aria-label="{u['since']}"></select></div></div>
   </div>
   <label class="f">{u['onchart']}</label>
@@ -486,6 +507,15 @@ def asset(aid, lang, ver):
             stats.append((S[key], simulate(aid, st)))
     rows = stats + [(S['p_since'].format(since=mlabel(i2ym(s0), lang)), simulate(aid, s0))]
     show = stats if len(stats) >= 2 else rows[-4:]
+    X = S['x']
+    lumps = []
+    for yrs, key in ((1, 'p1'), (3, 'p3'), (5, 'p5'), (10, 'p10')):
+        st = END_I - yrs * 12
+        if st >= s0 and st - s0 < len(A[aid]['p']):
+            k = A[aid]['p'][-1] / A[aid]['p'][st - s0]
+            lumps.append((S[key], 1000 * k, k - 1))
+    lump_cards = ''.join(f'<div class="card stat"><div class="k">{X["lump"].format(p=lab)}</div><div class="v">{usd(v)}</div>'
+                         f'<div class="s {cls(r)}">{pct(r)}</div></div>' for lab, v, r in lumps)
     stat_cards = ''.join(
         f'<div class="card stat"><div class="k">{S["stat"].format(p=lab)}</div><div class="v">{usd(x["val"])}</div>'
         f'<div class="s {cls(x["roi"])}">{pct(x["roi"])} <span class="muted">· {S["invested_lc"]} {usd(x["inv"])}</span></div></div>' for lab, x in show)
@@ -500,6 +530,9 @@ def asset(aid, lang, ver):
            (S['q4'].format(**f), S['a4'].format(**f)), (S['q3'], S['a3'])]
     if m['r1'] is None or m['r5'] is None:
         faq.pop(2)
+    if lumps:
+        lab, v, r5_ = lumps[min(2, len(lumps) - 1)]
+        faq.insert(1, (X['q5'].format(name=n, p=lab), X['a5'].format(name=n, p=lab, v=usd(v), roi=pct(r5_))))
     sim = [i for i in ORDERED if A[i]['cat'] == a['cat'] and i != aid]
     if a.get('sector'):
         same = [i for i in sim if A[i].get('sector') == a['sector']]
@@ -511,9 +544,17 @@ def asset(aid, lang, ver):
     head = (f'{crumbs}<div class="ahead">{icon(a, True)}<div><h1>{S["a_h1"].format(**fe)}</h1><div style="margin-top:4px">{badges}</div></div>'
             f'<div class="price"><span class="v" data-p="{aid}">{price(m["price"])}</span><span class="pill {cls(m["chg"])}" data-c="{aid}">{pct(m["chg"])}</span><span id="buyslot" data-id="{aid}"></span></div></div>')
     w = S['w']
+    loc = TV_LOC.get(lang, 'en')
     tv = (f'<section class="card section tvcard"><div class="charthead"><h2>{w["live_chart"]} · {esc(tk)}</h2><span class="livebadge"><i></i>{w["live"]}</span></div>'
-          f'<div id="tv" data-sym="{esc(tv_symbol(a))}" data-loc="{TV_LOC.get(lang, "en")}"></div></section>')
-    body = (f'{head}<p class="lead" style="margin-top:10px">{S["a_lead"].format(**fe)}</p>{tv}<div class="stats">{stat_cards}</div>{calc_block(lang)}'
+          + tvw('advanced-chart', dict(autosize=True, symbol=tv_symbol(a), interval='D', timezone='Etc/UTC', theme='light', style='1', locale=loc,
+                                       allow_symbol_change=False, hide_side_toolbar=True, withdateranges=True, save_image=False), 480) + '</section>')
+    tech_news = (f'<div class="cols2 section"><section class="card"><h2>{X["tech"]} · {esc(tk)}</h2>'
+                 + tvw('technical-analysis', dict(interval='1D', width='100%', height='100%', isTransparent=True, symbol=tv_symbol(a), showIntervalTabs=True,
+                                                  displayMode='single', locale=loc, colorTheme='light'), 430)
+                 + f'</section><section class="card"><h2>{X["news"]} · {esc(tk)}</h2>'
+                 + tvw('timeline', dict(feedMode='symbol', symbol=tv_symbol(a), isTransparent=True, displayMode='regular', width='100%', height='100%',
+                                        colorTheme='light', locale=loc), 430) + '</section></div>')
+    body = (f'{head}<p class="lead" style="margin-top:10px">{S["a_lead"].format(**fe)}</p>{tv}<div class="stats">{stat_cards}</div><div class="stats">{lump_cards}</div>{calc_block(lang)}{tech_news}'
             f'<div class="cols2 section"><section class="card"><h2>{S["a_periods"].format(**fe)}</h2>{ptable}</section>'
             f'<section class="card faq"><h2>{S["faq"]}</h2>' + ''.join(f'<details><summary>{esc(q)}</summary><p>{esc(x)}</p></details>' for q, x in faq) + '</section></div>'
             f'<section class="section">{table_block(lang, sim, S["a_similar"] + ": " + esc(cat), interactive=False)}</section>'
@@ -525,6 +566,219 @@ def asset(aid, lang, ver):
                   {"@type": "ListItem", "position": 2, "name": n, "item": SITE + url(lang, aid)}]}]
     sel = [aid] + list(bench(aid))[:2]
     return shell(lang, aid, title, desc, body, dict(sel=sel, since=since, asset=aid), ver, jsonld)
+
+
+
+# ---------------- hubs, tools ----------------
+def hub(lang, slug, ver):
+    S, X = TR[lang], TR[lang]['x']
+    cat = HUBS[slug]
+    ids = [i for i in ORDERED if A[i]['cat'] == cat]
+    label = S['ui'][cat]
+    title = X['hub_h1'].format(cat=label) + ' | whatif.invest'
+    desc = X['hub_d'].format(n=len(ids), cat=label.lower())
+    b5 = best_by('r5', ids)[:4]
+    cards = ''.join(hl_card(lang, i, nm(A[i], lang), 'r5', S['sub5']) for i in b5)
+    filt = f'<div class="toolbar"><div class="filter">{SEARCH_ICON}<input id="flt" type="search" autocomplete="off"></div></div>'
+    body = (f'<nav class="crumbs"><a href="{url(lang)}">{S["nav_rank"]}</a> / {esc(label)}</nav><h1>{esc(X["hub_h1"].format(cat=label))}</h1>'
+            f'<p class="lead">{esc(desc)}</p><div class="hl">{cards}</div><div class="tabs" id="tabs"></div>{filt}{table_block(lang, ids[:150])}')
+    return shell(lang, slug, title, desc, body, dict(tab=cat), ver)
+
+
+def tool(lang, slug, ver):
+    S, X, u = TR[lang], TR[lang]['x'], TR[lang]['ui']
+    loc = TV_LOC.get(lang, 'en')
+    h1, d = {'converter': (X['conv_h1'], X['conv_d']), 'calendar': (X['cal_h1'], X['cal_d']),
+             'heatmap': (X['heat_h1'], X['heat_d']), 'news': (X['news_h1'], X['news_d'])}[slug]
+    if slug == 'calendar':
+        inner = '<div class="card">' + tvw('events', dict(colorTheme='light', isTransparent=True, width='100%', height='100%', locale=loc,
+                                                           importanceFilter='0,1', countryFilter='us,eu,gb,cn,jp,de,ua'), 760) + '</div>'
+    elif slug == 'heatmap':
+        inner = ('<div class="card">' + tvw('stock-heatmap', dict(exchanges=[], dataSource='SPX500', grouping='sector', blockSize='market_cap_basic',
+                                                                    blockColor='change', locale=loc, symbolUrl='', colorTheme='light', hasTopBar=True,
+                                                                    isDataSetEnabled=True, isZoomEnabled=True, hasSymbolTooltip=True, width='100%', height='100%'), 640)
+                 + '</div><div class="card section">' + tvw('crypto-coins-heatmap', dict(dataSource='Crypto', blockSize='market_cap_calc', blockColor='24h_close_change|5',
+                                                                                         locale=loc, symbolUrl='', colorTheme='light', hasTopBar=True, isDataSetEnabled=True,
+                                                                                         isZoomEnabled=True, hasSymbolTooltip=True, width='100%', height='100%'), 560) + '</div>')
+    elif slug == 'news':
+        inner = '<div class="card">' + tvw('timeline', dict(feedMode='all_symbols', isTransparent=True, displayMode='regular', width='100%', height='100%',
+                                                             colorTheme='light', locale=loc), 900) + '</div>'
+    else:
+        opts = '<option value="usd">US Dollar (USD)</option>' + ''.join(f'<option value="{i}">{esc(nm(A[i], lang))} ({esc(A[i]["tk"])})</option>' for i in ORDERED)
+        inner = (f'<div class="card conv"><div class="cvrow"><label class="f">{X["conv_from"]}<div class="inp"><input id="cva" type="number" value="1" min="0" step="any"></div></label>'
+                 f'<label class="f">&nbsp;<div class="inp"><select id="cvf">{opts.replace(chr(34) + "btc" + chr(34), chr(34) + "btc" + chr(34) + " selected", 1)}</select></div></label>'
+                 f'<button class="toggle" id="cvsw" aria-label="swap">⇄</button>'
+                 f'<label class="f">{X["conv_to"]}<div class="inp"><select id="cvt">{opts}</select></div></label></div>'
+                 f'<div class="cvres" id="cvres"></div><div class="muted" id="cvrate"></div></div>')
+    body = f'<h1>{esc(h1)}</h1><p class="lead">{esc(d)}</p>{inner}'
+    return shell(lang, slug, f'{h1} | whatif.invest', d, body, dict(tool=slug), ver)
+
+
+# ---------------- blog ----------------
+import re as _re
+
+
+def load_posts():
+    posts = {}
+    root = os.path.join(ROOT, 'content/blog')
+    if not os.path.isdir(root):
+        return posts
+    for lang in sorted(os.listdir(root)):
+        for fn in sorted(os.listdir(os.path.join(root, lang))):
+            if not fn.endswith('.md'):
+                continue
+            raw = open(os.path.join(root, lang, fn), encoding='utf-8').read()
+            meta, body = {}, raw
+            if raw.startswith('---'):
+                head, body = raw[3:].split('\n---', 1)
+                for line in head.strip().splitlines():
+                    k, _, v = line.partition(':')
+                    meta[k.strip()] = v.strip()
+            meta['assets'] = [x.strip() for x in meta.get('assets', '').split(',') if x.strip() in A]
+            meta['body'] = body.strip()
+            posts.setdefault(lang, {})[fn[:-3]] = meta
+    return posts
+
+
+POSTS = load_posts()
+
+
+def sc_value(kind, args, lang):
+    """Shortcodes give numbers computed from today's data, so articles stay current."""
+    if kind == 'dcainv':
+        yrs = int(args[0]) if args else 5
+        return usd(simulate('btc', END_I - yrs * 12)['inv'])
+    aid = args[0] if args else None
+    if aid and aid not in A:
+        return '—'
+    yrs = int(args[1]) if len(args) > 1 else 5
+    st = max(END_I - yrs * 12, ym2i(A[aid]['start'])) if aid else END_I - yrs * 12
+    if kind == 'dca':
+        return usd(simulate(aid, st)['val'])
+    if kind == 'dcaroi':
+        return pct(simulate(aid, st)['roi'])
+    if kind == 'dcainv':
+        return usd(simulate(args[1] if len(args) > 1 and args[1] in A else 'btc', END_I - int(args[0]) * 12)['inv']) if args else '—'
+    if kind in ('lump', 'lumproi'):
+        k = A[aid]['p'][-1] / A[aid]['p'][min(st - ym2i(A[aid]['start']), len(A[aid]['p']) - 1)]
+        return usd(1000 * k) if kind == 'lump' else pct(k - 1)
+    if kind == 'price':
+        return price(METRICS[aid]['price'])
+    if kind == 'r':
+        return pct(METRICS[aid]['r' + str(yrs)] if ('r' + str(yrs)) in METRICS[aid] else None)
+    if kind == 'date':
+        return mlabel(END, lang, long=True)
+    return '—'
+
+
+def sc_block(kind, args, lang):
+    S = TR[lang]
+    if kind == 'card' and args and args[0] in A:
+        aid = args[0]; a = A[aid]; m = METRICS[aid]
+        return (f'<a class="card postcard" href="{aurl(lang, aid)}">{icon(a, True)}<div><b>{esc(nm(a, lang))}</b> <span class="badge">{esc(a["tk"])}</span>'
+                f'<div class="muted">{S["stat"].format(p=S["p5"])}: <b class="{cls(m["r5"])}">{pct(m["r5"])}</b> · {S["ui"]["price"]} <b data-p="{aid}">{price(m["price"])}</b></div></div>'
+                f'<span class="calc">{S["ui"]["calc"]} →</span></a>')
+    if kind == 'table' and args:
+        ids = [i for i in args[0].split(',') if i in A]
+        yrs = int(args[1]) if len(args) > 1 else 5
+        hh = f'<tr><th>{S["ui"]["asset"]}</th><th>{S["ui"]["invested"]}</th><th>DCA · {S["p" + str(yrs)] if "p" + str(yrs) in S else yrs}</th><th>{S["result"]}</th><th>{S["x"]["lump"].format(p=S.get("p" + str(yrs), yrs))}</th></tr>'
+        rows = ''
+        for i in ids:
+            st = max(END_I - yrs * 12, ym2i(A[i]['start']))
+            r = simulate(i, st)
+            k = A[i]['p'][-1] / A[i]['p'][min(st - ym2i(A[i]['start']), len(A[i]['p']) - 1)]
+            rows += (f'<tr><td class="a"><a href="{aurl(lang, i)}">{esc(nm(A[i], lang))}</a></td><td>{usd(r["inv"])}</td><td>{usd(r["val"])}</td>'
+                     f'<td class="{cls(r["roi"])}">{pct(r["roi"])}</td><td>{usd(1000 * k)}</td></tr>')
+        return f'<div style="overflow-x:auto"><table class="rt">{hh}{rows}</table></div>'
+    return ''
+
+
+def inline_md(s, lang):
+    s = esc(s)
+    s = _re.sub(r'\{\{(\w+)(?::([^}]*))?\}\}', lambda m: sc_value(m.group(1), (m.group(2) or '').split(':') if m.group(2) else [], lang), s)
+    s = _re.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', s)
+    s = _re.sub(r'(?<!\*)\*(?!\s)(.+?)\*', r'<em>\1</em>', s)
+    s = _re.sub(r'\[([^\]]+)\]\(([^)]+)\)', lambda m: f'<a href="{m.group(2).replace("{lang}", url(lang).rstrip("/"))}">{m.group(1)}</a>', s)
+    return s
+
+
+def md(text, lang):
+    out, para, lst, ltag = [], [], [], None
+    def flush():
+        nonlocal para, lst, ltag
+        if para:
+            out.append('<p>' + inline_md(' '.join(para), lang) + '</p>'); para = []
+        if lst:
+            out.append(f'<{ltag}>' + ''.join(f'<li>{inline_md(x, lang)}</li>' for x in lst) + f'</{ltag}>'); lst = []
+    for line in text.splitlines():
+        s = line.strip()
+        bm = _re.fullmatch(r'\{\{(card|table):([^}]*)\}\}', s)
+        if not s:
+            flush(); continue
+        if bm:
+            flush(); out.append(sc_block(bm.group(1), bm.group(2).split(':'), lang)); continue
+        h = _re.match(r'(#{2,3})\s+(.*)', s)
+        if h:
+            flush(); lv = len(h.group(1)); out.append(f'<h{lv}>{inline_md(h.group(2), lang)}</h{lv}>'); continue
+        if s.startswith('> '):
+            flush(); out.append(f'<blockquote>{inline_md(s[2:], lang)}</blockquote>'); continue
+        li = _re.match(r'(-|\d+\.)\s+(.*)', s)
+        if li:
+            if para:
+                flush()
+            ltag = 'ul' if li.group(1) == '-' else 'ol'
+            lst.append(li.group(2)); continue
+        if lst:
+            flush()
+        para.append(s)
+    flush()
+    return '\n'.join(out)
+
+
+def post_meta_title(meta, lang):
+    return _re.sub(r'\{\{(\w+)(?::([^}]*))?\}\}', lambda m: sc_value(m.group(1), (m.group(2) or '').split(':') if m.group(2) else [], lang), meta['title'])
+
+
+def blog_index(lang, ver):
+    X = TR[lang]['x']
+    items = sorted(POSTS.get(lang, {}).items(), key=lambda kv: kv[1].get('date', ''), reverse=True)
+    cards = ''.join(
+        f'<a class="card post" href="{url(lang, "blog/" + slug)}"><div class="muted">{esc(m.get("date", ""))}</div><h2>{esc(post_meta_title(m, lang))}</h2>'
+        f'<p>{esc(post_meta_title(dict(title=m.get("description", "")), lang))}</p>'
+        + ''.join(f'<span class="badge">{esc(A[i]["tk"])}</span> ' for i in m['assets']) + '</a>' for slug, m in items)
+    body = f'<h1>{esc(X["blog_h1"])}</h1><p class="lead">{esc(X["blog_d"])}</p><div class="posts">{cards}</div>'
+    return shell(lang, 'blog', X['blog_h1'] + ' | whatif.invest', X['blog_d'], body, {}, ver)
+
+
+def blog_post(lang, slug, ver):
+    S, X = TR[lang], TR[lang]['x']
+    m = POSTS[lang][slug]
+    title = post_meta_title(m, lang)
+    desc = post_meta_title(dict(title=m.get('description', '')), lang)
+    html_body = md(m['body'], lang)
+    rel = [s for s in POSTS.get(lang, {}) if s != slug][:3]
+    rel_html = ''.join(f'<a class="card post" href="{url(lang, "blog/" + s)}"><h3>{esc(post_meta_title(POSTS[lang][s], lang))}</h3></a>' for s in rel)
+    cards = ''.join(sc_block('card', [i], lang) for i in m['assets'][:4])
+    w = S['w']
+    body = (f'<nav class="crumbs"><a href="{url(lang, "blog")}">{X["nav_blog"]}</a></nav><article class="art"><h1>{esc(title)}</h1>'
+            f'<div class="muted">{esc(m.get("date", ""))} · {S["updated"]} {UPDATED}</div><div class="artbody">{html_body}</div></article>'
+            f'<div class="postcards">{cards}</div>'
+            f'<section class="banner section"><div><b>{w["cta"]}</b><p>{w["cta_text"]}</p></div><a class="btn" id="ctaBuy2" href="{url(lang, "compare")}">{w["cta"]} →</a></section>'
+            + (f'<section class="section"><h2>{X["related"]}</h2><div class="posts">{rel_html}</div></section>' if rel else ''))
+    jsonld = [{"@context": "https://schema.org", "@type": "Article", "headline": title, "description": desc, "inLanguage": S['loc'],
+               "datePublished": m.get('date'), "dateModified": UPDATED, "mainEntityOfPage": SITE + url(lang, 'blog/' + slug),
+               "author": {"@type": "Organization", "name": "whatif.invest"}, "publisher": {"@type": "Organization", "name": "whatif.invest"}}]
+    return shell(lang, 'blog/' + slug, title, desc, body, {}, ver, jsonld)
+
+
+def rss(lang):
+    X = TR[lang]['x']
+    items = sorted(POSTS.get(lang, {}).items(), key=lambda kv: kv[1].get('date', ''), reverse=True)
+    it = ''.join(f'<item><title>{esc(post_meta_title(m, lang))}</title><link>{SITE + url(lang, "blog/" + s)}</link>'
+                 f'<guid>{SITE + url(lang, "blog/" + s)}</guid><pubDate>{esc(m.get("date", ""))}</pubDate>'
+                 f'<description>{esc(post_meta_title(dict(title=m.get("description", "")), lang))}</description></item>' for s, m in items)
+    return (f'<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>{esc(X["blog_h1"])}</title>'
+            f'<link>{SITE + url(lang, "blog")}</link><description>{esc(X["blog_d"])}</description>{it}</channel></rss>')
 
 
 # ---------------- build ----------------
@@ -554,12 +808,23 @@ def main():
     per_lang = {}
     for lang in ORDER:
         pre = '' if lang == DEFAULT else lang + '/'
-        pages = [None, 'compare'] + [aid for aid in ORDERED if has_page(lang, aid)]
+        assets_ = [aid for aid in ORDERED if has_page(lang, aid)]
         write(pre + 'index.html', home(lang, ver))
         write(pre + 'compare/index.html', compare(lang, ver))
-        for aid in pages[2:]:
+        for aid in assets_:
             write(f'{pre}{aid}/index.html', asset(aid, lang, ver))
-        per_lang[lang] = pages
+        for slug in HUBS:
+            write(f'{pre}{slug}/index.html', hub(lang, slug, ver))
+        for slug in TOOLS:
+            write(f'{pre}{slug}/index.html', tool(lang, slug, ver))
+        extra_pages = []
+        if lang in BLOG_LANGS and POSTS.get(lang):
+            write(pre + 'blog/index.html', blog_index(lang, ver))
+            write(pre + 'blog/rss.xml', rss(lang))
+            for s in POSTS[lang]:
+                write(f'{pre}blog/{s}/index.html', blog_post(lang, s, ver))
+            extra_pages = ['blog'] + ['blog/' + s for s in POSTS[lang]]
+        per_lang[lang] = [None, 'compare'] + list(HUBS) + TOOLS + extra_pages + assets_
     # sitemaps: one per language + index
     for lang, pages in per_lang.items():
         sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']

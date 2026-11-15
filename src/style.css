@@ -234,3 +234,30 @@ footer a{color:var(--text)}
 @keyframes fd{0%{background:#fbd5d5}100%{background:transparent}}
 @media (max-width:980px){.herox{grid-template-columns:1fr}.wgrid{grid-template-columns:1fr 1fr}.wgrid3{grid-template-columns:1fr}.heat{grid-template-columns:repeat(4,1fr)}}
 @media (max-width:640px){.wgrid{grid-template-columns:1fr}.heat{grid-template-columns:repeat(3,1fr)}.tile.h1{grid-column:span 3;grid-row:span 1}#tv{height:380px}.brow{grid-template-columns:110px 1fr 80px}}
+
+/* ---- nav dropdown, modes, tools, blog ---- */
+.dd{position:relative}
+.dd summary{list-style:none;padding:8px 12px;border-radius:8px;font-weight:600;font-size:14px;color:var(--muted);cursor:pointer}
+.dd summary::-webkit-details-marker{display:none}
+.dd summary::after{content:' ▾';font-size:11px}
+.dd summary:hover,.dd summary.on{color:var(--text);background:var(--bg)}
+.dd>div{position:absolute;top:40px;left:0;background:#fff;border:1px solid var(--line);border-radius:12px;box-shadow:0 12px 32px rgba(16,24,40,.12);padding:6px;min-width:230px;z-index:30}
+.dd>div a{display:block;padding:9px 12px;border-radius:8px;text-decoration:none;font-weight:600;font-size:14px}
+.dd>div a:hover{background:var(--accent-soft);color:var(--accent)}
+.modeseg{margin-bottom:12px;display:inline-flex}
+.tvw{border-radius:10px;overflow:hidden}
+.conv .cvrow{display:grid;grid-template-columns:1fr 1.4fr auto 1.4fr;gap:10px;align-items:end}
+.conv .cvrow label.f{margin:0}.conv .cvrow .inp{margin-top:6px}
+.conv #cvsw{height:42px;font-size:18px}
+.cvres{font-size:18px;margin:18px 0 6px}.cvres .big{font:800 30px 'JetBrains Mono',monospace;color:var(--accent)}
+.posts{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.card.post{text-decoration:none;display:block}.card.post:hover{border-color:#cbd5e1}
+.card.post h2,.card.post h3{font-size:18px;margin:6px 0}.card.post p{color:var(--muted);margin:0 0 8px}
+.art{max-width:780px;margin:0 auto}
+.artbody{font-size:16.5px;line-height:1.7}.artbody h2{margin-top:28px}.artbody p{margin:12px 0}
+.artbody blockquote{border-left:4px solid var(--accent);margin:16px 0;padding:6px 16px;background:var(--accent-soft);border-radius:0 10px 10px 0}
+.artbody .rt{margin:14px 0}
+.postcard{display:flex;align-items:center;gap:14px;text-decoration:none;margin:14px 0}
+.postcard>div{flex:1}
+.postcards{max-width:780px;margin:0 auto}
+@media (max-width:640px){.conv .cvrow{grid-template-columns:1fr}.dd>div{right:0;left:auto}}

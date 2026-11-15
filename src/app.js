@@ -105,7 +105,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
   const PALETTE=['#1a6dff','#f59e0b','#14a44d','#e5484d','#8b5cf6','#0ea5e9','#ec4899','#64748b','#84cc16','#f97316'];
   const END=WI.u.slice(0,7), END_DAY=+WI.u.slice(8,10), MAXSEL=8;
   const cache={};
-  let freq='d', logScale=false, selected=(PAGE.sel||['btc']).filter(id=>BYID[id]); const colorOf={};
+  let freq='d', mode='dca', logScale=false, selected=(PAGE.sel||['btc']).filter(id=>BYID[id]); const colorOf={};
   const ym2i=s=>{const [y,m]=s.split('-').map(Number);return y*12+m-1};
   const i2ym=i=>`${Math.floor(i/12)}-${String(i%12+1).padStart(2,'0')}`;
   let DTF; try{DTF=new Intl.DateTimeFormat(T.intl||'en-US',{month:'short',year:'numeric'})}catch(e){}
@@ -116,6 +116,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
   function perMonth(i){ let d=daysIn(Math.floor(i/12),i%12+1); if(i2ym(i)===END) d=END_DAY;
     return freq==='d'?d:freq==='w'?d/7:(i2ym(i)===END?0:1) }
   function simulate(P,startI,amt){ const s0=ym2i(P.start), e=ym2i(P.end), from=Math.max(startI,s0);
+    if(mode==='lump'){ const u=amt/P.p[from-s0], pts=[]; for(let i=from;i<=e;i++) pts.push({i,inv:amt,val:u*P.p[i-s0]}); return {units:u,inv:amt,val:u*P.p[e-s0],pts,from} }
     let u=0,inv=0; const pts=[]; for(let i=from;i<=e;i++){ const c=amt*perMonth(i); u+=c/P.p[i-s0]; inv+=c; pts.push({i,inv,val:u*P.p[i-s0]}) }
     return {units:u,inv,val:u*P.p[e-s0],pts,from} }
 
@@ -136,6 +137,9 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
     $('#pool').innerHTML=list.map(a=>`<button data-id="${a.i}">${esc(nm(a))} <span class="muted">${esc(a.t)}</span></button>`).join('')||`<span class="muted">${T.nothing}</span>`;
     $$('#pool button').forEach(b=>b.onclick=()=>{toggle(b.dataset.id); $('#pq').value=''; pool()}) }
   $('#pq').placeholder=T.filter; $('#pq').oninput=pool;
+  $$('#mode button').forEach(b=>b.onclick=()=>{ mode=b.dataset.v; $$('#mode button').forEach(x=>x.classList.toggle('on',x===b));
+    const am=$('#amt'); if(mode==='lump'&&+am.value<100) am.value=1000; if(mode==='dca'&&+am.value>=1000) am.value=10;
+    $('#freqbox').style.visibility=mode==='lump'?'hidden':''; render() });
   $$('#freq button').forEach(b=>b.onclick=()=>{freq=b.dataset.v;$$('#freq button').forEach(x=>x.classList.toggle('on',x===b));render()});
   $('#amt').oninput=render; sel.onchange=render;
   $('#logBtn').onclick=()=>{logScale=!logScale;$('#logBtn').classList.toggle('on',logScale);render()};
@@ -157,7 +161,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
     $('#rt').innerHTML=`<tr><th>${T.asset}</th><th class="hide-sm">${T.invested}</th><th>${T.value}</th><th>${T.profit}</th><th class="hide-sm">${T.got}</th><th></th></tr>`+
       res.map(r=>{ const p=r.val-r.inv, u=T['u_'+r.a.c]||r.a.t, late=r.from>startI?`<div class="muted" style="font:500 11px Inter">${T.frm} ${mlabel(i2ym(r.from))}</div>`:'';
         return `<tr><td class="a" style="--c:${r.c}"><i></i><a href="${url(r.a.i)}" style="text-decoration:none">${esc(nm(r.a))}</a>${late}</td><td class="hide-sm">${fmtUsd(r.inv)}</td><td>${fmtUsd(r.val)}</td><td class="${cls(p)}">${fmtUsd(p)}<br><span style="font-size:11px">${fmtPct(r.val/r.inv-1)}</span></td><td class="hide-sm">${(+r.units.toPrecision(5)).toLocaleString('en-US')} ${esc(u)}</td><td>${buyBtn(r.a)}</td></tr>` }).join('');
-    $('#shareText').textContent=fmt(T.share,{asset:nm(best.a),amt,per:T['per_'+freq],since:mlabel(i2ym(best.from)),val:fmtUsd(best.val),pct:fmtPct(best.val/best.inv-1)});
+    $('#shareText').textContent=fmt(T.share,{asset:nm(best.a),amt,per:mode==='lump'?'':T['per_'+freq],since:mlabel(i2ym(best.from)),val:fmtUsd(best.val),pct:fmtPct(best.val/best.inv-1)});
     chart(res);
   }
   function niceStep(x){const p=10**Math.floor(Math.log10(x)),n=x/p;return (n<1.5?1:n<3?2:n<7?5:10)*p}
@@ -254,15 +258,30 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
   if(document.querySelector('[data-p]')) connect();
 })();
 
-/* ---------- TradingView live chart (asset page) ---------- */
+/* ---------- TradingView widgets (lazy) ---------- */
 (function(){
-  const el=$('#tv'); if(!el) return;
-  const mount=()=>{ const wrap=document.createElement('div'); wrap.className='tradingview-widget-container'; wrap.style.height='100%';
+  const els=$$('.tvw'); if(!els.length) return;
+  const mount=el=>{ if(el.dataset.done) return; el.dataset.done=1;
+    const wrap=document.createElement('div'); wrap.className='tradingview-widget-container'; wrap.style.height='100%';
     wrap.innerHTML='<div class="tradingview-widget-container__widget" style="height:100%"></div>';
-    const s=document.createElement('script'); s.src='https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js'; s.async=true;
-    s.textContent=JSON.stringify({autosize:true,symbol:el.dataset.sym,interval:'D',timezone:'Etc/UTC',theme:'light',style:'1',locale:el.dataset.loc||'en',
-      allow_symbol_change:false,hide_side_toolbar:true,withdateranges:true,save_image:false,support_host:'https://www.tradingview.com'});
-    wrap.appendChild(s); el.appendChild(wrap) };
-  if('IntersectionObserver' in window){ const io=new IntersectionObserver(es=>{ if(es.some(e=>e.isIntersecting)){io.disconnect();mount()} },{rootMargin:'300px'}); io.observe(el) } else mount();
+    const s=document.createElement('script'); s.src=`https://s3.tradingview.com/external-embedding/embed-widget-${el.dataset.w}.js`; s.async=true;
+    s.textContent=el.dataset.cfg; wrap.appendChild(s); el.appendChild(wrap) };
+  if('IntersectionObserver' in window){ const io=new IntersectionObserver(es=>es.forEach(e=>{ if(e.isIntersecting){io.unobserve(e.target);mount(e.target)} }),{rootMargin:'400px'}); els.forEach(el=>io.observe(el)) }
+  else els.forEach(mount);
+})();
+
+/* ---------- converter ---------- */
+(function(){
+  if(!$('#cvres')) return;
+  const px=id=>id==='usd'?1:(BYID[id]&&BYID[id].pr);
+  const lab=id=>id==='usd'?'USD':BYID[id].t;
+  const run=()=>{ const a=+$('#cva').value||0, f=$('#cvf').value, to=$('#cvt').value, pf=px(f), pt=px(to); if(!pf||!pt) return;
+    const v=a*pf/pt, r=pf/pt;
+    const fmtN=x=>x>=1?x.toLocaleString('en-US',{maximumFractionDigits:4}):x.toPrecision(6);
+    $('#cvres').innerHTML=`<b>${fmtN(a)} ${esc(lab(f))}</b> = <b class="big">${fmtN(v)} ${esc(lab(to))}</b>`;
+    $('#cvrate').textContent=`1 ${lab(f)} = ${fmtN(r)} ${lab(to)} · 1 ${lab(to)} = ${fmtN(1/r)} ${lab(f)}` };
+  ['#cva','#cvf','#cvt'].forEach(s=>$(s).addEventListener('input',run));
+  $('#cvsw').onclick=()=>{ const f=$('#cvf').value; $('#cvf').value=$('#cvt').value; $('#cvt').value=f; run() };
+  run(); setInterval(run,2000);
 })();
 })();

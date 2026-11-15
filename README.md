@@ -32,3 +32,22 @@ Locally: `python3 scripts/build.py && cd dist && python3 -m http.server` → htt
 4. GitHub → Actions → "Fetch market data" → **Run workflow** to refresh data any time.
 
 Not investment advice. Calculations use monthly closes and ignore fees, taxes and dividends.
+
+## Blog
+
+Posts live in `content/blog/<lang>/<slug>.md` (uk and en; use the same slug in both languages so they link to each other).
+
+```
+---
+title: $10 a day in Bitcoin for 5 years is now worth {{dca:btc:5}}
+description: One-line summary for Google
+date: 2026-11-15
+assets: btc, spy, gold
+---
+Markdown text: ## headings, - lists, **bold**, [links]({lang}/btc/), > quotes.
+```
+
+Numbers stay current — shortcodes are recalculated on every build:
+`{{dca:btc:5}}` value of $10/day over 5 years · `{{dcaroi:btc:5}}` its return · `{{dcainv:5}}` amount invested ·
+`{{lump:btc:5}}` $1,000 invested 5 years ago · `{{lumproi:btc:5}}` · `{{price:btc}}` · `{{date}}`.
+On their own line: `{{card:btc}}` asset card, `{{table:btc,eth,spy,gold:5}}` comparison table.
