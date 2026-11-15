@@ -1256,7 +1256,7 @@ def country_page(lang, slug, ver):
     cards = ''.join(hl_card(lang, i, nm(A[i], lang), key, S['sub5' if key == 'r5' else 'sub1']) for i in best)
     lead = CTRY[lang][1].format(n=len(ids))
     desc = f'{h1}. {lead}'
-    body = (f'<nav class="crumbs"><a href="{url(lang)}">{S["nav_rank"]}</a> / <a href="{url(lang, "stocks")}">{esc(S["cat_stock"])}</a> / {esc(name)}</nav>'
+    body = (f'<nav class="crumbs"><a href="{url(lang)}">{S["nav_rank"]}</a> / <a href="{url(lang, "stocks")}">{esc(S["ui"]["stock"])}</a> / {esc(name)}</nav>'
             f'<h1>{esc(h1)}</h1><p class="lead">{esc(lead)}</p>{country_chips(lang, slug)}'
             + (f'<div class="hl">{cards}</div>' if cards else '')
             + f'<section class="section">{table_block(lang, ids, None, interactive=False)}</section>'

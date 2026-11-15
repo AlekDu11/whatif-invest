@@ -146,6 +146,27 @@ def to_usd(series, ccy, fxm):
     return dict(series, p=out)
 
 
+def fix_x100(series):
+    """London prices: Yahoo mixes pence and pounds month to month. Lift months that are ~100x below their neighbours."""
+    if not series:
+        return series
+    p = list(series['p'])
+    for i, v in enumerate(p):
+        nb = sorted(x for x in p[max(0, i - 4):i] + p[i + 1:i + 5] if x > 0)
+        if not nb or v <= 0:
+            continue
+        m = nb[len(nb) // 2]
+        if abs(math.log(v * 100 / m)) + 2 < abs(math.log(v / m)):
+            p[i] = float(f"{v * 100:.6g}")
+    return dict(series, p=p)
+
+
+def broken(series):
+    """Redenominations / token swaps: a single month moving more than 30x makes DCA numbers meaningless."""
+    p = series['p']
+    return any(p[i - 1] > 0 and not (1 / 30 < p[i] / p[i - 1] < 30) for i in range(1, len(p)))
+
+
 def looks_stable(series):
     p = series['p'][-12:]
     return len(p) >= 3 and all(0.97 < x < 1.03 for x in p)
@@ -393,7 +414,7 @@ def main():
                 aid = f"{aid}-{r.get('mkt') or 'etf'}"
             if aid in assets:
                 continue
-            ser = to_usd(mm.get(r['yahoo']), ccy, fxm)
+            ser = to_usd(fix_x100(mm.get(r['yahoo'])) if ccy == 'GBp' else mm.get(r['yahoo']), ccy, fxm)
             assets[aid] = dict(name={'uk': r['name'], 'en': r['name']}, tk=r['tk'], cat=r['cat'], yahoo=r['yahoo'], src='yahoo', ccy=ccy,
                                **{k: r[k] for k in ('mkt', 'sector') if r.get(k)}, **(ser or {}))
 
@@ -444,7 +465,7 @@ def main():
         else:
             s, src = other_monthly(base)
         time.sleep(0.12)
-        if not s or looks_stable(s):
+        if not s or looks_stable(s) or broken(s):
             continue
         if not r and m.get('price') and not (m['price'] / 3 < s['p'][-1] < m['price'] * 3):
             continue                                    # same ticker, different coin on that exchange
