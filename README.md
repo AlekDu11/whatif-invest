@@ -51,3 +51,7 @@ Numbers stay current — shortcodes are recalculated on every build:
 `{{dca:btc:5}}` value of $10/day over 5 years · `{{dcaroi:btc:5}}` its return · `{{dcainv:5}}` amount invested ·
 `{{lump:btc:5}}` $1,000 invested 5 years ago · `{{lumproi:btc:5}}` · `{{price:btc}}` · `{{date}}`.
 On their own line: `{{card:btc}}` asset card, `{{table:btc,eth,spy,gold:5}}` comparison table.
+
+
+## Own news briefs
+content/news/<lang>/<slug>.md → /news/<slug>/ (NewsArticle). Front matter: title, description, date `YYYY-MM-DD HH:MM` (UTC), tags (bitcoin, ethereum, etf, regulation, defi, stablecoins, solana, xrp, markets, hacks), assets. Body in our own words + `## Sources` list; the same shortcodes as the blog work. Same English slug in every language.

@@ -413,6 +413,10 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
   load(); setInterval(()=>{ if(!document.hidden) load() },300000);
 })();
 
+/* ---------- local time for news timestamps ---------- */
+(function(){ let F; try{ F=new Intl.DateTimeFormat(T.intl||'en',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}) }catch(e){ return }
+  $$('time[data-t]').forEach(t=>{ const d=Date.parse(t.dataset.t.replace(' ','T')+(/Z|[+-]\d\d:?\d\d$/.test(t.dataset.t)?'':'Z')); if(d) t.textContent=F.format(new Date(d)) }) })();
+
 /* ---------- insights category tabs ---------- */
 (function(){ const t=$('#bcats'); if(!t) return;
   $$('#bcats button').forEach(b=>b.onclick=()=>{ $$('#bcats button').forEach(x=>x.classList.toggle('on',x===b)); $$('.posts .post[data-c]').forEach(p=>p.hidden=!!b.dataset.c&&p.dataset.c!==b.dataset.c) }) })();

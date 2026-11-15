@@ -95,6 +95,8 @@ def has_page(lang, aid):
         return aid != 'inflation' or bool(CPI['c'])
     if aid == 'habits' or (aid or '').startswith('habits/'):
         return True
+    if (aid or '').startswith('news/'):
+        return aid[5:] in NEWS.get(lang, {})
     if aid == 'blog' or (aid or '').startswith('blog/'):
         return lang in BLOG_LANGS and (aid == 'blog' or aid[5:] in POSTS.get(lang, {}))
     return lang in FULL or aid in TOP
@@ -941,15 +943,52 @@ def exchanges_page(lang, ver):
 NEWS_TAGS = ['bitcoin', 'ethereum', 'etf', 'regulation', 'defi', 'stablecoins', 'solana', 'xrp', 'markets', 'hacks']
 
 
+def news_items(lang):
+    return sorted(NEWS.get(lang, {}).items(), key=lambda kv: kv[1].get('date', ''), reverse=True)
+
+
+def news_row(lang, slug, m, tl):
+    tags = ''.join(f' <i class="badge">{esc(tl.get(t, t))}</i>' for t in (x.strip() for x in m.get('tags', '').split(',')) if t)
+    return (f'<a class="nrow" href="{url(lang, "news/" + slug)}"><b>{esc(m.get("title", ""))}</b>'
+            f'<span class="muted">WhatIfStack · <time data-t="{esc(m.get("date", ""))}">{esc(m.get("date", "")[:16])}</time>{tags}</span></a>')
+
+
 def news_page(lang, ver):
     n = NW[lang]
-    tl = n['tags'].split('|')
-    chips = f'<button class="on" data-t="">{esc(n["n_all"])}</button>' + ''.join(f'<button data-t="{k}">{esc(v)}</button>' for k, v in zip(NEWS_TAGS, tl))
-    body = (f'<h1>{esc(n["n_h1"])}</h1><p class="lead">{esc(n["n_d"])}</p><div class="seg nchips" id="ntags">{chips}</div>'
+    tl = dict(zip(NEWS_TAGS, n['tags'].split('|')))
+    chips = f'<button class="on" data-t="">{esc(n["n_all"])}</button>' + ''.join(f'<button data-t="{k}">{esc(v)}</button>' for k, v in tl.items())
+    own = news_items(lang)[:60]
+    own_html = (f'<section class="section"><h2>{esc(n["own"])}</h2><div class="card nlist own">' + ''.join(news_row(lang, k, m, tl) for k, m in own) + '</div></section>') if own else ''
+    body = (f'<h1>{esc(n["n_h1"])}</h1><p class="lead">{esc(n["n_d"])}</p>{own_html}'
+            f'<section class="section"><h2>{esc(n["live"])}</h2><div class="seg nchips" id="ntags">{chips}</div>'
             f'<div class="card nlist" id="nlist"><div class="bload"><i></i></div></div><button class="toggle" id="nmore" hidden>{esc(n["more"])}</button>'
-            f'<p class="muted" style="font-size:13px">{esc(n["n_note"])}</p>{poly_block(lang)}')
-    cfg = dict(news=dict(tags=dict(zip(NEWS_TAGS, tl))))
+            f'<p class="muted" style="font-size:13px">{esc(n["n_note"])}</p></section>{poly_block(lang)}')
+    cfg = dict(news=dict(tags=tl))
     return shell(lang, 'news', f'{n["n_h1"]} | {BRAND}', n['n_d'], body, cfg, ver)
+
+
+def news_article(lang, slug, ver):
+    S, n = TR[lang], NW[lang]
+    m = NEWS[lang][slug]
+    tl = dict(zip(NEWS_TAGS, n['tags'].split('|')))
+    title, desc = m.get('title', ''), m.get('description', '')
+    tags = ''.join(f'<span class="badge">{esc(tl.get(t, t))}</span> ' for t in (x.strip() for x in m.get('tags', '').split(',')) if t)
+    cards = ''.join(sc_block('card', [i], lang) for i in m['assets'][:3])
+    rel = [(k, x) for k, x in news_items(lang) if k != slug][:6]
+    rel_html = ''.join(news_row(lang, k, x, tl) for k, x in rel)
+    w = S['w']
+    about = url(lang if lang in ABOUT else 'en', 'about')
+    body = (f'<nav class="crumbs"><a href="{url(lang, "news")}">{n["n_nav"]}</a></nav><article class="art"><h1>{esc(title)}</h1>'
+            f'<div class="muted byline"><a href="{about}">WhatIfStack Research</a> · <time data-t="{esc(m.get("date", ""))}">{esc(m.get("date", ""))}</time> · {tags}</div>'
+            f'<p class="lead">{esc(desc)}</p><div class="postcards">{cards}</div><div class="artbody">{md(m["body"], lang)}</div></article>'
+            f'<section class="banner section"><div><b>{w["cta"]}</b><p>{w["cta_text"]}</p></div><a class="btn" id="ctaBuy2" href="{url(lang, "exchanges")}">{EX[lang]["nav"]} →</a></section>'
+            + (f'<section class="section"><h2>{esc(n["own"])}</h2><div class="card nlist own">{rel_html}</div></section>' if rel else ''))
+    d = m.get('date', '').replace(' ', 'T')
+    jsonld = [{"@context": "https://schema.org", "@type": "NewsArticle", "headline": title, "description": desc, "inLanguage": S['loc'],
+               "datePublished": d, "dateModified": d, "mainEntityOfPage": SITE + url(lang, 'news/' + slug), "image": [SITE + '/assets/og.jpg'],
+               "author": {"@type": "Organization", "name": "WhatIfStack Research", "url": SITE + about},
+               "publisher": {"@type": "Organization", "name": BRAND, "logo": {"@type": "ImageObject", "url": SITE + '/assets/icon-512.png'}}}]
+    return shell(lang, 'news/' + slug, f'{title} | {BRAND}', desc, body, {}, ver, jsonld)
 
 
 ABOUT = {
@@ -1059,9 +1098,9 @@ def tool(lang, slug, ver):
 import re as _re
 
 
-def load_posts():
+def load_posts(sub='blog'):
     posts = {}
-    root = os.path.join(ROOT, 'content/blog')
+    root = os.path.join(ROOT, 'content', sub)
     if not os.path.isdir(root):
         return posts
     for lang in sorted(os.listdir(root)):
@@ -1082,6 +1121,7 @@ def load_posts():
 
 
 POSTS = load_posts()
+NEWS = load_posts('news')   # own news briefs: content/news/<lang>/<slug>.md
 
 
 def sc_value(kind, args, lang):
@@ -1288,6 +1328,9 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
         write(pre + 'bitcoin-halving/index.html', halving_page(lang, ver))
         write(pre + 'exchanges/index.html', exchanges_page(lang, ver))
         write(pre + 'news/index.html', news_page(lang, ver))
+        for k in NEWS.get(lang, {}):
+            write(f'{pre}news/{k}/index.html', news_article(lang, k, ver))
+        extra_pages += ['news/' + k for k in NEWS.get(lang, {})]
         if lang in ABOUT:
             write(pre + 'about/index.html', about_page(lang, ver))
         write(pre + 'habits/index.html', habits_hub(lang, ver))
