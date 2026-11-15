@@ -1,13 +1,12 @@
-// Partner (referral) links. Put your own URLs here.
+// Partner (referral) links.
 // REF overrides one asset; REF_DEFAULT is used for every other asset in that category.
 // An empty url ('') hides the button.
 window.REF = {
-  // btc:  { url: 'https://accounts.binance.com/register?ref=YOURCODE', where: 'Binance' },
-  // gold: { url: 'https://www.bybit.com/invite?ref=YOURCODE', where: 'Bybit (XAUT)' },
+  hype: { url: 'https://app.hyperliquid.xyz/join/ALEKSDU', where: 'Hyperliquid' },
 };
 window.REF_DEFAULT = {
-  crypto: { url: '', where: 'Binance' },
-  metal:  { url: '', where: 'Bybit' },
+  crypto: { url: 'https://accounts.binance.com/register?ref=XWPWKG6S', where: 'Binance' },
+  metal:  { url: 'https://partner.bybit.com/b/94881', where: 'Bybit' },
   stock:  { url: '', where: 'broker' },
   etf:    { url: '', where: 'broker' },
 };

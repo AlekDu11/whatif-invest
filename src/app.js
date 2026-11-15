@@ -329,4 +329,69 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
   $$('#hy button').forEach(b=>b.onclick=()=>{ years=+b.dataset.v; $$('#hy button').forEach(x=>x.classList.toggle('on',x===b)); run() });
   run();
 })();
+/* ---------- millionaire + compound interest ---------- */
+(function(){
+  const box=$('#gcalc'); if(!box||!PAGE.calc) return; const C=PAGE.calc;
+  const nf=v=>{ try{ return new Intl.NumberFormat(T.intl||'en',{style:'currency',currency:C.code,maximumFractionDigits:Math.abs(v)>=100?0:2}).format(v) }catch(e){ return Math.round(v)+' '+C.code } };
+  const pc=v=>(v*100).toFixed(1)+'%';
+  let r=+($('#gseg button.on')||{}).dataset?.r||0.1, asset=($('#gseg button.on')||{}).dataset?.a||'spy';
+  const num=q=>{ const e=$(q); return e?Math.max(0,+e.value||0):0 };
+  function run(){
+    const n=Math.max(1,Math.min(60,num('#gy'))), p0=num('#gp'), rate=$('#gcw').hidden?r:(+$('#gr').value||0)/100;
+    const rm=Math.pow(1+rate,1/12)-1, N=n*12, g=Math.pow(1+rm,N), an=Math.abs(rm)<1e-12?N:(g-1)/rm;
+    const aname=C.names[asset]||''; $('#gsent').hidden=!$('#gcw').hidden;
+    let inv,val;
+    if(C.kind==='millionaire'){ const goal=num('#gg'); const pmt=Math.max(0,(goal-p0*g)/an); inv=p0+pmt*N; val=Math.max(goal,p0*g);
+      $('#gv').textContent=nf(pmt); $('#gsent').textContent=fmt(C.res,{goal:nf(goal),n,yr:C.yr,pmt:nf(pmt),asset:aname,r:pc(rate)}) }
+    else { const pmt=num('#gm'); val=p0*g+pmt*an; inv=p0+pmt*N;
+      $('#gv').textContent=nf(val); $('#gsent').textContent=fmt(C.res,{n,yr:C.yr,fv:nf(val),inv:nf(inv),gain:nf(val-inv)}) }
+    const a=val>0?Math.min(100,inv/val*100):100; $('#gbar .a').style.width=a+'%'; $('#gbar .b').style.width=(100-a)+'%' }
+  $$('#gseg button').forEach(b=>b.onclick=()=>{ $$('#gseg button').forEach(x=>x.classList.toggle('on',x===b));
+    if(b.dataset.r==='custom'){ $('#gcw').hidden=false } else { $('#gcw').hidden=true; r=+b.dataset.r; asset=b.dataset.a; $('#gr').value=(r*100).toFixed(1) } run() });
+  $$('#gcalc input').forEach(e=>e.addEventListener('input',run)); run();
+})();
+
+/* ---------- inflation ---------- */
+(function(){
+  const box=$('#icalc'); if(!box||!PAGE.infl) return; const C=PAGE.infl;
+  let DN; try{ DN=new Intl.DisplayNames([T.intl||'en'],{type:'region'}) }catch(e){}
+  $$('#ic option').forEach(o=>{ const n=DN&&DN.of(o.dataset.cc); if(n) o.textContent=`${n} (${o.dataset.ccy})` });
+  const opts=[...$('#ic').options].sort((a,b)=>a.textContent.localeCompare(b.textContent)); const cur=$('#ic').value; $('#ic').append(...opts); $('#ic').value=cur;
+  const pc=v=>(v*100).toFixed(1)+'%';
+  function run(){ const c=$('#ic').value, o=$('#ic').selectedOptions[0], ccy=o.dataset.ccy, d=C.c[c]||{}, y0=+$('#iy').value, amt=+$('#ia').value||0;
+    const ys=Object.keys(d).map(Number), last=Math.max(...ys); let f=1; for(let y=y0+1;y<=last;y++) f*=1+(d[y]||0)/100;
+    const nf=v=>{ try{ return new Intl.NumberFormat(T.intl||'en',{style:'currency',currency:ccy,maximumFractionDigits:Math.abs(v)>=100?0:2}).format(v) }catch(e){ return Math.round(v)+' '+ccy } };
+    let sym=ccy; try{ sym=new Intl.NumberFormat(T.intl||'en',{style:'currency',currency:ccy}).formatToParts(1).find(p=>p.type==='currency').value }catch(e){}
+    $('#isym').textContent=sym; $('#iv').textContent=nf(amt*f);
+    $('#is').textContent=fmt(C.res,{amt:nf(amt),y0,now:nf(amt*f),pct:pc(f-1),lost:pc(1-1/f)}); $('#isrc').textContent=fmt(C.src,{y:last}) }
+  ['#ic','#iy','#ia'].forEach(q=>$(q).addEventListener('input',run)); run();
+})();
+
+/* ---------- bitcoin halving countdown ---------- */
+(function(){
+  const box=$('#hv'); if(!box) return;
+  const NEXT=+box.dataset.next; let h=+box.dataset.h, at=Date.now();
+  let DTF; try{ DTF=new Intl.DateTimeFormat(T.intl||'en',{day:'numeric',month:'long',year:'numeric'}) }catch(e){}
+  function draw(){ const left=Math.max(0,NEXT-h), ms=left*600000-(Date.now()-at), s=Math.max(0,ms/1000);
+    $('#hd').textContent=Math.floor(s/86400).toLocaleString(T.intl||'en'); $('#hh').textContent=Math.floor(s%86400/3600); $('#hm').textContent=Math.floor(s%3600/60);
+    $('#hleft').textContent=left.toLocaleString(T.intl||'en'); if(DTF) $('#hest').textContent='≈ '+DTF.format(new Date(at+left*600000));
+    $('#hprog').style.width=Math.min(100,(h-840000)/2100)+'%' }
+  fetch('https://mempool.space/api/blocks/tip/height').then(r=>r.text()).then(t=>{ const v=parseInt(t); if(v>840000){ h=v; at=Date.now(); draw() } }).catch(()=>{});
+  draw(); setInterval(draw,30000);
+})();
+/* ---------- Polymarket odds (Gamma API) ---------- */
+(function(){
+  const box=$('.pm'); if(!box) return;
+  const VIA='?via=alek-du', pc=v=>v<.01?'<1%':v>.99?'>99%':Math.round(v*100)+'%';
+  const go=()=>fetch(`https://gamma-api.polymarket.com/events?closed=false&tag_slug=${box.dataset.tag||'crypto'}&order=volume24hr&ascending=false&limit=12`).then(r=>r.json()).then(ev=>{
+    const out=[];
+    for(const e of ev){ if(out.length>=4) break;
+      const ms=(e.markets||[]).filter(m=>m.active&&!m.closed&&m.outcomePrices).map(m=>{ let p; try{p=+JSON.parse(m.outcomePrices)[0]}catch(x){} return {t:m.groupItemTitle||m.question,p} })
+        .filter(m=>m.p>=.04&&m.p<=.96).slice(0,4);
+      if(!ms.length) continue;
+      out.push(`<a class="pmi" href="https://polymarket.com/event/${encodeURIComponent(e.slug)}${VIA}" target="_blank" rel="sponsored noopener"><b>${esc(e.title)}</b>`+
+        ms.map(m=>`<span class="pmr"><em>${esc(m.t)}</em><i><s style="width:${Math.round(m.p*100)}%"></s></i><strong>${pc(m.p)}</strong></span>`).join('')+'</a>') }
+    if(out.length){ box.querySelector('.pml').innerHTML=out.join(''); box.hidden=false } }).catch(()=>{});
+  setTimeout(go,1200);
+})();
 })();

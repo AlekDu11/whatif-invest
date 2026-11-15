@@ -6,10 +6,12 @@ Output: per language — home, compare and asset pages; index.js, per-asset pric
 Only the Python standard library is used, so it runs in Vercel's build image as is.
 Run: python3 scripts/build.py
 """
-import calendar, hashlib, html, json, os, shutil, sys
+import calendar, hashlib, html, json, math, os, shutil, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from i18n import LANGS as TR, ORDER, FULL, DEFAULT  # noqa: E402
+from i18n_t import T as TT  # noqa: E402
+from i18n_e import E as EX  # noqa: E402
 from i18n_h import H as HB, PRICES as HPRICE, SCEN as HSCEN, UNITS as HUNITS, CONV as HCONV  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -27,7 +29,7 @@ UPDATED = market['updated']
 END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
-RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits'}
+RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges'}
 # asset ids that clash with a language folder or a section get a suffix (ko -> ko-stock, fil -> fil-crypto)
 _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
 # delisted or stale series (last price older than a month) are dropped: "today" numbers would be false
@@ -37,6 +39,8 @@ _gp = os.path.join(ROOT, 'data/global.json')
 G = json.load(open(_gp, encoding='utf-8')) if os.path.exists(_gp) else {}
 _fp = os.path.join(ROOT, 'data/fx.json')
 FX = json.load(open(_fp, encoding='utf-8')) if os.path.exists(_fp) else {'rates': {}}
+_cp = os.path.join(ROOT, 'data/cpi.json')
+CPI = json.load(open(_cp, encoding='utf-8')) if os.path.exists(_cp) else {'c': {}}
 TV_LOC = {'en': 'en', 'uk': 'uk', 'ru': 'ru', 'es': 'es', 'pt': 'br', 'de': 'de_DE', 'fr': 'fr', 'it': 'it', 'pl': 'pl', 'tr': 'tr',
           'nl': 'nl_NL', 'id': 'id', 'vi': 'vi_VN', 'th': 'th_TH', 'hi': 'in', 'ja': 'ja', 'ko': 'kr', 'zh': 'zh_CN', 'ar': 'ar_AE', 'fil': 'en'}
 
@@ -76,6 +80,7 @@ TOP = set(ORDERED[:TOP_N])
 
 HUBS = {'crypto': 'crypto', 'stocks': 'stock', 'etfs': 'etf', 'metals': 'metal'}
 TOOLS = ['converter']
+CALCS = ['millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges']
 BLOG_LANGS = {l for l in ORDER if os.path.isdir(os.path.join(ROOT, 'content/blog', l)) and any(f.endswith('.md') for f in os.listdir(os.path.join(ROOT, 'content/blog', l)))}  # a language gets a blog once it has a post
 assert not (set(HUBS) | set(TOOLS) | {'blog', 'compare'}) & set(A), 'asset id collides with a section slug'
 
@@ -83,6 +88,8 @@ assert not (set(HUBS) | set(TOOLS) | {'blog', 'compare'}) & set(A), 'asset id co
 def has_page(lang, aid):
     if aid is None or aid == 'compare' or aid in HUBS or aid in TOOLS:
         return True
+    if aid in CALCS:
+        return aid != 'inflation' or bool(CPI['c'])
     if aid == 'habits' or (aid or '').startswith('habits/'):
         return True
     if aid == 'blog' or (aid or '').startswith('blog/'):
@@ -244,13 +251,14 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
     X = S['x']
     blog_l = lang if lang in BLOG_LANGS else 'en'
     nav = (''.join(f'<a href="{url(lang, k)}" class="{"on" if k == p else ""}">{v}</a>' for k, v in ((None, S['nav_rank']), ('compare', S['nav_cmp'])))
-           + f'<a href="{url(lang, "habits")}" class="{"on" if (p or "").startswith("habits") else ""}">{HB[lang]["nav"]}</a>'
-           + f'<a href="{url(lang, "converter")}" class="{"on" if p == "converter" else ""}">{HCONV[lang]}</a>'
+           + f'<details class="dd"><summary class="{"on" if p in TOOLS or (p in CALCS and p != "exchanges") or (p or "").startswith("habits") else ""}">{X["nav_tools"]}</summary><div>'
+           + ''.join(f'<a href="{url(lang, k)}">{v}</a>' for k, v in tools_menu(lang)) + '</div></details>'
+           + f'<a href="{url(lang, "exchanges")}" class="{"on" if p == "exchanges" else ""}">{EX[lang]["nav"]}</a>'
            + f'<a href="{url(blog_l, "blog")}" class="{"on" if (p or "").startswith("blog") else ""}">{X["nav_blog"]}</a>')
     i18n = dict(S['ui'], months=S['months'], intl=S['intl'])
     mnav = ''.join(f'<a href="{h}" class="{"on" if on else ""}"><span>{ic}</span>{esc(lb)}</a>' for h, ic, lb, on in (
         (url(lang), '◎', S['nav_rank'], p is None), (url(lang, 'compare'), '⇅', S['nav_cmp'], p == 'compare'),
-        (url(lang, 'converter'), '⇄', HCONV[lang], p in TOOLS), (url(blog_l, 'blog'), '✎', X['nav_blog'], (p or '').startswith('blog'))))
+        (url(lang, 'converter'), '⇄', HCONV[lang], p in TOOLS), (url(lang, 'exchanges'), '₿', EX[lang]['nav'], p == 'exchanges'), (url(blog_l, 'blog'), '✎', X['nav_blog'], (p or '').startswith('blog'))))
     cfg = dict(cfg, lang=lang, base=BASE, prefix=url(lang).rstrip('/'), full=lang in FULL, topn=TOP_N,
                names={'gold': S['gold'], 'silver': S['silver']})
     return f"""<!DOCTYPE html>
@@ -459,7 +467,7 @@ def home(lang, ver):
             cards.append(hl_card(lang, aid, nm(A[aid], lang), 'r5', S['sub5']))
     filt = f'<div class="toolbar"><div class="filter">{SEARCH_ICON}<input id="flt" type="search" autocomplete="off"></div></div>'
     body = (hero + f'<div class="wgrid">{w_mcap}{w_dom}{w_fng}{w_tr}</div>'
-            f'<div class="wgrid3">{w_up}{w_dn}{w_bat}</div>{banner}{habits_strip(lang)}'
+            f'<div class="wgrid3">{w_up}{w_dn}{w_bat}</div>{banner}{habits_strip(lang)}{poly_block(lang)}'
             f'<section class="section"><div class="hl">{"".join(cards)}</div></section>'
             f'<div class="tabs" id="tabs"></div>{filt}{table_block(lang, ids[:100])}'
             f'<section class="card section faq"><h2>{S["faq"]}</h2><details open><summary>{esc(S["q3"])}</summary><p>{esc(S["a3"])}</p></details></section>')
@@ -642,6 +650,273 @@ def habit_page(lang, sc, ver):
     cfg = dict(habit=dict(sc=sc, code=code, rate=rate, res=h['res'], phrase=phrase, yl={str(k): v for k, v in yl.items()}, assets=HASSETS))
     faq = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": h1, "acceptedAnswer": {"@type": "Answer", "text": sent}}]}
     return shell(lang, 'habits/' + HSLUG[sc], f'{h1} | {BRAND}', d, body, cfg, ver, [faq])
+
+
+def tools_menu(lang):
+    t = TT[lang]
+    items = [('habits', HB[lang]['nav']), ('millionaire', t['g_nav']), ('compound-interest', t['c_nav'])]
+    if CPI['c']:
+        items.append(('inflation', t['i_nav']))
+    items += [('converter', HCONV[lang]), ('ath', t['a_nav']), ('bitcoin-halving', t['v_nav'])]
+    return items
+
+
+def nice(v):
+    """Round to a friendly number (1, 2, 5 x 10^n)."""
+    if v <= 0:
+        return 0
+    e = 10 ** math.floor(math.log10(v))
+    return min((1, 2, 5, 10), key=lambda k: abs(k * e - v)) * e
+
+
+def cagr(aid, years=10):
+    a = A.get(aid)
+    if not a or len(a['p']) < years * 12 + 1:
+        return None
+    return (a['p'][-1] / a['p'][-1 - years * 12]) ** (1 / years) - 1
+
+
+GASSETS = [i for i in ('spy', 'qqq', 'gold') if cagr(i)]   # no Bitcoin: extrapolating its past 10-year return for decades would be misleading
+
+
+def fv(p0, pmt, r, n_years):
+    rm, n = (1 + r) ** (1 / 12) - 1, n_years * 12
+    if abs(rm) < 1e-12:
+        return p0 + pmt * n
+    g = (1 + rm) ** n
+    return p0 * g + pmt * (g - 1) / rm
+
+
+def need_pmt(goal, p0, r, n_years):
+    rm, n = (1 + r) ** (1 / 12) - 1, n_years * 12
+    if abs(rm) < 1e-12:
+        return max(0, (goal - p0) / n)
+    g = (1 + rm) ** n
+    return max(0, (goal - p0 * g) * rm / (g - 1))
+
+
+def pct0(v):
+    return f"{v * 100:.1f}%"
+
+
+def rate_seg(lang, default='spy'):
+    t = TT[lang]
+    b = ''.join(f'<button data-r="{cagr(i):.4f}"{" class=on" if i == default else ""} data-a="{i}">{esc(nm(A[i], lang))} · {pct0(cagr(i))}</button>' for i in GASSETS)
+    return (f'<div class="f">{t["g_ret"]}<div class="seg" id="gseg">{b}<button data-r="custom">{t["g_custom"]}</button></div></div>'
+            f'<label class="f" id="gcw" hidden>%<div class="inp"><input id="gr" type="number" step="0.1" value="{cagr(default) * 100:.1f}"></div></label>')
+
+
+def calc_page(lang, slug, ver):
+    S, t, u = TR[lang], TT[lang], TR[lang]['ui']
+    code, rate = hccy(lang)
+    sym = CCY_SYM.get(code, code)
+    inp = lambda i, lab, v: f'<label class="f">{lab}<div class="inp"><input id="{i}" type="number" min="0" step="any" value="{v:.0f}"><span class="muted">{sym}</span></div></label>'
+    yrs = lambda v: f'<label class="f">{t["g_years"]}<div class="inp"><input id="gy" type="number" min="1" max="60" step="1" value="{v}"></div></label>'
+    r0 = cagr('spy')
+    cfg = dict(calc=dict(kind=slug, code=code, yr=t['yr'], names={i: nm(A[i], lang) for i in GASSETS}))
+    if slug == 'millionaire':
+        goal, p0, n = nice(1e6 * rate), 0, 20
+        pmt = need_pmt(goal, p0, r0, n)
+        sent = t['g_res'].format(goal=money(goal, code), n=n, yr=t['yr'], pmt=money(pmt, code), asset=nm(A['spy'], lang), r=pct0(r0))
+        h1, d, cfg['calc']['res'] = t['g_h1'], t['g_d'], t['g_res']
+        form = (f'<div class="hrow">{inp("gg", t["g_goal"], goal)}{yrs(n)}{inp("gp", t["g_have"], p0)}</div><div class="hrow">{rate_seg(lang)}</div>'
+                f'<div class="hres"><div class="muted">{t["g_need"]}</div><div class="v good" id="gv">{money(pmt, code)}</div><p id="gsent">{esc(sent)}</p></div>')
+    else:
+        p0, pmt, n = nice(1000 * rate), nice(100 * rate), 20
+        v = fv(p0, pmt, r0, n)
+        inv = p0 + pmt * n * 12
+        sent = t['c_res'].format(n=n, yr=t['yr'], fv=money(v, code), inv=money(inv, code), gain=money(v - inv, code))
+        h1, d, cfg['calc']['res'] = t['c_h1'], t['c_d'], t['c_res']
+        form = (f'<div class="hrow">{inp("gp", t["c_init"], p0)}{inp("gm", t["c_month"], pmt)}{yrs(n)}</div><div class="hrow">{rate_seg(lang)}</div>'
+                f'<div class="hres"><div class="v good" id="gv">{money(v, code)}</div><p id="gsent">{esc(sent)}</p></div>')
+    chart = (f'<div class="gbar" id="gbar"><i class="a" style="width:50%"></i><i class="b" style="width:50%"></i></div>'
+             f'<div class="glg"><span><i class="a"></i>{t["g_inv"]}</span><span><i class="b"></i>{t["g_gain"]}</span></div>')
+    other = 'compound-interest' if slug == 'millionaire' else 'millionaire'
+    body = (f'<h1>{esc(h1)}</h1><p class="lead">{esc(d)}</p><div class="card hcalc" id="gcalc">{form}{chart}<p class="muted" style="font-size:13px">{t["g_note"]}</p></div>'
+            f'<section class="section"><div class="hgrid"><a class="card hcard" href="{url(lang, other)}"><span>{"📈" if other == "compound-interest" else "🎯"}</span><b>{esc(t["c_h1"] if other == "compound-interest" else t["g_h1"])}</b></a>'
+            f'<a class="card hcard" href="{url(lang, "habits")}"><span>☕</span><b>{esc(HB[lang]["h1"])}</b></a><a class="card hcard" href="{url(lang, "compare")}"><span>⇅</span><b>{esc(S["cmp_h1"])}</b></a></div></section>')
+    faq = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": h1, "acceptedAnswer": {"@type": "Answer", "text": sent}}]}
+    return shell(lang, slug, f'{h1} | {BRAND}', d, body, cfg, ver, [faq])
+
+
+CPI_LANG = {'uk': 'UKR', 'en': 'USA', 'es': 'ESP', 'pt': 'BRA', 'de': 'DEU', 'fr': 'FRA', 'it': 'ITA', 'pl': 'POL', 'tr': 'TUR', 'nl': 'NLD',
+            'ru': 'RUS', 'id': 'IDN', 'vi': 'VNM', 'th': 'THA', 'hi': 'IND', 'ja': 'JPN', 'ko': 'KOR', 'zh': 'CHN', 'ar': 'ARE', 'fil': 'PHL'}
+CPI_CCY = {'USA': ('US', 'USD'), 'UKR': ('UA', 'UAH'), 'ESP': ('ES', 'EUR'), 'BRA': ('BR', 'BRL'), 'DEU': ('DE', 'EUR'), 'FRA': ('FR', 'EUR'),
+           'ITA': ('IT', 'EUR'), 'POL': ('PL', 'PLN'), 'TUR': ('TR', 'TRY'), 'NLD': ('NL', 'EUR'), 'RUS': ('RU', 'RUB'), 'IDN': ('ID', 'IDR'),
+           'VNM': ('VN', 'VND'), 'THA': ('TH', 'THB'), 'IND': ('IN', 'INR'), 'JPN': ('JP', 'JPY'), 'KOR': ('KR', 'KRW'), 'CHN': ('CN', 'CNY'),
+           'ARE': ('AE', 'AED'), 'PHL': ('PH', 'PHP'), 'GBR': ('GB', 'GBP'), 'MEX': ('MX', 'MXN'), 'ARG': ('AR', 'ARS'), 'KAZ': ('KZ', 'KZT'),
+           'CAN': ('CA', 'CAD'), 'AUS': ('AU', 'AUD')}
+
+
+def infl(c, y0, amt):
+    d = CPI['c'].get(c, {})
+    if not d:
+        return None
+    last = max(int(y) for y in d)
+    f = 1.0
+    for y in range(y0 + 1, last + 1):
+        f *= 1 + d.get(str(y), 0) / 100
+    return dict(now=amt * f, f=f, last=last)
+
+
+def inflation_page(lang, ver):
+    t = TT[lang]
+    c = CPI_LANG.get(lang, 'USA')
+    c = c if c in CPI['c'] else 'USA'
+    code = CPI_CCY[c][1]
+    rate = 1.0 if code == 'USD' else FX.get('rates', {}).get(code, 1.0)
+    amt = 100 if rate < 100 else 10000 if rate < 5000 else 100000
+    y0 = 2010
+    r = infl(c, y0, amt)
+    sent = t['i_res'].format(amt=money(amt, code), y0=y0, now=money(r['now'], code), pct=pct0(r['f'] - 1), lost=pct0(1 - 1 / r['f']))
+    opts = ''.join(f'<option value="{k}"{" selected" if k == c else ""} data-cc="{CPI_CCY[k][0]}" data-ccy="{CPI_CCY[k][1]}">{CPI_CCY[k][1]} · {k}</option>' for k in CPI['c'] if k in CPI_CCY)
+    years = ''.join(f'<option{" selected" if y == y0 else ""}>{y}</option>' for y in range(r['last'] - 1, 1969, -1))
+    body = (f'<h1>{esc(t["i_h1"])}</h1><p class="lead">{esc(t["i_d"])}</p><div class="card hcalc" id="icalc">'
+            f'<div class="hrow"><label class="f">{t["i_country"]}<div class="inp"><select id="ic">{opts}</select></div></label>'
+            f'<label class="f">{t["i_amount"]}<div class="inp"><input id="ia" type="number" min="0" step="any" value="{amt}"><span class="muted" id="isym">{CCY_SYM.get(code, code)}</span></div></label>'
+            f'<label class="f">{t["i_year"]}<div class="inp"><select id="iy">{years}</select></div></label></div>'
+            f'<div class="hres"><div class="v bad" id="iv">{money(r["now"], code)}</div><p id="is">{esc(sent)}</p></div>'
+            f'<p class="muted" style="font-size:13px" id="isrc">{t["i_src"].format(y=r["last"])}</p></div>'
+            f'<section class="section"><div class="hgrid"><a class="card hcard" href="{url(lang, "compound-interest")}"><span>📈</span><b>{esc(t["c_h1"])}</b></a>'
+            f'<a class="card hcard" href="{url(lang, "millionaire")}"><span>🎯</span><b>{esc(t["g_h1"])}</b></a><a class="card hcard" href="{url(lang, "habits")}"><span>☕</span><b>{esc(HB[lang]["h1"])}</b></a></div></section>')
+    cfg = dict(infl=dict(res=t['i_res'], src=t['i_src'], c={k: v for k, v in CPI['c'].items() if k in CPI_CCY}))
+    faq = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": t['i_h1'], "acceptedAnswer": {"@type": "Answer", "text": sent}}]}
+    return shell(lang, 'inflation', f'{t["i_h1"]} | {BRAND}', t['i_d'], body, cfg, ver, [faq])
+
+
+def ath_ok(a):
+    ath = a.get('ath')
+    return bool(ath) and ath >= max(a['p']) * 0.8 and a.get('price', a['p'][-1]) <= ath * 1.05
+
+
+def btc_crashes():
+    a = A['btc']
+    p, s0 = a['p'], ym2i(a['start'])
+    out, peak_i, i = [], 0, 1
+    while i < len(p):
+        if p[i] >= p[peak_i]:
+            peak_i = i
+            i += 1
+            continue
+        # in a drawdown from peak_i: find bottom and recovery
+        j, bot = i, i
+        while j < len(p) and p[j] < p[peak_i]:
+            if p[j] < p[bot]:
+                bot = j
+            j += 1
+        dd = p[bot] / p[peak_i] - 1
+        if dd <= -0.4:
+            out.append(dict(peak=i2ym(s0 + peak_i), pp=p[peak_i], bot=i2ym(s0 + bot), bp=p[bot], dd=dd, rec=(j - peak_i) if j < len(p) else None))
+        if j >= len(p):
+            break
+        peak_i, i = j, j + 1
+    return out
+
+
+def ath_page(lang, ver):
+    t, u = TT[lang], TR[lang]['ui']
+    ids = [i for i in ORDERED if A[i]['cat'] == 'crypto' and A[i].get('rank') and ath_ok(A[i])]
+    ids.sort(key=lambda i: A[i]['rank'])
+    rows = ''
+    for i in ids[:100]:
+        a = A[i]
+        pr = a.get('price', a['p'][-1])
+        dd, back = pr / a['ath'] - 1, a['ath'] / pr - 1
+        rows += (f'<tr><td class="rank">{a["rank"]}</td><td class="name"><a href="{aurl(lang, i)}">{icon(a)}<b>{esc(nm(a, lang))}</b> <span class="muted">{esc(a["tk"])}</span></a></td>'
+                 f'<td class="mono" data-p="{i}">{price(pr)}</td><td class="mono {cls(dd)}"><b>{pct(dd)}</b></td><td class="mono hide-sm">{price(a["ath"])}</td>'
+                 f'<td class="hide-sm">{esc(a.get("athd") or "")}</td><td class="mono good">{pct(back)}</td></tr>')
+    table = (f'<div class="tw"><table class="mt"><thead><tr><th>#</th><th style="text-align:left">{u["name"]}</th><th>{u["price"]}</th><th>{t["a_from"]}</th>'
+             f'<th class="hide-sm">{t["a_ath"]}</th><th class="hide-sm">{t["a_date"]}</th><th>{t["a_back"]}</th></tr></thead><tbody>{rows}</tbody></table></div>')
+    cr = ''
+    for c in reversed(btc_crashes()):
+        cr += (f'<tr><td>{mlabel(c["peak"], lang)}</td><td class="mono">{price(c["pp"])}</td><td>{mlabel(c["bot"], lang)}</td><td class="mono">{price(c["bp"])}</td>'
+               f'<td class="mono bad"><b>{pct(c["dd"])}</b></td><td>{(str(c["rec"]) + " " + t["h_mo"]) if c["rec"] else t["h_not"]}</td></tr>')
+    hist = (f'<section class="card section"><h2>{t["h_hist"]}</h2><div class="tw"><table class="mt"><thead><tr><th style="text-align:left">{t["h_peak"]}</th><th></th>'
+            f'<th style="text-align:left">{t["h_bottom"]}</th><th></th><th>{t["h_drop"]}</th><th>{t["h_rec"]}</th></tr></thead><tbody>{cr}</tbody></table></div>'
+            f'<p class="muted" style="font-size:13px">{t["h_note"]}</p></section>')
+    b = A.get('btc')
+    lead = ''
+    if b and ath_ok(b):
+        pr = b.get('price', b['p'][-1])
+        lead = (f'<div class="hl"><a class="card" href="{aurl(lang, "btc")}"><div class="t">Bitcoin · {t["a_from"]}</div><div class="v bad">{pct(pr / b["ath"] - 1)}</div>'
+                f'<div class="s">{t["a_ath"]}: {price(b["ath"])} · {esc(b.get("athd") or "")}</div></a>'
+                f'<a class="card" href="{url(lang, "bitcoin-halving")}"><div class="t">{t["v_nav"]}</div><div class="v">⏳</div><div class="s">{t["v_next"]} →</div></a></div>')
+    body = f'<h1>{esc(t["a_h1"])}</h1><p class="lead">{esc(t["a_d"])}</p>{lead}{poly_block(lang)}<section class="section">{table}</section>{hist}'
+    return shell(lang, 'ath', f'{t["a_h1"]} | {BRAND}', t['a_d'], body, {}, ver)
+
+
+HALVINGS = [(210000, '2012-11-28', 50, 25), (420000, '2016-07-09', 25, 12.5), (630000, '2020-05-11', 12.5, 6.25), (840000, '2024-04-20', 6.25, 3.125)]
+NEXT_H = 1050000
+
+
+def halving_page(lang, ver):
+    import datetime as _dt
+    t = TT[lang]
+    base = _dt.datetime(2024, 4, 20, 0, 9, tzinfo=_dt.timezone.utc)
+    upd = _dt.datetime.strptime(UPDATED, '%Y-%m-%d').replace(tzinfo=_dt.timezone.utc)
+    h_now = 840000 + int((upd - base).total_seconds() / 600)
+    est = upd + _dt.timedelta(seconds=(NEXT_H - h_now) * 600)
+    b = A.get('btc')
+    rows = ''
+    for blk, dt, r0, r1 in HALVINGS:
+        ym = dt[:7]
+        p0 = p1 = None
+        if b:
+            s0 = ym2i(b['start'])
+            k = ym2i(ym) - s0
+            if 0 <= k < len(b['p']):
+                p0 = b['p'][k]
+                if k + 12 < len(b['p']):
+                    p1 = b['p'][k + 12]
+        rows += (f'<tr><td>{dt}</td><td class="mono">{blk:,}</td><td class="mono">{r0:g} → {r1:g}</td><td class="mono">{price(p0) if p0 else "—"}</td>'
+                 f'<td class="mono">{price(p1) if p1 else "—"}</td><td class="mono {cls(p1 / p0 - 1) if p0 and p1 else ""}">{pct(p1 / p0 - 1) if p0 and p1 else "—"}</td></tr>')
+    dhm = t['v_dhm'].split('|')
+    body = (f'<h1>{esc(t["v_h1"])}</h1><p class="lead">{esc(t["v_d"])}</p>'
+            f'<div class="card hv" id="hv" data-next="{NEXT_H}" data-h="{h_now}" data-u="{upd.isoformat()}"><div class="muted">{t["v_next"]} · #{NEXT_H:,}</div>'
+            f'<div class="cd"><div><b id="hd">—</b><span>{dhm[0]}</span></div><div><b id="hh">—</b><span>{dhm[1]}</span></div><div><b id="hm">—</b><span>{dhm[2]}</span></div></div>'
+            f'<div class="hvs"><span>{t["v_left"]}: <b id="hleft">{NEXT_H - h_now:,}</b></span><span>{t["v_est"]}: <b id="hest">{mlabel(est.strftime("%Y-%m"), lang, long=True)}</b></span>'
+            f'<span>{t["v_reward"].format(a="3.125", b="1.5625")}</span></div><div class="gbar"><i class="a" id="hprog" style="width:{(h_now - 840000) / 2100:.1f}%"></i></div></div>'
+            f'<section class="card section"><h2>{t["v_past"]}</h2><div class="tw"><table class="mt"><thead><tr><th style="text-align:left"></th><th>#</th><th>BTC</th>'
+            f'<th>{t["v_price"]}</th><th>{t["v_after"]}</th><th>%</th></tr></thead><tbody>{rows}</tbody></table></div><p class="muted" style="font-size:13px">{t["h_note"]}</p></section>'
+            f'{poly_block(lang)}<section class="card section faq"><h2>{t["v_what"]}</h2><p>{esc(t["v_text"])}</p></section>'
+            f'<section class="section"><div class="hgrid"><a class="card hcard" href="{url(lang, "ath")}"><span>📉</span><b>{esc(t["a_h1"])}</b></a>'
+            f'<a class="card hcard" href="{aurl(lang, "btc")}"><span>₿</span><b>Bitcoin DCA</b></a></div></section>')
+    faq = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+        {"@type": "Question", "name": t['v_h1'], "acceptedAnswer": {"@type": "Answer", "text": f'{t["v_est"]}: {mlabel(est.strftime("%Y-%m"), lang, long=True)} (#{NEXT_H:,})'}},
+        {"@type": "Question", "name": t['v_what'], "acceptedAnswer": {"@type": "Answer", "text": t['v_text']}}]}
+    return shell(lang, 'bitcoin-halving', f'{t["v_h1"]} | {BRAND}', t['v_d'], body, {}, ver, [faq])
+
+
+PARTNERS = {
+    'cex': [('Binance', 'https://accounts.binance.com/register?ref=XWPWKG6S', 'Spot · Futures · Earn · P2P', '#F0B90B'),
+            ('Bybit', 'https://partner.bybit.com/b/94881', 'Spot · Futures · Copy trading · Gold', '#17181E'),
+            ('Gate', 'https://www.gate.io/ref/4271013', 'Spot · Futures · Altcoins', '#2354E6'),
+            ('BingX', 'https://bingx.com/partner/AlekcDu/', 'Spot · Futures · Copy trading', '#2A5BFF'),
+            ('MEXC', 'https://promote.mexc.com/a/fKqr6ehO', 'Spot · Futures · New listings', '#1972E2')],
+    'dex': [('OKX Wallet', 'https://web3.okx.com/join/ALEKSDU', 'Multichain wallet · DEX swaps', '#000000'),
+            ('Hyperliquid', 'https://app.hyperliquid.xyz/join/ALEKSDU', 'On-chain perpetuals · Order book', '#0F3B36'),
+            ('GMGN', 'https://gmgn.ai/r/YEIKWyEq?chain=eth', 'Memecoin trading · Wallet tracking', '#18C46B')],
+}
+POLY = 'https://polymarket.com/?via=alek-du'
+
+
+def poly_block(lang, q='crypto'):
+    e = EX[lang]
+    return (f'<section class="card section pm" data-tag="{q}" hidden><div class="charthead"><h2>🔮 {e["pm_h"]}</h2>'
+            f'<a class="calc" href="{POLY}" target="_blank" rel="sponsored noopener">{e["pm_go"]} →</a></div>'
+            f'<p class="muted" style="margin:0 0 10px">{e["pm_d"]}</p><div class="pml"></div><p class="muted" style="font-size:12px;margin:8px 0 0">{e["pm_note"]}</p></section>')
+
+
+def exchanges_page(lang, ver):
+    e = EX[lang]
+    def cards(k):
+        return ''.join(f'<a class="card xcard" href="{u}" target="_blank" rel="sponsored noopener"><span class="xl" style="background:{c}">{n[0]}</span>'
+                       f'<div><b>{n}</b><small>{t}</small></div><span class="btn">{e["go"]}</span></a>' for n, u, t, c in PARTNERS[k])
+    body = (f'<h1>{esc(e["h1"])}</h1><p class="lead">{esc(e["d"])}</p>'
+            f'<section class="section"><h2>{e["cex"]}</h2><div class="xgrid">{cards("cex")}</div></section>'
+            f'<section class="section"><h2>{e["dex"]}</h2><div class="xgrid">{cards("dex")}</div></section>'
+            f'<p class="muted" style="font-size:13px">{e["note"]}</p>{poly_block(lang)}')
+    return shell(lang, 'exchanges', f'{e["h1"]} | {BRAND}', e['d'], body, {}, ver)
 
 
 def habits_strip(lang):
@@ -941,7 +1216,14 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
             write(f'{pre}{slug}/index.html', hub(lang, slug, ver))
         for slug in TOOLS:
             write(f'{pre}{slug}/index.html', tool(lang, slug, ver))
-        extra_pages = ['habits'] + ['habits/' + HSLUG[k] for k in HSCEN]
+        extra_pages = ['habits'] + ['habits/' + HSLUG[k] for k in HSCEN] + [c for c in CALCS if has_page(lang, c)]
+        write(pre + 'millionaire/index.html', calc_page(lang, 'millionaire', ver))
+        write(pre + 'compound-interest/index.html', calc_page(lang, 'compound-interest', ver))
+        if CPI['c']:
+            write(pre + 'inflation/index.html', inflation_page(lang, ver))
+        write(pre + 'ath/index.html', ath_page(lang, ver))
+        write(pre + 'bitcoin-halving/index.html', halving_page(lang, ver))
+        write(pre + 'exchanges/index.html', exchanges_page(lang, ver))
         write(pre + 'habits/index.html', habits_hub(lang, ver))
         for k in HSCEN:
             write(f'{pre}habits/{HSLUG[k]}/index.html', habit_page(lang, k, ver))
