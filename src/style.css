@@ -332,3 +332,7 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,su
 .pmr em{font-style:normal;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pmr i{height:8px;border-radius:4px;background:var(--line2);overflow:hidden}.pmr s{display:block;height:100%;background:var(--accent)}
 .pmr strong{text-align:right;font:700 13px 'JetBrains Mono',monospace}
+
+select option,select optgroup{background:var(--card);color:var(--text)}
+html[data-theme=dark] select{color-scheme:dark}
+.mt td.name{text-align:left}.mt td.name a{display:inline-flex;align-items:center;gap:8px;text-decoration:none}

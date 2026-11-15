@@ -123,7 +123,7 @@ BUBLIST = []   # top coins by market cap with 1h/24h/7d/30d/1y change, for the b
 
 def coingecko_meta():
     meta = {}
-    for page in (1, 2):
+    for page in (1, 2, 3, 4):
         d = get_json(f"https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page={page}&price_change_percentage=1h,24h,7d,30d,1y", tries=2)
         if not isinstance(d, list):
             break
@@ -237,6 +237,59 @@ def fx_rates():
     rates = {c: d['rates'][c] for c in FIATS if c in d.get('rates', {})}
     return rates if len(rates) > 20 else None
 
+# ---------------- logos: downloaded once, stored as 64px webp in data/logos/ ----------------
+LOGOS = os.path.join(ROOT, 'data/logos')
+
+
+def get_bytes(url):
+    try:
+        with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=20) as r:
+            if not (r.headers.get('Content-Type') or '').startswith('image'):
+                return None
+            return r.read()
+    except Exception:
+        return None
+
+
+def fetch_logos(assets):
+    try:
+        from PIL import Image
+        import io
+    except ImportError:
+        log('logos: pillow not installed, skipped')
+        return
+    os.makedirs(LOGOS, exist_ok=True)
+    have = {f[:-5] for f in os.listdir(LOGOS) if f.endswith('.webp')}
+    n = 0
+    for aid, a in assets.items():
+        if aid in have:
+            continue
+        tk = a.get('tk', '')
+        urls = []
+        if a.get('logo'):
+            urls.append(a['logo'].replace('/large/', '/small/'))
+        if a.get('cat') == 'crypto':
+            urls.append(f'https://bin.bnbstatic.com/static/assets/logos/{tk}.png')
+        elif a.get('cat') in ('stock', 'etf'):
+            urls.append(f'https://financialmodelingprep.com/image-stock/{tk.replace("-", ".")}.png')
+        for u in urls:
+            b = get_bytes(u)
+            if not b or len(b) < 200:
+                continue
+            try:
+                im = Image.open(io.BytesIO(b)).convert('RGBA')
+                im.thumbnail((64, 64))
+                bg = Image.new('RGBA', (64, 64), (255, 255, 255, 0))
+                bg.paste(im, ((64 - im.width) // 2, (64 - im.height) // 2), im)
+                bg.save(os.path.join(LOGOS, aid + '.webp'), 'WEBP', quality=85)
+                n += 1
+                break
+            except Exception:
+                continue
+        time.sleep(0.05)
+    log(f'logos: {n} new, {len(have) + n} total')
+
+
 # ---------------- inflation (World Bank, annual CPI %) ----------------
 CPI_COUNTRIES = ('USA UKR ESP BRA DEU FRA ITA POL TUR NLD RUS IDN VNM THA IND JPN KOR CHN ARE PHL GBR MEX ARG KAZ CAN AUS').split()
 
@@ -245,12 +298,12 @@ def inflation():
     """{ISO3: {year: inflation %}} annual consumer price inflation. Saved to data/cpi.json."""
     out = {}
     for c in CPI_COUNTRIES:
-        d = get_json(f'https://api.worldbank.org/v2/country/{c}/indicator/FP.CPI.TOTL.ZG?format=json&per_page=80&date=1960:2030', tries=2)
+        d = get_json(f'https://api.worldbank.org/v2/country/{c}/indicator/FP.CPI.TOTL.ZG?format=json&per_page=80&date=1960:2030', tries=4)
         if isinstance(d, list) and len(d) > 1 and d[1]:
             v = {r['date']: round(r['value'], 3) for r in d[1] if r.get('value') is not None}
             if v:
                 out[c] = v
-        time.sleep(0.3)
+        time.sleep(1.5)
     return out if len(out) > 10 else None
 
 
@@ -360,7 +413,14 @@ def main():
     except Exception as e:
         log(f"fx failed: {e}")
     try:
+        fetch_logos(final)
+    except Exception as e:
+        log(f"logos failed: {e}")
+    try:
         cpi = inflation()
+        cp = os.path.join(ROOT, 'data/cpi.json')
+        if cpi and os.path.exists(cp):                      # keep countries that failed today
+            cpi = {**json.load(open(cp)).get('c', {}), **cpi}
         if cpi:
             json.dump({'updated': now.strftime('%Y-%m-%d'), 'source': 'World Bank FP.CPI.TOTL.ZG', 'c': cpi},
                       open(os.path.join(ROOT, 'data/cpi.json'), 'w'), separators=(',', ':'))

@@ -186,6 +186,15 @@ def aurl(lang, aid):
     return url(lang if has_page(lang, aid) else 'en', aid)
 
 
+LOGO_DIR = os.path.join(ROOT, 'data/logos')
+_LOGOS = {f[:-5] for f in os.listdir(LOGO_DIR) if f.endswith('.webp')} if os.path.isdir(LOGO_DIR) else set()
+for _aid, _a in A.items():                      # self-hosted logo (downloaded once by fetch_data.py) beats a remote one
+    _src = _aid if _aid in _LOGOS else _aid.rsplit('-', 1)[0] if _aid.rsplit('-', 1)[0] in _LOGOS else None
+    if _src:
+        _a['logo'] = f'{BASE}/assets/logo/{_src}.webp'
+METAL_IC = {'GC=F': ('#d4a017', 'Au'), 'SI=F': ('#9ea3ab', 'Ag')}
+
+
 def hue(s):
     h = 0
     for c in s:
@@ -195,6 +204,9 @@ def hue(s):
 
 def icon(a, big=False):
     c = ' lg' if big else ''
+    if a.get('cat') == 'metal' and not a.get('logo'):
+        bg, t = METAL_IC.get(a.get('yahoo'), ('#b8a06a', a['tk'][:2]))
+        return f'<span class="ic{c}" style="background:{bg}">{t}</span>'
     if a.get('logo'):
         return (f'<span class="ic{c}" style="background:hsl({hue(a["tk"])} 55% 52%)"><img src="{esc(a["logo"])}" alt="" loading="lazy" width="26" height="26" '
                 f'onerror="this.parentNode.textContent=\'{esc(a["tk"][:2])}\'"></span>')
@@ -762,7 +774,7 @@ def infl(c, y0, amt):
 def inflation_page(lang, ver):
     t = TT[lang]
     c = CPI_LANG.get(lang, 'USA')
-    c = c if c in CPI['c'] else 'USA'
+    c = c if c in CPI['c'] else 'USA' if 'USA' in CPI['c'] else next(k for k in CPI['c'] if k in CPI_CCY)
     code = CPI_CCY[c][1]
     rate = 1.0 if code == 'USD' else FX.get('rates', {}).get(code, 1.0)
     amt = 100 if rate < 100 else 10000 if rate < 5000 else 100000
@@ -1188,6 +1200,8 @@ def main():
         write(f'assets/p/{aid}.json', json.dumps({'start': a['start'], 'end': a['end'], 'p': a['p']}, separators=(',', ':')))
     index_js = 'window.WI=' + json.dumps({'u': UPDATED, 'v': dv, 'a': idx, 'fx': FX.get('rates', {}), 'fxu': FX.get('updated')}, ensure_ascii=False, separators=(',', ':')) + ';'
     write('assets/index.js', index_js); write('assets/style.css', css); write('assets/app.js', js); write('assets/ref.js', ref)
+    if _LOGOS:
+        shutil.copytree(LOGO_DIR, os.path.join(OUT, 'assets/logo'))
     for f in ('favicon.svg', 'icon-192.png', 'icon-512.png', 'og.jpg'):
         shutil.copy(os.path.join(ROOT, 'src', f), os.path.join(OUT, 'assets', f))
     write('manifest.webmanifest', json.dumps({
