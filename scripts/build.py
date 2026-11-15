@@ -13,6 +13,7 @@ from i18n import LANGS as TR, ORDER, FULL, DEFAULT  # noqa: E402
 from i18n_t import T as TT  # noqa: E402
 from i18n_e import E as EX  # noqa: E402
 from i18n_n import N as NW, FOOT  # noqa: E402
+from i18n_p import P as POLL, OPTS as POLL_OPTS  # noqa: E402
 SOCIAL = []   # [(label, url)], e.g. ('Telegram', 'https://t.me/whatifstack'); the 'Follow us' column appears when filled
 from i18n_h import H as HB, PRICES as HPRICE, SCEN as HSCEN, UNITS as HUNITS, CONV as HCONV  # noqa: E402
 
@@ -260,6 +261,12 @@ def lang_menu(lang, p):
     return f'<select class="langsel" aria-label="Language" onchange="location.href=this.value">{opts}</select>'
 
 
+def poll_block(lang):
+    q, opts, thanks = POLL[lang]
+    b = ''.join(f'<button data-o="{k}">{esc(v)}</button>' for k, v in zip(POLL_OPTS, opts.split('|')))
+    return f'<section class="card section poll" id="poll" hidden data-thanks="{esc(thanks)}"><b>🗳 {esc(q)}</b><div class="pollb">{b}</div></section>'
+
+
 def footer_cols(lang):
     S, n, f = TR[lang], NW[lang], FOOT[lang]
     blog_l = lang if lang in BLOG_LANGS else 'en'
@@ -503,7 +510,7 @@ def home(lang, ver):
             cards.append(hl_card(lang, aid, nm(A[aid], lang), 'r5', S['sub5']))
     filt = f'<div class="toolbar"><div class="filter">{SEARCH_ICON}<input id="flt" type="search" autocomplete="off"></div></div>'
     body = (hero + f'<div class="wgrid">{w_mcap}{w_dom}{w_fng}{w_tr}</div>'
-            f'<div class="wgrid3">{w_up}{w_dn}{w_bat}</div>{banner}{habits_strip(lang)}{poly_block(lang)}'
+            f'<div class="wgrid3">{w_up}{w_dn}{w_bat}</div>{banner}{habits_strip(lang)}{poll_block(lang)}{poly_block(lang)}'
             f'<section class="section"><div class="hl">{"".join(cards)}</div></section>'
             f'<div class="tabs" id="tabs"></div>{filt}{table_block(lang, ids[:100])}'
             f'<section class="card section faq"><h2>{S["faq"]}</h2><details open><summary>{esc(S["q3"])}</summary><p>{esc(S["a3"])}</p></details></section>')
@@ -997,7 +1004,7 @@ def news_article(lang, slug, ver):
     body = (f'<nav class="crumbs"><a href="{url(lang, "news")}">{n["n_nav"]}</a></nav><article class="art"><h1>{esc(title)}</h1>'
             f'<div class="muted byline"><a href="{about}">WhatIfStack Research</a> · <time data-t="{esc(m.get("date", ""))}">{esc(m.get("date", ""))}</time> · {tags}</div>'
             f'<p class="lead">{esc(desc)}</p><div class="postcards">{cards}</div><div class="artbody">{md(m["body"], lang)}</div></article>'
-            f'<section class="banner section"><div><b>{w["cta"]}</b><p>{w["cta_text"]}</p></div><a class="btn" id="ctaBuy2" href="{url(lang, "exchanges")}">{EX[lang]["nav"]} →</a></section>'
+            f'{poll_block(lang)}<section class="banner section"><div><b>{w["cta"]}</b><p>{w["cta_text"]}</p></div><a class="btn" id="ctaBuy2" href="{url(lang, "exchanges")}">{EX[lang]["nav"]} →</a></section>'
             + (f'<section class="section"><h2>{esc(n["own"])}</h2><div class="card nlist own">{rel_html}</div></section>' if rel else ''))
     d = m.get('date', '').replace(' ', 'T')
     jsonld = [{"@context": "https://schema.org", "@type": "NewsArticle", "headline": title, "description": desc, "inLanguage": S['loc'],
@@ -1263,7 +1270,7 @@ def blog_post(lang, slug, ver):
     w = S['w']
     body = (f'<nav class="crumbs"><a href="{url(lang, "blog")}">{NW[lang]["i_nav"]}</a></nav><article class="art"><h1>{esc(title)}</h1>'
             f'<div class="muted byline"><a href="{url(lang if lang in ABOUT else "en", "about")}">WhatIfStack Research</a> · {esc(m.get("date", ""))} · {S["updated"]} {UPDATED}</div><div class="artbody">{html_body}</div></article>'
-            f'<div class="postcards">{cards}</div>'
+            f'<div class="postcards">{cards}</div>{poll_block(lang)}'
             f'<section class="banner section"><div><b>{w["cta"]}</b><p>{w["cta_text"]}</p></div><a class="btn" id="ctaBuy2" href="{url(lang, "compare")}">{w["cta"]} →</a></section>'
             + (f'<section class="section"><h2>{X["related"]}</h2><div class="posts">{rel_html}</div></section>' if rel else ''))
     jsonld = [{"@context": "https://schema.org", "@type": "Article", "headline": title, "description": desc, "inLanguage": S['loc'],

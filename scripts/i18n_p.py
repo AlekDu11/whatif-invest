@@ -1,0 +1,25 @@
+"""One-question retention poll: question | options (alerts, plan, watchlist, summary, game, learn) | thanks"""
+P = {
+ 'en': ('What would make you come back every day?', 'Price alerts in Telegram|Track my own DCA plan|Watchlist of my coins|Daily 1-minute market summary|A daily market puzzle|Simple lessons for beginners', 'Thanks! We build what you ask for.'),
+ 'uk': ('Що змусило б тебе заходити щодня?', 'Сповіщення про ціну в Telegram|Відстежувати мій DCA-план|Список моїх монет|Щоденний підсумок ринку за 1 хвилину|Щоденний ринковий пазл|Прості уроки для новачків', 'Дякуємо! Робимо те, що ви просите.'),
+ 'ru': ('Что заставило бы тебя заходить каждый день?', 'Уведомления о цене в Telegram|Отслеживать мой DCA-план|Список моих монет|Ежедневный итог рынка за 1 минуту|Ежедневный рыночный пазл|Простые уроки для новичков', 'Спасибо! Делаем то, что вы просите.'),
+ 'es': ('¿Qué te haría volver cada día?', 'Alertas de precio en Telegram|Seguir mi propio plan DCA|Lista de mis monedas|Resumen diario del mercado en 1 minuto|Un puzle diario del mercado|Lecciones sencillas para principiantes', '¡Gracias! Construimos lo que pides.'),
+ 'pt': ('O que faria você voltar todo dia?', 'Alertas de preço no Telegram|Acompanhar meu plano DCA|Lista das minhas moedas|Resumo diário do mercado em 1 minuto|Um quebra-cabeça diário do mercado|Aulas simples para iniciantes', 'Obrigado! Construímos o que você pede.'),
+ 'de': ('Was würde dich jeden Tag zurückbringen?', 'Preisalarme in Telegram|Meinen eigenen Sparplan verfolgen|Watchlist meiner Coins|Täglicher 1-Minuten-Marktüberblick|Ein tägliches Markt-Rätsel|Einfache Lektionen für Einsteiger', 'Danke! Wir bauen, was du dir wünschst.'),
+ 'fr': ('Qu’est-ce qui te ferait revenir chaque jour ?', 'Alertes de prix sur Telegram|Suivre mon propre plan DCA|Liste de mes cryptos|Résumé quotidien du marché en 1 minute|Un puzzle quotidien du marché|Leçons simples pour débutants', 'Merci ! Nous construisons ce que vous demandez.'),
+ 'it': ('Cosa ti farebbe tornare ogni giorno?', 'Avvisi di prezzo su Telegram|Seguire il mio piano PAC|Lista delle mie monete|Riepilogo giornaliero del mercato in 1 minuto|Un rompicapo quotidiano sul mercato|Lezioni semplici per principianti', 'Grazie! Costruiamo ciò che chiedi.'),
+ 'pl': ('Co sprawiłoby, że wracałbyś codziennie?', 'Alerty cenowe w Telegramie|Śledzenie mojego planu DCA|Lista moich monet|Codzienne podsumowanie rynku w 1 minutę|Codzienna rynkowa łamigłówka|Proste lekcje dla początkujących', 'Dzięki! Budujemy to, o co prosicie.'),
+ 'tr': ('Seni her gün geri getirecek şey ne olurdu?', 'Telegram’da fiyat uyarıları|Kendi DCA planımı takip etmek|Coin izleme listem|Günlük 1 dakikalık piyasa özeti|Günlük piyasa bulmacası|Yeni başlayanlar için basit dersler', 'Teşekkürler! İstediğinizi yapıyoruz.'),
+ 'nl': ('Waardoor zou je elke dag terugkomen?', 'Prijsalerts in Telegram|Mijn eigen DCA-plan volgen|Volglijst van mijn munten|Dagelijkse marktsamenvatting in 1 minuut|Een dagelijkse marktpuzzel|Eenvoudige lessen voor beginners', 'Bedankt! We bouwen wat je vraagt.'),
+ 'id': ('Apa yang membuatmu kembali setiap hari?', 'Peringatan harga di Telegram|Memantau rencana DCA saya|Daftar pantauan koin saya|Ringkasan pasar harian 1 menit|Teka-teki pasar harian|Pelajaran sederhana untuk pemula', 'Terima kasih! Kami membangun yang kamu minta.'),
+ 'vi': ('Điều gì khiến bạn quay lại mỗi ngày?', 'Cảnh báo giá qua Telegram|Theo dõi kế hoạch DCA của tôi|Danh sách coin theo dõi|Tóm tắt thị trường 1 phút mỗi ngày|Câu đố thị trường hằng ngày|Bài học đơn giản cho người mới', 'Cảm ơn! Chúng tôi làm điều bạn yêu cầu.'),
+ 'th': ('อะไรจะทำให้คุณกลับมาทุกวัน?', 'แจ้งเตือนราคาใน Telegram|ติดตามแผน DCA ของฉัน|รายการเหรียญที่ติดตาม|สรุปตลาดรายวันใน 1 นาที|ปริศนาตลาดประจำวัน|บทเรียนง่าย ๆ สำหรับมือใหม่', 'ขอบคุณ! เราสร้างสิ่งที่คุณต้องการ'),
+ 'hi': ('आपको रोज़ वापस आने के लिए क्या प्रेरित करेगा?', 'Telegram में प्राइस अलर्ट|अपने DCA प्लान को ट्रैक करना|मेरे कॉइन की वॉचलिस्ट|रोज़ 1 मिनट का मार्केट सारांश|रोज़ का मार्केट पज़ल|शुरुआती लोगों के लिए आसान पाठ', 'धन्यवाद! हम वही बनाते हैं जो आप चाहते हैं।'),
+ 'ja': ('毎日訪れたくなるのはどんな機能？', 'Telegramで価格アラート|自分の積立プランを記録|ウォッチリスト|毎日1分のマーケット要約|毎日のマーケットパズル|初心者向けのやさしいレッスン', 'ありがとうございます！ご要望を形にします。'),
+ 'ko': ('매일 다시 오게 만들 기능은?', '텔레그램 가격 알림|내 적립식 투자 계획 추적|관심 코인 목록|매일 1분 시장 요약|매일 시장 퍼즐|초보자를 위한 쉬운 강의', '감사합니다! 원하시는 것을 만들겠습니다.'),
+ 'zh': ('什么会让你每天都回来？', 'Telegram 价格提醒|跟踪我的定投计划|我的自选币列表|每日 1 分钟市场摘要|每日市场谜题|新手入门简单课程', '谢谢！我们会做你想要的。'),
+ 'ar': ('ما الذي سيجعلك تعود كل يوم؟', 'تنبيهات الأسعار في تيليجرام|متابعة خطتي للاستثمار الدوري|قائمة عملاتي|ملخص يومي للسوق في دقيقة|لغز يومي عن السوق|دروس بسيطة للمبتدئين', 'شكرًا! نبني ما تطلبه.'),
+ 'fil': ('Ano ang magpapabalik sa iyo araw-araw?', 'Price alerts sa Telegram|I-track ang sarili kong DCA plan|Watchlist ng mga coin ko|Araw-araw na 1 minutong buod ng merkado|Araw-araw na market puzzle|Simpleng aralin para sa baguhan', 'Salamat! Ginagawa namin ang hinihiling mo.'),
+}
+OPTS = ('alerts', 'plan', 'watchlist', 'summary', 'game', 'learn')
+assert all(len(v[1].split('|')) == 6 for v in P.values()) and len(P) == 20

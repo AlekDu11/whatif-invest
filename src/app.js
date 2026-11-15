@@ -422,4 +422,9 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
 /* ---------- insights category tabs ---------- */
 (function(){ const t=$('#bcats'); if(!t) return;
   $$('#bcats button').forEach(b=>b.onclick=()=>{ $$('#bcats button').forEach(x=>x.classList.toggle('on',x===b)); $$('.posts .post[data-c]').forEach(p=>p.hidden=!!b.dataset.c&&p.dataset.c!==b.dataset.c) }) })();
+/* ---------- one-question poll ---------- */
+(function(){ const box=$('#poll'); if(!box) return; let done; try{ done=localStorage.getItem('wi_poll1') }catch(e){}
+  if(done) return; box.hidden=false;
+  $$('#poll button').forEach(b=>b.onclick=()=>{ fetch(`/api/poll/?o=${b.dataset.o}&l=${lang}`).catch(()=>{}); try{ localStorage.setItem('wi_poll1',b.dataset.o) }catch(e){}
+    box.querySelector('.pollb').innerHTML=`<span class="good">✓ ${esc(box.dataset.thanks)}</span>` }) })();
 })();
