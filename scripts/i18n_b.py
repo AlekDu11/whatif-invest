@@ -39,7 +39,7 @@ L['it'] = dict(
  hl1='Miglior PAC, 1 anno', hl5='Miglior PAC, 5 anni', hlc='Miglior cripto large cap', sub1='$10/giorno, 1 anno', sub5='$10/giorno, 5 anni',
  stat='PAC $10/giorno · {p}', invested_lc='investiti', assets_n='Asset', updated='Aggiornato', gold='Oro', silver='Argento',
  by='Un progetto di', sources='Dati: Binance, Yahoo Finance, CoinGecko.',
- disclaimer='Non è una consulenza finanziaria. I rendimenti passati non garantiscono quelli futuri. Calcoli su chiusure mensili, senza commissioni, tasse e dividendi.')
+ disclaimer='Non è una consulenza finanziaria. I rendimenti passati non garantiscono quelli futuri. Calcoli su chiusure mensili; i prezzi di azioni ed ETF includono i dividendi reinvestiti; senza commissioni e tasse.')
 
 L['pl'] = dict(
  name='Polski', loc='pl', intl='pl-PL', dir='ltr',
@@ -79,7 +79,7 @@ L['pl'] = dict(
  hl1='Lider DCA, 1 rok', hl5='Lider DCA, 5 lat', hlc='Najlepsza duża kryptowaluta', sub1='$10/dzień, 1 rok', sub5='$10/dzień, 5 lat',
  stat='DCA $10/dzień · {p}', invested_lc='zainwestowano', assets_n='Aktywa', updated='Aktualizacja', gold='Złoto', silver='Srebro',
  by='Projekt', sources='Dane: Binance, Yahoo Finance, CoinGecko.',
- disclaimer='To nie jest porada inwestycyjna. Wyniki historyczne nie gwarantują przyszłych. Obliczenia na miesięcznych zamknięciach, bez prowizji, podatków i dywidend.')
+ disclaimer='To nie jest porada inwestycyjna. Wyniki historyczne nie gwarantują przyszłych. Obliczenia na miesięcznych zamknięciach; ceny akcji i ETF uwzględniają reinwestowane dywidendy; bez prowizji i podatków.')
 
 L['tr'] = dict(
  name='Türkçe', loc='tr', intl='tr-TR', dir='ltr',
@@ -119,7 +119,7 @@ L['tr'] = dict(
  hl1='1 yılın DCA lideri', hl5='5 yılın DCA lideri', hlc='En iyi büyük kripto', sub1='10$/gün, 1 yıl', sub5='10$/gün, 5 yıl',
  stat='DCA 10$/gün · {p}', invested_lc='yatırılan', assets_n='Varlık', updated='Güncelleme', gold='Altın', silver='Gümüş',
  by='Proje:', sources='Veriler: Binance, Yahoo Finance, CoinGecko.',
- disclaimer='Yatırım tavsiyesi değildir. Geçmiş performans gelecekteki sonuçları garanti etmez. Aylık kapanışlarla, komisyon, vergi ve temettü hariç hesaplanır.')
+ disclaimer='Yatırım tavsiyesi değildir. Geçmiş performans gelecekteki sonuçları garanti etmez. Aylık kapanışlarla hesaplanır; hisse ve ETF fiyatları yeniden yatırılan temettüleri içerir; komisyon ve vergi hariçtir.')
 
 L['nl'] = dict(
  name='Nederlands', loc='nl', intl='nl-NL', dir='ltr',
@@ -159,7 +159,7 @@ L['nl'] = dict(
  hl1='DCA-topper, 1 jaar', hl5='DCA-topper, 5 jaar', hlc='Beste grote crypto', sub1='$10/dag, 1 jaar', sub5='$10/dag, 5 jaar',
  stat='DCA $10/dag · {p}', invested_lc='ingelegd', assets_n='Beleggingen', updated='Bijgewerkt', gold='Goud', silver='Zilver',
  by='Een project van', sources='Data: Binance, Yahoo Finance, CoinGecko.',
- disclaimer='Geen beleggingsadvies. In het verleden behaalde resultaten bieden geen garantie voor de toekomst. Berekend met maandslotkoersen, zonder kosten, belasting en dividend.')
+ disclaimer='Geen beleggingsadvies. In het verleden behaalde resultaten bieden geen garantie voor de toekomst. Berekend met maandslotkoersen; koersen van aandelen en ETF’s zijn inclusief herbelegd dividend; zonder kosten en belasting.')
 
 L['id'] = dict(
  name='Bahasa Indonesia', loc='id', intl='id-ID', dir='ltr',
@@ -199,7 +199,7 @@ L['id'] = dict(
  hl1='Juara DCA, 1 tahun', hl5='Juara DCA, 5 tahun', hlc='Kripto besar terbaik', sub1='$10/hari, 1 tahun', sub5='$10/hari, 5 tahun',
  stat='DCA $10/hari · {p}', invested_lc='diinvestasikan', assets_n='Aset', updated='Diperbarui', gold='Emas', silver='Perak',
  by='Proyek dari', sources='Data: Binance, Yahoo Finance, CoinGecko.',
- disclaimer='Bukan saran investasi. Kinerja masa lalu tidak menjamin hasil di masa depan. Dihitung dengan penutupan bulanan, tanpa biaya, pajak, dan dividen.')
+ disclaimer='Bukan saran investasi. Kinerja masa lalu tidak menjamin hasil di masa depan. Dihitung dengan penutupan bulanan; harga saham dan ETF sudah termasuk dividen yang diinvestasikan kembali; tanpa biaya dan pajak.')
 
 L['vi'] = dict(
  name='Tiếng Việt', loc='vi', intl='vi-VN', dir='ltr',
@@ -239,7 +239,7 @@ L['vi'] = dict(
  hl1='Dẫn đầu DCA 1 năm', hl5='Dẫn đầu DCA 5 năm', hlc='Crypto vốn hóa lớn tốt nhất', sub1='$10/ngày, 1 năm', sub5='$10/ngày, 5 năm',
  stat='DCA $10/ngày · {p}', invested_lc='đã đầu tư', assets_n='Tài sản', updated='Cập nhật', gold='Vàng', silver='Bạc',
  by='Dự án của', sources='Dữ liệu: Binance, Yahoo Finance, CoinGecko.',
- disclaimer='Không phải lời khuyên đầu tư. Kết quả quá khứ không đảm bảo tương lai. Tính theo giá đóng cửa tháng, chưa gồm phí, thuế và cổ tức.')
+ disclaimer='Không phải lời khuyên đầu tư. Kết quả quá khứ không đảm bảo tương lai. Tính theo giá đóng cửa tháng; giá cổ phiếu và ETF đã gồm cổ tức tái đầu tư; chưa gồm phí và thuế.')
 
 L['th'] = dict(
  name='ไทย', loc='th', intl='th-TH', dir='ltr',
@@ -279,4 +279,4 @@ L['th'] = dict(
  hl1='DCA ดีที่สุด 1 ปี', hl5='DCA ดีที่สุด 5 ปี', hlc='คริปโตรายใหญ่ที่ดีที่สุด', sub1='$10/วัน, 1 ปี', sub5='$10/วัน, 5 ปี',
  stat='DCA $10/วัน · {p}', invested_lc='เงินลงทุน', assets_n='สินทรัพย์', updated='อัปเดต', gold='ทองคำ', silver='เงิน',
  by='โปรเจกต์ของ', sources='ข้อมูล: Binance, Yahoo Finance, CoinGecko',
- disclaimer='ไม่ใช่คำแนะนำการลงทุน ผลการดำเนินงานในอดีตไม่รับประกันอนาคต คำนวณจากราคาปิดรายเดือน ไม่รวมค่าธรรมเนียม ภาษี และเงินปันผล')
+ disclaimer='ไม่ใช่คำแนะนำการลงทุน ผลการดำเนินงานในอดีตไม่รับประกันอนาคต คำนวณจากราคาปิดรายเดือน ราคาหุ้นและ ETF รวมเงินปันผลที่นำไปลงทุนต่อแล้ว ไม่รวมค่าธรรมเนียมและภาษี')

@@ -39,7 +39,7 @@ L['en'] = dict(
  hl1='Top DCA, 1 year', hl5='Top DCA, 5 years', hlc='Best large-cap crypto', sub1='$10/day, 1 year', sub5='$10/day, 5 years',
  stat='DCA $10/day · {p}', invested_lc='invested', assets_n='Assets', updated='Updated', gold='Gold', silver='Silver',
  by='A project by', sources='Data: Binance, Yahoo Finance, CoinGecko.',
- disclaimer='Not investment advice. Past performance does not guarantee future results. Calculations use monthly closes and exclude fees, taxes and dividends.')
+ disclaimer='Not investment advice. Past performance does not guarantee future results. Calculations use monthly closes; stock and ETF prices include reinvested dividends; fees and taxes are excluded.')
 
 L['uk'] = dict(
  name='Українська', loc='uk', intl='uk-UA', dir='ltr',
@@ -79,7 +79,7 @@ L['uk'] = dict(
  hl1='Лідер DCA за рік', hl5='Лідер DCA за 5 років', hlc='Найкраща велика крипта', sub1='$10/день, 1 рік', sub5='$10/день, 5 років',
  stat='DCA $10/день · {p}', invested_lc='вкладено', assets_n='Активів', updated='Оновлено', gold='Золото', silver='Срібло',
  by='Проєкт', sources='Дані: Binance, Yahoo Finance, CoinGecko.',
- disclaimer='Це не інвестиційна порада. Минулі результати не гарантують майбутніх. Розрахунки за місячними цінами закриття, без комісій, податків і дивідендів.')
+ disclaimer='Це не інвестиційна порада. Минулі результати не гарантують майбутніх. Розрахунки за місячними цінами закриття; ціни акцій і ETF враховують реінвестовані дивіденди; без комісій і податків.')
 
 L['ru'] = dict(
  name='Русский', loc='ru', intl='ru-RU', dir='ltr',
@@ -119,7 +119,7 @@ L['ru'] = dict(
  hl1='Лидер DCA за год', hl5='Лидер DCA за 5 лет', hlc='Лучшая крупная крипта', sub1='$10/день, 1 год', sub5='$10/день, 5 лет',
  stat='DCA $10/день · {p}', invested_lc='вложено', assets_n='Активов', updated='Обновлено', gold='Золото', silver='Серебро',
  by='Проект', sources='Данные: Binance, Yahoo Finance, CoinGecko.',
- disclaimer='Не является инвестиционной рекомендацией. Прошлые результаты не гарантируют будущих. Расчёты по месячным ценам закрытия, без комиссий, налогов и дивидендов.')
+ disclaimer='Не является инвестиционной рекомендацией. Прошлые результаты не гарантируют будущих. Расчёты по месячным ценам закрытия; цены акций и ETF учитывают реинвестированные дивиденды; без комиссий и налогов.')
 
 L['es'] = dict(
  name='Español', loc='es', intl='es-ES', dir='ltr',
@@ -159,7 +159,7 @@ L['es'] = dict(
  hl1='Líder DCA, 1 año', hl5='Líder DCA, 5 años', hlc='Mejor cripto grande', sub1='$10/día, 1 año', sub5='$10/día, 5 años',
  stat='DCA $10/día · {p}', invested_lc='invertido', assets_n='Activos', updated='Actualizado', gold='Oro', silver='Plata',
  by='Un proyecto de', sources='Datos: Binance, Yahoo Finance, CoinGecko.',
- disclaimer='No es asesoramiento financiero. La rentabilidad pasada no garantiza resultados futuros. Cálculos con cierres mensuales, sin comisiones, impuestos ni dividendos.')
+ disclaimer='No es asesoramiento financiero. La rentabilidad pasada no garantiza resultados futuros. Cálculos con cierres mensuales; los precios de acciones y ETF incluyen dividendos reinvertidos; sin comisiones ni impuestos.')
 
 L['pt'] = dict(
  name='Português', loc='pt', intl='pt-BR', dir='ltr',
@@ -199,7 +199,7 @@ L['pt'] = dict(
  hl1='Líder DCA, 1 ano', hl5='Líder DCA, 5 anos', hlc='Melhor cripto grande', sub1='$10/dia, 1 ano', sub5='$10/dia, 5 anos',
  stat='DCA $10/dia · {p}', invested_lc='investido', assets_n='Ativos', updated='Atualizado', gold='Ouro', silver='Prata',
  by='Um projeto de', sources='Dados: Binance, Yahoo Finance, CoinGecko.',
- disclaimer='Não é recomendação de investimento. Rentabilidade passada não garante resultados futuros. Cálculos com fechamentos mensais, sem taxas, impostos e dividendos.')
+ disclaimer='Não é recomendação de investimento. Rentabilidade passada não garante resultados futuros. Cálculos com fechamentos mensais; preços de ações e ETFs incluem dividendos reinvestidos; sem taxas e impostos.')
 
 L['de'] = dict(
  name='Deutsch', loc='de', intl='de-DE', dir='ltr',
@@ -239,7 +239,7 @@ L['de'] = dict(
  hl1='DCA-Sieger, 1 Jahr', hl5='DCA-Sieger, 5 Jahre', hlc='Beste große Kryptowährung', sub1='10 $/Tag, 1 Jahr', sub5='10 $/Tag, 5 Jahre',
  stat='DCA 10 $/Tag · {p}', invested_lc='investiert', assets_n='Anlagen', updated='Aktualisiert', gold='Gold', silver='Silber',
  by='Ein Projekt von', sources='Daten: Binance, Yahoo Finance, CoinGecko.',
- disclaimer='Keine Anlageberatung. Vergangene Wertentwicklung ist kein Indikator für die Zukunft. Berechnung mit Monatsschlusskursen, ohne Gebühren, Steuern und Dividenden.')
+ disclaimer='Keine Anlageberatung. Vergangene Wertentwicklung ist kein Indikator für die Zukunft. Berechnung mit Monatsschlusskursen; Aktien- und ETF-Kurse inkl. reinvestierter Dividenden; ohne Gebühren und Steuern.')
 
 L['fr'] = dict(
  name='Français', loc='fr', intl='fr-FR', dir='ltr',
@@ -279,4 +279,4 @@ L['fr'] = dict(
  hl1='Meilleur DCA, 1 an', hl5='Meilleur DCA, 5 ans', hlc='Meilleure grande crypto', sub1='10 $/jour, 1 an', sub5='10 $/jour, 5 ans',
  stat='DCA 10 $/jour · {p}', invested_lc='investis', assets_n='Actifs', updated='Mis à jour', gold='Or', silver='Argent',
  by='Un projet de', sources='Données : Binance, Yahoo Finance, CoinGecko.',
- disclaimer='Ceci n’est pas un conseil en investissement. Les performances passées ne préjugent pas des performances futures. Calculs sur clôtures mensuelles, hors frais, impôts et dividendes.')
+ disclaimer='Ceci n’est pas un conseil en investissement. Les performances passées ne préjugent pas des performances futures. Calculs sur clôtures mensuelles ; cours des actions et ETF dividendes réinvestis inclus ; hors frais et impôts.')

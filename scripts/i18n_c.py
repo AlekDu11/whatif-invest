@@ -39,7 +39,7 @@ L['hi'] = dict(
  hl1='1 साल का DCA लीडर', hl5='5 साल का DCA लीडर', hlc='सबसे अच्छी बड़ी क्रिप्टो', sub1='$10/दिन, 1 साल', sub5='$10/दिन, 5 साल',
  stat='DCA $10/दिन · {p}', invested_lc='निवेश', assets_n='एसेट', updated='अपडेट', gold='सोना', silver='चांदी',
  by='प्रोजेक्ट:', sources='डेटा: Binance, Yahoo Finance, CoinGecko।',
- disclaimer='यह निवेश सलाह नहीं है। पिछला प्रदर्शन भविष्य की गारंटी नहीं है। गणना मासिक क्लोज़िंग पर, फ़ीस, टैक्स और डिविडेंड के बिना।')
+ disclaimer='यह निवेश सलाह नहीं है। पिछला प्रदर्शन भविष्य की गारंटी नहीं है। गणना मासिक क्लोज़िंग पर; शेयर और ETF कीमतों में पुनर्निवेशित डिविडेंड शामिल हैं; फीस और टैक्स शामिल नहीं।')
 
 L['ja'] = dict(
  name='日本語', loc='ja', intl='ja-JP', dir='ltr',
@@ -79,7 +79,7 @@ L['ja'] = dict(
  hl1='1年の積立トップ', hl5='5年の積立トップ', hlc='大型暗号資産のトップ', sub1='毎日10ドル・1年', sub5='毎日10ドル・5年',
  stat='毎日10ドル積立・{p}', invested_lc='投資額', assets_n='銘柄数', updated='更新', gold='金', silver='銀',
  by='運営：', sources='データ：Binance、Yahoo Finance、CoinGecko。',
- disclaimer='投資助言ではありません。過去の実績は将来の成果を保証しません。月末終値で計算し、手数料・税金・配当は含みません。')
+ disclaimer='投資助言ではありません。過去の実績は将来の成果を保証しません。月末終値で計算。株式・ETFの価格は配当再投資込み、手数料・税金は含みません。')
 
 L['ko'] = dict(
  name='한국어', loc='ko', intl='ko-KR', dir='ltr',
@@ -119,7 +119,7 @@ L['ko'] = dict(
  hl1='1년 적립 1위', hl5='5년 적립 1위', hlc='대형 암호화폐 1위', sub1='하루 $10, 1년', sub5='하루 $10, 5년',
  stat='하루 $10 적립 · {p}', invested_lc='투자금', assets_n='자산', updated='업데이트', gold='금', silver='은',
  by='프로젝트:', sources='데이터: Binance, Yahoo Finance, CoinGecko.',
- disclaimer='투자 조언이 아닙니다. 과거 수익률이 미래 결과를 보장하지 않습니다. 월말 종가 기준이며 수수료·세금·배당은 제외됩니다.')
+ disclaimer='투자 조언이 아닙니다. 과거 수익률이 미래 결과를 보장하지 않습니다. 월말 종가 기준이며 주식·ETF 가격은 배당 재투자를 포함하고 수수료·세금은 제외됩니다.')
 
 L['zh'] = dict(
  name='中文', loc='zh-Hans', intl='zh-CN', dir='ltr',
@@ -159,7 +159,7 @@ L['zh'] = dict(
  hl1='1年定投冠军', hl5='5年定投冠军', hlc='最佳大市值加密货币', sub1='每天10美元，1年', sub5='每天10美元，5年',
  stat='每天定投10美元 · {p}', invested_lc='投入', assets_n='资产数', updated='更新于', gold='黄金', silver='白银',
  by='项目：', sources='数据：Binance、Yahoo Finance、CoinGecko。',
- disclaimer='不构成投资建议。过往表现不代表未来收益。按月度收盘价计算，未计手续费、税费和股息。')
+ disclaimer='不构成投资建议。过往表现不代表未来收益。按月度收盘价计算；股票和ETF价格已含股息再投资；未计手续费和税费。')
 
 L['ar'] = dict(
  name='العربية', loc='ar', intl='ar', dir='rtl',
@@ -199,7 +199,7 @@ L['ar'] = dict(
  hl1='الأفضل في DCA لسنة', hl5='الأفضل في DCA لـ5 سنوات', hlc='أفضل عملة رقمية كبيرة', sub1='10$/يوم، سنة', sub5='10$/يوم، 5 سنوات',
  stat='DCA بـ10$/يوم · {p}', invested_lc='مستثمَر', assets_n='الأصول', updated='آخر تحديث', gold='الذهب', silver='الفضة',
  by='مشروع من', sources='البيانات: Binance وYahoo Finance وCoinGecko.',
- disclaimer='ليست نصيحة استثمارية. الأداء السابق لا يضمن النتائج المستقبلية. الحساب بأسعار الإغلاق الشهرية دون رسوم أو ضرائب أو توزيعات.')
+ disclaimer='ليست نصيحة استثمارية. الأداء السابق لا يضمن النتائج المستقبلية. الحساب بأسعار الإغلاق الشهرية؛ أسعار الأسهم وصناديق ETF تشمل إعادة استثمار التوزيعات؛ دون رسوم أو ضرائب.')
 
 L['fil'] = dict(
  name='Filipino', loc='fil', intl='fil-PH', dir='ltr',
@@ -239,4 +239,4 @@ L['fil'] = dict(
  hl1='Nangunguna sa DCA, 1 taon', hl5='Nangunguna sa DCA, 5 taon', hlc='Pinakamagandang malaking crypto', sub1='$10/araw, 1 taon', sub5='$10/araw, 5 taon',
  stat='DCA $10/araw · {p}', invested_lc='na-invest', assets_n='Asset', updated='Na-update', gold='Ginto', silver='Pilak',
  by='Proyekto ng', sources='Data: Binance, Yahoo Finance, CoinGecko.',
- disclaimer='Hindi ito payo sa pamumuhunan. Hindi garantiya ng hinaharap ang nakaraang resulta. Batay sa buwanang closing, hindi kasama ang fees, buwis at dividend.')
+ disclaimer='Hindi ito payo sa pamumuhunan. Hindi garantiya ng hinaharap ang nakaraang resulta. Batay sa buwanang closing; kasama sa presyo ng stocks at ETF ang reinvested na dividend; hindi kasama ang fees at buwis.')

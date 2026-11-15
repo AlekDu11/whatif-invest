@@ -261,8 +261,10 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
 <link rel="canonical" href="{canon}">
 {alts}
 <meta property="og:type" content="website"><meta property="og:site_name" content="{BRAND}"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{canon}"><meta property="og:locale" content="{S['intl'].replace('-', '_')}">
-<meta name="twitter:card" content="summary"><meta name="theme-color" content="#ffffff">
-<link rel="icon" href="{BASE}/assets/favicon.svg" type="image/svg+xml">
+<meta property="og:image" content="{SITE}/assets/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="{SITE}/assets/og.jpg"><meta name="theme-color" content="#ffffff">
+<script>(function(){{try{{var t=localStorage.getItem('wi_theme')}}catch(e){{}}if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';if(t==='dark'){{document.documentElement.dataset.theme='dark';document.querySelector('meta[name=theme-color]').content='#0e1014'}}}})()</script>
+<link rel="icon" href="{BASE}/assets/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="{BASE}/assets/icon-192.png"><link rel="manifest" href="{BASE}/manifest.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{BASE}/assets/style.css?v={ver['css']}">
@@ -274,6 +276,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
   <a class="logo" href="{url(lang)}">whatif<b>stack</b></a>
   <div class="gsearch">{SEARCH_ICON}<input id="gs" type="search" autocomplete="off" aria-label="search"><div class="gres" id="gres"></div></div>
   <nav class="nav">{nav}</nav>
+  <button class="thm" id="thm" type="button" aria-label="theme"><span class="m">☾</span><span class="s">☀</span></button>
   {lang_menu(lang, p)}
 </div></div>
 <nav class="mnav">{mnav}</nav>
@@ -286,6 +289,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
 <script src="{BASE}/assets/index.js?v={ver['index']}" defer></script>
 <script src="{BASE}/assets/ref.js?v={ver['ref']}" defer></script>
 <script src="{BASE}/assets/app.js?v={ver['js']}" defer></script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>
 """
@@ -438,18 +442,9 @@ def home(lang, ver):
                  f'<span class="bb"><i style="width:{max(2, r["val"] / mx * 100):.1f}%" class="{cls(r["roi"])}"></i></span><b>{usd(r["val"])}</b></a>')
     inv5 = usd(simulate(bat[0], END_I - 60)['inv']) if bat else ''
     w_bat = f'<div class="card wd battle"><div class="wt">⚔️ {w["battle"]}</div><div class="ws">{w["q_inv"]}: {inv5}</div>{rows}</div>'
-    # heatmap top 30 crypto
-    hm_ids = [i for i in ids if A[i]['cat'] == 'crypto'][:30]
-    tiles = ''
-    for k, i in enumerate(hm_ids):
-        c = METRICS[i]['chg'] or 0
-        sz = 'h1' if k < 2 else 'h2' if k < 8 else 'h3'
-        tiles += (f'<a class="tile {sz}{" dk" if abs(c) > 0.04 else ""}" data-h="{i}" href="{aurl(lang, i)}" style="background:{heat_color(c)}"><b>{esc(A[i]["tk"])}</b>'
-                  f'<span data-c="{i}">{pct(METRICS[i]["chg"])}</span><small data-p="{i}">{price(METRICS[i]["price"])}</small></a>')
     X_ = S['x']
     bub = (f'<section class="section"><div class="charthead"><h2>{X_["bub_h1"]}</h2><a class="calc" href="{url(lang, "bubbles")}">{X_["bub_h1"]} →</a></div>'
            f'{bubbles_block(lang, full=False)}</section>')
-    heat = f'<section class="section"><div class="charthead"><h2>{w["heat"]}</h2><span class="livebadge"><i></i>{w["live"]}</span></div><div class="heat">{tiles}</div></section>'
     banner = (f'<section class="banner section"><div><b>{w["cta"]}</b><p>{w["cta_text"]}</p></div>'
               f'<a class="btn" id="ctaBuy2" href="{url(lang, "compare")}">{w["cta"]} →</a></section>')
     # DCA leaders cards (as before)
@@ -464,23 +459,14 @@ def home(lang, ver):
             cards.append(hl_card(lang, aid, nm(A[aid], lang), 'r5', S['sub5']))
     filt = f'<div class="toolbar"><div class="filter">{SEARCH_ICON}<input id="flt" type="search" autocomplete="off"></div></div>'
     body = (hero + f'<div class="wgrid">{w_mcap}{w_dom}{w_fng}{w_tr}</div>'
-            f'<div class="wgrid3">{w_up}{w_dn}{w_bat}</div>{bub}{heat}{banner}'
+            f'<div class="wgrid3">{w_up}{w_dn}{w_bat}</div>{banner}'
             f'<section class="section"><div class="hl">{"".join(cards)}</div></section>'
-            f'<div class="tabs" id="tabs"></div>{filt}{table_block(lang, ids[:100])}'
+            f'<div class="tabs" id="tabs"></div>{filt}{table_block(lang, ids[:100])}{bub}'
             f'<section class="card section faq"><h2>{S["faq"]}</h2><details open><summary>{esc(S["q3"])}</summary><p>{esc(S["a3"])}</p></details></section>')
     jsonld = [{"@context": "https://schema.org", "@type": "WebApplication", "name": BRAND, "url": SITE + url(lang),
                "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "inLanguage": S['loc'],
                "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": desc}]
     return shell(lang, None, title, desc, body, dict(home=True), ver, jsonld)
-
-
-def heat_color(c):
-    c = max(-0.1, min(0.1, c))
-    if c >= 0:
-        k = c / 0.1
-        return f"rgb({int(232 - 212 * k)},{int(246 - 82 * k)},{int(237 - 160 * k)})"
-    k = -c / 0.1
-    return f"rgb({int(253 - 24 * k)},{int(236 - 164 * k)},{int(236 - 159 * k)})"
 
 
 def compare(lang, ver):
@@ -608,10 +594,14 @@ LOCAL_CCY = {'uk': 'fx:UAH', 'ru': 'fx:RUB', 'pl': 'fx:PLN', 'de': 'fx:EUR', 'fr
 
 def bubbles_block(lang, full):
     u = TR[lang]['ui']
-    per = f'<div class="seg" id="bper"><button data-v="ch" class="on">{u["chg"]}</button><button data-v="y1">{u["spark"]}</button><button data-v="r1">{u["d1"]}</button></div>'
-    cat = f'<div class="seg" id="bcat"><button data-v="crypto" class="on">{u["crypto"]}</button><button data-v="stock">{u["stock"]}</button><button data-v="all">{u["all"]}</button></div>'
-    return (f'<div class="card bubwrap"><div class="toolbar">{per}{cat if full else ""}</div>'
-            f'<div class="bub" data-n="{150 if full else 60}" style="height:{"72vh" if full else "460px"}"><canvas></canvas></div></div>')
+    bp = u['bp'].split('|')
+    per = ''.join(f'<button data-v="{v}"{" class=\"on\"" if v == "d" else ""}>{esc(t)}</button>' for v, t in zip(('h', 'd', 'w', 'm', 'y', 'mc'), bp))
+    per = f'<div class="seg bseg" id="bper">{per}<button data-v="dca">{esc(u["d1"])}</button></div>'
+    cat = f'<div class="seg bseg" id="bcat"><button data-v="crypto" class="on">{u["crypto"]}</button><button data-v="stock">{u["stock"]}</button></div>'
+    return (f'<div class="bubwrap"><div class="bubbar">{per}{cat}</div>'
+            f'<div class="bub{" full" if full else ""}" data-n="{150 if full else 100}"><canvas></canvas><div class="btip" hidden></div>'
+            f'<div class="bload"><i></i></div></div>'
+            f'<div class="bsrc">CoinGecko · Binance · Yahoo Finance</div></div>')
 
 
 def tool(lang, slug, ver):
@@ -836,8 +826,23 @@ def main():
         idx.append({k: (round(v, 4) if isinstance(v, float) and k in ('ch', 'r1', 'r3', 'r5') else v) for k, v in e.items() if v is not None})
         write(f'assets/p/{aid}.json', json.dumps({'start': a['start'], 'end': a['end'], 'p': a['p']}, separators=(',', ':')))
     index_js = 'window.WI=' + json.dumps({'u': UPDATED, 'v': dv, 'a': idx, 'fx': FX.get('rates', {}), 'fxu': FX.get('updated')}, ensure_ascii=False, separators=(',', ':')) + ';'
+    write('assets/bub.json', json.dumps({'u': G.get('updated'), 'a': G.get('bub', [])}, separators=(',', ':')))
     write('assets/index.js', index_js); write('assets/style.css', css); write('assets/app.js', js); write('assets/ref.js', ref)
-    shutil.copy(os.path.join(ROOT, 'src/favicon.svg'), os.path.join(OUT, 'assets/favicon.svg'))
+    for f in ('favicon.svg', 'icon-192.png', 'icon-512.png', 'og.jpg'):
+        shutil.copy(os.path.join(ROOT, 'src', f), os.path.join(OUT, 'assets', f))
+    write('manifest.webmanifest', json.dumps({
+        'name': 'WhatIfStack — DCA calculator & markets', 'short_name': 'WhatIfStack', 'start_url': '/', 'scope': '/',
+        'display': 'standalone', 'background_color': '#0e1014', 'theme_color': '#0e1014',
+        'icons': [{'src': '/assets/icon-192.png', 'sizes': '192x192', 'type': 'image/png', 'purpose': 'any maskable'},
+                  {'src': '/assets/icon-512.png', 'sizes': '512x512', 'type': 'image/png', 'purpose': 'any maskable'}]}, ensure_ascii=False))
+    # service worker: static assets cache-first, pages network-first with offline fallback to the cached copy
+    write('sw.js', f"""const C='wi-{dv}';
+self.addEventListener('install',e=>self.skipWaiting());
+self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(ks=>Promise.all(ks.filter(k=>k!==C).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
+self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.method!=='GET'||u.origin!==location.origin||u.pathname.startsWith('/_vercel'))return;
+ if(u.pathname.startsWith('/assets/')&&u.search){{e.respondWith(caches.open(C).then(c=>c.match(r).then(m=>m||fetch(r).then(res=>{{if(res.ok)c.put(r,res.clone());return res}}))));return}}
+ if(r.mode==='navigate'){{e.respondWith(fetch(r).then(res=>{{const cp=res.clone();caches.open(C).then(c=>c.put(r,cp));return res}}).catch(()=>caches.match(r).then(m=>m||caches.match('/'))))}}
+}});""")
     ver = dict(css=h8(css), js=h8(js), ref=h8(ref), index=h8(index_js))
     per_lang = {}
     for lang in ORDER:

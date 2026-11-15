@@ -192,3 +192,27 @@ BUB = {
  'ar': ('فقاعات العملات الرقمية والأسهم', 'خريطة فقاعات حية للسوق: كلما كبرت الفقاعة كانت الحركة أقوى. بدّل بين 24 ساعة وسعر سنة وعائد DCA لسنة.'),
  'fil': ('Crypto at stock bubbles', 'Live na bubble map ng merkado: mas malaki ang bubble, mas malaki ang galaw. Lumipat sa 24h, presyo sa 1 taon at kita ng DCA sa 1 taon.'),
 }
+
+# bubble periods: hour | day | week | month | year | market cap & day
+BP = {
+ 'en': 'Hour|Day|Week|Month|Year|Market cap & day',
+ 'uk': 'Година|День|Тиждень|Місяць|Рік|Капіталізація й день',
+ 'ru': 'Час|День|Неделя|Месяц|Год|Капитализация и день',
+ 'es': 'Hora|Día|Semana|Mes|Año|Capitalización y día',
+ 'pt': 'Hora|Dia|Semana|Mês|Ano|Capitalização e dia',
+ 'de': 'Stunde|Tag|Woche|Monat|Jahr|Marktkap. & Tag',
+ 'fr': 'Heure|Jour|Semaine|Mois|Année|Capitalisation & jour',
+ 'it': 'Ora|Giorno|Settimana|Mese|Anno|Capitalizzazione e giorno',
+ 'pl': 'Godzina|Dzień|Tydzień|Miesiąc|Rok|Kapitalizacja i dzień',
+ 'tr': 'Saat|Gün|Hafta|Ay|Yıl|Piyasa değeri ve gün',
+ 'nl': 'Uur|Dag|Week|Maand|Jaar|Marktkap. & dag',
+ 'id': 'Jam|Hari|Minggu|Bulan|Tahun|Kap. pasar & hari',
+ 'vi': 'Giờ|Ngày|Tuần|Tháng|Năm|Vốn hóa & ngày',
+ 'th': 'ชั่วโมง|วัน|สัปดาห์|เดือน|ปี|มูลค่าตลาดและวัน',
+ 'hi': 'घंटा|दिन|सप्ताह|महीना|साल|मार्केट कैप और दिन',
+ 'ja': '1時間|1日|1週間|1か月|1年|時価総額と1日',
+ 'ko': '1시간|1일|1주|1개월|1년|시가총액 및 1일',
+ 'zh': '1小时|1天|1周|1个月|1年|市值与1天',
+ 'ar': 'ساعة|يوم|أسبوع|شهر|سنة|القيمة السوقية واليوم',
+ 'fil': 'Oras|Araw|Linggo|Buwan|Taon|Market cap at araw',
+}

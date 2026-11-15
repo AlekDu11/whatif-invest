@@ -118,16 +118,26 @@ def looks_stable(series):
 
 
 # ---------------- CoinGecko (names/logos) ----------------
+BUBLIST = []   # top coins by market cap with 1h/24h/7d/30d/1y change, for the bubble map
+
+
 def coingecko_meta():
     meta = {}
     for page in (1, 2):
-        d = get_json(f"https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page={page}", tries=2)
+        d = get_json(f"https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page={page}&price_change_percentage=1h,24h,7d,30d,1y", tries=2)
         if not isinstance(d, list):
             break
         for c in d:
             sym = (c.get('symbol') or '').upper()
             if sym and sym not in meta:          # first = biggest market cap wins
                 meta[sym] = dict(name=c.get('name'), logo=c.get('image'), rank=c.get('market_cap_rank'), mcap=c.get('market_cap'))
+            if page == 1 and sym and c.get('current_price'):
+                r = lambda k: round(c[k] / 100, 5) if isinstance(c.get(k), (int, float)) else None
+                BUBLIST.append(dict(s=sym, n=c.get('name'), l=(c.get('image') or '').replace('/large/', '/small/'),
+                                    pr=c.get('current_price'), mc=c.get('market_cap'),
+                                    h=r('price_change_percentage_1h_in_currency'), d=r('price_change_percentage_24h_in_currency'),
+                                    w=r('price_change_percentage_7d_in_currency'), m=r('price_change_percentage_30d_in_currency'),
+                                    y=r('price_change_percentage_1y_in_currency')))
         time.sleep(3)
     log(f"CoinGecko meta: {len(meta)} coins")
     return meta
@@ -332,6 +342,8 @@ def main():
         log(f"fx failed: {e}")
     try:
         g = market_global(cg)
+        if BUBLIST:
+            g['bub'] = BUBLIST
         gp = os.path.join(ROOT, 'data/global.json')
         if g:
             old_g = json.load(open(gp)) if os.path.exists(gp) else {}
