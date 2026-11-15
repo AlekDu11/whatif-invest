@@ -14,6 +14,7 @@ from i18n_t import T as TT  # noqa: E402
 from i18n_e import E as EX  # noqa: E402
 from i18n_n import N as NW, FOOT  # noqa: E402
 from i18n_p import P as POLL, OPTS as POLL_OPTS  # noqa: E402
+from i18n_ai import AI as AIS  # noqa: E402
 SOCIAL = []   # [(label, url)], e.g. ('Telegram', 'https://t.me/whatifstack'); the 'Follow us' column appears when filled
 from i18n_h import H as HB, PRICES as HPRICE, SCEN as HSCEN, UNITS as HUNITS, CONV as HCONV  # noqa: E402
 
@@ -32,7 +33,7 @@ UPDATED = market['updated']
 END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
-RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges'}
+RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai'}
 # asset ids that clash with a language folder or a section get a suffix (ko -> ko-stock, fil -> fil-crypto)
 _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
 # delisted or stale series (last price older than a month) are dropped: "today" numbers would be false
@@ -90,6 +91,8 @@ assert not (set(HUBS) | set(TOOLS) | {'blog', 'compare'}) & set(A), 'asset id co
 
 def has_page(lang, aid):
     if aid is None or aid == 'compare' or aid in HUBS or aid in TOOLS:
+        return True
+    if aid == 'ai':
         return True
     if aid in CALCS:
         if aid == 'about':
@@ -294,6 +297,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
            + ''.join(f'<a href="{url(lang, k)}">{v}</a>' for k, v in tools_menu(lang)) + '</div></details>'
            + f'<a href="{url(lang, "exchanges")}" class="{"on" if p == "exchanges" else ""}">{EX[lang]["nav"]}</a>'
            + f'<a href="{url(lang, "news")}" class="{"on" if p == "news" else ""}">{NW[lang]["n_nav"]}</a>'
+           + f'<a href="{url(lang, "ai")}" class="{"on" if p == "ai" else ""}">{AIS[lang]["nav"]}</a>'
            + f'<a href="{url(blog_l, "blog")}" class="{"on" if (p or "").startswith("blog") else ""}">{NW[lang]["i_nav"]}</a>')
     i18n = dict(S['ui'], months=S['months'], intl=S['intl'])
     mnav = ''.join(f'<a href="{h}" class="{"on" if on else ""}"><span>{ic}</span>{esc(lb)}</a>' for h, ic, lb, on in (
@@ -301,7 +305,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
         (url(lang, 'exchanges'), '₿', EX[lang]['nav'], p == 'exchanges'), (url(blog_l, 'blog'), '✎', NW[lang]['i_nav'], (p or '').startswith('blog'))))
     mnav += f'<button type="button" id="mmore"><span>☰</span>{esc(X["nav_tools"])}</button>'
     msheet = ('<div class="msheet" id="msheet" hidden>' + ''.join(f'<a href="{url(lang, k)}">{esc(v)}</a>' for k, v in
-              [('compare', S['nav_cmp'])] + tools_menu(lang)) + '</div>')
+              [('compare', S['nav_cmp']), ('ai', AIS[lang]['h1'].split(':')[0])] + tools_menu(lang)) + '</div>')
     cfg = dict(cfg, lang=lang, base=BASE, prefix=url(lang).rstrip('/'), full=lang in FULL, topn=TOP_N,
                names={'gold': S['gold'], 'silver': S['silver']})
     return f"""<!DOCTYPE html>
@@ -962,7 +966,7 @@ def exchanges_page(lang, ver):
     return shell(lang, 'exchanges', f'{e["h1"]} | {BRAND}', e['d'], body, {}, ver)
 
 
-NEWS_TAGS = ['bitcoin', 'ethereum', 'etf', 'regulation', 'defi', 'stablecoins', 'solana', 'xrp', 'markets', 'hacks']
+NEWS_TAGS = ['bitcoin', 'ethereum', 'etf', 'regulation', 'defi', 'stablecoins', 'solana', 'xrp', 'markets', 'hacks', 'ai']
 
 
 def news_items(lang):
@@ -978,7 +982,7 @@ def news_row(lang, slug, m, tl):
 
 def news_page(lang, ver):
     n = NW[lang]
-    tl = dict(zip(NEWS_TAGS, n['tags'].split('|')))
+    tl = dict(zip(NEWS_TAGS, n['tags'].split('|') + [AIS[lang]['nav']]))
     chips = f'<button class="on" data-t="">{esc(n["n_all"])}</button>' + ''.join(f'<button data-t="{k}">{esc(v)}</button>' for k, v in tl.items())
     own = news_items(lang)[:60]
     own_html = (f'<section class="section"><h2>{esc(n["own"])}</h2><div class="card nlist own">' + ''.join(news_row(lang, k, m, tl) for k, m in own) + '</div></section>') if own else ''
@@ -993,7 +997,7 @@ def news_page(lang, ver):
 def news_article(lang, slug, ver):
     S, n = TR[lang], NW[lang]
     m = NEWS[lang][slug]
-    tl = dict(zip(NEWS_TAGS, n['tags'].split('|')))
+    tl = dict(zip(NEWS_TAGS, n['tags'].split('|') + [AIS[lang]['nav']]))
     title, desc = m.get('title', ''), m.get('description', '')
     tags = ''.join(f'<span class="badge">{esc(tl.get(t, t))}</span> ' for t in (x.strip() for x in m.get('tags', '').split(',')) if t)
     cards = ''.join(sc_block('card', [i], lang) for i in m['assets'][:3])
@@ -1035,6 +1039,53 @@ def about_page(lang, ver):
     body = f'<article class="art"><h1>{esc(h1)}</h1><div class="artbody">' + ''.join(f'<h2>{esc(h)}</h2><p>{esc(t)}</p>' for h, t in secs) + '</div></article>'
     org = {"@context": "https://schema.org", "@type": "Organization", "name": BRAND, "url": SITE + '/', "logo": SITE + '/assets/icon-512.png'}
     return shell(lang, 'about', f'{h1} | {BRAND}', secs[0][1], body, {}, ver, [org])
+
+
+AI_STOCKS = [i for i in ('nvda', 'msft', 'goog', 'meta', 'amzn', 'avgo', 'tsm', 'amd', 'orcl', 'pltr', 'mu', 'anet', 'smci', 'dell', 'crwv', 'smh', 'soxx') if i in A]
+AI_CRYPTO = [i for i in ('tao', 'near', 'render', 'fet', 'wld', 'icp', 'virtual', 'grt', 'ar', 'arkm', 'theta', 'io', 'kaito') if i in A]
+AI_BASKET_S = [i for i in ('nvda', 'msft', 'goog', 'meta', 'avgo', 'tsm', 'amd') if i in A]
+AI_BASKET_C = [i for i in ('near', 'fet', 'render', 'icp', 'grt', 'ar') if i in A]
+
+
+def basket(ids, years, daily=AMOUNT):
+    st = END_I - years * 12
+    ok = [i for i in ids if ym2i(A[i]['start']) <= st]
+    if not ok:
+        return None
+    rs = [simulate(i, st, daily / len(ok)) for i in ok]
+    inv, val = sum(r['inv'] for r in rs), sum(r['val'] for r in rs)
+    return dict(inv=inv, val=val, roi=val / inv - 1, ids=ok)
+
+
+def ai_page(lang, ver):
+    S, t = TR[lang], AIS[lang]
+    yl = {1: S['p1'], 3: S['p3'], 5: S['p5']}
+    cards, sents = '', []
+    for key, ids, y in (('basket_s', AI_BASKET_S, 5), ('basket_c', AI_BASKET_C, 3)):
+        b = basket(ids, y)
+        if not b:
+            continue
+        spy = simulate('spy', END_I - y * 12)
+        names = ', '.join(A[i]['tk'] for i in b['ids'])
+        sent = t['res'].format(names=names, y=yl[y], inv=usd(b['inv']), val=usd(b['val']), roi=pct(b['roi']), spy=f'{usd(spy["val"])} ({pct(spy["roi"])})')
+        sents.append(sent)
+        cards += (f'<div class="card bk"><div class="k">{esc(t[key])} · {esc(yl[y])}</div><div class="v {cls(b["roi"])}">{pct(b["roi"])}</div>'
+                  f'<div class="s">{esc(sent)}</div></div>')
+    for aid in ('nvda', 'tao'):
+        if aid in A:
+            cards += hl_card(lang, aid, nm(A[aid], lang), 'r5' if METRICS[aid]['r5'] is not None else 'r1', S['sub5'] if METRICS[aid]['r5'] is not None else S['sub1'])
+    tl = dict(zip(NEWS_TAGS, NW[lang]['tags'].split('|') + [t['nav']]))
+    news = [(k, m) for k, m in news_items(lang) if 'ai' in [x.strip() for x in m.get('tags', '').split(',')]][:8]
+    news_html = (f'<section class="section"><h2>{esc(t["news"])}</h2><div class="card nlist own">' + ''.join(news_row(lang, k, m, tl) for k, m in news) + '</div></section>') if news else ''
+    bl = lang if lang in BLOG_LANGS else 'en'
+    posts = sorted([(k, m) for k, m in POSTS.get(bl, {}).items() if m.get('category') == 'ai'], key=lambda kv: kv[1].get('date', ''), reverse=True)[:8]
+    posts_html = (f'<section class="section"><h2>{esc(t["posts"])}</h2><div class="posts">' + ''.join(
+        f'<a class="card post" href="{url(bl, "blog/" + k)}"><div class="muted">{esc(m.get("date", ""))}</div><h3>{esc(post_meta_title(m, bl))}</h3></a>' for k, m in posts) + '</div></section>') if posts else ''
+    body = (f'<h1>{esc(t["h1"])}</h1><p class="lead">{esc(t["d"])}</p><div class="hl">{cards}</div>'
+            f'<section class="section">{table_block(lang, AI_STOCKS, t["stocks"], interactive=False)}</section>'
+            f'<section class="section">{table_block(lang, AI_CRYPTO, t["crypto"], interactive=False)}</section>{news_html}{posts_html}{poll_block(lang)}{poly_block(lang)}')
+    faq = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": t['h1'], "acceptedAnswer": {"@type": "Answer", "text": ' '.join(sents)}}]}
+    return shell(lang, 'ai', f'{t["h1"]} | {BRAND}', t['d'], body, {}, ver, [faq])
 
 
 def habits_strip(lang):
@@ -1247,8 +1298,8 @@ def blog_index(lang, ver):
     X = TR[lang]['x']
     items = sorted(POSTS.get(lang, {}).items(), key=lambda kv: kv[1].get('date', ''), reverse=True)
     cl = NW[lang]['cats'].split('|')
-    cmap = dict(zip(('analytics', 'guides', 'reports'), cl[1:]))
-    cats = [c for c in ('analytics', 'guides', 'reports') if any(m.get('category', 'analytics') == c for _, m in items)]
+    cmap = dict(zip(('analytics', 'guides', 'reports'), cl[1:]), ai=AIS[lang]['nav'])
+    cats = [c for c in ('analytics', 'ai', 'guides', 'reports') if any(m.get('category', 'analytics') == c for _, m in items)]
     tabs = (f'<div class="seg nchips" id="bcats"><button class="on" data-c="">{esc(cl[0])}</button>' + ''.join(f'<button data-c="{c}">{esc(cmap[c])}</button>' for c in cats) + '</div>') if len(cats) > 1 else ''
     cards = ''.join(
         f'<a class="card post" data-c="{m.get("category", "analytics")}" href="{url(lang, "blog/" + slug)}"><div class="muted"><span class="badge">{esc(cmap.get(m.get("category", "analytics"), ""))}</span> {esc(m.get("date", ""))}</div><h2>{esc(post_meta_title(m, lang))}</h2>'
@@ -1350,6 +1401,8 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
         write(pre + 'ath/index.html', ath_page(lang, ver))
         write(pre + 'bitcoin-halving/index.html', halving_page(lang, ver))
         write(pre + 'exchanges/index.html', exchanges_page(lang, ver))
+        write(pre + 'ai/index.html', ai_page(lang, ver))
+        extra_pages.append('ai')
         write(pre + 'news/index.html', news_page(lang, ver))
         for k in NEWS.get(lang, {}):
             write(f'{pre}news/{k}/index.html', news_article(lang, k, ver))

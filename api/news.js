@@ -18,6 +18,7 @@ const TAGS = [
   ['defi', /\b(defi|dex|lending|liquidity|staking|restaking)\b/i], ['stablecoins', /\b(stablecoins?|usdt|usdc|tether|circle)\b/i],
   ['solana', /\b(solana|sol)\b/i], ['xrp', /\b(xrp|ripple)\b/i], ['markets', /\b(price|rally|crash|market|liquidat\w*|fed|rates?|stocks?|nasdaq|s&p)\b/i],
   ['hacks', /\b(hack\w*|exploit\w*|scam|stolen|drain\w*)\b/i],
+  ['ai', /\b(ai|a\.i\.|artificial intelligence|openai|nvidia|llm|chatgpt|agents?|bittensor|tao)\b/i],
 ];
 const dec = s => s.replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, '$1').replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
   .replace(/&quot;/g, '"').replace(/&#0?39;|&#8217;|&rsquo;/g, '’').replace(/&#8216;|&lsquo;/g, '‘').replace(/&#822[01];|&[lr]dquo;/g, '"')

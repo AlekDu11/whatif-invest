@@ -363,3 +363,4 @@ html[data-theme=dark] select{color-scheme:dark}
 .poll b{display:block;margin-bottom:10px;font-size:16px}.pollb{display:flex;flex-wrap:wrap;gap:8px}
 .pollb button{border:1px solid var(--line);background:var(--bg);color:var(--text);border-radius:999px;padding:8px 14px;font:600 13px Inter;cursor:pointer}
 .pollb button:hover{border-color:var(--accent);color:var(--accent)}
+.hl .card.bk .s{white-space:normal;overflow:visible;text-overflow:clip}
