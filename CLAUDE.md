@@ -1,4 +1,4 @@
-# whatif.invest — project brief for Claude
+# WhatIfStack (whatifstack.com) — project brief for Claude
 
 Owner: AlekDu11. Claude acts as head of product + engineering, SEO, design, copywriting and data.
 Full strategy doc: https://claude.ai/artifact/BWtJfaiRLWutsvaYkUqyoC
@@ -19,7 +19,7 @@ in one place, fast, no ad clutter, focused on regular (DCA) investing.
 7. Money without hurting users — referrals, one honest Pro plan, native ads only; never become worse than competitors.
 
 ## Roadmap (next phase starts only when the previous gate is met)
-1. Foundation (Nov–Dec 2026): domain (mytimebox.app/whatif), analytics + Search Console, dark theme, PWA, local currencies, OG share images, referral links. Gate: site indexed.
+1. Foundation (Nov–Dec 2026): domain whatifstack.com (done), analytics + Search Console, dark theme, PWA, local currencies, OG share images, referral links. Gate: site indexed.
 2. Retention (Jan–Feb 2027): accounts, watchlist, price alerts (email/Telegram), portfolio tracker + backtest. Gate: 10k visitors/month.
 3. Pro (Mar–Apr 2027): Pro ~$5/mo or $39/yr (ad-free, unlimited alerts, backtests, AI helper), exchange/broker ranking, dividends. Gate: 50k/month, 100 paying.
 4. Scale (May 2027+): API + embeddable widgets, mobile app, native ads. Gate: 200k/month.
@@ -28,10 +28,10 @@ Content: 2–3 blog posts a week on trending queries (content/blog/<lang>/), wee
 
 ## Architecture (see README.md for details)
 - data/market.json — daily via .github/workflows/update-prices.yml (scripts/fetch_data.py: Binance, Yahoo, CoinGecko, alternative.me)
-- scripts/build.py — static site into dist/whatif/ (stdlib only; Vercel runs it on each push)
+- scripts/build.py — static site into dist/ (served at the domain root; old /whatif/* URLs redirect) (stdlib only; Vercel runs it on each push)
 - scripts/i18n*.py — all UI/SEO strings for 20 languages; a new string must be added for every language
 - src/app.js, src/style.css — front-end; src/ref.js — referral links
 - Before pushing: run `python3 scripts/build.py` and check pages in a headless browser.
 
 ## Waiting on the owner
-mytimebox.app repository (for the /whatif rewrite), referral links, Search Console / analytics access.
+referral links, Search Console / analytics access.

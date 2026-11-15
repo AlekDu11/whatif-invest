@@ -1,8 +1,8 @@
-/* whatif.invest — front-end. Data: window.WI (index of all assets, from index.js),
+/* WhatIfStack — front-end. Data: window.WI (index of all assets, from index.js),
    page config: window.PAGE, referral links: window.REF / window.REF_DEFAULT (ref.js).
-   Price series are loaded on demand from /whatif/assets/p/<id>.json. */
+   Price series are loaded on demand from /assets/p/<id>.json. */
 (function(){
-const WI = window.WI, PAGE = window.PAGE || {}, BASE = '/whatif';
+const WI = window.WI, PAGE = window.PAGE || {}, BASE = PAGE.base || '';
 const lang = PAGE.lang || 'uk';
 const $ = (s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const IDX = WI.a, BYID = Object.fromEntries(IDX.map(a=>[a.i,a]));

@@ -1,7 +1,7 @@
 # whatif.invest
 
 "What if I invested $10 every day?" — a DCA calculator for crypto, stocks, ETFs, gold and silver.
-Live at **https://mytimebox.app/whatif/** (Ukrainian) and **/whatif/en/** (English).
+Live at **https://whatifstack.com/** (Ukrainian at the root, other languages at /en/, /es/ …).
 
 ## How it works
 

@@ -6,10 +6,11 @@
   "framework": null,
   "trailingSlash": true,
   "redirects": [
-    { "source": "/", "destination": "/whatif/", "permanent": false }
+    { "source": "/whatif", "destination": "/", "permanent": true },
+    { "source": "/whatif/:path*", "destination": "/:path*", "permanent": true }
   ],
   "headers": [
-    { "source": "/whatif/assets/p/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600, s-maxage=86400" }] },
-    { "source": "/whatif/assets/(.*)\\.(css|js|svg)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] }
+    { "source": "/assets/p/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600, s-maxage=86400" }] },
+    { "source": "/assets/(.*)\\.(css|js|svg)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] }
   ]
 }

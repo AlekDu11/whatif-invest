@@ -1,4 +1,4 @@
-"""Generate the static whatif.invest site into ./dist/whatif/ (Vercel runs this on every deploy).
+"""Generate the static whatif.invest site into ./dist/ (Vercel runs this on every deploy).
 
 Input:  data/market.json (prices, from scripts/fetch_data.py), data/assets.json (curated list),
         scripts/i18n*.py (20 languages).
@@ -13,9 +13,10 @@ from i18n import LANGS as TR, ORDER, FULL, DEFAULT  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIST = os.path.join(ROOT, 'dist')
-OUT = os.path.join(DIST, 'whatif')
-BASE = '/whatif'
-SITE = 'https://mytimebox.app'
+OUT = DIST
+BASE = ''
+SITE = 'https://whatifstack.com'
+BRAND = 'WhatIfStack'
 AMOUNT = 10
 TOP_N = 200            # asset pages in languages outside FULL
 
@@ -25,7 +26,9 @@ UPDATED = market['updated']
 END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
-A = {aid: a for aid, a in market['assets'].items() if a.get('p')}
+RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news'}
+# asset ids that clash with a language folder or a section get a suffix (ko -> ko-stock, fil -> fil-crypto)
+A = {(f"{aid}-{a['cat']}" if aid in RESERVED else aid): a for aid, a in market['assets'].items() if a.get('p')}
 _gp = os.path.join(ROOT, 'data/global.json')
 G = json.load(open(_gp, encoding='utf-8')) if os.path.exists(_gp) else {}
 TV_LOC = {'en': 'en', 'uk': 'uk', 'ru': 'ru', 'es': 'es', 'pt': 'br', 'de': 'de_DE', 'fr': 'fr', 'it': 'it', 'pl': 'pl', 'tr': 'tr',
@@ -237,7 +240,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
            + ''.join(f'<a href="{url(lang, k)}">{v}</a>' for k, v in tl.items()) + '</div></details>'
            + f'<a href="{url(blog_l, "blog")}" class="{"on" if (p or "").startswith("blog") else ""}">{X["nav_blog"]}</a>')
     i18n = dict(S['ui'], months=S['months'], intl=S['intl'])
-    cfg = dict(cfg, lang=lang, prefix=url(lang).rstrip('/'), full=lang in FULL, topn=TOP_N,
+    cfg = dict(cfg, lang=lang, base=BASE, prefix=url(lang).rstrip('/'), full=lang in FULL, topn=TOP_N,
                names={'gold': S['gold'], 'silver': S['silver']})
     return f"""<!DOCTYPE html>
 <html lang="{S['loc']}" dir="{S['dir']}">
@@ -248,7 +251,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
 <meta name="description" content="{esc(desc)}">
 <link rel="canonical" href="{canon}">
 {alts}
-<meta property="og:type" content="website"><meta property="og:site_name" content="whatif.invest"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{canon}"><meta property="og:locale" content="{S['intl'].replace('-', '_')}">
+<meta property="og:type" content="website"><meta property="og:site_name" content="{BRAND}"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{canon}"><meta property="og:locale" content="{S['intl'].replace('-', '_')}">
 <meta name="twitter:card" content="summary"><meta name="theme-color" content="#ffffff">
 <link rel="icon" href="{BASE}/assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -259,14 +262,14 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
 <body>
 {strip(lang)}
 <div class="top"><div class="in">
-  <a class="logo" href="{url(lang)}">what<b>if</b>.invest</a>
+  <a class="logo" href="{url(lang)}">whatif<b>stack</b></a>
   <div class="gsearch">{SEARCH_ICON}<input id="gs" type="search" autocomplete="off" aria-label="search"><div class="gres" id="gres"></div></div>
   <nav class="nav">{nav}</nav>
   {lang_menu(lang, p)}
 </div></div>
 <main class="wrap">
 {body}
-<footer><span>{S['by']} <a href="{SITE}/">Timebox</a> · {S['sources']}</span><span>{S['disclaimer']}</span></footer>
+<footer><span>{BRAND} · {S['by']} <a href="https://mytimebox.app/">Timebox</a> · {S['sources']}</span><span>{S['disclaimer']}</span></footer>
 <nav class="langs">{' · '.join(f'<a href="{url(lg, p) if has_page(lg, p) else url(lg)}" hreflang="{TR[lg]["loc"]}">{esc(TR[lg]["name"])}</a>' for lg in ORDER)}</nav>
 </main>
 <script>window.PAGE={json.dumps(cfg, ensure_ascii=False)};window.I18N={json.dumps(i18n, ensure_ascii=False)};</script>
@@ -452,7 +455,7 @@ def home(lang, ver):
             f'<section class="section"><div class="hl">{"".join(cards)}</div></section>'
             f'<div class="tabs" id="tabs"></div>{filt}{table_block(lang, ids[:100])}'
             f'<section class="card section faq"><h2>{S["faq"]}</h2><details open><summary>{esc(S["q3"])}</summary><p>{esc(S["a3"])}</p></details></section>')
-    jsonld = [{"@context": "https://schema.org", "@type": "WebApplication", "name": "whatif.invest", "url": SITE + url(lang),
+    jsonld = [{"@context": "https://schema.org", "@type": "WebApplication", "name": BRAND, "url": SITE + url(lang),
                "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "inLanguage": S['loc'],
                "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": desc}]
     return shell(lang, None, title, desc, body, dict(home=True), ver, jsonld)
@@ -562,7 +565,7 @@ def asset(aid, lang, ver):
     jsonld = [{"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": S['loc'],
                "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": x}} for q, x in faq]},
               {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
-                  {"@type": "ListItem", "position": 1, "name": "whatif.invest", "item": SITE + url(lang)},
+                  {"@type": "ListItem", "position": 1, "name": BRAND, "item": SITE + url(lang)},
                   {"@type": "ListItem", "position": 2, "name": n, "item": SITE + url(lang, aid)}]}]
     sel = [aid] + list(bench(aid))[:2]
     return shell(lang, aid, title, desc, body, dict(sel=sel, since=since, asset=aid), ver, jsonld)
@@ -575,7 +578,7 @@ def hub(lang, slug, ver):
     cat = HUBS[slug]
     ids = [i for i in ORDERED if A[i]['cat'] == cat]
     label = S['ui'][cat]
-    title = X['hub_h1'].format(cat=label) + ' | whatif.invest'
+    title = X['hub_h1'].format(cat=label) + ' | ' + BRAND
     desc = X['hub_d'].format(n=len(ids), cat=label.lower())
     b5 = best_by('r5', ids)[:4]
     cards = ''.join(hl_card(lang, i, nm(A[i], lang), 'r5', S['sub5']) for i in b5)
@@ -611,7 +614,7 @@ def tool(lang, slug, ver):
                  f'<label class="f">{X["conv_to"]}<div class="inp"><select id="cvt">{opts}</select></div></label></div>'
                  f'<div class="cvres" id="cvres"></div><div class="muted" id="cvrate"></div></div>')
     body = f'<h1>{esc(h1)}</h1><p class="lead">{esc(d)}</p>{inner}'
-    return shell(lang, slug, f'{h1} | whatif.invest', d, body, dict(tool=slug), ver)
+    return shell(lang, slug, f'{h1} | {BRAND}', d, body, dict(tool=slug), ver)
 
 
 # ---------------- blog ----------------
@@ -747,7 +750,7 @@ def blog_index(lang, ver):
         f'<p>{esc(post_meta_title(dict(title=m.get("description", "")), lang))}</p>'
         + ''.join(f'<span class="badge">{esc(A[i]["tk"])}</span> ' for i in m['assets']) + '</a>' for slug, m in items)
     body = f'<h1>{esc(X["blog_h1"])}</h1><p class="lead">{esc(X["blog_d"])}</p><div class="posts">{cards}</div>'
-    return shell(lang, 'blog', X['blog_h1'] + ' | whatif.invest', X['blog_d'], body, {}, ver)
+    return shell(lang, 'blog', X['blog_h1'] + ' | ' + BRAND, X['blog_d'], body, {}, ver)
 
 
 def blog_post(lang, slug, ver):
@@ -767,7 +770,7 @@ def blog_post(lang, slug, ver):
             + (f'<section class="section"><h2>{X["related"]}</h2><div class="posts">{rel_html}</div></section>' if rel else ''))
     jsonld = [{"@context": "https://schema.org", "@type": "Article", "headline": title, "description": desc, "inLanguage": S['loc'],
                "datePublished": m.get('date'), "dateModified": UPDATED, "mainEntityOfPage": SITE + url(lang, 'blog/' + slug),
-               "author": {"@type": "Organization", "name": "whatif.invest"}, "publisher": {"@type": "Organization", "name": "whatif.invest"}}]
+               "author": {"@type": "Organization", "name": BRAND}, "publisher": {"@type": "Organization", "name": BRAND}}]
     return shell(lang, 'blog/' + slug, title, desc, body, {}, ver, jsonld)
 
 

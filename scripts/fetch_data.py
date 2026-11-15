@@ -26,7 +26,7 @@ BINANCE = 'https://data-api.binance.vision/api/v3'
 SP500_CSV = 'https://raw.githubusercontent.com/datasets/s-and-p-500-companies/main/data/constituents.csv'
 STABLE = set('USDT USDC FDUSD TUSD USDP DAI BUSD EUR EURI AEUR USDE PYUSD XUSD USD1 BFUSD RLUSD UST USTC GBP TRY BRL '
               'AUD JPY RUB UAH ZAR NGN PLN ARS MXN COP CZK IDR VAI SUSD LUSD FRAX GUSD USDS USDD PAXG XAUT WBTC WBETH BETH BNSOL'.split())
-UA = {'User-Agent': 'whatif-invest/1.0 (+https://mytimebox.app/whatif/)'}
+UA = {'User-Agent': 'WhatIfStack/1.0 (+https://whatifstack.com/)'}
 
 
 def log(*a):
