@@ -26,7 +26,7 @@ UPDATED = market['updated']
 END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
-RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles'}
+RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener'}
 # asset ids that clash with a language folder or a section get a suffix (ko -> ko-stock, fil -> fil-crypto)
 _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
 # delisted or stale series (last price older than a month) are dropped: "today" numbers would be false
@@ -74,7 +74,7 @@ TOP = set(ORDERED[:TOP_N])
 
 
 HUBS = {'crypto': 'crypto', 'stocks': 'stock', 'etfs': 'etf', 'metals': 'metal'}
-TOOLS = ['bubbles', 'converter', 'calendar', 'heatmap', 'news']
+TOOLS = ['bubbles', 'screener', 'converter', 'calendar', 'heatmap', 'news']
 BLOG_LANGS = {'uk', 'en'}
 assert not (set(HUBS) | set(TOOLS) | {'blog', 'compare'}) & set(A), 'asset id collides with a section slug'
 
@@ -239,7 +239,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
     alts += f'<link rel="alternate" hreflang="x-default" href="{SITE + url("en", p)}">'
     ld = ''.join(f'<script type="application/ld+json">{json.dumps(j, ensure_ascii=False)}</script>' for j in jsonld)
     X = S['x']
-    tl = {'bubbles': X['bub_h1'], 'converter': X['conv_h1'], 'calendar': X['cal_h1'], 'heatmap': X['heat_h1'], 'news': X['news_h1']}
+    tl = {'bubbles': X['bub_h1'], 'screener': X['scr_h1'], 'converter': X['conv_h1'], 'calendar': X['cal_h1'], 'heatmap': X['heat_h1'], 'news': X['news_h1']}
     blog_l = lang if lang in BLOG_LANGS else 'en'
     nav = (''.join(f'<a href="{url(lang, k)}" class="{"on" if k == p else ""}">{v}</a>' for k, v in ((None, S['nav_rank']), ('compare', S['nav_cmp'])))
            + f'<details class="dd"><summary class="{"on" if p in TOOLS else ""}">{X["nav_tools"]}</summary><div>'
@@ -556,6 +556,11 @@ def asset(aid, lang, ver):
                  + f'</section><section class="card"><h2>{X["news"]} · {esc(tk)}</h2>'
                  + tvw('timeline', dict(feedMode='symbol', symbol=tv_symbol(a), isTransparent=True, displayMode='regular', width='100%', height='100%',
                                         colorTheme='light', locale=loc), 430) + '</section></div>')
+    if a['cat'] in ('stock', 'etf'):
+        tech_news += (f'<div class="cols2 section"><section class="card"><h2>{X["fund"]} · {esc(tk)}</h2>'
+                      + tvw('financials', dict(isTransparent=True, displayMode='regular', width='100%', height='100%', colorTheme='light', symbol=tv_symbol(a), locale=loc), 520)
+                      + f'</section><section class="card"><h2>{X["prof"]} · {esc(tk)}</h2>'
+                      + tvw('symbol-profile', dict(width='100%', height='100%', isTransparent=True, colorTheme='light', symbol=tv_symbol(a), locale=loc), 520) + '</section></div>')
     body = (f'{head}<p class="lead" style="margin-top:10px">{S["a_lead"].format(**fe)}</p>{tv}<div class="stats">{stat_cards}</div><div class="stats">{lump_cards}</div>{calc_block(lang)}{tech_news}'
             f'<div class="cols2 section"><section class="card"><h2>{S["a_periods"].format(**fe)}</h2>{ptable}</section>'
             f'<section class="card faq"><h2>{S["faq"]}</h2>' + ''.join(f'<details><summary>{esc(q)}</summary><p>{esc(x)}</p></details>' for q, x in faq) + '</section></div>'
@@ -607,7 +612,7 @@ def bubbles_block(lang, full):
 def tool(lang, slug, ver):
     S, X, u = TR[lang], TR[lang]['x'], TR[lang]['ui']
     loc = TV_LOC.get(lang, 'en')
-    h1, d = {'bubbles': (X['bub_h1'], X['bub_d']), 'converter': (X['conv_h1'], X['conv_d']), 'calendar': (X['cal_h1'], X['cal_d']),
+    h1, d = {'bubbles': (X['bub_h1'], X['bub_d']), 'screener': (X['scr_h1'], X['scr_d']), 'converter': (X['conv_h1'], X['conv_d']), 'calendar': (X['cal_h1'], X['cal_d']),
              'heatmap': (X['heat_h1'], X['heat_d']), 'news': (X['news_h1'], X['news_d'])}[slug]
     if slug == 'bubbles':
         inner = bubbles_block(lang, full=True)
@@ -621,6 +626,10 @@ def tool(lang, slug, ver):
                  + '</div><div class="card section">' + tvw('crypto-coins-heatmap', dict(dataSource='Crypto', blockSize='market_cap_calc', blockColor='24h_close_change|5',
                                                                                          locale=loc, symbolUrl='', colorTheme='light', hasTopBar=True, isDataSetEnabled=True,
                                                                                          isZoomEnabled=True, hasSymbolTooltip=True, width='100%', height='100%'), 560) + '</div>')
+    elif slug == 'screener':
+        sc = dict(width='100%', height='100%', defaultColumn='overview', defaultScreen='general', showToolbar=True, colorTheme='light', locale=loc, isTransparent=True)
+        inner = ('<div class="card">' + tvw('screener', dict(sc, market='america'), 620) + '</div><div class="card section">'
+                 + tvw('screener', dict(sc, market='crypto', screener_type='crypto_mkt', displayCurrency='USD'), 620) + '</div>')
     elif slug == 'news':
         inner = '<div class="card">' + tvw('timeline', dict(feedMode='all_symbols', isTransparent=True, displayMode='regular', width='100%', height='100%',
                                                              colorTheme='light', locale=loc), 900) + '</div>'
@@ -633,7 +642,10 @@ def tool(lang, slug, ver):
                  f'<label class="f">&nbsp;<div class="inp"><select id="cvf">{opts.replace(chr(34) + "btc" + chr(34), chr(34) + "btc" + chr(34) + " selected", 1)}</select></div></label>'
                  f'<button class="toggle" id="cvsw" aria-label="swap">⇄</button>'
                  f'<label class="f">{X["conv_to"]}<div class="inp"><select id="cvt" data-def="{LOCAL_CCY.get(lang, "usd")}">{opts}</select></div></label></div>'
-                 f'<div class="cvres" id="cvres"></div><div class="muted" id="cvrate"></div></div>')
+                 f'<div class="cvres" id="cvres"></div><div class="muted" id="cvrate"></div></div>'
+                 f'<section class="card section"><h2>{X["xrates"]}</h2>'
+                 + tvw('forex-cross-rates', dict(width='100%', height='100%', currencies=['EUR', 'USD', 'GBP', 'JPY', 'CHF', 'CNY', 'PLN', 'UAH', 'TRY'],
+                                                 isTransparent=True, colorTheme='light', locale=loc), 420) + '</section>')
     body = f'<h1>{esc(h1)}</h1><p class="lead">{esc(d)}</p>{inner}'
     return shell(lang, slug, f'{h1} | {BRAND}', d, body, dict(tool=slug), ver)
 

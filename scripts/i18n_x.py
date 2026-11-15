@@ -216,3 +216,27 @@ BP = {
  'ar': 'ساعة|يوم|أسبوع|شهر|سنة|القيمة السوقية واليوم',
  'fil': 'Oras|Araw|Linggo|Buwan|Taon|Market cap at araw',
 }
+
+# TradingView extras: fundamentals | company profile | screener h1 | screener description | currency cross rates
+TVX = {
+ 'en': ('Fundamentals', 'Company profile', 'Stock & crypto screener', 'Filter thousands of stocks and coins by price, change, market cap, volume, P/E, dividends and technical rating — live data.', 'Currency cross rates'),
+ 'uk': ('Фінансові показники', 'Профіль компанії', 'Скринер акцій і крипти', 'Фільтруй тисячі акцій і монет за ціною, зміною, капіталізацією, обсягом, P/E, дивідендами й технічним рейтингом — живі дані.', 'Крос-курси валют'),
+ 'ru': ('Финансовые показатели', 'Профиль компании', 'Скринер акций и крипты', 'Фильтруй тысячи акций и монет по цене, изменению, капитализации, объёму, P/E, дивидендам и техническому рейтингу — живые данные.', 'Кросс-курсы валют'),
+ 'es': ('Datos fundamentales', 'Perfil de la empresa', 'Screener de acciones y cripto', 'Filtra miles de acciones y monedas por precio, cambio, capitalización, volumen, PER, dividendos y rating técnico — datos en vivo.', 'Tipos cruzados de divisas'),
+ 'pt': ('Dados fundamentalistas', 'Perfil da empresa', 'Screener de ações e cripto', 'Filtre milhares de ações e moedas por preço, variação, valor de mercado, volume, P/L, dividendos e rating técnico — dados ao vivo.', 'Taxas cruzadas de moedas'),
+ 'de': ('Fundamentaldaten', 'Unternehmensprofil', 'Aktien- & Krypto-Screener', 'Filtere tausende Aktien und Coins nach Kurs, Veränderung, Marktkapitalisierung, Volumen, KGV, Dividende und technischem Rating — Live-Daten.', 'Devisen-Kreuzkurse'),
+ 'fr': ('Données fondamentales', 'Profil de l’entreprise', 'Screener actions et crypto', 'Filtrez des milliers d’actions et de cryptos par prix, variation, capitalisation, volume, PER, dividendes et note technique — données en direct.', 'Taux croisés des devises'),
+ 'it': ('Dati fondamentali', 'Profilo aziendale', 'Screener azioni e cripto', 'Filtra migliaia di azioni e monete per prezzo, variazione, capitalizzazione, volume, P/E, dividendi e rating tecnico — dati in tempo reale.', 'Tassi incrociati delle valute'),
+ 'pl': ('Dane fundamentalne', 'Profil spółki', 'Skaner akcji i krypto', 'Filtruj tysiące akcji i monet według ceny, zmiany, kapitalizacji, wolumenu, C/Z, dywidend i oceny technicznej — dane na żywo.', 'Kursy krzyżowe walut'),
+ 'tr': ('Temel veriler', 'Şirket profili', 'Hisse ve kripto tarayıcı', 'Binlerce hisse ve coini fiyat, değişim, piyasa değeri, hacim, F/K, temettü ve teknik puana göre filtrele — canlı veri.', 'Döviz çapraz kurları'),
+ 'nl': ('Fundamentele gegevens', 'Bedrijfsprofiel', 'Aandelen- & cryptoscreener', 'Filter duizenden aandelen en munten op koers, verandering, marktkapitalisatie, volume, K/W, dividend en technische rating — live data.', 'Valuta-kruiskoersen'),
+ 'id': ('Data fundamental', 'Profil perusahaan', 'Screener saham & kripto', 'Saring ribuan saham dan koin berdasarkan harga, perubahan, kapitalisasi pasar, volume, P/E, dividen, dan rating teknikal — data langsung.', 'Kurs silang mata uang'),
+ 'vi': ('Dữ liệu cơ bản', 'Hồ sơ công ty', 'Bộ lọc cổ phiếu & crypto', 'Lọc hàng nghìn cổ phiếu và coin theo giá, biến động, vốn hóa, khối lượng, P/E, cổ tức và đánh giá kỹ thuật — dữ liệu trực tiếp.', 'Tỷ giá chéo tiền tệ'),
+ 'th': ('ข้อมูลพื้นฐาน', 'ข้อมูลบริษัท', 'ตัวกรองหุ้นและคริปโต', 'กรองหุ้นและเหรียญนับพันตามราคา การเปลี่ยนแปลง มูลค่าตลาด ปริมาณ P/E เงินปันผล และเรตติ้งทางเทคนิค — ข้อมูลสด', 'อัตราแลกเปลี่ยนไขว้'),
+ 'hi': ('फंडामेंटल डेटा', 'कंपनी प्रोफ़ाइल', 'स्टॉक और क्रिप्टो स्क्रीनर', 'हज़ारों स्टॉक और कॉइन को कीमत, बदलाव, मार्केट कैप, वॉल्यूम, P/E, डिविडेंड और टेक्निकल रेटिंग से फ़िल्टर करें — लाइव डेटा।', 'मुद्रा क्रॉस रेट'),
+ 'ja': ('ファンダメンタルズ', '企業概要', '株式・暗号資産スクリーナー', '価格、変動率、時価総額、出来高、PER、配当、テクニカル評価で数千の株式・コインを絞り込み — リアルタイムデータ。', '通貨クロスレート'),
+ 'ko': ('펀더멘털', '기업 개요', '주식·암호화폐 스크리너', '가격, 변동률, 시가총액, 거래량, PER, 배당, 기술적 등급으로 수천 개의 주식과 코인을 필터링 — 실시간 데이터.', '통화 교차 환율'),
+ 'zh': ('基本面数据', '公司简介', '股票与加密货币筛选器', '按价格、涨跌幅、市值、成交量、市盈率、股息和技术评级筛选数千只股票和币种 — 实时数据。', '货币交叉汇率'),
+ 'ar': ('البيانات الأساسية', 'ملف الشركة', 'فرز الأسهم والعملات المشفرة', 'رشّح آلاف الأسهم والعملات حسب السعر والتغير والقيمة السوقية والحجم ومكرر الربحية والتوزيعات والتقييم الفني — بيانات مباشرة.', 'أسعار الصرف المتقاطعة'),
+ 'fil': ('Fundamental data', 'Profile ng kompanya', 'Screener ng stocks at crypto', 'I-filter ang libu-libong stocks at coins ayon sa presyo, pagbabago, market cap, volume, P/E, dividend at technical rating — live na data.', 'Cross rates ng pera'),
+}
