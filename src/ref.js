@@ -1,12 +1,12 @@
-// Partner (referral) links.
+// Partner (referral) links. URLs are /go/<id> (click tracker, api/go.js); the real referral URLs live in api/_partners.js.
 // REF overrides one asset; REF_DEFAULT is used for every other asset in that category.
 // An empty url ('') hides the button.
 window.REF = {
-  hype: { url: 'https://app.hyperliquid.xyz/join/ALEKSDU', where: 'Hyperliquid' },
+  hype: { url: '/go/hyperliquid', where: 'Hyperliquid' },
 };
 window.REF_DEFAULT = {
-  crypto: { url: 'https://accounts.binance.com/register?ref=XWPWKG6S', where: 'Binance' },
-  metal:  { url: 'https://partner.bybit.com/b/94881', where: 'Bybit' },
+  crypto: { url: '/go/binance', where: 'Binance' },
+  metal:  { url: '/go/bybit', where: 'Bybit' },
   stock:  { url: '', where: 'broker' },
   etf:    { url: '', where: 'broker' },
 };

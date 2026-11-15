@@ -32,7 +32,8 @@ function spark(arr,w=110,h=34){ if(!arr||arr.length<2) return '';
   const mn=Math.min(...arr),mx=Math.max(...arr),r=mx-mn||1, up=arr[arr.length-1]>=arr[0];
   const pts=arr.map((v,i)=>`${(i/(arr.length-1)*w).toFixed(1)},${(h-2-(v-mn)/r*(h-4)).toFixed(1)}`).join(' ');
   return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"><polyline points="${pts}" fill="none" stroke="${up?'#14a44d':'#e5484d'}" stroke-width="1.6" stroke-linejoin="round"/></svg>` }
-function refFor(a){ const r=REF[a.i]||REF_DEFAULT[a.c]; return r&&r.url?r:null }
+const goUrl=(u,extra)=>u&&u.startsWith('/go/')?`${u}?from=${encodeURIComponent(location.pathname)}&l=${lang}${extra||''}`:u;
+function refFor(a){ const r=REF[a.i]||REF_DEFAULT[a.c]; return r&&r.url?Object.assign({},r,{url:goUrl(r.url)}):null }
 function buyBtn(a){ const r=refFor(a); return r?`<a class="buy" href="${esc(r.url)}" target="_blank" rel="sponsored noopener" title="${esc(r.where)} · ${T.aff}">${T.buy}</a>`:'' }
 window.WIX={T,nm,url,esc,fmtUsd,fmtPrice,fmtPct,cls,icon,spark,buyBtn,BYID,IDX,lang};
 const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.dataset.id]); if(r) bs.innerHTML=`<a class="btn" href="${esc(r.url)}" target="_blank" rel="sponsored noopener">${T.buy} ${esc(BYID[bs.dataset.id].t)} · ${esc(r.where)}</a>` }
@@ -202,7 +203,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
 
 /* ---------- referral CTA buttons on home ---------- */
 (function(){ const r=REF_DEFAULT.crypto; if(!r||!r.url) return;
-  ['#ctaBuy','#ctaBuy2'].forEach(s=>{const b=$(s); if(b){b.href=r.url; b.target='_blank'; b.rel='sponsored noopener'}}) })();
+  ['#ctaBuy','#ctaBuy2'].forEach(s=>{const b=$(s); if(b){b.href=goUrl(r.url); b.target='_blank'; b.rel='sponsored noopener'}}) })();
 
 /* ---------- quick DCA calculator (home hero) ---------- */
 (function(){
@@ -393,7 +394,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
       const ms=(e.markets||[]).filter(m=>m.active&&!m.closed&&m.outcomePrices).map(m=>{ let p; try{p=+JSON.parse(m.outcomePrices)[0]}catch(x){} return {t:m.groupItemTitle||m.question,p} })
         .filter(m=>m.p>=.04&&m.p<=.96).slice(0,4);
       if(!ms.length) continue;
-      out.push(`<a class="pmi" href="https://polymarket.com/event/${encodeURIComponent(e.slug)}${VIA}" target="_blank" rel="sponsored noopener"><b>${esc(e.title)}</b>`+
+      out.push(`<a class="pmi" href="${goUrl('/go/polymarket','&e='+encodeURIComponent(e.slug))}" target="_blank" rel="sponsored nofollow noopener"><b>${esc(e.title)}</b>`+
         ms.map(m=>`<span class="pmr"><em>${esc(m.t)}</em><i><s style="width:${Math.round(m.p*100)}%"></s></i><strong>${pc(m.p)}</strong></span>`).join('')+'</a>') }
     if(out.length){ box.querySelector('.pml').innerHTML=out.join(''); box.hidden=false } }).catch(()=>{});
   setTimeout(go,1200);

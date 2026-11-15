@@ -94,5 +94,23 @@
         }
       ]
     }
+  ],
+  "rewrites": [
+    {
+      "source": "/go/:p",
+      "destination": "/api/go?p=:p"
+    },
+    {
+      "source": "/go/:p/",
+      "destination": "/api/go?p=:p"
+    },
+    {
+      "source": "/stats",
+      "destination": "/api/stats"
+    },
+    {
+      "source": "/stats/",
+      "destination": "/api/stats"
+    }
   ]
 }

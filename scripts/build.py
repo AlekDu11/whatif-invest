@@ -908,30 +908,30 @@ def halving_page(lang, ver):
     return shell(lang, 'bitcoin-halving', f'{t["v_h1"]} | {BRAND}', t['v_d'], body, {}, ver, [faq])
 
 
-PARTNERS = {
-    'cex': [('Binance', 'https://accounts.binance.com/register?ref=XWPWKG6S', 'Spot · Futures · Earn · P2P', '#F0B90B'),
-            ('Bybit', 'https://partner.bybit.com/b/94881', 'Spot · Futures · Copy trading · Gold', '#17181E'),
-            ('Gate', 'https://www.gate.io/ref/4271013', 'Spot · Futures · Altcoins', '#2354E6'),
-            ('BingX', 'https://bingx.com/partner/AlekcDu/', 'Spot · Futures · Copy trading', '#2A5BFF'),
-            ('MEXC', 'https://promote.mexc.com/a/fKqr6ehO', 'Spot · Futures · New listings', '#1972E2')],
-    'dex': [('OKX Wallet', 'https://web3.okx.com/join/ALEKSDU', 'Multichain wallet · DEX swaps', '#000000'),
-            ('Hyperliquid', 'https://app.hyperliquid.xyz/join/ALEKSDU', 'On-chain perpetuals · Order book', '#0F3B36'),
-            ('GMGN', 'https://gmgn.ai/r/YEIKWyEq?chain=eth', 'Memecoin trading · Wallet tracking', '#18C46B')],
+PARTNERS = {   # (name, /go/ id, tags, colour); real referral URLs are in api/_partners.js
+    'cex': [('Binance', 'binance', 'Spot · Futures · Earn · P2P', '#F0B90B'),
+            ('Bybit', 'bybit', 'Spot · Futures · Copy trading · Gold', '#17181E'),
+            ('Gate', 'gate', 'Spot · Futures · Altcoins', '#2354E6'),
+            ('BingX', 'bingx', 'Spot · Futures · Copy trading', '#2A5BFF'),
+            ('MEXC', 'mexc', 'Spot · Futures · New listings', '#1972E2')],
+    'dex': [('OKX Wallet', 'okx-wallet', 'Multichain wallet · DEX swaps', '#000000'),
+            ('Hyperliquid', 'hyperliquid', 'On-chain perpetuals · Order book', '#0F3B36'),
+            ('GMGN', 'gmgn', 'Memecoin trading · Wallet tracking', '#18C46B')],
 }
-POLY = 'https://polymarket.com/?via=alek-du'
+POLY = '/go/polymarket'
 
 
 def poly_block(lang, q='crypto'):
     e = EX[lang]
     return (f'<section class="card section pm" data-tag="{q}" hidden><div class="charthead"><h2>🔮 {e["pm_h"]}</h2>'
-            f'<a class="calc" href="{POLY}" target="_blank" rel="sponsored noopener">{e["pm_go"]} →</a></div>'
+            f'<a class="calc" href="{POLY}?from=pm-block&l={lang}" target="_blank" rel="sponsored nofollow noopener">{e["pm_go"]} →</a></div>'
             f'<p class="muted" style="margin:0 0 10px">{e["pm_d"]}</p><div class="pml"></div><p class="muted" style="font-size:12px;margin:8px 0 0">{e["pm_note"]}</p></section>')
 
 
 def exchanges_page(lang, ver):
     e = EX[lang]
     def cards(k):
-        return ''.join(f'<a class="card xcard" href="{u}" target="_blank" rel="sponsored noopener"><span class="xl" style="background:{c}">{n[0]}</span>'
+        return ''.join(f'<a class="card xcard" href="/go/{u}?from=exchanges&l={lang}" target="_blank" rel="sponsored nofollow noopener"><span class="xl" style="background:{c}">{n[0]}</span>'
                        f'<div><b>{n}</b><small>{t}</small></div><span class="btn">{e["go"]}</span></a>' for n, u, t, c in PARTNERS[k])
     body = (f'<h1>{esc(e["h1"])}</h1><p class="lead">{esc(e["d"])}</p>'
             f'<section class="section"><h2>{e["cex"]}</h2><div class="xgrid">{cards("cex")}</div></section>'
@@ -1359,7 +1359,7 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
           'en': ('Page not found', 'The asset may have been renamed or removed. Use the search above or go to the ranking.')}
     body404 = ''.join(f'<h1>{a}</h1><p class="lead">{b}</p><p><a class="btn" href="{url(lg)}">{TR[lg]["nav_rank"]} →</a></p>' for lg, (a, b) in nf.items())
     write('404.html', shell('en', None, 'Page not found | ' + BRAND, nf['en'][1], body404, {}, ver).replace('<link rel="canonical"', '<meta name="robots" content="noindex"><link rel="canonical"'))
-    write('robots.txt', f'User-agent: *\nAllow: /\nSitemap: {SITE}{BASE}/sitemap.xml\n')
+    write('robots.txt', f'User-agent: *\nAllow: /\nDisallow: /go/\nDisallow: /api/\nDisallow: /stats\nSitemap: {SITE}{BASE}/sitemap.xml\n')
     total = sum(len(p) for p in per_lang.values())
     print(f"built {total} pages in {len(ORDER)} languages · {len(A)} assets · data {UPDATED}")
 
