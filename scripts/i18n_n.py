@@ -35,3 +35,7 @@ FOOT = {
  'ja': ('人気', 'マーケット', 'フォロー'), 'ko': ('인기', '시장', '팔로우'), 'zh': ('热门', '市场', '关注我们'),
  'ar': ('الأكثر شيوعًا', 'الأسواق', 'تابعنا'), 'fil': ('Popular', 'Mga merkado', 'Sundan kami'),
 }
+
+SHARE = {'en': 'Share', 'uk': 'Поділитися', 'ru': 'Поделиться', 'es': 'Compartir', 'pt': 'Compartilhar', 'de': 'Teilen', 'fr': 'Partager',
+         'it': 'Condividi', 'pl': 'Udostępnij', 'tr': 'Paylaş', 'nl': 'Delen', 'id': 'Bagikan', 'vi': 'Chia sẻ', 'th': 'แชร์', 'hi': 'शेयर करें',
+         'ja': '共有', 'ko': '공유', 'zh': '分享', 'ar': 'مشاركة', 'fil': 'Ibahagi'}

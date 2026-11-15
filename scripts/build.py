@@ -12,7 +12,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from i18n import LANGS as TR, ORDER, FULL, DEFAULT  # noqa: E402
 from i18n_t import T as TT  # noqa: E402
 from i18n_e import E as EX  # noqa: E402
-from i18n_n import N as NW, FOOT  # noqa: E402
+from i18n_n import N as NW, FOOT, SHARE  # noqa: E402
 from i18n_p import P as POLL, OPTS as POLL_OPTS  # noqa: E402
 from i18n_ai import AI as AIS  # noqa: E402
 from i18n_me import ME  # noqa: E402
@@ -277,7 +277,7 @@ def footer_cols(lang):
     blog_l = lang if lang in BLOG_LANGS else 'en'
     pop = [(aurl(lang, i), nm(A[i], lang)) for i in ('btc', 'eth', 'sol', 'xrp', 'nvda', 'aapl', 'tsla', 'gold', 'spy', 'qqq') if i in A]
     mk = [(url(lang), S['nav_rank']), (url(lang, 'compare'), S['nav_cmp'])] + [(url(lang, k), S['cat_' + v]) for k, v in HUBS.items()]
-    tools = [(url(lang, k), v) for k, v in tools_menu(lang)]
+    tools = [(url(lang, k), v) for k, v in [x for x in tools_menu(lang) if x]]
     ins = [(url(lang, 'news'), n['n_nav']), (url(blog_l, 'blog'), n['i_nav']), (url(blog_l, 'blog') + 'rss.xml', 'RSS'),
            (url(lang, 'exchanges'), EX[lang]['nav']), (url(lang if lang in ABOUT else 'en', 'about'), n['about'])]
     cols = [(f[0], pop), (f[1], mk), (TR[lang]['x']['nav_tools'], tools), (n['i_nav'], ins)]
@@ -294,12 +294,13 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
     ld = ''.join(f'<script type="application/ld+json">{json.dumps(j, ensure_ascii=False)}</script>' for j in jsonld)
     X = S['x']
     blog_l = lang if lang in BLOG_LANGS else 'en'
-    nav = (''.join(f'<a href="{url(lang, k)}" class="{"on" if k == p else ""}">{v}</a>' for k, v in ((None, S['nav_rank']), ('compare', S['nav_cmp'])))
+    nav = (''.join(f'<a href="{url(lang, k)}" class="{"on" if k == p else ""}">{v}</a>' for k, v in ((None, S['nav_rank']),))
            + f'<details class="dd"><summary class="{"on" if p in TOOLS or (p in CALCS and p not in ("exchanges", "news", "about")) or (p or "").startswith("habits") else ""}">{X["nav_tools"]}</summary><div>'
-           + ''.join(f'<a href="{url(lang, k)}">{v}</a>' for k, v in tools_menu(lang)) + '</div></details>'
+           + ''.join(f'<a href="{url(lang, k)}">{v}</a>' for k, v in [x for x in tools_menu(lang) if x]) + '</div></details>'
            + f'<a href="{url(lang, "exchanges")}" class="{"on" if p == "exchanges" else ""}">{EX[lang]["nav"]}</a>'
            + f'<a href="{url(lang, "news")}" class="{"on" if p == "news" else ""}">{NW[lang]["n_nav"]}</a>'
            + f'<a href="{url(lang, "ai")}" class="{"on" if p == "ai" else ""}">{AIS[lang]["nav"]}</a>'
+           + f'<a href="{url(lang, "memes")}" class="{"on" if p == "memes" else ""}">{MEM[lang]["nav"]}</a>'
            + f'<a href="{url(blog_l, "blog")}" class="{"on" if (p or "").startswith("blog") else ""}">{NW[lang]["i_nav"]}</a>')
     i18n = dict(S['ui'], months=S['months'], intl=S['intl'])
     mnav = ''.join(f'<a href="{h}" class="{"on" if on else ""}"><span>{ic}</span>{esc(lb)}</a>' for h, ic, lb, on in (
@@ -307,7 +308,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
         (url(lang, 'exchanges'), '₿', EX[lang]['nav'], p == 'exchanges'), (url(blog_l, 'blog'), '✎', NW[lang]['i_nav'], (p or '').startswith('blog'))))
     mnav += f'<button type="button" id="mmore"><span>☰</span>{esc(X["nav_tools"])}</button>'
     msheet = ('<div class="msheet" id="msheet" hidden>' + ''.join(f'<a href="{url(lang, k)}">{esc(v)}</a>' for k, v in
-              [('me', ME[lang]['nav']), ('compare', S['nav_cmp']), ('ai', AIS[lang]['h1'].split(':')[0])] + tools_menu(lang)) + '</div>')
+              [('me', ME[lang]['nav']), ('ai', AIS[lang]['h1'].split(':')[0])] + [x for x in tools_menu(lang) if x]) + '</div>')
     cfg = dict(cfg, lang=lang, base=BASE, prefix=url(lang).rstrip('/'), full=lang in FULL, topn=TOP_N,
                names={'gold': S['gold'], 'silver': S['silver']})
     return f"""<!DOCTYPE html>
@@ -342,7 +343,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
 <nav class="mnav">{mnav}</nav>{msheet}
 <main class="wrap">
 {body}
-{footer_cols(lang)}<footer><span>{BRAND} · {S['by']} <a href="https://mytimebox.app/">Timebox</a> · {S['sources']} · <a href="{url(lang if lang in ABOUT else 'en', 'about')}">{NW[lang]['about']}</a></span><span>{S['disclaimer']}</span></footer>
+<div class="sharebar" data-l="{esc(SHARE[lang])}"></div>{footer_cols(lang)}<footer><span>{BRAND} · {S['by']} <a href="https://mytimebox.app/">Timebox</a> · {S['sources']} · <a href="{url(lang if lang in ABOUT else 'en', 'about')}">{NW[lang]['about']}</a></span><span>{S['disclaimer']}</span></footer>
 <nav class="langs">{' · '.join(f'<a href="{url(lg, p) if has_page(lg, p) else url(lg)}" hreflang="{TR[lg]["loc"]}">{esc(TR[lg]["name"])}</a>' for lg in ORDER)}</nav>
 </main>
 <script>window.PAGE={json.dumps(cfg, ensure_ascii=False)};window.I18N={json.dumps(i18n, ensure_ascii=False)};</script>
@@ -517,7 +518,7 @@ def home(lang, ver):
             cards.append(hl_card(lang, aid, nm(A[aid], lang), 'r5', S['sub5']))
     filt = f'<div class="toolbar"><div class="filter">{SEARCH_ICON}<input id="flt" type="search" autocomplete="off"></div></div>'
     body = (hero + f'<div class="wgrid">{w_mcap}{w_dom}{w_fng}{w_tr}</div>'
-            f'<div class="wgrid3">{w_up}{w_dn}{w_bat}</div>{banner}{habits_strip(lang)}{poll_block(lang)}{poly_block(lang)}'
+            f'{sections_strip(lang)}<div class="wgrid3">{w_up}{w_dn}{w_bat}</div>{banner}{habits_strip(lang)}{poll_block(lang)}{poly_block(lang)}'
             f'<section class="section"><div class="hl">{"".join(cards)}</div></section>'
             f'<div class="tabs" id="tabs"></div>{filt}{table_block(lang, ids[:100])}'
             f'<section class="card section faq"><h2>{S["faq"]}</h2><details open><summary>{esc(S["q3"])}</summary><p>{esc(S["a3"])}</p></details></section>')
@@ -704,7 +705,7 @@ def habit_page(lang, sc, ver):
 
 def tools_menu(lang):
     t = TT[lang]
-    items = [('habits', HB[lang]['nav']), ('millionaire', t['g_nav']), ('compound-interest', t['c_nav'])]
+    items = [('compare', S['nav_cmp']) if (S := TR[lang]) else None, ('habits', HB[lang]['nav']), ('millionaire', t['g_nav']), ('compound-interest', t['c_nav'])]
     if CPI['c']:
         items.append(('inflation', t['i_nav']))
     items += [('converter', HCONV[lang]), ('memes', MEM[lang]['nav']), ('ath', t['a_nav']), ('bitcoin-halving', t['v_nav'])]
@@ -1135,6 +1136,15 @@ def memes_page(lang, ver):
             f'<a class="card hcard" href="{url(lang, "exchanges")}"><span>₿</span><b>{esc(EX[lang]["h1"])}</b></a><a class="card hcard" href="{url(lang, "ath")}"><span>📉</span><b>{esc(TT[lang]["a_h1"])}</b></a></div></section>')
     cfg = dict(memes=dict(t=dict(trade=t['trade'], new=t['new'], lowliq=t['lowliq'], hot=t['hot'])))
     return shell(lang, 'memes', f'{t["h1"]} | {BRAND}', t['d'], body, cfg, ver)
+
+
+def sections_strip(lang):
+    S = TR[lang]
+    items = [('memes', '🐸', MEM[lang]['nav'], MEM[lang]['live']), ('ai', '🤖', AIS[lang]['nav'], AIS[lang]['stocks'] + ' · ' + AIS[lang]['crypto']),
+             ('me', '☆', ME[lang]['nav'], ME[lang]['hold'] + ' · ' + ME[lang]['plans']), ('news', '📰', NW[lang]['n_nav'], NW[lang]['own']),
+             ('exchanges', '₿', EX[lang]['nav'], EX[lang]['cex']), ('habits', '☕', HB[lang]['nav'], HB[lang]['h1'])]
+    cards = ''.join(f'<a class="card sec" href="{url(lang, k)}"><span>{ic}</span><div><b>{esc(t)}</b><small>{esc(d)}</small></div></a>' for k, ic, t, d in items)
+    return f'<section class="section"><div class="secgrid">{cards}</div></section>'
 
 
 def habits_strip(lang):

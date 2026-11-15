@@ -527,4 +527,20 @@ new MutationObserver(()=>{ clearTimeout(window._wiStar); window._wiStar=setTimeo
   $$('#dexn button').forEach(b=>b.onclick=()=>{ net=b.dataset.n; $$('#dexn button').forEach(x=>x.classList.toggle('on',x===b)); box.innerHTML='<tr><td colspan="8" class="empty">…</td></tr>'; load() });
   load(); setInterval(()=>{ if(!document.hidden) load() },60000);
 })();
+/* ---------- share buttons ---------- */
+(function(){
+  const bars=$$('.sharebar'); if(!bars.length) return;
+  const page=location.origin+location.pathname, title=(document.querySelector('h1')||{}).textContent||document.title;
+  const u=src=>encodeURIComponent(page+'?utm_source='+src+'&utm_medium=share'), tt=encodeURIComponent(title.trim());
+  const N=[['Telegram','#229ED9',`https://t.me/share/url?url=${u('telegram')}&text=${tt}`,'✈'],['X','#000',`https://x.com/intent/post?url=${u('x')}&text=${tt}`,'𝕏'],
+    ['WhatsApp','#25D366',`https://wa.me/?text=${tt}%20${u('whatsapp')}`,'✆'],['Facebook','#1877F2',`https://www.facebook.com/sharer/sharer.php?u=${u('facebook')}`,'f'],
+    ['Reddit','#FF4500',`https://www.reddit.com/submit?url=${u('reddit')}&title=${tt}`,'r'],['LinkedIn','#0A66C2',`https://www.linkedin.com/sharing/share-offsite/?url=${u('linkedin')}`,'in']];
+  bars.forEach(bar=>{
+    bar.innerHTML=`<span>${esc(bar.dataset.l)}:</span>`+(navigator.share?`<button class="sh" data-native style="background:var(--accent)">↗</button>`:'')+
+      N.map(([n,c,h,ic])=>`<a class="sh" href="${h}" target="_blank" rel="noopener" title="${n}" aria-label="${n}" style="background:${c}">${ic}</a>`).join('')+
+      `<button class="sh" data-copy title="${esc(T.copy||'Copy')}" style="background:#64748b">⧉</button>`;
+    const nb=bar.querySelector('[data-native]'); if(nb) nb.onclick=()=>navigator.share({title,url:page+'?utm_source=native&utm_medium=share'}).catch(()=>{});
+    bar.querySelector('[data-copy]').onclick=e=>{ navigator.clipboard&&navigator.clipboard.writeText(page+'?utm_source=copy&utm_medium=share'); e.currentTarget.textContent='✓' };
+  });
+})();
 })();
