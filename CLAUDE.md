@@ -42,4 +42,4 @@ Movers rubric «What's happening with X» (tag `movers`): twice a day 10:47/19:4
 News aggregator: api/news.js (Vercel function, RSS headlines only, links to originals).
 
 ## Waiting on the owner
-Enable Vercel Web Analytics in the project settings (script already in pages); a stock broker referral link.
+A stock broker referral link (Freedom24). Done 2026-11-16: Vercel Web Analytics enabled (Hobby, free); deployment retention set to 1 day for all types (each deploy is ~200 MB, Hobby limit 10 GB).
