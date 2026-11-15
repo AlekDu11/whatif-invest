@@ -305,4 +305,28 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
   fetch('https://open.er-api.com/v6/latest/USD').then(r=>r.json()).then(d=>{ if(d&&d.rates){ Object.keys(FX).forEach(c=>{ if(d.rates[c]) FX[c]=d.rates[c] }); WI.fxu=(d.time_last_update_utc||'').slice(5,16); run() } }).catch(()=>{});
 })();
 
+/* ---------- habits -> money calculator ---------- */
+(function(){
+  const box=$('#hcalc'); if(!box||!PAGE.habit) return; const C=PAGE.habit;
+  let asset='spy', years=10; const S={};
+  const END=WI.u.slice(0,7), END_DAY=+WI.u.slice(8,10);
+  const ym2i=s=>{const [y,m]=s.split('-').map(Number);return y*12+m-1};
+  const nf=v=>{ try{ return new Intl.NumberFormat(T.intl||'en',{style:'currency',currency:C.code,maximumFractionDigits:Math.abs(v)>=100?0:2}).format(v) }catch(e){ return Math.round(v)+' '+C.code } };
+  function sim(P,st,amt){ const s0=ym2i(P.start), e=ym2i(P.end), from=Math.max(st,s0); let u=0,inv=0;
+    for(let i=from;i<=e;i++){ const y=Math.floor(i/12), m=i%12+1, d=i===ym2i(END)?END_DAY:new Date(y,m,0).getDate(), c=amt*d; u+=c/P.p[i-s0]; inv+=c }
+    return {inv,val:u*P.p[e-s0]} }
+  async function run(){
+    const price=+$('#hp').value||0, t=+$('#ht').value||0, per=$('#hper').value, daily=price*t/({d:1,w:7,m:30.4375}[per])/C.rate;
+    try{ await Promise.all(C.assets.map(async id=>{ if(!S[id]) S[id]=await fetch(`${BASE}/assets/p/${id}.json?v=${WI.v}`).then(r=>r.json()) })) }catch(e){ return }
+    const st=ym2i(END)-years*12, R={};
+    C.assets.forEach(id=>{ const r=sim(S[id],st,daily); r.inv*=C.rate; r.val*=C.rate; r.roi=r.inv?r.val/r.inv-1:null; R[id]=r;
+      const tr=$(`#htb tr[data-a="${id}"]`); if(tr){ const td=tr.children; td[1].textContent=nf(r.inv); td[2].innerHTML='<b>'+nf(r.val)+'</b>'; td[3].textContent=fmtPct(r.roi); td[3].className='mono '+cls(r.roi) } });
+    const r=R[asset]; $('#hval').textContent=nf(r.val); $('#hval').className='v '+cls(r.roi);
+    const ph=C.res.startsWith('{habit}')?C.phrase[0].toUpperCase()+C.phrase.slice(1):C.phrase;
+    $('#hsent').textContent=fmt(C.res,{y:C.yl[years],habit:ph,spent:nf(r.inv),asset:nm(BYID[asset]),val:nf(r.val),roi:fmtPct(r.roi)}) }
+  ['#hp','#ht','#hper'].forEach(q=>$(q).addEventListener('input',run));
+  $$('#has button').forEach(b=>b.onclick=()=>{ asset=b.dataset.v; $$('#has button').forEach(x=>x.classList.toggle('on',x===b)); run() });
+  $$('#hy button').forEach(b=>b.onclick=()=>{ years=+b.dataset.v; $$('#hy button').forEach(x=>x.classList.toggle('on',x===b)); run() });
+  run();
+})();
 })();

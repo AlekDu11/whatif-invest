@@ -285,3 +285,22 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,su
   .mnav a.on{color:var(--accent)}
   body{padding-bottom:64px}
 }
+
+/* habits -> money */
+.hcalc{display:flex;flex-direction:column;gap:14px}
+.hrow{display:flex;flex-wrap:wrap;gap:14px}
+.hrow .f{display:flex;flex-direction:column;gap:6px;font:600 13px Inter;color:var(--muted);min-width:0}
+.hrow .inp{gap:8px}.hrow .inp input{width:120px;border:0;background:none;font:600 16px Inter;color:var(--text);outline:none}
+.hrow select{border:0;background:none;font:600 14px Inter;color:var(--text)}
+.hrow .seg{flex-wrap:wrap}
+.hres .v{font:800 40px/1.1 'JetBrains Mono',monospace;letter-spacing:-.02em}
+.hres p{margin:6px 0 0;font-size:16px}
+.hcalc h2{font-size:17px;margin:6px 0 0}
+.hgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.hcard{display:flex;flex-direction:column;gap:6px;text-decoration:none;padding:16px}
+.hcard span{font-size:28px}.hcard b{font-size:15px;line-height:1.3}.hcard small{color:var(--muted)}
+.hcard em{font:800 22px 'JetBrains Mono',monospace;font-style:normal}
+.hcard:hover{border-color:var(--accent)}
+@media (max-width:640px){.hres .v{font-size:30px}.hrow .inp input{width:90px}}
+.hcalc .mt td:first-child,.hcalc .mt th:first-child{text-align:left}
+.hcalc .mt td.name a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:600}

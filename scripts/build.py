@@ -10,6 +10,7 @@ import calendar, hashlib, html, json, os, shutil, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from i18n import LANGS as TR, ORDER, FULL, DEFAULT  # noqa: E402
+from i18n_h import H as HB, PRICES as HPRICE, SCEN as HSCEN, UNITS as HUNITS  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIST = os.path.join(ROOT, 'dist')
@@ -26,7 +27,7 @@ UPDATED = market['updated']
 END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
-RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener'}
+RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits'}
 # asset ids that clash with a language folder or a section get a suffix (ko -> ko-stock, fil -> fil-crypto)
 _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
 # delisted or stale series (last price older than a month) are dropped: "today" numbers would be false
@@ -81,6 +82,8 @@ assert not (set(HUBS) | set(TOOLS) | {'blog', 'compare'}) & set(A), 'asset id co
 
 def has_page(lang, aid):
     if aid is None or aid == 'compare' or aid in HUBS or aid in TOOLS:
+        return True
+    if aid == 'habits' or (aid or '').startswith('habits/'):
         return True
     if aid == 'blog' or (aid or '').startswith('blog/'):
         return lang in BLOG_LANGS and (aid == 'blog' or aid[5:] in POSTS.get(lang, {}))
@@ -239,10 +242,10 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
     alts += f'<link rel="alternate" hreflang="x-default" href="{SITE + url("en", p)}">'
     ld = ''.join(f'<script type="application/ld+json">{json.dumps(j, ensure_ascii=False)}</script>' for j in jsonld)
     X = S['x']
-    tl = {'screener': X['scr_h1'], 'converter': X['conv_h1'], 'calendar': X['cal_h1'], 'heatmap': X['heat_h1'], 'news': X['news_h1']}
+    tl = {'habits': HB[lang]['nav'], 'screener': X['scr_h1'], 'converter': X['conv_h1'], 'calendar': X['cal_h1'], 'heatmap': X['heat_h1'], 'news': X['news_h1']}
     blog_l = lang if lang in BLOG_LANGS else 'en'
     nav = (''.join(f'<a href="{url(lang, k)}" class="{"on" if k == p else ""}">{v}</a>' for k, v in ((None, S['nav_rank']), ('compare', S['nav_cmp'])))
-           + f'<details class="dd"><summary class="{"on" if p in TOOLS else ""}">{X["nav_tools"]}</summary><div>'
+           + f'<details class="dd"><summary class="{"on" if p in TOOLS or (p or "").startswith("habits") else ""}">{X["nav_tools"]}</summary><div>'
            + ''.join(f'<a href="{url(lang, k)}">{v}</a>' for k, v in tl.items()) + '</div></details>'
            + f'<a href="{url(blog_l, "blog")}" class="{"on" if (p or "").startswith("blog") else ""}">{X["nav_blog"]}</a>')
     i18n = dict(S['ui'], months=S['months'], intl=S['intl'])
@@ -457,7 +460,7 @@ def home(lang, ver):
             cards.append(hl_card(lang, aid, nm(A[aid], lang), 'r5', S['sub5']))
     filt = f'<div class="toolbar"><div class="filter">{SEARCH_ICON}<input id="flt" type="search" autocomplete="off"></div></div>'
     body = (hero + f'<div class="wgrid">{w_mcap}{w_dom}{w_fng}{w_tr}</div>'
-            f'<div class="wgrid3">{w_up}{w_dn}{w_bat}</div>{banner}'
+            f'<div class="wgrid3">{w_up}{w_dn}{w_bat}</div>{banner}{habits_strip(lang)}'
             f'<section class="section"><div class="hl">{"".join(cards)}</div></section>'
             f'<div class="tabs" id="tabs"></div>{filt}{table_block(lang, ids[:100])}'
             f'<section class="card section faq"><h2>{S["faq"]}</h2><details open><summary>{esc(S["q3"])}</summary><p>{esc(S["a3"])}</p></details></section>')
@@ -575,6 +578,94 @@ def asset(aid, lang, ver):
 
 
 # ---------------- hubs, tools ----------------
+# ---------------- habits -> money ----------------
+HSLUG = {'coffee': 'coffee', 'cig': 'cigarettes', 'delivery': 'food-delivery', 'subs': 'subscriptions', 'save': 'save-daily'}
+HASSETS = [i for i in ('spy', 'qqq', 'btc', 'gold') if i in A]
+HICON = {'coffee': '☕', 'cig': '🚬', 'delivery': '🍔', 'subs': '📺', 'save': '🐷'}
+CCY_SYM = {'USD': '$', 'EUR': '€', 'UAH': '₴', 'PLN': 'zł', 'BRL': 'R$', 'TRY': '₺', 'RUB': '₽', 'IDR': 'Rp', 'VND': '₫', 'THB': '฿',
+           'INR': '₹', 'JPY': '¥', 'KRW': '₩', 'CNY': '¥', 'AED': 'AED', 'PHP': '₱'}
+CCY_SUFFIX = {'PLN', 'UAH', 'RUB', 'VND', 'AED'}
+
+
+def hccy(lang):
+    c = LOCAL_CCY.get(lang, 'usd')
+    code = c[3:] if c.startswith('fx:') else 'USD'
+    rate = 1.0 if code == 'USD' else FX.get('rates', {}).get(code)
+    return (code, rate) if rate else ('USD', 1.0)
+
+
+def money(v, code):
+    s = f"{v:,.0f}" if abs(v) >= 100 else f"{v:,.2f}"
+    sym = CCY_SYM.get(code, code)
+    return f"{s} {sym}" if code in CCY_SUFFIX else f"{sym}{s}"
+
+
+def hsim(lang, sc, years, aid, price=None, times=None, per=None):
+    code, rate = hccy(lang)
+    t0, p0 = HUNITS[sc]
+    price = HPRICE[lang][HSCEN.index(sc)] if price is None else price
+    times, per = times or t0, per or p0
+    daily_usd = price * times / {'d': 1, 'w': 7, 'm': 30.4375}[per] / rate
+    r = simulate(aid, END_I - years * 12, daily_usd)
+    return dict(inv=r['inv'] * rate, val=r['val'] * rate, roi=r['roi'], code=code)
+
+
+def habit_page(lang, sc, ver):
+    S, h = TR[lang], HB[lang]
+    phrase, h1, d = h[sc]
+    code, rate = hccy(lang)
+    t0, p0 = HUNITS[sc]
+    price = HPRICE[lang][HSCEN.index(sc)]
+    yl = {1: S['p1'], 3: S['p3'], 5: S['p5'], 10: S['p10']}
+    r = hsim(lang, sc, 10, 'spy')
+    sent = h['res'].format(y=yl[10], habit=phrase[:1].upper() + phrase[1:] if h['res'].startswith('{habit}') else phrase, spent=money(r['inv'], code), asset=nm(A['spy'], lang), val=money(r['val'], code), roi=pct(r['roi']))
+    per_l = h['per'].split('|')
+    per_opts = ''.join(f'<option value="{v}"{" selected" if v == p0 else ""}>{esc(t)}</option>' for v, t in zip('dwm', per_l))
+    aseg = ''.join(f'<button data-v="{i}"{" class=on" if i == "spy" else ""}>{esc(nm(A[i], lang))}</button>' for i in HASSETS)
+    yseg = ''.join(f'<button data-v="{y}"{" class=on" if y == 10 else ""}>{esc(yl[y])}</button>' for y in (1, 3, 5, 10))
+    rows = ''
+    for i in HASSETS:
+        x = hsim(lang, sc, 10, i)
+        rows += (f'<tr data-a="{i}"><td class="name"><a href="{aurl(lang, i)}">{icon(A[i])}{esc(nm(A[i], lang))}</a></td>'
+                 f'<td class="mono">{money(x["inv"], code)}</td><td class="mono"><b>{money(x["val"], code)}</b></td><td class="mono {cls(x["roi"])}">{pct(x["roi"])}</td></tr>')
+    u = S['ui']
+    calc = (f'<div class="card hcalc" id="hcalc" data-sc="{sc}">'
+            f'<div class="hrow"><label class="f">{h["price"]}<div class="inp"><input id="hp" type="number" min="0" step="any" value="{price:g}"><span class="muted">{CCY_SYM.get(code, code)}</span></div></label>'
+            f'<label class="f">{h["times"]}<div class="inp"><input id="ht" type="number" min="0" step="any" value="{t0}" style="max-width:70px"><select id="hper">{per_opts}</select></div></label></div>'
+            f'<div class="hrow"><div class="f">{h["inv"]}<div class="seg" id="has">{aseg}</div></div><div class="f">{h["yrs"]}<div class="seg" id="hy">{yseg}</div></div></div>'
+            f'<div class="hres"><div class="v good" id="hval">{money(r["val"], code)}</div><p id="hsent">{esc(sent)}</p></div>'
+            f'<h2>{h["tbl"]}</h2><div class="tw"><table class="mt"><thead><tr><th style="text-align:left">{u["name"]}</th><th>{u["invested"]}</th><th>{u["value"]}</th><th>%</th></tr></thead><tbody id="htb">{rows}</tbody></table></div>'
+            f'<p class="muted" style="font-size:13px">{h["note"]}</p></div>')
+    others = ''.join(f'<a class="card hcard" href="{url(lang, "habits/" + HSLUG[k])}"><span>{HICON[k]}</span><b>{esc(HB[lang][k][1])}</b></a>' for k in HSCEN if k != sc)
+    body = (f'<div class="crumbs"><a href="{url(lang, "habits")}">{h["nav"]}</a></div><h1>{HICON[sc]} {esc(h1)}</h1><p class="lead">{esc(d)}</p>{calc}'
+            f'<section class="section"><h2>{h["other"]}</h2><div class="hgrid">{others}</div></section>'
+            f'<section class="banner section"><div><b>{esc(h["cta"])}</b></div><a class="btn" href="{url(lang, "compare")}">{esc(h["cta"])} →</a></section>')
+    cfg = dict(habit=dict(sc=sc, code=code, rate=rate, res=h['res'], phrase=phrase, yl={str(k): v for k, v in yl.items()}, assets=HASSETS))
+    faq = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": h1, "acceptedAnswer": {"@type": "Answer", "text": sent}}]}
+    return shell(lang, 'habits/' + HSLUG[sc], f'{h1} | {BRAND}', d, body, cfg, ver, [faq])
+
+
+def habits_strip(lang):
+    h = HB[lang]
+    code, _ = hccy(lang)
+    cards = ''.join(f'<a class="card hcard" href="{url(lang, "habits/" + HSLUG[k])}"><span>{HICON[k]}</span><b>{esc(h[k][1])}</b>'
+                    f'<small>{esc(TR[lang]["p10"])} · {esc(nm(A["spy"], lang))}</small><em class="good">{money(hsim(lang, k, 10, "spy")["val"], code)}</em></a>' for k in HSCEN)
+    return (f'<section class="section"><div class="charthead"><h2>{esc(h["h1"])}</h2><a class="calc" href="{url(lang, "habits")}">{esc(h["nav"])} →</a></div>'
+            f'<div class="hgrid">{cards}</div></section>')
+
+
+def habits_hub(lang, ver):
+    h = HB[lang]
+    code, _ = hccy(lang)
+    cards = ''
+    for k in HSCEN:
+        r = hsim(lang, k, 10, 'spy')
+        cards += (f'<a class="card hcard big" href="{url(lang, "habits/" + HSLUG[k])}"><span>{HICON[k]}</span><b>{esc(h[k][1])}</b>'
+                  f'<small>{esc(TR[lang]["p10"])} · {esc(nm(A["spy"], lang))}</small><em class="good">{money(r["val"], code)}</em></a>')
+    body = f'<h1>{esc(h["h1"])}</h1><p class="lead">{esc(h["d"])}</p><div class="hgrid">{cards}</div>'
+    return shell(lang, 'habits', f'{h["h1"]} | {BRAND}', h['d'], body, {}, ver)
+
+
 def hub(lang, slug, ver):
     S, X = TR[lang], TR[lang]['x']
     cat = HUBS[slug]
@@ -851,13 +942,16 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
             write(f'{pre}{slug}/index.html', hub(lang, slug, ver))
         for slug in TOOLS:
             write(f'{pre}{slug}/index.html', tool(lang, slug, ver))
-        extra_pages = []
+        extra_pages = ['habits'] + ['habits/' + HSLUG[k] for k in HSCEN]
+        write(pre + 'habits/index.html', habits_hub(lang, ver))
+        for k in HSCEN:
+            write(f'{pre}habits/{HSLUG[k]}/index.html', habit_page(lang, k, ver))
         if lang in BLOG_LANGS and POSTS.get(lang):
             write(pre + 'blog/index.html', blog_index(lang, ver))
             write(pre + 'blog/rss.xml', rss(lang))
             for s in POSTS[lang]:
                 write(f'{pre}blog/{s}/index.html', blog_post(lang, s, ver))
-            extra_pages = ['blog'] + ['blog/' + s for s in POSTS[lang]]
+            extra_pages += ['blog'] + ['blog/' + s for s in POSTS[lang]]
         per_lang[lang] = [None, 'compare'] + list(HUBS) + TOOLS + extra_pages + assets_
     # sitemaps: one per language + index
     for lang, pages in per_lang.items():
