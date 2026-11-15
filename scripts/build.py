@@ -75,7 +75,7 @@ TOP = set(ORDERED[:TOP_N])
 
 HUBS = {'crypto': 'crypto', 'stocks': 'stock', 'etfs': 'etf', 'metals': 'metal'}
 TOOLS = ['screener', 'converter', 'calendar', 'heatmap', 'news']
-BLOG_LANGS = {'uk', 'en'}
+BLOG_LANGS = {l for l in ORDER if os.path.isdir(os.path.join(ROOT, 'content/blog', l)) and any(f.endswith('.md') for f in os.listdir(os.path.join(ROOT, 'content/blog', l)))}  # a language gets a blog once it has a post
 assert not (set(HUBS) | set(TOOLS) | {'blog', 'compare'}) & set(A), 'asset id collides with a section slug'
 
 
