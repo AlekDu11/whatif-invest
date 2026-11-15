@@ -19,7 +19,7 @@ from i18n_p import P as POLL, OPTS as POLL_OPTS  # noqa: E402
 from i18n_ai import AI as AIS  # noqa: E402
 from i18n_me import ME  # noqa: E402
 from i18n_mem import MEM  # noqa: E402
-SOCIAL = []   # [(label, url)], e.g. ('Telegram', 'https://t.me/whatifstack'); the 'Follow us' column appears when filled
+SOCIAL = [('X (Twitter)', 'https://x.com/WhatIfStack')]   # [(label, url)], e.g. ('Telegram', 'https://t.me/whatifstack'); the 'Follow us' column appears when filled
 from i18n_h import H as HB, PRICES as HPRICE, SCEN as HSCEN, UNITS as HUNITS, CONV as HCONV  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -1102,7 +1102,7 @@ ABOUT = {
 def about_page(lang, ver):
     h1, secs = ABOUT[lang]
     body = f'<article class="art"><h1>{esc(h1)}</h1><div class="artbody">' + ''.join(f'<h2>{esc(h)}</h2><p>{esc(t)}</p>' for h, t in secs) + '</div></article>'
-    org = {"@context": "https://schema.org", "@type": "Organization", "name": BRAND, "url": SITE + '/', "logo": SITE + '/assets/icon-512.png'}
+    org = {"@context": "https://schema.org", "@type": "Organization", "name": BRAND, "url": SITE + '/', "logo": SITE + '/assets/icon-512.png', "sameAs": [u for _, u in SOCIAL]}
     return shell(lang, 'about', f'{h1} | {BRAND}', secs[0][1], body, {}, ver, [org])
 
 

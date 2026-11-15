@@ -25,6 +25,10 @@ TOP_CRYPTO = 1000
 MARKETS = os.path.join(ROOT, 'data/markets.json')   # ETFs + national stocks (Ukraine, Poland, Germany...)
 FX_TICKER = {'PLN': 'PLN=X', 'EUR': 'EUR=X', 'GBP': 'GBP=X'}   # Yahoo: units of currency per 1 USD
 SUFFIX_CCY = {'.WA': 'PLN', '.DE': 'EUR', '.L': 'GBp'}
+INFO_KEYS = ('ath', 'athd', 'mcap', 'cgid', 'circ', 'supply', 'maxs', 'fdv', 'vol', 'atl', 'atld')
+COININFO = os.path.join(ROOT, 'data/coininfo.json')    # links/description per coin, filled a few hundred per day
+STOCKINFO = os.path.join(ROOT, 'data/stockinfo.json')  # website/sector/summary per stock, filled gradually
+INFO_LANGS = ('uk', 'ru', 'es', 'pt', 'de', 'fr', 'it', 'pl', 'tr', 'nl', 'id', 'vi', 'th', 'hi', 'ja', 'ko', 'zh', 'ar')
 WRAPPED = ('wrapped', 'staked', 'bridged', 'restaked', 'liquid staking', 'tokenized', 'binance-peg', 'savings', 'usd')
 BINANCE = 'https://data-api.binance.vision/api/v3'
 SP500_CSV = 'https://raw.githubusercontent.com/datasets/s-and-p-500-companies/main/data/constituents.csv'
@@ -188,6 +192,8 @@ def coingecko_meta():
             if sym and sym not in meta:          # first = biggest market cap wins
                 meta[sym] = dict(name=c.get('name'), logo=c.get('image'), rank=c.get('market_cap_rank'), mcap=c.get('market_cap'),
                                  ath=c.get('ath'), athd=(c.get('ath_date') or '')[:10] or None,
+                                 cgid=c.get('id'), circ=c.get('circulating_supply'), supply=c.get('total_supply'), maxs=c.get('max_supply'),
+                                 fdv=c.get('fully_diluted_valuation'), vol=c.get('total_volume'), atl=c.get('atl'), atld=(c.get('atl_date') or '')[:10] or None,
                                  price=c.get('current_price'), chg=(c['price_change_percentage_24h'] / 100 if isinstance(c.get('price_change_percentage_24h'), (int, float)) else None))
                 CG_LIST.append(sym)
             if page == 1 and sym and c.get('current_price'):
@@ -365,6 +371,73 @@ def inflation():
     return out if len(out) > 10 else None
 
 
+# ---------------- per-asset info (links, descriptions), incremental ----------------
+def _clean(t, n=700):
+    import re
+    t = re.sub(r'<[^>]+>', '', t or '').replace('\r', '').strip()
+    t = re.sub(r'\s+', ' ', t)
+    return (t[:n].rsplit(' ', 1)[0] + '…') if len(t) > n else t
+
+
+def coin_info(assets, budget=220):
+    info = json.load(open(COININFO, encoding='utf-8')) if os.path.exists(COININFO) else {}
+    today = datetime.now(timezone.utc).strftime('%Y-%m-%d')
+    todo = sorted((a for a in assets.values() if a.get('cat') == 'crypto' and a.get('cgid')), key=lambda a: a.get('rank') or 9999)
+    from datetime import timedelta
+    cutoff = (datetime.now(timezone.utc) - timedelta(days=45)).strftime('%Y-%m-%d')
+    todo = [a for a in todo if info.get(a['cgid'], {}).get('d', '') < cutoff]   # new coins first (by rank), then stale ones
+    n = 0
+    for a in todo[:budget]:
+        d = get_json(f"https://api.coingecko.com/api/v3/coins/{a['cgid']}?localization=true&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false", tries=2)
+        time.sleep(2.6)
+        if not isinstance(d, dict) or 'links' not in d:
+            if d is None:
+                break                                   # rate-limited: try again tomorrow
+            continue
+        L = d.get('links') or {}
+        first = lambda v: next((x for x in (v or []) if x), None)
+        links = dict(web=first(L.get('homepage')), wp=L.get('whitepaper') or None, exp=first(L.get('blockchain_site')),
+                     x=('https://x.com/' + L['twitter_screen_name']) if L.get('twitter_screen_name') else None,
+                     tg=('https://t.me/' + L['telegram_channel_identifier']) if L.get('telegram_channel_identifier') else None,
+                     rd=L.get('subreddit_url') if (L.get('subreddit_url') or '').rstrip('/') not in ('https://www.reddit.com', 'https://reddit.com') else None,
+                     gh=first((L.get('repos_url') or {}).get('github')))
+        desc = d.get('description') or {}
+        ds = {'en': _clean(desc.get('en'))}
+        for lg in INFO_LANGS:
+            t = _clean(desc.get(lg))
+            if t and t != ds['en']:
+                ds[lg] = t
+        info[a['cgid']] = dict(l={k: v for k, v in links.items() if v}, ds={k: v for k, v in ds.items() if v},
+                               cat=[c for c in (d.get('categories') or []) if c][:6], d=today)
+        n += 1
+    json.dump(info, open(COININFO, 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
+    log(f"coin info: +{n}, {len(info)} total")
+
+
+def stock_info(assets, budget=180):
+    try:
+        import yfinance as yf
+    except ImportError:
+        return
+    info = json.load(open(STOCKINFO, encoding='utf-8')) if os.path.exists(STOCKINFO) else {}
+    todo = [a for a in assets.values() if a.get('cat') in ('stock', 'etf') and a.get('yahoo') and a['yahoo'] not in info]
+    n = 0
+    for a in todo[:budget]:
+        try:
+            i = yf.Ticker(a['yahoo']).info or {}
+        except Exception as e:
+            log(f"  info {a['yahoo']}: {e}")
+            time.sleep(2)
+            continue
+        info[a['yahoo']] = {k: v for k, v in dict(web=i.get('website'), sec=i.get('sector'), ind=i.get('industry'), cty=i.get('country'),
+                                                   emp=i.get('fullTimeEmployees'), mcap=i.get('marketCap'),
+                                                   ds={'en': _clean(i.get('longBusinessSummary'))} if i.get('longBusinessSummary') else None).items() if v}
+        n += 1
+        time.sleep(0.6)
+    json.dump(info, open(STOCKINFO, 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
+    log(f"stock info: +{n}, {len(info)} total")
+
+
 # ---------------- main ----------------
 def main():
     quick = '--quick' in sys.argv
@@ -453,7 +526,7 @@ def main():
             a = assets[pinned_crypto[base]]
             if r:
                 a['price'], a['chg'] = r['price'], r['chg']
-            a.update({k: v for k, v in (('logo', m.get('logo')), ('rank', m.get('rank')), ('ath', m.get('ath')), ('athd', m.get('athd')), ('mcap', m.get('mcap'))) if v})
+            a.update({k: m[k] for k in ('logo', 'rank') + INFO_KEYS if m.get(k)})
             s = binance_monthly(r['symbol']) if r else None   # use Binance if Yahoo failed or has a shorter history
             if s and ('p' not in a or s['start'] < a['start']):
                 a.update(s, src='binance')
@@ -476,7 +549,7 @@ def main():
         assets[aid] = dict(name={'uk': nm, 'en': nm}, tk=base, cat='crypto', src=src,
                            price=r['price'] if r else m.get('price'), chg=r['chg'] if r else m.get('chg'),
                            logo=m.get('logo'), rank=m.get('rank'), **({'binance': r['symbol']} if r else {}),
-                           **{k: m[k] for k in ('ath', 'athd', 'mcap') if m.get(k)}, **s)
+                           **{k: m[k] for k in INFO_KEYS if m.get(k)}, **s)
         n += 1
         other += not r
     log(f"crypto: {n} coins ({other} with history from Gate/MEXC/OKX)")
@@ -509,6 +582,12 @@ def main():
             log(f"fx: {len(fx)} currencies")
     except Exception as e:
         log(f"fx failed: {e}")
+    if not quick:
+        for f in (coin_info, stock_info):
+            try:
+                f(final)
+            except Exception as e:
+                log(f"{f.__name__} failed: {e}")
     try:
         fetch_logos(final)
     except Exception as e:
