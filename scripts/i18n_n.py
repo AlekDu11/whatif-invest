@@ -39,3 +39,18 @@ FOOT = {
 SHARE = {'en': 'Share', 'uk': 'Поділитися', 'ru': 'Поделиться', 'es': 'Compartir', 'pt': 'Compartilhar', 'de': 'Teilen', 'fr': 'Partager',
          'it': 'Condividi', 'pl': 'Udostępnij', 'tr': 'Paylaş', 'nl': 'Delen', 'id': 'Bagikan', 'vi': 'Chia sẻ', 'th': 'แชร์', 'hi': 'शेयर करें',
          'ja': '共有', 'ko': '공유', 'zh': '分享', 'ar': 'مشاركة', 'fil': 'Ibahagi'}
+
+# "What's happening with X" rubric: (tag label, asset-page block title with {name})
+HOT = {
+ 'en': ('Why it moves', "What's happening with {name}"), 'uk': ('Чому рухається', 'Що відбувається з {name}'),
+ 'ru': ('Почему движется', 'Что происходит с {name}'), 'es': ('Por qué se mueve', 'Qué está pasando con {name}'),
+ 'pt': ('Por que se move', 'O que está acontecendo com {name}'), 'de': ('Warum es sich bewegt', 'Was ist los mit {name}'),
+ 'fr': ('Pourquoi ça bouge', 'Que se passe-t-il avec {name}'), 'it': ('Perché si muove', 'Cosa succede a {name}'),
+ 'pl': ('Dlaczego się rusza', 'Co się dzieje z {name}'), 'tr': ('Neden hareket ediyor', "{name} tarafında neler oluyor"),
+ 'nl': ('Waarom het beweegt', 'Wat is er aan de hand met {name}'), 'id': ('Kenapa bergerak', 'Apa yang terjadi dengan {name}'),
+ 'vi': ('Vì sao biến động', 'Chuyện gì đang xảy ra với {name}'), 'th': ('ทำไมราคาเคลื่อนไหว', 'เกิดอะไรขึ้นกับ {name}'),
+ 'hi': ('क्यों हिल रहा है', '{name} के साथ क्या हो रहा है'), 'ja': ('値動きの理由', '{name}に何が起きているか'),
+ 'ko': ('왜 움직이나', '{name}에 무슨 일이'), 'zh': ('为何波动', '{name}发生了什么'),
+ 'ar': ('لماذا يتحرك', 'ماذا يحدث مع {name}'), 'fil': ('Bakit gumagalaw', 'Ano ang nangyayari sa {name}'),
+}
+assert len(HOT) == 20

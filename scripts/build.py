@@ -12,7 +12,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from i18n import LANGS as TR, ORDER, FULL, DEFAULT  # noqa: E402
 from i18n_t import T as TT  # noqa: E402
 from i18n_e import E as EX  # noqa: E402
-from i18n_n import N as NW, FOOT, SHARE  # noqa: E402
+from i18n_n import N as NW, FOOT, SHARE, HOT  # noqa: E402
 from i18n_p import P as POLL, OPTS as POLL_OPTS  # noqa: E402
 from i18n_ai import AI as AIS  # noqa: E402
 from i18n_me import ME  # noqa: E402
@@ -619,7 +619,7 @@ def asset(aid, lang, ver):
                       + tvw('financials', dict(isTransparent=True, displayMode='regular', width='100%', height='100%', colorTheme='light', symbol=tv_symbol(a), locale=loc), 520)
                       + f'</section><section class="card"><h2>{X["prof"]} · {esc(tk)}</h2>'
                       + tvw('symbol-profile', dict(width='100%', height='100%', isTransparent=True, colorTheme='light', symbol=tv_symbol(a), locale=loc), 520) + '</section></div>')
-    body = (f'{head}<p class="lead" style="margin-top:10px">{S["a_lead"].format(**fe)}</p>{tv}<div class="stats">{stat_cards}</div><div class="stats">{lump_cards}</div>{calc_block(lang)}{tech_news}'
+    body = (f'{head}<p class="lead" style="margin-top:10px">{S["a_lead"].format(**fe)}</p>{hot_block(lang, aid)}{tv}<div class="stats">{stat_cards}</div><div class="stats">{lump_cards}</div>{calc_block(lang)}{tech_news}'
             f'<div class="cols2 section"><section class="card"><h2>{S["a_periods"].format(**fe)}</h2>{ptable}</section>'
             f'<section class="card faq"><h2>{S["faq"]}</h2>' + ''.join(f'<details><summary>{esc(q)}</summary><p>{esc(x)}</p></details>' for q, x in faq) + '</section></div>'
             f'<section class="section">{table_block(lang, sim, S["a_similar"] + ": " + esc(cat), interactive=False)}</section>'
@@ -969,7 +969,20 @@ def exchanges_page(lang, ver):
     return shell(lang, 'exchanges', f'{e["h1"]} | {BRAND}', e['d'], body, {}, ver)
 
 
-NEWS_TAGS = ['bitcoin', 'ethereum', 'etf', 'regulation', 'defi', 'stablecoins', 'solana', 'xrp', 'markets', 'hacks', 'ai']
+NEWS_TAGS = ['movers', 'bitcoin', 'ethereum', 'etf', 'regulation', 'defi', 'stablecoins', 'solana', 'xrp', 'markets', 'hacks', 'ai']
+
+
+def news_tl(lang):
+    return dict(zip(NEWS_TAGS, [HOT[lang][0]] + NW[lang]['tags'].split('|') + [AIS[lang]['nav']]))
+
+
+def hot_block(lang, aid):
+    items = [(k, m) for k, m in news_items(lang) if aid in m.get('assets', [])][:4]
+    if not items:
+        return ''
+    tl = news_tl(lang)
+    return (f'<section class="section hot"><h2>{esc(HOT[lang][1].format(name=nm(A[aid], lang)))}</h2><div class="card nlist own">'
+            + ''.join(news_row(lang, k, m, tl) for k, m in items) + '</div></section>')
 
 
 def news_items(lang):
@@ -985,7 +998,7 @@ def news_row(lang, slug, m, tl):
 
 def news_page(lang, ver):
     n = NW[lang]
-    tl = dict(zip(NEWS_TAGS, n['tags'].split('|') + [AIS[lang]['nav']]))
+    tl = news_tl(lang)
     chips = f'<button class="on" data-t="">{esc(n["n_all"])}</button>' + ''.join(f'<button data-t="{k}">{esc(v)}</button>' for k, v in tl.items())
     own = news_items(lang)[:60]
     own_html = (f'<section class="section"><h2>{esc(n["own"])}</h2><div class="card nlist own">' + ''.join(news_row(lang, k, m, tl) for k, m in own) + '</div></section>') if own else ''
@@ -1000,7 +1013,7 @@ def news_page(lang, ver):
 def news_article(lang, slug, ver):
     S, n = TR[lang], NW[lang]
     m = NEWS[lang][slug]
-    tl = dict(zip(NEWS_TAGS, n['tags'].split('|') + [AIS[lang]['nav']]))
+    tl = news_tl(lang)
     title, desc = m.get('title', ''), m.get('description', '')
     tags = ''.join(f'<span class="badge">{esc(tl.get(t, t))}</span> ' for t in (x.strip() for x in m.get('tags', '').split(',')) if t)
     cards = ''.join(sc_block('card', [i], lang) for i in m['assets'][:3])
@@ -1291,8 +1304,14 @@ def sc_block(kind, args, lang):
     S = TR[lang]
     if kind == 'card' and args and args[0] in A:
         aid = args[0]; a = A[aid]; m = METRICS[aid]
+        if m['r5'] is not None:
+            pl, rv = S['p5'], m['r5']
+        elif m['r1'] is not None:
+            pl, rv = S['p1'], m['r1']
+        else:
+            pl, rv = S['p_since'].format(since=mlabel(a['start'], lang)), simulate(aid, ym2i(a['start']))['roi']
         return (f'<a class="card postcard" href="{aurl(lang, aid)}">{icon(a, True)}<div><b>{esc(nm(a, lang))}</b> <span class="badge">{esc(a["tk"])}</span>'
-                f'<div class="muted">{S["stat"].format(p=S["p5"])}: <b class="{cls(m["r5"])}">{pct(m["r5"])}</b> · {S["ui"]["price"]} <b data-p="{aid}">{price(m["price"])}</b></div></div>'
+                f'<div class="muted">{S["stat"].format(p=pl)}: <b class="{cls(rv)}">{pct(rv)}</b> · {S["ui"]["price"]} <b data-p="{aid}">{price(m["price"])}</b></div></div>'
                 f'<span class="calc">{S["ui"]["calc"]} →</span></a>')
     if kind == 'table' and args:
         ids = [i for i in args[0].split(',') if i in A]

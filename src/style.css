@@ -438,3 +438,4 @@ html[data-theme=dark] .btn.ghost{color:var(--accent);background:transparent}
 h1 em{color:inherit}
 .card.sec .si{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent);flex:none;font-size:0}
 .card.sec:nth-child(3n+2) .si{background:var(--gold-soft);color:var(--gold)}
+.hot .nlist{border-left:3px solid var(--gold)}
