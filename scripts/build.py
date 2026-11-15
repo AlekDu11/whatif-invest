@@ -12,7 +12,8 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from i18n import LANGS as TR, ORDER, FULL, DEFAULT  # noqa: E402
 from i18n_t import T as TT  # noqa: E402
 from i18n_e import E as EX  # noqa: E402
-from i18n_n import N as NW  # noqa: E402
+from i18n_n import N as NW, FOOT  # noqa: E402
+SOCIAL = []   # [(label, url)], e.g. ('Telegram', 'https://t.me/whatifstack'); the 'Follow us' column appears when filled
 from i18n_h import H as HB, PRICES as HPRICE, SCEN as HSCEN, UNITS as HUNITS, CONV as HCONV  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -259,6 +260,20 @@ def lang_menu(lang, p):
     return f'<select class="langsel" aria-label="Language" onchange="location.href=this.value">{opts}</select>'
 
 
+def footer_cols(lang):
+    S, n, f = TR[lang], NW[lang], FOOT[lang]
+    blog_l = lang if lang in BLOG_LANGS else 'en'
+    pop = [(aurl(lang, i), nm(A[i], lang)) for i in ('btc', 'eth', 'sol', 'xrp', 'nvda', 'aapl', 'tsla', 'gold', 'spy', 'qqq') if i in A]
+    mk = [(url(lang), S['nav_rank']), (url(lang, 'compare'), S['nav_cmp'])] + [(url(lang, k), S['cat_' + v]) for k, v in HUBS.items()]
+    tools = [(url(lang, k), v) for k, v in tools_menu(lang)]
+    ins = [(url(lang, 'news'), n['n_nav']), (url(blog_l, 'blog'), n['i_nav']), (url(blog_l, 'blog') + 'rss.xml', 'RSS'),
+           (url(lang, 'exchanges'), EX[lang]['nav']), (url(lang if lang in ABOUT else 'en', 'about'), n['about'])]
+    cols = [(f[0], pop), (f[1], mk), (TR[lang]['x']['nav_tools'], tools), (n['i_nav'], ins)]
+    if SOCIAL:
+        cols.insert(0, (f[2], SOCIAL))
+    return ('<div class="fcols">' + ''.join(f'<div><b>{esc(t)}</b>' + ''.join(f'<a href="{h}">{esc(l)}</a>' for h, l in items) + '</div>' for t, items in cols) + '</div>')
+
+
 def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
     S = TR[lang]
     canon = SITE + url(lang, p)
@@ -313,7 +328,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
 <nav class="mnav">{mnav}</nav>{msheet}
 <main class="wrap">
 {body}
-<footer><span>{BRAND} · {S['by']} <a href="https://mytimebox.app/">Timebox</a> · {S['sources']} · <a href="{url(lang if lang in ABOUT else 'en', 'about')}">{NW[lang]['about']}</a></span><span>{S['disclaimer']}</span></footer>
+{footer_cols(lang)}<footer><span>{BRAND} · {S['by']} <a href="https://mytimebox.app/">Timebox</a> · {S['sources']} · <a href="{url(lang if lang in ABOUT else 'en', 'about')}">{NW[lang]['about']}</a></span><span>{S['disclaimer']}</span></footer>
 <nav class="langs">{' · '.join(f'<a href="{url(lg, p) if has_page(lg, p) else url(lg)}" hreflang="{TR[lg]["loc"]}">{esc(TR[lg]["name"])}</a>' for lg in ORDER)}</nav>
 </main>
 <script>window.PAGE={json.dumps(cfg, ensure_ascii=False)};window.I18N={json.dumps(i18n, ensure_ascii=False)};</script>

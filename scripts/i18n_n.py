@@ -24,3 +24,14 @@ N = {k: dict(zip(K, v)) for k, v in {
  'fil': ('Balita', 'Crypto news ngayon', 'Pinakabagong headline sa crypto at merkado mula sa CoinDesk, Cointelegraph, Decrypt, The Block, Bitcoin Magazine at iba pang nangungunang outlet sa iisang feed. Ina-update kada 10 minuto.', 'Lahat', 'Ang mga headline ay naka-link sa orihinal na artikulo. Hindi namin kinokopya ang teksto.', 'Bitcoin|Ethereum|ETF|Regulasyon|DeFi|Stablecoins|Solana|XRP|Merkado|Hacks', 'Insights', 'Lahat|Analytics|Gabay|Ulat', 'Ipakita pa', 'Tungkol at metodolohiya', 'Mga pinagmulan', 'Balita ng WhatIfStack', 'Mga headline mula sa ibang outlet'),
 }.items()}
 assert all(len(v['tags'].split('|')) == 10 and len(v['cats'].split('|')) == 4 for v in N.values())
+
+# footer column titles: popular | markets | follow us
+FOOT = {
+ 'en': ('Popular', 'Markets', 'Follow us'), 'uk': ('Популярне', 'Ринки', 'Ми в соцмережах'), 'ru': ('Популярное', 'Рынки', 'Мы в соцсетях'),
+ 'es': ('Popular', 'Mercados', 'Síguenos'), 'pt': ('Popular', 'Mercados', 'Siga-nos'), 'de': ('Beliebt', 'Märkte', 'Folge uns'),
+ 'fr': ('Populaire', 'Marchés', 'Suivez-nous'), 'it': ('Popolari', 'Mercati', 'Seguici'), 'pl': ('Popularne', 'Rynki', 'Obserwuj nas'),
+ 'tr': ('Popüler', 'Piyasalar', 'Bizi takip et'), 'nl': ('Populair', 'Markten', 'Volg ons'), 'id': ('Populer', 'Pasar', 'Ikuti kami'),
+ 'vi': ('Phổ biến', 'Thị trường', 'Theo dõi chúng tôi'), 'th': ('ยอดนิยม', 'ตลาด', 'ติดตามเรา'), 'hi': ('लोकप्रिय', 'बाज़ार', 'हमें फ़ॉलो करें'),
+ 'ja': ('人気', 'マーケット', 'フォロー'), 'ko': ('인기', '시장', '팔로우'), 'zh': ('热门', '市场', '关注我们'),
+ 'ar': ('الأكثر شيوعًا', 'الأسواق', 'تابعنا'), 'fil': ('Popular', 'Mga merkado', 'Sundan kami'),
+}
