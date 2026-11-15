@@ -44,5 +44,12 @@ C = {
 }
 MKTS = {'ua': ('stocks-ukraine', '🇺🇦'), 'pl': ('stocks-poland', '🇵🇱'), 'de': ('stocks-germany', '🇩🇪')}
 MKT_LANG = {'ua': 'uk', 'pl': 'pl', 'de': 'de'}
-CCY_SIGN = {'PLN': 'zł', 'EUR': '€', 'GBp': 'p', 'USD': '$'}
-assert len(C) == 20 and all(set(v[3]) == set(MKTS) for v in C.values())
+CCY_SIGN = {'PLN': 'zł', 'EUR': '€', 'GBp': 'p', 'USD': '$', 'TRY': '₺', 'JPY': '¥', 'KRW': '₩', 'INR': '₹', 'BRL': 'R$', 'HKD': 'HK$', 'CNY': '¥',
+            'TWD': 'NT$', 'IDR': 'Rp', 'THB': '฿', 'PHP': '₱', 'VND': '₫', 'SAR': 'SAR', 'CHF': 'CHF', 'CAD': 'C$', 'AUD': 'A$', 'MXN': 'MX$', 'RUB': '₽'}
+from i18n_ctry2 import MK2, C2  # noqa: E402  (23 more markets, names from CLDR)
+for _m, (_slug, _flag, _lang) in MK2.items():
+    MKTS[_m] = (_slug, _flag)
+    MKT_LANG[_m] = _lang
+for _lg in C:
+    C[_lg][3].update(C2[_lg])
+assert len(C) == 20 and all(set(v[3]) == set(MKTS) for v in C.values()), 'country names missing'

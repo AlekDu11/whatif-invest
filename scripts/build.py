@@ -40,6 +40,7 @@ END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
 RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets'}
+RESERVED |= {v[0] for v in MKTS.values()} | {'world-assets'}
 # asset ids that clash with a language folder or a section get a suffix (ko -> ko-stock, fil -> fil-crypto)
 _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
 # delisted or stale series (last price older than a month) are dropped: "today" numbers would be false
@@ -62,9 +63,15 @@ def tv_symbol(a):
     if a['cat'] == 'metal':
         return 'OANDA:XAUUSD' if a['tk'] == 'XAU' else 'OANDA:XAGUSD'
     y = a.get('yahoo') or ''
-    for suf, ex in (('.WA', 'GPW'), ('.DE', 'XETR'), ('.L', 'LSE')):
+    if y.startswith('MOEX:'):
+        return y
+    for suf, ex in (('.WA', 'GPW'), ('.DE', 'XETR'), ('.L', 'LSE'), ('.PA', 'EURONEXT'), ('.AS', 'EURONEXT'), ('.MC', 'BME'), ('.MI', 'MIL'),
+                    ('.IS', 'BIST'), ('.T', 'TSE'), ('.KS', 'KRX'), ('.NS', 'NSE'), ('.SA', 'BMFBOVESPA'), ('.HK', 'HKEX'), ('.SS', 'SSE'),
+                    ('.SZ', 'SZSE'), ('.TW', 'TWSE'), ('.JK', 'IDX'), ('.BK', 'SET'), ('.PS', 'PSE'), ('.VN', 'HOSE'), ('.SR', 'TADAWUL'),
+                    ('.SW', 'SIX'), ('.TO', 'TSX'), ('.AX', 'ASX'), ('.MX', 'BMV')):
         if y.endswith(suf):
-            return f"{ex}:{y[:-len(suf)]}"
+            t = y[:-len(suf)]
+            return f"{ex}:{t.lstrip('0') if suf == '.HK' else t.replace('-', '.')}"
     return a['tk'].replace('-', '.')
 
 
@@ -289,7 +296,7 @@ def footer_cols(lang):
     blog_l = lang if lang in BLOG_LANGS else 'en'
     pop = [(aurl(lang, i), nm(A[i], lang)) for i in ('btc', 'eth', 'sol', 'xrp', 'nvda', 'aapl', 'tsla', 'gold', 'spy', 'qqq') if i in A]
     mk = [(url(lang), S['nav_rank']), (url(lang, 'compare'), S['nav_cmp'])] + [(url(lang, k), S['cat_' + v]) for k, v in HUBS.items()]
-    mk += [(url(lang, sl), f'{fl} {CTRY[lang][3][m][0]}') for m, (sl, fl) in MKTS.items() if has_page(lang, sl)]
+    mk += [(url(lang, sl), f'{fl} {CTRY[lang][3][m][0]}') for m, (sl, fl) in sorted(MKTS.items(), key=lambda kv: (MKT_LANG.get(kv[0]) != lang, kv[0] != 'ua')) if has_page(lang, sl)][:5]
     tools = [(url(lang, k), v) for k, v in [x for x in tools_menu(lang) if x]]
     ins = [(url(lang, 'news'), n['n_nav']), (url(blog_l, 'blog'), n['i_nav']), (url(blog_l, 'blog') + 'rss.xml', 'RSS'),
            (url(lang, 'exchanges'), EX[lang]['nav']), (url(lang if lang in ABOUT else 'en', 'about'), n['about'])]
@@ -537,7 +544,7 @@ def home(lang, ver):
             cards.append(hl_card(lang, aid, nm(A[aid], lang), 'r5', S['sub5']))
     filt = f'<div class="toolbar"><div class="filter">{SEARCH_ICON}<input id="flt" type="search" autocomplete="off"></div></div>'
     top10, rest = table_block(lang, ids[:100], S['nav_rank'], interactive='top')
-    body = (hero + f'<section class="section toprank"><div class="tabs" id="tabs"></div>{filt}{country_chips(lang)}{top10}</section>'
+    body = (hero + f'<section class="section toprank"><div class="tabs" id="tabs"></div>{filt}{country_chips(lang, limit=8)}{top10}</section>'
             f'<div class="wgrid">{w_mcap}{w_dom}{w_fng}{w_tr}</div>'
             f'{sections_strip(lang)}<div class="wgrid3">{w_up}{w_dn}{w_bat}</div>{banner}{habits_strip(lang)}{poll_block(lang)}{poly_block(lang)}'
             f'<section class="section"><div class="hl">{"".join(cards)}</div></section>'
@@ -659,7 +666,7 @@ def local_price(a, lang):
     if not a.get('lp') or a.get('ccy', 'USD') == 'USD':
         return ''
     v, c = a['lp'], a['ccy']
-    t = f"{v:,.2f}".replace(',', ' ') + ' ' + CCY_SIGN.get(c, c)
+    t = (f"{v:,.0f}" if v >= 1000 else f"{v:,.2f}").replace(',', ' ') + ' ' + CCY_SIGN.get(c, c)
     return f'<span class="lp" title="{esc(CTRY[lang][2])}">{esc(CTRY[lang][2])}: <b>{t}</b></span>'
 
 
@@ -1382,9 +1389,18 @@ def world_page(lang, ver):
     return shell(lang, 'world-assets', f'{w["h1"]} | {BRAND}', w['lead'], body, {}, ver, jsonld)
 
 
-def country_chips(lang, cur=None):
-    mk = sorted(MKTS.items(), key=lambda kv: MKT_LANG.get(kv[0]) != lang)   # the visitor's own country first
+MKT_N = {}
+
+
+def country_chips(lang, cur=None, limit=None):
+    if not MKT_N:
+        for a in A.values():
+            if a.get('mkt'):
+                MKT_N[a['mkt']] = MKT_N.get(a['mkt'], 0) + 1
+    mk = sorted(MKTS.items(), key=lambda kv: (MKT_LANG.get(kv[0]) != lang, kv[0] != 'ua', -MKT_N.get(kv[0], 0)))   # own country first
     ch = [(sl, f'{fl} {CTRY[lang][3][m][0]}') for m, (sl, fl) in mk if has_page(lang, sl)]
+    if limit and len(ch) > limit:
+        ch = ch[:limit] + [('stocks', '…')]
     if not ch:
         return ''
     return (f'<div class="cchips"><b>{esc(CTRY[lang][0])}:</b>' + ''.join(

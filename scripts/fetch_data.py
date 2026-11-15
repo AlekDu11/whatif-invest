@@ -23,8 +23,10 @@ OUT = os.path.join(ROOT, 'data/market.json')
 MIN_START = '2000-01'
 TOP_CRYPTO = 1000
 MARKETS = os.path.join(ROOT, 'data/markets.json')   # ETFs + national stocks (Ukraine, Poland, Germany...)
-FX_TICKER = {'PLN': 'PLN=X', 'EUR': 'EUR=X', 'GBP': 'GBP=X'}   # Yahoo: units of currency per 1 USD
-SUFFIX_CCY = {'.WA': 'PLN', '.DE': 'EUR', '.L': 'GBp'}
+FX_TICKER = {c: c + '=X' for c in 'PLN EUR GBP TRY JPY KRW INR BRL HKD CNY TWD IDR THB PHP VND SAR CHF CAD AUD MXN RUB'.split()}   # Yahoo: units per 1 USD
+SUFFIX_CCY = {'.WA': 'PLN', '.DE': 'EUR', '.PA': 'EUR', '.MC': 'EUR', '.MI': 'EUR', '.AS': 'EUR', '.L': 'GBp', '.IS': 'TRY', '.T': 'JPY', '.KS': 'KRW',
+              '.NS': 'INR', '.SA': 'BRL', '.HK': 'HKD', '.SS': 'CNY', '.SZ': 'CNY', '.TW': 'TWD', '.JK': 'IDR', '.BK': 'THB', '.PS': 'PHP', '.VN': 'VND',
+              '.SR': 'SAR', '.SW': 'CHF', '.TO': 'CAD', '.AX': 'AUD', '.MX': 'MXN', 'MOEX:': 'RUB'}
 CMDTY_T = {'brent': 'BZ=F', 'ng': 'NG=F', 'copper': 'HG=F'}   # for the world-assets page
 CMDTY = {}
 INFO_KEYS = ('ath', 'athd', 'mcap', 'cgid', 'circ', 'supply', 'maxs', 'fdv', 'vol', 'atl', 'atld')
@@ -134,6 +136,58 @@ def other_monthly(base):
     if isinstance(d, dict) and d.get('data'):
         return to_series((datetime.fromtimestamp(int(r[0]) / 1000, timezone.utc).strftime('%Y-%m'), r[4]) for r in d['data']), 'okx'
     return None, None
+
+
+MOEX = 'https://iss.moex.com/iss/engines/stock/markets/shares/boards/TQBR/securities'
+
+
+def moex_monthly(secid):
+    pts, start = [], 0
+    for _ in range(5):
+        d = get_json(f"{MOEX}/{secid}/candles.json?interval=31&from=2000-01-01&start={start}&iss.meta=off", tries=2)
+        rows = (d or {}).get('candles', {}).get('data') or []
+        cols = (d or {}).get('candles', {}).get('columns') or []
+        if not rows:
+            break
+        ic, ib = cols.index('close'), cols.index('begin')
+        pts += [(r[ib][:7], r[ic]) for r in rows]
+        if len(rows) < 500:
+            break
+        start += 500
+    return to_series(pts)
+
+
+def moex_last(secids):
+    d = get_json(f"{MOEX}.json?securities={','.join(secids)}&iss.only=marketdata&marketdata.columns=SECID,LAST,LASTTOPREVPRICE&iss.meta=off", tries=2)
+    out = {}
+    for sid, last, chg in ((d or {}).get('marketdata', {}).get('data') or []):
+        if last:
+            out[sid] = (float(last), (chg or 0) / 100)
+    return out
+
+
+def rub_fx_fallback():
+    """Monthly USD/RUB from the Central Bank of Russia if Yahoo has no RUB=X."""
+    import xml.etree.ElementTree as ET
+    now = datetime.now(timezone.utc)
+    txt = get_text(f"https://www.cbr.ru/scripts/XML_dynamic.asp?date_req1=01/01/2000&date_req2={now:%d/%m/%Y}&VAL_NM_RQ=R01235")
+    if not txt:
+        return None
+    try:
+        root = ET.fromstring(txt.encode('utf-8') if isinstance(txt, str) else txt)
+    except Exception:
+        return None
+    pts = []
+    for rec in root.findall('Record'):
+        dd, mm, yy = rec.get('Date').split('.')
+        pts.append((f"{yy}-{mm}", float(rec.find('Value').text.replace(',', '.')) / float(rec.find('Nominal').text)))
+    return to_series(pts)
+
+
+def slug(t):
+    import re, unicodedata
+    t = unicodedata.normalize('NFKD', t).encode('ascii', 'ignore').decode().lower()
+    return re.sub(r'[^a-z0-9]+', '-', t).strip('-')[:40] or 'x'
 
 
 def to_usd(series, ccy, fxm):
@@ -422,7 +476,7 @@ def stock_info(assets, budget=180):
     except ImportError:
         return
     info = json.load(open(STOCKINFO, encoding='utf-8')) if os.path.exists(STOCKINFO) else {}
-    todo = [a for a in assets.values() if a.get('cat') in ('stock', 'etf') and a.get('yahoo') and a['yahoo'] not in info]
+    todo = [a for a in assets.values() if a.get('cat') in ('stock', 'etf') and a.get('yahoo') and not a['yahoo'].startswith('MOEX:') and a['yahoo'] not in info]
     n = 0
     for a in todo[:budget]:
         try:
@@ -481,21 +535,39 @@ def main():
         mk = json.load(open(MARKETS, encoding='utf-8'))
         fxm = yahoo_monthly(list(FX_TICKER.values()))
         log(f"markets.json: {len(mk)} assets; fx series: {sorted(fxm)}")
-        mm = yahoo_monthly([r['yahoo'] for r in mk])
+        mm = yahoo_monthly([r['yahoo'] for r in mk if not r['yahoo'].startswith('MOEX:')])
+        if 'RUB=X' not in fxm and any(r['yahoo'].startswith('MOEX:') for r in mk):
+            rf = rub_fx_fallback()
+            if rf:
+                fxm['RUB=X'] = rf
         for r in mk:
-            ccy = next((c for suf, c in SUFFIX_CCY.items() if r['yahoo'].endswith(suf)), 'USD')
-            aid = r['tk'].lower().replace('.', '-')
+            if r['yahoo'].startswith('MOEX:'):
+                mm[r['yahoo']] = moex_monthly(r['tk'])
+                time.sleep(0.3)
+        for r in mk:
+            ccy = next((c for suf, c in SUFFIX_CCY.items() if r['yahoo'].endswith(suf) or r['yahoo'].startswith(suf)), 'USD')
+            base = slug(r['name'].split(' (')[0]) if r['tk'][:1].isdigit() else r['tk'].lower().replace('.', '-').replace('&', '')
+            aid = base
             if aid in assets or (aid in old and old[aid].get('yahoo') != r['yahoo']):
-                aid = f"{aid}-{r.get('mkt') or 'etf'}"
+                aid = f"{base}-{r.get('mkt') or 'etf'}"
             if aid in assets:
                 continue
-            ser = to_usd(fix_x100(mm.get(r['yahoo'])) if ccy == 'GBp' else mm.get(r['yahoo']), ccy, fxm)
-            assets[aid] = dict(name={'uk': r['name'], 'en': r['name']}, tk=r['tk'], cat=r['cat'], yahoo=r['yahoo'], src='yahoo', ccy=ccy,
+            raw = mm.get(r['yahoo'])
+            ser = to_usd(fix_x100(raw) if ccy == 'GBp' else raw, ccy, fxm)
+            if ser and broken(ser):
+                log(f"  skip {r['yahoo']}: broken series")
+                continue
+            assets[aid] = dict(name={'uk': r['name'], 'en': r['name']}, tk=r['tk'], cat=r['cat'], yahoo=r['yahoo'], src='moex' if ccy == 'RUB' else 'yahoo', ccy=ccy,
                                **{k: r[k] for k in ('mkt', 'sector') if r.get(k)}, **(ser or {}))
 
     # 3) daily price/24h change for every Yahoo asset (local currency -> USD)
-    ys = [a['yahoo'] for a in assets.values()] + list(FX_TICKER.values()) + list(CMDTY_T.values())
+    ys = [a['yahoo'] for a in assets.values() if not a['yahoo'].startswith('MOEX:')] + list(FX_TICKER.values()) + list(CMDTY_T.values())
     yd = yahoo_daily(ys)
+    mx = [a['tk'] for a in assets.values() if a['yahoo'].startswith('MOEX:')]
+    if mx:
+        yd.update({'MOEX:' + k: v for k, v in moex_last(mx).items()})
+        if 'RUB=X' not in yd and fxm.get('RUB=X'):
+            yd['RUB=X'] = (fxm['RUB=X']['p'][-1], 0)
     CMDTY.update({k: round(yd[t][0], 4) for k, t in CMDTY_T.items() if t in yd})
     for a in assets.values():
         if a['yahoo'] in yd:

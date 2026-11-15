@@ -121,5 +121,6 @@
       "source": "/stats/",
       "destination": "/api/stats"
     }
-  ]
+  ],
+  "ignoreCommand": "git diff --quiet HEAD^ HEAD -- . ':(exclude)social' ':(exclude)CLAUDE.md' ':(exclude)README.md'"
 }
