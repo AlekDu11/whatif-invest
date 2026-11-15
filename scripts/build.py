@@ -15,6 +15,7 @@ from i18n_e import E as EX  # noqa: E402
 from i18n_n import N as NW, FOOT  # noqa: E402
 from i18n_p import P as POLL, OPTS as POLL_OPTS  # noqa: E402
 from i18n_ai import AI as AIS  # noqa: E402
+from i18n_me import ME  # noqa: E402
 SOCIAL = []   # [(label, url)], e.g. ('Telegram', 'https://t.me/whatifstack'); the 'Follow us' column appears when filled
 from i18n_h import H as HB, PRICES as HPRICE, SCEN as HSCEN, UNITS as HUNITS, CONV as HCONV  # noqa: E402
 
@@ -33,7 +34,7 @@ UPDATED = market['updated']
 END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
-RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai'}
+RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me'}
 # asset ids that clash with a language folder or a section get a suffix (ko -> ko-stock, fil -> fil-crypto)
 _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
 # delisted or stale series (last price older than a month) are dropped: "today" numbers would be false
@@ -92,7 +93,7 @@ assert not (set(HUBS) | set(TOOLS) | {'blog', 'compare'}) & set(A), 'asset id co
 def has_page(lang, aid):
     if aid is None or aid == 'compare' or aid in HUBS or aid in TOOLS:
         return True
-    if aid == 'ai':
+    if aid in ('ai', 'me'):
         return True
     if aid in CALCS:
         if aid == 'about':
@@ -305,7 +306,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
         (url(lang, 'exchanges'), '₿', EX[lang]['nav'], p == 'exchanges'), (url(blog_l, 'blog'), '✎', NW[lang]['i_nav'], (p or '').startswith('blog'))))
     mnav += f'<button type="button" id="mmore"><span>☰</span>{esc(X["nav_tools"])}</button>'
     msheet = ('<div class="msheet" id="msheet" hidden>' + ''.join(f'<a href="{url(lang, k)}">{esc(v)}</a>' for k, v in
-              [('compare', S['nav_cmp']), ('ai', AIS[lang]['h1'].split(':')[0])] + tools_menu(lang)) + '</div>')
+              [('me', ME[lang]['nav']), ('compare', S['nav_cmp']), ('ai', AIS[lang]['h1'].split(':')[0])] + tools_menu(lang)) + '</div>')
     cfg = dict(cfg, lang=lang, base=BASE, prefix=url(lang).rstrip('/'), full=lang in FULL, topn=TOP_N,
                names={'gold': S['gold'], 'silver': S['silver']})
     return f"""<!DOCTYPE html>
@@ -333,6 +334,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
   <a class="logo" href="{url(lang)}">whatif<b>stack</b></a>
   <div class="gsearch">{SEARCH_ICON}<input id="gs" type="search" autocomplete="off" aria-label="search"><div class="gres" id="gres"></div></div>
   <nav class="nav">{nav}</nav>
+  <a class="thm me" href="{url(lang, 'me')}" title="{esc(ME[lang]['nav'])}" aria-label="{esc(ME[lang]['nav'])}">☆<i id="mecount"></i></a>
   <button class="thm" id="thm" type="button" aria-label="theme"><span class="m">☾</span><span class="s">☀</span></button>
   {lang_menu(lang, p)}
 </div></div>
@@ -599,7 +601,7 @@ def asset(aid, lang, ver):
     crumbs = f'<nav class="crumbs"><a href="{url(lang)}">{S["nav_rank"]}</a> / {esc(cat)} / {esc(n)}</nav>'
     badges = f'<span class="badge">{esc(tk)}</span> <span class="badge">{esc(cat)}</span>' + (f' <span class="badge">{esc(a["sector"])}</span>' if a.get('sector') else '')
     head = (f'{crumbs}<div class="ahead">{icon(a, True)}<div><h1>{S["a_h1"].format(**fe)}</h1><div style="margin-top:4px">{badges}</div></div>'
-            f'<div class="price"><span class="v" data-p="{aid}">{price(m["price"])}</span><span class="pill {cls(m["chg"])}" data-c="{aid}">{pct(m["chg"])}</span><span id="buyslot" data-id="{aid}"></span></div></div>')
+            f'<div class="price"><span class="v" data-p="{aid}">{price(m["price"])}</span><span class="pill {cls(m["chg"])}" data-c="{aid}">{pct(m["chg"])}</span><span id="buyslot" data-id="{aid}"></span><button class="star big" data-s="{aid}" title="{esc(ME[lang]["star"])}">☆</button></div></div>')
     w = S['w']
     loc = TV_LOC.get(lang, 'en')
     tv = (f'<section class="card section tvcard"><div class="charthead"><h2>{w["live_chart"]} · {esc(tk)}</h2><span class="livebadge"><i></i>{w["live"]}</span></div>'
@@ -1088,6 +1090,25 @@ def ai_page(lang, ver):
     return shell(lang, 'ai', f'{t["h1"]} | {BRAND}', t['d'], body, {}, ver, [faq])
 
 
+def me_page(lang, ver):
+    S, t = TR[lang], ME[lang]
+    code, rate = hccy(lang)
+    per = HB[lang]['per'].split('|')
+    body = (f'<h1>{esc(t["h1"])}</h1><p class="lead">{esc(t["d"])}</p>'
+            f'<div class="hl" id="metot"></div>'
+            f'<section class="section"><h2>{esc(t["plans"])}</h2><div id="plans"></div>'
+            f'<div class="card hcalc" id="planform"><div class="hrow">'
+            f'<label class="f">{S["w"]["q_asset"]}<div class="inp"><input id="pa" list="palist" autocomplete="off" placeholder="Bitcoin"><datalist id="palist"></datalist></div></label>'
+            f'<label class="f">{esc(t["amount"])}<div class="inp"><input id="pm" type="number" min="0" step="any" value="{nice(10 * rate):.0f}"><span class="muted">{CCY_SYM.get(code, code)}</span></div></label>'
+            f'<label class="f">&nbsp;<div class="inp"><select id="pf"><option value="d">{esc(per[0])}</option><option value="w">{esc(per[1])}</option><option value="m" selected>{esc(per[2])}</option></select></div></label>'
+            f'<label class="f">{esc(t["start"])}<div class="inp"><input id="ps" type="month" value="{END_I // 12 - 2}-01"></div></label></div>'
+            f'<button class="btn" id="psave">{esc(t["save"])}</button></div></section>'
+            f'<section class="section"><h2>☆ {esc(t["watch"])}</h2><div id="watch"><p class="muted">{esc(t["empty"])}</p></div></section>'
+            f'<p class="muted" style="font-size:13px">{esc(t["note"])}</p>')
+    cfg = dict(me=dict(code=code, rate=rate, t=t, per=dict(zip('dwm', per))))
+    return shell(lang, 'me', f'{t["h1"]} | {BRAND}', t['d'], body, cfg, ver)
+
+
 def habits_strip(lang):
     h = HB[lang]
     code, _ = hccy(lang)
@@ -1402,6 +1423,7 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
         write(pre + 'bitcoin-halving/index.html', halving_page(lang, ver))
         write(pre + 'exchanges/index.html', exchanges_page(lang, ver))
         write(pre + 'ai/index.html', ai_page(lang, ver))
+        write(pre + 'me/index.html', me_page(lang, ver))
         extra_pages.append('ai')
         write(pre + 'news/index.html', news_page(lang, ver))
         for k in NEWS.get(lang, {}):

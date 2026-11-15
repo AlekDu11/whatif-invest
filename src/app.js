@@ -84,7 +84,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
       if(sortK===kk) sortDir=-sortDir; else {sortK=kk; sortDir=(kk==='name'||kk==='o')?1:-1} draw() });
     tb.innerHTML=rows.length?rows.map((a,i)=>`<tr>
       <td class="l n hide-sm">${i+1}</td>
-      <td class="l"><a class="asset" href="${url(a.i)}">${icon(a)}<span><span class="nm">${esc(nm(a))}</span><span class="tk">${esc(a.t)}</span></span></a></td>
+      <td class="l"><button class="star" data-s="${a.i}" aria-label="☆">☆</button><a class="asset" href="${url(a.i)}">${icon(a)}<span><span class="nm">${esc(nm(a))}</span><span class="tk">${esc(a.t)}</span></span></a></td>
       <td>${buyBtn(a)}</td>
       <td class="num">${fmtPrice(a.pr)}</td>
       <td class="num ${cls(a.ch)}">${fmtPct(a.ch)}</td>
@@ -427,4 +427,52 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
   if(done) return; box.hidden=false;
   $$('#poll button').forEach(b=>b.onclick=()=>{ fetch(`/api/poll/?o=${b.dataset.o}&l=${lang}`).catch(()=>{}); try{ localStorage.setItem('wi_poll1',b.dataset.o) }catch(e){}
     box.querySelector('.pollb').innerHTML=`<span class="good">✓ ${esc(box.dataset.thanks)}</span>` }) })();
+/* ---------- watchlist stars (localStorage) ---------- */
+const WL={ get(){ try{ return JSON.parse(localStorage.getItem('wi_watch')||'[]') }catch(e){ return [] } },
+  set(v){ try{ localStorage.setItem('wi_watch',JSON.stringify(v)) }catch(e){} document.dispatchEvent(new Event('wi:watch')) } };
+function paintStars(){ const w=new Set(WL.get()); $$('.star[data-s]').forEach(b=>{ const on=w.has(b.dataset.s); b.textContent=on?'★':'☆'; b.classList.toggle('on',on) });
+  const c=$('#mecount'); if(c) c.textContent=w.size?w.size:'' }
+document.addEventListener('click',e=>{ const b=e.target.closest('.star[data-s]'); if(!b) return; e.preventDefault(); e.stopPropagation();
+  const w=WL.get(), i=w.indexOf(b.dataset.s); if(i>=0) w.splice(i,1); else w.unshift(b.dataset.s); WL.set(w) },true);
+document.addEventListener('wi:watch',paintStars); paintStars();
+new MutationObserver(()=>{ clearTimeout(window._wiStar); window._wiStar=setTimeout(paintStars,50) }).observe(document.body,{childList:true,subtree:true});
+
+/* ---------- my account: DCA plans + watchlist ---------- */
+(function(){
+  const C=PAGE.me; if(!C) return; const t=C.t;
+  const PL={ get(){ try{ return JSON.parse(localStorage.getItem('wi_plans')||'[]') }catch(e){ return [] } }, set(v){ try{ localStorage.setItem('wi_plans',JSON.stringify(v)) }catch(e){} } };
+  const nf=v=>{ try{ return new Intl.NumberFormat(T.intl||'en',{style:'currency',currency:C.code,maximumFractionDigits:Math.abs(v)>=100?0:2}).format(v) }catch(e){ return Math.round(v)+' '+C.code } };
+  const END=WI.u.slice(0,7), END_DAY=+WI.u.slice(8,10), ym2i=s=>{const [y,m]=s.split('-').map(Number);return y*12+m-1};
+  const cache={}, load=id=>cache[id]||(cache[id]=fetch(`${BASE}/assets/p/${id}.json?v=${WI.v}`).then(r=>r.json()));
+  function sim(P,st,amt,f){ const s0=ym2i(P.start), e=ym2i(P.end), from=Math.max(st,s0); let u=0,inv=0;
+    for(let i=from;i<=e;i++){ const y=Math.floor(i/12), m=i%12+1, d=i===ym2i(END)?END_DAY:new Date(y,m,0).getDate(); const c=f==='d'?amt*d:f==='w'?amt*d/7:(i===ym2i(END)&&END_DAY<28&&i!==from?0:amt); u+=c/P.p[i-s0]; inv+=c }
+    return {inv,val:u*P.p[e-s0]} }
+  // datalist
+  $('#palist').innerHTML=IDX.slice(0,1200).map(a=>`<option value="${esc(nm(a))} (${esc(a.t)})" data-i="${a.i}">`).join('');
+  const findId=v=>{ const m=/\(([^)]+)\)\s*$/.exec(v||''); const tk=m?m[1]:v; const a=IDX.find(x=>x.t.toLowerCase()===String(tk).toLowerCase()||nm(x).toLowerCase()===String(v).toLowerCase()); return a&&a.i };
+  async function drawPlans(){
+    const plans=PL.get(), box=$('#plans'); if(!plans.length){ box.innerHTML=''; $('#metot').innerHTML=''; return }
+    let tInv=0,tVal=0,tSpy=0; const rows=[];
+    for(const [k,p] of plans.entries()){ const a=BYID[p.id]; if(!a) continue;
+      const [P,S]=await Promise.all([load(p.id),load('spy')]), usd=p.amt/C.rate, st=ym2i(p.from);
+      const r=sim(P,st,usd,p.f), s=sim(S,st,usd,p.f); const inv=r.inv*C.rate, val=r.val*C.rate, sv=s.val*C.rate, roi=inv?val/inv-1:0;
+      tInv+=inv; tVal+=val; tSpy+=sv;
+      rows.push(`<div class="card plan"><div class="ph"><a class="asset" href="${url(a.i)}">${icon(a)}<span><span class="nm">${esc(nm(a))}</span><span class="tk">${esc(nf(p.amt))} · ${esc(C.per[p.f]||'')} · ${esc(t.start)} ${esc(p.from)}</span></span></a><button class="toggle" data-del="${k}">${esc(t.remove)}</button></div>
+        <div class="pg"><div><small>${esc(T.invested||'')}</small><b>${nf(inv)}</b></div><div><small>${esc(T.value||'')}</small><b>${nf(val)}</b></div><div><small>${esc(t.profit)}</small><b class="${cls(roi)}">${fmtPct(roi)}</b></div><div><small>${esc(t.vs)}</small><b>${nf(sv)}</b></div></div></div>`) }
+    box.innerHTML=rows.join('');
+    const roi=tInv?tVal/tInv-1:0;
+    $('#metot').innerHTML=`<div class="card"><div class="k">${esc(t.total)}</div><div class="v">${nf(tVal)}</div><div class="s">${esc(T.invested||'')}: ${nf(tInv)}</div></div>
+      <div class="card"><div class="k">${esc(t.profit)}</div><div class="v ${cls(roi)}">${fmtPct(roi)}</div><div class="s">${nf(tVal-tInv)}</div></div>
+      <div class="card"><div class="k">${esc(t.vs)}</div><div class="v">${nf(tSpy)}</div><div class="s">${fmtPct(tInv?tSpy/tInv-1:0)}</div></div>`;
+    $$('#plans [data-del]').forEach(b=>b.onclick=()=>{ const v=PL.get(); v.splice(+b.dataset.del,1); PL.set(v); drawPlans() }) }
+  $('#psave').onclick=()=>{ const id=findId($('#pa').value), amt=+$('#pm').value, from=$('#ps').value||END;
+    if(!id){ $('#pa').focus(); $('#pa').classList.add('bad'); return } if(!(amt>0)) return;
+    const v=PL.get(); v.push({id,amt,f:$('#pf').value,from:from.slice(0,7)}); PL.set(v); $('#pa').value=''; drawPlans();
+    const w=WL.get(); if(!w.includes(id)){ w.unshift(id); WL.set(w) } };
+  function drawWatch(){ const w=WL.get().filter(i=>BYID[i]), box=$('#watch'); if(!w.length){ box.innerHTML=`<p class="muted">${esc(t.empty)}</p>`; return }
+    box.innerHTML=`<div class="tw"><table class="mt"><thead><tr><th class="l">${esc(T.name||'')}</th><th>${esc(T.price||'')}</th><th>${esc(T.chg||'')}</th><th class="hide-sm">${esc(T.d1||'')}</th><th>${esc(T.d5||'')}</th><th class="hide-sm">${esc(T.spark||'')}</th></tr></thead><tbody>`+
+      w.map(i=>{ const a=BYID[i]; return `<tr><td class="l"><button class="star" data-s="${a.i}">★</button><a class="asset" href="${url(a.i)}">${icon(a)}<span><span class="nm">${esc(nm(a))}</span><span class="tk">${esc(a.t)}</span></span></a></td>
+        <td class="num" data-p="${a.i}">${fmtPrice(a.pr)}</td><td class="num ${cls(a.ch)}" data-c="${a.i}">${fmtPct(a.ch)}</td><td class="num hide-sm ${cls(a.r1)}">${fmtPct(a.r1)}</td><td><span class="pill ${cls(a.r5)}">${fmtPct(a.r5)}</span></td><td class="hide-sm">${spark(a.sp)}</td></tr>` }).join('')+'</tbody></table></div>' }
+  document.addEventListener('wi:watch',drawWatch); drawWatch(); drawPlans();
+})();
 })();

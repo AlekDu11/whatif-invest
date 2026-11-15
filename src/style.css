@@ -364,3 +364,17 @@ html[data-theme=dark] select{color-scheme:dark}
 .pollb button{border:1px solid var(--line);background:var(--bg);color:var(--text);border-radius:999px;padding:8px 14px;font:600 13px Inter;cursor:pointer}
 .pollb button:hover{border-color:var(--accent);color:var(--accent)}
 .hl .card.bk .s{white-space:normal;overflow:visible;text-overflow:clip}
+
+/* watchlist + my account */
+.star{border:0;background:none;color:var(--muted2);font-size:16px;cursor:pointer;padding:0 6px 0 0;line-height:1;vertical-align:middle}
+.star.on{color:#f5b83d}.star:hover{color:#f5b83d}
+.star.big{font-size:22px;margin-left:8px;padding:0}
+.mt td.l{white-space:nowrap}.mt td.l .asset{display:inline-flex}
+.thm.me{text-decoration:none;position:relative;color:#f5b83d}.thm.me i{position:absolute;top:-6px;right:-6px;font:700 10px Inter;font-style:normal;background:var(--accent);color:#fff;border-radius:8px;padding:1px 5px}
+.thm.me i:empty{display:none}
+.plan{display:flex;flex-direction:column;gap:12px;margin-bottom:10px}
+.plan .ph{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.plan .pg{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.plan .pg small{display:block;color:var(--muted);font-size:12px}.plan .pg b{font:700 16px 'JetBrains Mono',monospace}
+#planform .btn{align-self:flex-start}
+input.bad{outline:2px solid var(--bad)}
+@media (max-width:640px){.plan .pg{grid-template-columns:repeat(2,1fr)}}
