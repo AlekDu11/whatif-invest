@@ -10,7 +10,7 @@ import calendar, hashlib, html, json, os, shutil, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from i18n import LANGS as TR, ORDER, FULL, DEFAULT  # noqa: E402
-from i18n_h import H as HB, PRICES as HPRICE, SCEN as HSCEN, UNITS as HUNITS  # noqa: E402
+from i18n_h import H as HB, PRICES as HPRICE, SCEN as HSCEN, UNITS as HUNITS, CONV as HCONV  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIST = os.path.join(ROOT, 'dist')
@@ -75,7 +75,7 @@ TOP = set(ORDERED[:TOP_N])
 
 
 HUBS = {'crypto': 'crypto', 'stocks': 'stock', 'etfs': 'etf', 'metals': 'metal'}
-TOOLS = ['screener', 'converter', 'calendar', 'heatmap', 'news']
+TOOLS = ['converter']
 BLOG_LANGS = {l for l in ORDER if os.path.isdir(os.path.join(ROOT, 'content/blog', l)) and any(f.endswith('.md') for f in os.listdir(os.path.join(ROOT, 'content/blog', l)))}  # a language gets a blog once it has a post
 assert not (set(HUBS) | set(TOOLS) | {'blog', 'compare'}) & set(A), 'asset id collides with a section slug'
 
@@ -242,16 +242,15 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
     alts += f'<link rel="alternate" hreflang="x-default" href="{SITE + url("en", p)}">'
     ld = ''.join(f'<script type="application/ld+json">{json.dumps(j, ensure_ascii=False)}</script>' for j in jsonld)
     X = S['x']
-    tl = {'habits': HB[lang]['nav'], 'screener': X['scr_h1'], 'converter': X['conv_h1'], 'calendar': X['cal_h1'], 'heatmap': X['heat_h1'], 'news': X['news_h1']}
     blog_l = lang if lang in BLOG_LANGS else 'en'
     nav = (''.join(f'<a href="{url(lang, k)}" class="{"on" if k == p else ""}">{v}</a>' for k, v in ((None, S['nav_rank']), ('compare', S['nav_cmp'])))
-           + f'<details class="dd"><summary class="{"on" if p in TOOLS or (p or "").startswith("habits") else ""}">{X["nav_tools"]}</summary><div>'
-           + ''.join(f'<a href="{url(lang, k)}">{v}</a>' for k, v in tl.items()) + '</div></details>'
+           + f'<a href="{url(lang, "habits")}" class="{"on" if (p or "").startswith("habits") else ""}">{HB[lang]["nav"]}</a>'
+           + f'<a href="{url(lang, "converter")}" class="{"on" if p == "converter" else ""}">{HCONV[lang]}</a>'
            + f'<a href="{url(blog_l, "blog")}" class="{"on" if (p or "").startswith("blog") else ""}">{X["nav_blog"]}</a>')
     i18n = dict(S['ui'], months=S['months'], intl=S['intl'])
     mnav = ''.join(f'<a href="{h}" class="{"on" if on else ""}"><span>{ic}</span>{esc(lb)}</a>' for h, ic, lb, on in (
         (url(lang), '◎', S['nav_rank'], p is None), (url(lang, 'compare'), '⇅', S['nav_cmp'], p == 'compare'),
-        (url(lang, 'converter'), '⇄', X['conv_h1'].split()[0], p in TOOLS), (url(blog_l, 'blog'), '✎', X['nav_blog'], (p or '').startswith('blog'))))
+        (url(lang, 'converter'), '⇄', HCONV[lang], p in TOOLS), (url(blog_l, 'blog'), '✎', X['nav_blog'], (p or '').startswith('blog'))))
     cfg = dict(cfg, lang=lang, base=BASE, prefix=url(lang).rstrip('/'), full=lang in FULL, topn=TOP_N,
                names={'gold': S['gold'], 'silver': S['silver']})
     return f"""<!DOCTYPE html>

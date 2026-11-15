@@ -208,3 +208,9 @@ assert set(H) == set(PRICES)
 for _l, _d in H.items():
     assert len(_d['per'].split('|')) == 3, _l
     assert all(k in _d['res'] for k in ('{y}', '{habit}', '{spent}', '{asset}', '{val}', '{roi}')), _l
+
+# short nav label for the converter
+CONV = {'uk': 'Конвертер', 'en': 'Converter', 'ru': 'Конвертер', 'es': 'Conversor', 'pt': 'Conversor', 'de': 'Umrechner', 'fr': 'Convertisseur',
+        'it': 'Convertitore', 'pl': 'Kalkulator walut', 'tr': 'Çevirici', 'nl': 'Omrekenen', 'id': 'Konverter', 'vi': 'Quy đổi', 'th': 'แปลงค่า',
+        'hi': 'कन्वर्टर', 'ja': '換算', 'ko': '변환기', 'zh': '换算器', 'ar': 'المحوّل', 'fil': 'Converter'}
+assert set(CONV) == set(H)
