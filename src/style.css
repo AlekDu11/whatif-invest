@@ -276,3 +276,6 @@ a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,su
   .mnav a.on{color:var(--accent)}
   body{padding-bottom:64px}
 }
+.bubwrap{padding:12px}
+.bub{position:relative;border-radius:12px;background:radial-gradient(ellipse at center,#fbfcfe 0%,#f1f3f7 100%);overflow:hidden;touch-action:pan-y}
+.bub canvas{display:block}

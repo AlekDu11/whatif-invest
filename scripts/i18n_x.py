@@ -168,3 +168,27 @@ X = {
   'Blog: pag-invest gamit ang totoong numero', 'Mga artikulo tungkol sa DCA, crypto, stocks at ginto na may numerong nag-a-update araw-araw.', 'Basahin din',
   'Magkano na ngayon ang $1,000 na in-invest sa {name} {p} na ang nakalipas?', 'Ang isang bagsakang $1,000 sa {name} {p} na ang nakalipas ay {v} na ngayon ({roi}).'),
 }
+
+# Bubbles page: (h1, description)
+BUB = {
+ 'en': ('Crypto & stock bubbles', 'Live bubble map of the market: the bigger the bubble, the bigger the move. Switch between 24h, 1-year price and 1-year DCA return.'),
+ 'uk': ('Бульбашки крипти й акцій', 'Жива бульбашкова карта ринку: що більша бульбашка, то сильніший рух. Перемикай 24 години, ціну за рік і дохідність DCA за рік.'),
+ 'ru': ('Пузыри крипты и акций', 'Живая пузырьковая карта рынка: чем больше пузырь, тем сильнее движение. Переключай 24 часа, цену за год и доходность DCA за год.'),
+ 'es': ('Burbujas de cripto y acciones', 'Mapa de burbujas del mercado en vivo: cuanto más grande la burbuja, mayor el movimiento. Cambia entre 24 h, precio a 1 año y rentabilidad DCA a 1 año.'),
+ 'pt': ('Bolhas de cripto e ações', 'Mapa de bolhas do mercado ao vivo: quanto maior a bolha, maior o movimento. Alterne entre 24 h, preço em 1 ano e retorno DCA em 1 ano.'),
+ 'de': ('Krypto- und Aktien-Blasen', 'Live-Blasenkarte des Marktes: je größer die Blase, desto stärker die Bewegung. Wechsle zwischen 24 h, Kurs über 1 Jahr und Sparplan-Rendite über 1 Jahr.'),
+ 'fr': ('Bulles crypto et actions', 'Carte à bulles du marché en direct : plus la bulle est grosse, plus le mouvement est fort. Basculez entre 24 h, prix sur 1 an et rendement DCA sur 1 an.'),
+ 'it': ('Bolle di cripto e azioni', 'Mappa a bolle del mercato in tempo reale: più grande la bolla, più forte il movimento. Passa da 24 h a prezzo a 1 anno e rendimento PAC a 1 anno.'),
+ 'pl': ('Bańki krypto i akcji', 'Mapa baniek rynku na żywo: im większa bańka, tym większy ruch. Przełączaj 24 h, cenę za rok i zwrot z DCA za rok.'),
+ 'tr': ('Kripto ve hisse baloncukları', 'Piyasanın canlı baloncuk haritası: baloncuk ne kadar büyükse hareket o kadar güçlü. 24 saat, 1 yıllık fiyat ve 1 yıllık DCA getirisi arasında geçiş yap.'),
+ 'nl': ('Crypto- en aandelenbubbels', 'Live bubbelkaart van de markt: hoe groter de bubbel, hoe groter de beweging. Wissel tussen 24 u, koers over 1 jaar en DCA-rendement over 1 jaar.'),
+ 'id': ('Gelembung kripto & saham', 'Peta gelembung pasar secara langsung: makin besar gelembung, makin besar pergerakannya. Ganti antara 24 jam, harga 1 tahun, dan imbal hasil DCA 1 tahun.'),
+ 'vi': ('Bong bóng crypto & cổ phiếu', 'Bản đồ bong bóng thị trường trực tiếp: bong bóng càng lớn, biến động càng mạnh. Chuyển giữa 24h, giá 1 năm và lợi nhuận DCA 1 năm.'),
+ 'th': ('บับเบิลคริปโตและหุ้น', 'แผนที่บับเบิลของตลาดแบบสด: ฟองยิ่งใหญ่ การเคลื่อนไหวยิ่งแรง สลับดู 24 ชม. ราคา 1 ปี และผลตอบแทน DCA 1 ปี'),
+ 'hi': ('क्रिप्टो और शेयर बबल्स', 'बाज़ार का लाइव बबल मैप: बबल जितना बड़ा, बदलाव उतना बड़ा। 24 घंटे, 1 साल की कीमत और 1 साल के DCA रिटर्न के बीच बदलें।'),
+ 'ja': ('暗号資産・株式バブルチャート', '市場のライブバブルマップ：バブルが大きいほど値動きが大きい。24時間、1年の価格、1年の積立リターンを切り替えられます。'),
+ 'ko': ('암호화폐·주식 버블 차트', '실시간 시장 버블 맵: 버블이 클수록 변동이 큽니다. 24시간, 1년 가격, 1년 적립식 수익률을 전환해 보세요.'),
+ 'zh': ('加密货币与股票气泡图', '实时市场气泡图：气泡越大，涨跌越大。可切换24小时、1年价格和1年定投收益。'),
+ 'ar': ('فقاعات العملات الرقمية والأسهم', 'خريطة فقاعات حية للسوق: كلما كبرت الفقاعة كانت الحركة أقوى. بدّل بين 24 ساعة وسعر سنة وعائد DCA لسنة.'),
+ 'fil': ('Crypto at stock bubbles', 'Live na bubble map ng merkado: mas malaki ang bubble, mas malaki ang galaw. Lumipat sa 24h, presyo sa 1 taon at kita ng DCA sa 1 taon.'),
+}

@@ -26,7 +26,7 @@ UPDATED = market['updated']
 END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
-RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news'}
+RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles'}
 # asset ids that clash with a language folder or a section get a suffix (ko -> ko-stock, fil -> fil-crypto)
 _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
 # delisted or stale series (last price older than a month) are dropped: "today" numbers would be false
@@ -74,7 +74,7 @@ TOP = set(ORDERED[:TOP_N])
 
 
 HUBS = {'crypto': 'crypto', 'stocks': 'stock', 'etfs': 'etf', 'metals': 'metal'}
-TOOLS = ['converter', 'calendar', 'heatmap', 'news']
+TOOLS = ['bubbles', 'converter', 'calendar', 'heatmap', 'news']
 BLOG_LANGS = {'uk', 'en'}
 assert not (set(HUBS) | set(TOOLS) | {'blog', 'compare'}) & set(A), 'asset id collides with a section slug'
 
@@ -239,7 +239,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
     alts += f'<link rel="alternate" hreflang="x-default" href="{SITE + url("en", p)}">'
     ld = ''.join(f'<script type="application/ld+json">{json.dumps(j, ensure_ascii=False)}</script>' for j in jsonld)
     X = S['x']
-    tl = {'converter': X['conv_h1'], 'calendar': X['cal_h1'], 'heatmap': X['heat_h1'], 'news': X['news_h1']}
+    tl = {'bubbles': X['bub_h1'], 'converter': X['conv_h1'], 'calendar': X['cal_h1'], 'heatmap': X['heat_h1'], 'news': X['news_h1']}
     blog_l = lang if lang in BLOG_LANGS else 'en'
     nav = (''.join(f'<a href="{url(lang, k)}" class="{"on" if k == p else ""}">{v}</a>' for k, v in ((None, S['nav_rank']), ('compare', S['nav_cmp'])))
            + f'<details class="dd"><summary class="{"on" if p in TOOLS else ""}">{X["nav_tools"]}</summary><div>'
@@ -446,6 +446,9 @@ def home(lang, ver):
         sz = 'h1' if k < 2 else 'h2' if k < 8 else 'h3'
         tiles += (f'<a class="tile {sz}{" dk" if abs(c) > 0.04 else ""}" data-h="{i}" href="{aurl(lang, i)}" style="background:{heat_color(c)}"><b>{esc(A[i]["tk"])}</b>'
                   f'<span data-c="{i}">{pct(METRICS[i]["chg"])}</span><small data-p="{i}">{price(METRICS[i]["price"])}</small></a>')
+    X_ = S['x']
+    bub = (f'<section class="section"><div class="charthead"><h2>{X_["bub_h1"]}</h2><a class="calc" href="{url(lang, "bubbles")}">{X_["bub_h1"]} →</a></div>'
+           f'{bubbles_block(lang, full=False)}</section>')
     heat = f'<section class="section"><div class="charthead"><h2>{w["heat"]}</h2><span class="livebadge"><i></i>{w["live"]}</span></div><div class="heat">{tiles}</div></section>'
     banner = (f'<section class="banner section"><div><b>{w["cta"]}</b><p>{w["cta_text"]}</p></div>'
               f'<a class="btn" id="ctaBuy2" href="{url(lang, "compare")}">{w["cta"]} →</a></section>')
@@ -461,7 +464,7 @@ def home(lang, ver):
             cards.append(hl_card(lang, aid, nm(A[aid], lang), 'r5', S['sub5']))
     filt = f'<div class="toolbar"><div class="filter">{SEARCH_ICON}<input id="flt" type="search" autocomplete="off"></div></div>'
     body = (hero + f'<div class="wgrid">{w_mcap}{w_dom}{w_fng}{w_tr}</div>'
-            f'<div class="wgrid3">{w_up}{w_dn}{w_bat}</div>{heat}{banner}'
+            f'<div class="wgrid3">{w_up}{w_dn}{w_bat}</div>{bub}{heat}{banner}'
             f'<section class="section"><div class="hl">{"".join(cards)}</div></section>'
             f'<div class="tabs" id="tabs"></div>{filt}{table_block(lang, ids[:100])}'
             f'<section class="card section faq"><h2>{S["faq"]}</h2><details open><summary>{esc(S["q3"])}</summary><p>{esc(S["a3"])}</p></details></section>')
@@ -603,12 +606,22 @@ LOCAL_CCY = {'uk': 'fx:UAH', 'ru': 'fx:RUB', 'pl': 'fx:PLN', 'de': 'fx:EUR', 'fr
              'ko': 'fx:KRW', 'zh': 'fx:CNY', 'ar': 'fx:AED', 'fil': 'fx:PHP', 'en': 'usd'}
 
 
+def bubbles_block(lang, full):
+    u = TR[lang]['ui']
+    per = f'<div class="seg" id="bper"><button data-v="ch" class="on">{u["chg"]}</button><button data-v="y1">{u["spark"]}</button><button data-v="r1">{u["d1"]}</button></div>'
+    cat = f'<div class="seg" id="bcat"><button data-v="crypto" class="on">{u["crypto"]}</button><button data-v="stock">{u["stock"]}</button><button data-v="all">{u["all"]}</button></div>'
+    return (f'<div class="card bubwrap"><div class="toolbar">{per}{cat if full else ""}</div>'
+            f'<div class="bub" data-n="{150 if full else 60}" style="height:{"72vh" if full else "460px"}"><canvas></canvas></div></div>')
+
+
 def tool(lang, slug, ver):
     S, X, u = TR[lang], TR[lang]['x'], TR[lang]['ui']
     loc = TV_LOC.get(lang, 'en')
-    h1, d = {'converter': (X['conv_h1'], X['conv_d']), 'calendar': (X['cal_h1'], X['cal_d']),
+    h1, d = {'bubbles': (X['bub_h1'], X['bub_d']), 'converter': (X['conv_h1'], X['conv_d']), 'calendar': (X['cal_h1'], X['cal_d']),
              'heatmap': (X['heat_h1'], X['heat_d']), 'news': (X['news_h1'], X['news_d'])}[slug]
-    if slug == 'calendar':
+    if slug == 'bubbles':
+        inner = bubbles_block(lang, full=True)
+    elif slug == 'calendar':
         inner = '<div class="card">' + tvw('events', dict(colorTheme='light', isTransparent=True, width='100%', height='100%', locale=loc,
                                                            importanceFilter='0,1', countryFilter='us,eu,gb,cn,jp,de,ua'), 760) + '</div>'
     elif slug == 'heatmap':
