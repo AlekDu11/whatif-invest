@@ -704,9 +704,17 @@ def main():
             a['chg'] = round(a['chg'], 5)
         a.setdefault('chg', None)
         a = {k: v for k, v in a.items() if v is not None}
+        if a.get('cat') == 'crypto':
+            a['seen'] = now.strftime('%Y-%m-%d')
         final[aid] = a
+    from datetime import timedelta
+    stale = (now - timedelta(days=10)).strftime('%Y-%m-%d')
     for aid, a in old.items():                       # an asset that vanished from today's lists entirely
-        if aid not in final and not quick and a.get('cat') != 'crypto':
+        if aid in final or quick:
+            continue
+        # crypto lists depend on CoinGecko paging, which is often rate-limited (429): keep a coin for 10 days
+        # after it was last seen, so one bad run does not delete hundreds of pages
+        if a.get('cat') != 'crypto' or a.get('seen', now.strftime('%Y-%m-%d')) >= stale:
             final[aid] = a
             kept += 1
     try:
