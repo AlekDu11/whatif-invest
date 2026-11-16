@@ -21,6 +21,7 @@ from i18n_p import P as POLL, OPTS as POLL_OPTS  # noqa: E402
 from i18n_ai import AI as AIS  # noqa: E402
 from i18n_me import ME  # noqa: E402
 from i18n_mem import MEM  # noqa: E402
+from i18n_act import ACT  # noqa: E402
 SOCIAL = [('X (Twitter)', 'https://x.com/WhatIfStack')]   # [(label, url)], e.g. ('Telegram', 'https://t.me/whatifstack'); the 'Follow us' column appears when filled
 from i18n_h import H as HB, PRICES as HPRICE, SCEN as HSCEN, UNITS as HUNITS, CONV as HCONV  # noqa: E402
 
@@ -40,7 +41,7 @@ END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
 RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide'}
-RESERVED |= {v[0] for v in MKTS.values()} | {'world-assets'}
+RESERVED |= {v[0] for v in MKTS.values()} | {'world-assets', 'activities', 'editorial-policy', 'about'}
 # asset ids that clash with a language folder or a section get a suffix (ko -> ko-stock, fil -> fil-crypto)
 _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
 # delisted or stale series (last price older than a month) are dropped: "today" numbers would be false
@@ -120,8 +121,10 @@ assert not (set(HUBS) | set(TOOLS) | {'blog', 'compare'}) & set(A), 'asset id co
 def has_page(lang, aid):
     if aid is None or aid == 'compare' or aid in HUBS or aid in TOOLS:
         return True
-    if aid in ('ai', 'me', 'memes', 'world-assets'):
+    if aid in ('ai', 'me', 'memes', 'world-assets', 'activities'):
         return True
+    if aid == 'editorial-policy':
+        return lang in POLICY
     if aid == 'guide':
         return lang in GUIDE
     if aid in CSLUG:
@@ -314,7 +317,7 @@ def footer_cols(lang):
     mk += [(url(lang, sl), CTRY[lang][3][m][0]) for m, (sl, fl) in sorted(MKTS.items(), key=lambda kv: (MKT_LANG.get(kv[0]) != lang, kv[0] != 'ua')) if has_page(lang, sl)][:5]
     tools = [(url(lang, k), v) for k, v in [x for x in tools_menu(lang) if x]]
     ins = [(url(lang if lang in GUIDE else 'en', 'guide'), guide_meta(lang).get('nav', 'Guide')), (url(lang, 'news'), n['n_nav']), (url(blog_l, 'blog'), n['i_nav']), (url(blog_l, 'blog') + 'rss.xml', 'RSS'),
-           (url(lang, 'exchanges'), EX[lang]['nav']), (url(lang if lang in ABOUT else 'en', 'about'), n['about'])]
+           (url(lang, 'activities'), ACT[lang]['nav']), (url(lang, 'exchanges'), EX[lang]['nav']), (url(lang if lang in ABOUT else 'en', 'about'), n['about']), (pol_url(lang), ACT[lang]['pol'])]
     cols = [(f[0], pop), (f[1], mk), (TR[lang]['x']['nav_tools'], tools), (n['i_nav'], ins)]
     if SOCIAL:
         cols.insert(0, (f[2], [(u, l) for l, u in SOCIAL]))
@@ -331,6 +334,7 @@ def cover(kind, lang, slug):
 
 def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
     og_img = SITE + (cfg.pop('_og', None) or '/assets/og.jpg')
+    sec = cfg.pop('_sec', None) or p   # section to highlight in the nav
     S = TR[lang]
     canon = SITE + url(lang, p)
     alts = ''.join(f'<link rel="alternate" hreflang="{TR[lg]["loc"]}" href="{SITE + url(lg, p)}">' for lg in ORDER if has_page(lg, p))
@@ -343,16 +347,17 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
            + ''.join(f'<a href="{url(lang, k)}">{v}</a>' for k, v in [x for x in tools_menu(lang) if x]) + '</div></details>'
            + f'<a href="{url(lang, "exchanges")}" class="{"on" if p == "exchanges" else ""}">{EX[lang]["nav"]}</a>'
            + f'<a href="{url(lang, "news")}" class="{"on" if p == "news" else ""}">{NW[lang]["n_nav"]}</a>'
+           + f'<a href="{url(lang, "activities")}" class="{"on" if sec == "activities" else ""}">{ACT[lang]["nav"]}</a>'
            + f'<a href="{url(lang, "ai")}" class="{"on" if p == "ai" else ""}">{AIS[lang]["nav"]}</a>'
            + f'<a href="{url(lang, "memes")}" class="{"on" if p == "memes" else ""}">{MEM[lang]["nav"]}</a>'
-           + f'<a href="{url(blog_l, "blog")}" class="{"on" if (p or "").startswith("blog") else ""}">{NW[lang]["i_nav"]}</a>')
+           + f'<a href="{url(blog_l, "blog")}" class="{"on" if (sec or "").startswith("blog") else ""}">{NW[lang]["i_nav"]}</a>')
     i18n = dict(S['ui'], months=S['months'], intl=S['intl'])
     mnav = ''.join(f'<a href="{h}" class="{"on" if on else ""}"><span>{ic}</span>{esc(lb)}</a>' for h, ic, lb, on in (
         (url(lang), '◎', S['nav_rank'], p is None), (url(lang, 'news'), '▤', NW[lang]['n_nav'], p == 'news'),
         (url(lang, 'exchanges'), '₿', EX[lang]['nav'], p == 'exchanges'), (url(blog_l, 'blog'), '✎', NW[lang]['i_nav'], (p or '').startswith('blog'))))
     mnav += f'<button type="button" id="mmore"><span>☰</span>{esc(X["nav_tools"])}</button>'
     msheet = ('<div class="msheet" id="msheet" hidden>' + ''.join(f'<a href="{url(lang, k)}">{esc(v)}</a>' for k, v in
-              [('me', ME[lang]['nav']), ('ai', AIS[lang]['h1'].split(':')[0])] + [x for x in tools_menu(lang) if x]) + '</div>')
+              [('me', ME[lang]['nav']), ('activities', ACT[lang]['nav']), ('ai', AIS[lang]['h1'].split(':')[0])] + [x for x in tools_menu(lang) if x]) + '</div>')
     cfg = dict(cfg, lang=lang, base=BASE, prefix=url(lang).rstrip('/'), full=lang in FULL, topn=TOP_N,
                names={'gold': S['gold'], 'silver': S['silver']})
     return f"""<!DOCTYPE html>
@@ -386,7 +391,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
 <nav class="mnav">{mnav}</nav>{msheet}
 <main class="wrap">
 {body}
-<div class="sharebar" data-l="{esc(SHARE[lang])}"></div>{footer_cols(lang)}<footer><span>{BRAND} · {S['by']} <a href="https://mytimebox.app/">Timebox</a> · {S['sources']} · <a href="{url(lang if lang in ABOUT else 'en', 'about')}">{NW[lang]['about']}</a></span><span>{S['disclaimer']}</span></footer>
+<div class="sharebar" data-l="{esc(SHARE[lang])}"></div>{footer_cols(lang)}<footer><span>{BRAND} · {S['by']} <a href="https://mytimebox.app/">Timebox</a> · {S['sources']} · <a href="{url(lang if lang in ABOUT else 'en', 'about')}">{NW[lang]['about']}</a> · <a href="{pol_url(lang)}">{ACT[lang]['pol']}</a></span><span>{S['disclaimer']}</span></footer>
 <nav class="langs">{' · '.join(f'<a href="{url(lg, p) if has_page(lg, p) else url(lg)}" hreflang="{TR[lg]["loc"]}">{esc(TR[lg]["name"])}</a>' for lg in ORDER)}</nav>
 </main>
 <script>window.PAGE={json.dumps(cfg, ensure_ascii=False)};window.I18N={json.dumps(i18n, ensure_ascii=False)};</script>
@@ -1219,7 +1224,7 @@ ABOUT = {
 
 def about_page(lang, ver):
     h1, secs = ABOUT[lang]
-    body = f'<article class="art"><h1>{esc(h1)}</h1><div class="artbody">' + ''.join(f'<h2>{esc(h)}</h2><p>{esc(t)}</p>' for h, t in secs) + '</div></article>'
+    body = f'<article class="art"><h1>{esc(h1)}</h1><div class="artbody">' + ''.join(f'<h2>{esc(h)}</h2><p>{esc(t)}</p>' for h, t in secs) + f'<p><a href="{pol_url(lang)}">{esc(ACT[lang]["pol"])} →</a></p></div></article>'
     org = {"@context": "https://schema.org", "@type": "Organization", "name": BRAND, "url": SITE + '/', "logo": SITE + '/assets/icon-512.png', "sameAs": [u for _, u in SOCIAL]}
     return shell(lang, 'about', f'{h1} | {BRAND}', secs[0][1], body, {}, ver, [org])
 
@@ -1604,8 +1609,8 @@ def inline_md(s, lang):
     return s
 
 
-def load_guides():
-    out, root = {}, os.path.join(ROOT, 'content', 'guide')
+def load_guides(sub='guide'):
+    out, root = {}, os.path.join(ROOT, 'content', sub)
     for fn in sorted(os.listdir(root)) if os.path.isdir(root) else []:
         if fn.endswith('.md'):
             raw = open(os.path.join(root, fn), encoding='utf-8').read()
@@ -1617,6 +1622,62 @@ def load_guides():
 
 
 GUIDE = load_guides()
+POLICY = load_guides('policy')   # editorial policy: content/policy/<lang>.md
+
+
+def pol_url(lang):
+    return url(lang if lang in POLICY else 'en', 'editorial-policy')
+
+
+def policy_page(lang, ver):
+    g = POLICY[lang]
+    body = f'<article class="art guide"><h1>{esc(g["title"])}</h1><p class="lead">{esc(g["description"])}</p><div class="artbody">{md(g["body"], lang)}</div></article>'
+    org = {"@context": "https://schema.org", "@type": "Organization", "name": BRAND, "url": SITE + '/', "publishingPrinciples": SITE + url(lang, 'editorial-policy'),
+           "logo": SITE + '/assets/icon-512.png', "sameAs": [u for _, u in SOCIAL]}
+    return shell(lang, 'editorial-policy', f'{g["title"]} | {BRAND}', g['description'], body, {}, ver, [org])
+
+
+RISK = ('low', 'medium', 'high')
+STAT = ('live', 'expected', 'ended')
+
+
+def act_facts(lang, m, src='activity'):
+    a = ACT[lang]
+    lv, st = dict(zip(RISK, a['lv'].split('|'))), dict(zip(STAT, a['st'].split('|')))
+    r, sv = m.get('risk', 'medium'), m.get('status', 'live')
+    rows = [(a['risk'], f'<span class="risk r-{r}">{esc(lv.get(r, r))}</span>'), (a['status'], f'<span class="ast s-{sv}">{esc(st.get(sv, sv))}</span>')]
+    rows += [(a[k], esc(m[k])) for k in ('cost', 'time') if m.get(k)]
+    go = ''
+    if m.get('go'):
+        go = (f'<a class="btn" href="/go/{esc(m["go"])}?from={src}&l={lang}" target="_blank" rel="sponsored nofollow noopener">{esc(m.get("go_label") or a["go"])} →</a>'
+              f'<small class="muted">{esc(a["ad"])} <a href="{pol_url(lang)}">{esc(a["pol"])}</a></small>')
+    return '<div class="card afacts">' + ''.join(f'<div><small>{k}</small><b>{v}</b></div>' for k, v in rows) + (f'<div class="ago">{go}</div>' if go else '') + '</div>'
+
+
+def act_items(lang):
+    for lg in (lang, 'en'):
+        it = sorted([(k, m) for k, m in POSTS.get(lg, {}).items() if m.get('category') == 'activities'], key=lambda kv: kv[1].get('date', ''), reverse=True)
+        it.sort(key=lambda kv: STAT.index(kv[1]['status']) if kv[1].get('status') in STAT else 0)   # live first, ended last
+        if it:
+            return lg, it
+    return lang, []
+
+
+def activities_page(lang, ver):
+    a = ACT[lang]
+    lg, items = act_items(lang)
+    lv, st = dict(zip(RISK, a['lv'].split('|'))), dict(zip(STAT, a['st'].split('|')))
+    cards = ''.join(
+        f'<a class="card post act" href="{url(lg, "blog/" + k)}">'
+        + (f'<img class="thumb" src="{cover("blog", lg, k)}" alt="" width="600" height="315" loading="lazy">' if cover('blog', lg, k) else '')
+        + f'<div class="muted"><span class="ast s-{m.get("status", "live")}">{esc(st.get(m.get("status", "live"), ""))}</span> <span class="risk r-{m.get("risk", "medium")}">{esc(a["risk"])}: {esc(lv.get(m.get("risk", "medium"), ""))}</span></div>'
+        f'<h2>{esc(post_meta_title(m, lg))}</h2><p>{esc(post_meta_title(dict(title=m.get("description", "")), lg))}</p>'
+        + (f'<div class="muted">{esc(a["cost"])}: {esc(m["cost"])}' + (f' · {esc(a["time"])}: {esc(m["time"])}' if m.get('time') else '') + '</div>' if m.get('cost') else '') + '</a>'
+        for k, m in items)
+    note = f'<p class="muted">{esc(a["en_note"])}</p>' if lg != lang else ''
+    body = (f'<h1>{esc(a["h1"])}</h1><p class="lead">{esc(a["d"])}</p><div class="card awarn">⚠️ {esc(a["warn"])}</div>{note}'
+            f'<div class="posts">{cards}</div><p class="muted" style="font-size:13px">{esc(a["ad"])} <a href="{pol_url(lang)}">{esc(a["pol"])}</a></p>')
+    return shell(lang, 'activities', f'{a["h1"]} | {BRAND}', a['d'], body, {}, ver)
 
 
 def guide_meta(lang):
@@ -1639,7 +1700,7 @@ def guide_page(lang, ver):
 
 
 def md(text, lang):
-    out, para, lst, ltag = [], [], [], None
+    out, para, lst, ltag, quote = [], [], [], None, []
     def flush():
         nonlocal para, lst, ltag
         if para:
@@ -1649,6 +1710,8 @@ def md(text, lang):
     for line in text.splitlines():
         s = line.strip()
         bm = _re.fullmatch(r'\{\{(card|table):([^}]*)\}\}', s)
+        if quote and not s.startswith('>'):
+            out.append(f'<blockquote>{md(chr(10).join(quote), lang)}</blockquote>' if len(quote) > 1 else f'<blockquote>{inline_md(quote[0], lang)}</blockquote>'); quote.clear()
         if not s:
             flush(); continue
         if bm:
@@ -1656,8 +1719,8 @@ def md(text, lang):
         h = _re.match(r'(#{2,3})\s+(.*)', s)
         if h:
             flush(); lv = len(h.group(1)); out.append(f'<h{lv}>{inline_md(h.group(2), lang)}</h{lv}>'); continue
-        if s.startswith('> '):
-            flush(); out.append(f'<blockquote>{inline_md(s[2:], lang)}</blockquote>'); continue
+        if s.startswith('>'):
+            flush(); quote.append(s[1:].strip()); continue
         li = _re.match(r'(-|\d+\.)\s+(.*)', s)
         if li:
             if para:
@@ -1668,6 +1731,8 @@ def md(text, lang):
             flush()
         para.append(s)
     flush()
+    if quote:
+        out.append(f'<blockquote>{md(chr(10).join(quote), lang)}</blockquote>' if len(quote) > 1 else f'<blockquote>{inline_md(quote[0], lang)}</blockquote>'); quote.clear()
     return '\n'.join(out)
 
 
@@ -1679,8 +1744,8 @@ def blog_index(lang, ver):
     X = TR[lang]['x']
     items = sorted(POSTS.get(lang, {}).items(), key=lambda kv: kv[1].get('date', ''), reverse=True)
     cl = NW[lang]['cats'].split('|')
-    cmap = dict(zip(('analytics', 'guides', 'reports'), cl[1:]), ai=AIS[lang]['nav'])
-    cats = [c for c in ('analytics', 'ai', 'guides', 'reports') if any(m.get('category', 'analytics') == c for _, m in items)]
+    cmap = dict(zip(('analytics', 'guides', 'reports'), cl[1:]), ai=AIS[lang]['nav'], activities=ACT[lang]['nav'])
+    cats = [c for c in ('analytics', 'ai', 'activities', 'guides', 'reports') if any(m.get('category', 'analytics') == c for _, m in items)]
     tabs = (f'<div class="seg nchips" id="bcats"><button class="on" data-c="">{esc(cl[0])}</button>' + ''.join(f'<button data-c="{c}">{esc(cmap[c])}</button>' for c in cats) + '</div>') if len(cats) > 1 else ''
     cards = ''.join(
         f'<a class="card post" data-c="{m.get("category", "analytics")}" href="{url(lang, "blog/" + slug)}">'
@@ -1702,9 +1767,11 @@ def blog_post(lang, slug, ver):
     cards = ''.join(sc_block('card', [i], lang) for i in m['assets'][:4])
     w = S['w']
     cv = cover('blog', lang, slug)
-    body = (f'<nav class="crumbs"><a href="{url(lang, "blog")}">{NW[lang]["i_nav"]}</a></nav><article class="art"><h1>{esc(title)}</h1>'
+    crumb = (url(lang, 'activities'), ACT[lang]['nav']) if m.get('category') == 'activities' else (url(lang, 'blog'), NW[lang]['i_nav'])
+    body = (f'<nav class="crumbs"><a href="{crumb[0]}">{crumb[1]}</a></nav><article class="art"><h1>{esc(title)}</h1>'
             + (f'<img class="cover" src="{cv}" alt="" width="1200" height="630">' if cv else '') +
-            f'<div class="muted byline"><a href="{url(lang if lang in ABOUT else "en", "about")}">WhatIfStack Research</a> · {esc(m.get("date", ""))} · {S["updated"]} {UPDATED}</div><div class="artbody">{html_body}</div></article>'
+            f'<div class="muted byline"><a href="{url(lang if lang in ABOUT else "en", "about")}">WhatIfStack Research</a> · {esc(m.get("date", ""))} · {S["updated"]} {UPDATED} · <a href="{pol_url(lang)}">{esc(ACT[lang]["pol"])}</a></div>'
+            + (act_facts(lang, m) + f'<div class="card awarn">⚠️ {esc(ACT[lang]["warn"])}</div>' if m.get('category') == 'activities' else '') + f'<div class="artbody">{html_body}</div></article>'
             f'<div class="postcards">{cards}</div>{poll_block(lang)}'
             f'<section class="banner section"><div><b>{w["cta"]}</b><p>{w["cta_text"]}</p></div><a class="btn" id="ctaBuy2" href="{url(lang, "compare")}">{w["cta"]} →</a></section>'
             + (f'<section class="section"><h2>{X["related"]}</h2><div class="posts">{rel_html}</div></section>' if rel else ''))
@@ -1714,7 +1781,7 @@ def blog_post(lang, slug, ver):
                "publisher": {"@type": "Organization", "name": BRAND, "logo": {"@type": "ImageObject", "url": SITE + '/assets/icon-512.png'}}}]
     if cv:
         jsonld[0]['image'] = [SITE + cv]
-    return shell(lang, 'blog/' + slug, title, desc, body, {'_og': cv} if cv else {}, ver, jsonld)
+    return shell(lang, 'blog/' + slug, title, desc, body, dict({'_og': cv} if cv else {}, _sec='activities' if m.get('category') == 'activities' else None), ver, jsonld)
 
 
 def rss(lang):
@@ -1804,6 +1871,11 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
         write(pre + 'me/index.html', me_page(lang, ver))
         write(pre + 'memes/index.html', memes_page(lang, ver))
         write(pre + 'world-assets/index.html', world_page(lang, ver))
+        write(pre + 'activities/index.html', activities_page(lang, ver))
+        extra_pages.append('activities')
+        if lang in POLICY:
+            write(pre + 'editorial-policy/index.html', policy_page(lang, ver))
+            extra_pages.append('editorial-policy')
         if lang in GUIDE:
             write(pre + 'guide/index.html', guide_page(lang, ver))
             extra_pages.append('guide')

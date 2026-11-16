@@ -63,6 +63,10 @@ Pages like [Ukraine]({lang}/stocks-ukraine/), [Poland]({lang}/stocks-poland/), [
 
 Tap the ☆ next to any asset to add it to [your watchlist]({lang}/me/). On the same page you can save DCA plans (amount, frequency, start date) and keep a simple portfolio: add how much you put into each asset and see the total and its split. Everything is stored in your browser — no account needed.
 
+## Activities: airdrops and campaigns
+
+[Activities]({lang}/activities/) collects honest guides to airdrops, points programs and exchange campaigns. Each guide shows the risk level, status (live, expected or ended), cost and time, says what is officially confirmed and what is only expected, and links to the official site. Start with the [9 airdrop safety rules]({lang}/blog/airdrop-safety-rules/).
+
 ## Where to buy
 
 [Exchanges]({lang}/exchanges/) lists exchanges and wallets we work with. Some links are partner links: we may earn a commission if you sign up, at no extra cost to you. It never changes our data or rankings.
@@ -70,3 +74,5 @@ Tap the ☆ next to any asset to add it to [your watchlist]({lang}/me/). On the 
 ## Where the numbers come from
 
 Binance, CoinGecko, Yahoo Finance, the Moscow Exchange, the World Bank and other public sources; details in [About & methodology]({lang}/about/). Prices update daily, crypto prices live. Nothing on WhatIfStack is investment advice: past results do not guarantee future returns.
+
+How we write, check facts and correct mistakes is described in our [editorial policy]({lang}/editorial-policy/).

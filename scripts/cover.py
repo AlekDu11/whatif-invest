@@ -22,6 +22,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, 'scripts'))
 from i18n_n import N  # noqa: E402
 from i18n_ai import AI  # noqa: E402
+from i18n_act import ACT  # noqa: E402
 
 FD = os.path.join(ROOT, 'scripts', 'fonts')
 F_BOLD, F_SEMI, F_TEXT = (os.path.join(FD, f) for f in ('geologica-700.ttf', 'geologica-600.ttf', 'onest.ttf'))
@@ -81,7 +82,7 @@ def label(kind, lang, cat):
     if kind == 'news':
         return n['n_nav']
     cats = n['cats'].split('|')
-    return {'analytics': cats[1], 'guides': cats[2], 'reports': cats[3], 'ai': (AI.get(lang) or AI['en'])['nav']}.get(cat, cats[1])
+    return {'analytics': cats[1], 'guides': cats[2], 'reports': cats[3], 'ai': (AI.get(lang) or AI['en'])['nav'], 'activities': (ACT.get(lang) or ACT['en'])['nav']}.get(cat, cats[1])
 
 
 def render(kind, lang, slug, meta, out):
@@ -118,7 +119,7 @@ def render(kind, lang, slug, meta, out):
     stack(d, 64, 46, 2.1)
     d.text((120, 52), 'whatifstack', font=ImageFont.truetype(F_BOLD, 30), fill=TEXT)
     cf = ImageFont.truetype(F_SEMI, 24)
-    cat = label(kind, lang, meta.get('category', 'analytics'))
+    cat = meta.get('label') or label(kind, lang, meta.get('category', 'analytics'))
     cw = d.textlength(cat, font=cf)
     d.rounded_rectangle([W - 64 - cw - 36, 46, W - 64, 92], radius=23, fill=CARD, outline=LINE, width=2)
     d.text((W - 64 - cw - 18, 55), cat, font=cf, fill=GREEN)
@@ -137,8 +138,11 @@ def render(kind, lang, slug, meta, out):
         y += size * 1.14
     # optional big number on the right
     if stat:
-        sf = ImageFont.truetype(F_BOLD, 96)
-        sw = d.textlength(stat, font=sf)
+        for ss in (96, 84, 72, 62, 54, 46):   # shrink long stats so they never run into the title
+            sf = ImageFont.truetype(F_BOLD, ss)
+            sw = d.textlength(stat, font=sf)
+            if sw <= 370:
+                break
         d.text((W - 64 - sw, 230), stat, font=sf, fill=GOLD if not stat.startswith(('-', '−')) else (240, 110, 110))
         if stat_l:
             lf = ImageFont.truetype(F_TEXT, 24)
@@ -180,6 +184,16 @@ def out_path(kind, lang, slug):
 
 def main():
     args = sys.argv[1:]
+    if args[:1] == ['--x']:   # card for an X post: --x <slug> --lang en --title ... [--stat ..] [--stat-label ..] [--assets btc,eth] [--label ..]
+        import argparse, datetime
+        ap = argparse.ArgumentParser()
+        ap.add_argument('--x'); ap.add_argument('--lang', default='en'); ap.add_argument('--title', required=True)
+        ap.add_argument('--stat', default=''); ap.add_argument('--stat-label', default=''); ap.add_argument('--assets', default=''); ap.add_argument('--label', default='')
+        o = ap.parse_args(args)
+        meta = dict(title=o.title, stat=o.stat, stat_label=o.stat_label, assets=o.assets, label=o.label, date=datetime.date.today().isoformat())
+        path = out_path('x', o.lang, o.x)
+        print(path if render('x', o.lang, o.x, meta, path) else 'skipped (unsupported script)')
+        return
     if len(args) == 3:
         kind, lang, slug = args
         ok = render(kind, lang, slug, front(os.path.join(ROOT, 'content', kind, lang, slug + '.md')), out_path(kind, lang, slug))
