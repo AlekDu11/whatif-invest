@@ -332,6 +332,9 @@ def cover(kind, lang, slug):
     return None
 
 
+AHREFS = '<meta name="ahrefs-site-verification" content="f5a16ec7b7cfa87b5d531c2c5286aac58ddf73ffe836a8b623afe21b43719d5a">'   # Ahrefs Webmaster Tools ownership
+
+
 def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
     og_img = SITE + (cfg.pop('_og', None) or '/assets/og.jpg')
     sec = cfg.pop('_sec', None) or p   # section to highlight in the nav
@@ -364,7 +367,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
 <html lang="{S['loc']}" dir="{S['dir']}">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1">{AHREFS if p is None else ""}
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
 <link rel="canonical" href="{canon}">
