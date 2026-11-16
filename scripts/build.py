@@ -374,7 +374,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
 <link rel="canonical" href="{canon}">
-{alts}
+{alts}<link rel="alternate" type="application/rss+xml" title="{BRAND} RSS" href="{SITE + url(blog_l, 'blog')}rss.xml">
 <meta property="og:type" content="website"><meta property="og:site_name" content="{BRAND}"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{canon}"><meta property="og:locale" content="{S['intl'].replace('-', '_')}">
 <meta property="og:image" content="{og_img}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="{og_img}"><meta name="theme-color" content="#ffffff">
@@ -1793,14 +1793,53 @@ def blog_post(lang, slug, ver):
     return shell(lang, 'blog/' + slug, title, desc, body, dict({'_og': cv} if cv else {}, _sec='activities' if m.get('category') == 'activities' else None), ver, jsonld)
 
 
+def rfc822(d):
+    """'2026-11-16' -> 'Mon, 16 Nov 2026 08:00:00 +0000' (RSS readers, Pinterest, Flipboard and Google News need RFC-822 dates)."""
+    import email.utils, datetime as _dt
+    try:
+        y, m, dd = map(int, d[:10].split('-'))
+        return email.utils.format_datetime(_dt.datetime(y, m, dd, 8, 0, tzinfo=_dt.timezone.utc))
+    except Exception:
+        return ''
+
+
 def rss(lang):
+    """Blog feed per language: valid RSS 2.0 with cover image per item (Pinterest auto-pins, Flipboard, Feedly, Substack/Medium imports)."""
     X = TR[lang]['x']
-    items = sorted(POSTS.get(lang, {}).items(), key=lambda kv: kv[1].get('date', ''), reverse=True)
-    it = ''.join(f'<item><title>{esc(post_meta_title(m, lang))}</title><link>{SITE + url(lang, "blog/" + s)}</link>'
-                 f'<guid>{SITE + url(lang, "blog/" + s)}</guid><pubDate>{esc(m.get("date", ""))}</pubDate>'
-                 f'<description>{esc(post_meta_title(dict(title=m.get("description", "")), lang))}</description></item>' for s, m in items)
-    return (f'<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"><channel><title>{esc(X["blog_h1"])}</title>'
-            f'<link>{SITE + url(lang, "blog")}</link><description>{esc(X["blog_d"])}</description>{it}</channel></rss>')
+    items = sorted(POSTS.get(lang, {}).items(), key=lambda kv: kv[1].get('date', ''), reverse=True)[:50]
+    self_u = SITE + url(lang, 'blog') + 'rss.xml'
+    it = ''
+    for s, m in items:
+        link = SITE + url(lang, 'blog/' + s)
+        cv = cover('blog', lang, s)
+        img = (f'<enclosure url="{SITE + cv}" length="0" type="image/jpeg"/><media:content url="{SITE + cv}" medium="image" type="image/jpeg" width="1200" height="630"/>') if cv else ''
+        it += (f'<item><title>{esc(post_meta_title(m, lang))}</title><link>{link}</link><guid isPermaLink="true">{link}</guid>'
+               f'<pubDate>{rfc822(m.get("date", ""))}</pubDate>'
+               + ''.join(f'<category>{esc(c)}</category>' for c in [m.get('category', '')] if c)
+               + f'<description>{esc(post_meta_title(dict(title=m.get("description", "")), lang))}</description>{img}</item>')
+    last = rfc822(items[0][1].get('date', '')) if items else ''
+    return (f'<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/"><channel><title>{esc(X["blog_h1"])} | {BRAND}</title>'
+            f'<link>{SITE + url(lang, "blog")}</link><atom:link href="{self_u}" rel="self" type="application/rss+xml"/><description>{esc(X["blog_d"])}</description>'
+            f'<language>{TR[lang]["loc"]}</language><lastBuildDate>{last}</lastBuildDate><image><url>{SITE}/assets/og.jpg</url><title>{esc(X["blog_h1"])} | {BRAND}</title><link>{SITE + url(lang, "blog")}</link></image>{it}</channel></rss>')
+
+
+def news_sitemap():
+    """Google News sitemap: timely posts (not evergreen guides) and news briefs from the last 2 days, all languages (Google News only reads 48 h)."""
+    import datetime as _dt
+    cut = (_dt.date.fromisoformat(UPDATED[:10]) - _dt.timedelta(days=2)).isoformat()
+    rows = []
+    for kind, src in (('blog', POSTS), ('news', NEWS)):
+        for lang, posts in src.items():
+            if lang not in TR:
+                continue
+            for s, m in posts.items():
+                d = m.get('date', '')[:10]
+                if d >= cut and m.get('category') not in ('guides', 'activities') and has_page(lang, kind + '/' + s):
+                    rows.append(f'<url><loc>{SITE + url(lang, kind + "/" + s)}</loc><news:news><news:publication><news:name>{BRAND}</news:name>'
+                                f'<news:language>{TR[lang]["loc"].split("-")[0]}</news:language></news:publication><news:publication_date>{d}</news:publication_date>'
+                                f'<news:title>{esc(post_meta_title(m, lang))}</news:title></news:news></url>')
+    return ('<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">\n'
+            + '\n'.join(rows) + '\n</urlset>')
 
 
 # ---------------- build ----------------
@@ -1921,12 +1960,13 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
     si += [f'<sitemap><loc>{SITE}{BASE}/sitemap-{lg}.xml</loc><lastmod>{UPDATED}</lastmod></sitemap>' for lg in ORDER]
     si.append('</sitemapindex>')
     write('sitemap.xml', '\n'.join(si))
+    write('sitemap-news.xml', news_sitemap())
     nf = {'uk': ('Сторінку не знайдено', 'Можливо, актив перейменовано або видалено. Знайди його через пошук угорі або перейди до рейтингу.'),
           'en': ('Page not found', 'The asset may have been renamed or removed. Use the search above or go to the ranking.')}
     body404 = ''.join(f'<h1>{a}</h1><p class="lead">{b}</p><p><a class="btn" href="{url(lg)}">{TR[lg]["nav_rank"]} →</a></p>' for lg, (a, b) in nf.items())
     write('404.html', shell('en', None, 'Page not found | ' + BRAND, nf['en'][1], body404, {}, ver).replace('<link rel="canonical"', '<meta name="robots" content="noindex"><link rel="canonical"'))
     write('79eea7b784b383a4b1696da51540fdf0.txt', '79eea7b784b383a4b1696da51540fdf0')
-    write('robots.txt', f'User-agent: *\nAllow: /\nDisallow: /go/\nDisallow: /api/\nDisallow: /stats\nSitemap: {SITE}{BASE}/sitemap.xml\n')
+    write('robots.txt', f'User-agent: *\nAllow: /\nDisallow: /go/\nDisallow: /api/\nDisallow: /stats\nSitemap: {SITE}{BASE}/sitemap.xml\nSitemap: {SITE}{BASE}/sitemap-news.xml\n')
     total = sum(len(p) for p in per_lang.values())
     print(f"built {total} pages in {len(ORDER)} languages · {len(A)} assets · data {UPDATED}")
 
