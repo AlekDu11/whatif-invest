@@ -39,7 +39,7 @@ UPDATED = market['updated']
 END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
-RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets'}
+RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide'}
 RESERVED |= {v[0] for v in MKTS.values()} | {'world-assets'}
 # asset ids that clash with a language folder or a section get a suffix (ko -> ko-stock, fil -> fil-crypto)
 _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
@@ -113,6 +113,8 @@ def has_page(lang, aid):
         return True
     if aid in ('ai', 'me', 'memes', 'world-assets'):
         return True
+    if aid == 'guide':
+        return lang in GUIDE
     if aid in CSLUG:
         return any(a.get('mkt') == CSLUG[aid] for a in A.values())
     if aid in CALCS:
@@ -298,7 +300,7 @@ def footer_cols(lang):
     mk = [(url(lang), S['nav_rank']), (url(lang, 'compare'), S['nav_cmp'])] + [(url(lang, k), S['cat_' + v]) for k, v in HUBS.items()]
     mk += [(url(lang, sl), f'{fl} {CTRY[lang][3][m][0]}') for m, (sl, fl) in sorted(MKTS.items(), key=lambda kv: (MKT_LANG.get(kv[0]) != lang, kv[0] != 'ua')) if has_page(lang, sl)][:5]
     tools = [(url(lang, k), v) for k, v in [x for x in tools_menu(lang) if x]]
-    ins = [(url(lang, 'news'), n['n_nav']), (url(blog_l, 'blog'), n['i_nav']), (url(blog_l, 'blog') + 'rss.xml', 'RSS'),
+    ins = [(url(lang if lang in GUIDE else 'en', 'guide'), guide_meta(lang).get('nav', 'Guide')), (url(lang, 'news'), n['n_nav']), (url(blog_l, 'blog'), n['i_nav']), (url(blog_l, 'blog') + 'rss.xml', 'RSS'),
            (url(lang, 'exchanges'), EX[lang]['nav']), (url(lang if lang in ABOUT else 'en', 'about'), n['about'])]
     cols = [(f[0], pop), (f[1], mk), (TR[lang]['x']['nav_tools'], tools), (n['i_nav'], ins)]
     if SOCIAL:
@@ -1286,15 +1288,16 @@ def memes_page(lang, ver):
     return shell(lang, 'memes', f'{t["h1"]} | {BRAND}', t['d'], body, cfg, ver)
 
 
-SEC_ICON = {'memes': '<path d="M4 15c0-4.4 3.6-8 8-8s8 3.6 8 8v1a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3z"/><circle cx="9" cy="12" r="1.2"/><circle cx="15" cy="12" r="1.2"/>', 'ai': '<rect x="5" y="7" width="14" height="11" rx="3"/><path d="M12 3v4M9 12h.01M15 12h.01M9.5 15.5h5"/>', 'me': '<path d="m12 4 2.4 5 5.4.6-4 3.7 1.1 5.3L12 16l-4.9 2.6 1.1-5.3-4-3.7 5.4-.6z"/>', 'news': '<rect x="4" y="5" width="16" height="14" rx="2"/><path d="M8 9h8M8 12h8M8 15h5"/>', 'exchanges': '<path d="M7 7h11l-3-3M17 17H6l3 3"/>', 'habits': '<path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5zM16 10h1.5a2.5 2.5 0 0 1 0 5H16M8 3v3M11 3v3"/>'}
+SEC_ICON = {'guide': '<path d="M5 4h9a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M5 17a3 3 0 0 1 3-3h9M9 8h5"/>', 'memes': '<path d="M4 15c0-4.4 3.6-8 8-8s8 3.6 8 8v1a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3z"/><circle cx="9" cy="12" r="1.2"/><circle cx="15" cy="12" r="1.2"/>', 'ai': '<rect x="5" y="7" width="14" height="11" rx="3"/><path d="M12 3v4M9 12h.01M15 12h.01M9.5 15.5h5"/>', 'me': '<path d="m12 4 2.4 5 5.4.6-4 3.7 1.1 5.3L12 16l-4.9 2.6 1.1-5.3-4-3.7 5.4-.6z"/>', 'news': '<rect x="4" y="5" width="16" height="14" rx="2"/><path d="M8 9h8M8 12h8M8 15h5"/>', 'exchanges': '<path d="M7 7h11l-3-3M17 17H6l3 3"/>', 'habits': '<path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5zM16 10h1.5a2.5 2.5 0 0 1 0 5H16M8 3v3M11 3v3"/>'}
 
 
 def sections_strip(lang):
     S = TR[lang]
-    items = [('memes', '🐸', MEM[lang]['nav'], MEM[lang]['live']), ('ai', '🤖', AIS[lang]['nav'], AIS[lang]['stocks'] + ' · ' + AIS[lang]['crypto']),
+    gm = guide_meta(lang)
+    items = [('guide', '📘', gm.get('nav', 'Guide'), gm.get('short', '')), ('memes', '🐸', MEM[lang]['nav'], MEM[lang]['live']), ('ai', '🤖', AIS[lang]['nav'], AIS[lang]['stocks'] + ' · ' + AIS[lang]['crypto']),
              ('me', '☆', ME[lang]['nav'], ME[lang]['hold'] + ' · ' + ME[lang]['plans']), ('news', '📰', NW[lang]['n_nav'], NW[lang]['own']),
              ('exchanges', '₿', EX[lang]['nav'], EX[lang]['cex']), ('habits', '☕', HB[lang]['nav'], HB[lang]['h1'])]
-    cards = ''.join(f'<a class="card sec" href="{url(lang, k)}"><span class="si"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">{SEC_ICON[k]}</svg></span><div><b>{esc(t)}</b><small>{esc(d)}</small></div></a>' for k, ic, t, d in items)
+    cards = ''.join(f'<a class="card sec" href="{url(lang if k != "guide" or lang in GUIDE else "en", k)}"><span class="si"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">{SEC_ICON[k]}</svg></span><div><b>{esc(t)}</b><small>{esc(d)}</small></div></a>' for k, ic, t, d in items)
     return f'<section class="section"><div class="secgrid">{cards}</div></section>'
 
 
@@ -1567,6 +1570,40 @@ def inline_md(s, lang):
     return s
 
 
+def load_guides():
+    out, root = {}, os.path.join(ROOT, 'content', 'guide')
+    for fn in sorted(os.listdir(root)) if os.path.isdir(root) else []:
+        if fn.endswith('.md'):
+            raw = open(os.path.join(root, fn), encoding='utf-8').read()
+            head, body = raw[3:].split('\n---', 1)
+            meta = {k.strip(): v.strip() for k, _, v in (l.partition(':') for l in head.strip().splitlines())}
+            meta['body'] = body.strip()
+            out[fn[:-3]] = meta
+    return out
+
+
+GUIDE = load_guides()
+
+
+def guide_meta(lang):
+    return GUIDE.get(lang) or GUIDE.get('en') or {}
+
+
+def guide_page(lang, ver):
+    g = GUIDE[lang]
+    html = md(g['body'].replace('{n}', f'{len(A):,}'.replace(',', ' ' if lang != 'en' else ',')), lang)
+    toc = []
+    def anchor(m):
+        t = _re.sub(r'<[^>]+>', '', m.group(1))
+        sid = _re.sub(r'[^\w]+', '-', t.lower(), flags=_re.U).strip('-')[:50] or f's{len(toc)}'
+        toc.append((sid, t))
+        return f'<h2 id="{sid}">{m.group(1)}</h2>'
+    html = _re.sub(r'<h2>(.*?)</h2>', anchor, html)
+    nav = '<nav class="card gtoc">' + ''.join(f'<a href="#{i}">{esc(t)}</a>' for i, t in toc) + '</nav>'
+    body = f'<article class="art guide"><h1>{esc(g["title"])}</h1><p class="lead">{esc(g["description"])}</p>{nav}<div class="artbody">{html}</div></article>'
+    return shell(lang, 'guide', f'{g["title"]} | {BRAND}', g['description'], body, {}, ver)
+
+
 def md(text, lang):
     out, para, lst, ltag = [], [], [], None
     def flush():
@@ -1722,6 +1759,9 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
         write(pre + 'me/index.html', me_page(lang, ver))
         write(pre + 'memes/index.html', memes_page(lang, ver))
         write(pre + 'world-assets/index.html', world_page(lang, ver))
+        if lang in GUIDE:
+            write(pre + 'guide/index.html', guide_page(lang, ver))
+            extra_pages.append('guide')
         extra_pages.append('world-assets')
         extra_pages.append('memes')
         extra_pages.append('ai')

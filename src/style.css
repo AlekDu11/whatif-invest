@@ -474,3 +474,5 @@ a.more{text-align:center;text-decoration:none}
 .wtab .badge.t2{background:#dfeee6;color:#0b5c40}.wtab .badge.t3{background:#e3e9f5;color:#22406f}.wtab .badge.t4{background:#efe3f5;color:#5d2a77}
 [data-theme=dark] .wtab .badge{background:var(--line);color:var(--text)}
 .wsrc{margin:8px 0 0;padding-left:18px;font-size:13px;line-height:1.7}
+.gtoc{display:flex;flex-wrap:wrap;gap:6px 14px;padding:14px 18px;margin:16px 0 8px;font-size:14px}.gtoc a{text-decoration:none;color:var(--accent);font-weight:500}
+.guide .artbody h2{scroll-margin-top:90px}
