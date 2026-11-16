@@ -51,3 +51,6 @@ Candidates — before the first post in a community, open it, check it is active
 | 2026-11-16 | Bluesky | @whatifstack.bsky.social | intro: $10/day BTC 5y +49% | https://bsky.app/profile/whatifstack.bsky.social | first post |
 | 2026-11-16 | Instagram | @whatifstack | intro card 4:5 (social/igcard.js) + caption | https://www.instagram.com/whatifstack/ | bio + avatar set; website field is app-only |
 | 2026-11-16 | Threads | @whatifstack | intro + card | https://www.threads.com/@whatifstack | bio, link, avatar set |
+| 2026-11-16 | Facebook | Arti Trader (personal profile) | intro + /en/, weekly recap, airdrop safety rules (3 link posts) | https://www.facebook.com/arti.trader.39 | bio + website link set; 2021 photo posts set to Only me; Page creation failed (server error, new account) |
+
+Next: Teletype (teletype.in, login via Telegram) and Dzen (dzen.ru, Yandex/VK ID) — ru articles with canonical links; owner logs in.
