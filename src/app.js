@@ -25,7 +25,7 @@ function fmtPct(p,dec){ if(p==null||!isFinite(p)) return '—'; const a=Math.abs
   return (p>=0?'+':'−')+a.toLocaleString('en-US',{maximumFractionDigits:dec!=null?dec:(a>=100?0:a>=10?1:2)})+'%' }
 const cls = p => p==null?'':p>=0?'good':'bad';
 function hue(s){let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))%360;return h}
-function icon(a,big){ const c=big?' lg':''; const k=(WI.sp||{})[a.i];
+function icon(a,big){ const c=big?' lg':''; if(a.mi) return `<span class="ic${c} mi" style="background:${a.mi[0]}">${a.mi[1]}</span>`; const k=(WI.sp||{})[a.i];
   if(k!=null){ const [C,R]=WI.spc; return `<span class="ic sp${c}" style="background-position:${(k%C*100/(C-1)).toFixed(3)}% ${(Math.floor(k/C)*100/Math.max(1,R-1)).toFixed(3)}%"></span>` }
   if(a.l) return `<span class="ic${c}"><img src="${esc(a.l)}" alt="" loading="lazy" width="26" height="26"></span>`;
   return `<span class="ic${c}" style="background:hsl(${hue(a.t)} 55% 52%)">${esc(a.t.slice(0,2))}</span>` }

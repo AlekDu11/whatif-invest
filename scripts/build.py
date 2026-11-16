@@ -1939,6 +1939,8 @@ def main():
             e['ne'] = nm(a, 'en')
         if a.get('logo'):
             e['l'] = a['logo']
+        if a.get('cat') in ('metal', 'cmd') and a.get('yahoo') in METAL_IC:
+            e['mi'] = list(METAL_IC[a['yahoo']])
         if a.get('yahoo') in ('HG=F', 'ALI=F'):
             e['u'] = 1   # copper/aluminum are quoted per lb / tonne, not per oz
         if a.get('binance') or (a['cat'] == 'crypto' and a.get('src') == 'yahoo'):
