@@ -725,6 +725,52 @@ def auto_about(lang, aid):
     return ' '.join(out)
 
 
+def side_block(lang, aid):
+    """About card next to the chart (like CryptoRank): what the company/coin is and does, plus a few stable facts and links.
+    No auto-generated, ever-changing numbers here (owner's request)."""
+    a, t, T = A[aid], INF[lang], PROF_T[lang]
+    rows, links, desc, dlang = [], [], None, lang
+    def row(k, v):
+        rows.append(f'<div class="ir"><span>{esc(k)}</span><b>{v}</b></div>')
+    if a['cat'] == 'crypto':
+        ci = COININFO.get(a.get('cgid') or '', {})
+        if a.get('rank'): row('#', str(a['rank']))
+        if a.get('mcap'): row(t['mcap'], fbig(a['mcap']))
+        if a.get('circ'): row(t['circ'], f"{fnum(a['circ'])} {esc(a['tk'])}")
+        row(t['max'], f"{fnum(a['maxs'])} {esc(a['tk'])}" if a.get('maxs') else '∞')
+        if a.get('ath'): row(t['ath'], f"{price(a['ath'])} <small class=\"muted\">{esc(a.get('athd') or '')}</small>")
+        L = ci.get('l', {})
+        for k, lab in (('web', t['web']), ('wp', t['wp']), ('exp', t['exp']), ('x', 'X'), ('tg', 'Telegram'), ('gh', t['src'])):
+            if L.get(k): links.append((L[k], lab))
+        ds = ci.get('ds', {})
+        desc = ds.get(lang) or ds.get('en')
+        dlang = lang if ds.get(lang) else 'en'
+    else:
+        si = STOCKINFO.get(a.get('yahoo') or '', {})
+        if si.get('sec') or a.get('sector'): row(t['sector'], esc(si.get('sec') or a.get('sector')))
+        if si.get('ind'): row(t['industry'], esc(si['ind']))
+        if si.get('cty'): row(t['country'], esc(si['cty']))
+        if si.get('emp'): row(t['emp'], f"{si['emp']:,}".replace(',', ' '))
+        if si.get('mcap'): row(t['mcap'], fbig(si['mcap']))
+        if si.get('web'): links.append((si['web'], t['web']))
+        desc = (si.get('ds') or {}).get('en')
+        dlang = 'en'
+    prof = PROFILES.get(lang, {}).get(aid)
+    what = T['c_' + a['cat']].format(name=nm(a, lang), tk=a['tk'])
+    if prof:
+        body = f'<div class="artbody iprof sclip">{md(prof["body"], lang)}</div>'
+    elif desc:
+        body = f'<p class="swhat">{esc(what)}</p><div class="sclip"{"" if dlang == lang else f" lang=\"{dlang}\""}><p>{esc(desc)}</p></div>'
+    elif a['cat'] in ('stock', 'etf') and tv_symbol(a):   # our description not fetched yet -> TradingView company profile
+        body = tvw('symbol-profile', dict(width='100%', height='100%', isTransparent=True, colorTheme='light', symbol=tv_symbol(a), locale=TV_LOC.get(lang, 'en')), 400)
+    else:
+        body = f'<p class="swhat">{esc(what)}</p>'
+    lk = ''.join(f'<a class="chip" href="{esc(u)}" target="_blank" rel="nofollow noopener">{esc(l)} ↗</a>' for u, l in links)
+    return (f'<aside class="card side"><h2>{esc(nm(a, lang))} <span class="muted">{esc(a["tk"])}</span></h2>{body}'
+            f'<button class="smore" type="button" data-less="{esc(t["less"])}" hidden>{esc(t["more"])}</button>'
+            + (f'<div class="srows">{"".join(rows)}</div>' if rows else '') + (f'<div class="ilinks">{lk}</div>' if lk else '') + '</aside>')
+
+
 def info_block(lang, aid):
     a, t = A[aid], INF[lang]
     rows, links, desc = [], [], None
@@ -871,7 +917,7 @@ def asset(aid, lang, ver):
     loc = TV_LOC.get(lang, 'en')
     tvs = tv_symbol(a)
     if tvs:
-        tv = (f'<section class="card section tvcard"><div class="charthead"><h2>{w["live_chart"]} · {esc(tk)}</h2><span class="livebadge"><i></i>{w["live"]}</span></div>'
+        tv = (f'<section class="card tvcard"><div class="charthead"><h2>{w["live_chart"]} · {esc(tk)}</h2><span class="livebadge"><i></i>{w["live"]}</span></div>'
               + tvw('advanced-chart', dict(autosize=True, symbol=tv_symbol(a), interval='D', timezone='Etc/UTC', theme='light', style='1', locale=loc,
                                            allow_symbol_change=False, hide_side_toolbar=True, withdateranges=True, save_image=False), 480) + '</section>')
         tech_news = (f'<div class="cols2 section"><section class="card"><h2>{X["tech"]} · {esc(tk)}</h2>'
@@ -881,13 +927,12 @@ def asset(aid, lang, ver):
                      + tvw('timeline', dict(feedMode='symbol', symbol=tv_symbol(a), isTransparent=True, displayMode='regular', width='100%', height='100%',
                                             colorTheme='light', locale=loc), 430) + '</section></div>')
         if a['cat'] in ('stock', 'etf'):
-            tech_news += (f'<div class="cols2 section"><section class="card"><h2>{X["fund"]} · {esc(tk)}</h2>'
+            tech_news += (f'<section class="card section"><h2>{X["fund"]} · {esc(tk)}</h2>'
                           + tvw('financials', dict(isTransparent=True, displayMode='regular', width='100%', height='100%', colorTheme='light', symbol=tv_symbol(a), locale=loc), 520)
-                          + f'</section><section class="card"><h2>{X["prof"]} · {esc(tk)}</h2>'
-                          + tvw('symbol-profile', dict(width='100%', height='100%', isTransparent=True, colorTheme='light', symbol=tv_symbol(a), locale=loc), 520) + '</section></div>')
+                          + '</section>')
     else:   # no free live chart for this symbol
         tv, tech_news = '', ''
-    body = (f'{head}<p class="lead" style="margin-top:10px">{S["a_lead"].format(**fe)}</p>{hot_block(lang, aid)}{tv}{info_block(lang, aid)}{hot_more(lang, aid)}<div class="stats">{stat_cards}</div><div class="stats">{lump_cards}</div>{seas_block(lang, aid)}{calc_block(lang)}{tech_news}'
+    body = (f'{head}<p class="lead" style="margin-top:10px">{S["a_lead"].format(**fe)}</p>{hot_block(lang, aid)}<div class="chartside section">{tv}{side_block(lang, aid)}</div>{hot_more(lang, aid)}<div class="stats">{stat_cards}</div><div class="stats">{lump_cards}</div>{seas_block(lang, aid)}{calc_block(lang)}{tech_news}'
             f'<div class="cols2 section"><section class="card"><h2>{S["a_periods"].format(**fe)}</h2>{ptable}</section>'
             f'<section class="card faq"><h2>{S["faq"]}</h2>' + ''.join(f'<details><summary>{esc(q)}</summary><p>{esc(x)}</p></details>' for q, x in faq) + '</section></div>'
             f'<section class="section">{table_block(lang, sim, S["a_similar"] + ": " + esc(cat), interactive=False)}</section>'

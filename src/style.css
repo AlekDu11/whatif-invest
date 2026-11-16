@@ -497,3 +497,17 @@ a.more{text-align:center;text-decoration:none}
 .follow{margin-top:28px;padding:18px 20px}.follow b{display:block;font-size:17px;margin-bottom:12px}
 .folrow{display:flex;flex-wrap:wrap;gap:14px 18px}.fol{display:flex;flex-direction:column;align-items:center;gap:5px;text-decoration:none;color:var(--muted);font-size:12px;font-weight:600;min-width:52px}
 .fol svg{border-radius:50%;transition:transform .15s}.fol:hover svg{transform:translateY(-2px)}.fol:hover{color:var(--text)}
+.chartside{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:16px;align-items:stretch}
+.chartside>.tvcard{margin:0}.chartside>.side:only-child{grid-column:1/-1}
+@media (max-width:900px){.chartside{grid-template-columns:1fr}}
+.side{display:flex;flex-direction:column;gap:10px;padding:18px 18px 16px;max-height:600px}
+.side h2{font-size:19px;margin:0}.side h2 .muted{font-size:14px;font-weight:600}
+.side .swhat{margin:0;font-weight:600;font-size:14px;line-height:1.5}
+.side .sclip{position:relative;max-height:190px;overflow:hidden;font-size:14px;line-height:1.6;color:var(--muted)}
+.side .sclip p{margin:0 0 8px}.side .sclip h2,.side .sclip h3{font-size:15px;margin:8px 0 4px;color:var(--text)}
+.side .sclip.clip:after{content:"";position:absolute;left:0;right:0;bottom:0;height:46px;background:linear-gradient(transparent,var(--card))}
+.side.open{max-height:none}.side.open .sclip{max-height:none}.side.open .sclip:after{display:none}
+.smore{align-self:flex-start;background:none;border:0;padding:0;color:var(--accent);font-weight:700;cursor:pointer;font-size:13px}
+.side .srows{border-top:1px solid var(--line);padding-top:6px}.side .ir{display:flex;justify-content:space-between;gap:10px;padding:6px 0;font-size:13px;border-bottom:1px dashed var(--line)}
+.side .ir:last-child{border-bottom:0}.side .ir span{color:var(--muted)}.side .ir b{text-align:right}
+.side .ilinks{display:flex;flex-wrap:wrap;gap:6px}

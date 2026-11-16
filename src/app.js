@@ -599,3 +599,11 @@ new MutationObserver(()=>{ clearTimeout(window._wiStar); window._wiStar=setTimeo
   const io=new IntersectionObserver(es=>{ if(es.some(e=>e.isIntersecting)){ io.disconnect(); draw() } },{rootMargin:'400px'}); io.observe(box);
 })();
 })();
+
+// About card next to the chart: clip long descriptions with a "show more" toggle
+document.querySelectorAll('.side').forEach(sd => {
+  const c = sd.querySelector('.sclip'), b = sd.querySelector('.smore');
+  if (!c || !b || c.scrollHeight <= c.clientHeight + 4) return;
+  c.classList.add('clip'); b.hidden = false; const more = b.textContent;
+  b.addEventListener('click', () => { const o = sd.classList.toggle('open'); b.textContent = o ? b.dataset.less : more; });
+});
