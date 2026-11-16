@@ -15,9 +15,9 @@ Daily drafts land in `social/syndication/YYYY-MM-DD.md` (scheduled task "WhatIfS
 
 | Platform | What we post | How | Account |
 |---|---|---|---|
-| Google News (Publisher Center) | the whole site | add publication https://publishercenter.google.com, sections = /en/news/ and /en/blog/ RSS; sitemap-news.xml is live | ☐ owner |
+| Google News (Publisher Center) | the whole site | add publication https://publishercenter.google.com, sections = /en/news/ and /en/blog/ RSS; sitemap-news.xml is live | ✅ publication created (Google builds sections automatically) |
 | Bing Webmaster | sitemap + IndexNow (already automatic) | — | ✅ |
-| Pinterest (business) | every article cover as a pin, automatically | Settings → Bulk create Pins → Auto-publish from RSS: add https://whatifstack.com/en/blog/rss.xml (+ /es/, /de/, /pt/ … one board per language) | ☐ owner |
+| Pinterest (business) | every article cover as a pin, automatically | Settings → Bulk create Pins → Auto-publish from RSS: add https://whatifstack.com/en/blog/rss.xml (+ /es/, /de/, /pt/ … one board per language) | ✅ pinterest.com/whatifstack, site verified, 5 boards en/es/de/pt/uk auto-publish from RSS (2026-11-16) |
 | Flipboard | magazine per language from RSS | Add RSS feed to a magazine | ☐ owner |
 | Medium | full article via Import (canonical set automatically), en + es/de/pt | medium.com/p/import → paste the URL → tags → publish. Max 1–2 a day | ☐ owner |
 | LinkedIn (personal + page) | 1 analytic post a day: 3–5 numbers + link in the first comment | — | ☐ owner |
