@@ -18,12 +18,12 @@ Daily drafts land in `social/syndication/YYYY-MM-DD.md` (scheduled task "WhatIfS
 | Google News (Publisher Center) | the whole site | add publication https://publishercenter.google.com, sections = /en/news/ and /en/blog/ RSS; sitemap-news.xml is live | ✅ publication created (Google builds sections automatically) |
 | Bing Webmaster | sitemap + IndexNow (already automatic) | — | ✅ |
 | Pinterest (business) | every article cover as a pin, automatically | Settings → Bulk create Pins → Auto-publish from RSS: add https://whatifstack.com/en/blog/rss.xml (+ /es/, /de/, /pt/ … one board per language) | ✅ pinterest.com/whatifstack, site verified, 5 boards en/es/de/pt/uk auto-publish from RSS (2026-11-16) |
-| Flipboard | magazine per language from RSS | Add RSS feed to a magazine | ☐ owner |
+| Flipboard | magazine "WhatIfStack Insights" | RSS auto-import needs Flipboard publisher status (not granted yet) → new EN articles are added by URL in the magazine editor (X task, last run of the day) | ✅ flipboard.com/@whatifstack/whatifstack-insights-b316n978y |
 | Medium | full article via Import (canonical set automatically), en + es/de/pt | medium.com/p/import → paste the URL → tags → publish. Max 1–2 a day. NB: the import URL field ignores Claude's typing — the owner pastes the URL and presses Import, Claude does tags + publish | ✅ medium.com/@whatifstack |
-| LinkedIn (personal + page) | 1 analytic post a day: 3–5 numbers + link in the first comment | — | ☐ owner |
-| Reddit | regional articles in local subs, data posts | drafts in social/syndication/; owner posts manually | ☐ owner |
+| LinkedIn (personal + page) | 1 analytic post a day: 3–5 numbers + link in the first comment | — | ⏸ skipped by owner (2026-11-16) |
+| Reddit | regional articles in local subs, data posts | drafts in social/syndication/; owner posts manually (reddit.com is blocked in Claude's built-in browser) | ☐ owner |
 | Quora | answers to "what if I invested $X in Y" questions with our numbers + link | — | ☐ owner |
-| Threads / Bluesky | same posts as X | — | ☐ owner |
+| Threads / Bluesky | same posts as X | Bluesky: X task cross-posts each post (see social/x-log.md) · Threads: needs Instagram first | Bluesky ✅ @whatifstack.bsky.social · Threads ☐ |
 | Telegram channel @whatifstack | daily: 1 article + 1 number | — | ☐ owner |
 | TradingView Ideas / Binance Square / CMC Community | crypto articles as short ideas (links limited → brand mention) | — | ☐ owner |
 
