@@ -321,7 +321,16 @@ def footer_cols(lang):
     return ('<div class="fcols">' + ''.join(f'<div><b>{esc(t)}</b>' + ''.join(f'<a href="{h}">{esc(l)}</a>' for h, l in items) + '</div>' for t, items in cols) + '</div>')
 
 
+def cover(kind, lang, slug):
+    """Branded cover (content/covers/<kind>/<lang>/<slug>.jpg, made by scripts/cover.py); English cover as fallback."""
+    for lg in (lang, 'en'):
+        if os.path.exists(os.path.join(ROOT, 'content', 'covers', kind, lg, slug + '.jpg')):
+            return f'/assets/covers/{kind}/{lg}/{slug}.jpg'
+    return None
+
+
 def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
+    og_img = SITE + (cfg.pop('_og', None) or '/assets/og.jpg')
     S = TR[lang]
     canon = SITE + url(lang, p)
     alts = ''.join(f'<link rel="alternate" hreflang="{TR[lg]["loc"]}" href="{SITE + url(lg, p)}">' for lg in ORDER if has_page(lg, p))
@@ -356,8 +365,8 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
 <link rel="canonical" href="{canon}">
 {alts}
 <meta property="og:type" content="website"><meta property="og:site_name" content="{BRAND}"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{canon}"><meta property="og:locale" content="{S['intl'].replace('-', '_')}">
-<meta property="og:image" content="{SITE}/assets/og.jpg"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="{SITE}/assets/og.jpg"><meta name="theme-color" content="#ffffff">
+<meta property="og:image" content="{og_img}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="{og_img}"><meta name="theme-color" content="#ffffff">
 <script>(function(){{try{{var t=localStorage.getItem('wi_theme')}}catch(e){{}}if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';if(t==='dark'){{document.documentElement.dataset.theme='dark';document.querySelector('meta[name=theme-color]').content='#0e1014'}}}})()</script>
 <link rel="icon" href="{BASE}/assets/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="{BASE}/assets/icon-192.png"><link rel="manifest" href="{BASE}/manifest.webmanifest">
 <link rel="preload" href="{BASE}/assets/onest.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="{BASE}/assets/geologica-700.woff2" as="font" type="font/woff2" crossorigin>
@@ -1177,17 +1186,19 @@ def news_article(lang, slug, ver):
     rel_html = ''.join(news_row(lang, k, x, tl) for k, x in rel)
     w = S['w']
     about = url(lang if lang in ABOUT else 'en', 'about')
+    cv = cover('news', lang, slug)
     body = (f'<nav class="crumbs"><a href="{url(lang, "news")}">{n["n_nav"]}</a></nav><article class="art"><h1>{esc(title)}</h1>'
             f'<div class="muted byline"><a href="{about}">WhatIfStack Research</a> · <time data-t="{esc(m.get("date", ""))}">{esc(m.get("date", ""))}</time> · {tags}</div>'
+            + (f'<img class="cover" src="{cv}" alt="" width="1200" height="630">' if cv else '') +
             f'<p class="lead">{esc(desc)}</p><div class="postcards">{cards}</div><div class="artbody">{md(m["body"], lang)}</div></article>'
             f'{poll_block(lang)}<section class="banner section"><div><b>{w["cta"]}</b><p>{w["cta_text"]}</p></div><a class="btn" id="ctaBuy2" href="{url(lang, "exchanges")}">{EX[lang]["nav"]} →</a></section>'
             + (f'<section class="section"><h2>{esc(n["own"])}</h2><div class="card nlist own">{rel_html}</div></section>' if rel else ''))
     d = m.get('date', '').replace(' ', 'T')
     jsonld = [{"@context": "https://schema.org", "@type": "NewsArticle", "headline": title, "description": desc, "inLanguage": S['loc'],
-               "datePublished": d, "dateModified": d, "mainEntityOfPage": SITE + url(lang, 'news/' + slug), "image": [SITE + '/assets/og.jpg'],
+               "datePublished": d, "dateModified": d, "mainEntityOfPage": SITE + url(lang, 'news/' + slug), "image": [SITE + (cv or '/assets/og.jpg')],
                "author": {"@type": "Organization", "name": "WhatIfStack Research", "url": SITE + about},
                "publisher": {"@type": "Organization", "name": BRAND, "logo": {"@type": "ImageObject", "url": SITE + '/assets/icon-512.png'}}}]
-    return shell(lang, 'news/' + slug, f'{title} | {BRAND}', desc, body, {}, ver, jsonld)
+    return shell(lang, 'news/' + slug, f'{title} | {BRAND}', desc, body, {'_og': cv} if cv else {}, ver, jsonld)
 
 
 ABOUT = {
@@ -1672,7 +1683,8 @@ def blog_index(lang, ver):
     cats = [c for c in ('analytics', 'ai', 'guides', 'reports') if any(m.get('category', 'analytics') == c for _, m in items)]
     tabs = (f'<div class="seg nchips" id="bcats"><button class="on" data-c="">{esc(cl[0])}</button>' + ''.join(f'<button data-c="{c}">{esc(cmap[c])}</button>' for c in cats) + '</div>') if len(cats) > 1 else ''
     cards = ''.join(
-        f'<a class="card post" data-c="{m.get("category", "analytics")}" href="{url(lang, "blog/" + slug)}"><div class="muted"><span class="badge">{esc(cmap.get(m.get("category", "analytics"), ""))}</span> {esc(m.get("date", ""))}</div><h2>{esc(post_meta_title(m, lang))}</h2>'
+        f'<a class="card post" data-c="{m.get("category", "analytics")}" href="{url(lang, "blog/" + slug)}">'
+        + (f'<img class="thumb" src="{cover("blog", lang, slug)}" alt="" width="600" height="315" loading="lazy">' if cover('blog', lang, slug) else '') + f'<div class="muted"><span class="badge">{esc(cmap.get(m.get("category", "analytics"), ""))}</span> {esc(m.get("date", ""))}</div><h2>{esc(post_meta_title(m, lang))}</h2>'
         f'<p>{esc(post_meta_title(dict(title=m.get("description", "")), lang))}</p>'
         + ''.join(f'<span class="badge">{esc(A[i]["tk"])}</span> ' for i in m['assets']) + '</a>' for slug, m in items)
     body = f'<h1>{esc(NW[lang]["i_nav"])}</h1><p class="lead">{esc(X["blog_d"])}</p>{tabs}<div class="posts">{cards}</div>'
@@ -1689,7 +1701,9 @@ def blog_post(lang, slug, ver):
     rel_html = ''.join(f'<a class="card post" href="{url(lang, "blog/" + s)}"><h3>{esc(post_meta_title(POSTS[lang][s], lang))}</h3></a>' for s in rel)
     cards = ''.join(sc_block('card', [i], lang) for i in m['assets'][:4])
     w = S['w']
+    cv = cover('blog', lang, slug)
     body = (f'<nav class="crumbs"><a href="{url(lang, "blog")}">{NW[lang]["i_nav"]}</a></nav><article class="art"><h1>{esc(title)}</h1>'
+            + (f'<img class="cover" src="{cv}" alt="" width="1200" height="630">' if cv else '') +
             f'<div class="muted byline"><a href="{url(lang if lang in ABOUT else "en", "about")}">WhatIfStack Research</a> · {esc(m.get("date", ""))} · {S["updated"]} {UPDATED}</div><div class="artbody">{html_body}</div></article>'
             f'<div class="postcards">{cards}</div>{poll_block(lang)}'
             f'<section class="banner section"><div><b>{w["cta"]}</b><p>{w["cta_text"]}</p></div><a class="btn" id="ctaBuy2" href="{url(lang, "compare")}">{w["cta"]} →</a></section>'
@@ -1698,7 +1712,9 @@ def blog_post(lang, slug, ver):
                "datePublished": m.get('date'), "dateModified": UPDATED, "mainEntityOfPage": SITE + url(lang, 'blog/' + slug),
                "author": {"@type": "Organization", "name": "WhatIfStack Research", "url": SITE + url(lang if lang in ABOUT else 'en', 'about')},
                "publisher": {"@type": "Organization", "name": BRAND, "logo": {"@type": "ImageObject", "url": SITE + '/assets/icon-512.png'}}}]
-    return shell(lang, 'blog/' + slug, title, desc, body, {}, ver, jsonld)
+    if cv:
+        jsonld[0]['image'] = [SITE + cv]
+    return shell(lang, 'blog/' + slug, title, desc, body, {'_og': cv} if cv else {}, ver, jsonld)
 
 
 def rss(lang):
@@ -1741,6 +1757,8 @@ def main():
     if _LOGOS:
         shutil.copytree(LOGO_DIR, os.path.join(OUT, 'assets/logo'))
     shutil.copytree(os.path.join(ROOT, 'src', 'flags'), os.path.join(OUT, 'assets/flags'))
+    if os.path.isdir(os.path.join(ROOT, 'content', 'covers')):
+        shutil.copytree(os.path.join(ROOT, 'content', 'covers'), os.path.join(OUT, 'assets/covers'))
     for f in ('favicon.svg', 'icon-192.png', 'icon-512.png', 'og.jpg', 'onest.woff2', 'geologica-600.woff2', 'geologica-700.woff2'):
         shutil.copy(os.path.join(ROOT, 'src', f), os.path.join(OUT, 'assets', f))
     write('manifest.webmanifest', json.dumps({

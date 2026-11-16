@@ -479,3 +479,5 @@ a.more{text-align:center;text-decoration:none}
 .flag{width:18px;height:18px;border-radius:3px;flex:0 0 18px;display:inline-block;vertical-align:-3px}
 .tabs .tablink{display:inline-flex;align-items:center;padding:10px 14px;font-weight:600;font-size:15px;color:var(--accent);text-decoration:none;white-space:nowrap}
 .tabs .tablink:hover{text-decoration:underline}
+.art img.cover{display:block;width:100%;height:auto;aspect-ratio:1200/630;border-radius:var(--radius);margin:14px 0 6px;background:#0c1613}
+.card.post img.thumb{display:block;width:calc(100% + 32px);height:auto;aspect-ratio:1200/630;margin:-16px -16px 12px;border-radius:var(--radius) var(--radius) 0 0;object-fit:cover;background:#0c1613}
