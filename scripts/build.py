@@ -644,11 +644,16 @@ def info_block(lang, aid):
         if si.get('emp'): row(t['emp'], f"{si['emp']:,}".replace(',', ' '))
         if si.get('web'): links.append((si['web'], t['web']))
         desc = (si.get('ds') or {}).get('en')
-    if not rows and not links and not desc:
+    prof = PROFILES.get(lang, {}).get(aid)
+    if not rows and not links and not desc and not prof:
         return ''
     lk = ''.join(f'<a class="chip" href="{esc(u)}" target="_blank" rel="nofollow noopener">{esc(l)} ↗</a>' for u, l in links)
     about = ''
-    if desc or lk:
+    if prof:
+        about = (f'<section class="card iabout"><h2>{esc(prof.get("title") or (t["about"] + " " + nm(a, lang)))}</h2>'
+                 f'<div class="artbody iprof">{md(prof["body"], lang)}</div>'
+                 + (f'<h3>{esc(t["links"])}</h3><div class="ilinks">{lk}</div>' if lk else '') + '</section>')
+    elif desc or lk:
         about = (f'<section class="card iabout"><h2>{esc(t["about"])} {esc(nm(a, lang))}</h2>'
                  + (f'<details class="idesc"><summary><span class="ip">{esc(desc[:220])}{"…" if len(desc) > 220 else ""}</span><span class="im">{esc(t["more"])}</span></summary><p>{esc(desc)}</p></details>' if desc else '')
                  + (f'<h3>{esc(t["links"])}</h3><div class="ilinks">{lk}</div>' if lk else '') + '</section>')
@@ -1506,6 +1511,7 @@ def load_posts(sub='blog'):
 
 
 POSTS = load_posts()
+PROFILES = load_posts('profiles')   # own asset profiles: content/profiles/<lang>/<asset id>.md
 NEWS = load_posts('news')   # own news briefs: content/news/<lang>/<slug>.md
 
 
