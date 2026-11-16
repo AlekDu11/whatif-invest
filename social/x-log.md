@@ -9,4 +9,7 @@ Formats to rotate and compare: dca-whatif, mover, market-pulse, chart-fact, coun
 
 | when | format | topic | link | url | views | likes | reposts | replies |
 |---|---|---|---|---|---|---|---|---|
-| 2026-11-16 02:58 | dca-whatif | Gold vs S&P 500 vs Bitcoin, $10/day 5y | no | https://x.com/WhatIfStack/status/2122116675558355111 |  |  |  |  |
+| 2026-11-16 02:58 | dca-whatif | Gold vs S&P 500 vs Bitcoin, $10/day 5y | no | https://x.com/WhatIfStack/status/2122116675558355111 | 11 | 0 | 0 | 0 |
+| 2026-11-16 09:18 | market-pulse | Fear & Greed 10, BTC/ETH weekly drop, gold | no | https://x.com/WhatIfStack/status/2122227869095223565 |  |  |  |  |
+
+Week notes (2026-11-16): first week, only 1 post with stats (dca-whatif, 11 views) — no winner yet. Keep rotating formats to collect data; market-pulse tested today during the Extreme Fear sell-off.
