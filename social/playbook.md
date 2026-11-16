@@ -49,16 +49,22 @@ Past results, not a forecast.
 ```
 + card image; first reply: `Full numbers: https://whatifstack.com/en/<page>/`
 
-Telegram (link in the post, bold key figures):
+Telegram (owner-approved layout, see the "🏆 Weekly DCA leaderboard" post): airy, one item per line, blank line between blocks, NO disclaimer line (it is in the channel description):
 ```
-<emoji> **<Claim with a number>**
+**<emoji> <Claim with a number>**
 
-<2–3 sentences, **bold** numbers>
-• bullet with figure
-• bullet with figure
+<1–2 short sentences of context>
 
-👉 whatifstack.com/en/<page>/
-_Not investment advice._
+**Top 5**
+🥇 Item  +101.7% → $7,685
+🥈 Item  +95.3%
+…
+
+**For context**
+₿ Bitcoin  −12.2%
+🇺🇸 S&P 500  +4.1%
+
+👉 Full numbers: whatifstack.com/en/<page>/
 ```
 Instagram / Facebook: same card (4:5), caption = Telegram text without markdown, 3–6 hashtags (#dca #investing #bitcoin #stocks #gold …), link in bio (IG) or in text (FB).
 
