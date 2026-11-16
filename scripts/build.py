@@ -757,11 +757,16 @@ def side_block(lang, aid):
         dlang = 'en'
     prof = PROFILES.get(lang, {}).get(aid)
     what = T['c_' + a['cat']].format(name=nm(a, lang), tk=a['tk'])
+    own = DESC.get(lang, {}).get(aid)
+    if own:                          # our localized short description wins over source texts
+        desc, dlang = own, lang
+    elif dlang != lang:              # never show a foreign-language text: generic line + facts until translated
+        desc = None
     if prof:
         body = f'<div class="artbody iprof sclip">{md(prof["body"], lang)}</div>'
     elif desc:
         body = f'<p class="swhat">{esc(what)}</p><div class="sclip"{"" if dlang == lang else f" lang=\"{dlang}\""}><p>{esc(desc)}</p></div>'
-    elif a['cat'] in ('stock', 'etf') and tv_symbol(a):   # our description not fetched yet -> TradingView company profile
+    elif a['cat'] in ('stock', 'etf') and tv_symbol(a) and lang == 'en':   # no English description fetched yet -> TradingView profile
         body = tvw('symbol-profile', dict(width='100%', height='100%', isTransparent=True, colorTheme='light', symbol=tv_symbol(a), locale=TV_LOC.get(lang, 'en')), 400)
     else:
         body = f'<p class="swhat">{esc(what)}</p>'
@@ -1697,6 +1702,8 @@ def load_posts(sub='blog'):
 
 POSTS = load_posts()
 PROFILES = load_posts('profiles')   # own asset profiles: content/profiles/<lang>/<asset id>.md
+DESC = {f[:-5]: json.load(open(os.path.join(ROOT, 'data', 'desc', f), encoding='utf-8'))   # short localized descriptions: data/desc/<lang>.json {id: text}
+        for f in (os.listdir(os.path.join(ROOT, 'data', 'desc')) if os.path.isdir(os.path.join(ROOT, 'data', 'desc')) else []) if f.endswith('.json')}
 NEWS = load_posts('news')   # own news briefs: content/news/<lang>/<slug>.md
 
 
