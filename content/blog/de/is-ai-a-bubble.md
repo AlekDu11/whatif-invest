@@ -1,0 +1,98 @@
+---
+title: Ist KI eine Blase? Was Privatanleger aus dem Dotcom-Crash lernen können
+description: Ist der KI-Boom eine Blase? Beide Seiten der Debatte, was 2000–2002 mit dem Nasdaq passierte, wie lange die Erholung dauerte und warum ein Sparplan zählt.
+date: 2026-11-16
+category: ai
+assets: qqq, spy, nvda
+---
+Alle paar Wochen fragt eine neue Schlagzeile, ob künstliche Intelligenz eine Blase ist. Tech-Konzerne geben Hunderte Milliarden Dollar für Rechenzentren aus, Chipaktien haben ihren Wert vervielfacht, und einige wenige Riesenunternehmen machen inzwischen einen großen Teil des US-Aktienmarkts aus.
+
+Niemand kann sicher sagen, wie das ausgeht. Aber die Geschichte bietet Privatanlegern einen nützlichen Bezugspunkt: den Dotcom-Boom und -Crash von 1995–2002. Dieser Ratgeber stellt beide Seiten der heutigen Debatte vor und zeigt, was der frühere Crash lehren kann.
+
+## Was ist eine Blase, einfach erklärt?
+
+Eine Blase entsteht, wenn Preise weit über das steigen, was die dahinterstehenden Unternehmen realistisch verdienen können – vor allem, weil Menschen erwarten, dass die Preise weiter steigen. Im Zentrum steht meist eine echte, wichtige Technologie: die Eisenbahn in den 1840er-Jahren, das Internet in den 1990ern. Die Technologie überlebt. Viele Anleger, die zu viel dafür bezahlt haben, nicht.
+
+## Was dafür spricht, dass KI eine Blase ist
+
+Wer eine Blase befürchtet, verweist meist auf diese Anzeichen:
+
+- **Ausgaben weit vor den Einnahmen.** 2024 schätzte David Cahn, Partner bei Sequoia Capital, dass die KI-Branche rund 600 Mrd. $ Jahresumsatz bräuchte, um ihre Ausgaben für Rechenzentren zu rechtfertigen – weit mehr, als sie damals einnahm.
+- **Schwache Erträge bei vielen Unternehmen.** Ein viel zitierter MIT-Bericht von 2025 über KI-Projekte in Unternehmen kam zu dem Ergebnis, dass die meisten Pilotprojekte mit generativer KI noch keine messbaren finanziellen Erträge gebracht hatten.
+- **Kreisgeschäfte.** Chiphersteller haben in KI-Labore investiert, die dann ihre Chips kaufen, und Cloud-Anbieter haben Kunden finanziert, die ihre Rechenleistung mieten. Kritiker sagen, so könne die Nachfrage stärker wirken, als sie ist.
+- **Konzentration.** Eine Handvoll Tech-Riesen macht einen großen Teil des S&P 500 aus – ein Einbruch bei KI-Aktien würde also fast jeden Indexfonds treffen.
+- **Warnungen von Insidern und Behörden.** 2025 sagte OpenAI-Chef Sam Altman, er halte die Anleger beim Thema KI für übermäßig begeistert, und sowohl die Bank of England als auch der IWF warnten, dass überzogene KI-Bewertungen zu einer heftigen Marktkorrektur führen könnten.
+
+## Was dagegen spricht (zumindest noch)
+
+Die andere Seite argumentiert, dass sich die Lage heute in wichtigen Punkten von 2000 unterscheidet:
+
+- **Echte Gewinne.** 2000 hatten viele Internetfirmen kaum oder gar keinen Umsatz. Die heutigen KI-Führer – Microsoft, Alphabet, Amazon, Meta, Nvidia – gehören zu den profitabelsten Unternehmen der Welt.
+- **Ausgaben aus dem Cashflow bezahlt.** Ein großer Teil des Ausbaus der Rechenzentren wird aus den eigenen Gewinnen der großen Konzerne finanziert, nicht nur über neue Schulden oder Aktienverkäufe.
+- **Bewertungen hoch, aber nicht auf Dotcom-Niveau.** Auf dem Höhepunkt im Jahr 2000 wurde der Nasdaq-100 laut mehreren Marktanalysten zu weit höheren Kurs-Gewinn-Verhältnissen gehandelt als die größten Tech-Aktien heute.
+- **Echte Nachfrage.** Hunderte Millionen Menschen nutzen jede Woche KI-Werkzeuge, und Cloud-Anbieter sagen, dass sie vor allem dadurch gebremst werden, wie schnell sie Kapazität hinzufügen können.
+
+Beide Seiten können teilweise recht haben. Eine Technologie kann die Welt verändern – und ihre Aktienkurse können ihr trotzdem gleichzeitig zu weit vorauseilen.
+
+## Was im Dotcom-Crash passierte
+
+Die Zahlen von 2000–2002 sollte man kennen:
+
+- Der **Nasdaq Composite** erreichte am 10. März 2000 seinen Höchststand bei 5.048,62 Punkten und fiel bis zum 9. Oktober 2002 auf 1.114,11 – ein Minus von rund **78 %**.
+- Erst im **April 2015**, mehr als 15 Jahre später, schloss er wieder über seinem Hoch von 2000.
+- Nach unseren Monatsdaten für **QQQ** (den Nasdaq-100-Fonds) betrug der Rückgang von März 2000 bis September 2002 rund **81 %**, und es dauerte bis Ende 2014, bis das alte Hoch wieder erreicht war.
+- Berühmte Spitzenreiter fielen noch tiefer. Cisco, im Jahr 2000 kurzzeitig das wertvollste Unternehmen der Welt, verlor rund 86 % seines Werts, und der Aktienkurs lag danach mehr als zwei Jahrzehnte unter diesem Hoch.
+
+Das Internet selbst wuchs währenddessen weiter. Amazon fiel um mehr als 90 % und wurde später eines der größten Unternehmen der Welt. Viele andere gingen pleite. Bei der Technologie recht zu haben, reichte nicht.
+
+## Wie regelmäßiges Kaufen in den letzten 10 Jahren aussah
+
+So viel hätten 10 $ am Tag im Nasdaq-100 und im S&P 500 im letzten Jahrzehnt gebracht:
+
+{{table:qqq,spy:10}}
+
+Die letzten zehn Jahre waren für techlastige Indizes sehr gut. Genau deshalb ist die Blasenfrage wichtig: Starke vergangene Renditen geben das Gefühl, das Risiko sei gering – genau wie Ende der 1990er-Jahre.
+
+## Warum ein Sparplan (DCA) zählt, wenn eine Blase platzt
+
+Am schlechtesten erging es im Dotcom-Crash denen, die eine große Einmalsumme nahe dem Hoch im März 2000 in Tech-Aktien steckten und 2002 in Panik verkauften. Wer den Nasdaq-100 am Gipfel kaufte, wartete rund 15 Jahre, nur um wieder bei null zu sein.
+
+Wer jeden Monat weiter einen festen Betrag investierte, erlebte etwas ganz anderes. Seine Käufe in den Jahren 2001–2003 lagen zu Preisen 70–80 % unter dem Hoch, was seinen Durchschnittspreis stark senkte. Er war Jahre früher wieder im Plus als der Einmalanleger am Gipfel.
+
+Was das in der Praxis bedeutet:
+
+1. **Sie müssen die Blase nicht vorhersagen.** Regelmäßiges Kaufen verteilt Ihre Einstiege über Hochs und Tiefs.
+2. **Streuung ist im Boom wichtiger.** Ein breiter Fonds ist weniger anfällig als ein paar heiße Aktien.
+3. **Halten Sie Geld, das Sie bald brauchen, aus schwankungsreichen Anlagen heraus.**
+4. **Haben Sie einen Plan für einen Rückgang um 50 %**, bevor er eintritt. Würden Sie dann verkaufen, ist Ihre Position vielleicht zu groß.
+
+Verschiedene Startdaten – auch März 2000 – können Sie in unserem [Vergleichsrechner]({lang}/compare/) testen, und KI-Aktien, ETFs und Token verfolgen Sie auf der [KI-Übersicht]({lang}/ai/).
+
+## Häufige Fragen
+
+### Ist KI gerade eine Blase?
+
+Darüber gibt es keine Einigkeit. Manche Anleger und Zentralbanken sehen blasenartige Warnsignale, andere verweisen auf echte Gewinne und echte Nachfrage. Niemand kann zuverlässig bestimmen, wann eine Blase beginnt oder endet.
+
+### Wie stark fiel der Nasdaq nach 2000?
+
+Der Nasdaq Composite fiel von März 2000 bis Oktober 2002 um rund 78 % und brauchte bis 2015 für einen neuen Schlusskurs-Rekord.
+
+### Sollte ich meine KI-Aktien wegen des Blasengeredes verkaufen?
+
+Persönliche Beratung können wir nicht geben. Viele Langfristanleger legen vorher fest, welcher Anteil ihres Geldes in einem Thema für sie in Ordnung ist, und passen diesen Anteil an, statt den Gipfel erraten zu wollen.
+
+### Schützt ein Sparplan vor einem Crash?
+
+Er verhindert nicht, dass Ihre Anlagen fallen. Er senkt Ihren durchschnittlichen Kaufpreis während eines Rückgangs, was die Zeit bis zur Erholung meist verkürzt – verglichen mit einem Kauf von allem am Gipfel.
+
+## Quellen
+
+- [Historische Daten zum Nasdaq Composite – Nasdaq](https://www.nasdaq.com/market-activity/index/comp/historical)
+- [David Cahn, „AI's $600B Question“ – Sequoia Capital (2024)](https://www.sequoiacap.com/article/ais-600b-question/)
+- [MIT NANDA, „The GenAI Divide: State of AI in Business 2025“](https://nanda.media.mit.edu/)
+- [Bank of England – Protokoll des Financial Policy Committee, Oktober 2025](https://www.bankofengland.co.uk/financial-policy-summary-and-record/2025/october-2025)
+- [IWF – Global Financial Stability Report, Oktober 2025](https://www.imf.org/en/Publications/GFSR)
+- Kursdaten: monatliche Schlusskurse von Yahoo Finance, täglich auf WhatIfStack aktualisiert.
+
+*Keine Anlageberatung. Vergangene Entwicklungen garantieren keine zukünftigen Ergebnisse.*
