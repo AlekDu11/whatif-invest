@@ -7,6 +7,7 @@ window.REF = {
 window.REF_DEFAULT = {
   crypto: { url: '/go/binance', where: 'Binance' },
   metal:  { url: '/go/bybit', where: 'Bybit' },
-  stock:  { url: '', where: 'broker' },
-  etf:    { url: '', where: 'broker' },
+  stock:  { url: '/go/bybit', where: 'Bybit' },   // Bybit xStocks (tokenized US stocks) / TradFi; replace with a stock broker (Freedom24) when available
+  etf:    { url: '/go/bybit', where: 'Bybit' },
+  cmd:    { url: '/go/bybit', where: 'Bybit' },   // commodities via Bybit TradFi
 };
