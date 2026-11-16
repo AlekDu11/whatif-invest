@@ -83,6 +83,9 @@ FUT_EX = {'COMEX': ('GC', 'SI', 'HG', 'ALI'), 'NYMEX': ('PL', 'PA', 'CL', 'NG', 
 FUT_TV = {'PL=F': 'OANDA:XPTUSD', 'PA=F': 'OANDA:XPDUSD', 'HG=F': 'OANDA:XCUUSD', 'ZW=F': 'OANDA:WHEATUSD', 'ZC=F': 'OANDA:CORNUSD',
           'ZS=F': 'OANDA:SOYBNUSD', 'SB=F': 'OANDA:SUGARUSD', 'NG=F': 'OANDA:NATGASUSD', 'CL=F': 'OANDA:WTICOUSD', 'BZ=F': 'OANDA:BCOUSD'}
 
+# Exchanges whose charts TradingView does not allow in free embeds (they fall back to AAPL) -> our own chart
+TV_NOCHART = ('LSE:', 'BIST:', 'TSE:', 'KRX:', 'HKEX:', 'TWSE:', 'SET:', 'HOSE:', 'TADAWUL:', 'BMV:')
+
 
 def tv_symbol(a):
     if a['cat'] == 'crypto':
@@ -96,7 +99,7 @@ def tv_symbol(a):
     if y.startswith('MOEX:'):
         return y
     for suf, ex in (('.WA', 'GPW'), ('.DE', 'XETR'), ('.L', 'LSE'), ('.PA', 'EURONEXT'), ('.AS', 'EURONEXT'), ('.MC', 'BME'), ('.MI', 'MIL'),
-                    ('.IS', 'BIST'), ('.T', 'TSE'), ('.KS', 'KRX'), ('.NS', 'NSE'), ('.SA', 'BMFBOVESPA'), ('.HK', 'HKEX'), ('.SS', 'SSE'),
+                    ('.IS', 'BIST'), ('.T', 'TSE'), ('.KS', 'KRX'), ('.NS', 'BSE'), ('.SA', 'BMFBOVESPA'), ('.HK', 'HKEX'), ('.SS', 'SSE'),
                     ('.SZ', 'SZSE'), ('.TW', 'TWSE'), ('.JK', 'IDX'), ('.BK', 'SET'), ('.PS', 'PSE'), ('.VN', 'HOSE'), ('.SR', 'TADAWUL'),
                     ('.SW', 'SIX'), ('.TO', 'TSX'), ('.AX', 'ASX'), ('.MX', 'BMV')):
         if y.endswith(suf):
@@ -991,7 +994,14 @@ def asset(aid, lang, ver):
     w = S['w']
     loc = TV_LOC.get(lang, 'en')
     tvs = tv_symbol(a)
-    if tvs:
+    if tvs and tvs.startswith(TV_NOCHART):   # chart not embeddable: own chart, keep fundamentals
+        tv = own_chart(lang, a, aid)
+        tech_news = ''
+        if a['cat'] in ('stock', 'etf'):
+            tech_news = (f'<section class="card section"><h2>{X["fund"]} · {esc(tk)}</h2>'
+                         + tvw('financials', dict(isTransparent=True, displayMode='regular', width='100%', height='100%', colorTheme='light', symbol=tvs, locale=loc), 520)
+                         + '</section>')
+    elif tvs:
         tv = (f'<section class="card tvcard"><div class="charthead"><h2>{w["live_chart"]} · {esc(tk)}</h2><span class="livebadge"><i></i>{w["live"]}</span></div>'
               + tvw('advanced-chart', dict(autosize=True, symbol=tv_symbol(a), interval='D', timezone='Etc/UTC', theme='light', style='1', locale=loc,
                                            allow_symbol_change=False, hide_side_toolbar=True, withdateranges=True, save_image=False), 480) + '</section>')
