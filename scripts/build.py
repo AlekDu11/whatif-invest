@@ -764,7 +764,9 @@ def side_block(lang, aid):
         desc, dlang = own, lang
     elif dlang != lang:              # never show a foreign-language text: generic line + facts until translated
         desc = None
-    if prof:
+    if own:
+        body = f'<div class="sclip"><p>{esc(own)}</p></div>'
+    elif prof:
         body = f'<div class="artbody iprof sclip">{md(prof["body"], lang)}</div>'
     elif desc:
         body = f'<p class="swhat">{esc(what)}</p><div class="sclip"{"" if dlang == lang else f" lang=\"{dlang}\""}><p>{esc(desc)}</p></div>'
@@ -776,6 +778,22 @@ def side_block(lang, aid):
     return (f'<aside class="card side"><h2>{esc(nm(a, lang))} <span class="muted">{esc(a["tk"])}</span></h2>{body}'
             f'<button class="smore" type="button" data-less="{esc(t["less"])}" hidden>{esc(t["more"])}</button>'
             + (f'<div class="srows">{"".join(rows)}</div>' if rows else '') + (f'<div class="ilinks">{lk}</div>' if lk else '') + '</aside>')
+
+
+def long_block(lang, aid):
+    """Full description lower on the page (CryptoRank-style): our hand-written profile, or the source text in the page language."""
+    a, prof, own = A[aid], PROFILES.get(lang, {}).get(aid), DESC.get(lang, {}).get(aid)
+    if prof and own:
+        return (f'<section class="card section long"><h2>{esc(prof.get("title") or nm(a, lang))}</h2>'
+                f'<div class="artbody iprof">{md(prof["body"], lang)}</div></section>')
+    if a['cat'] == 'crypto':
+        src = (COININFO.get(a.get('cgid') or '', {}).get('ds') or {}).get(lang)
+    else:
+        src = (STOCKINFO.get(a.get('yahoo') or '', {}).get('ds') or {}).get('en') if lang == 'en' else None
+    if own and src and src.strip() != own.strip():
+        return (f'<section class="card section long"><h2>{esc(INF[lang]["about"])} {esc(nm(a, lang))}</h2>'
+                + ''.join(f'<p>{esc(x.strip())}</p>' for x in src.split('\n') if x.strip()) + '</section>')
+    return ''
 
 
 def info_block(lang, aid):
@@ -940,7 +958,7 @@ def asset(aid, lang, ver):
                           + '</section>')
     else:   # no free live chart for this symbol
         tv, tech_news = '', ''
-    body = (f'{head}<p class="lead" style="margin-top:10px">{S["a_lead"].format(**fe)}</p>{hot_block(lang, aid)}<div class="chartside section">{tv}{side_block(lang, aid)}</div>{hot_more(lang, aid)}<div class="stats">{stat_cards}</div><div class="stats">{lump_cards}</div>{seas_block(lang, aid)}{calc_block(lang)}{tech_news}'
+    body = (f'{head}<p class="lead" style="margin-top:10px">{S["a_lead"].format(**fe)}</p>{hot_block(lang, aid)}<div class="chartside section">{tv}{side_block(lang, aid)}</div>{hot_more(lang, aid)}<div class="stats">{stat_cards}</div><div class="stats">{lump_cards}</div>{long_block(lang, aid)}{seas_block(lang, aid)}{calc_block(lang)}{tech_news}'
             f'<div class="cols2 section"><section class="card"><h2>{S["a_periods"].format(**fe)}</h2>{ptable}</section>'
             f'<section class="card faq"><h2>{S["faq"]}</h2>' + ''.join(f'<details><summary>{esc(q)}</summary><p>{esc(x)}</p></details>' for q, x in faq) + '</section></div>'
             f'<section class="section">{table_block(lang, sim, S["a_similar"] + ": " + esc(cat), interactive=False)}</section>'
