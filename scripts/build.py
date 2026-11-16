@@ -6,7 +6,7 @@ Output: per language — home, compare and asset pages; index.js, per-asset pric
 Only the Python standard library is used, so it runs in Vercel's build image as is.
 Run: python3 scripts/build.py
 """
-import calendar, hashlib, html, json, math, os, shutil, sys
+import calendar, hashlib, html, json, math, os, re as _re, shutil, sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from i18n import LANGS as TR, ORDER, FULL, DEFAULT  # noqa: E402
@@ -25,7 +25,7 @@ from i18n_act import ACT  # noqa: E402
 from i18n_prof import P as PROF_T  # noqa: E402
 from i18n_pf import PF  # noqa: E402
 from i18n_bp import BP  # noqa: E402
-from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB  # noqa: E402
+from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB, CH as OWN_CH  # noqa: E402
 SOCIAL = [('Telegram', 'https://t.me/TradeMaster_insight'), ('X (Twitter)', 'https://x.com/WhatIfStack'), ('Bluesky', 'https://bsky.app/profile/whatifstack.bsky.social'), ('Instagram', 'https://www.instagram.com/whatifstack/'), ('Threads', 'https://www.threads.com/@whatifstack'),
           ('Pinterest', 'https://www.pinterest.com/whatifstack/'), ('Medium', 'https://medium.com/@whatifstack'),
           ('Flipboard', 'https://flipboard.com/@whatifstack'), ('Facebook', 'https://www.facebook.com/arti.trader.39'), ('Teletype', 'https://teletype.in/@whatifstack'),
@@ -466,6 +466,55 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
 
 def tvw(kind, cfg, height):
     return f'<div class="tvw" style="height:{height}px" data-w="{kind}" data-cfg="{esc(json.dumps(cfg))}"></div>'
+
+
+def own_chart(lang, a, aid):
+    """Monthly price chart drawn from our own data (no TradingView symbol available). CSS-only range tabs."""
+    ps, st = a.get('p') or [], a.get('start')
+    if len(ps) < 3 or not st:
+        return ''
+    y0, m0 = map(int, st.split('-'))
+    W, H, L, R, T, B = 720, 300, 8, 80, 12, 26
+    uid = 'oc' + _re.sub(r'[^a-z0-9]', '', aid)
+    rngs = [(n, n * 12) for n in (1, 3, 5, 10) if len(ps) > n * 12 - 1] + [(0, len(ps))]
+    rngs = [r for i, r in enumerate(rngs) if r[1] not in [x[1] for x in rngs[:i]]]
+    tabs, svgs = '', ''
+    for i, (n, k) in enumerate(rngs):
+        k = max(2, min(k, len(ps)))
+        seg = ps[-k:]
+        off = len(ps) - k
+        lo, hi = min(seg), max(seg)
+        pad = (hi - lo) * 0.08 or hi * 0.05 or 1
+        lo, hi = max(0, lo - pad), hi + pad
+        X = lambda j: L + (W - L - R) * j / (k - 1)
+        Y = lambda v: T + (H - T - B) * (1 - (v - lo) / (hi - lo))
+        pts = ' '.join(f'{X(j):.1f},{Y(v):.1f}' for j, v in enumerate(seg))
+        up = seg[-1] >= seg[0]
+        col = '#16a34a' if up else '#dc2626'
+        grid = ''
+        for g in range(5):
+            v = lo + (hi - lo) * g / 4
+            yy = Y(v)
+            lv = f'${v:,.0f}' if v >= 100 else (f'${v:,.2f}' if v >= 1 else f'${v:.4g}')
+            grid += f'<line x1="{L}" x2="{W - R}" y1="{yy:.1f}" y2="{yy:.1f}" class="g"/><text x="{W - R + 6}" y="{yy + 4:.1f}">{lv}</text>'
+        step = max(1, round(k / 12 / 6)) * 12 if k > 24 else (3 if k > 6 else 1)
+        for j in range(k):
+            mi = m0 - 1 + off + j
+            yy, mm = y0 + mi // 12, mi % 12 + 1
+            if (k > 24 and mm == 1 and (yy % (step // 12) == 0)) or (k <= 24 and (mi % step == 0)):
+                lab = str(yy) if k > 24 else f'{mm:02d}.{str(yy)[2:]}'
+                if L + 18 < X(j) < W - R - 18:
+                    grid += f'<text x="{X(j):.1f}" y="{H - 6}" text-anchor="middle">{lab}</text>'
+        chg = (seg[-1] / seg[0] - 1) if seg[0] else 0
+        lab = OWN_CH[lang][1] if n == 0 else BP[lang]['yrs'].format(n=n)
+        tabs += (f'<input type="radio" name="{uid}" id="{uid}{i}"{" checked" if i == len(rngs) - 1 else ""}>'
+                 f'<label for="{uid}{i}">{esc(lab)}</label>')
+        svgs += (f'<div class="ocv"><div class="occhg {"up" if up else "dn"}">{pct(chg)}</div>'
+                 f'<svg viewBox="0 0 {W} {H}" role="img" aria-label="{esc(OWN_CH[lang][0])}">{grid}'
+                 f'<polygon points="{X(0):.1f},{H - B} {pts} {X(k - 1):.1f},{H - B}" fill="{col}" opacity=".08"/>'
+                 f'<polyline points="{pts}" fill="none" stroke="{col}" stroke-width="2" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></svg></div>')
+    return (f'<section class="card tvcard ownchart"><div class="charthead"><h2>{esc(OWN_CH[lang][0])} · {esc(a["tk"])}</h2></div>'
+            f'<div class="oc">{tabs}<div class="ocs">{svgs}</div></div></section>')
 
 
 def calc_block(lang):
@@ -956,8 +1005,8 @@ def asset(aid, lang, ver):
             tech_news += (f'<section class="card section"><h2>{X["fund"]} · {esc(tk)}</h2>'
                           + tvw('financials', dict(isTransparent=True, displayMode='regular', width='100%', height='100%', colorTheme='light', symbol=tv_symbol(a), locale=loc), 520)
                           + '</section>')
-    else:   # no free live chart for this symbol
-        tv, tech_news = '', ''
+    else:   # no free live chart for this symbol -> our own monthly chart
+        tv, tech_news = own_chart(lang, a, aid), ''
     body = (f'{head}<p class="lead" style="margin-top:10px">{S["a_lead"].format(**fe)}</p>{hot_block(lang, aid)}<div class="chartside section">{tv}{side_block(lang, aid)}</div>{hot_more(lang, aid)}<div class="stats">{stat_cards}</div><div class="stats">{lump_cards}</div>{long_block(lang, aid)}{seas_block(lang, aid)}{calc_block(lang)}{tech_news}'
             f'<div class="cols2 section"><section class="card"><h2>{S["a_periods"].format(**fe)}</h2>{ptable}</section>'
             f'<section class="card faq"><h2>{S["faq"]}</h2>' + ''.join(f'<details><summary>{esc(q)}</summary><p>{esc(x)}</p></details>' for q, x in faq) + '</section></div>'
@@ -1699,7 +1748,7 @@ def tool(lang, slug, ver):
 
 
 # ---------------- blog ----------------
-import re as _re
+import re as _re  # noqa: E402
 
 
 def load_posts(sub='blog'):

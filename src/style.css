@@ -525,3 +525,12 @@ a.more{text-align:center;text-decoration:none}
 .bpa{display:inline-flex;align-items:center;gap:6px;padding:4px 10px 4px 4px;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:var(--text);font-size:13px;font-weight:600}
 .bpa .ic{width:22px;height:22px;font-size:10px}.bpnote{font-size:12.5px;margin:10px 0 0}
 .long p{line-height:1.7;margin:0 0 10px;color:var(--text)}.long{max-width:none}
+.oc{position:relative}.oc>input{position:absolute;opacity:0;pointer-events:none}
+.oc>label{display:inline-block;padding:5px 11px;margin:0 4px 8px 0;border:1px solid var(--line);border-radius:999px;font-size:13px;cursor:pointer;color:var(--muted)}
+.oc>input:checked+label{background:var(--text);color:var(--card);border-color:transparent}
+.oc>input:focus-visible+label{outline:2px solid #16a34a;outline-offset:2px}
+.ocv{display:none;position:relative}.ocs svg{width:100%;height:auto;display:block}
+.ocs text{font-size:11px;fill:var(--muted)}.ocs .g{stroke:var(--line);stroke-width:1;vector-effect:non-scaling-stroke}
+.occhg{position:absolute;top:-34px;right:0;font-weight:700;font-size:14px}.occhg.up{color:#16a34a}.occhg.dn{color:#dc2626}
+.oc>input:nth-of-type(1):checked~.ocs>.ocv:nth-child(1),.oc>input:nth-of-type(2):checked~.ocs>.ocv:nth-child(2),.oc>input:nth-of-type(3):checked~.ocs>.ocv:nth-child(3),.oc>input:nth-of-type(4):checked~.ocs>.ocv:nth-child(4),.oc>input:nth-of-type(5):checked~.ocs>.ocv:nth-child(5){display:block}
+@media (max-width:600px){.ocs text{font-size:17px}}

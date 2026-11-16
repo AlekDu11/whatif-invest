@@ -100,3 +100,14 @@ AB = {
  'fil': ('Ang {name} ({tk}) ay nasa kategoryang “{cat}”. Kasaysayan ng presyo sa WhatIfStack: mula {since}.', 'Ang pinakamataas na buwanang sara ay {hi} ({hid}); ngayon ay {dd} na mas mababa ang presyo sa tuktok na iyon.', 'Nasa tuktok ng buwanang chart ang presyo ({hi}).', 'Sa huling {n} buwan, {pos} ang nagsara nang mas mataas.', 'Pinakamagandang taon: {by} ({br}); pinakamasama: {wy} ({wr}).'),
 }
 assert len(AB) == 20 and all(len(v) == 5 for v in AB.values())
+
+# Own monthly price chart for assets without a free TradingView symbol: (title, "all time")
+CH = {
+ 'uk': ('Графік ціни (щомісяця)', 'Усе'), 'en': ('Price chart (monthly)', 'All'), 'ru': ('График цены (помесячно)', 'Всё'),
+ 'es': ('Gráfico de precio (mensual)', 'Todo'), 'pt': ('Gráfico de preço (mensal)', 'Tudo'), 'de': ('Kursverlauf (monatlich)', 'Alles'),
+ 'fr': ('Graphique du prix (mensuel)', 'Tout'), 'it': ('Grafico del prezzo (mensile)', 'Tutto'), 'pl': ('Wykres ceny (miesięczny)', 'Całość'),
+ 'tr': ('Fiyat grafiği (aylık)', 'Tümü'), 'nl': ('Koersgrafiek (maandelijks)', 'Alles'), 'id': ('Grafik harga (bulanan)', 'Semua'),
+ 'vi': ('Biểu đồ giá (theo tháng)', 'Tất cả'), 'th': ('กราฟราคา (รายเดือน)', 'ทั้งหมด'), 'hi': ('कीमत चार्ट (मासिक)', 'सभी'),
+ 'ja': ('価格チャート（月次）', '全期間'), 'ko': ('가격 차트 (월별)', '전체'), 'zh': ('价格走势（月度）', '全部'),
+ 'ar': ('مخطط السعر (شهري)', 'الكل'), 'fil': ('Tsart ng presyo (buwanan)', 'Lahat'),
+}
