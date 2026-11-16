@@ -335,7 +335,8 @@ def cover(kind, lang, slug):
 # Microsoft Clarity (heatmaps): loaded only after the page has finished loading and the browser is idle, so it never slows the first paint
 CLARITY = ('<script>addEventListener("load",function(){var go=function(){(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};'
            't=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","zekg137lbv")};window.requestIdleCallback?requestIdleCallback(go,{timeout:3000}):setTimeout(go,1500)})</script>')
-AHREFS = '<meta name="ahrefs-site-verification" content="f5a16ec7b7cfa87b5d531c2c5286aac58ddf73ffe836a8b623afe21b43719d5a">'   # Ahrefs Webmaster Tools ownership
+AHREFS = ('<meta name="ahrefs-site-verification" content="f5a16ec7b7cfa87b5d531c2c5286aac58ddf73ffe836a8b623afe21b43719d5a">'
+          '<meta name="p:domain_verify" content="a0820406d681ddd5d800b84175a15303">')   # + Pinterest site claim   # Ahrefs Webmaster Tools ownership
 
 
 def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
