@@ -59,9 +59,9 @@ Pages like [Ukraine]({lang}/stocks-ukraine/), [Poland]({lang}/stocks-poland/), [
 - [AI sector]({lang}/ai/): AI stocks and AI coins, and what a basket of them would have returned.
 - [Memecoins]({lang}/memes/): trending tokens on decentralised exchanges, live. These are extremely risky.
 
-## Your watchlist, DCA plans and portfolio
+## My portfolio, watchlist and DCA plans
 
-Tap the ☆ next to any asset to add it to [your watchlist]({lang}/me/). On the same page you can save DCA plans (amount, frequency, start date) and keep a simple portfolio: add how much you put into each asset and see the total and its split. Everything is stored in your browser — no account needed.
+Every asset page has an **＋ Add to portfolio** button: enter an amount (or quantity) and the month you bought — the asset appears in [my portfolio]({lang}/me/). There you see the total value, profit, 24h change and each asset's share. Buttons on every row: **＋** buy more, **−** sell part or all (realized profit is shown separately), **▾** history of buys and sells — any entry can be removed. Tap ☆ to add an asset to your watchlist, and save DCA plans (amount, frequency, start date) below. Everything stays in your browser with no sign-up — "Save a backup" downloads a file and "Restore backup" moves your portfolio to another device.
 
 ## Activities: airdrops and campaigns
 
