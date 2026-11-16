@@ -22,7 +22,7 @@ from i18n_ai import AI as AIS  # noqa: E402
 from i18n_me import ME  # noqa: E402
 from i18n_mem import MEM  # noqa: E402
 from i18n_act import ACT  # noqa: E402
-from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE  # noqa: E402
+from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB  # noqa: E402
 SOCIAL = [('X (Twitter)', 'https://x.com/WhatIfStack'), ('Bluesky', 'https://bsky.app/profile/whatifstack.bsky.social'),
           ('Pinterest', 'https://www.pinterest.com/whatifstack/'), ('Medium', 'https://medium.com/@whatifstack'),
           ('Flipboard', 'https://flipboard.com/@whatifstack'), ('GitHub', 'https://github.com/AlekDu11/whatif-invest')]
@@ -661,6 +661,42 @@ def fnum(v):
     return f"{v:,.0f}"
 
 
+def auto_about(lang, aid):
+    """Plain-language facts from the monthly price series, for assets without a written profile (20 languages)."""
+    a, T, S = A[aid], AUTO_AB[lang], TR[lang]
+    p = [v for v in (a.get('p') or [])]
+    if len(p) < 3:
+        return ''
+    y0, m0 = map(int, a['start'].split('-'))
+    def lab(k):
+        y, m = y0 + (m0 - 1 + k) // 12, (m0 - 1 + k) % 12 + 1
+        return {'ja': f'{y}年{m}月', 'zh': f'{y}年{m}月', 'ko': f'{y}년 {m}월'}.get(lang) or f"{S['months'][m - 1]} {y}"
+    ok = [(k, v) for k, v in enumerate(p) if v]
+    if len(ok) < 3:
+        return ''
+    k0 = ok[0][0]
+    out = [T[0].format(name=nm(a, lang), tk=a['tk'], cat=S['cat_' + a['cat']], since=lab(k0))]
+    kh, hi = max(ok, key=lambda kv: kv[1])
+    last = ok[-1][1]
+    out.append(T[2].format(hi=price(hi)) if kh == ok[-1][0] else T[1].format(hi=price(hi), hid=lab(kh), dd=f"{(1 - last / hi) * 100:.0f}%"))
+    tail = ok[-13:]
+    n = len(tail) - 1
+    if n >= 6:
+        out.append(T[3].format(n=n, pos=sum(1 for (_, x), (_, y) in zip(tail, tail[1:]) if y > x)))
+    yr = {}
+    for k, v in ok:
+        yr.setdefault(y0 + (m0 - 1 + k) // 12, []).append((k, v))
+    prev, rets = None, {}
+    for y in sorted(yr):
+        if prev is not None and (m0 - 1 + yr[y][-1][0]) % 12 == 11:   # full calendar years only
+            rets[y] = yr[y][-1][1] / prev - 1
+        prev = yr[y][-1][1]
+    if len(rets) >= 2:
+        by, wy = max(rets, key=rets.get), min(rets, key=rets.get)
+        out.append(T[4].format(by=by, br=pct(rets[by]), wy=wy, wr=pct(rets[wy])))
+    return ' '.join(out)
+
+
 def info_block(lang, aid):
     a, t = A[aid], INF[lang]
     rows, links, desc = [], [], None
@@ -702,7 +738,8 @@ def info_block(lang, aid):
         if si.get('web'): links.append((si['web'], t['web']))
         desc = (si.get('ds') or {}).get('en')
     prof = PROFILES.get(lang, {}).get(aid)
-    if not rows and not links and not desc and not prof:
+    auto = '' if prof else auto_about(lang, aid)
+    if not rows and not links and not desc and not prof and not auto:
         return ''
     lk = ''.join(f'<a class="chip" href="{esc(u)}" target="_blank" rel="nofollow noopener">{esc(l)} ↗</a>' for u, l in links)
     about = ''
@@ -710,8 +747,9 @@ def info_block(lang, aid):
         about = (f'<section class="card iabout"><h2>{esc(prof.get("title") or (t["about"] + " " + nm(a, lang)))}</h2>'
                  f'<div class="artbody iprof">{md(prof["body"], lang)}</div>'
                  + (f'<h3>{esc(t["links"])}</h3><div class="ilinks">{lk}</div>' if lk else '') + '</section>')
-    elif desc or lk:
+    elif desc or lk or auto:
         about = (f'<section class="card iabout"><h2>{esc(t["about"])} {esc(nm(a, lang))}</h2>'
+                 + (f'<p class="iauto">{esc(auto)}</p>' if auto else '')
                  + (f'<details class="idesc"><summary><span class="ip">{esc(desc[:220])}{"…" if len(desc) > 220 else ""}</span><span class="im">{esc(t["more"])}</span></summary><p>{esc(desc)}</p></details>' if desc else '')
                  + (f'<h3>{esc(t["links"])}</h3><div class="ilinks">{lk}</div>' if lk else '') + '</section>')
     stats = f'<section class="card istats"><h2>{esc(t["title"])}</h2>{"".join(rows)}</section>' if rows else ''
