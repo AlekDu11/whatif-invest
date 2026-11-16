@@ -480,7 +480,7 @@ new MutationObserver(()=>{ clearTimeout(window._wiStar); window._wiStar=setTimeo
     box.innerHTML=`<div class="tw"><table class="mt"><thead><tr><th class="l">${esc(T.name||'')}</th><th>${esc(T.price||'')}</th><th>${esc(T.chg||'')}</th><th class="hide-sm">${esc(T.d1||'')}</th><th>${esc(T.d5||'')}</th><th class="hide-sm">${esc(T.spark||'')}</th></tr></thead><tbody>`+
       w.map(i=>{ const a=BYID[i]; return `<tr><td class="l"><button class="star" data-s="${a.i}">★</button><a class="asset" href="${url(a.i)}">${icon(a)}<span><span class="nm">${esc(nm(a))}</span><span class="tk">${esc(a.t)}</span></span></a></td>
         <td class="num" data-p="${a.i}">${fmtPrice(a.pr)}</td><td class="num ${cls(a.ch)}" data-c="${a.i}">${fmtPct(a.ch)}</td><td class="num hide-sm ${cls(a.r1)}">${fmtPct(a.r1)}</td><td><span class="pill ${cls(a.r5)}">${fmtPct(a.r5)}</span></td><td class="hide-sm">${spark(a.sp)}</td></tr>` }).join('')+'</tbody></table></div>' }
-  /* simple portfolio (holdings) */
+  /* portfolio (holdings): buy, buy more, sell part, history, backup */
   const HL={ get(){ try{ return JSON.parse(localStorage.getItem('wi_hold')||'[]') }catch(e){ return [] } }, set(v){ try{ localStorage.setItem('wi_hold',JSON.stringify(v)) }catch(e){} } };
   const PAL=['#1a6dff','#f59e0b','#14a44d','#e5484d','#8b5cf6','#0ea5e9','#ec4899','#64748b','#84cc16','#f97316'];
   $('#hmode').onchange=()=>{ $('#hunit').textContent=$('#hmode').value==='qty'?'':(new Intl.NumberFormat(T.intl||'en',{style:'currency',currency:C.code}).formatToParts(1).find(p=>p.type==='currency')||{}).value||C.code };
@@ -489,23 +489,42 @@ new MutationObserver(()=>{ clearTimeout(window._wiStar); window._wiStar=setTimeo
     const a=BYID[id]; let px=a.pr;
     if(d<END){ try{ const P=await load(id), k=ym2i(d)-ym2i(P.start); if(k>=0&&k<P.p.length) px=P.p[k] }catch(e){} }
     const qty=$('#hmode').value==='qty'?v:(v/C.rate)/px, cost=qty*px;
-    const h=HL.get(); h.push({id,qty,cost,d}); HL.set(h); $('#ha').value=''; $('#ha').classList.remove('bad'); drawHold() };
+    const h=HL.get(); h.push({id,qty,cost,d,px}); HL.set(h); $('#ha').value=''; $('#ha').classList.remove('bad'); drawHold() };
+  const open=new Set();
   function drawHold(){
-    const raw=HL.get(), agg={};
-    raw.forEach(x=>{ if(!BYID[x.id]) return; const g=agg[x.id]||(agg[x.id]={id:x.id,qty:0,cost:0}); g.qty+=x.qty; g.cost+=x.cost });
-    const L=Object.values(agg).map(g=>{ const a=BYID[g.id]; return Object.assign(g,{a,val:g.qty*a.pr}) }).sort((x,y)=>y.val-x.val);
+    const raw=HL.get(), agg={}; let realized=0;
+    raw.forEach((x,k)=>{ if(!BYID[x.id]) return; const g=agg[x.id]||(agg[x.id]={id:x.id,qty:0,cost:0,tx:[]}); g.qty+=x.qty; g.cost+=x.cost; g.tx.push(Object.assign({k},x)); realized+=x.r||0 });
+    const L=Object.values(agg).filter(g=>g.qty>1e-12).map(g=>{ const a=BYID[g.id]; return Object.assign(g,{a,val:g.qty*a.pr}) }).sort((x,y)=>y.val-x.val);
     if(!L.length){ $('#hold').innerHTML=`<p class="muted">${esc(t.hempty)}</p>`; $('#htot').innerHTML=''; $('#abar').innerHTML=''; return }
     const tv=L.reduce((s,g)=>s+g.val,0), tc=L.reduce((s,g)=>s+g.cost,0), d24=L.reduce((s,g)=>s+g.val*(g.a.ch||0)/(1+(g.a.ch||0)),0), roi=tc?tv/tc-1:0;
     $('#htot').innerHTML=`<div class="card"><div class="k">${esc(t.total)}</div><div class="v">${nf(tv*C.rate)}</div><div class="s">${esc(T.invested||'')}: ${nf(tc*C.rate)}</div></div>
       <div class="card"><div class="k">${esc(t.profit)}</div><div class="v ${cls(roi)}">${fmtPct(roi)}</div><div class="s ${cls(roi)}">${nf((tv-tc)*C.rate)}</div></div>
-      <div class="card"><div class="k">${esc(T.chg||'24h')}</div><div class="v ${cls(d24)}">${fmtPct(tv-d24?d24/(tv-d24):0)}</div><div class="s ${cls(d24)}">${nf(d24*C.rate)}</div></div>`;
+      <div class="card"><div class="k">${esc(T.chg||'24h')}</div><div class="v ${cls(d24)}">${fmtPct(tv-d24?d24/(tv-d24):0)}</div><div class="s ${cls(d24)}">${nf(d24*C.rate)}</div></div>`
+      +(realized?`<div class="card"><div class="k">${esc(t.realized)}</div><div class="v ${cls(realized)}">${nf(realized*C.rate)}</div></div>`:'');
     $('#abar').innerHTML=L.map((g,i)=>`<i style="width:${(g.val/tv*100).toFixed(2)}%;background:${PAL[i%PAL.length]}" title="${esc(g.a.t)} ${(g.val/tv*100).toFixed(1)}%"></i>`).join('');
-    $('#hold').innerHTML=`<div class="tw"><table class="mt"><thead><tr><th class="l">${esc(T.name||'')}</th><th class="hide-sm">${esc(t.qty)}</th><th class="hide-sm">${esc(t.avg)}</th><th>${esc(T.value||'')}</th><th>${esc(t.profit)}</th><th class="hide-sm">${esc(T.chg||'')}</th><th class="hide-sm">${esc(t.share)}</th><th></th></tr></thead><tbody>`+
-      L.map((g,i)=>{ const r=g.cost?g.val/g.cost-1:0; return `<tr><td class="l"><i class="dot" style="background:${PAL[i%PAL.length]}"></i><a class="asset" href="${url(g.id)}">${icon(g.a)}<span><span class="nm">${esc(nm(g.a))}</span><span class="tk">${esc(g.a.t)}</span></span></a></td>
-        <td class="num hide-sm">${(+g.qty.toPrecision(6)).toLocaleString(T.intl||'en')}</td><td class="num hide-sm">${fmtPrice(g.cost/g.qty)}</td><td class="num"><b>${nf(g.val*C.rate)}</b></td>
+    const q=v=>v.toLocaleString(T.intl||'en',{maximumSignificantDigits:6});
+    $('#hold').innerHTML=`<div class="tw"><table class="mt pft"><thead><tr><th class="l">${esc(T.name||'')}</th><th class="hide-sm">${esc(t.qty)}</th><th class="hide-sm">${esc(t.avg)}</th><th>${esc(T.value||'')}</th><th>${esc(t.profit)}</th><th class="hide-sm">${esc(T.chg||'')}</th><th class="hide-sm">${esc(t.share)}</th><th></th></tr></thead><tbody>`+
+      L.map((g,i)=>{ const r=g.cost?g.val/g.cost-1:0, op=open.has(g.id);
+        return `<tr><td class="l"><i class="dot" style="background:${PAL[i%PAL.length]}"></i><a class="asset" href="${url(g.id)}">${icon(g.a)}<span><span class="nm">${esc(nm(g.a))}</span><span class="tk">${esc(g.a.t)}</span></span></a></td>
+        <td class="num hide-sm">${q(g.qty)}</td><td class="num hide-sm">${fmtPrice(g.cost/g.qty)}</td><td class="num"><b>${nf(g.val*C.rate)}</b></td>
         <td class="num ${cls(r)}">${fmtPct(r)}<br><small>${nf((g.val-g.cost)*C.rate)}</small></td><td class="num hide-sm ${cls(g.a.ch)}">${fmtPct(g.a.ch)}</td><td class="num hide-sm">${(g.val/tv*100).toFixed(1)}%</td>
-        <td><button class="toggle" data-hdel="${g.id}" aria-label="${esc(t.remove)}">✕</button></td></tr>` }).join('')+'</tbody></table></div>';
+        <td class="pfact"><button class="pb" data-buy="${g.id}" title="${esc(t.buy)}">＋</button><button class="pb" data-sell="${g.id}" title="${esc(t.sell)}">−</button><button class="pb" data-hist="${g.id}" title="${esc(t.txs)}">${op?'▴':'▾'}</button></td></tr>`
+        +`<tr class="pfx" data-x="${g.id}" hidden><td colspan="8"><div class="pfsell"><input type="number" min="0" step="any" placeholder="${esc(t.amount)} (${esc(C.code)})"><button class="btn" data-go="${g.id}">${esc(t.sell)}</button><button class="btn ghost" data-all="${g.id}">${esc(t.sell_all)}</button></div></td></tr>`
+        +(op?`<tr class="pfh"><td colspan="8">`+g.tx.map(x=>`<div class="tx"><span class="${x.qty<0?'bad':'good'}">${esc(x.qty<0?t.sold:t.bought)}</span><span>${esc(x.d||'')}</span><span>${q(Math.abs(x.qty))} ${esc(g.a.t)}</span><span>${nf(Math.abs(x.qty)*(x.px||Math.abs(x.cost/x.qty))*C.rate)}</span>${x.r?`<span class="${cls(x.r)}">${nf(x.r*C.rate)}</span>`:'<span></span>'}<button class="toggle" data-tx="${x.k}" aria-label="${esc(t.remove)}">✕</button></div>`).join('')+`<div class="tx"><span></span><span></span><span></span><span></span><span></span><button class="toggle" data-hdel="${g.id}" title="${esc(t.remove)}">🗑</button></div></td></tr>`:'') }).join('')+'</tbody></table></div>';
+    const sell=(id,usd,all)=>{ const g=agg[id], a=BYID[id], avg=g.cost/g.qty; let qq=all?g.qty:Math.min(g.qty,usd/a.pr); if(!(qq>0)) return;
+      const h=HL.get(); h.push({id,qty:-qq,cost:-avg*qq,d:END,px:a.pr,r:(a.pr-avg)*qq}); HL.set(h); drawHold() };
+    $$('#hold [data-buy]').forEach(b=>b.onclick=()=>{ const a=BYID[b.dataset.buy]; $('#ha').value=`${nm(a)} (${a.t})`; $('#hmode').value='sum'; $('#hdate').value=END; $('#holdform').scrollIntoView({behavior:'smooth',block:'center'}); setTimeout(()=>$('#hamt').focus(),400) });
+    $$('#hold [data-sell]').forEach(b=>b.onclick=()=>{ const r=$(`#hold tr.pfx[data-x="${b.dataset.sell}"]`); r.hidden=!r.hidden; if(!r.hidden) r.querySelector('input').focus() });
+    $$('#hold [data-go]').forEach(b=>b.onclick=()=>{ const v=+b.parentNode.querySelector('input').value; if(v>0) sell(b.dataset.go,v/C.rate,false) });
+    $$('#hold [data-all]').forEach(b=>b.onclick=()=>sell(b.dataset.all,0,true));
+    $$('#hold [data-hist]').forEach(b=>b.onclick=()=>{ const id=b.dataset.hist; open.has(id)?open.delete(id):open.add(id); drawHold() });
+    $$('#hold [data-tx]').forEach(b=>b.onclick=()=>{ const h=HL.get(); h.splice(+b.dataset.tx,1); HL.set(h); drawHold() });
     $$('#hold [data-hdel]').forEach(b=>b.onclick=()=>{ HL.set(HL.get().filter(x=>x.id!==b.dataset.hdel)); drawHold() }) }
+  // backup / restore (data lives only in this browser)
+  $('#pfexp')&&($('#pfexp').onclick=()=>{ const data={v:1,hold:HL.get(),plans:PL.get(),watch:WL.get()}; const a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,1)],{type:'application/json'})); a.download='whatifstack-portfolio.json'; a.click() });
+  $('#pfimp')&&($('#pfimp').onchange=e=>{ const f=e.target.files[0]; if(!f) return; f.text().then(s=>{ const d=JSON.parse(s);
+    if(Array.isArray(d.hold)) HL.set(d.hold); if(Array.isArray(d.plans)) PL.set(d.plans); if(Array.isArray(d.watch)) WL.set(d.watch); drawHold(); drawPlans(); drawWatch() }).catch(()=>{}) });
   let ht; document.addEventListener('wi:tick',()=>{ clearTimeout(ht); ht=setTimeout(drawHold,1500) });
   document.addEventListener('wi:watch',drawWatch); drawWatch(); drawPlans(); drawHold();
 })();
@@ -598,8 +617,6 @@ new MutationObserver(()=>{ clearTimeout(window._wiStar); window._wiStar=setTimeo
       `</tbody></table><p class="muted" style="font-size:12px;margin:8px 0 0">${esc(t.dnote)}</p>` }
   const io=new IntersectionObserver(es=>{ if(es.some(e=>e.isIntersecting)){ io.disconnect(); draw() } },{rootMargin:'400px'}); io.observe(box);
 })();
-})();
-
 // About card next to the chart: clip long descriptions with a "show more" toggle
 document.querySelectorAll('.side').forEach(sd => {
   const c = sd.querySelector('.sclip'), b = sd.querySelector('.smore');
@@ -607,3 +624,22 @@ document.querySelectorAll('.side').forEach(sd => {
   c.classList.add('clip'); b.hidden = false; const more = b.textContent;
   b.addEventListener('click', () => { const o = sd.classList.toggle('open'); b.textContent = o ? b.dataset.less : more; });
 });
+
+/* ---------- "Add to portfolio" button on asset pages ---------- */
+document.addEventListener('click',async e=>{
+  const b=e.target.closest('.addpf'); if(!b) return; const C=JSON.parse(b.dataset.cfg), id=b.dataset.add, old=document.querySelector('.pfpop');
+  if(old){ old.remove(); if(old.dataset.id===id) return }
+  const END=WI.u.slice(0,7), pop=document.createElement('div'); pop.className='pfpop card'; pop.dataset.id=id;
+  pop.innerHTML=`<label>${esc(C.t.qty_or_sum)}<div class="inp"><input type="number" min="0" step="any" value="100" class="pa"><span class="muted">${esc(C.code)}</span></div></label>
+    <label>${esc(C.d)}<div class="inp"><input type="month" class="pd" value="${END}" max="${END}"></div></label>
+    <div class="pfb"><button class="btn pok">＋ ${esc(C.t.addpf)}</button><button class="btn ghost pno">${esc(C.t.cancel)}</button></div><p class="pmsg"></p>`;
+  b.parentNode.after(pop); pop.querySelector('.pa').focus(); pop.querySelector('.pno').onclick=()=>pop.remove();
+  pop.querySelector('.pok').onclick=async()=>{ const v=+pop.querySelector('.pa').value, d=(pop.querySelector('.pd').value||END).slice(0,7); if(!(v>0)) return;
+    let px=(BYID[id]||{}).pr;
+    try{ const P=await fetch(`${BASE}/assets/p/${id}.json?v=${WI.v}`).then(r=>r.json()); const ym=s=>{const [y,m]=s.split('-').map(Number);return y*12+m-1}, k=ym(d)-ym(P.start);
+      if(!px) px=P.p[P.p.length-1]; if(d<END&&k>=0&&k<P.p.length) px=P.p[k] }catch(e){}
+    if(!px) return; const qty=(v/C.rate)/px; let h=[]; try{ h=JSON.parse(localStorage.getItem('wi_hold')||'[]') }catch(e){}
+    h.push({id,qty,cost:qty*px,d,px}); try{ localStorage.setItem('wi_hold',JSON.stringify(h)) }catch(e){}
+    pop.querySelector('.pmsg').innerHTML=`✓ ${esc(C.t.added)} · <a href="${C.me}">${esc(C.t.open)} →</a>`; pop.querySelector('.pfb').remove() };
+});
+})();

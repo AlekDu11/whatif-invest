@@ -23,6 +23,7 @@ from i18n_me import ME  # noqa: E402
 from i18n_mem import MEM  # noqa: E402
 from i18n_act import ACT  # noqa: E402
 from i18n_prof import P as PROF_T  # noqa: E402
+from i18n_pf import PF  # noqa: E402
 from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB  # noqa: E402
 SOCIAL = [('Telegram', 'https://t.me/TradeMaster_insight'), ('X (Twitter)', 'https://x.com/WhatIfStack'), ('Bluesky', 'https://bsky.app/profile/whatifstack.bsky.social'), ('Instagram', 'https://www.instagram.com/whatifstack/'), ('Threads', 'https://www.threads.com/@whatifstack'),
           ('Pinterest', 'https://www.pinterest.com/whatifstack/'), ('Medium', 'https://medium.com/@whatifstack'),
@@ -414,7 +415,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
         (url(lang, 'exchanges'), '₿', EX[lang]['nav'], p == 'exchanges'), (url(blog_l, 'blog'), '✎', NW[lang]['i_nav'], (p or '').startswith('blog'))))
     mnav += f'<button type="button" id="mmore"><span>☰</span>{esc(X["nav_tools"])}</button>'
     msheet = ('<div class="msheet" id="msheet" hidden>' + ''.join(f'<a href="{url(lang, k)}">{esc(v)}</a>' for k, v in
-              [('me', ME[lang]['nav']), ('activities', ACT[lang]['nav']), ('ai', AIS[lang]['h1'].split(':')[0])] + [x for x in tools_menu(lang) if x]) + '</div>')
+              [('me', PF[lang]['h1']), ('activities', ACT[lang]['nav']), ('ai', AIS[lang]['h1'].split(':')[0])] + [x for x in tools_menu(lang) if x]) + '</div>')
     cfg = dict(cfg, lang=lang, base=BASE, prefix=url(lang).rstrip('/'), full=lang in FULL, topn=TOP_N,
                names={'gold': S['gold'], 'silver': S['silver'], **{k: v[lang] for k, v in CMD_NAMES.items()}})
     return f"""<!DOCTYPE html>
@@ -441,7 +442,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
   <a class="logo" href="{url(lang)}"><svg class="mk" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="15" width="18" height="5" rx="2.5" fill="var(--gold)"/><rect x="5" y="9.5" width="14" height="4.5" rx="2.25" fill="var(--accent)"/><rect x="7.5" y="4" width="9" height="4.5" rx="2.25" fill="var(--text)"/></svg><span>whatif<b>stack</b></span></a>
   <div class="gsearch">{SEARCH_ICON}<input id="gs" type="search" autocomplete="off" aria-label="search"><div class="gres" id="gres"></div></div>
   <nav class="nav">{nav}</nav>
-  <a class="thm me" href="{url(lang, 'me')}" title="{esc(ME[lang]['nav'])}" aria-label="{esc(ME[lang]['nav'])}">☆</a>
+  <a class="thm me" href="{url(lang, 'me')}" title="{esc(PF[lang]['h1'])}" aria-label="{esc(PF[lang]['h1'])}">💼</a>
   <button class="thm" id="thm" type="button" aria-label="theme"><span class="m">☾</span><span class="s">☀</span></button>
   {lang_menu(lang, p)}
 </div></div>
@@ -915,7 +916,8 @@ def asset(aid, lang, ver):
     crumbs = f'<nav class="crumbs"><a href="{url(lang)}">{S["nav_rank"]}</a> / {esc(cat)} / {esc(n)}</nav>'
     badges = f'<span class="badge">{esc(tk)}</span> <span class="badge">{esc(cat)}</span>' + (f' <span class="badge">{esc(a["sector"])}</span>' if a.get('sector') else '')
     head = (f'{crumbs}<div class="ahead">{icon(a, True)}<div><h1>{S["a_h1"].format(**fe)}</h1><div style="margin-top:4px">{badges}</div></div>'
-            f'<div class="price"><span class="v" data-p="{aid}">{price(m["price"])}</span><span class="pill {cls(m["chg"])}" data-c="{aid}">{pct(m["chg"])}</span>{local_price(a, lang)}<span id="buyslot" data-id="{aid}"></span><button class="star big" data-s="{aid}" title="{esc(ME[lang]["star"])}">☆</button></div></div>')
+            f'<div class="price"><span class="v" data-p="{aid}">{price(m["price"])}</span><span class="pill {cls(m["chg"])}" data-c="{aid}">{pct(m["chg"])}</span>{local_price(a, lang)}<span id="buyslot" data-id="{aid}"></span><button class="star big" data-s="{aid}" title="{esc(ME[lang]["star"])}">☆</button>'
+            f'<button class="addpf" type="button" data-add="{aid}" data-cfg="{esc(json.dumps(dict(code=hccy(lang)[0], rate=hccy(lang)[1], me=url(lang, "me"), t={k: PF[lang][k] for k in ("addpf", "added", "open", "cancel", "qty_or_sum")}, d=ME[lang]["date"]), ensure_ascii=False))}">＋ {esc(PF[lang]["addpf"])}</button></div></div>')
     if (a.get('yahoo') or '').endswith('=F') and a['tk'] not in ('XAU', 'XAG'):
         head += f'<p class="note">{esc(CMD_NOTE[lang])}</p>'
     w = S['w']
@@ -1448,7 +1450,9 @@ def me_page(lang, ver):
             f'<label class="f">{esc(t["amount"])}<div class="inp"><input id="hamt" type="number" min="0" step="any" value="{nice(100 * rate):.0f}"><span class="muted" id="hunit">{CCY_SYM.get(code, code)}</span></div></label>'
             f'<label class="f">{esc(t["date"])}<div class="inp"><input id="hdate" type="month" value="{END}"></div></label></div>'
             f'<button class="btn" id="hsave">{esc(t["add"])}</button></div></section>')
-    body = (f'<h1>{esc(t["h1"])}</h1><p class="lead">{esc(t["d"])}</p>{hold}'
+    pf = PF[lang]
+    body = (f'<h1>{esc(pf["h1"])}</h1><p class="lead">{esc(pf["d"])}</p>{hold}'
+            f'<section class="section"><h2>☆ {esc(t["watch"])}</h2><div id="watch"><p class="muted">{esc(t["empty"])}</p></div></section>'
             f'<section class="section"><h2>📈 {esc(t["plans"])}</h2><div class="hl" id="metot"></div><div id="plans"></div>'
             f'<div class="card hcalc" id="planform"><div class="hrow">'
             f'<label class="f">{S["w"]["q_asset"]}<div class="inp"><input id="pa" list="palist" autocomplete="off" placeholder="Bitcoin"><datalist id="palist"></datalist></div></label>'
@@ -1456,10 +1460,11 @@ def me_page(lang, ver):
             f'<label class="f">&nbsp;<div class="inp"><select id="pf"><option value="d">{esc(per[0])}</option><option value="w">{esc(per[1])}</option><option value="m" selected>{esc(per[2])}</option></select></div></label>'
             f'<label class="f">{esc(t["start"])}<div class="inp"><input id="ps" type="month" value="{END_I // 12 - 2}-01"></div></label></div>'
             f'<button class="btn" id="psave">{esc(t["save"])}</button></div></section>'
-            f'<section class="section"><h2>☆ {esc(t["watch"])}</h2><div id="watch"><p class="muted">{esc(t["empty"])}</p></div></section>'
-            f'<p class="muted" style="font-size:13px">{esc(t["note"])}</p>')
-    cfg = dict(me=dict(code=code, rate=rate, t=t, per=dict(zip('dwm', per))))
-    return shell(lang, 'me', f'{t["h1"]} | {BRAND}', t['d'], body, cfg, ver)
+            f'<p class="muted" style="font-size:13px">{esc(t["note"])}</p>'
+            f'<div class="pfbk"><button class="btn ghost" id="pfexp" type="button">⬇ {esc(pf["backup"])}</button>'
+            f'<label class="btn ghost">⬆ {esc(pf["restore"])}<input type="file" id="pfimp" accept="application/json" hidden></label></div>')
+    cfg = dict(me=dict(code=code, rate=rate, t=dict(t, **pf), per=dict(zip('dwm', per))))
+    return shell(lang, 'me', f'{pf["h1"]} | {BRAND}', pf['d'], body, cfg, ver)
 
 
 MEME_IDS = [i for i in ('doge', 'shib', 'pepe', 'bonk', 'wif', 'floki', 'trump', 'pengu', 'neiro', 'bome', 'pnut') if i in A]
