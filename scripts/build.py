@@ -1757,6 +1757,7 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
           'en': ('Page not found', 'The asset may have been renamed or removed. Use the search above or go to the ranking.')}
     body404 = ''.join(f'<h1>{a}</h1><p class="lead">{b}</p><p><a class="btn" href="{url(lg)}">{TR[lg]["nav_rank"]} →</a></p>' for lg, (a, b) in nf.items())
     write('404.html', shell('en', None, 'Page not found | ' + BRAND, nf['en'][1], body404, {}, ver).replace('<link rel="canonical"', '<meta name="robots" content="noindex"><link rel="canonical"'))
+    write('79eea7b784b383a4b1696da51540fdf0.txt', '79eea7b784b383a4b1696da51540fdf0')
     write('robots.txt', f'User-agent: *\nAllow: /\nDisallow: /go/\nDisallow: /api/\nDisallow: /stats\nSitemap: {SITE}{BASE}/sitemap.xml\n')
     total = sum(len(p) for p in per_lang.values())
     print(f"built {total} pages in {len(ORDER)} languages · {len(A)} assets · data {UPDATED}")
