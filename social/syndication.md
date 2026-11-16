@@ -23,7 +23,7 @@ Daily drafts land in `social/syndication/YYYY-MM-DD.md` (scheduled task "WhatIfS
 | LinkedIn (personal + page) | 1 analytic post a day: 3–5 numbers + link in the first comment | — | ⏸ skipped by owner (2026-11-16) |
 | Reddit | regional articles in local subs, data posts | drafts in social/syndication/; owner posts manually (reddit.com is blocked in Claude's built-in browser) | ☐ owner |
 | Quora | answers to "what if I invested $X in Y" questions with our numbers + link | — | ☐ owner |
-| Threads / Bluesky | same posts as X | Bluesky: X task cross-posts each post (see social/x-log.md) · Threads: needs Instagram first | Bluesky ✅ @whatifstack.bsky.social · Threads ☐ |
+| Threads / Bluesky | same posts as X | Bluesky: X task cross-posts each post (see social/x-log.md) · Threads: needs Instagram first | Bluesky ✅ @whatifstack.bsky.social · Threads ✅ @whatifstack · Instagram ✅ @whatifstack |
 | Telegram channel @whatifstack | daily: 1 article + 1 number | — | ☐ owner |
 | TradingView Ideas / Binance Square / CMC Community | crypto articles as short ideas (links limited → brand mention) | — | ☐ owner |
 
@@ -48,3 +48,6 @@ Candidates — before the first post in a community, open it, check it is active
 | 2026-11-16 | Medium | @whatifstack | bitcoin-crash-65000-dca (en) | https://medium.com/@whatifstack/why-is-bitcoin-crashing-btc-below-65-000-49-off-its-high-what-dca-buyers-have-now-92e2ed802495 | canonical ✓ |
 | 2026-11-16 | Medium | @whatifstack | dax-schwergewichte-10-dollar-am-tag-5-jahre (de) | https://medium.com/@whatifstack/10-am-tag-in-5-dax-schwergewichte-65-in-5-jahren-mehr-als-s-p-500-und-bitcoin-29a0ac901b1a | canonical ✓ |
 | 2026-11-16 | Medium | @whatifstack | ibex-35-gigantes-10-dolares-al-dia-5-anos (es) | https://medium.com/@whatifstack/10-al-d%C3%ADa-en-5-gigantes-del-ibex-35-169-en-5-a%C3%B1os-frente-al-52-del-s-p-500-21ec089ac88a | canonical ✓ |
+| 2026-11-16 | Bluesky | @whatifstack.bsky.social | intro: $10/day BTC 5y +49% | https://bsky.app/profile/whatifstack.bsky.social | first post |
+| 2026-11-16 | Instagram | @whatifstack | intro card 4:5 (social/igcard.js) + caption | https://www.instagram.com/whatifstack/ | bio + avatar set; website field is app-only |
+| 2026-11-16 | Threads | @whatifstack | intro + card | https://www.threads.com/@whatifstack | bio, link, avatar set |
