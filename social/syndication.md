@@ -19,7 +19,7 @@ Daily drafts land in `social/syndication/YYYY-MM-DD.md` (scheduled task "WhatIfS
 | Bing Webmaster | sitemap + IndexNow (already automatic) | — | ✅ |
 | Pinterest (business) | every article cover as a pin, automatically | Settings → Bulk create Pins → Auto-publish from RSS: add https://whatifstack.com/en/blog/rss.xml (+ /es/, /de/, /pt/ … one board per language) | ✅ pinterest.com/whatifstack, site verified, 5 boards en/es/de/pt/uk auto-publish from RSS (2026-11-16) |
 | Flipboard | magazine per language from RSS | Add RSS feed to a magazine | ☐ owner |
-| Medium | full article via Import (canonical set automatically), en + es/de/pt | medium.com/p/import → paste the URL → tags → publish. Max 1–2 a day | ☐ owner |
+| Medium | full article via Import (canonical set automatically), en + es/de/pt | medium.com/p/import → paste the URL → tags → publish. Max 1–2 a day. NB: the import URL field ignores Claude's typing — the owner pastes the URL and presses Import, Claude does tags + publish | ✅ medium.com/@whatifstack |
 | LinkedIn (personal + page) | 1 analytic post a day: 3–5 numbers + link in the first comment | — | ☐ owner |
 | Reddit | regional articles in local subs, data posts | drafts in social/syndication/; owner posts manually | ☐ owner |
 | Quora | answers to "what if I invested $X in Y" questions with our numbers + link | — | ☐ owner |
@@ -45,3 +45,4 @@ Candidates — before the first post in a community, open it, check it is active
 ## Log
 | Date | Platform | Community | Article | URL | Result (views/upvotes/clicks) |
 |---|---|---|---|---|---|
+| 2026-11-16 | Medium | @whatifstack | bitcoin-crash-65000-dca (en) | https://medium.com/@whatifstack/why-is-bitcoin-crashing-btc-below-65-000-49-off-its-high-what-dca-buyers-have-now-92e2ed802495 | canonical ✓ |
