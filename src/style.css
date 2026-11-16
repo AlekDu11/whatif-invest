@@ -476,3 +476,4 @@ a.more{text-align:center;text-decoration:none}
 .wsrc{margin:8px 0 0;padding-left:18px;font-size:13px;line-height:1.7}
 .gtoc{display:flex;flex-wrap:wrap;gap:6px 14px;padding:14px 18px;margin:16px 0 8px;font-size:14px}.gtoc a{text-decoration:none;color:var(--accent);font-weight:500}
 .guide .artbody h2{scroll-margin-top:90px}
+.flag{width:18px;height:18px;border-radius:3px;flex:0 0 18px;display:inline-block;vertical-align:-3px}

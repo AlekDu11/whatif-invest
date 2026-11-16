@@ -298,13 +298,13 @@ def footer_cols(lang):
     blog_l = lang if lang in BLOG_LANGS else 'en'
     pop = [(aurl(lang, i), nm(A[i], lang)) for i in ('btc', 'eth', 'sol', 'xrp', 'nvda', 'aapl', 'tsla', 'gold', 'spy', 'qqq') if i in A]
     mk = [(url(lang), S['nav_rank']), (url(lang, 'compare'), S['nav_cmp'])] + [(url(lang, k), S['cat_' + v]) for k, v in HUBS.items()]
-    mk += [(url(lang, sl), f'{fl} {CTRY[lang][3][m][0]}') for m, (sl, fl) in sorted(MKTS.items(), key=lambda kv: (MKT_LANG.get(kv[0]) != lang, kv[0] != 'ua')) if has_page(lang, sl)][:5]
+    mk += [(url(lang, sl), CTRY[lang][3][m][0]) for m, (sl, fl) in sorted(MKTS.items(), key=lambda kv: (MKT_LANG.get(kv[0]) != lang, kv[0] != 'ua')) if has_page(lang, sl)][:5]
     tools = [(url(lang, k), v) for k, v in [x for x in tools_menu(lang) if x]]
     ins = [(url(lang if lang in GUIDE else 'en', 'guide'), guide_meta(lang).get('nav', 'Guide')), (url(lang, 'news'), n['n_nav']), (url(blog_l, 'blog'), n['i_nav']), (url(blog_l, 'blog') + 'rss.xml', 'RSS'),
            (url(lang, 'exchanges'), EX[lang]['nav']), (url(lang if lang in ABOUT else 'en', 'about'), n['about'])]
     cols = [(f[0], pop), (f[1], mk), (TR[lang]['x']['nav_tools'], tools), (n['i_nav'], ins)]
     if SOCIAL:
-        cols.insert(0, (f[2], SOCIAL))
+        cols.insert(0, (f[2], [(u, l) for l, u in SOCIAL]))
     return ('<div class="fcols">' + ''.join(f'<div><b>{esc(t)}</b>' + ''.join(f'<a href="{h}">{esc(l)}</a>' for h, l in items) + '</div>' for t, items in cols) + '</div>')
 
 
@@ -1396,19 +1396,23 @@ def world_page(lang, ver):
 MKT_N = {}
 
 
+def flag(m):
+    return f'<img class="flag" src="/assets/flags/{m}.svg" alt="" width="18" height="18" loading="lazy">'
+
+
 def country_chips(lang, cur=None, limit=None):
     if not MKT_N:
         for a in A.values():
             if a.get('mkt'):
                 MKT_N[a['mkt']] = MKT_N.get(a['mkt'], 0) + 1
     mk = sorted(MKTS.items(), key=lambda kv: (MKT_LANG.get(kv[0]) != lang, kv[0] != 'ua', -MKT_N.get(kv[0], 0)))   # own country first
-    ch = [(sl, f'{fl} {CTRY[lang][3][m][0]}') for m, (sl, fl) in mk if has_page(lang, sl)]
+    ch = [(sl, f'{flag(m)}{esc(CTRY[lang][3][m][0])}') for m, (sl, fl) in mk if has_page(lang, sl)]
     if limit and len(ch) > limit:
         ch = ch[:limit] + [('stocks', '…')]
     if not ch:
         return ''
     return (f'<div class="cchips"><b>{esc(CTRY[lang][0])}:</b>' + ''.join(
-        f'<a class="chip{" on" if sl == cur else ""}" href="{url(lang, sl)}">{esc(t)}</a>' for sl, t in ch) + '</div>')
+        f'<a class="chip{" on" if sl == cur else ""}" href="{url(lang, sl)}">{t}</a>' for sl, t in ch) + '</div>')
 
 
 def country_page(lang, slug, ver):
@@ -1714,6 +1718,7 @@ def main():
     write('assets/index.js', index_js); write('assets/style.css', css); write('assets/app.js', js); write('assets/ref.js', ref)
     if _LOGOS:
         shutil.copytree(LOGO_DIR, os.path.join(OUT, 'assets/logo'))
+    shutil.copytree(os.path.join(ROOT, 'src', 'flags'), os.path.join(OUT, 'assets/flags'))
     for f in ('favicon.svg', 'icon-192.png', 'icon-512.png', 'og.jpg', 'onest.woff2', 'geologica-600.woff2', 'geologica-700.woff2'):
         shutil.copy(os.path.join(ROOT, 'src', f), os.path.join(OUT, 'assets', f))
     write('manifest.webmanifest', json.dumps({
