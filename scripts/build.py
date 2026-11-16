@@ -22,6 +22,7 @@ from i18n_ai import AI as AIS  # noqa: E402
 from i18n_me import ME  # noqa: E402
 from i18n_mem import MEM  # noqa: E402
 from i18n_act import ACT  # noqa: E402
+from i18n_prof import P as PROF_T  # noqa: E402
 from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB  # noqa: E402
 SOCIAL = [('X (Twitter)', 'https://x.com/WhatIfStack'), ('Bluesky', 'https://bsky.app/profile/whatifstack.bsky.social'), ('Instagram', 'https://www.instagram.com/whatifstack/'), ('Threads', 'https://www.threads.com/@whatifstack'),
           ('Pinterest', 'https://www.pinterest.com/whatifstack/'), ('Medium', 'https://medium.com/@whatifstack'),
@@ -675,7 +676,7 @@ def auto_about(lang, aid):
     if len(ok) < 3:
         return ''
     k0 = ok[0][0]
-    out = [T[0].format(name=nm(a, lang), tk=a['tk'], cat=S['cat_' + a['cat']], since=lab(k0))]
+    out = []   # category sentence (T[0]) is covered by the 'What it is' paragraph
     kh, hi = max(ok, key=lambda kv: kv[1])
     last = ok[-1][1]
     out.append(T[2].format(hi=price(hi)) if kh == ok[-1][0] else T[1].format(hi=price(hi), hid=lab(kh), dd=f"{(1 - last / hi) * 100:.0f}%"))
@@ -727,7 +728,7 @@ def info_block(lang, aid):
             if L.get(k):
                 links.append((L[k], lab))
         ds = ci.get('ds', {})
-        desc = ds.get(lang) or ds.get('en')
+        desc = ds.get(lang) or (ds.get('en') if lang == 'en' else None)   # never show English text on other-language pages
     else:
         si = STOCKINFO.get(a.get('yahoo') or '', {})
         if si.get('mcap'): row(t['mcap'], fbig(si['mcap']))
@@ -736,7 +737,7 @@ def info_block(lang, aid):
         if si.get('cty'): row(t['country'], esc(si['cty']))
         if si.get('emp'): row(t['emp'], f"{si['emp']:,}".replace(',', ' '))
         if si.get('web'): links.append((si['web'], t['web']))
-        desc = (si.get('ds') or {}).get('en')
+        desc = (si.get('ds') or {}).get('en') if lang == 'en' else None
     prof = PROFILES.get(lang, {}).get(aid)
     auto = '' if prof else auto_about(lang, aid)
     if not rows and not links and not desc and not prof and not auto:
@@ -748,8 +749,17 @@ def info_block(lang, aid):
                  f'<div class="artbody iprof">{md(prof["body"], lang)}</div>'
                  + (f'<h3>{esc(t["links"])}</h3><div class="ilinks">{lk}</div>' if lk else '') + '</section>')
     elif desc or lk or auto:
+        T = PROF_T[lang]
+        what = T['c_' + a['cat']].format(name=nm(a, lang), tk=a['tk'])
+        if a['cat'] == 'crypto' and a.get('rank'):
+            what += ' ' + T['rank'].format(rank=a['rank'])
+        mc = a.get('mcap') if a['cat'] == 'crypto' else (STOCKINFO.get(a.get('yahoo') or '', {}) or {}).get('mcap')
+        if mc:
+            what += ' ' + T['mcap'].format(mcap=fbig(mc))
         about = (f'<section class="card iabout"><h2>{esc(t["about"])} {esc(nm(a, lang))}</h2>'
-                 + (f'<p class="iauto">{esc(auto)}</p>' if auto else '')
+                 f'<div class="iprof"><h3>{esc(T["hw"])}</h3><p>{esc(what)}</p>'
+                 + (f'<h3>{esc(T["hf"])}</h3><p class="iauto">{esc(auto)}</p>' if auto else '')
+                 + f'<h3>{esc(T["hr"])}</h3><p>{esc(T["r_" + a["cat"]])}</p><p class="muted"><small>{esc(T["na"])}</small></p></div>'
                  + (f'<details class="idesc"><summary><span class="ip">{esc(desc[:220])}{"…" if len(desc) > 220 else ""}</span><span class="im">{esc(t["more"])}</span></summary><p>{esc(desc)}</p></details>' if desc else '')
                  + (f'<h3>{esc(t["links"])}</h3><div class="ilinks">{lk}</div>' if lk else '') + '</section>')
     stats = f'<section class="card istats"><h2>{esc(t["title"])}</h2>{"".join(rows)}</section>' if rows else ''
