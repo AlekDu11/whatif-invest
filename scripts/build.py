@@ -46,6 +46,15 @@ _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
 # delisted or stale series (last price older than a month) are dropped: "today" numbers would be false
 A = {(f"{aid}-{a['cat']}" if aid in RESERVED else aid): a for aid, a in market['assets'].items()
      if a.get('p') and (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(a['end']) >= _END_I0 - 1}
+for _k, _a in A.items():
+    _a['_id'] = _k
+_SPF = os.path.join(ROOT, 'data/logo-sprite.json')
+SPRITE = json.load(open(_SPF)) if os.path.exists(_SPF) and os.path.exists(os.path.join(ROOT, 'data/logo-sprite.webp')) else {'ids': {}}
+SPRITE_CSS = ''
+if SPRITE['ids']:
+    _sv = hashlib.md5(open(os.path.join(ROOT, 'data/logo-sprite.webp'), 'rb').read()).hexdigest()[:8]
+    SPRITE_CSS = (f'<style>.ic.sp{{background-image:url(/assets/logo-sprite.webp?v={_sv});background-size:{SPRITE["cols"] * 100}% {SPRITE["rows"] * 100}%;'
+                  f'background-repeat:no-repeat;background-color:transparent}}</style>')
 _gp = os.path.join(ROOT, 'data/global.json')
 G = json.load(open(_gp, encoding='utf-8')) if os.path.exists(_gp) else {}
 _fp = os.path.join(ROOT, 'data/fx.json')
@@ -240,6 +249,10 @@ def icon(a, big=False):
     if a.get('cat') == 'metal' and not a.get('logo'):
         bg, t = METAL_IC.get(a.get('yahoo'), ('#b8a06a', a['tk'][:2]))
         return f'<span class="ic{c}" style="background:{bg}">{t}</span>'
+    k = SPRITE['ids'].get(a.get('_id'))
+    if k is not None:
+        cols, rows = SPRITE['cols'], SPRITE['rows']
+        return f'<span class="ic sp{c}" style="background-position:{k % cols * 100 / (cols - 1):.4g}% {k // cols * 100 / max(1, rows - 1):.4g}%"></span>'
     if a.get('logo'):
         return (f'<span class="ic{c}" style="background:hsl({hue(a["tk"])} 55% 52%)"><img src="{esc(a["logo"])}" alt="" loading="lazy" width="26" height="26" '
                 f'onerror="this.parentNode.textContent=\'{esc(a["tk"][:2])}\'"></span>')
@@ -348,7 +361,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
 <script>(function(){{try{{var t=localStorage.getItem('wi_theme')}}catch(e){{}}if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';if(t==='dark'){{document.documentElement.dataset.theme='dark';document.querySelector('meta[name=theme-color]').content='#0e1014'}}}})()</script>
 <link rel="icon" href="{BASE}/assets/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="{BASE}/assets/icon-192.png"><link rel="manifest" href="{BASE}/manifest.webmanifest">
 <link rel="preload" href="{BASE}/assets/onest.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="{BASE}/assets/geologica-700.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="{BASE}/assets/style.css?v={ver['css']}">
+<link rel="stylesheet" href="{BASE}/assets/style.css?v={ver['css']}">{SPRITE_CSS}
 {ld}
 </head>
 <body>
@@ -1720,7 +1733,10 @@ def main():
             e['bn'] = 1
         idx.append({k: (round(v, 4) if isinstance(v, float) and k in ('ch', 'r1', 'r3', 'r5') else v) for k, v in e.items() if v is not None})
         write(f'assets/p/{aid}.json', json.dumps({'start': a['start'], 'end': a['end'], 'p': a['p']}, separators=(',', ':')))
-    index_js = 'window.WI=' + json.dumps({'u': UPDATED, 'v': dv, 'a': idx, 'fx': FX.get('rates', {}), 'fxu': FX.get('updated')}, ensure_ascii=False, separators=(',', ':')) + ';'
+    json.dump(ORDERED[:160], open(os.path.join(ROOT, 'data/sprite_ids.json'), 'w'))   # next data run packs these logos into one sprite
+    if SPRITE['ids']:
+        shutil.copy(os.path.join(ROOT, 'data/logo-sprite.webp'), os.path.join(OUT, 'assets', 'logo-sprite.webp'))
+    index_js = 'window.WI=' + json.dumps({'sp': SPRITE['ids'], 'spc': [SPRITE.get('cols'), SPRITE.get('rows')], 'u': UPDATED, 'v': dv, 'a': idx, 'fx': FX.get('rates', {}), 'fxu': FX.get('updated')}, ensure_ascii=False, separators=(',', ':')) + ';'
     write('assets/index.js', index_js); write('assets/style.css', css); write('assets/app.js', js); write('assets/ref.js', ref)
     if _LOGOS:
         shutil.copytree(LOGO_DIR, os.path.join(OUT, 'assets/logo'))

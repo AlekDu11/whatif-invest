@@ -29,6 +29,8 @@ jobs:
         run: python scripts/fetch_data.py
       - name: Check the site still builds
         run: python scripts/build.py
+      - name: Pack top logos into one sprite (build.py wrote data/sprite_ids.json)
+        run: python -c "import sys; sys.path.insert(0, 'scripts'); import fetch_data; fetch_data.make_sprite()"
       - name: Commit data
         run: |
           git config user.name "whatif-bot"

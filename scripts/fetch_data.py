@@ -410,6 +410,25 @@ def fetch_logos(assets):
     log(f'logos: {n} new, {len(have) + n} total')
 
 
+def make_sprite(size=52, cols=16):
+    """Pack the logos of the ~160 most visible assets (data/sprite_ids.json, written by build.py) into one image: one request instead of dozens."""
+    from PIL import Image
+    ids_f = os.path.join(ROOT, 'data/sprite_ids.json')
+    if not os.path.exists(ids_f):
+        return
+    ids = [i for i in json.load(open(ids_f)) if os.path.exists(os.path.join(LOGOS, i + '.webp'))]
+    if not ids:
+        return
+    rows = (len(ids) + cols - 1) // cols
+    sheet = Image.new('RGBA', (cols * size, rows * size), (0, 0, 0, 0))
+    for k, i in enumerate(ids):
+        im = Image.open(os.path.join(LOGOS, i + '.webp')).convert('RGBA').resize((size, size), Image.LANCZOS)
+        sheet.paste(im, (k % cols * size, k // cols * size), im)
+    sheet.save(os.path.join(ROOT, 'data/logo-sprite.webp'), 'WEBP', quality=88, method=6)
+    json.dump({'cols': cols, 'rows': rows, 'size': size, 'ids': {i: k for k, i in enumerate(ids)}}, open(os.path.join(ROOT, 'data/logo-sprite.json'), 'w'), separators=(',', ':'))
+    log(f'sprite: {len(ids)} logos')
+
+
 # ---------------- inflation (World Bank, annual CPI %) ----------------
 CPI_COUNTRIES = ('USA UKR ESP BRA DEU FRA ITA POL TUR NLD RUS IDN VNM THA IND JPN KOR CHN ARE PHL GBR MEX ARG KAZ CAN AUS').split()
 
@@ -667,6 +686,7 @@ def main():
         fetch_logos(final)
     except Exception as e:
         log(f"logos failed: {e}")
+
     try:
         cpi = inflation()
         cp = os.path.join(ROOT, 'data/cpi.json')
