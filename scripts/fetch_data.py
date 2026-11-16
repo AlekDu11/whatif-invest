@@ -45,10 +45,14 @@ def log(*a):
     print(*a, flush=True)
 
 
-def get_json(url, tries=3):
+T0 = time.time()                      # run budget: optional extras (descriptions) stop after BUDGET seconds
+BUDGET = 50 * 60
+
+
+def get_json(url, tries=3, timeout=30):
     for k in range(tries):
         try:
-            with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=30) as r:
+            with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=timeout) as r:
                 return json.load(r)
         except Exception as e:
             log(f"  GET failed ({k + 1}/{tries}) {url[:90]}: {e}")
@@ -126,13 +130,13 @@ def binance_monthly(symbol):
 
 def other_monthly(base):
     """Monthly USDT history for a coin not on Binance: Gate.io, then MEXC, then OKX."""
-    d = get_json(f"https://api.gateio.ws/api/v4/spot/candlesticks?currency_pair={base}_USDT&interval=30d&limit=1000", tries=1)
+    d = get_json(f"https://api.gateio.ws/api/v4/spot/candlesticks?currency_pair={base}_USDT&interval=30d&limit=1000", tries=1, timeout=10)
     if isinstance(d, list) and d:
         return to_series((datetime.fromtimestamp(int(r[0]), timezone.utc).strftime('%Y-%m'), r[2]) for r in d), 'gate'
-    d = get_json(f"https://api.mexc.com/api/v3/klines?symbol={base}USDT&interval=1M&limit=1000", tries=1)
+    d = get_json(f"https://api.mexc.com/api/v3/klines?symbol={base}USDT&interval=1M&limit=1000", tries=1, timeout=10)
     if isinstance(d, list) and d:
         return to_series((datetime.fromtimestamp(r[0] / 1000, timezone.utc).strftime('%Y-%m'), r[4]) for r in d), 'mexc'
-    d = get_json(f"https://www.okx.com/api/v5/market/history-candles?instId={base}-USDT&bar=1Mutc&limit=100", tries=1)
+    d = get_json(f"https://www.okx.com/api/v5/market/history-candles?instId={base}-USDT&bar=1Mutc&limit=100", tries=1, timeout=10)
     if isinstance(d, dict) and d.get('data'):
         return to_series((datetime.fromtimestamp(int(r[0]) / 1000, timezone.utc).strftime('%Y-%m'), r[4]) for r in d['data']), 'okx'
     return None, None
@@ -188,6 +192,19 @@ def slug(t):
     import re, unicodedata
     t = unicodedata.normalize('NFKD', t).encode('ascii', 'ignore').decode().lower()
     return re.sub(r'[^a-z0-9]+', '-', t).strip('-')[:40] or 'x'
+
+
+def extend_old(o, price, now):
+    """Reuse a stored monthly series and roll it forward to this month with today's price (no need to re-download history)."""
+    if not o or not o.get('p') or not price:
+        return None
+    p, end = list(o['p']), ym2i(o['start']) + len(o['p']) - 1
+    cur = now.year * 12 + now.month - 1
+    if cur - end > 3:
+        return None
+    p += [price] * (cur - end)
+    p[-1] = float(f"{price:.6g}")
+    return {'start': o['start'], 'end': i2ym(cur), 'p': p}
 
 
 def to_usd(series, ccy, fxm):
@@ -475,6 +492,8 @@ def coin_info(assets, budget=220):
     todo = [a for a in todo if info.get(a['cgid'], {}).get('d', '') < cutoff]   # new coins first (by rank), then stale ones
     n = 0
     for a in todo[:budget]:
+        if time.time() - T0 > BUDGET:
+            break
         d = get_json(f"https://api.coingecko.com/api/v3/coins/{a['cgid']}?localization=true&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false", tries=2)
         time.sleep(2.6)
         if d is None:                                   # rate-limited: wait a minute and retry once
@@ -513,6 +532,8 @@ def stock_info(assets, budget=180):
     todo = [a for a in assets.values() if a.get('cat') in ('stock', 'etf') and a.get('yahoo') and not a['yahoo'].startswith('MOEX:') and a['yahoo'] not in info]
     n = 0
     for a in todo[:budget]:
+        if time.time() - T0 > BUDGET:
+            break
         try:
             i = yf.Ticker(a['yahoo']).info or {}
         except Exception as e:
@@ -642,13 +663,16 @@ def main():
             if s and ('p' not in a or s['start'] < a['start']):
                 a.update(s, src='binance')
             continue
+        prev = old.get(base.lower()) or old.get(base.lower() + '-token') or {}
         if r:
             s, src = binance_monthly(r['symbol']), 'binance'
         elif quick:
             continue
+        elif prev.get('tk') == base and prev.get('src') in ('gate', 'mexc', 'okx') and extend_old(prev, m.get('price'), now):
+            s, src = extend_old(prev, m.get('price'), now), prev['src']    # history already stored
         else:
             s, src = other_monthly(base)
-        time.sleep(0.12)
+            time.sleep(0.12)
         if not s or looks_stable(s) or broken(s):
             continue
         if not r and m.get('price') and not (m['price'] / 3 < s['p'][-1] < m['price'] * 3):
