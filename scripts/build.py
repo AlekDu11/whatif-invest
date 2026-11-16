@@ -22,7 +22,11 @@ from i18n_ai import AI as AIS  # noqa: E402
 from i18n_me import ME  # noqa: E402
 from i18n_mem import MEM  # noqa: E402
 from i18n_act import ACT  # noqa: E402
-SOCIAL = [('X (Twitter)', 'https://x.com/WhatIfStack')]   # [(label, url)], e.g. ('Telegram', 'https://t.me/whatifstack'); the 'Follow us' column appears when filled
+from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE  # noqa: E402
+SOCIAL = [('X (Twitter)', 'https://x.com/WhatIfStack'), ('Bluesky', 'https://bsky.app/profile/whatifstack.bsky.social'),
+          ('Pinterest', 'https://www.pinterest.com/whatifstack/'), ('Medium', 'https://medium.com/@whatifstack'),
+          ('Flipboard', 'https://flipboard.com/@whatifstack'), ('GitHub', 'https://github.com/AlekDu11/whatif-invest')]
+CONTACT_EMAIL = ''   # public contact address shown under 'Follow us' (set when the owner confirms which mailbox)   # [(label, url)], e.g. ('Telegram', 'https://t.me/whatifstack'); the 'Follow us' column appears when filled
 from i18n_h import H as HB, PRICES as HPRICE, SCEN as HSCEN, UNITS as HUNITS, CONV as HCONV  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -40,7 +44,7 @@ UPDATED = market['updated']
 END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
-RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide'}
+RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide', 'commodities'}
 RESERVED |= {v[0] for v in MKTS.values()} | {'world-assets', 'activities', 'editorial-policy', 'about'}
 # asset ids that clash with a language folder or a section get a suffix (ko -> ko-stock, fil -> fil-crypto)
 _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
@@ -49,6 +53,8 @@ A = {(f"{aid}-{a['cat']}" if aid in RESERVED else aid): a for aid, a in market['
      if a.get('p') and (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(a['end']) >= _END_I0 - 1}
 for _k, _a in A.items():
     _a['_id'] = _k
+    if _a.get('cat') == 'stock' and not _a.get('mkt') and not any(c in (_a.get('yahoo') or '') for c in '.:'):
+        _a['mkt'] = 'us'   # US-listed stocks -> /stocks-usa/
 _SPF = os.path.join(ROOT, 'data/logo-sprite.json')
 SPRITE = json.load(open(_SPF)) if os.path.exists(_SPF) and os.path.exists(os.path.join(ROOT, 'data/logo-sprite.webp')) else {'ids': {}}
 SPRITE_CSS = ''
@@ -66,12 +72,20 @@ TV_LOC = {'en': 'en', 'uk': 'uk', 'ru': 'ru', 'es': 'es', 'pt': 'br', 'de': 'de_
           'nl': 'nl_NL', 'id': 'id', 'vi': 'vi_VN', 'th': 'th_TH', 'hi': 'in', 'ja': 'ja', 'ko': 'kr', 'zh': 'zh_CN', 'ar': 'ar_AE', 'fil': 'en'}
 
 
+FUT_EX = {'COMEX': ('GC', 'SI', 'HG', 'ALI'), 'NYMEX': ('PL', 'PA', 'CL', 'NG', 'HO', 'RB'), 'CBOT': ('ZW', 'ZC', 'ZS', 'ZL', 'ZO', 'ZR'),
+          'ICEUS': ('SB', 'KC', 'CC', 'CT', 'OJ'), 'CME': ('LE', 'HE'), 'ICEEUR': ('BZ',)}
+
+
 def tv_symbol(a):
     if a['cat'] == 'crypto':
         ex = {'gate': 'GATEIO', 'mexc': 'MEXC', 'okx': 'OKX'}.get(a.get('src'), 'BINANCE')
         return f"{ex}:{a['tk']}USDT"
-    if a['cat'] == 'metal':
+    if a['cat'] == 'metal' and a['tk'] in ('XAU', 'XAG'):
         return 'OANDA:XAUUSD' if a['tk'] == 'XAU' else 'OANDA:XAGUSD'
+    if (a.get('yahoo') or '').endswith('=F'):
+        r = a['yahoo'][:-2]
+        ex = next((e for e, rs in FUT_EX.items() if r in rs), 'NYMEX')
+        return f'{ex}:{r}1!'
     y = a.get('yahoo') or ''
     if y.startswith('MOEX:'):
         return y
@@ -100,7 +114,7 @@ def order_key(item):
         return (0, PIN_ORDER[aid], '')
     if a['cat'] == 'crypto':
         return (1, a.get('rank') or 9999, a['tk'])
-    if a['cat'] in ('etf', 'metal'):
+    if a['cat'] in ('etf', 'metal', 'cmd'):
         return (2, 0, a['tk'])
     return (3, 0, nm(a, 'en').lower())
 
@@ -110,7 +124,10 @@ ORD = {aid: k for k, aid in enumerate(ORDERED)}
 TOP = set(ORDERED[:TOP_N])
 
 
-HUBS = {'crypto': 'crypto', 'stocks': 'stock', 'etfs': 'etf', 'metals': 'metal'}
+HUBS = {'crypto': 'crypto', 'stocks': 'stock', 'etfs': 'etf', 'metals': 'metal', 'commodities': 'cmd'}
+for _lg in TR:   # commodities tab labels (scripts/i18n_cmd.py)
+    TR[_lg]['ui'].update(cmd=CMD[_lg][0], u_cmd=CMD[_lg][2])
+    TR[_lg]['cat_cmd'] = CMD[_lg][1]
 CSLUG = {v[0]: k for k, v in MKTS.items()}   # 'stocks-poland' -> 'pl'
 TOOLS = ['converter']
 CALCS = ['millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'news', 'about']
@@ -237,7 +254,11 @@ for _aid, _a in A.items():                      # self-hosted logo (downloaded o
     _src = _aid if _aid in _LOGOS else _aid.rsplit('-', 1)[0] if _aid.rsplit('-', 1)[0] in _LOGOS else None
     if _src:
         _a['logo'] = f'{BASE}/assets/logo/{_src}.webp'
-METAL_IC = {'GC=F': ('#d4a017', 'Au'), 'SI=F': ('#9ea3ab', 'Ag')}
+METAL_IC = {'GC=F': ('#d4a017', 'Au'), 'SI=F': ('#9ea3ab', 'Ag'), 'PL=F': ('#8d97a5', 'Pt'), 'PA=F': ('#7b8794', 'Pd'), 'HG=F': ('#c06a3c', 'Cu'),
+            'ALI=F': ('#a7b1bb', 'Al'), 'ZW=F': ('#d9b45a', '🌾'), 'ZC=F': ('#e3b23c', '🌽'), 'ZS=F': ('#b9a35a', '🫘'), 'ZL=F': ('#c9a83c', '🫗'),
+            'ZO=F': ('#cdb07a', '🌾'), 'ZR=F': ('#d8cfb8', '🍚'), 'SB=F': ('#d6d0c4', '🍬'), 'KC=F': ('#7a4a2a', '☕'), 'CC=F': ('#6b3e26', '🍫'),
+            'CT=F': ('#cfd6dc', '☁'), 'OJ=F': ('#f0a030', '🍊'), 'LE=F': ('#9a6b4a', '🐄'), 'HE=F': ('#e3a0a0', '🐖'), 'CL=F': ('#333a44', '🛢'),
+            'BZ=F': ('#3f4a58', '🛢'), 'NG=F': ('#4a7fc0', '🔥'), 'HO=F': ('#5a5f6a', '🛢'), 'RB=F': ('#c04a3a', '⛽')}
 
 
 def hue(s):
@@ -249,7 +270,7 @@ def hue(s):
 
 def icon(a, big=False):
     c = ' lg' if big else ''
-    if a.get('cat') == 'metal' and not a.get('logo'):
+    if a.get('cat') in ('metal', 'cmd') and not a.get('logo'):
         bg, t = METAL_IC.get(a.get('yahoo'), ('#b8a06a', a['tk'][:2]))
         return f'<span class="ic{c}" style="background:{bg}">{t}</span>'
     k = SPRITE['ids'].get(a.get('_id'))
@@ -304,6 +325,7 @@ def lang_menu(lang, p):
 
 
 def poll_block(lang):
+    return ''   # poll hidden for now (owner, 2026-11-16)
     q, opts, thanks = POLL[lang]
     b = ''.join(f'<button data-o="{k}">{esc(v)}</button>' for k, v in zip(POLL_OPTS, opts.split('|')))
     return f'<section class="card section poll" id="poll" hidden data-thanks="{esc(thanks)}"><b>🗳 {esc(q)}</b><div class="pollb">{b}</div></section>'
@@ -320,8 +342,8 @@ def footer_cols(lang):
            (url(lang, 'activities'), ACT[lang]['nav']), (url(lang, 'exchanges'), EX[lang]['nav']), (url(lang if lang in ABOUT else 'en', 'about'), n['about']), (pol_url(lang), ACT[lang]['pol'])]
     cols = [(f[0], pop), (f[1], mk), (TR[lang]['x']['nav_tools'], tools), (n['i_nav'], ins)]
     if SOCIAL:
-        cols.insert(0, (f[2], [(u, l) for l, u in SOCIAL]))
-    return ('<div class="fcols">' + ''.join(f'<div><b>{esc(t)}</b>' + ''.join(f'<a href="{h}">{esc(l)}</a>' for h, l in items) + '</div>' for t, items in cols) + '</div>')
+        cols.insert(0, (f[2], [(u, l) for l, u in SOCIAL] + ([('mailto:' + CONTACT_EMAIL, '✉ ' + CONTACT_EMAIL)] if CONTACT_EMAIL else [])))
+    return ('<div class="fcols">' + ''.join(f'<div><b>{esc(t)}</b>' + ''.join(f'<a href="{h}"{" rel=\"me noopener\" target=\"_blank\"" if h.startswith("https://") and "whatifstack.com" not in h else ""}>{esc(l)}</a>' for h, l in items) + '</div>' for t, items in cols) + '</div>')
 
 
 def cover(kind, lang, slug):
@@ -366,7 +388,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
     msheet = ('<div class="msheet" id="msheet" hidden>' + ''.join(f'<a href="{url(lang, k)}">{esc(v)}</a>' for k, v in
               [('me', ME[lang]['nav']), ('activities', ACT[lang]['nav']), ('ai', AIS[lang]['h1'].split(':')[0])] + [x for x in tools_menu(lang) if x]) + '</div>')
     cfg = dict(cfg, lang=lang, base=BASE, prefix=url(lang).rstrip('/'), full=lang in FULL, topn=TOP_N,
-               names={'gold': S['gold'], 'silver': S['silver']})
+               names={'gold': S['gold'], 'silver': S['silver'], **{k: v[lang] for k, v in CMD_NAMES.items()}})
     return f"""<!DOCTYPE html>
 <html lang="{S['loc']}" dir="{S['dir']}">
 <head>
@@ -583,7 +605,7 @@ def home(lang, ver):
     top10, rest = table_block(lang, ids[:100], S['nav_rank'], interactive='top')
     body = (hero + f'<section class="section toprank"><div class="tabs" id="tabs"></div>{filt}{country_chips(lang, limit=8)}{top10}</section>'
             f'<div class="wgrid">{w_mcap}{w_dom}{w_fng}{w_tr}</div>'
-            f'{sections_strip(lang)}<div class="wgrid3">{w_up}{w_dn}{w_bat}</div>{banner}{habits_strip(lang)}{poll_block(lang)}{poly_block(lang)}'
+            f'<div class="wgrid3">{w_up}{w_dn}{w_bat}</div>{banner}{habits_strip(lang)}{poll_block(lang)}{poly_block(lang)}'
             f'<section class="section"><div class="hl">{"".join(cards)}</div></section>'
             f'{rest}'
             f'<section class="card section faq"><h2>{S["faq"]}</h2><details open><summary>{esc(S["q3"])}</summary><p>{esc(S["a3"])}</p></details></section>')
@@ -768,6 +790,8 @@ def asset(aid, lang, ver):
     badges = f'<span class="badge">{esc(tk)}</span> <span class="badge">{esc(cat)}</span>' + (f' <span class="badge">{esc(a["sector"])}</span>' if a.get('sector') else '')
     head = (f'{crumbs}<div class="ahead">{icon(a, True)}<div><h1>{S["a_h1"].format(**fe)}</h1><div style="margin-top:4px">{badges}</div></div>'
             f'<div class="price"><span class="v" data-p="{aid}">{price(m["price"])}</span><span class="pill {cls(m["chg"])}" data-c="{aid}">{pct(m["chg"])}</span>{local_price(a, lang)}<span id="buyslot" data-id="{aid}"></span><button class="star big" data-s="{aid}" title="{esc(ME[lang]["star"])}">☆</button></div></div>')
+    if (a.get('yahoo') or '').endswith('=F') and a['tk'] not in ('XAU', 'XAG'):
+        head += f'<p class="note">{esc(CMD_NOTE[lang])}</p>'
     w = S['w']
     loc = TV_LOC.get(lang, 'en')
     tv = (f'<section class="card section tvcard"><div class="charthead"><h2>{w["live_chart"]} · {esc(tk)}</h2><span class="livebadge"><i></i>{w["live"]}</span></div>'
@@ -1470,7 +1494,7 @@ def country_page(lang, slug, ver):
     body = (f'<nav class="crumbs"><a href="{url(lang)}">{S["nav_rank"]}</a> / <a href="{url(lang, "stocks")}">{esc(S["ui"]["stock"])}</a> / {esc(name)}</nav>'
             f'<h1>{esc(h1)}</h1><p class="lead">{esc(lead)}</p>{country_chips(lang, slug)}'
             + (f'<div class="hl">{cards}</div>' if cards else '')
-            + f'<section class="section">{table_block(lang, ids, None, interactive=False)}</section>'
+            + f'<section class="section">{table_block(lang, ids[:200], None, interactive=False)}</section>'
             f'<p class="note">{esc(TR[lang]["x"]["hub_d"].format(n=len(ids), cat=S["ui"]["stock"].lower()))}</p>')
     jsonld = [{"@context": "https://schema.org", "@type": "ItemList", "name": h1, "numberOfItems": len(ids),
                "itemListElement": [{"@type": "ListItem", "position": k + 1, "name": nm(A[i], lang), "url": SITE + aurl(lang, i)} for k, i in enumerate(ids[:50])]}]
@@ -1861,6 +1885,8 @@ def main():
             e['ne'] = nm(a, 'en')
         if a.get('logo'):
             e['l'] = a['logo']
+        if a.get('yahoo') in ('HG=F', 'ALI=F'):
+            e['u'] = 1   # copper/aluminum are quoted per lb / tonne, not per oz
         if a.get('binance') or (a['cat'] == 'crypto' and a.get('src') == 'yahoo'):
             e['bn'] = 1
         idx.append({k: (round(v, 4) if isinstance(v, float) and k in ('ch', 'r1', 'r3', 'r5') else v) for k, v in e.items() if v is not None})

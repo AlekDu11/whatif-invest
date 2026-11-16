@@ -53,3 +53,8 @@ for _m, (_slug, _flag, _lang) in MK2.items():
 for _lg in C:
     C[_lg][3].update(C2[_lg])
 assert len(C) == 20 and all(set(v[3]) == set(MKTS) for v in C.values()), 'country names missing'
+from i18n_cmd import US as _US  # noqa: E402  (United States market page)
+MKTS['us'] = ('stocks-usa', '🇺🇸')
+MKT_LANG['us'] = 'en'
+for _lg in C:
+    C[_lg][3]['us'] = _US[_lg]
