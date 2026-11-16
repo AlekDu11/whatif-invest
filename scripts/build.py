@@ -1364,8 +1364,9 @@ def world_items(lang):
         a = A[aid]
         if a['cat'] == 'stock':
             mc = (STOCKINFO.get(a.get('yahoo') or '', {}) or {}).get('mcap')
-            if mc and mc > 2e11 and a['tk'] not in seen:
-                seen.add(a['tk']); out.append((nm(a, lang), mc, 3, aid, None))
+            first = nm(a, 'en').split(' ')[0].lower()
+            if mc and mc > 2e11 and first not in seen:          # one row per company (GOOG/GOOGL, BRK-A/B...)
+                seen.add(first); out.append((nm(a, lang).split(' (Class')[0], mc, 3, aid, None))
         elif a['cat'] == 'crypto' and (a.get('mcap') or 0) > 5e10:
             out.append((nm(a, lang), a['mcap'], 4, aid, None))
     return sorted(out, key=lambda x: -x[1])
