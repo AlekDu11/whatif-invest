@@ -24,6 +24,7 @@ from i18n_mem import MEM  # noqa: E402
 from i18n_act import ACT  # noqa: E402
 from i18n_prof import P as PROF_T  # noqa: E402
 from i18n_pf import PF  # noqa: E402
+from i18n_bp import BP  # noqa: E402
 from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB  # noqa: E402
 SOCIAL = [('Telegram', 'https://t.me/TradeMaster_insight'), ('X (Twitter)', 'https://x.com/WhatIfStack'), ('Bluesky', 'https://bsky.app/profile/whatifstack.bsky.social'), ('Instagram', 'https://www.instagram.com/whatifstack/'), ('Threads', 'https://www.threads.com/@whatifstack'),
           ('Pinterest', 'https://www.pinterest.com/whatifstack/'), ('Medium', 'https://medium.com/@whatifstack'),
@@ -48,7 +49,7 @@ END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
 RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide', 'commodities'}
-RESERVED |= {v[0] for v in MKTS.values()} | {'world-assets', 'activities', 'editorial-policy', 'about'}
+RESERVED |= {v[0] for v in MKTS.values()} | {'world-assets', 'activities', 'editorial-policy', 'about', 'portfolios'}
 # asset ids that clash with a language folder or a section get a suffix (ko -> ko-stock, fil -> fil-crypto)
 _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
 # delisted or stale series (last price older than a month) are dropped: "today" numbers would be false
@@ -143,7 +144,7 @@ assert not (set(HUBS) | set(TOOLS) | {'blog', 'compare'}) & set(A), 'asset id co
 def has_page(lang, aid):
     if aid is None or aid == 'compare' or aid in HUBS or aid in TOOLS:
         return True
-    if aid in ('ai', 'me', 'memes', 'world-assets', 'activities'):
+    if aid in ('ai', 'me', 'memes', 'world-assets', 'activities', 'portfolios'):
         return True
     if aid == 'editorial-policy':
         return lang in POLICY
@@ -400,7 +401,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
     ld = ''.join(f'<script type="application/ld+json">{json.dumps(j, ensure_ascii=False)}</script>' for j in jsonld)
     X = S['x']
     blog_l = lang if lang in BLOG_LANGS else 'en'
-    nav = (''.join(f'<a href="{url(lang, k)}" class="{"on" if k == p else ""}">{v}</a>' for k, v in ((None, S['nav_rank']),))
+    nav = (''.join(f'<a href="{url(lang, k)}" class="{"on" if k == p else ""}">{v}</a>' for k, v in ((None, S['nav_rank']), ('portfolios', BP[lang]['nav'])))
            + f'<details class="dd"><summary class="{"on" if p in TOOLS or (p in CALCS and p not in ("exchanges", "news", "about")) or (p or "").startswith("habits") else ""}">{X["nav_tools"]}</summary><div>'
            + ''.join(f'<a href="{url(lang, k)}">{v}</a>' for k, v in [x for x in tools_menu(lang) if x]) + '</div></details>'
            + f'<a href="{url(lang, "exchanges")}" class="{"on" if p == "exchanges" else ""}">{EX[lang]["nav"]}</a>'
@@ -415,7 +416,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
         (url(lang, 'exchanges'), '₿', EX[lang]['nav'], p == 'exchanges'), (url(blog_l, 'blog'), '✎', NW[lang]['i_nav'], (p or '').startswith('blog'))))
     mnav += f'<button type="button" id="mmore"><span>☰</span>{esc(X["nav_tools"])}</button>'
     msheet = ('<div class="msheet" id="msheet" hidden>' + ''.join(f'<a href="{url(lang, k)}">{esc(v)}</a>' for k, v in
-              [('me', PF[lang]['h1']), ('activities', ACT[lang]['nav']), ('ai', AIS[lang]['h1'].split(':')[0])] + [x for x in tools_menu(lang) if x]) + '</div>')
+              [('me', PF[lang]['h1']), ('portfolios', BP[lang]['nav']), ('activities', ACT[lang]['nav']), ('ai', AIS[lang]['h1'].split(':')[0])] + [x for x in tools_menu(lang) if x]) + '</div>')
     cfg = dict(cfg, lang=lang, base=BASE, prefix=url(lang).rstrip('/'), full=lang in FULL, topn=TOP_N,
                names={'gold': S['gold'], 'silver': S['silver'], **{k: v[lang] for k, v in CMD_NAMES.items()}})
     return f"""<!DOCTYPE html>
@@ -1831,6 +1832,57 @@ def act_items(lang):
     return lang, []
 
 
+# ---------------- best DCA portfolios ----------------
+BP_SET = [('btc', {'btc': 1}), ('crypto', {'btc': .5, 'eth': .3, 'sol': .1, 'bnb': .1}), ('spy', {'spy': 1}), ('s6040', {'spy': .6, 'bnd': .4}),
+          ('world', {'vt': 1}), ('tech', {'qqq': 1}), ('mag7', {k: 1 / 7 for k in ('aapl', 'msft', 'nvda', 'googl', 'amzn', 'meta', 'tsla')}),
+          ('div', {'schd': 1}), ('mix', {'spy': .6, 'gold': .3, 'btc': .1}), ('metals', {'gold': .7, 'silver': .3})]
+
+
+def bp_sets():
+    out = [(k, {a: w for a, w in c.items() if a in A}) for k, c in BP_SET]
+    for key, cat, extra in (('topc', 'crypto', lambda a: (a.get('rank') or 999) <= 100), ('tops', 'stock', lambda a: (STOCKINFO.get(a.get('yahoo') or '', {}) or {}).get('mcap', 0) >= 2e10)):
+        best = sorted([i for i, a in A.items() if a['cat'] == cat and extra(a) and METRICS[i]['r5'] is not None], key=lambda i: -METRICS[i]['r5'])[:5]
+        out.append((key, {i: .2 for i in best}))
+    return [(k, c) for k, c in out if c and abs(sum(c.values()) - 1) < 1e-6]
+
+
+def bp_sim(comp, years):
+    st = END_I - years * 12
+    if any(ym2i(A[a]['start']) > st for a in comp):
+        return None
+    inv = val = 0.0
+    best = None
+    for a, w in comp.items():
+        r = simulate(a, st, AMOUNT * w)
+        inv += r['inv']; val += r['val']
+        if best is None or r['roi'] > best[1]:
+            best = (a, r['roi'])
+    return dict(inv=inv, val=val, roi=val / inv - 1, best=best)
+
+
+def portfolios_page(lang, ver):
+    t = BP[lang]
+    sets = bp_sets()
+    res = {k: {y: bp_sim(c, y) for y in (1, 3, 5, 10)} for k, c in sets}
+    order = sorted(sets, key=lambda kc: -(res[kc[0]][5]['roi'] if res[kc[0]][5] else -9))
+    rank = ''.join(f'<tr><td class="l"><b>{i + 1}. {esc(t[k])}</b>{" <small class=\"muted\">*</small>" if k in ("topc", "tops") else ""}</td>'
+                   f'<td class="num">{usd(res[k][5]["inv"])}</td><td class="num"><b>{usd(res[k][5]["val"])}</b></td><td class="num"><span class="pill {cls(res[k][5]["roi"])}">{pct(res[k][5]["roi"])}</span></td></tr>'
+                   for i, (k, c) in enumerate([kc for kc in order if res[kc[0]][5]]))
+    cards = []
+    for k, c in order:
+        chips = ''.join(f'<a class="bpa" href="{url(lang, a)}">{icon(A[a])}<span>{esc(A[a]["tk"])} {w * 100:.0f}%</span></a>' for a, w in sorted(c.items(), key=lambda x: -x[1]))
+        rows = ''.join(f'<tr><td class="l">{t["yrs"].format(n=y)}</td><td class="num">{usd(r["inv"])}</td><td class="num"><b>{usd(r["val"])}</b></td>'
+                       f'<td class="num"><span class="pill {cls(r["roi"])}">{pct(r["roi"])}</span></td>'
+                       f'<td class="num hide-sm">{esc(A[r["best"][0]]["tk"])} {pct(r["best"][1])}</td></tr>' for y in (1, 3, 5, 10) if (r := res[k][y]))
+        cards.append(f'<section class="card bpc"><h2>{esc(t[k])}</h2><div class="bpcomp">{chips}</div>'
+                     f'<div class="tw"><table class="mt"><thead><tr><th class="l"></th><th>{esc(t["inv"])}</th><th>{esc(t["val"])}</th><th>{esc(t["roi"])}</th><th class="hide-sm">{esc(t["best_asset"])}</th></tr></thead><tbody>{rows}</tbody></table></div>'
+                     + (f'<p class="muted bpnote">* {esc(t["hind"])}</p>' if k in ('topc', 'tops') else '') + '</section>')
+    body = (f'<h1>{esc(t["h1"])}</h1><p class="lead">{esc(t["d"])}</p>'
+            f'<section class="card section"><h2>🏆 {esc(t["rank"])}</h2><div class="tw"><table class="mt"><thead><tr><th class="l"></th><th>{esc(t["inv"])}</th><th>{esc(t["val"])}</th><th>{esc(t["roi"])}</th></tr></thead><tbody>{rank}</tbody></table></div>'
+            f'<p class="muted bpnote">{esc(t["how"])}</p></section><div class="bpgrid section">{"".join(cards)}</div><p class="muted" style="font-size:13px">{esc(t["na"])}</p>')
+    return shell(lang, 'portfolios', f'{t["h1"]} | {BRAND}', t['d'], body, {}, ver)
+
+
 def activities_page(lang, ver):
     a = ACT[lang]
     lg, items = act_items(lang)
@@ -2088,6 +2140,8 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
         write(pre + 'world-assets/index.html', world_page(lang, ver))
         write(pre + 'activities/index.html', activities_page(lang, ver))
         extra_pages.append('activities')
+        write(pre + 'portfolios/index.html', portfolios_page(lang, ver))
+        extra_pages.append('portfolios')
         if lang in POLICY:
             write(pre + 'editorial-policy/index.html', policy_page(lang, ver))
             extra_pages.append('editorial-policy')
