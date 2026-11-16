@@ -36,7 +36,7 @@ Hyperliquid's points program ended with the HYPE launch on November 29, 2024, wh
 
 Retroactive airdrops usually reward real, repeated use rather than one big burst. People who position for one typically:
 
-1. **Check that Polymarket is legal where they live.** It blocks many countries. Using a VPN to get around this breaks the terms and can get an account frozen — do not.
+1. **Check that Polymarket is legal where they live.** As of late October 2026, Polymarket itself blocks or limits to "close-only" about 40 countries, including the US, UK, France, Germany, Italy, Poland, Belgium, Australia, Brazil, Singapore and Thailand, and governments in Ukraine, Spain, Portugal, Turkey, India, Indonesia, the Philippines, Argentina, South Korea and others block the site themselves. Using a VPN to get around this breaks the terms and the law and can get an account frozen — do not. Our partner button checks your country and will not send you there if it is on these lists.
 2. **Deposit a small amount** they are ready to lose, for example $10–$50.
 3. **Make real predictions in several categories** (crypto, politics, sports, economy) over weeks and months, rather than one large trade.
 4. **Hold positions to resolution** sometimes, and occasionally provide liquidity, as the platform's own users describe.
@@ -54,5 +54,6 @@ An airdrop is a lottery ticket with unknown odds; a monthly investment plan is a
 - [SQ Magazine: Polymarket files POLY and $POLY trademarks](https://sqmagazine.co.uk/polymarket-poly-token-trademark-airdrop)
 - [Tangem: will Polymarket finally launch a POLY token?](https://tangem.com/en/learning-hub/post/polymarket-token-launch/)
 - [Hyperliquid Docs: points](https://hyperliquid.gitbook.io/hyperliquid-docs/points)
+- [Coinperps: Polymarket restricted countries, checked 27 October 2026](https://www.coinperps.com/learn/polymarket-restricted-countries)
 
 *Not investment advice. Prediction markets carry a risk of losing your whole stake.*

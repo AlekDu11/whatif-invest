@@ -14,7 +14,9 @@ Style (studied from @CryptoRank_io, 10–16k views/post): emoji + Title Case hea
 4. Log `img` in the link column (e.g. `no+img`) so we can compare reach with and without images.
 For a post about one of our articles, use the article's title and `stat` from its front matter.
 
-Formats to rotate and compare: dca-whatif, mover, market-pulse, chart-fact, country-stocks, article-link, poll.
+Formats to rotate and compare: dca-whatif, mover, market-pulse, chart-fact, country-stocks, article-link, poll, prediction-odds.
+
+**prediction-odds (Polymarket, our partner — up to 1 post a day, English only):** a live market's odds from polymarket.com (e.g. "Bitcoin above $X by Dec 31?": Yes 34%), 2–3 lines of context with our numbers, then one honest line such as "Polymarket has confirmed a POLY token and airdrop; no date or rules yet." Never say users "will get" or "can get" an airdrop, never promise rewards, no betting encouragement, add "Not available in every country." Do not post this format in Ukrainian, Polish, Russian or other languages whose main countries block Polymarket (see PM_BLOCKED in api/go.js).
 
 | when | format | topic | link | url | views | likes | reposts | replies |
 |---|---|---|---|---|---|---|---|---|

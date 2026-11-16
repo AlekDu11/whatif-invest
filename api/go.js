@@ -1,6 +1,11 @@
 // Click tracker + redirect: /go/<partner>?from=<page>&l=<lang>[&e=<polymarket event slug>]
 // Counts go to Upstash Redis (Vercel KV) when KV_REST_API_URL / KV_REST_API_TOKEN are set; otherwise it just redirects.
 const P = require('./_partners');
+// Polymarket is not available (Polymarket geoblock incl. close-only) or blocked by the government in these countries
+// (coinperps.com check of 27 Oct 2026 + government block list). Visitors from them go to our explainer instead.
+const PM_BLOCKED = new Set(('CU IR KP SY BY BE FR DE IT PL RU SK GB US UM BR NI VE AU MM NZ SG TW TH BI CF CD ET IQ LB LY SO SS SD YE ZW '
+  + 'IE MT NL JP KR CH CO RO UA HU PT AR PH IN ID ES CZ TR DK LT').split(' '));
+const PM_BLOCKED_REGIONS = new Set(['CA-AB', 'CA-BC', 'CA-ON', 'CA-QC']);
 
 async function redis(cmds) {
   const u = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
@@ -18,6 +23,15 @@ module.exports = async (req, res) => {
   if (!dest) { res.statusCode = 302; res.setHeader('Location', '/'); return res.end(); }
   if (id === 'polymarket' && q.e && /^[a-z0-9-]{1,200}$/.test(q.e)) dest = `https://polymarket.com/event/${q.e}?via=alek-du`;
   const h = req.headers || {};
+  if (id === 'polymarket') {
+    const c = String(h['x-vercel-ip-country'] || '').toUpperCase(), r = String(h['x-vercel-ip-country-region'] || '').toUpperCase();
+    if (PM_BLOCKED.has(c) || PM_BLOCKED_REGIONS.has(c + '-' + r)) {
+      await redis([['HINCRBY', 'clk:total', 'polymarket-geo', 1], ['HINCRBY', 'clk:geo:polymarket-geo', c, 1]]);
+      const l = String(q.l || '').replace(/[^a-z]/g, '').slice(0, 3);
+      res.statusCode = 302; res.setHeader('Location', (l && l !== 'uk' ? '/' + l : '') + '/activities/?pm=unavailable');
+      res.setHeader('Cache-Control', 'no-store'); return res.end();
+    }
+  }
   const ua = String(h['user-agent'] || '');
   const bot = /bot|crawl|spider|slurp|preview|facebookexternalhit|headless/i.test(ua) || !ua;
   if (!bot) {

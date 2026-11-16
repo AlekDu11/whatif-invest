@@ -1675,7 +1675,9 @@ def activities_page(lang, ver):
         + (f'<div class="muted">{esc(a["cost"])}: {esc(m["cost"])}' + (f' · {esc(a["time"])}: {esc(m["time"])}' if m.get('time') else '') + '</div>' if m.get('cost') else '') + '</a>'
         for k, m in items)
     note = f'<p class="muted">{esc(a["en_note"])}</p>' if lg != lang else ''
-    body = (f'<h1>{esc(a["h1"])}</h1><p class="lead">{esc(a["d"])}</p><div class="card awarn">⚠️ {esc(a["warn"])}</div>{note}'
+    pmna = (f'<div class="card awarn" id="pmna" hidden>🌍 {esc(a["pmna"])}</div>'
+            '<script>if(/[?&]pm=unavailable/.test(location.search))document.getElementById("pmna").hidden=false</script>')
+    body = (f'<h1>{esc(a["h1"])}</h1><p class="lead">{esc(a["d"])}</p>{pmna}<div class="card awarn">⚠️ {esc(a["warn"])}</div>{note}'
             f'<div class="posts">{cards}</div><p class="muted" style="font-size:13px">{esc(a["ad"])} <a href="{pol_url(lang)}">{esc(a["pol"])}</a></p>')
     return shell(lang, 'activities', f'{a["h1"]} | {BRAND}', a['d'], body, {}, ver)
 
