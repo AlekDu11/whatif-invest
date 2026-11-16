@@ -61,7 +61,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
   const tb=$('#mt'); if(!tb) return;
   let tab=PAGE.tab||'all', q='', sortK=PAGE.sort||'o', sortDir=1, shown=100;
   const TABS=['all','crypto','stock','etf','metal','lead','lag'];
-  $('#tabs').innerHTML=TABS.map(t=>`<button data-t="${t}" class="${t===tab?'on':''}">${T[t]}</button>`).join('');
+  $('#tabs').innerHTML=TABS.map(t=>`<button data-t="${t}" class="${t===tab?'on':''}">${T[t]}</button>`).join('')+(PAGE.wa?`<a class="tablink" href="${PAGE.wau}">🌍 ${esc(PAGE.wa)}</a>`:'');
   $$('#tabs button').forEach(b=>b.onclick=()=>{tab=b.dataset.t; $$('#tabs button').forEach(x=>x.classList.toggle('on',x===b));
     if(tab==='lead'){sortK='r5';sortDir=-1} else if(tab==='lag'){sortK='r5';sortDir=1} else if(sortK==='r5'&&(sortDir)){sortK='o';sortDir=1}
     shown=100; draw()});

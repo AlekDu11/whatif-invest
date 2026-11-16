@@ -555,7 +555,7 @@ def home(lang, ver):
     jsonld = [{"@context": "https://schema.org", "@type": "WebApplication", "name": BRAND, "url": SITE + url(lang),
                "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "inLanguage": S['loc'],
                "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": desc}]
-    return shell(lang, None, title, desc, body, dict(home=True), ver, jsonld)
+    return shell(lang, None, title, desc, body, dict(home=True, wa=WA[lang]['nav'], wau=url(lang, 'world-assets')), ver, jsonld)
 
 
 def compare(lang, ver):
