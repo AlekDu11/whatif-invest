@@ -3,6 +3,8 @@
 One line per post, newest at the bottom. Filled by the scheduled task "WhatIfStack: X posts".
 Columns: date-time (Kyiv) | format | topic | link? | post URL | views / likes / reposts / replies (updated on later runs)
 
+**Read social/playbook.md first (daily/weekly series, templates, cadence).** On X put the site link in the first reply to our own post ("Full numbers: <url>"), never in the main post.
+
 Style (studied from @CryptoRank_io, 10–16k views/post): emoji + Title Case headline, blank line, 2–4 short lines with exact numbers, one context line, "Past results, not a forecast." No link in the main post (X cuts reach); the site link lives in the profile. Charts/images get more reach when we can attach them.
 
 **Every post gets an image (required since 2026-11-16).** X's CSP blocks loading files from other sites, so the card is drawn on the x.com page itself:
