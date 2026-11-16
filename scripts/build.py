@@ -77,16 +77,18 @@ FUT_EX = {'COMEX': ('GC', 'SI', 'HG', 'ALI'), 'NYMEX': ('PL', 'PA', 'CL', 'NG', 
           'ICEUS': ('SB', 'KC', 'CC', 'CT', 'OJ'), 'CME': ('LE', 'HE'), 'ICEEUR': ('BZ',)}
 
 
+FUT_TV = {'PL=F': 'OANDA:XPTUSD', 'PA=F': 'OANDA:XPDUSD', 'HG=F': 'OANDA:XCUUSD', 'ZW=F': 'OANDA:WHEATUSD', 'ZC=F': 'OANDA:CORNUSD',
+          'ZS=F': 'OANDA:SOYBNUSD', 'SB=F': 'OANDA:SUGARUSD', 'NG=F': 'OANDA:NATGASUSD', 'CL=F': 'OANDA:WTICOUSD', 'BZ=F': 'OANDA:BCOUSD'}
+
+
 def tv_symbol(a):
     if a['cat'] == 'crypto':
         ex = {'gate': 'GATEIO', 'mexc': 'MEXC', 'okx': 'OKX'}.get(a.get('src'), 'BINANCE')
         return f"{ex}:{a['tk']}USDT"
     if a['cat'] == 'metal' and a['tk'] in ('XAU', 'XAG'):
         return 'OANDA:XAUUSD' if a['tk'] == 'XAU' else 'OANDA:XAGUSD'
-    if (a.get('yahoo') or '').endswith('=F'):
-        r = a['yahoo'][:-2]
-        ex = next((e for e, rs in FUT_EX.items() if r in rs), 'NYMEX')
-        return f'{ex}:{r}1!'
+    if (a.get('yahoo') or '').endswith('=F'):   # exchange futures are not allowed in free embeds -> OANDA CFD or no widget
+        return FUT_TV.get(a['yahoo'])
     y = a.get('yahoo') or ''
     if y.startswith('MOEX:'):
         return y
@@ -842,20 +844,24 @@ def asset(aid, lang, ver):
         head += f'<p class="note">{esc(CMD_NOTE[lang])}</p>'
     w = S['w']
     loc = TV_LOC.get(lang, 'en')
-    tv = (f'<section class="card section tvcard"><div class="charthead"><h2>{w["live_chart"]} · {esc(tk)}</h2><span class="livebadge"><i></i>{w["live"]}</span></div>'
-          + tvw('advanced-chart', dict(autosize=True, symbol=tv_symbol(a), interval='D', timezone='Etc/UTC', theme='light', style='1', locale=loc,
-                                       allow_symbol_change=False, hide_side_toolbar=True, withdateranges=True, save_image=False), 480) + '</section>')
-    tech_news = (f'<div class="cols2 section"><section class="card"><h2>{X["tech"]} · {esc(tk)}</h2>'
-                 + tvw('technical-analysis', dict(interval='1D', width='100%', height='100%', isTransparent=True, symbol=tv_symbol(a), showIntervalTabs=True,
-                                                  displayMode='single', locale=loc, colorTheme='light'), 430)
-                 + f'</section><section class="card"><h2>{X["news"]} · {esc(tk)}</h2>'
-                 + tvw('timeline', dict(feedMode='symbol', symbol=tv_symbol(a), isTransparent=True, displayMode='regular', width='100%', height='100%',
-                                        colorTheme='light', locale=loc), 430) + '</section></div>')
-    if a['cat'] in ('stock', 'etf'):
-        tech_news += (f'<div class="cols2 section"><section class="card"><h2>{X["fund"]} · {esc(tk)}</h2>'
-                      + tvw('financials', dict(isTransparent=True, displayMode='regular', width='100%', height='100%', colorTheme='light', symbol=tv_symbol(a), locale=loc), 520)
-                      + f'</section><section class="card"><h2>{X["prof"]} · {esc(tk)}</h2>'
-                      + tvw('symbol-profile', dict(width='100%', height='100%', isTransparent=True, colorTheme='light', symbol=tv_symbol(a), locale=loc), 520) + '</section></div>')
+    tvs = tv_symbol(a)
+    if tvs:
+        tv = (f'<section class="card section tvcard"><div class="charthead"><h2>{w["live_chart"]} · {esc(tk)}</h2><span class="livebadge"><i></i>{w["live"]}</span></div>'
+              + tvw('advanced-chart', dict(autosize=True, symbol=tv_symbol(a), interval='D', timezone='Etc/UTC', theme='light', style='1', locale=loc,
+                                           allow_symbol_change=False, hide_side_toolbar=True, withdateranges=True, save_image=False), 480) + '</section>')
+        tech_news = (f'<div class="cols2 section"><section class="card"><h2>{X["tech"]} · {esc(tk)}</h2>'
+                     + tvw('technical-analysis', dict(interval='1D', width='100%', height='100%', isTransparent=True, symbol=tv_symbol(a), showIntervalTabs=True,
+                                                      displayMode='single', locale=loc, colorTheme='light'), 430)
+                     + f'</section><section class="card"><h2>{X["news"]} · {esc(tk)}</h2>'
+                     + tvw('timeline', dict(feedMode='symbol', symbol=tv_symbol(a), isTransparent=True, displayMode='regular', width='100%', height='100%',
+                                            colorTheme='light', locale=loc), 430) + '</section></div>')
+        if a['cat'] in ('stock', 'etf'):
+            tech_news += (f'<div class="cols2 section"><section class="card"><h2>{X["fund"]} · {esc(tk)}</h2>'
+                          + tvw('financials', dict(isTransparent=True, displayMode='regular', width='100%', height='100%', colorTheme='light', symbol=tv_symbol(a), locale=loc), 520)
+                          + f'</section><section class="card"><h2>{X["prof"]} · {esc(tk)}</h2>'
+                          + tvw('symbol-profile', dict(width='100%', height='100%', isTransparent=True, colorTheme='light', symbol=tv_symbol(a), locale=loc), 520) + '</section></div>')
+    else:   # no free live chart for this symbol
+        tv, tech_news = '', ''
     body = (f'{head}<p class="lead" style="margin-top:10px">{S["a_lead"].format(**fe)}</p>{hot_block(lang, aid)}{tv}{info_block(lang, aid)}{hot_more(lang, aid)}<div class="stats">{stat_cards}</div><div class="stats">{lump_cards}</div>{seas_block(lang, aid)}{calc_block(lang)}{tech_news}'
             f'<div class="cols2 section"><section class="card"><h2>{S["a_periods"].format(**fe)}</h2>{ptable}</section>'
             f'<section class="card faq"><h2>{S["faq"]}</h2>' + ''.join(f'<details><summary>{esc(q)}</summary><p>{esc(x)}</p></details>' for q, x in faq) + '</section></div>'
