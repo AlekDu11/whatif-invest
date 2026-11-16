@@ -38,5 +38,5 @@ jobs:
           git add data/
           if git diff --cached --quiet; then echo "No changes"; exit 0; fi
           git commit -m "Market data $(date -u +%F)"
-          git pull --rebase
+          git pull --rebase -X theirs || (git rebase --abort; git pull --rebase -X theirs)
           git push

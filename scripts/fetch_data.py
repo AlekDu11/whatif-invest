@@ -227,6 +227,18 @@ def broken(series):
     return any(p[i - 1] > 0 and not (1 / 30 < p[i] / p[i - 1] < 30) for i in range(1, len(p)))
 
 
+def trim_breaks(series):
+    """Keep only the history after the last >30x one-month jump (old redenominations, unadjusted splits). None if < 12 months left."""
+    p = series['p']
+    cut = max([i for i in range(1, len(p)) if p[i - 1] > 0 and not (1 / 30 < p[i] / p[i - 1] < 30)] or [0])
+    if not cut:
+        return series
+    if len(p) - cut < 12:
+        return None
+    s0 = ym2i(series['start']) + cut
+    return dict(series, start=i2ym(s0), p=p[cut:])
+
+
 def looks_stable(series):
     p = series['p'][-12:]
     return len(p) >= 3 and all(0.97 < x < 1.03 for x in p)
@@ -465,9 +477,12 @@ def coin_info(assets, budget=220):
     for a in todo[:budget]:
         d = get_json(f"https://api.coingecko.com/api/v3/coins/{a['cgid']}?localization=true&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false", tries=2)
         time.sleep(2.6)
-        if not isinstance(d, dict) or 'links' not in d:
+        if d is None:                                   # rate-limited: wait a minute and retry once
+            time.sleep(65)
+            d = get_json(f"https://api.coingecko.com/api/v3/coins/{a['cgid']}?localization=true&tickers=false&market_data=false&community_data=false&developer_data=false&sparkline=false", tries=1)
             if d is None:
-                break                                   # rate-limited: try again tomorrow
+                break                                   # still limited: continue tomorrow
+        if not isinstance(d, dict) or 'links' not in d:
             continue
         L = d.get('links') or {}
         first = lambda v: next((x for x in (v or []) if x), None)
@@ -574,8 +589,10 @@ def main():
             raw = mm.get(r['yahoo'])
             ser = to_usd(fix_x100(raw) if ccy == 'GBp' else raw, ccy, fxm)
             if ser and broken(ser):
-                log(f"  skip {r['yahoo']}: broken series")
-                continue
+                ser = trim_breaks(ser)
+                log(f"  {r['yahoo']}: jump in history, kept from {ser['start'] if ser else '-'}")
+                if not ser:
+                    continue
             assets[aid] = dict(name={'uk': r['name'], 'en': r['name']}, tk=r['tk'], cat=r['cat'], yahoo=r['yahoo'], src='moex' if ccy == 'RUB' else 'yahoo', ccy=ccy,
                                **{k: r[k] for k in ('mkt', 'sector') if r.get(k)}, **(ser or {}))
 
