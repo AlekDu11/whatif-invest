@@ -1,0 +1,12 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>WhatIfStack image relay</title></head><body>
+<script>
+// Hands one of our own cover images to an x.com composer that opened this window (X's CSP blocks fetching it directly).
+(async () => {
+  const p = new URLSearchParams(location.search).get('img') || '';
+  if (!/^\/assets\/covers\/[\w\/.-]+\.jpg$/.test(p) || !window.opener) { document.body.textContent = 'nothing to do'; return; }
+  const buf = await (await fetch(p)).arrayBuffer();
+  window.opener.postMessage({ wisImg: p, buf }, 'https://x.com', [buf]);
+  document.body.textContent = 'sent';
+  setTimeout(() => window.close(), 500);
+})();
+</script></body></html>
