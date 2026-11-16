@@ -1,7 +1,12 @@
-# whatif.invest
+# WhatIfStack — [whatifstack.com](https://whatifstack.com/)
 
-"What if I invested $10 every day?" — a DCA calculator for crypto, stocks, ETFs, gold and silver.
-Live at **https://whatifstack.com/** (Ukrainian at the root, other languages at /en/, /es/ …).
+**What if you had invested $10 a day?** [WhatIfStack](https://whatifstack.com/) shows, with real prices, what regular (DCA) investing in 1,700+ cryptocurrencies, stocks, ETFs and gold would have returned — in 20 languages.
+
+- [DCA calculator and ranking](https://whatifstack.com/en/) · [Bitcoin $10 a day](https://whatifstack.com/en/btc/) · [Compare assets](https://whatifstack.com/en/compare/)
+- [World's largest assets](https://whatifstack.com/en/world-assets/) · [Stocks by country](https://whatifstack.com/en/stocks-ukraine/) · [Airdrops and campaigns](https://whatifstack.com/en/activities/)
+- [Guide to every tool](https://whatifstack.com/en/guide/) · [News](https://whatifstack.com/en/news/) · [X @WhatIfStack](https://x.com/WhatIfStack)
+
+Ukrainian is at the root, other languages at /en/, /es/, /pl/ …
 
 ## How it works
 
