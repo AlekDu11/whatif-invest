@@ -46,3 +46,4 @@ Candidates — before the first post in a community, open it, check it is active
 | Date | Platform | Community | Article | URL | Result (views/upvotes/clicks) |
 |---|---|---|---|---|---|
 | 2026-11-16 | Medium | @whatifstack | bitcoin-crash-65000-dca (en) | https://medium.com/@whatifstack/why-is-bitcoin-crashing-btc-below-65-000-49-off-its-high-what-dca-buyers-have-now-92e2ed802495 | canonical ✓ |
+| 2026-11-16 | Medium | @whatifstack | dax-schwergewichte-10-dollar-am-tag-5-jahre (de) | https://medium.com/@whatifstack/10-am-tag-in-5-dax-schwergewichte-65-in-5-jahren-mehr-als-s-p-500-und-bitcoin-29a0ac901b1a | canonical ✓ |
