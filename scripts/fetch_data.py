@@ -483,7 +483,7 @@ def _clean(t, n=700):
     return (t[:n].rsplit(' ', 1)[0] + '…') if len(t) > n else t
 
 
-def coin_info(assets, budget=220):
+def coin_info(assets, budget=320):
     info = json.load(open(COININFO, encoding='utf-8')) if os.path.exists(COININFO) else {}
     today = datetime.now(timezone.utc).strftime('%Y-%m-%d')
     todo = sorted((a for a in assets.values() if a.get('cat') == 'crypto' and a.get('cgid')), key=lambda a: a.get('rank') or 9999)
@@ -523,7 +523,7 @@ def coin_info(assets, budget=220):
     log(f"coin info: +{n}, {len(info)} total")
 
 
-def stock_info(assets, budget=180):
+def stock_info(assets, budget=450):
     try:
         import yfinance as yf
     except ImportError:
