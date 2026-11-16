@@ -494,3 +494,6 @@ a.more{text-align:center;text-decoration:none}
 .artbody blockquote ul{margin:6px 0 4px;padding-left:20px}.artbody blockquote p{margin:6px 0}
 .iauto{margin:0 0 12px;line-height:1.6}
 .ic.mi{color:#fff;font-weight:800;font-size:12px;display:inline-flex;align-items:center;justify-content:center}
+.follow{margin-top:28px;padding:18px 20px}.follow b{display:block;font-size:17px;margin-bottom:12px}
+.folrow{display:flex;flex-wrap:wrap;gap:14px 18px}.fol{display:flex;flex-direction:column;align-items:center;gap:5px;text-decoration:none;color:var(--muted);font-size:12px;font-weight:600;min-width:52px}
+.fol svg{border-radius:50%;transition:transform .15s}.fol:hover svg{transform:translateY(-2px)}.fol:hover{color:var(--text)}

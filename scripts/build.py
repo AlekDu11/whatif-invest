@@ -24,9 +24,10 @@ from i18n_mem import MEM  # noqa: E402
 from i18n_act import ACT  # noqa: E402
 from i18n_prof import P as PROF_T  # noqa: E402
 from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB  # noqa: E402
-SOCIAL = [('X (Twitter)', 'https://x.com/WhatIfStack'), ('Bluesky', 'https://bsky.app/profile/whatifstack.bsky.social'), ('Instagram', 'https://www.instagram.com/whatifstack/'), ('Threads', 'https://www.threads.com/@whatifstack'),
+SOCIAL = [('Telegram', 'https://t.me/TradeMaster_insight'), ('X (Twitter)', 'https://x.com/WhatIfStack'), ('Bluesky', 'https://bsky.app/profile/whatifstack.bsky.social'), ('Instagram', 'https://www.instagram.com/whatifstack/'), ('Threads', 'https://www.threads.com/@whatifstack'),
           ('Pinterest', 'https://www.pinterest.com/whatifstack/'), ('Medium', 'https://medium.com/@whatifstack'),
-          ('Flipboard', 'https://flipboard.com/@whatifstack'), ('GitHub', 'https://github.com/AlekDu11/whatif-invest')]
+          ('Flipboard', 'https://flipboard.com/@whatifstack'), ('Facebook', 'https://www.facebook.com/arti.trader.39'), ('Teletype', 'https://teletype.in/@whatifstack'),
+          ('GitHub', 'https://github.com/AlekDu11/whatif-invest')]
 CONTACT_EMAIL = ''   # public contact address shown under 'Follow us' (set when the owner confirms which mailbox)   # [(label, url)], e.g. ('Telegram', 'https://t.me/whatifstack'); the 'Follow us' column appears when filled
 from i18n_h import H as HB, PRICES as HPRICE, SCEN as HSCEN, UNITS as HUNITS, CONV as HCONV  # noqa: E402
 
@@ -325,6 +326,30 @@ def strip(lang):
 def lang_menu(lang, p):
     opts = ''.join(f'<option value="{url(lg, p) if has_page(lg, p) else url(lg)}"{" selected" if lg == lang else ""}>{esc(TR[lg]["name"])}</option>' for lg in ORDER)
     return f'<select class="langsel" aria-label="Language" onchange="location.href=this.value">{opts}</select>'
+
+
+# Brand-coloured round icons for the "Follow us" block under every article (simple glyphs, no external files)
+_G = {
+    'Telegram': ('#229ED9', '<path d="M5 12.5 19 6.5 16.6 18.2 11.8 14.8 9.6 17 9.9 13.6 16.4 8.4 8.3 12.9z" fill="#fff"/>'),
+    'X (Twitter)': ('#000', '<path d="M6.5 6h3.2l8 12h-3.2z" fill="#fff"/><path d="M17 6 7 18" stroke="#fff" stroke-width="1.6"/>'),
+    'Instagram': ('#E1306C', '<rect x="6" y="6" width="12" height="12" rx="3.5" fill="none" stroke="#fff" stroke-width="1.7"/><circle cx="12" cy="12" r="2.9" fill="none" stroke="#fff" stroke-width="1.7"/><circle cx="15.6" cy="8.4" r=".9" fill="#fff"/>'),
+    'Threads': ('#111', '<text x="12" y="16.6" text-anchor="middle" font-size="13" font-weight="700" fill="#fff" font-family="Arial">@</text>'),
+    'Bluesky': ('#1185FE', '<path d="M12 11.2C10.6 8.5 7.6 6.3 6.2 6.9c-1.4.6-.4 4.4 1.6 5.1-2.2.6-2.4 2.6-.6 3.5 1.9.9 3.8-.9 4.8-3.3 1 2.4 2.9 4.2 4.8 3.3 1.8-.9 1.6-2.9-.6-3.5 2-.7 3-4.5 1.6-5.1-1.4-.6-4.4 1.6-5.8 4.3z" fill="#fff"/>'),
+    'Facebook': ('#1877F2', '<path d="M13.2 19v-6h2l.3-2.4h-2.3V9.1c0-.7.2-1.2 1.2-1.2h1.2V5.8c-.2 0-1-.1-1.8-.1-1.8 0-3 1.1-3 3.1v1.8h-2V13h2v6z" fill="#fff"/>'),
+    'Pinterest': ('#E60023', '<text x="12" y="17" text-anchor="middle" font-size="14" font-weight="800" fill="#fff" font-family="Georgia">P</text>'),
+    'Medium': ('#000', '<ellipse cx="9" cy="12" rx="3.6" ry="3.8" fill="#fff"/><ellipse cx="15" cy="12" rx="1.7" ry="3.6" fill="#fff"/><ellipse cx="18" cy="12" rx=".7" ry="3.2" fill="#fff"/>'),
+    'Flipboard': ('#E12828', '<path d="M7 7h10v3.3h-6.7v3.4H7z" fill="#fff"/><path d="M7 13.7h3.3V17H7z" fill="#fff" opacity=".8"/>'),
+    'Teletype': ('#0c1613', '<text x="12" y="16.5" text-anchor="middle" font-size="12" font-weight="800" fill="#f2b632" font-family="Arial">T</text>'),
+    'GitHub': ('#24292f', '<path d="M12 5.5a6.5 6.5 0 0 0-2 12.7c.3 0 .4-.1.4-.3v-1.2c-1.8.4-2.2-.8-2.2-.8-.3-.8-.7-1-.7-1-.6-.4 0-.4 0-.4.7 0 1 .7 1 .7.6 1 1.6.7 2 .6 0-.4.2-.7.4-.9-1.4-.2-3-.7-3-3.2 0-.7.3-1.3.7-1.7-.1-.2-.3-.8.1-1.7 0 0 .5-.2 1.8.7a6 6 0 0 1 3.2 0c1.2-.9 1.8-.7 1.8-.7.3.9.1 1.5 0 1.7.4.4.7 1 .7 1.7 0 2.5-1.5 3-3 3.2.3.2.5.6.5 1.2v1.8c0 .2.1.4.4.3A6.5 6.5 0 0 0 12 5.5z" fill="#fff"/>'),
+}
+
+
+def follow_block(lang):
+    """'Follow us' card with round brand icons, shown under every article and news brief."""
+    t = FOOT[lang][2]
+    items = ''.join(f'<a class="fol" href="{u}" target="_blank" rel="me noopener" title="{esc(l)}"><svg viewBox="0 0 24 24" width="40" height="40" aria-hidden="true">'
+                    f'<circle cx="12" cy="12" r="12" fill="{_G[l][0]}"/>{_G[l][1]}</svg><span>{esc(l.split(" ")[0])}</span></a>' for l, u in SOCIAL if l in _G)
+    return f'<section class="card follow"><b>{esc(t)}</b><div class="folrow">{items}</div></section>'
 
 
 def poll_block(lang):
@@ -1281,7 +1306,7 @@ def news_article(lang, slug, ver):
     body = (f'<nav class="crumbs"><a href="{url(lang, "news")}">{n["n_nav"]}</a></nav><article class="art"><h1>{esc(title)}</h1>'
             f'<div class="muted byline"><a href="{about}">WhatIfStack Research</a> · <time data-t="{esc(m.get("date", ""))}">{esc(m.get("date", ""))}</time> · {tags}</div>'
             + (f'<img class="cover" src="{cv}" alt="" width="1200" height="630">' if cv else '') +
-            f'<p class="lead">{esc(desc)}</p><div class="postcards">{cards}</div><div class="artbody">{md(m["body"], lang)}</div></article>'
+            f'<p class="lead">{esc(desc)}</p><div class="postcards">{cards}</div><div class="artbody">{md(m["body"], lang)}</div>{follow_block(lang)}</article>'
             f'{poll_block(lang)}<section class="banner section"><div><b>{w["cta"]}</b><p>{w["cta_text"]}</p></div><a class="btn" id="ctaBuy2" href="{url(lang, "exchanges")}">{EX[lang]["nav"]} →</a></section>'
             + (f'<section class="section"><h2>{esc(n["own"])}</h2><div class="card nlist own">{rel_html}</div></section>' if rel else ''))
     d = m.get('date', '').replace(' ', 'T')
@@ -1859,7 +1884,7 @@ def blog_post(lang, slug, ver):
     body = (f'<nav class="crumbs"><a href="{crumb[0]}">{crumb[1]}</a></nav><article class="art"><h1>{esc(title)}</h1>'
             + (f'<img class="cover" src="{cv}" alt="" width="1200" height="630">' if cv else '') +
             f'<div class="muted byline"><a href="{url(lang if lang in ABOUT else "en", "about")}">WhatIfStack Research</a> · {esc(m.get("date", ""))} · {S["updated"]} {UPDATED} · <a href="{pol_url(lang)}">{esc(ACT[lang]["pol"])}</a></div>'
-            + (act_facts(lang, m) + f'<div class="card awarn">⚠️ {esc(ACT[lang]["warn"])}</div>' if m.get('category') == 'activities' else '') + f'<div class="artbody">{html_body}</div></article>'
+            + (act_facts(lang, m) + f'<div class="card awarn">⚠️ {esc(ACT[lang]["warn"])}</div>' if m.get('category') == 'activities' else '') + f'<div class="artbody">{html_body}</div>{follow_block(lang)}</article>'
             f'<div class="postcards">{cards}</div>{poll_block(lang)}'
             f'<section class="banner section"><div><b>{w["cta"]}</b><p>{w["cta_text"]}</p></div><a class="btn" id="ctaBuy2" href="{url(lang, "compare")}">{w["cta"]} →</a></section>'
             + (f'<section class="section"><h2>{X["related"]}</h2><div class="posts">{rel_html}</div></section>' if rel else ''))
