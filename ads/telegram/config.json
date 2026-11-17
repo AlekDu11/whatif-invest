@@ -1,0 +1,22 @@
+{
+ "promoted_channel": "WhatIfStack",
+ "currency": "TON (Gram)",
+ "weekly_spend_cap": 0,
+ "guard": {
+  "enabled": true,
+  "min_views_ctr": 3000,
+  "min_ctr": 0.3,
+  "min_spent_no_action": 1.5,
+  "min_spent_cpa": 1.5,
+  "cpa_vs_median": 2.0,
+  "min_actions_winner": 5
+ },
+ "autopilot": {
+  "enabled": false,
+  "target_cpa": null,
+  "step": 3,
+  "min_actions": 5,
+  "refill_below": 1.0
+ },
+ "_notes": "weekly_spend_cap і autopilot змінює тільки власник. 0 = автопілот нічого не витрачає; apply виконує лише дії з approved.json, які власник підтвердив словом «так»."
+}

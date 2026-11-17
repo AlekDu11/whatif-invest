@@ -1,0 +1,49 @@
+name: Telegram Ads autopilot
+
+on:
+  schedule:
+    - cron: '17 6 * * *'    # 09:17 Kyiv — stats + guard
+    - cron: '43 16 * * *'   # 19:43 Kyiv — stats + guard + approved actions + autopilot
+  push:
+    paths: ['ads/telegram/approved.json']   # owner-approved actions run right after commit
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ads-telegram
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    env:
+      TG_ADS_TOKEN: ${{ secrets.TG_ADS_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Skip if token is missing
+        id: tok
+        run: |
+          if [ -z "$TG_ADS_TOKEN" ]; then echo "TG_ADS_TOKEN not set — skipping"; echo "ok=0" >> $GITHUB_OUTPUT; else echo "ok=1" >> $GITHUB_OUTPUT; fi
+      - name: Apply approved actions
+        if: steps.tok.outputs.ok == '1'
+        run: python3 ads/telegram/tools/ads_tg.py apply
+      - name: Guard (pause losers)
+        if: steps.tok.outputs.ok == '1'
+        run: python3 ads/telegram/tools/ads_tg.py guard
+      - name: Autopilot (only if owner enabled it)
+        if: steps.tok.outputs.ok == '1' && github.event_name == 'schedule'
+        run: python3 ads/telegram/tools/ads_tg.py autopilot
+      - name: Check new candidate channels
+        run: python3 ads/telegram/tools/ads_tg.py check
+      - name: Report
+        if: steps.tok.outputs.ok == '1'
+        run: python3 ads/telegram/tools/ads_tg.py report
+      - name: Commit
+        run: |
+          git config user.name "ads-bot"
+          git config user.email "ads-bot@users.noreply.github.com"
+          git add ads/
+          git diff --cached --quiet || git commit -m "ads: telegram autopilot $(date -u +%F' '%H:%M)"
+          git pull --rebase -q origin main && git push -q origin main
