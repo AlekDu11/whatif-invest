@@ -25,6 +25,7 @@ from i18n_act import ACT  # noqa: E402
 from i18n_prof import P as PROF_T  # noqa: E402
 from i18n_pf import PF  # noqa: E402
 from i18n_bp import BP  # noqa: E402
+from i18n_ai import AIC  # noqa: E402
 from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB, CH as OWN_CH  # noqa: E402
 SOCIAL = [('Telegram', 'https://t.me/TradeMaster_insight'), ('X (Twitter)', 'https://x.com/WhatIfStack'), ('Bluesky', 'https://bsky.app/profile/whatifstack.bsky.social'), ('Instagram', 'https://www.instagram.com/whatifstack/'), ('Threads', 'https://www.threads.com/@whatifstack'),
           ('Pinterest', 'https://www.pinterest.com/whatifstack/'), ('Medium', 'https://medium.com/@whatifstack'),
@@ -394,6 +395,14 @@ AHREFS = ('<meta name="ahrefs-site-verification" content="f5a16ec7b7cfa87b5d531c
           '<meta name="p:domain_verify" content="a0820406d681ddd5d800b84175a15303">')   # + Pinterest site claim   # Ahrefs Webmaster Tools ownership
 
 
+def ai_widget(lang, cfg):
+    t = dict(AIC[lang])
+    aid = cfg.get('asset')
+    if aid and aid in A:
+        t['n'] = nm(A[aid], lang)
+    return f'<div id="aiw" data-cfg="{esc(json.dumps(t, ensure_ascii=False))}"></div>'
+
+
 def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
     og_img = SITE + (cfg.pop('_og', None) or '/assets/og.jpg')
     sec = cfg.pop('_sec', None) or p   # section to highlight in the nav
@@ -456,6 +465,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
 <div class="sharebar" data-l="{esc(SHARE[lang])}"></div>{footer_cols(lang)}<footer><span>{BRAND} · {S['by']} <a href="https://mytimebox.app/">Timebox</a> · {S['sources']} · <a href="{url(lang if lang in ABOUT else 'en', 'about')}">{NW[lang]['about']}</a> · <a href="{pol_url(lang)}">{ACT[lang]['pol']}</a></span><span>{S['disclaimer']}</span></footer>
 <nav class="langs">{' · '.join(f'<a href="{url(lg, p) if has_page(lg, p) else url(lg)}" hreflang="{TR[lg]["loc"]}">{esc(TR[lg]["name"])}</a>' for lg in ORDER)}</nav>
 </main>
+{ai_widget(lang, cfg)}
 <script>window.PAGE={json.dumps(cfg, ensure_ascii=False)};window.I18N={json.dumps(i18n, ensure_ascii=False)};</script>
 <script src="{BASE}/assets/index.js?v={ver['index']}" defer></script>
 <script src="{BASE}/assets/ref.js?v={ver['ref']}" defer></script>

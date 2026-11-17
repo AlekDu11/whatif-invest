@@ -68,6 +68,10 @@ WhatIfStackがまず答えるのは、ひとつの問いです。**「毎回同�
 
 [取引所]({lang}/exchanges/)のページでは、提携している取引所とウォレットを紹介しています。一部のリンクはパートナーリンクで、登録すると当サイトが手数料を受け取ることがありますが、あなたの負担が増えることはありません。データやランキングに影響することは一切ありません。
 
+## AI assistant
+
+The **Ask AI** button in the bottom-right corner opens a chat. Ask anything about the asset you are looking at, DCA, exchanges or how the site works — the assistant sees the numbers on the current page and answers in your language. It explains and calculates but never tells you what to buy. Answers are AI-generated and can contain mistakes; up to 20 questions per day.
+
 ## 数字の出典
 
 Binance、CoinGecko、Yahoo Finance、モスクワ取引所、世界銀行などの公開データを使っています。最新の動きは[ニュース]({lang}/news/)でご確認ください。価格は毎日更新、暗号資産の価格はリアルタイムです。WhatIfStackの内容は投資助言ではありません。過去の実績は将来のリターンを保証するものではありません。

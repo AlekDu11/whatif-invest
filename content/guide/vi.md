@@ -69,6 +69,10 @@ Chạm ☆ cạnh bất kỳ tài sản nào để thêm vào [danh sách theo d
 
 [Sàn giao dịch]({lang}/exchanges/) liệt kê các sàn và ví chúng tôi hợp tác. Một số liên kết là liên kết đối tác: chúng tôi có thể nhận hoa hồng nếu bạn đăng ký, bạn không mất thêm chi phí. Điều này không bao giờ thay đổi dữ liệu hay xếp hạng của chúng tôi.
 
+## AI assistant
+
+The **Ask AI** button in the bottom-right corner opens a chat. Ask anything about the asset you are looking at, DCA, exchanges or how the site works — the assistant sees the numbers on the current page and answers in your language. It explains and calculates but never tells you what to buy. Answers are AI-generated and can contain mistakes; up to 20 questions per day.
+
 ## Số liệu từ đâu
 
 Binance, CoinGecko, Yahoo Finance, Sở giao dịch Moskva, Ngân hàng Thế giới và các nguồn công khai khác; các bản tin mới nhất kèm nguồn có ở mục [Tin tức]({lang}/news/). Giá cập nhật hằng ngày, giá crypto theo thời gian thực. Không có nội dung nào trên WhatIfStack là lời khuyên đầu tư: kết quả trong quá khứ không đảm bảo lợi nhuận trong tương lai.

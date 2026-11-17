@@ -68,6 +68,10 @@ WhatIfStack सबसे पहले एक सवाल का जवाब �
 
 [एक्सचेंज]({lang}/exchanges/) पेज पर वे एक्सचेंज और वॉलेट हैं जिनके साथ हम काम करते हैं। कुछ लिंक पार्टनर लिंक हैं: अगर आप साइन अप करते हैं तो हमें कमीशन मिल सकता है, आपको कोई अतिरिक्त खर्च नहीं। इससे हमारे डेटा या रैंकिंग पर कभी असर नहीं पड़ता।
 
+## AI assistant
+
+The **Ask AI** button in the bottom-right corner opens a chat. Ask anything about the asset you are looking at, DCA, exchanges or how the site works — the assistant sees the numbers on the current page and answers in your language. It explains and calculates but never tells you what to buy. Answers are AI-generated and can contain mistakes; up to 20 questions per day.
+
 ## आँकड़े कहाँ से आते हैं
 
 Binance, CoinGecko, Yahoo Finance, मॉस्को एक्सचेंज, वर्ल्ड बैंक और दूसरे सार्वजनिक स्रोत; ताज़ा अपडेट के लिए [न्यूज़]({lang}/news/) देखें। कीमतें रोज़ अपडेट होती हैं, क्रिप्टो की कीमतें लाइव। WhatIfStack पर कुछ भी निवेश सलाह नहीं है: पिछले नतीजे भविष्य के रिटर्न की गारंटी नहीं देते।

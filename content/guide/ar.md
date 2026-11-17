@@ -68,6 +68,10 @@ short: شرح بسيط لكل الأدوات
 
 صفحة [المنصات]({lang}/exchanges/) تعرض المنصات والمحافظ التي نتعاون معها. بعض الروابط روابط شراكة: قد نحصل على عمولة إذا سجّلت، من دون أي تكلفة إضافية عليك. ولا يغيّر ذلك أبدًا بياناتنا أو ترتيباتنا.
 
+## AI assistant
+
+The **Ask AI** button in the bottom-right corner opens a chat. Ask anything about the asset you are looking at, DCA, exchanges or how the site works — the assistant sees the numbers on the current page and answers in your language. It explains and calculates but never tells you what to buy. Answers are AI-generated and can contain mistakes; up to 20 questions per day.
+
 ## من أين تأتي الأرقام
 
 Binance وCoinGecko وYahoo Finance وبورصة موسكو والبنك الدولي ومصادر عامة أخرى؛ وتابع آخر المستجدات في [الأخبار]({lang}/news/). تُحدَّث الأسعار يوميًا، وأسعار العملات المشفّرة مباشرة. لا شيء في WhatIfStack يُعدّ نصيحة استثمارية: النتائج السابقة لا تضمن العوائد المستقبلية.

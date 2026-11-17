@@ -69,6 +69,10 @@ Dotknij ☆ obok dowolnego aktywa, żeby dodać je do [obserwowanych]({lang}/me/
 
 Na stronie [Giełdy]({lang}/exchanges/) znajdziesz giełdy i portfele, z którymi współpracujemy. Część linków to linki partnerskie: możemy dostać prowizję, jeśli się zarejestrujesz, a Ciebie nic to nie kosztuje. Nigdy nie wpływa to na nasze dane ani rankingi.
 
+## AI assistant
+
+The **Ask AI** button in the bottom-right corner opens a chat. Ask anything about the asset you are looking at, DCA, exchanges or how the site works — the assistant sees the numbers on the current page and answers in your language. It explains and calculates but never tells you what to buy. Answers are AI-generated and can contain mistakes; up to 20 questions per day.
+
 ## Skąd są liczby
 
 Binance, CoinGecko, Yahoo Finance, Giełda Moskiewska, Bank Światowy i inne publiczne źródła; źródła każdej notki znajdziesz w [Wiadomościach]({lang}/news/). Ceny aktualizują się codziennie, kryptowaluty na żywo. Nic na WhatIfStack nie jest poradą inwestycyjną: wyniki z przeszłości nie gwarantują przyszłych.

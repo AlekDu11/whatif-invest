@@ -68,6 +68,10 @@ WhatIfStack은 먼저 한 가지 질문에 답합니다. **"정해진 금액을 
 
 [거래소]({lang}/exchanges/) 페이지에서 저희와 협력하는 거래소와 지갑을 소개합니다. 일부 링크는 제휴 링크로, 가입하시면 저희가 수수료를 받을 수 있지만 추가 비용은 없습니다. 이는 데이터나 순위에 절대 영향을 주지 않습니다.
 
+## AI assistant
+
+The **Ask AI** button in the bottom-right corner opens a chat. Ask anything about the asset you are looking at, DCA, exchanges or how the site works — the assistant sees the numbers on the current page and answers in your language. It explains and calculates but never tells you what to buy. Answers are AI-generated and can contain mistakes; up to 20 questions per day.
+
 ## 숫자는 어디서 오나요
 
 바이낸스, CoinGecko, Yahoo Finance, 모스크바 거래소, 세계은행 등 공개 출처를 사용합니다. 최신 소식은 [뉴스]({lang}/news/)에서 확인하세요. 가격은 매일 업데이트되며, 암호화폐 가격은 실시간입니다. WhatIfStack의 어떤 내용도 투자 조언이 아닙니다. 과거 수익률이 미래 수익을 보장하지 않습니다.

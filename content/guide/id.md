@@ -69,6 +69,10 @@ Ketuk ☆ di samping aset mana pun untuk menambahkannya ke [watchlist-mu]({lang}
 
 [Exchange]({lang}/exchanges/) menampilkan exchange dan dompet yang bekerja sama dengan kami. Sebagian tautan adalah tautan mitra: kami bisa mendapat komisi jika kamu mendaftar, tanpa biaya tambahan untukmu. Ini tidak pernah mengubah data atau peringkat kami.
 
+## AI assistant
+
+The **Ask AI** button in the bottom-right corner opens a chat. Ask anything about the asset you are looking at, DCA, exchanges or how the site works — the assistant sees the numbers on the current page and answers in your language. It explains and calculates but never tells you what to buy. Answers are AI-generated and can contain mistakes; up to 20 questions per day.
+
 ## Dari mana angkanya
 
 Binance, CoinGecko, Yahoo Finance, Bursa Moskow, Bank Dunia, dan sumber publik lainnya; ringkasan terbaru kami lengkap dengan sumbernya ada di [Berita]({lang}/news/). Harga diperbarui setiap hari, harga kripto secara live. Tidak ada apa pun di WhatIfStack yang merupakan saran investasi: hasil masa lalu tidak menjamin hasil di masa depan.

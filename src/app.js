@@ -642,4 +642,46 @@ document.addEventListener('click',async e=>{
     h.push({id,qty,cost:qty*px,d,px}); try{ localStorage.setItem('wi_hold',JSON.stringify(h)) }catch(e){}
     pop.querySelector('.pmsg').innerHTML=`✓ ${esc(C.t.added)} · <a href="${C.me}">${esc(C.t.open)} →</a>`; pop.querySelector('.pfb').remove() };
 });
+
+/* ---------- AI assistant (api/ask.js, Groq) ---------- */
+(function(){
+  const host=$('#aiw'); if(!host) return; let C; try{ C=JSON.parse(host.dataset.cfg) }catch(e){ return }
+  const KEY='wi_ai_'+lang; let H=[]; try{ H=JSON.parse(sessionStorage.getItem(KEY)||'[]') }catch(e){}
+  const save=()=>{ try{ sessionStorage.setItem(KEY,JSON.stringify(H.slice(-20))) }catch(e){} };
+  const md=t=>{ let h=esc(t).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>')
+      .replace(/(https:\/\/(?:www\.)?whatifstack\.com[^\s<)"]*)/g,'<a href="$1">$1</a>');
+    return h.split(/\n{2,}/).map(p=>{ const ls=p.split('\n');
+      if(ls.every(l=>/^\s*([-*•]|\d+[.)])\s+/.test(l))) return '<ul>'+ls.map(l=>'<li>'+l.replace(/^\s*([-*•]|\d+[.)])\s+/,'')+'</li>').join('')+'</ul>';
+      return '<p>'+ls.join('<br>')+'</p>' }).join('') };
+  const btn=document.createElement('button'); btn.type='button'; btn.className='aibtn'; btn.setAttribute('aria-haspopup','dialog');
+  btn.innerHTML='<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2l1.9 5.6L19.5 9.5l-5.6 1.9L12 17l-1.9-5.6L4.5 9.5l5.6-1.9zM19 14l.9 2.6 2.6.9-2.6.9L19 21l-.9-2.6-2.6-.9 2.6-.9z"/></svg><span>'+esc(C.btn)+'</span>';
+  const P=document.createElement('section'); P.className='aip'; P.hidden=true; P.setAttribute('role','dialog'); P.setAttribute('aria-label',C.title);
+  P.innerHTML=`<header><b>${esc(C.title)}</b><button type="button" class="ainew">${esc(C.new)}</button><button type="button" class="aix" aria-label="×">×</button></header>
+    <div class="aimsgs" aria-live="polite"></div>
+    <form class="aiform"><textarea rows="1" maxlength="600" placeholder="${esc(C.ph)}" aria-label="${esc(C.ph)}"></textarea><button type="submit" aria-label="${esc(C.send)}">➤</button></form>
+    <p class="ainote">${esc(C.note)}</p>`;
+  document.body.append(btn,P);
+  const box=$('.aimsgs',P), ta=$('textarea',P), form=$('form',P);
+  const chips=()=>{ const qs=C.n?[C.a1,C.a2,C.a3].map(x=>fmt(x,{n:C.n})):[C.g1,C.g2,C.g3];
+    return '<div class="aichips">'+qs.map(q=>`<button type="button">${esc(q)}</button>`).join('')+'</div>' };
+  const render=()=>{ box.innerHTML=H.length?H.map(m=>`<div class="aim ${m.r}">${m.r==='a'?md(m.t):esc(m.t)}</div>`).join(''):chips(); box.scrollTop=box.scrollHeight };
+  const ctx=()=>{ const g=s=>{ const e=$(s); return e?e.innerText.replace(/\s+\n/g,'\n').replace(/[ \t]+/g,' ').trim():'' };
+    return [location.pathname, document.title, g('h1'), g('.price'), g('.lead'), g('.side'), g('.stats')].filter(Boolean).join('\n').slice(0,2500) };
+  let busy=false;
+  const ask=async q=>{ q=q.trim(); if(!q||busy) return; busy=true; H.push({r:'u',t:q}); render(); ta.value='';
+    box.insertAdjacentHTML('beforeend','<div class="aim a typing"><i></i><i></i><i></i></div>'); box.scrollTop=box.scrollHeight;
+    let a, err;
+    try{ const r=await fetch('/api/ask',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({q,lang,ctx:ctx(),hist:H.slice(-7,-1)})});
+      const j=await r.json().catch(()=>({})); if(r.ok&&j.a) a=j.a; else err=r.status===429?C.limit:C.err }catch(e){ err=C.err }
+    if(a){ H.push({r:'a',t:a}); save(); render() } else { H.pop(); render(); box.insertAdjacentHTML('beforeend',`<div class="aim err">${esc(err)}</div>`); ta.value=q }
+    busy=false; ta.focus() };
+  const open=v=>{ P.hidden=!v; btn.classList.toggle('on',v); if(v){ render(); ta.focus() } };
+  btn.onclick=()=>open(P.hidden); $('.aix',P).onclick=()=>{ open(false); btn.focus() };
+  $('.ainew',P).onclick=()=>{ H=[]; save(); render(); ta.focus() };
+  box.addEventListener('click',e=>{ const b=e.target.closest('.aichips button'); if(b) ask(b.textContent) });
+  form.onsubmit=e=>{ e.preventDefault(); ask(ta.value) };
+  ta.addEventListener('keydown',e=>{ if(e.key==='Enter'&&!e.shiftKey){ e.preventDefault(); ask(ta.value) } });
+  ta.addEventListener('input',()=>{ ta.style.height='auto'; ta.style.height=Math.min(ta.scrollHeight,120)+'px' });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&!P.hidden){ open(false); btn.focus() } });
+})();
 })();

@@ -68,6 +68,10 @@ I-tap ang ☆ sa tabi ng kahit anong asset para idagdag ito sa [watchlist mo]({l
 
 Nakalista sa [Exchanges]({lang}/exchanges/) ang mga exchange at wallet na katrabaho namin. Partner links ang ilan: puwede kaming makakuha ng commission kapag nag-sign up ka, nang walang dagdag na gastos sa iyo. Hindi nito kailanman binabago ang data o rankings namin.
 
+## AI assistant
+
+The **Ask AI** button in the bottom-right corner opens a chat. Ask anything about the asset you are looking at, DCA, exchanges or how the site works — the assistant sees the numbers on the current page and answers in your language. It explains and calculates but never tells you what to buy. Answers are AI-generated and can contain mistakes; up to 20 questions per day.
+
 ## Saan galing ang mga numero
 
 Binance, CoinGecko, Yahoo Finance, Moscow Exchange, World Bank at iba pang pampublikong source; para sa pinakabagong update, tingnan ang [Balita]({lang}/news/). Araw-araw ina-update ang presyo, live ang presyo ng crypto. Walang anuman sa WhatIfStack na investment advice: hindi garantiya ng mga nakaraang resulta ang kikitain sa hinaharap.

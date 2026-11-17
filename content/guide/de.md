@@ -69,6 +69,10 @@ Tippe auf den ☆ neben einem Wert, um ihn auf [deine Merkliste]({lang}/me/) zu 
 
 Unter [Börsen]({lang}/exchanges/) findest du die Börsen und Wallets, mit denen wir zusammenarbeiten. Manche Links sind Partnerlinks: Wir bekommen eventuell eine Provision, wenn du dich anmeldest – dich kostet das nichts extra. An unseren Daten und Rankings ändert das nie etwas.
 
+## AI assistant
+
+The **Ask AI** button in the bottom-right corner opens a chat. Ask anything about the asset you are looking at, DCA, exchanges or how the site works — the assistant sees the numbers on the current page and answers in your language. It explains and calculates but never tells you what to buy. Answers are AI-generated and can contain mistakes; up to 20 questions per day.
+
 ## Woher die Zahlen kommen
 
 Binance, CoinGecko, Yahoo Finance, die Moskauer Börse, die Weltbank und andere öffentliche Quellen; die Quellen jeder Meldung findest du unter [News]({lang}/news/). Die Kurse werden täglich aktualisiert, Kryptokurse live. Nichts auf WhatIfStack ist eine Anlageberatung: Vergangene Ergebnisse sind keine Garantie für die Zukunft.

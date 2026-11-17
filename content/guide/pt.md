@@ -69,6 +69,10 @@ Toque na ☆ ao lado de qualquer ativo para adicioná-lo aos [seus favoritos]({l
 
 Em [Corretoras]({lang}/exchanges/) estão as corretoras e carteiras com que trabalhamos. Alguns links são de parceiros: podemos ganhar uma comissão se você se cadastrar, sem nenhum custo extra para você. Isso nunca muda nossos dados nem nossos rankings.
 
+## AI assistant
+
+The **Ask AI** button in the bottom-right corner opens a chat. Ask anything about the asset you are looking at, DCA, exchanges or how the site works — the assistant sees the numbers on the current page and answers in your language. It explains and calculates but never tells you what to buy. Answers are AI-generated and can contain mistakes; up to 20 questions per day.
+
 ## De onde vêm os números
 
 Binance, CoinGecko, Yahoo Finance, a Bolsa de Moscou, o Banco Mundial e outras fontes públicas; as fontes de cada resumo estão em [Notícias]({lang}/news/). Os preços são atualizados diariamente, e os de cripto ao vivo. Nada no WhatIfStack é recomendação de investimento: resultados passados não garantem resultados futuros.

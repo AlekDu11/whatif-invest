@@ -69,6 +69,10 @@ Touche l'☆ à côté de n'importe quel actif pour l'ajouter à [ta liste]({lan
 
 La page [Plateformes]({lang}/exchanges/) liste les plateformes d'échange et les portefeuilles avec lesquels nous travaillons. Certains liens sont des liens partenaires : nous pouvons toucher une commission si tu t'inscris, sans aucun surcoût pour toi. Cela ne change jamais nos données ni nos classements.
 
+## AI assistant
+
+The **Ask AI** button in the bottom-right corner opens a chat. Ask anything about the asset you are looking at, DCA, exchanges or how the site works — the assistant sees the numbers on the current page and answers in your language. It explains and calculates but never tells you what to buy. Answers are AI-generated and can contain mistakes; up to 20 questions per day.
+
 ## D'où viennent les chiffres
 
 Binance, CoinGecko, Yahoo Finance, la Bourse de Moscou, la Banque mondiale et d'autres sources publiques ; les sources de chaque brève sont dans [Actu]({lang}/news/). Les prix sont mis à jour chaque jour, ceux de la crypto en direct. Rien sur WhatIfStack n'est un conseil en investissement : les performances passées ne préjugent pas des performances futures.

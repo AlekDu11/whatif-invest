@@ -69,6 +69,10 @@ Herhangi bir varlığın yanındaki ☆'a dokunarak onu [izleme listene]({lang}/
 
 [Borsalar]({lang}/exchanges/) birlikte çalıştığımız borsaları ve cüzdanları listeler. Bazı bağlantılar ortaklık bağlantısıdır: kaydolursan komisyon kazanabiliriz, sana ek bir maliyeti yoktur. Bu, verilerimizi veya sıralamalarımızı asla değiştirmez.
 
+## AI assistant
+
+The **Ask AI** button in the bottom-right corner opens a chat. Ask anything about the asset you are looking at, DCA, exchanges or how the site works — the assistant sees the numbers on the current page and answers in your language. It explains and calculates but never tells you what to buy. Answers are AI-generated and can contain mistakes; up to 20 questions per day.
+
 ## Rakamlar nereden geliyor
 
 Binance, CoinGecko, Yahoo Finance, Moskova Borsası, Dünya Bankası ve diğer açık kaynaklar; kaynakları gösterilen güncel özetler için [Haberler]({lang}/news/) sayfasına bak. Fiyatlar her gün, kripto fiyatları canlı güncellenir. WhatIfStack'teki hiçbir şey yatırım tavsiyesi değildir: geçmiş sonuçlar gelecekteki getirileri garanti etmez.

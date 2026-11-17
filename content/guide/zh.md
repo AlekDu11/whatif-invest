@@ -68,6 +68,10 @@ WhatIfStack 首先回答一个问题：**如果我一直定期投入固定金额
 
 [交易所]({lang}/exchanges/)页面列出了我们合作的交易所和钱包。部分链接是合作伙伴链接：如果你注册，我们可能会获得佣金，你不需要多付任何费用。这绝不会影响我们的数据或排名。
 
+## AI assistant
+
+The **Ask AI** button in the bottom-right corner opens a chat. Ask anything about the asset you are looking at, DCA, exchanges or how the site works — the assistant sees the numbers on the current page and answers in your language. It explains and calculates but never tells you what to buy. Answers are AI-generated and can contain mistakes; up to 20 questions per day.
+
 ## 数据从哪里来
 
 币安、CoinGecko、Yahoo Finance、莫斯科交易所、世界银行和其他公开来源；最新动态请看[新闻]({lang}/news/)。价格每天更新，加密货币价格实时更新。WhatIfStack 上的任何内容都不构成投资建议：过去的表现不代表未来的收益。
