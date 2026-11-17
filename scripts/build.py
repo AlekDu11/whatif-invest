@@ -26,7 +26,7 @@ from i18n_prof import P as PROF_T  # noqa: E402
 from i18n_pf import PF  # noqa: E402
 from i18n_bp import BP  # noqa: E402
 from i18n_ai import AIC  # noqa: E402
-from i18n_emb import EMB  # noqa: E402
+from i18n_emb import EMB, EXT  # noqa: E402
 from i18n_ic import IC  # noqa: E402
 from i18n_bpd import BPD, IDEA as BP_IDEA  # noqa: E402
 from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB, CH as OWN_CH, CH2 as OWN_CH2  # noqa: E402
@@ -825,12 +825,13 @@ def home(lang, ver):
     w_fng = (f'<div class="card wd fng"><div class="wt">{w["fng"]}</div><div class="fgw">{fng_gauge(fv)}<div class="fgv"><b id="fngv">{fv if fv is not None else "—"}</b>'
              f'<span id="fngl">{fng_label(lang, fv) if fv is not None else ""}</span></div></div>'
              f'<div class="fhs">{fh(1, w["yday"])}{fh(7, w["week"])}{fh(30, w["month"])}</div></div>')
-    trend = [s.lower() for s in (G.get('trending') or []) if s.lower() in A][:5]
+    trend = [s.lower() for s in (G.get('trending') or []) if s.lower() in A and (A[s.lower()].get('mcap') or 0) >= 1e8][:5]
     if not trend:
         trend = [i for i in ids if A[i]['cat'] == 'crypto'][:5]
     w_tr = (f'<div class="card wd"><div class="wt">🔥 {w["trending"]}</div>' +
             ''.join(mini_row(lang, i, f'<span class="mc {cls(METRICS[i]["chg"])}" data-c="{i}">{pct(METRICS[i]["chg"])}</span>') for i in trend) + '</div>')
-    movers = [i for i in ids if METRICS[i]['chg'] is not None and ORD[i] < 400]
+    big = lambda i: A[i]['cat'] != 'crypto' or (A[i].get('mcap') or 0) >= 1e9   # no micro-caps on the home page
+    movers = [i for i in ids if METRICS[i]['chg'] is not None and ORD[i] < 400 and big(i)]
     up = sorted(movers, key=lambda i: -METRICS[i]['chg'])[:6]
     dn = sorted(movers, key=lambda i: METRICS[i]['chg'])[:6]
     w_up = f'<div class="card wd"><div class="wt">🚀 {w["gainers"]}</div>' + ''.join(mini_row(lang, i, f'<span class="mc good" data-c="{i}">{pct(METRICS[i]["chg"])}</span>') for i in up) + '</div>'
@@ -850,8 +851,8 @@ def home(lang, ver):
               f'<a class="btn" id="ctaBuy2" href="{url(lang, "compare")}">{w["cta"]} →</a></section>')
     # DCA leaders cards (as before)
     cards = []
-    b1, b5l = best_by('r1', ids), best_by('r5', ids)
-    bc = best_by('r1', [i for i in ids if A[i]['cat'] == 'crypto' and ORD[i] < 60])
+    b1, b5l = best_by('r1', [i for i in ids if big(i)]), best_by('r5', [i for i in ids if big(i)])
+    bc = best_by('r1', [i for i in ids if A[i]['cat'] == 'crypto' and ORD[i] < 60 and big(i)])
     if b1: cards.append(hl_card(lang, b1[0], S['hl1'], 'r1', S['sub1']))
     if b5l: cards.append(hl_card(lang, b5l[0], S['hl5'], 'r5', S['sub5']))
     if bc: cards.append(hl_card(lang, bc[0], S['hlc'], 'r1', S['sub1']))
@@ -1535,8 +1536,17 @@ def exchanges_page(lang, ver):
     def cards(k):
         return ''.join(f'<a class="card xcard" href="/go/{u}?from=exchanges&l={lang}" target="_blank" rel="sponsored nofollow noopener"><span class="xl" style="background:{c}">{n[0]}</span>'
                        f'<div><b>{n}</b><small>{t}</small></div><span class="btn">{e["go"]}</span></a>' for n, u, t, c in PARTNERS[k])
+    x = EXT[lang]
+    FEES = {'binance': ('0.10% / 0.10%', 'Auto-Invest'), 'bybit': ('0.10% / 0.10%', 'Auto-Invest'), 'gate': ('0.10–0.20%', 'Auto-Invest'),
+            'bingx': ('0.10% / 0.10%', 'Recurring Buy'), 'mexc': ('0% / 0.05%', 'Spot DCA')}
+    trows = ''.join(f'<tr><td class="l"><span class="xl sm" style="background:{c}">{n[0]}</span><b>{n}</b></td><td class="num">{FEES[u][0]}</td>'
+                    f'<td>✓ {FEES[u][1]}</td><td class="hide-sm muted">{t}</td>'
+                    f'<td><a class="btn" href="/go/{u}?from=exchanges-table&l={lang}" target="_blank" rel="sponsored nofollow noopener">{e["go"]}</a></td></tr>'
+                    for n, u, t, c in PARTNERS['cex'] if u in FEES)
+    table = (f'<div class="tw"><table class="mt xt"><thead><tr><th class="l"></th><th>{esc(x["fee"])}</th><th>{esc(x["dca"])}</th><th class="hide-sm">{esc(x["feat"])}</th><th></th></tr></thead>'
+             f'<tbody>{trows}</tbody></table></div><p class="muted" style="font-size:13px">{esc(x["note2"])} {esc(x["src"])}.</p>')
     body = (f'<h1>{esc(e["h1"])}</h1><p class="lead">{esc(e["d"])}</p>'
-            f'<section class="section"><h2>{e["cex"]}</h2><div class="xgrid">{cards("cex")}</div></section>'
+            f'<section class="section card"><h2>{e["cex"]}</h2>{table}</section>'
             f'<section class="section"><h2>{e["dex"]}</h2><div class="xgrid">{cards("dex")}</div></section>'
             f'<p class="muted" style="font-size:13px">{e["note"]}</p>{poly_block(lang)}')
     return shell(lang, 'exchanges', f'{e["h1"]} | {BRAND}', e['d'], body, {}, ver)

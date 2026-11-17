@@ -84,3 +84,30 @@ _V = {
 }
 EMB = {lg: dict(zip(_K, v)) for lg, v in _V.items()}
 assert len(EMB) == 20 and all(len(v) == len(_K) for v in _V.values())
+
+# Exchanges comparison table (/exchanges/): headers + notes
+_XK = ['fee', 'dca', 'feat', 'note2', 'src']
+_XV = {
+ 'uk': ['Спот-комісія (мейкер / тейкер)', 'Автопокупка (DCA)', 'Що є', 'Комісії — базові для нових акаунтів, без знижок. Доступність залежить від країни: перевір перед реєстрацією.', 'Джерела: публічні тарифи бірж, листопад 2026'],
+ 'en': ['Spot fee (maker / taker)', 'Recurring buy (DCA)', 'Features', 'Fees are base rates for new accounts, before discounts. Availability depends on your country — check before signing up.', 'Sources: exchanges’ public fee schedules, November 2026'],
+ 'ru': ['Спот-комиссия (мейкер / тейкер)', 'Автопокупка (DCA)', 'Что есть', 'Комиссии — базовые для новых аккаунтов, без скидок. Доступность зависит от страны: проверьте перед регистрацией.', 'Источники: публичные тарифы бирж, ноябрь 2026'],
+ 'es': ['Comisión spot (maker / taker)', 'Compra recurrente (DCA)', 'Qué ofrece', 'Comisiones base para cuentas nuevas, sin descuentos. La disponibilidad depende de tu país: compruébalo antes de registrarte.', 'Fuentes: tarifas públicas de los exchanges, noviembre de 2026'],
+ 'pt': ['Taxa spot (maker / taker)', 'Compra recorrente (DCA)', 'Recursos', 'Taxas base para contas novas, sem descontos. A disponibilidade depende do seu país — confira antes de se cadastrar.', 'Fontes: tabelas públicas de taxas das corretoras, novembro de 2026'],
+ 'de': ['Spot-Gebühr (Maker / Taker)', 'Sparplan (DCA)', 'Funktionen', 'Basisgebühren für neue Konten ohne Rabatte. Die Verfügbarkeit hängt von deinem Land ab – vor der Anmeldung prüfen.', 'Quellen: öffentliche Gebührenübersichten der Börsen, November 2026'],
+ 'fr': ['Frais spot (maker / taker)', 'Achat récurrent (DCA)', 'Fonctions', 'Frais de base pour un nouveau compte, hors remises. La disponibilité dépend de votre pays : vérifiez avant l’inscription.', 'Sources : grilles tarifaires publiques des plateformes, novembre 2026'],
+ 'it': ['Commissione spot (maker / taker)', 'Acquisto ricorrente (PAC)', 'Funzioni', 'Commissioni base per nuovi account, senza sconti. La disponibilità dipende dal paese: verifica prima di iscriverti.', 'Fonti: tariffari pubblici degli exchange, novembre 2026'],
+ 'pl': ['Prowizja spot (maker / taker)', 'Zakup cykliczny (DCA)', 'Funkcje', 'Bazowe prowizje dla nowych kont, bez zniżek. Dostępność zależy od kraju — sprawdź przed rejestracją.', 'Źródła: publiczne cenniki giełd, listopad 2026'],
+ 'tr': ['Spot komisyon (maker / taker)', 'Düzenli alım (DCA)', 'Özellikler', 'Yeni hesaplar için indirimsiz temel oranlar. Erişim ülkene bağlı — kayıt olmadan önce kontrol et.', 'Kaynak: borsaların herkese açık ücret tabloları, Kasım 2026'],
+ 'nl': ['Spot-kosten (maker / taker)', 'Periodiek kopen (DCA)', 'Functies', 'Basistarieven voor nieuwe accounts, zonder korting. Beschikbaarheid hangt af van je land — controleer vóór je aanmeldt.', 'Bronnen: openbare tarieven van de exchanges, november 2026'],
+ 'id': ['Biaya spot (maker / taker)', 'Beli rutin (DCA)', 'Fitur', 'Biaya dasar untuk akun baru, tanpa diskon. Ketersediaan tergantung negaramu — cek sebelum mendaftar.', 'Sumber: daftar biaya publik exchange, November 2026'],
+ 'vi': ['Phí giao ngay (maker / taker)', 'Mua định kỳ (DCA)', 'Tính năng', 'Phí cơ bản cho tài khoản mới, chưa giảm giá. Khả năng sử dụng tùy quốc gia — hãy kiểm tra trước khi đăng ký.', 'Nguồn: biểu phí công khai của các sàn, tháng 11/2026'],
+ 'th': ['ค่าธรรมเนียมสปอต (เมกเกอร์ / เทกเกอร์)', 'ซื้ออัตโนมัติ (DCA)', 'จุดเด่น', 'ค่าธรรมเนียมพื้นฐานของบัญชีใหม่ ยังไม่หักส่วนลด การใช้งานขึ้นกับประเทศ ตรวจสอบก่อนสมัคร', 'ที่มา: ตารางค่าธรรมเนียมสาธารณะของกระดาน พ.ย. 2026'],
+ 'hi': ['स्पॉट फीस (मेकर / टेकर)', 'नियमित ख़रीद (DCA)', 'सुविधाएँ', 'नए खातों की बेस फीस, बिना छूट। उपलब्धता देश पर निर्भर है — साइन-अप से पहले जाँचें।', 'स्रोत: एक्सचेंजों की सार्वजनिक फीस सूची, नवंबर 2026'],
+ 'ja': ['現物手数料（メイカー／テイカー）', '積立購入（DCA）', '主な機能', '新規口座の基本手数料（割引前）。利用可否は国により異なります。登録前に確認してください。', '出典：各取引所の公開手数料表（2026年11月）'],
+ 'ko': ['현물 수수료(메이커 / 테이커)', '정기 매수(DCA)', '기능', '신규 계정 기본 수수료(할인 전). 이용 가능 여부는 국가마다 다르니 가입 전에 확인하세요.', '출처: 각 거래소 공개 수수료표, 2026년 11월'],
+ 'zh': ['现货手续费（挂单 / 吃单）', '定投（DCA）', '功能', '新账户基础费率，未计折扣。可用性取决于所在国家，注册前请先确认。', '来源：各交易所公开费率表，2026年11月'],
+ 'ar': ['رسوم السوق الفوري (صانع / آخذ)', 'شراء دوري (DCA)', 'المزايا', 'رسوم أساسية للحسابات الجديدة قبل الخصومات. التوفر يعتمد على بلدك — تحقق قبل التسجيل.', 'المصادر: جداول الرسوم العامة للمنصات، نوفمبر 2026'],
+ 'fil': ['Spot fee (maker / taker)', 'Recurring buy (DCA)', 'Mga feature', 'Base fee para sa bagong account, bago ang discount. Depende sa bansa ang availability — tingnan bago mag-sign up.', 'Pinagmulan: pampublikong fee schedule ng mga exchange, Nobyembre 2026'],
+}
+EXT = {lg: dict(zip(_XK, v)) for lg, v in _XV.items()}
+assert len(EXT) == 20
