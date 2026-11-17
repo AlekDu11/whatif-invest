@@ -7,7 +7,13 @@ window.REF = {
 window.REF_DEFAULT = {
   crypto: { url: '/go/binance', where: 'Binance' },
   metal:  { url: '/go/bybit', where: 'Bybit' },
-  stock:  { url: '/go/bybit', where: 'Bybit' },   // Bybit xStocks (tokenized US stocks) / TradFi; replace with a stock broker (Freedom24) when available
+  stock:  { url: '/go/bybit', where: 'Bybit' },   // Bybit xStocks (tokenized US stocks) / TradFi — where Freedom24 is not offered
   etf:    { url: '/go/bybit', where: 'Bybit' },
   cmd:    { url: '/go/bybit', where: 'Bybit' },   // commodities via Bybit TradFi
+};
+// Per-language overrides: Freedom24 (EU broker, CySEC; recurring investment plan) for stocks/ETFs where its audience lives.
+// Not available to US or UK residents, so English and Asian-language pages keep Bybit.
+window.REF_LANG = {
+  stock: { langs: ['uk', 'de', 'fr', 'it', 'es', 'pt', 'pl', 'nl'], url: '/go/freedom24', where: 'Freedom24' },
+  etf:   { langs: ['uk', 'de', 'fr', 'it', 'es', 'pt', 'pl', 'nl'], url: '/go/freedom24', where: 'Freedom24' },
 };

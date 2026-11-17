@@ -40,7 +40,7 @@ function spark(arr,w=110,h=34){ if(!arr||arr.length<2) return '';
   const pts=arr.map((v,i)=>`${(i/(arr.length-1)*w).toFixed(1)},${(h-2-(v-mn)/r*(h-4)).toFixed(1)}`).join(' ');
   return `<svg class="spk ${up?'up':'dn'}" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" aria-hidden="true"><polygon points="0,${h} ${pts} ${w},${h}"/><polyline points="${pts}"/></svg>` }
 const goUrl=(u,extra)=>u&&u.startsWith('/go/')?`${u}?from=${encodeURIComponent(location.pathname)}&l=${lang}${extra||''}`:u;
-function refFor(a){ const r=REF[a.i]||REF_DEFAULT[a.c]; return r&&r.url?Object.assign({},r,{url:goUrl(r.url)}):null }
+function refFor(a){ const RL=(window.REF_LANG||{})[a.c]; const r=REF[a.i]||(RL&&RL.langs.includes(lang)?RL:null)||REF_DEFAULT[a.c]; return r&&r.url?Object.assign({},r,{url:goUrl(r.url)}):null }
 function buyBtn(a){ const r=refFor(a); return r?`<a class="buy" href="${esc(r.url)}" target="_blank" rel="sponsored noopener" title="${esc(r.where)} · ${T.aff}">${T.buy}</a>`:'' }
 window.WIX={T,nm,url,esc,fmtUsd,fmtPrice,fmtPct,cls,icon,spark,buyBtn,BYID,IDX,lang};
 const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.dataset.id]); if(r) bs.innerHTML=`<a class="btn" href="${esc(r.url)}" target="_blank" rel="sponsored noopener">${T.buy} ${esc(BYID[bs.dataset.id].t)} · ${esc(r.where)}</a>` }
@@ -236,7 +236,18 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
     $('#qs').innerHTML=`<span class="${cls(roi)}">${fmtPct(roi)}</span> · ${esc(T.w_q_inv)} ${fmtUsd(inv)}`;
     $('#qsp').innerHTML=spark(path,300,56); $('#qmore').href=url(id) };
   $$('#qy button').forEach(b=>b.onclick=()=>{years=+b.dataset.y;$$('#qy button').forEach(x=>x.classList.toggle('on',x===b));run()});
-  $('#qa').onchange=run; $('#qm').oninput=run; run();
+  $('#qa').onchange=run; $('#qm').oninput=run;
+  // any asset we have: type to search all of them (the select only lists the top 120)
+  (function(){ const sel=$('#qa'), lab=(a)=>`${nm(a)} (${a.t})`, inp=document.createElement('input'), dl=document.createElement('datalist');
+    inp.type='search'; inp.id='qas'; inp.setAttribute('list','qal'); inp.autocomplete='off'; inp.setAttribute('aria-label',sel.closest('label')?.firstChild?.textContent||'asset');
+    dl.id='qal'; dl.innerHTML=IDX.map(a=>`<option value="${esc(lab(a))}">`).join('');
+    const cur=BYID[sel.value]; inp.value=cur?lab(cur):''; sel.hidden=true; sel.after(inp,dl);
+    const pick=()=>{ const v=inp.value.trim().toLowerCase(); if(!v) return;
+      const a=IDX.find(x=>lab(x).toLowerCase()===v)||IDX.find(x=>x.t.toLowerCase()===v)||IDX.find(x=>x.n.toLowerCase()===v||(x.ne||'').toLowerCase()===v);
+      if(!a) return; if(![...sel.options].some(o=>o.value===a.i)) sel.add(new Option(lab(a),a.i)); sel.value=a.i; inp.value=lab(a); inp.blur(); run() };
+    inp.addEventListener('change',pick); inp.addEventListener('input',()=>{ if(IDX.some(x=>lab(x)===inp.value)) pick() });
+    inp.addEventListener('focus',()=>inp.select()) })();
+  run();
 })();
 
 /* ---------- live global widgets (CoinGecko, alternative.me) ---------- */

@@ -7,6 +7,7 @@ Only the Python standard library is used, so it runs in Vercel's build image as 
 Run: python3 scripts/build.py
 """
 import calendar, hashlib, html, json, math, os, re as _re, shutil, sys
+from datetime import date, datetime, timezone
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from i18n import LANGS as TR, ORDER, FULL, DEFAULT  # noqa: E402
@@ -31,6 +32,7 @@ from i18n_ic import IC  # noqa: E402
 from i18n_calc2 import DV, AV, OV  # noqa: E402
 from i18n_ap import AP  # noqa: E402
 from i18n_home2 import HM  # noqa: E402
+from i18n_ks import KS, SECT  # noqa: E402
 from i18n_bpd import BPD, IDEA as BP_IDEA  # noqa: E402
 from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB, CH as OWN_CH, CH2 as OWN_CH2  # noqa: E402
 SOCIAL = [('Telegram', 'https://t.me/TradeMaster_insight'), ('X (Twitter)', 'https://x.com/WhatIfStack'), ('Bluesky', 'https://bsky.app/profile/whatifstack.bsky.social'), ('Instagram', 'https://www.instagram.com/whatifstack/'), ('Threads', 'https://www.threads.com/@whatifstack'),
@@ -1086,6 +1088,31 @@ def _jload(name):
 
 
 COININFO, STOCKINFO = _jload('coininfo.json'), _jload('stockinfo.json')
+STOCKSTATS = _jload('stockstats.json')   # key stats from scripts/stock_stats.py (rotating daily refresh)
+
+
+def to_usd(v, ccy):
+    """Amount in a listing/report currency -> USD (None if the rate is unknown)."""
+    if v is None:
+        return None
+    c, k = (ccy or 'USD'), 1.0
+    if c in ('GBp', 'GBX'):
+        c, k = 'GBP', 0.01
+    elif c == 'ILA':
+        c, k = 'ILS', 0.01
+    elif c == 'ZAc':
+        c, k = 'ZAR', 0.01
+    if c == 'USD':
+        return v * k
+    rate = FX.get('rates', {}).get(c)
+    return v * k / rate if rate else None
+
+
+for _sym, _st in STOCKSTATS.items():   # stats refresh the older profile file; market cap always stored in USD
+    _m = to_usd(_st.get('mcap'), _st.get('ccy'))
+    STOCKINFO[_sym] = {**STOCKINFO.get(_sym, {}), **{k: v for k, v in _st.items() if k in ('web', 'sec', 'ind', 'cty', 'emp', 'ds')}}
+    if _m:
+        STOCKINFO[_sym]['mcap'] = _m
 
 
 def fnum(v, money=False):
@@ -1178,7 +1205,7 @@ def side_block(lang, aid):
         desc = None
     if own:
         body = f'<div class="sclip"><p>{esc(own)}</p></div>'
-    elif prof:
+    elif prof and prof.get('kind') != 'analysis':
         body = f'<div class="artbody iprof sclip">{md(prof["body"], lang)}</div>'
     elif desc:
         body = f'<p class="swhat">{esc(what)}</p><div class="sclip"{"" if dlang == lang else f" lang=\"{dlang}\""}><p>{esc(desc)}</p></div>'
@@ -1292,6 +1319,158 @@ def local_price(a, lang):
     return f'<span class="lp" title="{esc(CTRY[lang][2])}">{esc(CTRY[lang][2])}: <b>{t}</b></span>'
 
 
+
+def pctu(p):
+    return pct(p).lstrip('+')
+
+
+def stock_stats(a):
+    return STOCKSTATS.get(a.get('yahoo') or '', {}) if a.get('cat') in ('stock', 'etf') else {}
+
+
+def stock_ctry(lang, a, st):
+    mk = a.get('mkt') or ('us' if (st.get('cty') or 'United States') == 'United States' else None)
+    try:
+        return CTRY[lang][3][mk][0] if mk else st.get('cty', '')
+    except (KeyError, IndexError, TypeError):
+        return st.get('cty', '')
+
+
+def stock_facts(lang, aid):
+    """Key numbers for a stock in display form (USD), or {} when there is no data."""
+    a, m = A[aid], METRICS[aid]
+    st = stock_stats(a)
+    if not st:
+        return {}
+    k, c = KS[lang], st.get('ccy')
+    cur = m['price']
+    lc = to_usd(1.0, c) or None   # local listing currency -> USD factor for per-share values
+    tgt = st['tgt'] * lc if st.get('tgt') and lc else None
+    h52 = st['h52'] * lc if st.get('h52') and lc else None
+    l52 = st['l52'] * lc if st.get('l52') and lc else None
+    fc = st.get('fcy') or c
+    f = dict(name=nm(a, lang), tk=a['tk'], sec=SECT[lang].get(st.get('sec'), st.get('sec') or ''), cty=stock_ctry(lang, a, st),
+             mcap=to_usd(st.get('mcap'), c), rev=to_usd(st.get('rev'), fc), ni=to_usd(st.get('ni'), fc), revg=st.get('revg'), pm=st.get('pm'),
+             pe=st.get('pe'), dy=st.get('dy'), beta=st.get('beta'), tgt=tgt, h52=h52, l52=l52, cur=cur, n=st.get('nan'),
+             rec=k.get(st.get('rec') or '', None), ern=st.get('ern'), emp=st.get('emp'), d=st.get('d', ''))
+    return f
+
+
+def _when(ts, lang):
+    try:
+        d = datetime.fromtimestamp(int(ts), timezone.utc).date()
+    except (TypeError, ValueError, OSError):
+        return None
+    return d if d >= date.fromisoformat(UPDATED[:10]) else None
+
+
+def stock_summary(lang, f):
+    k = KS[lang]
+    out = []
+    if f.get('sec') and f.get('cty'):
+        out.append(k['s_intro'].format(name=f['name'], tk=f['tk'], sec=f['sec'], cty=f['cty']))
+    if f.get('mcap'):
+        out.append(k['s_size'].format(mcap=usd(f['mcap'])))
+    if f.get('rev') and f.get('revg') is not None:
+        out.append(k['s_rev'].format(rev=usd(f['rev']), revg=pct(f['revg'])))
+    if f.get('ni') is not None and f.get('rev'):
+        if f['ni'] > 0 and f.get('pm'):
+            out.append(k['s_profit'].format(pm=usd(100 * f['pm'])))
+        elif f['ni'] < 0:
+            out.append(k['s_loss'].format(ni=usd(-f['ni'])))
+    if f.get('pe') and 0 < f['pe'] < 500:
+        out.append(k['s_pe'].format(pe=_num(f['pe'], 0 if f['pe'] >= 10 else 1)))
+    if f.get('h52') and f.get('l52') and f.get('cur') and f['h52'] > f['l52']:
+        out.append(k['s_52'].format(below=pctu(max(0, 1 - f['cur'] / f['h52'])), above=pctu(max(0, f['cur'] / f['l52'] - 1))))
+    if f.get('dy'):
+        out.append(k['s_div'].format(dy=pctu(f['dy'])))
+    elif f.get('mcap'):
+        out.append(k['s_nodiv'])
+    if f.get('rec') and f.get('n') and f.get('tgt') and f.get('cur'):
+        out.append(k['s_an'].format(n=f['n'], rec=f['rec'], tgt=usd(f['tgt']), up=pct(f['tgt'] / f['cur'] - 1)))
+    return out
+
+
+def stock_block(lang, aid):
+    """Key numbers + plain-language summary + analysts for stocks/ETFs with Yahoo stats (20 languages)."""
+    f = stock_facts(lang, aid)
+    if not f:
+        return ''
+    k = KS[lang]
+    tiles = []
+    def tile(lab, val, sub=''):
+        tiles.append(f'<div class="ks"><span>{esc(lab)}</span><b>{val}</b>{f"<small>{sub}</small>" if sub else ""}</div>')
+    if f.get('mcap'): tile(k['mcap'], usd_h(f['mcap']))
+    if f.get('pe') and f['pe'] > 0: tile(k['pe'], _num(f['pe'], 1))
+    tile(k['div'], pctu(f['dy']) if f.get('dy') else esc(k['divno']))
+    if f.get('rev'): tile(k['rev'], usd_h(f['rev']), f'<span class="{cls(f.get("revg"))}">{pct(f["revg"])}</span>' if f.get('revg') is not None else '')
+    if f.get('ni') is not None: tile(k['ni'], f'<span class="{cls(f["ni"])}">{"−" if f["ni"] < 0 else ""}{usd_h(abs(f["ni"]))}</span>', f'{esc(k["pm"])}: {pctu(f["pm"]) if f["pm"] >= 0 else pct(f["pm"])}' if f.get('pm') is not None else '')
+    if f.get('beta') is not None:
+        b = f['beta']
+        tile(k['beta'], _num(b, 2), esc(k['b_lo'] if b < 0.8 else k['b_hi'] if b > 1.2 else k['b_mid']))
+    if f.get('emp'): tile(k['emp'], _num(f['emp'], 0))
+    if f.get('sec'): tile(k['sec'], esc(f['sec']))
+    rng = ''
+    if f.get('h52') and f.get('l52') and f['h52'] > f['l52'] and f.get('cur'):
+        x = min(100, max(0, (f['cur'] - f['l52']) / (f['h52'] - f['l52']) * 100))
+        rng = (f'<div class="k52"><span>{esc(k["r52"])}</span><div class="k52b"><i style="left:{x:.1f}%"></i></div>'
+               f'<div class="k52l"><span>{esc(k["lo"])} {usd_h(f["l52"])}</span><span>{esc(k["hi"])} {usd_h(f["h52"])}</span></div></div>')
+    an = ''
+    if f.get('rec') and f.get('tgt') and f.get('cur'):
+        up = f['tgt'] / f['cur'] - 1
+        an = (f'<div class="kan"><span>{esc(k["an"])}{f" · {f[chr(110)]}" if f.get("n") else ""}</span><b>{esc(f["rec"])}</b>'
+              f'<small>{esc(k["tgt"])}: {usd_h(f["tgt"])} <span class="{cls(up)}">({pct(up)})</span></small></div>')
+    ed = _when(f.get('ern'), lang)
+    ern = f'<div class="kan"><span>{esc(k["ern"])}</span><b>{ed.isoformat()}</b></div>' if ed else ''
+    summ = stock_summary(lang, f)
+    return (f'<section class="section kstats"><h2>{esc(k["h"])} · {esc(f["tk"])}</h2><div class="kgrid"><div class="card kcard"><div class="ktiles">{"".join(tiles)}</div>{rng}</div>'
+            f'<div class="card kside">{an}{ern}<h3>{esc(k["sum_h"])}</h3><p>{esc(" ".join(summ))}</p><p class="muted ksrc">{esc(k["src"].format(d=f["d"]))} {esc(k["notadv"])}</p></div></div></section>')
+
+
+
+def analysis_block(lang, aid):
+    """Full written analysis of the asset (content/profiles/<lang>/<id>.md with `kind: analysis`), shown in full on the page."""
+    prof = PROFILES.get(lang, {}).get(aid)
+    if not prof or prof.get('kind') != 'analysis':
+        return ''
+    return (f'<section class="section card anl"><h2>{esc(prof.get("title", ""))}</h2>'
+            f'<p class="muted anld">{esc(prof.get("date", ""))}</p><div class="artbody">{md(prof["body"], lang)}</div></section>')
+
+def stock_faq(lang, aid):
+    f = stock_facts(lang, aid)
+    if not f:
+        return []
+    k, n = KS[lang], f['name']
+    s = stock_summary(lang, f)
+    out = []
+    if s:
+        out.append((k['q_what'].format(name=n), ' '.join(s[:3])))
+    out.append((k['q_div'].format(name=n), k['s_div'].format(dy=pctu(f['dy'])) if f.get('dy') else k['s_nodiv']))
+    if f.get('pe') and 0 < f['pe'] < 500:
+        out.append((k['q_pe'].format(name=n), k['s_pe'].format(pe=_num(f['pe'], 1))))
+    ed = _when(f.get('ern'), lang)
+    if ed:
+        out.append((k['q_ern'].format(name=n), ed.isoformat()))
+    if f.get('rec') and f.get('n') and f.get('tgt') and f.get('cur'):
+        out.append((k['q_an'].format(name=n), k['s_an'].format(n=f['n'], rec=f['rec'], tgt=usd(f['tgt']), up=pct(f['tgt'] / f['cur'] - 1)) + ' ' + k['notadv']))
+    return out
+
+
+def stock_peers(aid, k=8):
+    a = A[aid]
+    st = stock_stats(a)
+    if not st or a['cat'] != 'stock':
+        return []
+    me = STOCKINFO.get(a.get('yahoo') or '', {}).get('mcap') or 0
+    def sim(key):
+        return [i for i, b in A.items() if i != aid and b['cat'] == 'stock' and stock_stats(b).get(key) and stock_stats(b).get(key) == st.get(key)]
+    pool = sim('ind') if st.get('ind') else []
+    if len(pool) < 4 and st.get('sec'):
+        pool = list(dict.fromkeys(pool + sim('sec')))
+    mc = lambda i: STOCKINFO.get(A[i].get('yahoo') or '', {}).get('mcap') or 0
+    pool.sort(key=lambda i: abs(math.log10((mc(i) or 1e6) / (me or 1e9))))
+    return pool[:k]
+
 def asset(aid, lang, ver):
     S, u = TR[lang], TR[lang]['ui']
     a, m = A[aid], METRICS[aid]
@@ -1336,6 +1515,7 @@ def asset(aid, lang, ver):
            (S['q4'].format(**f), S['a4'].format(**f)), (S['q3'], S['a3'])]
     if m['r1'] is None or m['r5'] is None:
         faq.pop(2)
+    faq = stock_faq(lang, aid) + faq
     if lumps:
         lab, v, r5_ = lumps[min(2, len(lumps) - 1)]
         faq.insert(1, (X['q5'].format(name=n, p=lab), X['a5'].format(name=n, p=lab, v=usd(v), roi=pct(r5_))))
@@ -1378,9 +1558,10 @@ def asset(aid, lang, ver):
                           + '</section>')
     else:   # no free live chart for this symbol -> our own monthly chart
         tv, tech_news = own_chart(lang, a, aid), ''
-    body = (f'{head}<p class="lead" style="margin-top:10px">{S["a_lead"].format(**fe)}</p>{hot_block(lang, aid)}<div class="chartside section">{tv}{side_block(lang, aid)}</div>{'' if 'timeline' in tech_news else hot_more(lang, aid)}<div class="stats">{stat_cards}</div><div class="stats">{lump_cards}</div>{long_block(lang, aid)}{seas_block(lang, aid)}{calc_block(lang)}{tech_news}'
+    body = (f'{head}<p class="lead" style="margin-top:10px">{S["a_lead"].format(**fe)}</p>{hot_block(lang, aid)}<div class="chartside section">{tv}{side_block(lang, aid)}</div>{'' if 'timeline' in tech_news else hot_more(lang, aid)}{stock_block(lang, aid)}{analysis_block(lang, aid)}<div class="stats">{stat_cards}</div><div class="stats">{lump_cards}</div>{long_block(lang, aid)}{seas_block(lang, aid)}{calc_block(lang)}{tech_news}'
             f'<div class="cols2 section"><section class="card"><h2>{S["a_periods"].format(**fe)}</h2>{ptable}</section>'
             f'<section class="card faq"><h2>{S["faq"]}</h2>' + ''.join(f'<details><summary>{esc(q)}</summary><p>{esc(x)}</p></details>' for q, x in faq) + '</section></div>'
+            + (f'<section class="section">{table_block(lang, peers, esc(KS[lang]["peers"]), interactive=False)}</section>' if (peers := stock_peers(aid)) else '') +
             f'<section class="section">{table_block(lang, sim, S["a_similar"] + ": " + esc(cat), interactive=False)}</section>'
             f'{emb_block(lang, aid)}<p class="note">{esc(S["about"].format(**f))}</p>')
     jsonld = [{"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": S['loc'],
@@ -1707,11 +1888,18 @@ PARTNERS = {   # (name, /go/ id, tags, colour); real referral URLs are in api/_p
             ('MEXC', 'mexc', 'Spot · Futures · New listings', '#1972E2')],
     'dex': [('OKX Wallet', 'okx-wallet', 'Multichain wallet · DEX swaps', '#000000'),
             ('Hyperliquid', 'hyperliquid', 'On-chain perpetuals · Order book', '#0F3B36'),
-            ('GMGN', 'gmgn', 'Memecoin trading · Wallet tracking', '#18C46B')],
+            ('GMGN', 'gmgn', 'Memecoin trading · Wallet tracking', '#18C46B'),
+            ('FG Wallet', 'fgwallet', 'USDT (TRC-20) wallet · No TRX needed for fees', '#1B7F5F')],
+    'brk': [('Freedom24', 'freedom24', 'Stocks & ETFs · EU residents (CySEC) · Recurring investment plan', '#2E7D32')],
 }
+BRK_H = {'uk': 'Брокер для акцій і ETF', 'en': 'Broker for stocks and ETFs', 'es': 'Bróker para acciones y ETF', 'pt': 'Corretora para ações e ETFs',
+         'de': 'Broker für Aktien und ETFs', 'fr': 'Courtier pour actions et ETF', 'it': 'Broker per azioni ed ETF', 'pl': 'Broker do akcji i ETF',
+         'tr': 'Hisse ve ETF için aracı kurum', 'nl': 'Broker voor aandelen en ETF’s', 'ru': 'Брокер для акций и ETF', 'id': 'Broker untuk saham dan ETF',
+         'vi': 'Môi giới cổ phiếu và ETF', 'th': 'โบรกเกอร์หุ้นและ ETF', 'hi': 'शेयर और ETF के लिए ब्रोकर', 'ja': '株式・ETFの証券会社',
+         'ko': '주식·ETF 증권사', 'zh': '股票和 ETF 券商', 'ar': 'وسيط للأسهم وصناديق ETF', 'fil': 'Broker para sa stocks at ETF'}
 POLY = '/go/polymarket'
 XDOM = {'binance': 'binance.com', 'bybit': 'bybit.com', 'gate': 'gate.com', 'bingx': 'bingx.com', 'mexc': 'mexc.com', 'okx-wallet': 'okx.com',
-        'hyperliquid': 'hyperliquid.xyz', 'gmgn': 'gmgn.ai'}
+        'hyperliquid': 'hyperliquid.xyz', 'gmgn': 'gmgn.ai', 'freedom24': 'freedom24.com', 'fgwallet': 'fgwallet.io'}
 
 
 def xlogo(u, n, c, cls_='xl'):
@@ -1744,6 +1932,7 @@ def exchanges_page(lang, ver):
              f'<tbody>{trows}</tbody></table></div><p class="muted" style="font-size:13px">{esc(x["note2"])} {esc(x["src"])}.</p>')
     body = (f'<h1>{esc(e["h1"])}</h1><p class="lead">{esc(e["d"])}</p>'
             f'<section class="section card"><h2>{e["cex"]}</h2>{table}</section>'
+            f'<section class="section"><h2>{esc(BRK_H[lang])}</h2><div class="xgrid">{cards("brk")}</div></section>'
             f'<section class="section"><h2>{e["dex"]}</h2><div class="xgrid">{cards("dex")}</div></section>'
             f'<p class="muted" style="font-size:13px">{e["note"]}</p>{poly_block(lang)}')
     return shell(lang, 'exchanges', f'{e["h1"]} | {BRAND}', e['d'], body, {}, ver)

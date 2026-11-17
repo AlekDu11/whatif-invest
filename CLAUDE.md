@@ -52,4 +52,4 @@ Free distribution: social/syndication.md (platform rules, communities per langua
 News aggregator: api/news.js (Vercel function, RSS headlines only, links to originals).
 
 ## Waiting on the owner
-A stock broker referral link (Freedom24). Done 2026-11-16: Vercel Web Analytics enabled (Hobby, free); deployment retention set to 1 day for all types (each deploy is ~200 MB, Hobby limit 10 GB).
+Nothing blocking. Done 2026-11-17: Freedom24 referral (stocks/ETF buy buttons on uk/de/fr/it/es/pt/pl/nl pages via REF_LANG in src/ref.js; EU only, not US/UK) and FG Wallet (USDT TRC-20 wallet, /exchanges/ wallets). Done 2026-11-16: Vercel Web Analytics enabled (Hobby, free); deployment retention set to 1 day for all types (each deploy is ~200 MB, Hobby limit 10 GB).

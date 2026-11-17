@@ -776,3 +776,23 @@ html[data-theme=dark] .ic img{background:#fff;border-radius:50%}
 .tgrid>:nth-child(1){grid-area:a}.tgrid>:nth-child(2){grid-area:b}.tgrid>:nth-child(3){grid-area:c}.tgrid>:nth-child(4){grid-area:d}.tgrid>:nth-child(5){grid-area:n}
 @media (max-width:980px){.tgrid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-areas:"a b" "c d" "n n"}}
 @media (max-width:560px){.tgrid{grid-template-columns:minmax(0,1fr);grid-template-areas:"a" "b" "c" "d" "n"}}
+/* inputs: one focus ring around the whole field (prefix/suffix included), not around the bare input */
+.inp:focus-within{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.inp input:focus-visible,.inp select:focus-visible{outline:none}
+.inp input[type=search]{font:600 15px var(--fb)}
+/* stock key numbers */
+.kgrid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:12px}
+.ktiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.ks{display:flex;flex-direction:column;gap:3px;padding:12px;border-radius:12px;background:var(--card2);border:1px solid var(--line2);min-width:0}
+.ks span{font-size:12px;color:var(--muted)}.ks b{font:700 17px var(--fn);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ks small{font-size:12px;color:var(--muted)}
+.k52{margin-top:14px}.k52>span{font-size:12px;color:var(--muted)}
+.k52b{position:relative;height:8px;border-radius:4px;margin:8px 0 6px;background:linear-gradient(90deg,var(--dn),var(--gold) 50%,var(--up))}
+.k52b i{position:absolute;top:-5px;width:4px;height:18px;border-radius:2px;background:var(--text);transform:translateX(-2px);box-shadow:0 0 0 3px var(--card)}
+.k52l{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted)}
+.kside h3{font-size:14px;margin:6px 0 6px}.kside p{margin:0 0 8px;line-height:1.55}.ksrc{font-size:12px}
+.kan{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;padding:10px 12px;border-radius:12px;background:var(--card2);border:1px solid var(--line2);margin-bottom:8px}
+.kan span{font-size:12px;color:var(--muted);flex-basis:100%}.kan b{font:700 17px var(--fn);text-transform:capitalize}.kan small{font-size:13px;color:var(--muted)}
+@media (max-width:980px){.kgrid{grid-template-columns:minmax(0,1fr)}.ktiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.anl{padding:24px 28px}.anl h2{font-size:24px;line-height:1.25;margin:0 0 4px}.anld{font-size:13px;margin:0 0 14px}
+.anl .artbody{max-width:780px}.anl .artbody h2{font-size:19px;margin:22px 0 8px}.anl .artbody blockquote{margin:14px 0;padding:12px 16px;border-left:3px solid var(--accent);background:var(--card2);border-radius:0 12px 12px 0}
+.ks b span,.kan small span{font:inherit}
