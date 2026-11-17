@@ -184,7 +184,7 @@ footer a{color:var(--text)}
   .price{margin-left:0;width:100%}
   .mt td,.mt th{padding:10px 8px}
 }
-.langsel{height:34px;border:1px solid var(--line);border-radius:8px;background:var(--card);font:600 13px var(--fb);color:var(--text);padding:0 8px;flex:none;max-width:140px}
+.langsel{height:34px;border:1px solid var(--line);border-radius:8px;background:var(--card);font:600 13px var(--fb);color:var(--text);padding:0 8px;flex:none;max-width:118px}
 .langs{margin-top:14px;font-size:12.5px;color:var(--muted);line-height:2}
 .langs a{color:var(--muted);text-decoration:none}.langs a:hover{color:var(--accent)}
 [dir=rtl] .mt th,[dir=rtl] .mt td,[dir=rtl] .rt th,[dir=rtl] .rt td{text-align:left}
@@ -579,7 +579,7 @@ html[data-theme=dark] .aim.u{color:#06231a}
 .lwnote .lwavg::before{content:'';display:inline-block;width:14px;border-top:2px dashed var(--gold);vertical-align:middle;margin-right:6px}
 @media (max-width:600px){.lwbox{height:300px}}
 /* header fit: long nav labels (ru, fr, es, pt, vi...) overflowed the page between 1181 and ~1750px */
-@media (max-width:1800px){.nav a,.dd summary{padding:8px 7px;font-size:13.5px}.top .in{gap:12px;max-width:1320px}}
+@media (max-width:1800px){.nav a,.dd summary{padding:8px 7px;font-size:13.5px}.top .in{gap:12px}}
 @media (max-width:1360px){.logo>span{display:none}}
 @media (max-width:1260px){.nav{display:none}}
 /* widget builder */
@@ -612,3 +612,5 @@ html[data-theme=dark] .icchart .a{fill:#2a3d35}
 @media (max-width:600px){.icres .stat.big{grid-column:span 1}.icrow{grid-template-columns:1fr auto}.icrow .bar,.icrow small{display:none}}
 .icgrid div.f:has(#icc),.icgrid div.f:has(#ics){grid-column:span 2}@media (max-width:600px){.icgrid div.f:has(#icc),.icgrid div.f:has(#ics){grid-column:1/-1}}
 @media (max-width:600px){.icres .stat.big{grid-column:1/-1}.icres .stat.big .v{font-size:28px}}
+.gsearch{min-width:140px}
+.top .in{gap:10px}.top .in>.nav{min-width:0}.nav{gap:0}
