@@ -35,6 +35,7 @@ from i18n_home2 import HM  # noqa: E402
 from i18n_ks import KS, SECT  # noqa: E402
 from i18n_offer import OFFER_TGW  # noqa: E402
 from i18n_lc import LC  # noqa: E402
+from i18n_xc import XC  # noqa: E402
 from i18n_bpd import BPD, IDEA as BP_IDEA  # noqa: E402
 from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB, CH as OWN_CH, CH2 as OWN_CH2  # noqa: E402
 SOCIAL = [('Telegram', 'https://t.me/TradeMaster_insight'), ('X (Twitter)', 'https://x.com/WhatIfStack'), ('Bluesky', 'https://bsky.app/profile/whatifstack.bsky.social'), ('Instagram', 'https://www.instagram.com/whatifstack/'), ('Threads', 'https://www.threads.com/@whatifstack'),
@@ -59,7 +60,7 @@ UPDATED = market['updated']
 END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
-RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide', 'commodities', 'widgets', 'embed', 'dividends', 'average-price', 'ovdp', 'largest-companies'}
+RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide', 'commodities', 'widgets', 'embed', 'dividends', 'average-price', 'ovdp', 'largest-companies', 'crypto-exchanges'}
 RESERVED |= {v[0] for v in MKTS.values()} | {'world-assets', 'activities', 'editorial-policy', 'about', 'portfolios'}
 # asset ids that clash with a language folder or a section get a suffix (ko -> ko-stock, fil -> fil-crypto)
 _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
@@ -169,6 +170,8 @@ def has_page(lang, aid):
         return True
     if aid in ('ai', 'me', 'memes', 'world-assets', 'activities', 'portfolios', 'largest-companies') or (aid or '').startswith(('portfolios/', 'largest-companies/')):
         return True
+    if aid == 'crypto-exchanges' or (aid or '').startswith('crypto-exchanges/'):
+        return xc_has(lang, None if aid in ('crypto-exchanges', 'crypto-exchanges/derivatives') else aid.split('/', 1)[1])
     if aid == 'editorial-policy':
         return lang in POLICY
     if aid == 'guide':
@@ -1584,6 +1587,142 @@ def lc_pages(lang, ver):
             out.append(lc_page(lang, 'mcap', m, ver))
     return out
 
+
+XCH = _jload('exchanges.json') or {}
+XC_PARTNER = {'binance': 'binance', 'bybit': 'bybit', 'gate': 'gate', 'bingx': 'bingx', 'mexc': 'mexc', 'kraken': 'kraken', 'hyperliquid': 'hyperliquid'}
+
+
+def xc_partner(name):
+    k = (name or '').lower().split()[0].replace('.io', '') if name else ''
+    return XC_PARTNER.get(k)
+
+
+def xc_has(lang, xid=None):
+    if not XCH.get('spot'):
+        return False
+    return xid is None or (lang in FULL and xid in XCH.get('detail', {}))
+
+
+def xc_url(lang, xid):
+    return url(lang if lang in FULL else 'en', 'crypto-exchanges/' + xid)
+
+
+def _xlogo(e):
+    return (f'<span class="ic"><img src="{esc(e["img"])}" alt="" loading="lazy" width="26" height="26" referrerpolicy="no-referrer"></span>' if e.get('img')
+            else f'<span class="ic">{esc((e.get("name") or "?")[0])}</span>')
+
+
+def _xvsvg(pts, w=640, h=170):
+    if len(pts) < 2:
+        return ''
+    mx = max(v for _, v in pts) or 1
+    xy = [(i / (len(pts) - 1) * w, h - 4 - v / mx * (h - 12)) for i, (_, v) in enumerate(pts)]
+    line = ' '.join(f'{x:.1f},{y:.1f}' for x, y in xy)
+    return (f'<svg class="spk up xchart" viewBox="0 0 {w} {h}" preserveAspectRatio="none" aria-hidden="true">'
+            f'<polygon points="0,{h} {line} {w},{h}"/><polyline points="{line}"/></svg>')
+
+
+def xc_spot_page(lang, ver):
+    t, btc = XC[lang], METRICS['btc']['price'] if 'btc' in METRICS else 0
+    sp = [e for e in XCH['spot'] if e.get('vol_btc')]
+    tot = sum(e.get('nvol_btc') or 0 for e in sp) or 1
+    rows = ''
+    for k, e in enumerate(sp[:100]):
+        det = e['id'] in XCH.get('detail', {})
+        nm_ = f'<a class="asset" href="{xc_url(lang, e["id"])}">' if det else '<span class="asset">'
+        ch = XCH.get('detail', {}).get(e['id'], {}).get('chart') or []
+        go = xc_partner(e.get('name'))
+        golink = f'<a class="buy" href="/go/{go}?from=xc-list&l={lang}" target="_blank" rel="sponsored noopener" title="{esc(t["aff"])}">↗</a>' if go else ''
+        rows += (f'<tr><td class="l n">{k + 1}</td><td class="l">{nm_}{_xlogo(e)}<span><span class="nm">{esc(e["name"])}</span>'
+                 f'<span class="tk">{esc(e.get("country") or "")}</span></span>{"</a>" if det else "</span>"}</td>'
+                 f'<td class="num"><b>{usd_h((e.get("nvol_btc") or 0) * btc)}</b></td><td class="num hide-sm">{usd_h(e["vol_btc"] * btc)}</td>'
+                 f'<td class="num">{pctu((e.get("nvol_btc") or 0) / tot)}</td><td class="num hide-sm">{e.get("trust") or "—"}/10</td>'
+                 f'<td class="hide-sm">{spark([v for _, v in ch][-14:]) if ch else ""}</td>'
+                 f'<td>{golink}</td></tr>')
+    th = (f'<tr><th class="l n">#</th><th class="l">{esc(t["name"])}</th><th>{esc(t["nvol"])}</th><th class="hide-sm">{esc(t["vol"])}</th>'
+          f'<th>{esc(t["share"])}</th><th class="hide-sm">{esc(t["trust"])}</th><th class="hide-sm"></th><th></th></tr>')
+    return _xc_shell(lang, ver, 'spot', t['h_spot'], t['lead_spot'], th, rows)
+
+
+def xc_der_page(lang, ver):
+    t, btc = XC[lang], METRICS['btc']['price'] if 'btc' in METRICS else 0
+    rows = ''
+    for k, e in enumerate([e for e in XCH.get('derivatives', []) if e.get('oi_btc')][:60]):
+        go = xc_partner(e.get('name'))
+        rows += (f'<tr><td class="l n">{k + 1}</td><td class="l"><span class="asset">{_xlogo(e)}<span><span class="nm">{esc(e["name"])}</span>'
+                 f'<span class="tk">{esc(e.get("country") or "")}</span></span></span></td><td class="num"><b>{usd_h(e["oi_btc"] * btc)}</b></td>'
+                 f'<td class="num">{usd_h((e.get("vol_btc") or 0) * btc)}</td><td class="num hide-sm">{e.get("perp") or 0}</td><td class="num hide-sm">{e.get("fut") or 0}</td>'
+                 f'<td>{f"<a class=buy href=/go/{go}?from=xc-der&l={lang} target=_blank rel=\"sponsored noopener\">↗</a>" if go else ""}</td></tr>')
+    th = (f'<tr><th class="l n">#</th><th class="l">{esc(t["name"])}</th><th>{esc(t["oi"])}</th><th>{esc(t["vol"])}</th>'
+          f'<th class="hide-sm">{esc(t["perp"])}</th><th class="hide-sm">{esc(t["fut"])}</th><th></th></tr>')
+    return _xc_shell(lang, ver, 'derivatives', t['h_der'], t['lead_der'], th, rows)
+
+
+def _xc_shell(lang, ver, kind, h1, lead, th, rows):
+    t = XC[lang]
+    path = 'crypto-exchanges' + ('/derivatives' if kind == 'derivatives' else '')
+    tabs = (f'<a class="chip{" on" if kind == "spot" else ""}" href="{url(lang, "crypto-exchanges")}">{esc(t["tab_spot"])}</a>'
+            f'<a class="chip{" on" if kind == "derivatives" else ""}" href="{url(lang, "crypto-exchanges/derivatives")}">{esc(t["tab_der"])}</a>'
+            f'<a class="chip" href="{url(lang, "exchanges")}">{esc(EX[lang]["nav"])}</a>')
+    body = (f'<h1>{esc(h1)}</h1><p class="lead">{esc(lead)}</p><div class="cchips lcchips">{tabs}</div>'
+            f'<section class="section"><div class="tw"><table class="mt lct">{"<thead>" + th + "</thead>"}<tbody>{rows}</tbody></table></div></section>'
+            f'<p class="note">{esc(t["src"].format(d=XCH.get("updated", "")))} {esc(t["aff"])}: ↗</p>')
+    return path, shell(lang, path, f'{h1} | {BRAND}', lead, body, {}, ver)
+
+
+def xc_detail_page(lang, xid, ver):
+    t, btc = XC[lang], METRICS['btc']['price'] if 'btc' in METRICS else 0
+    sp = XCH['spot']
+    e = next(x for x in sp if x['id'] == xid)
+    d = XCH['detail'][xid]
+    tot = sum(x.get('nvol_btc') or 0 for x in sp) or 1
+    name = e['name']
+    cg2aid = {a.get('cgid'): i for i, a in A.items() if a.get('cgid')}
+    cpart = f' ({e["country"]}{", " + str(e["year"]) if e.get("year") else ""})' if e.get('country') else ''
+    lead = t['x_lead'].format(x=name, c=cpart, v=usd((e.get('vol_btc') or 0) * btc), s=pctu((e.get('nvol_btc') or 0) / tot), r=e.get('rank') or '—')
+    go = xc_partner(name)
+    fee = ''
+    if go:
+        fz = {'binance': ('0.10% / 0.10%', 'Auto-Invest'), 'bybit': ('0.10% / 0.10%', 'Auto-Invest'), 'kraken': ('0.40% / 0.80%', 'Recurring Buy (1%)'),
+              'gate': ('0.10–0.20%', 'Auto-Invest'), 'bingx': ('0.10% / 0.10%', 'Recurring Buy'), 'mexc': ('0% / 0.05%', 'Spot DCA')}.get(go)
+        if fz:
+            fee = f'<div class="ks"><span>{esc(t["fees"])}</span><b>{fz[0]}</b><small>{esc(t["dca"])}: {esc(fz[1])}</small></div>'
+    yr = f'<small>{esc(t["year"])}: {e["year"]}</small>' if e.get('year') else ''
+    tiles = (f'<div class="ks"><span>{esc(t["vol"])}</span><b>{usd_h((e.get("vol_btc") or 0) * btc)}</b></div>'
+             f'<div class="ks"><span>{esc(t["nvol"])}</span><b>{usd_h((e.get("nvol_btc") or 0) * btc)}</b><small>{esc(t["share"])}: {pctu((e.get("nvol_btc") or 0) / tot)}</small></div>'
+             f'<div class="ks"><span>{esc(t["trust"])}</span><b>{e.get("trust") or "—"}/10</b><small>#{e.get("rank") or "—"}</small></div>'
+             + (f'<div class="ks"><span>{esc(t["country"])}</span><b>{esc(e["country"])}</b>{yr}</div>' if e.get('country') else '')
+             + fee)
+    pr = ''
+    for p in d.get('pairs', [])[:30]:
+        aid = cg2aid.get(p.get('cg'))
+        lab = f'{esc(p.get("b", ""))}/{esc(p.get("q", ""))}'
+        lab = f'<a href="{aurl(lang, aid)}">{icon(A[aid])}{lab}</a>' if aid else lab
+        pr += (f'<tr><td class="l">{lab}</td><td class="num">{_num(p["last"], 6 if (p.get("last") or 0) < 1 else 2) if p.get("last") is not None else "—"}</td>'
+               f'<td class="num"><b>{usd_h(p.get("usd"))}</b></td><td class="num hide-sm">{pctu((p.get("spread") or 0) / 100) if p.get("spread") is not None else "—"}</td></tr>')
+    cta = (f'<a class="btn" href="/go/{go}?from=xc-{xid}&l={lang}" target="_blank" rel="sponsored noopener">{esc(t["go"].format(x=name))}</a> <small class="muted">{esc(t["aff"])}</small>' if go
+           else (f'<a class="btn ghost" href="{esc(e["url"])}" target="_blank" rel="nofollow noopener">{esc(t["site"])} ↗</a>' if e.get('url') else ''))
+    h1 = t['x_h1'].format(x=name)
+    body = (f'<nav class="crumbs"><a href="{url(lang, "crypto-exchanges")}">{esc(t["nav"])}</a> / {esc(name)}</nav>'
+            f'<div class="ahead">{_xlogo(e)}<div><h1>{esc(h1)}</h1></div></div><p class="lead">{esc(lead)}</p><p>{cta}</p>'
+            f'<section class="section"><div class="ktiles">{tiles}</div></section>'
+            + (f'<section class="section card"><h2>{esc(t["chart"])}</h2>{_xvsvg([(ts, v * btc) for ts, v in d["chart"]])}</section>' if d.get('chart') else '')
+            + (f'<section class="section"><h2>{esc(t["pairs_h"].format(x=name))}</h2><div class="tw"><table class="mt"><thead><tr><th class="l">{esc(t["pair"])}</th>'
+               f'<th>{esc(t["price"])}</th><th>{esc(t["vol"])}</th><th class="hide-sm">{esc(t["spread"])}</th></tr></thead><tbody>{pr}</tbody></table></div></section>' if pr else '')
+            + f'<p class="note">{esc(t["src"].format(d=XCH.get("updated", "")))}</p>')
+    path = 'crypto-exchanges/' + xid
+    ld = {"@context": "https://schema.org", "@type": "Organization", "name": name, "url": e.get('url') or '', "foundingDate": str(e.get('year') or '')}
+    return path, shell(lang, path, f'{h1} | {BRAND}', lead, body, {}, ver, [ld])
+
+
+def xc_pages(lang, ver):
+    if not xc_has(lang):
+        return []
+    out = [xc_spot_page(lang, ver), xc_der_page(lang, ver)]
+    if lang in FULL:
+        out += [xc_detail_page(lang, x, ver) for x in XCH.get('detail', {}) if any(e['id'] == x for e in XCH['spot'])]
+    return out
+
 def stock_peers(aid, k=8):
     a = A[aid]
     st = stock_stats(a)
@@ -1783,6 +1922,8 @@ def tools_menu(lang):
     items = [('compare', S['nav_cmp']) if (S := TR[lang]) else None, ('habits', HB[lang]['nav']), ('millionaire', t['g_nav'])]
     if CPI['c']:
         items.append(('inflation', t['i_nav']))
+    if XCH.get('spot'):
+        items.append(('crypto-exchanges', XC[lang]['nav']))
     items += [('largest-companies', LC[lang]['nav']), ('world-assets', WA[lang]['nav']), ('memes', MEM[lang]['nav']), ('converter', HCONV[lang]), ('ath', t['a_nav']), ('bitcoin-halving', t['v_nav']), ('dividends', DV[lang]['nav']), ('average-price', AV[lang]['nav'])]
     if lang in OV:
         items.append(('ovdp', OV[lang]['nav']))
@@ -3028,6 +3169,9 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
             write(f'{pre}portfolios/{k}/index.html', portfolio_detail(lang, k, c, ver))
         write(pre + 'millionaire/index.html', calc_page(lang, 'millionaire', ver))
         write(pre + 'compound-interest/index.html', ic_page(lang, ver))
+        for _p, _h in xc_pages(lang, ver):
+            write(f'{pre}{_p}/index.html', _h)
+            extra_pages.append(_p)
         for _p, _h in lc_pages(lang, ver):
             write(f'{pre}{_p}/index.html', _h)
             extra_pages.append(_p)
