@@ -151,5 +151,5 @@
       "destination": "/api/stats"
     }
   ],
-  "ignoreCommand": "git diff --quiet HEAD^ HEAD -- . ':(exclude)social/*.md' ':(exclude)social/*.js' ':(exclude)CLAUDE.md' ':(exclude)README.md'"
+  "ignoreCommand": "bash scripts/vercel_ignore.sh"
 }

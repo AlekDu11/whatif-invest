@@ -1,0 +1,38 @@
+name: Scheduled deploy
+
+# Vercel builds only commits with [deploy] in the message (scripts/vercel_ignore.sh), to stay under the
+# 10 GB deployment-storage limit of the Hobby plan. Every 4 hours: if anything that affects the site changed
+# since the last deploy, push an empty "[deploy]" commit.
+on:
+  schedule:
+    - cron: '23 */4 * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: scheduled-deploy
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 500
+      - name: Request a deploy if the site changed
+        run: |
+          last=$(git log -1 --format=%H --grep='\[deploy\]' || true)
+          if [ -n "$last" ]; then
+            changed=$(git diff --name-only "$last" HEAD -- . ':(exclude)social' ':(exclude)ads' ':(exclude)reports' ':(exclude)CLAUDE.md' ':(exclude)README.md' | head -1)
+          else
+            changed=yes
+          fi
+          if [ -z "$changed" ]; then echo "Nothing to deploy"; exit 0; fi
+          git config user.name "whatif-bot"
+          git config user.email "whatif-bot@users.noreply.github.com"
+          git commit --allow-empty -m "Scheduled deploy [deploy]"
+          git pull --rebase -X theirs || true
+          git push

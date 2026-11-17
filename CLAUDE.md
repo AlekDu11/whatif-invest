@@ -33,6 +33,7 @@ Content: 2–3 blog posts a week on trending queries (content/blog/<lang>/), wee
 - scripts/i18n*.py — all UI/SEO strings for 20 languages; a new string must be added for every language
 - src/app.js, src/style.css — front-end; src/ref.js — referral links
 - Before pushing: run `python3 scripts/build.py` and check pages in a headless browser.
+- Deploys (owner-approved 2026-11-17, Vercel storage limit): Vercel builds ONLY commits with `[deploy]` in the message (scripts/vercel_ignore.sh). .github/workflows/deploy.yml adds such a commit every 4 hours if the site changed. Put `[deploy]` in a commit message only for urgent fixes the owner is waiting for.
 
 ## Partner links
 src/ref.js (buy buttons) and PARTNERS / POLY in scripts/build.py (/exchanges/ page, Polymarket block).
