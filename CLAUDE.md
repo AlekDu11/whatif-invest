@@ -7,7 +7,8 @@ Full strategy doc: https://claude.ai/artifact/BWtJfaiRLWutsvaYkUqyoC
 The most useful and fastest markets site for ordinary people worldwide — a modern, better version of
 CoinMarketCap, CoinGecko, CryptoRank and Investing.com — and a profitable business on top of it.
 Positioning: "markets in plain language, with real numbers, for the whole world" — crypto, stocks and gold
-in one place, fast, no ad clutter, focused on regular (DCA) investing.
+in one place, fast, no ad clutter. Owner (2026-11-17): the essence is what people find interesting and useful
+(price, chart, news, what's happening, tools) — not "$10 a day"/DCA; DCA is one useful tool among many, not the headline.
 
 ## Principles (check every decision against them)
 1. Usefulness first — every page answers a real question ("what would I have…", "what to buy…", "what's the market doing").
