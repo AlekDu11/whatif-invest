@@ -4969,5 +4969,605 @@
 "name": "AFK Sistema",
 "cat": "stock",
 "mkt": "ru"
+},
+{
+"tk": "ASML",
+"yahoo": "ASML",
+"name": "ASML",
+"cat": "stock"
+},
+{
+"tk": "AZN",
+"yahoo": "AZN",
+"name": "AstraZeneca",
+"cat": "stock"
+},
+{
+"tk": "ARM",
+"yahoo": "ARM",
+"name": "Arm Holdings",
+"cat": "stock"
+},
+{
+"tk": "PDD",
+"yahoo": "PDD",
+"name": "PDD Holdings (Temu)",
+"cat": "stock"
+},
+{
+"tk": "MELI",
+"yahoo": "MELI",
+"name": "MercadoLibre",
+"cat": "stock"
+},
+{
+"tk": "TEAM",
+"yahoo": "TEAM",
+"name": "Atlassian",
+"cat": "stock"
+},
+{
+"tk": "MDB",
+"yahoo": "MDB",
+"name": "MongoDB",
+"cat": "stock"
+},
+{
+"tk": "ZS",
+"yahoo": "ZS",
+"name": "Zscaler",
+"cat": "stock"
+},
+{
+"tk": "CCEP",
+"yahoo": "CCEP",
+"name": "Coca-Cola Europacific Partners",
+"cat": "stock"
+},
+{
+"tk": "GFS",
+"yahoo": "GFS",
+"name": "GlobalFoundries",
+"cat": "stock"
+},
+{
+"tk": "SHOP",
+"yahoo": "SHOP",
+"name": "Shopify",
+"cat": "stock"
+},
+{
+"tk": "TRI",
+"yahoo": "TRI",
+"name": "Thomson Reuters",
+"cat": "stock"
+},
+{
+"tk": "MSTR",
+"yahoo": "MSTR",
+"name": "Strategy (MicroStrategy)",
+"cat": "stock"
+},
+{
+"tk": "TTD",
+"yahoo": "TTD",
+"name": "The Trade Desk",
+"cat": "stock"
+},
+{
+"tk": "FER",
+"yahoo": "FER",
+"name": "Ferrovial",
+"cat": "stock"
+},
+{
+"tk": "ALNY",
+"yahoo": "ALNY",
+"name": "Alnylam Pharmaceuticals",
+"cat": "stock"
+},
+{
+"tk": "INSM",
+"yahoo": "INSM",
+"name": "Insmed",
+"cat": "stock"
+},
+{
+"tk": "AA",
+"yahoo": "AA",
+"name": "Alcoa",
+"cat": "stock"
+},
+{
+"tk": "AAL",
+"yahoo": "AAL",
+"name": "American Airlines",
+"cat": "stock"
+},
+{
+"tk": "AAON",
+"yahoo": "AAON",
+"name": "AAON",
+"cat": "stock"
+},
+{
+"tk": "ACI",
+"yahoo": "ACI",
+"name": "Albertsons",
+"cat": "stock"
+},
+{
+"tk": "ACM",
+"yahoo": "ACM",
+"name": "AECOM",
+"cat": "stock"
+},
+{
+"tk": "ADC",
+"yahoo": "ADC",
+"name": "Agree Realty",
+"cat": "stock"
+},
+{
+"tk": "AEIS",
+"yahoo": "AEIS",
+"name": "Advanced Energy",
+"cat": "stock"
+},
+{
+"tk": "AFG",
+"yahoo": "AFG",
+"name": "American Financial Group",
+"cat": "stock"
+},
+{
+"tk": "AGCO",
+"yahoo": "AGCO",
+"name": "AGCO",
+"cat": "stock"
+},
+{
+"tk": "AGNC",
+"yahoo": "AGNC",
+"name": "AGNC Investment",
+"cat": "stock"
+},
+{
+"tk": "AHR",
+"yahoo": "AHR",
+"name": "American Healthcare REIT",
+"cat": "stock"
+},
+{
+"tk": "AIT",
+"yahoo": "AIT",
+"name": "Applied Industrial Technologies",
+"cat": "stock"
+},
+{
+"tk": "ALGM",
+"yahoo": "ALGM",
+"name": "Allegro MicroSystems",
+"cat": "stock"
+},
+{
+"tk": "ALK",
+"yahoo": "ALK",
+"name": "Alaska Air",
+"cat": "stock"
+},
+{
+"tk": "ALLY",
+"yahoo": "ALLY",
+"name": "Ally Financial",
+"cat": "stock"
+},
+{
+"tk": "ALSN",
+"yahoo": "ALSN",
+"name": "Allison Transmission",
+"cat": "stock"
+},
+{
+"tk": "ALV",
+"yahoo": "ALV",
+"name": "Autoliv",
+"cat": "stock"
+},
+{
+"tk": "AM",
+"yahoo": "AM",
+"name": "Antero Midstream",
+"cat": "stock"
+},
+{
+"tk": "AMG",
+"yahoo": "AMG",
+"name": "Affiliated Managers Group",
+"cat": "stock"
+},
+{
+"tk": "AMH",
+"yahoo": "AMH",
+"name": "American Homes 4 Rent",
+"cat": "stock"
+},
+{
+"tk": "AMKR",
+"yahoo": "AMKR",
+"name": "Amkor Technology",
+"cat": "stock"
+},
+{
+"tk": "AN",
+"yahoo": "AN",
+"name": "AutoNation",
+"cat": "stock"
+},
+{
+"tk": "ANF",
+"yahoo": "ANF",
+"name": "Abercrombie & Fitch",
+"cat": "stock"
+},
+{
+"tk": "APG",
+"yahoo": "APG",
+"name": "APi Group",
+"cat": "stock"
+},
+{
+"tk": "APPF",
+"yahoo": "APPF",
+"name": "AppFolio",
+"cat": "stock"
+},
+{
+"tk": "AR",
+"yahoo": "AR",
+"name": "Antero Resources",
+"cat": "stock"
+},
+{
+"tk": "ARMK",
+"yahoo": "ARMK",
+"name": "Aramark",
+"cat": "stock"
+},
+{
+"tk": "ARW",
+"yahoo": "ARW",
+"name": "Arrow Electronics",
+"cat": "stock"
+},
+{
+"tk": "ARWR",
+"yahoo": "ARWR",
+"name": "Arrowhead Pharmaceuticals",
+"cat": "stock"
+},
+{
+"tk": "ASB",
+"yahoo": "ASB",
+"name": "Associated Banc-Corp",
+"cat": "stock"
+},
+{
+"tk": "ASH",
+"yahoo": "ASH",
+"name": "Ashland",
+"cat": "stock"
+},
+{
+"tk": "ATI",
+"yahoo": "ATI",
+"name": "ATI",
+"cat": "stock"
+},
+{
+"tk": "ATR",
+"yahoo": "ATR",
+"name": "AptarGroup",
+"cat": "stock"
+},
+{
+"tk": "AVAV",
+"yahoo": "AVAV",
+"name": "AeroVironment",
+"cat": "stock"
+},
+{
+"tk": "AVNT",
+"yahoo": "AVNT",
+"name": "Avient",
+"cat": "stock"
+},
+{
+"tk": "AVT",
+"yahoo": "AVT",
+"name": "Avnet",
+"cat": "stock"
+},
+{
+"tk": "AVTR",
+"yahoo": "AVTR",
+"name": "Avantor",
+"cat": "stock"
+},
+{
+"tk": "AXTA",
+"yahoo": "AXTA",
+"name": "Axalta",
+"cat": "stock"
+},
+{
+"tk": "AYI",
+"yahoo": "AYI",
+"name": "Acuity",
+"cat": "stock"
+},
+{
+"tk": "BAH",
+"yahoo": "BAH",
+"name": "Booz Allen Hamilton",
+"cat": "stock"
+},
+{
+"tk": "BBWI",
+"yahoo": "BBWI",
+"name": "Bath & Body Works",
+"cat": "stock"
+},
+{
+"tk": "BC",
+"yahoo": "BC",
+"name": "Brunswick",
+"cat": "stock"
+},
+{
+"tk": "BCO",
+"yahoo": "BCO",
+"name": "Brink's",
+"cat": "stock"
+},
+{
+"tk": "BDC",
+"yahoo": "BDC",
+"name": "Belden",
+"cat": "stock"
+},
+{
+"tk": "BHF",
+"yahoo": "BHF",
+"name": "Brighthouse Financial",
+"cat": "stock"
+},
+{
+"tk": "BILL",
+"yahoo": "BILL",
+"name": "Bill Holdings",
+"cat": "stock"
+},
+{
+"tk": "BIO",
+"yahoo": "BIO",
+"name": "Bio-Rad Laboratories",
+"cat": "stock"
+},
+{
+"tk": "BJ",
+"yahoo": "BJ",
+"name": "BJ's Wholesale Club",
+"cat": "stock"
+},
+{
+"tk": "BKH",
+"yahoo": "BKH",
+"name": "Black Hills",
+"cat": "stock"
+},
+{
+"tk": "BMRN",
+"yahoo": "BMRN",
+"name": "BioMarin Pharmaceutical",
+"cat": "stock"
+},
+{
+"tk": "BRKR",
+"yahoo": "BRKR",
+"name": "Bruker",
+"cat": "stock"
+},
+{
+"tk": "BROS",
+"yahoo": "BROS",
+"name": "Dutch Bros",
+"cat": "stock"
+},
+{
+"tk": "BRX",
+"yahoo": "BRX",
+"name": "Brixmor Property Group",
+"cat": "stock"
+},
+{
+"tk": "BSY",
+"yahoo": "BSY",
+"name": "Bentley Systems",
+"cat": "stock"
+},
+{
+"tk": "BTSG",
+"yahoo": "BTSG",
+"name": "BrightSpring Health Services",
+"cat": "stock"
+},
+{
+"tk": "BURL",
+"yahoo": "BURL",
+"name": "Burlington Stores",
+"cat": "stock"
+},
+{
+"tk": "BWA",
+"yahoo": "BWA",
+"name": "BorgWarner",
+"cat": "stock"
+},
+{
+"tk": "BWXT",
+"yahoo": "BWXT",
+"name": "BWX Technologies",
+"cat": "stock"
+},
+{
+"tk": "BYD",
+"yahoo": "BYD",
+"name": "Boyd Gaming",
+"cat": "stock"
+},
+{
+"tk": "CACI",
+"yahoo": "CACI",
+"name": "CACI International",
+"cat": "stock"
+},
+{
+"tk": "CAR",
+"yahoo": "CAR",
+"name": "Avis Budget Group",
+"cat": "stock"
+},
+{
+"tk": "CART",
+"yahoo": "CART",
+"name": "Instacart (Maplebear)",
+"cat": "stock"
+},
+{
+"tk": "CAVA",
+"yahoo": "CAVA",
+"name": "Cava Group",
+"cat": "stock"
+},
+{
+"tk": "CBSH",
+"yahoo": "CBSH",
+"name": "Commerce Bancshares",
+"cat": "stock"
+},
+{
+"tk": "CBT",
+"yahoo": "CBT",
+"name": "Cabot",
+"cat": "stock"
+},
+{
+"tk": "CCK",
+"yahoo": "CCK",
+"name": "Crown Holdings",
+"cat": "stock"
+},
+{
+"tk": "CDE",
+"yahoo": "CDE",
+"name": "Coeur Mining",
+"cat": "stock"
+},
+{
+"tk": "CDP",
+"yahoo": "CDP",
+"name": "COPT Defense Properties",
+"cat": "stock"
+},
+{
+"tk": "CELH",
+"yahoo": "CELH",
+"name": "Celsius Holdings",
+"cat": "stock"
+},
+{
+"tk": "CFR",
+"yahoo": "CFR",
+"name": "Cullen/Frost Bankers",
+"cat": "stock"
+},
+{
+"tk": "CG",
+"yahoo": "CG",
+"name": "Carlyle Group",
+"cat": "stock"
+},
+{
+"tk": "CGNX",
+"yahoo": "CGNX",
+"name": "Cognex",
+"cat": "stock"
+},
+{
+"tk": "CHDN",
+"yahoo": "CHDN",
+"name": "Churchill Downs",
+"cat": "stock"
+},
+{
+"tk": "CHE",
+"yahoo": "CHE",
+"name": "Chemed",
+"cat": "stock"
+},
+{
+"tk": "CHH",
+"yahoo": "CHH",
+"name": "Choice Hotels",
+"cat": "stock"
+},
+{
+"tk": "CHRD",
+"yahoo": "CHRD",
+"name": "Chord Energy",
+"cat": "stock"
+},
+{
+"tk": "CHWY",
+"yahoo": "CHWY",
+"name": "Chewy",
+"cat": "stock"
+},
+{
+"tk": "CLF",
+"yahoo": "CLF",
+"name": "Cleveland-Cliffs",
+"cat": "stock"
+},
+{
+"tk": "CLH",
+"yahoo": "CLH",
+"name": "Clean Harbors",
+"cat": "stock"
+},
+{
+"tk": "CMC",
+"yahoo": "CMC",
+"name": "Commercial Metals",
+"cat": "stock"
+},
+{
+"tk": "CNH",
+"yahoo": "CNH",
+"name": "CNH Industrial",
+"cat": "stock"
+},
+{
+"tk": "CNM",
+"yahoo": "CNM",
+"name": "Core & Main",
+"cat": "stock"
+},
+{
+"tk": "CNO",
+"yahoo": "CNO",
+"name": "CNO Financial Group",
+"cat": "stock"
 }
 ]
