@@ -660,3 +660,6 @@ html[data-theme=dark] .icchart .a{fill:#2a3d35}
 @media (max-width:480px){.icards{grid-template-columns:repeat(2,1fr)}.tri3 b{font-size:14px}}
 .icr2 .icrow{display:block}
 @media (max-width:600px){.icards{display:flex;overflow-x:auto;gap:8px;padding-bottom:6px;scroll-snap-type:x mandatory}.icard{flex:0 0 118px;padding:10px;scroll-snap-align:start}.icard.on{padding:9px}.icard .ir{font-size:20px}.icard .ii{width:28px;height:28px;font-size:15px}}
+@media (max-width:600px){.mt .nm{max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block}.mt td:nth-child(5),.mt th:nth-child(5){display:none}.mt td,.mt th{padding-left:6px;padding-right:6px}}
+@media (max-width:600px){.mt .asset{min-width:0;gap:8px}.mt .nm{max-width:118px}.mt .star{padding-right:2px}.mt .pill{padding:2px 6px}}
+@media (max-width:600px){.mt th{white-space:normal;line-height:1.2}.mt .nm{max-width:110px}}

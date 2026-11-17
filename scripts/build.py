@@ -132,6 +132,15 @@ def order_key(item):
 
 
 ORDERED = [aid for aid, _ in sorted(A.items(), key=order_key)]
+# Home-table default order: what people look for first, mixed across classes; niche commodities later
+_HOME_FIRST = ['btc', 'eth', 'spy', 'gold', 'nvda', 'aapl', 'msft', 'qqq', 'googl', 'amzn', 'meta', 'tsla', 'sol', 'xrp', 'bnb', 'silver', 'avgo',
+               'tsm', 'vt', 'doge', 'jpm', 'v', 'lly', 'wmt', 'ada', 'trx', 'pltr', 'amd', 'nflx', 'orcl', 'schd', 'link', 'ko', 'ton', 'vti', 'smh', 'wti',
+               'ltc', 'dot', 'brent', 'platinum', 'copper']
+_hf = [i for i in _HOME_FIRST if i in A]
+_niche = [i for i in ORDERED if i not in _hf and A[i]['cat'] in ('cmd', 'metal')]
+_rest = [i for i in ORDERED if i not in _hf and i not in _niche]
+HOME_ORDER = _hf + _rest[:150] + _niche + _rest[150:]
+HOME_POS = {aid: k for k, aid in enumerate(HOME_ORDER)}
 ORD = {aid: k for k, aid in enumerate(ORDERED)}
 TOP = set(ORDERED[:TOP_N])
 
@@ -193,8 +202,9 @@ def simulate(aid, start_i, amt=AMOUNT):
     s0, e = ym2i(P['start']), ym2i(P['end'])
     frm = max(start_i, s0)
     units = inv = 0.0
+    anniv = frm == start_i and start_i < END_I and (END_I - start_i) % 12 == 0   # "N years" = exactly N*365 days
     for i in range(frm, e + 1):
-        c = amt * per_month(i)
+        c = amt * (per_month(i) - (END_DAY if anniv and i == frm else 0))
         units += c / P['p'][i - s0]
         inv += c
     val = units * P['p'][e - s0]
@@ -434,10 +444,10 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 const ym=s=>{const[y,m]=s.split('-').map(Number);return y*12+m-1};
 const money=v=>{try{return new Intl.NumberFormat(T.intl,{style:'currency',currency:'USD',currencyDisplay:'narrowSymbol',minimumFractionDigits:0,maximumFractionDigits:v>=100||Number.isInteger(v)?0:2}).format(v)}catch(e){return '$'+Math.round(v)}};
 fetch('/assets/p/'+id+'.json').then(r=>r.json()).then(P=>{
-  const s0=ym(P.start),e=ym(P.end),now=new Date();let from=ym(Q.get('s')&&/^\\d{4}-\\d{2}$/.test(Q.get('s'))?Q.get('s'):(now.getFullYear()-5)+'-01');from=Math.max(from,s0);
+  const s0=ym(P.start),e=ym(P.end),now=new Date(),qs=Q.get('s'),okS=qs&&/^\\d{4}-\\d{2}$/.test(qs);let from=okS?ym(qs):e-60;const anniv=!okS&&from>=s0;from=Math.max(from,s0);
   let u=0,inv=0;const pts=[];
   for(let i=from;i<=e;i++){const y=Math.floor(i/12),m=i%12+1;let d=new Date(y,m,0).getDate();if(i===e)d=Math.min(d,now.getDate());
-    const c=amt*(f==='d'?d:f==='w'?d/7:(i===e?0:1));u+=c/P.p[i-s0];inv+=c;pts.push([inv,u*P.p[i-s0]])}
+    if(anniv&&i===from)d-=Math.min(d,now.getDate());const c=amt*(f==='d'?d:f==='w'?d/7:(i===e?0:1));u+=c/P.p[i-s0];inv+=c;pts.push([inv,u*P.p[i-s0]])}
   const val=u*P.p[e-s0],pct=inv?val/inv-1:0,name=Q.get('n')||P.n;
   let since;try{since=new Intl.DateTimeFormat(T.intl,{month:'short',year:'numeric'}).format(new Date(Math.floor(from/12),from%12,15))}catch(x){since=from}
   const pc=(pct>=0?'+':'')+(pct*100).toFixed(Math.abs(pct)<1?1:0)+'%';
@@ -709,7 +719,7 @@ def row_html(aid, lang, n):
     a, m = A[aid], METRICS[aid]
     href = aurl(lang, aid)
     return (f'<tr><td class="l n hide-sm">{n}</td><td class="l"><a class="asset" href="{href}">{icon(a)}<span><span class="nm">{esc(nm(a, lang))}</span>'
-            f'<span class="tk">{esc(a["tk"])}</span></span></a></td><td></td><td class="num" data-p="{aid}">{price(m["price"])}</td>'
+            f'<span class="tk">{esc(a["tk"])}</span></span></a></td><td class="hide-sm"></td><td class="num" data-p="{aid}">{price(m["price"])}</td>'
             f'<td class="num {cls(m["chg"])}" data-c="{aid}">{pct(m["chg"])}</td><td class="num hide-sm {cls(m["r1"])}">{pct(m["r1"])}</td>'
             f'<td class="num hide-sm {cls(m["r3"])}">{pct(m["r3"])}</td><td><span class="pill {cls(m["r5"])}">{pct(m["r5"])}</span></td>'
             f'<td class="hide-sm">{spark(m["spark"])}</td><td class="hide-sm"><a class="calc" href="{href}">→</a></td></tr>')
@@ -718,7 +728,7 @@ def row_html(aid, lang, n):
 def table_block(lang, ids, title=None, interactive=True):
     u = TR[lang]['ui']
     head = ['#', u['name'], '', u['price'], u['chg'], u['d1'], u['d3'], u['d5'], u['spark'], '']
-    hc = ['l n hide-sm', 'l', '', '', '', 'hide-sm', 'hide-sm', '', 'hide-sm', 'hide-sm']
+    hc = ['l n hide-sm', 'l', 'hide-sm', '', '', 'hide-sm', 'hide-sm', '', 'hide-sm', 'hide-sm']
     th = ''.join(f'<th class="{c}">{h}</th>' for h, c in zip(head, hc))
     rows = ''.join(row_html(aid, lang, k + 1) for k, aid in enumerate(ids))
     ttl = f'<h2>{title}</h2>' if title else ''
@@ -848,7 +858,8 @@ def home(lang, ver):
         if aid in A and len(cards) < 4:
             cards.append(hl_card(lang, aid, nm(A[aid], lang), 'r5', S['sub5']))
     filt = f'<div class="toolbar"><div class="filter">{SEARCH_ICON}<input id="flt" type="search" autocomplete="off"></div></div>'
-    top10, rest = table_block(lang, ids[:100], S['nav_rank'], interactive='top')
+    top10 = table_block(lang, HOME_ORDER[:20], None, interactive=True)
+    rest = ''
     body = (hero + f'<section class="section toprank"><div class="tabs" id="tabs"></div>{filt}{country_chips(lang, limit=8)}{top10}</section>'
             f'<div class="wgrid">{w_mcap}{w_dom}{w_fng}{w_tr}</div>'
             f'<div class="wgrid3">{w_up}{w_dn}{w_bat}</div>{banner}{habits_strip(lang)}{poll_block(lang)}{poly_block(lang)}'
@@ -865,14 +876,13 @@ def compare(lang, ver):
     S = TR[lang]
     sel = [i for i in ('btc', 'nvda', 'gold', 'spy', 'eth') if i in A]
     body = f'<h1>{S["cmp_h1"]}</h1><p class="lead">{S["cmp_lead"]}</p>{calc_block(lang)}'
-    return shell(lang, 'compare', S['cmp_title'], S['cmp_desc'], body, dict(sel=sel, since=f"{END_I // 12 - 5}-01"), ver)
+    return shell(lang, 'compare', S['cmp_title'], S['cmp_desc'], body, dict(sel=sel, since=i2ym(END_I - 60)), ver)
 
 
 def default_since(aid):
+    """Site-wide default: the last 5 years (same as the DCA 5y column and the home calculator), or since launch."""
     s0 = ym2i(A[aid]['start'])
-    st = max(s0, END_I - 60)
-    y = (st + 11) // 12
-    return f"{y}-01" if y * 12 < END_I - 6 else i2ym(s0)
+    return i2ym(max(s0, END_I - 60))
 
 
 def bench(aid):
@@ -2317,6 +2327,7 @@ def main():
             e['mi'] = list(METAL_IC[a['yahoo']])
         if aid in ALIAS:
             e['al'] = ALIAS[aid]
+        e['h'] = HOME_POS.get(aid, 9999)
         if a.get('yahoo') in ('HG=F', 'ALI=F'):
             e['u'] = 1   # copper/aluminum are quoted per lb / tonne, not per oz
         if a.get('binance') or (a['cat'] == 'crypto' and a.get('src') == 'yahoo'):

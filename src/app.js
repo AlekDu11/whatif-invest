@@ -62,20 +62,20 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
 /* ---------- main table (home) ---------- */
 (function(){
   const tb=$('#mt'); if(!tb) return;
-  let tab=PAGE.tab||'all', q='', sortK=PAGE.sort||'o', sortDir=1, shown=100;
+  let tab=PAGE.tab||'all', q='', sortK=PAGE.sort||'o', sortDir=1, shown=PAGE.home?20:100; const STEP=PAGE.home?50:100;
   const TABS=['all','crypto','stock','etf','metal','cmd','lead','lag'];
   $('#tabs').innerHTML=TABS.map(t=>`<button data-t="${t}" class="${t===tab?'on':''}">${T[t]}</button>`).join('')+(PAGE.wa?`<a class="tablink" href="${PAGE.wau}">🌍 ${esc(PAGE.wa)}</a>`:'');
   $$('#tabs button').forEach(b=>b.onclick=()=>{tab=b.dataset.t; $$('#tabs button').forEach(x=>x.classList.toggle('on',x===b));
     if(tab==='lead'){sortK='r5';sortDir=-1} else if(tab==='lag'){sortK='r5';sortDir=1} else if(sortK==='r5'&&(sortDir)){sortK='o';sortDir=1}
-    shown=100; draw()});
-  const f=$('#flt'); f.placeholder=T.filter; f.oninput=()=>{q=f.value.trim().toLowerCase(); shown=100; draw()};
-  const COLS=[['n','#','l n hide-sm'],['name',T.name,'l'],['buy','',''],['pr',T.price,''],['ch',T.chg,''],['r1',T.d1,'hide-sm'],['r3',T.d3,'hide-sm'],['r5',T.d5,''],['sp',T.spark,'hide-sm'],['go','','hide-sm']];
+    shown=PAGE.home?20:100; draw()});
+  const f=$('#flt'); f.placeholder=T.filter; f.oninput=()=>{q=f.value.trim().toLowerCase(); shown=PAGE.home?20:100; draw()};
+  const COLS=[['n','#','l n hide-sm'],['name',T.name,'l'],['buy','','hide-sm'],['pr',T.price,''],['ch',T.chg,''],['r1',T.d1,'hide-sm'],['r3',T.d3,'hide-sm'],['r5',T.d5,''],['sp',T.spark,'hide-sm'],['go','','hide-sm']];
   function draw(){
     let rows=IDX.filter(a=>{
       if(tab==='crypto'||tab==='stock'||tab==='etf'||tab==='metal'||tab==='cmd'){ if(a.c!==tab) return false }
       if((tab==='lead'||tab==='lag')&&a.r5==null) return false;
       return !q||a.t.toLowerCase().includes(q)||nm(a).toLowerCase().includes(q) });
-    const k=sortK==='n'?'o':sortK;
+    const k=sortK==='n'?'o':(sortK==='o'&&PAGE.home&&tab==='all'&&!q?'h':sortK);
     rows.sort((x,y)=>{ const vx=k==='name'?nm(x):x[k], vy=k==='name'?nm(y):y[k];
       if(vx==null&&vy==null) return x.o-y.o; if(vx==null) return 1; if(vy==null) return -1;
       return (typeof vx==='string'?vx.localeCompare(vy):vx-vy)*sortDir });
@@ -90,7 +90,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
     const tr=(a,i)=>`<tr>
       <td class="l n hide-sm">${i+1}</td>
       <td class="l"><button class="star" data-s="${a.i}" aria-label="☆">☆</button><a class="asset" href="${url(a.i)}">${icon(a)}<span><span class="nm">${esc(nm(a))}</span><span class="tk">${esc(a.t)}</span></span></a></td>
-      <td>${buyBtn(a)}</td>
+      <td class="hide-sm">${buyBtn(a)}</td>
       <td class="num">${fmtPrice(a.pr)}</td>
       <td class="num ${cls(a.ch)}">${fmtPct(a.ch)}</td>
       <td class="num hide-sm ${cls(a.r1)}">${fmtPct(a.r1)}</td>
@@ -102,7 +102,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
     if(split){ $('#mt2').innerHTML=rest.map((a,i)=>tr(a,i+10)).join(''); $('#rank2').hidden=!rest.length;
       $('#mttop').innerHTML=total>10?`<a class="more" href="#rank2">${T.more} ↓</a>`:''; }
     $('#mtmore').innerHTML=total>shown?`<button class="more">${T.more} (${fmt(T.shown,{a:shown,b:total})})</button>`:'';
-    const mb=$('#mtmore button'); if(mb) mb.onclick=()=>{shown+=100;draw()};
+    const mb=$('#mtmore button'); if(mb) mb.onclick=()=>{shown+=STEP;draw()};
     try{paintStars()}catch(e){}
   }
   draw();
@@ -126,12 +126,12 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
     return freq==='d'?d:freq==='w'?d/7:(i2ym(i)===END?0:1) }
   function simulate(P,startI,amt){ const s0=ym2i(P.start), e=ym2i(P.end), from=Math.max(startI,s0);
     if(mode==='lump'){ const u=amt/P.p[from-s0], pts=[]; for(let i=from;i<=e;i++) pts.push({i,inv:amt,val:u*P.p[i-s0]}); return {units:u,inv:amt,val:u*P.p[e-s0],pts,from} }
-    let u=0,inv=0; const pts=[]; for(let i=from;i<=e;i++){ const c=amt*perMonth(i); u+=c/P.p[i-s0]; inv+=c; pts.push({i,inv,val:u*P.p[i-s0]}) }
+    const anniv=from===startI&&from<ym2i(END)&&(ym2i(END)-from)%12===0; let u=0,inv=0; const pts=[]; for(let i=from;i<=e;i++){ let c=amt*perMonth(i); if(anniv&&i===from&&freq!=='m') c=c*(1-END_DAY/new Date(Math.floor(i/12),i%12+1,0).getDate()); u+=c/P.p[i-s0]; inv+=c; pts.push({i,inv,val:u*P.p[i-s0]}) }
     return {units:u,inv,val:u*P.p[e-s0],pts,from} }
 
   // since select
   const sel=$('#since');
-  for(let i=ym2i(END)-1;i>=ym2i('2000-01');i--){ if(i%12!==0&&i%6!==0&&i<ym2i(END)-24) continue;
+  for(let i=ym2i(END)-1;i>=ym2i('2000-01');i--){ if(i%12!==0&&i%6!==0&&i<ym2i(END)-24&&(ym2i(END)-i)%12!==0) continue;
     const o=document.createElement('option'); o.value=i2ym(i); o.textContent=mlabel(i2ym(i)); sel.appendChild(o) }
   sel.value=[...sel.options].some(o=>o.value===PAGE.since)?PAGE.since:'2021-01';
 
@@ -223,7 +223,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
     let P; try{P=await fetch(`${BASE}/assets/p/${id}.json?v=${WI.v}`).then(r=>r.json())}catch(e){return}
     const s0=ym2i(P.start), e=ym2i(P.end), from=Math.max(s0,ENDI-years*12);
     let u=0,inv=0; const path=[];
-    for(let i=from;i<=e;i++){ let d=new Date(Math.floor(i/12),i%12+1,0).getDate(); if(i===ENDI) d=END_DAY;
+    for(let i=from;i<=e;i++){ let d=new Date(Math.floor(i/12),i%12+1,0).getDate(); if(i===ENDI) d=END_DAY; else if(i===from&&from===ENDI-years*12) d-=END_DAY;
       const c=amt*d; u+=c/P.p[i-s0]; inv+=c; path.push(u*P.p[i-s0]) }
     const val=u*P.p[e-s0], roi=val/inv-1;
     $('#qv').textContent=fmtUsd(val); $('#qv').className='v '+cls(roi);
