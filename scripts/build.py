@@ -1002,8 +1002,8 @@ def home(lang, ver):
     movers = [i for i in ids if METRICS[i]['chg'] is not None and ORD[i] < 400 and big(i)]
     up = sorted(movers, key=lambda i: -METRICS[i]['chg'])[:6]
     dn = sorted(movers, key=lambda i: METRICS[i]['chg'])[:6]
-    w_up = f'<div class="card wd"><div class="wt">🚀 {w["gainers"]}</div>' + ''.join(mini_row(lang, i, f'<span class="mc good" data-c="{i}">{pct(METRICS[i]["chg"])}</span>') for i in up) + '</div>'
-    w_dn = f'<div class="card wd"><div class="wt">📉 {w["losers"]}</div>' + ''.join(mini_row(lang, i, f'<span class="mc bad" data-c="{i}">{pct(METRICS[i]["chg"])}</span>') for i in dn) + '</div>'
+    w_up = f'<div class="card wd"><div class="wt">🚀 {w["gainers"]}</div>' + ''.join(mini_row(lang, i, f'<span class="mc good">{pct(METRICS[i]["chg"])}</span>') for i in up) + '</div>'
+    w_dn = f'<div class="card wd"><div class="wt">📉 {w["losers"]}</div>' + ''.join(mini_row(lang, i, f'<span class="mc bad">{pct(METRICS[i]["chg"])}</span>') for i in dn) + '</div>'
     bat = [i for i in ('btc', 'eth', 'nvda', 'aapl', 'spy', 'qqq', 'gold', 'silver') if i in A and METRICS[i]['r5'] is not None]
     bat.sort(key=lambda i: -METRICS[i]['r5'])
     mx = max([simulate(i, END_I - 60)['val'] for i in bat] or [1])
