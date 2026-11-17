@@ -28,6 +28,7 @@ from i18n_bp import BP  # noqa: E402
 from i18n_ai import AIC  # noqa: E402
 from i18n_emb import EMB, EXT  # noqa: E402
 from i18n_ic import IC  # noqa: E402
+from i18n_calc2 import DV, AV, OV  # noqa: E402
 from i18n_bpd import BPD, IDEA as BP_IDEA  # noqa: E402
 from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB, CH as OWN_CH, CH2 as OWN_CH2  # noqa: E402
 SOCIAL = [('Telegram', 'https://t.me/TradeMaster_insight'), ('X (Twitter)', 'https://x.com/WhatIfStack'), ('Bluesky', 'https://bsky.app/profile/whatifstack.bsky.social'), ('Instagram', 'https://www.instagram.com/whatifstack/'), ('Threads', 'https://www.threads.com/@whatifstack'),
@@ -52,7 +53,7 @@ UPDATED = market['updated']
 END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
-RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide', 'commodities', 'widgets', 'embed'}
+RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide', 'commodities', 'widgets', 'embed', 'dividends', 'average-price', 'ovdp'}
 RESERVED |= {v[0] for v in MKTS.values()} | {'world-assets', 'activities', 'editorial-policy', 'about', 'portfolios'}
 # asset ids that clash with a language folder or a section get a suffix (ko -> ko-stock, fil -> fil-crypto)
 _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
@@ -152,7 +153,7 @@ for _lg in TR:   # commodities tab labels (scripts/i18n_cmd.py)
     TR[_lg]['cat_cmd'] = CMD[_lg][1]
 CSLUG = {v[0]: k for k, v in MKTS.items()}   # 'stocks-poland' -> 'pl'
 TOOLS = ['converter']
-CALCS = ['millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'news', 'about', 'widgets']
+CALCS = ['millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'news', 'about', 'widgets', 'dividends', 'average-price', 'ovdp']
 BLOG_LANGS = {l for l in ORDER if os.path.isdir(os.path.join(ROOT, 'content/blog', l)) and any(f.endswith('.md') for f in os.listdir(os.path.join(ROOT, 'content/blog', l)))}  # a language gets a blog once it has a post
 assert not (set(HUBS) | set(TOOLS) | {'blog', 'compare'}) & set(A), 'asset id collides with a section slug'
 
@@ -171,6 +172,8 @@ def has_page(lang, aid):
     if aid in CALCS:
         if aid == 'about':
             return lang in ABOUT
+        if aid == 'ovdp':
+            return lang in OV
         return aid != 'inflation' or bool(CPI['c'])
     if aid == 'habits' or (aid or '').startswith('habits/'):
         return True
@@ -437,7 +440,7 @@ def footer_cols(lang):
     cols = [(f[0], pop), (f[1], mk), (TR[lang]['x']['nav_tools'], tools), (n['i_nav'], ins)]
     if SOCIAL:
         cols.insert(0, (f[2], [(u, l) for l, u in SOCIAL] + ([('mailto:' + CONTACT_EMAIL, '✉ ' + CONTACT_EMAIL)] if CONTACT_EMAIL else [])))
-    return ('<div class="fcols">' + ''.join(f'<div><b>{esc(t)}</b>' + ''.join(f'<a href="{h}"{" rel=\"me noopener\" target=\"_blank\"" if h.startswith("https://") and "whatifstack.com" not in h else ""}>{esc(l)}</a>' for h, l in items) + '</div>' for t, items in cols) + '</div>')
+    return ('<div class="fcols">' + ''.join(f'<details open><summary><b>{esc(t)}</b></summary><div>' + ''.join(f'<a href="{h}"{" rel=\"me noopener\" target=\"_blank\"" if h.startswith("https://") and "whatifstack.com" not in h else ""}>{esc(l)}</a>' for h, l in items) + '</div></details>' for t, items in cols) + '</div>')
 
 
 def cover(kind, lang, slug):
@@ -727,6 +730,107 @@ def ic_page(lang, ver):
     return shell(lang, 'compound-interest', t['title'] + ' | ' + BRAND, t['d'], body, cfg, ver, [faq])
 
 
+def _calc_shell(t, cards, left, right, links):
+    return (f'<div class="icpage"><div class="ichero"><h1>{esc(t["h1"])}</h1><p class="lead">{esc(t["d"])}</p></div>'
+            f'{cards}<div class="icgrid2">{left}{right}</div><p class="note">{esc(t["note"])}</p>'
+            f'<section class="section"><div class="hgrid">{links}</div></section></div>')
+
+
+def _calc_links(lang, keys):
+    lab = {'compound-interest': ('📈', IC[lang]['nav']), 'dividends': ('💸', DV[lang]['nav']), 'average-price': ('⚖️', AV[lang]['nav']),
+           'ovdp': ('🏛️', OV.get(lang, OV['en'])['nav']), 'millionaire': ('🎯', TT[lang]['g_h1']), 'compare': ('⇅', TR[lang]['cmp_h1'])}
+    return ''.join(f'<a class="card hcard" href="{url(lang, k)}"><span>{lab[k][0]}</span><b>{esc(lab[k][1])}</b></a>' for k in keys if has_page(lang, k))
+
+
+def _app_ld(t):
+    return {"@context": "https://schema.org", "@type": "WebApplication", "name": t['h1'], "applicationCategory": "FinanceApplication", "operatingSystem": "Any",
+            "offers": {"@type": "Offer", "price": "0"}, "description": t['d']}
+
+
+def _cnum(i, lab, v, sym='', extra=''):
+    v = int(v) if float(v).is_integer() else v
+    return (f'<label class="f">{esc(lab)}<div class="inp"><input id="{i}" type="number" min="0" step="any" value="{v}"{extra}>'
+            + (f'<span class=muted>{esc(sym)}</span>' if sym else '') + '</div></label>')
+
+
+DIV_SETS = [('schd', 3.3, 9.0, '#16a34a'), ('vym', 2.2, 6.0, '#4f8cff'), ('spy', 1.2, 6.0, '#8b5cf6'), ('ko', 2.9, 4.5, '#ef4444'), ('o', 5.5, 3.5, '#f0b53a')]
+
+
+def dividends_page(lang, ver):
+    t, U = DV[lang], TR[lang]['ui']
+    code, rate = hccy(lang)
+    sym = CCY_SYM.get(code, code)
+    sets = []
+    for aid, y, dg, col in DIV_SETS:
+        if aid in A and (r := cagr(aid)):
+            sets.append((aid, nm(A[aid], lang), y, dg, round(max(0.0, r * 100 - y), 1), col))
+    sel = sets[0] if sets else ('custom', '', 3.0, 5.0, 5.0, '#16a34a')
+    cards = '<div class="icards">' + ''.join(
+        f'<button type="button" class="icard{" on" if s is sel else ""}" data-y="{s[2]}" data-dg="{s[3]}" data-pg="{s[4]}" style="--c:{s[5]}"><span class="ii">💸</span>'
+        f'<b>{esc(s[1])}</b><span class="ir">{s[2]:g}%</span><small>+{s[3]:g}%/{esc(TT[lang]["yr"])} · {esc(A[s[0]]["tk"])}</small></button>' for s in sets) + '</div>'
+    cards += f'<p class="muted icnote2" style="margin:-10px 0 16px">{esc(t["pre"])}: {esc(t["pre_note"])}</p>'
+    left = (f'<section class="card icl"><h2>⚙️ {esc(t["nav"])}</h2>'
+            f'{_cnum("dvp", t["init"], nice(1000 * rate), sym)}{_cnum("dvm", t["month"], nice(100 * rate), sym)}'
+            f'<label class="f">{esc(t["yrs"])}: <b id="dvyl">20</b><div class="icy2"><input type="range" id="dvys" min="1" max="40" value="20"><div class="inp"><input id="dvy" type="number" min="1" max="60" step="1" value="20"></div></div></label>'
+            f'{_cnum("dvr", t["yld"], sel[2], "", " step=0.1")}{_cnum("dvg", t["dg"], sel[3], "", " step=0.1")}{_cnum("dvq", t["pg"], sel[4], "", " step=0.1")}'
+            f'<div class="icchk"><label class="chk"><input type="checkbox" id="dvre" checked> {esc(t["reinv"])}</label>{_cnum("dvt", t["tax"], 15, "", " step=0.5")}</div>'
+            f'<div class="icsum"><div class="kv"><span>{esc(t["contrib"])}</span><b id="dv_c">—</b></div><div class="kv"><span>{esc(t["divs"])}</span><b class="good" id="dv_d">—</b></div>'
+            f'<div class="kv big"><span>💰 {esc(t["final"])}</span><b id="dv_v">—</b></div></div>'
+            f'<div class="icbox inc"><h3>📈 {esc(t["inc_m"])}</h3><div class="tri3"><div><b id="dv_m">—</b><span>{esc(U["per_m"])}</span></div>'
+            f'<div><b id="dv_y">—</b><span>{esc(t["inc_y"])}</span></div><div><b id="dv_o">—</b><span>{esc(t["yoc"])}</span></div></div></div></section>')
+    right = (f'<section class="card icr2"><h3>{esc(t["chart"])}</h3><div id="dvchart" class="icchart"></div><hr>'
+             f'<div class="tw"><table class="tbl ictab" id="dvtable"></table></div></section>')
+    body = _calc_shell(t, cards, left, right, _calc_links(lang, ['compound-interest', 'average-price', 'ovdp', 'millionaire']))
+    cfg = dict(dv=dict(code=code, t={k: t[k] for k in ('year', 'val', 'contrib', 'divy')}))
+    return shell(lang, 'dividends', t['title'] + ' | ' + BRAND, t['d'], body, cfg, ver, [_app_ld(t)])
+
+
+AVG_ASSETS = ['btc', 'eth', 'sol', 'bnb', 'xrp', 'doge', 'ton', 'spy', 'qqq', 'aapl', 'nvda', 'tsla', 'msft', 'amzn', 'gold', 'silver']
+
+
+def avgprice_page(lang, ver):
+    t = AV[lang]
+    opts = f'<option value="">{esc(t["pick"])}</option>' + ''.join(f'<option value="{a}">{esc(nm(A[a], lang))} ({esc(A[a]["tk"])})</option>' for a in AVG_ASSETS if a in A)
+    seg = (f'<div class="seg full" id="avmode"><button type="button" data-v="s" class=on>{esc(t["m_sum"])}</button><button type="button" data-v="q">{esc(t["m_qty"])}</button></div>')
+    left = (f'<section class="card icl"><h2>🧾 {esc(t["buy"])}</h2><div class="f">{esc(t["mode"])}{seg}</div>'
+            f'<div class="tw"><table class="tbl avt"><thead><tr><th>#</th><th>{esc(t["price"])}</th><th id="avh2">{esc(t["sum"])}</th><th></th></tr></thead><tbody id="avrows"></tbody></table></div>'
+            f'<div class="avbtns"><button type="button" class="btn ghost" id="avadd">{esc(t["add"])}</button><button type="button" class="btn ghost" id="avclr">{esc(t["reset"])}</button></div>'
+            f'<hr><label class="f">{esc(t["asset"])}<div class="inp"><select id="avasset">{opts}</select></div></label>{_cnum("avcur", t["cur"], 0)}</section>')
+    right = (f'<section class="card icr2"><div class="icsum"><div class="kv big"><span>⚖️ {esc(t["avg"])}</span><b id="av_a">—</b></div>'
+             f'<div class="kv"><span>{esc(t["tqty"])}</span><b id="av_q">—</b></div><div class="kv"><span>{esc(t["cost"])}</span><b id="av_c">—</b></div>'
+             f'<div class="kv"><span>{esc(t["pl"])}</span><b id="av_p">—</b></div></div>'
+             f'<div class="icbox"><h3>🔻 {esc(t["tgt_h"])}</h3>{_cnum("avtg", t["tgt"], 0)}{_cnum("avbp", t["buy_at"], 0)}'
+             f'<div class="kv"><span>{esc(t["need"])}</span><b class="good" id="av_n">—</b></div><p class="muted icnote2" id="av_nq"></p></div></section>')
+    body = _calc_shell(t, '', left, right, _calc_links(lang, ['compound-interest', 'dividends', 'compare', 'millionaire']))
+    cfg = dict(av=dict(t={k: t[k] for k in ('del', 'need_qty', 'imp', 'price', 'sum', 'qty')}))
+    return shell(lang, 'average-price', t['title'] + ' | ' + BRAND, t['d'], body, cfg, ver, [_app_ld(t)])
+
+
+# (currency, bond %, deposit %)
+OVDP_CCY = [('UAH', 14.9, 13.7, '₴', '#f0b53a'), ('USD', 3.7, 0.8, '$', '#16a34a'), ('EUR', 3.2, 0.3, '€', '#4f8cff')]
+
+
+def ovdp_page(lang, ver):
+    t = OV[lang]
+    cards = '<div class="icards">' + ''.join(
+        f'<button type="button" class="icard{" on" if i == 0 else ""}" data-c="{c}" data-b="{b}" data-d="{d}" data-s="{s}" style="--c:{col}"><span class="ii">{s}</span>'
+        f'<b>{t["b"]} {c}</b><span class="ir">{b:g}%</span><small>{esc(t["dp"])} {d:g}%</small></button>' for i, (c, b, d, s, col) in enumerate(OVDP_CCY)) + '</div>'
+    terms = ''.join(f'<button type="button" data-v="{m}"{" class=on" if m == 12 else ""}>{m} {esc(t["m"])}</button>' for m in (6, 12, 24, 36))
+    left = (f'<section class="card icl"><h2>⚙️ {esc(t["h1"])}</h2>{_cnum("ova", t["amt"], 100000, "₴")}'
+            f'<div class="f">{esc(t["term"])}<div class="seg full" id="ovt">{terms}</div></div>'
+            f'{_cnum("ovb", t["yld"], 14.9, "", " step=0.01")}{_cnum("ovd", t["dep"], 13.7, "", " step=0.01")}'
+            f'<p class="muted icnote2">{esc(t["tax"])}: 23%</p><div id="ovdevw">{_cnum("ovv", t["dev"], 8, "", " step=0.5")}</div></section>')
+    right = (f'<section class="card icr2"><div class="icsum"><div class="kv big"><span>🏛️ {esc(t["res_b"])}</span><b id="ov_b">—</b></div>'
+             f'<div class="kv"><span>🏦 {esc(t["res_d"])} ({esc(t["net"])})</span><b id="ov_d">—</b></div>'
+             f'<div class="kv"><span>{esc(t["diff"])}</span><b class="good" id="ov_x">—</b></div>'
+             f'<div class="kv"><span>{esc(t["per_m"])}</span><b id="ov_m">—</b></div></div>'
+             f'<div class="iccmp" id="ovbars"></div><div class="icbox" id="ovusd" style="margin-top:14px"><h3>💵 {esc(t["in_usd"])}</h3><div class="kv"><span>UAH → USD</span><b id="ov_u">—</b></div></div>'
+             f'<p class="muted icnote2">{esc(t["src"])}</p></section>')
+    body = _calc_shell(t, cards, left, right, _calc_links(lang, ['compound-interest', 'dividends', 'average-price']))
+    cfg = dict(ov=dict(b=t['b'], dp=t['dp']))
+    return shell(lang, 'ovdp', t['title'] + ' | ' + BRAND, t['d'], body, cfg, ver, [_app_ld(t)])
+
+
 # search aliases: local names / transliterations people type (uk, ru, pl, de...)
 ALIAS = {
     'btc': 'біткоїн біткоін біткойн биткоин биткойн бітка битка bitcoin', 'eth': 'ефір ефіріум етеріум эфир эфириум эфириум ether',
@@ -767,7 +871,7 @@ def row_html(aid, lang, n):
     a, m = A[aid], METRICS[aid]
     href = aurl(lang, aid)
     return (f'<tr><td class="l n hide-sm">{n}</td><td class="l"><a class="asset" href="{href}">{icon(a)}<span><span class="nm">{esc(nm(a, lang))}</span>'
-            f'<span class="tk">{esc(a["tk"])}</span></span></a></td><td class="hide-sm"></td><td class="num" data-p="{aid}">{price(m["price"])}</td>'
+            f'<span class="tk">{esc(a["tk"])}{'<i class="enb" title="English">EN</i>' if lang != 'en' and not has_page(lang, aid) else ''}</span></span></a></td><td class="hide-sm"></td><td class="num" data-p="{aid}">{price(m["price"])}</td>'
             f'<td class="num {cls(m["chg"])}" data-c="{aid}">{pct(m["chg"])}</td><td class="num hide-sm {cls(m["r1"])}">{pct(m["r1"])}</td>'
             f'<td class="num hide-sm {cls(m["r3"])}">{pct(m["r3"])}</td><td><span class="pill {cls(m["r5"])}">{pct(m["r5"])}</span></td>'
             f'<td class="hide-sm">{spark(m["spark"])}</td><td class="hide-sm"><a class="calc" href="{href}">→</a></td></tr>')
@@ -848,7 +952,7 @@ def home(lang, ver):
     qopts = ''.join(f'<option value="{aid}"{" selected" if aid == "btc" else ""}>{esc(nm(A[aid], lang))} ({esc(A[aid]["tk"])})</option>' for aid in ids[:120])
     yrs = ''.join(f'<button data-y="{y}" class="{"on" if y == 5 else ""}">{y}</button>' for y in (1, 3, 5, 10))
     b5 = simulate('btc', END_I - 60) if 'btc' in A else None
-    cta_ref = f'<a class="btn" id="ctaBuy" href="{url(lang, "compare")}">{w["cta"]}</a>'
+    cta_ref = f'<a class="btn" id="ctaBuy" href="{url(lang, "exchanges")}">{w["cta"]}</a>'
     hero = (f'<section class="herox"><div class="hx"><h1>{S["home_h1"].format(ten=TEN)}</h1><p class="lead">{S["home_lead"].format(n=n)}</p>'
             f'<div class="hxbtn">{cta_ref}<a class="btn ghost" href="{url(lang, "compare")}">{S["nav_cmp"]}</a></div></div>'
             f'<div class="card qcalc" id="qcalc"><div class="qt">{w["quick"]}</div>'
@@ -896,7 +1000,7 @@ def home(lang, ver):
     w_bat = f'<div class="card wd battle"><div class="wt">⚔️ {w["battle"]}</div><div class="ws">{w["q_inv"]}: {inv5}</div>{rows}</div>'
     X_ = S['x']
     banner = (f'<section class="banner section"><div><b>{w["cta"]}</b><p>{w["cta_text"]}</p></div>'
-              f'<a class="btn" id="ctaBuy2" href="{url(lang, "compare")}">{w["cta"]} →</a></section>')
+              f'<a class="btn" id="ctaBuy2" href="{url(lang, "exchanges")}">{w["cta"]} →</a></section>')
     # DCA leaders cards (as before)
     cards = []
     b1, b5l = best_by('r1', [i for i in ids if big(i)]), best_by('r5', [i for i in ids if big(i)])
@@ -1229,7 +1333,7 @@ def asset(aid, lang, ver):
         tech_news = (f'<div class="cols2 section"><section class="card"><h2>{X["tech"]} · {esc(tk)}</h2>'
                      + tvw('technical-analysis', dict(interval='1D', width='100%', height='100%', isTransparent=True, symbol=tv_symbol(a), showIntervalTabs=True,
                                                       displayMode='single', locale=loc, colorTheme='light'), 430)
-                     + f'</section><section class="card"><h2>{X["news"]} · {esc(tk)}</h2>'
+                     + f'</section><section class="card"><h2>{X["news"]} · {esc(tk)}</h2>' + own_news_rows(lang, aid)
                      + tvw('timeline', dict(feedMode='symbol', symbol=tv_symbol(a), isTransparent=True, displayMode='regular', width='100%', height='100%',
                                             colorTheme='light', locale=loc), 430) + '</section></div>')
         if a['cat'] in ('stock', 'etf'):
@@ -1238,7 +1342,7 @@ def asset(aid, lang, ver):
                           + '</section>')
     else:   # no free live chart for this symbol -> our own monthly chart
         tv, tech_news = own_chart(lang, a, aid), ''
-    body = (f'{head}<p class="lead" style="margin-top:10px">{S["a_lead"].format(**fe)}</p>{hot_block(lang, aid)}<div class="chartside section">{tv}{side_block(lang, aid)}</div>{hot_more(lang, aid)}<div class="stats">{stat_cards}</div><div class="stats">{lump_cards}</div>{long_block(lang, aid)}{seas_block(lang, aid)}{calc_block(lang)}{tech_news}'
+    body = (f'{head}<p class="lead" style="margin-top:10px">{S["a_lead"].format(**fe)}</p>{hot_block(lang, aid)}<div class="chartside section">{tv}{side_block(lang, aid)}</div>{'' if 'timeline' in tech_news else hot_more(lang, aid)}<div class="stats">{stat_cards}</div><div class="stats">{lump_cards}</div>{long_block(lang, aid)}{seas_block(lang, aid)}{calc_block(lang)}{tech_news}'
             f'<div class="cols2 section"><section class="card"><h2>{S["a_periods"].format(**fe)}</h2>{ptable}</section>'
             f'<section class="card faq"><h2>{S["faq"]}</h2>' + ''.join(f'<details><summary>{esc(q)}</summary><p>{esc(x)}</p></details>' for q, x in faq) + '</section></div>'
             f'<section class="section">{table_block(lang, sim, S["a_similar"] + ": " + esc(cat), interactive=False)}</section>'
@@ -1326,7 +1430,10 @@ def tools_menu(lang):
     items = [('compare', S['nav_cmp']) if (S := TR[lang]) else None, ('habits', HB[lang]['nav']), ('millionaire', t['g_nav'])]
     if CPI['c']:
         items.append(('inflation', t['i_nav']))
-    items += [('world-assets', WA[lang]['nav']), ('memes', MEM[lang]['nav']), ('converter', HCONV[lang]), ('ath', t['a_nav']), ('bitcoin-halving', t['v_nav']), ('widgets', EMB[lang]['nav'])]
+    items += [('world-assets', WA[lang]['nav']), ('memes', MEM[lang]['nav']), ('converter', HCONV[lang]), ('ath', t['a_nav']), ('bitcoin-halving', t['v_nav']), ('dividends', DV[lang]['nav']), ('average-price', AV[lang]['nav'])]
+    if lang in OV:
+        items.append(('ovdp', OV[lang]['nav']))
+    items.append(('widgets', EMB[lang]['nav']))
     return items
 
 
@@ -1635,6 +1742,15 @@ def hot_more(lang, aid):
             + ''.join(news_row(lang, k, m, tl) for k, m in items) + '</div></section>')
 
 
+def own_news_rows(lang, aid):
+    """Our own briefs about the asset, shown on top of the external headlines (one news block instead of two)."""
+    items = hot_items(lang, aid)[1:4]
+    if not items:
+        return ''
+    tl = news_tl(lang)
+    return '<div class="nlist own nmerge">' + ''.join(news_row(lang, k, m, tl) for k, m in items) + '</div>'
+
+
 def news_items(lang):
     return sorted(NEWS.get(lang, {}).items(), key=lambda kv: kv[1].get('date', ''), reverse=True)
 
@@ -1760,7 +1876,7 @@ def me_page(lang, ver):
     S, t = TR[lang], ME[lang]
     code, rate = hccy(lang)
     per = HB[lang]['per'].split('|')
-    hold = (f'<section class="section"><h2>💼 {esc(t["hold"])}</h2><div class="hl" id="htot"></div><div class="abar" id="abar"></div><div id="hold"><p class="muted">{esc(t["hempty"])}</p></div>'
+    hold = (f'<section class="section"><h2 class="sr">{esc(t["hold"])}</h2><div class="hl" id="htot"></div><div class="abar" id="abar"></div><div id="hold"><p class="muted">{esc(t["hempty"])}</p></div>'
             f'<div class="card hcalc" id="holdform"><div class="hrow">'
             f'<label class="f">{S["w"]["q_asset"]}<div class="inp"><input id="ha" list="palist" autocomplete="off" placeholder="Bitcoin"></div></label>'
             f'<label class="f">&nbsp;<div class="inp"><select id="hmode"><option value="sum">{esc(t["by_sum"])}</option><option value="qty">{esc(t["by_qty"])}</option></select></div></label>'
@@ -2402,7 +2518,7 @@ def blog_post(lang, slug, ver):
             f'<div class="muted byline"><a href="{url(lang if lang in ABOUT else "en", "about")}">WhatIfStack Research</a> · {esc(m.get("date", ""))} · {S["updated"]} {UPDATED} · <a href="{pol_url(lang)}">{esc(ACT[lang]["pol"])}</a></div>'
             + (act_facts(lang, m) + f'<div class="card awarn">⚠️ {esc(ACT[lang]["warn"])}</div>' if m.get('category') == 'activities' else '') + f'<div class="artbody">{html_body}</div>{follow_block(lang)}</article>'
             f'<div class="postcards">{cards}</div>{poll_block(lang)}'
-            f'<section class="banner section"><div><b>{w["cta"]}</b><p>{w["cta_text"]}</p></div><a class="btn" id="ctaBuy2" href="{url(lang, "compare")}">{w["cta"]} →</a></section>'
+            f'<section class="banner section"><div><b>{w["cta"]}</b><p>{w["cta_text"]}</p></div><a class="btn" id="ctaBuy2" href="{url(lang, "exchanges")}">{w["cta"]} →</a></section>'
             + (f'<section class="section"><h2>{X["related"]}</h2><div class="posts">{rel_html}</div></section>' if rel else ''))
     jsonld = [{"@context": "https://schema.org", "@type": "Article", "headline": title, "description": desc, "inLanguage": S['loc'],
                "datePublished": m.get('date'), "dateModified": UPDATED, "mainEntityOfPage": SITE + url(lang, 'blog/' + slug),
@@ -2475,16 +2591,17 @@ def main():
     for aid in ORDERED:
         a, m = A[aid], METRICS[aid]
         e = dict(i=aid, n=nm(a, 'uk'), t=a['tk'], c=a['cat'], o=ORD[aid], pr=m['price'], ch=m['chg'],
-                 r1=m['r1'], r3=m['r3'], r5=m['r5'], sp=m['spark'], s=a['start'])
+                 r1=m['r1'], r3=m['r3'], r5=m['r5'], sp=[float(f'{v:.4g}') if isinstance(v, (int, float)) else v for v in (m['spark'] or [])] or None, s=a['start'])
         if nm(a, 'en') != e['n']:
             e['ne'] = nm(a, 'en')
         if a.get('logo'):
-            e['l'] = a['logo']
+            e['l'] = 1 if a['logo'] == f'/assets/logo/{aid}.webp' else a['logo']   # 1 = standard path (expanded in app.js)
         if a.get('cat') in ('metal', 'cmd') and a.get('yahoo') in METAL_IC:
             e['mi'] = list(METAL_IC[a['yahoo']])
         if aid in ALIAS:
             e['al'] = ALIAS[aid]
-        e['h'] = HOME_POS.get(aid, 9999)
+        if aid in HOME_POS:
+            e['h'] = HOME_POS[aid]   # missing = 9999 (app.js)
         if a.get('yahoo') in ('HG=F', 'ALI=F'):
             e['u'] = 1   # copper/aluminum are quoted per lb / tonne, not per oz
         if a.get('binance') or (a['cat'] == 'crypto' and a.get('src') == 'yahoo'):
@@ -2547,6 +2664,10 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
             write(f'{pre}portfolios/{k}/index.html', portfolio_detail(lang, k, c, ver))
         write(pre + 'millionaire/index.html', calc_page(lang, 'millionaire', ver))
         write(pre + 'compound-interest/index.html', ic_page(lang, ver))
+        write(pre + 'dividends/index.html', dividends_page(lang, ver))
+        write(pre + 'average-price/index.html', avgprice_page(lang, ver))
+        if lang in OV:
+            write(pre + 'ovdp/index.html', ovdp_page(lang, ver))
         write(pre + 'widgets/index.html', widgets_page(lang, ver))
         if CPI['c']:
             write(pre + 'inflation/index.html', inflation_page(lang, ver))

@@ -77,6 +77,12 @@ Der Button **KI fragen** unten rechts öffnet einen Chat. Frag zum Asset auf der
 
 Bau einen Live-Rechner „10 $ pro Tag“ für jede Kryptowährung, Aktie oder Gold in deinen Blog, dein Forum oder deine Website ein. Täglich aktualisiert, kostenlos, ohne Anmeldung. [Kostenlose Sparplan-Widgets für deine Website]({lang}/widgets/)
 
+## Dividenden · Durchschnittspreis
+
+Berechne, wie viel Dividende pro Jahr und Monat ein Depot bringt, wenn du monatlich einzahlst und die Ausschüttungen wieder anlegst. [Dividendenrechner]({lang}/dividends/)
+
+Gib deine Käufe ein und erhalte Einstandskurs, Gewinn zum aktuellen Kurs und wie viel du nachkaufen musst, um den Schnitt zu senken. [Durchschnittspreis-Rechner]({lang}/average-price/)
+
 ## Woher die Zahlen kommen
 
 Binance, CoinGecko, Yahoo Finance, die Moskauer Börse, die Weltbank und andere öffentliche Quellen; die Quellen jeder Meldung findest du unter [News]({lang}/news/). Die Kurse werden täglich aktualisiert, Kryptokurse live. Nichts auf WhatIfStack ist eine Anlageberatung: Vergangene Ergebnisse sind keine Garantie für die Zukunft.

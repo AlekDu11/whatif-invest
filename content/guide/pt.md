@@ -77,6 +77,12 @@ O botão **Perguntar à IA** no canto inferior direito abre um chat. Pergunte so
 
 Adicione ao seu blog, fórum ou site uma calculadora ao vivo de "$10 por dia" para qualquer cripto, ação ou ouro. Os números atualizam todo dia, grátis e sem cadastro. [Widgets de DCA grátis para o seu site]({lang}/widgets/)
 
+## Dividendos · Preço médio
+
+Veja quanto em dividendos por ano e por mês uma carteira paga se você aportar todo mês e reinvestir os proventos. [Calculadora de dividendos]({lang}/dividends/)
+
+Informe suas compras e veja o preço médio, o lucro no preço atual e quanto comprar para baixar o médio. [Calculadora de preço médio]({lang}/average-price/)
+
 ## De onde vêm os números
 
 Binance, CoinGecko, Yahoo Finance, a Bolsa de Moscou, o Banco Mundial e outras fontes públicas; as fontes de cada resumo estão em [Notícias]({lang}/news/). Os preços são atualizados diariamente, e os de cripto ao vivo. Nada no WhatIfStack é recomendação de investimento: resultados passados não garantem resultados futuros.

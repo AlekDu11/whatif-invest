@@ -77,6 +77,12 @@ Nút **Hỏi AI** ở góc dưới bên phải mở khung trò chuyện. Hãy h�
 
 Thêm máy tính trực tiếp "$10 mỗi ngày" cho bất kỳ tiền mã hóa, cổ phiếu hay vàng nào vào blog, diễn đàn hoặc website. Số liệu cập nhật hằng ngày, miễn phí, không cần đăng ký. [Widget DCA miễn phí cho website của bạn]({lang}/widgets/)
 
+## Cổ tức · Giá trung bình
+
+Tính xem danh mục trả bao nhiêu cổ tức mỗi năm và mỗi tháng nếu bạn góp vốn hằng tháng và tái đầu tư cổ tức. [Máy tính cổ tức]({lang}/dividends/)
+
+Nhập các lần mua để biết giá trung bình, lãi ở giá hiện tại và cần mua thêm bao nhiêu để hạ giá trung bình. [Máy tính giá trung bình]({lang}/average-price/)
+
 ## Số liệu từ đâu
 
 Binance, CoinGecko, Yahoo Finance, Sở giao dịch Moskva, Ngân hàng Thế giới và các nguồn công khai khác; các bản tin mới nhất kèm nguồn có ở mục [Tin tức]({lang}/news/). Giá cập nhật hằng ngày, giá crypto theo thời gian thực. Không có nội dung nào trên WhatIfStack là lời khuyên đầu tư: kết quả trong quá khứ không đảm bảo lợi nhuận trong tương lai.

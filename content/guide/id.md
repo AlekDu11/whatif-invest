@@ -77,6 +77,12 @@ Tombol **Tanya AI** di kanan bawah membuka obrolan. Tanyakan tentang aset di hal
 
 Pasang kalkulator langsung "$10 per hari" untuk kripto, saham, atau emas apa pun di blog, forum, atau situsmu. Angka diperbarui setiap hari, gratis tanpa daftar. [Widget DCA gratis untuk situsmu]({lang}/widgets/)
 
+## Dividen · Harga rata-rata
+
+Hitung berapa dividen per tahun dan per bulan dari portofolio jika kamu menabung tiap bulan dan menginvestasikan ulang dividennya. [Kalkulator dividen]({lang}/dividends/)
+
+Masukkan pembelianmu dan lihat harga rata-rata, untung di harga sekarang, dan berapa yang perlu dibeli untuk menurunkan rata-rata. [Kalkulator harga rata-rata]({lang}/average-price/)
+
 ## Dari mana angkanya
 
 Binance, CoinGecko, Yahoo Finance, Bursa Moskow, Bank Dunia, dan sumber publik lainnya; ringkasan terbaru kami lengkap dengan sumbernya ada di [Berita]({lang}/news/). Harga diperbarui setiap hari, harga kripto secara live. Tidak ada apa pun di WhatIfStack yang merupakan saran investasi: hasil masa lalu tidak menjamin hasil di masa depan.

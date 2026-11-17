@@ -6,6 +6,7 @@ const WI = window.WI, PAGE = window.PAGE || {}, BASE = PAGE.base || '';
 const lang = PAGE.lang || 'uk';
 const $ = (s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const IDX = WI.a, BYID = Object.fromEntries(IDX.map(a=>[a.i,a]));
+IDX.forEach(a=>{ if(a.h==null) a.h=9999; if(a.l===1) a.l='/assets/logo/'+a.i+'.webp' });
 const REF = window.REF||{}, REF_DEFAULT = window.REF_DEFAULT||{};
 
 const T = window.I18N || {};
@@ -73,7 +74,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
   $$('#tabs button').forEach(b=>b.onclick=()=>{tab=b.dataset.t; $$('#tabs button').forEach(x=>x.classList.toggle('on',x===b));
     if(tab==='lead'){sortK='r5';sortDir=-1} else if(tab==='lag'){sortK='r5';sortDir=1} else if(sortK==='r5'&&(sortDir)){sortK='o';sortDir=1}
     shown=PAGE.home?20:100; draw()});
-  const f=$('#flt'); f.placeholder=T.filter; f.oninput=()=>{q=f.value.trim().toLowerCase(); shown=PAGE.home?20:100; draw()};
+  const f=$('#flt'); f.placeholder=T.filter; f.setAttribute('aria-label',T.filter); f.oninput=()=>{q=f.value.trim().toLowerCase(); shown=PAGE.home?20:100; draw()};
   const COLS=[['n','#','l n hide-sm'],['name',T.name,'l'],['buy','','hide-sm'],['pr',T.price,''],['ch',T.chg,''],['r1',T.d1,'hide-sm'],['r3',T.d3,'hide-sm'],['r5',T.d5,''],['sp',T.spark,'hide-sm'],['go','','hide-sm']];
   function draw(){
     let rows=IDX.filter(a=>{
@@ -94,7 +95,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
       if(sortK===kk) sortDir=-sortDir; else {sortK=kk; sortDir=(kk==='name'||kk==='o')?1:-1} draw() });
     const tr=(a,i)=>`<tr>
       <td class="l n hide-sm">${i+1}</td>
-      <td class="l"><button class="star" data-s="${a.i}" aria-label="☆">☆</button><a class="asset" href="${url(a.i)}">${icon(a)}<span><span class="nm">${esc(nm(a))}</span><span class="tk">${esc(a.t)}</span></span></a></td>
+      <td class="l"><button class="star" data-s="${a.i}" aria-label="☆">☆</button><a class="asset" href="${url(a.i)}">${icon(a)}<span><span class="nm">${esc(nm(a))}</span><span class="tk">${esc(a.t)}${lang!=='en'&&url(a.i).startsWith(BASE+'/en/')?'<i class="enb" title="English">EN</i>':''}</span></span></a></td>
       <td class="hide-sm">${buyBtn(a)}</td>
       <td class="num">${fmtPrice(a.pr)}</td>
       <td class="num ${cls(a.ch)}">${fmtPct(a.ch)}</td>
@@ -215,8 +216,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
 })();
 
 /* ---------- referral CTA buttons on home ---------- */
-(function(){ const r=REF_DEFAULT.crypto; if(!r||!r.url) return;
-  ['#ctaBuy','#ctaBuy2'].forEach(s=>{const b=$(s); if(b){b.href=goUrl(r.url); b.target='_blank'; b.rel='sponsored noopener'}}) })();
+/* "Start DCA" buttons lead to the exchanges page (fees + recurring-buy features side by side) */
 
 /* ---------- quick DCA calculator (home hero) ---------- */
 (function(){
@@ -849,4 +849,90 @@ $$('details.dd').forEach(d=>d.addEventListener('toggle',()=>{ if(d.open) $$('det
     sel.onchange=()=>{ try{ localStorage.setItem('wi_ccy',sel.value) }catch(e){} location.reload() } }
   if(CCY!=='USD') conv();
 })();
+/* ---------- dividend calculator (/dividends/) ---------- */
+(function(){
+  const box=$('.icpage'); if(!box||!PAGE.dv) return; const C=PAGE.dv, t=C.t;
+  const nf=v=>{ try{ return new Intl.NumberFormat(T.intl||'en',{style:'currency',currency:C.code,maximumFractionDigits:Math.abs(v)>=100?0:2}).format(v) }catch(e){ return Math.round(v)+' '+C.code } };
+  const short=v=>{ try{ return new Intl.NumberFormat(T.intl||'en',{style:'currency',currency:C.code,notation:'compact',maximumFractionDigits:1}).format(v) }catch(e){ return nf(v) } };
+  const num=id=>Math.max(0,+$('#'+id).value||0);
+  function run(){
+    const p0=num('dvp'), pm=num('dvm'), Y=Math.min(60,Math.max(1,Math.round(num('dvy'))||1)), y=num('dvr')/100, dg=num('dvg')/100, pg=num('dvq')/100, tax=Math.min(1,num('dvt')/100), re=$('#dvre').checked;
+    $('#dvyl').textContent=Y; $('#dvys').value=Math.min(40,Y);
+    let P=1, units=p0, dpu=y, cash=0, contrib=p0, tot=0, yd=0; const rows=[], gm=Math.pow(1+pg,1/12);
+    for(let m=1;m<=Y*12;m++){ P*=gm; units+=pm/P; contrib+=pm;
+      if(m%3===0){ const d=units*dpu/4*(1-tax); tot+=d; yd+=d; if(re) units+=d/P; else cash+=d }
+      if(m%12===0){ rows.push({y:m/12,v:units*P+cash,c:contrib,d:yd}); yd=0; dpu*=1+dg } }
+    const last=rows[rows.length-1]||{v:p0,c:p0,d:0};
+    $('#dv_c').textContent=nf(contrib); $('#dv_d').textContent='+'+nf(tot); $('#dv_v').textContent=nf(last.v);
+    $('#dv_m').textContent=nf(last.d/12); $('#dv_y').textContent=nf(last.d); $('#dv_o').textContent=contrib?(last.d/contrib*100).toFixed(1)+'%':'—';
+    const W=640,H=220,L=6,R=70,TP=10,B=24, mx=Math.max(...rows.map(r=>r.d),1), bw=(W-L-R)/rows.length;
+    let g=''; for(let k=0;k<=4;k++){ const v=mx*k/4, yy=TP+(H-TP-B)*(1-k/4); g+=`<line x1="${L}" x2="${W-R}" y1="${yy}" y2="${yy}" class="g"/><text x="${W-R+6}" y="${yy+4}">${esc(short(v))}</text>` }
+    const step=Math.max(1,Math.ceil(rows.length/10));
+    rows.forEach((r,k)=>{ const h=(H-TP-B)*r.d/mx, x=L+k*bw; g+=`<rect x="${(x+bw*.15).toFixed(1)}" y="${(H-B-h).toFixed(1)}" width="${(bw*.7).toFixed(1)}" height="${h.toFixed(1)}" rx="2" fill="var(--good)"/>`;
+      if(k%step===0||k===rows.length-1) g+=`<text x="${(x+bw/2).toFixed(1)}" y="${H-6}" text-anchor="middle">${r.y}</text>` });
+    $('#dvchart').innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img">${g}</svg>`;
+    $('#dvtable').innerHTML=`<thead><tr><th>${esc(t.year)}</th><th>${esc(t.contrib)}</th><th>${esc(t.val)}</th><th>${esc(t.divy)}</th></tr></thead><tbody>`+
+      rows.map(r=>`<tr><td>${r.y}</td><td>${nf(r.c)}</td><td>${nf(r.v)}</td><td class="good">+${nf(r.d)}</td></tr>`).join('')+'</tbody>';
+  }
+  $$('.icard',box).forEach(b=>b.onclick=()=>{ $$('.icard',box).forEach(x=>x.classList.toggle('on',x===b)); $('#dvr').value=b.dataset.y; $('#dvg').value=b.dataset.dg; $('#dvq').value=b.dataset.pg; run() });
+  $('#dvys').oninput=()=>{ $('#dvy').value=$('#dvys').value; run() };
+  $$('input',box).forEach(i=>{ if(i.id!=='dvys') i.addEventListener('input',run) }); run();
+})();
+
+/* ---------- average buy price (/average-price/) ---------- */
+(function(){
+  const box=$('.icpage'); if(!box||!PAGE.av) return; const t=PAGE.av.t;
+  const n=v=>{ const a=Math.abs(v); return NF('av'+(a>=1000?0:a>=1?2:6),{maximumFractionDigits:a>=1000?2:a>=1?4:8}).format(v) };
+  let mode='s', rows=[{p:100,v:500},{p:80,v:500},{p:60,v:500}];
+  try{ const s=JSON.parse(localStorage.getItem('wi_avg')||'null'); if(s&&Array.isArray(s.rows)){ rows=s.rows; mode=s.mode||'s' } }catch(e){}
+  const save=()=>{ try{ localStorage.setItem('wi_avg',JSON.stringify({rows,mode})) }catch(e){} };
+  function draw(){
+    $$('#avmode button').forEach(b=>b.classList.toggle('on',b.dataset.v===mode)); $('#avh2').textContent=mode==='s'?t.sum:t.qty;
+    $('#avrows').innerHTML=rows.map((r,i)=>`<tr><td>${i+1}</td><td><input type="number" min="0" step="any" data-i="${i}" data-k="p" value="${r.p||''}" aria-label="${esc(t.price)} ${i+1}"></td>`+
+      `<td><input type="number" min="0" step="any" data-i="${i}" data-k="v" value="${r.v||''}" aria-label="${esc(mode==='s'?t.sum:t.qty)} ${i+1}"></td><td><button type="button" class="avdel" data-i="${i}" aria-label="${esc(t.del)}">✕</button></td></tr>`).join('');
+    $$('#avrows input').forEach(e=>e.oninput=()=>{ rows[+e.dataset.i][e.dataset.k]=+e.value||0; save(); run() });
+    $$('#avrows .avdel').forEach(b=>b.onclick=()=>{ rows.splice(+b.dataset.i,1); if(!rows.length) rows.push({p:0,v:0}); save(); draw() });
+    run() }
+  function run(){
+    let q=0,c=0; rows.forEach(r=>{ if(!(r.p>0)||!(r.v>0)) return; const qq=mode==='s'?r.v/r.p:r.v; q+=qq; c+=qq*r.p });
+    const avg=q?c/q:0, cur=+$('#avcur').value||0;
+    $('#av_a').textContent=avg?n(avg):'—'; $('#av_q').textContent=q?n(q):'—'; $('#av_c').textContent=c?n(c):'—';
+    const pl=$('#av_p'); if(cur&&q){ const v=q*cur-c; pl.textContent=(v>=0?'+':'−')+n(Math.abs(v))+' ('+fmtPct(v/c)+')'; pl.className=v>=0?'good':'bad' } else { pl.textContent='—'; pl.className='' }
+    const tg=+$('#avtg').value||0, bp=+$('#avbp').value||0, out=$('#av_n'), nq=$('#av_nq');
+    if(!(tg>0&&bp>0&&q)){ out.textContent='—'; nq.textContent=''; return }
+    // (c + x) / (q + x/bp) = tg  →  x = (tg*q - c) / (1 - tg/bp)
+    const den=1-tg/bp, x=den?(tg*q-c)/den:NaN;
+    if(!isFinite(x)||x<0){ out.textContent='—'; nq.textContent=t.imp; return }
+    out.textContent=n(x); nq.textContent=t.need_qty+': '+n(x/bp) }
+  $('#avadd').onclick=()=>{ rows.push({p:0,v:0}); save(); draw(); const ins=$$('#avrows input'); ins[ins.length-2]&&ins[ins.length-2].focus() };
+  $('#avclr').onclick=()=>{ rows=[{p:0,v:0}]; save(); draw() };
+  $$('#avmode button').forEach(b=>b.onclick=()=>{ mode=b.dataset.v; save(); draw() });
+  ['avcur','avtg','avbp'].forEach(id=>$('#'+id).addEventListener('input',run));
+  $('#avasset').onchange=async e=>{ const id=e.target.value; if(!id) return;
+    try{ const P=await fetch(`${BASE}/assets/p/${id}.json?v=${WI.v}`).then(r=>r.json()); const p=P.p[P.p.length-1]; $('#avcur').value=+p.toPrecision(6); run() }catch(err){} };
+  draw();
+})();
+
+/* ---------- Ukrainian bonds (/ovdp/) ---------- */
+(function(){
+  const box=$('.icpage'); if(!box||!PAGE.ov) return; const C=PAGE.ov;
+  let ccy='UAH', sym='₴';
+  const nf=v=>{ try{ return new Intl.NumberFormat(T.intl||'uk',{style:'currency',currency:ccy,maximumFractionDigits:0}).format(v) }catch(e){ return Math.round(v)+' '+ccy } };
+  const num=id=>Math.max(0,+$('#'+id).value||0);
+  function run(){
+    const a=num('ova'), m=+(($('#ovt button.on')||{}).dataset||{}).v||12, b=num('ovb')/100, d=num('ovd')/100, dev=num('ovv')/100;
+    const ib=a*b*m/12, id=a*d*m/12*(1-0.23);
+    $('#ov_b').textContent='+'+nf(ib); $('#ov_d').textContent='+'+nf(id); $('#ov_m').textContent='+'+nf(ib/m);
+    const x=$('#ov_x'); x.textContent=(ib>=id?'+':'−')+nf(Math.abs(ib-id)); x.className=ib>=id?'good':'bad';
+    const top=Math.max(ib,id,1);
+    $('#ovbars').innerHTML=[[C.b,ib,'#f0b53a'],[C.dp,id,'#4f8cff']].map(r=>`<div class="icrow"><div class="h"><span>${esc(r[0])}</span><b>+${esc(nf(r[1]))}</b></div><div class="bar"><i style="width:${(r[1]/top*100).toFixed(1)}%;background:${r[2]}"></i></div></div>`).join('');
+    const u=$('#ovusd'), w=$('#ovdevw'); u.hidden=w.hidden=ccy!=='UAH';
+    if(ccy==='UAH'){ const r=(1+b*m/12)/Math.pow(1+dev,m/12)-1; const e=$('#ov_u'); e.textContent=fmtPct(r); e.className=r>=0?'good':'bad' } }
+  $$('.icard',box).forEach(c=>c.onclick=()=>{ $$('.icard',box).forEach(x=>x.classList.toggle('on',x===c)); ccy=c.dataset.c; sym=c.dataset.s;
+    $('#ovb').value=c.dataset.b; $('#ovd').value=c.dataset.d; $('#ova').value=ccy==='UAH'?100000:3000; $('#ova').nextElementSibling.textContent=sym; run() });
+  $$('#ovt button').forEach(bt=>bt.onclick=()=>{ $$('#ovt button').forEach(x=>x.classList.toggle('on',x===bt)); run() });
+  $$('input',box).forEach(i=>i.addEventListener('input',run)); run();
+})();
+/* footer columns collapse on phones */
+if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
 })();

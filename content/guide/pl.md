@@ -77,6 +77,12 @@ Przycisk **Zapytaj AI** w prawym dolnym rogu otwiera czat. Pytaj o aktywo na str
 
 Dodaj do bloga, forum lub strony kalkulator na żywo „10 $ dziennie” dla dowolnej kryptowaluty, akcji lub złota. Liczby aktualizują się codziennie, za darmo i bez rejestracji. [Darmowe widżety DCA na Twoją stronę]({lang}/widgets/)
 
+## Dywidendy · Średnia cena
+
+Policz, ile dywidend rocznie i miesięcznie da portfel, jeśli co miesiąc dokupujesz i reinwestujesz wypłaty. [Kalkulator dywidend]({lang}/dividends/)
+
+Wpisz swoje zakupy i zobacz średnią cenę, zysk po obecnej cenie i ile dokupić, by obniżyć średnią. [Kalkulator średniej ceny]({lang}/average-price/)
+
 ## Skąd są liczby
 
 Binance, CoinGecko, Yahoo Finance, Giełda Moskiewska, Bank Światowy i inne publiczne źródła; źródła każdej notki znajdziesz w [Wiadomościach]({lang}/news/). Ceny aktualizują się codziennie, kryptowaluty na żywo. Nic na WhatIfStack nie jest poradą inwestycyjną: wyniki z przeszłości nie gwarantują przyszłych.

@@ -77,6 +77,12 @@ Il pulsante **Chiedi all'IA** in basso a destra apre una chat. Chiedi dell'asset
 
 Aggiungi al tuo blog, forum o sito un calcolatore live "10 $ al giorno" per qualsiasi cripto, azione o oro. Numeri aggiornati ogni giorno, gratis e senza registrazione. [Widget PAC gratuiti per il tuo sito]({lang}/widgets/)
 
+## Dividendi · Prezzo medio
+
+Scopri quanti dividendi all’anno e al mese rende un portafoglio se versi ogni mese e reinvesti le cedole. [Calcolatore di dividendi]({lang}/dividends/)
+
+Inserisci i tuoi acquisti: prezzo medio, guadagno al prezzo attuale e quanto comprare per abbassare la media. [Calcolatore del prezzo medio]({lang}/average-price/)
+
 ## Da dove vengono i numeri
 
 Binance, CoinGecko, Yahoo Finance, la Borsa di Mosca, la Banca Mondiale e altre fonti pubbliche; le fonti di ogni articolo sono in [Notizie]({lang}/news/). I prezzi si aggiornano ogni giorno, quelli delle cripto in tempo reale. Niente su WhatIfStack è una consulenza finanziaria: i rendimenti passati non garantiscono quelli futuri.

@@ -79,6 +79,14 @@ The **Ask AI** button in the bottom-right corner opens a chat. Ask anything abou
 
 Add a live "$10 a day" calculator for any crypto, stock or gold to your blog, forum or website. Numbers update daily — free, no sign-up. [Free DCA widgets for your website]({lang}/widgets/)
 
+## Dividends · Average price · Ukraine bonds
+
+See how much dividend income per year and per month a portfolio pays if you add money monthly and reinvest the payouts. [Dividend calculator]({lang}/dividends/)
+
+Enter your buys and get your average price, profit at the current price, and how much to buy to bring the average down. [Average price calculator]({lang}/average-price/)
+
+See how much Ukrainian military government bonds (OVDP) pay in hryvnia, dollars or euros — and what a bank deposit would give after the 23% tax. [Ukraine bonds (OVDP) calculator]({lang}/ovdp/)
+
 ## Where the numbers come from
 
 Binance, CoinGecko, Yahoo Finance, the Moscow Exchange, the World Bank and other public sources; details in [About & methodology]({lang}/about/). Prices update daily, crypto prices live. Nothing on WhatIfStack is investment advice: past results do not guarantee future returns.

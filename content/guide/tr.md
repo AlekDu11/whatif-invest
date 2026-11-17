@@ -77,6 +77,12 @@ Sağ alttaki **AI'ya sor** düğmesi bir sohbet açar. Baktığın varlık, DCA,
 
 Blogana, forumuna veya sitene herhangi bir kripto, hisse ya da altın için canlı "günde 10 $" hesaplayıcı ekle. Rakamlar her gün güncellenir; ücretsiz, kayıt gerekmez. [Siten için ücretsiz DCA widget’ları]({lang}/widgets/)
 
+## Temettü · Ortalama maliyet
+
+Her ay ekleme yapıp temettüleri yeniden yatırırsan portföyün yılda ve ayda ne kadar temettü vereceğini hesapla. [Temettü hesaplayıcı]({lang}/dividends/)
+
+Alımlarını gir; ortalama maliyeti, güncel fiyattaki kârı ve ortalamayı düşürmek için ne kadar alman gerektiğini gör. [Ortalama maliyet hesaplayıcı]({lang}/average-price/)
+
 ## Rakamlar nereden geliyor
 
 Binance, CoinGecko, Yahoo Finance, Moskova Borsası, Dünya Bankası ve diğer açık kaynaklar; kaynakları gösterilen güncel özetler için [Haberler]({lang}/news/) sayfasına bak. Fiyatlar her gün, kripto fiyatları canlı güncellenir. WhatIfStack'teki hiçbir şey yatırım tavsiyesi değildir: geçmiş sonuçlar gelecekteki getirileri garanti etmez.

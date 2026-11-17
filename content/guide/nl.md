@@ -77,6 +77,12 @@ De knop **Vraag het AI** rechtsonder opent een chat. Vraag naar de asset op de p
 
 Zet een live "$10 per dag"-calculator voor elke crypto, elk aandeel of goud op je blog, forum of website. Cijfers worden dagelijks bijgewerkt, gratis en zonder account. [Gratis DCA-widgets voor je website]({lang}/widgets/)
 
+## Dividend · Gemiddelde prijs
+
+Bereken hoeveel dividend per jaar en per maand een portefeuille oplevert als je maandelijks inlegt en de uitkeringen herbelegt. [Dividendcalculator]({lang}/dividends/)
+
+Vul je aankopen in en zie je gemiddelde prijs, winst tegen de huidige koers en hoeveel je moet bijkopen om het gemiddelde te verlagen. [Gemiddelde-prijscalculator]({lang}/average-price/)
+
 ## Waar de cijfers vandaan komen
 
 Binance, CoinGecko, Yahoo Finance, de Moskouse beurs, de Wereldbank en andere openbare bronnen; onze actuele stukken met bronvermelding vind je bij [Nieuws]({lang}/news/). Koersen worden dagelijks bijgewerkt, cryptokoersen live. Niets op WhatIfStack is beleggingsadvies: resultaten uit het verleden bieden geen garantie voor de toekomst.

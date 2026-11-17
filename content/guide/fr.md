@@ -77,6 +77,12 @@ Le bouton **Demander à l'IA** en bas à droite ouvre un chat. Pose tes question
 
 Ajoutez à votre blog, forum ou site un calculateur en direct « 10 $ par jour » pour n’importe quelle crypto, action ou l’or. Chiffres mis à jour chaque jour, gratuit et sans inscription. [Widgets DCA gratuits pour votre site]({lang}/widgets/)
 
+## Dividendes · Prix moyen
+
+Calculez combien de dividendes par an et par mois rapporte un portefeuille si vous investissez chaque mois et réinvestissez les versements. [Calculateur de dividendes]({lang}/dividends/)
+
+Saisissez vos achats : prix moyen, gain au cours actuel et combien racheter pour faire baisser la moyenne. [Calculateur de prix moyen]({lang}/average-price/)
+
 ## D'où viennent les chiffres
 
 Binance, CoinGecko, Yahoo Finance, la Bourse de Moscou, la Banque mondiale et d'autres sources publiques ; les sources de chaque brève sont dans [Actu]({lang}/news/). Les prix sont mis à jour chaque jour, ceux de la crypto en direct. Rien sur WhatIfStack n'est un conseil en investissement : les performances passées ne préjugent pas des performances futures.

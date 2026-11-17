@@ -76,6 +76,12 @@ Ang button na **Magtanong sa AI** sa kanang ibaba ay nagbubukas ng chat. Magtano
 
 Maglagay ng live na "$10 kada araw" na calculator para sa anumang crypto, stock o ginto sa iyong blog, forum o website. Araw-araw nag-a-update ang mga numero, libre at walang sign-up. [Libreng DCA widget para sa iyong website]({lang}/widgets/)
 
+## Dividendo · Average price
+
+Alamin kung magkano ang dividendo kada taon at kada buwan kung mag-iipon ka buwan-buwan at ire-reinvest ang mga payout. [Dividend calculator]({lang}/dividends/)
+
+Ilagay ang mga binili mo para makita ang average price, kita sa kasalukuyang presyo, at magkano pa ang bibilhin para bumaba ang average. [Average price calculator]({lang}/average-price/)
+
 ## Saan galing ang mga numero
 
 Binance, CoinGecko, Yahoo Finance, Moscow Exchange, World Bank at iba pang pampublikong source; para sa pinakabagong update, tingnan ang [Balita]({lang}/news/). Araw-araw ina-update ang presyo, live ang presyo ng crypto. Walang anuman sa WhatIfStack na investment advice: hindi garantiya ng mga nakaraang resulta ang kikitain sa hinaharap.

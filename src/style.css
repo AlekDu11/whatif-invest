@@ -4,7 +4,7 @@
 [hidden]{display:none!important}
 :root{
   --fb:'Onest',system-ui,-apple-system,'Segoe UI',sans-serif;--fd:'Geologica','Onest',system-ui,sans-serif;--fn:'Geologica','Onest',system-ui,sans-serif;
-  --bg:#f4f6f3;--card:#fff;--line:#dfe5df;--line2:#eef2ee;--text:#10201a;--muted:#5d6b64;--muted2:#8f9b95;
+  --bg:#f4f6f3;--card:#fff;--line:#dfe5df;--line2:#eef2ee;--text:#10201a;--muted:#5d6b64;--muted2:#687570;
   --accent:#0b7a55;--accent-soft:#e3f2eb;--gold:#d99a1e;--gold-soft:#fbf1dc;--good:#0f8a4e;--bad:#c8463d;--good-soft:#e2f3ea;--bad-soft:#fbe9e7;
   --hover:#f7faf7;--card2:#f5faf7;--radius:16px;--r-sm:10px;--shadow:none
 }
@@ -668,3 +668,17 @@ html[data-theme=dark] .icchart .a{fill:#2a3d35}
 html[data-theme=dark] .banner{background:linear-gradient(90deg,#12382b,#0f241d);color:var(--text);border:1px solid var(--line)}html[data-theme=dark] .banner p{color:var(--muted)}
 .ccysel{height:34px;border:1px solid var(--line);border-radius:8px;background:var(--card);font:600 13px var(--fb);color:var(--text);padding:0 4px;flex:none;width:68px}@media (max-width:640px){.ccysel{width:60px}}
 .xlogo{position:relative;overflow:hidden}.xlogo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#fff;padding:3px;border-radius:inherit}
+/* dividends / average price / ovdp calculators */
+.avt input{width:100%;min-width:70px;height:36px;border:1px solid var(--line);border-radius:8px;background:var(--card);color:var(--text);font:inherit;padding:0 8px}
+.avt td,.avt th{padding:5px 4px}.avt td:first-child{color:var(--muted);width:24px}.avdel{border:0;background:none;color:var(--muted);cursor:pointer;font-size:15px;padding:6px}.avdel:hover{color:var(--bad)}
+.avbtns{display:flex;gap:8px;margin:10px 0 4px}.icl hr{border:0;border-top:1px solid var(--line);margin:14px 0}
+#av_p.good{color:var(--good)}#av_p.bad{color:var(--bad)}#ov_x.bad,#ov_u.bad{color:var(--bad)}#ov_u.good{color:var(--good)}
+@media (max-width:900px){.icgrid2{grid-template-columns:minmax(0,1fr)}}.tri3>div{min-width:0}.tri3 b{overflow-wrap:anywhere}
+.nmerge{margin:0 0 10px;border-bottom:1px solid var(--line);padding-bottom:6px}
+.fcols summary{list-style:none;cursor:default}.fcols summary::-webkit-details-marker{display:none}.fcols details>div{display:flex;flex-direction:column;gap:7px;margin-top:4px}
+@media (max-width:639px){.fcols{gap:0;grid-template-columns:1fr}.fcols details{border-bottom:1px solid var(--line)}.fcols summary{cursor:pointer;padding:12px 0;display:flex;justify-content:space-between}.fcols summary::after{content:'+';color:var(--muted);font-weight:700}.fcols details[open] summary::after{content:'−'}.fcols details>div{padding-bottom:12px}}
+@media (min-width:640px){.fcols summary{pointer-events:none}}
+.enb{font-style:normal;font-size:9.5px;font-weight:700;border:1px solid var(--line);border-radius:4px;padding:0 3px;margin-left:5px;color:var(--muted);vertical-align:1px}
+:root{--gold-t:#9c6a0c}html[data-theme=dark]{--gold-t:var(--gold)}.icsum .kv.big b{color:var(--gold-t)}
+input[type=month]{min-width:170px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
