@@ -27,7 +27,7 @@ comparisons that get thousands of views on crypto X. Keep the matchup a real que
 - ko pep | cola war
 - coffee cocoa sugar | breakfast commodities
 - btc eth --since 2017-08 | BTC vs ETH since ETH data start
-- pltr crwd snow | software growth
+- pltr crwd orcl | software growth
 - ltc bch etc | old-school forks
 - wheat corn soybeans | grains
 
