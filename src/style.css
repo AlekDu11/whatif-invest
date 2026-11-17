@@ -697,3 +697,76 @@ input[type=month]{min-width:170px}
 @media (max-width:640px){.pulse{grid-template-columns:repeat(2,1fr)}.ptf{grid-column:span 2}.pt svg{display:none}}
 @media (min-width:981px){.pulse{grid-template-columns:repeat(5,minmax(0,1fr))}.pt{padding:11px 12px}.ptp{font-size:16px}}
 .ptf .ptn b{font-size:12px;white-space:normal;line-height:1.2}
+
+/* ================= WhatIfStack visual system v3 — "night desk" =================
+   Ink background with a faint teal cast, mint for up / coral for down, brand gold as the second accent.
+   Depth comes from soft light (glow + 1px highlights), not heavy shadows. Light theme gets the same shapes. */
+:root{--radius:18px;--r-sm:12px;--up:#0f8a4e;--dn:#d43a40;--glow:transparent;--edge:rgba(16,32,26,.06)}
+html[data-theme=dark]{
+  --bg:#080d0f;--card:#0e1619;--card2:#121c20;--line:rgba(190,235,220,.08);--line2:rgba(190,235,220,.05);--text:#e8f1ee;--muted:#8fa5a0;--muted2:#71857f;
+  --accent:#37e2a3;--accent-soft:rgba(55,226,163,.12);--gold:#f5b942;--gold-soft:rgba(245,185,66,.12);--good:#37e2a3;--bad:#ff6474;
+  --good-soft:rgba(55,226,163,.12);--bad-soft:rgba(255,100,116,.12);--hover:rgba(255,255,255,.03);--up:#37e2a3;--dn:#ff6474;
+  --glow:rgba(55,226,163,.10);--edge:rgba(255,255,255,.05)}
+html[data-theme=dark] body{background:
+  radial-gradient(900px 420px at 12% -120px,rgba(55,226,163,.10),transparent 70%),
+  radial-gradient(700px 380px at 92% -80px,rgba(245,185,66,.07),transparent 70%),var(--bg);background-repeat:no-repeat}
+/* surfaces */
+.card,.tw,.pt,.qcalc{border-color:var(--line);box-shadow:inset 0 1px 0 var(--edge)}
+html[data-theme=dark] .card,html[data-theme=dark] .tw,html[data-theme=dark] .pt{background:linear-gradient(180deg,rgba(255,255,255,.025),rgba(255,255,255,0) 60%),var(--card)}
+html[data-theme=dark] .strip{background:rgba(8,13,15,.9)}
+html[data-theme=dark] .top{background:rgba(8,13,15,.78);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px)}
+html[data-theme=dark] .gsearch input{background:rgba(255,255,255,.04)}
+html[data-theme=dark] .nav a:hover,html[data-theme=dark] .nav a.on{background:rgba(255,255,255,.05)}
+html[data-theme=dark] .nav a.on{color:var(--accent)}
+/* sparklines: line + soft area */
+.spk polyline{fill:none;stroke-width:1.7;stroke-linejoin:round;stroke-linecap:round}
+.spk.up polyline{stroke:var(--up)}.spk.dn polyline{stroke:var(--dn)}
+.spk polygon{stroke:none;opacity:.10}.spk.up polygon{fill:var(--up)}.spk.dn polygon{fill:var(--dn)}
+/* buttons & pills */
+.btn{border-radius:12px}
+html[data-theme=dark] .btn:not(.ghost){background:linear-gradient(180deg,#46eab0,#22c98c);color:#04140d;box-shadow:0 6px 24px -8px rgba(55,226,163,.55)}
+html[data-theme=dark] .buy{background:transparent;border-color:rgba(55,226,163,.45)}
+html[data-theme=dark] .buy:hover{background:var(--accent-soft)}
+.pill{border-radius:8px;padding:3px 8px}
+/* hero */
+.hx2 h1{letter-spacing:-.025em}
+html[data-theme=dark] .hx2 h1{background:linear-gradient(180deg,#ffffff 30%,#a9c7bf);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* pulse tiles: the memorable element — big numbers with a light edge in the day's direction */
+.pt{position:relative;overflow:hidden;border-radius:16px;padding:13px 14px 10px}
+.pt::before{content:'';position:absolute;inset:0 0 auto 0;height:2px;background:var(--line)}
+.pt:has(.ptc.good)::before{background:linear-gradient(90deg,transparent,var(--up),transparent)}
+.pt:has(.ptc.bad)::before{background:linear-gradient(90deg,transparent,var(--dn),transparent)}
+html[data-theme=dark] .pt:has(.ptc.good){box-shadow:inset 0 1px 0 var(--edge),0 10px 30px -18px rgba(55,226,163,.55)}
+html[data-theme=dark] .pt:has(.ptc.bad){box-shadow:inset 0 1px 0 var(--edge),0 10px 30px -18px rgba(255,100,116,.5)}
+.ptp{font-size:19px;letter-spacing:-.02em}
+.ptn{color:var(--muted)}.ptn b{color:var(--text);font-weight:600}
+.pt .spk{width:100%;height:30px}
+/* quick calculator */
+html[data-theme=dark] .qcalc{background:radial-gradient(520px 260px at 80% 0,rgba(55,226,163,.10),transparent 70%),var(--card)}
+.qres .v{letter-spacing:-.03em}
+html[data-theme=dark] .qres .v{text-shadow:0 0 28px rgba(55,226,163,.35)}
+/* section headings */
+.section>h2,.today h2{font-size:22px;letter-spacing:-.02em}
+/* market lists */
+.wd .wt{font-size:13.5px;color:var(--muted);font-weight:600}
+.mrow{border-color:var(--line2);border-radius:10px;padding:8px 6px;margin:0 -6px}
+.mrow:hover{background:var(--hover)}
+.mrow .mc{border-radius:7px;padding:2px 6px;min-width:66px}
+.mrow .mc.good{background:var(--good-soft)}.mrow .mc.bad{background:var(--bad-soft)}
+/* table */
+.mt th{background:var(--card);font-weight:600}
+html[data-theme=dark] .mt th{background:#0e1619}
+.mt td{border-color:var(--line2)}
+.mt tr{transition:background .12s}
+.tabs button.on{color:var(--text);border-color:var(--accent)}
+html[data-theme=dark] .tabs button.on{text-shadow:0 0 18px rgba(55,226,163,.5)}
+/* chips */
+.tch,.chips button,.ctry a{transition:border-color .15s,color .15s,background .15s}
+html[data-theme=dark] .tch{background:rgba(255,255,255,.03)}
+/* news rows */
+.wnews .nrow b{font-weight:600}
+html[data-theme=dark] .badge{background:rgba(255,255,255,.05);border-color:var(--line)}
+/* logos on dark: soft round plate instead of a hard white square */
+html[data-theme=dark] .ic img{background:#fff;border-radius:50%}
+@media (prefers-reduced-motion:reduce){.pt,.mt tr{transition:none}.pt:hover{transform:none}}
+.mt .spk polygon{opacity:.07}

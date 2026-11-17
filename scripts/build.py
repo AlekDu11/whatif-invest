@@ -363,8 +363,9 @@ def spark(arr, w=110, h=34):
     mn, mx = min(arr), max(arr)
     r = (mx - mn) or 1
     pts = ' '.join(f"{i / (len(arr) - 1) * w:.1f},{h - 2 - (v - mn) / r * (h - 4):.1f}" for i, v in enumerate(arr))
-    col = '#14a44d' if arr[-1] >= arr[0] else '#e5484d'
-    return f'<svg width="{w}" height="{h}" viewBox="0 0 {w} {h}"><polyline points="{pts}" fill="none" stroke="{col}" stroke-width="1.6" stroke-linejoin="round"/></svg>'
+    up = arr[-1] >= arr[0]
+    return (f'<svg class="spk {"up" if up else "dn"}" width="{w}" height="{h}" viewBox="0 0 {w} {h}" aria-hidden="true">'
+            f'<polygon points="0,{h} {pts} {w},{h}"/><polyline points="{pts}"/></svg>')
 
 
 # ---------------- page shell ----------------
@@ -557,7 +558,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
 <meta property="og:type" content="website"><meta property="og:site_name" content="{BRAND}"><meta property="og:title" content="{esc(title)}"><meta property="og:description" content="{esc(desc)}"><meta property="og:url" content="{canon}"><meta property="og:locale" content="{S['intl'].replace('-', '_')}">
 <meta property="og:image" content="{og_img}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="{og_img}"><meta name="theme-color" content="#ffffff">
-<script>(function(){{try{{var t=localStorage.getItem('wi_theme')}}catch(e){{}}if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';if(t==='dark'){{document.documentElement.dataset.theme='dark';document.querySelector('meta[name=theme-color]').content='#0e1014'}}}})()</script>
+<script>(function(){{try{{var t=localStorage.getItem('wi_theme')}}catch(e){{}}if(!t)t='dark';if(t==='dark'){{document.documentElement.dataset.theme='dark';document.querySelector('meta[name=theme-color]').content='#080d0f'}}}})()</script>
 <link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" href="{BASE}/assets/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="{BASE}/assets/icon-192.png"><link rel="manifest" href="{BASE}/manifest.webmanifest">
 <link rel="preload" href="{BASE}/assets/onest.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="{BASE}/assets/geologica-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{BASE}/assets/style.css?v={ver['css']}">{SPRITE_CSS}

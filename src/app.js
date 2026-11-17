@@ -38,7 +38,7 @@ function icon(a,big){ const c=big?' lg':''; if(a.mi) return `<span class="ic${c}
 function spark(arr,w=110,h=34){ if(!arr||arr.length<2) return '';
   const mn=Math.min(...arr),mx=Math.max(...arr),r=mx-mn||1, up=arr[arr.length-1]>=arr[0];
   const pts=arr.map((v,i)=>`${(i/(arr.length-1)*w).toFixed(1)},${(h-2-(v-mn)/r*(h-4)).toFixed(1)}`).join(' ');
-  return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}"><polyline points="${pts}" fill="none" stroke="${up?'#14a44d':'#e5484d'}" stroke-width="1.6" stroke-linejoin="round"/></svg>` }
+  return `<svg class="spk ${up?'up':'dn'}" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" aria-hidden="true"><polygon points="0,${h} ${pts} ${w},${h}"/><polyline points="${pts}"/></svg>` }
 const goUrl=(u,extra)=>u&&u.startsWith('/go/')?`${u}?from=${encodeURIComponent(location.pathname)}&l=${lang}${extra||''}`:u;
 function refFor(a){ const r=REF[a.i]||REF_DEFAULT[a.c]; return r&&r.url?Object.assign({},r,{url:goUrl(r.url)}):null }
 function buyBtn(a){ const r=refFor(a); return r?`<a class="buy" href="${esc(r.url)}" target="_blank" rel="sponsored noopener" title="${esc(r.where)} · ${T.aff}">${T.buy}</a>`:'' }
@@ -261,7 +261,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
   const b=$('#thm'); if(b) b.onclick=()=>{ const d=document.documentElement, dark=d.dataset.theme!=='dark';
     if(dark) d.dataset.theme='dark'; else delete d.dataset.theme;
     try{ localStorage.setItem('wi_theme',dark?'dark':'light') }catch(e){}
-    const m=$('meta[name=theme-color]'); if(m) m.content=dark?'#0e1014':'#ffffff';
+    const m=$('meta[name=theme-color]'); if(m) m.content=dark?'#080d0f':'#ffffff';
     if($('.tvw[data-done]')) location.reload() };
   if('serviceWorker' in navigator && location.protocol==='https:') addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));
 })();
