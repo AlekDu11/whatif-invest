@@ -571,21 +571,44 @@ new MutationObserver(()=>{ clearTimeout(window._wiStar); window._wiStar=setTimeo
   $$('#dexn button').forEach(b=>b.onclick=()=>{ net=b.dataset.n; $$('#dexn button').forEach(x=>x.classList.toggle('on',x===b)); box.innerHTML='<tr><td colspan="8" class="empty">…</td></tr>'; load() });
   load(); setInterval(()=>{ if(!document.hidden) load() },60000);
 })();
-/* ---------- share buttons ---------- */
+/* ---------- share: one button -> phone share sheet, or a menu (networks + copy link) ---------- */
 (function(){
   const bars=$$('.sharebar'); if(!bars.length) return;
-  const page=location.origin+location.pathname, title=(document.querySelector('h1')||{}).textContent||document.title;
-  const u=src=>encodeURIComponent(page+'?utm_source='+src+'&utm_medium=share'), tt=encodeURIComponent(title.trim());
+  const page=location.origin+location.pathname, title=((document.querySelector('h1')||{}).textContent||document.title).trim();
+  const u=src=>encodeURIComponent(page+'?utm_source='+src+'&utm_medium=share'), tt=encodeURIComponent(title);
   const N=[['Telegram','#229ED9',`https://t.me/share/url?url=${u('telegram')}&text=${tt}`,'✈'],['X','#000',`https://x.com/intent/post?url=${u('x')}&text=${tt}`,'𝕏'],
     ['WhatsApp','#25D366',`https://wa.me/?text=${tt}%20${u('whatsapp')}`,'✆'],['Facebook','#1877F2',`https://www.facebook.com/sharer/sharer.php?u=${u('facebook')}`,'f'],
-    ['Reddit','#FF4500',`https://www.reddit.com/submit?url=${u('reddit')}&title=${tt}`,'r'],['LinkedIn','#0A66C2',`https://www.linkedin.com/sharing/share-offsite/?url=${u('linkedin')}`,'in']];
-  bars.forEach(bar=>{
-    bar.innerHTML=`<span>${esc(bar.dataset.l)}:</span>`+(navigator.share?`<button class="sh" data-native style="background:var(--accent)">↗</button>`:'')+
-      N.map(([n,c,h,ic])=>`<a class="sh" href="${h}" target="_blank" rel="noopener" title="${n}" aria-label="${n}" style="background:${c}">${ic}</a>`).join('')+
-      `<button class="sh" data-copy title="${esc(T.copy||'Copy')}" style="background:#64748b">⧉</button>`;
-    const nb=bar.querySelector('[data-native]'); if(nb) nb.onclick=()=>navigator.share({title,url:page+'?utm_source=native&utm_medium=share'}).catch(()=>{});
-    bar.querySelector('[data-copy]').onclick=e=>{ navigator.clipboard&&navigator.clipboard.writeText(page+'?utm_source=copy&utm_medium=share'); e.currentTarget.textContent='✓' };
-  });
+    ['Viber','#7360F2',`viber://forward?text=${tt}%20${u('viber')}`,'V'],['Reddit','#FF4500',`https://www.reddit.com/submit?url=${u('reddit')}&title=${tt}`,'r'],
+    ['LinkedIn','#0A66C2',`https://www.linkedin.com/sharing/share-offsite/?url=${u('linkedin')}`,'in'],['E-mail','#64748b',`mailto:?subject=${tt}&body=${u('email')}`,'@']];
+  const label=bars[0].dataset.l||'Share', copyL=T.copy||'Copy link';
+  const touch=matchMedia('(pointer:coarse)').matches;
+  let menu=null;
+  const close=()=>{ if(menu){ menu.remove(); menu=null } };
+  function open(btn){
+    if(navigator.share&&touch){ navigator.share({title,url:page+'?utm_source=native&utm_medium=share'}).catch(()=>{}); return }
+    if(menu){ close(); return }
+    menu=document.createElement('div'); menu.className='shmenu'; menu.setAttribute('role','menu');
+    menu.innerHTML=N.map(([n,c,h,ic])=>`<a role="menuitem" href="${h}" target="_blank" rel="noopener"><i style="background:${c}">${ic}</i>${n}</a>`).join('')+
+      `<button type="button" role="menuitem" data-copy><i style="background:var(--accent)">⧉</i>${esc(copyL)}</button>`;
+    document.body.appendChild(menu);
+    const r=btn.getBoundingClientRect(), w=menu.offsetWidth, h=menu.offsetHeight;
+    let x=Math.min(r.left, innerWidth-w-12), y=r.bottom+8; if(y+h>innerHeight-8) y=r.top-h-8;
+    menu.style.left=Math.max(12,x)+scrollX+'px'; menu.style.top=y+scrollY+'px';
+    menu.querySelector('[data-copy]').onclick=e=>{ const v=page+'?utm_source=copy&utm_medium=share';
+      (navigator.clipboard?navigator.clipboard.writeText(v):Promise.reject()).catch(()=>{ const t=document.createElement('textarea'); t.value=v; document.body.appendChild(t); t.select(); try{document.execCommand('copy')}catch(_){} t.remove() });
+      e.currentTarget.lastChild.textContent=' ✓'; setTimeout(close,700) };
+    menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setTimeout(close,100)));
+  }
+  const mk=cls=>{ const b=document.createElement('button'); b.type='button'; b.className='shbtn'+(cls?' '+cls:''); b.setAttribute('aria-haspopup','menu');
+    b.innerHTML=`<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M16 6l-4-4-4 4M12 2v14"/></svg><span>${esc(label)}</span>`;
+    b.onclick=e=>{ e.stopPropagation(); open(b) }; return b };
+  bars.forEach(bar=>{ bar.innerHTML=''; bar.appendChild(mk()) });
+  // a second button right under the title of assets, articles and news
+  const top=document.querySelector('.ahead h1, article.art h1');
+  if(top){ const w=top.closest('.ahead')||top; const b=mk('top'); w.insertAdjacentElement('afterend', b) }
+  document.addEventListener('click',e=>{ if(menu&&!menu.contains(e.target)) close() });
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') close() });
+  addEventListener('scroll',()=>{ if(menu) close() },{passive:true});
 })();
 
 /* ---------- returns heatmap on asset pages (day / month / quarter) ---------- */

@@ -452,7 +452,7 @@ def footer_cols(lang):
            (url(lang if lang in PARTNER_TXT else 'en', 'partners'), PARTNER_NAV[lang])]
     cols = [(f[0], pop), (f[1], mk), (TR[lang]['x']['nav_tools'], tools), (n['i_nav'], ins)]
     if SOCIAL:
-        cols.insert(0, (f[2], [(u, l) for l, u in SOCIAL] + ([('mailto:' + CONTACT_EMAIL, '✉ ' + CONTACT_EMAIL)] if CONTACT_EMAIL else [])))
+        cols.insert(0, (f[2], [(u, l) for l, u in SOCIAL] + ([('mailto:' + CONTACT_EMAIL, '✉ ' + CONTACT_EMAIL)] if CONTACT_EMAIL else []) + [('mailto:' + PARTNER_EMAIL, '🤝 ' + PARTNER_EMAIL)]))
     return ('<div class="fcols">' + ''.join(f'<details open><summary><b>{esc(t)}</b></summary><div>' + ''.join(f'<a href="{h}"{" rel=\"me noopener\" target=\"_blank\"" if h.startswith("https://") and "whatifstack.com" not in h else ""}>{esc(l)}</a>' for h, l in items) + '</div></details>' for t, items in cols) + '</div>')
 
 
