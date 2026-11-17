@@ -619,3 +619,6 @@ html[data-theme=dark] .icchart .a{fill:#2a3d35}
 @media (min-width:1500px){:root{--cw:min(1800px,calc(100vw - 80px))}.strip .in,.top .in,.wrap{max-width:var(--cw)}}
 @media (min-width:1181px){.aibtn,.aip{right:max(18px,calc((100vw - var(--cw)) / 2 + 20px))}}
 @media (min-width:1500px){.gsearch{max-width:none}}
+/* audit fixes: asset header actions wrap on phones; add-to-portfolio form input/suffix */
+@media (max-width:640px){.price{flex-wrap:wrap;row-gap:8px}.price .btn,.price .addpf{flex:1 1 auto;justify-content:center;text-align:center}}
+.pfpop .inp{display:flex;align-items:center;gap:6px}.pfpop .inp input{min-width:0;width:130px}.pfpop .inp .muted{flex:none}

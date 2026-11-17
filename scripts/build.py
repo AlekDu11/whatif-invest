@@ -323,7 +323,7 @@ SEARCH_ICON = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" strok
 def strip(lang):
     S = TR[lang]
     items = []
-    for aid, label in (('btc', 'BTC'), ('eth', 'ETH'), ('spy', 'S&P 500'), ('qqq', 'Nasdaq-100'), ('gold', S['gold']), ('silver', S['silver'])):
+    for aid, label in (('btc', 'BTC'), ('eth', 'ETH'), ('spy', 'S&P 500 (SPY)'), ('qqq', 'Nasdaq-100 (QQQ)'), ('gold', S['gold']), ('silver', S['silver'])):
         if aid in A:
             m = METRICS[aid]
             items.append(f'<a href="{aurl(lang, aid)}">{esc(label)} <b data-p="{aid}">{price(m["price"])}</b> <span class="{cls(m["chg"])}" data-c="{aid}">{pct(m["chg"])}</span></a>')

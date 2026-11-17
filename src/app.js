@@ -633,7 +633,8 @@ document.addEventListener('click',async e=>{
   pop.innerHTML=`<label>${esc(C.t.qty_or_sum)}<div class="inp"><input type="number" min="0" step="any" value="100" class="pa"><span class="muted">${esc(C.code)}</span></div></label>
     <label>${esc(C.d)}<div class="inp"><input type="month" class="pd" value="${END}" max="${END}"></div></label>
     <div class="pfb"><button class="btn pok">＋ ${esc(C.t.addpf)}</button><button class="btn ghost pno">${esc(C.t.cancel)}</button></div><p class="pmsg"></p>`;
-  b.parentNode.after(pop); pop.querySelector('.pa').focus(); pop.querySelector('.pno').onclick=()=>pop.remove();
+  b.parentNode.after(pop); const pa=pop.querySelector('.pa'); pa.focus(); pa.select(); pop.querySelector('.pno').onclick=()=>pop.remove();
+  pop.addEventListener('keydown',ev=>{ if(ev.key==='Enter'){ ev.preventDefault(); const k=pop.querySelector('.pok'); k&&k.click() } if(ev.key==='Escape') pop.remove() });
   pop.querySelector('.pok').onclick=async()=>{ const v=+pop.querySelector('.pa').value, d=(pop.querySelector('.pd').value||END).slice(0,7); if(!(v>0)) return;
     let px=(BYID[id]||{}).pr;
     try{ const P=await fetch(`${BASE}/assets/p/${id}.json?v=${WI.v}`).then(r=>r.json()); const ym=s=>{const [y,m]=s.split('-').map(Number);return y*12+m-1}, k=ym(d)-ym(P.start);
