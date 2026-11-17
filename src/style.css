@@ -616,5 +616,6 @@ html[data-theme=dark] .icchart .a{fill:#2a3d35}
 .top .in{gap:10px}.top .in>.nav{min-width:0}.nav{gap:0}
 /* wider layout on big screens; AI button sits at the content's right edge */
 :root{--cw:1240px}
-@media (min-width:1600px){:root{--cw:1440px}.strip .in,.top .in,.wrap{max-width:var(--cw)}}
+@media (min-width:1500px){:root{--cw:min(1800px,calc(100vw - 80px))}.strip .in,.top .in,.wrap{max-width:var(--cw)}}
 @media (min-width:1181px){.aibtn,.aip{right:max(18px,calc((100vw - var(--cw)) / 2 + 20px))}}
+@media (min-width:1500px){.gsearch{max-width:none}}
