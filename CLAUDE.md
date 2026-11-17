@@ -46,6 +46,7 @@ Scheduled tasks: daily Insights article (6 or 20 languages, category analytics/g
 Movers rubric «What's happening with X» (tag `movers`): twice a day 10:47/19:47 Kyiv, scripts/movers.py lists candidates, briefs in en/uk/ru/es show on the asset page.
 Regional articles: daily 14:23 Kyiv, 3 languages per day about their own market (front matter `region: yes`).
 X @WhatIfStack: 5 posts/day via the built-in browser (style + log in social/x-log.md). Weekly growth report Mondays 10:37 → reports/growth/.
+Stock deep-dives: 02:13 and 13:13 Kyiv, 15 stocks per run in en+uk (queue: scripts/analysis_todo.py; format = content/profiles/*/twlo.md, front matter `kind: analysis` → full block on the stock page). Key stats: data/stockstats.json via .github/workflows/stock-stats.yml (daily, rotating).
 Asset profiles: daily 16:52 Kyiv, 3 assets/day → content/profiles/<lang>/<asset id>.md (About block on the asset page).
 Guide: content/guide/<lang>.md → /guide/ (every tool explained; keep it updated when a feature is added).
 Free distribution: social/syndication.md (platform rules, communities per language, log); daily drafts in social/syndication/YYYY-MM-DD.md. RSS per language (/<lang>/blog/rss.xml, with cover images → Pinterest/Flipboard auto-publish) and Google News sitemap /sitemap-news.xml are built by scripts/build.py.
