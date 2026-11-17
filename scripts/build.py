@@ -30,6 +30,7 @@ from i18n_emb import EMB, EXT  # noqa: E402
 from i18n_ic import IC  # noqa: E402
 from i18n_calc2 import DV, AV, OV  # noqa: E402
 from i18n_ap import AP  # noqa: E402
+from i18n_home2 import HM  # noqa: E402
 from i18n_bpd import BPD, IDEA as BP_IDEA  # noqa: E402
 from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB, CH as OWN_CH, CH2 as OWN_CH2  # noqa: E402
 SOCIAL = [('Telegram', 'https://t.me/TradeMaster_insight'), ('X (Twitter)', 'https://x.com/WhatIfStack'), ('Bluesky', 'https://bsky.app/profile/whatifstack.bsky.social'), ('Instagram', 'https://www.instagram.com/whatifstack/'), ('Threads', 'https://www.threads.com/@whatifstack'),
@@ -433,7 +434,7 @@ def footer_cols(lang):
     S, n, f = TR[lang], NW[lang], FOOT[lang]
     blog_l = lang if lang in BLOG_LANGS else 'en'
     pop = [(aurl(lang, i), nm(A[i], lang)) for i in ('btc', 'eth', 'sol', 'xrp', 'nvda', 'aapl', 'tsla', 'gold', 'spy', 'qqq') if i in A]
-    mk = [(url(lang), S['nav_rank']), (url(lang, 'compare'), S['nav_cmp'])] + [(url(lang, k), S['cat_' + v]) for k, v in HUBS.items()]
+    mk = [(url(lang), HM[lang]['nav']), (url(lang, 'compare'), S['nav_cmp'])] + [(url(lang, k), S['cat_' + v]) for k, v in HUBS.items()]
     mk += [(url(lang, sl), CTRY[lang][3][m][0]) for m, (sl, fl) in sorted(MKTS.items(), key=lambda kv: (MKT_LANG.get(kv[0]) != lang, kv[0] != 'ua')) if has_page(lang, sl)][:5]
     tools = [(url(lang, k), v) for k, v in [x for x in tools_menu(lang) if x]]
     ins = [(url(lang if lang in GUIDE else 'en', 'guide'), guide_meta(lang).get('nav', 'Guide')), (url(lang, 'news'), n['n_nav']), (url(blog_l, 'blog'), n['i_nav']), (url(blog_l, 'blog') + 'rss.xml', 'RSS'),
@@ -528,7 +529,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
     blog_l = lang if lang in BLOG_LANGS else 'en'
     news_on = p in ('news', 'ai') or sec == 'activities' or (sec or '').startswith('blog') or (p or '').startswith('news/')
     tools_on = p in TOOLS or (p in CALCS and p not in ("exchanges", "news", "about", "compound-interest")) or (p or "").startswith("habits") or p in ('memes', 'world-assets')
-    nav = (''.join(f'<a href="{url(lang, k)}" class="{"on" if k == p else ""}">{v}</a>' for k, v in ((None, S['nav_rank']), ('portfolios', BP[lang]['nav']), ('compound-interest', IC[lang]['nav'])))
+    nav = (''.join(f'<a href="{url(lang, k)}" class="{"on" if k == p else ""}">{v}</a>' for k, v in ((None, HM[lang]['nav']), ('portfolios', BP[lang]['nav']), ('compound-interest', IC[lang]['nav'])))
            + f'<a href="{url(lang, "exchanges")}" class="{"on" if p == "exchanges" else ""}">{EX[lang]["nav"]}</a>'
            + f'<details class="dd"><summary class="{"on" if news_on else ""}">{NW[lang]["n_nav"]}</summary><div>'
            + f'<a href="{url(lang, "news")}">{NW[lang]["n_nav"]}</a><a href="{url(blog_l, "blog")}">{NW[lang]["i_nav"]}</a>'
@@ -537,7 +538,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
            + ''.join(f'<a href="{url(lang, k)}">{v}</a>' for k, v in [x for x in tools_menu(lang) if x]) + '</div></details>')
     i18n = dict(S['ui'], months=S['months'], intl=S['intl'])
     mnav = ''.join(f'<a href="{h}" class="{"on" if on else ""}"><span>{ic}</span>{esc(lb)}</a>' for h, ic, lb, on in (
-        (url(lang), '◎', S['nav_rank'], p is None), (url(lang, 'news'), '▤', NW[lang]['n_nav'], p == 'news'),
+        (url(lang), '◎', HM[lang]['nav'], p is None), (url(lang, 'news'), '▤', NW[lang]['n_nav'], p == 'news'),
         (url(lang, 'exchanges'), '₿', EX[lang]['nav'], p == 'exchanges'), (url(blog_l, 'blog'), '✎', NW[lang]['i_nav'], (p or '').startswith('blog'))))
     mnav += f'<button type="button" id="mmore"><span>☰</span>{esc(X["nav_tools"])}</button>'
     msheet = ('<div class="msheet" id="msheet" hidden>' + ''.join(f'<a href="{url(lang, k)}">{esc(v)}</a>' for k, v in
@@ -948,14 +949,28 @@ def home(lang, ver):
     S, w = TR[lang], TR[lang]['w']
     ids = ORDERED
     n = len(A)
-    title, desc = S['home_title'], S['home_desc'].format(n=n)
+    hm = HM[lang]
+    title, desc = hm['title'], hm['desc'].format(n=n)
     # --- hero with quick calculator
     qopts = ''.join(f'<option value="{aid}"{" selected" if aid == "btc" else ""}>{esc(nm(A[aid], lang))} ({esc(A[aid]["tk"])})</option>' for aid in ids[:120])
     yrs = ''.join(f'<button data-y="{y}" class="{"on" if y == 5 else ""}">{y}</button>' for y in (1, 3, 5, 10))
     b5 = simulate('btc', END_I - 60) if 'btc' in A else None
     cta_ref = f'<a class="btn" id="ctaBuy" href="{url(lang, "exchanges")}">{w["cta"]}</a>'
-    hero = (f'<section class="herox"><div class="hx"><h1>{S["home_h1"].format(ten=TEN)}</h1><p class="lead">{S["home_lead"].format(n=n)}</p>'
-            f'<div class="hxbtn">{cta_ref}<a class="btn ghost" href="{url(lang, "compare")}">{S["nav_cmp"]}</a></div></div>'
+    fv0 = (G.get('fng') or [None])[0]
+    def ptile(i):
+        mm = METRICS[i]
+        return (f'<a class="pt" href="{aurl(lang, i)}"><span class="ptn">{icon(A[i])}<b>{esc(nm(A[i], lang))}</b></span>'
+                f'<span class="ptp" data-p="{i}">{price(mm["price"])}</span><span class="ptc {cls(mm["chg"])}" data-c="{i}">{pct(mm["chg"])}</span>'
+                f'{spark(mm["spark"], 120, 30)}</a>')
+    pulse = ''.join(ptile(i) for i in ('btc', 'eth', 'spy', 'gold') if i in A)
+    if fv0 is not None:
+        pulse += (f'<a class="pt ptf" href="{url(lang, "news")}"><span class="ptn"><b>{w["fng"]}</b></span><span class="ptp">{fv0}<small>/100</small></span>'
+                  f'<span class="ptc">{fng_label(lang, fv0)}</span><span class="fbar"><i style="left:{fv0}%"></i></span></a>')
+    tools = [('compare', '⇅', S['nav_cmp']), ('compound-interest', '📈', IC[lang]['nav']), ('dividends', '💸', DV[lang]['nav']),
+             ('portfolios', '🧺', BP[lang]['nav']), ('exchanges', '🏦', EX[lang]['nav'])]
+    tchips = ''.join(f'<a class="tch" href="{url(lang, k)}"><span>{ic}</span>{esc(lb)}</a>' for k, ic, lb in tools)
+    hero = (f'<section class="herox hx2"><div class="hx"><h1>{esc(hm["h1"])}</h1><p class="lead">{esc(hm["lead"])}</p>'
+            f'<div class="pulse">{pulse}</div><div class="tchips">{tchips}</div></div>'
             f'<div class="card qcalc" id="qcalc"><div class="qt">{w["quick"]}</div>'
             f'<div class="qrow"><label class="f">{w["q_asset"]}<div class="inp"><select id="qa">{qopts}</select></div></label>'
             f'<label class="f">{S["ui"]["amount"]}<div class="inp"><span>$</span><input id="qm" type="number" min="1" value="{AMOUNT}"></div></label></div>'
@@ -1015,9 +1030,13 @@ def home(lang, ver):
     filt = f'<div class="toolbar"><div class="filter">{SEARCH_ICON}<input id="flt" type="search" autocomplete="off"></div></div>'
     top10 = table_block(lang, HOME_ORDER[:20], None, interactive=True)
     rest = ''
-    body = (hero + f'<section class="section toprank"><div class="tabs" id="tabs"></div>{filt}{country_chips(lang, limit=8)}{top10}</section>'
-            f'<div class="wgrid">{w_mcap}{w_dom}{w_fng}{w_tr}</div>'
-            f'<div class="wgrid3">{w_up}{w_dn}{w_bat}</div>{banner}{habits_strip(lang)}{poll_block(lang)}{poly_block(lang)}'
+    tl = news_tl(lang)
+    nws = news_items(lang)[:4]
+    w_news = (f'<div class="card wd wnews"><div class="wt">📰 {esc(hm["news"])}</div><div class="nlist own">' + ''.join(news_row(lang, k, m, tl) for k, m in nws)
+              + f'</div><a class="calc" href="{url(lang, "news")}">{esc(hm["all"])} →</a></div>') if nws else w_tr
+    today = f'<section class="section today"><h2>{esc(hm["today"])}</h2><div class="wgrid3">{w_up}{w_dn}{w_news}</div></section>'
+    body = (hero + today + f'<section class="section toprank"><div class="tabs" id="tabs"></div>{filt}{country_chips(lang, limit=8)}{top10}</section>'
+            f'<div class="wgrid3">{w_tr if nws else w_fng}<div class="wstack">{w_mcap}{w_dom}</div>{w_bat}</div>{banner}{habits_strip(lang)}{poll_block(lang)}{poly_block(lang)}'
             f'<section class="section"><div class="hl">{"".join(cards)}</div></section>'
             f'{rest}'
             f'<section class="card section faq"><h2>{S["faq"]}</h2><details open><summary>{esc(S["q3"])}</summary><p>{esc(S["a3"])}</p></details></section>')
@@ -1029,7 +1048,7 @@ def home(lang, ver):
                "potentialAction": {"@type": "SearchAction", "target": SITE + url(lang) + '?q={search_term_string}', "query-input": "required name=search_term_string"}},
               {"@context": "https://schema.org", "@type": "Organization", "name": BRAND, "alternateName": "whatifstack", "url": SITE + '/',
                "logo": SITE + '/assets/icon-512.png', "sameAs": [u for _, u in SOCIAL],
-               "description": "Independent markets site: what regular (DCA) investing in crypto, stocks and gold would have returned, with real prices."}]
+               "description": "Independent markets site: live prices, news and calculators for crypto, stocks and gold, in plain language and 20 languages."}]
     return shell(lang, None, title, desc, body, dict(home=True, wa=WA[lang]['nav'], wau=url(lang, 'world-assets')), ver, jsonld)
 
 
@@ -1317,7 +1336,7 @@ def asset(aid, lang, ver):
         sim = same + [i for i in sim if i not in same]
     sim = sim[:10]
     cat = S['cat_' + a['cat']]
-    crumbs = f'<nav class="crumbs"><a href="{url(lang)}">{S["nav_rank"]}</a> / {esc(cat)} / {esc(n)}</nav>'
+    crumbs = f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / {esc(cat)} / {esc(n)}</nav>'
     badges = f'<span class="badge">{esc(tk)}</span> <span class="badge">{esc(cat)}</span>' + (f' <span class="badge">{esc(a["sector"])}</span>' if a.get('sector') else '')
     head = (f'{crumbs}<div class="ahead">{icon(a, True)}<div><h1>{esc(AP[lang]["h1"].format(name=n, tk=tk))}</h1><div style="margin-top:4px">{badges}</div></div>'
             f'<div class="price"><span class="v" data-p="{aid}">{price(m["price"])}</span><span class="pill {cls(m["chg"])}" data-c="{aid}">{pct(m["chg"])}</span>{local_price(a, lang)}<span id="buyslot" data-id="{aid}"></span><button class="star big" data-s="{aid}" title="{esc(ME[lang]["star"])}">☆</button>'
@@ -1973,7 +1992,7 @@ def hub(lang, slug, ver):
     b5 = best_by('r5', ids)[:4]
     cards = ''.join(hl_card(lang, i, nm(A[i], lang), 'r5', S['sub5']) for i in b5)
     filt = f'<div class="toolbar"><div class="filter">{SEARCH_ICON}<input id="flt" type="search" autocomplete="off"></div></div>'
-    body = (f'<nav class="crumbs"><a href="{url(lang)}">{S["nav_rank"]}</a> / {esc(label)}</nav><h1>{esc(X["hub_h1"].format(cat=label))}</h1>'
+    body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / {esc(label)}</nav><h1>{esc(X["hub_h1"].format(cat=label))}</h1>'
             f'<p class="lead">{esc(desc)}</p>{country_chips(lang) if cat == "stock" else ""}<div class="hl">{cards}</div><div class="tabs" id="tabs"></div>{filt}{table_block(lang, ids[:150])}')
     return shell(lang, slug, title, desc, body, dict(tab=cat), ver)
 
@@ -2066,7 +2085,7 @@ def country_page(lang, slug, ver):
     cards = ''.join(hl_card(lang, i, nm(A[i], lang), key, S['sub5' if key == 'r5' else 'sub1']) for i in best)
     lead = CTRY[lang][1].format(n=len(ids))
     desc = f'{h1}. {lead}'
-    body = (f'<nav class="crumbs"><a href="{url(lang)}">{S["nav_rank"]}</a> / <a href="{url(lang, "stocks")}">{esc(S["ui"]["stock"])}</a> / {esc(name)}</nav>'
+    body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / <a href="{url(lang, "stocks")}">{esc(S["ui"]["stock"])}</a> / {esc(name)}</nav>'
             f'<h1>{esc(h1)}</h1><p class="lead">{esc(lead)}</p>{country_chips(lang, slug)}'
             + (f'<div class="hl">{cards}</div>' if cards else '')
             + f'<section class="section">{table_block(lang, ids[:200], None, interactive=False)}</section>'
@@ -2731,7 +2750,7 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
     write('sitemap-news.xml', news_sitemap())
     nf = {'uk': ('Сторінку не знайдено', 'Можливо, актив перейменовано або видалено. Знайди його через пошук угорі або перейди до рейтингу.'),
           'en': ('Page not found', 'The asset may have been renamed or removed. Use the search above or go to the ranking.')}
-    body404 = ''.join(f'<h1>{a}</h1><p class="lead">{b}</p><p><a class="btn" href="{url(lg)}">{TR[lg]["nav_rank"]} →</a></p>' for lg, (a, b) in nf.items())
+    body404 = ''.join(f'<h1>{a}</h1><p class="lead">{b}</p><p><a class="btn" href="{url(lg)}">{HM[lg]["nav"]} →</a></p>' for lg, (a, b) in nf.items())
     write('404.html', shell('en', None, 'Page not found | ' + BRAND, nf['en'][1], body404, {}, ver).replace('<link rel="canonical"', '<meta name="robots" content="noindex"><link rel="canonical"'))
     write('79eea7b784b383a4b1696da51540fdf0.txt', '79eea7b784b383a4b1696da51540fdf0')
     write('robots.txt', f'User-agent: *\nAllow: /\nDisallow: /go/\nDisallow: /api/\nDisallow: /stats\nSitemap: {SITE}{BASE}/sitemap.xml\nSitemap: {SITE}{BASE}/sitemap-news.xml\n')

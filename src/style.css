@@ -682,3 +682,18 @@ html[data-theme=dark] .banner{background:linear-gradient(90deg,#12382b,#0f241d);
 :root{--gold-t:#9c6a0c}html[data-theme=dark]{--gold-t:var(--gold)}.icsum .kv.big b{color:var(--gold-t)}
 input[type=month]{min-width:170px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+/* home v2: market pulse first, calculator on the side */
+.hx2{align-items:start}.hx2 h1{font-size:clamp(28px,3.4vw,42px);line-height:1.1;margin-bottom:10px}.hx2 .lead{max-width:640px}
+.pulse{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:18px 0 14px}
+.pt{display:flex;flex-direction:column;gap:3px;padding:12px 14px;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--text);text-decoration:none;transition:border-color .15s,transform .15s;min-width:0}
+.pt:hover{border-color:var(--accent);transform:translateY(-1px)}
+.ptn{display:flex;align-items:center;gap:7px;font-size:13px;min-width:0}.ptn b{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ptn .ic{width:20px;height:20px;flex:none}.ptn .ic img{width:20px;height:20px}
+.ptp{font:700 18px var(--fn);white-space:nowrap}.ptp small{font-size:12px;color:var(--muted);font-weight:500}.ptc{font:600 12.5px var(--fn)}.ptc.good{color:var(--good)}.ptc.bad{color:var(--bad)}
+.pt svg{width:100%;height:28px;margin-top:2px}
+.ptf .fbar{position:relative;height:6px;border-radius:3px;margin-top:9px;background:linear-gradient(90deg,#e5484d,#f0b53a 50%,#16a34a)}.ptf .fbar i{position:absolute;top:-4px;width:4px;height:14px;border-radius:2px;background:var(--text);transform:translateX(-2px)}
+.tchips{display:flex;flex-wrap:wrap;gap:8px}.tch{display:inline-flex;align-items:center;gap:6px;padding:7px 12px;border-radius:999px;border:1px solid var(--line);background:var(--card);color:var(--text);text-decoration:none;font-size:13.5px;font-weight:600}.tch:hover{border-color:var(--accent);color:var(--accent)}
+.today h2{margin-bottom:10px}.today .wgrid3{margin-top:0}.wnews .nlist{border:0;padding:0}.wnews .nrow{padding:8px 0}.wnews .nrow b{font-size:14px;line-height:1.3}.wnews .calc{display:inline-block;margin-top:8px}
+.wstack{display:flex;flex-direction:column;gap:12px}
+@media (max-width:640px){.pulse{grid-template-columns:repeat(2,1fr)}.ptf{grid-column:span 2}.pt svg{display:none}}
+@media (min-width:981px){.pulse{grid-template-columns:repeat(5,minmax(0,1fr))}.pt{padding:11px 12px}.ptp{font-size:16px}}
+.ptf .ptn b{font-size:12px;white-space:normal;line-height:1.2}
