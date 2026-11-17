@@ -53,6 +53,16 @@ def logo(aid, size):
     return None
 
 
+def badge(tk, color, size):
+    im = Image.new('RGBA', (size, size), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.ellipse((0, 0, size - 1, size - 1), fill=color)
+    f = ImageFont.truetype(F_BOLD, int(size * .36))
+    t = tk[:3]
+    d.text(((size - d.textlength(t, font=f)) / 2, size * .3), t, font=f, fill=BG)
+    return im
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('ids', nargs='+')
@@ -86,8 +96,8 @@ def main():
     L, T = MON[a.lang], TXT[a.lang]
     name = lambda i: A[i].get('tk') or i.upper()
     col = {i: PALETTE[k % len(PALETTE)] for k, i in enumerate(ids)}
-    lg = {i: logo(i, 64) for i in ids}
-    lg_big = {i: logo(i, 120) for i in ids}
+    lg = {i: logo(i, 64) or badge(name(i), col[i], 64) for i in ids}
+    lg_big = {i: logo(i, 120) or badge(name(i), col[i], 120) for i in ids}
     f_title, f_big, f_mid, f_sm, f_xs = (ImageFont.truetype(F_BOLD, 52), ImageFont.truetype(F_BOLD, 40), ImageFont.truetype(F_SEMI, 32),
                                          ImageFont.truetype(F_SEMI, 26), ImageFont.truetype(F_TEXT, 22))
     d0 = f'{L[start % 12]} {start // 12}'
@@ -99,7 +109,7 @@ def main():
     hold = int(3.5 * FPS)
     os.makedirs(os.path.dirname(os.path.abspath(a.out)), exist_ok=True)
     proc = subprocess.Popen(['ffmpeg', '-y', '-loglevel', 'error', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}', '-r', str(FPS), '-i', '-',
-                             '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '20', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', a.out], stdin=subprocess.PIPE)
+                             '-c:v', 'libx264', '-preset', 'veryfast', '-crf', '27', '-maxrate', '600k', '-bufsize', '1200k', '-pix_fmt', 'yuv420p', '-movflags', '+faststart', a.out], stdin=subprocess.PIPE)
     ymax_s = None
     for fr in range(anim + hold):
         t = min(1.0, fr / anim)

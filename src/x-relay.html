@@ -17,6 +17,13 @@
     s.textContent = 'sent'; setTimeout(() => window.close(), 500); return;
   }
   const t = ORIG[q.get('to')]; if (!t) { s.textContent = 'nothing to do'; return; }
+  // Same-tab hand-off (the built-in browser opens popups in the same tab): carry the file in the URL fragment
+  // (never sent to a server; Chrome allows ~2 MB URLs). The composer tab reads location.hash right after load.
+  if (q.get('hash') === '1') {
+    const b64 = await new Promise(r => { const fr = new FileReader(); fr.onload = () => r(fr.result.split(',')[1]); fr.readAsDataURL(new Blob([buf])) });
+    if (b64.length > 1.9e6) { s.textContent = 'file too big for hash hand-off'; return; }
+    location.href = t[1] + '#wisf=' + encodeURIComponent(p.split('/').pop()) + ':' + b64; return;
+  }
   s.textContent = 'ready: ' + p + ' (' + Math.round(buf.byteLength / 1024) + ' KB)';
   const b = document.getElementById('go'); b.hidden = false;
   let acked = false; window.addEventListener('message', e => { if (e.origin === t[0] && e.data && e.data.wisAck) { acked = true; s.textContent = 'delivered ✓' } });
