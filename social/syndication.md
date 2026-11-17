@@ -11,6 +11,15 @@ Daily drafts land in `social/syndication/YYYY-MM-DD.md` (scheduled task "WhatIfS
 5. **No advice, no hype.** Same as the site: real numbers, "past results, not a forecast", "not investment advice".
 6. **Transparency.** The account is clearly WhatIfStack (or the owner saying "I run whatifstack.com"). Never pose as a random user praising the site.
 
+## How to post to Instagram / Threads / Bluesky / Facebook (tested 2026-11-17, built-in browser, video)
+- Hand-off: navigate to `https://whatifstack.com/x-relay.html?vid=/assets/video/<slug>.mp4&to=<ig|th|bs|fb>&hash=1`; first javascript_tool call decodes `location.hash` into `window.__wisFile` (File video/mp4), clears the hash, defines `window.__setF(input)` (DataTransfer → `.files` + `change`) and patches `HTMLInputElement.prototype.click` for file inputs. (The tool sometimes reports "page navigated" — just re-run it on the platform page.)
+- Typing: `execCommand('insertText')` does NOT work in these editors. Focus the editor with JS (`ed.focus()`, caret to end via Range) and then use computer `type` + `key Enter` line by line. Never press Escape in a composer (FB asks "save as draft?" — close that prompt with its `[aria-label=Закрыть]`, not "Удалить черновик").
+- Screenshots often time out (pane hidden) — work with javascript_tool / find refs.
+- **Instagram** (UI in Ukrainian): click the `svg[aria-label="Новий допис"]`'s parent link → dialog; `__setF(dialog input[type=file])`; click "OK" on the Reels notice; crop button `svg[aria-label="Вибрати тип обтинання"]` → "Оригінал" (keeps 4:5); "Далі" ×2; click caption textbox ref "Додайте підпис…" and type; click "Поширити"; wait for "Відео Reels опубліковано". URL: open https://www.instagram.com/whatifstack/ and read the first `a[href*="/reel/"]`.
+- **Threads**: click `[role=button][aria-label^="Порожнє текстове"]` → dialog; `__setF(dialog input[type=file])` (video preview appears); focus dialog `[contenteditable=true]` via JS (clicking the inline box behind the dialog closes it) and type; click the dialog's "Опублікувати" via a `find` ref (JS `.click()` didn't fire). URL from https://www.threads.com/@whatifstack (`a[href*="/post/"]`).
+- **Bluesky**: click `[aria-label="Новий пост"]`; click `[aria-label="Add media to post"]` (or `__setF` on the single input[type=file]); wait until "Обробка відео..." disappears; focus editor via JS and type; click `[aria-label="Publish post"]`. URL: `fetch('https://public.api.bsky.app/xrpc/app.bsky.feed.getAuthorFeed?actor=whatifstack.bsky.social&limit=5')`.
+- **Facebook** (UI in Russian, audience already "Доступно всем"): click the `[role=button]` "Фото/видео" on the home feed — the patched click attaches the video automatically; focus the dialog's `[contenteditable=true]` and type; click `[role=button]` "Опубликовать". A video becomes a Reel; it shows on the profile after ~30 s — read `a[href*="/reel/"]` there.
+
 ## Platforms (account status: owner creates the account once, as WhatIfStack)
 
 | Platform | What we post | How | Account |
