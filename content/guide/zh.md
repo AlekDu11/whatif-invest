@@ -68,9 +68,9 @@ WhatIfStack 首先回答一个问题：**如果我一直定期投入固定金额
 
 [交易所]({lang}/exchanges/)页面列出了我们合作的交易所和钱包。部分链接是合作伙伴链接：如果你注册，我们可能会获得佣金，你不需要多付任何费用。这绝不会影响我们的数据或排名。
 
-## AI assistant
+## AI 助手
 
-The **Ask AI** button in the bottom-right corner opens a chat. Ask anything about the asset you are looking at, DCA, exchanges or how the site works — the assistant sees the numbers on the current page and answers in your language. It explains and calculates but never tells you what to buy. Answers are AI-generated and can contain mistakes; up to 20 questions per day.
+右下角的 **问 AI** 按钮会打开聊天窗口。可以询问当前页面的资产、定投、交易所或网站用法——助手能看到当前页面的数据，并用你的语言回答。它会解释和计算，但从不告诉你该买什么。回答由 AI 生成，可能有误；每天最多 20 个问题。
 
 ## 数据从哪里来
 

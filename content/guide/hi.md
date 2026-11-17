@@ -68,9 +68,9 @@ WhatIfStack सबसे पहले एक सवाल का जवाब �
 
 [एक्सचेंज]({lang}/exchanges/) पेज पर वे एक्सचेंज और वॉलेट हैं जिनके साथ हम काम करते हैं। कुछ लिंक पार्टनर लिंक हैं: अगर आप साइन अप करते हैं तो हमें कमीशन मिल सकता है, आपको कोई अतिरिक्त खर्च नहीं। इससे हमारे डेटा या रैंकिंग पर कभी असर नहीं पड़ता।
 
-## AI assistant
+## AI सहायक
 
-The **Ask AI** button in the bottom-right corner opens a chat. Ask anything about the asset you are looking at, DCA, exchanges or how the site works — the assistant sees the numbers on the current page and answers in your language. It explains and calculates but never tells you what to buy. Answers are AI-generated and can contain mistakes; up to 20 questions per day.
+नीचे दाईं ओर **AI से पूछें** बटन चैट खोलता है। पेज पर दिख रहे एसेट, DCA, एक्सचेंज या साइट कैसे काम करती है — कुछ भी पूछें। सहायक मौजूदा पेज के आँकड़े देखता है और आपकी भाषा में जवाब देता है। वह समझाता और गणना करता है, लेकिन कभी नहीं बताता कि क्या खरीदें। जवाब AI बनाता है और उनमें गलती हो सकती है; दिन में अधिकतम 20 सवाल।
 
 ## आँकड़े कहाँ से आते हैं
 

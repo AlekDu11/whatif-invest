@@ -69,9 +69,9 @@ Touche l'☆ à côté de n'importe quel actif pour l'ajouter à [ta liste]({lan
 
 La page [Plateformes]({lang}/exchanges/) liste les plateformes d'échange et les portefeuilles avec lesquels nous travaillons. Certains liens sont des liens partenaires : nous pouvons toucher une commission si tu t'inscris, sans aucun surcoût pour toi. Cela ne change jamais nos données ni nos classements.
 
-## AI assistant
+## Assistant IA
 
-The **Ask AI** button in the bottom-right corner opens a chat. Ask anything about the asset you are looking at, DCA, exchanges or how the site works — the assistant sees the numbers on the current page and answers in your language. It explains and calculates but never tells you what to buy. Answers are AI-generated and can contain mistakes; up to 20 questions per day.
+Le bouton **Demander à l'IA** en bas à droite ouvre un chat. Pose tes questions sur l'actif affiché, le DCA, les plateformes ou le fonctionnement du site : l'assistant voit les chiffres de la page et répond dans ta langue. Il explique et calcule, mais ne te dit jamais quoi acheter. Les réponses sont générées par une IA et peuvent contenir des erreurs ; jusqu'à 20 questions par jour.
 
 ## D'où viennent les chiffres
 

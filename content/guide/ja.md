@@ -68,9 +68,9 @@ WhatIfStackがまず答えるのは、ひとつの問いです。**「毎回同�
 
 [取引所]({lang}/exchanges/)のページでは、提携している取引所とウォレットを紹介しています。一部のリンクはパートナーリンクで、登録すると当サイトが手数料を受け取ることがありますが、あなたの負担が増えることはありません。データやランキングに影響することは一切ありません。
 
-## AI assistant
+## AIアシスタント
 
-The **Ask AI** button in the bottom-right corner opens a chat. Ask anything about the asset you are looking at, DCA, exchanges or how the site works — the assistant sees the numbers on the current page and answers in your language. It explains and calculates but never tells you what to buy. Answers are AI-generated and can contain mistakes; up to 20 questions per day.
+右下の **AIに聞く** ボタンでチャットが開きます。表示中の銘柄、積立投資、取引所、サイトの使い方など何でも質問できます。アシスタントは表示中のページの数値を参照し、あなたの言語で答えます。説明や計算はしますが、何を買うべきかは決して言いません。回答はAIが生成するため誤りを含む場合があります。質問は1日20件まで。
 
 ## 数字の出典
 

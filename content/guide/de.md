@@ -69,9 +69,9 @@ Tippe auf den ☆ neben einem Wert, um ihn auf [deine Merkliste]({lang}/me/) zu 
 
 Unter [Börsen]({lang}/exchanges/) findest du die Börsen und Wallets, mit denen wir zusammenarbeiten. Manche Links sind Partnerlinks: Wir bekommen eventuell eine Provision, wenn du dich anmeldest – dich kostet das nichts extra. An unseren Daten und Rankings ändert das nie etwas.
 
-## AI assistant
+## KI-Assistent
 
-The **Ask AI** button in the bottom-right corner opens a chat. Ask anything about the asset you are looking at, DCA, exchanges or how the site works — the assistant sees the numbers on the current page and answers in your language. It explains and calculates but never tells you what to buy. Answers are AI-generated and can contain mistakes; up to 20 questions per day.
+Der Button **KI fragen** unten rechts öffnet einen Chat. Frag zum Asset auf der Seite, zum Sparplan, zu Börsen oder dazu, wie die Seite funktioniert – der Assistent sieht die Zahlen der aktuellen Seite und antwortet in deiner Sprache. Er erklärt und rechnet, sagt dir aber nie, was du kaufen sollst. Antworten stammen von einer KI und können Fehler enthalten; bis zu 20 Fragen pro Tag.
 
 ## Woher die Zahlen kommen
 

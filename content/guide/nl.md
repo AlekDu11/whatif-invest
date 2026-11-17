@@ -69,9 +69,9 @@ Tik op de ☆ naast een asset om die aan [je volglijst]({lang}/me/) toe te voege
 
 [Exchanges]({lang}/exchanges/) toont de beurzen en wallets waarmee we samenwerken. Sommige links zijn partnerlinks: we kunnen een vergoeding krijgen als je je aanmeldt, zonder extra kosten voor jou. Dat verandert nooit onze data of ranglijsten.
 
-## AI assistant
+## AI-assistent
 
-The **Ask AI** button in the bottom-right corner opens a chat. Ask anything about the asset you are looking at, DCA, exchanges or how the site works — the assistant sees the numbers on the current page and answers in your language. It explains and calculates but never tells you what to buy. Answers are AI-generated and can contain mistakes; up to 20 questions per day.
+De knop **Vraag het AI** rechtsonder opent een chat. Vraag naar de asset op de pagina, DCA, exchanges of hoe de site werkt — de assistent ziet de cijfers van de huidige pagina en antwoordt in jouw taal. Hij legt uit en rekent, maar zegt nooit wat je moet kopen. Antwoorden komen van AI en kunnen fouten bevatten; tot 20 vragen per dag.
 
 ## Waar de cijfers vandaan komen
 

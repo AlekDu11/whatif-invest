@@ -69,9 +69,9 @@ Ketuk ☆ di samping aset mana pun untuk menambahkannya ke [watchlist-mu]({lang}
 
 [Exchange]({lang}/exchanges/) menampilkan exchange dan dompet yang bekerja sama dengan kami. Sebagian tautan adalah tautan mitra: kami bisa mendapat komisi jika kamu mendaftar, tanpa biaya tambahan untukmu. Ini tidak pernah mengubah data atau peringkat kami.
 
-## AI assistant
+## Asisten AI
 
-The **Ask AI** button in the bottom-right corner opens a chat. Ask anything about the asset you are looking at, DCA, exchanges or how the site works — the assistant sees the numbers on the current page and answers in your language. It explains and calculates but never tells you what to buy. Answers are AI-generated and can contain mistakes; up to 20 questions per day.
+Tombol **Tanya AI** di kanan bawah membuka obrolan. Tanyakan tentang aset di halaman, DCA, exchange, atau cara kerja situs — asisten melihat angka di halaman ini dan menjawab dalam bahasamu. Ia menjelaskan dan menghitung, tetapi tidak pernah menyuruhmu membeli apa pun. Jawaban dibuat AI dan bisa keliru; maksimal 20 pertanyaan per hari.
 
 ## Dari mana angkanya
 

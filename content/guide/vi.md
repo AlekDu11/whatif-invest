@@ -69,9 +69,9 @@ Chạm ☆ cạnh bất kỳ tài sản nào để thêm vào [danh sách theo d
 
 [Sàn giao dịch]({lang}/exchanges/) liệt kê các sàn và ví chúng tôi hợp tác. Một số liên kết là liên kết đối tác: chúng tôi có thể nhận hoa hồng nếu bạn đăng ký, bạn không mất thêm chi phí. Điều này không bao giờ thay đổi dữ liệu hay xếp hạng của chúng tôi.
 
-## AI assistant
+## Trợ lý AI
 
-The **Ask AI** button in the bottom-right corner opens a chat. Ask anything about the asset you are looking at, DCA, exchanges or how the site works — the assistant sees the numbers on the current page and answers in your language. It explains and calculates but never tells you what to buy. Answers are AI-generated and can contain mistakes; up to 20 questions per day.
+Nút **Hỏi AI** ở góc dưới bên phải mở khung trò chuyện. Hãy hỏi về tài sản trên trang, DCA, sàn giao dịch hoặc cách dùng trang — trợ lý thấy số liệu của trang hiện tại và trả lời bằng ngôn ngữ của bạn. Trợ lý giải thích và tính toán nhưng không bao giờ bảo bạn nên mua gì. Câu trả lời do AI tạo và có thể sai; tối đa 20 câu hỏi mỗi ngày.
 
 ## Số liệu từ đâu
 

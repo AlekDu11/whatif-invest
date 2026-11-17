@@ -69,9 +69,9 @@ Herhangi bir varlığın yanındaki ☆'a dokunarak onu [izleme listene]({lang}/
 
 [Borsalar]({lang}/exchanges/) birlikte çalıştığımız borsaları ve cüzdanları listeler. Bazı bağlantılar ortaklık bağlantısıdır: kaydolursan komisyon kazanabiliriz, sana ek bir maliyeti yoktur. Bu, verilerimizi veya sıralamalarımızı asla değiştirmez.
 
-## AI assistant
+## AI asistanı
 
-The **Ask AI** button in the bottom-right corner opens a chat. Ask anything about the asset you are looking at, DCA, exchanges or how the site works — the assistant sees the numbers on the current page and answers in your language. It explains and calculates but never tells you what to buy. Answers are AI-generated and can contain mistakes; up to 20 questions per day.
+Sağ alttaki **AI'ya sor** düğmesi bir sohbet açar. Baktığın varlık, DCA, borsalar ya da sitenin nasıl çalıştığı hakkında sor — asistan sayfadaki rakamları görür ve senin dilinde yanıt verir. Açıklar ve hesaplar ama asla ne alman gerektiğini söylemez. Yanıtları yapay zekâ üretir, hata içerebilir; günde en fazla 20 soru.
 
 ## Rakamlar nereden geliyor
 

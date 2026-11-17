@@ -69,9 +69,9 @@ Tocca la ☆ accanto a qualsiasi asset per aggiungerlo alla [tua watchlist]({lan
 
 Nella pagina [Exchange]({lang}/exchanges/) trovi gli exchange e i wallet con cui collaboriamo. Alcuni link sono link partner: potremmo ricevere una commissione se ti registri, senza nessun costo in più per te. Questo non cambia mai i nostri dati né le nostre classifiche.
 
-## AI assistant
+## Assistente IA
 
-The **Ask AI** button in the bottom-right corner opens a chat. Ask anything about the asset you are looking at, DCA, exchanges or how the site works — the assistant sees the numbers on the current page and answers in your language. It explains and calculates but never tells you what to buy. Answers are AI-generated and can contain mistakes; up to 20 questions per day.
+Il pulsante **Chiedi all'IA** in basso a destra apre una chat. Chiedi dell'asset che stai guardando, del PAC, degli exchange o di come funziona il sito: l'assistente vede i numeri della pagina e risponde nella tua lingua. Spiega e calcola, ma non ti dice mai cosa comprare. Le risposte sono generate da un'IA e possono contenere errori; fino a 20 domande al giorno.
 
 ## Da dove vengono i numeri
 

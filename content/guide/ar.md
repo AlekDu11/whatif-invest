@@ -68,9 +68,9 @@ short: شرح بسيط لكل الأدوات
 
 صفحة [المنصات]({lang}/exchanges/) تعرض المنصات والمحافظ التي نتعاون معها. بعض الروابط روابط شراكة: قد نحصل على عمولة إذا سجّلت، من دون أي تكلفة إضافية عليك. ولا يغيّر ذلك أبدًا بياناتنا أو ترتيباتنا.
 
-## AI assistant
+## المساعد الذكي
 
-The **Ask AI** button in the bottom-right corner opens a chat. Ask anything about the asset you are looking at, DCA, exchanges or how the site works — the assistant sees the numbers on the current page and answers in your language. It explains and calculates but never tells you what to buy. Answers are AI-generated and can contain mistakes; up to 20 questions per day.
+يفتح زر **اسأل الذكاء الاصطناعي** في الزاوية السفلية محادثة. اسأل عن الأصل المعروض أو الاستثمار المنتظم أو المنصات أو طريقة عمل الموقع — يرى المساعد أرقام الصفحة الحالية ويجيب بلغتك. يشرح ويحسب لكنه لا يخبرك أبدًا بما تشتريه. الإجابات من إنشاء الذكاء الاصطناعي وقد تحتوي على أخطاء؛ حتى 20 سؤالًا يوميًا.
 
 ## من أين تأتي الأرقام
 

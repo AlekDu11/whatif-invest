@@ -68,9 +68,9 @@ WhatIfStack은 먼저 한 가지 질문에 답합니다. **"정해진 금액을 
 
 [거래소]({lang}/exchanges/) 페이지에서 저희와 협력하는 거래소와 지갑을 소개합니다. 일부 링크는 제휴 링크로, 가입하시면 저희가 수수료를 받을 수 있지만 추가 비용은 없습니다. 이는 데이터나 순위에 절대 영향을 주지 않습니다.
 
-## AI assistant
+## AI 도우미
 
-The **Ask AI** button in the bottom-right corner opens a chat. Ask anything about the asset you are looking at, DCA, exchanges or how the site works — the assistant sees the numbers on the current page and answers in your language. It explains and calculates but never tells you what to buy. Answers are AI-generated and can contain mistakes; up to 20 questions per day.
+오른쪽 아래 **AI에게 묻기** 버튼을 누르면 채팅이 열립니다. 보고 있는 자산, 적립식 투자, 거래소, 사이트 사용법 등을 물어보세요. 도우미는 현재 페이지의 숫자를 보고 사용자의 언어로 답합니다. 설명하고 계산해 주지만 무엇을 사라고 말하지는 않습니다. 답변은 AI가 생성하므로 오류가 있을 수 있으며, 하루 최대 20개 질문까지 가능합니다.
 
 ## 숫자는 어디서 오나요
 

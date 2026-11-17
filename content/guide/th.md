@@ -69,9 +69,9 @@ WhatIfStack ตอบคำถามข้อเดียวก่อนเล�
 
 [กระดานเทรด]({lang}/exchanges/)รวบรวมกระดานเทรดและกระเป๋าเงินที่เราร่วมงานด้วย บางลิงก์เป็นลิงก์พาร์ทเนอร์: เราอาจได้ค่าคอมมิชชันถ้าคุณสมัคร โดยคุณไม่ต้องจ่ายเพิ่ม สิ่งนี้ไม่เคยเปลี่ยนข้อมูลหรืออันดับของเรา
 
-## AI assistant
+## ผู้ช่วย AI
 
-The **Ask AI** button in the bottom-right corner opens a chat. Ask anything about the asset you are looking at, DCA, exchanges or how the site works — the assistant sees the numbers on the current page and answers in your language. It explains and calculates but never tells you what to buy. Answers are AI-generated and can contain mistakes; up to 20 questions per day.
+ปุ่ม **ถาม AI** มุมขวาล่างจะเปิดหน้าแชท ถามเกี่ยวกับสินทรัพย์ในหน้านั้น DCA กระดานเทรด หรือวิธีใช้เว็บได้ ผู้ช่วยเห็นตัวเลขของหน้าปัจจุบันและตอบเป็นภาษาของคุณ ผู้ช่วยอธิบายและคำนวณให้ แต่จะไม่บอกว่าควรซื้ออะไร คำตอบสร้างโดย AI อาจผิดพลาดได้ ถามได้สูงสุด 20 คำถามต่อวัน
 
 ## ตัวเลขมาจากไหน
 

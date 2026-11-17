@@ -69,9 +69,9 @@ Dotknij ☆ obok dowolnego aktywa, żeby dodać je do [obserwowanych]({lang}/me/
 
 Na stronie [Giełdy]({lang}/exchanges/) znajdziesz giełdy i portfele, z którymi współpracujemy. Część linków to linki partnerskie: możemy dostać prowizję, jeśli się zarejestrujesz, a Ciebie nic to nie kosztuje. Nigdy nie wpływa to na nasze dane ani rankingi.
 
-## AI assistant
+## Asystent AI
 
-The **Ask AI** button in the bottom-right corner opens a chat. Ask anything about the asset you are looking at, DCA, exchanges or how the site works — the assistant sees the numbers on the current page and answers in your language. It explains and calculates but never tells you what to buy. Answers are AI-generated and can contain mistakes; up to 20 questions per day.
+Przycisk **Zapytaj AI** w prawym dolnym rogu otwiera czat. Pytaj o aktywo na stronie, DCA, giełdy albo o to, jak działa serwis — asystent widzi liczby z bieżącej strony i odpowiada w Twoim języku. Wyjaśnia i liczy, ale nigdy nie mówi, co kupić. Odpowiedzi generuje AI i mogą zawierać błędy; do 20 pytań dziennie.
 
 ## Skąd są liczby
 
