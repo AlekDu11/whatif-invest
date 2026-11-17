@@ -20,7 +20,7 @@ comparisons that get thousands of views on crypto X. Keep the matchup a real que
 
 ## Queue (take the first unused line; mark it with the date when posted; add new ideas at the end)
 - ✅ 2026-11-17 btc gold spy --since 2016-01 | Bitcoin vs gold vs S&P 500
-- okb bnb cro | exchange tokens since launch
+- ✅ 2026-11-17 okb bnb cro | exchange tokens since launch
 - btc eth sol | the big three L1s
 - nvda amd intc | chip makers
 - aapl msft googl | big tech classics
@@ -48,4 +48,5 @@ comparisons that get thousands of views on crypto X. Keep the matchup a real que
 ## Log
 | date | ids | X URL | Telegram | views |
 |---|---|---|---|---|
-| 2026-11-17 | btc gold spy (since 2016-01) | https://x.com/WhatIfStack/status/2122690567314292871 | msg 1474 | |
+| 2026-11-17 | btc gold spy (since 2016-01) | https://x.com/WhatIfStack/status/2122690567314292871 | msg 1474 | X 3 · TG 9 (2026-11-17) |
+| 2026-11-17 | okb bnb cro (since 2020-02) | https://x.com/WhatIfStack/status/2122729649189044275 | msg 1475 | |
