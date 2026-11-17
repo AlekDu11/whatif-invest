@@ -26,12 +26,13 @@ Formats to rotate and compare: dca-whatif, mover, market-pulse, chart-fact, coun
 
 | when | format | topic | link | url | views | likes | reposts | replies |
 |---|---|---|---|---|---|---|---|---|
-| 2026-11-16 02:58 | dca-whatif | Gold vs S&P 500 vs Bitcoin, $10/day 5y | no | https://x.com/WhatIfStack/status/2122116675558355111 | 23 | 0 | 0 | 0 |
-| 2026-11-16 09:18 | market-pulse | Fear & Greed 10, BTC/ETH weekly drop, gold | no | https://x.com/WhatIfStack/status/2122227869095223565 | 15 | 0 | 0 | 0 |
-| 2026-11-16 12:16 | mover | Kava Lend exploit, KAVA −40% | no | https://x.com/WhatIfStack/status/2122272638718329107 | 17 | 0 | 0 | 0 |
-| 2026-11-16 15:23 | chart-fact | BTC −16.5% in November so far vs best/worst Novembers | no+img | https://x.com/WhatIfStack/status/2122319572535763138 | 14 | 0 | 0 | 0 |
-| 2026-11-16 18:19 | dca-whatif | Palantir vs Nvidia vs Ethereum, $10/day 5y (PLTR +729%) | no+img | https://x.com/WhatIfStack/status/2122363783330894225 | 4 | 0 | 0 | 0 |
-| 2026-11-16 21:17 | mover | Internet Computer +15% in 24h as crypto slides (ICP $2.50, 99.6% below ATH, $10/day 3y $11,120 → $6,370) | no+img | https://x.com/WhatIfStack/status/2122408622227337401 |  |  |  |  |
+| 2026-11-16 02:58 | dca-whatif | Gold vs S&P 500 vs Bitcoin, $10/day 5y | no | https://x.com/WhatIfStack/status/2122116675558355111 | 24 | 0 | 0 | 0 |
+| 2026-11-16 09:18 | market-pulse | Fear & Greed 10, BTC/ETH weekly drop, gold | no | https://x.com/WhatIfStack/status/2122227869095223565 | 16 | 0 | 0 | 0 |
+| 2026-11-16 12:16 | mover | Kava Lend exploit, KAVA −40% | no | https://x.com/WhatIfStack/status/2122272638718329107 | 18 | 0 | 0 | 0 |
+| 2026-11-16 15:23 | chart-fact | BTC −16.5% in November so far vs best/worst Novembers | no+img | https://x.com/WhatIfStack/status/2122319572535763138 | 16 | 0 | 0 | 0 |
+| 2026-11-16 18:19 | dca-whatif | Palantir vs Nvidia vs Ethereum, $10/day 5y (PLTR +729%) | no+img | https://x.com/WhatIfStack/status/2122363783330894225 | 7 | 0 | 0 | 0 |
+| 2026-11-16 21:17 | mover | Internet Computer +15% in 24h as crypto slides (ICP $2.50, 99.6% below ATH, $10/day 3y $11,120 → $6,370) | no+img | https://x.com/WhatIfStack/status/2122408622227337401 | 4 | 0 | 0 | 0 |
+| 2026-11-17 09:27 | dca-whatif | AMD vs Apple vs Tesla, $10/day 5y (AMD +290% → $71,873) | no+img | https://x.com/WhatIfStack/status/2122589805674635428 |  |  |  |  |
 
 Week notes (2026-11-16): first week, 3 posts with stats (dca-whatif 15, mover 6, market-pulse 4 views) — dca-whatif leads but samples are tiny. Keep rotating formats to collect data; market-pulse tested today during the Extreme Fear sell-off.
 Note (2026-11-16 12:16): posting with a $KAVA cashtag (X attached a price card) failed twice with "Your account may not be allowed to perform this action"; the same text without the cashtag went through after a reload. Avoid cashtags for now. Profile/search timelines don't render in the pane — read the post URL from the SearchTimeline network response.
