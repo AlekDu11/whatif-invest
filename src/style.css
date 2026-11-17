@@ -591,3 +591,24 @@ details.emb[open]>summary{margin-bottom:12px}
 .embcode{display:flex;gap:8px;align-items:flex-start}.embcode textarea{flex:1;font:12px/1.4 ui-monospace,Consolas,monospace;padding:8px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--text);resize:vertical}
 @media (max-width:600px){.embcode{flex-direction:column}.embcode textarea{width:100%}}
 .embf div.f{display:flex;flex-direction:column;gap:4px}
+/* investment calculator */
+.icgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px 16px;align-items:end}
+.icgrid div.f{display:flex;flex-direction:column;gap:4px}.icgrid select{width:100%;border:0;background:none;color:var(--text);font:inherit}
+.icopts{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:end;margin:14px 0 4px}.icopts .f{max-width:150px}
+.chk{display:flex;gap:6px;align-items:center;font-size:14px;cursor:pointer}
+.icres{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:16px 0 10px}
+.icres .stat.big{grid-column:span 2}.icres .stat.big .v{font-size:32px}.icres .s{font-size:12px;color:var(--muted)}
+.icchart svg{width:100%;height:auto;display:block}.icchart text{font-size:11px;fill:var(--muted)}.icchart .g{stroke:var(--line);stroke-width:1}
+.icchart .a{fill:var(--line2)}.icchart .b{fill:var(--accent)}
+html[data-theme=dark] .icchart .a{fill:#2a3d35}
+.glg i.a{background:var(--line2)}.glg i.b{background:var(--accent)}
+.ictbl{margin-top:10px}.ictbl summary{cursor:pointer;color:var(--muted);font-size:14px}
+.iccmp{display:flex;flex-direction:column;gap:8px}
+.icrow{display:grid;grid-template-columns:minmax(120px,220px) 1fr auto auto;gap:10px;align-items:center;font-size:14px}
+.icrow .bar{height:12px;background:var(--line2);border-radius:6px;overflow:hidden}.icrow .bar i{display:block;height:100%;background:var(--muted)}
+.icrow.on .bar i{background:var(--accent)}.icrow.on span{font-weight:700}.icrow small{color:var(--muted);min-width:80px;text-align:right}
+.kv{display:flex;justify-content:space-between;gap:10px;padding:8px 0;border-bottom:1px solid var(--line)}
+.v.big{font-size:28px;font-weight:800}
+@media (max-width:600px){.icres .stat.big{grid-column:span 1}.icrow{grid-template-columns:1fr auto}.icrow .bar,.icrow small{display:none}}
+.icgrid div.f:has(#icc),.icgrid div.f:has(#ics){grid-column:span 2}@media (max-width:600px){.icgrid div.f:has(#icc),.icgrid div.f:has(#ics){grid-column:1/-1}}
+@media (max-width:600px){.icres .stat.big{grid-column:1/-1}.icres .stat.big .v{font-size:28px}}

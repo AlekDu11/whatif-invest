@@ -27,6 +27,7 @@ from i18n_pf import PF  # noqa: E402
 from i18n_bp import BP  # noqa: E402
 from i18n_ai import AIC  # noqa: E402
 from i18n_emb import EMB  # noqa: E402
+from i18n_ic import IC  # noqa: E402
 from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB, CH as OWN_CH, CH2 as OWN_CH2  # noqa: E402
 SOCIAL = [('Telegram', 'https://t.me/TradeMaster_insight'), ('X (Twitter)', 'https://x.com/WhatIfStack'), ('Bluesky', 'https://bsky.app/profile/whatifstack.bsky.social'), ('Instagram', 'https://www.instagram.com/whatifstack/'), ('Threads', 'https://www.threads.com/@whatifstack'),
           ('Pinterest', 'https://www.pinterest.com/whatifstack/'), ('Medium', 'https://medium.com/@whatifstack'),
@@ -463,7 +464,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
     ld = ''.join(f'<script type="application/ld+json">{json.dumps(j, ensure_ascii=False)}</script>' for j in jsonld)
     X = S['x']
     blog_l = lang if lang in BLOG_LANGS else 'en'
-    nav = (''.join(f'<a href="{url(lang, k)}" class="{"on" if k == p else ""}">{v}</a>' for k, v in ((None, S['nav_rank']), ('portfolios', BP[lang]['nav'])))
+    nav = (''.join(f'<a href="{url(lang, k)}" class="{"on" if k == p else ""}">{v}</a>' for k, v in ((None, S['nav_rank']), ('portfolios', BP[lang]['nav']), ('compound-interest', IC[lang]['nav'])))
            + f'<details class="dd"><summary class="{"on" if p in TOOLS or (p in CALCS and p not in ("exchanges", "news", "about")) or (p or "").startswith("habits") else ""}">{X["nav_tools"]}</summary><div>'
            + ''.join(f'<a href="{url(lang, k)}">{v}</a>' for k, v in [x for x in tools_menu(lang) if x]) + '</div></details>'
            + f'<a href="{url(lang, "exchanges")}" class="{"on" if p == "exchanges" else ""}">{EX[lang]["nav"]}</a>'
@@ -478,7 +479,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
         (url(lang, 'exchanges'), '₿', EX[lang]['nav'], p == 'exchanges'), (url(blog_l, 'blog'), '✎', NW[lang]['i_nav'], (p or '').startswith('blog'))))
     mnav += f'<button type="button" id="mmore"><span>☰</span>{esc(X["nav_tools"])}</button>'
     msheet = ('<div class="msheet" id="msheet" hidden>' + ''.join(f'<a href="{url(lang, k)}">{esc(v)}</a>' for k, v in
-              [('me', PF[lang]['h1']), ('portfolios', BP[lang]['nav']), ('activities', ACT[lang]['nav']), ('ai', AIS[lang]['h1'].split(':')[0])] + [x for x in tools_menu(lang) if x]) + '</div>')
+              [('me', PF[lang]['h1']), ('portfolios', BP[lang]['nav']), ('compound-interest', IC[lang]['nav']), ('activities', ACT[lang]['nav']), ('ai', AIS[lang]['h1'].split(':')[0])] + [x for x in tools_menu(lang) if x]) + '</div>')
     cfg = dict(cfg, lang=lang, base=BASE, prefix=url(lang).rstrip('/'), full=lang in FULL, topn=TOP_N,
                names={'gold': S['gold'], 'silver': S['silver'], **{k: v[lang] for k, v in CMD_NAMES.items()}})
     return f"""<!DOCTYPE html>
@@ -602,6 +603,60 @@ def widgets_page(lang, ver):
             f'<section class="card section"><div class="embuild" data-cfg="{esc(json.dumps(emb_cfg(lang, "btc") | dict(pickable=1), ensure_ascii=False))}"></div></section>'
             f'<section class="card section"><h2>{esc(e["how"])}</h2><p>{esc(e["help"])}</p><p class="muted">{esc(e["why"])}</p></section>')
     return shell(lang, 'widgets', f'{e["h1"]} | {BRAND}', e['d'], body, {}, ver)
+
+
+def ic_page(lang, ver):
+    """Full investment calculator on /compound-interest/ (ported from invest.mytimebox.app, 20 languages)."""
+    t, S, TTl = IC[lang], TR[lang], TT[lang]
+    code, rate = hccy(lang)
+    sym = CCY_SYM.get(code, code)
+    c = CPI_LANG.get(lang, 'USA')
+    cpi = CPI['c'].get(c) or CPI['c'].get('USA') or {}
+    infl = round(cpi[max(cpi)], 1) if cpi else 3.0
+    insts = []
+    if lang == 'uk':
+        insts += [('ovdp', t['bond'], 15.0, 1), ('dep', t['dep'], 13.7, 0)]
+    else:
+        insts += [('dep', t['dep'], 4.0, 0), ('bond', t['bond'], 4.0, 0)]
+    for aid in ('spy', 'qqq', 'gold'):
+        r = cagr(aid)
+        if r:
+            insts.append((aid, nm(A[aid], lang), round(r * 100, 1), 0))
+    insts += [('cash', t['cashi'], 0.0, 0), ('custom', t['custom'], 10.0, 0)]
+    sel = 'ovdp' if lang == 'uk' else 'spy'
+    p0, pm, yrs = nice(1000 * rate), nice(100 * rate), 10
+    tax = 23 if lang == 'uk' else 0
+    num = lambda i, lab, v, extra='': f'<label class="f">{esc(lab)}<div class="inp"><input id="{i}" type="number" min="0" step="any" value="{int(v) if float(v).is_integer() else v}"{extra}>{f"<span class=muted>{esc(sym)}</span>" if i in ("icp", "icm", "icx", "icg") else ""}</div></label>'
+    seg = lambda i, opts, v: f'<div class="seg" id="{i}">' + ''.join(f'<button type="button" data-v="{k}"{" class=on" if k == v else ""}>{esc(l)}</button>' for k, l in opts) + '</div>'
+    sel_html = '<select id="ici">' + ''.join(f'<option value="{k}" data-r="{r}" data-tf="{tf}"{" selected" if k == sel else ""}>{esc(l)} · {r:g}%</option>' for k, l, r, tf in insts) + '</select>'
+    form = (f'<div class="icgrid">{num("icp", t["init"], p0)}{num("icm", t["month"], pm)}{num("icy", t["years"], yrs, " max=60 step=1")}'
+            f'<label class="f">{esc(t["inst"])}<div class="inp">{sel_html}</div></label>{num("icr", t["rate"], dict((k, r) for k, _, r, _ in insts)[sel], " step=0.1")}'
+            f'<div class="f">{esc(t["scen"])}{seg("ics", [("o", t["opt"]), ("r", t["real"]), ("p", t["pes"])], "r")}</div>'
+            f'<div class="f">{esc(t["comp"])}{seg("icc", [("m", t["cm"]), ("q", t["cq"]), ("h", t["ch"]), ("y", t["cy"])], "m" if lang != "uk" else "y")}</div></div>'
+            f'<div class="icopts"><label class="chk"><input type="checkbox" id="icre" checked> {esc(t["reinv"])}</label>'
+            f'<label class="chk"><input type="checkbox" id="icin" checked> {esc(t["infl"])}</label>{num("icir", t["infl_r"], infl, " step=0.1")}'
+            f'<label class="chk"><input type="checkbox" id="ictx"{" checked" if tax else ""}> {esc(t["tax"])}</label>{num("ictr", t["tax_r"], tax or 15, " step=0.5")}</div>')
+    res = (f'<div class="icres"><div class="card stat big"><div class="k">{esc(t["final"])}</div><div class="v good" id="icv">—</div><div class="s" id="icvs"></div></div>'
+           + ''.join(f'<div class="card stat"><div class="k">{esc(t[k])}</div><div class="v" id="ic_{k}">—</div></div>' for k in ('contrib', 'interest', 'taxes', 'realv'))
+           + f'<div class="card stat"><div class="k">{esc(t["cash"])}</div><div class="v bad" id="ic_cash">—</div><div class="s" id="ic_cashs"></div></div></div>')
+    body = (f'<h1>{esc(t["h1"])}</h1><p class="lead">{esc(t["d"])}</p>'
+            f'<div class="card hcalc section" id="iccalc">{form}{res}<button type="button" class="btn ghost" id="icsh">{esc(t["share"])}</button></div>'
+            f'<section class="card section"><h2 id="icch">{esc(t["tbl_h"])}</h2><div id="icchart" class="icchart"></div>'
+            f'<div class="glg"><span><i class="a"></i>{esc(t["contrib"])}</span><span><i class="b"></i>{esc(t["interest"])}</span></div>'
+            f'<details class="ictbl"><summary>{esc(t["year"])} · {esc(t["contrib"])} · {esc(t["interest"])} · {esc(t["total"])}</summary><div class="tw"><table class="tbl" id="ictable"></table></div></details></section>'
+            f'<section class="card section"><h2 id="iccmph"></h2><div id="iccmp" class="iccmp"></div></section>'
+            f'<div class="cols2 section"><section class="card"><h2>{esc(t["rev_h"])}</h2>{num("icg", t["rev_goal"], nice(1e5 * rate))}'
+            f'<p class="muted">{esc(t["rev_need"])}</p><div class="v good big" id="icgv">—</div></section>'
+            f'<section class="card"><h2>{esc(t["fire_h"])}</h2>{num("icx", t["fire_exp"], nice(1500 * rate))}'
+            f'<div class="kv"><span>{esc(t["fire_need"])}</span><b id="icfn">—</b></div><div class="kv"><span>{esc(t["fire_yrs"])}</span><b id="icfy">—</b></div>'
+            f'<div class="kv"><span>{esc(t["fire_inc"])}</span><b id="icfi">—</b></div></section></div>'
+            f'<p class="note">{esc(t["note"])}</p>'
+            f'<section class="section"><div class="hgrid"><a class="card hcard" href="{url(lang, "millionaire")}"><span>🎯</span><b>{esc(TTl["g_h1"])}</b></a>'
+            f'<a class="card hcard" href="{url(lang, "inflation")}"><span>📉</span><b>{esc(TTl["i_nav"])}</b></a><a class="card hcard" href="{url(lang, "compare")}"><span>⇅</span><b>{esc(S["cmp_h1"])}</b></a></div></section>')
+    cfg = dict(ic=dict(code=code, yr=TTl['yr'], t={k: t[k] for k in ('cmp_h', 'cash_t', 'fire_never', 'year', 'contrib', 'interest', 'total', 'taxes')}, comp_uk=lang == 'uk'))
+    faq = {"@context": "https://schema.org", "@type": "WebApplication", "name": t['h1'], "applicationCategory": "FinanceApplication", "operatingSystem": "Any",
+           "offers": {"@type": "Offer", "price": "0"}, "description": t['d']}
+    return shell(lang, 'compound-interest', t['title'] + ' | ' + BRAND, t['d'], body, cfg, ver, [faq])
 
 
 def calc_block(lang):
@@ -1186,7 +1241,7 @@ def habit_page(lang, sc, ver):
 
 def tools_menu(lang):
     t = TT[lang]
-    items = [('compare', S['nav_cmp']) if (S := TR[lang]) else None, ('habits', HB[lang]['nav']), ('millionaire', t['g_nav']), ('compound-interest', t['c_nav'])]
+    items = [('compare', S['nav_cmp']) if (S := TR[lang]) else None, ('habits', HB[lang]['nav']), ('millionaire', t['g_nav'])]
     if CPI['c']:
         items.append(('inflation', t['i_nav']))
     items += [('world-assets', WA[lang]['nav']), ('converter', HCONV[lang]), ('memes', MEM[lang]['nav']), ('ath', t['a_nav']), ('bitcoin-halving', t['v_nav']), ('widgets', EMB[lang]['nav'])]
@@ -2294,7 +2349,7 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
             write(f'{pre}{slug}/index.html', tool(lang, slug, ver))
         extra_pages = ['habits'] + ['habits/' + HSLUG[k] for k in HSCEN] + [c for c in CALCS if has_page(lang, c)]
         write(pre + 'millionaire/index.html', calc_page(lang, 'millionaire', ver))
-        write(pre + 'compound-interest/index.html', calc_page(lang, 'compound-interest', ver))
+        write(pre + 'compound-interest/index.html', ic_page(lang, ver))
         write(pre + 'widgets/index.html', widgets_page(lang, ver))
         if CPI['c']:
             write(pre + 'inflation/index.html', inflation_page(lang, ver))
