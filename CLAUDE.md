@@ -55,6 +55,7 @@ Free distribution: social/syndication.md (platform rules, communities per langua
 Partnerships: /partners/ page (en, uk) with partners@whatifstack.com; partner program list partners/programs.md (refresh only when the owner asks).
 Offers: offer_card() in build.py (Telegram Wallet bonus, strings in scripts/i18n_offer.py) on home + crypto asset pages; clicks via /go/tgwallet?from=<placement>.
 Crypto exchange rankings: data/exchanges.json via .github/workflows/exchanges.yml (CoinGecko, daily 03:11 UTC) → /crypto-exchanges/ (spot, by trust rank), /crypto-exchanges/derivatives/ (open interest), /crypto-exchanges/<id>/ (en+uk: 30-day volume, top pairs, partner CTA via XC_PARTNER).
+Ukraine pages (uk, ru; scripts/i18n_ua.py): /ovdp/brokers/ ranking + /ovdp/brokers/<id>/ (OB list: fee, currencies, issues, score — refresh facts when tariffs change), /buy-stocks-ukraine/ guide (Freedom24 CTA via /go/freedom24). Portfolio /me/#bonds: OVDP holdings (localStorage wi_bonds, CSV import name;broker;currency;amount;rate;bought;matures, uk/ru/en).
 News aggregator: api/news.js (Vercel function, RSS headlines only, links to originals).
 
 ## Backlog agreed with the owner (2026-11-17)

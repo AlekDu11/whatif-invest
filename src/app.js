@@ -540,12 +540,80 @@ new MutationObserver(()=>{ clearTimeout(window._wiStar); window._wiStar=setTimeo
     $$('#hold [data-tx]').forEach(b=>b.onclick=()=>{ const h=HL.get(); h.splice(+b.dataset.tx,1); HL.set(h); drawHold() });
     $$('#hold [data-hdel]').forEach(b=>b.onclick=()=>{ HL.set(HL.get().filter(x=>x.id!==b.dataset.hdel)); drawHold() }) }
   // backup / restore (data lives only in this browser)
-  $('#pfexp')&&($('#pfexp').onclick=()=>{ const data={v:1,hold:HL.get(),plans:PL.get(),watch:WL.get()}; const a=document.createElement('a');
+  $('#pfexp')&&($('#pfexp').onclick=()=>{ const data={v:1,hold:HL.get(),plans:PL.get(),watch:WL.get(),bonds:(()=>{ try{ return JSON.parse(localStorage.getItem('wi_bonds')||'[]') }catch(e){ return [] } })()}; const a=document.createElement('a');
     a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,1)],{type:'application/json'})); a.download='whatifstack-portfolio.json'; a.click() });
   $('#pfimp')&&($('#pfimp').onchange=e=>{ const f=e.target.files[0]; if(!f) return; f.text().then(s=>{ const d=JSON.parse(s);
-    if(Array.isArray(d.hold)) HL.set(d.hold); if(Array.isArray(d.plans)) PL.set(d.plans); if(Array.isArray(d.watch)) WL.set(d.watch); drawHold(); drawPlans(); drawWatch() }).catch(()=>{}) });
+    if(Array.isArray(d.hold)) HL.set(d.hold); if(Array.isArray(d.plans)) PL.set(d.plans); if(Array.isArray(d.watch)) WL.set(d.watch); if(Array.isArray(d.bonds)){ try{ localStorage.setItem('wi_bonds',JSON.stringify(d.bonds)) }catch(e){} document.dispatchEvent(new Event('wi:bonds')) } drawHold(); drawPlans(); drawWatch() }).catch(()=>{}) });
   let ht; document.addEventListener('wi:tick',()=>{ clearTimeout(ht); ht=setTimeout(drawHold,1500) });
   document.addEventListener('wi:watch',drawWatch); drawWatch(); drawPlans(); drawHold();
+})();
+/* ---------- my OVDP (Ukrainian government bonds) in the portfolio ---------- */
+(function(){
+  const M=PAGE.me; if(!M||!M.ob||!$('#bonds')) return; const t=M.ob.t, BR=M.ob.b;
+  const BS={ get(){ try{ return JSON.parse(localStorage.getItem('wi_bonds')||'[]') }catch(e){ return [] } }, set(v){ try{ localStorage.setItem('wi_bonds',JSON.stringify(v)) }catch(e){} } };
+  const SYM={UAH:'₴',USD:'$',EUR:'€'}, DAY=864e5;
+  const nf=(v,c)=>{ try{ return new Intl.NumberFormat(T.intl||'uk',{style:'currency',currency:c,maximumFractionDigits:Math.abs(v)>=1000?0:2}).format(v) }catch(e){ return Math.round(v)+' '+c } };
+  const toLocal=(v,c)=>{ const fx=WI.fx||{}; const usd=c==='USD'?v:(fx[c]?v/fx[c]:null); return usd==null?null:usd*M.rate };
+  const today=()=>{ const d=new Date(); d.setHours(0,0,0,0); return d };
+  const pd=s=>{ if(!s) return null; s=String(s).trim(); let m=/^(\d{4})-(\d{1,2})-(\d{1,2})/.exec(s); if(m) return new Date(+m[1],m[2]-1,+m[3]);
+    m=/^(\d{1,2})[./](\d{1,2})[./](\d{2,4})$/.exec(s); if(m){ const y=+m[3]<100?2000+(+m[3]):+m[3]; return new Date(y,m[2]-1,+m[1]) } return null };
+  const iso=d=>d?`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`:'';
+  const loc=s=>{ const d=pd(s); return d?d.toLocaleDateString(T.intl||'uk',{day:'numeric',month:'short',year:'numeric'}):'' };
+  const calc=b=>{ const s=pd(b.s), e=pd(b.e), now=today(); const term=s&&e?Math.max(1,(e-s)/DAY):365;
+    const el=s?Math.min(term,Math.max(0,(now-s)/DAY)):0, inc=b.a*b.r/100*term/365;
+    return {term,el,acc:b.a*b.r/100*el/365,inc,fin:b.a+inc,left:e?Math.ceil((e-now)/DAY):null,done:e?now>=e:false,p:el/term} };
+  const bname=b=>b.b&&BR[b.b]?BR[b.b]:(b.bt||'');
+  let edit=-1;
+  function draw(){
+    const L=BS.get(), box=$('#blist'), tot=$('#btot');
+    if(!L.length){ box.innerHTML=`<p class="muted">${esc(t.empty)}</p>`; tot.innerHTML=''; return }
+    const rows=L.map((b,k)=>Object.assign({k,b},calc(b))).sort((x,y)=>(x.done-y.done)||((pd(x.b.e)||0)-(pd(y.b.e)||0)));
+    const by={}; let loc_=0, locAcc=0, ok=true;
+    rows.forEach(r=>{ const c=r.b.c||'UAH', g=by[c]||(by[c]={a:0,acc:0,inc:0}); if(!r.done){ g.a+=r.b.a; g.acc+=r.acc; g.inc+=r.inc }
+      if(!r.done){ const v=toLocal(r.b.a+r.acc,c), w=toLocal(r.acc,c); if(v==null) ok=false; else { loc_+=v; locAcc+=w } } });
+    const nx=rows.find(r=>!r.done&&r.left!=null);
+    tot.innerHTML=`<div class="card"><div class="k">${esc(t.total)}</div><div class="v">${Object.entries(by).filter(([c,g])=>g.a).map(([c,g])=>esc(nf(g.a+g.acc,c))).join('<br>')||'—'}</div>`
+      +(ok&&Object.values(by).filter(g=>g.a).length>1?`<div class="s">≈ ${esc(nf(loc_,M.code))} ${esc(t.in_ccy.replace('{c}',M.code))}</div>`:'')+`</div>`
+      +`<div class="card"><div class="k">${esc(t.earned)}</div><div class="v good">${Object.entries(by).filter(([c,g])=>g.a).map(([c,g])=>'+'+esc(nf(g.acc,c))).join('<br>')||'—'}</div><div class="s">${esc(t.income)}: ${Object.entries(by).filter(([c,g])=>g.a).map(([c,g])=>'+'+esc(nf(g.inc,c))).join(' · ')}</div></div>`
+      +(nx?`<div class="card"><div class="k">${esc(t.next)}</div><div class="v">${esc(loc(nx.b.e))}</div><div class="s">${esc(nx.b.n||bname(nx.b))} · ${esc(nf(nx.fin,nx.b.c))} · ${nx.left} ${esc(t.days)}</div></div>`:'');
+    box.innerHTML=`<div class="tw"><table class="mt bdt"><thead><tr><th class="l">${esc(t.name)}</th><th>${esc(t.amt)}</th><th>%</th><th class="hide-sm">${esc(t.start)} → ${esc(t.end)}</th><th>${esc(t.earned)}</th><th class="hide-sm">${esc(t.at_end)}</th><th></th></tr></thead><tbody>`+
+      rows.map(r=>{ const b=r.b, c=b.c||'UAH';
+        return `<tr class="${r.done?'bdone':''}"><td class="l"><b>${esc(b.n||'ОВДП')}</b><br><small class="muted">${esc(bname(b))}${b.q?' · '+esc(t.qty)+' '+b.q:''}</small></td>
+        <td class="num">${esc(nf(b.a,c))}</td><td class="num">${(+b.r).toFixed(2).replace(/\.?0+$/,'')}%</td>
+        <td class="hide-sm"><div class="bper"><span>${esc(loc(b.s))}</span><span>${esc(loc(b.e))}</span></div><div class="bbar"><i style="width:${(r.p*100).toFixed(1)}%"></i></div><small class="muted">${r.done?esc(t.matured):r.left!=null?esc(t.left)+' '+r.left+' '+esc(t.days):''}</small></td>
+        <td class="num good">+${esc(nf(r.acc,c))}</td><td class="num hide-sm"><b>${esc(nf(r.fin,c))}</b><br><small class="good">+${esc(nf(r.inc,c))}</small></td>
+        <td class="pfact"><button class="pb" data-be="${r.k}" title="${esc(t.edit)}">✎</button><button class="pb" data-bd="${r.k}" title="${esc(t.del)}">✕</button></td></tr>` }).join('')+'</tbody></table></div>';
+    $$('#blist [data-bd]').forEach(x=>x.onclick=()=>{ const v=BS.get(); v.splice(+x.dataset.bd,1); BS.set(v); if(edit===+x.dataset.bd) reset(); draw() });
+    $$('#blist [data-be]').forEach(x=>x.onclick=()=>{ const k=+x.dataset.be, b=BS.get()[k]; if(!b) return; edit=k;
+      $('#bn').value=b.n||''; $('#bb').value=b.b&&BR[b.b]?b.b:''; $('#bc').value=b.c||'UAH'; $('#ba').value=b.a; $('#br').value=b.r; $('#bs').value=b.s||''; $('#be').value=b.e||''; sym();
+      $('#bsave').textContent=t.save; $('#bform').scrollIntoView({behavior:'smooth',block:'center'}) });
+  }
+  const sym=()=>{ $('#bcs').textContent=SYM[$('#bc').value]||'' };
+  const reset=()=>{ edit=-1; $('#bsave').textContent=t.add; $('#bn').value=''; $('#be').value='' };
+  $('#bc').onchange=sym;
+  $('#bsave').onclick=()=>{ const a=+$('#ba').value, r=+$('#br').value, s_=$('#bs').value, e_=$('#be').value;
+    if(!(a>0)){ $('#ba').focus(); return } if(!(r>=0)){ $('#br').focus(); return } if(!e_||(s_&&e_<=s_)){ $('#be').focus(); $('#be').classList.add('bad'); return } $('#be').classList.remove('bad');
+    const b={n:$('#bn').value.trim(),b:$('#bb').value,c:$('#bc').value,a,r,s:s_,e:e_}; const v=BS.get(); if(edit>=0&&v[edit]) v[edit]=Object.assign(v[edit],b); else v.push(b); BS.set(v); reset(); draw() };
+  // CSV import: name; broker; currency; amount; rate; bought; matures
+  const num=x=>{ x=String(x||'').replace(/[\s %₴$€]/g,''); if(/,\d{1,2}$/.test(x)&&!/\.\d/.test(x)) x=x.replace(/\./g,'').replace(',','.'); else x=x.replace(/,/g,''); return parseFloat(x) };
+  const brk=x=>{ x=String(x||'').toLowerCase().trim(); if(!x) return ''; if(BR[x]) return x; const hit=Object.entries(BR).find(([id,n])=>n.toLowerCase().includes(x)||x.includes(id)||x.includes(n.toLowerCase().split(' ')[0])); return hit?hit[0]:'' };
+  function parse(txt){
+    const lines=String(txt||'').replace(/^﻿/,'').split(/\r?\n/).map(l=>l.trim()).filter(Boolean); if(!lines.length) return [];
+    const sep=[';','\t',','].map(c=>[c,lines[0].split(c).length]).sort((a,b)=>b[1]-a[1])[0][0];
+    const out=[];
+    for(const l of lines){ const f=l.split(sep).map(x=>x.replace(/^"|"$/g,'').trim()); if(f.length<6) continue;
+      const a=num(f[3]), r=num(f[4]), s=pd(f[5]), e=pd(f[6]||''); if(!(a>0)||!(r>=0)||!e) continue;
+      const c=(String(f[2]).toUpperCase().match(/UAH|USD|EUR/)||[/[$]|ДОЛ/i.test(f[2])?'USD':/€|ЄВРО|ЕВРО/i.test(f[2])?'EUR':'UAH'])[0];
+      const id=brk(f[1]); out.push({n:f[0],b:id,bt:id?'':f[1],c,a,r,s:iso(s),e:iso(e)}) }
+    return out }
+  const doImp=txt=>{ const L=parse(txt), m=$('#bmsg'); if(!L.length){ m.textContent=t.imp_bad; m.className='muted bad'; return } BS.set(BS.get().concat(L)); m.textContent=t.imp_ok.replace('{n}',L.length); m.className='muted good'; draw() };
+  $('#bimp').onchange=e=>{ const f=e.target.files[0]; if(f) f.text().then(doImp); e.target.value='' };
+  $('#bpgo').onclick=()=>doImp($('#bpt').value);
+  $('#btpl').onclick=()=>{ const csv='﻿name;broker;currency;amount;rate;bought;matures\nUA4000227045;privatbank;UAH;50000;15.5;2026-03-01;2027-03-01\nUA4000226211;monobank;USD;2000;4.2;01.05.2026;01.05.2027\n';
+    const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv'})); a.download='whatifstack-ovdp.csv'; a.click() };
+  const q=new URLSearchParams(location.search).get('bb'); if(q&&BR[q]){ $('#bb').value=q; setTimeout(()=>$('#bonds').scrollIntoView({block:'start'}),300) }
+  if(!$('#be').value){ const d=today(); d.setFullYear(d.getFullYear()+1); $('#be').value=iso(d) }
+  document.addEventListener('wi:bonds',draw); sym(); draw();
 })();
 /* ---------- memecoins: live DEX trending (GeckoTerminal) ---------- */
 (function(){

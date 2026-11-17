@@ -36,6 +36,7 @@ from i18n_ks import KS, SECT  # noqa: E402
 from i18n_offer import OFFER_TGW  # noqa: E402
 from i18n_lc import LC  # noqa: E402
 from i18n_xc import XC  # noqa: E402
+from i18n_ua import UA_LANGS, UA_ASOF, OB, OBI, OBT, UA_SRC, BUYG, BUYG_SRC, OVP  # noqa: E402
 from i18n_bpd import BPD, IDEA as BP_IDEA  # noqa: E402
 from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB, CH as OWN_CH, CH2 as OWN_CH2  # noqa: E402
 SOCIAL = [('Telegram', 'https://t.me/TradeMaster_insight'), ('X (Twitter)', 'https://x.com/WhatIfStack'), ('Bluesky', 'https://bsky.app/profile/whatifstack.bsky.social'), ('Instagram', 'https://www.instagram.com/whatifstack/'), ('Threads', 'https://www.threads.com/@whatifstack'),
@@ -60,7 +61,7 @@ UPDATED = market['updated']
 END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
-RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide', 'commodities', 'widgets', 'embed', 'dividends', 'average-price', 'ovdp', 'largest-companies', 'crypto-exchanges', 'partners'}
+RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide', 'commodities', 'widgets', 'embed', 'dividends', 'average-price', 'ovdp', 'largest-companies', 'crypto-exchanges', 'partners', 'buy-stocks-ukraine'}
 RESERVED |= {v[0] for v in MKTS.values()} | {'world-assets', 'activities', 'editorial-policy', 'about', 'portfolios'}
 # asset ids that clash with a language folder or a section get a suffix (ko -> ko-stock, fil -> fil-crypto)
 _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
@@ -172,6 +173,10 @@ def has_page(lang, aid):
         return True
     if aid == 'partners':
         return lang in PARTNER_TXT
+    if aid == 'buy-stocks-ukraine' or aid == 'ovdp/brokers':
+        return lang in UA_LANGS
+    if (aid or '').startswith('ovdp/brokers/'):
+        return lang in UA_LANGS and aid.rsplit('/', 1)[1] in OBI
     if aid == 'crypto-exchanges' or (aid or '').startswith('crypto-exchanges/'):
         return xc_has(lang, None if aid in ('crypto-exchanges', 'crypto-exchanges/derivatives') else aid.split('/', 1)[1])
     if aid == 'editorial-policy':
@@ -839,9 +844,131 @@ def ovdp_page(lang, ver):
              f'<div class="kv"><span>{esc(t["per_m"])}</span><b id="ov_m">—</b></div></div>'
              f'<div class="iccmp" id="ovbars"></div><div class="icbox" id="ovusd" style="margin-top:14px"><h3>💵 {esc(t["in_usd"])}</h3><div class="kv"><span>UAH → USD</span><b id="ov_u">—</b></div></div>'
              f'<p class="muted icnote2">{esc(t["src"])}</p></section>')
-    body = _calc_shell(t, cards, left, right, _calc_links(lang, ['compound-interest', 'dividends', 'average-price']))
+    lk = _calc_links(lang, ['compound-interest', 'dividends', 'average-price'])
+    if lang in UA_LANGS:
+        lk = (f'<a class="card hcard" href="{url(lang, "ovdp/brokers")}"><span>🏦</span><b>{esc(OBT[lang]["nav"])}</b></a>'
+              f'<a class="card hcard" href="{url(lang, "me")}#bonds"><span>🏛️</span><b>{esc(OBT[lang]["port"])}</b></a>' + lk)
+    elif lang in OVP:
+        lk = f'<a class="card hcard" href="{url(lang, "me")}#bonds"><span>🏛️</span><b>{esc(OVP[lang]["h"])}</b></a>' + lk
+    body = _calc_shell(t, cards, left, right, lk)
     cfg = dict(ov=dict(b=t['b'], dp=t['dp']))
     return shell(lang, 'ovdp', t['title'] + ' | ' + BRAND, t['d'], body, cfg, ver, [_app_ld(t)])
+
+
+# ---------------- Ukraine: OVDP brokers + how to buy stocks ----------------
+def _ua_faq(lang, qa):
+    return {"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": TR[lang]['loc'],
+            "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in qa]}
+
+
+def _ua_faq_html(qa):
+    return '<section class="section"><h2>FAQ</h2>' + ''.join(f'<details class="card faqi"><summary>{esc(q)}</summary><p>{esc(a)}</p></details>' for q, a in qa) + '</section>'
+
+
+def _ua_src(lang, title, items):
+    return (f'<section class="section"><h2>{esc(title)}</h2><ul class="srcl">' + ''.join(f'<li><a href="{esc(u)}" target="_blank" rel="nofollow noopener">{esc(n)}</a></li>' for n, u in items)
+            + f'</ul><p class="muted" style="font-size:13px">{esc(UA_ASOF[lang])}</p></section>')
+
+
+def _ccy_badges(c):
+    return ' '.join(f'<span class="ccyb">{x}</span>' for x in c.split())
+
+
+def _ob_rank():
+    return sorted(OB, key=lambda b: -b['score'])
+
+
+def ovdp_brokers_page(lang, ver):
+    t = OBT[lang]
+    n = len(OB)
+    rows = ''
+    for k, b in enumerate(_ob_rank(), 1):
+        L = b[lang]
+        rows += (f'<tr><td class="l n">{k}</td><td class="l"><a class="obn" href="{url(lang, "ovdp/brokers/" + b["id"])}"><b>{esc(b["name"])}</b><small>{esc(t["kinds"][b["kind"]])} · {esc(L["short"])}</small></a></td>'
+                 f'<td class="l">{esc(L["fee"])}</td><td>{_ccy_badges(b["ccy"])}</td><td class="num hide-sm">{"≈" + str(b["issues"]) if b["issues"] else "—"}</td>'
+                 f'<td class="num"><span class="obsc">{b["score"]:.1f}</span></td><td class="hide-sm"><a class="calc" href="{url(lang, "ovdp/brokers/" + b["id"])}">{esc(t["more"])} →</a></td></tr>')
+    th = ''.join(f'<th class="{c}">{esc(h)}</th>' for h, c in zip(t['th'], ['l n', 'l', 'l', '', 'hide-sm', '', 'hide-sm']))
+    kt = '<blockquote class="kt"><b>' + esc(t['kt']) + '</b><ul>' + ''.join(f'<li>{esc(x)}</li>' for x in t['kts']) + '</ul></blockquote>'
+    port = (f'<section class="section"><div class="hgrid"><a class="card hcard" href="{url(lang, "ovdp")}"><span>🧮</span><b>{esc(t["calc"])}</b></a>'
+            f'<a class="card hcard" href="{url(lang, "me")}#bonds"><span>🏛️</span><b>{esc(t["port"])}</b><small>{esc(t["port_d"])}</small></a>'
+            f'<a class="card hcard" href="{url(lang, "buy-stocks-ukraine")}"><span>🇺🇦</span><b>{esc(BUYG[lang]["nav"])}</b></a></div></section>')
+    body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / <a href="{url(lang, "ovdp")}">{esc(OV[lang]["nav"])}</a> / {esc(t["nav"])}</nav>'
+            f'<h1>{esc(t["h1"].format(n=n))}</h1><p class="lead">{esc(t["lead"])}</p>{kt}'
+            f'<section class="section"><div class="tw"><table class="mt obt"><thead><tr>{th}</tr></thead><tbody>{rows}</tbody></table></div></section>'
+            f'<section class="section card"><h2>{esc(t["how"])}</h2><p>{esc(t["howt"])}</p></section>{port}'
+            f'{_ua_faq_html(t["faq"])}{_ua_src(lang, t["src"], UA_SRC)}')
+    il = {"@context": "https://schema.org", "@type": "ItemList", "name": t['h1'].format(n=n),
+          "itemListElement": [{"@type": "ListItem", "position": k, "name": b['name'], "url": SITE + url(lang, 'ovdp/brokers/' + b['id'])} for k, b in enumerate(_ob_rank(), 1)]}
+    return shell(lang, 'ovdp/brokers', t['title'].format(n=n) + ' | ' + BRAND, t['d'], body, {'_sec': 'ovdp'}, ver, [il, _ua_faq(lang, t['faq'])])
+
+
+def ovdp_broker_page(lang, b, ver):
+    t, L = OBT[lang], b[lang]
+    nm_ = b['name']
+    rank = [x['id'] for x in _ob_rank()].index(b['id']) + 1
+    tiles = [(t['tiles'][0], L['fee']), (t['tiles'][1], ' '.join(b['ccy'].split())), (t['tiles'][2], f'≈{b["issues"]}' if b['issues'] else '—'),
+             (t['tiles'][3], t['kinds'][b['kind']]), (t['tiles'][4], f'{b["score"]:.1f} / 10 · #{rank}')]
+    tl = '<div class="ktiles obtiles">' + ''.join(f'<div class="ks"><span>{esc(k)}</span><b title="{esc(v)}">{esc(v)}</b></div>' for k, v in tiles) + '</div>'
+    steps = t['st_' + b['kind']]
+    st = '<ol class="obsteps">' + ''.join(f'<li>{esc(x.format(name=nm_))}</li>' for x in steps) + '</ol>'
+    li = lambda xs, c: f'<ul class="{c}">' + ''.join(f'<li>{esc(x)}</li>' for x in xs) + '</ul>'
+    others = [x for x in _ob_rank() if x['id'] != b['id']][:5]
+    vs = ''.join(f'<tr><td class="l"><a href="{url(lang, "ovdp/brokers/" + x["id"])}">{esc(x["name"])}</a></td><td class="l">{esc(x[lang]["fee"])}</td><td>{_ccy_badges(x["ccy"])}</td><td class="num"><span class="obsc">{x["score"]:.1f}</span></td></tr>' for x in others)
+    faq = [(t['b_h1'].format(name=nm_) + '?', ' '.join(s.format(name=nm_) for s in steps)), (t['tiles'][0] + ' — ' + nm_ + '?', L['fee'] + '. ' + L['short'])]
+    body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / <a href="{url(lang, "ovdp/brokers")}">{esc(t["nav"])}</a> / {esc(nm_)}</nav>'
+            f'<h1>{esc(t["b_h1"].format(name=nm_))}</h1><p class="lead">{esc(L["short"])} {esc(L["who"])}</p>{tl}'
+            f'<section class="section card"><h2>{esc(t["steps"])}</h2>{st}<div class="obcta"><a class="btn" href="{url(lang, "me")}?bb={b["id"]}#bonds">🏛️ {esc(t["port"])}</a>'
+            f'<a class="btn ghost" href="{esc(b["site"])}" target="_blank" rel="nofollow noopener">{esc(t["site"].format(name=nm_))} ↗</a></div></section>'
+            f'<section class="section"><div class="obpc"><div class="card"><h2>👍 {esc(t["pros"])}</h2>{li(L["pros"], "good")}</div><div class="card"><h2>⚠️ {esc(t["cons"])}</h2>{li(L["cons"], "")}</div></div>'
+            f'<div class="card" style="margin-top:12px"><h2>{esc(t["who"])}</h2><p>{esc(L["who"])}</p></div></section>'
+            f'<section class="section"><h2>{esc(t["vs"])}</h2><div class="tw"><table class="mt obt"><tbody>{vs}</tbody></table></div><p><a class="calc" href="{url(lang, "ovdp/brokers")}">{esc(t["all"])} →</a></p></section>'
+            f'<section class="section"><div class="hgrid"><a class="card hcard" href="{url(lang, "ovdp")}"><span>🧮</span><b>{esc(t["calc"])}</b></a><a class="card hcard" href="{url(lang, "buy-stocks-ukraine")}"><span>🇺🇦</span><b>{esc(BUYG[lang]["nav"])}</b></a></div></section>'
+            f'{_ua_faq_html(faq)}{_ua_src(lang, t["src"], UA_SRC)}')
+    return shell(lang, 'ovdp/brokers/' + b['id'], t['b_title'].format(name=nm_) + ' | ' + BRAND, t['b_d'].format(name=nm_, fee=L['fee'], ccy=', '.join(b['ccy'].split())),
+                 body, {'_sec': 'ovdp'}, ver, [_ua_faq(lang, faq)])
+
+
+def _dca_month(aid, months, amt):
+    P = A[aid]
+    s0, e = ym2i(P['start']), ym2i(P['end'])
+    st = max(END_I - months, s0)
+    units = inv = 0.0
+    for i in range(st, e + 1):
+        units += amt / P['p'][i - s0]
+        inv += amt
+    return inv, units * P['p'][e - s0], st
+
+
+def buyg_page(lang, ver):
+    t = BUYG[lang]
+    li = lambda xs: '<ul>' + ''.join(f'<li>{esc(x)}</li>' for x in xs) + '</ul>'
+    kt = '<blockquote class="kt"><b>' + esc(t['kt']) + '</b><ul>' + ''.join(f'<li>{esc(x)}</li>' for x in t['kts']) + '</ul></blockquote>'
+    live = ''
+    for aid in ('spy', 'qqq', 'aapl', 'nvda'):
+        if aid not in A or len(A[aid]['p']) < 61:
+            continue
+        inv, val, st = _dca_month(aid, 60, 100)
+        y, m = divmod(st, 12)
+        live += (f'<a class="card obl" href="{aurl(lang, aid)}">{icon(A[aid])}<span><b>{esc(nm(A[aid], lang))}</b><small>{esc(t["live_t"].format(since=mlabel(f"{y}-{m + 1:02d}", lang), amt="$100", name=A[aid]["tk"], val=money(val, "USD"), inv=money(inv, "USD")))}</small></span>'
+                 f'<em class="{cls(val / inv - 1)}">{pct(val / inv - 1)}</em></a>')
+    brows = ''.join(f'<tr><td class="l"><b>{esc(k)}</b></td><td class="l">{esc(f)}</td><td class="l">{esc(i)}</td></tr>' for k, f, i in t['brows'])
+    btab = (f'<div class="tw"><table class="mt bgt"><thead><tr>' + ''.join(f'<th class="l">{esc(h)}</th>' for h in t['bth']) + f'</tr></thead><tbody>{brows}</tbody></table></div>'
+            f'<div class="obcta"><a class="btn" href="/go/freedom24?from=ua-guide&l={lang}" target="_blank" rel="sponsored noopener">{esc(t["cta_f"])} ↗</a>'
+            f'<a class="btn ghost" href="https://www.interactivebrokers.com" target="_blank" rel="nofollow noopener">{esc(t["cta_i"])} ↗</a></div>'
+            f'<p class="muted" style="font-size:12px">Freedom24 — {esc(t["aff"])}.</p>')
+    links = ''.join(f'<a class="card hcard" href="{url(lang, k)}"><span>{ic}</span><b>{esc(t["ln"][k])}</b></a>' for k, ic in t['links'] if k in t['ln'] and has_page(lang, k))
+    body = (f'<article class="art guide"><nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / {esc(t["nav"])}</nav><h1>{esc(t["h1"])}</h1>'
+            f'<p class="lead">{esc(t["lead"])}</p>{kt}'
+            + (f'<section class="section"><h2>📈 {esc(t["live"])}</h2><div class="obgrid">{live}</div></section>' if live else '')
+            + f'<div class="artbody"><h2>{esc(t["s1"])}</h2><p>{esc(t["s1p"])}</p>{btab}'
+            f'<h2>{esc(t["s2"])}</h2>{li(t["s2l"])}<h2>{esc(t["s3"])}</h2><p>{esc(t["s3p"])}</p>'
+            f'<h2>{esc(t["s4"])}</h2><p>{esc(t["s4p"])}</p><p><a class="calc" href="{url(lang, "compare")}">{esc(t["s4l"])} →</a></p>'
+            f'<h2>{esc(t["s5"])}</h2>{li(t["s5l"])}<h2>{esc(t["err"])}</h2>{li(t["errl"])}</div>'
+            f'<section class="section"><h2>{esc(t["next_"])}</h2><div class="hgrid">{links}</div></section>'
+            f'{_ua_faq_html(t["faq"])}{_ua_src(lang, t["src"], BUYG_SRC)}<p class="note">{esc(t["note"])}</p></article>')
+    art = {"@context": "https://schema.org", "@type": "Article", "headline": t['h1'], "description": t['d'], "inLanguage": TR[lang]['loc'], "dateModified": UPDATED[:10],
+           "author": {"@type": "Organization", "name": BRAND}, "publisher": {"@type": "Organization", "name": BRAND}}
+    return shell(lang, 'buy-stocks-ukraine', t['title'] + ' | ' + BRAND, t['d'], body, {}, ver, [art, _ua_faq(lang, t['faq'])])
 
 
 # search aliases: local names / transliterations people type (uk, ru, pl, de...)
@@ -1973,6 +2100,8 @@ def tools_menu(lang):
     items += [('largest-companies', LC[lang]['nav']), ('world-assets', WA[lang]['nav']), ('memes', MEM[lang]['nav']), ('converter', HCONV[lang]), ('ath', t['a_nav']), ('bitcoin-halving', t['v_nav']), ('dividends', DV[lang]['nav']), ('average-price', AV[lang]['nav'])]
     if lang in OV:
         items.append(('ovdp', OV[lang]['nav']))
+    if lang in UA_LANGS:
+        items += [('ovdp/brokers', OBT[lang]['nav']), ('buy-stocks-ukraine', BUYG[lang]['nav'])]
     items.append(('widgets', EMB[lang]['nav']))
     return items
 
@@ -2434,7 +2563,28 @@ def me_page(lang, ver):
             f'<label class="f">{esc(t["date"])}<div class="inp"><input id="hdate" type="month" value="{END}"></div></label></div>'
             f'<button class="btn" id="hsave">{esc(t["add"])}</button></div></section>')
     pf = PF[lang]
-    body = (f'<h1>{esc(pf["h1"])}</h1><p class="lead">{esc(pf["d"])}</p>{hold}'
+    bonds = ''
+    if lang in OVP:
+        o = OVP[lang]
+        bopt = ''.join(f'<option value="{b["id"]}">{esc(b["name"])}</option>' for b in OB) + f'<option value="">{esc(o["other"])}</option>'
+        today = UPDATED[:10]
+        bl = url(lang, 'ovdp/brokers') if lang in UA_LANGS else url('uk', 'ovdp/brokers')
+        bonds = (f'<section class="section" id="bonds"><div class="charthead"><h2>{esc(o["h"])}</h2><a class="calc" href="{bl}">{esc(o["brokers"])} →</a></div>'
+                 f'<p class="muted" style="margin-top:-4px">{esc(o["d"])}</p><div class="hl" id="btot"></div><div id="blist"><p class="muted">{esc(o["empty"])}</p></div>'
+                 f'<div class="card hcalc" id="bform"><div class="hrow brow">'
+                 f'<label class="f">{esc(o["name"])}<div class="inp"><input id="bn" autocomplete="off" placeholder="{esc(o["name_ph"])}"></div></label>'
+                 f'<label class="f">{esc(o["broker"])}<div class="inp"><select id="bb">{bopt}</select></div></label>'
+                 f'<label class="f">{esc(o["ccy"])}<div class="inp"><select id="bc"><option>UAH</option><option>USD</option><option>EUR</option></select></div></label>'
+                 f'<label class="f">{esc(o["amt"])}<div class="inp"><input id="ba" type="number" min="0" step="any" value="10000"><span class="muted" id="bcs">₴</span></div></label>'
+                 f'<label class="f">{esc(o["rate"])}<div class="inp"><input id="br" type="number" min="0" max="100" step="0.01" value="15"></div></label>'
+                 f'<label class="f">{esc(o["start"])}<div class="inp"><input id="bs" type="date" value="{today}"></div></label>'
+                 f'<label class="f">{esc(o["end"])}<div class="inp"><input id="be" type="date"></div></label></div>'
+                 f'<div class="bbtns"><button class="btn" id="bsave" type="button">{esc(o["add"])}</button>'
+                 f'<label class="btn ghost">⬆ {esc(o["imp"])}<input type="file" id="bimp" accept=".csv,text/csv,text/plain" hidden></label>'
+                 f'<button class="btn ghost" id="btpl" type="button">⬇ {esc(o["tmpl"])}</button></div>'
+                 f'<details class="bpaste"><summary>{esc(o["paste"])}</summary><textarea id="bpt" rows="4" placeholder="UA4000227045;privatbank;UAH;50000;15.5;2026-03-01;2027-03-01"></textarea>'
+                 f'<button class="btn ghost" id="bpgo" type="button">{esc(o["paste_go"])}</button></details><p class="muted" id="bmsg" style="font-size:13px"></p></div></section>')
+    body = (f'<h1>{esc(pf["h1"])}</h1><p class="lead">{esc(pf["d"])}</p>{hold}{bonds}'
             f'<section class="section"><h2>☆ {esc(t["watch"])}</h2><div id="watch"><p class="muted">{esc(t["empty"])}</p></div></section>'
             f'<section class="section"><h2>📈 {esc(t["plans"])}</h2><div class="hl" id="metot"></div><div id="plans"></div>'
             f'<div class="card hcalc" id="planform"><div class="hrow">'
@@ -2447,6 +2597,8 @@ def me_page(lang, ver):
             f'<div class="pfbk"><button class="btn ghost" id="pfexp" type="button">⬇ {esc(pf["backup"])}</button>'
             f'<label class="btn ghost">⬆ {esc(pf["restore"])}<input type="file" id="pfimp" accept="application/json" hidden></label></div>')
     cfg = dict(me=dict(code=code, rate=rate, t=dict(t, **pf), per=dict(zip('dwm', per))))
+    if lang in OVP:
+        cfg['me']['ob'] = dict(t=OVP[lang], b={b['id']: b['name'] for b in OB})
     return shell(lang, 'me', f'{pf["h1"]} | {BRAND}', pf['d'], body, cfg, ver).replace('<link rel="canonical"', '<meta name="robots" content="noindex, follow"><link rel="canonical"', 1)   # personal page: keep out of search
 
 
@@ -3228,6 +3380,13 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
         write(pre + 'average-price/index.html', avgprice_page(lang, ver))
         if lang in OV:
             write(pre + 'ovdp/index.html', ovdp_page(lang, ver))
+        if lang in UA_LANGS:
+            write(pre + 'ovdp/brokers/index.html', ovdp_brokers_page(lang, ver))
+            write(pre + 'buy-stocks-ukraine/index.html', buyg_page(lang, ver))
+            extra_pages += ['ovdp/brokers', 'buy-stocks-ukraine']
+            for _b in OB:
+                write(f'{pre}ovdp/brokers/{_b["id"]}/index.html', ovdp_broker_page(lang, _b, ver))
+                extra_pages.append('ovdp/brokers/' + _b['id'])
         write(pre + 'widgets/index.html', widgets_page(lang, ver))
         if CPI['c']:
             write(pre + 'inflation/index.html', inflation_page(lang, ver))
