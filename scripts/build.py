@@ -2094,8 +2094,7 @@ def portfolios_page(lang, ver):
                      f'<div class="tw"><table class="mt"><thead><tr><th class="l"></th><th>{esc(t["inv"])}</th><th>{esc(t["val"])}</th><th>{esc(t["roi"])}</th><th class="hide-sm">{esc(t["best_asset"])}</th></tr></thead><tbody>{rows}</tbody></table></div>'
                      + (f'<p class="muted bpnote">* {esc(t["hind"])}</p>' if k in ('topc', 'tops') else '') + '</section>')
     body = (f'<h1>{esc(t["h1"])}</h1><p class="lead">{esc(t["d"])}</p>'
-            f'<section class="card section"><h2>🏆 {esc(t["rank"])}</h2><div class="tw"><table class="mt"><thead><tr><th class="l"></th><th>{esc(t["inv"])}</th><th>{esc(t["val"])}</th><th>{esc(t["roi"])}</th></tr></thead><tbody>{rank}</tbody></table></div>'
-            f'<p class="muted bpnote">{esc(t["how"])}</p></section><div class="bpgrid section">{"".join(cards)}</div><p class="muted" style="font-size:13px">{esc(t["na"])}</p>')
+            f'<p class="muted bpnote">{esc(t["how"])}</p><div class="bpgrid section">{"".join(cards)}</div><p class="muted" style="font-size:13px">{esc(t["na"])}</p>')
     return shell(lang, 'portfolios', f'{t["h1"]} | {BRAND}', t['d'], body, {}, ver)
 
 
