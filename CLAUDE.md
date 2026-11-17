@@ -53,4 +53,4 @@ Offers: offer_card() in build.py (Telegram Wallet bonus, strings in scripts/i18n
 News aggregator: api/news.js (Vercel function, RSS headlines only, links to originals).
 
 ## Waiting on the owner
-Nothing blocking. Done 2026-11-17: Freedom24 referral (stocks/ETF buy buttons on uk/de/fr/it/es/pt/pl/nl pages via REF_LANG in src/ref.js; EU only, not US/UK) and FG Wallet (USDT TRC-20 wallet, /exchanges/ wallets). Done 2026-11-16: Vercel Web Analytics enabled (Hobby, free); deployment retention set to 1 day for all types (each deploy is ~200 MB, Hobby limit 10 GB).
+Nothing blocking. Done 2026-11-17: Kraken referral (crypto buy buttons on English pages via REF_LANG — Binance does not serve US/UK; Kraken row in /exchanges/ table, Pro 0.40%/0.80%, recurring buy 1%). Freedom24 referral (stocks/ETF buy buttons on uk/de/fr/it/es/pt/pl/nl pages via REF_LANG in src/ref.js; EU only, not US/UK) and FG Wallet (USDT TRC-20 wallet, /exchanges/ wallets). Done 2026-11-16: Vercel Web Analytics enabled (Hobby, free); deployment retention set to 1 day for all types (each deploy is ~200 MB, Hobby limit 10 GB).

@@ -14,6 +14,8 @@ window.REF_DEFAULT = {
 // Per-language overrides: Freedom24 (EU broker, CySEC; recurring investment plan) for stocks/ETFs where its audience lives.
 // Not available to US or UK residents, so English and Asian-language pages keep Bybit.
 window.REF_LANG = {
+  // Binance does not serve the US and restricts the UK; Kraken does — so English pages send crypto buyers to Kraken.
+  crypto: { langs: ['en'], url: '/go/kraken', where: 'Kraken' },
   stock: { langs: ['uk', 'de', 'fr', 'it', 'es', 'pt', 'pl', 'nl'], url: '/go/freedom24', where: 'Freedom24' },
   etf:   { langs: ['uk', 'de', 'fr', 'it', 'es', 'pt', 'pl', 'nl'], url: '/go/freedom24', where: 'Freedom24' },
 };
