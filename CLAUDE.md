@@ -49,6 +49,7 @@ X @WhatIfStack: 5 posts/day via the built-in browser (style + log in social/x-lo
 Asset profiles: daily 16:52 Kyiv, 3 assets/day → content/profiles/<lang>/<asset id>.md (About block on the asset page).
 Guide: content/guide/<lang>.md → /guide/ (every tool explained; keep it updated when a feature is added).
 Free distribution: social/syndication.md (platform rules, communities per language, log); daily drafts in social/syndication/YYYY-MM-DD.md. RSS per language (/<lang>/blog/rss.xml, with cover images → Pinterest/Flipboard auto-publish) and Google News sitemap /sitemap-news.xml are built by scripts/build.py.
+Offers: offer_card() in build.py (Telegram Wallet bonus, strings in scripts/i18n_offer.py) on home + crypto asset pages; clicks via /go/tgwallet?from=<placement>.
 News aggregator: api/news.js (Vercel function, RSS headlines only, links to originals).
 
 ## Waiting on the owner

@@ -33,6 +33,7 @@ from i18n_calc2 import DV, AV, OV  # noqa: E402
 from i18n_ap import AP  # noqa: E402
 from i18n_home2 import HM  # noqa: E402
 from i18n_ks import KS, SECT  # noqa: E402
+from i18n_offer import OFFER_TGW  # noqa: E402
 from i18n_bpd import BPD, IDEA as BP_IDEA  # noqa: E402
 from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB, CH as OWN_CH, CH2 as OWN_CH2  # noqa: E402
 SOCIAL = [('Telegram', 'https://t.me/TradeMaster_insight'), ('X (Twitter)', 'https://x.com/WhatIfStack'), ('Bluesky', 'https://bsky.app/profile/whatifstack.bsky.social'), ('Instagram', 'https://www.instagram.com/whatifstack/'), ('Threads', 'https://www.threads.com/@whatifstack'),
@@ -1046,7 +1047,7 @@ def home(lang, ver):
                 + ''.join(mini_row(lang, i, f'<span class="mc {"good" if sign > 0 else "bad"}">{pct(METRICS[i]["chg"])}</span>') for i in pool) + '</div>')
     today = (f'<section class="section today"><h2>{esc(hm["today"])}</h2><div class="tgrid">'
              f'{mv("crypto", 1)}{mv("crypto", -1)}{mv("stock", 1)}{mv("stock", -1)}{w_news}</div></section>')
-    body = (hero + today + f'<section class="section toprank"><div class="tabs" id="tabs"></div>{filt}{top10}</section>'
+    body = (hero + today + offer_card(lang, 'home') + f'<section class="section toprank"><div class="tabs" id="tabs"></div>{filt}{top10}</section>'
             f'<div class="wgrid3">{w_tr if nws else w_fng}<div class="wstack">{w_mcap}{w_dom}</div>{w_bat}</div>{banner}{habits_strip(lang)}{poll_block(lang)}{poly_block(lang)}'
             f'<section class="section"><div class="hl">{"".join(cards)}</div></section>'
             f'{rest}'
@@ -1471,6 +1472,14 @@ def stock_peers(aid, k=8):
     pool.sort(key=lambda i: abs(math.log10((mc(i) or 1e6) / (me or 1e9))))
     return pool[:k]
 
+
+def offer_card(lang, src):
+    """One native partner offer (Telegram Wallet bonus); clicks counted by /go/ with the placement in `from`."""
+    o = OFFER_TGW[lang]
+    return (f'<a class="offer section" href="/go/tgwallet?from={src}&l={lang}" target="_blank" rel="sponsored noopener">'
+            f'<span class="ofi" aria-hidden="true">🎁</span><span class="oft"><b>{esc(o["t"])}</b><span>{esc(o["d"])}</span><small>{esc(o["note"])}</small></span>'
+            f'<span class="btn">{esc(o["cta"])}</span></a>')
+
 def asset(aid, lang, ver):
     S, u = TR[lang], TR[lang]['ui']
     a, m = A[aid], METRICS[aid]
@@ -1558,7 +1567,7 @@ def asset(aid, lang, ver):
                           + '</section>')
     else:   # no free live chart for this symbol -> our own monthly chart
         tv, tech_news = own_chart(lang, a, aid), ''
-    body = (f'{head}<p class="lead" style="margin-top:10px">{S["a_lead"].format(**fe)}</p>{hot_block(lang, aid)}<div class="chartside section">{tv}{side_block(lang, aid)}</div>{'' if 'timeline' in tech_news else hot_more(lang, aid)}{stock_block(lang, aid)}{analysis_block(lang, aid)}<div class="stats">{stat_cards}</div><div class="stats">{lump_cards}</div>{long_block(lang, aid)}{seas_block(lang, aid)}{calc_block(lang)}{tech_news}'
+    body = (f'{head}<p class="lead" style="margin-top:10px">{S["a_lead"].format(**fe)}</p>{hot_block(lang, aid)}<div class="chartside section">{tv}{side_block(lang, aid)}</div>{'' if 'timeline' in tech_news else hot_more(lang, aid)}{stock_block(lang, aid)}{analysis_block(lang, aid)}{offer_card(lang, 'asset-' + aid) if a['cat'] == 'crypto' else ''}<div class="stats">{stat_cards}</div><div class="stats">{lump_cards}</div>{long_block(lang, aid)}{seas_block(lang, aid)}{calc_block(lang)}{tech_news}'
             f'<div class="cols2 section"><section class="card"><h2>{S["a_periods"].format(**fe)}</h2>{ptable}</section>'
             f'<section class="card faq"><h2>{S["faq"]}</h2>' + ''.join(f'<details><summary>{esc(q)}</summary><p>{esc(x)}</p></details>' for q, x in faq) + '</section></div>'
             + (f'<section class="section">{table_block(lang, peers, esc(KS[lang]["peers"]), interactive=False)}</section>' if (peers := stock_peers(aid)) else '') +
@@ -1889,6 +1898,7 @@ PARTNERS = {   # (name, /go/ id, tags, colour); real referral URLs are in api/_p
     'dex': [('OKX Wallet', 'okx-wallet', 'Multichain wallet · DEX swaps', '#000000'),
             ('Hyperliquid', 'hyperliquid', 'On-chain perpetuals · Order book', '#0F3B36'),
             ('GMGN', 'gmgn', 'Memecoin trading · Wallet tracking', '#18C46B'),
+            ('Telegram Wallet', 'tgwallet', 'Crypto inside Telegram · New users: up to $50 bonus in gold', '#2AABEE'),
             ('FG Wallet', 'fgwallet', 'USDT (TRC-20) wallet · No TRX needed for fees', '#1B7F5F')],
     'brk': [('Freedom24', 'freedom24', 'Stocks & ETFs · EU residents (CySEC) · Recurring investment plan', '#2E7D32')],
 }
@@ -1899,7 +1909,7 @@ BRK_H = {'uk': 'Брокер для акцій і ETF', 'en': 'Broker for stocks
          'ko': '주식·ETF 증권사', 'zh': '股票和 ETF 券商', 'ar': 'وسيط للأسهم وصناديق ETF', 'fil': 'Broker para sa stocks at ETF'}
 POLY = '/go/polymarket'
 XDOM = {'binance': 'binance.com', 'bybit': 'bybit.com', 'gate': 'gate.com', 'bingx': 'bingx.com', 'mexc': 'mexc.com', 'okx-wallet': 'okx.com',
-        'hyperliquid': 'hyperliquid.xyz', 'gmgn': 'gmgn.ai', 'freedom24': 'freedom24.com', 'fgwallet': 'fgwallet.io'}
+        'hyperliquid': 'hyperliquid.xyz', 'gmgn': 'gmgn.ai', 'freedom24': 'freedom24.com', 'fgwallet': 'fgwallet.io', 'tgwallet': 'wallet.tg'}
 
 
 def xlogo(u, n, c, cls_='xl'):

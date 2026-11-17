@@ -10,5 +10,6 @@ module.exports = {
   gmgn: 'https://gmgn.ai/r/YEIKWyEq?chain=eth',
   polymarket: 'https://polymarket.com/?via=alek-du',
   freedom24: 'https://freedom24.com/invite_from/1756798',
+  tgwallet: 'https://telegram.me/walt/start?startapp=ref-3-_nKDCE0BgAk',
   fgwallet: 'https://app.fgwallet.io/invite?r=07bba179-3274-51b5-89e8-371e36026868',
 };
