@@ -83,6 +83,10 @@ Her ay ekleme yapıp temettüleri yeniden yatırırsan portföyün yılda ve ayd
 
 Alımlarını gir; ortalama maliyeti, güncel fiyattaki kârı ve ortalamayı düşürmek için ne kadar alman gerektiğini gör. [Ortalama maliyet hesaplayıcı]({lang}/average-price/)
 
+## En büyük şirketler
+
+Fiyat, günlük ve yıllık değişimle halka açık şirketler sıralaması. Temel rakamlar ve sade bir analiz için bir şirkete dokun. [Piyasa değerine göre dünyanın en büyük şirketleri]({lang}/largest-companies/)
+
 ## Rakamlar nereden geliyor
 
 Binance, CoinGecko, Yahoo Finance, Moskova Borsası, Dünya Bankası ve diğer açık kaynaklar; kaynakları gösterilen güncel özetler için [Haberler]({lang}/news/) sayfasına bak. Fiyatlar her gün, kripto fiyatları canlı güncellenir. WhatIfStack'teki hiçbir şey yatırım tavsiyesi değildir: geçmiş sonuçlar gelecekteki getirileri garanti etmez.

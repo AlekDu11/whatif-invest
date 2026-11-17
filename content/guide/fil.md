@@ -82,6 +82,10 @@ Alamin kung magkano ang dividendo kada taon at kada buwan kung mag-iipon ka buwa
 
 Ilagay ang mga binili mo para makita ang average price, kita sa kasalukuyang presyo, at magkano pa ang bibilhin para bumaba ang average. [Average price calculator]({lang}/average-price/)
 
+## Pinakamalaking kumpanya
+
+Ranking ng mga listed na kumpanya na may presyo at galaw sa araw at sa taon. I-tap ang kumpanya para sa key numbers at simpleng pagsusuri. [Pinakamalaking kumpanya sa mundo ayon sa market cap]({lang}/largest-companies/)
+
 ## Saan galing ang mga numero
 
 Binance, CoinGecko, Yahoo Finance, Moscow Exchange, World Bank at iba pang pampublikong source; para sa pinakabagong update, tingnan ang [Balita]({lang}/news/). Araw-araw ina-update ang presyo, live ang presyo ng crypto. Walang anuman sa WhatIfStack na investment advice: hindi garantiya ng mga nakaraang resulta ang kikitain sa hinaharap.

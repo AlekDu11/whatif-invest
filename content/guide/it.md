@@ -83,6 +83,10 @@ Scopri quanti dividendi all’anno e al mese rende un portafoglio se versi ogni 
 
 Inserisci i tuoi acquisti: prezzo medio, guadagno al prezzo attuale e quanto comprare per abbassare la media. [Calcolatore del prezzo medio]({lang}/average-price/)
 
+## Aziende più grandi
+
+Classifica delle società quotate con prezzo e variazione giornaliera e annua. Tocca un’azienda per i numeri chiave e un’analisi chiara. [Aziende più grandi del mondo per capitalizzazione]({lang}/largest-companies/)
+
 ## Da dove vengono i numeri
 
 Binance, CoinGecko, Yahoo Finance, la Borsa di Mosca, la Banca Mondiale e altre fonti pubbliche; le fonti di ogni articolo sono in [Notizie]({lang}/news/). I prezzi si aggiornano ogni giorno, quelli delle cripto in tempo reale. Niente su WhatIfStack è una consulenza finanziaria: i rendimenti passati non garantiscono quelli futuri.

@@ -83,6 +83,10 @@ Veja quanto em dividendos por ano e por mês uma carteira paga se você aportar 
 
 Informe suas compras e veja o preço médio, o lucro no preço atual e quanto comprar para baixar o médio. [Calculadora de preço médio]({lang}/average-price/)
 
+## Maiores empresas
+
+Ranking de empresas listadas com preço e variação no dia e no ano. Toque numa empresa para ver os números-chave e uma análise simples. [Maiores empresas do mundo por valor de mercado]({lang}/largest-companies/)
+
 ## De onde vêm os números
 
 Binance, CoinGecko, Yahoo Finance, a Bolsa de Moscou, o Banco Mundial e outras fontes públicas; as fontes de cada resumo estão em [Notícias]({lang}/news/). Os preços são atualizados diariamente, e os de cripto ao vivo. Nada no WhatIfStack é recomendação de investimento: resultados passados não garantem resultados futuros.

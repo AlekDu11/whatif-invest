@@ -83,6 +83,10 @@ Policz, ile dywidend rocznie i miesięcznie da portfel, jeśli co miesiąc dokup
 
 Wpisz swoje zakupy i zobacz średnią cenę, zysk po obecnej cenie i ile dokupić, by obniżyć średnią. [Kalkulator średniej ceny]({lang}/average-price/)
 
+## Największe spółki
+
+Ranking spółek giełdowych z ceną oraz zmianą dzienną i roczną. Kliknij spółkę, by zobaczyć kluczowe liczby i prostą analizę. [Największe spółki świata według kapitalizacji]({lang}/largest-companies/)
+
 ## Skąd są liczby
 
 Binance, CoinGecko, Yahoo Finance, Giełda Moskiewska, Bank Światowy i inne publiczne źródła; źródła każdej notki znajdziesz w [Wiadomościach]({lang}/news/). Ceny aktualizują się codziennie, kryptowaluty na żywo. Nic na WhatIfStack nie jest poradą inwestycyjną: wyniki z przeszłości nie gwarantują przyszłych.

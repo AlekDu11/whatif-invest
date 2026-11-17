@@ -83,6 +83,10 @@ Tính xem danh mục trả bao nhiêu cổ tức mỗi năm và mỗi tháng n�
 
 Nhập các lần mua để biết giá trung bình, lãi ở giá hiện tại và cần mua thêm bao nhiêu để hạ giá trung bình. [Máy tính giá trung bình]({lang}/average-price/)
 
+## Công ty lớn nhất
+
+Bảng xếp hạng công ty niêm yết với giá và biến động ngày, năm. Chạm vào công ty để xem số liệu chính và phân tích dễ hiểu. [Công ty lớn nhất thế giới theo vốn hóa]({lang}/largest-companies/)
+
 ## Số liệu từ đâu
 
 Binance, CoinGecko, Yahoo Finance, Sở giao dịch Moskva, Ngân hàng Thế giới và các nguồn công khai khác; các bản tin mới nhất kèm nguồn có ở mục [Tin tức]({lang}/news/). Giá cập nhật hằng ngày, giá crypto theo thời gian thực. Không có nội dung nào trên WhatIfStack là lời khuyên đầu tư: kết quả trong quá khứ không đảm bảo lợi nhuận trong tương lai.

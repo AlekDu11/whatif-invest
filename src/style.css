@@ -804,3 +804,6 @@ html[data-theme=dark] .ic img{background:#fff;border-radius:50%}
 .offer .btn{flex:none;white-space:nowrap}
 html[data-theme=dark] .offer .btn{background:linear-gradient(180deg,#45bdf5,#2AABEE);color:#04121b;box-shadow:0 6px 24px -8px rgba(42,171,238,.6)}
 @media (max-width:640px){.offer{flex-wrap:wrap}.offer .btn{width:100%;text-align:center}}
+/* largest companies ranking */
+.lcchips{margin:8px 0}.lct td.n{white-space:nowrap}.rk{font:700 11px var(--fn);margin-right:6px}.rk.up{color:var(--up)}.rk.dn{color:var(--dn)}
+.lct td.l .flag,.lct td.l img{vertical-align:middle;margin-right:4px}.ks small a{color:var(--accent);text-decoration:none}

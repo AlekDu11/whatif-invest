@@ -34,6 +34,7 @@ from i18n_ap import AP  # noqa: E402
 from i18n_home2 import HM  # noqa: E402
 from i18n_ks import KS, SECT  # noqa: E402
 from i18n_offer import OFFER_TGW  # noqa: E402
+from i18n_lc import LC  # noqa: E402
 from i18n_bpd import BPD, IDEA as BP_IDEA  # noqa: E402
 from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB, CH as OWN_CH, CH2 as OWN_CH2  # noqa: E402
 SOCIAL = [('Telegram', 'https://t.me/TradeMaster_insight'), ('X (Twitter)', 'https://x.com/WhatIfStack'), ('Bluesky', 'https://bsky.app/profile/whatifstack.bsky.social'), ('Instagram', 'https://www.instagram.com/whatifstack/'), ('Threads', 'https://www.threads.com/@whatifstack'),
@@ -58,7 +59,7 @@ UPDATED = market['updated']
 END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
-RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide', 'commodities', 'widgets', 'embed', 'dividends', 'average-price', 'ovdp'}
+RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide', 'commodities', 'widgets', 'embed', 'dividends', 'average-price', 'ovdp', 'largest-companies'}
 RESERVED |= {v[0] for v in MKTS.values()} | {'world-assets', 'activities', 'editorial-policy', 'about', 'portfolios'}
 # asset ids that clash with a language folder or a section get a suffix (ko -> ko-stock, fil -> fil-crypto)
 _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
@@ -166,7 +167,7 @@ assert not (set(HUBS) | set(TOOLS) | {'blog', 'compare'}) & set(A), 'asset id co
 def has_page(lang, aid):
     if aid is None or aid == 'compare' or aid in HUBS or aid in TOOLS:
         return True
-    if aid in ('ai', 'me', 'memes', 'world-assets', 'activities', 'portfolios') or (aid or '').startswith('portfolios/'):
+    if aid in ('ai', 'me', 'memes', 'world-assets', 'activities', 'portfolios', 'largest-companies') or (aid or '').startswith(('portfolios/', 'largest-companies/')):
         return True
     if aid == 'editorial-policy':
         return lang in POLICY
@@ -1403,7 +1404,10 @@ def stock_block(lang, aid):
     tiles = []
     def tile(lab, val, sub=''):
         tiles.append(f'<div class="ks"><span>{esc(lab)}</span><b>{val}</b>{f"<small>{sub}</small>" if sub else ""}</div>')
-    if f.get('mcap'): tile(k['mcap'], usd_h(f['mcap']))
+    wr = world_rank(aid)
+    if f.get('mcap'): tile(k['mcap'], usd_h(f['mcap']), f'<a href="{url(lang, "largest-companies")}">{esc(LC[lang]["world"].format(n=wr))}</a>' if wr else '')
+    yc = year_chg(aid)
+    if yc is not None: tile(LC[lang]['year'], f'<span class="{cls(yc)}">{pct(yc)}</span>')
     if f.get('pe') and f['pe'] > 0: tile(k['pe'], _num(f['pe'], 1))
     tile(k['div'], pctu(f['dy']) if f.get('dy') else esc(k['divno']))
     if f.get('rev'): tile(k['rev'], usd_h(f['rev']), f'<span class="{cls(f.get("revg"))}">{pct(f["revg"])}</span>' if f.get('revg') is not None else '')
@@ -1458,6 +1462,127 @@ def stock_faq(lang, aid):
         out.append((k['q_an'].format(name=n), k['s_an'].format(n=f['n'], rec=f['rec'], tgt=usd(f['tgt']), up=pct(f['tgt'] / f['cur'] - 1)) + ' ' + k['notadv']))
     return out
 
+
+
+LC_TABS = [('mcap', ''), ('rev', 'revenue'), ('ni', 'earnings'), ('emp', 'employees'), ('div', 'dividend'), ('pe', 'pe-ratio')]
+_LCU = {}
+
+
+def lc_universe():
+    """Stocks with key stats: dict id -> numbers in USD (market cap, revenue, earnings, employees, dividend yield, P/E)."""
+    if _LCU:
+        return _LCU
+    for aid, a in A.items():
+        if a['cat'] != 'stock':
+            continue
+        st = stock_stats(a)
+        mc = STOCKINFO.get(a.get('yahoo') or '', {}).get('mcap') if st else None
+        if not mc:
+            continue
+        c, fc = st.get('ccy'), st.get('fcy') or st.get('ccy')
+        lcf = to_usd(1.0, c)
+        cur = METRICS[aid]['price']
+        dy = (st['dps'] * lcf / cur) if st.get('dps') and lcf and cur else None
+        _LCU[aid] = dict(mcap=mc, rev=to_usd(st.get('rev'), fc), ni=to_usd(st.get('ni'), fc), emp=st.get('emp'),
+                         div=dy if dy and dy < 0.25 else None, pe=st.get('pe') if st.get('pe') and 0 < st['pe'] < 300 else None,
+                         mkt=a.get('mkt') or 'us', web=(st.get('web') or '').lower().replace('https://', '').replace('http://', '').replace('www.', '').strip('/'))
+    seen = {}   # one row per company: share classes / ADR + home listing share a website -> keep the better-known listing
+    for aid in sorted(_LCU, key=lambda i: ORD.get(i, 1e9)):
+        w = _LCU[aid]['web']
+        if w and w in seen:
+            del _LCU[aid]
+        elif w:
+            seen[w] = aid
+    return _LCU
+
+
+def world_rank(aid):
+    u = lc_universe()
+    if aid not in u:
+        return None
+    if '_rank' not in _LCU.get('__meta__', {}):
+        order = sorted((i for i in u if i != '__meta__'), key=lambda i: -u[i]['mcap'])
+        _LCU['__meta__'] = {'_rank': {i: k + 1 for k, i in enumerate(order)}}
+    return _LCU['__meta__']['_rank'].get(aid)
+
+
+def year_chg(aid):
+    p = A[aid]['p']
+    return p[-1] / p[-13] - 1 if len(p) >= 13 and p[-13] else None
+
+
+def lc_slug(m):
+    return MKTS[m][0].replace('stocks-', '') if m in MKTS else m
+
+
+def lc_ids(tab, mkt=None):
+    u = {i: v for i, v in lc_universe().items() if i != '__meta__' and (mkt is None or v['mkt'] == mkt)}
+    if tab == 'pe':
+        ids = sorted((i for i in u if u[i]['pe']), key=lambda i: u[i]['pe'])
+    else:
+        ids = sorted((i for i in u if u[i].get(tab)), key=lambda i: -u[i][tab])
+    return ids
+
+
+def lc_page(lang, tab='mcap', mkt=None, ver=None):
+    t = LC[lang]
+    u = lc_universe()
+    ids = lc_ids(tab, mkt)
+    if mkt is None:
+        ids = ids[:100]
+    # rank change vs yesterday (market cap tab only): yesterday's cap = today's / (1 + day change)
+    moves = {}
+    if tab == 'mcap':
+        y = sorted(ids, key=lambda i: -u[i]['mcap'] / (1 + (METRICS[i]['chg'] or 0)))
+        ry = {i: k for k, i in enumerate(y)}
+        moves = {i: ry[i] - k for k, i in enumerate(ids)}
+    cname = (lambda m: CTRY[lang][3][m][0] if m in CTRY[lang][3] else m.upper())
+    val = {'mcap': lambda v: usd_h(v['mcap']), 'rev': lambda v: usd_h(v['rev']), 'ni': lambda v: usd_h(v['ni']),
+           'emp': lambda v: _num(v['emp'], 0), 'div': lambda v: pctu(v['div']), 'pe': lambda v: _num(v['pe'], 1)}[tab]
+    rows = ''
+    for k, i in enumerate(ids):
+        a, m, v = A[i], METRICS[i], u[i]
+        mv = moves.get(i, 0)
+        arr = f'<span class="rk {"up" if mv > 0 else "dn"}">{"▲" if mv > 0 else "▼"}{abs(mv)}</span>' if mv else ''
+        yc = year_chg(i)
+        extra = f'<td class="num hide-sm">{usd_h(v["mcap"])}</td>' if tab != 'mcap' else ''
+        rows += (f'<tr><td class="l n">{arr}{k + 1}</td><td class="l"><a class="asset" href="{aurl(lang, i)}">{icon(a)}<span><span class="nm">{esc(nm(a, lang))}</span>'
+                 f'<span class="tk">{esc(a["tk"])}</span></span></a></td><td class="num"><b>{val(v)}</b></td>{extra}'
+                 f'<td class="num" data-p="{i}">{price(m["price"])}</td><td class="num {cls(m["chg"])}" data-c="{i}">{pct(m["chg"])}</td>'
+                 f'<td class="num hide-sm {cls(yc)}">{pct(yc)}</td><td class="hide-sm">{spark(m["spark"])}</td>'
+                 f'<td class="l hide-sm">{flag(v["mkt"])}{esc(cname(v["mkt"]))}</td></tr>')
+    lab = t['t_' + tab]
+    th = (f'<tr><th class="l n">{esc(t["rank"])}</th><th class="l">{esc(t["name"])}</th><th>{esc(lab)}</th>'
+          + (f'<th class="hide-sm">{esc(t["t_mcap"])}</th>' if tab != 'mcap' else '')
+          + f'<th>{esc(t["price"])}</th><th>{esc(t["day"])}</th><th class="hide-sm">{esc(t["year"])}</th><th class="hide-sm"></th><th class="l hide-sm">{esc(t["ctry"])}</th></tr>')
+    base = 'largest-companies'
+    if mkt is None:
+        h1 = t['h_' + tab]
+        path = base + ('/' + dict(LC_TABS)[tab] if tab != 'mcap' else '')
+    else:
+        h1 = t['h_ctry'].format(c=cname(mkt))
+        path = base + '/' + lc_slug(mkt)
+    tabs = ''.join(f'<a class="chip{" on" if k == tab and mkt is None else ""}" href="{url(lang, base + ("/" + s if s else ""))}">{esc(t["t_" + k])}</a>' for k, s in LC_TABS)
+    mk = sorted({v['mkt'] for i, v in u.items() if i != '__meta__'}, key=lambda m: (MKT_LANG.get(m) != lang, -len(lc_ids('mcap', m))))
+    ctry = ''.join(f'<a class="chip{" on" if m == mkt else ""}" href="{url(lang, base + "/" + lc_slug(m))}">{flag(m)}{esc(cname(m))}</a>' for m in mk if len(lc_ids('mcap', m)) >= 5)
+    top = ids[:3]
+    desc = (t['lead'] + ' ' + ', '.join(f'{nm(A[i], lang)}' for i in top)).strip()[:300]
+    body = (f'<h1>{esc(h1)}</h1><p class="lead">{esc(t["lead"])}</p>'
+            f'<div class="cchips lcchips"><b>{esc(t["by"])}:</b>{tabs}</div><div class="cchips lcchips"><b>{esc(t["ctry_h"])}:</b>{ctry}</div>'
+            f'<section class="section"><div class="tw"><table class="mt lct"><thead>{th}</thead><tbody>{rows}</tbody></table></div></section>'
+            f'<p class="note">{esc(t["note"])} {UPDATED[:10]}</p>')
+    ld = {"@context": "https://schema.org", "@type": "ItemList", "name": h1,
+          "itemListElement": [{"@type": "ListItem", "position": k + 1, "name": nm(A[i], 'en'), "url": SITE + aurl(lang, i)} for k, i in enumerate(ids[:20])]}
+    return path, shell(lang, path, f'{h1} ({UPDATED[:4]}) | {BRAND}', desc, body, {}, ver, [ld])
+
+
+def lc_pages(lang, ver):
+    out = [lc_page(lang, k, None, ver) for k, _ in LC_TABS]
+    u = lc_universe()
+    for m in sorted({v['mkt'] for i, v in u.items() if i != '__meta__'}):
+        if len(lc_ids('mcap', m)) >= 5:
+            out.append(lc_page(lang, 'mcap', m, ver))
+    return out
 
 def stock_peers(aid, k=8):
     a = A[aid]
@@ -1658,7 +1783,7 @@ def tools_menu(lang):
     items = [('compare', S['nav_cmp']) if (S := TR[lang]) else None, ('habits', HB[lang]['nav']), ('millionaire', t['g_nav'])]
     if CPI['c']:
         items.append(('inflation', t['i_nav']))
-    items += [('world-assets', WA[lang]['nav']), ('memes', MEM[lang]['nav']), ('converter', HCONV[lang]), ('ath', t['a_nav']), ('bitcoin-halving', t['v_nav']), ('dividends', DV[lang]['nav']), ('average-price', AV[lang]['nav'])]
+    items += [('largest-companies', LC[lang]['nav']), ('world-assets', WA[lang]['nav']), ('memes', MEM[lang]['nav']), ('converter', HCONV[lang]), ('ath', t['a_nav']), ('bitcoin-halving', t['v_nav']), ('dividends', DV[lang]['nav']), ('average-price', AV[lang]['nav'])]
     if lang in OV:
         items.append(('ovdp', OV[lang]['nav']))
     items.append(('widgets', EMB[lang]['nav']))
@@ -2903,6 +3028,9 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
             write(f'{pre}portfolios/{k}/index.html', portfolio_detail(lang, k, c, ver))
         write(pre + 'millionaire/index.html', calc_page(lang, 'millionaire', ver))
         write(pre + 'compound-interest/index.html', ic_page(lang, ver))
+        for _p, _h in lc_pages(lang, ver):
+            write(f'{pre}{_p}/index.html', _h)
+            extra_pages.append(_p)
         write(pre + 'dividends/index.html', dividends_page(lang, ver))
         write(pre + 'average-price/index.html', avgprice_page(lang, ver))
         if lang in OV:

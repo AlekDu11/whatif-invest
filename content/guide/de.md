@@ -83,6 +83,10 @@ Berechne, wie viel Dividende pro Jahr und Monat ein Depot bringt, wenn du monatl
 
 Gib deine Käufe ein und erhalte Einstandskurs, Gewinn zum aktuellen Kurs und wie viel du nachkaufen musst, um den Schnitt zu senken. [Durchschnittspreis-Rechner]({lang}/average-price/)
 
+## Größte Unternehmen
+
+Rangliste börsennotierter Unternehmen mit Kurs und Veränderung zum Vortag und zum Vorjahr. Tippe auf ein Unternehmen für Kennzahlen und eine verständliche Analyse. [Größte Unternehmen der Welt nach Börsenwert]({lang}/largest-companies/)
+
 ## Woher die Zahlen kommen
 
 Binance, CoinGecko, Yahoo Finance, die Moskauer Börse, die Weltbank und andere öffentliche Quellen; die Quellen jeder Meldung findest du unter [News]({lang}/news/). Die Kurse werden täglich aktualisiert, Kryptokurse live. Nichts auf WhatIfStack ist eine Anlageberatung: Vergangene Ergebnisse sind keine Garantie für die Zukunft.

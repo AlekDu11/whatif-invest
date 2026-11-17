@@ -87,6 +87,10 @@ Enter your buys and get your average price, profit at the current price, and how
 
 See how much Ukrainian military government bonds (OVDP) pay in hryvnia, dollars or euros — and what a bank deposit would give after the 23% tax. [Ukraine bonds (OVDP) calculator]({lang}/ovdp/)
 
+## Largest companies
+
+Ranking of public companies with prices and daily and yearly change. Tap a company to see its key numbers and a plain-language analysis. [Largest companies in the world by market cap]({lang}/largest-companies/)
+
 ## Where the numbers come from
 
 Binance, CoinGecko, Yahoo Finance, the Moscow Exchange, the World Bank and other public sources; details in [About & methodology]({lang}/about/). Prices update daily, crypto prices live. Nothing on WhatIfStack is investment advice: past results do not guarantee future returns.

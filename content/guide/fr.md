@@ -83,6 +83,10 @@ Calculez combien de dividendes par an et par mois rapporte un portefeuille si vo
 
 Saisissez vos achats : prix moyen, gain au cours actuel et combien racheter pour faire baisser la moyenne. [Calculateur de prix moyen]({lang}/average-price/)
 
+## Plus grandes entreprises
+
+Classement des sociétés cotées avec cours et variation sur un jour et un an. Touchez une entreprise pour voir ses chiffres clés et une analyse claire. [Plus grandes entreprises du monde par capitalisation]({lang}/largest-companies/)
+
 ## D'où viennent les chiffres
 
 Binance, CoinGecko, Yahoo Finance, la Bourse de Moscou, la Banque mondiale et d'autres sources publiques ; les sources de chaque brève sont dans [Actu]({lang}/news/). Les prix sont mis à jour chaque jour, ceux de la crypto en direct. Rien sur WhatIfStack n'est un conseil en investissement : les performances passées ne préjugent pas des performances futures.
