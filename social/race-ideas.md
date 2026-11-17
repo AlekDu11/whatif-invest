@@ -4,8 +4,22 @@ Made with `python3 scripts/race_video.py <ids...> --amt 100 [--since YYYY-MM] --
 (ids from data/market.json; 2–4 assets; default start = the youngest asset's first month). Inspired by animated "since launch"
 comparisons that get thousands of views on crypto X. Keep the matchup a real question people argue about.
 
+## How to post (tested 2026-11-17)
+- **X** blocks downloads from other sites (CSP), and the built-in browser opens popups in the same tab. Hand-off via URL
+  fragment: navigate the tab to `https://whatifstack.com/x-relay.html?vid=/assets/video/<slug>.mp4&to=x&hash=1` (the video
+  must be deployed: content/video/ -> /assets/video/). It redirects to `x.com/compose/post#wisf=<name>:<base64>`. Then in ONE
+  javascript_tool call: decode `location.hash` into a File (video/mp4) right away, wait for `[role=dialog]
+  input[data-testid=fileInput]` (only the dialog's input — the home page has its own), set `.files` via DataTransfer and
+  dispatch `change`; wait until `[role=dialog] [data-testid=attachments]` says "Ready". Type the text by clicking the
+  dialog's "What's happening?" box and typing line by line (Enter for new lines), then click `[role=dialog]
+  [data-testid=tweetButton]`. Fallback if the hash route fails: `python3 scripts/race_snippet.py ...` prints JS that renders
+  and encodes the same video inside the page (WebCodecs) into window.__wisRaceFile.
+- **Telegram Web** can fetch it directly: `fetch('https://raw.githubusercontent.com/AlekDu11/whatif-invest/main/content/video/<slug>.mp4')`,
+  File -> window.__wisNext + the patched HTMLInputElement.prototype.click from the Telegram task -> Attach -> "Photo or Video",
+  caption with the KeyboardEvent/execCommand method (airy layout, bold headline + "In numbers"), click send.
+
 ## Queue (take the first unused line; mark it with the date when posted; add new ideas at the end)
-- btc gold spy --since 2016-01 | Bitcoin vs gold vs S&P 500
+- ✅ 2026-11-17 btc gold spy --since 2016-01 | Bitcoin vs gold vs S&P 500
 - okb bnb cro | exchange tokens since launch
 - btc eth sol | the big three L1s
 - nvda amd intc | chip makers
@@ -34,3 +48,4 @@ comparisons that get thousands of views on crypto X. Keep the matchup a real que
 ## Log
 | date | ids | X URL | Telegram | views |
 |---|---|---|---|---|
+| 2026-11-17 | btc gold spy (since 2016-01) | https://x.com/WhatIfStack/status/2122690567314292871 | msg 1474 | |

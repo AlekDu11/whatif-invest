@@ -114,7 +114,8 @@ def main():
     for fr in range(anim + hold):
         t = min(1.0, fr / anim)
         e = t * t * (3 - 2 * t) * 0.15 + t * 0.85          # gentle ease
-        pos = e * (n - 1)
+        p0 = min(6, n - 1)
+        pos = p0 + e * (n - 1 - p0)   # start a few months in: frame 0 is the X/Telegram thumbnail
         j = int(pos)
         fj = pos - j
         im = Image.new('RGB', (W, H), BG)
