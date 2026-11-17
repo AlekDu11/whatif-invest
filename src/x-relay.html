@@ -1,14 +1,29 @@
-<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>WhatIfStack image relay</title></head><body>
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="robots" content="noindex"><meta name="viewport" content="width=device-width"><title>WhatIfStack media relay</title>
+<style>body{font:16px system-ui;margin:40px}button{font:700 18px system-ui;padding:14px 22px;border-radius:12px;border:0;background:#0b7a55;color:#fff;cursor:pointer}</style></head><body>
+<p id="s">…</p><button id="go" hidden>Open composer</button>
 <script>
-// Hands one of our own cover images or race videos to an x.com / Telegram Web composer that opened this window (X's CSP blocks fetching it directly).
+// Hands one of our own cover images or race videos to our X / Telegram Web composer (their CSP blocks fetching it directly).
+// Mode 1 (opener): x.com opened this window -> post the file back.  Mode 2 (?to=x|tg): click the button -> this page opens
+// the composer and keeps posting the file to it until the composer tab acknowledges ({wisAck:1}).
 (async () => {
-  const q = new URLSearchParams(location.search), p = q.get('img') || q.get('vid') || '';
+  const q = new URLSearchParams(location.search), p = q.get('img') || q.get('vid') || '', s = document.getElementById('s');
   const ok = /^\/assets\/covers\/[\w\/.-]+\.jpg$/.test(p) || /^\/assets\/video\/[\w-]+\.mp4$/.test(p);
-  if (!ok || !window.opener) { document.body.textContent = 'nothing to do'; return; }
+  if (!ok) { s.textContent = 'nothing to do'; return; }
   const buf = await (await fetch(p)).arrayBuffer();
-  // our own posting tabs only: X and Telegram Web (a wrong targetOrigin is silently dropped)
-  for (const o of ['https://x.com', 'https://web.telegram.org']) { try { window.opener.postMessage({ wisImg: p, wisVid: p.endsWith('.mp4') ? p : '', buf: buf.slice(0) }, o) } catch (e) {} }
-  document.body.textContent = 'sent';
-  setTimeout(() => window.close(), 500);
+  const msg = () => ({ wisImg: p, wisVid: p.endsWith('.mp4') ? p : '', buf: buf.slice(0) });
+  const ORIG = { x: ['https://x.com', 'https://x.com/compose/post'], tg: ['https://web.telegram.org', q.get('u') || 'https://web.telegram.org/a/'] };
+  if (window.opener && !q.get('to')) {
+    for (const o of ['https://x.com', 'https://web.telegram.org']) { try { window.opener.postMessage(msg(), o) } catch (e) {} }
+    s.textContent = 'sent'; setTimeout(() => window.close(), 500); return;
+  }
+  const t = ORIG[q.get('to')]; if (!t) { s.textContent = 'nothing to do'; return; }
+  s.textContent = 'ready: ' + p + ' (' + Math.round(buf.byteLength / 1024) + ' KB)';
+  const b = document.getElementById('go'); b.hidden = false;
+  let acked = false; window.addEventListener('message', e => { if (e.origin === t[0] && e.data && e.data.wisAck) { acked = true; s.textContent = 'delivered ✓' } });
+  b.onclick = () => {
+    const w = window.open(t[1], '_blank'); if (!w) { s.textContent = 'popup blocked'; return; }
+    let n = 0; const iv = setInterval(() => { if (acked || ++n > 240) return clearInterval(iv); try { w.postMessage(msg(), t[0]) } catch (e) {} }, 1000);
+    s.textContent = 'sending…';
+  };
 })();
 </script></body></html>
