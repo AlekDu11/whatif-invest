@@ -28,6 +28,7 @@ from i18n_bp import BP  # noqa: E402
 from i18n_ai import AIC  # noqa: E402
 from i18n_emb import EMB  # noqa: E402
 from i18n_ic import IC  # noqa: E402
+from i18n_bpd import BPD, IDEA as BP_IDEA  # noqa: E402
 from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB, CH as OWN_CH, CH2 as OWN_CH2  # noqa: E402
 SOCIAL = [('Telegram', 'https://t.me/TradeMaster_insight'), ('X (Twitter)', 'https://x.com/WhatIfStack'), ('Bluesky', 'https://bsky.app/profile/whatifstack.bsky.social'), ('Instagram', 'https://www.instagram.com/whatifstack/'), ('Threads', 'https://www.threads.com/@whatifstack'),
           ('Pinterest', 'https://www.pinterest.com/whatifstack/'), ('Medium', 'https://medium.com/@whatifstack'),
@@ -159,7 +160,7 @@ assert not (set(HUBS) | set(TOOLS) | {'blog', 'compare'}) & set(A), 'asset id co
 def has_page(lang, aid):
     if aid is None or aid == 'compare' or aid in HUBS or aid in TOOLS:
         return True
-    if aid in ('ai', 'me', 'memes', 'world-assets', 'activities', 'portfolios'):
+    if aid in ('ai', 'me', 'memes', 'world-assets', 'activities', 'portfolios') or (aid or '').startswith('portfolios/'):
         return True
     if aid == 'editorial-policy':
         return lang in POLICY
@@ -2125,12 +2126,104 @@ def portfolios_page(lang, ver):
         rows = ''.join(f'<tr><td class="l">{t["yrs"].format(n=y)}</td><td class="num">{usd(r["inv"])}</td><td class="num"><b>{usd(r["val"])}</b></td>'
                        f'<td class="num"><span class="pill {cls(r["roi"])}">{pct(r["roi"])}</span></td>'
                        f'<td class="num hide-sm">{esc(A[r["best"][0]]["tk"])} {pct(r["best"][1])}</td></tr>' for y in (1, 3, 5, 10) if (r := res[k][y]))
-        cards.append(f'<section class="card bpc"><h2>{esc(t[k])}</h2><div class="bpcomp">{chips}</div>'
+        cards.append(f'<section class="card bpc"><h2><a href="{url(lang, "portfolios/" + k)}">{esc(t[k])}</a></h2><div class="bpcomp">{chips}</div>'
                      f'<div class="tw"><table class="mt"><thead><tr><th class="l"></th><th>{esc(t["inv"])}</th><th>{esc(t["val"])}</th><th>{esc(t["roi"])}</th><th class="hide-sm">{esc(t["best_asset"])}</th></tr></thead><tbody>{rows}</tbody></table></div>'
-                     + (f'<p class="muted bpnote">* {esc(t["hind"])}</p>' if k in ('topc', 'tops') else '') + '</section>')
+                     + (f'<p class="muted bpnote">* {esc(t["hind"])}</p>' if k in ('topc', 'tops') else '')
+                     + f'<a class="btn ghost bpmore" href="{url(lang, "portfolios/" + k)}">{esc(BPD[lang]["more"])}</a></section>')
     body = (f'<h1>{esc(t["h1"])}</h1><p class="lead">{esc(t["d"])}</p>'
             f'<p class="muted bpnote">{esc(t["how"])}</p><div class="bpgrid section">{"".join(cards)}</div><p class="muted" style="font-size:13px">{esc(t["na"])}</p>')
     return shell(lang, 'portfolios', f'{t["h1"]} | {BRAND}', t['d'], body, {}, ver)
+
+
+def bp_path(comp, st):
+    """Monthly invested / value of a DCA portfolio from month index st to the end; per-asset final results."""
+    months = list(range(st, END_I + 1))
+    inv = [0.0] * len(months); val = [0.0] * len(months); per = {}
+    for a, w in comp.items():
+        P = A[a]; s0 = ym2i(P['start']); amt = AMOUNT * w; u = ii = 0.0
+        anniv = (END_I - st) % 12 == 0
+        for j, i in enumerate(months):
+            c = amt * (per_month(i) - (END_DAY if anniv and j == 0 else 0))
+            u += c / P['p'][i - s0]; ii += c
+            val[j] += u * P['p'][i - s0]
+        per[a] = dict(inv=ii, val=u * P['p'][END_I - s0])
+    # cumulative invested (all assets)
+    tot = 0.0
+    for j, i in enumerate(months):
+        tot += AMOUNT * (per_month(i) - (END_DAY if (END_I - st) % 12 == 0 and j == 0 else 0))
+        inv[j] = tot
+    return months, inv, val, per
+
+
+def portfolio_detail(lang, k, comp, ver):
+    t, d, S = BP[lang], BPD[lang], TR[lang]
+    res = {y: bp_sim(comp, y) for y in (1, 3, 5, 10)}
+    yrs = 5 if res[5] else (3 if res[3] else 1)
+    st = END_I - yrs * 12
+    months, inv, val, per = bp_path(comp, st)
+    r = res[yrs]
+    name = t[k]
+    lead = d['dlead'].format(n=yrs, yr=TT[lang]['yr'], inv=f'<b>{usd(r["inv"])}</b>', val=f'<b>{usd(r["val"])}</b>', roi=f'<span class="{cls(r["roi"])}">{pct(r["roi"])}</span>')
+    profit = sum(max(0, x['val'] - x['inv']) for x in per.values()) or 1
+    rows = ''
+    for a, w in sorted(comp.items(), key=lambda x: -(per[x[0]]['val'] - per[x[0]]['inv'])):
+        x = per[a]; roi = x['val'] / x['inv'] - 1 if x['inv'] else 0
+        sh = max(0, x['val'] - x['inv']) / profit
+        rows += (f'<tr><td class="l"><a class="asset" href="{aurl(lang, a)}">{icon(A[a])}<span><span class="nm">{esc(nm(A[a], lang))}</span><span class="tk">{esc(A[a]["tk"])}</span></span></a></td>'
+                 f'<td class="num">{w * 100:.0f}%</td><td class="num hide-sm">{usd(x["inv"])}</td><td class="num"><b>{usd(x["val"])}</b></td>'
+                 f'<td class="num"><span class="pill {cls(roi)}">{pct(roi)}</span></td><td class="num hide-sm">{sh * 100:.0f}%</td></tr>')
+    comp_tbl = (f'<div class="tw"><table class="mt"><thead><tr><th class="l"></th><th>{esc(d["weight"])}</th><th class="hide-sm">{esc(t["inv"])}</th><th>{esc(t["val"])}</th>'
+                f'<th>{esc(t["roi"])}</th><th class="hide-sm">{esc(d["share"])}</th></tr></thead><tbody>{rows}</tbody></table></div>')
+    res_rows = ''.join(f'<tr><td class="l">{t["yrs"].format(n=y)}</td><td class="num">{usd(x["inv"])}</td><td class="num"><b>{usd(x["val"])}</b></td>'
+                       f'<td class="num"><span class="pill {cls(x["roi"])}">{pct(x["roi"])}</span></td></tr>' for y in (1, 3, 5, 10) if (x := res[y]))
+    res_tbl = f'<div class="tw"><table class="mt"><thead><tr><th class="l"></th><th>{esc(t["inv"])}</th><th>{esc(t["val"])}</th><th>{esc(t["roi"])}</th></tr></thead><tbody>{res_rows}</tbody></table></div>'
+    # chart
+    W, H, L, R, T_, B = 720, 260, 8, 78, 12, 26
+    mx = max(max(val), max(inv)) * 1.05 or 1
+    X = lambda j: L + (W - L - R) * j / max(1, len(months) - 1)
+    Y = lambda v: T_ + (H - T_ - B) * (1 - v / mx)
+    line = lambda arr: ' '.join(f'{X(j):.1f},{Y(v):.1f}' for j, v in enumerate(arr))
+    grid = ''.join(f'<line x1="{L}" x2="{W - R}" y1="{Y(mx * g / 4):.1f}" y2="{Y(mx * g / 4):.1f}" class="g"/><text x="{W - R + 6}" y="{Y(mx * g / 4) + 4:.1f}">{esc(usd(mx * g / 4))}</text>' for g in range(5))
+    grid += ''.join(f'<text x="{X(j):.1f}" y="{H - 6}" text-anchor="middle">{i // 12}</text>' for j, i in enumerate(months) if i % 12 == 0)
+    up = val[-1] >= inv[-1]
+    col = '#16a34a' if up else '#dc2626'
+    chart = (f'<svg viewBox="0 0 {W} {H}" class="bpchart" role="img" aria-label="{esc(d["chart"])}">{grid}'
+             f'<polygon points="{X(0):.1f},{H - B} {line(val)} {X(len(val) - 1):.1f},{H - B}" fill="{col}" opacity=".1"/>'
+             f'<polyline points="{line(val)}" fill="none" stroke="{col}" stroke-width="2.5" stroke-linejoin="round"/>'
+             f'<polyline points="{line(inv)}" fill="none" stroke="var(--muted)" stroke-width="1.6" stroke-dasharray="6 5"/></svg>'
+             f'<div class="glg"><span><i style="background:{col}"></i>{esc(t["val"])}</span><span><i class="cl"></i>{esc(t["inv"])}</span></div>')
+    # why: contributors + deepest drop of the portfolio's return (value / invested)
+    ratio = [v / i if i else 1 for v, i in zip(val, inv)]
+    peak, dd, ddm = ratio[0], 0.0, months[0]
+    for j, x in enumerate(ratio):
+        peak = max(peak, x)
+        if x / peak - 1 < dd:
+            dd, ddm = x / peak - 1, months[j]
+    srt = sorted(per.items(), key=lambda kv: -(kv[1]['val'] - kv[1]['inv']))
+    why = []
+    if len(comp) > 1:
+        a0, x0 = srt[0]; aL, xL = srt[-1]
+        why.append(d['contrib'].format(a=nm(A[a0], lang), p=f'{max(0, x0["val"] - x0["inv"]) / profit * 100:.0f}%', r=pct(x0['val'] / x0['inv'] - 1)))
+        why.append(d['weak'].format(a=nm(A[aL], lang), r=pct(xL['val'] / xL['inv'] - 1)))
+    if dd < -0.05:
+        why.append(d['dd'].format(d=pct(dd), m=mlabel(i2ym(ddm), lang)))
+    idea = BP_IDEA.get(lang, {}).get(k)
+    li = lambda xs: '<ul>' + ''.join(f'<li>{esc(x)}</li>' for x in xs) + '</ul>'
+    chips = ''.join(f'<a class="bpa" href="{aurl(lang, a)}">{icon(A[a])}<span>{esc(A[a]["tk"])} {w * 100:.0f}%</span></a>' for a, w in sorted(comp.items(), key=lambda x: -x[1]))
+    others = ''.join(f'<a class="bpa" href="{url(lang, "portfolios/" + kk)}"><span>{esc(t[kk])}</span></a>' for kk, _ in bp_sets() if kk != k)
+    h1 = d['dh1'].format(name=name)
+    body = (f'<p class="crumbs"><a href="{url(lang, "portfolios")}">{esc(d["back"])}</a></p><h1>{esc(h1)}</h1><p class="lead">{lead}</p><div class="bpcomp">{chips}</div>'
+            + (f'<div class="card awarn">⚠️ {esc(d["hind"])}</div>' if k in ('topc', 'tops') else '')
+            + (f'<section class="card section"><h2>💡 {esc(d["idea"])}</h2><p>{esc(idea)}</p></section>' if idea else '')
+            + f'<section class="card section"><h2>{esc(d["chart"])}</h2>{chart}</section>'
+            f'<div class="cols2 section"><section class="card"><h2>{esc(d["comp"])}</h2>{comp_tbl}</section><section class="card"><h2>{esc(d["res"])}</h2>{res_tbl}</section></div>'
+            + (f'<section class="card section"><h2>🔍 {esc(d["why"])}</h2>{li(why)}</section>' if why else '')
+            + f'<div class="cols2 section"><section class="card"><h2>✅ {esc(d["good"])}</h2>{li([d["g1"], d["g2"], d["g3"]])}</section>'
+            f'<section class="card"><h2>⚠️ {esc(d["risks"])}</h2>{li([d["r1"], d["r2"], d["r3"]])}</section></div>'
+            f'<p><a class="btn" href="{url(lang, "compare")}?sel={",".join(comp)}">⇅ {esc(d["try"])}</a></p>'
+            f'<p class="muted bpnote">{esc(t["how"])}</p><section class="section"><h2>{esc(t["h1"].split(":")[0])}</h2><div class="bpcomp">{others}</div></section>')
+    desc = _re.sub(r'<[^>]+>', '', lead)
+    return shell(lang, 'portfolios/' + k, f'{h1} | {BRAND}', desc, body, {}, ver)
 
 
 def activities_page(lang, ver):
@@ -2384,7 +2477,9 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
                 extra_pages_c.append(slug)
         for slug in TOOLS:
             write(f'{pre}{slug}/index.html', tool(lang, slug, ver))
-        extra_pages = ['habits'] + ['habits/' + HSLUG[k] for k in HSCEN] + [c for c in CALCS if has_page(lang, c)]
+        extra_pages = ['habits'] + ['habits/' + HSLUG[k] for k in HSCEN] + [c for c in CALCS if has_page(lang, c)] + ['portfolios/' + k for k, _ in bp_sets()]
+        for k, c in bp_sets():
+            write(f'{pre}portfolios/{k}/index.html', portfolio_detail(lang, k, c, ver))
         write(pre + 'millionaire/index.html', calc_page(lang, 'millionaire', ver))
         write(pre + 'compound-interest/index.html', ic_page(lang, ver))
         write(pre + 'widgets/index.html', widgets_page(lang, ver))
