@@ -42,7 +42,7 @@ SOCIAL = [('Telegram', 'https://t.me/TradeMaster_insight'), ('X (Twitter)', 'htt
           ('Pinterest', 'https://www.pinterest.com/whatifstack/'), ('Medium', 'https://medium.com/@whatifstack'),
           ('Flipboard', 'https://flipboard.com/@whatifstack'), ('Facebook', 'https://www.facebook.com/arti.trader.39'), ('Teletype', 'https://teletype.in/@whatifstack'),
           ('GitHub', 'https://github.com/AlekDu11/whatif-invest')]
-CONTACT_EMAIL = ''   # public contact address shown under 'Follow us' (set when the owner confirms which mailbox)   # [(label, url)], e.g. ('Telegram', 'https://t.me/whatifstack'); the 'Follow us' column appears when filled
+CONTACT_EMAIL = 'support@whatifstack.com'   # public contact address shown under 'Follow us' (set when the owner confirms which mailbox)   # [(label, url)], e.g. ('Telegram', 'https://t.me/whatifstack'); the 'Follow us' column appears when filled
 from i18n_h import H as HB, PRICES as HPRICE, SCEN as HSCEN, UNITS as HUNITS, CONV as HCONV  # noqa: E402
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
