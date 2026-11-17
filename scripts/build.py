@@ -607,56 +607,81 @@ def widgets_page(lang, ver):
 
 def ic_page(lang, ver):
     """Full investment calculator on /compound-interest/ (ported from invest.mytimebox.app, 20 languages)."""
-    t, S, TTl = IC[lang], TR[lang], TT[lang]
+    t, S, TTl, U = IC[lang], TR[lang], TT[lang], TR[lang]['ui']
     code, rate = hccy(lang)
     sym = CCY_SYM.get(code, code)
     c = CPI_LANG.get(lang, 'USA')
     cpi = CPI['c'].get(c) or CPI['c'].get('USA') or {}
     infl = round(cpi[max(cpi)], 1) if cpi else 3.0
+    # (id, label, rate %, tax-free, icon, colour, small note)
     insts = []
     if lang == 'uk':
-        insts += [('ovdp', t['bond'], 15.0, 1), ('dep', t['dep'], 13.7, 0)]
+        insts += [('ovdp', t['bond'], 15.0, 1, '🏛️', '#f0b53a', 'ПДФО 0%'), ('dep', t['dep'], 13.7, 0, '🏦', '#4f8cff', 'ПДФО+ВЗ 23%')]
     else:
-        insts += [('dep', t['dep'], 4.0, 0), ('bond', t['bond'], 4.0, 0)]
-    for aid in ('spy', 'qqq', 'gold'):
+        insts += [('dep', t['dep'], 4.0, 0, '🏦', '#4f8cff', ''), ('bond', t['bond'], 4.0, 0, '🏛️', '#f0b53a', '')]
+    for aid, ic, col in (('spy', '📈', '#16a34a'), ('qqq', '💻', '#8b5cf6'), ('gold', '🥇', '#d97706')):
         r = cagr(aid)
         if r:
-            insts.append((aid, nm(A[aid], lang), round(r * 100, 1), 0))
-    insts += [('cash', t['cashi'], 0.0, 0), ('custom', t['custom'], 10.0, 0)]
+            insts.append((aid, nm(A[aid], lang), round(r * 100, 1), 0, ic, col, 'Ø 10Y · USD'))
+    insts += [('cash', t['cashi'], 0.0, 0, '💵', '#ef4444', ''), ('custom', t['custom'], 10.0, 0, '✏️', '#64748b', '')]
     sel = 'ovdp' if lang == 'uk' else 'spy'
     p0, pm, yrs = nice(1000 * rate), nice(100 * rate), 10
     tax = 23 if lang == 'uk' else 0
-    num = lambda i, lab, v, extra='': f'<label class="f">{esc(lab)}<div class="inp"><input id="{i}" type="number" min="0" step="any" value="{int(v) if float(v).is_integer() else v}"{extra}>{f"<span class=muted>{esc(sym)}</span>" if i in ("icp", "icm", "icx", "icg") else ""}</div></label>'
-    seg = lambda i, opts, v: f'<div class="seg" id="{i}">' + ''.join(f'<button type="button" data-v="{k}"{" class=on" if k == v else ""}>{esc(l)}</button>' for k, l in opts) + '</div>'
-    sel_html = '<select id="ici">' + ''.join(f'<option value="{k}" data-r="{r}" data-tf="{tf}"{" selected" if k == sel else ""}>{esc(l)} · {r:g}%</option>' for k, l, r, tf in insts) + '</select>'
-    form = (f'<div class="icgrid">{num("icp", t["init"], p0)}{num("icm", t["month"], pm)}{num("icy", t["years"], yrs, " max=60 step=1")}'
-            f'<label class="f">{esc(t["inst"])}<div class="inp">{sel_html}</div></label>{num("icr", t["rate"], dict((k, r) for k, _, r, _ in insts)[sel], " step=0.1")}'
-            f'<div class="f">{esc(t["scen"])}{seg("ics", [("o", t["opt"]), ("r", t["real"]), ("p", t["pes"])], "r")}</div>'
-            f'<div class="f">{esc(t["comp"])}{seg("icc", [("m", t["cm"]), ("q", t["cq"]), ("h", t["ch"]), ("y", t["cy"])], "m" if lang != "uk" else "y")}</div></div>'
-            f'<div class="icopts"><label class="chk"><input type="checkbox" id="icre" checked> {esc(t["reinv"])}</label>'
-            f'<label class="chk"><input type="checkbox" id="icin" checked> {esc(t["infl"])}</label>{num("icir", t["infl_r"], infl, " step=0.1")}'
-            f'<label class="chk"><input type="checkbox" id="ictx"{" checked" if tax else ""}> {esc(t["tax"])}</label>{num("ictr", t["tax_r"], tax or 15, " step=0.5")}</div>')
-    res = (f'<div class="icres"><div class="card stat big"><div class="k">{esc(t["final"])}</div><div class="v good" id="icv">—</div><div class="s" id="icvs"></div></div>'
-           + ''.join(f'<div class="card stat"><div class="k">{esc(t[k])}</div><div class="v" id="ic_{k}">—</div></div>' for k in ('contrib', 'interest', 'taxes', 'realv'))
-           + f'<div class="card stat"><div class="k">{esc(t["cash"])}</div><div class="v bad" id="ic_cash">—</div><div class="s" id="ic_cashs"></div></div></div>')
-    body = (f'<h1>{esc(t["h1"])}</h1><p class="lead">{esc(t["d"])}</p>'
-            f'<div class="card hcalc section" id="iccalc">{form}{res}<button type="button" class="btn ghost" id="icsh">{esc(t["share"])}</button></div>'
-            f'<section class="card section"><h2 id="icch">{esc(t["tbl_h"])}</h2><div id="icchart" class="icchart"></div>'
-            f'<div class="glg"><span><i class="a"></i>{esc(t["contrib"])}</span><span><i class="b"></i>{esc(t["interest"])}</span></div>'
-            f'<details class="ictbl"><summary>{esc(t["year"])} · {esc(t["contrib"])} · {esc(t["interest"])} · {esc(t["total"])}</summary><div class="tw"><table class="tbl" id="ictable"></table></div></details></section>'
-            f'<section class="card section"><h2 id="iccmph"></h2><div id="iccmp" class="iccmp"></div></section>'
-            f'<div class="cols2 section"><section class="card"><h2>{esc(t["rev_h"])}</h2>{num("icg", t["rev_goal"], nice(1e5 * rate))}'
-            f'<p class="muted">{esc(t["rev_need"])}</p><div class="v good big" id="icgv">—</div></section>'
-            f'<section class="card"><h2>{esc(t["fire_h"])}</h2>{num("icx", t["fire_exp"], nice(1500 * rate))}'
-            f'<div class="kv"><span>{esc(t["fire_need"])}</span><b id="icfn">—</b></div><div class="kv"><span>{esc(t["fire_yrs"])}</span><b id="icfy">—</b></div>'
-            f'<div class="kv"><span>{esc(t["fire_inc"])}</span><b id="icfi">—</b></div></section></div>'
+    iv = lambda v: int(v) if float(v).is_integer() else v
+    num = lambda i, lab, v, extra='', unit=True: (f'<label class="f">{esc(lab)}<div class="inp"><input id="{i}" type="number" min="0" step="any" value="{iv(v)}"{extra}>'
+                                                 + (f'<span class=muted>{esc(sym)}</span>' if unit else '') + '</div></label>')
+    seg = lambda i, opts, v: f'<div class="seg full" id="{i}">' + ''.join(f'<button type="button" data-v="{k}"{" class=on" if k == v else ""}>{esc(l)}</button>' for k, l in opts) + '</div>'
+    cards = ''.join(f'<button type="button" class="icard{" on" if k == sel else ""}" data-v="{k}" data-r="{r}" data-tf="{tf}" style="--c:{col}"><span class="ii">{ic}</span>'
+                    f'<b>{esc(l)}</b><span class="ir">{r:g}%</span>{f"<small>{esc(nt)}</small>" if nt else ""}</button>' for k, l, r, tf, ic, col, nt in insts)
+    opts = ''.join(f'<option value="{k}" data-r="{r}" data-tf="{tf}" data-c="{col}"{" selected" if k == sel else ""}>{esc(l)}</option>' for k, l, r, tf, ic, col, nt in insts)
+    rows = lambda ks: ''.join(f'<div class="kv"><span>{esc(lab)}</span><b id="{i}">—</b></div>' for i, lab in ks)
+    left = (f'<section class="card icl"><h2>⚙️ {esc(t["inst"])}</h2><select id="ici" hidden>{opts}</select>'
+            f'{num("icp", t["init"], p0)}{num("icm", t["month"], pm)}'
+            f'<label class="f">{esc(t["years"])}: <b id="icyl">{yrs}</b><div class="icy2"><input type="range" id="icys" min="1" max="40" value="{yrs}"><div class="inp"><input id="icy" type="number" min="1" max="60" step="1" value="{yrs}"></div></div></label>'
+            f'{num("icr", t["rate"], dict((x[0], x[2]) for x in insts)[sel], " step=0.1", False)}'
+            f'<div class="f">{esc(t["scen"])}{seg("ics", [("o", "😊 " + t["opt"]), ("r", "😐 " + t["real"]), ("p", "😟 " + t["pes"])], "r")}</div>'
+            f'<div class="f">{esc(t["comp"])}{seg("icc", [("m", t["cm"]), ("q", t["cq"]), ("h", t["ch"]), ("y", t["cy"])], "m" if lang != "uk" else "y")}</div>'
+            f'<div class="icchk"><label class="chk"><input type="checkbox" id="icre" checked> {esc(t["reinv"])}</label>'
+            f'<label class="chk"><input type="checkbox" id="icin" checked> {esc(t["infl"])}</label><div class="sub">{num("icir", t["infl_r"], infl, " step=0.1", False)}</div>'
+            f'<label class="chk"><input type="checkbox" id="ictx"{" checked" if tax else ""}> {esc(t["tax"])}</label><div class="sub">{num("ictr", t["tax_r"], tax or 15, " step=0.5", False)}</div></div>'
+            f'<div class="icsum">{rows([("ic_p0", t["init"]), ("ic_contrib", t["contrib"]), ("ic_interest", t["interest"]), ("ic_taxes", t["taxes"])])}'
+            f'<div class="kv big"><span>💰 {esc(t["final"])}</span><b id="icv">—</b></div>'
+            f'{rows([("ic_realv", t["realv"]), ("ic_cash", t["cash"])])}<p class="muted icnote2" id="ic_cashs"></p></div>'
+            f'<div class="icbox fire"><h3>🔥 {esc(t["fire_h"])}</h3>{num("icx", t["fire_exp"], nice(800 * rate))}'
+            f'<div class="tri"><div><b id="icfn">—</b><span>{esc(t["fire_need"])}</span></div><div><b id="icfy">—</b><span>{esc(t["fire_yrs"])}</span></div></div></div>'
+            f'<div class="icbox inc"><h3>📈 {esc(t["fire_inc"])}</h3><div class="tri3"><div><b id="icid">—</b><span>{esc(U["per_d"])}</span></div>'
+            f'<div><b id="iciw">—</b><span>{esc(U["per_w"])}</span></div><div><b id="icfi">—</b><span>{esc(U["per_m"])}</span></div></div></div>'
+            f'<div class="icbox"><h3>🔄 {esc(t["rev_h"])}</h3>{num("icg", t["rev_goal"], nice(1e5 * rate))}<div class="kv"><span>{esc(t["rev_need"])}</span><b class="good" id="icgv">—</b></div></div>'
+            f'<button type="button" class="btn ghost full" id="icsh">🔗 {esc(t["share"])}</button></section>')
+    right = (f'<section class="card icr2"><h2>📊 <span id="iccmph"></span></h2><div id="iccmp" class="iccmp"></div><hr>'
+             f'<h3>{esc(t["tbl_h"])}</h3><div id="icchart" class="icchart"></div>'
+             f'<div class="glg"><span><i class="tl"></i>{esc(t["total"])}</span><span><i class="cl"></i>{esc(t["contrib"])}</span></div><hr>'
+             f'<div class="icdon"><div id="icdonut"></div><div class="glg col"><span><i class="b"></i>{esc(t["interest"])} <b id="icdi"></b></span><span><i class="a"></i>{esc(t["contrib"])} <b id="icdc"></b></span></div></div><hr>'
+             f'<div class="tw"><table class="tbl ictab" id="ictable"></table></div></section>')
+    body = (f'<div class="icpage"><div class="ichero"><h1>{esc(t["h1"])}</h1><p class="lead">{esc(t["d"])}</p></div>'
+            f'<div class="icards">{cards}</div><div class="icgrid2">{left}{right}</div>'
             f'<p class="note">{esc(t["note"])}</p>'
             f'<section class="section"><div class="hgrid"><a class="card hcard" href="{url(lang, "millionaire")}"><span>🎯</span><b>{esc(TTl["g_h1"])}</b></a>'
-            f'<a class="card hcard" href="{url(lang, "inflation")}"><span>📉</span><b>{esc(TTl["i_nav"])}</b></a><a class="card hcard" href="{url(lang, "compare")}"><span>⇅</span><b>{esc(S["cmp_h1"])}</b></a></div></section>')
-    cfg = dict(ic=dict(code=code, yr=TTl['yr'], t={k: t[k] for k in ('cmp_h', 'cash_t', 'fire_never', 'year', 'contrib', 'interest', 'total', 'taxes')}, comp_uk=lang == 'uk'))
+            f'<a class="card hcard" href="{url(lang, "inflation")}"><span>📉</span><b>{esc(TTl["i_nav"])}</b></a><a class="card hcard" href="{url(lang, "compare")}"><span>⇅</span><b>{esc(S["cmp_h1"])}</b></a></div></section></div>')
+    cfg = dict(ic=dict(code=code, yr=TTl['yr'], t={k: t[k] for k in ('cmp_h', 'cash_t', 'fire_never', 'year', 'contrib', 'interest', 'total', 'taxes')}))
     faq = {"@context": "https://schema.org", "@type": "WebApplication", "name": t['h1'], "applicationCategory": "FinanceApplication", "operatingSystem": "Any",
            "offers": {"@type": "Offer", "price": "0"}, "description": t['d']}
     return shell(lang, 'compound-interest', t['title'] + ' | ' + BRAND, t['d'], body, cfg, ver, [faq])
+
+
+# search aliases: local names / transliterations people type (uk, ru, pl, de...)
+ALIAS = {
+    'btc': 'біткоїн біткоін біткойн биткоин биткойн бітка битка bitcoin', 'eth': 'ефір ефіріум етеріум эфир эфириум эфириум ether',
+    'sol': 'солана', 'xrp': 'ріпл рипл', 'doge': 'доге дог догекоїн догикоин', 'ada': 'кардано', 'bnb': 'бнб бінанс бинанс',
+    'trx': 'трон', 'ton': 'тон', 'ltc': 'лайткоїн лайткоин', 'dot': 'полкадот', 'link': 'чейнлінк чейнлинк', 'avax': 'аваланч',
+    'usdt': 'тезер тетер', 'shib': 'шиба', 'pepe': 'пепе',
+    'aapl': 'епл еппл епл апл эпл эппл айфон', 'msft': 'майкрософт мікрософт', 'nvda': 'нвідіа нвидиа нвідія нвидия', 'tsla': 'тесла',
+    'amzn': 'амазон', 'googl': 'гугл google alphabet', 'goog': 'гугл google', 'meta': 'мета фейсбук facebook', 'nflx': 'нетфлікс нетфликс',
+    'amd': 'амд', 'intc': 'інтел интел', 'tsm': 'тсмс', 'pltr': 'палантир', 'ko': 'кока-кола кока кола', 'pep': 'пепсі пепси',
+    'spy': 'с&п sp500 с&п500 снп s&p500 сп500', 'qqq': 'насдак nasdaq', 'vt': 'весь світ world',
+    'gold': 'золото gold злото xau', 'silver': 'срібло серебро silver srebro', 'platinum': 'платина', 'copper': 'мідь медь',
+    'wti': 'нафта нефть oil ропа', 'brent': 'брент нафта нефть', 'natgas': 'газ gas', 'wheat': 'пшениця пшеница', 'coffee': 'кава кофе',
+}
 
 
 def calc_block(lang):
@@ -2290,6 +2315,8 @@ def main():
             e['l'] = a['logo']
         if a.get('cat') in ('metal', 'cmd') and a.get('yahoo') in METAL_IC:
             e['mi'] = list(METAL_IC[a['yahoo']])
+        if aid in ALIAS:
+            e['al'] = ALIAS[aid]
         if a.get('yahoo') in ('HG=F', 'ALI=F'):
             e['u'] = 1   # copper/aluminum are quoted per lb / tonne, not per oz
         if a.get('binance') or (a['cat'] == 'crypto' and a.get('src') == 'yahoo'):

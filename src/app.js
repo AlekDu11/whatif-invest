@@ -44,8 +44,10 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
   const inp=$('#gs'), box=$('#gres'); if(!inp) return;
   inp.placeholder=T.search; let sel=0, items=[];
   const run=()=>{ const q=inp.value.trim().toLowerCase(); if(!q){box.style.display='none';return}
-    items=IDX.filter(a=>a.t.toLowerCase().startsWith(q)||nm(a).toLowerCase().includes(q))
-      .sort((x,y)=>(y.t.toLowerCase()===q)-(x.t.toLowerCase()===q)||x.o-y.o).slice(0,8);
+    const sc=a=>{ const t=a.t.toLowerCase(), n=nm(a).toLowerCase(), ne=(a.ne||a.n||'').toLowerCase(), al=(a.al||'').toLowerCase();
+      if(t===q) return 0; if(n.startsWith(q)||ne.startsWith(q)||t.startsWith(q)) return 1; if(al.split(' ').some(w=>w.startsWith(q))) return 2;
+      if(n.split(/[\s.-]+/).some(w=>w.startsWith(q))||ne.split(/[\s.-]+/).some(w=>w.startsWith(q))) return 3; if(q.length>=3&&(n.includes(q)||ne.includes(q))) return 4; return 9 };
+    items=IDX.map(a=>[sc(a),a]).filter(x=>x[0]<9).sort((x,y)=>x[0]-y[0]||x[1].o-y[1].o).slice(0,8).map(x=>x[1]);
     sel=0;
     box.innerHTML=items.length?items.map((a,k)=>`<a href="${url(a.i)}" class="${k?'':'on'}">${icon(a)}<span>${esc(nm(a))} <span class="t">${esc(a.t)}</span></span><span class="t" style="margin-left:auto">${fmtPrice(a.pr)}</span></a>`).join(''):`<div class="empty">${T.nothing}</div>`;
     box.style.display='block' };
@@ -762,60 +764,70 @@ document.addEventListener('click',async e=>{
 
 /* ---------- investment calculator (/compound-interest/) ---------- */
 (function(){
-  const box=$('#iccalc'); if(!box||!PAGE.ic) return; const C=PAGE.ic, t=C.t;
+  const box=$('.icpage'); if(!box||!PAGE.ic) return; const C=PAGE.ic, t=C.t;
   const nf=v=>{ try{ return new Intl.NumberFormat(T.intl||'en',{style:'currency',currency:C.code,maximumFractionDigits:Math.abs(v)>=100?0:2}).format(v) }catch(e){ return Math.round(v)+' '+C.code } };
   const short=v=>{ try{ return new Intl.NumberFormat(T.intl||'en',{style:'currency',currency:C.code,notation:'compact',maximumFractionDigits:1}).format(v) }catch(e){ return nf(v) } };
   const num=id=>{ const e=$('#'+id); return e?Math.max(0,+e.value||0):0 };
   const segv=id=>($('#'+id+' button.on')||{}).dataset?.v;
   const PER={m:1,q:3,h:6,y:12}, SC={o:1.25,r:1,p:0.6};
-  // monthly simulation; contributions at the start of each month, interest credited every `per` months, tax on each credit
-  function sim(p0,pmt,years,rate,per,reinv,tax){ let bal=p0,acc=0,paid=0,contrib=p0,taxT=0; const yrs=[]; const N=Math.round(years*12);
-    for(let m=1;m<=N;m++){ if(m>1||true){ if(m>1){ bal+=pmt; contrib+=pmt } } acc+=bal*rate/12;
+  function sim(p0,pmt,years,rate,per,reinv,tax){ let bal=p0,acc=0,paid=0,contrib=p0,taxT=0; const yrs=[{y:0,contrib:p0,total:p0}]; const N=Math.round(years*12);
+    for(let m=1;m<=N;m++){ if(m>1){ bal+=pmt; contrib+=pmt } acc+=bal*rate/12;
       if(m%per===0||m===N){ const tx=acc*tax; taxT+=tx; const net=acc-tx; if(reinv) bal+=net; else paid+=net; acc=0 }
-      if(m%12===0||m===N) yrs.push({y:Math.ceil(m/12),contrib,total:bal+paid}) }
+      if(m%12===0||m===N) yrs.push({y:+(m/12).toFixed(1),contrib,total:bal+paid}) }
     return {final:bal+paid,contrib,taxT,yrs} }
-  function inputs(){ const o=$('#ici').selectedOptions[0]; return { p0:num('icp'), pmt:num('icm'), y:Math.min(60,Math.max(1,Math.round(num('icy'))||1)),
+  const opt=()=>$('#ici').selectedOptions[0];
+  function inputs(){ const o=opt(); return { p0:num('icp'), pmt:num('icm'), y:Math.min(60,Math.max(1,Math.round(num('icy'))||1)),
       rate:(+$('#icr').value||0)/100*SC[segv('ics')||'r'], per:PER[segv('icc')||'m'], reinv:$('#icre').checked,
-      tax:$('#ictx').checked&&o.dataset.tf!=='1'?num('ictr')/100:0, inf:$('#icin').checked?num('icir')/100:0, inst:o.value } }
+      tax:$('#ictx').checked&&o.dataset.tf!=='1'?num('ictr')/100:0, inf:$('#icin').checked?num('icir')/100:0, inst:o.value, col:o.dataset.c } }
   function run(){
     const I=inputs(), R=sim(I.p0,I.pmt,I.y,I.rate,I.per,I.reinv,I.tax), defl=Math.pow(1+I.inf,I.y);
-    const interest=R.final-R.contrib+R.taxT;
-    $('#icv').textContent=nf(R.final); $('#icvs').textContent=(R.contrib?((R.final/R.contrib-1)*100>=0?'+':'')+((R.final/R.contrib-1)*100).toFixed(0)+'%':'');
-    $('#ic_contrib').textContent=nf(R.contrib); $('#ic_interest').textContent=nf(interest); $('#ic_taxes').textContent=nf(R.taxT);
-    $('#ic_realv').textContent=nf(R.final/defl);
-    const cashReal=R.contrib/defl; $('#ic_cash').textContent=nf(cashReal); $('#ic_cashs').textContent=fmt(t.cash_t,{v:nf(R.contrib-cashReal),inv:nf(R.contrib)});
-    // chart
-    const W=720,H=260,L=8,Rr=70,TP=10,B=24, mx=Math.max(...R.yrs.map(r=>r.total),1), bw=(W-L-Rr)/R.yrs.length;
-    let svg=''; for(let g=0;g<=4;g++){ const v=mx*g/4, y=TP+(H-TP-B)*(1-g/4); svg+=`<line x1="${L}" x2="${W-Rr}" y1="${y}" y2="${y}" class="g"/><text x="${W-Rr+6}" y="${y+4}">${esc(short(v))}</text>` }
-    R.yrs.forEach((r,k)=>{ const x=L+k*bw+bw*.15, w=bw*.7, hc=(H-TP-B)*Math.min(r.contrib,r.total)/mx, ht=(H-TP-B)*r.total/mx;
-      svg+=`<rect x="${x}" y="${H-B-ht}" width="${w}" height="${Math.max(0,ht-hc)}" class="b"><title>${r.y}: ${esc(nf(r.total))}</title></rect><rect x="${x}" y="${H-B-hc}" width="${w}" height="${hc}" class="a"/>`;
-      if(R.yrs.length<=15||k%Math.ceil(R.yrs.length/12)===0) svg+=`<text x="${x+w/2}" y="${H-6}" text-anchor="middle">${r.y}</text>` });
-    $('#icchart').innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img">${svg}</svg>`;
-    $('#ictable').innerHTML=`<thead><tr><th>${esc(t.year)}</th><th>${esc(t.contrib)}</th><th>${esc(t.interest)}</th><th>${esc(t.total)}</th></tr></thead><tbody>`+
-      R.yrs.map(r=>`<tr><td>${r.y}</td><td>${nf(r.contrib)}</td><td>${nf(r.total-r.contrib)}</td><td><b>${nf(r.total)}</b></td></tr>`).join('')+'</tbody>';
-    // compare instruments
+    const interest=R.final-R.contrib+R.taxT, real=R.final/defl;
+    $('#icyl').textContent=I.y; $('#icys').value=Math.min(40,I.y);
+    $('#ic_p0').textContent=nf(I.p0); $('#ic_contrib').textContent=nf(R.contrib); $('#ic_interest').textContent='+'+nf(interest); $('#ic_taxes').textContent=R.taxT?'−'+nf(R.taxT):nf(0);
+    $('#icv').textContent=nf(R.final);
+    const re=$('#ic_realv'); re.textContent=nf(real); re.className=real>=R.contrib?'good':'bad';
+    const cashReal=R.contrib/defl; $('#ic_cash').textContent=nf(cashReal); $('#ic_cashs').textContent=I.inf?fmt(t.cash_t,{v:nf(R.contrib-cashReal),inv:nf(R.contrib)}):'';
+    // comparison bars
     $('#iccmph').textContent=fmt(t.cmp_h,{n:I.y,yr:C.yr});
     const rows=[...$('#ici').options].filter(o=>o.value!=='custom').map(o=>{ const rr=(+o.dataset.r)/100*SC[segv('ics')||'r'], tx=$('#ictx').checked&&o.dataset.tf!=='1'?num('ictr')/100:0;
-      const f=sim(I.p0,I.pmt,I.y,rr,I.per,I.reinv,tx).final; return {n:o.textContent,f,on:o.value===I.inst} }).sort((a,b)=>b.f-a.f);
+      return {n:o.textContent,r:o.dataset.r,c:o.dataset.c,f:sim(I.p0,I.pmt,I.y,rr,I.per,I.reinv,tx).final,on:o.value===I.inst} });
     const top=Math.max(...rows.map(r=>r.f),1);
-    $('#iccmp').innerHTML=rows.map(r=>`<div class="icrow${r.on?' on':''}"><span>${esc(r.n)}</span><div class="bar"><i style="width:${(r.f/top*100).toFixed(1)}%"></i></div><b>${esc(nf(r.f))}</b><small>${esc(nf(r.f/defl))}</small></div>`).join('');
-    // reverse: FV is linear in pmt
+    $('#iccmp').innerHTML=rows.map(r=>`<div class="icrow${r.on?' on':''}"><div class="h"><span>${esc(r.n)} · ${r.r}%</span><b>${esc(nf(r.f))}</b></div><div class="bar"><i style="width:${(r.f/top*100).toFixed(1)}%;background:${r.c}"></i></div></div>`).join('');
+    // growth line chart: total vs contributions
+    const W=640,H=230,L=6,Rr=70,TP=10,B=24, ys=R.yrs, mx=Math.max(...ys.map(r=>r.total),1), X=k=>L+(W-L-Rr)*k/Math.max(1,ys.length-1), Y=v=>TP+(H-TP-B)*(1-v/mx);
+    let g=''; for(let k=0;k<=4;k++){ const v=mx*k/4; g+=`<line x1="${L}" x2="${W-Rr}" y1="${Y(v)}" y2="${Y(v)}" class="g"/><text x="${W-Rr+6}" y="${Y(v)+4}">${esc(short(v))}</text>` }
+    const pt=f=>ys.map((r,k)=>`${X(k).toFixed(1)},${Y(f(r)).toFixed(1)}`).join(' ');
+    const step=Math.max(1,Math.ceil(ys.length/8)); ys.forEach((r,k)=>{ if(k%step===0||k===ys.length-1) g+=`<text x="${X(k)}" y="${H-6}" text-anchor="middle">${Math.round(r.y)}</text>` });
+    $('#icchart').innerHTML=`<svg viewBox="0 0 ${W} ${H}" role="img"><defs><linearGradient id="icgr" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="${I.col}" stop-opacity=".28"/><stop offset="1" stop-color="${I.col}" stop-opacity="0"/></linearGradient></defs>${g}
+      <polygon points="${X(0)},${H-B} ${pt(r=>r.total)} ${X(ys.length-1)},${H-B}" fill="url(#icgr)"/><polyline points="${pt(r=>r.total)}" fill="none" stroke="${I.col}" stroke-width="3" stroke-linejoin="round"/>
+      <polyline points="${pt(r=>r.contrib)}" fill="none" stroke="var(--muted)" stroke-width="2" stroke-dasharray="6 5"/></svg>`;
+    $$('.glg i.tl',box).forEach(i=>i.style.background=I.col);
+    // donut
+    const gain=Math.max(0,R.final-R.contrib), tot=gain+R.contrib||1, fr=gain/tot, rr=54, cc=2*Math.PI*rr;
+    $('#icdonut').innerHTML=`<svg viewBox="0 0 140 140" width="140" height="140"><circle cx="70" cy="70" r="${rr}" fill="none" stroke="var(--line2)" stroke-width="18"/><circle cx="70" cy="70" r="${rr}" fill="none" stroke="${I.col}" stroke-width="18" stroke-dasharray="${(cc*fr).toFixed(1)} ${cc}" transform="rotate(-90 70 70)"/><text x="70" y="76" text-anchor="middle" class="dn">${Math.round(fr*100)}%</text></svg>`;
+    $('#icdi').textContent=Math.round(fr*100)+'%'; $('#icdc').textContent=Math.round((1-fr)*100)+'%';
+    $$('.glg i.b',box).forEach(i=>i.style.background=I.col);
+    // table
+    $('#ictable').innerHTML=`<thead><tr><th>${esc(t.year)}</th><th>${esc(t.contrib)}</th><th>${esc(t.interest)}</th><th>${esc(t.total)}</th></tr></thead><tbody>`+
+      ys.slice(1).map(r=>`<tr><td>${Math.round(r.y)}</td><td>${nf(r.contrib)}</td><td class="good">+${nf(r.total-r.contrib)}</td><td><b>${nf(r.total)}</b></td></tr>`).join('')+'</tbody>';
+    // reverse
     const base=sim(I.p0,0,I.y,I.rate,I.per,I.reinv,I.tax).final, unit=sim(0,1,I.y,I.rate,I.per,I.reinv,I.tax).final, G=num('icg');
     $('#icgv').textContent=nf(Math.max(0,(G-base)/(unit||1)));
-    // FIRE (in today's money)
-    const need=num('icx')*12/0.04; $('#icfn').textContent=nf(need);
+    // FIRE (today's money) + income from the final capital
+    const need=num('icx')*12/0.04; $('#icfn').textContent=short(need);
     let bal=I.p0, mm=0; const rm=I.rate*(1-I.tax)/12; while(mm<720){ mm++; if(mm>1) bal+=I.pmt; bal*=1+rm; if(bal/Math.pow(1+I.inf,mm/12)>=need) break }
-    $('#icfy').textContent=mm>=720?t.fire_never:`${Math.floor(mm/12)} ${C.yr}${mm%12?' '+(mm%12)+' m':''}`;
-    $('#icfi').textContent=nf(R.final*0.04/12);
+    $('#icfy').textContent=mm>=720?'—':`${Math.ceil(mm/12)} ${C.yr}`; $('#icfy').title=mm>=720?t.fire_never:'';
+    const yInc=R.final*I.rate*(1-I.tax); $('#icid').textContent=nf(yInc/365); $('#iciw').textContent=nf(yInc/52); $('#icfi').textContent=nf(yInc/12);
     try{ const q=new URLSearchParams({p:I.p0,m:I.pmt,y:I.y,i:I.inst,r:$('#icr').value,s:segv('ics'),c:segv('icc')}); new URLSearchParams(location.search).forEach((v,k)=>{ if(k.startsWith('utm_')) q.set(k,v) }); history.replaceState(null,'','?'+q) }catch(e){}
   }
-  // restore from URL
+  const pick=(v,keepRate)=>{ $('#ici').value=v; const o=opt(); if(!keepRate) $('#icr').value=o.dataset.r; $$('.icard',box).forEach(c=>c.classList.toggle('on',c.dataset.v===v)) };
   try{ const q=new URLSearchParams(location.search); if(q.has('p')){ $('#icp').value=q.get('p'); $('#icm').value=q.get('m')||0; $('#icy').value=q.get('y')||10;
-    if(q.get('i')&&[...$('#ici').options].some(o=>o.value===q.get('i'))) $('#ici').value=q.get('i'); if(q.get('r')) $('#icr').value=q.get('r');
-    ['s','c'].forEach(k=>{ const v=q.get(k), seg=$(k==='s'?'#ics':'#icc'); if(v&&seg) $$('button',seg).forEach(b=>b.classList.toggle('on',b.dataset.v===v)) }) } }catch(e){}
-  $('#ici').addEventListener('change',e=>{ $('#icr').value=e.target.selectedOptions[0].dataset.r; run() });
-  box.addEventListener('click',e=>{ const b=e.target.closest('.seg button'); if(b){ $$('button',b.parentNode).forEach(x=>x.classList.toggle('on',x===b)); run() } });
-  $$('input').forEach(e=>{ if(e.closest('#iccalc')||['icg','icx'].includes(e.id)) e.addEventListener('input',run) });
+    if(q.get('i')&&[...$('#ici').options].some(o=>o.value===q.get('i'))) pick(q.get('i'),true); if(q.get('r')) $('#icr').value=q.get('r');
+    ['s','c'].forEach(k=>{ const v=q.get(k), sg=$(k==='s'?'#ics':'#icc'); if(v&&sg) $$('button',sg).forEach(b=>b.classList.toggle('on',b.dataset.v===v)) }) } }catch(e){}
+  box.addEventListener('click',e=>{ const c=e.target.closest('.icard'); if(c){ pick(c.dataset.v); run(); return }
+    const b=e.target.closest('.seg button'); if(b){ $$('button',b.parentNode).forEach(x=>x.classList.toggle('on',x===b)); run() } });
+  $('#icys').addEventListener('input',e=>{ $('#icy').value=e.target.value; run() });
+  $$('input',box).forEach(e=>{ if(e.id!=='icys') e.addEventListener('input',run) });
   $('#icsh').onclick=()=>{ const u=location.href; (navigator.share?navigator.share({url:u,title:document.title}):navigator.clipboard.writeText(u)).catch(()=>{}); $('#icsh').textContent='✓' };
   run();
 })();

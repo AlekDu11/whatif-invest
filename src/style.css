@@ -622,3 +622,41 @@ html[data-theme=dark] .icchart .a{fill:#2a3d35}
 /* audit fixes: asset header actions wrap on phones; add-to-portfolio form input/suffix */
 @media (max-width:640px){.price{flex-wrap:wrap;row-gap:8px}.price .btn,.price .addpf{flex:1 1 auto;justify-content:center;text-align:center}}
 .pfpop .inp{display:flex;align-items:center;gap:6px}.pfpop .inp input{min-width:0;width:130px}.pfpop .inp .muted{flex:none}
+/* investment calculator v2 (layout like the original invest.mytimebox.app) */
+.icpage{max-width:1240px;margin:0 auto}
+.ichero{text-align:center;max-width:760px;margin:10px auto 22px}.ichero h1{margin-bottom:8px}
+.icards{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-bottom:20px}
+.icard{display:flex;flex-direction:column;align-items:flex-start;gap:4px;text-align:left;padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--card);color:var(--text);cursor:pointer;font:inherit;transition:border-color .15s,transform .15s}
+.icard:hover{border-color:var(--c)}.icard.on{border:2px solid var(--c);padding:13px;box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 14%,transparent)}
+.icard .ii{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:color-mix(in srgb,var(--c) 15%,transparent);font-size:18px}
+.icard b{font-size:14px}.icard .ir{font-size:24px;font-weight:800;color:var(--c);line-height:1.1}.icard small{font-size:11px;color:var(--muted)}
+.icgrid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:18px;align-items:start}
+.icl,.icr2{padding:20px 22px}.icl h2,.icr2 h2{font-size:17px;margin:0 0 14px}.icr2 h3,.icbox h3{font-size:13px;letter-spacing:.02em;color:var(--muted);margin:0 0 10px;font-weight:700}
+.icl>label.f,.icl>div.f{display:flex;flex-direction:column;gap:5px;margin-bottom:12px}
+.icl .inp{width:100%}.icy2{display:flex;gap:12px;align-items:center}.icy2 input[type=range]{flex:1;accent-color:var(--accent)}.icy2 .inp{width:90px;flex:none}
+.seg.full{display:flex;width:100%}.seg.full button{flex:1}
+.icchk{display:flex;flex-direction:column;gap:8px;margin:6px 0 14px;padding:12px;border:1px solid var(--line);border-radius:12px}
+.icchk .sub{padding-left:26px}.icchk .sub .f{display:flex;flex-direction:column;gap:4px;max-width:200px}
+.icsum{border-top:1px solid var(--line);padding-top:6px;margin-bottom:12px}
+.icsum .kv b.good{color:var(--good)}.icsum .kv b.bad{color:var(--bad)}.icsum .kv.big b{font-size:24px;color:var(--gold)}.icsum .kv.big span{font-weight:700}
+.icnote2{font-size:12px;margin:6px 0 0}
+.icbox{border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:12px}
+.icbox.fire{background:color-mix(in srgb,#8b5cf6 7%,var(--card))}.icbox.inc{background:color-mix(in srgb,#16a34a 7%,var(--card))}
+.icbox label.f{display:flex;flex-direction:column;gap:4px;margin-bottom:10px}
+.tri,.tri3{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}.tri3{grid-template-columns:repeat(3,1fr)}
+.tri>div,.tri3>div{background:var(--bg);border-radius:10px;padding:10px;text-align:center;display:flex;flex-direction:column;gap:2px}
+.tri b,.tri3 b{font-size:17px}.tri span,.tri3 span{font-size:11px;color:var(--muted)}
+.btn.full{width:100%;justify-content:center}
+.icr2 hr{border:0;border-top:1px solid var(--line);margin:16px 0}
+.iccmp{display:flex;flex-direction:column;gap:10px}
+.icrow .h{display:flex;justify-content:space-between;font-size:14px;margin-bottom:4px}.icrow .bar{height:8px;background:var(--line2);border-radius:5px;overflow:hidden}
+.icrow .bar i{display:block;height:100%;border-radius:5px}.icrow.on .h{font-weight:800}
+.icchart svg{width:100%;height:auto;display:block}.icchart text{font-size:12px;fill:var(--muted)}.icchart .g{stroke:var(--line);stroke-width:1}
+.glg i.tl{background:var(--accent)}.glg i.cl{background:none;border-top:2px dashed var(--muted);height:0;width:14px;border-radius:0;vertical-align:middle}
+.glg.col{flex-direction:column;gap:8px;align-items:flex-start}.glg.col b{margin-left:6px}
+.icdon{display:flex;align-items:center;gap:20px}.icdon .dn{font:800 22px var(--fb);fill:var(--text)}
+.ictab td,.ictab th{text-align:right}.ictab td:first-child,.ictab th:first-child{text-align:left}.ictab td.good{color:var(--good)}
+@media (max-width:900px){.icgrid2{grid-template-columns:1fr}.icards{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}}
+@media (max-width:480px){.icards{grid-template-columns:repeat(2,1fr)}.tri3 b{font-size:14px}}
+.icr2 .icrow{display:block}
+@media (max-width:600px){.icards{display:flex;overflow-x:auto;gap:8px;padding-bottom:6px;scroll-snap-type:x mandatory}.icard{flex:0 0 118px;padding:10px;scroll-snap-align:start}.icard.on{padding:9px}.icard .ir{font-size:20px}.icard .ii{width:28px;height:28px;font-size:15px}}
