@@ -818,4 +818,8 @@ document.addEventListener('click',async e=>{
   $('#icsh').onclick=()=>{ const u=location.href; (navigator.share?navigator.share({url:u,title:document.title}):navigator.clipboard.writeText(u)).catch(()=>{}); $('#icsh').textContent='✓' };
   run();
 })();
+
+/* header dropdowns: one open at a time, close on outside click */
+document.addEventListener('click',e=>{ $$('details.dd[open]').forEach(d=>{ if(!d.contains(e.target)) d.removeAttribute('open') }) });
+$$('details.dd').forEach(d=>d.addEventListener('toggle',()=>{ if(d.open) $$('details.dd[open]').forEach(o=>{ if(o!==d) o.removeAttribute('open') }) }));
 })();

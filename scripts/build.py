@@ -464,15 +464,15 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
     ld = ''.join(f'<script type="application/ld+json">{json.dumps(j, ensure_ascii=False)}</script>' for j in jsonld)
     X = S['x']
     blog_l = lang if lang in BLOG_LANGS else 'en'
+    news_on = p in ('news', 'ai') or sec == 'activities' or (sec or '').startswith('blog') or (p or '').startswith('news/')
+    tools_on = p in TOOLS or (p in CALCS and p not in ("exchanges", "news", "about", "compound-interest")) or (p or "").startswith("habits") or p in ('memes', 'world-assets')
     nav = (''.join(f'<a href="{url(lang, k)}" class="{"on" if k == p else ""}">{v}</a>' for k, v in ((None, S['nav_rank']), ('portfolios', BP[lang]['nav']), ('compound-interest', IC[lang]['nav'])))
-           + f'<details class="dd"><summary class="{"on" if p in TOOLS or (p in CALCS and p not in ("exchanges", "news", "about")) or (p or "").startswith("habits") else ""}">{X["nav_tools"]}</summary><div>'
-           + ''.join(f'<a href="{url(lang, k)}">{v}</a>' for k, v in [x for x in tools_menu(lang) if x]) + '</div></details>'
            + f'<a href="{url(lang, "exchanges")}" class="{"on" if p == "exchanges" else ""}">{EX[lang]["nav"]}</a>'
-           + f'<a href="{url(lang, "news")}" class="{"on" if p == "news" else ""}">{NW[lang]["n_nav"]}</a>'
-           + f'<a href="{url(lang, "activities")}" class="{"on" if sec == "activities" else ""}">{ACT[lang]["nav"]}</a>'
-           + f'<a href="{url(lang, "ai")}" class="{"on" if p == "ai" else ""}">{AIS[lang]["nav"]}</a>'
-           + f'<a href="{url(lang, "memes")}" class="{"on" if p == "memes" else ""}">{MEM[lang]["nav"]}</a>'
-           + f'<a href="{url(blog_l, "blog")}" class="{"on" if (sec or "").startswith("blog") else ""}">{NW[lang]["i_nav"]}</a>')
+           + f'<details class="dd"><summary class="{"on" if news_on else ""}">{NW[lang]["n_nav"]}</summary><div>'
+           + f'<a href="{url(lang, "news")}">{NW[lang]["n_nav"]}</a><a href="{url(blog_l, "blog")}">{NW[lang]["i_nav"]}</a>'
+           + f'<a href="{url(lang, "ai")}">{AIS[lang]["nav"]}</a><a href="{url(lang, "activities")}">{ACT[lang]["nav"]}</a></div></details>'
+           + f'<details class="dd"><summary class="{"on" if tools_on else ""}">{X["nav_tools"]}</summary><div>'
+           + ''.join(f'<a href="{url(lang, k)}">{v}</a>' for k, v in [x for x in tools_menu(lang) if x]) + '</div></details>')
     i18n = dict(S['ui'], months=S['months'], intl=S['intl'])
     mnav = ''.join(f'<a href="{h}" class="{"on" if on else ""}"><span>{ic}</span>{esc(lb)}</a>' for h, ic, lb, on in (
         (url(lang), '◎', S['nav_rank'], p is None), (url(lang, 'news'), '▤', NW[lang]['n_nav'], p == 'news'),
@@ -1244,7 +1244,7 @@ def tools_menu(lang):
     items = [('compare', S['nav_cmp']) if (S := TR[lang]) else None, ('habits', HB[lang]['nav']), ('millionaire', t['g_nav'])]
     if CPI['c']:
         items.append(('inflation', t['i_nav']))
-    items += [('world-assets', WA[lang]['nav']), ('converter', HCONV[lang]), ('memes', MEM[lang]['nav']), ('ath', t['a_nav']), ('bitcoin-halving', t['v_nav']), ('widgets', EMB[lang]['nav'])]
+    items += [('world-assets', WA[lang]['nav']), ('memes', MEM[lang]['nav']), ('converter', HCONV[lang]), ('ath', t['a_nav']), ('bitcoin-halving', t['v_nav']), ('widgets', EMB[lang]['nav'])]
     return items
 
 
