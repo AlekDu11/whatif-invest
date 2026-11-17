@@ -1,11 +1,13 @@
 <!DOCTYPE html><html><head><meta charset="utf-8"><meta name="robots" content="noindex"><title>WhatIfStack image relay</title></head><body>
 <script>
-// Hands one of our own cover images to an x.com composer that opened this window (X's CSP blocks fetching it directly).
+// Hands one of our own cover images or race videos to an x.com / Telegram Web composer that opened this window (X's CSP blocks fetching it directly).
 (async () => {
-  const p = new URLSearchParams(location.search).get('img') || '';
-  if (!/^\/assets\/covers\/[\w\/.-]+\.jpg$/.test(p) || !window.opener) { document.body.textContent = 'nothing to do'; return; }
+  const q = new URLSearchParams(location.search), p = q.get('img') || q.get('vid') || '';
+  const ok = /^\/assets\/covers\/[\w\/.-]+\.jpg$/.test(p) || /^\/assets\/video\/[\w-]+\.mp4$/.test(p);
+  if (!ok || !window.opener) { document.body.textContent = 'nothing to do'; return; }
   const buf = await (await fetch(p)).arrayBuffer();
-  window.opener.postMessage({ wisImg: p, buf }, 'https://x.com', [buf]);
+  // our own posting tabs only: X and Telegram Web (a wrong targetOrigin is silently dropped)
+  for (const o of ['https://x.com', 'https://web.telegram.org']) { try { window.opener.postMessage({ wisImg: p, wisVid: p.endsWith('.mp4') ? p : '', buf: buf.slice(0) }, o) } catch (e) {} }
   document.body.textContent = 'sent';
   setTimeout(() => window.close(), 500);
 })();

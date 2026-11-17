@@ -2251,6 +2251,8 @@ def main():
         shutil.copytree(LOGO_DIR, os.path.join(OUT, 'assets/logo'))
     shutil.copytree(os.path.join(ROOT, 'src', 'flags'), os.path.join(OUT, 'assets/flags'))
     shutil.copy(os.path.join(ROOT, 'src', 'x-relay.html'), os.path.join(DIST, 'x-relay.html'))
+    if os.path.isdir(os.path.join(ROOT, 'content', 'video')):   # race videos for X / Telegram (handed over by x-relay.html)
+        shutil.copytree(os.path.join(ROOT, 'content', 'video'), os.path.join(OUT, 'assets', 'video'), dirs_exist_ok=True)
     os.makedirs(os.path.join(DIST, 'embed'), exist_ok=True)
     open(os.path.join(DIST, 'embed', 'index.html'), 'w', encoding='utf-8').write(embed_page())
     shutil.copytree(os.path.join(ROOT, 'src', 'vendor'), os.path.join(OUT, 'assets', 'vendor'), dirs_exist_ok=True)   # Lightweight Charts (Apache-2.0, TradingView)
