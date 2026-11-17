@@ -971,8 +971,8 @@ def home(lang, ver):
              ('portfolios', '🧺', BP[lang]['nav']), ('exchanges', '🏦', EX[lang]['nav'])]
     tchips = ''.join(f'<a class="tch" href="{url(lang, k)}"><span>{ic}</span>{esc(lb)}</a>' for k, ic, lb in tools)
     hero = (f'<section class="herox hx2"><div class="hx"><h1>{esc(hm["h1"])}</h1><p class="lead">{esc(hm["lead"])}</p>'
-            f'<div class="pulse">{pulse}</div><div class="tchips">{tchips}</div></div>'
-            f'<div class="card qcalc" id="qcalc"><div class="qt">{w["quick"]}</div>'
+            f'<div class="pulse">{pulse}</div>{country_chips(lang, limit=8)}</div>'
+            f'<div class="card qcalc" id="qcalc"><div class="qt qth">{S["home_h1"].format(ten=TEN)}</div>'
             f'<div class="qrow"><label class="f">{w["q_asset"]}<div class="inp"><select id="qa">{qopts}</select></div></label>'
             f'<label class="f">{S["ui"]["amount"]}<div class="inp"><span>$</span><input id="qm" type="number" min="1" value="{AMOUNT}"></div></label></div>'
             f'<label class="f">{w["q_years"]}</label><div class="seg" id="qy">{yrs}</div>'
@@ -1035,8 +1035,16 @@ def home(lang, ver):
     nws = news_items(lang)[:4]
     w_news = (f'<div class="card wd wnews"><div class="wt">📰 {esc(hm["news"])}</div><div class="nlist own">' + ''.join(news_row(lang, k, m, tl) for k, m in nws)
               + f'</div><a class="calc" href="{url(lang, "news")}">{esc(hm["all"])} →</a></div>') if nws else w_tr
-    today = f'<section class="section today"><h2>{esc(hm["today"])}</h2><div class="wgrid3">{w_up}{w_dn}{w_news}</div></section>'
-    body = (hero + today + f'<section class="section toprank"><div class="tabs" id="tabs"></div>{filt}{country_chips(lang, limit=8)}{top10}</section>'
+    def mv(cat, sign):
+        pool = [i for i in ids if A[i]['cat'] == cat and METRICS[i]['chg'] is not None and big(i) and ORD[i] < (400 if cat == 'crypto' else 900)]
+        pool.sort(key=lambda i: -sign * METRICS[i]['chg'])
+        pool = [i for i in pool if sign * METRICS[i]['chg'] > 0][:5]
+        ttl = f'{"🚀" if sign > 0 else "📉"} {S["ui"][cat]} · {w["gainers"] if sign > 0 else w["losers"]}'
+        return (f'<div class="card wd"><div class="wt">{esc(ttl)}</div>'
+                + ''.join(mini_row(lang, i, f'<span class="mc {"good" if sign > 0 else "bad"}">{pct(METRICS[i]["chg"])}</span>') for i in pool) + '</div>')
+    today = (f'<section class="section today"><h2>{esc(hm["today"])}</h2><div class="tgrid">'
+             f'{mv("crypto", 1)}{mv("crypto", -1)}{mv("stock", 1)}{mv("stock", -1)}{w_news}</div></section>')
+    body = (hero + today + f'<section class="section toprank"><div class="tabs" id="tabs"></div>{filt}{top10}</section>'
             f'<div class="wgrid3">{w_tr if nws else w_fng}<div class="wstack">{w_mcap}{w_dom}</div>{w_bat}</div>{banner}{habits_strip(lang)}{poll_block(lang)}{poly_block(lang)}'
             f'<section class="section"><div class="hl">{"".join(cards)}</div></section>'
             f'{rest}'
