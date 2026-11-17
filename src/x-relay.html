@@ -11,7 +11,9 @@
   if (!ok) { s.textContent = 'nothing to do'; return; }
   const buf = await (await fetch(p)).arrayBuffer();
   const msg = () => ({ wisImg: p, wisVid: p.endsWith('.mp4') ? p : '', buf: buf.slice(0) });
-  const ORIG = { x: ['https://x.com', 'https://x.com/compose/post'], tg: ['https://web.telegram.org', q.get('u') || 'https://web.telegram.org/a/'] };
+  const ORIG = { x: ['https://x.com', 'https://x.com/compose/post'], tg: ['https://web.telegram.org', 'https://web.telegram.org/a/'],
+    ig: ['https://www.instagram.com', 'https://www.instagram.com/'], th: ['https://www.threads.com', 'https://www.threads.com/'],
+    fb: ['https://www.facebook.com', 'https://www.facebook.com/'], bs: ['https://bsky.app', 'https://bsky.app/'] };
   if (window.opener && !q.get('to')) {
     for (const o of ['https://x.com', 'https://web.telegram.org']) { try { window.opener.postMessage(msg(), o) } catch (e) {} }
     s.textContent = 'sent'; setTimeout(() => window.close(), 500); return;
