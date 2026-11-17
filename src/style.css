@@ -807,3 +807,6 @@ html[data-theme=dark] .offer .btn{background:linear-gradient(180deg,#45bdf5,#2AA
 /* largest companies ranking */
 .lcchips{margin:8px 0}.lct td.n{white-space:nowrap}.rk{font:700 11px var(--fn);margin-right:6px}.rk.up{color:var(--up)}.rk.dn{color:var(--dn)}
 .lct td.l .flag,.lct td.l img{vertical-align:middle;margin-right:4px}.ks small a{color:var(--accent);text-decoration:none}
+.seasmore{display:block;margin:10px auto 0;padding:7px 16px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);font:600 13px var(--fn);cursor:pointer}
+.seasmore:hover{color:var(--text);border-color:var(--accent)}
+.seast tr.med th,.seast tr.med td{border-bottom:2px solid var(--line)}

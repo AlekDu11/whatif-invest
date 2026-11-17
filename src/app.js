@@ -599,7 +599,10 @@ new MutationObserver(()=>{ clearTimeout(window._wiStar); window._wiStar=setTimeo
   const cell=(v,open)=>v==null?'<td></td>':`<td class="${v>0.001?'up':v<-0.001?'dn':'fl'}${open?' open':''}" style="--a:${Math.min(1,.35+Math.abs(v)*3).toFixed(2)}" ${open?`title="${esc(t.open)}"`:''}>${pc(v)}</td>`;
   const med=a=>{ if(!a.length) return null; const s=[...a].sort((x,y)=>x-y), k=s.length>>1; return s.length%2?s[k]:(s[k-1]+s[k])/2 };
   const modes=[...(C.bn?[['d',L('day','Day')]]:[]),['m',L('month','Month')],['q',L('quarter','Quarter')]];
-  let mode='m', P=null, D=null;
+  let mode='m', P=null, D=null, all=false;
+  const SHOW=6;   // recent years shown; older ones behind a language-neutral "▾ 2004–2019" toggle
+  const more=ys=>ys.length>SHOW?`<button type="button" class="seasmore" id="seasmore">${all?'▴':'▾ '+ys[ys.length-1]+'–'+ys[SHOW]}</button>`:'';
+  const bindMore=()=>{ const b=$('#seasmore'); if(b) b.onclick=()=>{ all=!all; draw() } };
   $('#seasm').innerHTML=modes.map(([k,l])=>`<button data-m="${k}" class="${k===mode?'on':''}">${esc(l)}</button>`).join('');
   $$('#seasm button').forEach(b=>b.onclick=async()=>{ mode=b.dataset.m; $$('#seasm button').forEach(x=>x.classList.toggle('on',x===b)); draw() });
   const ym=s=>{ const [y,m]=s.split('-').map(Number); return y*12+m-1 };
@@ -622,11 +625,11 @@ new MutationObserver(()=>{ clearTimeout(window._wiStar); window._wiStar=setTimeo
     const M=monthly(); cards(M);
     if(mode==='m'){ const ys=Object.keys(M.rows).map(Number).sort((a,b)=>b-a);
       g.innerHTML=`<table class="seast"><thead><tr><th></th>${MN.map(x=>`<th>${esc(x)}</th>`).join('')}<th>${esc(L('year','Year'))}</th></tr></thead><tbody>`+
-        ys.map(y=>`<tr><th>${y}</th>${MN.map((_,m)=>cell(M.rows[y][m], y*12+m===M.last)).join('')}${cell(M.yr[y], y===Math.floor(M.last/12))}</tr>`).join('')+
-        `<tr class="med"><th>${esc(t.med)}</th>${MN.map((_,m)=>{ const a=ys.filter(y=>y*12+m<M.last).map(y=>M.rows[y][m]).filter(v=>v!=null); return cell(a.length?med(a):null) }).join('')}<td></td></tr></tbody></table>`; return }
+        `<tr class="med"><th>${esc(t.med)}</th>${MN.map((_,m)=>{ const a=ys.filter(y=>y*12+m<M.last).map(y=>M.rows[y][m]).filter(v=>v!=null); return cell(a.length?med(a):null) }).join('')}<td></td></tr>`+
+        (all?ys:ys.slice(0,SHOW)).map(y=>`<tr><th>${y}</th>${MN.map((_,m)=>cell(M.rows[y][m], y*12+m===M.last)).join('')}${cell(M.yr[y], y===Math.floor(M.last/12))}</tr>`).join('')+'</tbody></table>'+more(ys); bindMore(); return }
     if(mode==='q'){ const Q=qrows(), ys=Object.keys(Q.rows).map(Number).sort((a,b)=>b-a);
       g.innerHTML=`<table class="seast q"><thead><tr><th></th>${[1,2,3,4].map(q=>`<th>Q${q}</th>`).join('')}<th>${esc(L('year','Year'))}</th></tr></thead><tbody>`+
-        ys.map(y=>`<tr><th>${y}</th>${[0,1,2,3].map(q=>cell(Q.rows[y][q], y*12+q*3+2>Q.last)).join('')}${cell(M.yr[y], y===Math.floor(M.last/12))}</tr>`).join('')+'</tbody></table>'; return }
+        (all?ys:ys.slice(0,SHOW)).map(y=>`<tr><th>${y}</th>${[0,1,2,3].map(q=>cell(Q.rows[y][q], y*12+q*3+2>Q.last)).join('')}${cell(M.yr[y], y===Math.floor(M.last/12))}</tr>`).join('')+'</tbody></table>'+more(ys); bindMore(); return }
     if(!D){ g.innerHTML='<div class="bload"><i></i></div>';
       try{ D=await fetch(`https://data-api.binance.vision/api/v3/klines?symbol=${C.bn}&interval=1d&limit=400`).then(r=>r.json()) }catch(e){ D=[] } }
     const by={}; D.forEach((k,i)=>{ if(!i) return; const d=new Date(k[0]), key=d.getUTCFullYear()*12+d.getUTCMonth(); (by[key]=by[key]||{})[d.getUTCDate()]=k[4]/D[i-1][4]-1 });
