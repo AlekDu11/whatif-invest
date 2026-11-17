@@ -60,7 +60,7 @@ UPDATED = market['updated']
 END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
-RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide', 'commodities', 'widgets', 'embed', 'dividends', 'average-price', 'ovdp', 'largest-companies', 'crypto-exchanges'}
+RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide', 'commodities', 'widgets', 'embed', 'dividends', 'average-price', 'ovdp', 'largest-companies', 'crypto-exchanges', 'partners'}
 RESERVED |= {v[0] for v in MKTS.values()} | {'world-assets', 'activities', 'editorial-policy', 'about', 'portfolios'}
 # asset ids that clash with a language folder or a section get a suffix (ko -> ko-stock, fil -> fil-crypto)
 _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
@@ -170,6 +170,8 @@ def has_page(lang, aid):
         return True
     if aid in ('ai', 'me', 'memes', 'world-assets', 'activities', 'portfolios', 'largest-companies') or (aid or '').startswith(('portfolios/', 'largest-companies/')):
         return True
+    if aid == 'partners':
+        return lang in PARTNER_TXT
     if aid == 'crypto-exchanges' or (aid or '').startswith('crypto-exchanges/'):
         return xc_has(lang, None if aid in ('crypto-exchanges', 'crypto-exchanges/derivatives') else aid.split('/', 1)[1])
     if aid == 'editorial-policy':
@@ -446,7 +448,8 @@ def footer_cols(lang):
     mk += [(url(lang, sl), CTRY[lang][3][m][0]) for m, (sl, fl) in sorted(MKTS.items(), key=lambda kv: (MKT_LANG.get(kv[0]) != lang, kv[0] != 'ua')) if has_page(lang, sl)][:5]
     tools = [(url(lang, k), v) for k, v in [x for x in tools_menu(lang) if x]]
     ins = [(url(lang if lang in GUIDE else 'en', 'guide'), guide_meta(lang).get('nav', 'Guide')), (url(lang, 'news'), n['n_nav']), (url(blog_l, 'blog'), n['i_nav']), (url(blog_l, 'blog') + 'rss.xml', 'RSS'),
-           (url(lang, 'activities'), ACT[lang]['nav']), (url(lang, 'exchanges'), EX[lang]['nav']), (url(lang if lang in ABOUT else 'en', 'about'), n['about']), (pol_url(lang), ACT[lang]['pol'])]
+           (url(lang, 'activities'), ACT[lang]['nav']), (url(lang, 'exchanges'), EX[lang]['nav']), (url(lang if lang in ABOUT else 'en', 'about'), n['about']), (pol_url(lang), ACT[lang]['pol']),
+           (url(lang if lang in PARTNER_TXT else 'en', 'partners'), PARTNER_NAV[lang])]
     cols = [(f[0], pop), (f[1], mk), (TR[lang]['x']['nav_tools'], tools), (n['i_nav'], ins)]
     if SOCIAL:
         cols.insert(0, (f[2], [(u, l) for l, u in SOCIAL] + ([('mailto:' + CONTACT_EMAIL, '✉ ' + CONTACT_EMAIL)] if CONTACT_EMAIL else [])))
@@ -1722,6 +1725,49 @@ def xc_pages(lang, ver):
     if lang in FULL:
         out += [xc_detail_page(lang, x, ver) for x in XCH.get('detail', {}) if any(e['id'] == x for e in XCH['spot'])]
     return out
+
+
+PARTNER_EMAIL = 'partners@whatifstack.com'   # forwarded to the owner's mailbox (set up by the owner in DNS/email forwarding)
+PARTNER_NAV = {'uk': 'Партнерам і рекламодавцям', 'en': 'For partners & advertisers', 'es': 'Para socios y anunciantes', 'pt': 'Para parceiros e anunciantes',
+               'de': 'Für Partner & Werbekunden', 'fr': 'Partenaires & annonceurs', 'it': 'Per partner e inserzionisti', 'pl': 'Dla partnerów i reklamodawców',
+               'tr': 'Ortaklar ve reklam verenler', 'nl': 'Voor partners & adverteerders', 'ru': 'Партнёрам и рекламодателям', 'id': 'Untuk mitra & pengiklan',
+               'vi': 'Dành cho đối tác & nhà quảng cáo', 'th': 'สำหรับพาร์ทเนอร์และผู้ลงโฆษณา', 'hi': 'पार्टनर और विज्ञापनदाताओं के लिए', 'ja': 'パートナー・広告主の方へ',
+               'ko': '파트너·광고주 안내', 'zh': '合作与广告', 'ar': 'للشركاء والمعلنين', 'fil': 'Para sa partners at advertisers'}
+PARTNER_TXT = {
+ 'en': dict(h1='Partner with WhatIfStack', lead='WhatIfStack explains crypto, stocks and gold in plain language with real numbers — in 20 languages. We work with exchanges, brokers, wallets and fintech products that are licensed for the audiences we send them.',
+            what='What we offer', offer=['Referral / affiliate integration: buy buttons on asset pages, exchange and broker rankings, comparison tables (always labelled "partner link").',
+                                         'Native offer cards on the home page and asset pages (one card per page, clearly marked).',
+                                         'Sponsored articles and guides marked as sponsored, written to our editorial policy.',
+                                         'Telegram, X, Instagram, Threads, Bluesky and Facebook posts.'],
+            not_='What we do not do', no=['Sell positions in rankings — rankings use public data (CoinGecko, Yahoo Finance).',
+                                           'Promise profit, run "free money" campaigns or advise how to bypass regional restrictions.',
+                                           'Work with unlicensed brokers or projects that look like scams.'],
+            reach='Reach', facts='{pages} pages in 20 languages · {assets} assets (crypto, stocks, ETFs, metals) · {stocks} company pages · daily market news and analyses',
+            contact='Contact', cta='Write to us: {mail} — tell us the product, regions and the model (CPA, revenue share, sponsorship). We reply within 2 working days.'),
+ 'uk': dict(h1='Партнерство з WhatIfStack', lead='WhatIfStack пояснює крипту, акції й золото простою мовою з реальними цифрами — 20 мовами. Ми працюємо з біржами, брокерами, гаманцями й фінтех-продуктами, які мають ліцензію для аудиторії, яку ми до них приводимо.',
+            what='Що ми пропонуємо', offer=['Реферальна / партнерська інтеграція: кнопки «Купити» на сторінках активів, рейтинги бірж і брокерів, порівняльні таблиці (завжди з позначкою «партнерське посилання»).',
+                                           'Нативні картки-офери на головній і сторінках активів (одна картка на сторінку, з чіткою позначкою).',
+                                           'Спонсорські статті й гайди з позначкою «спонсорський матеріал», за нашою редакційною політикою.',
+                                           'Пости в Telegram, X, Instagram, Threads, Bluesky і Facebook.'],
+            not_='Чого ми не робимо', no=['Не продаємо місця в рейтингах — вони рахуються з відкритих даних (CoinGecko, Yahoo Finance).',
+                                          'Не обіцяємо прибутку, не робимо кампаній «гроші за просто так» і не радимо, як обійти регіональні обмеження.',
+                                          'Не працюємо з неліцензованими брокерами й проєктами, схожими на шахрайство.'],
+            reach='Охоплення', facts='{pages} сторінок 20 мовами · {assets} активів (крипта, акції, ETF, метали) · {stocks} сторінок компаній · щоденні новини ринку й розбори',
+            contact='Контакт', cta='Пишіть нам: {mail} — розкажіть про продукт, регіони й модель (CPA, revenue share, спонсорство). Відповідаємо протягом 2 робочих днів.'),
+}
+
+
+def partners_page(lang, ver, npages):
+    t = PARTNER_TXT[lang]
+    mail = f'<a href="mailto:{PARTNER_EMAIL}">{PARTNER_EMAIL}</a>'
+    li = lambda xs: '<ul>' + ''.join(f'<li>{esc(x)}</li>' for x in xs) + '</ul>'
+    nst = sum(1 for a in A.values() if a['cat'] == 'stock')
+    body = (f'<h1>{esc(t["h1"])}</h1><p class="lead">{esc(t["lead"])}</p>'
+            f'<section class="section card"><h2>{esc(t["reach"])}</h2><p>{esc(t["facts"].format(pages=_num(npages, 0) + "+", assets=_num(len(A), 0), stocks=_num(nst, 0)))}</p></section>'
+            f'<section class="section card"><h2>{esc(t["what"])}</h2>{li(t["offer"])}</section>'
+            f'<section class="section card"><h2>{esc(t["not_"])}</h2>{li(t["no"])}</section>'
+            f'<section class="section card"><h2>{esc(t["contact"])}</h2><p>{esc(t["cta"]).replace(esc("{mail}"), mail)}</p></section>')
+    return shell(lang, 'partners', f'{t["h1"]} | {BRAND}', t['lead'], body, {}, ver)
 
 def stock_peers(aid, k=8):
     a = A[aid]
@@ -3169,6 +3215,9 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
             write(f'{pre}portfolios/{k}/index.html', portfolio_detail(lang, k, c, ver))
         write(pre + 'millionaire/index.html', calc_page(lang, 'millionaire', ver))
         write(pre + 'compound-interest/index.html', ic_page(lang, ver))
+        if lang in PARTNER_TXT:
+            write(pre + 'partners/index.html', partners_page(lang, ver, 10000))
+            extra_pages.append('partners')
         for _p, _h in xc_pages(lang, ver):
             write(f'{pre}{_p}/index.html', _h)
             extra_pages.append(_p)
