@@ -684,4 +684,47 @@ document.addEventListener('click',async e=>{
   ta.addEventListener('input',()=>{ ta.style.height='auto'; ta.style.height=Math.min(ta.scrollHeight,120)+'px' });
   document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&!P.hidden){ open(false); btn.focus() } });
 })();
+
+/* ---------- own daily chart: Lightweight Charts (Apache-2.0, TradingView) where the TradingView embed is not allowed ---------- */
+(function(){
+  const sec=$('.ownchart[data-lw]'); if(!sec) return; let C; try{ C=JSON.parse(sec.dataset.lw) }catch(e){ return } if(!C.y) return;
+  const loadLib=()=>window.LightweightCharts?Promise.resolve():new Promise((ok,no)=>{ const s=document.createElement('script'); s.src=`${BASE}/assets/vendor/lwc-5.3.0.js`; s.onload=ok; s.onerror=no; document.head.appendChild(s) });
+  const get=r=>fetch(`/api/chart?s=${encodeURIComponent(C.y)}&r=${r}`).then(x=>x.ok?x.json():Promise.reject()).then(j=>{ if(!j.d||j.d.length<2) throw 0; return j });
+  const start=async()=>{
+    let D5; try{ [D5]=await Promise.all([get('5y'),loadLib()]) }catch(e){ return }   // keep the monthly SVG chart
+    const L=window.LightweightCharts, css=getComputedStyle(document.documentElement), v=k=>css.getPropertyValue(k).trim();
+    const up=v('--good')||'#16a34a', dn=v('--bad')||'#dc2626';
+    sec.classList.add('lw');
+    const ranges=[[C.yrs[0],365],[C.yrs[1],365*3],[C.yrs[2],365*5],[C.all,0]];
+    sec.innerHTML=`<div class="charthead"><h2>${esc(C.t)} · ${esc($('.ahead .badge')?.textContent||'')}${D5.cur&&D5.cur!=='USD'?` <span class="lwcur">${esc(D5.cur)}</span>`:''}</h2><span class="lwchg"></span></div>
+      <div class="lwbar"><div class="lwr">${ranges.map((r,i)=>`<button type="button" data-i="${i}"${i===0?' class="on"':''}>${esc(r[0])}</button>`).join('')}</div>
+      <div class="lwr lwt"><button type="button" data-t="c" class="on" aria-label="candles"><svg viewBox="0 0 16 16" width="14" height="14"><path fill="currentColor" d="M4 1h1v3h1v7H5v4H4v-4H3V4h1zm7 2h1v2h1v6h-1v4h-1v-4h-1V5h1z"/></svg></button><button type="button" data-t="l" aria-label="line"><svg viewBox="0 0 16 16" width="14" height="14"><path fill="none" stroke="currentColor" stroke-width="1.6" d="M1 12l4-5 3 3 4-6 3 3"/></svg></button></div></div>
+      <div class="lwbox"></div><p class="lwnote"><span class="lwavg"></span></p>`;
+    const box=$('.lwbox',sec);
+    const ch=L.createChart(box,{autoSize:true,layout:{background:{color:'transparent'},textColor:v('--muted')||'#666',fontFamily:getComputedStyle(document.body).fontFamily,attributionLogo:true},
+      grid:{vertLines:{visible:false},horzLines:{color:v('--line2')||'#eee'}},rightPriceScale:{borderVisible:false},timeScale:{borderVisible:false},
+      crosshair:{mode:L.CrosshairMode.Normal},localization:{locale:C.intl}});
+    const cs=ch.addSeries(L.CandlestickSeries,{upColor:up,downColor:dn,borderVisible:false,wickUpColor:up,wickDownColor:dn});
+    const ls=ch.addSeries(L.AreaSeries,{lineColor:v('--accent')||up,topColor:'rgba(63,209,155,.25)',bottomColor:'rgba(63,209,155,0)',lineWidth:2,visible:false});
+    let all=null, type='c', ri=0, pl=null;
+    const show=async()=>{
+      let d=D5.d;
+      if(ranges[ri][1]===0){ try{ all=all||await get('max'); d=all.d }catch(e){ d=D5.d } }
+      else { const from=d[d.length-1][0]-ranges[ri][1]*864e2; d=d.filter(x=>x[0]>=from) }
+      cs.setData(d.map(x=>({time:x[0],open:x[1],high:x[2],low:x[3],close:x[4]})));
+      ls.setData(d.map(x=>({time:x[0],value:x[4]})));
+      cs.applyOptions({visible:type==='c'}); ls.applyOptions({visible:type==='l'});
+      const s=type==='c'?cs:ls; if(pl){ try{cs.removePriceLine(pl)}catch(e){} try{ls.removePriceLine(pl)}catch(e){} }
+      const avg=d.length/d.reduce((a,x)=>a+1/x[4],0);   // equal money each period -> harmonic mean of closes
+      pl=s.createPriceLine({price:avg,color:v('--gold')||'#f0b53a',lineWidth:1,lineStyle:L.LineStyle.Dashed,axisLabelVisible:true,title:C.avg});
+      const chg=d[d.length-1][4]/d[0][4]-1, e=$('.lwchg',sec); e.textContent=fmtPct(chg); e.className='lwchg '+(chg>=0?'up':'dn');
+      const last=d[d.length-1][4]; $('.lwavg',sec).textContent=`${C.avg}: ${avg.toLocaleString(C.intl,{maximumSignificantDigits:5})}${D5.cur&&D5.cur!=='USD'?' '+D5.cur:''} · ${fmtPct(last/avg-1)}`;
+      ch.timeScale().fitContent() };
+    $('.lwbar',sec).addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return;
+      if(b.dataset.i!=null){ ri=+b.dataset.i; $$('.lwr:not(.lwt) button',sec).forEach(x=>x.classList.toggle('on',x===b)) }
+      else { type=b.dataset.t; $$('.lwt button',sec).forEach(x=>x.classList.toggle('on',x===b)) }
+      show() });
+    show() };
+  if('IntersectionObserver' in window){ const io=new IntersectionObserver(es=>{ if(es.some(e=>e.isIntersecting)){ io.disconnect(); start() } },{rootMargin:'300px'}); io.observe(sec) } else start();
+})();
 })();

@@ -566,3 +566,15 @@ html[data-theme=dark] .aim.u{color:#06231a}
 .ainote{margin:0;padding:2px 14px 10px;font-size:11px;color:var(--muted2)}
 @media (max-width:1180px){.aibtn{bottom:calc(70px + env(safe-area-inset-bottom));right:12px;padding:10px 13px}.aip{right:12px;bottom:calc(70px + env(safe-area-inset-bottom));height:min(560px,calc(100vh - 150px))}}
 @media (max-width:600px){.aibtn span{display:none}.aip{left:8px;right:8px;width:auto;max-width:none}}
+/* own daily chart (Lightweight Charts) */
+.ownchart.lw{display:flex;flex-direction:column}
+.lwbox{height:380px;position:relative}
+.lwbar{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin:0 0 8px}
+.lwr{display:flex;gap:4px}
+.lwr button{padding:5px 11px;border:1px solid var(--line);border-radius:999px;background:none;color:var(--muted);font:600 13px var(--fb);cursor:pointer;display:flex;align-items:center}
+.lwr button.on{background:var(--text);color:var(--card);border-color:transparent}
+.lwchg{font-weight:700;font-size:14px}.lwchg.up{color:var(--good)}.lwchg.dn{color:var(--bad)}
+.lwcur{font-size:12px;font-weight:600;color:var(--muted);border:1px solid var(--line);border-radius:6px;padding:1px 6px;margin-left:4px}
+.lwnote{margin:8px 0 0;font-size:13px;color:var(--muted)}
+.lwnote .lwavg::before{content:'';display:inline-block;width:14px;border-top:2px dashed var(--gold);vertical-align:middle;margin-right:6px}
+@media (max-width:600px){.lwbox{height:300px}}

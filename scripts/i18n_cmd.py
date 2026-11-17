@@ -111,3 +111,6 @@ CH = {
  'ja': ('価格チャート（月次）', '全期間'), 'ko': ('가격 차트 (월별)', '전체'), 'zh': ('价格走势（月度）', '全部'),
  'ar': ('مخطط السعر (شهري)', 'الكل'), 'fil': ('Tsart ng presyo (buwanan)', 'Lahat'),
 }
+
+# Daily chart (Lightweight Charts): (title, average DCA buy price label)
+CH2 = {'uk': ('Графік ціни', 'Середня ціна DCA'), 'en': ('Price chart', 'Avg DCA price'), 'ru': ('График цены', 'Средняя цена DCA'), 'es': ('Gráfico de precio', 'Precio medio DCA'), 'pt': ('Gráfico de preço', 'Preço médio DCA'), 'de': ('Kursverlauf', 'Ø Sparplan-Kaufpreis'), 'fr': ('Graphique du prix', 'Prix moyen DCA'), 'it': ('Grafico del prezzo', 'Prezzo medio PAC'), 'pl': ('Wykres ceny', 'Średnia cena DCA'), 'tr': ('Fiyat grafiği', 'Ortalama DCA fiyatı'), 'nl': ('Koersgrafiek', 'Gem. DCA-prijs'), 'id': ('Grafik harga', 'Harga rata-rata DCA'), 'vi': ('Biểu đồ giá', 'Giá DCA trung bình'), 'th': ('กราฟราคา', 'ราคาเฉลี่ย DCA'), 'hi': ('कीमत चार्ट', 'औसत DCA कीमत'), 'ja': ('価格チャート', '積立の平均取得単価'), 'ko': ('가격 차트', '적립식 평균 단가'), 'zh': ('价格走势', '定投平均成本'), 'ar': ('مخطط السعر', 'متوسط سعر الشراء المنتظم'), 'fil': ('Tsart ng presyo', 'Average na presyo ng DCA')}
