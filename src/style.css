@@ -578,3 +578,7 @@ html[data-theme=dark] .aim.u{color:#06231a}
 .lwnote{margin:8px 0 0;font-size:13px;color:var(--muted)}
 .lwnote .lwavg::before{content:'';display:inline-block;width:14px;border-top:2px dashed var(--gold);vertical-align:middle;margin-right:6px}
 @media (max-width:600px){.lwbox{height:300px}}
+/* header fit: long nav labels (ru, fr, es, pt, vi...) overflowed the page between 1181 and ~1750px */
+@media (max-width:1800px){.nav a,.dd summary{padding:8px 7px;font-size:13.5px}.top .in{gap:12px;max-width:1320px}}
+@media (max-width:1360px){.logo>span{display:none}}
+@media (max-width:1260px){.nav{display:none}}
