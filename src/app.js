@@ -727,4 +727,35 @@ document.addEventListener('click',async e=>{
     show() };
   if('IntersectionObserver' in window){ const io=new IntersectionObserver(es=>{ if(es.some(e=>e.isIntersecting)){ io.disconnect(); start() } },{rootMargin:'300px'}); io.observe(sec) } else start();
 })();
+
+/* ---------- widget builder: embed code for other sites ---------- */
+(function(){
+  $$('.embuild').forEach(box=>{ let C; try{ C=JSON.parse(box.dataset.cfg) }catch(e){ return } const t=C.t;
+    const det=box.closest('details'); let done=false;
+    const init=()=>{ if(done) return; done=true;
+      const yr=new Date().getFullYear(); let a=C.a||'btc', amt=10, f='d', since=(yr-5)+'-01', th='light';
+      const A=id=>(WI.a||[]).find(x=>x.i===id);
+      const seg=(k,opts,v)=>`<div class="seg" data-k="${k}">${opts.map(([val,lab])=>`<button type="button" data-v="${val}"${val===v?' class="on"':''}>${esc(lab)}</button>`).join('')}</div>`;
+      const years=[]; for(let y=yr-1;y>=2015;y--) years.push(y);
+      box.innerHTML=`<div class="embf">${C.pickable?`<label class="f">${esc(t.pick)}<div class="inp"><input class="ea" list="emblist" value="${esc(nm(A(a)||{n:a}))}"></div><datalist id="emblist">${(WI.a||[]).slice(0,600).map(x=>`<option value="${esc(nm(x))}">${esc(x.t)}</option>`).join('')}</datalist></label>`:''}
+        <label class="f">${esc(t.amount)}<div class="inp"><input class="em" type="number" min="1" max="100000" value="10"><span class="muted">$</span></div></label>
+        <div class="f">${esc(t.freq)}${seg('f',[['d',t.daily],['w',t.weekly],['m',t.monthly]],f)}</div>
+        <label class="f">${esc(t.since)}<div class="inp"><select class="es">${years.map(y=>`<option value="${y}-01"${y+'-01'===since?' selected':''}>${y}</option>`).join('')}</select></div></label>
+        <div class="f">${esc(t.theme)}${seg('th',[['light',t.light],['dark',t.dark],['auto',t.auto]],th)}</div></div>
+        <div class="embprev"><iframe title="preview" loading="lazy"></iframe></div>
+        <p class="muted embhelp">${esc(t.help)}</p><div class="embcode"><textarea readonly rows="4"></textarea><button type="button" class="btn">${esc(t.copy)}</button></div>`;
+      const ifr=$('iframe',box), ta=$('textarea',box);
+      const upd=()=>{ const x=A(a); if(!x) return; const n=nm(x), base='https://whatifstack.com';
+        const q=`a=${a}&amt=${amt}&f=${f}&s=${since}&l=${C.l}&th=${th}&n=${encodeURIComponent(n)}`;
+        ifr.src=`/embed/?${q}`;
+        const page=base+(C.l==='uk'?'':'/'+C.l)+'/'+a+'/';
+        ta.value=`<iframe src="${base}/embed/?${q}" width="100%" height="250" style="border:0;max-width:520px" loading="lazy" title="${esc(fmt(t.anchor,{n}))}"></iframe>\n<p style="margin:4px 0;font-size:13px"><a href="${page}">${esc(fmt(t.anchor,{n}))}</a></p>` };
+      box.addEventListener('click',e=>{ const b=e.target.closest('.seg button'); if(b){ const k=b.parentNode.dataset.k; $$('button',b.parentNode).forEach(x=>x.classList.toggle('on',x===b)); if(k==='f') f=b.dataset.v; else th=b.dataset.v; upd() }
+        if(e.target.closest('.embcode .btn')){ ta.select(); (navigator.clipboard?navigator.clipboard.writeText(ta.value):Promise.reject()).catch(()=>document.execCommand('copy')); const bt=e.target.closest('.btn'); bt.textContent=t.copied; setTimeout(()=>bt.textContent=t.copy,1600) } });
+      $('.em',box).addEventListener('input',e=>{ amt=Math.max(1,Math.min(100000,Math.round(+e.target.value)||10)); clearTimeout(box._t); box._t=setTimeout(upd,400) });
+      $('.es',box).addEventListener('change',e=>{ since=e.target.value; upd() });
+      const ea=$('.ea',box); if(ea) ea.addEventListener('change',()=>{ const v=ea.value.trim().toLowerCase(); const x=(WI.a||[]).find(y=>nm(y).toLowerCase()===v||y.t.toLowerCase()===v||y.i===v); if(x){ a=x.i; upd() } });
+      upd() };
+    if(det&&!det.open) det.addEventListener('toggle',()=>{ if(det.open) init() },{once:false}); else init() });
+})();
 })();

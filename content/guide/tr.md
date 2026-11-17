@@ -73,6 +73,10 @@ Herhangi bir varlığın yanındaki ☆'a dokunarak onu [izleme listene]({lang}/
 
 Sağ alttaki **AI'ya sor** düğmesi bir sohbet açar. Baktığın varlık, DCA, borsalar ya da sitenin nasıl çalıştığı hakkında sor — asistan sayfadaki rakamları görür ve senin dilinde yanıt verir. Açıklar ve hesaplar ama asla ne alman gerektiğini söylemez. Yanıtları yapay zekâ üretir, hata içerebilir; günde en fazla 20 soru.
 
+## Widget’lar
+
+Blogana, forumuna veya sitene herhangi bir kripto, hisse ya da altın için canlı "günde 10 $" hesaplayıcı ekle. Rakamlar her gün güncellenir; ücretsiz, kayıt gerekmez. [Siten için ücretsiz DCA widget’ları]({lang}/widgets/)
+
 ## Rakamlar nereden geliyor
 
 Binance, CoinGecko, Yahoo Finance, Moskova Borsası, Dünya Bankası ve diğer açık kaynaklar; kaynakları gösterilen güncel özetler için [Haberler]({lang}/news/) sayfasına bak. Fiyatlar her gün, kripto fiyatları canlı güncellenir. WhatIfStack'teki hiçbir şey yatırım tavsiyesi değildir: geçmiş sonuçlar gelecekteki getirileri garanti etmez.

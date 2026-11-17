@@ -73,6 +73,10 @@ Unter [Börsen]({lang}/exchanges/) findest du die Börsen und Wallets, mit denen
 
 Der Button **KI fragen** unten rechts öffnet einen Chat. Frag zum Asset auf der Seite, zum Sparplan, zu Börsen oder dazu, wie die Seite funktioniert – der Assistent sieht die Zahlen der aktuellen Seite und antwortet in deiner Sprache. Er erklärt und rechnet, sagt dir aber nie, was du kaufen sollst. Antworten stammen von einer KI und können Fehler enthalten; bis zu 20 Fragen pro Tag.
 
+## Widgets
+
+Bau einen Live-Rechner „10 $ pro Tag“ für jede Kryptowährung, Aktie oder Gold in deinen Blog, dein Forum oder deine Website ein. Täglich aktualisiert, kostenlos, ohne Anmeldung. [Kostenlose Sparplan-Widgets für deine Website]({lang}/widgets/)
+
 ## Woher die Zahlen kommen
 
 Binance, CoinGecko, Yahoo Finance, die Moskauer Börse, die Weltbank und andere öffentliche Quellen; die Quellen jeder Meldung findest du unter [News]({lang}/news/). Die Kurse werden täglich aktualisiert, Kryptokurse live. Nichts auf WhatIfStack ist eine Anlageberatung: Vergangene Ergebnisse sind keine Garantie für die Zukunft.

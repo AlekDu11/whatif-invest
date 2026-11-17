@@ -73,6 +73,10 @@ Tik op de ☆ naast een asset om die aan [je volglijst]({lang}/me/) toe te voege
 
 De knop **Vraag het AI** rechtsonder opent een chat. Vraag naar de asset op de pagina, DCA, exchanges of hoe de site werkt — de assistent ziet de cijfers van de huidige pagina en antwoordt in jouw taal. Hij legt uit en rekent, maar zegt nooit wat je moet kopen. Antwoorden komen van AI en kunnen fouten bevatten; tot 20 vragen per dag.
 
+## Widgets
+
+Zet een live "$10 per dag"-calculator voor elke crypto, elk aandeel of goud op je blog, forum of website. Cijfers worden dagelijks bijgewerkt, gratis en zonder account. [Gratis DCA-widgets voor je website]({lang}/widgets/)
+
 ## Waar de cijfers vandaan komen
 
 Binance, CoinGecko, Yahoo Finance, de Moskouse beurs, de Wereldbank en andere openbare bronnen; onze actuele stukken met bronvermelding vind je bij [Nieuws]({lang}/news/). Koersen worden dagelijks bijgewerkt, cryptokoersen live. Niets op WhatIfStack is beleggingsadvies: resultaten uit het verleden bieden geen garantie voor de toekomst.

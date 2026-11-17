@@ -26,6 +26,7 @@ from i18n_prof import P as PROF_T  # noqa: E402
 from i18n_pf import PF  # noqa: E402
 from i18n_bp import BP  # noqa: E402
 from i18n_ai import AIC  # noqa: E402
+from i18n_emb import EMB  # noqa: E402
 from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB, CH as OWN_CH, CH2 as OWN_CH2  # noqa: E402
 SOCIAL = [('Telegram', 'https://t.me/TradeMaster_insight'), ('X (Twitter)', 'https://x.com/WhatIfStack'), ('Bluesky', 'https://bsky.app/profile/whatifstack.bsky.social'), ('Instagram', 'https://www.instagram.com/whatifstack/'), ('Threads', 'https://www.threads.com/@whatifstack'),
           ('Pinterest', 'https://www.pinterest.com/whatifstack/'), ('Medium', 'https://medium.com/@whatifstack'),
@@ -49,7 +50,7 @@ UPDATED = market['updated']
 END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
-RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide', 'commodities'}
+RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide', 'commodities', 'widgets', 'embed'}
 RESERVED |= {v[0] for v in MKTS.values()} | {'world-assets', 'activities', 'editorial-policy', 'about', 'portfolios'}
 # asset ids that clash with a language folder or a section get a suffix (ko -> ko-stock, fil -> fil-crypto)
 _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
@@ -140,7 +141,7 @@ for _lg in TR:   # commodities tab labels (scripts/i18n_cmd.py)
     TR[_lg]['cat_cmd'] = CMD[_lg][1]
 CSLUG = {v[0]: k for k, v in MKTS.items()}   # 'stocks-poland' -> 'pl'
 TOOLS = ['converter']
-CALCS = ['millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'news', 'about']
+CALCS = ['millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'news', 'about', 'widgets']
 BLOG_LANGS = {l for l in ORDER if os.path.isdir(os.path.join(ROOT, 'content/blog', l)) and any(f.endswith('.md') for f in os.listdir(os.path.join(ROOT, 'content/blog', l)))}  # a language gets a blog once it has a post
 assert not (set(HUBS) | set(TOOLS) | {'blog', 'compare'}) & set(A), 'asset id collides with a section slug'
 
@@ -403,6 +404,55 @@ def ai_widget(lang, cfg):
     return f'<div id="aiw" data-cfg="{esc(json.dumps(t, ensure_ascii=False))}"></div>'
 
 
+def embed_page():
+    """/embed/?a=btc&amt=10&f=d|w|m&s=2021-01&l=uk&th=light|dark|auto&n=Name — iframe widget for other sites."""
+    L = {lg: dict(share=TR[lg]['ui']['share'], inv=TR[lg]['ui']['invested'], per_d=TR[lg]['ui']['per_d'], per_w=TR[lg]['ui']['per_w'],
+                  per_m=TR[lg]['ui']['per_m'], cta=EMB[lg]['cta'], intl=TR[lg]['intl'], dir=TR[lg]['dir'],
+                  pre='' if lg == DEFAULT else '/' + lg) for lg in ORDER}
+    return """<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>WhatIfStack DCA widget</title><style>
+:root{--bg:#fff;--tx:#10231b;--mu:#5d6f67;--ln:#e3ebe7;--ac:#0b7a55;--gd:#0f8a4e;--bd:#c8463d;--inv:#9aa8a2}
+.dark{--bg:#0f1a16;--tx:#e8f1ed;--mu:#93a49c;--ln:#22332c;--ac:#3fd19b;--gd:#3fd19b;--bd:#ff7a6e;--inv:#5d6f67}
+*{box-sizing:border-box}html,body{margin:0;background:transparent}
+body{font:14px/1.4 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--tx)}
+.w{background:var(--bg);border:1px solid var(--ln);border-radius:14px;padding:14px 16px 10px;max-width:520px}
+.h{display:flex;align-items:center;gap:8px;font-weight:700;font-size:15px}.h img{width:24px;height:24px;border-radius:50%}
+.h small{color:var(--mu);font-weight:600;font-size:12px;border:1px solid var(--ln);border-radius:6px;padding:0 5px}
+.q{color:var(--mu);font-size:13px;margin:6px 0 2px}.v{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.v b{font-size:28px;letter-spacing:-.02em}.v i{font-style:normal;font-weight:700}.up{color:var(--gd)}.dn{color:var(--bd)}
+.s{color:var(--mu);font-size:13px}svg{display:block;width:100%;height:64px;margin:8px 0 6px}
+.f{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--ln);padding-top:8px;font-size:13px}
+.f a{color:var(--ac);font-weight:700;text-decoration:none}.f a:hover{text-decoration:underline}.f span{color:var(--mu)}
+</style></head><body><div class="w" id="w"><div class="s">…</div></div><script>
+const L=""" + json.dumps(L, ensure_ascii=False, separators=(',', ':')) + """;
+const Q=new URLSearchParams(location.search),id=(Q.get('a')||'btc').replace(/[^a-z0-9-]/g,''),lg=L[Q.get('l')]?Q.get('l'):'en',T=L[lg];
+const amt=Math.max(1,Math.min(1e6,+Q.get('amt')||10)),f=['d','w','m'].includes(Q.get('f'))?Q.get('f'):'d',th=Q.get('th')||'light';
+if(th==='dark'||(th==='auto'&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.className='dark';
+document.documentElement.lang=lg;document.documentElement.dir=T.dir;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const ym=s=>{const[y,m]=s.split('-').map(Number);return y*12+m-1};
+const money=v=>{try{return new Intl.NumberFormat(T.intl,{style:'currency',currency:'USD',currencyDisplay:'narrowSymbol',minimumFractionDigits:0,maximumFractionDigits:v>=100||Number.isInteger(v)?0:2}).format(v)}catch(e){return '$'+Math.round(v)}};
+fetch('/assets/p/'+id+'.json').then(r=>r.json()).then(P=>{
+  const s0=ym(P.start),e=ym(P.end),now=new Date();let from=ym(Q.get('s')&&/^\\d{4}-\\d{2}$/.test(Q.get('s'))?Q.get('s'):(now.getFullYear()-5)+'-01');from=Math.max(from,s0);
+  let u=0,inv=0;const pts=[];
+  for(let i=from;i<=e;i++){const y=Math.floor(i/12),m=i%12+1;let d=new Date(y,m,0).getDate();if(i===e)d=Math.min(d,now.getDate());
+    const c=amt*(f==='d'?d:f==='w'?d/7:(i===e?0:1));u+=c/P.p[i-s0];inv+=c;pts.push([inv,u*P.p[i-s0]])}
+  const val=u*P.p[e-s0],pct=inv?val/inv-1:0,name=Q.get('n')||P.n;
+  let since;try{since=new Intl.DateTimeFormat(T.intl,{month:'short',year:'numeric'}).format(new Date(Math.floor(from/12),from%12,15))}catch(x){since=from}
+  const pc=(pct>=0?'+':'')+(pct*100).toFixed(Math.abs(pct)<1?1:0)+'%';
+  const sent=T.share.replace('${amt}',money(amt)).replace('{amt}',amt).replace('{per}',T['per_'+f]).replace('{asset}',name).replace('{since}',since).replace('{val}',money(val)).replace('{pct}',pc);
+  const mx=Math.max(...pts.map(p=>Math.max(p[0],p[1])))||1,W=500,H=64,X=k=>(pts.length>1?k/(pts.length-1):0)*W,Y=v=>H-2-(v/mx)*(H-4);
+  const line=j=>pts.map((p,k)=>X(k).toFixed(1)+','+Y(p[j]).toFixed(1)).join(' ');
+  const href='https://whatifstack.com'+T.pre+'/'+id+'/?utm_source=embed&utm_medium=widget';
+  document.getElementById('w').innerHTML=`<div class="h"><img src="/assets/logo/${id}.webp" alt="" onerror="this.remove()">${esc(name)} <small>${esc(P.t||'')}</small></div>
+   <div class="q">${esc(sent)}</div><div class="v"><b>${money(val)}</b><i class="${pct>=0?'up':'dn'}">${pc}</i><span class="s">${esc(T.inv)} ${money(inv)}</span></div>
+   <svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true"><polyline points="${line(0)}" fill="none" stroke="var(--inv)" stroke-width="1.5" stroke-dasharray="4 3" vector-effect="non-scaling-stroke"/>
+   <polyline points="${line(1)}" fill="none" stroke="var(--${pct>=0?'gd':'bd'})" stroke-width="2" vector-effect="non-scaling-stroke"/></svg>
+   <div class="f"><a href="${href}" target="_blank" rel="noopener">${esc(T.cta)} →</a><span>WhatIfStack</span></div>`;
+}).catch(()=>{document.getElementById('w').innerHTML='<div class="f"><a href="https://whatifstack.com/" target="_blank" rel="noopener">WhatIfStack</a></div>'});
+</script></body></html>"""
+
+
 def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
     og_img = SITE + (cfg.pop('_og', None) or '/assets/og.jpg')
     sec = cfg.pop('_sec', None) or p   # section to highlight in the nav
@@ -530,6 +580,28 @@ def own_chart(lang, a, aid):
               yrs=[BP[lang]['yrs'].format(n=n) for n in (1, 3, 5)], intl=TR[lang]['loc'])
     return (f'<section class="card tvcard ownchart" data-lw="{esc(json.dumps(lw, ensure_ascii=False))}"><div class="charthead"><h2>{esc(OWN_CH[lang][0])} · {esc(a["tk"])}</h2></div>'
             f'<div class="oc">{tabs}<div class="ocs">{svgs}</div></div></section>')
+
+
+def emb_cfg(lang, aid=None):
+    u = TR[lang]['ui']
+    e = EMB[lang]
+    return dict(a=aid or '', l=lang, t=dict(dlg=e['dlg'], help=e['help'], theme=e['theme'], light=e['light'], dark=e['dark'], auto=e['auto'],
+                pick=e['pick'], anchor=e['anchor'], amount=u['amount'], freq=u['freq'], daily=u['daily'], weekly=u['weekly'],
+                monthly=u['monthly'], since=u['since'], copy=u['copy'], copied=u['copied']))
+
+
+def emb_block(lang, aid):
+    e = EMB[lang]
+    return (f'<details class="card emb section"><summary>{esc(e["btn"])} · {esc(e["dlg"])}</summary>'
+            f'<div class="embuild" data-cfg="{esc(json.dumps(emb_cfg(lang, aid), ensure_ascii=False))}"></div></details>')
+
+
+def widgets_page(lang, ver):
+    e = EMB[lang]
+    body = (f'<h1>{esc(e["h1"])}</h1><p class="lead">{esc(e["d"])}</p>'
+            f'<section class="card section"><div class="embuild" data-cfg="{esc(json.dumps(emb_cfg(lang, "btc") | dict(pickable=1), ensure_ascii=False))}"></div></section>'
+            f'<section class="card section"><h2>{esc(e["how"])}</h2><p>{esc(e["help"])}</p><p class="muted">{esc(e["why"])}</p></section>')
+    return shell(lang, 'widgets', f'{e["h1"]} | {BRAND}', e['d'], body, {}, ver)
 
 
 def calc_block(lang):
@@ -1033,7 +1105,7 @@ def asset(aid, lang, ver):
             f'<div class="cols2 section"><section class="card"><h2>{S["a_periods"].format(**fe)}</h2>{ptable}</section>'
             f'<section class="card faq"><h2>{S["faq"]}</h2>' + ''.join(f'<details><summary>{esc(q)}</summary><p>{esc(x)}</p></details>' for q, x in faq) + '</section></div>'
             f'<section class="section">{table_block(lang, sim, S["a_similar"] + ": " + esc(cat), interactive=False)}</section>'
-            f'<p class="note">{esc(S["about"].format(**f))}</p>')
+            f'{emb_block(lang, aid)}<p class="note">{esc(S["about"].format(**f))}</p>')
     jsonld = [{"@context": "https://schema.org", "@type": "FAQPage", "inLanguage": S['loc'],
                "mainEntity": [{"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": x}} for q, x in faq]},
               {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
@@ -1117,7 +1189,7 @@ def tools_menu(lang):
     items = [('compare', S['nav_cmp']) if (S := TR[lang]) else None, ('habits', HB[lang]['nav']), ('millionaire', t['g_nav']), ('compound-interest', t['c_nav'])]
     if CPI['c']:
         items.append(('inflation', t['i_nav']))
-    items += [('world-assets', WA[lang]['nav']), ('converter', HCONV[lang]), ('memes', MEM[lang]['nav']), ('ath', t['a_nav']), ('bitcoin-halving', t['v_nav'])]
+    items += [('world-assets', WA[lang]['nav']), ('converter', HCONV[lang]), ('memes', MEM[lang]['nav']), ('ath', t['a_nav']), ('bitcoin-halving', t['v_nav']), ('widgets', EMB[lang]['nav'])]
     return items
 
 
@@ -2169,7 +2241,7 @@ def main():
         if a.get('binance') or (a['cat'] == 'crypto' and a.get('src') == 'yahoo'):
             e['bn'] = 1
         idx.append({k: (round(v, 4) if isinstance(v, float) and k in ('ch', 'r1', 'r3', 'r5') else v) for k, v in e.items() if v is not None})
-        write(f'assets/p/{aid}.json', json.dumps({'start': a['start'], 'end': a['end'], 'p': a['p']}, separators=(',', ':')))
+        write(f'assets/p/{aid}.json', json.dumps({'start': a['start'], 'end': a['end'], 'p': a['p'], 'n': nm(a, 'en'), 't': a['tk']}, separators=(',', ':')))
     json.dump(ORDERED[:160], open(os.path.join(ROOT, 'data/sprite_ids.json'), 'w'))   # next data run packs these logos into one sprite
     if SPRITE['ids']:
         shutil.copy(os.path.join(ROOT, 'data/logo-sprite.webp'), os.path.join(OUT, 'assets', 'logo-sprite.webp'))
@@ -2179,6 +2251,8 @@ def main():
         shutil.copytree(LOGO_DIR, os.path.join(OUT, 'assets/logo'))
     shutil.copytree(os.path.join(ROOT, 'src', 'flags'), os.path.join(OUT, 'assets/flags'))
     shutil.copy(os.path.join(ROOT, 'src', 'x-relay.html'), os.path.join(DIST, 'x-relay.html'))
+    os.makedirs(os.path.join(DIST, 'embed'), exist_ok=True)
+    open(os.path.join(DIST, 'embed', 'index.html'), 'w', encoding='utf-8').write(embed_page())
     shutil.copytree(os.path.join(ROOT, 'src', 'vendor'), os.path.join(OUT, 'assets', 'vendor'), dirs_exist_ok=True)   # Lightweight Charts (Apache-2.0, TradingView)
     shutil.copytree(os.path.join(ROOT, 'social', 'launch'), os.path.join(OUT, 'assets', 'press'), ignore=shutil.ignore_patterns('*.md'))   # press kit images   # hands covers to the X composer
     if os.path.isdir(os.path.join(ROOT, 'content', 'covers')):
@@ -2219,6 +2293,7 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
         extra_pages = ['habits'] + ['habits/' + HSLUG[k] for k in HSCEN] + [c for c in CALCS if has_page(lang, c)]
         write(pre + 'millionaire/index.html', calc_page(lang, 'millionaire', ver))
         write(pre + 'compound-interest/index.html', calc_page(lang, 'compound-interest', ver))
+        write(pre + 'widgets/index.html', widgets_page(lang, ver))
         if CPI['c']:
             write(pre + 'inflation/index.html', inflation_page(lang, ver))
         write(pre + 'ath/index.html', ath_page(lang, ver))

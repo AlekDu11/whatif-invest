@@ -73,6 +73,10 @@ Chạm ☆ cạnh bất kỳ tài sản nào để thêm vào [danh sách theo d
 
 Nút **Hỏi AI** ở góc dưới bên phải mở khung trò chuyện. Hãy hỏi về tài sản trên trang, DCA, sàn giao dịch hoặc cách dùng trang — trợ lý thấy số liệu của trang hiện tại và trả lời bằng ngôn ngữ của bạn. Trợ lý giải thích và tính toán nhưng không bao giờ bảo bạn nên mua gì. Câu trả lời do AI tạo và có thể sai; tối đa 20 câu hỏi mỗi ngày.
 
+## Widget
+
+Thêm máy tính trực tiếp "$10 mỗi ngày" cho bất kỳ tiền mã hóa, cổ phiếu hay vàng nào vào blog, diễn đàn hoặc website. Số liệu cập nhật hằng ngày, miễn phí, không cần đăng ký. [Widget DCA miễn phí cho website của bạn]({lang}/widgets/)
+
 ## Số liệu từ đâu
 
 Binance, CoinGecko, Yahoo Finance, Sở giao dịch Moskva, Ngân hàng Thế giới và các nguồn công khai khác; các bản tin mới nhất kèm nguồn có ở mục [Tin tức]({lang}/news/). Giá cập nhật hằng ngày, giá crypto theo thời gian thực. Không có nội dung nào trên WhatIfStack là lời khuyên đầu tư: kết quả trong quá khứ không đảm bảo lợi nhuận trong tương lai.

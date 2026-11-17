@@ -75,6 +75,10 @@ Every asset page has an **＋ Add to portfolio** button: enter an amount (or qua
 
 The **Ask AI** button in the bottom-right corner opens a chat. Ask anything about the asset you are looking at, DCA, exchanges or how the site works — the assistant sees the numbers on the current page and answers in your language. It explains and calculates but never tells you what to buy. Answers are AI-generated and can contain mistakes; up to 20 questions per day.
 
+## Widgets
+
+Add a live "$10 a day" calculator for any crypto, stock or gold to your blog, forum or website. Numbers update daily — free, no sign-up. [Free DCA widgets for your website]({lang}/widgets/)
+
 ## Where the numbers come from
 
 Binance, CoinGecko, Yahoo Finance, the Moscow Exchange, the World Bank and other public sources; details in [About & methodology]({lang}/about/). Prices update daily, crypto prices live. Nothing on WhatIfStack is investment advice: past results do not guarantee future returns.

@@ -73,6 +73,10 @@ La page [Plateformes]({lang}/exchanges/) liste les plateformes d'échange et les
 
 Le bouton **Demander à l'IA** en bas à droite ouvre un chat. Pose tes questions sur l'actif affiché, le DCA, les plateformes ou le fonctionnement du site : l'assistant voit les chiffres de la page et répond dans ta langue. Il explique et calcule, mais ne te dit jamais quoi acheter. Les réponses sont générées par une IA et peuvent contenir des erreurs ; jusqu'à 20 questions par jour.
 
+## Widgets
+
+Ajoutez à votre blog, forum ou site un calculateur en direct « 10 $ par jour » pour n’importe quelle crypto, action ou l’or. Chiffres mis à jour chaque jour, gratuit et sans inscription. [Widgets DCA gratuits pour votre site]({lang}/widgets/)
+
 ## D'où viennent les chiffres
 
 Binance, CoinGecko, Yahoo Finance, la Bourse de Moscou, la Banque mondiale et d'autres sources publiques ; les sources de chaque brève sont dans [Actu]({lang}/news/). Les prix sont mis à jour chaque jour, ceux de la crypto en direct. Rien sur WhatIfStack n'est un conseil en investissement : les performances passées ne préjugent pas des performances futures.

@@ -72,6 +72,10 @@ Nakalista sa [Exchanges]({lang}/exchanges/) ang mga exchange at wallet na katrab
 
 Ang button na **Magtanong sa AI** sa kanang ibaba ay nagbubukas ng chat. Magtanong tungkol sa asset sa page, DCA, mga exchange o kung paano gumagana ang site — nakikita ng assistant ang mga numero sa kasalukuyang page at sumasagot sa iyong wika. Nagpapaliwanag at nagkukuwenta ito pero hindi kailanman sinasabi kung ano ang bibilhin. Gawa ng AI ang mga sagot at maaaring may mali; hanggang 20 tanong bawat araw.
 
+## Mga widget
+
+Maglagay ng live na "$10 kada araw" na calculator para sa anumang crypto, stock o ginto sa iyong blog, forum o website. Araw-araw nag-a-update ang mga numero, libre at walang sign-up. [Libreng DCA widget para sa iyong website]({lang}/widgets/)
+
 ## Saan galing ang mga numero
 
 Binance, CoinGecko, Yahoo Finance, Moscow Exchange, World Bank at iba pang pampublikong source; para sa pinakabagong update, tingnan ang [Balita]({lang}/news/). Araw-araw ina-update ang presyo, live ang presyo ng crypto. Walang anuman sa WhatIfStack na investment advice: hindi garantiya ng mga nakaraang resulta ang kikitain sa hinaharap.

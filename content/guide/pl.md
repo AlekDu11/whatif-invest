@@ -73,6 +73,10 @@ Na stronie [Giełdy]({lang}/exchanges/) znajdziesz giełdy i portfele, z którym
 
 Przycisk **Zapytaj AI** w prawym dolnym rogu otwiera czat. Pytaj o aktywo na stronie, DCA, giełdy albo o to, jak działa serwis — asystent widzi liczby z bieżącej strony i odpowiada w Twoim języku. Wyjaśnia i liczy, ale nigdy nie mówi, co kupić. Odpowiedzi generuje AI i mogą zawierać błędy; do 20 pytań dziennie.
 
+## Widżety
+
+Dodaj do bloga, forum lub strony kalkulator na żywo „10 $ dziennie” dla dowolnej kryptowaluty, akcji lub złota. Liczby aktualizują się codziennie, za darmo i bez rejestracji. [Darmowe widżety DCA na Twoją stronę]({lang}/widgets/)
+
 ## Skąd są liczby
 
 Binance, CoinGecko, Yahoo Finance, Giełda Moskiewska, Bank Światowy i inne publiczne źródła; źródła każdej notki znajdziesz w [Wiadomościach]({lang}/news/). Ceny aktualizują się codziennie, kryptowaluty na żywo. Nic na WhatIfStack nie jest poradą inwestycyjną: wyniki z przeszłości nie gwarantują przyszłych.

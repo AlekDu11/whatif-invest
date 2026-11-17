@@ -582,3 +582,12 @@ html[data-theme=dark] .aim.u{color:#06231a}
 @media (max-width:1800px){.nav a,.dd summary{padding:8px 7px;font-size:13.5px}.top .in{gap:12px;max-width:1320px}}
 @media (max-width:1360px){.logo>span{display:none}}
 @media (max-width:1260px){.nav{display:none}}
+/* widget builder */
+details.emb>summary{cursor:pointer;font-weight:700;list-style:none}details.emb>summary::-webkit-details-marker{display:none}
+details.emb[open]>summary{margin-bottom:12px}
+.embf{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:flex-end}.embf .f{min-width:140px}
+.embprev{margin:14px 0 6px;max-width:540px}.embprev iframe{width:100%;height:250px;border:0;display:block}
+.embhelp{font-size:13px;margin:4px 0 8px}
+.embcode{display:flex;gap:8px;align-items:flex-start}.embcode textarea{flex:1;font:12px/1.4 ui-monospace,Consolas,monospace;padding:8px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--text);resize:vertical}
+@media (max-width:600px){.embcode{flex-direction:column}.embcode textarea{width:100%}}
+.embf div.f{display:flex;flex-direction:column;gap:4px}

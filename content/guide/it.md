@@ -73,6 +73,10 @@ Nella pagina [Exchange]({lang}/exchanges/) trovi gli exchange e i wallet con cui
 
 Il pulsante **Chiedi all'IA** in basso a destra apre una chat. Chiedi dell'asset che stai guardando, del PAC, degli exchange o di come funziona il sito: l'assistente vede i numeri della pagina e risponde nella tua lingua. Spiega e calcola, ma non ti dice mai cosa comprare. Le risposte sono generate da un'IA e possono contenere errori; fino a 20 domande al giorno.
 
+## Widget
+
+Aggiungi al tuo blog, forum o sito un calcolatore live "10 $ al giorno" per qualsiasi cripto, azione o oro. Numeri aggiornati ogni giorno, gratis e senza registrazione. [Widget PAC gratuiti per il tuo sito]({lang}/widgets/)
+
 ## Da dove vengono i numeri
 
 Binance, CoinGecko, Yahoo Finance, la Borsa di Mosca, la Banca Mondiale e altre fonti pubbliche; le fonti di ogni articolo sono in [Notizie]({lang}/news/). I prezzi si aggiornano ogni giorno, quelli delle cripto in tempo reale. Niente su WhatIfStack è una consulenza finanziaria: i rendimenti passati non garantiscono quelli futuri.

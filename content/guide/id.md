@@ -73,6 +73,10 @@ Ketuk ☆ di samping aset mana pun untuk menambahkannya ke [watchlist-mu]({lang}
 
 Tombol **Tanya AI** di kanan bawah membuka obrolan. Tanyakan tentang aset di halaman, DCA, exchange, atau cara kerja situs — asisten melihat angka di halaman ini dan menjawab dalam bahasamu. Ia menjelaskan dan menghitung, tetapi tidak pernah menyuruhmu membeli apa pun. Jawaban dibuat AI dan bisa keliru; maksimal 20 pertanyaan per hari.
 
+## Widget
+
+Pasang kalkulator langsung "$10 per hari" untuk kripto, saham, atau emas apa pun di blog, forum, atau situsmu. Angka diperbarui setiap hari, gratis tanpa daftar. [Widget DCA gratis untuk situsmu]({lang}/widgets/)
+
 ## Dari mana angkanya
 
 Binance, CoinGecko, Yahoo Finance, Bursa Moskow, Bank Dunia, dan sumber publik lainnya; ringkasan terbaru kami lengkap dengan sumbernya ada di [Berita]({lang}/news/). Harga diperbarui setiap hari, harga kripto secara live. Tidak ada apa pun di WhatIfStack yang merupakan saran investasi: hasil masa lalu tidak menjamin hasil di masa depan.

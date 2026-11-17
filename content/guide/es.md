@@ -73,6 +73,10 @@ En [Exchanges]({lang}/exchanges/) tienes los exchanges y monederos con los que t
 
 El botón **Preguntar a la IA** abajo a la derecha abre un chat. Pregunta por el activo que estás viendo, el DCA, los exchanges o cómo funciona el sitio: el asistente ve las cifras de la página y responde en tu idioma. Explica y calcula, pero nunca te dice qué comprar. Las respuestas las genera una IA y pueden tener errores; hasta 20 preguntas al día.
 
+## Widgets
+
+Añade a tu blog, foro o web una calculadora en vivo de "$10 al día" para cualquier cripto, acción u oro. Las cifras se actualizan a diario, gratis y sin registro. [Widgets DCA gratis para tu web]({lang}/widgets/)
+
 ## De dónde salen los números
 
 Binance, CoinGecko, Yahoo Finance, la Bolsa de Moscú, el Banco Mundial y otras fuentes públicas; las fuentes de cada nota están en [Noticias]({lang}/news/). Los precios se actualizan a diario y los de las criptomonedas, en directo. Nada en WhatIfStack es asesoramiento financiero: las rentabilidades pasadas no garantizan las futuras.
