@@ -91,6 +91,10 @@ See how much Ukrainian military government bonds (OVDP) pay in hryvnia, dollars 
 
 Ranking of public companies with prices and daily and yearly change. Tap a company to see its key numbers and a plain-language analysis. [Largest companies in the world by market cap]({lang}/largest-companies/)
 
+## Exchange ranking
+
+Where crypto trades most: 24h volume, market share and trust score. Tap an exchange to see what trades there. [Largest crypto exchanges by trading volume]({lang}/crypto-exchanges/) · [Largest futures and perpetuals exchanges]({lang}/crypto-exchanges/derivatives/)
+
 ## Where the numbers come from
 
 Binance, CoinGecko, Yahoo Finance, the Moscow Exchange, the World Bank and other public sources; details in [About & methodology]({lang}/about/). Prices update daily, crypto prices live. Nothing on WhatIfStack is investment advice: past results do not guarantee future returns.

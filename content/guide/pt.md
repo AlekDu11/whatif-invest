@@ -87,6 +87,10 @@ Informe suas compras e veja o preço médio, o lucro no preço atual e quanto co
 
 Ranking de empresas listadas com preço e variação no dia e no ano. Toque numa empresa para ver os números-chave e uma análise simples. [Maiores empresas do mundo por valor de mercado]({lang}/largest-companies/)
 
+## Ranking de corretoras
+
+Onde mais se negocia: volume 24 h, participação de mercado e confiança. Toque numa corretora para ver o que é negociado. [Maiores corretoras de cripto por volume]({lang}/crypto-exchanges/) · [Maiores corretoras de futuros e perpétuos]({lang}/crypto-exchanges/derivatives/)
+
 ## De onde vêm os números
 
 Binance, CoinGecko, Yahoo Finance, a Bolsa de Moscou, o Banco Mundial e outras fontes públicas; as fontes de cada resumo estão em [Notícias]({lang}/news/). Os preços são atualizados diariamente, e os de cripto ao vivo. Nada no WhatIfStack é recomendação de investimento: resultados passados não garantem resultados futuros.

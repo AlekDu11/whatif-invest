@@ -1625,7 +1625,7 @@ def _xvsvg(pts, w=640, h=170):
 def xc_spot_page(lang, ver):
     t, btc = XC[lang], METRICS['btc']['price'] if 'btc' in METRICS else 0
     sp = [e for e in XCH['spot'] if e.get('vol_btc')]
-    tot = sum(e.get('nvol_btc') or 0 for e in sp) or 1
+    tot = sum(e.get('vol_btc') or 0 for e in sp) or 1
     rows = ''
     for k, e in enumerate(sp[:100]):
         det = e['id'] in XCH.get('detail', {})
@@ -1635,11 +1635,11 @@ def xc_spot_page(lang, ver):
         golink = f'<a class="buy" href="/go/{go}?from=xc-list&l={lang}" target="_blank" rel="sponsored noopener" title="{esc(t["aff"])}">↗</a>' if go else ''
         rows += (f'<tr><td class="l n">{k + 1}</td><td class="l">{nm_}{_xlogo(e)}<span><span class="nm">{esc(e["name"])}</span>'
                  f'<span class="tk">{esc(e.get("country") or "")}</span></span>{"</a>" if det else "</span>"}</td>'
-                 f'<td class="num"><b>{usd_h((e.get("nvol_btc") or 0) * btc)}</b></td><td class="num hide-sm">{usd_h(e["vol_btc"] * btc)}</td>'
-                 f'<td class="num">{pctu((e.get("nvol_btc") or 0) / tot)}</td><td class="num hide-sm">{e.get("trust") or "—"}/10</td>'
+                 f'<td class="num"><b>{usd_h(e["vol_btc"] * btc)}</b></td>'
+                 f'<td class="num">{pctu(e["vol_btc"] / tot)}</td><td class="num hide-sm">{e.get("trust") or "—"}/10</td>'
                  f'<td class="hide-sm">{spark([v for _, v in ch][-14:]) if ch else ""}</td>'
                  f'<td>{golink}</td></tr>')
-    th = (f'<tr><th class="l n">#</th><th class="l">{esc(t["name"])}</th><th>{esc(t["nvol"])}</th><th class="hide-sm">{esc(t["vol"])}</th>'
+    th = (f'<tr><th class="l n">#</th><th class="l">{esc(t["name"])}</th><th>{esc(t["vol"])}</th>'
           f'<th>{esc(t["share"])}</th><th class="hide-sm">{esc(t["trust"])}</th><th class="hide-sm"></th><th></th></tr>')
     return _xc_shell(lang, ver, 'spot', t['h_spot'], t['lead_spot'], th, rows)
 
@@ -1675,11 +1675,11 @@ def xc_detail_page(lang, xid, ver):
     sp = XCH['spot']
     e = next(x for x in sp if x['id'] == xid)
     d = XCH['detail'][xid]
-    tot = sum(x.get('nvol_btc') or 0 for x in sp) or 1
+    tot = sum(x.get('vol_btc') or 0 for x in sp) or 1
     name = e['name']
     cg2aid = {a.get('cgid'): i for i, a in A.items() if a.get('cgid')}
     cpart = f' ({e["country"]}{", " + str(e["year"]) if e.get("year") else ""})' if e.get('country') else ''
-    lead = t['x_lead'].format(x=name, c=cpart, v=usd((e.get('vol_btc') or 0) * btc), s=pctu((e.get('nvol_btc') or 0) / tot), r=e.get('rank') or '—')
+    lead = t['x_lead'].format(x=name, c=cpart, v=usd((e.get('vol_btc') or 0) * btc), s=pctu((e.get('vol_btc') or 0) / tot), r=e.get('rank') or '—')
     go = xc_partner(name)
     fee = ''
     if go:
@@ -1689,7 +1689,7 @@ def xc_detail_page(lang, xid, ver):
             fee = f'<div class="ks"><span>{esc(t["fees"])}</span><b>{fz[0]}</b><small>{esc(t["dca"])}: {esc(fz[1])}</small></div>'
     yr = f'<small>{esc(t["year"])}: {e["year"]}</small>' if e.get('year') else ''
     tiles = (f'<div class="ks"><span>{esc(t["vol"])}</span><b>{usd_h((e.get("vol_btc") or 0) * btc)}</b></div>'
-             f'<div class="ks"><span>{esc(t["nvol"])}</span><b>{usd_h((e.get("nvol_btc") or 0) * btc)}</b><small>{esc(t["share"])}: {pctu((e.get("nvol_btc") or 0) / tot)}</small></div>'
+             f'<div class="ks"><span>{esc(t["share"])}</span><b>{pctu((e.get("vol_btc") or 0) / tot)}</b></div>'
              f'<div class="ks"><span>{esc(t["trust"])}</span><b>{e.get("trust") or "—"}/10</b><small>#{e.get("rank") or "—"}</small></div>'
              + (f'<div class="ks"><span>{esc(t["country"])}</span><b>{esc(e["country"])}</b>{yr}</div>' if e.get('country') else '')
              + fee)

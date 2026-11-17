@@ -53,6 +53,7 @@ Asset profiles: daily 16:52 Kyiv, 3 assets/day → content/profiles/<lang>/<asse
 Guide: content/guide/<lang>.md → /guide/ (every tool explained; keep it updated when a feature is added).
 Free distribution: social/syndication.md (platform rules, communities per language, log); daily drafts in social/syndication/YYYY-MM-DD.md. RSS per language (/<lang>/blog/rss.xml, with cover images → Pinterest/Flipboard auto-publish) and Google News sitemap /sitemap-news.xml are built by scripts/build.py.
 Offers: offer_card() in build.py (Telegram Wallet bonus, strings in scripts/i18n_offer.py) on home + crypto asset pages; clicks via /go/tgwallet?from=<placement>.
+Crypto exchange rankings: data/exchanges.json via .github/workflows/exchanges.yml (CoinGecko, daily 03:11 UTC) → /crypto-exchanges/ (spot, by trust rank), /crypto-exchanges/derivatives/ (open interest), /crypto-exchanges/<id>/ (en+uk: 30-day volume, top pairs, partner CTA via XC_PARTNER).
 News aggregator: api/news.js (Vercel function, RSS headlines only, links to originals).
 
 ## Backlog agreed with the owner (2026-11-17)

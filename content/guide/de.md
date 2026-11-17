@@ -87,6 +87,10 @@ Gib deine Käufe ein und erhalte Einstandskurs, Gewinn zum aktuellen Kurs und wi
 
 Rangliste börsennotierter Unternehmen mit Kurs und Veränderung zum Vortag und zum Vorjahr. Tippe auf ein Unternehmen für Kennzahlen und eine verständliche Analyse. [Größte Unternehmen der Welt nach Börsenwert]({lang}/largest-companies/)
 
+## Börsen-Ranking
+
+Wo am meisten gehandelt wird: 24h-Volumen, Marktanteil und Vertrauenswert. Tippe auf eine Börse, um zu sehen, was dort gehandelt wird. [Größte Kryptobörsen nach Handelsvolumen]({lang}/crypto-exchanges/) · [Größte Börsen für Futures und Perpetuals]({lang}/crypto-exchanges/derivatives/)
+
 ## Woher die Zahlen kommen
 
 Binance, CoinGecko, Yahoo Finance, die Moskauer Börse, die Weltbank und andere öffentliche Quellen; die Quellen jeder Meldung findest du unter [News]({lang}/news/). Die Kurse werden täglich aktualisiert, Kryptokurse live. Nichts auf WhatIfStack ist eine Anlageberatung: Vergangene Ergebnisse sind keine Garantie für die Zukunft.

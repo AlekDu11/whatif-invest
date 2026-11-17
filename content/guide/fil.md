@@ -86,6 +86,10 @@ Ilagay ang mga binili mo para makita ang average price, kita sa kasalukuyang pre
 
 Ranking ng mga listed na kumpanya na may presyo at galaw sa araw at sa taon. I-tap ang kumpanya para sa key numbers at simpleng pagsusuri. [Pinakamalaking kumpanya sa mundo ayon sa market cap]({lang}/largest-companies/)
 
+## Ranking ng exchange
+
+Kung saan pinakamaraming trade: 24h volume, market share at trust score. I-tap ang exchange para makita kung ano ang tini-trade. [Pinakamalaking crypto exchange ayon sa volume]({lang}/crypto-exchanges/) · [Pinakamalaking futures at perpetual exchange]({lang}/crypto-exchanges/derivatives/)
+
 ## Saan galing ang mga numero
 
 Binance, CoinGecko, Yahoo Finance, Moscow Exchange, World Bank at iba pang pampublikong source; para sa pinakabagong update, tingnan ang [Balita]({lang}/news/). Araw-araw ina-update ang presyo, live ang presyo ng crypto. Walang anuman sa WhatIfStack na investment advice: hindi garantiya ng mga nakaraang resulta ang kikitain sa hinaharap.

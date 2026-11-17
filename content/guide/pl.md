@@ -87,6 +87,10 @@ Wpisz swoje zakupy i zobacz średnią cenę, zysk po obecnej cenie i ile dokupi�
 
 Ranking spółek giełdowych z ceną oraz zmianą dzienną i roczną. Kliknij spółkę, by zobaczyć kluczowe liczby i prostą analizę. [Największe spółki świata według kapitalizacji]({lang}/largest-companies/)
 
+## Ranking giełd
+
+Gdzie handluje się najwięcej: wolumen 24h, udział w rynku i ocena zaufania. Kliknij giełdę, by zobaczyć, czym się na niej handluje. [Największe giełdy krypto według wolumenu]({lang}/crypto-exchanges/) · [Największe giełdy kontraktów futures i perpetual]({lang}/crypto-exchanges/derivatives/)
+
 ## Skąd są liczby
 
 Binance, CoinGecko, Yahoo Finance, Giełda Moskiewska, Bank Światowy i inne publiczne źródła; źródła każdej notki znajdziesz w [Wiadomościach]({lang}/news/). Ceny aktualizują się codziennie, kryptowaluty na żywo. Nic na WhatIfStack nie jest poradą inwestycyjną: wyniki z przeszłości nie gwarantują przyszłych.

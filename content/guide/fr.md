@@ -87,6 +87,10 @@ Saisissez vos achats : prix moyen, gain au cours actuel et combien racheter pour
 
 Classement des sociétés cotées avec cours et variation sur un jour et un an. Touchez une entreprise pour voir ses chiffres clés et une analyse claire. [Plus grandes entreprises du monde par capitalisation]({lang}/largest-companies/)
 
+## Classement des plateformes
+
+Là où l’on échange le plus : volume 24 h, part de marché et indice de confiance. Touchez une plateforme pour voir ce qui s’y échange. [Plus grandes plateformes crypto par volume]({lang}/crypto-exchanges/) · [Plus grandes plateformes de futures et perpétuels]({lang}/crypto-exchanges/derivatives/)
+
 ## D'où viennent les chiffres
 
 Binance, CoinGecko, Yahoo Finance, la Bourse de Moscou, la Banque mondiale et d'autres sources publiques ; les sources de chaque brève sont dans [Actu]({lang}/news/). Les prix sont mis à jour chaque jour, ceux de la crypto en direct. Rien sur WhatIfStack n'est un conseil en investissement : les performances passées ne préjugent pas des performances futures.

@@ -87,6 +87,10 @@ Introduce tus compras y obtén el precio medio, la ganancia al precio actual y c
 
 Ranking de empresas cotizadas con precio y variación diaria y anual. Toca una empresa para ver sus cifras clave y un análisis claro. [Mayores empresas del mundo por capitalización]({lang}/largest-companies/)
 
+## Ranking de exchanges
+
+Dónde se opera más: volumen 24 h, cuota de mercado y confianza. Toca un exchange para ver qué se negocia. [Mayores exchanges de cripto por volumen]({lang}/crypto-exchanges/) · [Mayores exchanges de futuros y perpetuos]({lang}/crypto-exchanges/derivatives/)
+
 ## De dónde salen los números
 
 Binance, CoinGecko, Yahoo Finance, la Bolsa de Moscú, el Banco Mundial y otras fuentes públicas; las fuentes de cada nota están en [Noticias]({lang}/news/). Los precios se actualizan a diario y los de las criptomonedas, en directo. Nada en WhatIfStack es asesoramiento financiero: las rentabilidades pasadas no garantizan las futuras.

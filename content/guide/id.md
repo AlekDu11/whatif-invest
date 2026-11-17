@@ -87,6 +87,10 @@ Masukkan pembelianmu dan lihat harga rata-rata, untung di harga sekarang, dan be
 
 Peringkat perusahaan terbuka dengan harga serta perubahan harian dan tahunan. Ketuk perusahaan untuk angka utama dan analisis sederhana. [Perusahaan terbesar dunia menurut kapitalisasi pasar]({lang}/largest-companies/)
 
+## Peringkat bursa
+
+Tempat trading terbanyak: volume 24 jam, pangsa pasar, dan skor kepercayaan. Ketuk bursa untuk melihat apa yang diperdagangkan. [Bursa kripto terbesar menurut volume]({lang}/crypto-exchanges/) · [Bursa futures dan perpetual terbesar]({lang}/crypto-exchanges/derivatives/)
+
 ## Dari mana angkanya
 
 Binance, CoinGecko, Yahoo Finance, Bursa Moskow, Bank Dunia, dan sumber publik lainnya; ringkasan terbaru kami lengkap dengan sumbernya ada di [Berita]({lang}/news/). Harga diperbarui setiap hari, harga kripto secara live. Tidak ada apa pun di WhatIfStack yang merupakan saran investasi: hasil masa lalu tidak menjamin hasil di masa depan.

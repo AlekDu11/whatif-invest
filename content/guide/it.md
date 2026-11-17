@@ -87,6 +87,10 @@ Inserisci i tuoi acquisti: prezzo medio, guadagno al prezzo attuale e quanto com
 
 Classifica delle società quotate con prezzo e variazione giornaliera e annua. Tocca un’azienda per i numeri chiave e un’analisi chiara. [Aziende più grandi del mondo per capitalizzazione]({lang}/largest-companies/)
 
+## Classifica exchange
+
+Dove si scambia di più: volume 24h, quota di mercato e affidabilità. Tocca un exchange per vedere cosa si scambia. [I più grandi exchange crypto per volume]({lang}/crypto-exchanges/) · [I più grandi exchange di futures e perpetual]({lang}/crypto-exchanges/derivatives/)
+
 ## Da dove vengono i numeri
 
 Binance, CoinGecko, Yahoo Finance, la Borsa di Mosca, la Banca Mondiale e altre fonti pubbliche; le fonti di ogni articolo sono in [Notizie]({lang}/news/). I prezzi si aggiornano ogni giorno, quelli delle cripto in tempo reale. Niente su WhatIfStack è una consulenza finanziaria: i rendimenti passati non garantiscono quelli futuri.

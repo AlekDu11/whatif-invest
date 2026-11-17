@@ -87,6 +87,10 @@ Vul je aankopen in en zie je gemiddelde prijs, winst tegen de huidige koers en h
 
 Ranglijst van beursgenoteerde bedrijven met koers en dag- en jaarverandering. Tik op een bedrijf voor kerncijfers en een heldere analyse. [Grootste bedrijven ter wereld naar marktwaarde]({lang}/largest-companies/)
 
+## Beurzenranglijst
+
+Waar het meest gehandeld wordt: 24u-volume, marktaandeel en vertrouwensscore. Tik op een beurs om te zien wat er verhandeld wordt. [Grootste cryptobeurzen naar handelsvolume]({lang}/crypto-exchanges/) · [Grootste beurzen voor futures en perpetuals]({lang}/crypto-exchanges/derivatives/)
+
 ## Waar de cijfers vandaan komen
 
 Binance, CoinGecko, Yahoo Finance, de Moskouse beurs, de Wereldbank en andere openbare bronnen; onze actuele stukken met bronvermelding vind je bij [Nieuws]({lang}/news/). Koersen worden dagelijks bijgewerkt, cryptokoersen live. Niets op WhatIfStack is beleggingsadvies: resultaten uit het verleden bieden geen garantie voor de toekomst.

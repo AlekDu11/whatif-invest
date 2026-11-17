@@ -87,6 +87,10 @@ Alımlarını gir; ortalama maliyeti, güncel fiyattaki kârı ve ortalamayı d�
 
 Fiyat, günlük ve yıllık değişimle halka açık şirketler sıralaması. Temel rakamlar ve sade bir analiz için bir şirkete dokun. [Piyasa değerine göre dünyanın en büyük şirketleri]({lang}/largest-companies/)
 
+## Borsa sıralaması
+
+En çok nerede işlem yapılıyor: 24 saatlik hacim, pazar payı ve güven puanı. Ne işlem gördüğünü görmek için bir borsaya dokun. [İşlem hacmine göre en büyük kripto borsaları]({lang}/crypto-exchanges/) · [En büyük vadeli ve sürekli vadeli borsaları]({lang}/crypto-exchanges/derivatives/)
+
 ## Rakamlar nereden geliyor
 
 Binance, CoinGecko, Yahoo Finance, Moskova Borsası, Dünya Bankası ve diğer açık kaynaklar; kaynakları gösterilen güncel özetler için [Haberler]({lang}/news/) sayfasına bak. Fiyatlar her gün, kripto fiyatları canlı güncellenir. WhatIfStack'teki hiçbir şey yatırım tavsiyesi değildir: geçmiş sonuçlar gelecekteki getirileri garanti etmez.
