@@ -1350,9 +1350,11 @@ def stock_facts(lang, aid):
     h52 = st['h52'] * lc if st.get('h52') and lc else None
     l52 = st['l52'] * lc if st.get('l52') and lc else None
     fc = st.get('fcy') or c
+    # dividend yield from the dividend per share (yfinance's own yield field switched units between versions)
+    dy = (st['dps'] * lc / cur) if st.get('dps') and lc and cur else (st.get('dy') if (st.get('dy') or 0) < 0.25 else None)
     f = dict(name=nm(a, lang), tk=a['tk'], sec=SECT[lang].get(st.get('sec'), st.get('sec') or ''), cty=stock_ctry(lang, a, st),
              mcap=to_usd(st.get('mcap'), c), rev=to_usd(st.get('rev'), fc), ni=to_usd(st.get('ni'), fc), revg=st.get('revg'), pm=st.get('pm'),
-             pe=st.get('pe'), dy=st.get('dy'), beta=st.get('beta'), tgt=tgt, h52=h52, l52=l52, cur=cur, n=st.get('nan'),
+             pe=st.get('pe'), dy=dy, beta=st.get('beta'), tgt=tgt, h52=h52, l52=l52, cur=cur, n=st.get('nan'),
              rec=k.get(st.get('rec') or '', None), ern=st.get('ern'), emp=st.get('emp'), d=st.get('d', ''))
     return f
 
