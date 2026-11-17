@@ -806,7 +806,7 @@ document.addEventListener('click',async e=>{
     let bal=I.p0, mm=0; const rm=I.rate*(1-I.tax)/12; while(mm<720){ mm++; if(mm>1) bal+=I.pmt; bal*=1+rm; if(bal/Math.pow(1+I.inf,mm/12)>=need) break }
     $('#icfy').textContent=mm>=720?t.fire_never:`${Math.floor(mm/12)} ${C.yr}${mm%12?' '+(mm%12)+' m':''}`;
     $('#icfi').textContent=nf(R.final*0.04/12);
-    try{ const q=new URLSearchParams({p:I.p0,m:I.pmt,y:I.y,i:I.inst,r:$('#icr').value,s:segv('ics'),c:segv('icc')}); history.replaceState(null,'','?'+q) }catch(e){}
+    try{ const q=new URLSearchParams({p:I.p0,m:I.pmt,y:I.y,i:I.inst,r:$('#icr').value,s:segv('ics'),c:segv('icc')}); new URLSearchParams(location.search).forEach((v,k)=>{ if(k.startsWith('utm_')) q.set(k,v) }); history.replaceState(null,'','?'+q) }catch(e){}
   }
   // restore from URL
   try{ const q=new URLSearchParams(location.search); if(q.has('p')){ $('#icp').value=q.get('p'); $('#icm').value=q.get('m')||0; $('#icy').value=q.get('y')||10;
