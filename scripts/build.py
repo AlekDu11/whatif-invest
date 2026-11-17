@@ -229,27 +229,73 @@ def mlabel(ym, lang, long=False):
     return S['date'].format(m=mon, y=y)
 
 
+# Number style per page language (set in the build loop): group sep, decimal sep, currency after the number, big-number words
+NBSP, NNBSP = '\u00a0', '\u202f'
+NUMFMT = {
+    'en': (',', '.', False, ('K', 'M', 'B', 'T')), 'uk': (NBSP, ',', True, ('тис.', 'млн', 'млрд', 'трлн')), 'ru': (NBSP, ',', True, ('тыс.', 'млн', 'млрд', 'трлн')),
+    'pl': (NBSP, ',', True, ('tys.', 'mln', 'mld', 'bln')), 'de': ('.', ',', True, ('Tsd.', 'Mio.', 'Mrd.', 'Bio.')), 'fr': (NNBSP, ',', True, ('k', 'M', 'Md', 'Bn')),
+    'it': ('.', ',', True, ('mila', 'Mln', 'Mrd', 'Bln')), 'es': ('.', ',', True, ('mil', 'M', 'mil M', 'B')), 'pt': ('.', ',', False, ('mil', 'mi', 'bi', 'tri')),
+    'tr': ('.', ',', False, ('B', 'Mn', 'Mr', 'Tn')), 'nl': ('.', ',', False, ('K', 'mln', 'mld', 'bln')), 'id': ('.', ',', False, ('rb', 'jt', 'M', 'T')),
+    'vi': ('.', ',', True, ('N', 'Tr', 'T', 'NT')), 'th': (',', '.', False, ('K', 'M', 'B', 'T')), 'hi': (',', '.', False, ('K', 'M', 'B', 'T')),
+    'ja': (',', '.', False, ('K', 'M', 'B', 'T')), 'ko': (',', '.', False, ('K', 'M', 'B', 'T')), 'zh': (',', '.', False, ('K', 'M', 'B', 'T')),
+    'ar': (',', '.', False, ('K', 'M', 'B', 'T')), 'fil': (',', '.', False, ('K', 'M', 'B', 'T')),
+}
+CUR_FMT = ['en']
+
+
+def set_numfmt(lang):
+    CUR_FMT[0] = lang if lang in NUMFMT else 'en'
+
+
+def _num(x, dec):
+    g, d, _, _ = NUMFMT[CUR_FMT[0]]
+    s = f"{x:,.{dec}f}"
+    return s.replace(',', '\x00').replace('.', d).replace('\x00', g)
+
+
+def _money(body, neg=False):
+    after = NUMFMT[CUR_FMT[0]][2]
+    sign = '−' if neg else ''
+    return f"{sign}{body}{NBSP}$" if after else f"{sign}${body}"
+
+
 def usd(v):
     if v is None:
         return '—'
     a = abs(v)
-    s = f"{a/1e9:.2f}B" if a >= 1e9 else f"{a/1e6:.2f}M" if a >= 1e6 else f"{a:,.0f}" if a >= 1e4 else f"{a:,.2f}".rstrip('0').rstrip('.')
-    return ('−$' if v < 0 else '$') + s
+    w = NUMFMT[CUR_FMT[0]][3]
+    if a >= 1e9:
+        body = _num(a / 1e9, 2) + NBSP + w[2]
+    elif a >= 1e6:
+        body = _num(a / 1e6, 2) + NBSP + w[1]
+    elif a >= 1e3:
+        body = _num(a, 0)
+    else:
+        body = _num(a, 2)
+        dsep = NUMFMT[CUR_FMT[0]][1]
+        if body.endswith(dsep + '00'):
+            body = body[:-3]
+    return _money(body, v < 0)
+
+
+def usd_h(v):
+    """usd() for visible page text: the currency switcher converts it in the browser."""
+    return f'<span data-u="{v:.6g}">{usd(v)}</span>' if v is not None else '—'
 
 
 def price(v):
     if v is None:
         return '—'
     if v >= 1:
-        return f"${v:,.2f}"
-    return f"${v:.4f}" if v >= 0.01 else f"${v:.8f}".rstrip('0')
+        return _money(_num(v, 2))
+    return _money(_num(v, 4)) if v >= 0.01 else _money(_num(v, 8).rstrip('0'))
 
 
 def pct(p):
     if p is None:
         return '—'
     a = abs(p * 100)
-    s = f"{a:,.0f}" if a >= 100 else f"{a:.1f}" if a >= 10 else f"{a:.2f}"
+    s = _num(a, 0) if a >= 100 else _num(a, 1) if a >= 10 else _num(a, 2)
     return ('+' if p >= 0 else '−') + s + '%'
 
 
@@ -338,13 +384,14 @@ def strip(lang):
         if aid in A:
             m = METRICS[aid]
             items.append(f'<a href="{aurl(lang, aid)}">{esc(label)} <b data-p="{aid}">{price(m["price"])}</b> <span class="{cls(m["chg"])}" data-c="{aid}">{pct(m["chg"])}</span></a>')
-    return (f'<div class="strip"><div class="in"><span>{S["assets_n"]} <b>{len(A)}</b></span>{"".join(items)}'
+    return (f'<div class="strip"><div class="in">{"".join(items)}'
             f'<span>{S["updated"]} <b>{UPDATED}</b></span></div></div>')
 
 
 def lang_menu(lang, p):
     opts = ''.join(f'<option value="{url(lg, p) if has_page(lg, p) else url(lg)}"{" selected" if lg == lang else ""}>{esc(TR[lg]["name"])}</option>' for lg in ORDER)
-    return f'<select class="langsel" aria-label="Language" onchange="location.href=this.value">{opts}</select>'
+    return (f'<select class="ccysel" id="ccysel" aria-label="Currency"><option>USD</option></select>'
+            f'<select class="langsel" aria-label="Language" onchange="location.href=this.value">{opts}</select>')
 
 
 # Brand-coloured round icons for the "Follow us" block under every article (simple glyphs, no external files)
@@ -761,7 +808,8 @@ TEN = '<em>$10</em>'
 def big_usd(v):
     if v is None:
         return '—'
-    return f"${v/1e12:.2f}T" if v >= 1e12 else f"${v/1e9:.1f}B"
+    w = NUMFMT[CUR_FMT[0]][3]
+    return _money(_num(v / 1e12, 2) + NBSP + w[3]) if v >= 1e12 else _money(_num(v / 1e9, 1) + NBSP + w[2])
 
 
 def mini_row(lang, aid, val_html):
@@ -843,7 +891,7 @@ def home(lang, ver):
     for i in bat:
         r = simulate(i, END_I - 60)
         rows += (f'<a class="brow" href="{aurl(lang, i)}"><span class="bn">{icon(A[i])}{esc(nm(A[i], lang))}</span>'
-                 f'<span class="bb"><i style="width:{max(2, r["val"] / mx * 100):.1f}%" class="{cls(r["roi"])}"></i></span><b>{usd(r["val"])}</b></a>')
+                 f'<span class="bb"><i style="width:{max(2, r["val"] / mx * 100):.1f}%" class="{cls(r["roi"])}"></i></span><b>{usd_h(r["val"])}</b></a>')
     inv5 = usd(simulate(bat[0], END_I - 60)['inv']) if bat else ''
     w_bat = f'<div class="card wd battle"><div class="wt">⚔️ {w["battle"]}</div><div class="ws">{w["q_inv"]}: {inv5}</div>{rows}</div>'
     X_ = S['x']
@@ -901,22 +949,19 @@ def _jload(name):
 COININFO, STOCKINFO = _jload('coininfo.json'), _jload('stockinfo.json')
 
 
-def fbig(v):
+def fnum(v, money=False):
     if v is None:
         return '—'
-    for d, u in ((1e12, 'T'), (1e9, 'B'), (1e6, 'M'), (1e3, 'K')):
+    w = NUMFMT[CUR_FMT[0]][3]
+    for d, k in ((1e12, 3), (1e9, 2), (1e6, 1)):
         if abs(v) >= d:
-            return f"${v / d:,.2f}{u}"
-    return f"${v:,.0f}"
+            body = _num(v / d, 2) + NBSP + w[k]
+            return _money(body) if money else body
+    return _money(_num(v, 0)) if money else _num(v, 0)
 
 
-def fnum(v):
-    if v is None:
-        return '—'
-    for d, u in ((1e12, 'T'), (1e9, 'B'), (1e6, 'M')):
-        if v >= d:
-            return f"{v / d:,.2f}{u}"
-    return f"{v:,.0f}"
+def fbig(v):
+    return fnum(v, money=True)
 
 
 def auto_about(lang, aid):
@@ -1135,18 +1180,18 @@ def asset(aid, lang, ver):
         if st >= s0 and st - s0 < len(A[aid]['p']):
             k = A[aid]['p'][-1] / A[aid]['p'][st - s0]
             lumps.append((S[key], 1000 * k, k - 1))
-    lump_cards = ''.join(f'<div class="card stat"><div class="k">{X["lump"].format(p=lab)}</div><div class="v">{usd(v)}</div>'
+    lump_cards = ''.join(f'<div class="card stat"><div class="k">{X["lump"].format(p=lab)}</div><div class="v">{usd_h(v)}</div>'
                          f'<div class="s {cls(r)}">{pct(r)}</div></div>' for lab, v, r in lumps)
     stat_cards = ''.join(
-        f'<div class="card stat"><div class="k">{S["stat"].format(p=lab)}</div><div class="v">{usd(x["val"])}</div>'
-        f'<div class="s {cls(x["roi"])}">{pct(x["roi"])} <span class="muted">· {S["invested_lc"]} {usd(x["inv"])}</span></div></div>' for lab, x in show)
+        f'<div class="card stat"><div class="k">{S["stat"].format(p=lab)}</div><div class="v">{usd_h(x["val"])}</div>'
+        f'<div class="s {cls(x["roi"])}">{pct(x["roi"])} <span class="muted">· {S["invested_lc"]} {usd_h(x["inv"])}</span></div></div>' for lab, x in show)
     ptable = (f'<table class="rt"><tr><th>{S["period"]}</th><th>{u["invested"]}</th><th>{S["now"]}</th><th>{S["result"]}</th></tr>' +
-              ''.join(f'<tr><td class="a">{lab}</td><td>{usd(x["inv"])}</td><td>{usd(x["val"])}</td><td class="{cls(x["roi"])}">{pct(x["roi"])}</td></tr>' for lab, x in rows) +
+              ''.join(f'<tr><td class="a">{lab}</td><td>{usd_h(x["inv"])}</td><td>{usd_h(x["val"])}</td><td class="{cls(x["roi"])}">{pct(x["roi"])}</td></tr>' for lab, x in rows) +
               '</table>')
     f = dict(name=n, tk=tk, since=since_l, inv=usd(r['inv']), val=usd(r['val']), roi=pct(r['roi']), n=len(A) - 1, upd=upd,
              bench=nm(A[b1], lang), ra=pct(ra5['roi']), rb=pct(rb5['roi']), r1=pct(m['r1']), r5=pct(m['r5']), ten=TEN)
     title, desc = S['a_title'].format(**f), S['a_desc'].format(**f)
-    fe = dict(f, name=esc(n), roi=f'<span class="{cls(r["roi"])}">{pct(r["roi"])}</span>')
+    fe = dict(f, name=esc(n), inv=usd_h(r['inv']), val=usd_h(r['val']), roi=f'<span class="{cls(r["roi"])}">{pct(r["roi"])}</span>')
     faq = [(S['q1'].format(**f), S['a1'].format(**f)), (S['q2'].format(**f), S['a2'].format(**f)),
            (S['q4'].format(**f), S['a4'].format(**f)), (S['q3'], S['a3'])]
     if m['r1'] is None or m['r5'] is None:
@@ -1522,6 +1567,15 @@ PARTNERS = {   # (name, /go/ id, tags, colour); real referral URLs are in api/_p
             ('GMGN', 'gmgn', 'Memecoin trading · Wallet tracking', '#18C46B')],
 }
 POLY = '/go/polymarket'
+XDOM = {'binance': 'binance.com', 'bybit': 'bybit.com', 'gate': 'gate.com', 'bingx': 'bingx.com', 'mexc': 'mexc.com', 'okx-wallet': 'okx.com',
+        'hyperliquid': 'hyperliquid.xyz', 'gmgn': 'gmgn.ai'}
+
+
+def xlogo(u, n, c, cls_='xl'):
+    d = XDOM.get(u)
+    img = (f'<img src="https://www.google.com/s2/favicons?domain={d}&sz=64" alt="" width="28" height="28" loading="lazy" '
+           f'onerror="this.remove()">' if d else '')
+    return f'<span class="{cls_} xlogo" style="background:{c}">{n[0]}{img}</span>'
 
 
 def poly_block(lang, q='crypto'):
@@ -1534,12 +1588,12 @@ def poly_block(lang, q='crypto'):
 def exchanges_page(lang, ver):
     e = EX[lang]
     def cards(k):
-        return ''.join(f'<a class="card xcard" href="/go/{u}?from=exchanges&l={lang}" target="_blank" rel="sponsored nofollow noopener"><span class="xl" style="background:{c}">{n[0]}</span>'
+        return ''.join(f'<a class="card xcard" href="/go/{u}?from=exchanges&l={lang}" target="_blank" rel="sponsored nofollow noopener">{xlogo(u, n, c)}'
                        f'<div><b>{n}</b><small>{t}</small></div><span class="btn">{e["go"]}</span></a>' for n, u, t, c in PARTNERS[k])
     x = EXT[lang]
     FEES = {'binance': ('0.10% / 0.10%', 'Auto-Invest'), 'bybit': ('0.10% / 0.10%', 'Auto-Invest'), 'gate': ('0.10–0.20%', 'Auto-Invest'),
             'bingx': ('0.10% / 0.10%', 'Recurring Buy'), 'mexc': ('0% / 0.05%', 'Spot DCA')}
-    trows = ''.join(f'<tr><td class="l"><span class="xl sm" style="background:{c}">{n[0]}</span><b>{n}</b></td><td class="num">{FEES[u][0]}</td>'
+    trows = ''.join(f'<tr><td class="l">{xlogo(u, n, c, "xl sm")}<b>{n}</b></td><td class="num">{FEES[u][0]}</td>'
                     f'<td>✓ {FEES[u][1]}</td><td class="hide-sm muted">{t}</td>'
                     f'<td><a class="btn" href="/go/{u}?from=exchanges-table&l={lang}" target="_blank" rel="sponsored nofollow noopener">{e["go"]}</a></td></tr>'
                     for n, u, t, c in PARTNERS['cex'] if u in FEES)
@@ -2025,7 +2079,7 @@ def sc_block(kind, args, lang):
             st = max(END_I - yrs * 12, ym2i(A[i]['start']))
             r = simulate(i, st)
             k = A[i]['p'][-1] / A[i]['p'][min(st - ym2i(A[i]['start']), len(A[i]['p']) - 1)]
-            rows += (f'<tr><td class="a"><a href="{aurl(lang, i)}">{esc(nm(A[i], lang))}</a></td><td>{usd(r["inv"])}</td><td>{usd(r["val"])}</td>'
+            rows += (f'<tr><td class="a"><a href="{aurl(lang, i)}">{esc(nm(A[i], lang))}</a></td><td>{usd_h(r["inv"])}</td><td>{usd_h(r["val"])}</td>'
                      f'<td class="{cls(r["roi"])}">{pct(r["roi"])}</td><td>{usd(1000 * k)}</td></tr>')
         return f'<div style="overflow-x:auto"><table class="rt">{hh}{rows}</table></div>'
     return ''
@@ -2133,7 +2187,7 @@ def portfolios_page(lang, ver):
     cards = []
     for k, c in order:
         chips = ''.join(f'<a class="bpa" href="{url(lang, a)}">{icon(A[a])}<span>{esc(A[a]["tk"])} {w * 100:.0f}%</span></a>' for a, w in sorted(c.items(), key=lambda x: -x[1]))
-        rows = ''.join(f'<tr><td class="l">{t["yrs"].format(n=y)}</td><td class="num">{usd(r["inv"])}</td><td class="num"><b>{usd(r["val"])}</b></td>'
+        rows = ''.join(f'<tr><td class="l">{t["yrs"].format(n=y)}</td><td class="num">{usd_h(r["inv"])}</td><td class="num"><b>{usd_h(r["val"])}</b></td>'
                        f'<td class="num"><span class="pill {cls(r["roi"])}">{pct(r["roi"])}</span></td>'
                        f'<td class="num hide-sm">{esc(A[r["best"][0]]["tk"])} {pct(r["best"][1])}</td></tr>' for y in (1, 3, 5, 10) if (r := res[k][y]))
         cards.append(f'<section class="card bpc"><h2><a href="{url(lang, "portfolios/" + k)}">{esc(t[k])}</a></h2><div class="bpcomp">{chips}</div>'
@@ -2173,18 +2227,18 @@ def portfolio_detail(lang, k, comp, ver):
     months, inv, val, per = bp_path(comp, st)
     r = res[yrs]
     name = t[k]
-    lead = d['dlead'].format(n=yrs, yr=TT[lang]['yr'], inv=f'<b>{usd(r["inv"])}</b>', val=f'<b>{usd(r["val"])}</b>', roi=f'<span class="{cls(r["roi"])}">{pct(r["roi"])}</span>')
+    lead = d['dlead'].format(n=yrs, yr=TT[lang]['yr'], inv=f'<b>{usd_h(r["inv"])}</b>', val=f'<b>{usd_h(r["val"])}</b>', roi=f'<span class="{cls(r["roi"])}">{pct(r["roi"])}</span>')
     profit = sum(max(0, x['val'] - x['inv']) for x in per.values()) or 1
     rows = ''
     for a, w in sorted(comp.items(), key=lambda x: -(per[x[0]]['val'] - per[x[0]]['inv'])):
         x = per[a]; roi = x['val'] / x['inv'] - 1 if x['inv'] else 0
         sh = max(0, x['val'] - x['inv']) / profit
         rows += (f'<tr><td class="l"><a class="asset" href="{aurl(lang, a)}">{icon(A[a])}<span><span class="nm">{esc(nm(A[a], lang))}</span><span class="tk">{esc(A[a]["tk"])}</span></span></a></td>'
-                 f'<td class="num">{w * 100:.0f}%</td><td class="num hide-sm">{usd(x["inv"])}</td><td class="num"><b>{usd(x["val"])}</b></td>'
+                 f'<td class="num">{w * 100:.0f}%</td><td class="num hide-sm">{usd_h(x["inv"])}</td><td class="num"><b>{usd_h(x["val"])}</b></td>'
                  f'<td class="num"><span class="pill {cls(roi)}">{pct(roi)}</span></td><td class="num hide-sm">{sh * 100:.0f}%</td></tr>')
     comp_tbl = (f'<div class="tw"><table class="mt"><thead><tr><th class="l"></th><th>{esc(d["weight"])}</th><th class="hide-sm">{esc(t["inv"])}</th><th>{esc(t["val"])}</th>'
                 f'<th>{esc(t["roi"])}</th><th class="hide-sm">{esc(d["share"])}</th></tr></thead><tbody>{rows}</tbody></table></div>')
-    res_rows = ''.join(f'<tr><td class="l">{t["yrs"].format(n=y)}</td><td class="num">{usd(x["inv"])}</td><td class="num"><b>{usd(x["val"])}</b></td>'
+    res_rows = ''.join(f'<tr><td class="l">{t["yrs"].format(n=y)}</td><td class="num">{usd_h(x["inv"])}</td><td class="num"><b>{usd_h(x["val"])}</b></td>'
                        f'<td class="num"><span class="pill {cls(x["roi"])}">{pct(x["roi"])}</span></td></tr>' for y in (1, 3, 5, 10) if (x := res[y]))
     res_tbl = f'<div class="tw"><table class="mt"><thead><tr><th class="l"></th><th>{esc(t["inv"])}</th><th>{esc(t["val"])}</th><th>{esc(t["roi"])}</th></tr></thead><tbody>{res_rows}</tbody></table></div>'
     # chart
@@ -2472,6 +2526,7 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
     ver = dict(css=h8(css), js=h8(js), ref=h8(ref), index=h8(index_js))
     per_lang = {}
     for lang in ORDER:
+        set_numfmt(lang)
         pre = '' if lang == DEFAULT else lang + '/'
         assets_ = [aid for aid in ORDERED if has_page(lang, aid)]
         extra_pages_c = []

@@ -16,13 +16,18 @@ const NAMES=PAGE.names||{};
 const nm = a => ((a.c==='metal'||a.c==='cmd')&&NAMES[a.i]) ? NAMES[a.i] : lang==='uk' ? a.n : (a.ne||a.n);
 const url = id => { const a=BYID[id]; return (PAGE.full||(a&&a.o<PAGE.topn)) ? `${PAGE.prefix}/${id}/` : `${BASE}/en/${id}/` };
 const esc = s => String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-function fmtUsd(v){ if(v==null) return '—'; const a=Math.abs(v); let s;
-  if(a>=1e9) s=(a/1e9).toFixed(2)+'B'; else if(a>=1e6) s=(a/1e6).toFixed(2)+'M'; else if(a>=1e4) s=Math.round(a).toLocaleString('en-US');
-  else s=a.toLocaleString('en-US',{maximumFractionDigits:2}); return (v<0?'−$':'$')+s }
-function fmtPrice(v){ if(v==null) return '—'; const d=v>=1000?2:v>=1?2:v>=0.01?4:8;
-  return '$'+v.toLocaleString('en-US',{minimumFractionDigits:v>=1?2:0,maximumFractionDigits:d}) }
+// Display currency (header switcher): all JS-rendered money and server numbers marked [data-u] are converted from USD
+let CCY='USD'; try{ CCY=localStorage.getItem('wi_ccy')||'USD' }catch(e){}
+const ccyRate=()=>CCY==='USD'?1:((WI.fx||{})[CCY]||1);
+if(CCY!=='USD'&&!(WI.fx||{})[CCY]) CCY='USD';
+const _nf={}; const NF=(k,o)=>_nf[k]||(_nf[k]=(()=>{ try{ return new Intl.NumberFormat(T.intl||'en',o) }catch(e){ return new Intl.NumberFormat('en',o) } })());
+const _cur=(min,max,compact)=>NF(CCY+min+'|'+max+(compact?'c':''),{style:'currency',currency:CCY,currencyDisplay:'narrowSymbol',minimumFractionDigits:min,maximumFractionDigits:max,...(compact?{notation:'compact'}:{})});
+function fmtUsd(v){ if(v==null) return '—'; const x=v*ccyRate(), a=Math.abs(x);
+  if(a>=1e6) return _cur(0,2,true).format(x).replace('-','−'); return _cur(0,a>=1000?0:2).format(x).replace('-','−') }
+function fmtPrice(v){ if(v==null) return '—'; const x=v*ccyRate(); const d=x>=1?2:x>=0.01?4:8;
+  return _cur(x>=1?2:0,d).format(x) }
 function fmtPct(p,dec){ if(p==null||!isFinite(p)) return '—'; const a=Math.abs(p*100);
-  return (p>=0?'+':'−')+a.toLocaleString('en-US',{maximumFractionDigits:dec!=null?dec:(a>=100?0:a>=10?1:2)})+'%' }
+  return (p>=0?'+':'−')+NF('p'+(dec!=null?dec:(a>=100?0:a>=10?1:2)),{maximumFractionDigits:dec!=null?dec:(a>=100?0:a>=10?1:2)}).format(a)+'%' }
 const cls = p => p==null?'':p>=0?'good':'bad';
 function hue(s){let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))%360;return h}
 function icon(a,big){ const c=big?' lg':''; if(a.mi) return `<span class="ic${c} mi" style="background:${a.mi[0]}">${a.mi[1]}</span>`; const k=(WI.sp||{})[a.i];
@@ -835,4 +840,13 @@ document.addEventListener('click',async e=>{
 /* header dropdowns: one open at a time, close on outside click */
 document.addEventListener('click',e=>{ $$('details.dd[open]').forEach(d=>{ if(!d.contains(e.target)) d.removeAttribute('open') }) });
 $$('details.dd').forEach(d=>d.addEventListener('toggle',()=>{ if(d.open) $$('details.dd[open]').forEach(o=>{ if(o!==d) o.removeAttribute('open') }) }));
+
+/* ---------- currency switcher in the header ---------- */
+(function(){
+  const conv=()=>{ $$('[data-u]').forEach(el=>{ el.textContent=fmtUsd(+el.dataset.u) }); if(CCY!=='USD') $$('[data-p]').forEach(el=>{ const a=BYID[el.dataset.p]; if(a&&a.pr!=null) el.textContent=fmtPrice(a.pr) }) };
+  const sel=$('#ccysel'); if(sel){ const list=['USD','EUR','UAH','PLN','GBP','CHF','TRY','RUB','KZT','BRL','MXN','INR','IDR','VND','THB','PHP','JPY','KRW','CNY','SAR','AED','CAD','AUD'].filter(c=>c==='USD'||(WI.fx||{})[c]);
+    sel.innerHTML=list.map(c=>`<option value="${c}"${c===CCY?' selected':''}>${c}</option>`).join('');
+    sel.onchange=()=>{ try{ localStorage.setItem('wi_ccy',sel.value) }catch(e){} location.reload() } }
+  if(CCY!=='USD') conv();
+})();
 })();
