@@ -57,3 +57,4 @@ Next: Teletype (teletype.in, login via Telegram) and Dzen (dzen.ru, Yandex/VK ID
 | 2026-11-16 | Telegram | WhatIfStack — DCA & markets (ex @TradeMaster_insight, 5.1k subs) | renamed, new description + logo, intro post with card (formatted) | https://t.me/TradeMaster_insight | username change and pin need the channel owner |
 | 2026-11-16 | Teletype | @whatifstack | profile: name, RU bio, logo, link to /ru/ | https://teletype.in/@whatifstack | articles next |
 | 2026-11-16 | Teletype | @whatifstack | weekly-dca-recap-2026-11-16 (ru) | https://teletype.in/@whatifstack/weekly-dca-recap-2026-11-16 | canonical link ✓, follow-us footer |
+| 2026-11-17 | Teletype | @whatifstack | ethereum-10-dollars-a-day-5-years (ru) | https://teletype.in/@whatifstack/ethereum-10-dollars-a-day-5-years | canonical link ✓ |
