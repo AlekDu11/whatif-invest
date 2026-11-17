@@ -127,6 +127,14 @@
       "destination": "/api/v?ch=:ch"
     },
     {
+      "source": "/v/:ch/:vid/",
+      "destination": "/api/v?ch=:ch&vid=:vid"
+    },
+    {
+      "source": "/v/:ch/",
+      "destination": "/api/v?ch=:ch"
+    },
+    {
       "source": "/go/:p",
       "destination": "/api/go?p=:p"
     },
