@@ -556,7 +556,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
 <meta property="og:image" content="{og_img}"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image"><meta name="twitter:image" content="{og_img}"><meta name="theme-color" content="#ffffff">
 <script>(function(){{try{{var t=localStorage.getItem('wi_theme')}}catch(e){{}}if(!t)t=matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';if(t==='dark'){{document.documentElement.dataset.theme='dark';document.querySelector('meta[name=theme-color]').content='#0e1014'}}}})()</script>
-<link rel="icon" href="{BASE}/assets/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="{BASE}/assets/icon-192.png"><link rel="manifest" href="{BASE}/manifest.webmanifest">
+<link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" href="{BASE}/assets/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="{BASE}/assets/icon-192.png"><link rel="manifest" href="{BASE}/manifest.webmanifest">
 <link rel="preload" href="{BASE}/assets/onest.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="{BASE}/assets/geologica-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{BASE}/assets/style.css?v={ver['css']}">{SPRITE_CSS}
 {ld}
@@ -1022,7 +1022,13 @@ def home(lang, ver):
             f'<section class="card section faq"><h2>{S["faq"]}</h2><details open><summary>{esc(S["q3"])}</summary><p>{esc(S["a3"])}</p></details></section>')
     jsonld = [{"@context": "https://schema.org", "@type": "WebApplication", "name": BRAND, "url": SITE + url(lang),
                "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "inLanguage": S['loc'],
-               "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": desc}]
+               "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}, "description": desc},
+              {"@context": "https://schema.org", "@type": "WebSite", "name": BRAND, "alternateName": ["WhatIfStack", "whatifstack", "whatifstack.com", "What If Stack"],
+               "url": SITE + '/', "inLanguage": S['loc'],
+               "potentialAction": {"@type": "SearchAction", "target": SITE + url(lang) + '?q={search_term_string}', "query-input": "required name=search_term_string"}},
+              {"@context": "https://schema.org", "@type": "Organization", "name": BRAND, "alternateName": "whatifstack", "url": SITE + '/',
+               "logo": SITE + '/assets/icon-512.png', "sameAs": [u for _, u in SOCIAL],
+               "description": "Independent markets site: what regular (DCA) investing in crypto, stocks and gold would have returned, with real prices."}]
     return shell(lang, None, title, desc, body, dict(home=True, wa=WA[lang]['nav'], wau=url(lang, 'world-assets')), ver, jsonld)
 
 
@@ -1897,7 +1903,7 @@ def me_page(lang, ver):
             f'<div class="pfbk"><button class="btn ghost" id="pfexp" type="button">⬇ {esc(pf["backup"])}</button>'
             f'<label class="btn ghost">⬆ {esc(pf["restore"])}<input type="file" id="pfimp" accept="application/json" hidden></label></div>')
     cfg = dict(me=dict(code=code, rate=rate, t=dict(t, **pf), per=dict(zip('dwm', per))))
-    return shell(lang, 'me', f'{pf["h1"]} | {BRAND}', pf['d'], body, cfg, ver)
+    return shell(lang, 'me', f'{pf["h1"]} | {BRAND}', pf['d'], body, cfg, ver).replace('<link rel="canonical"', '<meta name="robots" content="noindex, follow"><link rel="canonical"', 1)   # personal page: keep out of search
 
 
 MEME_IDS = [i for i in ('doge', 'shib', 'pepe', 'bonk', 'wif', 'floki', 'trump', 'pengu', 'neiro', 'bome', 'pnut') if i in A]
@@ -2627,6 +2633,7 @@ def main():
         shutil.copytree(os.path.join(ROOT, 'content', 'covers'), os.path.join(OUT, 'assets/covers'))
     for f in ('favicon.svg', 'icon-192.png', 'icon-512.png', 'og.jpg', 'onest.woff2', 'geologica-600.woff2', 'geologica-700.woff2'):
         shutil.copy(os.path.join(ROOT, 'src', f), os.path.join(OUT, 'assets', f))
+    shutil.copy(os.path.join(ROOT, 'src', 'favicon.ico'), os.path.join(OUT, 'favicon.ico'))   # Google's search favicon looks at /favicon.ico
     write('manifest.webmanifest', json.dumps({
         'name': 'WhatIfStack — DCA calculator & markets', 'short_name': 'WhatIfStack', 'start_url': '/', 'scope': '/',
         'display': 'standalone', 'background_color': '#0e1014', 'theme_color': '#0e1014',

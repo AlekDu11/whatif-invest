@@ -75,6 +75,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
     if(tab==='lead'){sortK='r5';sortDir=-1} else if(tab==='lag'){sortK='r5';sortDir=1} else if(sortK==='r5'&&(sortDir)){sortK='o';sortDir=1}
     shown=PAGE.home?20:100; draw()});
   const f=$('#flt'); f.placeholder=T.filter; f.setAttribute('aria-label',T.filter); f.oninput=()=>{q=f.value.trim().toLowerCase(); shown=PAGE.home?20:100; draw()};
+  try{ const sq=new URLSearchParams(location.search).get('q'); if(sq){ f.value=sq; f.oninput() } }catch(e){}
   const COLS=[['n','#','l n hide-sm'],['name',T.name,'l'],['buy','','hide-sm'],['pr',T.price,''],['ch',T.chg,''],['r1',T.d1,'hide-sm'],['r3',T.d3,'hide-sm'],['r5',T.d5,''],['sp',T.spark,'hide-sm'],['go','','hide-sm']];
   function draw(){
     let rows=IDX.filter(a=>{
