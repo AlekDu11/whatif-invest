@@ -26,21 +26,22 @@ Formats to rotate and compare: dca-whatif, mover, market-pulse, chart-fact, coun
 
 | when | format | topic | link | url | views | likes | reposts | replies |
 |---|---|---|---|---|---|---|---|---|
-| 2026-11-16 02:58 | dca-whatif | Gold vs S&P 500 vs Bitcoin, $10/day 5y | no | https://x.com/WhatIfStack/status/2122116675558355111 | 26 | 0 | 0 | 0 |
-| 2026-11-16 09:18 | market-pulse | Fear & Greed 10, BTC/ETH weekly drop, gold | no | https://x.com/WhatIfStack/status/2122227869095223565 | 17 | 0 | 0 | 0 |
+| 2026-11-16 02:58 | dca-whatif | Gold vs S&P 500 vs Bitcoin, $10/day 5y | no | https://x.com/WhatIfStack/status/2122116675558355111 | 27 | 0 | 0 | 0 |
+| 2026-11-16 09:18 | market-pulse | Fear & Greed 10, BTC/ETH weekly drop, gold | no | https://x.com/WhatIfStack/status/2122227869095223565 | 18 | 0 | 0 | 0 |
 | 2026-11-16 12:16 | mover | Kava Lend exploit, KAVA −40% | no | https://x.com/WhatIfStack/status/2122272638718329107 | 20 | 0 | 0 | 0 |
-| 2026-11-16 15:23 | chart-fact | BTC −16.5% in November so far vs best/worst Novembers | no+img | https://x.com/WhatIfStack/status/2122319572535763138 | 18 | 0 | 0 | 0 |
-| 2026-11-16 18:19 | dca-whatif | Palantir vs Nvidia vs Ethereum, $10/day 5y (PLTR +729%) | no+img | https://x.com/WhatIfStack/status/2122363783330894225 | 10 | 0 | 0 | 0 |
-| 2026-11-16 21:17 | mover | Internet Computer +15% in 24h as crypto slides (ICP $2.50, 99.6% below ATH, $10/day 3y $11,120 → $6,370) | no+img | https://x.com/WhatIfStack/status/2122408622227337401 | 7 | 0 | 0 | 0 |
-| 2026-11-17 09:27 | dca-whatif | AMD vs Apple vs Tesla, $10/day 5y (AMD +290% → $71,873) | no+img | https://x.com/WhatIfStack/status/2122589805674635428 | 4 | 0 | 0 | 0 |
-| 2026-11-17 12:17 | country-stocks | South Korea 5y DCA leaders (SK hynix +601%, Hanwha Aerospace +332%, vs S&P 500 +52%) | no+img | https://x.com/WhatIfStack/status/2122635304012005721 | 5 | 0 | 0 | 0 |
-| 2026-11-17 15:21 | market-pulse | Dollar 19-month high, Fed hike bets >90%; BTC $64,250/ETH $1,813 −14% w/w, gold $3,870, S&P −1.9%, F&G 12 | no+img | https://x.com/WhatIfStack/status/2122681457277558810 | 10 | 0 | 0 | 0 |
-| 2026-11-17 18:18 | chart-fact | ETH 3rd-worst November so far (−19.6%; worse 2018 −42.8%, 2025 −22.3%; $10/day 5y $18,260 → $15,091) | no+img | https://x.com/WhatIfStack/status/2122726051398754536 | 8 | 1 | 0 | 0 |
-| 2026-11-17 21:17 | mover | Backpack BP +30.5% in 24h on CFTC approval of its US derivatives exchange + clearing ($1.09, mcap $273M, 34% below $1.65 peak) | no+img | https://x.com/WhatIfStack/status/2122771047841730783 | 10 | 1 | 0 | 0 |
-| 2026-11-18 09:30 | dca-whatif | Big Tech $10/day 5y: Meta +95% ($35,552), Google +78%, Amazon +60%, Microsoft +43% | no+img | https://x.com/WhatIfStack/status/2122952235613126909 | 5 | 0 | 0 | 0 |
-| 2026-11-18 12:20 | market-pulse | Gold −2.5% to lowest in over a year ($3,769); BTC $64,718 +0.6%, ETH $1,811, S&P −1.0%, F&G 11 | no | https://x.com/WhatIfStack/status/2122997462545596718 | 6 | 0 | 0 | 0 |
-| 2026-11-18 15:21 | world-assets | All above-ground gold $27.2T > US M2 $23.4T; Apple $5.1T, Bitcoin $1.3T (gold at 1-year low $3,769) | no+img | https://x.com/WhatIfStack/status/2123043887803691467 | 4 | 0 | 0 | 0 |
-| 2026-11-18 18:24 | chart-fact | Nvidia 2nd-worst November since 2000 (−24.0% so far, $204.64 → $155.46; only Nov 2000 −34.8% worse; +4% after hours on $115.8B quarter) | no+img | https://x.com/WhatIfStack/status/2123088135764709415 |  |  |  |  |
+| 2026-11-16 15:23 | chart-fact | BTC −16.5% in November so far vs best/worst Novembers | no+img | https://x.com/WhatIfStack/status/2122319572535763138 | 19 | 0 | 0 | 0 |
+| 2026-11-16 18:19 | dca-whatif | Palantir vs Nvidia vs Ethereum, $10/day 5y (PLTR +729%) | no+img | https://x.com/WhatIfStack/status/2122363783330894225 | 11 | 0 | 0 | 0 |
+| 2026-11-16 21:17 | mover | Internet Computer +15% in 24h as crypto slides (ICP $2.50, 99.6% below ATH, $10/day 3y $11,120 → $6,370) | no+img | https://x.com/WhatIfStack/status/2122408622227337401 | 8 | 0 | 0 | 0 |
+| 2026-11-17 09:27 | dca-whatif | AMD vs Apple vs Tesla, $10/day 5y (AMD +290% → $71,873) | no+img | https://x.com/WhatIfStack/status/2122589805674635428 | 5 | 0 | 0 | 0 |
+| 2026-11-17 12:17 | country-stocks | South Korea 5y DCA leaders (SK hynix +601%, Hanwha Aerospace +332%, vs S&P 500 +52%) | no+img | https://x.com/WhatIfStack/status/2122635304012005721 | 6 | 0 | 0 | 0 |
+| 2026-11-17 15:21 | market-pulse | Dollar 19-month high, Fed hike bets >90%; BTC $64,250/ETH $1,813 −14% w/w, gold $3,870, S&P −1.9%, F&G 12 | no+img | https://x.com/WhatIfStack/status/2122681457277558810 | 11 | 0 | 0 | 0 |
+| 2026-11-17 18:18 | chart-fact | ETH 3rd-worst November so far (−19.6%; worse 2018 −42.8%, 2025 −22.3%; $10/day 5y $18,260 → $15,091) | no+img | https://x.com/WhatIfStack/status/2122726051398754536 | 9 | 1 | 0 | 0 |
+| 2026-11-17 21:17 | mover | Backpack BP +30.5% in 24h on CFTC approval of its US derivatives exchange + clearing ($1.09, mcap $273M, 34% below $1.65 peak) | no+img | https://x.com/WhatIfStack/status/2122771047841730783 | 11 | 1 | 0 | 0 |
+| 2026-11-18 09:30 | dca-whatif | Big Tech $10/day 5y: Meta +95% ($35,552), Google +78%, Amazon +60%, Microsoft +43% | no+img | https://x.com/WhatIfStack/status/2122952235613126909 | 7 | 0 | 0 | 0 |
+| 2026-11-18 12:20 | market-pulse | Gold −2.5% to lowest in over a year ($3,769); BTC $64,718 +0.6%, ETH $1,811, S&P −1.0%, F&G 11 | no | https://x.com/WhatIfStack/status/2122997462545596718 | 8 | 0 | 0 | 0 |
+| 2026-11-18 15:21 | world-assets | All above-ground gold $27.2T > US M2 $23.4T; Apple $5.1T, Bitcoin $1.3T (gold at 1-year low $3,769) | no+img | https://x.com/WhatIfStack/status/2123043887803691467 | 7 | 0 | 0 | 0 |
+| 2026-11-18 18:24 | chart-fact | Nvidia 2nd-worst November since 2000 (−24.0% so far, $204.64 → $155.46; only Nov 2000 −34.8% worse; +4% after hours on $115.8B quarter) | no+img | https://x.com/WhatIfStack/status/2123088135764709415 | 3 | 0 | 0 | 0 |
+| 2026-11-18 21:20 | mover | Pieverse +61% to record $3.28 as crypto slides (mcap $902M, 66 of top 89 red, no project news; $10/day 1y $3,650 → $17,297 vs BTC $3,161) | no+img | https://x.com/WhatIfStack/status/2123133327305589074 |  |  |  |  |
 
 Week notes (2026-11-16): first week, 3 posts with stats (dca-whatif 15, mover 6, market-pulse 4 views) — dca-whatif leads but samples are tiny. Keep rotating formats to collect data; market-pulse tested today during the Extreme Fear sell-off.
 Note (2026-11-16 12:16): posting with a $KAVA cashtag (X attached a price card) failed twice with "Your account may not be allowed to perform this action"; the same text without the cashtag went through after a reload. Avoid cashtags for now. Profile/search timelines don't render in the pane — read the post URL from the SearchTimeline network response.
@@ -59,3 +60,5 @@ Note (2026-11-18 12:20): avg views (2 weeks) — market-pulse 13 (2), chart-fact
 Note (2026-11-18 15:21): avg views (2 weeks) — chart-fact 12 (2), mover 11.3 (3), dca-whatif 10 (4), market-pulse 9.7 (3; text-only gold post 3 views after 3 h), country-stocks 5 (1). Profile timeline rendered again (stats read there in one pass). Experimental slot: first world-assets post. BUG for the owner: /world-assets/ (world_items in build.py) uses Yahoo mcap in local currency for non-US stocks — Reliance shows $18.5T (INR), KEPCO $16.1T (KRW), TCS $8.7T, Agricultural Bank of China $2.7T and Kweichow Moutai $1.8T (CNY) — they rank above Apple; needs FX conversion. Post used only gold/M2/Apple/Bitcoin, which are correct.
 
 Note (2026-11-18 18:24): avg views (2 weeks) — chart-fact 13 (2), mover 12.3 (3), dca-whatif 11.3 (4), market-pulse 11 (3), country-stocks 5 (1), world-assets 4 (1). Profile timeline rendered (stats read in one pass). Posted chart-fact (top average): Nvidia's November drawdown from data/market.json monthly closes (Tuesday close, before the after-hours earnings bounce). One more post not in this log: status/2123077127801298975 (1 view, likely another routine).
+
+Note (2026-11-18 21:20): avg views (2 weeks) — mover 13 (3), dca-whatif 12.5 (4), market-pulse 12.3 (3), chart-fact 10.3 (3; NVDA post 3 views after 3 h), world-assets 7 (1), country-stocks 6 (1). Posted mover (top average): Pieverse record high from today's movers brief. compose/post: wisCard attached the image to the inline home composer (dialog not rendered yet after 4 s) — fixed by fetching the preview blob and setting it on `[role=dialog] input[type=file]`; better wait until the dialog's input exists before calling wisCard.
