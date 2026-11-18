@@ -16,7 +16,7 @@ from i18n_e import E as EX  # noqa: E402
 from i18n_n import N as NW, FOOT, SHARE, HOT
 from i18n_s import S as SEA  # noqa: E402
 from i18n_i import I as INF  # noqa: E402
-from i18n_world import W as WA, WN  # noqa: E402
+from i18n_world import W as WA, WN, WD  # noqa: E402
 from i18n_ctry import C as CTRY, MKTS, MKT_LANG, CCY_SIGN  # noqa: E402  # noqa: E402
 from i18n_p import P as POLL, OPTS as POLL_OPTS  # noqa: E402
 from i18n_ai import AI as AIS  # noqa: E402
@@ -3037,7 +3037,13 @@ def world_page(lang, ver):
     rows = ''
     for k, (n, v, t, aid, emo) in enumerate(items[:100]):
         ic = icon(A[aid]) if aid else f'<span class="wic">{emo}</span>'
-        name = f'<a class="asset" href="{aurl(lang, aid)}">{ic}<span class="nm">{esc(n)}</span></a>' if aid else f'<span class="asset">{ic}<span class="nm">{esc(n)}</span></span>'
+        wk = {'🏠': 're', '🛢️': 'oil', '🔥': 'gas', '💵': 'usd', '💴': 'cny'}.get(emo)
+        if aid:
+            name = f'<a class="asset" href="{aurl(lang, aid)}">{ic}<span class="nm">{esc(n)}</span></a>'
+        elif wk and WD.get(lang, {}).get(wk):
+            name = f'<details class="wdesc"><summary class="asset">{ic}<span class="nm">{esc(n)}</span><span class="wq">ⓘ</span></summary><p>{esc(WD[lang][wk])}</p></details>'
+        else:
+            name = f'<span class="asset">{ic}<span class="nm">{esc(n)}</span></span>'
         rows += f'<tr><td class="n">{k + 1}</td><td class="l">{name}</td><td class="num"><b>{fbig(v)}</b></td><td class="hide-sm"><span class="badge t{t}">{esc(types[t])}</span></td></tr>'
     src = ''.join(f'<li><a href="{esc(u)}" target="_blank" rel="nofollow noopener">{esc(l)}</a></li>' for _, _, l, u in WORLD_SRC)
     body = (f'<h1>{esc(w["h1"])}</h1><p class="lead">{esc(w["lead"])}</p>'
