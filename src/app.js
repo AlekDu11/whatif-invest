@@ -68,13 +68,13 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
 /* ---------- main table (home) ---------- */
 (function(){
   const tb=$('#mt'); if(!tb) return;
-  let tab=PAGE.tab||'all', q='', sortK=PAGE.sort||'o', sortDir=1, shown=PAGE.home?20:100; const STEP=PAGE.home?50:100;
+  let tab=PAGE.tab||'all', q='', sortK=PAGE.sort||'o', sortDir=1, shown=PAGE.home?20:100, pg=0; const STEP=PAGE.home?50:100, PER=50;
   const TABS=['all','crypto','stock','etf','metal','cmd','lead','lag'];
   $('#tabs').innerHTML=TABS.map(t=>`<button data-t="${t}" class="${t===tab?'on':''}">${T[t]}</button>`).join('')+(PAGE.wa?`<a class="tablink" href="${PAGE.wau}">🌍 ${esc(PAGE.wa)}</a>`:'');
   $$('#tabs button').forEach(b=>b.onclick=()=>{tab=b.dataset.t; $$('#tabs button').forEach(x=>x.classList.toggle('on',x===b));
     if(tab==='lead'){sortK='r5';sortDir=-1} else if(tab==='lag'){sortK='r5';sortDir=1} else if(sortK==='r5'&&(sortDir)){sortK='o';sortDir=1}
-    shown=PAGE.home?20:100; draw()});
-  const f=$('#flt'); f.placeholder=T.filter; f.setAttribute('aria-label',T.filter); f.oninput=()=>{q=f.value.trim().toLowerCase(); shown=PAGE.home?20:100; draw()};
+    shown=PAGE.home?20:100; pg=0; draw()});
+  const f=$('#flt'); f.placeholder=T.filter; f.setAttribute('aria-label',T.filter); f.oninput=()=>{q=f.value.trim().toLowerCase(); shown=PAGE.home?20:100; pg=0; draw()};
   try{ const sq=new URLSearchParams(location.search).get('q'); if(sq){ f.value=sq; f.oninput() } }catch(e){}
   const COLS=[['n','#','l n hide-sm'],['name',T.name,'l'],['buy','','hide-sm'],['pr',T.price,''],['ch',T.chg,''],['r1',T.d1,'hide-sm'],['r3',T.d3,'hide-sm'],['r5',T.d5,''],['sp',T.spark,'hide-sm'],['go','','hide-sm']];
   function draw(){
@@ -86,7 +86,8 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
     rows.sort((x,y)=>{ const vx=k==='name'?nm(x):x[k], vy=k==='name'?nm(y):y[k];
       if(vx==null&&vy==null) return x.o-y.o; if(vx==null) return 1; if(vy==null) return -1;
       return (typeof vx==='string'?vx.localeCompare(vy):vx-vy)*sortDir });
-    const total=rows.length; rows=rows.slice(0,shown);
+    const total=rows.length, paged=!PAGE.home, np=Math.max(1,Math.ceil(total/PER)); if(pg>=np) pg=np-1; const off=paged?pg*PER:0;
+    rows=paged?rows.slice(off,off+PER):rows.slice(0,shown);
     const split=!!$('#mt2'), top=split?rows.slice(0,10):rows, rest=split?rows.slice(10):[];
     const head='<tr>'+COLS.map(([c,l,cl])=>{ const s=(c===sortK||(c==='n'&&sortK==='o'));
       const sortable=!['buy','sp','go'].includes(c);
@@ -95,7 +96,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
     $$('#mthead th[data-k],#mthead2 th[data-k]').forEach(th=>th.onclick=()=>{ let kk=th.dataset.k; if(kk==='n') kk='o';
       if(sortK===kk) sortDir=-sortDir; else {sortK=kk; sortDir=(kk==='name'||kk==='o')?1:-1} draw() });
     const tr=(a,i)=>`<tr>
-      <td class="l n hide-sm">${i+1}</td>
+      <td class="l n hide-sm">${off+i+1}</td>
       <td class="l"><button class="star" data-s="${a.i}" aria-label="☆">☆</button><a class="asset" href="${url(a.i)}">${icon(a)}<span><span class="nm">${esc(nm(a))}</span><span class="tk">${esc(a.t)}${lang!=='en'&&url(a.i).startsWith(BASE+'/en/')?'<i class="enb" title="English">EN</i>':''}</span></span></a></td>
       <td class="hide-sm">${buyBtn(a)}</td>
       <td class="num">${fmtPrice(a.pr)}</td>
@@ -108,8 +109,12 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
     tb.innerHTML=top.length?top.map(tr).join(''):`<tr><td colspan="10" class="empty">${T.nothing}</td></tr>`;
     if(split){ $('#mt2').innerHTML=rest.map((a,i)=>tr(a,i+10)).join(''); $('#rank2').hidden=!rest.length;
       $('#mttop').innerHTML=total>10?`<a class="more" href="#rank2">${T.more} ↓</a>`:''; }
-    $('#mtmore').innerHTML=total>shown?`<button class="more">${T.more} (${fmt(T.shown,{a:shown,b:total})})</button>`:'';
-    const mb=$('#mtmore button'); if(mb) mb.onclick=()=>{shown+=STEP;draw()};
+    if(paged){ const pb=(n,l,dis,on)=>`<button type="button" class="pgb${on?' on':''}" data-pg="${n}"${dis?' disabled':''}>${l}</button>`;
+      let h=''; if(np>1){ h+=pb(pg-1,'‹',pg===0); const seen=new Set(); [0,1,2,pg-1,pg,pg+1,np-1].filter(n=>n>=0&&n<np).sort((a,b)=>a-b).forEach(n=>{ if(seen.has(n)) return; if(seen.size&&!seen.has(n-1)) h+='<span class="pgd">…</span>'; seen.add(n); h+=pb(n,n+1,false,n===pg) }); h+=pb(pg+1,'›',pg===np-1) }
+      $('#mtmore').innerHTML=np>1?`<div class="pager">${h}<span class="muted pgi">${off+1}–${Math.min(off+PER,total)} / ${total}</span></div>`:'';
+      $$('#mtmore .pgb').forEach(b=>b.onclick=()=>{ pg=+b.dataset.pg; draw(); $('#mthead').closest('.tw').scrollIntoView({block:'start',behavior:'smooth'}) }) }
+    else { $('#mtmore').innerHTML=total>shown?`<button class="more">${T.more} (${fmt(T.shown,{a:shown,b:total})})</button>`:'';
+      const mb=$('#mtmore button'); if(mb) mb.onclick=()=>{shown+=STEP;draw()}; }
     try{paintStars()}catch(e){}
   }
   draw();

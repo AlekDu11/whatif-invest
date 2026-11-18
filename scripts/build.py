@@ -41,6 +41,7 @@ from i18n_fb import FB  # noqa: E402
 from i18n_sm import SM, SM_LANGS, SM_KINDS  # noqa: E402
 from i18n_al import AL  # noqa: E402
 from i18n_nl import NL  # noqa: E402
+from i18n_ch import CH  # noqa: E402
 from i18n_ua import UA_LANGS, UA_ASOF, OB, OBI, OBT, UA_SRC, BUYG, BUYG_SRC, OVP  # noqa: E402
 from i18n_bpd import BPD, IDEA as BP_IDEA  # noqa: E402
 from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB, CH as OWN_CH, CH2 as OWN_CH2  # noqa: E402
@@ -66,7 +67,7 @@ UPDATED = market['updated']
 END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
-RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide', 'commodities', 'widgets', 'embed', 'dividends', 'average-price', 'ovdp', 'largest-companies', 'crypto-exchanges', 'partners', 'buy-stocks-ukraine'}
+RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide', 'commodities', 'widgets', 'embed', 'dividends', 'average-price', 'ovdp', 'largest-companies', 'crypto-exchanges', 'partners', 'buy-stocks-ukraine', 'calculators'}
 RESERVED |= {v[0] for v in MKTS.values()} | {'world-assets', 'activities', 'editorial-policy', 'about', 'portfolios'}
 # asset ids that clash with a language folder or a section get a suffix (ko -> ko-stock, fil -> fil-crypto)
 _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
@@ -177,7 +178,7 @@ _CVS = {}
 def has_page(lang, aid):
     if aid is None or aid == 'compare' or aid in HUBS or aid in TOOLS:
         return True
-    if aid in ('ai', 'me', 'memes', 'world-assets', 'activities', 'portfolios', 'largest-companies') or (aid or '').startswith(('portfolios/', 'largest-companies/')):
+    if aid in ('ai', 'me', 'memes', 'world-assets', 'activities', 'portfolios', 'largest-companies', 'calculators') or (aid or '').startswith(('portfolios/', 'largest-companies/')):
         return True
     if aid == 'partners':
         return lang in PARTNER_TXT
@@ -567,7 +568,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
     X = S['x']
     blog_l = lang if lang in BLOG_LANGS else 'en'
     news_on = p in ('news', 'ai') or sec == 'activities' or (sec or '').startswith('blog') or (p or '').startswith('news/')
-    tools_on = p in TOOLS or (p in CALCS and p not in ("exchanges", "news", "about", "compound-interest")) or (p or "").startswith("habits") or p in ('memes', 'world-assets')
+    tools_on = p in TOOLS or (p in CALCS and p not in ("exchanges", "news", "about", "compound-interest")) or (p or "").startswith("habits") or p in ('memes', 'world-assets', 'calculators', 'largest-companies')
     nav = (''.join(f'<a href="{url(lang, k)}" class="{"on" if k == p else ""}">{v}</a>' for k, v in ((None, HM[lang]['nav']), ('portfolios', BP[lang]['nav']), ('compound-interest', IC[lang]['nav'])))
            + f'<details class="dd"><summary class="{"on" if p == "exchanges" or (p or "").startswith("crypto-exchanges") else ""}">{EX[lang]["nav"]}</summary><div>'
            + ''.join(f'<a href="{url(lang, k)}">{esc(v)}</a>' for k, v in xc_menu(lang)) + '</div></details>'
@@ -2417,14 +2418,33 @@ def habit_page(lang, sc, ver):
 def tools_menu(lang):
     t = TT[lang]
     S = TR[lang]
-    items = [('compare', S['nav_cmp']), ('habits', HB[lang]['nav']), ('millionaire', t['g_nav'])]
-    if CPI['c']:
-        items.append(('inflation', t['i_nav']))
-    items += [('largest-companies', LC[lang]['nav']), ('world-assets', WA[lang]['nav']), ('memes', MEM[lang]['nav']), ('converter', HCONV[lang]), ('bitcoin-halving', t['v_nav']), ('dividends', DV[lang]['nav'])]
+    items = [('compare', S['nav_cmp']), ('converter', HCONV[lang]), ('largest-companies', LC[lang]['nav']), ('world-assets', WA[lang]['nav']),
+             ('memes', MEM[lang]['nav']), ('bitcoin-halving', t['v_nav']), ('calculators', CH[lang][0])]
     if lang == 'uk':
         items.append(('ovdp', '🇺🇦 ОВДП і акції з України'))
-    items.append(('widgets', EMB[lang]['nav']))
     return items
+
+
+def calc_hub_items(lang):
+    t = TT[lang]
+    it = [('compound-interest', '📈', IC[lang]['nav']), ('habits', '☕', HB[lang]['nav']), ('millionaire', '🎯', t['g_nav'])]
+    if CPI['c']:
+        it.append(('inflation', '🎈', t['i_nav']))
+    it += [('dividends', '💸', DV[lang]['nav']), ('average-price', '⚖️', AV[lang]['nav']), ('ath', '📉', t['a_h1'].split(':')[0].split('?')[0]),
+           ('compare', '⇅', TR[lang]['nav_cmp']), ('converter', '🔁', HCONV[lang])]
+    if lang in OV:
+        it.append(('ovdp', '🏛️', OV[lang]['nav']))
+    it.append(('widgets', '🧩', EMB[lang]['nav']))
+    return [x for x in it if has_page(lang, x[0])]
+
+
+def calc_hub_page(lang, ver):
+    nav, h1, lead = CH[lang]
+    cards = ''.join(f'<a class="card hcard" href="{url(lang, k)}"><span>{ic}</span><b>{esc(lb)}</b></a>' for k, ic, lb in calc_hub_items(lang))
+    body = f'<h1>{esc(h1)}</h1><p class="lead">{esc(lead)}</p><section class="section"><div class="hgrid chub">{cards}</div></section>'
+    ld = {"@context": "https://schema.org", "@type": "ItemList", "name": h1,
+          "itemListElement": [{"@type": "ListItem", "position": k + 1, "name": lb, "url": SITE + url(lang, key)} for k, (key, _, lb) in enumerate(calc_hub_items(lang))]}
+    return shell(lang, 'calculators', f'{h1} | {BRAND}', lead, body, {}, ver, [ld])
 
 
 def xc_menu(lang):
@@ -3834,6 +3854,8 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
         write(pre + 'average-price/index.html', avgprice_page(lang, ver))
         if lang in OV:
             write(pre + 'ovdp/index.html', ovdp_page(lang, ver))
+        write(pre + 'calculators/index.html', calc_hub_page(lang, ver))
+        extra_pages.append('calculators')
         if lang in UA_LANGS:
             write(pre + 'ovdp/brokers/index.html', ovdp_brokers_page(lang, ver))
             write(pre + 'buy-stocks-ukraine/index.html', buyg_page(lang, ver))
