@@ -1,10 +1,15 @@
-# WhatIfStack — [whatifstack.com](https://whatifstack.com/)
+# WhatIfStack — [whatifstack.com](https://whatifstack.com/en/)
 
-**What if you had invested $10 a day?** [WhatIfStack](https://whatifstack.com/) shows, with real prices, what regular (DCA) investing in 1,700+ cryptocurrencies, stocks, ETFs and gold would have returned — in 20 languages.
+**Markets in plain language, for the whole world.** [WhatIfStack](https://whatifstack.com/en/) is a free markets site in 20 languages: prices, charts and plain-language news for 600+ cryptocurrencies and 1,200+ stocks from 27 markets, plus gold. No sign-up, no ad clutter, source and date next to every number.
 
-- [DCA calculator and ranking](https://whatifstack.com/en/) · [Bitcoin $10 a day](https://whatifstack.com/en/btc/) · [Compare assets](https://whatifstack.com/en/compare/)
-- [World's largest assets](https://whatifstack.com/en/world-assets/) · [Stocks by country](https://whatifstack.com/en/stocks-ukraine/) · [Airdrops and campaigns](https://whatifstack.com/en/activities/)
-- [Guide to every tool](https://whatifstack.com/en/guide/) · [News](https://whatifstack.com/en/news/) · [X @WhatIfStack](https://x.com/WhatIfStack)
+- [Markets today](https://whatifstack.com/en/) — "Market in 60 seconds" and a home page that opens with your own watchlist and portfolio
+- [Bitcoin](https://whatifstack.com/en/btc/) · [Nvidia](https://whatifstack.com/en/nvda/) — price, chart, "what's happening", where it trades, history and calculators
+- [Crypto exchange ranking](https://whatifstack.com/en/crypto-exchanges/) — 100 exchanges with volume, pairs and proof of reserves
+- [Famous investors' portfolios](https://whatifstack.com/en/investors/) — Warren Buffett, Ray Dalio, Cathie Wood and others from SEC 13F filings
+- [Largest companies in the world](https://whatifstack.com/en/largest-companies/) · [Converter](https://whatifstack.com/en/converter/) · [Calculators](https://whatifstack.com/en/calculators/) · [News](https://whatifstack.com/en/news/)
+- [Guide to every tool](https://whatifstack.com/en/guide/) · [X @WhatIfStack](https://x.com/WhatIfStack) · [Telegram](https://t.me/WhatIfStack)
+
+Not investment advice: history and data, not forecasts.
 
 Ukrainian is at the root, other languages at /en/, /es/, /pl/ …
 
