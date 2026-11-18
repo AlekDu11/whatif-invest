@@ -70,7 +70,7 @@ Order: easy listings first, then the launch days. Product Hunt and Show HN get t
 | 3 | Crunchbase | crunchbase.com (create a company profile) | free profile | short description | ☐ |
 | 4 | Indie Hackers | indiehackers.com/products + a "how I built it" post | free | long description | ☐ |
 | 5 | Uneed | uneed.best/submit-a-tool | free line (launch day needs ≥10 upvotes to stay, ≥20 for dofollow) | short + long | ⏳ free launch scheduled for **2027-02-10**; texts, 3 screenshots set 2026-11-19 |
-| 6 | Fazier | fazier.co | free (paid options not needed) | short + long | ☐ |
+| 6 | Fazier | fazier.com/launch | ✗ free launch needs 3 comments on other products + their badge on our site ($29 to skip) | — | skip |
 | 7 | Startup Stash | startupstash.com | ✗ now paid plans only (checked 2026-11-19) | — | skip |
 | 8 | BetaList | betalist.com/submit | free with a long queue (paid skip — not needed) | short + long | ☐ |
 | 9 | Polymart crypto tools | polymart.app/submit?type=crypto | free, needs a link back (owner OK'd: /en/partners/ «Find WhatIfStack on») | short description | ⏳ submitted 2026-11-19 by the owner (review: a few days) |
