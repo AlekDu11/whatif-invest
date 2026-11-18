@@ -74,8 +74,8 @@ Order: easy listings first, then the launch days. Product Hunt and Show HN get t
 | 7 | Startup Stash | startupstash.com | free | short description | ☐ |
 | 8 | BetaList | betalist.com/submit | free with a long queue (paid skip — not needed) | short + long | ☐ |
 | 9 | Polymart crypto tools | polymart.app/submit?type=crypto | free, hand-reviewed, no account | short description | ☐ |
-| 10 | GitHub | repo: description, website link, topics (crypto, stocks, investing, finance, i18n, static-site) | free | tagline | ☐ (Claude can prepare) |
-| 11 | DEV Community | dev.to — article "Building a 19k-page static markets site in 20 languages" with a link | free | Claude writes the article | ☐ |
+| 10 | GitHub | README updated by Claude 2026-11-19; owner sets About: description, website, topics (repo → ⚙ next to About) | free | see GitHub About below | ☐ owner |
+| 11 | DEV Community | dev.to/new — article ready in social/launch/devto.md | free | devto.md | ☐ owner |
 | 12 | Reddit r/SideProject | reddit.com/r/SideProject | free, follow sub rules | Product Hunt comment, shortened | ☐ |
 | 13 | Product Hunt | producthunt.com/launch | free (paid promo not needed) | tagline + maker comment + 6 screenshots | ☐ own day |
 | 14 | Hacker News | news.ycombinator.com/submit | free | Show HN | ☐ own day |
@@ -85,3 +85,8 @@ Never: paid link packages, "submit to 500 directories" services, link exchanges.
 ## Log
 | Date | Site | Listing URL | Result |
 |---|---|---|---|
+
+## GitHub About (repo page → ⚙ next to «About»)
+- Description: Free markets site in 20 languages: prices, charts and plain-language news for 600+ crypto and 1,200+ stocks, exchange rankings, famous investors' portfolios, calculators.
+- Website: https://whatifstack.com/en/
+- Topics: crypto, stocks, investing, finance, bitcoin, cryptocurrency, market-data, portfolio-tracker, dca-calculator, static-site-generator, i18n, python, sec-13f
