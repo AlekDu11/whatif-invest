@@ -100,8 +100,16 @@ def main():
                                                      vol_btc=num(e.get('trade_volume_24h_btc')), nvol_btc=num(e.get('trade_volume_24h_btc_normalized'))).items() if v is not None})
     if not out['spot']:
         out['spot'] = old.get('spot', [])
-    for e in out['spot'][:100]:
-        d = {}
+    out['reserves'] = reserves(out['spot']) or old.get('reserves', {})     # fast (DefiLlama) — before the slow CoinGecko loop
+    t0 = time.time()
+    budget = float(os.environ.get('XC_BUDGET', 35 * 60))
+    top = out['spot'][:100]
+    top = sorted(top, key=lambda e: (out['detail'].get(e['id'], {}).get('t', ''), top.index(e)))      # stalest first
+    for e in top:
+        if time.time() - t0 > budget:
+            print('time budget reached; the rest is refreshed next run', flush=True)
+            break
+        d = {'t': datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M')}
         ch = get(f"/exchanges/{e['id']}/volume_chart?days=30")
         if ch:
             d['chart'] = [[int(t / 1000), num(v)] for t, v in ch][-31:]
@@ -117,7 +125,7 @@ def main():
                                                     usd=num((t.get('converted_volume') or {}).get('usd')), spread=num(t.get('bid_ask_spread_percentage')),
                                                     trust=t.get('trust_score'), stale=t.get('is_stale') or None).items() if v is not None}
                           for t in tk['tickers'] if not t.get('is_anomaly')][:100]
-        if d:
+        if len(d) > 1:
             out['detail'][e['id']] = d
     der = get('/derivatives/exchanges?order=open_interest_btc_desc&per_page=60&page=1')
     if der:
@@ -125,7 +133,6 @@ def main():
                                                       url=e.get('url'), img=e.get('image'), oi_btc=num(e.get('open_interest_btc')),
                                                       vol_btc=num(e.get('trade_volume_24h_btc')), perp=e.get('number_of_perpetual_pairs'),
                                                       fut=e.get('number_of_futures_pairs')).items() if v is not None} for e in der]
-    out['reserves'] = reserves(out['spot']) or old.get('reserves', {})
     json.dump(out, open(OUT, 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
     print(f"reserves: {len(out['reserves'])} exchanges")
     print(f"exchanges: spot {len(out['spot'])}, detail {len(out['detail'])}, derivatives {len(out['derivatives'])}")
