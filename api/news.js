@@ -43,7 +43,9 @@ async function feed([src, url]) {
   } catch (e) { return [] }
 }
 
+const G = require('./_guard');
 module.exports = async (req, res) => {
+  if (G.over(req, 30, 'news')) { res.statusCode = 429; res.setHeader('Retry-After', '60'); return res.end('[]') }
   const all = (await Promise.all(FEEDS.map(feed))).flat();
   const seen = new Set();
   const items = all.filter(x => { const k = x.t.toLowerCase().slice(0, 60); if (seen.has(k)) return false; seen.add(k); return true })

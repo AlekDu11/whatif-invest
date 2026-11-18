@@ -844,11 +844,11 @@ document.addEventListener('click',async e=>{
     busy=false; ta.focus() };
   const open=v=>{ P.hidden=!v; btn.classList.toggle('on',v); if(v){ render(); ta.focus() } };
   const FBF=$('.aifb',P);
-  if(FBF){ const fbMode=v=>{ FBF.hidden=!v; box.hidden=v; form.hidden=v; if(v) $('textarea',FBF).focus(); else ta.focus() };
+  if(FBF){ let fbT=0; const fbMode=v=>{ FBF.hidden=!v; box.hidden=v; form.hidden=v; if(v){ fbT=Date.now(); $('textarea',FBF).focus() } else ta.focus() };
     $('.aifbl',P).onclick=()=>fbMode(true); $('.aifbx',FBF).onclick=()=>fbMode(false);
     FBF.onsubmit=async e=>{ e.preventDefault(); const t=$('textarea',FBF).value.trim(), em=$('input',FBF).value.trim(), m=$('.aifbm',FBF); if(t.length<3) return;
       const sb=$('[type=submit]',FBF); sb.disabled=true;
-      try{ const r=await fetch('/api/feedback',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({t,em,l:lang,p:location.pathname})});
+      try{ const r=await fetch('/api/feedback',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({t,em,l:lang,p:location.pathname,w:Date.now()-fbT})});
         if(!r.ok) throw 0; m.textContent=C.fb.ok; m.className='aifbm good'; $('textarea',FBF).value=''; setTimeout(()=>{ fbMode(false); m.textContent='' },2200) }
       catch(x){ m.textContent=C.fb.err; m.className='aifbm bad' } sb.disabled=false } }
   btn.onclick=()=>open(P.hidden); $('.aix',P).onclick=()=>{ open(false); btn.focus() };

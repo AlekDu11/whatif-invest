@@ -8,6 +8,7 @@ module.exports = async (req, res) => {
   const t = String(b.t || '').trim().slice(0, 2000), em = String(b.em || '').trim().slice(0, 120);
   const ua = String((req.headers || {})['user-agent'] || '');
   if (t.length < 3 || /bot|crawl|spider|headless/i.test(ua) || (em && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em))) { res.statusCode = 400; return res.end('{}') }
+  if (b.w !== undefined && +b.w < 2000) { res.statusCode = 200; res.setHeader('Content-Type', 'application/json'); return res.end('{"ok":1}') }
   const u = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL, k = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
   if (!u || !k) { res.statusCode = 503; return res.end('{}') }
   const h = req.headers || {}, ip = String(h['x-forwarded-for'] || '').split(',')[0].trim() || '?';

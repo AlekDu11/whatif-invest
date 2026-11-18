@@ -1,7 +1,9 @@
 // Daily/weekly OHLC for our own Lightweight Charts: GET /api/chart?s=<yahoo symbol>&r=5y|max
 // Yahoo Finance chart endpoint, cached on Vercel's CDN for an hour.
+const G = require('./_guard');
 module.exports = async (req, res) => {
   const q = req.query || {};
+  if (G.over(req, 60, 'chart')) { res.statusCode = 429; res.setHeader('Retry-After', '60'); return res.end('{"e":"limit"}') }
   const s = String(q.s || '');
   const r = q.r === 'max' ? 'max' : '5y';
   const send = (code, obj, cache) => { res.statusCode = code; res.setHeader('Content-Type', 'application/json; charset=utf-8');

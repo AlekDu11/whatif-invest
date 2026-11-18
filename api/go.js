@@ -1,6 +1,7 @@
 // Click tracker + redirect: /go/<partner>?from=<page>&l=<lang>[&e=<polymarket event slug>]
 // Counts go to Upstash Redis (Vercel KV) when KV_REST_API_URL / KV_REST_API_TOKEN are set; otherwise it just redirects.
 const P = require('./_partners');
+const G = require('./_guard');
 // Polymarket is not available (Polymarket geoblock incl. close-only) or blocked by the government in these countries
 // (coinperps.com check of 27 Oct 2026 + government block list). Visitors from them go to our explainer instead.
 const PM_BLOCKED = new Set(('CU IR KP SY BY BE FR DE IT PL RU SK GB US UM BR NI VE AU MM NZ SG TW TH BI CF CD ET IQ LB LY SO SS SD YE ZW '
@@ -33,7 +34,7 @@ module.exports = async (req, res) => {
     }
   }
   const ua = String(h['user-agent'] || '');
-  const bot = /bot|crawl|spider|slurp|preview|facebookexternalhit|headless/i.test(ua) || !ua;
+  const bot = /bot|crawl|spider|slurp|preview|facebookexternalhit|headless/i.test(ua) || !ua || G.over(req, 20, 'go');
   if (!bot) {
     const day = new Date().toISOString().slice(0, 10);
     const country = String(h['x-vercel-ip-country'] || '??');

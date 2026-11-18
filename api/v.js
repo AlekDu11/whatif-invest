@@ -3,6 +3,7 @@
 const CH = {
   artitrade: '/', aleksdu: '/', keepthespark: '/en/', growthecoin: '/en/', samestart: '/en/',
 };
+const G = require('./_guard');
 async function redis(cmds) {
   const u = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
   const t = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
@@ -16,7 +17,7 @@ module.exports = async (req, res) => {
   let to = String(q.to || '');
   if (!/^\/[a-z0-9/_-]*$/i.test(to)) to = CH[ch] || '/';
   const h = req.headers || {}, ua = String(h['user-agent'] || '');
-  const bot = /bot|crawl|spider|slurp|preview|facebookexternalhit|headless/i.test(ua) || !ua;
+  const bot = /bot|crawl|spider|slurp|preview|facebookexternalhit|headless/i.test(ua) || !ua || G.over(req, 20, 'v');
   if (!bot) {
     const day = new Date().toISOString().slice(0, 10), key = vid ? `${ch}/${vid}` : ch;
     const country = String(h['x-vercel-ip-country'] || '??');
