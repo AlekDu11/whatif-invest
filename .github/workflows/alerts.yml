@@ -1,0 +1,19 @@
+name: Price alerts (Telegram)
+
+# Every 10 minutes: ask the site's checker to send due alerts. Needs repository secret ALERTS_KEY (same value as in Vercel env).
+on:
+  schedule:
+    - cron: '*/10 * * * *'
+  workflow_dispatch: {}
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Run the checker
+        env:
+          KEY: ${{ secrets.ALERTS_KEY }}
+        run: |
+          if [ -z "$KEY" ]; then echo "ALERTS_KEY secret not set yet"; exit 0; fi
+          curl -fsS --max-time 60 "https://whatifstack.com/api/alerts?key=$KEY" || true

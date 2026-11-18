@@ -548,6 +548,16 @@ new MutationObserver(()=>{ clearTimeout(window._wiStar); window._wiStar=setTimeo
   let ht; document.addEventListener('wi:tick',()=>{ clearTimeout(ht); ht=setTimeout(drawHold,1500) });
   document.addEventListener('wi:watch',drawWatch); drawWatch(); drawPlans(); drawHold();
 })();
+/* ---------- price alert in Telegram (asset page) ---------- */
+$$('[data-alert]').forEach(b=>{ let C; try{ C=JSON.parse(b.dataset.alert) }catch(e){ return }
+  b.onclick=()=>{ const old=$('.alpop'); if(old){ old.remove(); return }
+    const a=BYID[C.aid], cur=a&&a.pr||0, r=v=>v>=1000?Math.round(v):v>=1?+v.toFixed(2):+v.toPrecision(4);
+    const pop=document.createElement('div'); pop.className='alpop card';
+    pop.innerHTML=`<b>${esc(C.t.h)}</b><div class="alrow"><label><input type="radio" name="ald" value="u" checked> ${esc(C.t.up)}</label><label><input type="radio" name="ald" value="d"> ${esc(C.t.dn)}</label></div>
+      <div class="inp"><span class="muted">$</span><input type="number" min="0" step="any" value="${r(cur*1.05)}"></div><a class="btn" target="_blank" rel="noopener">✈️ ${esc(C.t.go)}</a><p class="muted">${esc(C.t.note)}</p>`;
+    b.after(pop); const inp=$('input[type=number]',pop), go=$('a',pop);
+    const upd=()=>{ const d=$('input[name=ald]:checked',pop).value, v=+inp.value; go.href=`https://t.me/${C.bot}?start=${encodeURIComponent(`a_${C.aid}_${d}_${String(r(v)).replace('.','p')}_${C.lang}`)}` };
+    $$('input[name=ald]',pop).forEach(x=>x.onchange=()=>{ inp.value=r(cur*(x.value==='u'?1.05:0.95)); upd() }); inp.oninput=upd; upd(); inp.focus() } });
 /* ---------- markets tables: quote tabs + show more ---------- */
 $$('section.mkt').forEach(sec=>{ const rows=[...sec.querySelectorAll('tbody tr')], more=sec.querySelector('.mkmore'); let q='', open=false;
   const apply=()=>{ let n=0; rows.forEach(r=>{ const ok=!q||r.dataset.q===q; const show=ok&&(open||q||!r.classList.contains('xh')); r.style.display=show?'':'none'; if(show) n++ }); if(more) more.style.display=(open||q||!rows.some(r=>r.classList.contains('xh')))?'none':'' };

@@ -21,7 +21,7 @@ in one place, fast, no ad clutter. Owner (2026-11-17): the essence is what peopl
 
 ## Roadmap (next phase starts only when the previous gate is met)
 1. Foundation (Nov–Dec 2026): domain whatifstack.com (done), Search Console (done 2026-11-15: domain property verified via Vercel DNS TXT, sitemap submitted), analytics, dark theme, PWA, local currencies, OG share images, referral links. Gate: site indexed.
-2. Retention (Jan–Feb 2027): accounts, watchlist, price alerts (email/Telegram), portfolio tracker + backtest. Gate: 10k visitors/month.
+2. Retention (Jan–Feb 2027): accounts, watchlist, price alerts (Telegram built 2026-11-18, waiting for the bot token; email later), portfolio tracker + backtest. Gate: 10k visitors/month.
 3. Pro (Mar–Apr 2027): Pro ~$5/mo or $39/yr (ad-free, unlimited alerts, backtests, AI helper), exchange/broker ranking, dividends. Gate: 50k/month, 100 paying.
 4. Scale (May 2027+): API + embeddable widgets, mobile app, native ads. Gate: 200k/month.
 
@@ -60,6 +60,7 @@ Ukraine pages (uk, ru; scripts/i18n_ua.py): /ovdp/brokers/ ranking + /ovdp/broke
 Converter pair pages /converter/<asset>-<ccy>/ (cv_pairs in build.py, strings scripts/i18n_cv.py, currencies per language CV_CCY; top 40 crypto in uk/en, 20 elsewhere + gold/silver; light option list to keep pages small).
 Coin markets (CryptoRank-style «where it trades», all quote currencies): data/coin_markets.json via .github/workflows/coin-markets.yml (scripts/fetch_coin_markets.py, daily 05:41 UTC, 150 stalest coins per run) → coin_markets_block on crypto pages; fallback = exchange snapshot pairs. Exchange pages show 100 pairs with quote tabs. fetch_data.py adds coins traded on big exchanges but missing from the top-1000 list (exchange_extras).
 User suggestions: «💡 Suggest an improvement» form inside the AI assistant panel (strings scripts/i18n_fb.py) → api/feedback.js → Upstash list fb:v1 (LRANGE fb:v1 0 50; counter fb:count; 10/day per IP). Read them in the weekly growth report.
+Price alerts in Telegram: «🔔» button on crypto / US stock / gold pages (alert_btn, strings scripts/i18n_al.py; shown only when TG_BOT in build.py is set) → t.me/<bot>?start=a_<aid>_<u|d>_<price, p = dot>_<lang> → api/tg.js webhook stores alerts in Upstash (al:items hash, al:chat:<id> sets, max 10 per chat; /list /del /stop) → api/alerts.js checker (CoinGecko simple price + Yahoo chart; map dist/assets/alerts-map.json) called every 10 min by .github/workflows/alerts.yml. Owner setup: bot in @BotFather, Vercel env TG_BOT_TOKEN + ALERTS_KEY, GitHub secret ALERTS_KEY, then open /api/tg?setup=<ALERTS_KEY>.
 News aggregator: api/news.js (Vercel function, RSS headlines only, links to originals).
 
 ## Backlog agreed with the owner (2026-11-17)

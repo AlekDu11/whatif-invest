@@ -39,6 +39,7 @@ from i18n_xc import XC  # noqa: E402
 from i18n_cv import CV, CV_CCY  # noqa: E402
 from i18n_fb import FB  # noqa: E402
 from i18n_sm import SM, SM_LANGS, SM_KINDS  # noqa: E402
+from i18n_al import AL  # noqa: E402
 from i18n_ua import UA_LANGS, UA_ASOF, OB, OBI, OBT, UA_SRC, BUYG, BUYG_SRC, OVP  # noqa: E402
 from i18n_bpd import BPD, IDEA as BP_IDEA  # noqa: E402
 from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB, CH as OWN_CH, CH2 as OWN_CH2  # noqa: E402
@@ -1988,6 +1989,33 @@ def coin_markets_block(lang, aid):
 
 
 
+
+# ---------------- Telegram price alerts ----------------
+TG_BOT = ''   # bot username without @ (set when the owner creates it in @BotFather); empty = no alert button
+
+
+def alert_src(aid):
+    a = A.get(aid) or {}
+    if not _re.fullmatch(r'[a-z0-9][a-z0-9_-]{0,29}', aid):
+        return None
+    if a.get('cat') == 'crypto' and a.get('cgid'):
+        return ['c', a['cgid'], a['tk']]
+    y = a.get('yahoo') or ''
+    if a.get('cat') in ('stock', 'etf') and not a.get('mkt') and y and '.' not in y:
+        return ['y', y, a['tk']]
+    if aid in ('gold', 'silver'):
+        return ['y', 'GC=F' if aid == 'gold' else 'SI=F', nm(a, 'en')]
+    return None
+
+
+def alert_btn(lang, aid):
+    if not TG_BOT or not alert_src(aid):
+        return ''
+    t = AL[lang]
+    cfg = dict(bot=TG_BOT, aid=aid, lang=lang, t=dict(t, h=t['h'].format(tk=A[aid]['tk']), note=t['note'].format(bot=TG_BOT)))
+    return f'<button class="alb" type="button" data-alert="{esc(json.dumps(cfg, ensure_ascii=False))}">{esc(t["btn"])}</button>'
+
+
 # ---------------- per-stock metric pages: /<id>/market-cap|revenue|earnings/ ----------------
 SM_TOP = 1500
 
@@ -2246,7 +2274,7 @@ def asset(aid, lang, ver):
     badges = f'<span class="badge">{esc(tk)}</span> <span class="badge">{esc(cat)}</span>' + (f' <span class="badge">{esc(a["sector"])}</span>' if a.get('sector') else '')
     head = (f'{crumbs}<div class="ahead">{icon(a, True)}<div><h1>{esc(AP[lang]["h1"].format(name=n, tk=tk))}</h1><div style="margin-top:4px">{badges}</div></div>'
             f'<div class="price"><span class="v" data-p="{aid}">{price(m["price"])}</span><span class="pill {cls(m["chg"])}" data-c="{aid}">{pct(m["chg"])}</span>{local_price(a, lang)}<span id="buyslot" data-id="{aid}"></span><button class="star big" data-s="{aid}" title="{esc(ME[lang]["star"])}">☆</button>'
-            f'<button class="addpf" type="button" data-add="{aid}" data-cfg="{esc(json.dumps(dict(code=hccy(lang)[0], rate=hccy(lang)[1], me=url(lang, "me"), t={k: PF[lang][k] for k in ("addpf", "added", "open", "cancel", "qty_or_sum")}, d=ME[lang]["date"]), ensure_ascii=False))}">＋ {esc(PF[lang]["addpf"])}</button></div></div>')
+            f'<button class="addpf" type="button" data-add="{aid}" data-cfg="{esc(json.dumps(dict(code=hccy(lang)[0], rate=hccy(lang)[1], me=url(lang, "me"), t={k: PF[lang][k] for k in ("addpf", "added", "open", "cancel", "qty_or_sum")}, d=ME[lang]["date"]), ensure_ascii=False))}">＋ {esc(PF[lang]["addpf"])}</button>{alert_btn(lang, aid)}</div></div>')
     if (a.get('yahoo') or '').endswith('=F') and a['tk'] not in ('XAU', 'XAG'):
         head += f'<p class="note">{esc(CMD_NOTE[lang])}</p>'
     w = S['w']
@@ -3726,6 +3754,7 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
  if(r.mode==='navigate'){{e.respondWith(fetch(r).then(res=>{{const cp=res.clone();caches.open(C).then(c=>c.put(r,cp));return res}}).catch(()=>caches.match(r).then(m=>m||caches.match('/'))))}}
 }});""")
     ver = dict(css=h8(css), js=h8(js), ref=h8(ref), index=h8(index_js))
+    json.dump({i: alert_src(i) for i in A if alert_src(i)}, open(os.path.join(DIST, 'assets/alerts-map.json'), 'w'), separators=(',', ':'))
     per_lang = {}
     for lang in ORDER:
         set_numfmt(lang)
