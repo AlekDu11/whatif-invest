@@ -4,6 +4,7 @@ Goal: free traffic and backlinks from platforms where our readers already are, w
 Daily drafts land in `social/syndication/YYYY-MM-DD.md` (scheduled task "WhatIfStack: syndication"); log every published item in the table at the bottom.
 
 ## Golden rules
+0. **English only (owner, 2026-11-18).** Every social account and every syndicated copy is in English.
 1. **Canonical first.** Full copies only where the platform sets a canonical link to whatifstack.com (Medium "Import a story" does this). Everywhere else: a short, useful summary (3–6 numbers) + link to the full article.
 2. **Value in the post itself.** The post must be worth reading without clicking. Numbers, a table, the honest downside.
 3. **Reddit 90/10.** At most 1 in 10 of the account's posts/comments links to us; the rest are helpful comments. Read each subreddit's rules before posting; some ban links in posts — then post the text and add the link only if someone asks. Never post the same link in several subs on the same day.

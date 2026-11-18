@@ -775,7 +775,8 @@ document.addEventListener('click',async e=>{
   P.innerHTML=`<header><b>${esc(C.title)}</b><button type="button" class="ainew">${esc(C.new)}</button><button type="button" class="aix" aria-label="×">×</button></header>
     <div class="aimsgs" aria-live="polite"></div>
     <form class="aiform"><textarea rows="1" maxlength="600" placeholder="${esc(C.ph)}" aria-label="${esc(C.ph)}"></textarea><button type="submit" aria-label="${esc(C.send)}">➤</button></form>
-    <p class="ainote">${esc(C.note)}</p>`;
+    <p class="ainote">${esc(C.note)}${C.fb?` · <button type="button" class="aifbl">${esc(C.fb.btn)}</button>`:''}</p>
+    ${C.fb?`<form class="aifb" hidden><b>${esc(C.fb.h)}</b><p>${esc(C.fb.d)}</p><textarea rows="4" maxlength="2000" required placeholder="${esc(C.fb.ph)}"></textarea><input type="email" maxlength="120" placeholder="${esc(C.fb.em)}"><div><button type="button" class="aifbx">${esc(C.fb.back)}</button><button type="submit" class="btn">${esc(C.fb.send)}</button></div><p class="aifbm" aria-live="polite"></p></form>`:''}`;
   document.body.append(btn,P);
   const box=$('.aimsgs',P), ta=$('textarea',P), form=$('form',P);
   const chips=()=>{ const qs=C.n?[C.a1,C.a2,C.a3].map(x=>fmt(x,{n:C.n})):[C.g1,C.g2,C.g3];
@@ -792,6 +793,14 @@ document.addEventListener('click',async e=>{
     if(a){ H.push({r:'a',t:a}); save(); render() } else { H.pop(); render(); box.insertAdjacentHTML('beforeend',`<div class="aim err">${esc(err)}</div>`); ta.value=q }
     busy=false; ta.focus() };
   const open=v=>{ P.hidden=!v; btn.classList.toggle('on',v); if(v){ render(); ta.focus() } };
+  const FBF=$('.aifb',P);
+  if(FBF){ const fbMode=v=>{ FBF.hidden=!v; box.hidden=v; form.hidden=v; if(v) $('textarea',FBF).focus(); else ta.focus() };
+    $('.aifbl',P).onclick=()=>fbMode(true); $('.aifbx',FBF).onclick=()=>fbMode(false);
+    FBF.onsubmit=async e=>{ e.preventDefault(); const t=$('textarea',FBF).value.trim(), em=$('input',FBF).value.trim(), m=$('.aifbm',FBF); if(t.length<3) return;
+      const sb=$('[type=submit]',FBF); sb.disabled=true;
+      try{ const r=await fetch('/api/feedback',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({t,em,l:lang,p:location.pathname})});
+        if(!r.ok) throw 0; m.textContent=C.fb.ok; m.className='aifbm good'; $('textarea',FBF).value=''; setTimeout(()=>{ fbMode(false); m.textContent='' },2200) }
+      catch(x){ m.textContent=C.fb.err; m.className='aifbm bad' } sb.disabled=false } }
   btn.onclick=()=>open(P.hidden); $('.aix',P).onclick=()=>{ open(false); btn.focus() };
   $('.ainew',P).onclick=()=>{ H=[]; save(); render(); ta.focus() };
   box.addEventListener('click',e=>{ const b=e.target.closest('.aichips button'); if(b) ask(b.textContent) });

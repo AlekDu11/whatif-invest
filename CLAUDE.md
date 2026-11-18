@@ -46,6 +46,7 @@ Every blog/news post needs a branded cover: run `python3 scripts/cover.py --miss
 Scheduled tasks: daily Insights article (6 or 20 languages, category analytics/guides), monthly market report on the 1st (category reports).
 Movers rubric «What's happening with X» (tag `movers`): twice a day 10:47/19:47 Kyiv, scripts/movers.py lists candidates, briefs in en/uk/ru/es show on the asset page.
 Regional articles: daily 14:23 Kyiv, 3 languages per day about their own market (front matter `region: yes`).
+Social media language (owner, 2026-11-18): ALL social accounts and syndication in English only. Medium: daily 17:19 Kyiv, 1–2 English articles imported automatically (paste-event method in social/syndication.md).
 X @WhatIfStack: 5 posts/day via the built-in browser (style + log in social/x-log.md). Weekly growth report Mondays 10:37 → reports/growth/.
 Stock deep-dives: 02:13 and 13:13 Kyiv, 15 stocks per run in en+uk (queue: scripts/analysis_todo.py; format = content/profiles/*/twlo.md, front matter `kind: analysis` → full block on the stock page). Key stats: data/stockstats.json via .github/workflows/stock-stats.yml (daily, rotating).
 Stock coverage: daily 22:47 Kyiv a task adds up to 100 stocks to data/markets.json (Nasdaq-100 → S&P 400 → S&P 600 → index members of the 27 supported markets), removes symbols Yahoo can't fetch; cap 4000 stocks until deploy size/build time are re-checked.
@@ -58,6 +59,7 @@ Crypto exchange rankings: data/exchanges.json via .github/workflows/exchanges.ym
 Ukraine pages (uk, ru; scripts/i18n_ua.py): /ovdp/brokers/ ranking + /ovdp/brokers/<id>/ (OB list: fee, currencies, issues, score — refresh facts when tariffs change), /buy-stocks-ukraine/ guide (Freedom24 CTA via /go/freedom24). Portfolio /me/#bonds: OVDP holdings (localStorage wi_bonds, CSV import name;broker;currency;amount;rate;bought;matures, uk/ru/en).
 Converter pair pages /converter/<asset>-<ccy>/ (cv_pairs in build.py, strings scripts/i18n_cv.py, currencies per language CV_CCY; top 40 crypto in uk/en, 20 elsewhere + gold/silver; light option list to keep pages small).
 Coin markets (CryptoRank-style «where it trades», all quote currencies): data/coin_markets.json via .github/workflows/coin-markets.yml (scripts/fetch_coin_markets.py, daily 05:41 UTC, 150 stalest coins per run) → coin_markets_block on crypto pages; fallback = exchange snapshot pairs. Exchange pages show 100 pairs with quote tabs. fetch_data.py adds coins traded on big exchanges but missing from the top-1000 list (exchange_extras).
+User suggestions: «💡 Suggest an improvement» form inside the AI assistant panel (strings scripts/i18n_fb.py) → api/feedback.js → Upstash list fb:v1 (LRANGE fb:v1 0 50; counter fb:count; 10/day per IP). Read them in the weekly growth report.
 News aggregator: api/news.js (Vercel function, RSS headlines only, links to originals).
 
 ## Backlog agreed with the owner (2026-11-17)

@@ -37,6 +37,7 @@ from i18n_offer import OFFER_TGW  # noqa: E402
 from i18n_lc import LC  # noqa: E402
 from i18n_xc import XC  # noqa: E402
 from i18n_cv import CV, CV_CCY  # noqa: E402
+from i18n_fb import FB  # noqa: E402
 from i18n_ua import UA_LANGS, UA_ASOF, OB, OBI, OBT, UA_SRC, BUYG, BUYG_SRC, OVP  # noqa: E402
 from i18n_bpd import BPD, IDEA as BP_IDEA  # noqa: E402
 from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB, CH as OWN_CH, CH2 as OWN_CH2  # noqa: E402
@@ -483,7 +484,7 @@ AHREFS = ('<meta name="ahrefs-site-verification" content="f5a16ec7b7cfa87b5d531c
 
 
 def ai_widget(lang, cfg):
-    t = dict(AIC[lang])
+    t = dict(AIC[lang], fb=FB[lang])
     aid = cfg.get('asset')
     if aid and aid in A:
         t['n'] = nm(A[aid], lang)
