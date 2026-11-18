@@ -63,6 +63,8 @@ User suggestions: «💡 Suggest an improvement» form inside the AI assistant p
 Price alerts in Telegram: «🔔» button on crypto / US stock / gold pages (alert_btn, strings scripts/i18n_al.py; shown only when TG_BOT in build.py is set) → t.me/<bot>?start=a_<aid>_<u|d>_<price, p = dot>_<lang> → api/tg.js webhook stores alerts in Upstash (al:items hash, al:chat:<id> sets, max 10 per chat; /list /del /stop) → api/alerts.js checker (CoinGecko simple price + Yahoo chart; map dist/assets/alerts-map.json) called every 10 min by .github/workflows/alerts.yml. Owner setup: bot in @BotFather, Vercel env TG_BOT_TOKEN + ALERTS_KEY, GitHub secret ALERTS_KEY, then open /api/tg?setup=<ALERTS_KEY>.
 Weekly e-mail report signup: nl_block() on home + under every article/news (strings scripts/i18n_nl.py) → api/subscribe.js → Upstash hash nl:subs (email → {l, at, src, c}), counter nl:count. Sending waits for the owner's newsletter provider (Brevo/MailerLite) API key.
 Daily health check task 07:43 Kyiv → reports/health.md, messages the owner only when something broke.
+Famous investors: data/investors.json via .github/workflows/investors.yml (scripts/fetch_13f.py: SEC 13F-HR for 16 funds — Buffett, Ackman, Burry, Dalio, Wood…; CUSIP → ticker via OpenFIGI, cache data/cusip_map.json; weekly Tue) → /investors/ + /investors/<id>/ (20 languages, strings scripts/i18n_inv.py), in the Tools menu.
+Calculators hub /calculators/ (scripts/i18n_ch.py); Tools menu keeps only the main tools. Asset lists paginate 50 per page.
 News aggregator: api/news.js (Vercel function, RSS headlines only, links to originals).
 
 ## Backlog agreed with the owner (2026-11-17)

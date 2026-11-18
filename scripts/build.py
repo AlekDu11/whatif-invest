@@ -42,6 +42,7 @@ from i18n_sm import SM, SM_LANGS, SM_KINDS  # noqa: E402
 from i18n_al import AL  # noqa: E402
 from i18n_nl import NL  # noqa: E402
 from i18n_ch import CH  # noqa: E402
+from i18n_inv import INV  # noqa: E402
 from i18n_ua import UA_LANGS, UA_ASOF, OB, OBI, OBT, UA_SRC, BUYG, BUYG_SRC, OVP  # noqa: E402
 from i18n_bpd import BPD, IDEA as BP_IDEA  # noqa: E402
 from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB, CH as OWN_CH, CH2 as OWN_CH2  # noqa: E402
@@ -67,7 +68,7 @@ UPDATED = market['updated']
 END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
-RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide', 'commodities', 'widgets', 'embed', 'dividends', 'average-price', 'ovdp', 'largest-companies', 'crypto-exchanges', 'partners', 'buy-stocks-ukraine', 'calculators'}
+RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide', 'commodities', 'widgets', 'embed', 'dividends', 'average-price', 'ovdp', 'largest-companies', 'crypto-exchanges', 'partners', 'buy-stocks-ukraine', 'calculators', 'investors'}
 RESERVED |= {v[0] for v in MKTS.values()} | {'world-assets', 'activities', 'editorial-policy', 'about', 'portfolios'}
 # asset ids that clash with a language folder or a section get a suffix (ko -> ko-stock, fil -> fil-crypto)
 _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
@@ -186,6 +187,10 @@ def has_page(lang, aid):
         return lang in UA_LANGS
     if '/' in (aid or '') and aid.rsplit('/', 1)[1] in SM_KINDS:
         return lang in SM_LANGS and sm_ok(aid.rsplit('/', 1)[0], aid.rsplit('/', 1)[1])
+    if aid == 'investors':
+        return bool(INVD)
+    if (aid or '').startswith('investors/'):
+        return aid.split('/', 1)[1] in INVD
     if (aid or '').startswith('converter/'):
         return aid in _CVS.setdefault(lang, {cv_slug(i, c) for i, c in cv_pairs(lang)})
     if (aid or '').startswith('ovdp/brokers/'):
@@ -2018,6 +2023,84 @@ def coin_markets_block(lang, aid):
 
 
 
+
+# ---------------- famous investors (SEC 13F) ----------------
+INVD = (_jload('investors.json') or {}).get('inv', {})
+_TK2AID = {}
+
+
+def tk2aid(tk):
+    if not _TK2AID:
+        for i in ORDERED:
+            a = A[i]
+            if a['cat'] in ('stock', 'etf') and a.get('mkt') in (None, '', 'us'):
+                _TK2AID.setdefault((a.get('yahoo') or a['tk']).upper().replace('-', '.'), i)
+                _TK2AID.setdefault(a['tk'].upper(), i)
+    t = (tk or '').upper()
+    return _TK2AID.get(t) or _TK2AID.get(t.replace('/', '.')) or _TK2AID.get(t.replace('.', '-'))
+
+
+def _qlabel(period, lang):
+    return f'Q{(int(period[5:7]) - 1) // 3 + 1} {period[:4]}' if period else ''
+
+
+def inv_order():
+    return sorted(INVD, key=lambda k: -(INVD[k].get('value') or 0))
+
+
+def _inv_name(row, lang):
+    tk, issuer = row[0], row[1]
+    aid = tk2aid(tk)
+    if aid:
+        return f'<a class="asset" href="{aurl(lang, aid)}">{icon(A[aid])}<span><span class="nm">{esc(nm(A[aid], lang))}</span><span class="tk">{esc(tk)}</span></span></a>'
+    return f'<span class="asset"><span class="ic" style="background:hsl({hue(tk or issuer)} 45% 45%)">{esc((tk or issuer)[:2])}</span><span><span class="nm">{esc(issuer.title())}</span><span class="tk">{esc(tk)}</span></span></span>'
+
+
+def investors_page(lang, ver):
+    t = INV[lang]
+    rows = ''
+    for k, fid in enumerate(inv_order()):
+        d = INVD[fid]
+        top = d['top'][0] if d.get('top') else None
+        rows += (f'<tr><td class="l n">{k + 1}</td><td class="l"><a class="asset" href="{url(lang, "investors/" + fid)}"><span class="ic" style="background:hsl({hue(fid)} 50% 42%)">{esc("".join(w[0] for w in d["name"].split()[:2]))}</span>'
+                 f'<span><span class="nm">{esc(d["name"])}</span><span class="tk">{esc(d["fund"])}</span></span></a></td><td class="num"><b>{usd_h(d["value"])}</b></td>'
+                 f'<td class="num hide-sm">{d["n"]}</td><td class="l hide-sm">{esc(top[0] or top[1].title()) if top else "—"} <span class="muted">{pctu(top[3]) if top else ""}</span></td>'
+                 f'<td class="hide-sm">{esc(_qlabel(d.get("period"), lang))}</td></tr>')
+    body = (f'<h1>{esc(t["h1"])}</h1><p class="lead">{esc(t["lead"])}</p><section class="section"><div class="tw"><table class="mt"><thead><tr><th class="l n">#</th>'
+            f'<th class="l">{esc(t["c_inv"])}</th><th>{esc(t["c_val"])}</th><th class="hide-sm">{esc(t["c_n"])}</th><th class="l hide-sm">{esc(t["c_top"])}</th><th class="hide-sm">{esc(t["c_per"])}</th></tr></thead>'
+            f'<tbody>{rows}</tbody></table></div><p class="note">{esc(t["note"])}</p></section>')
+    ld = {"@context": "https://schema.org", "@type": "ItemList", "name": t['h1'],
+          "itemListElement": [{"@type": "ListItem", "position": k + 1, "name": INVD[f]['name'], "url": SITE + url(lang, 'investors/' + f)} for k, f in enumerate(inv_order())]}
+    return shell(lang, 'investors', t['h1'] + ' | ' + BRAND, t['lead'], body, {}, ver, [ld])
+
+
+def investor_page(lang, fid, ver):
+    t, d = INV[lang], INVD[fid]
+    q = _qlabel(d.get('period'), lang)
+    topn = ', '.join((r[0] or r[1].title()) + f' {pctu(r[3])}' for r in d['top'][:3])
+    f = dict(name=d['name'], fund=d['fund'], n=d['n'], v=usd(d['value']), q=q, top=topn)
+    rows = ''
+    for k, r in enumerate(d['top']):
+        chg = r[5]
+        ch = (f'<span class="pill up">{esc(t["new"])}</span>' if chg == 'new' else f'<span class="{cls(chg)}">{pct(chg)}</span>' if isinstance(chg, (int, float)) and abs(chg) > 0.0005 else '—')
+        rows += (f'<tr><td class="l n">{k + 1}</td><td class="l">{_inv_name(r, lang)}</td><td class="num"><b>{pctu(r[3])}</b><div class="wbar"><i style="width:{min(100, r[3] * 100 / max(d["top"][0][3], 0.0001)):.1f}%"></i></div></td>'
+                 f'<td class="num">{usd_h(r[2])}</td><td class="num hide-sm">{_num(r[4], 0)}</td><td class="num">{ch}</td></tr>')
+    sold = ''.join(f'<tr><td class="l">{_inv_name(r, lang)}</td><td class="num muted">{usd_h(r[2])}</td></tr>' for r in d.get('sold') or [])
+    w10 = sum(r[3] for r in d['top'][:10])
+    others = ''.join(f'<a class="chip" href="{url(lang, "investors/" + o)}">{esc(INVD[o]["name"])}</a>' for o in inv_order() if o != fid)
+    body = (f'<nav class="crumbs"><a href="{url(lang, "investors")}">{esc(t["nav"])}</a> / {esc(d["name"])}</nav><h1>{esc(t["p_h1"].format(**f))}</h1>'
+            f'<p class="lead">{esc(t["p_lead"].format(**f))}</p>'
+            f'<div class="ktiles obtiles smtiles"><div class="ks"><span>{esc(t["c_val"])}</span><b>{usd_h(d["value"])}</b></div><div class="ks"><span>{esc(t["c_n"])}</span><b>{d["n"]}</b></div>'
+            f'<div class="ks"><span>{esc(t["c_per"])}</span><b>{esc(q)}</b></div><div class="ks"><span>Top 10</span><b>{pctu(w10)}</b></div></div>'
+            f'<section class="section"><h2>{esc(t["top10"].format(w=pctu(w10)))}</h2><div class="tw"><table class="mt"><thead><tr><th class="l n">#</th><th class="l">{esc(t["c_stock"])}</th>'
+            f'<th>{esc(t["c_w"])}</th><th>{esc(t["c_val"])}</th><th class="hide-sm">{esc(t["c_sh"])}</th><th>{esc(t["c_chg"])}</th></tr></thead><tbody>{rows}</tbody></table></div></section>'
+            + (f'<section class="section"><h2>{esc(t["sold"])}</h2><div class="tw"><table class="mt"><tbody>{sold}</tbody></table></div></section>' if sold else '')
+            + f'<p class="note">{esc(t["note"])} {esc(t["src"].format(d=d.get("filed", "")))} <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK={d["cik"]}&type=13F-HR" target="_blank" rel="nofollow noopener">SEC ↗</a></p>'
+            f'<section class="section"><h2>{esc(t["nav"])}</h2><div class="chips">{others}</div></section>')
+    ld = {"@context": "https://schema.org", "@type": "Person", "name": d['name'], "worksFor": {"@type": "Organization", "name": d['fund']}}
+    return shell(lang, 'investors/' + fid, t['p_title'].format(**f) + ' | ' + BRAND, t['p_lead'].format(**f), body, {}, ver, [ld])
+
+
 # ---------------- Telegram price alerts ----------------
 TG_BOT = ''   # bot username without @ (set when the owner creates it in @BotFather); empty = no alert button
 
@@ -2420,6 +2503,8 @@ def tools_menu(lang):
     S = TR[lang]
     items = [('compare', S['nav_cmp']), ('converter', HCONV[lang]), ('largest-companies', LC[lang]['nav']), ('world-assets', WA[lang]['nav']),
              ('memes', MEM[lang]['nav']), ('bitcoin-halving', t['v_nav']), ('calculators', CH[lang][0])]
+    if INVD:
+        items.insert(3, ('investors', INV[lang]['nav']))
     if lang == 'uk':
         items.append(('ovdp', '🇺🇦 ОВДП і акції з України'))
     return items
@@ -3856,6 +3941,12 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
             write(pre + 'ovdp/index.html', ovdp_page(lang, ver))
         write(pre + 'calculators/index.html', calc_hub_page(lang, ver))
         extra_pages.append('calculators')
+        if INVD:
+            write(pre + 'investors/index.html', investors_page(lang, ver))
+            extra_pages.append('investors')
+            for _f in INVD:
+                write(f'{pre}investors/{_f}/index.html', investor_page(lang, _f, ver))
+                extra_pages.append('investors/' + _f)
         if lang in UA_LANGS:
             write(pre + 'ovdp/brokers/index.html', ovdp_brokers_page(lang, ver))
             write(pre + 'buy-stocks-ukraine/index.html', buyg_page(lang, ver))
