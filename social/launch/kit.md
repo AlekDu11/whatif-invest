@@ -68,7 +68,7 @@ Order: easy listings first, then the launch days. Product Hunt and Show HN get t
 | 1 | AlternativeTo | alternativeto.net (Add app, then "alternative to" CoinMarketCap, CoinGecko, Investing.com, CryptoRank) | free (queue is long; $25 priority not needed) | AlternativeTo description | ⏳ submitted 2026-11-16, texts + 5 screenshots + developer updated 2026-11-19 |
 | 2 | SaaSHub | saashub.com/submit | free (1–12 weeks) | tagline | ⏳ submitted 2026-11-19 (contact support@whatifstack.com; competitors CoinMarketCap, CoinGecko, Investing.com, Yahoo Finance + wallmine, Sharesight, Delta, Blockfolio). To claim/verify: owner registers with support@whatifstack.com |
 | 3 | Crunchbase | crunchbase.com (create a company profile) | free profile | short description | ☐ |
-| 4 | Indie Hackers | indiehackers.com/products + a "how I built it" post | free | long description | ☐ |
+| 4 | Indie Hackers | indiehackers.com/products + a "how I built it" post | free | long description | ✅ 2026-11-19 https://www.indiehackers.com/product/whatifstack (story post: later) |
 | 5 | Uneed | uneed.best/submit-a-tool | free line (launch day needs ≥10 upvotes to stay, ≥20 for dofollow) | short + long | ⏳ free launch scheduled for **2027-02-10**; texts, 3 screenshots set 2026-11-19 |
 | 6 | Fazier | fazier.com/launch | ✗ free launch needs 3 comments on other products + their badge on our site ($29 to skip) | — | skip |
 | 7 | Startup Stash | startupstash.com | ✗ now paid plans only (checked 2026-11-19) | — | skip |
@@ -87,6 +87,7 @@ Never: paid link packages, "submit to 500 directories" services, link exchanges.
 |---|---|---|---|
 | 2026-11-19 | GitHub | https://github.com/AlekDu11/whatif-invest | About + topics updated |
 | 2026-11-19 | AlternativeTo | (pending review) | listing updated |
+| 2026-11-19 | Indie Hackers | https://www.indiehackers.com/product/whatifstack | live |
 | 2026-11-19 | PolyMart | https://polymart.app/crypto (after review) | submitted |
 | 2026-11-19 | Uneed | https://www.uneed.best/tool/whatifstack | free launch 2027-02-10 |
 | 2026-11-19 | SaaSHub | https://www.saashub.com/whatifstack (after approval) | submitted, free queue |

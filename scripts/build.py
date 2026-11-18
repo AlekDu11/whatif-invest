@@ -2353,7 +2353,8 @@ PARTNER_TXT = {
 
 # Directories and catalogues that list WhatIfStack (add a row when a listing goes live)
 LISTED = [('GitHub — open source code', 'https://github.com/AlekDu11/whatif-invest'),
-          ('PolyMart — crypto tools directory', 'https://polymart.app/crypto')]
+          ('PolyMart — crypto tools directory', 'https://polymart.app/crypto'),
+          ('Indie Hackers', 'https://www.indiehackers.com/product/whatifstack')]
 LISTED_H = {'en': 'Find WhatIfStack on', 'uk': 'WhatIfStack на інших сайтах'}
 
 
