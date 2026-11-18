@@ -26,17 +26,18 @@ Formats to rotate and compare: dca-whatif, mover, market-pulse, chart-fact, coun
 
 | when | format | topic | link | url | views | likes | reposts | replies |
 |---|---|---|---|---|---|---|---|---|
-| 2026-11-16 02:58 | dca-whatif | Gold vs S&P 500 vs Bitcoin, $10/day 5y | no | https://x.com/WhatIfStack/status/2122116675558355111 | 24 | 0 | 0 | 0 |
+| 2026-11-16 02:58 | dca-whatif | Gold vs S&P 500 vs Bitcoin, $10/day 5y | no | https://x.com/WhatIfStack/status/2122116675558355111 | 25 | 0 | 0 | 0 |
 | 2026-11-16 09:18 | market-pulse | Fear & Greed 10, BTC/ETH weekly drop, gold | no | https://x.com/WhatIfStack/status/2122227869095223565 | 16 | 0 | 0 | 0 |
-| 2026-11-16 12:16 | mover | Kava Lend exploit, KAVA −40% | no | https://x.com/WhatIfStack/status/2122272638718329107 | 18 | 0 | 0 | 0 |
-| 2026-11-16 15:23 | chart-fact | BTC −16.5% in November so far vs best/worst Novembers | no+img | https://x.com/WhatIfStack/status/2122319572535763138 | 16 | 0 | 0 | 0 |
-| 2026-11-16 18:19 | dca-whatif | Palantir vs Nvidia vs Ethereum, $10/day 5y (PLTR +729%) | no+img | https://x.com/WhatIfStack/status/2122363783330894225 | 8 | 0 | 0 | 0 |
-| 2026-11-16 21:17 | mover | Internet Computer +15% in 24h as crypto slides (ICP $2.50, 99.6% below ATH, $10/day 3y $11,120 → $6,370) | no+img | https://x.com/WhatIfStack/status/2122408622227337401 | 6 | 0 | 0 | 0 |
-| 2026-11-17 09:27 | dca-whatif | AMD vs Apple vs Tesla, $10/day 5y (AMD +290% → $71,873) | no+img | https://x.com/WhatIfStack/status/2122589805674635428 | 3 | 0 | 0 | 0 |
-| 2026-11-17 12:17 | country-stocks | South Korea 5y DCA leaders (SK hynix +601%, Hanwha Aerospace +332%, vs S&P 500 +52%) | no+img | https://x.com/WhatIfStack/status/2122635304012005721 | 3 | 0 | 0 | 0 |
-| 2026-11-17 15:21 | market-pulse | Dollar 19-month high, Fed hike bets >90%; BTC $64,250/ETH $1,813 −14% w/w, gold $3,870, S&P −1.9%, F&G 12 | no+img | https://x.com/WhatIfStack/status/2122681457277558810 | 7 | 0 | 0 | 0 |
-| 2026-11-17 18:18 | chart-fact | ETH 3rd-worst November so far (−19.6%; worse 2018 −42.8%, 2025 −22.3%; $10/day 5y $18,260 → $15,091) | no+img | https://x.com/WhatIfStack/status/2122726051398754536 | 2 | 0 | 0 | 0 |
-| 2026-11-17 21:17 | mover | Backpack BP +30.5% in 24h on CFTC approval of its US derivatives exchange + clearing ($1.09, mcap $273M, 34% below $1.65 peak) | no+img | https://x.com/WhatIfStack/status/2122771047841730783 |  |  |  |  |
+| 2026-11-16 12:16 | mover | Kava Lend exploit, KAVA −40% | no | https://x.com/WhatIfStack/status/2122272638718329107 | 19 | 0 | 0 | 0 |
+| 2026-11-16 15:23 | chart-fact | BTC −16.5% in November so far vs best/worst Novembers | no+img | https://x.com/WhatIfStack/status/2122319572535763138 | 17 | 0 | 0 | 0 |
+| 2026-11-16 18:19 | dca-whatif | Palantir vs Nvidia vs Ethereum, $10/day 5y (PLTR +729%) | no+img | https://x.com/WhatIfStack/status/2122363783330894225 | 9 | 0 | 0 | 0 |
+| 2026-11-16 21:17 | mover | Internet Computer +15% in 24h as crypto slides (ICP $2.50, 99.6% below ATH, $10/day 3y $11,120 → $6,370) | no+img | https://x.com/WhatIfStack/status/2122408622227337401 | 7 | 0 | 0 | 0 |
+| 2026-11-17 09:27 | dca-whatif | AMD vs Apple vs Tesla, $10/day 5y (AMD +290% → $71,873) | no+img | https://x.com/WhatIfStack/status/2122589805674635428 | 4 | 0 | 0 | 0 |
+| 2026-11-17 12:17 | country-stocks | South Korea 5y DCA leaders (SK hynix +601%, Hanwha Aerospace +332%, vs S&P 500 +52%) | no+img | https://x.com/WhatIfStack/status/2122635304012005721 | 5 | 0 | 0 | 0 |
+| 2026-11-17 15:21 | market-pulse | Dollar 19-month high, Fed hike bets >90%; BTC $64,250/ETH $1,813 −14% w/w, gold $3,870, S&P −1.9%, F&G 12 | no+img | https://x.com/WhatIfStack/status/2122681457277558810 | 10 | 0 | 0 | 0 |
+| 2026-11-17 18:18 | chart-fact | ETH 3rd-worst November so far (−19.6%; worse 2018 −42.8%, 2025 −22.3%; $10/day 5y $18,260 → $15,091) | no+img | https://x.com/WhatIfStack/status/2122726051398754536 | 6 | 1 | 0 | 0 |
+| 2026-11-17 21:17 | mover | Backpack BP +30.5% in 24h on CFTC approval of its US derivatives exchange + clearing ($1.09, mcap $273M, 34% below $1.65 peak) | no+img | https://x.com/WhatIfStack/status/2122771047841730783 | 6 | 1 | 0 | 0 |
+| 2026-11-18 09:30 | dca-whatif | Big Tech $10/day 5y: Meta +95% ($35,552), Google +78%, Amazon +60%, Microsoft +43% | no+img | https://x.com/WhatIfStack/status/2122952235613126909 |  |  |  |  |
 
 Week notes (2026-11-16): first week, 3 posts with stats (dca-whatif 15, mover 6, market-pulse 4 views) — dca-whatif leads but samples are tiny. Keep rotating formats to collect data; market-pulse tested today during the Extreme Fear sell-off.
 Note (2026-11-16 12:16): posting with a $KAVA cashtag (X attached a price card) failed twice with "Your account may not be allowed to perform this action"; the same text without the cashtag went through after a reload. Avoid cashtags for now. Profile/search timelines don't render in the pane — read the post URL from the SearchTimeline network response.
@@ -47,3 +48,5 @@ Note (2026-11-17 15:21): avg views (2 weeks) — market-pulse 16 (1), chart-fact
 Note (2026-11-17 18:18): avg views (2 weeks) — chart-fact 16 (1), mover 12 (2), dca-whatif 11 (3), market-pulse 10 (2), country-stocks 2 (1). Reach still low (latest 5 posts 8/6/2/2/4). Posted chart-fact (top average). Metals series in data/market.json is flat Jan–Mar 2026 (gold 4745.1, silver 78.3 three months running) — looks like a data gap; avoid metals peak/drawdown claims until fixed.
 
 Note (2026-11-17 21:17): avg views (2 weeks) — mover 12 (2), dca-whatif 12 (3), market-pulse 12 (2), chart-fact 9 (2), country-stocks 3 (1). Posted mover (top average, Backpack/CFTC). Profile timeline renders again in the pane, so stats can be read from article [role=group] aria-labels there in one pass. Two posts on the profile are not in this log (status/2122690567314292871, 2122729649189044275 — likely from another routine).
+
+Note (2026-11-18 09:30): avg views (2 weeks) — market-pulse 13 (2), dca-whatif 13 (3), chart-fact 12 (2), mover 11 (3), country-stocks 5 (1). Reach still ~5–10 per post; first likes (ETH chart-fact, Backpack mover). Posted dca-whatif (Big Tech ranking, not in last 3 formats). Profile timeline did not render this run; stats read from each status page.
