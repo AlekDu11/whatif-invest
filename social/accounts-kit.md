@@ -44,4 +44,4 @@ Long bio: see "Short description" in social/launch/kit.md.
 - Owner's own profile, credential: "Founder of WhatIfStack (whatifstack.com)"
 
 ## 9. Telegram channel
-- Name WhatIfStack, link t.me/whatifstack, description = short bio + site link, avatar = logo
+- Name WhatIfStack, link t.me/WhatIfStack, description = short bio + site link, avatar = logo
