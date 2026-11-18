@@ -1,34 +1,87 @@
-# WhatIfStack launch kit (Product Hunt, AlternativeTo, directories)
+# WhatIfStack launch kit (directories, Product Hunt, Show HN)
 
-Images in this folder: logo-240.png / logo-512.png (thumbnail), 01–05 screenshots 1270×760 (gallery).
+Updated 2026-11-19. All texts in English (social/syndication rule). Owner signs up and submits; log every submission in the table at the end.
+Images in this folder: logo-240.png / logo-512.png (thumbnail), screenshots 1270×760:
+01-home.png (Your markets + Market in 60 seconds), 02-bitcoin.png (asset page: DCA results + monthly heatmap),
+03-exchange.png (Binance page), 04-investors.png (Warren Buffett portfolio), 05-largest-companies.png, 06-converter.png.
 
 ## Basics
 - Name: WhatIfStack
-- URL: https://whatifstack.com/en/  (use the /en/ page for English directories)
-- Tagline (≤60): What if you had invested $10 a day? Real numbers, 20 languages
-- Short description (≤260): WhatIfStack shows what regular (DCA) investing in 1,700+ cryptocurrencies, stocks, ETFs and gold would have returned, with real prices. Free calculators, monthly-returns heatmaps, stocks of 25 countries and the world's largest assets, in 20 languages. No sign-up.
-- Category / tags: Fintech, Investing, Crypto, Personal finance, Calculator, Open source
+- URL: https://whatifstack.com/en/  (English directories always get the /en/ page)
+- Tagline (≤60): Crypto, stocks and gold in plain language, in 20 languages
+- Tagline, shorter (≤40): Markets in plain language, free
+- Short description (≤260): WhatIfStack is a free markets site for ordinary people: prices, charts and news for 600+ cryptocurrencies and 1,200+ stocks from 27 markets, gold, exchange rankings, famous investors' portfolios and simple calculators. 20 languages, no sign-up.
+- Category / tags: Fintech, Investing, Crypto, Stocks, Personal finance, Open source
 - Pricing: Free
 - Platforms: Web (PWA, works on mobile)
 - Open source: yes, https://github.com/AlekDu11/whatif-invest
-- Alternatives to list it against (AlternativeTo): CoinMarketCap, CoinGecko, Investing.com, dcaBTC, Portfolio Visualizer, TradingView
+- Alternatives to list it against: CoinMarketCap, CoinGecko, CryptoRank, Investing.com, CompaniesMarketCap, Yahoo Finance
 
-## Product Hunt maker comment (first comment)
-Hi Product Hunt! I built WhatIfStack because the most common beginner question in investing is "what would I have now if I had started buying a little every month?", and every answer online was either a single-asset calculator or a trading terminal.
+## Long description (directories with a big text field)
+WhatIfStack is a free markets site for people who are not professional traders. It puts crypto, stocks and gold in one place and explains them in plain language.
 
-WhatIfStack answers it for 1,700+ assets at once, with real daily prices:
-- $10 a day / week / month into Bitcoin, Nvidia, gold, the S&P 500 or a stock from your own country, from any start date
-- a monthly-returns heatmap for every asset (which months are usually red or green)
-- compare up to several assets on one chart, or see the world's largest assets by market cap
-- stocks of 25 countries in their local currency, and the whole site in 20 languages
-- honest guides to airdrops and exchange campaigns, with risks and what is not confirmed
+- Prices and charts for 600+ cryptocurrencies and 1,200+ stocks from 27 markets, in local currency, with live crypto prices
+- "What's happening with X": short daily briefs on why a coin or stock is moving
+- Market in 60 seconds: a daily summary of crypto, stocks, gold and the Fear & Greed index
+- Your markets: star assets or add your holdings and the home page opens with your portfolio, its change today and news about your assets (stored only in your browser)
+- 100 crypto exchanges ranked, with volume, trading pairs and proof-of-reserves data
+- Famous investors' portfolios from SEC 13F filings: Warren Buffett, Bill Ackman, Ray Dalio, Cathie Wood and more
+- The world's largest companies by market cap, revenue and earnings, by country
+- A currency and crypto converter, and calculators: what regular investing (DCA) in any asset would have returned, average price, compound interest
 
-It is free, needs no account and loads fast on a phone. Prices come from Binance, CoinGecko, Yahoo Finance and other public sources; the editorial policy and methodology are public. Not investment advice: history, not a forecast.
+The whole site is available in 20 languages, needs no account and loads fast on a phone. Prices come from public sources (Binance, CoinGecko, Yahoo Finance, SEC, DefiLlama), with the source and date shown. Not investment advice.
 
-I would love feedback: which asset or country is missing, and what would make you come back every week?
-
-## AlternativeTo description
-WhatIfStack is a free, no-sign-up markets site focused on regular (DCA) investing. Pick any of 1,700+ cryptocurrencies, stocks, ETFs or metals, set an amount ($10 a day, $100 a month…) and a start date, and it shows what you would have now, with a chart, the worst drawdown and a comparison with other assets. Also: monthly-returns heatmaps, a world's largest assets ranking, stock lists for 25 countries in local currency, news briefs and guides, all in 20 languages. Open source.
+## AlternativeTo description (≤ ~600 chars)
+Free markets site in 20 languages: prices, charts and plain-language news for 600+ cryptocurrencies and 1,200+ stocks from 27 markets, plus gold. Also ranks 100 crypto exchanges (volume, pairs, proof of reserves), shows famous investors' portfolios from SEC 13F filings, lists the world's largest companies, and has a converter and investing calculators. A personal home page shows your watchlist and portfolio. No sign-up, no ad clutter, open source.
 
 ## Short version (directories with 1–2 lines)
-Free DCA calculator for 1,700+ crypto, stocks, ETFs and gold: see what $10 a day would be worth now. 20 languages, no sign-up.
+Free markets site in 20 languages: crypto, stocks and gold prices, plain-language news, exchange rankings, Buffett's portfolio and investing calculators. No sign-up.
+
+## Product Hunt — maker comment (first comment)
+Hi Product Hunt! I built WhatIfStack because markets sites are either made for traders (dense terminals, ads everywhere) or cover only one thing: crypto or stocks, English only.
+
+WhatIfStack puts crypto, stocks and gold in one place and explains them in plain language:
+- prices, charts and short "why is it moving" briefs for 600+ coins and 1,200+ stocks from 27 markets
+- "Market in 60 seconds" every day, and a home page that opens with your own watchlist and portfolio
+- 100 crypto exchanges ranked, with trading pairs and proof-of-reserves data
+- what Warren Buffett, Ray Dalio, Cathie Wood and others hold, from SEC filings
+- the whole site in 20 languages, prices in your local currency
+
+It's free, needs no account and is open source. Sources and dates are shown next to every number. Not investment advice.
+
+What would make you open it every morning? I read every comment.
+
+Launch day tips: launch at 00:01 Pacific (10:01 Kyiv), reply to every comment the same day, do not ask anyone for upvotes (Product Hunt removes launches for vote rings).
+
+## Show HN (news.ycombinator.com/submit)
+Title (≤80): Show HN: WhatIfStack – a static, open-source markets site in 20 languages
+URL: https://whatifstack.com/en/
+Text (first comment):
+I wanted a markets site that is fast and readable for non-traders, and in more languages than English. WhatIfStack is ~19k static pages generated by one Python script (stdlib only) from daily data: Binance, CoinGecko and Yahoo prices, SEC 13F filings for famous investors' portfolios, DefiLlama proof-of-reserves for exchanges. Live crypto prices come from the public Binance websocket; the personal "watchlist + portfolio" home lives in localStorage, no accounts. Deployed as static files plus a few serverless functions. Code: https://github.com/AlekDu11/whatif-invest. Feedback on speed and data quality is very welcome.
+Rules: post once, no asking for upvotes, answer questions technically.
+
+## Where to submit (all free; ☐ = not submitted yet)
+Order: easy listings first, then the launch days. Product Hunt and Show HN get their own day, when the owner can answer comments for a few hours.
+
+| # | Site | Submit at | Free? | Which text | Status |
+|---|---|---|---|---|---|
+| 1 | AlternativeTo | alternativeto.net (Add app, then "alternative to" CoinMarketCap, CoinGecko, Investing.com, CryptoRank) | free | AlternativeTo description | ☐ |
+| 2 | SaaSHub | saashub.com/submit | free | short description + long | ☐ |
+| 3 | Crunchbase | crunchbase.com (create a company profile) | free profile | short description | ☐ |
+| 4 | Indie Hackers | indiehackers.com/products + a "how I built it" post | free | long description | ☐ |
+| 5 | Uneed | uneed.best/submit-a-tool | free with a waiting list (paid skip — not needed) | short + long | ☐ |
+| 6 | Fazier | fazier.co | free (paid options not needed) | short + long | ☐ |
+| 7 | Startup Stash | startupstash.com | free | short description | ☐ |
+| 8 | BetaList | betalist.com/submit | free with a long queue (paid skip — not needed) | short + long | ☐ |
+| 9 | Polymart crypto tools | polymart.app/submit?type=crypto | free, hand-reviewed, no account | short description | ☐ |
+| 10 | GitHub | repo: description, website link, topics (crypto, stocks, investing, finance, i18n, static-site) | free | tagline | ☐ (Claude can prepare) |
+| 11 | DEV Community | dev.to — article "Building a 19k-page static markets site in 20 languages" with a link | free | Claude writes the article | ☐ |
+| 12 | Reddit r/SideProject | reddit.com/r/SideProject | free, follow sub rules | Product Hunt comment, shortened | ☐ |
+| 13 | Product Hunt | producthunt.com/launch | free (paid promo not needed) | tagline + maker comment + 6 screenshots | ☐ own day |
+| 14 | Hacker News | news.ycombinator.com/submit | free | Show HN | ☐ own day |
+
+Never: paid link packages, "submit to 500 directories" services, link exchanges. Google treats them as link schemes; for a new domain that can hurt rankings for months.
+
+## Log
+| Date | Site | Listing URL | Result |
+|---|---|---|---|
