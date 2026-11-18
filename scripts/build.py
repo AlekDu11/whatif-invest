@@ -1257,6 +1257,23 @@ def to_usd(v, ccy):
     return v * k / rate if rate else None
 
 
+# Listing currency by Yahoo suffix: stockinfo.json market caps are in the listing currency, not USD
+SUFFIX_CCY = {'.DE': 'EUR', '.PA': 'EUR', '.MC': 'EUR', '.MI': 'EUR', '.AS': 'EUR', '.L': 'GBp', '.T': 'JPY', '.KS': 'KRW', '.KQ': 'KRW', '.NS': 'INR', '.BO': 'INR',
+              '.WA': 'PLN', '.IS': 'TRY', '.HK': 'HKD', '.TO': 'CAD', '.AX': 'AUD', '.SW': 'CHF', '.SA': 'BRL', '.MX': 'MXN', '.BK': 'THB', '.JK': 'IDR',
+              '.TW': 'TWD', '.TWO': 'TWD', '.SR': 'SAR', '.SS': 'CNY', '.SZ': 'CNY', '.PS': 'PHP', '.VN': 'VND', '.ME': 'RUB'}
+
+
+def sym_ccy(sym):
+    for suf, c in SUFFIX_CCY.items():
+        if sym.endswith(suf):
+            return c
+    return 'USD'
+
+
+for _sym, _inf in list(STOCKINFO.items()):   # convert every listing-currency market cap first
+    if _inf.get('mcap') and sym_ccy(_sym) != 'USD':
+        _m = to_usd(_inf['mcap'], (STOCKSTATS.get(_sym) or {}).get('ccy') or sym_ccy(_sym))
+        STOCKINFO[_sym] = dict(_inf, mcap=_m) if _m else {k: v for k, v in _inf.items() if k != 'mcap'}
 for _sym, _st in STOCKSTATS.items():   # stats refresh the older profile file; market cap always stored in USD
     _m = to_usd(_st.get('mcap'), _st.get('ccy'))
     STOCKINFO[_sym] = {**STOCKINFO.get(_sym, {}), **{k: v for k, v in _st.items() if k in ('web', 'sec', 'ind', 'cty', 'emp', 'ds')}}
