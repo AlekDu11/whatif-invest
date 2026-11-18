@@ -1,0 +1,34 @@
+name: Famous investors (SEC 13F)
+
+on:
+  schedule:
+    - cron: '37 6 * * 2'    # weekly, Tuesday 06:37 UTC (13F filings land up to 45 days after a quarter)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: investors
+  cancel-in-progress: false
+
+jobs:
+  investors:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch 13F holdings
+        run: python scripts/fetch_13f.py
+      - name: Commit
+        run: |
+          git config user.name "whatif-bot"
+          git config user.email "whatif-bot@users.noreply.github.com"
+          git add data/investors.json data/cusip_map.json
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git commit -m "Investors 13F $(date -u +%F)"
+          git pull --rebase -X theirs || (git rebase --abort; git pull --rebase -X theirs)
+          git push
