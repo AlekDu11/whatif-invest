@@ -91,6 +91,10 @@ See how much Ukrainian military government bonds (OVDP) pay in hryvnia, dollars 
 
 Ranking of public companies with prices and daily and yearly change. Tap a company to see its key numbers and a plain-language analysis. [Largest companies in the world by market cap]({lang}/largest-companies/)
 
+## A converter page for every pair
+
+Pages like [BTC → USD]({lang}/converter/btc-usd/): the rate now, conversion tables both ways and links to other currencies. Every coin page also shows where it trades: exchanges and pairs in any quote currency (USDT, USD, EUR, BTC and more), with a filter.
+
 ## Exchange ranking
 
 Where crypto trades most: 24h volume, market share and trust score. Tap an exchange to see what trades there. [Largest crypto exchanges by trading volume]({lang}/crypto-exchanges/) · [Largest futures and perpetuals exchanges]({lang}/crypto-exchanges/derivatives/)

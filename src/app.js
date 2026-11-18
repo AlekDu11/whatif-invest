@@ -547,6 +547,11 @@ new MutationObserver(()=>{ clearTimeout(window._wiStar); window._wiStar=setTimeo
   let ht; document.addEventListener('wi:tick',()=>{ clearTimeout(ht); ht=setTimeout(drawHold,1500) });
   document.addEventListener('wi:watch',drawWatch); drawWatch(); drawPlans(); drawHold();
 })();
+/* ---------- markets tables: quote tabs + show more ---------- */
+$$('section.mkt').forEach(sec=>{ const rows=[...sec.querySelectorAll('tbody tr')], more=sec.querySelector('.mkmore'); let q='', open=false;
+  const apply=()=>{ let n=0; rows.forEach(r=>{ const ok=!q||r.dataset.q===q; const show=ok&&(open||q||!r.classList.contains('xh')); r.style.display=show?'':'none'; if(show) n++ }); if(more) more.style.display=(open||q||!rows.some(r=>r.classList.contains('xh')))?'none':'' };
+  sec.querySelectorAll('.qtabs button').forEach(b=>b.onclick=()=>{ q=b.dataset.q; sec.querySelectorAll('.qtabs button').forEach(x=>x.classList.toggle('on',x===b)); apply() });
+  if(more) more.onclick=()=>{ open=true; apply() }; apply() });
 /* ---------- my OVDP (Ukrainian government bonds) in the portfolio ---------- */
 (function(){
   const M=PAGE.me; if(!M||!M.ob||!$('#bonds')) return; const t=M.ob.t, BR=M.ob.b;
@@ -671,9 +676,6 @@ new MutationObserver(()=>{ clearTimeout(window._wiStar); window._wiStar=setTimeo
     b.innerHTML=`<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M4 12v7a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-7M16 6l-4-4-4 4M12 2v14"/></svg><span>${esc(label)}</span>`;
     b.onclick=e=>{ e.stopPropagation(); open(b) }; return b };
   bars.forEach(bar=>{ bar.innerHTML=''; bar.appendChild(mk()) });
-  // a second button right under the title of assets, articles and news
-  const top=document.querySelector('.ahead h1, article.art h1');
-  if(top){ const w=top.closest('.ahead')||top; const b=mk('top'); w.insertAdjacentElement('afterend', b) }
   document.addEventListener('click',e=>{ if(menu&&!menu.contains(e.target)) close() });
   document.addEventListener('keydown',e=>{ if(e.key==='Escape') close() });
   addEventListener('scroll',()=>{ if(menu) close() },{passive:true});

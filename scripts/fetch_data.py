@@ -293,6 +293,40 @@ def coingecko_meta():
     return meta
 
 
+def exchange_extras(cg, have):
+    """Symbols from data/exchanges.json top pairs that are missing from the market-cap list (CryptoRank-style coverage).
+    Skips stablecoins, tokenized stocks and wrapped/staked tokens. Adds their CoinGecko meta to cg."""
+    try:
+        ex = json.load(open(os.path.join(ROOT, 'data/exchanges.json'), encoding='utf-8'))
+    except Exception:
+        return []
+    ids = {}
+    for d in ex.get('detail', {}).values():
+        for p in d.get('pairs', []):
+            b, cid = (p.get('b') or '').upper(), p.get('cg') or ''
+            if not cid or b in have or b in STABLE or not b.isalnum():
+                continue
+            if any(w in cid for w in ('stock', 'bstock', 'rstock', 'xstock', 'usd', 'staked', 'wrapped', 'bridged', 'peg', 'gold', 'etf')):
+                continue
+            ids[cid] = ids.get(cid, 0) + (p.get('usd') or 0)
+    best = [c for c, _ in sorted(ids.items(), key=lambda z: -z[1])][:150]
+    out = []
+    for k in range(0, len(best), 100):
+        d = get_json('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=' + ','.join(best[k:k + 100]), tries=2)
+        for c in d if isinstance(d, list) else []:
+            sym = (c.get('symbol') or '').upper()
+            if not sym or sym in have or sym in cg or not c.get('current_price') or (c.get('total_volume') or 0) < 1e6:
+                continue
+            cg[sym] = dict(name=c.get('name'), logo=c.get('image'), rank=c.get('market_cap_rank'), mcap=c.get('market_cap'), cgid=c.get('id'),
+                           ath=c.get('ath'), athd=(c.get('ath_date') or '')[:10] or None, circ=c.get('circulating_supply'), supply=c.get('total_supply'),
+                           maxs=c.get('max_supply'), fdv=c.get('fully_diluted_valuation'), vol=c.get('total_volume'), price=c.get('current_price'),
+                           chg=(c['price_change_percentage_24h'] / 100 if isinstance(c.get('price_change_percentage_24h'), (int, float)) else None))
+            out.append(sym)
+        time.sleep(3)
+    log(f"exchange extras: {len(out)} coins ({', '.join(out[:20])})")
+    return out
+
+
 # ---------------- Yahoo ----------------
 def yahoo_monthly(tickers):
     """{ticker: series} using batched yfinance downloads."""
@@ -643,6 +677,8 @@ def main():
     stock_tk = {a['tk'] for a in assets.values() if a['cat'] in ('stock', 'etf')} | {'DRAM', 'MSTR', 'CRCL', 'SPCX', 'SOXL', 'SOXS', 'TQQQ', 'COIN', 'HOOD', 'KORU', 'BNC', 'BMNR', 'SKHY', 'SNXX', 'SNDK', 'QQQ', 'SPY', 'CRWV', 'PLTR'}
     bmap = {r['base']: r for r in top}
     order = CG_LIST or [r['base'] for r in top]          # by market cap; Binance volume if CoinGecko failed
+    if not quick:
+        order = order + exchange_extras(cg, set(order))     # coins traded on the big exchanges but outside the top-1000 list
     log(f"crypto candidates: {len(order)}")
     n, other = 0, 0
     for base in order:

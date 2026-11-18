@@ -1,7 +1,7 @@
 """Crypto exchange rankings from the CoinGecko public API (no key) -> data/exchanges.json.
 
   spot:        top 120 exchanges (trust rank, 24h volume in BTC, normalized volume, country, year, site, logo)
-  detail:      for the top 50: 30-day daily volume (BTC) and the top 40 trading pairs (USD volume, last price, spread, trust)
+  detail:      for the top 50: 30-day daily volume (BTC) and the top 100 trading pairs (USD volume, last price, spread, trust)
   derivatives: top 60 derivatives venues (open interest, 24h volume in BTC, perpetual / futures pair counts)
 Run daily by .github/workflows/exchanges.yml. Public rate limit is tight, so calls are spaced out.
 """
@@ -55,7 +55,7 @@ def main():
             d['pairs'] = [{k: v for k, v in dict(b=t.get('base'), q=t.get('target'), cg=t.get('coin_id'), last=num(t.get('last')),
                                                     usd=num((t.get('converted_volume') or {}).get('usd')), spread=num(t.get('bid_ask_spread_percentage')),
                                                     trust=t.get('trust_score'), stale=t.get('is_stale') or None).items() if v is not None}
-                          for t in tk['tickers'] if not t.get('is_anomaly')][:40]
+                          for t in tk['tickers'] if not t.get('is_anomaly')][:100]
         if d:
             out['detail'][e['id']] = d
     der = get('/derivatives/exchanges?order=open_interest_btc_desc&per_page=60&page=1')

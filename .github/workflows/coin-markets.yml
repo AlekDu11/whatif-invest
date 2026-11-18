@@ -1,0 +1,34 @@
+name: Coin markets (where each coin trades)
+
+on:
+  schedule:
+    - cron: '41 5 * * *'    # daily 05:41 UTC
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: coin-markets
+  cancel-in-progress: false
+
+jobs:
+  coinmarkets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch coin tickers from CoinGecko
+        run: python scripts/fetch_coin_markets.py 150
+      - name: Commit
+        run: |
+          git config user.name "whatif-bot"
+          git config user.email "whatif-bot@users.noreply.github.com"
+          git add data/coin_markets.json
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git commit -m "Coin markets $(date -u +%F)"
+          git pull --rebase -X theirs || (git rebase --abort; git pull --rebase -X theirs)
+          git push

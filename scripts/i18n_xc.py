@@ -166,3 +166,30 @@ _V = {
 XC = {lg: dict(zip(_K, v)) for lg, v in _V.items()}
 for _lg, _v in _V.items():
     assert len(_v) == len(_K), (_lg, len(_v))
+
+# coin «Markets» block on crypto asset pages + quote tabs on exchange pages: heading, All, Other, show more, source note
+_MK = {
+ 'uk': ('Де торгується {x}: біржі й пари', 'Усі', 'Інші', 'Показати більше', 'Ринки {x} на біржах за обсягом торгів за 24 год. Дані CoinGecko, {d}.'),
+ 'en': ('Where {x} trades: exchanges and pairs', 'All', 'Other', 'Show more', '{x} markets across exchanges by 24h trading volume. Data: CoinGecko, {d}.'),
+ 'es': ('Dónde se negocia {x}: exchanges y pares', 'Todos', 'Otros', 'Ver más', 'Mercados de {x} en exchanges por volumen de 24 h. Datos: CoinGecko, {d}.'),
+ 'pt': ('Onde {x} é negociado: corretoras e pares', 'Todos', 'Outros', 'Mostrar mais', 'Mercados de {x} nas corretoras por volume de 24 h. Dados: CoinGecko, {d}.'),
+ 'de': ('Wo {x} gehandelt wird: Börsen und Paare', 'Alle', 'Andere', 'Mehr anzeigen', '{x}-Märkte auf Börsen nach 24-h-Handelsvolumen. Daten: CoinGecko, {d}.'),
+ 'fr': ('Où s’échange {x} : plateformes et paires', 'Tous', 'Autres', 'Afficher plus', 'Marchés de {x} sur les plateformes par volume sur 24 h. Données : CoinGecko, {d}.'),
+ 'it': ('Dove si scambia {x}: exchange e coppie', 'Tutti', 'Altri', 'Mostra altro', 'Mercati di {x} sugli exchange per volume nelle 24 ore. Dati: CoinGecko, {d}.'),
+ 'pl': ('Gdzie handluje się {x}: giełdy i pary', 'Wszystkie', 'Inne', 'Pokaż więcej', 'Rynki {x} na giełdach według wolumenu z 24 h. Dane: CoinGecko, {d}.'),
+ 'tr': ('{x} nerede işlem görüyor: borsalar ve pariteler', 'Tümü', 'Diğer', 'Daha fazla göster', 'Borsalardaki {x} piyasaları, 24 saatlik işlem hacmine göre. Veri: CoinGecko, {d}.'),
+ 'nl': ('Waar {x} wordt verhandeld: beurzen en paren', 'Alle', 'Overig', 'Meer tonen', '{x}-markten op beurzen op 24-uurs handelsvolume. Data: CoinGecko, {d}.'),
+ 'ru': ('Где торгуется {x}: биржи и пары', 'Все', 'Другие', 'Показать больше', 'Рынки {x} на биржах по объёму торгов за 24 ч. Данные CoinGecko, {d}.'),
+ 'id': ('Tempat {x} diperdagangkan: bursa dan pasangan', 'Semua', 'Lainnya', 'Tampilkan lebih banyak', 'Pasar {x} di bursa menurut volume 24 jam. Data: CoinGecko, {d}.'),
+ 'vi': ('{x} được giao dịch ở đâu: sàn và cặp', 'Tất cả', 'Khác', 'Xem thêm', 'Thị trường {x} trên các sàn theo khối lượng 24 giờ. Dữ liệu: CoinGecko, {d}.'),
+ 'th': ('{x} ซื้อขายที่ไหน: กระดานเทรดและคู่เทรด', 'ทั้งหมด', 'อื่น ๆ', 'แสดงเพิ่ม', 'ตลาด {x} บนกระดานเทรดตามวอลุ่ม 24 ชม. ข้อมูล: CoinGecko, {d}'),
+ 'hi': ('{x} कहाँ ट्रेड होता है: एक्सचेंज और पेयर', 'सभी', 'अन्य', 'और दिखाएँ', 'एक्सचेंजों पर {x} के बाज़ार, 24 घंटे के वॉल्यूम के अनुसार। डेटा: CoinGecko, {d}।'),
+ 'ja': ('{x}の取引所と取引ペア', 'すべて', 'その他', 'もっと見る', '取引所ごとの{x}市場（24時間出来高順）。データ：CoinGecko、{d}。'),
+ 'ko': ('{x} 거래소와 거래쌍', '전체', '기타', '더 보기', '거래소별 {x} 마켓, 24시간 거래량 기준. 데이터: CoinGecko, {d}.'),
+ 'zh': ('{x} 在哪里交易：交易所与交易对', '全部', '其他', '显示更多', '各交易所的 {x} 市场，按 24 小时成交量排序。数据：CoinGecko，{d}。'),
+ 'ar': ('أين يُتداول {x}: المنصات والأزواج', 'الكل', 'أخرى', 'عرض المزيد', 'أسواق {x} على المنصات حسب حجم التداول خلال 24 ساعة. البيانات: CoinGecko، {d}.'),
+ 'fil': ('Saan nite-trade ang {x}: mga exchange at pair', 'Lahat', 'Iba pa', 'Ipakita pa', 'Mga market ng {x} sa mga exchange ayon sa 24h volume. Data: CoinGecko, {d}.'),
+}
+for _lg, _v in _MK.items():
+    XC[_lg].update(dict(zip(('mk_h', 'q_all', 'q_oth', 'more', 'mk_src'), _v)))
+assert set(_MK) == set(XC)
