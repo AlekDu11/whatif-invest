@@ -1,11 +1,12 @@
 name: Scheduled deploy
 
 # Vercel builds only commits with [deploy] in the message (scripts/vercel_ignore.sh), to stay under the
-# 10 GB deployment-storage limit of the Hobby plan. Every 4 hours: if anything that affects the site changed
-# since the last deploy, push an empty "[deploy]" commit.
+# 10 GB deployment-storage limit of the Hobby plan. At most every 4 hours: if anything that affects the site changed
+# since the last deploy, push an empty "[deploy]" commit. GitHub often skips scheduled runs, so the job is checked
+# every hour and only deploys when the last deploy is at least 3h50m old (missed slots are picked up an hour later).
 on:
   schedule:
-    - cron: '23 */4 * * *'
+    - cron: '23 * * * *'
   workflow_dispatch: {}
 
 permissions:
@@ -31,6 +32,10 @@ jobs:
             changed=yes
           fi
           if [ -z "$changed" ]; then echo "Nothing to deploy"; exit 0; fi
+          if [ -n "$last" ] && [ "${{ github.event_name }}" = "schedule" ]; then
+            age=$(( $(date +%s) - $(git log -1 --format=%ct "$last") ))
+            if [ "$age" -lt 13800 ]; then echo "Last deploy ${age}s ago — waiting for the 4-hour slot"; exit 0; fi
+          fi
           git config user.name "whatif-bot"
           git config user.email "whatif-bot@users.noreply.github.com"
           git commit --allow-empty -m "Scheduled deploy [deploy]"
