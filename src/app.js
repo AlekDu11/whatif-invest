@@ -762,8 +762,8 @@ $$('section.mkt').forEach(sec=>{ const rows=[...sec.querySelectorAll('tbody tr')
     const mtd=M.rows[y]&&M.rows[y][m], mm=ys.map(x=>M.rows[x][m]).filter(v=>v!=null);
     const Q=qrows(), q=Math.floor(m/3), qtd=Q.rows[y]&&Q.rows[y][q], qq=ys.map(x=>Q.rows[x]&&Q.rows[x][q]).filter(v=>v!=null);
     const ytd=M.yr[y], yy=ys.map(x=>M.yr[x]).filter(v=>v!=null);
-    const c=(lab,v,arr)=>`<div class="card stat"><div class="k">${esc(lab)}</div><div class="v ${cls(v)}">${v==null?'—':pc(v)}</div><div class="s muted">${esc(t.med)} ${arr.length?pc(med(arr)):'—'} · ${esc(t.up)}: ${arr.filter(v=>v>0).length}/${arr.length}</div></div>`;
-    $('#seasc').innerHTML=`<div class="stats">${c(t.mtd+' · '+MN[m],mtd,mm)}${c(t.qtd+' · Q'+(q+1),qtd,qq)}${c(t.ytd+' · '+y,ytd,yy)}</div>` }
+    const c=(lab,v,arr)=>`<div class="card stat"><div class="k">${esc(lab)}</div><div class="v ${cls(v)}">${v==null?'—':pc(v)}</div>${arr.length?`<div class="s muted">${esc(t.med)} ${pc(med(arr))} · ${esc(t.up)}: ${arr.filter(v=>v>0).length}/${arr.length}</div>`:''}</div>`;
+    $('#seasc').innerHTML=`<div class="stats sfit">${c(t.mtd+' · '+MN[m],mtd,mm)}${c(t.qtd+' · Q'+(q+1),qtd,qq)}${c(t.ytd+' · '+y,ytd,yy)}</div>` }
   async function draw(){ const g=$('#seasg');
     if(!P){ try{ P=await fetch(`${BASE}/assets/p/${C.id}.json?v=${WI.v}`).then(r=>r.json()) }catch(e){ g.innerHTML=''; return } }
     const M=monthly(); cards(M);

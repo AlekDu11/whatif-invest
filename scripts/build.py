@@ -2484,7 +2484,7 @@ def asset(aid, lang, ver):
                           + '</section>')
     else:   # no free live chart for this symbol -> our own monthly chart
         tv, tech_news = own_chart(lang, a, aid), ''
-    body = (f'{head}<p class="lead" style="margin-top:10px">{S["a_lead"].format(**fe)}</p>{hot_block(lang, aid)}<div class="chartside section">{tv}{side_block(lang, aid)}</div>{'' if 'timeline' in tech_news else hot_more(lang, aid)}{stock_block(lang, aid)}{analysis_block(lang, aid)}{offer_card(lang, 'asset-' + aid) if a['cat'] == 'crypto' else ''}<div class="stats">{stat_cards}</div><div class="stats">{lump_cards}</div>{long_block(lang, aid)}{seas_block(lang, aid)}{calc_block(lang)}{tech_news}{coin_markets_block(lang, aid)}'
+    body = (f'{head}<p class="lead" style="margin-top:10px">{S["a_lead"].format(**fe)}</p>{hot_block(lang, aid)}<div class="chartside section">{tv}{side_block(lang, aid)}</div>{'' if 'timeline' in tech_news else hot_more(lang, aid)}{stock_block(lang, aid)}{analysis_block(lang, aid)}{offer_card(lang, 'asset-' + aid) if a['cat'] == 'crypto' else ''}<div class="stats sfit">{stat_cards}{lump_cards}</div>{long_block(lang, aid)}{seas_block(lang, aid)}{calc_block(lang)}{tech_news}{coin_markets_block(lang, aid)}'
             f'<div class="cols2 section"><section class="card"><h2>{S["a_periods"].format(**fe)}</h2>{ptable}</section>'
             f'<section class="card faq"><h2>{S["faq"]}</h2>' + ''.join(f'<details><summary>{esc(q)}</summary><p>{esc(x)}</p></details>' for q, x in faq) + '</section></div>'
             + (f'<section class="section">{table_block(lang, peers, esc(KS[lang]["peers"]), interactive=False)}</section>' if (peers := stock_peers(aid)) else '') +

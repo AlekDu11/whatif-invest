@@ -895,3 +895,6 @@ tr.xh{display:none}.mkmore{margin-top:10px}.xgo{text-decoration:none;color:var(-
 .bchip .bt{display:none;font-weight:600}
 @media(max-width:560px){.bchip .bn{display:none}.bchip .bt{display:inline}}
 .bnums{display:flex;flex-wrap:wrap;gap:6px 16px;margin:0}.bnums a{text-decoration:none;color:inherit}
+/* stat cards stretch to fill the row (max 4 per row), no lonely card with empty space */
+.stats.sfit{grid-template-columns:repeat(auto-fit,minmax(max(200px,calc(25% - 9px)),1fr))}
+@media(max-width:980px){.stats.sfit{grid-template-columns:repeat(2,1fr)}}
