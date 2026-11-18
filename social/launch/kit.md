@@ -73,7 +73,7 @@ Order: easy listings first, then the launch days. Product Hunt and Show HN get t
 | 6 | Fazier | fazier.co | free (paid options not needed) | short + long | ☐ |
 | 7 | Startup Stash | startupstash.com | ✗ now paid plans only (checked 2026-11-19) | — | skip |
 | 8 | BetaList | betalist.com/submit | free with a long queue (paid skip — not needed) | short + long | ☐ |
-| 9 | Polymart crypto tools | polymart.app/submit?type=crypto | free, needs a link back (owner OK'd: /en/partners/ «Find WhatIfStack on») | short description | ☐ form filled 2026-11-19, owner passes the Cloudflare check and clicks Submit |
+| 9 | Polymart crypto tools | polymart.app/submit?type=crypto | free, needs a link back (owner OK'd: /en/partners/ «Find WhatIfStack on») | short description | ⏳ submitted 2026-11-19 by the owner (review: a few days) |
 | 10 | GitHub | README + About (description, website, 13 topics) | free | — | ✅ 2026-11-19 |
 | 11 | DEV Community | dev.to/new — article ready in social/launch/devto.md | free | devto.md | ☐ owner |
 | 12 | Reddit r/SideProject | reddit.com/r/SideProject | free, follow sub rules | Product Hunt comment, shortened | ☐ |
@@ -87,6 +87,8 @@ Never: paid link packages, "submit to 500 directories" services, link exchanges.
 |---|---|---|---|
 | 2026-11-19 | GitHub | https://github.com/AlekDu11/whatif-invest | About + topics updated |
 | 2026-11-19 | AlternativeTo | (pending review) | listing updated |
+| 2026-11-19 | PolyMart | https://polymart.app/crypto (after review) | submitted |
+| 2026-11-19 | Uneed | https://www.uneed.best/tool/whatifstack | free launch 2027-02-10 |
 | 2026-11-19 | SaaSHub | https://www.saashub.com/whatifstack (after approval) | submitted, free queue |
 
 ## GitHub About (repo page → ⚙ next to «About»)
