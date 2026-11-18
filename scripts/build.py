@@ -40,6 +40,7 @@ from i18n_cv import CV, CV_CCY  # noqa: E402
 from i18n_fb import FB  # noqa: E402
 from i18n_sm import SM, SM_LANGS, SM_KINDS  # noqa: E402
 from i18n_al import AL  # noqa: E402
+from i18n_nl import NL  # noqa: E402
 from i18n_ua import UA_LANGS, UA_ASOF, OB, OBI, OBT, UA_SRC, BUYG, BUYG_SRC, OVP  # noqa: E402
 from i18n_bpd import BPD, IDEA as BP_IDEA  # noqa: E402
 from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB, CH as OWN_CH, CH2 as OWN_CH2  # noqa: E402
@@ -441,6 +442,15 @@ _G = {
     'Teletype': ('#0c1613', '<text x="12" y="16.5" text-anchor="middle" font-size="12" font-weight="800" fill="#f2b632" font-family="Arial">T</text>'),
     'GitHub': ('#24292f', '<path d="M12 5.5a6.5 6.5 0 0 0-2 12.7c.3 0 .4-.1.4-.3v-1.2c-1.8.4-2.2-.8-2.2-.8-.3-.8-.7-1-.7-1-.6-.4 0-.4 0-.4.7 0 1 .7 1 .7.6 1 1.6.7 2 .6 0-.4.2-.7.4-.9-1.4-.2-3-.7-3-3.2 0-.7.3-1.3.7-1.7-.1-.2-.3-.8.1-1.7 0 0 .5-.2 1.8.7a6 6 0 0 1 3.2 0c1.2-.9 1.8-.7 1.8-.7.3.9.1 1.5 0 1.7.4.4.7 1 .7 1.7 0 2.5-1.5 3-3 3.2.3.2.5.6.5 1.2v1.8c0 .2.1.4.4.3A6.5 6.5 0 0 0 12 5.5z" fill="#fff"/>'),
 }
+
+
+def nl_block(lang, src=''):
+    """Weekly e-mail report signup (api/subscribe.js)."""
+    t = NL[lang]
+    return (f'<section class="card nlbox"><div><b>{esc(t["h"])}</b><p>{esc(t["d"])}</p></div>'
+            f'<form class="nlf" data-ok="{esc(t["ok"])}" data-err="{esc(t["err"])}" data-src="{esc(src)}"><input type="email" required maxlength="120" placeholder="{esc(t["ph"])}" aria-label="{esc(t["ph"])}">'
+            f'<input type="text" name="hp" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true"><button class="btn" type="submit">{esc(t["btn"])}</button></form>'
+            f'<p class="muted nln">{esc(t["note"])}</p></section>')
 
 
 def follow_block(lang):
@@ -1195,7 +1205,7 @@ def home(lang, ver):
                 + ''.join(mini_row(lang, i, f'<span class="mc {"good" if sign > 0 else "bad"}">{pct(METRICS[i]["chg"])}</span>') for i in pool) + '</div>')
     today = (f'<section class="section today"><h2>{esc(hm["today"])}</h2><div class="tgrid">'
              f'{mv("crypto", 1)}{mv("crypto", -1)}{mv("stock", 1)}{mv("stock", -1)}{w_news}</div></section>')
-    body = (hero + today + offer_card(lang, 'home') + f'<section class="section toprank"><div class="tabs" id="tabs"></div>{filt}{top10}</section>'
+    body = (hero + today + offer_card(lang, 'home') + nl_block(lang, 'home') + f'<section class="section toprank"><div class="tabs" id="tabs"></div>{filt}{top10}</section>'
             f'<div class="wgrid3">{w_tr if nws else w_fng}<div class="wstack">{w_mcap}{w_dom}</div>{w_bat}</div>{banner}{habits_strip(lang)}{poll_block(lang)}{poly_block(lang)}'
             f'<section class="section"><div class="hl">{"".join(cards)}</div></section>'
             f'{rest}'
@@ -2790,7 +2800,7 @@ def news_article(lang, slug, ver):
     body = (f'<nav class="crumbs"><a href="{url(lang, "news")}">{n["n_nav"]}</a></nav><article class="art"><h1>{esc(title)}</h1>'
             f'<div class="muted byline"><a href="{about}">WhatIfStack Research</a> · <time data-t="{esc(m.get("date", ""))}">{esc(m.get("date", ""))}</time> · {tags}</div>'
             + (f'<img class="cover" src="{cv}" alt="" width="1200" height="630">' if cv else '') +
-            f'<p class="lead">{esc(desc)}</p><div class="postcards">{cards}</div><div class="artbody">{md(m["body"], lang)}</div>{follow_block(lang)}</article>'
+            f'<p class="lead">{esc(desc)}</p><div class="postcards">{cards}</div><div class="artbody">{md(m["body"], lang)}</div>{nl_block(lang, 'news')}{follow_block(lang)}</article>'
             f'{poll_block(lang)}<section class="banner section"><div><b>{w["cta"]}</b><p>{w["cta_text"]}</p></div><a class="btn" id="ctaBuy2" href="{url(lang, "exchanges")}">{EX[lang]["nav"]} →</a></section>'
             + (f'<section class="section"><h2>{esc(n["own"])}</h2><div class="card nlist own">{rel_html}</div></section>' if rel else ''))
     d = m.get('date', '').replace(' ', 'T')
@@ -3651,7 +3661,7 @@ def blog_post(lang, slug, ver):
     body = (f'<nav class="crumbs"><a href="{crumb[0]}">{crumb[1]}</a></nav><article class="art"><h1>{esc(title)}</h1>'
             + (f'<img class="cover" src="{cv}" alt="" width="1200" height="630">' if cv else '') +
             f'<div class="muted byline"><a href="{url(lang if lang in ABOUT else "en", "about")}">WhatIfStack Research</a> · {esc(m.get("date", ""))} · {S["updated"]} {UPDATED} · <a href="{pol_url(lang)}">{esc(ACT[lang]["pol"])}</a></div>'
-            + (act_facts(lang, m) + f'<div class="card awarn">⚠️ {esc(ACT[lang]["warn"])}</div>' if m.get('category') == 'activities' else '') + f'<div class="artbody">{html_body}</div>{follow_block(lang)}</article>'
+            + (act_facts(lang, m) + f'<div class="card awarn">⚠️ {esc(ACT[lang]["warn"])}</div>' if m.get('category') == 'activities' else '') + f'<div class="artbody">{html_body}</div>{nl_block(lang, 'blog')}{follow_block(lang)}</article>'
             f'<div class="postcards">{cards}</div>{poll_block(lang)}'
             f'<section class="banner section"><div><b>{w["cta"]}</b><p>{w["cta_text"]}</p></div><a class="btn" id="ctaBuy2" href="{url(lang, "exchanges")}">{w["cta"]} →</a></section>'
             + (f'<section class="section"><h2>{X["related"]}</h2><div class="posts">{rel_html}</div></section>' if rel else ''))

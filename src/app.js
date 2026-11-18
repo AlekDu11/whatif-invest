@@ -553,6 +553,13 @@ $$('.clamp').forEach(el=>{ if(el.scrollHeight<760) return; el.classList.add('cla
   const b=document.createElement('button'); b.type='button'; b.className='btn ghost clampbtn'; b.textContent=(el.dataset.more||'Show more')+' ▾';
   b.onclick=()=>{ const open=el.classList.toggle('clamped')===false; b.textContent=open?'▴':(el.dataset.more||'Show more')+' ▾'; if(!open) el.scrollIntoView({block:'start',behavior:'smooth'}) };
   el.after(b) });
+/* ---------- weekly e-mail report signup (api/subscribe.js) ---------- */
+$$('form.nlf').forEach(f=>f.onsubmit=async e=>{ e.preventDefault(); const em=$('input[type=email]',f).value.trim(), b=$('button',f), box=f.closest('.nlbox'), note=$('.nln',box);
+  b.disabled=true;
+  try{ const r=await fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({em,l:lang,src:(f.dataset.src||'')+' '+location.pathname,hp:f.hp.value})});
+    if(!r.ok) throw 0; f.remove(); note.textContent=f.dataset.ok; note.className='good nln'; try{ localStorage.setItem('wi_nl','1') }catch(x){} }
+  catch(x){ note.textContent=f.dataset.err; note.className='bad nln'; b.disabled=false } });
+try{ if(localStorage.getItem('wi_nl')) $$('.nlbox').forEach(x=>x.remove()) }catch(e){}
 /* ---------- price alert in Telegram (asset page) ---------- */
 $$('[data-alert]').forEach(b=>{ let C; try{ C=JSON.parse(b.dataset.alert) }catch(e){ return }
   b.onclick=()=>{ const old=$('.alpop'); if(old){ old.remove(); return }
