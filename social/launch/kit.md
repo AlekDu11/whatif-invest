@@ -65,16 +65,16 @@ Order: easy listings first, then the launch days. Product Hunt and Show HN get t
 
 | # | Site | Submit at | Free? | Which text | Status |
 |---|---|---|---|---|---|
-| 1 | AlternativeTo | alternativeto.net (Add app, then "alternative to" CoinMarketCap, CoinGecko, Investing.com, CryptoRank) | free | AlternativeTo description | ☐ |
-| 2 | SaaSHub | saashub.com/submit | free | short description + long | ☐ |
+| 1 | AlternativeTo | alternativeto.net (Add app, then "alternative to" CoinMarketCap, CoinGecko, Investing.com, CryptoRank) | free (queue is long; $25 priority not needed) | AlternativeTo description | ⏳ submitted 2026-11-16, texts + 5 screenshots + developer updated 2026-11-19 |
+| 2 | SaaSHub | saashub.com/submit | free (1–12 weeks) | tagline | ⏳ submitted 2026-11-19 (contact support@whatifstack.com; competitors CoinMarketCap, CoinGecko, Investing.com, Yahoo Finance + wallmine, Sharesight, Delta, Blockfolio). To claim/verify: owner registers with support@whatifstack.com |
 | 3 | Crunchbase | crunchbase.com (create a company profile) | free profile | short description | ☐ |
 | 4 | Indie Hackers | indiehackers.com/products + a "how I built it" post | free | long description | ☐ |
-| 5 | Uneed | uneed.best/submit-a-tool | free with a waiting list (paid skip — not needed) | short + long | ☐ |
+| 5 | Uneed | uneed.best/submit-a-tool | free with a waiting list (paid skip — not needed) | short + long | ☐ preview ready, needs owner account (Continue with Google) |
 | 6 | Fazier | fazier.co | free (paid options not needed) | short + long | ☐ |
-| 7 | Startup Stash | startupstash.com | free | short description | ☐ |
+| 7 | Startup Stash | startupstash.com | ✗ now paid plans only (checked 2026-11-19) | — | skip |
 | 8 | BetaList | betalist.com/submit | free with a long queue (paid skip — not needed) | short + long | ☐ |
-| 9 | Polymart crypto tools | polymart.app/submit?type=crypto | free, hand-reviewed, no account | short description | ☐ |
-| 10 | GitHub | README updated by Claude 2026-11-19; owner sets About: description, website, topics (repo → ⚙ next to About) | free | see GitHub About below | ☐ owner |
+| 9 | Polymart crypto tools | polymart.app/submit?type=crypto | ✗ requires a reciprocal link from our site (link exchange) | — | skip |
+| 10 | GitHub | README + About (description, website, 13 topics) | free | — | ✅ 2026-11-19 |
 | 11 | DEV Community | dev.to/new — article ready in social/launch/devto.md | free | devto.md | ☐ owner |
 | 12 | Reddit r/SideProject | reddit.com/r/SideProject | free, follow sub rules | Product Hunt comment, shortened | ☐ |
 | 13 | Product Hunt | producthunt.com/launch | free (paid promo not needed) | tagline + maker comment + 6 screenshots | ☐ own day |
@@ -85,6 +85,9 @@ Never: paid link packages, "submit to 500 directories" services, link exchanges.
 ## Log
 | Date | Site | Listing URL | Result |
 |---|---|---|---|
+| 2026-11-19 | GitHub | https://github.com/AlekDu11/whatif-invest | About + topics updated |
+| 2026-11-19 | AlternativeTo | (pending review) | listing updated |
+| 2026-11-19 | SaaSHub | https://www.saashub.com/whatifstack (after approval) | submitted, free queue |
 
 ## GitHub About (repo page → ⚙ next to «About»)
 - Description: Free markets site in 20 languages: prices, charts and plain-language news for 600+ crypto and 1,200+ stocks, exchange rankings, famous investors' portfolios, calculators.
