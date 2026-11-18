@@ -87,10 +87,12 @@ def holdings(cik, acc):
         if not raw or b'infoTable' not in raw:
             continue
         txt = re.sub(rb'<(/?)[A-Za-z0-9_]+:', rb'<\1', raw)        # drop namespaces prefixes
-        txt = re.sub(rb'\sxmlns(:\w+)?="[^"]+"', b'', txt)
+        txt = re.sub(rb'\sxmlns(:\w+)?="[^"]*"', b'', txt)
+        txt = re.sub(rb'\s[A-Za-z_]+:[A-Za-z_]+="[^"]*"', b'', txt)      # prefixed attributes (xsi:schemaLocation) whose namespace is gone
         try:
             root = ET.fromstring(txt)
-        except ET.ParseError:
+        except ET.ParseError as e:
+            print(f'  {fn}: {e}', flush=True)
             continue
         agg = {}
         for it in root.iter('infoTable'):
@@ -150,6 +152,10 @@ def main():
             if fid in old.get('inv', {}):
                 out['inv'][fid] = old['inv'][fid]
             continue
+        for h in (cur, prev or {}):     # a 13F is only required above $100M: a smaller total means values were filed in thousands
+            if 0 < sum(v['value'] for v in h.values()) < 1e8:
+                for v in h.values():
+                    v['value'] *= 1000
         figi(list(cur) + list(prev or {}), cache)
         total = sum(v['value'] for v in cur.values()) or 1
         top = []
