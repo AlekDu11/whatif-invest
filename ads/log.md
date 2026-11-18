@@ -39,3 +39,9 @@
 | WIS C small T1 | 84 | 1 | 1 | 1.19% | 0.03 | 0.03 | 4.97 | Active |
 | WIS A network T1 | 0 | 0 | 0 | — | — | 0.00 | 5.00 | Active |
 Баланс акаунта 5.00 Gram. Пауз немає (жодне правило не спрацювало), Declined немає, бюджети не вичерпані. Topics з 02:20 лише +22 покази при CPM 0.10 — ймовірно, програє аукціон; розібрати у вечірньому звіті.
+
+### 2026-11-18 15:40 — зміни за «так» власника
+- Аналіз 5-хв статистики: тематичне оголошення відкрутило 7 832 покази з 22:05 до 02:15 Київ (пік 01:00–02:15, до ~1000 показів/5 хв); після CPM 0.1 — майже 0 показів. Канальні оголошення при CPM 0.3 — 0–128 показів за добу.
+- Пауза: WIS A network T1 (0 показів), WIS BD mid-large T1 (12 показів); їхні 10 Gram повертаються на баланс.
+- WIS Topics control T1: CPM 0.10 → 0.20.
+- Нове: WIS Users tier1 T3 — таргет на користувачів (не канали): USA, UK, Canada, Australia, Germany, Netherlands, Sweden, Ireland (ліміт 8 країн); мова EN; інтереси Cryptocurrencies, Investments, Economy & Finance; CPM 0.5; 5 Gram. Текст T3: «November so far: Bitcoin −16%, Nvidia −24%, gold −3%, S&P 500 −3%. What moves the markets each day — in plain English. No signals.» (data/market.json 2026-11-18).
