@@ -296,8 +296,9 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
   const top=ids.slice(0,8).map(i=>{ const a=BYID[i]; return `<a class="mrow" href="${url(i)}">${icon(a)}<span class="mn"><b>${esc(a.t)}</b><span>${esc(nm(a))}</span></span>
       <span class="mp" data-p="${i}">${fmtPrice(a.pr)}</span><span class="mc ${cls(a.ch)}" data-c="${i}">${fmtPct(a.ch)}</span></a>` }).join('');
   box.innerHTML=`<div class="myhh"><h2>${esc(C.h)}</h2><a class="calc" href="${C.me}">${esc(C.open)} →</a></div>
-    <div class="mygrid"><div id="mypf">${pf()}</div><div class="card wd"><div class="wt">★ ${esc(C.watch)}</div>${top}</div><div class="card wd" id="mynews" hidden><div class="wt">📰 ${esc(C.news)}</div><div class="nlist own"></div></div></div>`;
+    <div class="mygrid"><div class="mycol"><div id="mypf">${pf()}</div></div><div class="card wd"><div class="wt">★ ${esc(C.watch)}</div>${top}</div><div class="card wd" id="mynews" hidden><div class="wt">📰 ${esc(C.news)}</div><div class="nlist own"></div></div></div>`;
   if(!Object.keys(hold).length) box.querySelector('#mypf').remove();
+  const br=$('#brief'); if(br) box.querySelector('.mycol').appendChild(br);   // «Market in 60 seconds» sits under the portfolio balance
   box.hidden=false;
   let t; document.addEventListener('wi:tick',()=>{ clearTimeout(t); t=setTimeout(()=>{ const el=$('#mypf'); if(el) el.innerHTML=pf() },1200) });
   fetch(C.nf+'?v='+WI.v).then(r=>r.json()).then(L=>{ const w=new Set(ids), f=L.filter(n=>(n.a||[]).some(x=>w.has(x))).slice(0,4); if(!f.length) return;

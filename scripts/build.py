@@ -1146,9 +1146,10 @@ def brief_block(lang):
            + (f' <span class="muted">· {esc(w["yday"].lower())} {fy}</span>' if fy is not None else '') + '</div>') if fv is not None else ''
     nums = ''.join(f'<a href="{aurl(lang, i)}">{esc(nm(A[i], lang))} <b class="{cls(ch(i))}" data-c="{i}">{pct(ch(i))}</b></a>' for i in ('btc', 'eth', 'spy', 'qqq', 'gold') if ch(i) is not None)
     mvh = (f'<div class="bmove"><span class="muted">{esc(b["move"])}</span>{chip(mv)}{why}</div>') if mv else ''
-    return (f'<section class="section brief card"><div class="bh"><h2>⏱ {esc(b["h"])}</h2><span class="muted">{esc(b["upd"])} {esc(UPDATED[:10])}</span></div>'
-            f'<p class="bv">{esc(verdict)}</p><p class="bnums">{nums}</p>'
-            f'{mvh}{fng}<p class="bsrc muted">{esc(b["src"])}</p></section>')
+    tgl = next((u for n, u in SOCIAL if 't.me' in u), 'https://t.me/WhatIfStack')
+    return (f'<details class="section brief card" id="brief"><summary><span class="bh"><b>⏱ {esc(b["h"])}</b><span class="muted">{esc(b["upd"])} {esc(UPDATED[:10])}</span></span>'
+            f'<span class="bv">{esc(verdict)}</span></summary><div class="bbody"><p class="bnums">{nums}</p>'
+            f'{mvh}{fng}<a class="btn btg" href="{tgl}" target="_blank" rel="noopener">✈ {esc(b["tg"])}</a><p class="bsrc muted">{esc(b["src"])}</p></div></details>')
 
 
 def my_block(lang):

@@ -877,10 +877,16 @@ tr.xh{display:none}.mkmore{margin-top:10px}.xgo{text-decoration:none;color:var(-
 
 /* personal home + market in 60 seconds */
 .myh{margin:14px 0 22px}.myhh,.brief .bh{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap}
-.myhh h2,.brief h2{margin:0;font-size:1.15rem}
+.myhh h2{margin:0;font-size:1.15rem}
 .mygrid{align-items:start;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:10px}
 .mypf{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:inherit;height:100%;box-sizing:border-box}.mypf .v{font-size:1.9rem;line-height:1.1}
-.brief{padding:14px 18px}.brief .bv{margin:6px 0 10px;font-weight:600}
+.brief{padding:0}.brief summary{list-style:none;cursor:pointer;padding:14px 44px 14px 18px;position:relative;display:flex;flex-direction:column;gap:4px}
+.brief summary::-webkit-details-marker{display:none}
+.brief summary::after{content:'▾';position:absolute;right:18px;top:14px;color:var(--muted,#889);transition:transform .2s}
+.brief[open] summary::after{transform:rotate(180deg)}
+.brief .bv{font-weight:600;font-size:.95rem}.brief .bbody{padding:0 18px 14px}
+.brief .bh b{font-size:1.05rem}.btg{display:inline-flex;margin-top:12px}
+.mycol{display:flex;flex-direction:column;gap:12px}.mycol .brief{margin:0}
 .bchips{display:flex;flex-wrap:wrap;gap:8px}
 .bchip{display:inline-flex;align-items:center;gap:7px;padding:6px 10px;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:inherit;font-size:.92rem;white-space:nowrap}
 .bchip:hover{border-color:var(--accent,#1a6dff)}.bchip .bn{color:var(--muted,#667)}
