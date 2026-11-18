@@ -2349,6 +2349,12 @@ PARTNER_TXT = {
 }
 
 
+# Directories and catalogues that list WhatIfStack (add a row when a listing goes live)
+LISTED = [('GitHub — open source code', 'https://github.com/AlekDu11/whatif-invest'),
+          ('PolyMart — crypto tools directory', 'https://polymart.app/crypto')]
+LISTED_H = {'en': 'Find WhatIfStack on', 'uk': 'WhatIfStack на інших сайтах'}
+
+
 def partners_page(lang, ver, npages):
     t = PARTNER_TXT[lang]
     mail = f'<a href="mailto:{PARTNER_EMAIL}">{PARTNER_EMAIL}</a>'
@@ -2358,7 +2364,9 @@ def partners_page(lang, ver, npages):
             f'<section class="section card"><h2>{esc(t["reach"])}</h2><p>{esc(t["facts"].format(pages=_num(npages, 0) + "+", assets=_num(len(A), 0), stocks=_num(nst, 0)))}</p></section>'
             f'<section class="section card"><h2>{esc(t["what"])}</h2>{li(t["offer"])}</section>'
             f'<section class="section card"><h2>{esc(t["not_"])}</h2>{li(t["no"])}</section>'
-            f'<section class="section card"><h2>{esc(t["contact"])}</h2><p>{esc(t["cta"]).replace(esc("{mail}"), mail)}</p></section>')
+            f'<section class="section card"><h2>{esc(t["contact"])}</h2><p>{esc(t["cta"]).replace(esc("{mail}"), mail)}</p></section>'
+            f'<section class="section card listed"><h2>{esc(LISTED_H.get(lang, LISTED_H["en"]))}</h2><ul>'
+            + ''.join(f'<li><a href="{u}" rel="noopener" target="_blank">{esc(n)}</a></li>' for n, u in LISTED) + '</ul></section>')
     return shell(lang, 'partners', f'{t["h1"]} | {BRAND}', t['lead'], body, {}, ver)
 
 def stock_peers(aid, k=8):
