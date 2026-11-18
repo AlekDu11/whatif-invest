@@ -12,5 +12,11 @@ module.exports = {
   freedom24: 'https://freedom24.com/invite_from/1756798',
   kraken: 'https://proinvite.kraken.com/9f1e/vd2jmvyj',
   tgwallet: 'https://telegram.me/walt/start?startapp=ref-3-_nKDCE0BgAk',
+  pumpfun: 'https://pump.fun/u/alessa',
+  inzhur: 'https://www.inzhur.reit/r/xWNTFBBI5gOX4p9V175sl',
+  tradingview: 'https://www.tradingview.com/pricing/?share_your_love=AleksDu',
+  monobank: 'https://monobank.ua/r/YkfE',
+  privat24: 'https://www.privat24.ua/invite/ktwrx',
+  privat24b: 'https://www.privat24.ua/invite/j34g9',
   fgwallet: 'https://app.fgwallet.io/invite?r=07bba179-3274-51b5-89e8-371e36026868',
 };

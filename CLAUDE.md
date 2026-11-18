@@ -36,7 +36,7 @@ Content: 2–3 blog posts a week on trending queries (content/blog/<lang>/), wee
 - Deploys (since 2026-11-18, after hitting the Hobby limit of 100 deployments/day): git auto-deploys are OFF (vercel.json git.deploymentEnabled=false), pushes cost nothing. .github/workflows/deploy.yml checks hourly and, at most every ~4 hours when the site changed, POSTs the Vercel Deploy Hook (GitHub secret VERCEL_DEPLOY_HOOK, hook «scheduled» on main) and adds a «[deploy]» marker commit. Urgent fix: run deploy.yml with workflow_dispatch (it skips the 4-hour wait).
 
 ## Partner links
-src/ref.js (buy buttons) and PARTNERS / POLY in scripts/build.py (/exchanges/ page, Polymarket block).
+src/ref.js (buy buttons) and PARTNERS / POLY in scripts/build.py (/exchanges/ page, Polymarket block). All /go/<id> targets: api/_partners.js. Also: TradingView ref on every live chart (tvref), pump.fun card on /memes/, monobank/Privat24 CTAs on OVDP broker pages (OB_GO), Inzhur REIT card on Ukrainian pages (INZ).
 
 ## Content quality (applies to every article, brief, guide, profile and post)
 Follow content/STYLE.md: headline with a specific number, lead that answers the question, key-takeaways box, "what it means if you buy regularly", sources, local phrasing per language, `stat:`/`stat_label:` front matter.

@@ -96,6 +96,11 @@ OB = [
                  who='Тем, кто хочет оформлять сделки с менеджером.')),
 ]
 OBI = {b['id']: b for b in OB}
+# referral CTAs on broker pages (owner's links, /go/<id>)
+OB_GO = {'privatbank': ('privat24', {'uk': 'Відкрити Приват24', 'ru': 'Открыть Приват24'}),
+         'monobank': ('monobank', {'uk': 'Відкрити monobank (+100 ₴ за реєстрацію)', 'ru': 'Открыть monobank (+100 ₴ за регистрацию)'})}
+INZ = {'uk': ('🏢 Inzhur REIT — нерухомість з дивідендами', 'Ще один спосіб отримувати пасивний дохід у гривні: фонд комерційної нерухомості, що щомісяця виплачує дивіденди. Вхід від кількох гривень, купівля в застосунку. За реєстрацію через наше посилання — подарункові сертифікати фонду (умови — на сайті Inzhur). Це не ОВДП: вартість сертифікатів може падати.', 'Відкрити Inzhur'),
+       'ru': ('🏢 Inzhur REIT — недвижимость с дивидендами', 'Ещё один способ получать пассивный доход в гривне: фонд коммерческой недвижимости, который ежемесячно платит дивиденды. Вход от нескольких гривен, покупка в приложении. За регистрацию по нашей ссылке — подарочные сертификаты фонда (условия — на сайте Inzhur). Это не ОВГЗ: стоимость сертификатов может падать.', 'Открыть Inzhur')}
 UA_SRC = [('КОШТ — рейтинг сервісів для купівлі ОВДП', 'https://kosht.media/onlayn-i-bez-komisiy-reytynh-servisiv-dlia-kupivli-hryvnevykh-derzhavnykh-oblihatsiy/'),
           ('КОШТ — банки з купівлею облігацій', 'https://kosht.media/yaki-banky-proponuiut-zruchnyy-servis-kupivli-derzhavnykh-oblihatsiy-os-krashchi-varianty/'),
           ('Finance.ua — купити ОВДП в Україні', 'https://finance.ua/ua/saving/kupyty-ovdp-v-ukraini-yaki-ye-varianty'),

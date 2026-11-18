@@ -7,6 +7,7 @@ Only the Python standard library is used, so it runs in Vercel's build image as 
 Run: python3 scripts/build.py
 """
 import calendar, hashlib, html, json, math, os, re as _re, shutil, sys
+import urllib.parse as _up
 from datetime import date, datetime, timedelta, timezone
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
@@ -43,7 +44,7 @@ from i18n_al import AL  # noqa: E402
 from i18n_nl import NL  # noqa: E402
 from i18n_ch import CH  # noqa: E402
 from i18n_inv import INV  # noqa: E402
-from i18n_ua import UA_LANGS, UA_ASOF, OB, OBI, OBT, UA_SRC, BUYG, BUYG_SRC, OVP  # noqa: E402
+from i18n_ua import UA_LANGS, UA_ASOF, OB, OBI, OBT, UA_SRC, BUYG, BUYG_SRC, OVP, OB_GO, INZ  # noqa: E402
 from i18n_bpd import BPD, IDEA as BP_IDEA  # noqa: E402
 from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB, CH as OWN_CH, CH2 as OWN_CH2  # noqa: E402
 SOCIAL = [('Telegram', 'https://t.me/WhatIfStack'), ('X (Twitter)', 'https://x.com/WhatIfStack'), ('Bluesky', 'https://bsky.app/profile/whatifstack.bsky.social'), ('Instagram', 'https://www.instagram.com/whatifstack/'), ('Threads', 'https://www.threads.com/@whatifstack'),
@@ -908,6 +909,12 @@ def _ob_rank():
     return sorted(OB, key=lambda b: -b['score'])
 
 
+def inzhur_card(lang, src):
+    h, d, b = INZ[lang]
+    return (f'<section class="section card inz"><h2>{esc(h)}</h2><p>{esc(d)}</p>'
+            f'<a class="btn ghost" href="/go/inzhur?from={src}&l={lang}" target="_blank" rel="sponsored noopener">{esc(b)} ↗</a></section>')
+
+
 def ovdp_brokers_page(lang, ver):
     t = OBT[lang]
     n = len(OB)
@@ -925,7 +932,7 @@ def ovdp_brokers_page(lang, ver):
     body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / <a href="{url(lang, "ovdp")}">{esc(OV[lang]["nav"])}</a> / {esc(t["nav"])}</nav>'
             f'<h1>{esc(t["h1"].format(n=n))}</h1><p class="lead">{esc(t["lead"])}</p>{kt}'
             f'<section class="section"><div class="tw"><table class="mt obt"><thead><tr>{th}</tr></thead><tbody>{rows}</tbody></table></div></section>'
-            f'<section class="section card"><h2>{esc(t["how"])}</h2><p>{esc(t["howt"])}</p></section>{port}'
+            f'<section class="section card"><h2>{esc(t["how"])}</h2><p>{esc(t["howt"])}</p></section>{port}{inzhur_card(lang, "ovdp-brokers")}'
             f'{_ua_faq_html(t["faq"])}{_ua_src(lang, t["src"], UA_SRC)}')
     il = {"@context": "https://schema.org", "@type": "ItemList", "name": t['h1'].format(n=n),
           "itemListElement": [{"@type": "ListItem", "position": k, "name": b['name'], "url": SITE + url(lang, 'ovdp/brokers/' + b['id'])} for k, b in enumerate(_ob_rank(), 1)]}
@@ -948,7 +955,7 @@ def ovdp_broker_page(lang, b, ver):
     body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / <a href="{url(lang, "ovdp/brokers")}">{esc(t["nav"])}</a> / {esc(nm_)}</nav>'
             f'<h1>{esc(t["b_h1"].format(name=nm_))}</h1><p class="lead">{esc(L["short"])} {esc(L["who"])}</p>{tl}'
             f'<section class="section card"><h2>{esc(t["steps"])}</h2>{st}<div class="obcta"><a class="btn" href="{url(lang, "me")}?bb={b["id"]}#bonds">🏛️ {esc(t["port"])}</a>'
-            f'<a class="btn ghost" href="{esc(b["site"])}" target="_blank" rel="nofollow noopener">{esc(t["site"].format(name=nm_))} ↗</a></div></section>'
+            + (f'<a class="btn ghost" href="/go/{OB_GO[b["id"]][0]}?from=ovdp-{b["id"]}&l={lang}" target="_blank" rel="sponsored noopener">{esc(OB_GO[b["id"]][1][lang])} ↗</a>' if b['id'] in OB_GO else f'<a class="btn ghost" href="{esc(b["site"])}" target="_blank" rel="nofollow noopener">{esc(t["site"].format(name=nm_))} ↗</a>') + '</div></section>'
             f'<section class="section"><div class="obpc"><div class="card"><h2>👍 {esc(t["pros"])}</h2>{li(L["pros"], "good")}</div><div class="card"><h2>⚠️ {esc(t["cons"])}</h2>{li(L["cons"], "")}</div></div>'
             f'<div class="card" style="margin-top:12px"><h2>{esc(t["who"])}</h2><p>{esc(L["who"])}</p></div></section>'
             f'<section class="section"><h2>{esc(t["vs"])}</h2><div class="tw"><table class="mt obt"><tbody>{vs}</tbody></table></div><p><a class="calc" href="{url(lang, "ovdp/brokers")}">{esc(t["all"])} →</a></p></section>'
@@ -994,7 +1001,7 @@ def buyg_page(lang, ver):
             f'<h2>{esc(t["s2"])}</h2>{li(t["s2l"])}<h2>{esc(t["s3"])}</h2><p>{esc(t["s3p"])}</p>'
             f'<h2>{esc(t["s4"])}</h2><p>{esc(t["s4p"])}</p><p><a class="calc" href="{url(lang, "compare")}">{esc(t["s4l"])} →</a></p>'
             f'<h2>{esc(t["s5"])}</h2>{li(t["s5l"])}<h2>{esc(t["err"])}</h2>{li(t["errl"])}</div>'
-            f'<section class="section"><h2>{esc(t["next_"])}</h2><div class="hgrid">{links}</div></section>'
+            f'{inzhur_card(lang, "ua-guide")}<section class="section"><h2>{esc(t["next_"])}</h2><div class="hgrid">{links}</div></section>'
             f'{_ua_faq_html(t["faq"])}{_ua_src(lang, t["src"], BUYG_SRC)}<p class="note">{esc(t["note"])}</p></article>')
     art = {"@context": "https://schema.org", "@type": "Article", "headline": t['h1'], "description": t['d'], "inLanguage": TR[lang]['loc'], "dateModified": UPDATED[:10],
            "author": {"@type": "Organization", "name": BRAND}, "publisher": {"@type": "Organization", "name": BRAND}}
@@ -1822,13 +1829,28 @@ def xc_spot_page(lang, ver):
     return _xc_shell(lang, ver, 'spot', t['h_spot'], t['lead_spot'], th, rows)
 
 
+def der2spot(name):
+    """Derivatives venue «Binance (Futures)» -> spot exchange id with its own page («binance»)."""
+    n = _re.sub(r'\s*[\(\[]?(futures|derivatives|perpetuals?|perps?|swap|contract)[\)\]]?\s*$', '', (name or ''), flags=_re.I).strip().lower()
+    if not n:
+        return None
+    det = XCH.get('detail', {})
+    for e in XCH.get('spot', []):
+        en = (e.get('name') or '').lower()
+        if e['id'] in det and (en == n or en.split(' ')[0] == n.split(' ')[0] and len(n.split(' ')[0]) > 2):
+            return e['id']
+    return None
+
+
 def xc_der_page(lang, ver):
     t, btc = XC[lang], METRICS['btc']['price'] if 'btc' in METRICS else 0
     rows = ''
     for k, e in enumerate([e for e in XCH.get('derivatives', []) if e.get('oi_btc')][:60]):
         go = xc_partner(e.get('name'))
-        rows += (f'<tr><td class="l n">{k + 1}</td><td class="l"><span class="asset">{_xlogo(e)}<span><span class="nm">{esc(e["name"])}</span>'
-                 f'<span class="tk">{esc(e.get("country") or "")}</span></span></span></td><td class="num"><b>{usd_h(e["oi_btc"] * btc)}</b></td>'
+        sx = der2spot(e.get('name'))
+        o_, c_ = (f'<a class="asset" href="{xc_url(lang, sx)}">', '</a>') if sx else ('<span class="asset">', '</span>')
+        rows += (f'<tr><td class="l n">{k + 1}</td><td class="l">{o_}{_xlogo(e)}<span><span class="nm">{esc(e["name"])}</span>'
+                 f'<span class="tk">{esc(e.get("country") or "")}</span></span>{c_}</td><td class="num"><b>{usd_h(e["oi_btc"] * btc)}</b></td>'
                  f'<td class="num">{usd_h((e.get("vol_btc") or 0) * btc)}</td><td class="num hide-sm">{e.get("perp") or 0}</td><td class="num hide-sm">{e.get("fut") or 0}</td>'
                  f'<td>{f"<a class=buy href=/go/{go}?from=xc-der&l={lang} target=_blank rel=\"sponsored noopener\">↗</a>" if go else ""}</td></tr>')
     th = (f'<tr><th class="l n">#</th><th class="l">{esc(t["name"])}</th><th>{esc(t["oi"])}</th><th>{esc(t["vol"])}</th>'
@@ -2400,7 +2422,7 @@ def asset(aid, lang, ver):
                          + tvw('financials', dict(isTransparent=True, displayMode='regular', width='100%', height='100%', colorTheme='light', symbol=tvs, locale=loc), 520)
                          + '</section>')
     elif tvs:
-        tv = (f'<section class="card tvcard"><div class="charthead"><h2>{w["live_chart"]} · {esc(tk)}</h2><span class="livebadge"><i></i>{w["live"]}</span></div>'
+        tv = (f'<section class="card tvcard"><div class="charthead"><h2>{w["live_chart"]} · {esc(tk)}</h2><span class="livebadge"><i></i>{w["live"]}</span><a class="tvref" href="https://www.tradingview.com/chart/?symbol={_up.quote(tvs)}&share_your_love=AleksDu" target="_blank" rel="sponsored noopener" title="TradingView">TradingView ↗</a></div>'
               + tvw('advanced-chart', dict(autosize=True, symbol=tv_symbol(a), interval='D', timezone='Etc/UTC', theme='light', style='1', locale=loc,
                                            allow_symbol_change=False, hide_side_toolbar=True, withdateranges=True, save_image=False), 480) + '</section>')
         tech_news = (f'<div class="cols2 section"><section class="card"><h2>{X["tech"]} · {esc(tk)}</h2>'
@@ -3053,7 +3075,7 @@ def memes_page(lang, ver):
             f'<div class="seg" id="dexn">{seg}</div><div class="tw" style="margin-top:10px"><table class="mt" id="dext"><thead>{head}</thead><tbody id="dexb"><tr><td colspan="8" class="empty">…</td></tr></tbody></table></div>'
             f'<p class="muted" style="font-size:12px">{esc(t["src"])}</p></section>'
             f'<section class="section">{table_block(lang, MEME_IDS, "🐸 " + t["est"], interactive=False)}</section>'
-            f'<section class="section"><div class="hgrid"><a class="card hcard" href="/go/gmgn?from=memes-card&l={lang}" target="_blank" rel="sponsored nofollow noopener"><span>🦎</span><b>GMGN</b><small>Memecoin trading · Wallet tracking</small></a>'
+            f'<section class="section"><div class="hgrid"><a class="card hcard" href="/go/pumpfun?from=memes-card&l={lang}" target="_blank" rel="sponsored nofollow noopener"><span>💊</span><b>pump.fun</b><small>Memecoin launchpad · code alessa</small></a><a class="card hcard" href="/go/gmgn?from=memes-card&l={lang}" target="_blank" rel="sponsored nofollow noopener"><span>🦎</span><b>GMGN</b><small>Memecoin trading · Wallet tracking</small></a>'
             f'<a class="card hcard" href="{url(lang, "exchanges")}"><span>₿</span><b>{esc(EX[lang]["h1"])}</b></a><a class="card hcard" href="{url(lang, "ath")}"><span>📉</span><b>{esc(TT[lang]["a_h1"])}</b></a></div></section>')
     cfg = dict(memes=dict(t=dict(trade=t['trade'], new=t['new'], lowliq=t['lowliq'], hot=t['hot'])))
     return shell(lang, 'memes', f'{t["h1"]} | {BRAND}', t['d'], body, cfg, ver)

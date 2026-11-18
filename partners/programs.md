@@ -22,6 +22,8 @@ First version: 2026-11-18.
 
 ## Already wired
 
+- 2026-11-18: pump.fun (code alessa → /memes/ card), Inzhur REIT (uk/ru: /ovdp/brokers/ + /buy-stocks-ukraine/ card), TradingView (share_your_love=AleksDu on every live chart), monobank (+100 ₴, OVDP broker page), Privat24 (two invite links: privat24 used, privat24b spare).
+
 | Partner | /go/ id | Where on the site |
 |---|---|---|
 | Binance | binance | crypto buy buttons (all languages except en), /exchanges/, /crypto-exchanges/ ↗ |
