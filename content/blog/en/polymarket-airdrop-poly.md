@@ -15,6 +15,8 @@ stat_label: since the airdrop was promised, still no date
 ---
 Polymarket, the largest prediction market, has said there will be a POLY token and an airdrop — but **more than a year later it has published no launch date, no snapshot date and no eligibility rules**. Anyone using Polymarket "for the airdrop" is betting on a promise whose size and terms are unknown. Here is what is actually confirmed, what is only rumoured and how people take part without fooling themselves.
 
+*Updated November 18, 2026: still no token, date or rules. On October 29, 2026 Polymarket briefly switched its international exchange to cancel-only after malicious code loaded through a third-party script drained some users' accounts (about $2.6–2.7 million by on-chain estimates); Polymarket says affected users will be made whole.*
+
 > **Key takeaways**
 > - Polymarket's CMO Matthew Modabber confirmed a token and an airdrop on October 24, 2025, and said the US relaunch comes first.
 > - Its parent company Blockratize filed "POLY" and "$POLY" trademarks with the US patent office on February 4, 2026.
@@ -54,6 +56,7 @@ An airdrop is a lottery ticket with unknown odds; a monthly investment plan is a
 - [SQ Magazine: Polymarket files POLY and $POLY trademarks](https://sqmagazine.co.uk/polymarket-poly-token-trademark-airdrop)
 - [Tangem: will Polymarket finally launch a POLY token?](https://tangem.com/en/learning-hub/post/polymarket-token-launch/)
 - [Hyperliquid Docs: points](https://hyperliquid.gitbook.io/hyperliquid-docs/points)
+- [Blockhead: Binance halts withdrawals hours after Polymarket vendor exploit](https://www.blockhead.co/2026/10/30/binance-halts-withdrawals-after-multibillion-dollar-hot-wallet-drain-hours-after-polymarket-vendor-exploit/)
 - [Coinperps: Polymarket restricted countries, checked 27 October 2026](https://www.coinperps.com/learn/polymarket-restricted-countries)
 
 *Not investment advice. Prediction markets carry a risk of losing your whole stake.*

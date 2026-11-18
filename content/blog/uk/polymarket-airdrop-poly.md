@@ -15,6 +15,8 @@ stat_label: від обіцянки аірдропу, а дати досі не�
 ---
 Polymarket, найбільший ринок прогнозів, заявив, що буде токен POLY і аірдроп. Але **понад рік потому він не опублікував ні дати запуску, ні дати снепшоту, ні правил участі**. Хто користується Polymarket «заради аірдропу», ставить на обіцянку, розмір і умови якої невідомі. Розбираємо, що справді підтверджено, що лише чутки і як брати участь, не обманюючи себе.
 
+*Оновлено 18 листопада 2026: токена, дати й правил досі немає. 29 жовтня 2026 року Polymarket ненадовго перевів міжнародну біржу в режим «лише скасування» після того, як шкідливий код через сторонній скрипт вивів кошти з частини акаунтів (близько $2,6–2,7 млн за ончейн-оцінками); Polymarket обіцяє повністю компенсувати втрати.*
+
 > **Головне**
 > - Маркетинговий директор Polymarket Метью Модаббер підтвердив токен і аірдроп 24 жовтня 2025 року й сказав, що спершу буде перезапуск у США.
 > - Материнська компанія Blockratize подала заявки на торгові марки «POLY» і «$POLY» до патентного відомства США 4 лютого 2026 року.
@@ -54,6 +56,7 @@ Polymarket, найбільший ринок прогнозів, заявив, щ
 - [SQ Magazine: Polymarket подав заявки на торгові марки POLY і $POLY](https://sqmagazine.co.uk/polymarket-poly-token-trademark-airdrop)
 - [Tangem: чи запустить Polymarket токен POLY](https://tangem.com/en/learning-hub/post/polymarket-token-launch/)
 - [Hyperliquid Docs: поінти](https://hyperliquid.gitbook.io/hyperliquid-docs/points)
+- [Blockhead: Binance зупинила виведення через кілька годин після злому постачальника Polymarket](https://www.blockhead.co/2026/10/30/binance-halts-withdrawals-after-multibillion-dollar-hot-wallet-drain-hours-after-polymarket-vendor-exploit/)
 - [Coinperps: країни з обмеженнями Polymarket, перевірка 27 жовтня 2026](https://www.coinperps.com/learn/polymarket-restricted-countries)
 
 *Не інвестиційна порада. На ринку прогнозів можна втратити всю ставку.*
