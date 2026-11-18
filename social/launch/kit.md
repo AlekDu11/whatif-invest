@@ -69,11 +69,11 @@ Order: easy listings first, then the launch days. Product Hunt and Show HN get t
 | 2 | SaaSHub | saashub.com/submit | free (1–12 weeks) | tagline | ⏳ submitted 2026-11-19 (contact support@whatifstack.com; competitors CoinMarketCap, CoinGecko, Investing.com, Yahoo Finance + wallmine, Sharesight, Delta, Blockfolio). To claim/verify: owner registers with support@whatifstack.com |
 | 3 | Crunchbase | crunchbase.com (create a company profile) | free profile | short description | ☐ |
 | 4 | Indie Hackers | indiehackers.com/products + a "how I built it" post | free | long description | ☐ |
-| 5 | Uneed | uneed.best/submit-a-tool | free with a waiting list (paid skip — not needed) | short + long | ☐ preview ready, needs owner account (Continue with Google) |
+| 5 | Uneed | uneed.best/submit-a-tool | free line (launch day needs ≥10 upvotes to stay, ≥20 for dofollow) | short + long | ⏳ free launch scheduled for **2027-02-10**; texts, 3 screenshots set 2026-11-19 |
 | 6 | Fazier | fazier.co | free (paid options not needed) | short + long | ☐ |
 | 7 | Startup Stash | startupstash.com | ✗ now paid plans only (checked 2026-11-19) | — | skip |
 | 8 | BetaList | betalist.com/submit | free with a long queue (paid skip — not needed) | short + long | ☐ |
-| 9 | Polymart crypto tools | polymart.app/submit?type=crypto | ✗ requires a reciprocal link from our site (link exchange) | — | skip |
+| 9 | Polymart crypto tools | polymart.app/submit?type=crypto | free, needs a link back (owner OK'd: /en/partners/ «Find WhatIfStack on») | short description | ☐ form filled 2026-11-19, owner passes the Cloudflare check and clicks Submit |
 | 10 | GitHub | README + About (description, website, 13 topics) | free | — | ✅ 2026-11-19 |
 | 11 | DEV Community | dev.to/new — article ready in social/launch/devto.md | free | devto.md | ☐ owner |
 | 12 | Reddit r/SideProject | reddit.com/r/SideProject | free, follow sub rules | Product Hunt comment, shortened | ☐ |
