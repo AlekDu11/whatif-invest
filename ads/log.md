@@ -46,3 +46,12 @@
 - WIS Topics control T1: CPM 0.10 → 0.20.
 - Нове: WIS Users tier1 T3 — таргет на користувачів (не канали): USA, UK, Canada, Australia, Germany, Netherlands, Sweden, Ireland (ліміт 8 країн); мова EN; інтереси Cryptocurrencies, Investments, Economy & Finance; CPM 0.5; 5 Gram. Текст T3: «November so far: Bitcoin −16%, Nvidia −24%, gold −3%, S&P 500 −3%. What moves the markets each day — in plain English. No signals.» (data/market.json 2026-11-18).
 - 2026-11-18 ~16:00: 10 Gram з паузованих оголошень повернуто на баланс (баланс 10). WIS Users tier1 T3 за ~10 хв: 2 651 показ, 51 клік (CTR 1,9%), 22 підписки, 1,33 Gram → CPA 0,06. Topics при CPM 0.2 — показів ще немає. Канал 5.16K; пост 1476: 20 → 39 переглядів, старші пости +7…13.
+
+### 2026-11-18 16:00–16:30 — тести CPM 0.1 (за «так» власника, «по 0.1»)
+- WIS Users tier1 T3: CPM 0.5 → 0.1. Пауза WIS C small T1/T2, з них повернуто 4,96 + 3,96 Gram (у T2 лишився мінімум 1 Gram). Баланс 12,92.
+- Нові (по 2 Gram, CPM 0.1, users-таргет, EN, інтереси Crypto/Investments/Economy):
+  - #7 EU-EN T3 (PL, CZ, RO, PT, ES, IT, GR, HR): 6 983 покази, 777 кліків (CTR 11%), 261 підписка, 0,70 Gram → 0,0027/підп.
+  - #8 audiences T3 (аудиторія 30 каналів з високим ER; US, GB, CA, AU, DE, PL, ES, IT): 2 230 / 217 (CTR 9,7%) / 88 / 0,22 → 0,0025.
+  - #9 tier1 T1 (8 країн tier-1, текст T1): 4 905 / 53 (CTR 1,1%) / 6 / 0,49 → 0,08.
+  - #6 tier1 T3 загалом: 9 866 / 100 / 33 / 3,06 → 0,09.
+- Канал: 5,16K → 5 507 підп. (+~350 за 30 хв), але перегляди останніх постів лише +~30 (1476: 51→58, 1477: 42→49, 1478: 39→50). CTR 10–11% аномально високий. Підозра на неякісний трафік → #7 і #8 на паузу до перевірки переглядів наступних постів.
