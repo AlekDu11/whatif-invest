@@ -45,3 +45,4 @@
 - Пауза: WIS A network T1 (0 показів), WIS BD mid-large T1 (12 показів); їхні 10 Gram повертаються на баланс.
 - WIS Topics control T1: CPM 0.10 → 0.20.
 - Нове: WIS Users tier1 T3 — таргет на користувачів (не канали): USA, UK, Canada, Australia, Germany, Netherlands, Sweden, Ireland (ліміт 8 країн); мова EN; інтереси Cryptocurrencies, Investments, Economy & Finance; CPM 0.5; 5 Gram. Текст T3: «November so far: Bitcoin −16%, Nvidia −24%, gold −3%, S&P 500 −3%. What moves the markets each day — in plain English. No signals.» (data/market.json 2026-11-18).
+- 2026-11-18 ~16:00: 10 Gram з паузованих оголошень повернуто на баланс (баланс 10). WIS Users tier1 T3 за ~10 хв: 2 651 показ, 51 клік (CTR 1,9%), 22 підписки, 1,33 Gram → CPA 0,06. Topics при CPM 0.2 — показів ще немає. Канал 5.16K; пост 1476: 20 → 39 переглядів, старші пости +7…13.
