@@ -67,6 +67,7 @@ TOP_N = 200            # asset pages in languages outside FULL
 market = json.load(open(os.path.join(ROOT, 'data/market.json'), encoding='utf-8'))
 pinned = json.load(open(os.path.join(ROOT, 'data/assets.json'), encoding='utf-8'))
 UPDATED = market['updated']
+OG_LANGS = {f[:-4] for f in os.listdir(os.path.join(ROOT, 'src', 'og')) if f.endswith('.jpg')} if os.path.isdir(os.path.join(ROOT, 'src', 'og')) else set()
 END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
@@ -565,7 +566,7 @@ fetch('/assets/p/'+id+'.json').then(r=>r.json()).then(P=>{
 
 
 def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
-    og_img = SITE + (cfg.pop('_og', None) or '/assets/og.jpg')
+    og_img = SITE + (cfg.pop('_og', None) or (f'/assets/og/{lang}.jpg' if lang in OG_LANGS else '/assets/og/en.jpg'))
     sec = cfg.pop('_sec', None) or p   # section to highlight in the nav
     S = TR[lang]
     canon = SITE + url(lang, p)
@@ -3942,6 +3943,8 @@ def main():
     shutil.copytree(os.path.join(ROOT, 'social', 'launch'), os.path.join(OUT, 'assets', 'press'), ignore=shutil.ignore_patterns('*.md'))   # press kit images   # hands covers to the X composer
     if os.path.isdir(os.path.join(ROOT, 'content', 'covers')):
         shutil.copytree(os.path.join(ROOT, 'content', 'covers'), os.path.join(OUT, 'assets/covers'))
+    if os.path.isdir(os.path.join(ROOT, 'src', 'og')):
+        shutil.copytree(os.path.join(ROOT, 'src', 'og'), os.path.join(DIST, 'assets', 'og'), dirs_exist_ok=True)
     for f in ('favicon.svg', 'icon-192.png', 'icon-512.png', 'og.jpg', 'onest.woff2', 'geologica-600.woff2', 'geologica-700.woff2'):
         shutil.copy(os.path.join(ROOT, 'src', f), os.path.join(OUT, 'assets', f))
     shutil.copy(os.path.join(ROOT, 'src', 'favicon.ico'), os.path.join(OUT, 'favicon.ico'))   # Google's search favicon looks at /favicon.ico

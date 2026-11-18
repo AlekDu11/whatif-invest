@@ -40,6 +40,7 @@ src/ref.js (buy buttons) and PARTNERS / POLY in scripts/build.py (/exchanges/ pa
 
 ## Content quality (applies to every article, brief, guide, profile and post)
 Follow content/STYLE.md: headline with a specific number, lead that answers the question, key-takeaways box, "what it means if you buy regularly", sources, local phrasing per language, `stat:`/`stat_label:` front matter.
+Default share image per language: src/og/<lang>.jpg from scripts/og.py (re-run when positioning or asset count changes).
 Every blog/news post needs a branded cover: run `python3 scripts/cover.py --missing` (pip install pillow fonttools) before building and commit content/covers/. Covers are the share image (og:image) and the article hero.
 
 ## Content automation
