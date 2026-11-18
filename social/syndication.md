@@ -73,3 +73,4 @@ Next: Teletype (teletype.in, login via Telegram) and Dzen (dzen.ru, Yandex/VK ID
 | 2026-11-16 | Teletype | @whatifstack | weekly-dca-recap-2026-11-16 (ru) | https://teletype.in/@whatifstack/weekly-dca-recap-2026-11-16 | canonical link ✓, follow-us footer |
 | 2026-11-17 | Teletype | @whatifstack | ethereum-10-dollars-a-day-5-years (ru) | https://teletype.in/@whatifstack/ethereum-10-dollars-a-day-5-years | canonical link ✓ |
 | 2026-11-18 | Medium | @whatifstack | fed-rate-hike-december-2026 (en) | https://medium.com/@whatifstack/fed-rate-hike-odds-hit-100-what-hikes-did-to-bitcoin-stocks-and-gold-b4330d6cba2c | canonical ✓, imported by Claude without the owner (paste event) |
+| 2026-11-18 | Teletype | @whatifstack | ai-stocks-sell-off-four-pressures (en) | https://teletype.in/@whatifstack/ai-stocks-sell-off-four-pressures | canonical link ✓ |
