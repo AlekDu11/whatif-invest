@@ -1256,7 +1256,7 @@ def home(lang, ver):
                 + ''.join(mini_row(lang, i, f'<span class="mc {"good" if sign > 0 else "bad"}">{pct(METRICS[i]["chg"])}</span>') for i in pool) + '</div>')
     today = (f'<section class="section today"><h2>{esc(hm["today"])}</h2><div class="tgrid">'
              f'{mv("crypto", 1)}{mv("crypto", -1)}{mv("stock", 1)}{mv("stock", -1)}{w_news}</div></section>')
-    body = (my_block(lang) + hero + brief_block(lang) + today + offer_card(lang, 'home') + nl_block(lang, 'home') + f'<section class="section toprank"><div class="tabs" id="tabs"></div>{filt}{top10}</section>'
+    body = (hero + my_block(lang) + brief_block(lang) + today + offer_card(lang, 'home') + nl_block(lang, 'home') + f'<section class="section toprank"><div class="tabs" id="tabs"></div>{filt}{top10}</section>'
             f'<div class="wgrid3">{w_tr if nws else w_fng}<div class="wstack">{w_mcap}{w_dom}</div>{w_bat}</div>{banner}{habits_strip(lang)}{poll_block(lang)}{poly_block(lang)}'
             f'<section class="section"><div class="hl">{"".join(cards)}</div></section>'
             f'{rest}'
