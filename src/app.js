@@ -282,6 +282,28 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
   if('serviceWorker' in navigator && location.protocol==='https:') addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));
 })();
 
+/* ---------- personal home: watchlist + portfolio first (only for visitors who have them) ---------- */
+(function(){ const box=$('#myh'); if(!box) return; let C; try{ C=JSON.parse(box.dataset.cfg) }catch(e){ return }
+  const rd=k=>{ try{ return JSON.parse(localStorage.getItem(k)||'[]') }catch(e){ return [] } };
+  const hold={}; rd('wi_hold').forEach(x=>{ if(!BYID[x.id]) return; const g=hold[x.id]||(hold[x.id]={qty:0,cost:0}); g.qty+=+x.qty||0; g.cost+=+x.cost||0 });
+  Object.keys(hold).forEach(k=>{ if(hold[k].qty<=1e-12) delete hold[k] });
+  const ids=[...new Set([...Object.keys(hold),...rd('wi_watch').filter(i=>BYID[i])])]; if(!ids.length) return;
+  const nf=v=>{ try{ return new Intl.NumberFormat(T.intl||'en',{style:'currency',currency:C.code,maximumFractionDigits:Math.abs(v)>=100?0:2}).format(v) }catch(e){ return Math.round(v)+' '+C.code } };
+  const pf=()=>{ let tv=0,tc=0,d=0; for(const [id,g] of Object.entries(hold)){ const a=BYID[id], v=g.qty*a.pr; tv+=v; tc+=g.cost; d+=v*(a.ch||0)/(1+(a.ch||0)) }
+    if(!tv) return ''; const dp=tv-d?d/(tv-d):0, r=tc?tv/tc-1:0;
+    return `<a class="card mypf" href="${C.me}"><span class="muted">${esc(C.pf)}</span><b class="v">${nf(tv*C.rate)}</b>
+      <span class="${cls(dp)}">${fmtPct(dp)} ${esc(C.today)} · ${d<0?'−':'+'}${nf(Math.abs(d)*C.rate)}</span><span class="muted">${esc(T.invested||'')}: ${nf(tc*C.rate)} · <span class="${cls(r)}">${fmtPct(r)}</span></span></a>` };
+  const top=ids.slice(0,8).map(i=>{ const a=BYID[i]; return `<a class="mrow" href="${url(i)}">${icon(a)}<span class="mn"><b>${esc(a.t)}</b><span>${esc(nm(a))}</span></span>
+      <span class="mp" data-p="${i}">${fmtPrice(a.pr)}</span><span class="mc ${cls(a.ch)}" data-c="${i}">${fmtPct(a.ch)}</span></a>` }).join('');
+  box.innerHTML=`<div class="myhh"><h2>${esc(C.h)}</h2><a class="calc" href="${C.me}">${esc(C.open)} →</a></div>
+    <div class="mygrid"><div id="mypf">${pf()}</div><div class="card wd"><div class="wt">★ ${esc(C.watch)}</div>${top}</div><div class="card wd" id="mynews" hidden><div class="wt">📰 ${esc(C.news)}</div><div class="nlist own"></div></div></div>`;
+  if(!Object.keys(hold).length) box.querySelector('#mypf').remove();
+  box.hidden=false;
+  let t; document.addEventListener('wi:tick',()=>{ clearTimeout(t); t=setTimeout(()=>{ const el=$('#mypf'); if(el) el.innerHTML=pf() },1200) });
+  fetch(C.nf+'?v='+WI.v).then(r=>r.json()).then(L=>{ const w=new Set(ids), f=L.filter(n=>(n.a||[]).some(x=>w.has(x))).slice(0,4); if(!f.length) return;
+    const n=$('#mynews'); n.querySelector('.nlist').innerHTML=f.map(x=>`<a class="nrow" href="${x.u}"><b>${esc(x.t)}</b><span class="muted"><time data-t="${esc(x.d)}">${esc(x.d)}</time> · ${esc(x.a.map(i=>BYID[i]?BYID[i].t:i).slice(0,3).join(', '))}</span></a>`).join(''); n.hidden=false }).catch(()=>{});
+})();
+
 /* ---------- live crypto prices (Binance WebSocket, only symbols shown on the page) ---------- */
 (function(){
   if(!('WebSocket' in window)) return;

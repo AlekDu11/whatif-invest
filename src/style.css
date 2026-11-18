@@ -874,3 +874,18 @@ tr.xh{display:none}.mkmore{margin-top:10px}.xgo{text-decoration:none;color:var(-
 .pager{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:14px 0 4px}.pgb{min-width:38px;height:38px;padding:0 10px;border-radius:10px;border:1px solid var(--line2);background:var(--card);color:var(--text);font:600 14px var(--fb);cursor:pointer}.pgb.on{background:var(--accent);color:#06120d;border-color:transparent}.pgb:disabled{opacity:.35;cursor:default}.pgd{color:var(--muted);padding:0 4px}.pgi{margin-left:8px;font-size:13px}
 .wbar{height:4px;border-radius:2px;background:var(--line2);margin-top:4px;overflow:hidden;min-width:60px}.wbar i{display:block;height:100%;background:var(--accent)}
 .tvref{margin-left:auto;font:600 12.5px var(--fb);color:var(--muted);text-decoration:none;border:1px solid var(--line2);border-radius:999px;padding:4px 10px}.tvref:hover{color:var(--accent);border-color:var(--accent)}.inz p{color:var(--muted);line-height:1.55}
+
+/* personal home + market in 60 seconds */
+.myh{margin:14px 0 22px}.myhh,.brief .bh{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.myhh h2,.brief h2{margin:0;font-size:1.15rem}
+.mygrid{align-items:start;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:10px}
+.mypf{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:inherit;height:100%;box-sizing:border-box}.mypf .v{font-size:1.9rem;line-height:1.1}
+.brief{padding:14px 18px}.brief .bv{margin:6px 0 10px;font-weight:600}
+.bchips{display:flex;flex-wrap:wrap;gap:8px}
+.bchip{display:inline-flex;align-items:center;gap:7px;padding:6px 10px;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:inherit;font-size:.92rem;white-space:nowrap}
+.bchip:hover{border-color:var(--accent,#1a6dff)}.bchip .bn{color:var(--muted,#667)}
+.bmove{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:10px}.bwhy{font-size:.92rem}
+.bfng{margin-top:8px;font-size:.92rem}.bfng b{font-size:1.05rem}.bsrc{margin:8px 0 0;font-size:.8rem}
+.bchip .bt{display:none;font-weight:600}
+@media(max-width:560px){.bchip .bn{display:none}.bchip .bt{display:inline}}
+.bnums{display:flex;flex-wrap:wrap;gap:6px 16px;margin:0}.bnums a{text-decoration:none;color:inherit}

@@ -6,6 +6,12 @@ short: Every tool explained
 ---
 WhatIfStack answers one question first: **what would I have today if I had invested a fixed amount regularly?** Everything else on the site helps you look at crypto, stocks, ETFs and gold from that angle — with real prices and without hype. Here is what each tool does and how to use it.
 
+## Your markets and «Market in 60 seconds» (home page)
+
+If you have starred assets (☆) or added holdings to your portfolio, the home page opens with «Your markets»: portfolio value and today's change, your assets with live prices, and our news about exactly those assets. The data stays in your browser only.
+
+«Market in 60 seconds» under the headline is a short daily summary: whether crypto and stocks are up or down, Bitcoin, Ethereum, S&P 500, Nasdaq-100 and gold, the biggest move among large assets (with a link to our brief when there is one) and the Fear & Greed index. It updates automatically with prices.
+
 ## The DCA ranking (home page)
 
 The table on the [home page]({lang}/) ranks {n} assets by what regular buying would have returned. DCA (dollar-cost averaging) means buying for the same amount every day, week or month, whatever the price.

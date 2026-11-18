@@ -42,6 +42,7 @@ from i18n_fb import FB  # noqa: E402
 from i18n_sm import SM, SM_LANGS, SM_KINDS  # noqa: E402
 from i18n_al import AL  # noqa: E402
 from i18n_nl import NL  # noqa: E402
+from i18n_my import MY, BR  # noqa: E402
 from i18n_ch import CH  # noqa: E402
 from i18n_inv import INV  # noqa: E402
 from i18n_ua import UA_LANGS, UA_ASOF, OB, OBI, OBT, UA_SRC, BUYG, BUYG_SRC, OVP, OB_GO, INZ  # noqa: E402
@@ -1120,6 +1121,41 @@ def fng_label(lang, v):
     return labs[0 if v < 25 else 1 if v < 45 else 2 if v < 56 else 3 if v < 76 else 4]
 
 
+def brief_block(lang):
+    """«Market in 60 seconds»: a short daily summary built from our own data (no third-party text)."""
+    b, S, w = BR[lang], TR[lang], TR[lang]['w']
+    ch = lambda i: METRICS[i]['chg'] if i in A and METRICS.get(i) and METRICS[i]['chg'] is not None else None
+    def chip(i, label=None):
+        if ch(i) is None: return ''
+        return (f'<a class="bchip" href="{aurl(lang, i)}">{icon(A[i])}<span class="bn">{esc(label or nm(A[i], lang))}</span>'
+                f'<b data-p="{i}">{price(METRICS[i]["price"])}</b><span class="{cls(ch(i))}" data-c="{i}">{pct(ch(i))}</span></a>')
+    c, st = ch('btc'), ch('spy')
+    if c is None or st is None: return ''
+    verdict = b['up'] if c > 0 and st > 0 else b['dn'] if c < 0 and st < 0 else b['mix']
+    pool = [i for i in ORDERED if ch(i) is not None and ORD[i] < 150 and A[i]['cat'] in ('crypto', 'stock') and (A[i]['cat'] != 'crypto' or (A[i].get('mcap') or 0) >= 5e9)]
+    mv = max(pool, key=lambda i: abs(ch(i))) if pool else None
+    why = ''
+    if mv:
+        fresh = [(k, m) for k, m in hot_items(lang, mv) if m.get('date', '')[:10] >= (date.fromisoformat(UPDATED[:10]) - timedelta(days=3)).isoformat()]
+        if fresh:
+            k, m = fresh[0]
+            why = f'<a class="bwhy" href="{url(lang, "news/" + k)}">{esc(b["why"])}: {esc(m.get("title", ""))} →</a>'
+    fv = (G.get('fng') or [None])[0]; fy = (G.get('fng') or [None, None])[1] if len(G.get('fng') or []) > 1 else None
+    fng = (f'<div class="bfng"><span>{esc(w["fng"])}:</span> <b>{fv}</b> <span>{esc(fng_label(lang, fv))}</span>'
+           + (f' <span class="muted">· {esc(w["yday"].lower())} {fy}</span>' if fy is not None else '') + '</div>') if fv is not None else ''
+    nums = ''.join(f'<a href="{aurl(lang, i)}">{esc(nm(A[i], lang))} <b class="{cls(ch(i))}" data-c="{i}">{pct(ch(i))}</b></a>' for i in ('btc', 'eth', 'spy', 'qqq', 'gold') if ch(i) is not None)
+    mvh = (f'<div class="bmove"><span class="muted">{esc(b["move"])}</span>{chip(mv)}{why}</div>') if mv else ''
+    return (f'<section class="section brief card"><div class="bh"><h2>⏱ {esc(b["h"])}</h2><span class="muted">{esc(b["upd"])} {esc(UPDATED[:10])}</span></div>'
+            f'<p class="bv">{esc(verdict)}</p><p class="bnums">{nums}</p>'
+            f'{mvh}{fng}<p class="bsrc muted">{esc(b["src"])}</p></section>')
+
+
+def my_block(lang):
+    """Personal home: filled in the browser from the visitor's watchlist and portfolio (stays empty and hidden for everyone else)."""
+    cfg = dict(MY[lang], me=url(lang, 'me'), nf=f'/assets/nf/{lang}.json', code=hccy(lang)[0], rate=hccy(lang)[1])
+    return f'<section class="section myh" id="myh" hidden data-cfg="{esc(json.dumps(cfg, ensure_ascii=False))}"></section>'
+
+
 def home(lang, ver):
     S, w = TR[lang], TR[lang]['w']
     ids = ORDERED
@@ -1218,7 +1254,7 @@ def home(lang, ver):
                 + ''.join(mini_row(lang, i, f'<span class="mc {"good" if sign > 0 else "bad"}">{pct(METRICS[i]["chg"])}</span>') for i in pool) + '</div>')
     today = (f'<section class="section today"><h2>{esc(hm["today"])}</h2><div class="tgrid">'
              f'{mv("crypto", 1)}{mv("crypto", -1)}{mv("stock", 1)}{mv("stock", -1)}{w_news}</div></section>')
-    body = (hero + today + offer_card(lang, 'home') + nl_block(lang, 'home') + f'<section class="section toprank"><div class="tabs" id="tabs"></div>{filt}{top10}</section>'
+    body = (my_block(lang) + hero + brief_block(lang) + today + offer_card(lang, 'home') + nl_block(lang, 'home') + f'<section class="section toprank"><div class="tabs" id="tabs"></div>{filt}{top10}</section>'
             f'<div class="wgrid3">{w_tr if nws else w_fng}<div class="wstack">{w_mcap}{w_dom}</div>{w_bat}</div>{banner}{habits_strip(lang)}{poll_block(lang)}{poly_block(lang)}'
             f'<section class="section"><div class="hl">{"".join(cards)}</div></section>'
             f'{rest}'
@@ -3916,6 +3952,10 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
 }});""")
     ver = dict(css=h8(css), js=h8(js), ref=h8(ref), index=h8(index_js))
     json.dump({i: alert_src(i) for i in A if alert_src(i)}, open(os.path.join(DIST, 'assets/alerts-map.json'), 'w'), separators=(',', ':'))
+    os.makedirs(os.path.join(DIST, 'assets/nf'), exist_ok=True)
+    for _l in ORDER:   # recent own news per language, for «News about your assets» on the personal home
+        json.dump([dict(u=url(_l, 'news/' + k), t=m.get('title', ''), d=m.get('date', '')[:16], a=[x.strip() for x in (m['assets'] if isinstance(m['assets'], list) else str(m['assets']).split(','))]) for k, m in news_items(_l)[:120] if m.get('assets')],
+                  open(os.path.join(DIST, f'assets/nf/{_l}.json'), 'w'), ensure_ascii=False, separators=(',', ':'))
     per_lang = {}
     for lang in ORDER:
         set_numfmt(lang)
