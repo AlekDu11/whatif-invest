@@ -38,6 +38,7 @@ from i18n_lc import LC  # noqa: E402
 from i18n_xc import XC  # noqa: E402
 from i18n_cv import CV, CV_CCY  # noqa: E402
 from i18n_fb import FB  # noqa: E402
+from i18n_sm import SM, SM_LANGS, SM_KINDS  # noqa: E402
 from i18n_ua import UA_LANGS, UA_ASOF, OB, OBI, OBT, UA_SRC, BUYG, BUYG_SRC, OVP  # noqa: E402
 from i18n_bpd import BPD, IDEA as BP_IDEA  # noqa: E402
 from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB, CH as OWN_CH, CH2 as OWN_CH2  # noqa: E402
@@ -180,6 +181,8 @@ def has_page(lang, aid):
         return lang in PARTNER_TXT
     if aid == 'buy-stocks-ukraine' or aid == 'ovdp/brokers':
         return lang in UA_LANGS
+    if '/' in (aid or '') and aid.rsplit('/', 1)[1] in SM_KINDS:
+        return lang in SM_LANGS and sm_ok(aid.rsplit('/', 1)[0], aid.rsplit('/', 1)[1])
     if (aid or '').startswith('converter/'):
         return aid in _CVS.setdefault(lang, {cv_slug(i, c) for i, c in cv_pairs(lang)})
     if (aid or '').startswith('ovdp/brokers/'):
@@ -290,7 +293,9 @@ def usd(v):
         return '—'
     a = abs(v)
     w = NUMFMT[CUR_FMT[0]][3]
-    if a >= 1e9:
+    if a >= 1e12 and len(w) > 3:
+        body = _num(a / 1e12, 2) + NBSP + w[3]
+    elif a >= 1e9:
         body = _num(a / 1e9, 2) + NBSP + w[2]
     elif a >= 1e6:
         body = _num(a / 1e6, 2) + NBSP + w[1]
@@ -1571,7 +1576,8 @@ def stock_block(lang, aid):
     ed = _when(f.get('ern'), lang)
     ern = f'<div class="kan"><span>{esc(k["ern"])}</span><b>{ed.isoformat()}</b></div>' if ed else ''
     summ = stock_summary(lang, f)
-    return (f'<section class="section kstats"><h2>{esc(k["h"])} · {esc(f["tk"])}</h2><div class="kgrid"><div class="card kcard"><div class="ktiles">{"".join(tiles)}</div>{rng}</div>'
+    smn = _sm_links(lang, aid) if lang in SM_LANGS and sm_ok(aid, 'market-cap') else ''
+    return (f'<section class="section kstats"><h2>{esc(k["h"])} · {esc(f["tk"])}</h2>{smn}<div class="kgrid"><div class="card kcard"><div class="ktiles">{"".join(tiles)}</div>{rng}</div>'
             f'<div class="card kside">{an}{ern}<h3>{esc(k["sum_h"])}</h3><p>{esc(" ".join(summ))}</p><p class="muted ksrc">{esc(k["src"].format(d=f["d"]))} {esc(k["notadv"])}</p></div></div></section>')
 
 
@@ -1917,6 +1923,131 @@ def coin_markets_block(lang, aid):
             f'<th class="l n">#</th><th class="l">{esc(t["name"])}</th><th class="l">{esc(t["pair"])}</th><th>{esc(t["price"])}</th><th>{esc(t["vol"])}</th>'
             f'<th class="hide-sm">{esc(t["share"])}</th><th class="hide-sm">{esc(t["spread"])}</th><th class="hide-sm">{esc(t["trust"])}</th></tr></thead><tbody>{tr}</tbody></table></div>'
             f'{more}<p class="note">{esc(t["mk_src"].format(x=a["tk"], d=src_d))}</p></section>')
+
+
+
+# ---------------- per-stock metric pages: /<id>/market-cap|revenue|earnings/ ----------------
+SM_TOP = 1500
+
+
+def sm_hist(aid):
+    st = stock_stats(A[aid])
+    ys = st.get('hy') or []
+    if len(ys) < 2:
+        return None
+    fc = st.get('fcy') or st.get('ccy')
+    rv = [to_usd(v, fc) if v is not None else None for v in st.get('hr') or []]
+    ni = [to_usd(v, fc) if v is not None else None for v in st.get('hn') or []]
+    return dict(y=ys, rev=rv, ni=ni, fc=fc)
+
+
+def sm_ok(aid, kind):
+    if aid not in A or A[aid]['cat'] != 'stock':
+        return False
+    wr = world_rank(aid)
+    if not wr or wr > SM_TOP:
+        return False
+    if kind == 'market-cap':
+        return True
+    h = sm_hist(aid)
+    key = 'rev' if kind == 'revenue' else 'ni'
+    return bool(h) and sum(1 for v in h[key] if v is not None) >= 2
+
+
+def _sm_bars(labels, vals, w=640, h=190):
+    vv = [v or 0 for v in vals]
+    mx = max([abs(v) for v in vv] + [1])
+    n = len(vv)
+    bw = w / max(n, 1)
+    base = h - 22 if min(vv) >= 0 else (h - 22) / 2
+    sc = (h - 34) / mx if min(vv) >= 0 else (h - 40) / 2 / mx
+    out = ''
+    for k, (lb, v) in enumerate(zip(labels, vv)):
+        x = k * bw + bw * 0.18
+        bh = abs(v) * sc
+        y = base - bh if v >= 0 else base
+        out += (f'<rect x="{x:.1f}" y="{y:.1f}" width="{bw * 0.64:.1f}" height="{max(bh, 1):.1f}" rx="4" class="{"up" if v >= 0 else "dn"}"/>'
+                f'<text x="{x + bw * 0.32:.1f}" y="{h - 6}" text-anchor="middle">{lb}</text>')
+    return f'<svg class="smbars" viewBox="0 0 {w} {h}" role="img" aria-hidden="true">{out}</svg>'
+
+
+def _sm_links(lang, aid, cur=None):
+    t = SM[lang]
+    return '<div class="smnav">' + ''.join(
+        f'<a class="chip{" on" if k == cur else ""}" href="{url(lang, aid + "/" + k)}">{esc(t["nav"][k])}</a>' for k in SM_KINDS if sm_ok(aid, k)) + '</div>'
+
+
+def sm_page(lang, aid, kind, ver):
+    t, a = SM[lang], A[aid]
+    name, tk = nm(a, lang), a['tk']
+    P = a
+    u = lc_universe()[aid]
+    wr = world_rank(aid)
+    st = stock_stats(a)
+    mon = mlabel(UPDATED[:7], lang, True)
+    rows, chart, extra, note = '', '', '', t['fx'] if (st.get('fcy') or st.get('ccy') or 'USD') != 'USD' else ''
+    if kind == 'market-cap':
+        mc = u['mcap']
+        p = P['p']
+        s0 = ym2i(P['start'])
+        last = len(p) - 1
+        est = [(i, mc * p[i] / p[last]) for i in range(max(0, last - 120), last + 1) if p[i]]
+        yc = year_chg(aid)
+        f = dict(name=name, tk=tk, v=usd(mc), m=mon, r=wr, g=pct(yc) if yc is not None else '—')
+        ans = t['mc_a'].format(**f) + (' ' + t['mc_a1'].format(**f) if yc is not None else '')
+        ye = {}
+        for i in range(len(p)):
+            y, m = divmod(s0 + i, 12)
+            if p[i]:
+                ye[y] = mc * p[i] / p[last]
+        yrs = sorted(ye)[-12:]
+        for k, y in enumerate(reversed(yrs)):
+            prev = ye.get(y - 1)
+            ch = ye[y] / prev - 1 if prev else None
+            rows += f'<tr><td class="l">{y}</td><td class="num"><b>{usd_h(ye[y])}</b></td><td class="num {cls(ch or 0)}">{pct(ch) if ch is not None else "—"}</td></tr>'
+        chart = f'<section class="section card"><h2>{esc(t["chart_mc"])}</h2>{_xvsvg([(i, v) for i, v in est])}</section>'
+        note = t['est']
+        tiles = [(t['nav']['market-cap'], usd_h(mc)), (t['rank'], f'#{wr}'), (t['y1'], f'<span class="{cls(yc or 0)}">{f["g"]}</span>'), (t['price'], price(METRICS[aid]['price']) if aid in METRICS else '—')]
+        title, h1, desc = t['mc_t'].format(**f), t['mc_h1'].format(**f), t['mc_d'].format(**f)
+    else:
+        h = sm_hist(aid)
+        key = 'rev' if kind == 'revenue' else 'ni'
+        pairs = [(y, v) for y, v in zip(h['y'], h[key]) if v is not None]
+        y, v = pairs[-1]
+        pv = pairs[-2][1] if len(pairs) > 1 else None
+        g = (v / pv - 1) if pv and pv > 0 and v is not None else None
+        f = dict(name=name, tk=tk, v=usd(v) if v >= 0 else '−' + usd(-v), y=y, g=pct(g) if g is not None else '—', m=mon, r=wr)
+        pre = 'rv' if kind == 'revenue' else 'ea'
+        ans = t[pre + '_a'].format(**f)
+        if kind == 'revenue' and u.get('rev'):
+            ans += ' ' + t['rv_ttm'].format(v=usd(u['rev']))
+        if kind == 'earnings':
+            rv = dict(zip(h['y'], h['rev'])).get(y)
+            if rv:
+                ans += ' ' + t['ea_m'].format(v=pctu(v / rv))
+        for k, (yy, vv) in enumerate(reversed(pairs)):
+            pr_ = dict(pairs).get(yy - 1)
+            ch = vv / pr_ - 1 if pr_ and pr_ > 0 else None
+            mg = ''
+            if kind == 'earnings':
+                rv = dict(zip(h['y'], h['rev'])).get(yy)
+                mg = f'<td class="num hide-sm">{pctu(vv / rv) if rv else "—"}</td>'
+            rows += (f'<tr><td class="l">{yy}</td><td class="num"><b class="{"" if vv >= 0 else "dn"}">{usd_h(vv)}</b></td>'
+                     f'<td class="num {cls(ch or 0)}">{pct(ch) if ch is not None else "—"}</td>{mg}</tr>')
+        chart = f'<section class="section card"><h2>{esc(t["chart_rv" if kind == "revenue" else "chart_ea"])}</h2>{_sm_bars([str(x) for x, _ in pairs], [x for _, x in pairs])}</section>'
+        tiles = [(f'{t["nav"][kind]} {y}', usd_h(v)), (t['chg'], f'<span class="{cls(g or 0)}">{f["g"]}</span>'), (t['rank'], f'#{wr}'),
+                 (t['nav']['market-cap'], usd_h(u['mcap']))]
+        title, h1, desc = t[pre + '_t'].format(**f), t[pre + '_h1'].format(**f), t[pre + '_d'].format(**f)
+    th = f'<th class="l">{esc(t["year"])}</th><th>{esc(t["val"])}</th><th>{esc(t["chg"])}</th>' + (f'<th class="hide-sm">{esc(t["margin"])}</th>' if kind == 'earnings' else '')
+    tl = '<div class="ktiles obtiles smtiles">' + ''.join(f'<div class="ks"><span>{esc(k)}</span><b>{v}</b></div>' for k, v in tiles) + '</div>'
+    body = (f'<nav class="crumbs"><a href="{url(lang, "largest-companies")}">{esc(LC[lang]["nav"])}</a> / <a href="{url(lang, aid)}">{esc(name)}</a> / {esc(t["nav"][kind])}</nav>'
+            f'<div class="ahead">{icon(a, True)}<div><h1>{esc(h1)}</h1></div></div>{_sm_links(lang, aid, kind)}<p class="lead">{esc(ans)}</p>{tl}{chart}'
+            f'<section class="section"><h2>{esc(t["table"])}</h2><div class="tw"><table class="mt"><thead><tr>{th}</tr></thead><tbody>{rows}</tbody></table></div>'
+            f'<p class="note">{esc(note)} {esc(t["src"].format(d=st.get("d") or UPDATED[:10]))}</p></section>'
+            f'<section class="section"><div class="hgrid"><a class="card hcard" href="{url(lang, aid)}"><span>📈</span><b>{esc(t["more"].format(name=name))}</b></a>'
+            f'<a class="card hcard" href="{url(lang, "largest-companies")}"><span>🌍</span><b>{esc(t["peers"])}</b></a></div></section>')
+    ld = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": h1 + '?', "acceptedAnswer": {"@type": "Answer", "text": ans}}]}
+    return shell(lang, f'{aid}/{kind}', title + ' | ' + BRAND, desc, body, dict(asset=aid), ver, [ld])
 
 
 def xc_pages(lang, ver):
@@ -3553,8 +3684,15 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
             write(f'{pre}{slug}/index.html', tool(lang, slug, ver))
         for _ai, _c in cv_pairs(lang):
             write(f'{pre}{cv_slug(_ai, _c)}/index.html', cv_page(lang, _ai, _c, ver))
+        _smx = []
+        if lang in SM_LANGS:
+            for _ai in [i for i in A if A[i]['cat'] == 'stock' and has_page(lang, i)]:
+                for _k in SM_KINDS:
+                    if sm_ok(_ai, _k):
+                        write(f'{pre}{_ai}/{_k}/index.html', sm_page(lang, _ai, _k, ver))
+                        _smx.append(f'{_ai}/{_k}')
         extra_pages = ['habits'] + ['habits/' + HSLUG[k] for k in HSCEN] + [c for c in CALCS if has_page(lang, c)] + ['portfolios/' + k for k, _ in bp_sets()]
-        extra_pages += [cv_slug(i, c) for i, c in cv_pairs(lang)]
+        extra_pages += [cv_slug(i, c) for i, c in cv_pairs(lang)] + _smx
         for k, c in bp_sets():
             write(f'{pre}portfolios/{k}/index.html', portfolio_detail(lang, k, c, ver))
         write(pre + 'millionaire/index.html', calc_page(lang, 'millionaire', ver))

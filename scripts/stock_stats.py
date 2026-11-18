@@ -8,6 +8,7 @@ Fields (short keys, missing ones omitted):
   mcap pe fpe eps dy (dividend yield, fraction) dps (dividend per share) pr (payout ratio) beta h52 l52
   rev revg (fraction) gm pm (margins) ni (net income) fcf debt cash
   rec (recommendationKey) tgt (target mean) nan (analyst count) ern (next earnings, unix) exd (ex-dividend, unix)
+  sh (shares outstanding) · stocks only: hy [fiscal years] hr [total revenue] hn [net income] (annual income statement, oldest first)
 """
 import json, os, sys, time
 from datetime import date
@@ -45,10 +46,32 @@ def pick(i):
                gm=num(g('grossMargins')), pm=num(g('profitMargins')), ni=num(g('netIncomeToCommon')), fcf=num(g('freeCashflow')),
                debt=num(g('totalDebt')), cash=num(g('totalCash')), rec=g('recommendationKey') if g('recommendationKey') not in (None, 'none') else None,
                tgt=num(g('targetMeanPrice')), nan=g('numberOfAnalystOpinions'), ern=g('earningsTimestamp') or g('earningsTimestampStart'),
-               exd=g('exDividendDate'), d=date.today().isoformat())
+               exd=g('exDividendDate'), sh=num(g('sharesOutstanding')), d=date.today().isoformat())
     if g('longBusinessSummary'):
         out['ds'] = {'en': clean(g('longBusinessSummary'))}
     return {k: v for k, v in out.items() if v is not None and v != ''}
+
+
+def history(t):
+    """Annual revenue and net income for the last 4-5 fiscal years, oldest first."""
+    try:
+        df = t.income_stmt
+    except Exception:
+        return {}
+    if df is None or getattr(df, 'empty', True):
+        return {}
+    row = lambda *names: next((df.loc[n] for n in names if n in df.index), None)
+    rv, ni = row('Total Revenue', 'Operating Revenue'), row('Net Income', 'Net Income Common Stockholders')
+    ys, hr, hn = [], [], []
+    for col in sorted(df.columns):
+        r = num(rv[col]) if rv is not None else None
+        n_ = num(ni[col]) if ni is not None else None
+        if r is None and n_ is None:
+            continue
+        ys.append(col.year if hasattr(col, 'year') else int(str(col)[:4]))
+        hr.append(r)
+        hn.append(n_)
+    return dict(hy=ys, hr=hr, hn=hn) if len(ys) >= 2 else {}
 
 
 def main():
@@ -56,13 +79,15 @@ def main():
     assets = json.load(open(MARKET, encoding='utf-8'))['assets']
     stats = json.load(open(OUT, encoding='utf-8')) if os.path.exists(OUT) else {}
     syms = sorted({a['yahoo'] for a in assets.values() if a.get('cat') in ('stock', 'etf') and a.get('yahoo') and ':' not in a['yahoo']})
+    is_stock = {a['yahoo'] for a in assets.values() if a.get('cat') == 'stock' and a.get('yahoo')}
     syms.sort(key=lambda s: (stats.get(s, {}).get('d', ''), s))      # never fetched first, then the stalest
     n = fail = 0
     for s in syms[:MAXN]:
         if time.time() - T0 > BUDGET:
             break
         try:
-            i = yf.Ticker(s).info or {}
+            tk = yf.Ticker(s)
+            i = tk.info or {}
         except Exception as e:  # rate limit or unknown symbol: keep the old record
             print(f'  {s}: {str(e)[:80]}', flush=True)
             fail += 1
@@ -71,6 +96,12 @@ def main():
             time.sleep(5)
             continue
         rec = pick(i)
+        if s in is_stock and len(rec) > 2:
+            h = history(tk)
+            if h:
+                rec.update(h)
+            elif stats.get(s, {}).get('hy'):        # keep the older history if this fetch had none
+                rec.update({k: stats[s][k] for k in ('hy', 'hr', 'hn')})
         if len(rec) > 2:
             stats[s] = rec
             n += 1

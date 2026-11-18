@@ -65,7 +65,7 @@ News aggregator: api/news.js (Vercel function, RSS headlines only, links to orig
 ## Backlog agreed with the owner (2026-11-17)
 Taken from CompaniesMarketCap / StockAnalysis / Simply Wall St:
 1. DONE 2026-11-17: /largest-companies/ rankings (market cap, revenue, earnings, employees, dividend, P/E) + 27 country pages, rank-change arrows, 20 languages (scripts/i18n_lc.py, lc_pages() in build.py); stock pages show "#N in the world" and 1-year change.
-2. NEXT (after Vercel storage is back under 10 GB): per-stock metric pages /<id>/market-cap/, /<id>/revenue/, /<id>/earnings/ (en+uk first, light pages) with multi-year history: add annual income statement (4-5 years) and shares outstanding to scripts/stock_stats.py; market-cap history = monthly price x shares (labelled as an estimate); one-sentence answer ("As of <month> X is worth $..., #N in the world").
+2. DONE 2026-11-18 (market cap for the top 1500 stocks in en+uk; revenue/earnings appear as stock_stats.py fills hy/hr/hn): per-stock metric pages /<id>/market-cap/, /<id>/revenue/, /<id>/earnings/ (en+uk first, light pages) with multi-year history: add annual income statement (4-5 years) and shares outstanding to scripts/stock_stats.py; market-cap history = monthly price x shares (labelled as an estimate); one-sentence answer ("As of <month> X is worth $..., #N in the world").
 3. Then: a visual health score for each stock in our own style (valuation, growth, profit, debt, dividend), not a copy of Simply Wall St's snowflake; tags on stock pages (sector, index membership such as Dow Jones / S&P 500 / DAX).
 
 ## Waiting on the owner
