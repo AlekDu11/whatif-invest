@@ -33,7 +33,7 @@ Content: 2–3 blog posts a week on trending queries (content/blog/<lang>/), wee
 - scripts/i18n*.py — all UI/SEO strings for 20 languages; a new string must be added for every language
 - src/app.js, src/style.css — front-end; src/ref.js — referral links
 - Before pushing: run `python3 scripts/build.py` and check pages in a headless browser.
-- Deploys (owner-approved 2026-11-17, Vercel storage limit): Vercel builds ONLY commits with `[deploy]` in the message (scripts/vercel_ignore.sh). .github/workflows/deploy.yml adds such a commit every 4 hours if the site changed. Put `[deploy]` in a commit message only for urgent fixes the owner is waiting for.
+- Deploys (since 2026-11-18, after hitting the Hobby limit of 100 deployments/day): git auto-deploys are OFF (vercel.json git.deploymentEnabled=false), pushes cost nothing. .github/workflows/deploy.yml checks hourly and, at most every ~4 hours when the site changed, POSTs the Vercel Deploy Hook (GitHub secret VERCEL_DEPLOY_HOOK, hook «scheduled» on main) and adds a «[deploy]» marker commit. Urgent fix: run deploy.yml with workflow_dispatch (it skips the 4-hour wait).
 
 ## Partner links
 src/ref.js (buy buttons) and PARTNERS / POLY in scripts/build.py (/exchanges/ page, Polymarket block).
