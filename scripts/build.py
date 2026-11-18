@@ -2858,15 +2858,42 @@ LOCAL_CCY = {'uk': 'fx:UAH', 'ru': 'fx:RUB', 'pl': 'fx:PLN', 'de': 'fx:EUR', 'fr
 
 
 
-def cv_assets(lang):
-    n = 40 if lang in FULL else 20
+SB = (_jload('stables.json') or {}).get('s', {})
+SBA = {k.lower(): dict(_id=k.lower(), name=v['name'], tk=k, price=v['price'], chg=v.get('chg'), logo=v.get('logo'), cat='stable') for k, v in SB.items()}
+
+
+def cva(i):
+    return A.get(i) or SBA.get(i)
+
+
+def cv_assets(lang, n=None):
+    n = n or (60 if lang in FULL else 40)
     cr = [i for i in ORDERED if A[i]['cat'] == 'crypto' and A[i].get('price') and has_page(lang, i)][:n]
-    return cr + [i for i in ('gold', 'silver') if i in A and has_page(lang, i)]
+    st = [i for i in ORDERED if A[i]['cat'] == 'stock' and A[i].get('price') and has_page(lang, i)][:10]
+    return cr + [i for i in ('gold', 'silver') if i in A and has_page(lang, i)] + st + list(SBA)
+
+
+def cv_ccys(lang):
+    rates = FX.get('rates', {})
+    return [c for c in CV_CCY.get(lang, ['USD']) if c == 'USD' or c in rates]
+
+
+_CVP = {}
 
 
 def cv_pairs(lang):
-    rates = FX.get('rates', {})
-    return [(i, c) for i in cv_assets(lang) for c in CV_CCY.get(lang, ['USD']) if c == 'USD' or c in rates]
+    if lang not in _CVP:
+        _CVP[lang] = _cv_pairs(lang)
+    return _CVP[lang]
+
+
+def _cv_pairs(lang):
+    """Local currency first and with the most assets (uk → UAH, pl → PLN...); other currencies get the top 10 + stablecoins."""
+    cc = cv_ccys(lang)
+    small = cv_assets(lang, 10)[:10] + ['gold'] + list(SBA)[:2]
+    out = [(i, cc[0]) for i in cv_assets(lang)] + [(i, c) for c in cc[1:] for i in small if i in A or i in SBA]
+    seen = set()
+    return [x for x in out if not (x in seen or seen.add(x)) and not (x[0] in SBA and x[1] == 'USD')]
 
 
 def _cvn(v):
@@ -2886,28 +2913,29 @@ def cv_slug(aid, c):
 
 
 def cv_page(lang, aid, c, ver):
-    t, a = CV[lang], A[aid]
+    t, a = CV[lang], cva(aid)
     r = 1.0 if c == 'USD' else FX['rates'][c]
     v1 = a['price'] * r
     name, tk = nm(a, lang), a['tk']
     val = f'{_cvn(v1)} {c}'
-    yc = year_chg(aid)
+    yc = year_chg(aid) if aid in A else None
     f = dict(name=name, tk=tk, c=c, v=val, chg=pct(a['chg']) if a.get('chg') is not None else '—', y=pct(yc) if yc is not None else '', d=UPDATED[:10])
     ans = t['ans'].format(**f) + (t['ans_y'].format(**f) if yc is not None else '')
     amts = [0.001, 0.01, 0.1, 0.5, 1, 2, 5, 10] if a['price'] >= 1000 else [1, 5, 10, 50, 100, 500, 1000, 10000] if a['price'] >= 1 else [100, 1000, 10000, 100000, 1000000, 10000000]
     fiat = [x * 10 ** max(0, round(math.log10(r))) for x in (10, 50, 100, 500, 1000, 5000, 10000)]
     t1 = ''.join(f'<tr><td class="l"><b>{_cvn(q)} {tk}</b></td><td class="num">{_cvn(q * v1)} {c}</td></tr>' for q in amts)
     t2 = ''.join(f'<tr><td class="l"><b>{_cvn(q)} {c}</b></td><td class="num">{_cvn(q / v1)} {tk}</td></tr>' for q in fiat)
-    oc = ''.join(f'<a class="chip" href="{url(lang, cv_slug(aid, x))}">{tk} → {x}</a>' for x in CV_CCY.get(lang, []) if x != c and (x == 'USD' or x in FX['rates']))
-    oa = ''.join(f'<a class="chip" href="{url(lang, cv_slug(i, c))}">{icon(A[i])}{esc(A[i]["tk"])} → {c}</a>' for i in cv_assets(lang) if i != aid)
-    fid, tid = aid, ('usd' if c == 'USD' else 'fx:' + c)
+    prs = cv_pairs(lang)
+    oc = ''.join(f'<a class="chip" href="{url(lang, cv_slug(aid, x))}">{tk} → {x}</a>' for i, x in prs if i == aid and x != c)
+    oa = ''.join(f'<a class="chip" href="{url(lang, cv_slug(i, c))}">{icon(cva(i))}{esc(cva(i)["tk"])} → {c}</a>' for i, x in prs if x == c and i != aid)
+    fid, tid = ('st:' + a['tk'] if aid in SBA else aid), ('usd' if c == 'USD' else 'fx:' + c)
     tw = lambda h, rows: f'<div class="card"><h2>{esc(h)}</h2><table class="mt"><tbody>{rows}</tbody></table></div>'
     body = (f'<nav class="crumbs"><a href="{url(lang, "converter")}">{esc(HCONV[lang])}</a> / {tk} → {c}</nav>'
             f'<div class="ahead">{icon(a, True)}<div><h1>{esc(t["h1"].format(**f))}</h1></div></div>'
             f'<p class="cvbig"><b>1 {tk}</b> = <b class="big">{val}</b> <span class="{cls(a.get("chg") or 0)}">{f["chg"]}</span></p><p class="lead">{esc(ans)}</p>'
             + conv_box(lang, fid, tid, light=True)
             + f'<section class="section obpc">{tw(t["tab"].format(**f), t1)}{tw(t["rev"].format(**f), t2)}</section>'
-            f'<p><a class="calc" href="{aurl(lang, aid)}">{esc(t["about"].format(**f))} →</a></p>'
+            + (f'<p><a class="calc" href="{aurl(lang, aid)}">{esc(t["about"].format(**f))} →</a></p>' if aid in A else '')
             + (f'<section class="section"><h2>{esc(t["oth_c"].format(**f))}</h2><div class="chips">{oc}</div></section>' if oc else '')
             + f'<section class="section"><h2>{esc(t["oth_a"].format(**f))}</h2><div class="chips">{oa}</div></section>')
     ld = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": t['h1'].format(**f) + '?', "acceptedAnswer": {"@type": "Answer", "text": ans}}]}
@@ -2923,7 +2951,8 @@ def conv_box(lang, fid='btc', tid=None, light=False):
     fiat = ''.join(f'<option value="fx:{c}">{c}</option>' for c in FX.get('rates', {}))
     opts = (f'<optgroup label="Fiat" data-g="fiat"><option value="usd">US Dollar (USD)</option>{fiat}</optgroup>'
             f'<optgroup label="Crypto" data-g="crypto">' + ''.join(f'<option value="{i}">{esc(nm(A[i], lang))} ({esc(A[i]["tk"])})</option>' for i in cr) + '</optgroup>'
-            f'<optgroup label="Stocks, ETFs, metals" data-g="other">' + ''.join(f'<option value="{i}">{esc(nm(A[i], lang))} ({esc(A[i]["tk"])})</option>' for i in ot) + '</optgroup>')
+            + (f'<optgroup label="Stablecoins" data-g="stable">' + ''.join(f'<option value="st:{v["tk"]}" data-p="{v["price"]:.6g}">{esc(v["name"])} ({v["tk"]})</option>' for v in SBA.values()) + '</optgroup>' if SBA else '')
+            + f'<optgroup label="Stocks, ETFs, metals" data-g="other">' + ''.join(f'<option value="{i}">{esc(nm(A[i], lang))} ({esc(A[i]["tk"])})</option>' for i in ot) + '</optgroup>')
     q = chr(34)
     return (f'<div class="card conv"><div class="cvrow"><label class="f">{X["conv_from"]}<div class="inp"><input id="cva" type="number" value="1" min="0" step="any"></div></label>'
             f'<label class="f">&nbsp;<div class="inp"><select id="cvf">{opts.replace(q + fid + q, q + fid + q + " selected", 1)}</select></div></label>'
@@ -2934,8 +2963,13 @@ def conv_box(lang, fid='btc', tid=None, light=False):
 
 def cv_popular(lang):
     t = CV[lang]
-    ch = ''.join(f'<a class="chip" href="{url(lang, cv_slug(i, c))}">{icon(A[i])}{esc(A[i]["tk"])} → {c}</a>' for i, c in cv_pairs(lang)[:60])
-    return f'<section class="section"><h2>{esc(t["all"])}</h2><div class="chips">{ch}</div></section>' if ch else ''
+    prs = cv_pairs(lang)
+    out = ''
+    for c in cv_ccys(lang):
+        ch = ''.join(f'<a class="chip" href="{url(lang, cv_slug(i, x))}">{icon(cva(i))}{esc(cva(i)["tk"])} → {c}</a>' for i, x in prs if x == c)
+        if ch:
+            out += f'<h3 class="cvh">→ {c}</h3><div class="chips">{ch}</div>'
+    return f'<section class="section"><h2>{esc(t["all"])}</h2>{out}</section>' if out else ''
 
 
 def tool(lang, slug, ver):

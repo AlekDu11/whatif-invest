@@ -671,6 +671,14 @@ def main():
 
     # 4) crypto via Binance (+ CoinGecko names/logos)
     cg = coingecko_meta()
+    try:   # stablecoins are not assets, but people convert them (USDT → UAH): keep their live price for the converter
+        sb = {k: dict(name=cg[k]['name'], price=cg[k]['price'], chg=cg[k].get('chg'), logo=cg[k].get('logo'), mcap=cg[k].get('mcap'), cgid=cg[k].get('cgid'))
+              for k in ('USDT', 'USDC', 'DAI', 'USDE', 'FDUSD', 'PYUSD') if k in cg and cg[k].get('price')}
+        if sb:
+            json.dump({'updated': datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC'), 's': sb}, open(os.path.join(ROOT, 'data/stables.json'), 'w', encoding='utf-8'),
+                      ensure_ascii=False, separators=(',', ':'))
+    except Exception as e:
+        log(f"stables failed: {e}")
     top = binance_top()
     log(f"Binance USDT pairs: {len(top)}")
     pinned_crypto = {a['tk']: a['id'] for a in pinned if a['cat'] == 'crypto'}
