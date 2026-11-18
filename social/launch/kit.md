@@ -75,7 +75,7 @@ Order: easy listings first, then the launch days. Product Hunt and Show HN get t
 | 8 | BetaList | betalist.com/submit | free with a long queue (paid skip — not needed) | short + long | ☐ |
 | 9 | Polymart crypto tools | polymart.app/submit?type=crypto | free, needs a link back (owner OK'd: /en/partners/ «Find WhatIfStack on») | short description | ⏳ submitted 2026-11-19 by the owner (review: a few days) |
 | 10 | GitHub | README + About (description, website, 13 topics) | free | — | ✅ 2026-11-19 |
-| 11 | DEV Community | dev.to/new — article ready in social/launch/devto.md | free | devto.md | ☐ owner |
+| 11 | DEV Community | dev.to/new | free | devto.md | ✅ 2026-11-19 https://dev.to/alekdu11/how-i-built-a-19000-page-markets-site-in-20-languages-with-one-python-script-11c (AI disclosure: AI generated) |
 | 12 | Reddit r/SideProject | reddit.com/r/SideProject | free, follow sub rules | Product Hunt comment, shortened | ☐ |
 | 13 | Product Hunt | producthunt.com/launch | free (paid promo not needed) | tagline + maker comment + 6 screenshots | ☐ own day |
 | 14 | Hacker News | news.ycombinator.com/submit | free | Show HN | ☐ own day |
@@ -87,6 +87,7 @@ Never: paid link packages, "submit to 500 directories" services, link exchanges.
 |---|---|---|---|
 | 2026-11-19 | GitHub | https://github.com/AlekDu11/whatif-invest | About + topics updated |
 | 2026-11-19 | AlternativeTo | (pending review) | listing updated |
+| 2026-11-19 | DEV | https://dev.to/alekdu11/how-i-built-a-19000-page-markets-site-in-20-languages-with-one-python-script-11c | published |
 | 2026-11-19 | Indie Hackers | https://www.indiehackers.com/product/whatifstack | live |
 | 2026-11-19 | PolyMart | https://polymart.app/crypto (after review) | submitted |
 | 2026-11-19 | Uneed | https://www.uneed.best/tool/whatifstack | free launch 2027-02-10 |

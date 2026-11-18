@@ -1,6 +1,6 @@
 ---
 title: How I built a 19,000-page markets site in 20 languages with one Python script
-published: false
+published: true
 tags: python, webdev, opensource, showdev
 canonical_url:
 cover_image: https://whatifstack.com/assets/og.jpg
@@ -43,7 +43,7 @@ The rule that keeps this sane: **a new string is added for every language in the
 Static does not have to mean stale:
 
 - **Crypto prices are live.** The page opens a WebSocket to Binance's public market-data stream, only for the symbols visible on the page, and updates the numbers in place.
-- **The personal home page has no accounts.** If you star assets or add holdings, they are stored in `localStorage`, and the home page renders "Your markets" first: portfolio value, today's change, and our news about your assets (from a small per-language JSON feed). Everyone else gets the normal page.
+- **The personal home page has no accounts.** If you star assets or add holdings, they are stored in `localStorage`, and the home page adds a "Your markets" block: portfolio value, today's change, and our news about your assets (from a small per-language JSON feed). Everyone else gets the normal page.
 - **"Market in 60 seconds"** is generated at build time from the same data: is the market up or down, the biggest move among large assets, and a link to our brief explaining it, if there is one.
 
 ## Things that bit me
