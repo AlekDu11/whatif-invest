@@ -1744,7 +1744,7 @@ def xc_partner(name):
 def xc_has(lang, xid=None):
     if not XCH.get('spot'):
         return False
-    return xid is None or (lang in FULL and xid in XCH.get('detail', {}))
+    return xid is None or xid in XCH.get('detail', {})
 
 
 def xc_url(lang, xid):
@@ -1858,10 +1858,72 @@ def xc_detail_page(lang, xid, ver):
             + (f'<section class="section mkt"><h2>{esc(t["pairs_h"].format(x=name))}</h2>{_qtabs(t, qs)}<div class="tw"><table class="mt"><thead><tr><th class="l">{esc(t["pair"])}</th>'
                f'<th>{esc(t["price"])}</th><th>{esc(t["vol"])}</th><th class="hide-sm">{esc(t["spread"])}</th></tr></thead><tbody>{pr}</tbody></table></div>'
                + (f'<button type="button" class="btn ghost mkmore">{esc(t["more"])}</button>' if len(pairs) > 30 else '') + '</section>' if pr else '')
+            + xc_reserves_block(lang, xid, name) + xc_facts_block(lang, xid, e)
             + f'<p class="note">{esc(t["src"].format(d=XCH.get("updated", "")))}</p>')
     path = 'crypto-exchanges/' + xid
     ld = {"@context": "https://schema.org", "@type": "Organization", "name": name, "url": e.get('url') or '', "foundingDate": str(e.get('year') or '')}
     return path, shell(lang, path, f'{h1} | {BRAND}', lead, body, {}, ver, [ld])
+
+
+
+def xc_reserves_block(lang, xid, name):
+    r = (XCH.get('reserves') or {}).get(xid)
+    if not r or not r.get('tvl'):
+        return ''
+    t = XC[lang]
+    ch = lambda v: f'<b class="{cls(v)}">{pct(v / 100)}</b>' if v is not None else '<b>—</b>'
+    m1 = None
+    if r.get('hist') and len(r['hist']) > 5 and r['hist'][-5][1]:
+        m1 = (r['tvl'] / r['hist'][-5][1] - 1) * 100
+    tiles = (f'<div class="ks"><span>{esc(t["rs_tot"])}</span><b>{usd_h(r["tvl"])}</b></div>'
+             f'<div class="ks"><span>{esc(t["rs_7d"])}</span>{ch(r.get("d7"))}</div>'
+             f'<div class="ks"><span>{esc(t["rs_30d"])}</span>{ch(r.get("m1") if r.get("m1") is not None else m1)}</div>')
+    tot = r['tvl'] or 1
+    chains = ''.join(f'<div class="rsrow"><span>{esc(c)}</span><i style="width:{max(2, v / tot * 100):.1f}%"></i><b>{usd_h(v)}</b><small>{pctu(v / tot)}</small></div>' for c, v in (r.get('chains') or []))
+    sym2aid = {}
+    for i in ORDERED:
+        sym2aid.setdefault(A[i]['tk'].upper(), i)
+    toks = ''
+    for k, (tk, v, sh) in enumerate(r.get('tokens') or []):
+        aid = sym2aid.get(tk.upper()) if A.get(sym2aid.get(tk.upper()) or '', {}).get('cat') == 'crypto' else None
+        lab = f'<a href="{aurl(lang, aid)}">{icon(A[aid])}{esc(tk)}</a>' if aid else esc(tk)
+        toks += f'<tr><td class="l n">{k + 1}</td><td class="l">{lab}</td><td class="num"><b>{usd_h(v)}</b></td><td class="num">{pctu(sh)}</td></tr>'
+    hist = f'<div class="card"><h3>{esc(t["rs_hist"])}</h3>{_xvsvg([(ts, v) for ts, v in r["hist"]])}</div>' if len(r.get('hist') or []) > 4 else ''
+    return (f'<section class="section rsv"><h2>🛡️ {esc(t["rs_h"].format(x=name))}</h2><div class="ktiles">{tiles}</div>'
+            f'<div class="rsgrid">' + (f'<div class="card"><h3>{esc(t["rs_ch"])}</h3>{chains}</div>' if chains else '')
+            + (f'<div class="card"><h3>{esc(t["rs_tk"])}</h3><table class="mt"><tbody>{toks}</tbody></table></div>' if toks else '') + '</div>' + hist
+            + f'<p class="note">{esc(t["rs_src"])} <a href="https://defillama.com/protocol/{esc(r.get("slug") or "")}" target="_blank" rel="nofollow noopener">DefiLlama ↗</a></p></section>')
+
+
+def xc_facts_block(lang, xid, e):
+    pf = (XCH.get('detail', {}).get(xid) or {}).get('prof') or {}
+    t = XC[lang]
+    rows = []
+    if e.get('year'):
+        rows.append((t['year'], str(e['year'])))
+    if e.get('country'):
+        rows.append((t['country'], esc(e['country'])))
+    if pf.get('cen') is not None:
+        rows.append((t['f_type'], esc(t['f_cex'] if pf['cen'] else t['f_dex'])))
+    if pf.get('coins'):
+        rows.append((t['f_coins'], _num(pf['coins'], 0)))
+    if pf.get('pairs'):
+        rows.append((t['f_pairs'], _num(pf['pairs'], 0)))
+    soc = pf.get('soc') or {}
+    links = []
+    if e.get('url'):
+        links.append((t['site'], e['url']))
+    if soc.get('tw'):
+        links.append(('X', 'https://x.com/' + soc['tw'].lstrip('@')))
+    for k, n in (('tg', 'Telegram'), ('fb', 'Facebook'), ('rd', 'Reddit')):
+        if soc.get(k):
+            links.append((n, soc[k]))
+    if links:
+        rows.append((t['f_soc'], ' · '.join(f'<a href="{esc(u_)}" target="_blank" rel="nofollow noopener">{esc(n)}</a>' for n, u_ in links)))
+    if not rows:
+        return ''
+    return (f'<section class="section card xfacts"><h2>{esc(t["f_h"])}</h2><table class="mt"><tbody>'
+            + ''.join(f'<tr><td class="l muted">{esc(k)}</td><td class="l"><b>{v}</b></td></tr>' for k, v in rows) + '</tbody></table></section>')
 
 
 CMK = _jload('coin_markets.json') or {}
@@ -2054,7 +2116,7 @@ def xc_pages(lang, ver):
     if not xc_has(lang):
         return []
     out = [xc_spot_page(lang, ver), xc_der_page(lang, ver)]
-    if lang in FULL:
+    if True:   # exchange pages in every language
         out += [xc_detail_page(lang, x, ver) for x in XCH.get('detail', {}) if any(e['id'] == x for e in XCH['spot'])]
     return out
 

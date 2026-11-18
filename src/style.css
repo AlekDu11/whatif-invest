@@ -858,3 +858,7 @@ tr.xh{display:none}.mkmore{margin-top:10px}.xgo{text-decoration:none;color:var(-
 .smnav{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 12px}.smnav .chip{display:inline-flex;padding:6px 12px;border-radius:999px;border:1px solid var(--line2);background:var(--card);text-decoration:none;color:var(--text);font:600 13px var(--fb)}.smnav .chip.on,.smnav .chip:hover{border-color:var(--accent);color:var(--accent)}
 .smtiles{grid-template-columns:repeat(4,minmax(0,1fr))}@media (max-width:700px){.smtiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .smbars{width:100%;height:auto}.smbars rect.up{fill:var(--accent)}.smbars rect.dn{fill:var(--dn)}.smbars text{fill:var(--muted);font:12px var(--fn)}
+.rsgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}@media (max-width:800px){.rsgrid{grid-template-columns:minmax(0,1fr)}}
+.rsv h3,.xfacts h3{margin:0 0 10px;font-size:15px}.rsrow{display:grid;grid-template-columns:90px 1fr auto 52px;gap:8px;align-items:center;margin:7px 0;font-size:13.5px}
+.rsrow i{display:block;height:8px;border-radius:4px;background:linear-gradient(90deg,var(--accent),var(--gold))}.rsrow small{color:var(--muted);text-align:right}
+.xfacts td:first-child{width:38%}
