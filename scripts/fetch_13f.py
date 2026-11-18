@@ -152,8 +152,9 @@ def main():
             if fid in old.get('inv', {}):
                 out['inv'][fid] = old['inv'][fid]
             continue
-        for h in (cur, prev or {}):     # a 13F is only required above $100M: a smaller total means values were filed in thousands
-            if 0 < sum(v['value'] for v in h.values()) < 1e8:
+        for h in (cur, prev or {}):     # some filers still report values in thousands: then value / shares is a tiny "price"
+            px = sorted(v['value'] / v['shares'] for v in h.values() if v['shares'] > 0 and v['value'] > 0)
+            if px and px[len(px) // 2] < 0.5:
                 for v in h.values():
                     v['value'] *= 1000
         figi(list(cur) + list(prev or {}), cache)

@@ -7,7 +7,7 @@ Only the Python standard library is used, so it runs in Vercel's build image as 
 Run: python3 scripts/build.py
 """
 import calendar, hashlib, html, json, math, os, re as _re, shutil, sys
-from datetime import date, datetime, timezone
+from datetime import date, datetime, timedelta, timezone
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from i18n import LANGS as TR, ORDER, FULL, DEFAULT  # noqa: E402
@@ -2025,7 +2025,8 @@ def coin_markets_block(lang, aid):
 
 
 # ---------------- famous investors (SEC 13F) ----------------
-INVD = (_jload('investors.json') or {}).get('inv', {})
+INVD = {k: v for k, v in ((_jload('investors.json') or {}).get('inv', {})).items()
+        if v.get('period') and v['period'] >= (datetime.strptime(UPDATED[:10], '%Y-%m-%d') - timedelta(days=300)).strftime('%Y-%m-%d') and v.get('top')}   # only funds that still file
 _TK2AID = {}
 
 
