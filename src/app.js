@@ -548,6 +548,11 @@ new MutationObserver(()=>{ clearTimeout(window._wiStar); window._wiStar=setTimeo
   let ht; document.addEventListener('wi:tick',()=>{ clearTimeout(ht); ht=setTimeout(drawHold,1500) });
   document.addEventListener('wi:watch',drawWatch); drawWatch(); drawPlans(); drawHold();
 })();
+/* ---------- long texts (stock analyses): show the first screen, «Show more» opens the rest ---------- */
+$$('.clamp').forEach(el=>{ if(el.scrollHeight<760) return; el.classList.add('clamped');
+  const b=document.createElement('button'); b.type='button'; b.className='btn ghost clampbtn'; b.textContent=(el.dataset.more||'Show more')+' ▾';
+  b.onclick=()=>{ const open=el.classList.toggle('clamped')===false; b.textContent=open?'▴':(el.dataset.more||'Show more')+' ▾'; if(!open) el.scrollIntoView({block:'start',behavior:'smooth'}) };
+  el.after(b) });
 /* ---------- price alert in Telegram (asset page) ---------- */
 $$('[data-alert]').forEach(b=>{ let C; try{ C=JSON.parse(b.dataset.alert) }catch(e){ return }
   b.onclick=()=>{ const old=$('.alpop'); if(old){ old.remove(); return }

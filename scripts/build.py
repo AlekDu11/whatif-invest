@@ -1589,7 +1589,7 @@ def analysis_block(lang, aid):
     if not prof or prof.get('kind') != 'analysis':
         return ''
     return (f'<section class="section card anl"><h2>{esc(prof.get("title", ""))}</h2>'
-            f'<p class="muted anld">{esc(prof.get("date", ""))}</p><div class="artbody">{md(prof["body"], lang)}</div></section>')
+            f'<p class="muted anld">{esc(prof.get("date", ""))}</p><div class="artbody clamp" data-more="{esc(XC[lang]["more"])}">{md(prof["body"], lang)}</div></section>')
 
 def stock_faq(lang, aid):
     f = stock_facts(lang, aid)
