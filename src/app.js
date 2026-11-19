@@ -94,7 +94,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
       return `<th class="${cl}${s?' sorted':''}" ${sortable?`data-k="${c}"`:''}>${l}${sortable&&l?`<span class="ar">${s?(sortDir>0?'↑':'↓'):'↕'}</span>`:''}</th>`}).join('')+'</tr>';
     $('#mthead').innerHTML=head; if(split) $('#mthead2').innerHTML=head;
     $$('#mthead th[data-k],#mthead2 th[data-k]').forEach(th=>th.onclick=()=>{ let kk=th.dataset.k; if(kk==='n') kk='o';
-      if(sortK===kk) sortDir=-sortDir; else {sortK=kk; sortDir=(kk==='name'||kk==='o')?1:-1} draw() });
+      if(sortK===kk) sortDir=-sortDir; else {sortK=kk; sortDir=(kk==='name'||kk==='o')?1:-1} pg=0; draw() });
     const tr=(a,i)=>`<tr>
       <td class="l n hide-sm">${off+i+1}</td>
       <td class="l"><button class="star" data-s="${a.i}" aria-label="☆">☆</button><a class="asset" href="${url(a.i)}">${icon(a)}<span><span class="nm">${esc(nm(a))}</span><span class="tk">${esc(a.t)}${lang!=='en'&&url(a.i).startsWith(BASE+'/en/')?'<i class="enb" title="English">EN</i>':''}</span></span></a></td>
@@ -765,7 +765,7 @@ $$('section.mkt').forEach(sec=>{ const rows=[...sec.querySelectorAll('tbody tr')
   $$('#seasm button').forEach(b=>b.onclick=async()=>{ mode=b.dataset.m; $$('#seasm button').forEach(x=>x.classList.toggle('on',x===b)); draw() });
   const ym=s=>{ const [y,m]=s.split('-').map(Number); return y*12+m-1 };
   function monthly(){ const s0=ym(P.start), rows={};
-    P.p.forEach((v,i)=>{ if(!i) return; const k=s0+i, y=Math.floor(k/12), m=k%12; (rows[y]=rows[y]||{})[m]=v/P.p[i-1]-1 });
+    P.p.forEach((v,i)=>{ if(!i||v===P.p[i-1]) return; const k=s0+i, y=Math.floor(k/12), m=k%12; (rows[y]=rows[y]||{})[m]=v/P.p[i-1]-1 });   // an identical close = a gap in the source series, not a 0% month
     const yr={}; for(const y in rows){ const endI=Math.min(P.p.length-1,(+y)*12+11-s0), stI=(+y)*12-1-s0; if(stI>=0) yr[y]=P.p[endI]/P.p[stI]-1 }
     return {rows,yr,last:s0+P.p.length-1} }
   function qrows(){ const s0=ym(P.start), last=s0+P.p.length-1, rows={}; const px=k=>P.p[k-s0];

@@ -78,6 +78,10 @@ _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
 # delisted or stale series (last price older than a month) are dropped: "today" numbers would be false
 A = {(f"{aid}-{a['cat']}" if aid in RESERVED else aid): a for aid, a in market['assets'].items()
      if a.get('p') and (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(a['end']) >= _END_I0 - 1}
+# index funds are shown as what they are: an ETF that tracks the index (its price is the fund's, not the index level)
+for _k, _n in (('spy', 'S&P 500 ETF'), ('qqq', 'Nasdaq-100 ETF'), ('dia', 'Dow Jones ETF'), ('iwm', 'Russell 2000 ETF')):
+    if _k in A:
+        A[_k]['name'] = {'en': _n, 'uk': _n}
 for _k, _a in A.items():
     _a['_id'] = _k
     if _a.get('cat') == 'stock' and not _a.get('mkt') and not any(c in (_a.get('yahoo') or '') for c in '.:'):
@@ -576,15 +580,16 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
     X = S['x']
     blog_l = lang if lang in BLOG_LANGS else 'en'
     news_on = p in ('news', 'ai') or sec == 'activities' or (sec or '').startswith('blog') or (p or '').startswith('news/')
-    tools_on = p in TOOLS or (p in CALCS and p not in ("exchanges", "news", "about", "compound-interest")) or (p or "").startswith("habits") or p in ('memes', 'world-assets', 'calculators', 'largest-companies')
-    nav = (''.join(f'<a href="{url(lang, k)}" class="{"on" if k == p else ""}">{v}</a>' for k, v in ((None, HM[lang]['nav']), ('portfolios', BP[lang]['nav']), ('compound-interest', IC[lang]['nav'])))
+    tools_on = p in ('portfolios', 'compound-interest') or (p or '').startswith('portfolios/') or p in TOOLS or (p in CALCS and p not in ("exchanges", "news", "about", "compound-interest")) or (p or "").startswith("habits") or p in ('memes', 'world-assets', 'calculators', 'largest-companies')
+    # top nav (owner + UX audit 2026-11-19): Markets · Crypto · Stocks first; DCA portfolios and the investment calculator moved into Tools
+    nav = (''.join(f'<a href="{url(lang, k)}" class="{"on" if k == p or (k == "stocks" and (p or "").startswith("stocks")) else ""}">{v}</a>' for k, v in ((None, HM[lang]['nav']), ('crypto', S['ui']['crypto']), ('stocks', S['ui']['stock'])))
            + f'<details class="dd"><summary class="{"on" if p == "exchanges" or (p or "").startswith("crypto-exchanges") else ""}">{EX[lang]["nav"]}</summary><div>'
            + ''.join(f'<a href="{url(lang, k)}">{esc(v)}</a>' for k, v in xc_menu(lang)) + '</div></details>'
            + f'<details class="dd"><summary class="{"on" if news_on else ""}">{NW[lang]["n_nav"]}</summary><div>'
            + f'<a href="{url(lang, "news")}">{NW[lang]["n_nav"]}</a><a href="{url(blog_l, "blog")}">{NW[lang]["i_nav"]}</a>'
            + f'<a href="{url(lang, "ai")}">{AIS[lang]["nav"]}</a><a href="{url(lang, "activities")}">{ACT[lang]["nav"]}</a></div></details>'
            + f'<details class="dd ddt"><summary class="{"on" if tools_on else ""}">{X["nav_tools"]}</summary><div>'
-           + ''.join(f'<a href="{url(lang, k)}">{v}</a>' for k, v in [x for x in tools_menu(lang) if x]) + '</div></details>')
+           + ''.join(f'<a href="{url(lang, k)}">{v}</a>' for k, v in [('portfolios', BP[lang]['nav']), ('compound-interest', IC[lang]['nav'])] + [x for x in tools_menu(lang) if x]) + '</div></details>')
     i18n = dict(S['ui'], months=S['months'], intl=S['intl'])
     mnav = ''.join(f'<a href="{h}" class="{"on" if on else ""}"><span>{ic}</span>{esc(lb)}</a>' for h, ic, lb, on in (
         (url(lang), '◎', HM[lang]['nav'], p is None), (url(lang, 'news'), '▤', NW[lang]['n_nav'], p == 'news'),
@@ -1173,7 +1178,7 @@ def home(lang, ver):
     def ptile(i):
         mm = METRICS[i]
         tk = f'<small class="pttk">{esc(A[i]["tk"])}</small>' if A[i]['cat'] in ('etf', 'stock') else ''
-        return (f'<a class="pt" href="{aurl(lang, i)}"><span class="ptn">{icon(A[i])}<b>{esc(nm(A[i], lang))}</b>{tk}</span>'
+        return (f'<a class="pt" href="{aurl(lang, i)}"><span class="ptn">{icon(A[i])}<b>{esc(nm(A[i], lang).replace(" ETF", ""))}</b>{tk}</span>'
                 f'<span class="ptp" data-p="{i}">{price(mm["price"])}</span><span class="ptc {cls(mm["chg"])}" data-c="{i}">{pct(mm["chg"])}</span>'
                 f'{spark(mm["spark"], 120, 30)}</a>')
     pulse = ''.join(ptile(i) for i in ('btc', 'eth', 'spy', 'gold') if i in A)
@@ -1257,10 +1262,11 @@ def home(lang, ver):
                 + ''.join(mini_row(lang, i, f'<span class="mc {"good" if sign > 0 else "bad"}">{pct(METRICS[i]["chg"])}</span>') for i in pool) + '</div>')
     today = (f'<section class="section today"><h2>{esc(hm["today"])}</h2><div class="tgrid">'
              f'{mv("crypto", 1)}{mv("crypto", -1)}{mv("stock", 1)}{mv("stock", -1)}{w_news}</div></section>')
-    body = (hero + my_block(lang) + today + offer_card(lang, 'home') + nl_block(lang, 'home') + f'<section class="section toprank"><div class="tabs" id="tabs"></div>{filt}{top10}</section>'
-            f'<div class="wgrid3">{w_tr if nws else w_fng}<div class="wstack">{w_mcap}{w_dom}</div>{w_bat}</div>{banner}{habits_strip(lang)}{poll_block(lang)}{poly_block(lang)}'
-            f'<section class="section"><div class="hl">{"".join(cards)}</div></section>'
-            f'{rest}'
+    # owner 2026-11-19: right after the hero comes the main ranking with charts; then today's movers and news; DCA extras (battle, habits,
+    # top-DCA cards, poll, «start DCA» banner) left the home page — they live on their own pages
+    body = (hero + my_block(lang) + f'<section class="section toprank"><div class="tabs" id="tabs"></div>{filt}{top10}</section>'
+            + today + f'<div class="wgrid3">{w_tr if nws else w_fng}<div class="wstack">{w_mcap}{w_dom}</div>{w_fng if nws else ""}</div>'
+            + offer_card(lang, 'home') + poly_block(lang) + nl_block(lang, 'home') + f'{rest}'
             f'<section class="card section faq"><h2>{S["faq"]}</h2><details open><summary>{esc(S["q3"])}</summary><p>{esc(S["a3"])}</p></details></section>')
     jsonld = [{"@context": "https://schema.org", "@type": "WebApplication", "name": BRAND, "url": SITE + url(lang),
                "applicationCategory": "FinanceApplication", "operatingSystem": "Any", "inLanguage": S['loc'],
@@ -1844,7 +1850,9 @@ def xc_url(lang, xid):
 
 
 def _xlogo(e):
-    return (f'<span class="ic"><img src="{esc(e["img"])}" alt="" loading="lazy" width="26" height="26" referrerpolicy="no-referrer"></span>' if e.get('img')
+    l0 = esc((e.get('name') or '?')[0])
+    return (f'<span class="ic"><img src="{esc(e["img"])}" alt="{esc(e.get("name") or "")}" loading="lazy" width="26" height="26" referrerpolicy="no-referrer" '
+            f'onerror="this.parentNode.textContent=\'{l0}\'"></span>' if e.get('img')
             else f'<span class="ic">{esc((e.get("name") or "?")[0])}</span>')
 
 
@@ -1858,12 +1866,16 @@ def _xvsvg(pts, w=640, h=170):
             f'<polygon points="0,{h} {line} {w},{h}"/><polyline points="{line}"/></svg>')
 
 
-def xc_spot_page(lang, ver):
+def xc_spot_page(lang, ver, pg=1):
     t, btc = XC[lang], METRICS['btc']['price'] if 'btc' in METRICS else 0
-    sp = [e for e in XCH['spot'] if e.get('vol_btc')]
-    tot = sum(e.get('vol_btc') or 0 for e in sp) or 1
+    # ranked by 24h spot volume (as the title says; CryptoRank-style), 50 per page
+    vb = lambda e: e.get('nvol_btc') or e.get('vol_btc') or 0   # normalized volume (wash trading filtered), like CryptoRank's adjusted volume
+    # trusted venues (CoinGecko trust score ≥ 7) first, each group by volume: low-trust volume is often inflated
+    sp = sorted([e for e in XCH['spot'] if vb(e)], key=lambda e: ((e.get('trust') or 0) < 7, -vb(e)))[:100]
+    tot = sum(vb(e) for e in sp) or 1
+    np_ = max(1, -(-len(sp) // PER_PAGE))
     rows = ''
-    for k, e in enumerate(sp[:100]):
+    for k, e in list(enumerate(sp))[(pg - 1) * PER_PAGE:pg * PER_PAGE]:
         det = e['id'] in XCH.get('detail', {})
         nm_ = f'<a class="asset" href="{xc_url(lang, e["id"])}">' if det else '<span class="asset">'
         ch = XCH.get('detail', {}).get(e['id'], {}).get('chart') or []
@@ -1871,13 +1883,13 @@ def xc_spot_page(lang, ver):
         golink = f'<a class="buy" href="/go/{go}?from=xc-list&l={lang}" target="_blank" rel="sponsored noopener" title="{esc(t["aff"])}">↗</a>' if go else ''
         rows += (f'<tr><td class="l n">{k + 1}</td><td class="l">{nm_}{_xlogo(e)}<span><span class="nm">{esc(e["name"])}</span>'
                  f'<span class="tk">{esc(e.get("country") or "")}</span></span>{"</a>" if det else "</span>"}</td>'
-                 f'<td class="num"><b>{usd_h(e["vol_btc"] * btc)}</b></td>'
-                 f'<td class="num">{pctu(e["vol_btc"] / tot)}</td><td class="num hide-sm">{e.get("trust") or "—"}/10</td>'
+                 f'<td class="num"><b>{usd_h(vb(e) * btc)}</b></td>'
+                 f'<td class="num">{pctu(vb(e) / tot)}</td><td class="num hide-sm">{e.get("trust") or "—"}/10</td>'
                  f'<td class="hide-sm">{spark([v for _, v in ch][-14:]) if ch else ""}</td>'
                  f'<td>{golink}</td></tr>')
     th = (f'<tr><th class="l n">#</th><th class="l">{esc(t["name"])}</th><th>{esc(t["vol"])}</th>'
           f'<th>{esc(t["share"])}</th><th class="hide-sm">{esc(t["trust"])}</th><th class="hide-sm"></th><th></th></tr>')
-    return _xc_shell(lang, ver, 'spot', t['h_spot'], t['lead_spot'], th, rows)
+    return _xc_shell(lang, ver, 'spot', t['h_spot'], t['lead_spot'], th, rows, pg, np_, len(sp))
 
 
 def der2spot(name):
@@ -1909,16 +1921,17 @@ def xc_der_page(lang, ver):
     return _xc_shell(lang, ver, 'derivatives', t['h_der'], t['lead_der'], th, rows)
 
 
-def _xc_shell(lang, ver, kind, h1, lead, th, rows):
+def _xc_shell(lang, ver, kind, h1, lead, th, rows, pg=1, np_=1, total=0):
     t = XC[lang]
-    path = 'crypto-exchanges' + ('/derivatives' if kind == 'derivatives' else '')
+    base = 'crypto-exchanges' + ('/derivatives' if kind == 'derivatives' else '')
+    path = paged_path(base, pg)
     tabs = (f'<a class="chip{" on" if kind == "spot" else ""}" href="{url(lang, "crypto-exchanges")}">{esc(t["tab_spot"])}</a>'
             f'<a class="chip{" on" if kind == "derivatives" else ""}" href="{url(lang, "crypto-exchanges/derivatives")}">{esc(t["tab_der"])}</a>'
             f'<a class="chip" href="{url(lang, "exchanges")}">{esc(EX[lang]["nav"])}</a>')
     body = (f'<h1>{esc(h1)}</h1><p class="lead">{esc(lead)}</p><div class="cchips lcchips">{tabs}</div>'
-            f'<section class="section"><div class="tw"><table class="mt lct">{"<thead>" + th + "</thead>"}<tbody>{rows}</tbody></table></div></section>'
+            f'<section class="section"><div class="tw"><table class="mt lct">{"<thead>" + th + "</thead>"}<tbody>{rows}</tbody></table></div>{pager(lang, base, pg, np_, total)}</section>'
             f'<p class="note">{esc(t["src"].format(d=XCH.get("updated", "")))} {esc(t["aff"])}: ↗</p>')
-    return path, shell(lang, path, f'{h1} | {BRAND}', lead, body, {}, ver)
+    return path, shell(lang, path, f'{h1}{" — " + str(pg) if pg > 1 else ""} | {BRAND}', lead, body, {}, ver)
 
 
 def xc_detail_page(lang, xid, ver):
@@ -2157,7 +2170,7 @@ def investor_page(lang, fid, ver):
     for k, r in enumerate(d['top']):
         chg = r[5]
         ch = (f'<span class="pill up">{esc(t["new"])}</span>' if chg == 'new' else f'<span class="{cls(chg)}">{pct(chg)}</span>' if isinstance(chg, (int, float)) and abs(chg) > 0.0005 else '—')
-        rows += (f'<tr><td class="l n">{k + 1}</td><td class="l">{_inv_name(r, lang)}</td><td class="num"><b>{pctu(r[3])}</b><div class="wbar"><i style="width:{min(100, r[3] * 100 / max(d["top"][0][3], 0.0001)):.1f}%"></i></div></td>'
+        rows += (f'<tr{" class=\"inv-more\" hidden" if k >= 10 else ""}><td class="l n">{k + 1}</td><td class="l">{_inv_name(r, lang)}</td><td class="num"><b>{pctu(r[3])}</b><div class="wbar"><i style="width:{min(100, r[3] * 100 / max(d["top"][0][3], 0.0001)):.1f}%"></i></div></td>'
                  f'<td class="num">{usd_h(r[2])}</td><td class="num hide-sm">{_num(r[4], 0)}</td><td class="num">{ch}</td></tr>')
     sold = ''.join(f'<tr><td class="l">{_inv_name(r, lang)}</td><td class="num muted">{usd_h(r[2])}</td></tr>' for r in d.get('sold') or [])
     w10 = sum(r[3] for r in d['top'][:10])
@@ -2167,7 +2180,8 @@ def investor_page(lang, fid, ver):
             f'<div class="ktiles obtiles smtiles"><div class="ks"><span>{esc(t["c_val"])}</span><b>{usd_h(d["value"])}</b></div><div class="ks"><span>{esc(t["c_n"])}</span><b>{d["n"]}</b></div>'
             f'<div class="ks"><span>{esc(t["c_per"])}</span><b>{esc(q)}</b></div><div class="ks"><span>Top 10</span><b>{pctu(w10)}</b></div></div>'
             f'<section class="section"><h2>{esc(t["top10"].format(w=pctu(w10)))}</h2><div class="tw"><table class="mt"><thead><tr><th class="l n">#</th><th class="l">{esc(t["c_stock"])}</th>'
-            f'<th>{esc(t["c_w"])}</th><th>{esc(t["c_val"])}</th><th class="hide-sm">{esc(t["c_sh"])}</th><th>{esc(t["c_chg"])}</th></tr></thead><tbody>{rows}</tbody></table></div></section>'
+            f'<th>{esc(t["c_w"])}</th><th>{esc(t["c_val"])}</th><th class="hide-sm">{esc(t["c_sh"])}</th><th>{esc(t["c_chg"])}</th></tr></thead><tbody>{rows}</tbody></table></div>'
+            + (f'<button type="button" class="seasmore" onclick="this.previousElementSibling.querySelectorAll(\'.inv-more\').forEach(r=>r.hidden=false);this.remove()">▾ {len(d["top"])}</button>' if len(d['top']) > 10 else '') + '</section>'
             + (f'<section class="section"><h2>{esc(t["sold"])}</h2><div class="tw"><table class="mt"><tbody>{sold}</tbody></table></div></section>' if sold else '')
             + f'<p class="note">{esc(t["note"])} {esc(t["src"].format(d=d.get("filed", "")))} <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&CIK={d["cik"]}&type=13F-HR" target="_blank" rel="nofollow noopener">SEC ↗</a></p>'
             f'<section class="section"><h2>{esc(t["nav"])}</h2><div class="chips">{others}</div></section>')
@@ -2328,7 +2342,7 @@ def sm_page(lang, aid, kind, ver):
 def xc_pages(lang, ver):
     if not xc_has(lang):
         return []
-    out = [xc_spot_page(lang, ver), xc_der_page(lang, ver)]
+    out = [xc_spot_page(lang, ver), xc_spot_page(lang, ver, 2), xc_der_page(lang, ver)]
     if True:   # exchange pages in every language
         out += [xc_detail_page(lang, x, ver) for x in XCH.get('detail', {}) if any(e['id'] == x for e in XCH['spot'])]
     return out

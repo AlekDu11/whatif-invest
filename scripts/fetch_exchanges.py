@@ -104,12 +104,13 @@ def main():
     t0 = time.time()
     budget = float(os.environ.get('XC_BUDGET', 35 * 60))
     top = out['spot'][:100]
-    top = sorted(top, key=lambda e: (out['detail'].get(e['id'], {}).get('t', ''), top.index(e)))      # stalest first
+    # exchanges with no pairs/profile yet come first, then the stalest
+    top = sorted(top, key=lambda e: (bool(out['detail'].get(e['id'], {}).get('pairs')), out['detail'].get(e['id'], {}).get('t', ''), top.index(e)))
     for e in top:
         if time.time() - t0 > budget:
             print('time budget reached; the rest is refreshed next run', flush=True)
             break
-        d = {'t': datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M')}
+        d = dict(out['detail'].get(e['id'], {}))   # keep what we had if a call fails (rate limits): never wipe pairs/profile
         ch = get(f"/exchanges/{e['id']}/volume_chart?days=30")
         if ch:
             d['chart'] = [[int(t / 1000), num(v)] for t, v in ch][-31:]
@@ -120,12 +121,18 @@ def main():
             d['prof'] = {k: v for k, v in dict(cen=tk.get('centralized'), soc=soc or None, coins=tk.get('coins'), pairs=tk.get('pairs'),
                                                notice=(tk.get('public_notice') or '')[:300] or None, alert=(tk.get('alert_notice') or '')[:300] or None).items() if v is not None}
             tk['tickers'] = sorted(tk.get('tickers') or [], key=lambda t: -((t.get('converted_volume') or {}).get('usd') or 0))
+        if tk and not tk.get('tickers'):   # big exchanges: the profile call sometimes comes back without tickers
+            tt = get(f"/exchanges/{e['id']}/tickers?order=volume&depth=false&page=1")
+            if tt and tt.get('tickers'):
+                tk['tickers'] = sorted(tt['tickers'], key=lambda t: -((t.get('converted_volume') or {}).get('usd') or 0))
+        if tk:
+            d['t'] = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M')
         if tk and tk.get('tickers'):
             d['pairs'] = [{k: v for k, v in dict(b=t.get('base'), q=t.get('target'), cg=t.get('coin_id'), last=num(t.get('last')),
                                                     usd=num((t.get('converted_volume') or {}).get('usd')), spread=num(t.get('bid_ask_spread_percentage')),
                                                     trust=t.get('trust_score'), stale=t.get('is_stale') or None).items() if v is not None}
                           for t in tk['tickers'] if not t.get('is_anomaly')][:100]
-        if len(d) > 1:
+        if d:
             out['detail'][e['id']] = d
     der = get('/derivatives/exchanges?order=open_interest_btc_desc&per_page=60&page=1')
     if der:
