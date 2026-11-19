@@ -2931,8 +2931,14 @@ def news_tl(lang):
     return dict(zip(NEWS_TAGS, [HOT[lang][0]] + NW[lang]['tags'].split('|') + [AIS[lang]['nav']]))
 
 
+def _alist(m):
+    v = m.get('assets', [])
+    return [x.strip() for x in (v if isinstance(v, list) else str(v).split(','))]
+
+
 def hot_items(lang, aid):
-    return [(k, m) for k, m in news_items(lang) if aid in m.get('assets', [])][:20]
+    """News about this asset: it must be the story's main asset (first in `assets`), not a benchmark mentioned in passing."""
+    return [(k, m) for k, m in news_items(lang) if _alist(m)[:1] == [aid]][:20]
 
 
 def hot_block(lang, aid):

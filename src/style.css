@@ -660,7 +660,7 @@ html[data-theme=dark] .icchart .a{fill:#2a3d35}
 @media (max-width:480px){.icards{grid-template-columns:repeat(2,1fr)}.tri3 b{font-size:14px}}
 .icr2 .icrow{display:block}
 @media (max-width:600px){.icards{display:flex;overflow-x:auto;gap:8px;padding-bottom:6px;scroll-snap-type:x mandatory}.icard{flex:0 0 118px;padding:10px;scroll-snap-align:start}.icard.on{padding:9px}.icard .ir{font-size:20px}.icard .ii{width:28px;height:28px;font-size:15px}}
-@media (max-width:600px){.mt .nm{max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block}.mt td:nth-child(5),.mt th:nth-child(5){display:none}.mt td,.mt th{padding-left:6px;padding-right:6px}}
+@media (max-width:600px){.mt .nm{max-width:140px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;display:block}.mt:not(.lct):not(.bdt) td:nth-child(8),.mt:not(.lct):not(.bdt) th:nth-child(8){display:none}.mt td,.mt th{padding-left:6px;padding-right:6px}}
 @media (max-width:600px){.mt .asset{min-width:0;gap:8px}.mt .nm{max-width:118px}.mt .star{padding-right:2px}.mt .pill{padding:2px 6px}}
 @media (max-width:600px){.mt th{white-space:normal;line-height:1.2}.mt .nm{max-width:110px}}
 .bpchart{width:100%;height:auto;display:block}.bpchart text{font-size:11px;fill:var(--muted)}.bpchart .g{stroke:var(--line);stroke-width:1}.bpc h2 a{color:inherit;text-decoration:none}.bpc h2 a:hover{color:var(--accent)}.bpmore{margin-top:10px;display:inline-flex}.crumbs{font-size:14px;margin:0 0 6px}.crumbs a{color:var(--muted)}
@@ -900,3 +900,5 @@ tr.xh{display:none}.mkmore{margin-top:10px}.xgo{text-decoration:none;color:var(-
 @media(max-width:980px){.stats.sfit{grid-template-columns:repeat(2,1fr)}}
 a.pgb,span.pgb{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;box-sizing:border-box}span.pgb[aria-disabled]{opacity:.35}
 .pttk{margin-left:6px;font-size:11px;color:var(--muted);font-weight:600}
+@media (max-width:640px){.aibtn{bottom:calc(76px + env(safe-area-inset-bottom))!important;padding:10px 12px!important}.aibtn span,.aibtn b{display:none}.tw{padding-right:2px}.star{min-width:36px;min-height:36px}}
+@media (max-width:640px){.cchips,.lcchips{flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}.cchips::-webkit-scrollbar{display:none}.cchips>*{flex:none}}
