@@ -69,6 +69,8 @@ def _row(b, q, last, qvol, bid, ask, usd, cg):
     b, q = (b or '').upper(), (q or '').upper()
     if b.startswith('R') and len(b) > 2 and b[1:] in STOCKS:   # Bitget's tokenized US stocks (RNVDA, RSPY...) are not crypto
         return None
+    if b.endswith('B') and len(b) > 2 and b[:-1] in STOCKS:     # Binance's tokenized stocks (NVDAB, SOXLB...)
+        return None
     last, qvol, bid, ask = _f(last), _f(qvol), _f(bid), _f(ask)
     if not b or not q or not last or not qvol or q not in usd:
         return None

@@ -48,6 +48,7 @@ from i18n_ch import CH  # noqa: E402
 from i18n_inv import INV  # noqa: E402
 from i18n_mkt import MKT, LEAD as MLEAD, FG as MFG  # noqa: E402
 from i18n_st import ST as STX  # noqa: E402
+from i18n_xc2 import XC2  # noqa: E402
 from i18n_ua import UA_LANGS, UA_ASOF, OB, OBI, OBT, UA_SRC, BUYG, BUYG_SRC, OVP, OB_GO, INZ  # noqa: E402
 from i18n_bpd import BPD, IDEA as BP_IDEA  # noqa: E402
 from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB, CH as OWN_CH, CH2 as OWN_CH2  # noqa: E402
@@ -1909,8 +1910,14 @@ def xc_url(lang, xid):
     return url(lang if lang in FULL else 'en', 'crypto-exchanges/' + xid)
 
 
+XLOGO_DIR = os.path.join(ROOT, 'data/xlogos')
+_XLOGOS = {f[:-5] for f in os.listdir(XLOGO_DIR) if f.endswith('.webp')} if os.path.isdir(XLOGO_DIR) else set()
+
+
 def _xlogo(e):
     l0 = esc((e.get('name') or '?')[0])
+    if e.get('id') in _XLOGOS:   # self-hosted copy (fetch_exchanges.py)
+        e = dict(e, img=f'/assets/xlogo/{e["id"]}.webp')
     return (f'<span class="ic"><img src="{esc(e["img"])}" alt="{esc(e.get("name") or "")}" loading="lazy" width="26" height="26" referrerpolicy="no-referrer" '
             f'onerror="this.parentNode.textContent=\'{l0}\'"></span>' if e.get('img')
             else f'<span class="ic">{esc((e.get("name") or "?")[0])}</span>')
@@ -2034,7 +2041,8 @@ def xc_detail_page(lang, xid, ver):
     for k, p in enumerate(pairs[:100]):
         aid = cg2aid.get(p.get('cg'))
         lab = f'{esc(p.get("b", ""))}/{esc(p.get("q", ""))}'
-        lab = f'<a href="{aurl(lang, aid)}">{icon(A[aid])}{lab}</a>' if aid else stable_icon(p.get('b')) + lab
+        lab = (f'<a href="{aurl(lang, aid)}">{icon(A[aid])}{lab}</a>' if aid
+               else f'<a href="{url(lang, p["b"].lower())}">{stable_icon(p["b"])}{lab}</a>' if p.get('b') in SB else stable_icon(p.get('b')) + lab)
         g = _qg(p.get('q'))
         qs.add(g)
         pr += (f'<tr data-q="{g}"{" class=xh" if k >= 30 else ""}><td class="l">{lab}</td><td class="num">{_num(p["last"], 6 if (p.get("last") or 0) < 1 else 2) if p.get("last") is not None else "—"}</td>'
@@ -2112,10 +2120,57 @@ def xc_facts_block(lang, xid, e):
             links.append((n, soc[k]))
     if links:
         rows.append((t['f_soc'], ' · '.join(f'<a href="{esc(u_)}" target="_blank" rel="nofollow noopener">{esc(n)}</a>' for n, u_ in links)))
-    if not rows:
+    # the data rows repeat the tiles above: keep only type + links, and say the rest in one plain paragraph
+    rows = [r for r in rows if r[0] in (t['f_type'], t['f_soc'])]
+    T2, d = XC2[lang], XCH.get('detail', {}).get(xid) or {}
+    btc = (METRICS.get('btc') or {}).get('price') or 0
+    sp = XCH.get('spot', [])
+    tot = sum(x.get('vol_btc') or 0 for x in sp) or 1
+    typ = T2['cen'] if pf.get('cen', True) else T2['dex']
+    para = T2['a'].format(x=esc(e['name']), t=typ) + (T2['yr'].format(y=e['year']) if e.get('year') else '') + (T2['cty'].format(c=esc(e['country'])) if e.get('country') else '')
+    if e.get('vol_btc') and btc:
+        para += T2['b'].format(v=f'<b>{usd(e["vol_btc"] * btc)}</b>', s=pctu(e['vol_btc'] / tot), r=e.get('rank') or '—')
+    prs = d.get('pairs') or []
+    coins, pairs_n = ap.get('coins') or pf.get('coins'), ap.get('pairs') or pf.get('pairs')
+    if coins and pairs_n and prs:
+        p0 = prs[0]
+        para += T2['c'].format(coins=_num(coins, 0), pairs=_num(pairs_n, 0), p=f'{esc(p0.get("b", ""))}/{esc(p0.get("q", ""))}', pv=usd_h(p0.get('usd')))
+    para += '' if lang in ('ja', 'zh') else '.'
+    nt = _re.sub(r'<[^>]+>', '', pf.get('notice') or '').strip()
+    if nt and not nt.endswith('.'):   # CoinGecko notices are cut at 300 chars: end at the last full sentence
+        nt = nt[:nt.rfind('. ') + 1] if '. ' in nt else nt
+    note = f'<p class="xnotice">⚠️ {esc(nt)}</p>' if nt else ''
+    return (f'<section class="section card xfacts"><h2>{esc(t["f_h"])}</h2>{note}<p>{para}</p>'
+            + (('<table class="mt"><tbody>' + ''.join(f'<tr><td class="l muted">{esc(k)}</td><td class="l"><b>{v}</b></td></tr>' for k, v in rows) + '</tbody></table>') if rows else '')
+            + '</section>' + xc_topcoins_block(lang, xid, e))
+
+
+def xc_topcoins_block(lang, xid, e):
+    """CryptoRank-style «top coins on the exchange»: volume per coin summed over its pairs (stablecoins as quotes)."""
+    T2, prs = XC2[lang], (XCH.get('detail', {}).get(xid) or {}).get('pairs') or []
+    agg, cgs = {}, {}
+    stk = {(a.get('tk') or '').upper() for a in A.values() if a['cat'] in ('stock', 'etf')}
+    for p in prs:
+        b = p.get('b')
+        if b and len(b) > 2 and b[-1] == 'B' and b[:-1] in stk:   # Binance tokenized stocks (NVDAB, SOXLB) are not coins
+            continue
+        if b and p.get('usd'):
+            agg[b] = agg.get(b, 0) + p['usd']
+            cgs.setdefault(b, p.get('cg'))
+    if len(agg) < 3:
         return ''
-    return (f'<section class="section card xfacts"><h2>{esc(t["f_h"])}</h2><table class="mt"><tbody>'
-            + ''.join(f'<tr><td class="l muted">{esc(k)}</td><td class="l"><b>{v}</b></td></tr>' for k, v in rows) + '</tbody></table></section>')
+    tot = sum(agg.values()) or 1
+    cg2aid = {a.get('cgid'): i for i, a in A.items() if a.get('cgid')}
+    rows = ''
+    for n, (b, v) in enumerate(sorted(agg.items(), key=lambda kv: -kv[1])[:15], 1):
+        aid = cg2aid.get(cgs.get(b))
+        lab = (f'<a href="{aurl(lang, aid)}">{icon(A[aid])}{esc(nm(A[aid], lang))} <small class="muted">{esc(b)}</small></a>' if aid
+               else f'<a href="{url(lang, b.lower())}">{stable_icon(b)}{esc(SB[b]["name"])} <small class="muted">{esc(b)}</small></a>' if b in SB
+               else stable_icon(b) + esc(b))
+        rows += (f'<tr><td class="l n hide-sm">{n}</td><td class="l">{lab}</td><td class="num"><b>{usd_h(v)}</b></td>'
+                 f'<td class="num"><span class="xbar"><i style="width:{max(2, round(v / tot * 100))}%"></i></span> {pctu(v / tot)}</td></tr>')
+    return (f'<section class="section mkt"><h2>{esc(T2["top"].format(x=e["name"]))}</h2><div class="tw"><table class="mt"><thead><tr><th class="l n hide-sm">#</th>'
+            f'<th class="l">{esc(T2["coin"])}</th><th>{esc(XC[lang]["vol"])}</th><th>{esc(T2["shr"])}</th></tr></thead><tbody>{rows}</tbody></table></div></section>')
 
 
 CMK = _jload('coin_markets.json') or {}
@@ -4263,6 +4318,8 @@ def main():
     write('assets/index.js', index_js); write('assets/style.css', css); write('assets/app.js', js); write('assets/ref.js', ref)
     if _LOGOS:
         shutil.copytree(LOGO_DIR, os.path.join(OUT, 'assets/logo'))
+    if _XLOGOS:
+        shutil.copytree(XLOGO_DIR, os.path.join(OUT, 'assets/xlogo'))
     shutil.copytree(os.path.join(ROOT, 'src', 'flags'), os.path.join(OUT, 'assets/flags'))
     shutil.copy(os.path.join(ROOT, 'src', 'x-relay.html'), os.path.join(DIST, 'x-relay.html'))
     if os.path.isdir(os.path.join(ROOT, 'content', 'video')):   # race videos for X / Telegram (handed over by x-relay.html)

@@ -159,6 +159,34 @@ def main():
                                                       vol_btc=num(e.get('trade_volume_24h_btc')), perp=e.get('number_of_perpetual_pairs'),
                                                       fut=e.get('number_of_futures_pairs')).items() if v is not None} for e in der]
     json.dump(out, open(OUT, 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
+    save_logos(out)
+
+
+def save_logos(out):
+    """Self-host exchange logos (data/xlogos/<id>.webp, 64 px) — CoinGecko's image CDN often fails to load in browsers."""
+    try:
+        from PIL import Image
+        import io
+    except Exception:
+        print('  pillow missing — exchange logos skipped', flush=True)
+        return
+    d = os.path.join(ROOT, 'data', 'xlogos')
+    os.makedirs(d, exist_ok=True)
+    n = 0
+    for e in out.get('spot', [])[:150] + out.get('derivatives', [])[:40]:
+        f = os.path.join(d, e['id'] + '.webp')
+        if os.path.exists(f) or not e.get('img'):
+            continue
+        try:
+            req = urllib.request.Request(e['img'].replace('/small/', '/large/'), headers={'User-Agent': 'whatifstack.com data bot'})
+            raw = urllib.request.urlopen(req, timeout=20).read()
+            im = Image.open(io.BytesIO(raw)).convert('RGBA')
+            im.thumbnail((64, 64))
+            im.save(f, 'WEBP', quality=88)
+            n += 1
+        except Exception as ex:
+            print(f'  logo {e["id"]}: {ex}', flush=True)
+    print(f'  exchange logos saved: {n}', flush=True)
     print(f"reserves: {len(out['reserves'])} exchanges")
     print(f"exchanges: spot {len(out['spot'])}, detail {len(out['detail'])}, derivatives {len(out['derivatives'])}")
 
