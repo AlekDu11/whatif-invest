@@ -78,3 +78,4 @@ Next: Teletype (teletype.in, login via Telegram) and Dzen (dzen.ru, Yandex/VK ID
 | 2026-11-18 | Medium | @whatifstack | anthropic-ipo-what-ai-ipos-did-next (en) | https://medium.com/@whatifstack/anthropics-1-4-trillion-ipo-6-of-2026-s-7-biggest-listings-trade-below-offer-ab4a99396c26 | canonical ✓ |
 | 2026-11-18 | Medium | @whatifstack | ai-stocks-sell-off-four-pressures (en) | — not published | ⛔ ACCOUNT SUSPENDED: Medium showed "Your account was found in violation of the Medium Rules" on Publish (profile isSuspended=true). Medium automation paused until the owner resolves it |
 | 2026-11-18 | Teletype | @whatifstack | ai-stocks-sell-off-four-pressures (en) | https://teletype.in/@whatifstack/ai-stocks-sell-off-four-pressures | canonical link ✓ |
+| 2026-11-19 | Teletype | @whatifstack | gold-price-falls-14-month-low (en) | https://teletype.in/@whatifstack/gold-price-falls-14-month-low | canonical link ✓ |
