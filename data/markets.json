@@ -6006,5 +6006,605 @@
 "yahoo": "HWC",
 "name": "Hancock Whitney",
 "cat": "stock"
+},
+{
+"tk": "HXL",
+"yahoo": "HXL",
+"name": "Hexcel",
+"cat": "stock"
+},
+{
+"tk": "IBOC",
+"yahoo": "IBOC",
+"name": "International Bancshares",
+"cat": "stock"
+},
+{
+"tk": "IDA",
+"yahoo": "IDA",
+"name": "Idacorp",
+"cat": "stock"
+},
+{
+"tk": "IDCC",
+"yahoo": "IDCC",
+"name": "InterDigital",
+"cat": "stock"
+},
+{
+"tk": "IESC",
+"yahoo": "IESC",
+"name": "IES Holdings",
+"cat": "stock"
+},
+{
+"tk": "INGR",
+"yahoo": "INGR",
+"name": "Ingredion",
+"cat": "stock"
+},
+{
+"tk": "IPGP",
+"yahoo": "IPGP",
+"name": "IPG Photonics",
+"cat": "stock"
+},
+{
+"tk": "IRT",
+"yahoo": "IRT",
+"name": "Independence Realty Trust",
+"cat": "stock"
+},
+{
+"tk": "ITT",
+"yahoo": "ITT",
+"name": "ITT",
+"cat": "stock"
+},
+{
+"tk": "JAZZ",
+"yahoo": "JAZZ",
+"name": "Jazz Pharmaceuticals",
+"cat": "stock"
+},
+{
+"tk": "JEF",
+"yahoo": "JEF",
+"name": "Jefferies",
+"cat": "stock"
+},
+{
+"tk": "JLL",
+"yahoo": "JLL",
+"name": "Jones Lang LaSalle",
+"cat": "stock"
+},
+{
+"tk": "KBH",
+"yahoo": "KBH",
+"name": "KB Home",
+"cat": "stock"
+},
+{
+"tk": "KBR",
+"yahoo": "KBR",
+"name": "KBR",
+"cat": "stock"
+},
+{
+"tk": "KD",
+"yahoo": "KD",
+"name": "Kyndryl",
+"cat": "stock"
+},
+{
+"tk": "KEX",
+"yahoo": "KEX",
+"name": "Kirby",
+"cat": "stock"
+},
+{
+"tk": "KNF",
+"yahoo": "KNF",
+"name": "Knife River",
+"cat": "stock"
+},
+{
+"tk": "KNSL",
+"yahoo": "KNSL",
+"name": "Kinsale Capital",
+"cat": "stock"
+},
+{
+"tk": "KNX",
+"yahoo": "KNX",
+"name": "Knight-Swift",
+"cat": "stock"
+},
+{
+"tk": "KRC",
+"yahoo": "KRC",
+"name": "Kilroy Realty",
+"cat": "stock"
+},
+{
+"tk": "KRG",
+"yahoo": "KRG",
+"name": "Kite Realty",
+"cat": "stock"
+},
+{
+"tk": "KRYS",
+"yahoo": "KRYS",
+"name": "Krystal Biotech",
+"cat": "stock"
+},
+{
+"tk": "KTOS",
+"yahoo": "KTOS",
+"name": "Kratos Defense",
+"cat": "stock"
+},
+{
+"tk": "LAD",
+"yahoo": "LAD",
+"name": "Lithia Motors",
+"cat": "stock"
+},
+{
+"tk": "LAMR",
+"yahoo": "LAMR",
+"name": "Lamar Advertising",
+"cat": "stock"
+},
+{
+"tk": "LEA",
+"yahoo": "LEA",
+"name": "Lear",
+"cat": "stock"
+},
+{
+"tk": "LECO",
+"yahoo": "LECO",
+"name": "Lincoln Electric",
+"cat": "stock"
+},
+{
+"tk": "LFUS",
+"yahoo": "LFUS",
+"name": "Littelfuse",
+"cat": "stock"
+},
+{
+"tk": "LIVN",
+"yahoo": "LIVN",
+"name": "LivaNova",
+"cat": "stock"
+},
+{
+"tk": "LNTH",
+"yahoo": "LNTH",
+"name": "Lantheus",
+"cat": "stock"
+},
+{
+"tk": "LOPE",
+"yahoo": "LOPE",
+"name": "Grand Canyon Education",
+"cat": "stock"
+},
+{
+"tk": "LPX",
+"yahoo": "LPX",
+"name": "Louisiana-Pacific",
+"cat": "stock"
+},
+{
+"tk": "LSCC",
+"yahoo": "LSCC",
+"name": "Lattice Semiconductor",
+"cat": "stock"
+},
+{
+"tk": "LSTR",
+"yahoo": "LSTR",
+"name": "Landstar System",
+"cat": "stock"
+},
+{
+"tk": "MANH",
+"yahoo": "MANH",
+"name": "Manhattan Associates",
+"cat": "stock"
+},
+{
+"tk": "MAT",
+"yahoo": "MAT",
+"name": "Mattel",
+"cat": "stock"
+},
+{
+"tk": "MEDP",
+"yahoo": "MEDP",
+"name": "Medpace",
+"cat": "stock"
+},
+{
+"tk": "MIDD",
+"yahoo": "MIDD",
+"name": "Middleby",
+"cat": "stock"
+},
+{
+"tk": "MKSI",
+"yahoo": "MKSI",
+"name": "MKS Instruments",
+"cat": "stock"
+},
+{
+"tk": "MLI",
+"yahoo": "MLI",
+"name": "Mueller Industries",
+"cat": "stock"
+},
+{
+"tk": "MMS",
+"yahoo": "MMS",
+"name": "Maximus",
+"cat": "stock"
+},
+{
+"tk": "MOG.A",
+"yahoo": "MOG-A",
+"name": "Moog",
+"cat": "stock"
+},
+{
+"tk": "MOH",
+"yahoo": "MOH",
+"name": "Molina Healthcare",
+"cat": "stock"
+},
+{
+"tk": "MORN",
+"yahoo": "MORN",
+"name": "Morningstar",
+"cat": "stock"
+},
+{
+"tk": "MP",
+"yahoo": "MP",
+"name": "MP Materials",
+"cat": "stock"
+},
+{
+"tk": "MSA",
+"yahoo": "MSA",
+"name": "MSA Safety",
+"cat": "stock"
+},
+{
+"tk": "MSM",
+"yahoo": "MSM",
+"name": "MSC Industrial Direct",
+"cat": "stock"
+},
+{
+"tk": "MTDR",
+"yahoo": "MTDR",
+"name": "Matador Resources",
+"cat": "stock"
+},
+{
+"tk": "MTG",
+"yahoo": "MTG",
+"name": "MGIC Investment",
+"cat": "stock"
+},
+{
+"tk": "MTN",
+"yahoo": "MTN",
+"name": "Vail Resorts",
+"cat": "stock"
+},
+{
+"tk": "MTSI",
+"yahoo": "MTSI",
+"name": "MACOM Technology",
+"cat": "stock"
+},
+{
+"tk": "MTZ",
+"yahoo": "MTZ",
+"name": "MasTec",
+"cat": "stock"
+},
+{
+"tk": "MUR",
+"yahoo": "MUR",
+"name": "Murphy Oil",
+"cat": "stock"
+},
+{
+"tk": "MUSA",
+"yahoo": "MUSA",
+"name": "Murphy USA",
+"cat": "stock"
+},
+{
+"tk": "MZTI",
+"yahoo": "MZTI",
+"name": "The Marzetti Company",
+"cat": "stock"
+},
+{
+"tk": "NBIX",
+"yahoo": "NBIX",
+"name": "Neurocrine Biosciences",
+"cat": "stock"
+},
+{
+"tk": "NEU",
+"yahoo": "NEU",
+"name": "NewMarket",
+"cat": "stock"
+},
+{
+"tk": "NFG",
+"yahoo": "NFG",
+"name": "National Fuel Gas",
+"cat": "stock"
+},
+{
+"tk": "NJR",
+"yahoo": "NJR",
+"name": "New Jersey Resources",
+"cat": "stock"
+},
+{
+"tk": "NLY",
+"yahoo": "NLY",
+"name": "Annaly Capital Management",
+"cat": "stock"
+},
+{
+"tk": "NNN",
+"yahoo": "NNN",
+"name": "NNN REIT",
+"cat": "stock"
+},
+{
+"tk": "NOV",
+"yahoo": "NOV",
+"name": "NOV",
+"cat": "stock"
+},
+{
+"tk": "NOVT",
+"yahoo": "NOVT",
+"name": "Novanta",
+"cat": "stock"
+},
+{
+"tk": "NTNX",
+"yahoo": "NTNX",
+"name": "Nutanix",
+"cat": "stock"
+},
+{
+"tk": "NVST",
+"yahoo": "NVST",
+"name": "Envista",
+"cat": "stock"
+},
+{
+"tk": "NVT",
+"yahoo": "NVT",
+"name": "nVent Electric",
+"cat": "stock"
+},
+{
+"tk": "NWE",
+"yahoo": "NWE",
+"name": "NorthWestern Energy",
+"cat": "stock"
+},
+{
+"tk": "NXST",
+"yahoo": "NXST",
+"name": "Nexstar Media",
+"cat": "stock"
+},
+{
+"tk": "NYT",
+"yahoo": "NYT",
+"name": "New York Times",
+"cat": "stock"
+},
+{
+"tk": "OC",
+"yahoo": "OC",
+"name": "Owens Corning",
+"cat": "stock"
+},
+{
+"tk": "OGE",
+"yahoo": "OGE",
+"name": "OGE Energy",
+"cat": "stock"
+},
+{
+"tk": "OGS",
+"yahoo": "OGS",
+"name": "ONE Gas",
+"cat": "stock"
+},
+{
+"tk": "OHI",
+"yahoo": "OHI",
+"name": "Omega Healthcare Investors",
+"cat": "stock"
+},
+{
+"tk": "OLED",
+"yahoo": "OLED",
+"name": "Universal Display",
+"cat": "stock"
+},
+{
+"tk": "OLLI",
+"yahoo": "OLLI",
+"name": "Ollie's Bargain Outlet",
+"cat": "stock"
+},
+{
+"tk": "ONB",
+"yahoo": "ONB",
+"name": "Old National Bancorp",
+"cat": "stock"
+},
+{
+"tk": "ONTO",
+"yahoo": "ONTO",
+"name": "Onto Innovation",
+"cat": "stock"
+},
+{
+"tk": "OPCH",
+"yahoo": "OPCH",
+"name": "Option Care Health",
+"cat": "stock"
+},
+{
+"tk": "ORI",
+"yahoo": "ORI",
+"name": "Old Republic",
+"cat": "stock"
+},
+{
+"tk": "OSK",
+"yahoo": "OSK",
+"name": "Oshkosh",
+"cat": "stock"
+},
+{
+"tk": "OVV",
+"yahoo": "OVV",
+"name": "Ovintiv",
+"cat": "stock"
+},
+{
+"tk": "OZK",
+"yahoo": "OZK",
+"name": "Bank OZK",
+"cat": "stock"
+},
+{
+"tk": "PAG",
+"yahoo": "PAG",
+"name": "Penske Automotive",
+"cat": "stock"
+},
+{
+"tk": "PATH",
+"yahoo": "PATH",
+"name": "UiPath",
+"cat": "stock"
+},
+{
+"tk": "PB",
+"yahoo": "PB",
+"name": "Prosperity Bancshares",
+"cat": "stock"
+},
+{
+"tk": "PBF",
+"yahoo": "PBF",
+"name": "PBF Energy",
+"cat": "stock"
+},
+{
+"tk": "PCTY",
+"yahoo": "PCTY",
+"name": "Paylocity",
+"cat": "stock"
+},
+{
+"tk": "PEGA",
+"yahoo": "PEGA",
+"name": "Pegasystems",
+"cat": "stock"
+},
+{
+"tk": "PEN",
+"yahoo": "PEN",
+"name": "Penumbra",
+"cat": "stock"
+},
+{
+"tk": "PFGC",
+"yahoo": "PFGC",
+"name": "Performance Food Group",
+"cat": "stock"
+},
+{
+"tk": "PII",
+"yahoo": "PII",
+"name": "Polaris",
+"cat": "stock"
+},
+{
+"tk": "PINS",
+"yahoo": "PINS",
+"name": "Pinterest",
+"cat": "stock"
+},
+{
+"tk": "PK",
+"yahoo": "PK",
+"name": "Park Hotels & Resorts",
+"cat": "stock"
+},
+{
+"tk": "PLNT",
+"yahoo": "PLNT",
+"name": "Planet Fitness",
+"cat": "stock"
+},
+{
+"tk": "PNFP",
+"yahoo": "PNFP",
+"name": "Pinnacle Financial Partners",
+"cat": "stock"
+},
+{
+"tk": "POR",
+"yahoo": "POR",
+"name": "Portland General Electric",
+"cat": "stock"
+},
+{
+"tk": "POST",
+"yahoo": "POST",
+"name": "Post Holdings",
+"cat": "stock"
+},
+{
+"tk": "PPC",
+"yahoo": "PPC",
+"name": "Pilgrim's Pride",
+"cat": "stock"
+},
+{
+"tk": "PR",
+"yahoo": "PR",
+"name": "Permian Resources",
+"cat": "stock"
+},
+{
+"tk": "PRI",
+"yahoo": "PRI",
+"name": "Primerica",
+"cat": "stock"
 }
 ]
