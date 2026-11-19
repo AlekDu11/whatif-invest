@@ -1,13 +1,19 @@
 name: Scheduled deploy
 
 # Vercel builds only commits with [deploy] in the message (scripts/vercel_ignore.sh), to stay under the
-# 10 GB deployment-storage limit of the Hobby plan (one deploy of ~23k pages is >1 GB). Four fixed slots a day:
-# 05:23, 11:23, 17:23, 23:23 UTC (08:23 Kyiv = right after the morning market wrap). If GitHub skips a slot run,
-# the next hourly run deploys once the last deploy is older than 6.5 h. A plain manual run follows the same rules;
-# only a manual run with force=true deploys now, and even then at most 6 deploys per 24 h.
+# 10 GB deployment-storage limit of the Hobby plan (one deploy of ~23k pages is >1 GB). At most one deploy every
+# 5 h 50 min (≈4 a day), only when the site changed. GitHub fires scheduled runs of this repo very rarely (4 times in
+# 36 h on 2026-11-19), so the check also runs on every push to main and after the data workflows finish: whichever
+# comes first after the 5 h 50 min mark deploys. A plain manual run follows the same rule; only force=true deploys
+# now, and even then at most 6 deploys per 24 h.
 on:
   schedule:
     - cron: '23 * * * *'
+  push:
+    branches: [main]
+  workflow_run:
+    workflows: ['Fetch market data', 'Crypto exchange rankings']
+    types: [completed]
   workflow_dispatch:
     inputs:
       force:
@@ -45,10 +51,7 @@ jobs:
             if [ "$n" -ge 6 ]; then echo "Already $n deploys in 24 h — waiting for the next slot"; exit 0; fi
           elif [ -n "$last" ]; then
             age=$(( $(date +%s) - $(git log -1 --format=%ct "$last") ))
-            h=$(date -u +%H)
-            case "$h" in 05|11|17|23) slot=1 ;; *) slot=0 ;; esac
-            if [ "$age" -lt 3600 ]; then echo "Deployed ${age}s ago"; exit 0; fi
-            if [ "$slot" = 0 ] && [ "$age" -lt 23400 ]; then echo "Not a deploy slot (05/11/17/23 UTC); last deploy ${age}s ago"; exit 0; fi
+            if [ "$age" -lt 21000 ]; then echo "Last deploy ${age}s ago — next one after 5 h 50 min"; exit 0; fi
           fi
           if [ -n "$HOOK" ]; then          # preferred: Vercel Deploy Hook (git auto-deploys are off, so pushes cost nothing)
             curl -fsS -X POST "$HOOK" && git config user.name "whatif-bot" && git config user.email "whatif-bot@users.noreply.github.com" \
