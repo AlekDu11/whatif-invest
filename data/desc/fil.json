@@ -1,0 +1,22 @@
+{
+ "aluminum": "Ang aluminyo ay magaang metal na ginagamit sa eroplano, kotse, packaging at konstruksyon. Napakalaking kuryente ang kailangan sa paggawa nito, kaya nakadepende rin ang presyo nito sa gastos ng enerhiya.",
+ "cattle": "Ang live cattle ay futures contract na sumusunod sa presyo ng baka para sa karne sa Estados Unidos. Nakadepende ito sa gastos sa pakain, laki ng kawan at demand sa karne.",
+ "cocoa": "Ang cocoa ang hilaw na materyal ng tsokolate. Mahigit kalahati ng ani sa mundo ay mula sa Côte d'Ivoire at Ghana, kaya malakas na naaapektuhan ng sakit ng puno at panahon doon ang presyo.",
+ "coffee": "Ang kape ay isa sa pinakakinakalakal na produktong agrikultural. Arabica ang benchmark na kontrata, at nakadepende ang presyo sa ani at panahon sa Brazil, Vietnam at Colombia.",
+ "copper": "Ang tanso ang pangunahing metal ng elektripikasyon: kailangan ito ng mga kable, de-kuryenteng motor, EV, power grid at data center. Madalas ituring ang presyo nito na sukatan ng kalagayan ng pandaigdigang ekonomiya.",
+ "corn": "Ang mais ang pinakamalaking pananim na butil sa mundo ayon sa dami: pagkain ng hayop, sangkap sa pagkain at biofuel (ethanol). Ang Estados Unidos ang pinakamalaking prodyuser.",
+ "cotton": "Ang bulak ang pangunahing natural na hibla para sa damit at tela. Ang pinakamalalaking prodyuser ay China, India, Estados Unidos at Brazil.",
+ "gold": "Ang ginto ang klasikong safe-haven na asset na ginagamit bilang taguan ng halaga sa loob ng libu-libong taon. Binibili ito ng mga central bank, alahero at investor, lalo na sa panahon ng krisis, inflation o digmaan.",
+ "hogs": "Ang lean hogs ay futures contract sa presyo ng karne ng baboy sa Estados Unidos. Gumagalaw ito ayon sa gastos sa pakain, export sa Asya at mga sakit ng hayop.",
+ "oats": "Ang oats ay butil na ginagamit sa cereal, lugaw at pagkain ng hayop. Maliit ang futures market nito, kaya puwedeng biglang gumalaw ang presyo dahil sa panahon sa Canada at US.",
+ "ojuice": "Ang frozen concentrated orange juice ay maliit na futures market. Nakadepende ang presyo sa ani ng dalandan sa Florida at Brazil, mga bagyo at sakit ng citrus.",
+ "palladium": "Ang palladium ay bihirang metal mula sa platinum group na halos lahat ay napupunta sa catalytic converter ng mga makinang de-gasolina. Pangunahing prodyuser nito ang Russia at South Africa.",
+ "platinum": "Ang platinum ay bihirang mahalagang metal na karamihan ay mina sa South Africa. Pangunahing gamit nito ang catalytic converter ng sasakyan, alahas at teknolohiyang hydrogen.",
+ "rice": "Ang bigas ang pangunahing pagkain ng mahigit kalahati ng sangkatauhan. Sa Chicago exchange, palay (rough rice) ang kinakalakal; nakadepende ang presyo sa ani sa Asya at sa mga limitasyon sa export.",
+ "silver": "Ang pilak ay parehong mahalagang metal at pang-industriya, ginagamit sa electronics, solar panel at medisina. Dahil sa dobleng demand na ito, kadalasang mas matindi ang galaw ng presyo nito kaysa sa ginto.",
+ "soybeans": "Ang soybeans ay pangunahing pinagmumulan ng protina at langis mula sa halaman, para sa feeds, soybean oil at tokwa. Brazil at US ang pinakamalaking prodyuser, at China ang pinakamalaking mamimili.",
+ "soyoil": "Ang soybean oil ay isa sa pinakalaganap na mantika sa mundo at hilaw na materyal din ng biodiesel, kaya nakadepende rin ang presyo nito sa patakaran sa enerhiya.",
+ "sugar": "Ang asukal ay gawa sa tubo at sugar beet. Ang Brazil, ang pinakamalaking exporter, ay ginagawang ethanol ang bahagi ng tubo nito, kaya konektado rin ang presyo ng asukal sa langis.",
+ "wheat": "Ang trigo ay isa sa mga pangunahing butil sa mundo at hilaw na materyal ng tinapay at harina. Ang presyo nito ay nakadepende sa ani sa US, Russia, EU at Ukraine, at sa panahon.",
+ "wti": "Ang WTI ang benchmark na krudo ng Estados Unidos na kinakalakal sa New York. Gumagalaw ang presyo nito ayon sa desisyon ng OPEC+, produksyon ng US, imbentaryo at pandaigdigang demand."
+}

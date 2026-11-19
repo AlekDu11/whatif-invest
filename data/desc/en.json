@@ -1,0 +1,22 @@
+{
+ "aluminum": "Aluminium is a light metal used in aircraft, cars, packaging and construction. Producing it takes huge amounts of electricity, so its price also depends on energy costs.",
+ "cattle": "Live cattle is a futures contract that tracks the price of beef cattle in the United States. It depends on feed costs, herd size and demand for meat.",
+ "cocoa": "Cocoa is the raw material for chocolate. Côte d'Ivoire and Ghana grow more than half of the world's crop, so tree diseases and weather there move the price strongly.",
+ "coffee": "Coffee is one of the most traded agricultural commodities. The benchmark contract is arabica, and prices depend on harvests and weather in Brazil, Vietnam and Colombia.",
+ "copper": "Copper is the key metal of electrification: wires, electric motors, EVs, power grids and data centres all need it. Its price is often seen as a gauge of the global economy.",
+ "corn": "Corn (maize) is the world's biggest grain crop by volume: livestock feed, food ingredient and ethanol biofuel. The United States is the top producer.",
+ "cotton": "Cotton is the main natural fibre for clothing and textiles. The biggest producers are China, India, the United States and Brazil.",
+ "gold": "Gold is the classic safe-haven asset that has served as a store of value for thousands of years. Central banks, jewellers and investors buy it, especially in times of crisis, inflation or war.",
+ "hogs": "Lean hogs is a futures contract on the price of pork carcasses in the United States. It is driven by feed costs, exports to Asia and animal diseases.",
+ "oats": "Oats are a grain used for cereal flakes, porridge and animal feed. The futures market is small, so prices can swing sharply on the weather in Canada and the US.",
+ "ojuice": "Frozen concentrated orange juice is a small futures market. Prices depend on orange harvests in Florida and Brazil, hurricanes and citrus diseases.",
+ "palladium": "Palladium is a rare platinum-group metal that goes almost entirely into catalytic converters for petrol engines. The main producers are Russia and South Africa.",
+ "platinum": "Platinum is a rare precious metal mined mostly in South Africa. Its main uses are catalytic converters for cars, jewellery and hydrogen technologies.",
+ "rice": "Rice is the staple food of more than half of humanity. The Chicago exchange trades rough (unhusked) rice; prices depend on Asian harvests and export restrictions.",
+ "silver": "Silver is both a precious and an industrial metal, used in electronics, solar panels and medicine. Because of that dual demand, its price usually moves more sharply than gold's.",
+ "soybeans": "Soybeans are a major source of plant protein and oil, used for animal feed, soybean oil and tofu. Brazil and the US are the largest producers and China the largest buyer.",
+ "soyoil": "Soybean oil is one of the world's most widely used cooking oils and also a feedstock for biodiesel, so its price depends on energy policy as well as food demand.",
+ "sugar": "Sugar is made from sugar cane and sugar beet. Brazil is the largest exporter and turns part of its cane into ethanol, so the sugar price is linked to oil too.",
+ "wheat": "Wheat is one of the world's staple grains and the raw material for bread and flour. Its price is driven by harvests in the US, Russia, the EU and Ukraine, and by the weather.",
+ "wti": "WTI is the US benchmark grade of crude oil, priced in New York. Its price moves with OPEC+ decisions, US output, inventories and global demand."
+}

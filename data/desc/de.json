@@ -1,0 +1,22 @@
+{
+ "aluminum": "Aluminium ist ein Leichtmetall für Flugzeuge, Autos, Verpackungen und Bau. Seine Herstellung verschlingt enorm viel Strom, daher hängt der Preis auch von den Energiekosten ab.",
+ "cattle": "Lebendrind (Live Cattle) ist ein Terminkontrakt auf den Preis von Schlachtrindern in den USA. Er hängt von Futterkosten, Herdengröße und Fleischnachfrage ab.",
+ "cocoa": "Kakao ist der Rohstoff für Schokolade. Die Elfenbeinküste und Ghana liefern mehr als die Hälfte der Welternte, daher bewegen Baumkrankheiten und Wetter dort den Preis stark.",
+ "coffee": "Kaffee gehört zu den meistgehandelten Agrarrohstoffen. Referenz ist Arabica; der Preis hängt von Ernten und Wetter in Brasilien, Vietnam und Kolumbien ab.",
+ "copper": "Kupfer ist das Schlüsselmetall der Elektrifizierung: Kabel, Elektromotoren, E-Autos, Stromnetze und Rechenzentren brauchen es. Sein Preis gilt oft als Gradmesser der Weltwirtschaft.",
+ "corn": "Mais ist mengenmäßig das größte Getreide der Welt: Tierfutter, Lebensmittelrohstoff und Biokraftstoff (Ethanol). Größter Produzent sind die USA.",
+ "cotton": "Baumwolle ist die wichtigste Naturfaser für Kleidung und Textilien. Die größten Produzenten sind China, Indien, die USA und Brasilien.",
+ "gold": "Gold ist der klassische sichere Hafen und dient seit Jahrtausenden als Wertspeicher. Zentralbanken, Juweliere und Anleger kaufen es – besonders in Zeiten von Krisen, Inflation oder Krieg.",
+ "hogs": "Lean Hogs ist ein Terminkontrakt auf den Preis von Schweinehälften in den USA. Ihn bewegen Futterkosten, Exporte nach Asien und Tierseuchen.",
+ "oats": "Hafer ist ein Getreide für Flocken, Brei und Tierfutter. Der Terminmarkt ist klein, daher kann der Preis je nach Wetter in Kanada und den USA stark schwanken.",
+ "ojuice": "Gefrorenes Orangensaftkonzentrat ist ein kleiner Terminmarkt. Der Preis hängt von den Orangenernten in Florida und Brasilien, von Hurrikans und Zitruskrankheiten ab.",
+ "palladium": "Palladium ist ein seltenes Platinmetall, das fast vollständig in Katalysatoren für Benzinmotoren fließt. Die wichtigsten Förderländer sind Russland und Südafrika.",
+ "platinum": "Platin ist ein seltenes Edelmetall, das überwiegend in Südafrika gefördert wird. Gefragt ist es vor allem für Autokatalysatoren, Schmuck und Wasserstofftechnik.",
+ "rice": "Reis ist das Grundnahrungsmittel für mehr als die Hälfte der Menschheit. In Chicago wird Rohreis (ungeschält) gehandelt; der Preis hängt von asiatischen Ernten und Exportbeschränkungen ab.",
+ "silver": "Silber ist Edel- und Industriemetall zugleich und steckt in Elektronik, Solarmodulen und Medizintechnik. Wegen dieser doppelten Nachfrage schwankt sein Preis meist stärker als der von Gold.",
+ "soybeans": "Sojabohnen liefern pflanzliches Eiweiß und Öl – für Tierfutter, Sojaöl und Tofu. Größte Produzenten sind Brasilien und die USA, größter Abnehmer ist China.",
+ "soyoil": "Sojaöl gehört zu den meistgenutzten Speiseölen der Welt und ist zugleich Rohstoff für Biodiesel – sein Preis hängt deshalb auch von der Energiepolitik ab.",
+ "sugar": "Zucker wird aus Zuckerrohr und Zuckerrüben gewonnen. Brasilien ist der größte Exporteur und macht aus einem Teil seines Rohrs Ethanol – daher hängt der Zuckerpreis auch am Öl.",
+ "wheat": "Weizen ist eines der wichtigsten Getreide der Welt und Rohstoff für Brot und Mehl. Der Preis hängt von den Ernten in den USA, Russland, der EU und der Ukraine sowie vom Wetter ab.",
+ "wti": "WTI ist die US-Referenzsorte für Rohöl und wird in New York gehandelt. Der Preis hängt von OPEC+-Beschlüssen, der US-Förderung, Lagerbeständen und der weltweiten Nachfrage ab."
+}

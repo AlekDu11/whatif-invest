@@ -1,0 +1,22 @@
+{
+ "aluminum": "L'aluminium est un métal léger utilisé dans l'aviation, l'automobile, l'emballage et le bâtiment. Sa production consomme énormément d'électricité, donc son prix dépend aussi du coût de l'énergie.",
+ "cattle": "Le bétail vivant (live cattle) est un contrat à terme sur le prix des bovins de boucherie aux États-Unis. Il dépend du coût de l'alimentation, de la taille du cheptel et de la demande de viande.",
+ "cocoa": "Le cacao est la matière première du chocolat. La Côte d'Ivoire et le Ghana produisent plus de la moitié de la récolte mondiale : maladies des arbres et météo y font fortement varier le prix.",
+ "coffee": "Le café est l'une des matières premières agricoles les plus échangées. Le contrat de référence porte sur l'arabica ; le prix dépend des récoltes et de la météo au Brésil, au Vietnam et en Colombie.",
+ "copper": "Le cuivre est le métal clé de l'électrification : câbles, moteurs électriques, voitures électriques, réseaux et centres de données. Son prix est souvent vu comme un baromètre de l'économie mondiale.",
+ "corn": "Le maïs est la première céréale mondiale en volume : alimentation animale, ingrédient alimentaire et biocarburant (éthanol). Les États-Unis en sont le premier producteur.",
+ "cotton": "Le coton est la principale fibre naturelle pour les vêtements et le textile. Les plus grands producteurs sont la Chine, l'Inde, les États-Unis et le Brésil.",
+ "gold": "L'or est la valeur refuge par excellence et sert de réserve de valeur depuis des millénaires. Banques centrales, bijoutiers et investisseurs l'achètent, surtout en période de crise, d'inflation ou de guerre.",
+ "hogs": "Le lean hogs est un contrat à terme sur le prix des carcasses de porc aux États-Unis. Il dépend du coût de l'alimentation, des exportations vers l'Asie et des maladies animales.",
+ "oats": "L'avoine est une céréale utilisée pour les flocons, le porridge et l'alimentation animale. Son marché à terme est petit, si bien que le prix peut varier fortement selon la météo au Canada et aux États-Unis.",
+ "ojuice": "Le jus d'orange concentré surgelé est un petit marché à terme. Son prix dépend des récoltes d'oranges en Floride et au Brésil, des ouragans et des maladies des agrumes.",
+ "palladium": "Le palladium est un métal rare du groupe du platine, utilisé presque entièrement dans les pots catalytiques des moteurs à essence. Les principaux producteurs sont la Russie et l'Afrique du Sud.",
+ "platinum": "Le platine est un métal précieux rare, extrait surtout en Afrique du Sud. Il sert principalement aux pots catalytiques automobiles, à la joaillerie et aux technologies de l'hydrogène.",
+ "rice": "Le riz est l'aliment de base de plus de la moitié de l'humanité. À Chicago, on négocie du riz paddy (non décortiqué) ; le prix dépend des récoltes asiatiques et des restrictions à l'export.",
+ "silver": "L'argent est à la fois un métal précieux et industriel, utilisé dans l'électronique, les panneaux solaires et la médecine. Cette double demande rend son prix généralement plus volatil que celui de l'or.",
+ "soybeans": "Le soja est une grande source de protéines et d'huile végétales, utilisé pour l'alimentation animale, l'huile de soja et le tofu. Le Brésil et les États-Unis sont les premiers producteurs, la Chine le premier acheteur.",
+ "soyoil": "L'huile de soja est l'une des huiles alimentaires les plus utilisées au monde et une matière première du biodiesel ; son prix dépend donc aussi de la politique énergétique.",
+ "sugar": "Le sucre provient de la canne et de la betterave. Le Brésil, premier exportateur, transforme une partie de sa canne en éthanol : le prix du sucre est donc aussi lié au pétrole.",
+ "wheat": "Le blé est l'une des céréales de base de la planète et la matière première du pain et de la farine. Son prix dépend des récoltes aux États-Unis, en Russie, dans l'UE et en Ukraine, ainsi que de la météo.",
+ "wti": "Le WTI est le pétrole brut de référence américain, coté à New York. Son prix évolue selon les décisions de l'OPEP+, la production américaine, les stocks et la demande mondiale."
+}

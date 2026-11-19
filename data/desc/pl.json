@@ -1,0 +1,22 @@
+{
+ "aluminum": "Aluminium to lekki metal wykorzystywany w samolotach, samochodach, opakowaniach i budownictwie. Jego produkcja pochłania ogromne ilości prądu, więc cena zależy też od kosztów energii.",
+ "cattle": "Żywe bydło (live cattle) to kontrakt terminowy na cenę bydła rzeźnego w USA. Zależy od kosztów paszy, wielkości stada i popytu na mięso.",
+ "cocoa": "Kakao to surowiec do produkcji czekolady. Wybrzeże Kości Słoniowej i Ghana dają ponad połowę światowych zbiorów, więc choroby drzew i pogoda w tych krajach mocno wpływają na cenę.",
+ "coffee": "Kawa to jeden z najczęściej handlowanych surowców rolnych. Kontrakt referencyjny dotyczy arabiki, a ceny zależą od zbiorów i pogody w Brazylii, Wietnamie i Kolumbii.",
+ "copper": "Miedź to kluczowy metal elektryfikacji: przewody, silniki elektryczne, auta elektryczne, sieci i centra danych. Jej cenę często traktuje się jako barometr światowej gospodarki.",
+ "corn": "Kukurydza to największa pod względem wolumenu uprawa zbożowa świata: pasza dla zwierząt, surowiec spożywczy i biopaliwo (etanol). Największym producentem są USA.",
+ "cotton": "Bawełna to najważniejsze naturalne włókno do odzieży i tekstyliów. Największymi producentami są Chiny, Indie, USA i Brazylia.",
+ "gold": "Złoto to klasyczna bezpieczna przystań, która od tysięcy lat służy do przechowywania wartości. Kupują je banki centralne, jubilerzy i inwestorzy, zwłaszcza w czasach kryzysu, inflacji lub wojny.",
+ "hogs": "Lean hogs to kontrakt terminowy na cenę tusz wieprzowych w USA. Wpływają na nią koszty paszy, eksport do Azji i choroby zwierząt.",
+ "oats": "Owies to zboże na płatki, owsiankę i paszę. Rynek kontraktów jest mały, więc cena może gwałtownie się wahać w zależności od pogody w Kanadzie i USA.",
+ "ojuice": "Mrożony koncentrat soku pomarańczowego to niewielki rynek terminowy. Ceny zależą od zbiorów pomarańczy na Florydzie i w Brazylii, huraganów i chorób cytrusów.",
+ "palladium": "Pallad to rzadki metal z grupy platynowców, który niemal w całości trafia do katalizatorów silników benzynowych. Główni producenci to Rosja i RPA.",
+ "platinum": "Platyna to rzadki metal szlachetny wydobywany głównie w RPA. Najwięcej trafia do katalizatorów samochodowych, jubilerstwa i technologii wodorowych.",
+ "rice": "Ryż to podstawa wyżywienia ponad połowy ludzkości. Na giełdzie w Chicago handluje się ryżem niełuskanym; ceny zależą od zbiorów w Azji i ograniczeń eksportowych.",
+ "silver": "Srebro to metal szlachetny i przemysłowy jednocześnie – trafia do elektroniki, paneli słonecznych i medycyny. Przez tę podwójną rolę jego cena zwykle zmienia się gwałtowniej niż cena złota.",
+ "soybeans": "Soja to ważne źródło białka i oleju roślinnego – trafia do pasz, oleju sojowego i tofu. Największymi producentami są Brazylia i USA, a największym nabywcą Chiny.",
+ "soyoil": "Olej sojowy to jeden z najpowszechniejszych olejów spożywczych na świecie i surowiec do biodiesla, dlatego jego cena zależy również od polityki energetycznej.",
+ "sugar": "Cukier produkuje się z trzciny cukrowej i buraków. Największym eksporterem jest Brazylia, która część trzciny przerabia na etanol, więc cena cukru zależy też od ropy.",
+ "wheat": "Pszenica to jedno z podstawowych zbóż świata i surowiec do chleba i mąki. Cenę wyznaczają zbiory w USA, Rosji, UE i Ukrainie oraz pogoda.",
+ "wti": "WTI to amerykański gatunek referencyjny ropy naftowej notowany w Nowym Jorku. Na cenę wpływają decyzje OPEC+, wydobycie w USA, zapasy i światowy popyt."
+}

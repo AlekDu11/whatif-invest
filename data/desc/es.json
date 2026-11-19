@@ -1,0 +1,22 @@
+{
+ "aluminum": "El aluminio es un metal ligero que se usa en aviones, coches, envases y construcción. Producirlo consume muchísima electricidad, por lo que su precio también depende del coste de la energía.",
+ "cattle": "El ganado vivo es un contrato de futuros sobre el precio del ganado de carne en Estados Unidos. Depende del coste del pienso, el tamaño de la cabaña y la demanda de carne.",
+ "cocoa": "El cacao es la materia prima del chocolate. Costa de Marfil y Ghana producen más de la mitad de la cosecha mundial, así que las plagas y el clima allí mueven mucho el precio.",
+ "coffee": "El café es una de las materias primas agrícolas más negociadas. El contrato de referencia es el arábica y su precio depende de las cosechas y el clima en Brasil, Vietnam y Colombia.",
+ "copper": "El cobre es el metal clave de la electrificación: cables, motores eléctricos, coches eléctricos, redes y centros de datos. Su precio suele verse como un termómetro de la economía mundial.",
+ "corn": "El maíz es el cereal más producido del mundo: pienso para el ganado, ingrediente alimentario y biocombustible (etanol). Estados Unidos es el mayor productor.",
+ "cotton": "El algodón es la principal fibra natural para ropa y textiles. Los mayores productores son China, India, Estados Unidos y Brasil.",
+ "gold": "El oro es el activo refugio por excelencia y lleva miles de años sirviendo como reserva de valor. Lo compran bancos centrales, joyeros e inversores, sobre todo en épocas de crisis, inflación o guerra.",
+ "hogs": "Lean hogs es un contrato de futuros sobre el precio de las canales de cerdo en Estados Unidos. Influyen el coste del pienso, las exportaciones a Asia y las enfermedades animales.",
+ "oats": "La avena es un cereal para copos, gachas y pienso animal. Su mercado de futuros es pequeño, así que el precio puede moverse con fuerza según el clima en Canadá y EE. UU.",
+ "ojuice": "El zumo de naranja concentrado congelado es un mercado de futuros pequeño. Su precio depende de las cosechas de naranja en Florida y Brasil, los huracanes y las enfermedades de los cítricos.",
+ "palladium": "El paladio es un metal raro del grupo del platino que se destina casi por completo a catalizadores de motores de gasolina. Sus principales productores son Rusia y Sudáfrica.",
+ "platinum": "El platino es un metal precioso escaso que se extrae sobre todo en Sudáfrica. Se usa principalmente en catalizadores de automóviles, joyería y tecnologías del hidrógeno.",
+ "rice": "El arroz es el alimento básico de más de la mitad de la humanidad. En la bolsa de Chicago se negocia arroz con cáscara; el precio depende de las cosechas asiáticas y de las restricciones a la exportación.",
+ "silver": "La plata es a la vez un metal precioso e industrial: se usa en electrónica, paneles solares y medicina. Por esa doble demanda, su precio suele moverse con más fuerza que el del oro.",
+ "soybeans": "La soja es una gran fuente de proteína y aceite vegetal: se usa para piensos, aceite de soja y tofu. Brasil y EE. UU. son los mayores productores y China, el mayor comprador.",
+ "soyoil": "El aceite de soja es uno de los aceites comestibles más usados del mundo y también materia prima del biodiésel, por lo que su precio depende de la política energética además de la demanda de alimentos.",
+ "sugar": "El azúcar se obtiene de la caña y la remolacha. Brasil es el mayor exportador y convierte parte de su caña en etanol, por lo que el precio del azúcar también está ligado al petróleo.",
+ "wheat": "El trigo es uno de los cereales básicos del mundo y la materia prima del pan y la harina. Su precio depende de las cosechas de EE. UU., Rusia, la UE y Ucrania, y del clima.",
+ "wti": "El WTI es el crudo de referencia de Estados Unidos y cotiza en Nueva York. Su precio se mueve según las decisiones de la OPEP+, la producción estadounidense, los inventarios y la demanda mundial."
+}

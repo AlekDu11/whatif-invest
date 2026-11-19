@@ -1,0 +1,22 @@
+{
+ "aluminum": "Alüminyum; uçak, otomobil, ambalaj ve inşaatta kullanılan hafif bir metaldir. Üretimi çok fazla elektrik gerektirdiği için fiyatı enerji maliyetlerine de bağlıdır.",
+ "cattle": "Canlı sığır (live cattle), ABD'deki besi sığırı fiyatını izleyen bir vadeli işlem sözleşmesidir. Fiyat yem maliyetine, sürü büyüklüğüne ve et talebine bağlıdır.",
+ "cocoa": "Kakao, çikolatanın hammaddesidir. Dünya rekoltesinin yarısından fazlası Fildişi Sahili ve Gana'dan geldiği için oradaki ağaç hastalıkları ve hava koşulları fiyatı güçlü biçimde etkiler.",
+ "coffee": "Kahve, en çok işlem gören tarım emtialarından biridir. Referans sözleşme arabica kahvesidir; fiyat Brezilya, Vietnam ve Kolombiya'daki hasatlara ve hava koşullarına bağlıdır.",
+ "copper": "Bakır, elektrifikasyonun temel metalidir: kablolar, elektrik motorları, elektrikli araçlar, şebekeler ve veri merkezleri ona ihtiyaç duyar. Fiyatı çoğu zaman küresel ekonominin göstergesi sayılır.",
+ "corn": "Mısır, hacim bakımından dünyanın en büyük tahıl ürünüdür: hayvan yemi, gıda hammaddesi ve biyoyakıt (etanol). En büyük üretici ABD'dir.",
+ "cotton": "Pamuk, giyim ve tekstil için başlıca doğal liftir. En büyük üreticiler Çin, Hindistan, ABD ve Brezilya'dır.",
+ "gold": "Altın, binlerce yıldır değer saklama aracı olarak kullanılan klasik güvenli liman varlığıdır. Merkez bankaları, kuyumcular ve yatırımcılar özellikle kriz, enflasyon ve savaş dönemlerinde altın alır.",
+ "hogs": "Lean hogs, ABD'deki domuz karkas fiyatına dayalı bir vadeli işlem sözleşmesidir. Yem maliyetleri, Asya'ya ihracat ve hayvan hastalıkları fiyatı etkiler.",
+ "oats": "Yulaf; gevrek, lapa ve hayvan yemi için kullanılan bir tahıldır. Vadeli piyasası küçük olduğundan fiyatı Kanada ve ABD'deki hava koşullarına göre sert dalgalanabilir.",
+ "ojuice": "Dondurulmuş konsantre portakal suyu küçük bir vadeli piyasadır. Fiyatlar Florida ve Brezilya'daki portakal hasatlarına, kasırgalara ve narenciye hastalıklarına bağlıdır.",
+ "palladium": "Paladyum, neredeyse tamamı benzinli motorların katalitik konvertörlerinde kullanılan nadir bir platin grubu metalidir. Başlıca üreticiler Rusya ve Güney Afrika'dır.",
+ "platinum": "Platin, çoğunlukla Güney Afrika'da çıkarılan nadir bir değerli metaldir. Başlıca kullanım alanları otomobil katalitik konvertörleri, mücevher ve hidrojen teknolojileridir.",
+ "rice": "Pirinç, insanlığın yarısından fazlasının temel besinidir. Chicago borsasında kabuklu (çeltik) pirinç işlem görür; fiyat Asya'daki hasatlara ve ihracat kısıtlamalarına bağlıdır.",
+ "silver": "Gümüş hem değerli hem de endüstriyel bir metaldir; elektronikte, güneş panellerinde ve tıpta kullanılır. Bu çifte talep nedeniyle fiyatı genellikle altından daha sert hareket eder.",
+ "soybeans": "Soya fasulyesi önemli bir bitkisel protein ve yağ kaynağıdır; hayvan yemi, soya yağı ve tofu yapımında kullanılır. En büyük üreticiler Brezilya ve ABD, en büyük alıcı ise Çin'dir.",
+ "soyoil": "Soya yağı dünyada en yaygın kullanılan yemeklik yağlardan biridir ve biyodizel hammaddesidir; bu yüzden fiyatı enerji politikalarına da bağlıdır.",
+ "sugar": "Şeker, şeker kamışı ve şeker pancarından üretilir. En büyük ihracatçı Brezilya kamışın bir kısmını etanole dönüştürdüğü için şeker fiyatı petrolle de bağlantılıdır.",
+ "wheat": "Buğday, dünyanın temel tahıllarından biri ve ekmek ile unun hammaddesidir. Fiyatını ABD, Rusya, AB ve Ukrayna'daki hasatlar ile hava koşulları belirler.",
+ "wti": "WTI, New York'ta işlem gören ABD referans ham petrolüdür. Fiyatı OPEC+ kararları, ABD üretimi, stoklar ve küresel talebe göre hareket eder."
+}
