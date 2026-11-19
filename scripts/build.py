@@ -65,7 +65,7 @@ BASE = ''
 SITE = 'https://whatifstack.com'
 BRAND = 'WhatIfStack'
 AMOUNT = 10
-TOP_N = 200            # asset pages in languages outside FULL (all-language pages for every asset will be rendered on demand — see CLAUDE.md, storage limit)
+TOP_N = 1000           # asset pages in languages outside FULL — step 1 towards every asset in every language (1 deploy/day frees storage); next steps after checking Vercel Deployment Storage
 
 market = json.load(open(os.path.join(ROOT, 'data/market.json'), encoding='utf-8'))
 pinned = json.load(open(os.path.join(ROOT, 'data/assets.json'), encoding='utf-8'))
