@@ -445,6 +445,17 @@ def logo_quality(im):
     return 'ok'
 
 
+# company sites for stocks without a Yahoo profile (MOEX listings): the logo comes from the site's icon
+LOGO_DOMAIN = {
+    'sber': 'sberbank.com', 'gazp': 'gazprom.ru', 'lkoh': 'lukoil.ru', 'rosn': 'rosneft.ru', 'nvtk': 'novatek.ru',
+    'gmkn': 'nornickel.ru', 'tatn': 'tatneft.ru', 'sngs': 'surgutneftegas.ru', 'plzl': 'polyus.com', 'ydex': 'yandex.ru',
+    'mgnt': 'magnit.ru', 'chmf': 'severstal.com', 'nlmk': 'nlmk.com', 'mtss': 'mts.ru', 'alrs': 'alrosa.ru', 'vtbr': 'vtb.ru',
+    'moex': 'moex.com', 'phor': 'phosagro.ru', 'rual': 'rusal.ru', 'ozon': 'ozon.ru', 't-ru': 'tbank.ru', 'irao': 'interrao.ru',
+    'aflt': 'aeroflot.ru', 'pikk': 'pik.ru', 'magn': 'mmk.ru', 'x5': 'x5.ru', 'head': 'hh.ru', 'smlt': 'samolet.ru',
+    'trnfp': 'transneft.ru', 'afks': 'sistema.ru',
+}
+
+
 def fetch_logos(assets):
     try:
         from PIL import Image, ImageDraw
@@ -486,6 +497,7 @@ def fetch_logos(assets):
             urls.append(f'https://financialmodelingprep.com/image-stock/{(a.get("yahoo") if a.get("mkt") else tk.replace("-", "."))}.png')
             web = (sinfo.get(a.get('yahoo') or '', {}) or {}).get('web') or ''
             dom = web.split('//')[-1].split('/')[0].replace('www.', '') if web else ''
+            dom = dom or LOGO_DOMAIN.get(aid, '')
             if dom:   # the company's own site icon (works for most companies, incl. Vietnam/Thailand/Saudi listings)
                 urls.append(f'https://www.google.com/s2/favicons?domain={dom}&sz=128')
                 urls.append(f'https://icons.duckduckgo.com/ip3/{dom}.ico')
