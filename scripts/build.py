@@ -435,25 +435,28 @@ def h8(s):
 SEARCH_ICON = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>'
 
 
-def strip(lang):
+def strip(lang, home=False):
     S = TR[lang]
     items = []
-    for aid, label in (('btc', 'BTC'), ('eth', 'ETH'), ('spy', 'S&P 500 (SPY)'), ('gold', S['gold'])):   # QQQ/silver dropped for the market totals
+    # home keeps its approved first screen (owner, 2026-11-19): the six prices; other pages: market totals first + four prices
+    lst = (('btc', 'BTC'), ('eth', 'ETH'), ('spy', 'S&P 500 (SPY)'), ('qqq', 'Nasdaq-100 (QQQ)'), ('gold', S['gold']), ('silver', S['silver'])) if home else \
+          (('btc', 'BTC'), ('eth', 'ETH'), ('spy', 'S&P 500 (SPY)'), ('gold', S['gold']))
+    for aid, label in lst:
         if aid in A:
             m = METRICS[aid]
             items.append(f'<a href="{aurl(lang, aid)}">{esc(label)} <b data-p="{aid}">{price(m["price"])}</b> <span class="{cls(m["chg"])}" data-c="{aid}">{pct(m["chg"])}</span></a>')
     # CoinMarketCap-style market totals first: crypto market cap, 24h volume, BTC dominance, Fear & Greed
     w, mc = S['w'], G.get('mcap')
     tot = ''
-    if mc:
+    if mc and not home:
         ch = (G.get('mcap_chg') or 0) / 100
         tot += f'<span>{esc(w["mcap"])} <b>{big_usd(mc)}</b> <span class="{cls(ch)}">{pct(ch)}</span></span>'
-    if G.get('vol'):
+    if G.get('vol') and not home:
         tot += f'<span>{esc(w["vol"])} <b>{big_usd(G["vol"])}</b></span>'
-    if G.get('btc_dom'):
+    if G.get('btc_dom') and not home:
         tot += f'<span>{esc(w["dom"])} <b>{G["btc_dom"]:.1f}%</b></span>'
     fv = (G.get('fng') or [None])[0]
-    if fv is not None:
+    if fv is not None and not home:
         tot += f'<span>{esc(MFG[lang])} <b>{fv}/100</b></span>'
     return (f'<div class="strip"><div class="in">{tot}{"".join(items)}'
             f'<span>{S["updated"]} <b>{UPDATED}</b></span></div></div>')
@@ -642,7 +645,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
 {ld}
 </head>
 <body>
-{strip(lang)}
+{strip(lang, home=p is None)}
 <div class="top"><div class="in">
   <a class="logo" href="{url(lang)}"><svg class="mk" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="15" width="18" height="5" rx="2.5" fill="var(--gold)"/><rect x="5" y="9.5" width="14" height="4.5" rx="2.25" fill="var(--accent)"/><rect x="7.5" y="4" width="9" height="4.5" rx="2.25" fill="var(--text)"/></svg><span>whatif<b>stack</b></span></a>
   <div class="gsearch">{SEARCH_ICON}<input id="gs" type="search" autocomplete="off" aria-label="search"><div class="gres" id="gres"></div></div>
@@ -1085,6 +1088,16 @@ def mkt_of(aid):
     return mc, vol, a.get('c7'), a.get('s7')
 
 
+def row_html_dca(aid, lang, n):
+    a, m = A[aid], METRICS[aid]
+    href = aurl(lang, aid)
+    return (f'<tr><td class="l n hide-sm">{n}</td><td class="l"><a class="asset" href="{href}">{icon(a)}<span><span class="nm">{esc(nm(a, lang))}</span>'
+            f'<span class="tk">{esc(a["tk"])}{'<i class="enb" title="English">EN</i>' if lang != 'en' and not has_page(lang, aid) else ''}</span></span></a></td><td class="hide-sm"></td><td class="num" data-p="{aid}">{price(m["price"])}</td>'
+            f'<td class="num {cls(m["chg"])}" data-c="{aid}">{pct(m["chg"])}</td><td class="num hide-sm {cls(m["r1"])}">{pct(m["r1"])}</td>'
+            f'<td class="num hide-sm {cls(m["r3"])}">{pct(m["r3"])}</td><td><span class="pill {cls(m["r5"])}">{pct(m["r5"])}</span></td>'
+            f'<td class="hide-sm">{spark(m["spark"])}</td><td class="hide-sm"><a class="calc" href="{href}">→</a></td></tr>')
+
+
 def row_html(aid, lang, n):
     a, m = A[aid], METRICS[aid]
     href = aurl(lang, aid)
@@ -1096,10 +1109,16 @@ def row_html(aid, lang, n):
             f'<td class="hide-sm">{spark(s7 or m["spark"])}</td><td class="hide-sm"><a class="calc" href="{href}">→</a></td></tr>')
 
 
-def table_block(lang, ids, title=None, interactive=True, start=0):
+def table_block(lang, ids, title=None, interactive=True, start=0, dca=False):
     u, k = TR[lang]['ui'], MKT[lang]
-    head = ['#', u['name'], '', u['price'], u['chg'], k['d7'], k['mcap'], k['vol'], k['k7'], '']
-    hc = ['l n hide-sm', 'l', 'hide-sm', '', '', 'hide-sm', 'hide-sm', 'hide-md', 'hide-sm', 'hide-sm']
+    if dca:   # the home table keeps its approved DCA columns
+        head = ['#', u['name'], '', u['price'], u['chg'], u['d1'], u['d3'], u['d5'], u['spark'], '']
+        hc = ['l n hide-sm', 'l', 'hide-sm', '', '', 'hide-sm', 'hide-sm', '', 'hide-sm', 'hide-sm']
+        row_html = row_html_dca
+    else:
+        head = ['#', u['name'], '', u['price'], u['chg'], k['d7'], k['mcap'], k['vol'], k['k7'], '']
+        hc = ['l n hide-sm', 'l', 'hide-sm', '', '', 'hide-sm', 'hide-sm', 'hide-md', 'hide-sm', 'hide-sm']
+        row_html = globals()['row_html']
     th = ''.join(f'<th class="{c}">{h}</th>' for h, c in zip(head, hc))
     rows = ''.join(row_html(aid, lang, start + k + 1) for k, aid in enumerate(ids))
     ttl = f'<h2>{title}</h2>' if title else ''
@@ -1282,7 +1301,7 @@ def home(lang, ver):
         if aid in A and len(cards) < 4:
             cards.append(hl_card(lang, aid, nm(A[aid], lang), 'r5', S['sub5']))
     filt = f'<div class="toolbar"><div class="filter">{SEARCH_ICON}<input id="flt" type="search" autocomplete="off"></div></div>'
-    top10 = table_block(lang, HOME_ORDER[:20], None, interactive=True)
+    top10 = table_block(lang, HOME_ORDER[:20], None, interactive=True, dca=True)
     rest = ''
     tl = news_tl(lang)
     nws = news_items(lang)[:4]
