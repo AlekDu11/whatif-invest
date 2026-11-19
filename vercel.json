@@ -7,6 +7,16 @@
   "trailingSlash": true,
   "redirects": [
     {
+      "source": "/tg",
+      "destination": "/en/?utm_source=telegram&utm_medium=channel",
+      "permanent": false
+    },
+    {
+      "source": "/tg/:path*",
+      "destination": "/:path*?utm_source=telegram&utm_medium=channel",
+      "permanent": false
+    },
+    {
       "source": "/whatif",
       "destination": "/",
       "permanent": true
