@@ -2060,10 +2060,11 @@ def xc_facts_block(lang, xid, e):
         rows.append((t['country'], esc(e['country'])))
     if pf.get('cen') is not None:
         rows.append((t['f_type'], esc(t['f_cex'] if pf['cen'] else t['f_dex'])))
-    if pf.get('coins'):
-        rows.append((t['f_coins'], _num(pf['coins'], 0)))
-    if pf.get('pairs'):
-        rows.append((t['f_pairs'], _num(pf['pairs'], 0)))
+    ap = (XCH.get('detail', {}).get(xid) or {}).get('api') or {}   # counted from the exchange's own API (fresher than CoinGecko)
+    if ap.get('coins') or pf.get('coins'):
+        rows.append((t['f_coins'], _num(ap.get('coins') or pf['coins'], 0)))
+    if ap.get('pairs') or pf.get('pairs'):
+        rows.append((t['f_pairs'], _num(ap.get('pairs') or pf['pairs'], 0)))
     soc = pf.get('soc') or {}
     links = []
     if e.get('url'):

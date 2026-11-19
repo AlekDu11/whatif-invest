@@ -906,3 +906,4 @@ a.pgb,span.pgb{display:inline-flex;align-items:center;justify-content:center;tex
 /* market columns of the asset tables (7d, market cap, volume, 7-day chart) */
 @media (max-width:1180px){.hide-md{display:none}}
 .mt tr.strow .tk{color:var(--muted)}
+.mkt td.l>a,.mkt td.l>.ic{vertical-align:middle}.mkt td.l>a{display:inline-flex;align-items:center;gap:8px}.mkt td.l>.ic{margin-right:8px}
