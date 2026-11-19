@@ -47,6 +47,7 @@ from i18n_my import MY, BR  # noqa: E402
 from i18n_ch import CH  # noqa: E402
 from i18n_inv import INV  # noqa: E402
 from i18n_mkt import MKT, LEAD as MLEAD, FG as MFG  # noqa: E402
+from i18n_st import ST as STX  # noqa: E402
 from i18n_ua import UA_LANGS, UA_ASOF, OB, OBI, OBT, UA_SRC, BUYG, BUYG_SRC, OVP, OB_GO, INZ  # noqa: E402
 from i18n_bpd import BPD, IDEA as BP_IDEA  # noqa: E402
 from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB, CH as OWN_CH, CH2 as OWN_CH2  # noqa: E402
@@ -409,10 +410,13 @@ def icon(a, big=False):
     return f'<span class="ic{c}" style="background:hsl({hue(a["tk"])} 55% 52%)">{esc(a["tk"][:2])}</span>'
 
 
-def spark(arr, w=110, h=34):
+def spark(arr, w=110, h=34, band=0):
     if not arr or len(arr) < 2:
         return ''
     mn, mx = min(arr), max(arr)
+    if band:   # pegged coins: a ±band window so a 0.01% wiggle does not look like a crash
+        mid = sum(arr) / len(arr)
+        mn, mx = min(mn, mid * (1 - band)), max(mx, mid * (1 + band))
     r = (mx - mn) or 1
     pts = ' '.join(f"{i / (len(arr) - 1) * w:.1f},{h - 2 - (v - mn) / r * (h - 4):.1f}" for i, v in enumerate(arr))
     up = arr[-1] >= arr[0]
@@ -2428,6 +2432,96 @@ def sm_page(lang, aid, kind, ver):
     return shell(lang, f'{aid}/{kind}', title + ' | ' + BRAND, desc, body, dict(asset=aid), ver, [ld])
 
 
+# ---------------- stablecoins + gold tokens: /stablecoins/ hub and one page per token (/<tk>/) ----------------
+def st_ids():
+    """Stablecoin page ids (lower-case ticker), biggest first; skip anything that clashes with a normal asset page."""
+    return [k.lower() for k, v in sorted(SB.items(), key=lambda kv: -(kv[1].get('mcap') or 0)) if v.get('price') and k.lower() not in A]
+
+
+def st_logo(v, tk):
+    return (f'<span class="ic xl"><img src="{esc(v["logo"])}" alt="{esc(tk)}" width="48" height="48" referrerpolicy="no-referrer" '
+            f'onerror="this.parentNode.textContent=\'{esc(tk[:1])}\'"></span>' if v.get('logo') else f'<span class="ic xl">{esc(tk[:1])}</span>')
+
+
+def st_pairs(tk):
+    """Pairs with this token as the base, from the exchanges we read directly (today's data), biggest first."""
+    nm_ = {e['id']: e['name'] for e in XCH.get('spot', [])}
+    rows = []
+    for xid, d in XCH.get('detail', {}).items():
+        for pr in d.get('pairs', []):
+            if pr.get('b') == tk and pr.get('usd'):
+                rows.append((xid, nm_.get(xid, xid), pr['q'], pr.get('last'), pr['usd'], pr.get('spread')))
+    return sorted(rows, key=lambda r: -r[4])[:30]
+
+
+def st_page(lang, sid, ver):
+    T, K, L = STX[lang], MKT[lang], MLEAD[lang]
+    tk = sid.upper()
+    v = SB[tk]
+    gold = bool(v.get('gold'))
+    name, pr, ch, mc, vol, c7 = v['name'], v['price'], v.get('chg'), v.get('mcap'), v.get('vol'), v.get('c7')
+    ml = L['p'].format(name=esc(name), price=f'<b>{price(pr)}</b>', chg=f'<span class="{cls(ch)}">{pct(ch)}</span>')
+    if c7 is not None:
+        ml += L['w'].format(c7=f'<span class="{cls(c7)}">{pct(c7)}</span>')
+    if mc and v.get('rank'):
+        ml += L['m'].format(mcap=f'<b>{fbig(mc)}</b>', rank=v['rank']) + (L['v'].format(vol=f'<b>{fbig(vol)}</b>') if vol else '')
+    ml += '' if lang in ('ja', 'zh') else '.'
+    ref = (METRICS.get('gold') or {}).get('price') if gold else 1.0
+    dev = (pr / ref - 1) if ref else None
+    tiles = (f'<div class="ks"><span>{esc(TR[lang]["ui"]["price"])}</span><b>{price(pr)}</b><small class="{cls(ch)}">{pct(ch)}</small></div>'
+             + (f'<div class="ks"><span>{esc(T["peg"])}{" (" + esc(TR[lang]["gold"]) + ")" if gold else " ($1)"}</span><b class="{cls(dev) if abs(dev or 0) > 0.003 else ""}">{pct(dev)}</b></div>' if dev is not None else '')
+             + (f'<div class="ks"><span>{esc(K["mcap"])}</span><b>{fbig(mc)}</b><small>#{v["rank"]}</small></div>' if mc else '')
+             + (f'<div class="ks"><span>{esc(K["vol"])}</span><b>{fbig(vol)}</b></div>' if vol else '')
+             + (f'<div class="ks"><span>{esc(T["circ"])}</span><b>{_num(v["circ"], 0)} {esc(tk)}</b></div>' if v.get('circ') else ''))
+    chart = (f'<section class="section card"><h2>{esc(K["k7"])}</h2><div class="stspark">{spark(v["s7"], 640, 120, 0 if gold else 0.005)}</div></section>' if v.get('s7') else '')
+    rows = st_pairs(tk)
+    mk = ''.join(f'<tr><td class="l"><a href="{url(lang, "crypto-exchanges/" + x)}">{esc(n)}</a></td><td class="l">{esc(tk)}/{esc(q)}</td>'
+                 f'<td class="num">{_num(l, 4) if l else "—"}</td><td class="num"><b>{usd_h(u)}</b></td><td class="num hide-sm">{pctu((sp or 0) / 100) if sp is not None else "—"}</td></tr>'
+                 for x, n, q, l, u, sp in rows)
+    t = XC[lang]
+    mkt = (f'<section class="section mkt" id="markets"><h2>{esc(T["where"])}</h2><div class="tw"><table class="mt"><thead><tr><th class="l">{esc(t["name"])}</th>'
+           f'<th class="l">{esc(t["pair"])}</th><th>{esc(t["price"])}</th><th>{esc(t["vol"])}</th><th class="hide-sm">{esc(t["spread"])}</th></tr></thead><tbody>{mk}</tbody></table></div></section>' if mk else '')
+    about = f'<section class="section card"><h2>{esc(T["what"])}</h2><p>{esc((T["about_gold"] if gold else T["about_usd"]).format(name=name, tk=tk))}</p><p class="muted">{esc(T["risk"])}</p></section>'
+    cv = f'<p><a class="btn ghost" href="{url(lang, "converter")}">{esc(TR[lang]["x"].get("cv_nav") or "Converter")} →</a></p>' if sid in SBA else ''
+    others = ''.join(f'<a class="chip" href="{url(lang, o)}">{esc(SB[o.upper()]["name"])} <small>{esc(o.upper())}</small></a>' for o in st_ids() if o != sid)[:6000]
+    body = (f'<nav class="crumbs"><a href="{url(lang, "crypto")}">{esc(TR[lang]["ui"]["crypto"])}</a> / <a href="{url(lang, "stablecoins")}">{esc(T["nav"])}</a> / {esc(name)}</nav>'
+            f'<div class="ahead">{st_logo(v, tk)}<div><h1>{esc(name)} ({esc(tk)})</h1></div></div><p class="lead" style="margin-top:10px">{ml}</p>'
+            f'<section class="section"><div class="ktiles">{tiles}</div></section>{chart}{mkt}{about}{cv}'
+            f'<section class="section"><h2>{esc(T["others"])}</h2><div class="chips">{others}</div></section><p class="note">{esc(T["note"])}</p>')
+    title = f'{name} ({tk}) {esc(TR[lang]["ui"]["price"]).lower()}: {price(pr)} | {BRAND}'
+    desc = _re.sub('<[^>]+>', '', ml)[:300]
+    ld = {"@context": "https://schema.org", "@type": "FinancialProduct", "name": f'{name} ({tk})', "category": "Stablecoin"}
+    return sid, shell(lang, sid, title, desc, body, {'_sec': 'crypto'}, ver, [ld])
+
+
+def st_hub(lang, ver):
+    T, K = STX[lang], MKT[lang]
+    ids = st_ids()
+    rows = ''
+    for n, sid in enumerate(ids, 1):
+        v = SB[sid.upper()]
+        ref = (METRICS.get('gold') or {}).get('price') if v.get('gold') else 1.0
+        dev = v['price'] / ref - 1 if ref else None
+        rows += (f'<tr><td class="l n hide-sm">{n}</td><td class="l"><a class="asset" href="{url(lang, sid)}">{stable_icon(sid.upper()) or st_logo(v, sid.upper()).replace(" xl", "")}<span><span class="nm">{esc(v["name"])}</span>'
+                 f'<span class="tk">{esc(sid.upper())}</span></span></a></td><td class="num">{price(v["price"])}</td><td class="num hide-sm">{pct(dev) if dev is not None else "—"}</td>'
+                 f'<td class="num {cls(v.get("c7"))} hide-sm">{pct(v.get("c7")) if v.get("c7") is not None else "—"}</td><td class="num">{fbig(v["mcap"]) if v.get("mcap") else "—"}</td>'
+                 f'<td class="num hide-md">{fbig(v["vol"]) if v.get("vol") else "—"}</td><td class="hide-sm">{spark(v.get("s7"), band=0 if v.get("gold") else 0.005)}</td></tr>')
+    head = (f'<tr><th class="l n hide-sm">#</th><th class="l">{esc(TR[lang]["ui"]["name"])}</th><th>{esc(TR[lang]["ui"]["price"])}</th><th class="hide-sm">{esc(T["peg"])}</th>'
+            f'<th class="hide-sm">{esc(K["d7"])}</th><th>{esc(K["mcap"])}</th><th class="hide-md">{esc(K["vol"])}</th><th class="hide-sm">{esc(K["k7"])}</th></tr>')
+    tot = sum(SB[i.upper()].get('mcap') or 0 for i in ids if not SB[i.upper()].get('gold'))
+    lead = T['d'].format(n=len(ids)) + f' {esc(K["mcap"])}: <b>{fbig(tot)}</b>.'
+    body = (f'<nav class="crumbs"><a href="{url(lang, "crypto")}">{esc(TR[lang]["ui"]["crypto"])}</a> / {esc(T["nav"])}</nav><h1>{esc(T["h1"])}</h1>'
+            f'<p class="lead">{lead}</p><section class="section"><div class="tw"><table class="mt"><thead>{head}</thead><tbody>{rows}</tbody></table></div></section>'
+            f'<section class="section card"><p>{esc(T["risk"])}</p></section><p class="note">{esc(T["note"])}</p>')
+    return 'stablecoins', shell(lang, 'stablecoins', f'{T["h1"]} | {BRAND}', T['d'].format(n=len(ids)), body, {'_sec': 'crypto'}, ver)
+
+
+def st_pages(lang, ver):
+    if not SB:
+        return []
+    return [st_hub(lang, ver)] + [st_page(lang, i, ver) for i in st_ids()]
+
+
 def xc_pages(lang, ver):
     if not xc_has(lang):
         return []
@@ -3316,12 +3410,14 @@ def hub(lang, slug, ver):
     cards = ''.join(hl_card(lang, i, nm(A[i], lang), 'r5', S['sub5']) for i in b5)
     if cat == 'crypto':   # people search «crypto prices», not «DCA ranking»: market view first (CoinMarketCap-style)
         h1, desc = MKT[lang]['cr_h1'], MKT[lang]['cr_d'].format(n=len(ids) + len(SB))
+
         big = [i for i in ids[:100] if METRICS[i]['chg'] is not None]
         cards = ''.join(hl_card(lang, i, nm(A[i], lang), 'chg', S['ui']['chg']) for i in sorted(big, key=lambda i: -METRICS[i]['chg'])[:4])
     title = h1 + ' | ' + BRAND
     filt = f'<div class="toolbar"><div class="filter">{SEARCH_ICON}<input id="flt" type="search" autocomplete="off"></div></div>'
     body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / {esc(label)}</nav><h1>{esc(h1)}</h1>'
-            f'<p class="lead">{esc(desc)}</p>{country_chips(lang) if cat == "stock" else ""}<div class="hl">{cards}</div><div class="tabs" id="tabs"></div>{filt}{table_block(lang, ids[:150])}')
+            f'<p class="lead">{esc(desc)}</p>{country_chips(lang) if cat == "stock" else ""}'
+            f'{f"<p><a class=chip href={url(lang, chr(115) + "tablecoins")}>💵 {esc(STX[lang]["nav"])} →</a></p>" if cat == "crypto" and SB else ""}<div class="hl">{cards}</div><div class="tabs" id="tabs"></div>{filt}{table_block(lang, ids[:150])}')
     return shell(lang, slug, title, desc, body, dict(tab=cat), ver)
 
 
@@ -4260,7 +4356,7 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
         if lang in PARTNER_TXT:
             write(pre + 'partners/index.html', partners_page(lang, ver, 10000))
             extra_pages.append('partners')
-        for _p, _h in xc_pages(lang, ver):
+        for _p, _h in xc_pages(lang, ver) + st_pages(lang, ver):
             write(f'{pre}{_p}/index.html', _h)
             extra_pages.append(_p)
         for _p, _h in lc_pages(lang, ver):

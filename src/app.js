@@ -117,7 +117,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
       <td class="hide-sm">${spark(a.k7||a.sp)}</td>`;
     const tr=(a,i)=>a.st?`<tr class="strow">
       <td class="l n hide-sm">${off+i+1}</td>
-      <td class="l"><a class="asset" href="${cvu}">${icon(a)}<span><span class="nm">${esc(a.n)}</span><span class="tk">${esc(a.t)} · ${esc(T.mk_stable||'Stablecoin')}</span></span></a></td>
+      <td class="l"><a class="asset" href="${PAGE.prefix}/${a.t.toLowerCase()}/">${icon(a)}<span><span class="nm">${esc(a.n)}</span><span class="tk">${esc(a.t)} · ${esc(T.mk_stable||'Stablecoin')}</span></span></a></td>
       <td class="hide-sm"></td><td class="num">${fmtPrice(a.pr)}</td><td class="num ${cls(a.ch)}">${fmtPct(a.ch)}</td>${cells(a)}
       <td class="hide-sm"></td></tr>`:`<tr>
       <td class="l n hide-sm">${off+i+1}</td>

@@ -907,3 +907,4 @@ a.pgb,span.pgb{display:inline-flex;align-items:center;justify-content:center;tex
 @media (max-width:1180px){.hide-md{display:none}}
 .mt tr.strow .tk{color:var(--muted)}
 .mkt td.l>a,.mkt td.l>.ic{vertical-align:middle}.mkt td.l>a{display:inline-flex;align-items:center;gap:8px}.mkt td.l>.ic{margin-right:8px}
+.stspark svg{width:100%;height:120px}.ic.xl{width:48px;height:48px;font-size:22px}.ic.xl img{width:48px;height:48px}
