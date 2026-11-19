@@ -902,3 +902,4 @@ a.pgb,span.pgb{display:inline-flex;align-items:center;justify-content:center;tex
 .pttk{margin-left:6px;font-size:11px;color:var(--muted);font-weight:600}
 @media (max-width:640px){.aibtn{bottom:calc(76px + env(safe-area-inset-bottom))!important;padding:10px 12px!important}.aibtn span,.aibtn b{display:none}.tw{padding-right:2px}.star{min-width:36px;min-height:36px}}
 @media (max-width:640px){.cchips,.lcchips{flex-wrap:nowrap!important;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}.cchips::-webkit-scrollbar{display:none}.cchips>*{flex:none}}
+.mdt td,.mdt th{text-align:left;vertical-align:top}.mdt{min-width:520px}

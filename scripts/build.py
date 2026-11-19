@@ -3544,7 +3544,10 @@ def load_posts(sub='blog'):
                 head, body = raw[3:].split('\n---', 1)
                 for line in head.strip().splitlines():
                     k, _, v = line.partition(':')
-                    meta[k.strip()] = v.strip()
+                    v = v.strip()
+                    if len(v) > 1 and v[0] == v[-1] and v[0] in '"\'':   # YAML-style quoted value
+                        v = v[1:-1]
+                    meta[k.strip()] = v
             meta['assets'] = [x.strip() for x in meta.get('assets', '').split(',') if x.strip() in A]
             meta['body'] = body.strip()
             posts.setdefault(lang, {})[fn[:-3]] = meta
@@ -3857,10 +3860,23 @@ def guide_page(lang, ver):
     return shell(lang, 'guide', f'{g["title"]} | {BRAND}', g['description'], body, {}, ver)
 
 
+def _md_table(rows, lang):
+    cells = [[c.strip() for c in r.strip().strip('|').split('|')] for r in rows]
+    if len(cells) >= 2 and all(_re.fullmatch(r':?-{2,}:?', c) for c in cells[1]):
+        head, body = cells[0], cells[2:]
+    else:
+        head, body = None, cells
+    th = ('<thead><tr>' + ''.join(f'<th>{inline_md(c, lang)}</th>' for c in head) + '</tr></thead>') if head else ''
+    tb = ''.join('<tr>' + ''.join(f'<td>{inline_md(c, lang)}</td>' for c in r) + '</tr>' for r in body)
+    return f'<div class="tw"><table class="rt mdt">{th}<tbody>{tb}</tbody></table></div>'
+
+
 def md(text, lang):
-    out, para, lst, ltag, quote = [], [], [], None, []
+    out, para, lst, ltag, quote, tbl = [], [], [], None, [], []
     def flush():
         nonlocal para, lst, ltag
+        if tbl:
+            out.append(_md_table(tbl, lang)); tbl.clear()
         if para:
             out.append('<p>' + inline_md(' '.join(para), lang) + '</p>'); para = []
         if lst:
@@ -3872,6 +3888,12 @@ def md(text, lang):
             out.append(f'<blockquote>{md(chr(10).join(quote), lang)}</blockquote>' if len(quote) > 1 else f'<blockquote>{inline_md(quote[0], lang)}</blockquote>'); quote.clear()
         if not s:
             flush(); continue
+        if s.startswith('|') and s.endswith('|'):   # markdown table row
+            if para or lst:
+                flush()
+            tbl.append(s); continue
+        if tbl:
+            flush()
         if bm:
             flush(); out.append(sc_block(bm.group(1), bm.group(2).split(':'), lang)); continue
         h = _re.match(r'(#{2,3})\s+(.*)', s)
