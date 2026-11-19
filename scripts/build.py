@@ -4020,7 +4020,7 @@ def blog_index(lang, ver):
         + (f'<img class="thumb" src="{cover("blog", lang, slug)}" alt="" width="600" height="315" loading="lazy">' if cover('blog', lang, slug) else '') + f'<div class="muted"><span class="badge">{esc(cmap.get(m.get("category", "analytics"), ""))}</span> {esc(m.get("date", ""))}</div><h2>{esc(post_meta_title(m, lang))}</h2>'
         f'<p>{esc(post_meta_title(dict(title=m.get("description", "")), lang))}</p>'
         + ''.join(f'<span class="badge">{esc(A[i]["tk"])}</span> ' for i in m['assets']) + '</a>' for slug, m in items)
-    body = f'<h1>{esc(NW[lang]["i_nav"])}</h1><p class="lead">{esc(X["blog_d"])}</p>{tabs}<div class="posts">{cards}</div>'
+    body = f'<h1>{esc(NW[lang]["i_nav"])}</h1><p class="lead">{esc(X["blog_d"])}</p>{tabs}<div class="posts" data-per="20">{cards}</div>'
     return shell(lang, 'blog', X['blog_h1'] + ' | ' + BRAND, X['blog_d'], body, {}, ver)
 
 

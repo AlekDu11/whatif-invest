@@ -511,8 +511,21 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
   $$('time[data-t]').forEach(t=>{ const d=Date.parse(t.dataset.t.replace(' ','T')+(/Z|[+-]\d\d:?\d\d$/.test(t.dataset.t)?'':'Z')); if(d) t.textContent=F.format(new Date(d)) }) })();
 
 /* ---------- insights category tabs ---------- */
-(function(){ const t=$('#bcats'); if(!t) return;
-  $$('#bcats button').forEach(b=>b.onclick=()=>{ $$('#bcats button').forEach(x=>x.classList.toggle('on',x===b)); $$('.posts .post[data-c]').forEach(p=>p.hidden=!!b.dataset.c&&p.dataset.c!==b.dataset.c) }) })();
+/* ---------- blog list: category chips + numbered pager «‹ 1 2 3 ›», 20 posts a page (same pager as the asset tables) ---------- */
+(function(){ const box=$('.posts[data-per]'); if(!box) return;
+  const PER=+box.dataset.per||20, all=$$('.post',box); let cat='', pg=0;
+  const nav=document.createElement('div'); nav.className='pager'; box.after(nav);
+  function draw(scroll){ const L=all.filter(p=>!cat||p.dataset.c===cat), np=Math.max(1,Math.ceil(L.length/PER)); if(pg>=np) pg=np-1;
+    all.forEach(p=>p.hidden=true); L.slice(pg*PER,pg*PER+PER).forEach(p=>p.hidden=false);
+    const pb=(n,l,dis,on)=>`<button type="button" class="pgb${on?' on':''}" data-pg="${n}"${dis?' disabled':''}>${l}</button>`;
+    let h=''; if(np>1){ h+=pb(pg-1,'‹',pg===0); const seen=new Set(); [0,1,2,pg-1,pg,pg+1,np-1].filter(n=>n>=0&&n<np).sort((a,b)=>a-b).forEach(n=>{ if(seen.has(n)) return; if(seen.size&&!seen.has(n-1)) h+='<span class="pgd">…</span>'; seen.add(n); h+=pb(n,n+1,false,n===pg) }); h+=pb(pg+1,'›',pg===np-1)
+      h+=`<span class="muted pgi">${pg*PER+1}–${Math.min(pg*PER+PER,L.length)} / ${L.length}</span>` }
+    nav.innerHTML=h; nav.hidden=np<2;
+    $$('.pgb',nav).forEach(b=>b.onclick=()=>{ pg=+b.dataset.pg; try{ history.replaceState(null,'',pg?'#p'+(pg+1):location.pathname+location.search) }catch(e){} draw(true) });
+    if(scroll) ($('#bcats')||box).scrollIntoView({block:'start',behavior:'smooth'}) }
+  $$('#bcats button').forEach(b=>b.onclick=()=>{ $$('#bcats button').forEach(x=>x.classList.toggle('on',x===b)); cat=b.dataset.c; pg=0; draw() });
+  const m=/^#p(\d+)$/.exec(location.hash); if(m) pg=+m[1]-1;
+  draw() })();
 /* ---------- one-question poll ---------- */
 (function(){ const box=$('#poll'); if(!box) return; let done; try{ done=localStorage.getItem('wi_poll1') }catch(e){}
   if(done) return; box.hidden=false;
