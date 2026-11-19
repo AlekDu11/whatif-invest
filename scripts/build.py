@@ -42,6 +42,7 @@ from i18n_fb import FB  # noqa: E402
 from i18n_sm import SM, SM_LANGS, SM_KINDS  # noqa: E402
 from i18n_al import AL  # noqa: E402
 from i18n_nl import NL  # noqa: E402
+from i18n_tgj import TGJ  # noqa: E402
 from i18n_my import MY, BR  # noqa: E402
 from i18n_ch import CH  # noqa: E402
 from i18n_inv import INV  # noqa: E402
@@ -1264,7 +1265,7 @@ def home(lang, ver):
              f'{mv("crypto", 1)}{mv("crypto", -1)}{mv("stock", 1)}{mv("stock", -1)}{w_news}</div></section>')
     # owner 2026-11-19: right after the hero comes the main ranking with charts; then today's movers and news; DCA extras (battle, habits,
     # top-DCA cards, poll, «start DCA» banner) left the home page — they live on their own pages
-    body = (hero + my_block(lang) + f'<section class="section toprank"><div class="tabs" id="tabs"></div>{filt}{top10}</section>'
+    body = (hero + my_block(lang) + tg_card(lang, 'home') + f'<section class="section toprank"><div class="tabs" id="tabs"></div>{filt}{top10}</section>'
             + today + f'<div class="wgrid3">{w_tr if nws else w_fng}<div class="wstack">{w_mcap}{w_dom}</div>{w_fng if nws else ""}</div>'
             + offer_card(lang, 'home') + poly_block(lang) + nl_block(lang, 'home') + f'{rest}'
             f'<section class="card section faq"><h2>{S["faq"]}</h2><details open><summary>{esc(S["q3"])}</summary><p>{esc(S["a3"])}</p></details></section>')
@@ -2415,6 +2416,14 @@ def stock_peers(aid, k=8):
     return pool[:k]
 
 
+def tg_card(lang, src):
+    """'Join our Telegram channel' card; clicks counted by /go/tgchannel with the placement in `from`."""
+    t = TGJ[lang]
+    return (f'<a class="offer section tgj" href="/go/tgchannel?from={src}&l={lang}" target="_blank" rel="noopener">'
+            f'<span class="ofi" aria-hidden="true">✈️</span><span class="oft"><b>{esc(t["t"])}</b><span>{esc(t["d"])}</span></span>'
+            f'<span class="btn">{esc(t["cta"])}</span></a>')
+
+
 def offer_card(lang, src):
     """One native partner offer (Telegram Wallet bonus); clicks counted by /go/ with the placement in `from`."""
     o = OFFER_TGW[lang]
@@ -2511,7 +2520,7 @@ def asset(aid, lang, ver):
                           + '</section>')
     else:   # no free live chart for this symbol -> our own monthly chart
         tv, tech_news = own_chart(lang, a, aid), ''
-    body = (f'{head}<p class="lead" style="margin-top:10px">{S["a_lead"].format(**fe)}</p>{hot_block(lang, aid)}<div class="chartside section">{tv}{side_block(lang, aid)}</div>{'' if 'timeline' in tech_news else hot_more(lang, aid)}{stock_block(lang, aid)}{analysis_block(lang, aid)}{offer_card(lang, 'asset-' + aid) if a['cat'] == 'crypto' else ''}<div class="stats sfit">{stat_cards}{lump_cards}</div>{long_block(lang, aid)}{seas_block(lang, aid)}{calc_block(lang)}{tech_news}{coin_markets_block(lang, aid)}'
+    body = (f'{head}<p class="lead" style="margin-top:10px">{S["a_lead"].format(**fe)}</p>{hot_block(lang, aid)}<div class="chartside section">{tv}{side_block(lang, aid)}</div>{'' if 'timeline' in tech_news else hot_more(lang, aid)}{stock_block(lang, aid)}{analysis_block(lang, aid)}{offer_card(lang, 'asset-' + aid) if a['cat'] == 'crypto' else ''}{tg_card(lang, 'asset-' + a['cat'])}<div class="stats sfit">{stat_cards}{lump_cards}</div>{long_block(lang, aid)}{seas_block(lang, aid)}{calc_block(lang)}{tech_news}{coin_markets_block(lang, aid)}'
             f'<div class="cols2 section"><section class="card"><h2>{S["a_periods"].format(**fe)}</h2>{ptable}</section>'
             f'<section class="card faq"><h2>{S["faq"]}</h2>' + ''.join(f'<details><summary>{esc(q)}</summary><p>{esc(x)}</p></details>' for q, x in faq) + '</section></div>'
             + (f'<section class="section">{table_block(lang, peers, esc(KS[lang]["peers"]), interactive=False)}</section>' if (peers := stock_peers(aid)) else '') +

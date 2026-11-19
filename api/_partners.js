@@ -18,5 +18,6 @@ module.exports = {
   monobank: 'https://monobank.ua/r/YkfE',
   privat24: 'https://www.privat24.ua/invite/ktwrx',
   privat24b: 'https://www.privat24.ua/invite/j34g9',
+  tgchannel: 'https://t.me/WhatIfStack',
   fgwallet: 'https://app.fgwallet.io/invite?r=07bba179-3274-51b5-89e8-371e36026868',
 };

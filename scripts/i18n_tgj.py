@@ -1,0 +1,23 @@
+# «Join our Telegram channel» card (tg_card in build.py). The channel posts in English, so `d` says so.
+TGJ = {
+    'uk': {'t': 'Ринки щодня в Telegram', 'd': 'Що рухає крипту, акції й золото — коротко, з цифрами. Канал англійською.', 'cta': 'Підписатися'},
+    'en': {'t': 'Markets daily on Telegram', 'd': 'What moves crypto, stocks and gold — short, with real numbers.', 'cta': 'Join channel'},
+    'es': {'t': 'Los mercados cada día en Telegram', 'd': 'Qué mueve las cripto, las acciones y el oro, en breve y con cifras. Canal en inglés.', 'cta': 'Unirme'},
+    'pt': {'t': 'Mercados todos os dias no Telegram', 'd': 'O que move cripto, ações e ouro — curto e com números. Canal em inglês.', 'cta': 'Entrar'},
+    'de': {'t': 'Märkte täglich auf Telegram', 'd': 'Was Krypto, Aktien und Gold bewegt – kurz und mit Zahlen. Kanal auf Englisch.', 'cta': 'Beitreten'},
+    'fr': {'t': 'Les marchés chaque jour sur Telegram', 'd': 'Ce qui fait bouger crypto, actions et or, en bref et chiffré. Chaîne en anglais.', 'cta': 'Rejoindre'},
+    'it': {'t': 'I mercati ogni giorno su Telegram', 'd': 'Cosa muove cripto, azioni e oro, in breve e con i numeri. Canale in inglese.', 'cta': 'Iscriviti'},
+    'pl': {'t': 'Rynki codziennie na Telegramie', 'd': 'Co porusza kryptowaluty, akcje i złoto – krótko i z liczbami. Kanał po angielsku.', 'cta': 'Dołącz'},
+    'tr': {'t': 'Piyasalar her gün Telegram’da', 'd': 'Kripto, hisse ve altını ne hareket ettiriyor — kısa ve rakamlarla. Kanal İngilizce.', 'cta': 'Katıl'},
+    'nl': {'t': 'Markten dagelijks op Telegram', 'd': 'Wat crypto, aandelen en goud beweegt – kort en met cijfers. Kanaal in het Engels.', 'cta': 'Lid worden'},
+    'ru': {'t': 'Рынки каждый день в Telegram', 'd': 'Что двигает крипту, акции и золото — коротко, с цифрами. Канал на английском.', 'cta': 'Подписаться'},
+    'id': {'t': 'Pasar setiap hari di Telegram', 'd': 'Apa yang menggerakkan kripto, saham, dan emas — singkat dengan angka. Kanal berbahasa Inggris.', 'cta': 'Gabung'},
+    'vi': {'t': 'Thị trường mỗi ngày trên Telegram', 'd': 'Điều gì chi phối tiền số, cổ phiếu và vàng — ngắn gọn, có số liệu. Kênh tiếng Anh.', 'cta': 'Tham gia'},
+    'th': {'t': 'ตลาดทุกวันบน Telegram', 'd': 'อะไรขยับคริปโต หุ้น และทองคำ — สั้น ๆ พร้อมตัวเลข ช่องเป็นภาษาอังกฤษ', 'cta': 'เข้าร่วม'},
+    'hi': {'t': 'Telegram पर रोज़ बाज़ार', 'd': 'क्रिप्टो, शेयर और सोना किससे चलते हैं — छोटे में, असली आंकड़ों के साथ। चैनल अंग्रेज़ी में।', 'cta': 'जुड़ें'},
+    'ja': {'t': 'マーケットを毎日Telegramで', 'd': '暗号資産・株・金を動かす要因を短く、数字で。チャンネルは英語です。', 'cta': '参加する'},
+    'ko': {'t': '매일 시장 소식을 텔레그램에서', 'd': '코인, 주식, 금을 움직이는 이유를 짧고 숫자로. 채널은 영어입니다.', 'cta': '참여하기'},
+    'zh': {'t': '每天在 Telegram 看市场', 'd': '是什么推动了加密货币、股票和黄金——简短、有数据。频道为英文。', 'cta': '加入频道'},
+    'ar': {'t': 'الأسواق يوميًا على تيليجرام', 'd': 'ما الذي يحرك الكريبتو والأسهم والذهب — باختصار وبالأرقام. القناة بالإنجليزية.', 'cta': 'انضم'},
+    'fil': {'t': 'Mga merkado araw-araw sa Telegram', 'd': 'Ano ang gumagalaw sa crypto, stocks at ginto — maikli at may numero. Ingles ang channel.', 'cta': 'Sumali'},
+}
