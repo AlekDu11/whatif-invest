@@ -3429,7 +3429,14 @@ def tool(lang, slug, ver):
                  + tvw('forex-cross-rates', dict(width='100%', height='100%', currencies=['EUR', 'USD', 'GBP', 'JPY', 'CHF', 'CNY', 'PLN', 'UAH', 'TRY'],
                                                  isTransparent=True, colorTheme='light', locale=loc), 420) + '</section>')
     body = f'<h1>{esc(h1)}</h1><p class="lead">{esc(d)}</p>{inner}'
-    return shell(lang, slug, f'{h1} | {BRAND}', d, body, dict(tool=slug), ver)
+    ttl = f'{h1} | {BRAND}'
+    if slug == 'converter' and 'btc' in A:   # a live number in the search title (Search Console: converter pages get impressions, no clicks)
+        _c = cv_ccys(lang)[0]
+        _r = 1.0 if _c == 'USD' else FX['rates'].get(_c)
+        if _r:
+            ttl = f'{h1}: 1 BTC = {_cvn(A["btc"]["price"] * _r)} {_c} | {BRAND}'
+            d = f'1 BTC = {_cvn(A["btc"]["price"] * _r)} {_c} ({UPDATED[:10]}). ' + d
+    return shell(lang, slug, ttl, d, body, dict(tool=slug), ver)
 
 
 # ---------------- blog ----------------
