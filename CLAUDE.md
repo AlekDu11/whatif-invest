@@ -45,6 +45,10 @@ Now: set up, fill and optimise (≈4 deploys/day). Later: deploy only 1–2 time
 between deploys: live prices stay client-side; numbers that change daily (DCA results, 7d, market cap, exchange rankings) should come
 from small JSON files the browser loads (like dist/assets/mkt.json), refreshed by the data workflows; daily articles need either a light
 articles-only update or client-side loading. Watch the deploy size (≈1.4 GB at 24k pages; plan before it reaches ~1.8 GB).
+2026-11-20: Vercel «Deployment Storage» was 10.52 GB of the Hobby 10 GB (many deploys on 11-19). Owner wants EVERY asset in ALL 20
+languages (our «фішка»). Static pages for that would be ~3–4 GB per deploy, so the plan is: keep static pages for uk/en (all assets) and the
+top 200 in other languages (TOP_N), and serve the rest on demand from a Vercel function (Python, reuses build.py's page code + data, CDN
+cache s-maxage≈1 day) — no deployment storage. Descriptions are already written for all assets in all 20 languages.
 
 ## Partner links
 src/ref.js (buy buttons) and PARTNERS / POLY in scripts/build.py (/exchanges/ page, Polymarket block). All /go/<id> targets: api/_partners.js. Also: TradingView ref on every live chart (tvref), pump.fun card on /memes/, monobank/Privat24 CTAs on OVDP broker pages (OB_GO), Inzhur REIT card on Ukrainian pages (INZ).
