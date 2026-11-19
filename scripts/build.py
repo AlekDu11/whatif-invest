@@ -46,7 +46,7 @@ from i18n_tgj import TGJ  # noqa: E402
 from i18n_my import MY, BR  # noqa: E402
 from i18n_ch import CH  # noqa: E402
 from i18n_inv import INV  # noqa: E402
-from i18n_mkt import MKT  # noqa: E402
+from i18n_mkt import MKT, LEAD as MLEAD  # noqa: E402
 from i18n_ua import UA_LANGS, UA_ASOF, OB, OBI, OBT, UA_SRC, BUYG, BUYG_SRC, OVP, OB_GO, INZ  # noqa: E402
 from i18n_bpd import BPD, IDEA as BP_IDEA  # noqa: E402
 from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB, CH as OWN_CH, CH2 as OWN_CH2  # noqa: E402
@@ -2120,8 +2120,29 @@ def coin_markets_block(lang, aid):
                     rows.append([xid, nm_.get(xid, xid), pr.get('b'), pr.get('q'), px, pr['usd'], pr.get('spread'), pr.get('trust'), ''])
         rows.sort(key=lambda r: -r[5])
         src_d = XCH.get('updated', '')
+    # fresher numbers for the exchanges we read directly (Binance, OKX, Gate, KuCoin, MEXC, Bitget): today's API data wins
+    rows = [list(r) for r in rows]
+    have = {(r[0], r[3]): r for r in rows}
+    nm_ = {e['id']: e['name'] for e in XCH.get('spot', [])}
+    for xid, d in XCH.get('detail', {}).items():
+        if d.get('src') != 'api':
+            continue
+        for pr in d.get('pairs', []):
+            if pr.get('cg') == cg and pr.get('usd'):
+                px = pr['last'] if pr.get('q') in ('USD', 'USDT', 'USDC') else None
+                r = have.get((xid, pr.get('q')))
+                if r:
+                    r[4], r[5], r[6] = px or r[4], pr['usd'], pr.get('spread', r[6])
+                else:
+                    rows.append([xid, nm_.get(xid, xid), pr.get('b'), pr.get('q'), px, pr['usd'], pr.get('spread'), None, ''])
     if len(rows) < 2:
         return ''
+    # CoinMarketCap-style order: exchanges with a high trust score first (CoinGecko trust 1–10), then by volume
+    sc = {e['id']: e.get('trust') or 0 for e in XCH.get('spot', [])}
+    rows.sort(key=lambda r: (sc.get(r[0], 0) < 7, -(r[5] or 0)))
+    for r in rows:
+        v = sc.get(r[0])
+        r[7] = r[7] or ('green' if v and v >= 8 else 'yellow' if v and v >= 5 else 'red' if v else None)
     tot = sum(r[5] for r in rows) or 1
     tr = ''
     qs = set()
@@ -2554,7 +2575,19 @@ def asset(aid, lang, ver):
                           + '</section>')
     else:   # no free live chart for this symbol -> our own monthly chart
         tv, tech_news = own_chart(lang, a, aid), ''
-    body = (f'{head}<p class="lead" style="margin-top:10px">{S["a_lead"].format(**fe)}</p>{hot_block(lang, aid)}<div class="chartside section">{tv}{side_block(lang, aid)}</div>{'' if 'timeline' in tech_news else hot_more(lang, aid)}{stock_block(lang, aid)}{analysis_block(lang, aid)}{offer_card(lang, 'asset-' + aid) if a['cat'] == 'crypto' else ''}{tg_card(lang, 'asset-' + a['cat'])}<div class="stats sfit">{stat_cards}{lump_cards}</div>{long_block(lang, aid)}{seas_block(lang, aid)}{calc_block(lang)}{tech_news}{coin_markets_block(lang, aid)}'
+    dca_lead = f'<p class="lead" style="margin-top:10px">{S["a_lead"].format(**fe)}</p>'
+    cr = a['cat'] == 'crypto'
+    if cr:   # CoinMarketCap-style: the first sentence is the market (price, 24h/7d, market cap and rank, volume); DCA moves to its cards
+        L, (mc, vol, c7, _s7) = MLEAD[lang], mkt_of(aid)
+        ml = L['p'].format(name=esc(nm(a, lang)), price=f'<b data-p="{aid}">{price(METRICS[aid]["price"])}</b>', chg=f'<span class="{cls(METRICS[aid]["chg"])}" data-c="{aid}">{pct(METRICS[aid]["chg"])}</span>')
+        if c7 is not None:
+            ml += L['w'].format(c7=f'<span class="{cls(c7)}">{pct(c7)}</span>')
+        if mc and a.get('rank'):
+            ml += L['m'].format(mcap=f'<b>{fbig(mc)}</b>', rank=a['rank']) + (L['v'].format(vol=f'<b>{fbig(vol)}</b>') if vol else '')
+        lead_top = f'<p class="lead" style="margin-top:10px">{ml}{"" if lang in ("ja", "zh") else "."}</p>'
+    else:
+        lead_top = dca_lead
+    body = (f'{head}{lead_top}{hot_block(lang, aid)}<div class="chartside section">{tv}{side_block(lang, aid)}</div>{coin_markets_block(lang, aid) if cr else ""}{'' if 'timeline' in tech_news else hot_more(lang, aid)}{stock_block(lang, aid)}{analysis_block(lang, aid)}{offer_card(lang, 'asset-' + aid) if cr else ''}{tg_card(lang, 'asset-' + a['cat'])}{dca_lead if cr else ""}<div class="stats sfit">{stat_cards}{lump_cards}</div>{long_block(lang, aid)}{seas_block(lang, aid)}{calc_block(lang)}{tech_news}{"" if cr else coin_markets_block(lang, aid)}'
             f'<div class="cols2 section"><section class="card"><h2>{S["a_periods"].format(**fe)}</h2>{ptable}</section>'
             f'<section class="card faq"><h2>{S["faq"]}</h2>' + ''.join(f'<details><summary>{esc(q)}</summary><p>{esc(x)}</p></details>' for q, x in faq) + '</section></div>'
             + (f'<section class="section">{table_block(lang, peers, esc(KS[lang]["peers"]), interactive=False)}</section>' if (peers := stock_peers(aid)) else '') +

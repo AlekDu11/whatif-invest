@@ -44,3 +44,29 @@ _V = {
             'Live na presyo ng {n} cryptocurrency: market cap, pagbabago sa 24 oras at 7 araw, trading volume at chart — at kung magkano ang $10 kada araw.'),
 }
 MKT = {lg: dict(zip(_K, v)) for lg, v in _V.items()}
+
+# Market lead on crypto pages (CoinMarketCap-style first sentence). Parts are joined; missing numbers drop their part.
+# p: price + 24h; w: 7-day change; m: market cap + rank; v: 24h volume
+_L = {
+    'en': ('{name} price today is {price}, {chg} in 24 hours', ' and {c7} over 7 days', '. Market cap: {mcap} (#{rank} among cryptocurrencies)', ', 24h trading volume: {vol}'),
+    'uk': ('Курс {name} сьогодні — {price}, {chg} за 24 години', ' і {c7} за 7 днів', '. Капіталізація — {mcap} (№{rank} серед криптовалют)', ', обсяг торгів за добу — {vol}'),
+    'ru': ('Курс {name} сегодня — {price}, {chg} за 24 часа', ' и {c7} за 7 дней', '. Капитализация — {mcap} (№{rank} среди криптовалют)', ', объём торгов за сутки — {vol}'),
+    'es': ('El precio de {name} hoy es {price}, {chg} en 24 horas', ' y {c7} en 7 días', '. Capitalización: {mcap} (n.º {rank} entre las criptomonedas)', ', volumen en 24 h: {vol}'),
+    'de': ('Der {name}-Kurs liegt heute bei {price}, {chg} in 24 Stunden', ' und {c7} in 7 Tagen', '. Marktkapitalisierung: {mcap} (Platz {rank} der Kryptowährungen)', ', Handelsvolumen 24 h: {vol}'),
+    'pt': ('O preço de {name} hoje é {price}, {chg} em 24 horas', ' e {c7} em 7 dias', '. Capitalização: {mcap} (nº {rank} entre as criptomoedas)', ', volume em 24 h: {vol}'),
+    'pl': ('Kurs {name} dziś to {price}, {chg} w 24 godziny', ' i {c7} w 7 dni', '. Kapitalizacja: {mcap} (nr {rank} wśród kryptowalut)', ', wolumen 24 h: {vol}'),
+    'tr': ('{name} fiyatı bugün {price}, 24 saatte {chg}', ', 7 günde {c7}', '. Piyasa değeri: {mcap} (kripto paralar arasında {rank}.)', ', 24 saatlik işlem hacmi: {vol}'),
+    'fr': ('Le cours de {name} aujourd’hui est de {price}, {chg} sur 24 heures', ' et {c7} sur 7 jours', '. Capitalisation : {mcap} (n° {rank} des cryptomonnaies)', ', volume sur 24 h : {vol}'),
+    'it': ('Il prezzo di {name} oggi è {price}, {chg} in 24 ore', ' e {c7} in 7 giorni', '. Capitalizzazione: {mcap} (n. {rank} tra le criptovalute)', ', volume nelle 24 ore: {vol}'),
+    'nl': ('De koers van {name} is vandaag {price}, {chg} in 24 uur', ' en {c7} in 7 dagen', '. Marktkapitalisatie: {mcap} (nr. {rank} van alle cryptomunten)', ', handelsvolume 24 uur: {vol}'),
+    'id': ('Harga {name} hari ini {price}, {chg} dalam 24 jam', ' dan {c7} dalam 7 hari', '. Kapitalisasi pasar: {mcap} (peringkat #{rank} kripto)', ', volume 24 jam: {vol}'),
+    'vi': ('Giá {name} hôm nay là {price}, {chg} trong 24 giờ', ' và {c7} trong 7 ngày', '. Vốn hóa: {mcap} (hạng #{rank} trong các tiền điện tử)', ', khối lượng 24 giờ: {vol}'),
+    'th': ('ราคา {name} วันนี้อยู่ที่ {price} เปลี่ยนแปลง {chg} ใน 24 ชั่วโมง', ' และ {c7} ใน 7 วัน', ' มูลค่าตลาด {mcap} (อันดับ {rank} ของคริปโต)', ' ปริมาณซื้อขาย 24 ชม. {vol}'),
+    'hi': ('आज {name} की कीमत {price} है, 24 घंटे में {chg}', ' और 7 दिन में {c7}', '। मार्केट कैप: {mcap} (क्रिप्टो में #{rank})', ', 24 घंटे का वॉल्यूम: {vol}'),
+    'ja': ('{name}の今日の価格は{price}、24時間で{chg}', '、7日間で{c7}', '。時価総額は{mcap}（暗号資産で{rank}位）', '、24時間出来高は{vol}'),
+    'ko': ('오늘 {name} 가격은 {price}, 24시간 {chg}', ', 7일 {c7}', '. 시가총액 {mcap} (암호화폐 {rank}위)', ', 24시간 거래량 {vol}'),
+    'zh': ('{name}今日价格为 {price}，24 小时 {chg}', '，7 天 {c7}', '。市值 {mcap}（加密货币第 {rank} 名）', '，24 小时成交量 {vol}'),
+    'ar': ('سعر {name} اليوم {price}، بتغير {chg} خلال 24 ساعة', ' و{c7} خلال 7 أيام', '. القيمة السوقية: {mcap} (المرتبة {rank} بين العملات المشفرة)', '، وحجم التداول خلال 24 ساعة: {vol}'),
+    'fil': ('Ang presyo ng {name} ngayon ay {price}, {chg} sa 24 oras', ' at {c7} sa 7 araw', '. Market cap: {mcap} (#{rank} sa mga cryptocurrency)', ', 24h volume: {vol}'),
+}
+LEAD = {lg: dict(zip(('p', 'w', 'm', 'v'), v)) for lg, v in _L.items()}

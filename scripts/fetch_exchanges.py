@@ -105,6 +105,16 @@ def main():
     out['reserves'] = reserves(out['spot']) or old.get('reserves', {})     # fast (DefiLlama) — before the slow CoinGecko loop
     api = exchange_apis.fetch_all()     # Binance, OKX, Bybit, Gate, KuCoin, MEXC, Bitget: all spot pairs from the exchange itself
     now = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M')
+    btc = next((x.get('price') for x in [((json.load(open(os.path.join(ROOT, 'data/market.json'))).get('assets') or {}).get('btc') or {})]), None) if os.path.exists(os.path.join(ROOT, 'data/market.json')) else None
+    cgv = {e['id']: (e.get('vol_btc') or 0) * (btc or 0) for e in out['spot']}
+    for xid, v in list(api.items()):
+        if cgv.get(xid) and v['vol_usd'] > 4 * cgv[xid]:   # sanity: the exchange's own total must be close to CoinGecko's
+            print(f'  {xid}: API volume ${v["vol_usd"]:,.0f} vs CoinGecko ${cgv[xid]:,.0f} — ignored', flush=True)
+            del api[xid]
+    for xid in exchange_apis.SOURCES:   # API skipped/ignored today: let CoinGecko refresh that exchange instead of keeping stale API pairs
+        if xid not in api and (out['detail'].get(xid) or {}).get('src') == 'api':
+            for k in ('src', 'api', 'tp'):
+                out['detail'][xid].pop(k, None)
     for xid, v in api.items():
         d = out['detail'].setdefault(xid, {})
         d.update(pairs=v['pairs'], src='api', tp=now)

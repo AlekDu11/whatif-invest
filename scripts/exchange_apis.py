@@ -39,6 +39,9 @@ def _split(sym):
     return None, None
 
 
+STOCKS = set()
+
+
 def _ctx():
     """USD value of a quote currency (stablecoins 1, fiat from fx.json, coins from market.json) + symbol -> CoinGecko id."""
     usd, cg = {s: 1.0 for s in STABLE}, {}
@@ -50,6 +53,7 @@ def _ctx():
         pass
     try:
         A = json.load(open(os.path.join(ROOT, 'data/market.json')))['assets']
+        STOCKS.update((a.get('tk') or '').upper() for a in A.values() if a.get('cat') in ('stock', 'etf'))
         for a in sorted((a for a in A.values() if a.get('cat') == 'crypto'), key=lambda a: -(a.get('rank') or 99999)):
             tk = (a.get('tk') or '').upper()   # the best-ranked coin wins a shared ticker (sorted worst first, overwritten)
             if a.get('price') and tk not in STABLE:
@@ -63,6 +67,8 @@ def _ctx():
 
 def _row(b, q, last, qvol, bid, ask, usd, cg):
     b, q = (b or '').upper(), (q or '').upper()
+    if b.startswith('R') and len(b) > 2 and b[1:] in STOCKS:   # Bitget's tokenized US stocks (RNVDA, RSPY...) are not crypto
+        return None
     last, qvol, bid, ask = _f(last), _f(qvol), _f(bid), _f(ask)
     if not b or not q or not last or not qvol or q not in usd:
         return None
@@ -113,7 +119,9 @@ def kucoin(usd, cg):
 
 def bitget(usd, cg):
     d = (_get('https://api.bitget.com/api/v2/spot/market/tickers') or {}).get('data') or []
-    return [_row(*_split(t.get('symbol') or ''), t.get('lastPr'), t.get('quoteVolume'), t.get('bidPr'), t.get('askPr'), usd, cg) for t in d]
+    # usdtVolume = 24h turnover in USDT; quoteVolume comes back inflated for tokenized-stock pairs (RNVDA...)
+    return [_row(*_split(t.get('symbol') or ''), t.get('lastPr'), t.get('usdtVolume'), t.get('bidPr'), t.get('askPr'), usd, cg)
+            if _split(t.get('symbol') or '')[1] in ('USDT', 'USDC') else None for t in d]
 
 
 def bybit(usd, cg):
