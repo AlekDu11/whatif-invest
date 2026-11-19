@@ -3127,7 +3127,9 @@ def me_page(lang, ver):
         bopt = ''.join(f'<option value="{b["id"]}">{esc(b["name"])}</option>' for b in OB) + f'<option value="">{esc(o["other"])}</option>'
         today = UPDATED[:10]
         bl = url(lang, 'ovdp/brokers') if lang in UA_LANGS else url('uk', 'ovdp/brokers')
-        bonds = (f'<section class="section" id="bonds"><div class="charthead"><h2>{esc(o["h"])}</h2><a class="calc" href="{bl}">{esc(o["brokers"])} →</a></div>'
+        # Ukrainian bonds are for uk/ru readers; on other languages the block stays hidden unless the visitor already
+        # keeps bonds here or came via a #bonds / ?bb= link (app.js unhides it)
+        bonds = (f'<section class="section" id="bonds"{"" if lang in UA_LANGS else " hidden data-opt"}><div class="charthead"><h2>{esc(o["h"])}</h2><a class="calc" href="{bl}">{esc(o["brokers"])} →</a></div>'
                  f'<p class="muted" style="margin-top:-4px">{esc(o["d"])}</p><div class="hl" id="btot"></div><div id="blist"><p class="muted">{esc(o["empty"])}</p></div>'
                  f'<div class="card hcalc" id="bform"><div class="hrow brow">'
                  f'<label class="f">{esc(o["name"])}<div class="inp"><input id="bn" autocomplete="off" placeholder="{esc(o["name_ph"])}"></div></label>'

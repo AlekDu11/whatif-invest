@@ -621,6 +621,9 @@ $$('section.mkt').forEach(sec=>{ const rows=[...sec.querySelectorAll('tbody tr')
 (function(){
   const M=PAGE.me; if(!M||!M.ob||!$('#bonds')) return; const t=M.ob.t, BR=M.ob.b;
   const BS={ get(){ try{ return JSON.parse(localStorage.getItem('wi_bonds')||'[]') }catch(e){ return [] } }, set(v){ try{ localStorage.setItem('wi_bonds',JSON.stringify(v)) }catch(e){} } };
+  { const sec=$('#bonds'), show=()=>{ sec.hidden=false };
+    if(sec.hasAttribute('data-opt')){ if(BS.get().length||location.hash==='#bonds'||new URLSearchParams(location.search).get('bb')) show();
+      document.addEventListener('wi:bonds',()=>{ if(BS.get().length) show() }); window.addEventListener('hashchange',()=>{ if(location.hash==='#bonds') show() }) } }
   const SYM={UAH:'₴',USD:'$',EUR:'€'}, DAY=864e5;
   const nf=(v,c)=>{ try{ return new Intl.NumberFormat(T.intl||'uk',{style:'currency',currency:c,maximumFractionDigits:Math.abs(v)>=1000?0:2}).format(v) }catch(e){ return Math.round(v)+' '+c } };
   const toLocal=(v,c)=>{ const fx=WI.fx||{}; const usd=c==='USD'?v:(fx[c]?v/fx[c]:null); return usd==null?null:usd*M.rate };
