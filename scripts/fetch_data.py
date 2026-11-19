@@ -29,7 +29,8 @@ SUFFIX_CCY = {'.WA': 'PLN', '.DE': 'EUR', '.PA': 'EUR', '.MC': 'EUR', '.MI': 'EU
               '.SR': 'SAR', '.SW': 'CHF', '.TO': 'CAD', '.AX': 'AUD', '.MX': 'MXN', 'MOEX:': 'RUB'}
 CMDTY_T = {'brent': 'BZ=F', 'ng': 'NG=F', 'copper': 'HG=F'}   # for the world-assets page
 CMDTY = {}
-INFO_KEYS = ('ath', 'athd', 'mcap', 'cgid', 'circ', 'supply', 'maxs', 'fdv', 'vol', 'atl', 'atld')
+INFO_KEYS = ('ath', 'athd', 'mcap', 'cgid', 'circ', 'supply', 'maxs', 'fdv', 'vol', 'atl', 'atld', 'c7', 's7')   # c7/s7: 7-day change + 7-day sparkline
+YW = {}   # Yahoo ticker -> (7-day change, last daily closes) for the 7d column and sparkline
 COININFO = os.path.join(ROOT, 'data/coininfo.json')    # links/description per coin, filled a few hundred per day
 STOCKINFO = os.path.join(ROOT, 'data/stockinfo.json')  # website/sector/summary per stock, filled gradually
 INFO_LANGS = ('uk', 'ru', 'es', 'pt', 'de', 'fr', 'it', 'pl', 'tr', 'nl', 'id', 'vi', 'th', 'hi', 'ja', 'ko', 'zh', 'ar')
@@ -279,10 +280,18 @@ CG_LIST = []   # symbols of the top coins by market cap, biggest first
 BUBLIST = []   # top coins by market cap with 1h/24h/7d/30d/1y change, for the bubble map
 
 
+def _spark7(pts, n=24):
+    """168 hourly prices -> n evenly spaced points (4 significant digits) for a small 7-day chart."""
+    pts = [x for x in pts if isinstance(x, (int, float)) and x > 0]
+    if len(pts) < 8:
+        return None
+    return [float(f'{pts[round(k * (len(pts) - 1) / (n - 1))]:.4g}') for k in range(n)]
+
+
 def coingecko_meta():
     meta = {}
     for page in (1, 2, 3, 4):
-        d = get_json(f"https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page={page}&price_change_percentage=1h,24h,7d,30d,1y", tries=2)
+        d = get_json(f"https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page={page}&price_change_percentage=1h,24h,7d,30d,1y&sparkline=true", tries=2)
         if not isinstance(d, list):
             break
         for c in d:
@@ -292,7 +301,9 @@ def coingecko_meta():
                                  ath=c.get('ath'), athd=(c.get('ath_date') or '')[:10] or None,
                                  cgid=c.get('id'), circ=c.get('circulating_supply'), supply=c.get('total_supply'), maxs=c.get('max_supply'),
                                  fdv=c.get('fully_diluted_valuation'), vol=c.get('total_volume'), atl=c.get('atl'), atld=(c.get('atl_date') or '')[:10] or None,
-                                 price=c.get('current_price'), chg=(c['price_change_percentage_24h'] / 100 if isinstance(c.get('price_change_percentage_24h'), (int, float)) else None))
+                                 price=c.get('current_price'), chg=(c['price_change_percentage_24h'] / 100 if isinstance(c.get('price_change_percentage_24h'), (int, float)) else None),
+                                 c7=(round(c['price_change_percentage_7d_in_currency'] / 100, 5) if isinstance(c.get('price_change_percentage_7d_in_currency'), (int, float)) else None),
+                                 s7=_spark7(((c.get('sparkline_in_7d') or {}).get('price')) or []))
                 CG_LIST.append(sym)
             if page == 1 and sym and c.get('current_price'):
                 r = lambda k: round(c[k] / 100, 5) if isinstance(c.get(k), (int, float)) else None
@@ -373,7 +384,7 @@ def yahoo_daily(tickers):
     for k in range(0, len(tickers), 200):
         chunk = tickers[k:k + 200]
         try:
-            df = yf.download(chunk, period='7d', interval='1d', auto_adjust=True, group_by='ticker', threads=True, progress=False)
+            df = yf.download(chunk, period='12d', interval='1d', auto_adjust=True, group_by='ticker', threads=True, progress=False)
         except Exception as e:
             log(f"  yahoo daily batch failed: {e}")
             continue
@@ -384,6 +395,9 @@ def yahoo_daily(tickers):
                     col = col.iloc[:, 0]
                 if len(col) >= 2:
                     out[t] = (float(col.iloc[-1]), float(col.iloc[-1] / col.iloc[-2] - 1))
+                    wk = col.iloc[-6:]   # ~one trading week (5 sessions back)
+                    if len(wk) >= 3:
+                        YW[t] = (round(float(wk.iloc[-1] / wk.iloc[0] - 1), 5), [float(f'{float(v):.4g}') for v in col.iloc[-8:]])
             except Exception:
                 pass
     return out
@@ -744,6 +758,8 @@ def main():
     for a in assets.values():
         if a['yahoo'] in yd:
             a['price'], a['chg'] = yd[a['yahoo']]
+            if a['yahoo'] in YW:
+                a['c7'], a['s7'] = YW[a['yahoo']]
             ccy = a.get('ccy', 'USD')
             if ccy != 'USD':
                 rate = (yd.get(FX_TICKER['GBP' if ccy == 'GBp' else ccy]) or [None])[0] or (fxm.get(FX_TICKER['GBP' if ccy == 'GBp' else ccy], {}).get('p') or [None])[-1]
@@ -755,6 +771,16 @@ def main():
     try:   # stablecoins are not assets, but people convert them (USDT → UAH): keep their live price for the converter
         sb = {k: dict(name=cg[k]['name'], price=cg[k]['price'], chg=cg[k].get('chg'), logo=cg[k].get('logo'), mcap=cg[k].get('mcap'), cgid=cg[k].get('cgid'))
               for k in ('USDT', 'USDC', 'DAI', 'USDE', 'FDUSD', 'PYUSD') if k in cg and cg[k].get('price')}
+        # every big stablecoin + gold-backed tokens, for the crypto table (CoinMarketCap order: USDT is #3)
+        for k in CG_LIST[:400]:
+            m = cg.get(k) or {}
+            pr, mc = m.get('price') or 0, m.get('mcap') or 0
+            gold = k in ('PAXG', 'XAUT')
+            if k not in sb and mc >= 3e8 and (gold or ((k in STABLE or 'USD' in k) and 0.97 < pr < 1.03)):
+                sb[k] = dict(name=m['name'], price=pr, chg=m.get('chg'), logo=m.get('logo'), mcap=mc, cgid=m.get('cgid'))
+        for k, v in sb.items():
+            m = cg.get(k) or {}
+            v.update({f: m[f] for f in ('rank', 'vol', 'c7', 's7', 'circ') if m.get(f) is not None}, **({'gold': 1} if k in ('PAXG', 'XAUT') else {}))
         if sb:
             json.dump({'updated': datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M UTC'), 's': sb}, open(os.path.join(ROOT, 'data/stables.json'), 'w', encoding='utf-8'),
                       ensure_ascii=False, separators=(',', ':'))
@@ -775,10 +801,11 @@ def main():
             break
         m, r = cg.get(base, {}), bmap.get(base)
         low = (m.get('name') or base).lower()
-        if base in STABLE or not base.isalnum() or any(w in low for w in WRAPPED + ('xstock',)):
-            continue
-        if ('USD' in base) or (base.endswith('B') and base[:-1] in stock_tk):
-            continue                                    # yield stablecoins and Binance tokenized stocks (NVDAB...)
+        if base not in pinned_crypto:                 # pinned coins (BTC, ETH, BNB...) are never filtered: BNB looked like «BN» stock + B
+            if base in STABLE or not base.isalnum() or any(w in low for w in WRAPPED + ('xstock',)):
+                continue
+            if ('USD' in base) or (base.endswith('B') and base[:-1] in stock_tk):
+                continue                                # yield stablecoins and Binance tokenized stocks (NVDAB...)
         if base in pinned_crypto:                      # long Yahoo history already; take live price + logo
             a = assets[pinned_crypto[base]]
             if r:

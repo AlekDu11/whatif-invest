@@ -46,6 +46,7 @@ from i18n_tgj import TGJ  # noqa: E402
 from i18n_my import MY, BR  # noqa: E402
 from i18n_ch import CH  # noqa: E402
 from i18n_inv import INV  # noqa: E402
+from i18n_mkt import MKT  # noqa: E402
 from i18n_ua import UA_LANGS, UA_ASOF, OB, OBI, OBT, UA_SRC, BUYG, BUYG_SRC, OVP, OB_GO, INZ  # noqa: E402
 from i18n_bpd import BPD, IDEA as BP_IDEA  # noqa: E402
 from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB, CH as OWN_CH, CH2 as OWN_CH2  # noqa: E402
@@ -600,7 +601,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
            + f'<a href="{url(lang, "ai")}">{AIS[lang]["nav"]}</a><a href="{url(lang, "activities")}">{ACT[lang]["nav"]}</a></div></details>'
            + f'<details class="dd ddt"><summary class="{"on" if tools_on else ""}">{X["nav_tools"]}</summary><div>'
            + ''.join(f'<a href="{url(lang, k)}">{v}</a>' for k, v in [('portfolios', BP[lang]['nav']), ('compound-interest', IC[lang]['nav'])] + [x for x in tools_menu(lang) if x]) + '</div></details>')
-    i18n = dict(S['ui'], months=S['months'], intl=S['intl'])
+    i18n = dict(S['ui'], months=S['months'], intl=S['intl'], **{'mk_' + k: v for k, v in MKT[lang].items() if k in ('d7', 'mcap', 'vol', 'k7', 'stable')})
     mnav = ''.join(f'<a href="{h}" class="{"on" if on else ""}"><span>{ic}</span>{esc(lb)}</a>' for h, ic, lb, on in (
         (url(lang), '◎', HM[lang]['nav'], p is None), (url(lang, 'news'), '▤', NW[lang]['n_nav'], p == 'news'),
         (url(lang, 'exchanges'), '₿', EX[lang]['nav'], p == 'exchanges'), (url(blog_l, 'blog'), '✎', NW[lang]['i_nav'], (p or '').startswith('blog'))))
@@ -1061,20 +1062,31 @@ def calc_block(lang):
 </div>"""
 
 
+def mkt_of(aid):
+    """(market cap USD, 24h volume USD, 7-day change, 7-day sparkline) for the market columns of the tables."""
+    a = A[aid]
+    if a['cat'] == 'crypto':
+        mc, vol = a.get('mcap'), a.get('vol')
+    else:
+        mc, vol = (lc_universe().get(aid) or {}).get('mcap') if a['cat'] == 'stock' else None, None
+    return mc, vol, a.get('c7'), a.get('s7')
+
+
 def row_html(aid, lang, n):
     a, m = A[aid], METRICS[aid]
     href = aurl(lang, aid)
+    mc, vol, c7, s7 = mkt_of(aid)
     return (f'<tr><td class="l n hide-sm">{n}</td><td class="l"><a class="asset" href="{href}">{icon(a)}<span><span class="nm">{esc(nm(a, lang))}</span>'
             f'<span class="tk">{esc(a["tk"])}{'<i class="enb" title="English">EN</i>' if lang != 'en' and not has_page(lang, aid) else ''}</span></span></a></td><td class="hide-sm"></td><td class="num" data-p="{aid}">{price(m["price"])}</td>'
-            f'<td class="num {cls(m["chg"])}" data-c="{aid}">{pct(m["chg"])}</td><td class="num hide-sm {cls(m["r1"])}">{pct(m["r1"])}</td>'
-            f'<td class="num hide-sm {cls(m["r3"])}">{pct(m["r3"])}</td><td><span class="pill {cls(m["r5"])}">{pct(m["r5"])}</span></td>'
-            f'<td class="hide-sm">{spark(m["spark"])}</td><td class="hide-sm"><a class="calc" href="{href}">→</a></td></tr>')
+            f'<td class="num {cls(m["chg"])}" data-c="{aid}">{pct(m["chg"])}</td><td class="num hide-sm {cls(c7)}">{pct(c7) if c7 is not None else "—"}</td>'
+            f'<td class="num hide-sm">{fbig(mc) if mc else "—"}</td><td class="num hide-md">{fbig(vol) if vol else "—"}</td>'
+            f'<td class="hide-sm">{spark(s7 or m["spark"])}</td><td class="hide-sm"><a class="calc" href="{href}">→</a></td></tr>')
 
 
 def table_block(lang, ids, title=None, interactive=True, start=0):
-    u = TR[lang]['ui']
-    head = ['#', u['name'], '', u['price'], u['chg'], u['d1'], u['d3'], u['d5'], u['spark'], '']
-    hc = ['l n hide-sm', 'l', 'hide-sm', '', '', 'hide-sm', 'hide-sm', '', 'hide-sm', 'hide-sm']
+    u, k = TR[lang]['ui'], MKT[lang]
+    head = ['#', u['name'], '', u['price'], u['chg'], k['d7'], k['mcap'], k['vol'], k['k7'], '']
+    hc = ['l n hide-sm', 'l', 'hide-sm', '', '', 'hide-sm', 'hide-sm', 'hide-md', 'hide-sm', 'hide-sm']
     th = ''.join(f'<th class="{c}">{h}</th>' for h, c in zip(head, hc))
     rows = ''.join(row_html(aid, lang, start + k + 1) for k, aid in enumerate(ids))
     ttl = f'<h2>{title}</h2>' if title else ''
@@ -3232,12 +3244,17 @@ def hub(lang, slug, ver):
     cat = HUBS[slug]
     ids = [i for i in ORDERED if A[i]['cat'] == cat]
     label = S['ui'][cat]
-    title = X['hub_h1'].format(cat=label) + ' | ' + BRAND
+    h1 = X['hub_h1'].format(cat=label)
     desc = X['hub_d'].format(n=len(ids), cat=label.lower())
     b5 = best_by('r5', ids)[:4]
     cards = ''.join(hl_card(lang, i, nm(A[i], lang), 'r5', S['sub5']) for i in b5)
+    if cat == 'crypto':   # people search «crypto prices», not «DCA ranking»: market view first (CoinMarketCap-style)
+        h1, desc = MKT[lang]['cr_h1'], MKT[lang]['cr_d'].format(n=len(ids) + len(SB))
+        big = [i for i in ids[:100] if METRICS[i]['chg'] is not None]
+        cards = ''.join(hl_card(lang, i, nm(A[i], lang), 'chg', S['ui']['chg']) for i in sorted(big, key=lambda i: -METRICS[i]['chg'])[:4])
+    title = h1 + ' | ' + BRAND
     filt = f'<div class="toolbar"><div class="filter">{SEARCH_ICON}<input id="flt" type="search" autocomplete="off"></div></div>'
-    body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / {esc(label)}</nav><h1>{esc(X["hub_h1"].format(cat=label))}</h1>'
+    body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / {esc(label)}</nav><h1>{esc(h1)}</h1>'
             f'<p class="lead">{esc(desc)}</p>{country_chips(lang) if cat == "stock" else ""}<div class="hl">{cards}</div><div class="tabs" id="tabs"></div>{filt}{table_block(lang, ids[:150])}')
     return shell(lang, slug, title, desc, body, dict(tab=cat), ver)
 
@@ -3397,7 +3414,8 @@ LOCAL_CCY = {'uk': 'fx:UAH', 'ru': 'fx:RUB', 'pl': 'fx:PLN', 'de': 'fx:EUR', 'fr
 
 
 SB = (_jload('stables.json') or {}).get('s', {})
-SBA = {k.lower(): dict(_id=k.lower(), name=v['name'], tk=k, price=v['price'], chg=v.get('chg'), logo=v.get('logo'), cat='stable') for k, v in SB.items()}
+SBA = {k.lower(): dict(_id=k.lower(), name=v['name'], tk=k, price=v['price'], chg=v.get('chg'), logo=v.get('logo'), cat='stable') for k, v in SB.items()
+       if k in ('USDT', 'USDC', 'DAI', 'USDE', 'FDUSD', 'PYUSD')}   # converter: the 6 big ones only (each adds pair pages); all of SB go to the crypto table
 
 
 def cva(i):
@@ -4068,6 +4086,14 @@ def main():
             e['y'] = a['yahoo']   # USD-listed: live quote via /api/quote
         idx.append({k: (round(v, 4) if isinstance(v, float) and k in ('ch', 'r1', 'r3', 'r5') else v) for k, v in e.items() if v is not None})
         write(f'assets/p/{aid}.json', json.dumps({'start': a['start'], 'end': a['end'], 'p': a['p'], 'n': nm(a, 'en'), 't': a['tk']}, separators=(',', ':')))
+    mk = {}
+    for aid in ORDERED:
+        mc, vol, c7, s7 = mkt_of(aid)
+        if mc or vol or c7 is not None or s7:
+            mk[aid] = [round(mc) if mc else None, round(vol) if vol else None, round(c7, 4) if c7 is not None else None, s7, A[aid].get('rank') if A[aid]['cat'] == 'crypto' else None]
+    st = [dict(t=k, n=v['name'], pr=v['price'], ch=round(v['chg'], 4) if v.get('chg') is not None else None, l=v.get('logo'), mc=round(v['mcap']) if v.get('mcap') else None,
+               vo=round(v['vol']) if v.get('vol') else None, w7=v.get('c7'), k7=v.get('s7'), r=v.get('rank'), g=v.get('gold')) for k, v in SB.items()]
+    write('assets/mkt.json', json.dumps({'a': mk, 'st': [{x: y for x, y in r.items() if y is not None} for r in st]}, ensure_ascii=False, separators=(',', ':')))
     json.dump(ORDERED[:160], open(os.path.join(ROOT, 'data/sprite_ids.json'), 'w'))   # next data run packs these logos into one sprite
     if SPRITE['ids']:
         shutil.copy(os.path.join(ROOT, 'data/logo-sprite.webp'), os.path.join(OUT, 'assets', 'logo-sprite.webp'))

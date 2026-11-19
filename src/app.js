@@ -76,13 +76,23 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
     shown=PAGE.home?20:100; pg=0; draw()});
   const f=$('#flt'); f.placeholder=T.filter; f.setAttribute('aria-label',T.filter); f.oninput=()=>{q=f.value.trim().toLowerCase(); shown=PAGE.home?20:100; pg=0; draw()};
   try{ const sq=new URLSearchParams(location.search).get('q'); if(sq){ f.value=sq; f.oninput() } }catch(e){}
-  const COLS=[['n','#','l n hide-sm'],['name',T.name,'l'],['buy','','hide-sm'],['pr',T.price,''],['ch',T.chg,''],['r1',T.d1,'hide-sm'],['r3',T.d3,'hide-sm'],['r5',T.d5,''],['sp',T.spark,'hide-sm'],['go','','hide-sm']];
+  // two views: market (CoinMarketCap-style: 7d, market cap, volume, 7-day chart) and DCA returns (tabs «DCA leaders/laggards»)
+  const COLS_DCA=[['n','#','l n hide-sm'],['name',T.name,'l'],['buy','','hide-sm'],['pr',T.price,''],['ch',T.chg,''],['r1',T.d1,'hide-sm'],['r3',T.d3,'hide-sm'],['r5',T.d5,''],['sp',T.spark,'hide-sm'],['go','','hide-sm']];
+  const COLS_MKT=[['n','#','l n hide-sm'],['name',T.name,'l'],['buy','','hide-sm'],['pr',T.price,''],['ch',T.chg,''],['w7',T.mk_d7||'7d','hide-sm'],['mc',T.mk_mcap||'Market cap','hide-sm'],['vo',T.mk_vol||'Volume','hide-md'],['k7',T.mk_k7||'7d','hide-sm'],['go','','hide-sm']];
+  let COLS=COLS_MKT, ST=[];
+  fetch(`${BASE}/assets/mkt.json?v=${WI.v}`).then(r=>r.json()).then(M=>{
+    Object.entries(M.a||{}).forEach(([i,v])=>{ const a=BYID[i]; if(a){ a.mc=v[0]; a.vo=v[1]; a.w7=v[2]; a.k7=v[3]; a.rk=v[4] } });
+    const cr=IDX.filter(a=>a.c==='crypto'&&a.rk).sort((x,y)=>x.rk-y.rk);
+    ST=(M.st||[]).filter(x=>x.r&&x.pr).map(x=>{ const prev=cr.filter(a=>a.rk<x.r).pop(); return {i:'st-'+x.t.toLowerCase(), st:1, c:'crypto', n:x.n, t:x.t, pr:x.pr, ch:x.ch, l:x.l, mc:x.mc, vo:x.vo, w7:x.w7, k7:x.k7, rk:x.r, o:(prev?prev.o:-1)+0.5-1/(x.r+2)} });
+    draw() }).catch(()=>{});
   function draw(){
-    let rows=IDX.filter(a=>{
+    COLS=(tab==='lead'||tab==='lag')?COLS_DCA:COLS_MKT;
+    let rows=(tab==='crypto'?IDX.concat(ST):IDX).filter(a=>{
       if(tab==='crypto'||tab==='stock'||tab==='etf'||tab==='metal'||tab==='cmd'){ if(a.c!==tab) return false }
       if((tab==='lead'||tab==='lag')&&a.r5==null) return false;
       return !q||a.t.toLowerCase().includes(q)||nm(a).toLowerCase().includes(q) });
-    const k=sortK==='n'?'o':(sortK==='o'&&PAGE.home&&tab==='all'&&!q?'h':sortK);
+    // crypto tab: «#» = market-cap rank like CoinMarketCap (stablecoins included); home «All» keeps its own mix
+    const k=sortK==='n'?'o':(sortK==='o'&&PAGE.home&&tab==='all'&&!q?'h':(sortK==='o'&&tab==='crypto'&&ST.length?'rk':sortK));
     rows.sort((x,y)=>{ const vx=k==='name'?nm(x):x[k], vy=k==='name'?nm(y):y[k];
       if(vx==null&&vy==null) return x.o-y.o; if(vx==null) return 1; if(vy==null) return -1;
       return (typeof vx==='string'?vx.localeCompare(vy):vx-vy)*sortDir });
@@ -90,21 +100,31 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
     rows=paged?rows.slice(off,off+PER):rows.slice(0,shown);
     const split=!!$('#mt2'), top=split?rows.slice(0,10):rows, rest=split?rows.slice(10):[];
     const head='<tr>'+COLS.map(([c,l,cl])=>{ const s=(c===sortK||(c==='n'&&sortK==='o'));
-      const sortable=!['buy','sp','go'].includes(c);
+      const sortable=!['buy','sp','go','k7'].includes(c);
       return `<th class="${cl}${s?' sorted':''}" ${sortable?`data-k="${c}"`:''}>${l}${sortable&&l?`<span class="ar">${s?(sortDir>0?'↑':'↓'):'↕'}</span>`:''}</th>`}).join('')+'</tr>';
     $('#mthead').innerHTML=head; if(split) $('#mthead2').innerHTML=head;
     $$('#mthead th[data-k],#mthead2 th[data-k]').forEach(th=>th.onclick=()=>{ let kk=th.dataset.k; if(kk==='n') kk='o';
       if(sortK===kk) sortDir=-sortDir; else {sortK=kk; sortDir=(kk==='name'||kk==='o')?1:-1} pg=0; draw() });
-    const tr=(a,i)=>`<tr>
-      <td class="l n hide-sm">${off+i+1}</td>
-      <td class="l"><button class="star" data-s="${a.i}" aria-label="☆">☆</button><a class="asset" href="${url(a.i)}">${icon(a)}<span><span class="nm">${esc(nm(a))}</span><span class="tk">${esc(a.t)}${lang!=='en'&&url(a.i).startsWith(BASE+'/en/')?'<i class="enb" title="English">EN</i>':''}</span></span></a></td>
-      <td class="hide-sm">${buyBtn(a)}</td>
-      <td class="num">${fmtPrice(a.pr)}</td>
-      <td class="num ${cls(a.ch)}">${fmtPct(a.ch)}</td>
+    const cvu=`${PAGE.prefix}/converter/`;
+    const cells=a=>COLS===COLS_DCA?`
       <td class="num hide-sm ${cls(a.r1)}">${fmtPct(a.r1)}</td>
       <td class="num hide-sm ${cls(a.r3)}">${fmtPct(a.r3)}</td>
       <td><span class="pill ${cls(a.r5)}">${fmtPct(a.r5)}</span></td>
-      <td class="hide-sm">${spark(a.sp)}</td>
+      <td class="hide-sm">${spark(a.sp)}</td>`:`
+      <td class="num hide-sm ${cls(a.w7)}">${fmtPct(a.w7)}</td>
+      <td class="num hide-sm">${a.mc?fmtUsd(a.mc):'—'}</td>
+      <td class="num hide-md">${a.vo?fmtUsd(a.vo):'—'}</td>
+      <td class="hide-sm">${spark(a.k7||a.sp)}</td>`;
+    const tr=(a,i)=>a.st?`<tr class="strow">
+      <td class="l n hide-sm">${off+i+1}</td>
+      <td class="l"><a class="asset" href="${cvu}">${icon(a)}<span><span class="nm">${esc(a.n)}</span><span class="tk">${esc(a.t)} · ${esc(T.mk_stable||'Stablecoin')}</span></span></a></td>
+      <td class="hide-sm"></td><td class="num">${fmtPrice(a.pr)}</td><td class="num ${cls(a.ch)}">${fmtPct(a.ch)}</td>${cells(a)}
+      <td class="hide-sm"></td></tr>`:`<tr>
+      <td class="l n hide-sm">${off+i+1}</td>
+      <td class="l"><button class="star" data-s="${a.i}" aria-label="☆">☆</button><a class="asset" href="${url(a.i)}">${icon(a)}<span><span class="nm">${esc(nm(a))}</span><span class="tk">${esc(a.t)}${lang!=='en'&&url(a.i).startsWith(BASE+'/en/')?'<i class="enb" title="English">EN</i>':''}</span></span></a></td>
+      <td class="hide-sm">${buyBtn(a)}</td>
+      <td class="num" data-p="${a.i}">${fmtPrice(a.pr)}</td>
+      <td class="num ${cls(a.ch)}" data-c="${a.i}">${fmtPct(a.ch)}</td>${cells(a)}
       <td class="hide-sm"><a class="calc" href="${url(a.i)}">${T.calc} →</a></td></tr>`;
     tb.innerHTML=top.length?top.map(tr).join(''):`<tr><td colspan="10" class="empty">${T.nothing}</td></tr>`;
     if(split){ $('#mt2').innerHTML=rest.map((a,i)=>tr(a,i+10)).join(''); $('#rank2').hidden=!rest.length;
@@ -116,6 +136,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
     else { $('#mtmore').innerHTML=total>shown?`<button class="more">${T.more} (${fmt(T.shown,{a:shown,b:total})})</button>`:'';
       const mb=$('#mtmore button'); if(mb) mb.onclick=()=>{shown+=STEP;draw()}; }
     try{paintStars()}catch(e){}
+    document.dispatchEvent(new Event('wi:rows'));   // live price streams pick up the rows now on screen
   }
   draw();
 })();
@@ -338,6 +359,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
     ws.onmessage=ev=>{ let m; try{m=JSON.parse(ev.data).data}catch(e){return} if(m&&m.s) apply(m) };
     ws.onclose=()=>{ ws=null; if(!document.hidden&&tries++<5) setTimeout(connect,3000*tries) } }
   document.addEventListener('visibilitychange',()=>{ if(document.hidden){ if(ws){ tries=99; ws.close() } } else if(!ws){ tries=0; connect() } });
+  let rt; document.addEventListener('wi:rows',()=>{ clearTimeout(rt); rt=setTimeout(()=>{ if(document.hidden) return; const s=symbols().join('/'); if(s&&s!==want){ if(ws){ tries=99; ws.onclose=null; ws.close(); ws=null } tries=0; connect() } },400) });
   if(!document.querySelector('.art')) connect();
 })();
 
