@@ -1056,12 +1056,12 @@ def row_html(aid, lang, n):
             f'<td class="hide-sm">{spark(m["spark"])}</td><td class="hide-sm"><a class="calc" href="{href}">→</a></td></tr>')
 
 
-def table_block(lang, ids, title=None, interactive=True):
+def table_block(lang, ids, title=None, interactive=True, start=0):
     u = TR[lang]['ui']
     head = ['#', u['name'], '', u['price'], u['chg'], u['d1'], u['d3'], u['d5'], u['spark'], '']
     hc = ['l n hide-sm', 'l', 'hide-sm', '', '', 'hide-sm', 'hide-sm', '', 'hide-sm', 'hide-sm']
     th = ''.join(f'<th class="{c}">{h}</th>' for h, c in zip(head, hc))
-    rows = ''.join(row_html(aid, lang, k + 1) for k, aid in enumerate(ids))
+    rows = ''.join(row_html(aid, lang, start + k + 1) for k, aid in enumerate(ids))
     ttl = f'<h2>{title}</h2>' if title else ''
     if interactive == 'top':
         rows = ''.join(row_html(aid, lang, k + 1) for k, aid in enumerate(ids[:10]))
@@ -1750,12 +1750,17 @@ def lc_ids(tab, mkt=None):
     return ids
 
 
-def lc_page(lang, tab='mcap', mkt=None, ver=None):
+LC_MAX = 300   # global rankings: top 300 in 6 pages of 50
+
+
+def lc_page(lang, tab='mcap', mkt=None, ver=None, pg=1):
     t = LC[lang]
     u = lc_universe()
     ids = lc_ids(tab, mkt)
     if mkt is None:
-        ids = ids[:100]
+        ids = ids[:LC_MAX]
+    total, np_ = len(ids), max(1, -(-len(ids) // PER_PAGE))
+    off = (pg - 1) * PER_PAGE
     # rank change vs yesterday (market cap tab only): yesterday's cap = today's / (1 + day change)
     moves = {}
     if tab == 'mcap':
@@ -1766,7 +1771,7 @@ def lc_page(lang, tab='mcap', mkt=None, ver=None):
     val = {'mcap': lambda v: usd_h(v['mcap']), 'rev': lambda v: usd_h(v['rev']), 'ni': lambda v: usd_h(v['ni']),
            'emp': lambda v: _num(v['emp'], 0), 'div': lambda v: pctu(v['div']), 'pe': lambda v: _num(v['pe'], 1)}[tab]
     rows = ''
-    for k, i in enumerate(ids):
+    for k, i in enumerate(ids[off:off + PER_PAGE], start=off):
         a, m, v = A[i], METRICS[i], u[i]
         mv = moves.get(i, 0)
         arr = f'<span class="rk {"up" if mv > 0 else "dn"}">{"▲" if mv > 0 else "▼"}{abs(mv)}</span>' if mv else ''
@@ -1795,19 +1800,26 @@ def lc_page(lang, tab='mcap', mkt=None, ver=None):
     desc = (t['lead'] + ' ' + ', '.join(f'{nm(A[i], lang)}' for i in top)).strip()[:300]
     body = (f'<h1>{esc(h1)}</h1><p class="lead">{esc(t["lead"])}</p>'
             f'<div class="cchips lcchips"><b>{esc(t["by"])}:</b>{tabs}</div><div class="cchips lcchips"><b>{esc(t["ctry_h"])}:</b>{ctry}</div>'
-            f'<section class="section"><div class="tw"><table class="mt lct"><thead>{th}</thead><tbody>{rows}</tbody></table></div></section>'
+            f'<section class="section"><div class="tw"><table class="mt lct"><thead>{th}</thead><tbody>{rows}</tbody></table></div>{pager(lang, path, pg, np_, total)}</section>'
             f'<p class="note">{esc(t["note"])} {UPDATED[:10]}</p>')
     ld = {"@context": "https://schema.org", "@type": "ItemList", "name": h1,
           "itemListElement": [{"@type": "ListItem", "position": k + 1, "name": nm(A[i], 'en'), "url": SITE + aurl(lang, i)} for k, i in enumerate(ids[:20])]}
+    if pg > 1:
+        return paged_path(path, pg), shell(lang, paged_path(path, pg), f'{h1} ({UPDATED[:4]}) — {pg} | {BRAND}', desc, body, {}, ver, [ld])
     return path, shell(lang, path, f'{h1} ({UPDATED[:4]}) | {BRAND}', desc, body, {}, ver, [ld])
 
 
+def lc_np(tab, mkt):
+    n = len(lc_ids(tab, mkt))
+    return max(1, -(-(min(n, LC_MAX) if mkt is None else n) // PER_PAGE))
+
+
 def lc_pages(lang, ver):
-    out = [lc_page(lang, k, None, ver) for k, _ in LC_TABS]
+    out = [lc_page(lang, k, None, ver, pg) for k, _ in LC_TABS for pg in range(1, lc_np(k, None) + 1)]
     u = lc_universe()
     for m in sorted({v['mkt'] for i, v in u.items() if i != '__meta__'}):
         if len(lc_ids('mcap', m)) >= 5:
-            out.append(lc_page(lang, 'mcap', m, ver))
+            out += [lc_page(lang, 'mcap', m, ver, pg) for pg in range(1, lc_np('mcap', m) + 1)]
     return out
 
 
@@ -3261,11 +3273,37 @@ def country_chips(lang, cur=None, limit=None):
         f'<a class="chip{" on" if sl == cur else ""}" href="{url(lang, sl)}">{t}</a>' for sl, t in ch) + '</div>')
 
 
-def country_page(lang, slug, ver):
+PER_PAGE = 50
+
+
+def pager(lang, path, pg, np, total):
+    """Numbered pager «‹ 1 2 3 … N ›» with real URLs: page 1 = /<path>/, page n = /<path>/<n>/ (each page is its own indexable URL)."""
+    if np <= 1:
+        return ''
+    href = lambda n: url(lang, path if n == 1 else f'{path}/{n}')
+    nums = sorted({n for n in (1, 2, 3, pg - 1, pg, pg + 1, np) if 1 <= n <= np})
+    h, prev = '', 0
+    h += (f'<a class="pgb" href="{href(pg - 1)}" rel="prev">‹</a>' if pg > 1 else '<span class="pgb" aria-disabled="true">‹</span>')
+    for n in nums:
+        if prev and n != prev + 1:
+            h += '<span class="pgd">…</span>'
+        h += f'<span class="pgb on" aria-current="page">{n}</span>' if n == pg else f'<a class="pgb" href="{href(n)}">{n}</a>'
+        prev = n
+    h += (f'<a class="pgb" href="{href(pg + 1)}" rel="next">›</a>' if pg < np else '<span class="pgb" aria-disabled="true">›</span>')
+    a, b = (pg - 1) * PER_PAGE + 1, min(pg * PER_PAGE, total)
+    return f'<nav class="pager" aria-label="pages">{h}<span class="muted pgi">{a}–{b} / {total}</span></nav>'
+
+
+def paged_path(path, pg):
+    return path if pg == 1 else f'{path}/{pg}'
+
+
+def country_page(lang, slug, ver, pg=1):
     S = TR[lang]
     mkt = CSLUG[slug]
     name, h1 = CTRY[lang][3][mkt]
-    ids = [i for i in ORDERED if A[i].get('mkt') == mkt]
+    ids = country_ids(mkt)
+    np_ = max(1, -(-len(ids) // PER_PAGE))
     key = 'r5' if sum(METRICS[i]['r5'] is not None for i in ids) >= 4 else 'r1'
     best = best_by(key, ids)[:4]
     cards = ''.join(hl_card(lang, i, nm(A[i], lang), key, S['sub5' if key == 'r5' else 'sub1']) for i in best)
@@ -3273,12 +3311,30 @@ def country_page(lang, slug, ver):
     desc = f'{h1}. {lead}'
     body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / <a href="{url(lang, "stocks")}">{esc(S["ui"]["stock"])}</a> / {esc(name)}</nav>'
             f'<h1>{esc(h1)}</h1><p class="lead">{esc(lead)}</p>{country_chips(lang, slug)}'
-            + (f'<div class="hl">{cards}</div>' if cards else '')
-            + f'<section class="section">{table_block(lang, ids[:200], None, interactive=False)}</section>'
+            + (f'<div class="hl">{cards}</div>' if cards and pg == 1 else '')
+            + f'<section class="section">{table_block(lang, ids[(pg - 1) * PER_PAGE:pg * PER_PAGE], None, interactive=False, start=(pg - 1) * PER_PAGE)}'
+            f'{pager(lang, slug, pg, np_, len(ids))}</section>'
             f'<p class="note">{esc(TR[lang]["x"]["hub_d"].format(n=len(ids), cat=S["ui"]["stock"].lower()))}</p>')
     jsonld = [{"@context": "https://schema.org", "@type": "ItemList", "name": h1, "numberOfItems": len(ids),
                "itemListElement": [{"@type": "ListItem", "position": k + 1, "name": nm(A[i], lang), "url": SITE + aurl(lang, i)} for k, i in enumerate(ids[:50])]}]
-    return shell(lang, slug, f'{h1} | {BRAND}', desc[:300], body, {}, ver, jsonld)
+    pt = f' — {pg}' if pg > 1 else ''
+    return shell(lang, paged_path(slug, pg), f'{h1}{pt} | {BRAND}', desc[:300], body, {}, ver, jsonld)
+
+
+_CIDS = {}
+
+
+def country_ids(mkt):
+    """Stocks of one market, biggest company first (market cap in USD), assets without a known cap after them."""
+    if mkt not in _CIDS:
+        u = lc_universe()
+        ids = [i for i in ORDERED if A[i].get('mkt') == mkt]
+        _CIDS[mkt] = sorted(ids, key=lambda i: -(u.get(i, {}).get('mcap') or 0))
+    return _CIDS[mkt]
+
+
+def country_np(slug):
+    return max(1, -(-len(country_ids(CSLUG[slug])) // PER_PAGE))
 
 
 LOCAL_CCY = {'uk': 'fx:UAH', 'ru': 'fx:RUB', 'pl': 'fx:PLN', 'de': 'fx:EUR', 'fr': 'fx:EUR', 'es': 'fx:EUR', 'it': 'fx:EUR', 'nl': 'fx:EUR',
@@ -4012,6 +4068,9 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
             if has_page(lang, slug):
                 write(f'{pre}{slug}/index.html', country_page(lang, slug, ver))
                 extra_pages_c.append(slug)
+                for _pg in range(2, country_np(slug) + 1):
+                    write(f'{pre}{slug}/{_pg}/index.html', country_page(lang, slug, ver, _pg))
+                    extra_pages_c.append(f'{slug}/{_pg}')
         for slug in TOOLS:
             write(f'{pre}{slug}/index.html', tool(lang, slug, ver))
         for _ai, _c in cv_pairs(lang):

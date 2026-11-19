@@ -68,7 +68,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
 /* ---------- main table (home) ---------- */
 (function(){
   const tb=$('#mt'); if(!tb) return;
-  let tab=PAGE.tab||'all', q='', sortK=PAGE.sort||'o', sortDir=1, shown=PAGE.home?20:100, pg=0; const STEP=PAGE.home?50:100, PER=50;
+  let tab=PAGE.tab||'all', q='', sortK=PAGE.sort||'o', sortDir=1, shown=PAGE.home?20:100, pg=0; const STEP=PAGE.home?50:100, PER=PAGE.home?20:50;
   const TABS=['all','crypto','stock','etf','metal','cmd','lead','lag'];
   $('#tabs').innerHTML=TABS.map(t=>`<button data-t="${t}" class="${t===tab?'on':''}">${T[t]}</button>`).join('')+(PAGE.wa?`<a class="tablink" href="${PAGE.wau}">🌍 ${esc(PAGE.wa)}</a>`:'');
   $$('#tabs button').forEach(b=>b.onclick=()=>{tab=b.dataset.t; $$('#tabs button').forEach(x=>x.classList.toggle('on',x===b));
@@ -86,7 +86,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
     rows.sort((x,y)=>{ const vx=k==='name'?nm(x):x[k], vy=k==='name'?nm(y):y[k];
       if(vx==null&&vy==null) return x.o-y.o; if(vx==null) return 1; if(vy==null) return -1;
       return (typeof vx==='string'?vx.localeCompare(vy):vx-vy)*sortDir });
-    const total=rows.length, paged=!PAGE.home, np=Math.max(1,Math.ceil(total/PER)); if(pg>=np) pg=np-1; const off=paged?pg*PER:0;
+    const total=rows.length, paged=true, np=Math.max(1,Math.ceil(total/PER)); if(pg>=np) pg=np-1; const off=paged?pg*PER:0;
     rows=paged?rows.slice(off,off+PER):rows.slice(0,shown);
     const split=!!$('#mt2'), top=split?rows.slice(0,10):rows, rest=split?rows.slice(10):[];
     const head='<tr>'+COLS.map(([c,l,cl])=>{ const s=(c===sortK||(c==='n'&&sortK==='o'));

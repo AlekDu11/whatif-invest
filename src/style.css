@@ -898,3 +898,4 @@ tr.xh{display:none}.mkmore{margin-top:10px}.xgo{text-decoration:none;color:var(-
 /* stat cards stretch to fill the row (max 4 per row), no lonely card with empty space */
 .stats.sfit{grid-template-columns:repeat(auto-fit,minmax(max(200px,calc(25% - 9px)),1fr))}
 @media(max-width:980px){.stats.sfit{grid-template-columns:repeat(2,1fr)}}
+a.pgb,span.pgb{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;box-sizing:border-box}span.pgb[aria-disabled]{opacity:.35}
