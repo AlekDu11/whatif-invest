@@ -19,6 +19,11 @@ in one place, fast, no ad clutter. Owner (2026-11-17): the essence is what peopl
 6. Search and trends — every feature is also an SEO page or a reason to share.
 7. Money without hurting users — referrals, one honest Pro plan, native ads only; never become worse than competitors.
 
+## Money goal (owner, 2026-11-19)
+$5k+/month income. Path: Telegram channel ad posts (now) → exchange rev-share + labelled fixed-fee packages (no paid ranking) →
+native banner slots (one per page, never on the home first screen, no casinos/«guaranteed profit»/anonymous tokens) →
+Pro = no ads + «support the site» + extra tools. Rough math: 1M page views/month ≈ $10–30k/month from all streams.
+
 ## Roadmap (next phase starts only when the previous gate is met)
 1. Foundation (Nov–Dec 2026): domain whatifstack.com (done), Search Console (done 2026-11-15: domain property verified via Vercel DNS TXT, sitemap submitted), analytics, dark theme, PWA, local currencies, OG share images, referral links. Gate: site indexed.
 2. Retention (Jan–Feb 2027): accounts, watchlist, price alerts (Telegram built 2026-11-18, waiting for the bot token; email later), portfolio tracker + backtest. Gate: 10k visitors/month.
