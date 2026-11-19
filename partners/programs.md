@@ -5,6 +5,16 @@ Owner signs up himself (accounts, KYC and payouts are his). Claude researches, w
 Payout figures: "official" = from the program's own page; "reported" = from third-party round-ups (check on signup).
 First version: 2026-11-18.
 
+## Quick wins found 2026-11-19 (owner asked for more income sources)
+
+| # | What | Why | Terms | Action (owner) |
+|---|---|---|---|---|
+| A | **Telegram channel monetization** (@WhatIfStack) | passive, no work: Telegram shows its own ads in the channel | 50% of Telegram's ad revenue in the channel, paid in TON via Fragment; public channels with ≥1,000 subscribers (official blog) | Channel settings → Statistics → Monetization → turn on |
+| B | **Binance Affiliate** (upgrade from the normal referral) | our main crypto partner, button on every crypto page | 20% → 30/40/50% of fees by referred volume; influencers need 5,000+ active followers (official blog) — the channel qualifies | binance.com → Affiliate → apply (site + channel) |
+| C | **WhiteBIT affiliate** | founded in Ukraine, very popular with uk/ru readers; derivatives #11 in our ranking | rev-share 40% base, up to 60% for affiliates, lifetime, $25 minimum, monthly in USDT (reported) | whitebit.com → Affiliate program |
+| D | **Binance Advent Calendar (Ukraine)** | time-limited, until 2026-11-30 | 3 spins per invited user who passes KYC and makes a $50+ spot trade; invitee gets 5 spins; max 20 referrals | send the referral link → Claude writes an /activities/ guide in uk/ru |
+| E | **Telegram channel ad posts** (sell posts) | biggest short-term money | price per post by real views | list the channel on Telega.in / answer exchanges directly; posts marked as ads |
+
 ## Top 10 to apply now
 
 | # | Program | Why | Payout | Where to apply |
