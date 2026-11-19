@@ -1172,7 +1172,8 @@ def home(lang, ver):
     fv0 = (G.get('fng') or [None])[0]
     def ptile(i):
         mm = METRICS[i]
-        return (f'<a class="pt" href="{aurl(lang, i)}"><span class="ptn">{icon(A[i])}<b>{esc(nm(A[i], lang))}</b></span>'
+        tk = f'<small class="pttk">{esc(A[i]["tk"])}</small>' if A[i]['cat'] in ('etf', 'stock') else ''
+        return (f'<a class="pt" href="{aurl(lang, i)}"><span class="ptn">{icon(A[i])}<b>{esc(nm(A[i], lang))}</b>{tk}</span>'
                 f'<span class="ptp" data-p="{i}">{price(mm["price"])}</span><span class="ptc {cls(mm["chg"])}" data-c="{i}">{pct(mm["chg"])}</span>'
                 f'{spark(mm["spark"], 120, 30)}</a>')
     pulse = ''.join(ptile(i) for i in ('btc', 'eth', 'spy', 'gold') if i in A)
@@ -1256,7 +1257,7 @@ def home(lang, ver):
                 + ''.join(mini_row(lang, i, f'<span class="mc {"good" if sign > 0 else "bad"}">{pct(METRICS[i]["chg"])}</span>') for i in pool) + '</div>')
     today = (f'<section class="section today"><h2>{esc(hm["today"])}</h2><div class="tgrid">'
              f'{mv("crypto", 1)}{mv("crypto", -1)}{mv("stock", 1)}{mv("stock", -1)}{w_news}</div></section>')
-    body = (hero + my_block(lang) + brief_block(lang) + today + offer_card(lang, 'home') + nl_block(lang, 'home') + f'<section class="section toprank"><div class="tabs" id="tabs"></div>{filt}{top10}</section>'
+    body = (hero + my_block(lang) + today + offer_card(lang, 'home') + nl_block(lang, 'home') + f'<section class="section toprank"><div class="tabs" id="tabs"></div>{filt}{top10}</section>'
             f'<div class="wgrid3">{w_tr if nws else w_fng}<div class="wstack">{w_mcap}{w_dom}</div>{w_bat}</div>{banner}{habits_strip(lang)}{poll_block(lang)}{poly_block(lang)}'
             f'<section class="section"><div class="hl">{"".join(cards)}</div></section>'
             f'{rest}'
@@ -3989,6 +3990,8 @@ def main():
             e['u'] = 1   # copper/aluminum are quoted per lb / tonne, not per oz
         if a.get('binance') or (a['cat'] == 'crypto' and a.get('src') == 'yahoo'):
             e['bn'] = 1
+        if a['cat'] in ('stock', 'etf', 'metal', 'cmd') and a.get('yahoo') and not any(ch in a['yahoo'] for ch in '.:'):
+            e['y'] = a['yahoo']   # USD-listed: live quote via /api/quote
         idx.append({k: (round(v, 4) if isinstance(v, float) and k in ('ch', 'r1', 'r3', 'r5') else v) for k, v in e.items() if v is not None})
         write(f'assets/p/{aid}.json', json.dumps({'start': a['start'], 'end': a['end'], 'p': a['p'], 'n': nm(a, 'en'), 't': a['tk']}, separators=(',', ':')))
     json.dump(ORDERED[:160], open(os.path.join(ROOT, 'data/sprite_ids.json'), 'w'))   # next data run packs these logos into one sprite
