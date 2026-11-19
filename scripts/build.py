@@ -1935,6 +1935,14 @@ def _xc_shell(lang, ver, kind, h1, lead, th, rows, pg=1, np_=1, total=0):
     return path, shell(lang, path, f'{h1}{" — " + str(pg) if pg > 1 else ""} | {BRAND}', lead, body, {}, ver)
 
 
+def stable_icon(tk):
+    """Small logo for stablecoins (and wrapped ETH) that have no page of their own."""
+    k = (tk or '').upper()
+    lg = (SB.get(k) or {}).get('logo') or ((A.get('eth') or {}).get('logo') if k == 'WETH' else None)
+    return (f'<span class="ic"><img src="{esc(lg)}" alt="" loading="lazy" width="26" height="26" referrerpolicy="no-referrer" onerror="this.parentNode.textContent=\'{esc(k[:1])}\'"></span>'
+            if lg else '')
+
+
 def xc_detail_page(lang, xid, ver):
     t, btc = XC[lang], METRICS['btc']['price'] if 'btc' in METRICS else 0
     sp = XCH['spot']
@@ -1957,29 +1965,32 @@ def xc_detail_page(lang, xid, ver):
              f'<div class="ks"><span>{esc(t["share"])}</span><b>{pctu((e.get("vol_btc") or 0) / tot)}</b></div>'
              f'<div class="ks"><span>{esc(t["trust"])}</span><b>{e.get("trust") or "—"}/10</b><small>#{e.get("rank") or "—"}</small></div>'
              + (f'<div class="ks"><span>{esc(t["country"])}</span><b>{esc(e["country"])}</b>{yr}</div>' if e.get('country') else '')
+             + (f'<div class="ks"><span>{esc(t["f_coins"])} / {esc(t["f_pairs"])}</span><b>{_num((d.get("prof") or {}).get("coins"), 0)} / {_num((d.get("prof") or {}).get("pairs"), 0)}</b></div>'
+                if (d.get('prof') or {}).get('coins') else '')
              + fee)
     pr = ''
     qs = set()
     pairs = d.get('pairs', [])
+    pv = sum(p.get('usd') or 0 for p in pairs[:100]) or 1
     for k, p in enumerate(pairs[:100]):
         aid = cg2aid.get(p.get('cg'))
         lab = f'{esc(p.get("b", ""))}/{esc(p.get("q", ""))}'
-        lab = f'<a href="{aurl(lang, aid)}">{icon(A[aid])}{lab}</a>' if aid else lab
+        lab = f'<a href="{aurl(lang, aid)}">{icon(A[aid])}{lab}</a>' if aid else stable_icon(p.get('b')) + lab
         g = _qg(p.get('q'))
         qs.add(g)
         pr += (f'<tr data-q="{g}"{" class=xh" if k >= 30 else ""}><td class="l">{lab}</td><td class="num">{_num(p["last"], 6 if (p.get("last") or 0) < 1 else 2) if p.get("last") is not None else "—"}</td>'
-               f'<td class="num"><b>{usd_h(p.get("usd"))}</b></td><td class="num hide-sm">{pctu((p.get("spread") or 0) / 100) if p.get("spread") is not None else "—"}</td></tr>')
+               f'<td class="num"><b>{usd_h(p.get("usd"))}</b></td><td class="num hide-sm">{pctu((p.get("usd") or 0) / pv)}</td><td class="num hide-sm">{pctu((p.get("spread") or 0) / 100) if p.get("spread") is not None else "—"}</td></tr>')
     cta = (f'<a class="btn" href="/go/{go}?from=xc-{xid}&l={lang}" target="_blank" rel="sponsored noopener">{esc(t["go"].format(x=name))}</a> <small class="muted">{esc(t["aff"])}</small>' if go
            else (f'<a class="btn ghost" href="{esc(e["url"])}" target="_blank" rel="nofollow noopener">{esc(t["site"])} ↗</a>' if e.get('url') else ''))
     h1 = t['x_h1'].format(x=name)
     body = (f'<nav class="crumbs"><a href="{url(lang, "crypto-exchanges")}">{esc(t["nav"])}</a> / {esc(name)}</nav>'
             f'<div class="ahead">{_xlogo(e)}<div><h1>{esc(h1)}</h1></div></div><p class="lead">{esc(lead)}</p><p>{cta}</p>'
-            f'<section class="section"><div class="ktiles">{tiles}</div></section>'
-            + (f'<section class="section card"><h2>{esc(t["chart"])}</h2>{_xvsvg([(ts, v * btc) for ts, v in d["chart"]])}</section>' if d.get('chart') else '')
+            f'<section class="section"><div class="ktiles">{tiles}</div></section>' + xc_facts_block(lang, xid, e)
             + (f'<section class="section mkt"><h2>{esc(t["pairs_h"].format(x=name))}</h2>{_qtabs(t, qs)}<div class="tw"><table class="mt"><thead><tr><th class="l">{esc(t["pair"])}</th>'
-               f'<th>{esc(t["price"])}</th><th>{esc(t["vol"])}</th><th class="hide-sm">{esc(t["spread"])}</th></tr></thead><tbody>{pr}</tbody></table></div>'
+               f'<th>{esc(t["price"])}</th><th>{esc(t["vol"])}</th><th class="hide-sm">%</th><th class="hide-sm">{esc(t["spread"])}</th></tr></thead><tbody>{pr}</tbody></table></div>'
                + (f'<button type="button" class="btn ghost mkmore">{esc(t["more"])}</button>' if len(pairs) > 30 else '') + '</section>' if pr else '')
-            + xc_reserves_block(lang, xid, name) + xc_facts_block(lang, xid, e)
+            + (f'<section class="section card"><h2>{esc(t["chart"])}</h2>{_xvsvg([(ts, v * btc) for ts, v in d["chart"]])}</section>' if d.get('chart') else '')
+            + xc_reserves_block(lang, xid, name)
             + f'<p class="note">{esc(t["src"].format(d=XCH.get("updated", "")))}</p>')
     path = 'crypto-exchanges/' + xid
     ld = {"@context": "https://schema.org", "@type": "Organization", "name": name, "url": e.get('url') or '', "foundingDate": str(e.get('year') or '')}
@@ -2007,7 +2018,7 @@ def xc_reserves_block(lang, xid, name):
     toks = ''
     for k, (tk, v, sh) in enumerate(r.get('tokens') or []):
         aid = sym2aid.get(tk.upper()) if A.get(sym2aid.get(tk.upper()) or '', {}).get('cat') == 'crypto' else None
-        lab = f'<a href="{aurl(lang, aid)}">{icon(A[aid])}{esc(tk)}</a>' if aid else esc(tk)
+        lab = f'<a href="{aurl(lang, aid)}">{icon(A[aid])}{esc(tk)}</a>' if aid else stable_icon(tk) + esc(tk)
         toks += f'<tr><td class="l n">{k + 1}</td><td class="l">{lab}</td><td class="num"><b>{usd_h(v)}</b></td><td class="num">{pctu(sh)}</td></tr>'
     hist = f'<div class="card"><h3>{esc(t["rs_hist"])}</h3>{_xvsvg([(ts, v) for ts, v in r["hist"]])}</div>' if len(r.get('hist') or []) > 4 else ''
     return (f'<section class="section rsv"><h2>🛡️ {esc(t["rs_h"].format(x=name))}</h2><div class="ktiles">{tiles}</div>'
