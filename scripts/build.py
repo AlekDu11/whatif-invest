@@ -51,8 +51,7 @@ from i18n_bpd import BPD, IDEA as BP_IDEA  # noqa: E402
 from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB, CH as OWN_CH, CH2 as OWN_CH2  # noqa: E402
 SOCIAL = [('Telegram', 'https://t.me/WhatIfStack'), ('X (Twitter)', 'https://x.com/WhatIfStack'), ('Bluesky', 'https://bsky.app/profile/whatifstack.bsky.social'), ('Instagram', 'https://www.instagram.com/whatifstack/'), ('Threads', 'https://www.threads.com/@whatifstack'),
           ('Pinterest', 'https://www.pinterest.com/whatifstack/'), ('Medium', 'https://medium.com/@whatifstack'),
-          ('Flipboard', 'https://flipboard.com/@whatifstack'), ('Facebook', 'https://www.facebook.com/arti.trader.39'), ('Teletype', 'https://teletype.in/@whatifstack'),
-          ('GitHub', 'https://github.com/AlekDu11/whatif-invest')]
+          ('Flipboard', 'https://flipboard.com/@whatifstack'), ('Facebook', 'https://www.facebook.com/arti.trader.39'), ('Teletype', 'https://teletype.in/@whatifstack')]   # no GitHub link on the site (owner, 2026-11-19)
 CONTACT_EMAIL = 'support@whatifstack.com'   # public contact address shown under 'Follow us' (set when the owner confirms which mailbox)   # [(label, url)], e.g. ('Telegram', 'https://t.me/WhatIfStack'); the 'Follow us' column appears when filled
 from i18n_h import H as HB, PRICES as HPRICE, SCEN as HSCEN, UNITS as HUNITS, CONV as HCONV  # noqa: E402
 
@@ -79,6 +78,14 @@ _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
 # delisted or stale series (last price older than a month) are dropped: "today" numbers would be false
 A = {(f"{aid}-{a['cat']}" if aid in RESERVED else aid): a for aid, a in market['assets'].items()
      if a.get('p') and (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(a['end']) >= _END_I0 - 1}
+# Yahoo quotes grains, softs and livestock futures in US cents (595 = $5.95 a bushel): show them in dollars
+CENT_FUT = {'ZW=F', 'ZC=F', 'ZS=F', 'ZL=F', 'ZO=F', 'SB=F', 'KC=F', 'CT=F', 'OJ=F', 'LE=F', 'HE=F', 'KE=F', 'GF=F'}
+for _a in A.values():
+    if _a.get('yahoo') in CENT_FUT:
+        _a['p'] = [float(f'{x / 100:.6g}') for x in _a['p']]
+        for _f in ('price', 'lp', 'ath', 'atl'):
+            if isinstance(_a.get(_f), (int, float)):
+                _a[_f] = float(f'{_a[_f] / 100:.6g}')
 # index funds are shown as what they are: an ETF that tracks the index (its price is the fund's, not the index level)
 for _k, _n in (('spy', 'S&P 500 ETF'), ('qqq', 'Nasdaq-100 ETF'), ('dia', 'Dow Jones ETF'), ('iwm', 'Russell 2000 ETF')):
     if _k in A:
@@ -117,6 +124,8 @@ TV_NOCHART = ('LSE:', 'BIST:', 'TSE:', 'KRX:', 'HKEX:', 'TWSE:', 'SET:', 'HOSE:'
 
 def tv_symbol(a):
     if a['cat'] == 'crypto':
+        if a.get('src') in ('kraken', 'yahoo-cc'):   # delisted from Binance (Monero...): Kraken's USD pair
+            return f"KRAKEN:{a['tk']}USD"
         ex = {'gate': 'GATEIO', 'mexc': 'MEXC', 'okx': 'OKX'}.get(a.get('src'), 'BINANCE')
         return f"{ex}:{a['tk']}USDT"
     if a['cat'] == 'metal' and a['tk'] in ('XAU', 'XAG'):
@@ -2393,8 +2402,7 @@ PARTNER_TXT = {
 
 
 # Directories and catalogues that list WhatIfStack (add a row when a listing goes live)
-LISTED = [('GitHub — open source code', 'https://github.com/AlekDu11/whatif-invest'),
-          ('PolyMart — crypto tools directory', 'https://polymart.app/crypto'),
+LISTED = [('PolyMart — crypto tools directory', 'https://polymart.app/crypto'),
           ('Indie Hackers', 'https://www.indiehackers.com/product/whatifstack')]
 LISTED_H = {'en': 'Find WhatIfStack on', 'uk': 'WhatIfStack на інших сайтах'}
 

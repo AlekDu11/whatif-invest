@@ -30,7 +30,7 @@ async function prices(items) {   // items: [{s:'c'|'y', k: cgid|yahoo}] -> {k: u
     try {
       const j = await (await fetch(`https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(s)}?range=1d&interval=5m`, { headers: { 'User-Agent': 'Mozilla/5.0 (WhatIfStack alerts)' } })).json();
       const m = ((j.chart || {}).result || [])[0].meta;
-      if (m && m.regularMarketPrice) out[s] = m.regularMarketPrice;
+      if (m && m.regularMarketPrice) out[s] = m.regularMarketPrice / (m.currency === 'USX' ? 100 : 1);   // US cents -> dollars
     } catch (e) {}
   }));
   return out;

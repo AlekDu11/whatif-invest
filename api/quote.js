@@ -15,7 +15,9 @@ async function one(s) {
       const ts = r.timestamp || [], cl = ((((r.indicators || {}).quote || [])[0] || {}).close) || [];
       for (let i = ts.length - 1; i >= 0; i--) { if (cl[i] != null) { if (ts[i] > (t || 0) + 60) { p = cl[i]; t = ts[i]; x = 1 } break } }
       if (p == null) continue;
-      return { p: +p.toPrecision(8), c: pc ? +(p / pc - 1).toFixed(5) : null, t, x, cur: m.currency || 'USD' };
+      const ch = pc ? +(p / pc - 1).toFixed(5) : null;
+      if (m.currency === 'USX') p /= 100;   // grains, sugar, coffee, cattle are quoted in US cents -> dollars, as on our pages
+      return { p: +p.toPrecision(8), c: ch, t, x, cur: m.currency === 'USX' ? 'USD' : (m.currency || 'USD') };
     } catch (e) { /* next host */ }
   }
   return null;

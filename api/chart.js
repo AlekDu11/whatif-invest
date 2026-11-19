@@ -19,12 +19,14 @@ module.exports = async (req, res) => {
       const c = ((j.chart || {}).result || [])[0];
       if (!c || !c.timestamp) continue;
       const k = (c.indicators.quote || [])[0] || {};
-      const cur = (c.meta || {}).currency || 'USD';
+      let cur = (c.meta || {}).currency || 'USD';
+      const f = cur === 'USX' ? 0.01 : 1;   // US cents (grains, softs, livestock) -> dollars
+      if (f !== 1) cur = 'USD';
       const out = [];
       for (let i = 0; i < c.timestamp.length; i++) {
         const o = k.open[i], hi = k.high[i], lo = k.low[i], cl = k.close[i];
         if (cl == null || o == null || hi == null || lo == null) continue;
-        out.push([c.timestamp[i], +o.toPrecision(7), +hi.toPrecision(7), +lo.toPrecision(7), +cl.toPrecision(7)]);
+        out.push([c.timestamp[i], +(o * f).toPrecision(7), +(hi * f).toPrecision(7), +(lo * f).toPrecision(7), +(cl * f).toPrecision(7)]);
       }
       if (out.length < 2) continue;
       return send(200, { cur, iv, d: out }, 'public, s-maxage=3600, stale-while-revalidate=86400');

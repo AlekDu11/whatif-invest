@@ -139,6 +139,19 @@ def other_monthly(base):
     d = get_json(f"https://www.okx.com/api/v5/market/history-candles?instId={base}-USDT&bar=1Mutc&limit=100", tries=1, timeout=10)
     if isinstance(d, dict) and d.get('data'):
         return to_series((datetime.fromtimestamp(int(r[0]) / 1000, timezone.utc).strftime('%Y-%m'), r[4]) for r in d['data']), 'okx'
+    # coins delisted from Binance/Gate/MEXC/OKX (Monero, Helium...): Kraken 15-day candles, then Yahoo <TK>-USD
+    d = get_json(f"https://api.kraken.com/0/public/OHLC?pair={base}USD&interval=21600", tries=1, timeout=15)
+    res = (d or {}).get('result') if isinstance(d, dict) else None
+    if res and not (d.get('error') or []):
+        rows = next((v for k, v in res.items() if k != 'last' and isinstance(v, list)), [])
+        if len(rows) >= 6:
+            return to_series((datetime.fromtimestamp(int(r[0]), timezone.utc).strftime('%Y-%m'), r[4]) for r in rows), 'kraken'
+    try:
+        ys = yahoo_monthly([f'{base}-USD']).get(f'{base}-USD')
+        if ys and len(ys['p']) >= 6:
+            return ys, 'yahoo-cc'
+    except Exception as e:
+        log(f"  yahoo {base}-USD: {e}")
     return None, None
 
 
@@ -780,7 +793,7 @@ def main():
             s, src = binance_monthly(r['symbol']), 'binance'
         elif quick:
             continue
-        elif prev.get('tk') == base and prev.get('src') in ('gate', 'mexc', 'okx') and extend_old(prev, m.get('price'), now):
+        elif prev.get('tk') == base and prev.get('src') in ('gate', 'mexc', 'okx', 'kraken', 'yahoo-cc') and extend_old(prev, m.get('price'), now):
             s, src = extend_old(prev, m.get('price'), now), prev['src']    # history already stored
         else:
             s, src = other_monthly(base)
