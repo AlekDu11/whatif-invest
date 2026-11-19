@@ -66,6 +66,7 @@ Weekly e-mail report signup: nl_block() on home + under every article/news (stri
 Daily health check task 07:43 Kyiv → reports/health.md, messages the owner only when something broke.
 Famous investors: data/investors.json via .github/workflows/investors.yml (scripts/fetch_13f.py: SEC 13F-HR for 16 funds — Buffett, Ackman, Burry, Dalio, Wood…; CUSIP → ticker via OpenFIGI, cache data/cusip_map.json; weekly Tue) → /investors/ + /investors/<id>/ (20 languages, strings scripts/i18n_inv.py), in the Tools menu.
 Home (2026-11-19): «Market in 60 seconds» is a collapsed <details id=brief> widget with a Telegram-channel CTA (BR.tg); when «Your markets» shows, JS moves it under the portfolio balance. Order on home: hero (with the $10/day calculator) first, then «Your markets», then «Today in the markets» (owner, 2026-11-19). Same report posts daily 08:41 Kyiv in the Telegram channel. «Your markets» personal block my_block() (client-side from wi_watch/wi_hold, news from dist/assets/nf/<lang>.json; hidden for visitors without data) + «Market in 60 seconds» brief_block() under the hero (own data only); strings scripts/i18n_my.py (MY, BR).
+Dropped assets (stale/delisted/renamed, e.g. ton → gram «prev. Toncoin»): build.py writes redirect stubs (meta refresh + canonical, noindex) to the renamed asset (RENAMED) or the category list, so known URLs never 404.
 Calculators hub /calculators/ (scripts/i18n_ch.py); Tools menu keeps only the main tools. Asset lists paginate 50 per page.
 News aggregator: api/news.js (Vercel function, RSS headlines only, links to originals).
 

@@ -3965,6 +3965,26 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
 }});""")
     ver = dict(css=h8(css), js=h8(js), ref=h8(ref), index=h8(index_js))
     json.dump({i: alert_src(i) for i in A if alert_src(i)}, open(os.path.join(DIST, 'assets/alerts-map.json'), 'w'), separators=(',', ':'))
+    # Pages of assets that dropped out (stale / delisted / renamed) must not turn into 404s that Google already knows:
+    # write a redirect stub (instant meta refresh + canonical) to the renamed asset or to the category list.
+    RENAMED = {'ton': 'gram'}
+    _cat2hub = {v: k for k, v in HUBS.items()}
+    _stub = 0
+    for _aid, _a in market['assets'].items():
+        if _aid in A or _aid in RESERVED:
+            continue
+        for _l in ORDER:
+            _d = os.path.join(DIST, *([_l] if _l != DEFAULT else []), _aid)
+            if os.path.exists(os.path.join(_d, 'index.html')):
+                continue
+            _t = RENAMED.get(_aid)
+            _to = url(_l, _t) if _t in A else url(_l, _cat2hub.get(_a.get('cat'), 'crypto'))
+            os.makedirs(_d, exist_ok=True)
+            open(os.path.join(_d, 'index.html'), 'w').write(
+                f'<!doctype html><meta charset="utf-8"><title>{esc(_a.get("tk", _aid))}</title><meta name="robots" content="noindex,follow">'
+                f'<link rel="canonical" href="{SITE}{_to}"><meta http-equiv="refresh" content="0;url={_to}"><a href="{_to}">{esc(_to)}</a>')
+            _stub += 1
+    print('redirect stubs for dropped assets:', _stub)
     os.makedirs(os.path.join(DIST, 'assets/nf'), exist_ok=True)
     for _l in ORDER:   # recent own news per language, for «News about your assets» on the personal home
         json.dump([dict(u=url(_l, 'news/' + k), t=m.get('title', ''), d=m.get('date', '')[:16], a=[x.strip() for x in (m['assets'] if isinstance(m['assets'], list) else str(m['assets']).split(','))]) for k, m in news_items(_l)[:120] if m.get('assets')],
