@@ -1,0 +1,25 @@
+---
+title: Hackean el vault sBOLD de K3 Capital en Ethereum: 3,4 millones de dólares en 8 minutos
+description: Un atacante vació unos 3,4 M$ del vault sBOLD de K3 Capital en Ethereum el 19 de noviembre con un fallo de precios; los bots se llevaron buena parte.
+date: 2026-11-19 18:30
+tags: hacks, defi, ethereum
+assets: eth, btc
+---
+Otro vault DeFi vaciado este jueves 19 de noviembre. El vault de ahorro sBOLD de K3 Capital en Ethereum, un producto de rendimiento construido sobre la stablecoin BOLD de Liquity, perdió unos 3,4 millones de dólares en un ataque que duró unos ocho minutos y 97 transacciones.
+
+## Qué pasó
+
+- **Un fallo de precios.** El atacante depositó BOLD una y otra vez y coló WETH extra en el vault, inflando el valor de cada participación sBOLD; después retiró el dinero de otros depositantes a ese precio inflado.
+- **Los bots se llevaron su parte.** Bots MEV copiaron las transacciones del atacante y capturaron cerca de 1,9 millones de dólares, la mayoría pagados como comisiones a los constructores de bloques. El atacante se habría quedado con unos 520.000 $.
+- **Un riesgo conocido.** Según el informe, la auditora ChainSecurity ya había señalado un riesgo similar en una revisión de mayo de 2025.
+- **Sin recuperación por ahora.** El equipo dice que está rastreando los fondos, evaluando las pérdidas de los depositantes y corrigiendo el código.
+
+## Qué significa para el inversor de a pie
+
+Los pequeños vaults de rendimiento añaden una capa de riesgo de contratos inteligentes sobre el de la propia criptomoneda, y 2026 ya va siendo un año cargado de hackeos. Ether cotiza a {{price:eth}}, más de un 60% por debajo de su máximo histórico de 4.946 $ de agosto de 2025; consulta la distancia de cada moneda a su máximo en nuestra [página de caída desde el ATH]({lang}/ath/). Quien simplemente hubiera comprado 10 $ de ether al día durante 5 años tendría hoy {{dca:eth:5}} ({{dcaroi:eth:5}}).
+
+## Fuentes
+
+- [KuCoin News — Hackean el vault sBOLD de K3 Capital en Ethereum por 3,4 M$ en 8 minutos](https://kucoin.com/news/flash/k3-capital-ethereum-sbold-vault-hacked-for-3-4m-in-8-minutes)
+
+*No es asesoramiento de inversión.*
