@@ -70,3 +70,8 @@ _L = {
     'fil': ('Ang presyo ng {name} ngayon ay {price}, {chg} sa 24 oras', ' at {c7} sa 7 araw', '. Market cap: {mcap} (#{rank} sa mga cryptocurrency)', ', 24h volume: {vol}'),
 }
 LEAD = {lg: dict(zip(('p', 'w', 'm', 'v'), v)) for lg, v in _L.items()}
+
+# short label of the Fear & Greed index for the top strip
+FG = {'en': 'Fear & Greed', 'uk': 'Страх і жадібність', 'ru': 'Страх и жадность', 'es': 'Miedo y codicia', 'de': 'Angst & Gier', 'pt': 'Medo e ganância',
+      'pl': 'Strach i chciwość', 'tr': 'Korku ve açgözlülük', 'fr': 'Peur et avidité', 'it': 'Paura e avidità', 'nl': 'Angst & hebzucht', 'id': 'Takut & serakah',
+      'vi': 'Sợ hãi & tham lam', 'th': 'กลัวและโลภ', 'hi': 'डर और लालच', 'ja': '恐怖と強欲', 'ko': '공포·탐욕', 'zh': '恐惧与贪婪', 'ar': 'الخوف والطمع', 'fil': 'Takot at kasakiman'}

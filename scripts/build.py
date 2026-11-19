@@ -46,7 +46,7 @@ from i18n_tgj import TGJ  # noqa: E402
 from i18n_my import MY, BR  # noqa: E402
 from i18n_ch import CH  # noqa: E402
 from i18n_inv import INV  # noqa: E402
-from i18n_mkt import MKT, LEAD as MLEAD  # noqa: E402
+from i18n_mkt import MKT, LEAD as MLEAD, FG as MFG  # noqa: E402
 from i18n_ua import UA_LANGS, UA_ASOF, OB, OBI, OBT, UA_SRC, BUYG, BUYG_SRC, OVP, OB_GO, INZ  # noqa: E402
 from i18n_bpd import BPD, IDEA as BP_IDEA  # noqa: E402
 from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB, CH as OWN_CH, CH2 as OWN_CH2  # noqa: E402
@@ -438,11 +438,24 @@ SEARCH_ICON = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" strok
 def strip(lang):
     S = TR[lang]
     items = []
-    for aid, label in (('btc', 'BTC'), ('eth', 'ETH'), ('spy', 'S&P 500 (SPY)'), ('qqq', 'Nasdaq-100 (QQQ)'), ('gold', S['gold']), ('silver', S['silver'])):
+    for aid, label in (('btc', 'BTC'), ('eth', 'ETH'), ('spy', 'S&P 500 (SPY)'), ('gold', S['gold'])):   # QQQ/silver dropped for the market totals
         if aid in A:
             m = METRICS[aid]
             items.append(f'<a href="{aurl(lang, aid)}">{esc(label)} <b data-p="{aid}">{price(m["price"])}</b> <span class="{cls(m["chg"])}" data-c="{aid}">{pct(m["chg"])}</span></a>')
-    return (f'<div class="strip"><div class="in">{"".join(items)}'
+    # CoinMarketCap-style market totals first: crypto market cap, 24h volume, BTC dominance, Fear & Greed
+    w, mc = S['w'], G.get('mcap')
+    tot = ''
+    if mc:
+        ch = (G.get('mcap_chg') or 0) / 100
+        tot += f'<span>{esc(w["mcap"])} <b>{big_usd(mc)}</b> <span class="{cls(ch)}">{pct(ch)}</span></span>'
+    if G.get('vol'):
+        tot += f'<span>{esc(w["vol"])} <b>{big_usd(G["vol"])}</b></span>'
+    if G.get('btc_dom'):
+        tot += f'<span>{esc(w["dom"])} <b>{G["btc_dom"]:.1f}%</b></span>'
+    fv = (G.get('fng') or [None])[0]
+    if fv is not None:
+        tot += f'<span>{esc(MFG[lang])} <b>{fv}/100</b></span>'
+    return (f'<div class="strip"><div class="in">{tot}{"".join(items)}'
             f'<span>{S["updated"]} <b>{UPDATED}</b></span></div></div>')
 
 
