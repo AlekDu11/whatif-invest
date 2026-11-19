@@ -434,18 +434,47 @@ def get_bytes(url):
         return None
 
 
+def logo_quality(im):
+    """'ok' | 'white' (only white/near-white strokes: invisible on light UIs) | 'empty' (almost nothing visible)."""
+    px = list(im.convert('RGBA').resize((32, 32)).getdata())
+    vis = [p for p in px if p[3] > 100]
+    if len(vis) < 20:
+        return 'empty'
+    if all(p[0] > 225 and p[1] > 225 and p[2] > 225 for p in vis):
+        return 'white'
+    return 'ok'
+
+
 def fetch_logos(assets):
     try:
-        from PIL import Image
+        from PIL import Image, ImageDraw
         import io
     except ImportError:
         log('logos: pillow not installed, skipped')
         return
     os.makedirs(LOGOS, exist_ok=True)
     have = {f[:-5] for f in os.listdir(LOGOS) if f.endswith('.webp')}
-    n = 0
+    # one-time repair: logos that are empty or white-only get re-fetched from other sources (list kept in data/logos/_checked.json)
+    ck_path = os.path.join(LOGOS, '_checked.json')
+    try:
+        checked = set(json.load(open(ck_path)))
+    except Exception:
+        checked = set()
+    redo = set()
+    for aid in have - checked:
+        try:
+            if logo_quality(Image.open(os.path.join(LOGOS, aid + '.webp'))) != 'ok':
+                redo.add(aid)
+        except Exception:
+            redo.add(aid)
+    sinfo = {}
+    try:
+        sinfo = json.load(open(os.path.join(ROOT, 'data/stockinfo.json'), encoding='utf-8'))
+    except Exception:
+        pass
+    n = fixed = 0
     for aid, a in assets.items():
-        if aid in have:
+        if aid in have and aid not in redo:
             continue
         tk = a.get('tk', '')
         urls = []
@@ -455,22 +484,49 @@ def fetch_logos(assets):
             urls.append(f'https://bin.bnbstatic.com/static/assets/logos/{tk}.png')
         elif a.get('cat') in ('stock', 'etf'):
             urls.append(f'https://financialmodelingprep.com/image-stock/{(a.get("yahoo") if a.get("mkt") else tk.replace("-", "."))}.png')
+            web = (sinfo.get(a.get('yahoo') or '', {}) or {}).get('web') or ''
+            dom = web.split('//')[-1].split('/')[0].replace('www.', '') if web else ''
+            if dom:   # the company's own site icon (works for most companies, incl. Vietnam/Thailand/Saudi listings)
+                urls.append(f'https://www.google.com/s2/favicons?domain={dom}&sz=128')
+                urls.append(f'https://icons.duckduckgo.com/ip3/{dom}.ico')
+        best = None
         for u in urls:
             b = get_bytes(u)
             if not b or len(b) < 200:
                 continue
             try:
                 im = Image.open(io.BytesIO(b)).convert('RGBA')
-                im.thumbnail((64, 64))
-                bg = Image.new('RGBA', (64, 64), (255, 255, 255, 0))
-                bg.paste(im, ((64 - im.width) // 2, (64 - im.height) // 2), im)
-                bg.save(os.path.join(LOGOS, aid + '.webp'), 'WEBP', quality=85)
-                n += 1
-                break
+                if im.width < 32 and 'favicons' not in u and '.ico' not in u:
+                    continue
+                q = logo_quality(im)
+                if q == 'empty':
+                    continue
+                best = (im, q)
+                if q == 'ok':
+                    break
             except Exception:
                 continue
+        if best:
+            im, q = best
+            im.thumbnail((64, 64))
+            bg = Image.new('RGBA', (64, 64), (255, 255, 255, 0))
+            if q == 'white':   # white logo: bake in a dark round backing so it is visible everywhere
+                ImageDraw.Draw(bg).ellipse((0, 0, 63, 63), fill=(31, 41, 55, 255))
+                im.thumbnail((44, 44))
+            bg.paste(im, ((64 - im.width) // 2, (64 - im.height) // 2), im)
+            bg.save(os.path.join(LOGOS, aid + '.webp'), 'WEBP', quality=85)
+            n += 1
+            fixed += aid in redo
+        elif aid in redo:
+            try:
+                os.remove(os.path.join(LOGOS, aid + '.webp'))   # a blank logo is worse than our initials badge
+            except Exception:
+                pass
+        checked.add(aid)
         time.sleep(0.05)
-    log(f'logos: {n} new, {len(have) + n} total')
+    checked |= have - redo
+    json.dump(sorted(checked), open(ck_path, 'w'))
+    log(f'logos: {n} new/replaced ({fixed} repaired), {len(redo)} were bad')
 
 
 def make_sprite(size=52, cols=16):
