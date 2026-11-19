@@ -22,7 +22,7 @@ comparisons that get thousands of views on crypto X. Keep the matchup a real que
 - ✅ 2026-11-17 btc gold spy --since 2016-01 | Bitcoin vs gold vs S&P 500
 - ✅ 2026-11-17 okb bnb cro | exchange tokens since launch
 - ✅ 2026-11-18 btc eth sol | the big three L1s
-- nvda amd intc | chip makers
+- ✅ 2026-11-19 nvda amd intc | chip makers
 - aapl msft googl | big tech classics
 - spy qqq vt | ETF trio
 - gold silver platinum | precious metals
@@ -48,6 +48,7 @@ comparisons that get thousands of views on crypto X. Keep the matchup a real que
 ## Log
 | date | ids | X URL | Telegram | views |
 |---|---|---|---|---|
-| 2026-11-17 | btc gold spy (since 2016-01) | https://x.com/WhatIfStack/status/2122690567314292871 | msg 1474 | X 10 · TG 39 (2026-11-18) |
-| 2026-11-17 | okb bnb cro (since 2020-02) | https://x.com/WhatIfStack/status/2122729649189044275 | msg 1475 | X 11 · TG 83 (2026-11-18) |
-| 2026-11-18 | btc eth sol (since 2020-04) | https://x.com/WhatIfStack/status/2123077127801298975 | msg 1479 | |
+| 2026-11-17 | btc gold spy (since 2016-01) | https://x.com/WhatIfStack/status/2122690567314292871 | msg 1474 | X 13 · TG 59 (2026-11-19) |
+| 2026-11-17 | okb bnb cro (since 2020-02) | https://x.com/WhatIfStack/status/2122729649189044275 | msg 1475 | X 14 · TG 103 (2026-11-19) |
+| 2026-11-18 | btc eth sol (since 2020-04) | https://x.com/WhatIfStack/status/2123077127801298975 | msg 1479 | X 9 · TG 1.2K (2026-11-19) |
+| 2026-11-19 | nvda amd intc (since 2000-01) | https://x.com/WhatIfStack/status/2123439207024910576 | msg 1483 | |
