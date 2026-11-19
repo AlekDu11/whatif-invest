@@ -291,6 +291,8 @@ def _spark7(pts, n=24):
 def coingecko_meta():
     meta = {}
     for page in range(1, 9):   # top 2000 by market cap
+        if page > 1:
+            time.sleep(4)   # stay under CoinGecko's free rate limit
         d = get_json(f"https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page={page}&price_change_percentage=1h,24h,7d,30d,1y&sparkline=true", tries=2)
         if not isinstance(d, list):
             break
