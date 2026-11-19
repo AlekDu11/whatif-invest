@@ -305,7 +305,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
     const n=$('#mynews'); n.querySelector('.nlist').innerHTML=f.map(x=>`<a class="nrow" href="${x.u}"><b>${esc(x.t)}</b><span class="muted"><time data-t="${esc(x.d)}">${esc(x.d)}</time> · ${esc(x.a.map(i=>BYID[i]?BYID[i].t:i).slice(0,3).join(', '))}</span></a>`).join(''); n.hidden=false }).catch(()=>{});
 })();
 
-/* ---------- live quotes for US stocks, ETFs, gold and other futures (/api/quote, Yahoo, 60 s CDN cache) ---------- */
+/* ---------- live quotes for US stocks, ETFs, gold and other futures (/api/quote, Yahoo incl. pre-/after-market, 30 s CDN cache) ---------- */
 (function(){
   const ids=()=>[...new Set($$('[data-p],[data-c]').map(el=>el.dataset.p||el.dataset.c))].filter(i=>BYID[i]&&BYID[i].y).slice(0,25);
   let busy=false;
@@ -316,7 +316,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
         if(q.c!=null) $$(`[data-c="${i}"]`).forEach(el=>{ el.textContent=fmtPct(q.c); el.classList.remove('good','bad'); el.classList.add(cls(q.c)) });
         document.dispatchEvent(new CustomEvent('wi:tick',{detail:a})) });
     }catch(e){} finally{ busy=false } }
-  setTimeout(run,600); setInterval(run,60000); document.addEventListener('visibilitychange',()=>{ if(!document.hidden) run() });
+  setTimeout(run,600); setInterval(run,30000); document.addEventListener('visibilitychange',()=>{ if(!document.hidden) run() });
 })();
 
 /* ---------- live crypto prices (Binance WebSocket, only symbols shown on the page) ---------- */

@@ -1,16 +1,21 @@
 // Live quotes for stocks, ETFs and futures (crypto is live via the Binance stream): GET /api/quote?s=SPY,QQQ,GC=F
-// Yahoo chart endpoint (1-day range): last price + previous close. Up to 25 symbols, CDN-cached for 60 s.
+// Yahoo chart endpoint (1-day range, 1-minute bars incl. pre-/post-market): latest trade + previous close.
+// Outside regular US hours the price is the pre-/after-market trade (x: 1). Up to 25 symbols, CDN-cached for 30 s.
 const G = require('./_guard');
 async function one(s) {
   for (const h of ['query1', 'query2']) {
     try {
-      const y = await fetch(`https://${h}.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(s)}?range=1d&interval=5m&includePrePost=false`,
+      const y = await fetch(`https://${h}.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(s)}?range=1d&interval=1m&includePrePost=true`,
         { headers: { 'User-Agent': 'Mozilla/5.0 (WhatIfStack quote)', Accept: 'application/json' } });
       if (!y.ok) continue;
-      const m = ((((await y.json()).chart || {}).result || [])[0] || {}).meta || {};
-      const p = m.regularMarketPrice, pc = m.chartPreviousClose || m.previousClose;
+      const r = (((await y.json()).chart || {}).result || [])[0] || {}, m = r.meta || {};
+      let p = m.regularMarketPrice, t = m.regularMarketTime || null, x = 0;
+      const pc = m.chartPreviousClose || m.previousClose;
+      // newest 1-minute bar: if it is later than the last regular trade, it is a pre-/after-market price
+      const ts = r.timestamp || [], cl = ((((r.indicators || {}).quote || [])[0] || {}).close) || [];
+      for (let i = ts.length - 1; i >= 0; i--) { if (cl[i] != null) { if (ts[i] > (t || 0) + 60) { p = cl[i]; t = ts[i]; x = 1 } break } }
       if (p == null) continue;
-      return { p: +p.toPrecision(8), c: pc ? +(p / pc - 1).toFixed(5) : null, t: m.regularMarketTime || null, cur: m.currency || 'USD' };
+      return { p: +p.toPrecision(8), c: pc ? +(p / pc - 1).toFixed(5) : null, t, x, cur: m.currency || 'USD' };
     } catch (e) { /* next host */ }
   }
   return null;
@@ -23,5 +28,5 @@ module.exports = async (req, res) => {
   if (!list.length) return send(400, { e: 'symbols' });
   const out = {};
   await Promise.all(list.map(async s => { const q = await one(s); if (q && q.cur === 'USD') out[s] = q }));
-  return send(200, out, 'public, s-maxage=60, stale-while-revalidate=300');
+  return send(200, out, 'public, s-maxage=30, stale-while-revalidate=120');
 };
