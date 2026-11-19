@@ -1965,8 +1965,8 @@ def xc_detail_page(lang, xid, ver):
              f'<div class="ks"><span>{esc(t["share"])}</span><b>{pctu((e.get("vol_btc") or 0) / tot)}</b></div>'
              f'<div class="ks"><span>{esc(t["trust"])}</span><b>{e.get("trust") or "—"}/10</b><small>#{e.get("rank") or "—"}</small></div>'
              + (f'<div class="ks"><span>{esc(t["country"])}</span><b>{esc(e["country"])}</b>{yr}</div>' if e.get('country') else '')
-             + (f'<div class="ks"><span>{esc(t["f_coins"])} / {esc(t["f_pairs"])}</span><b>{_num((d.get("prof") or {}).get("coins"), 0)} / {_num((d.get("prof") or {}).get("pairs"), 0)}</b></div>'
-                if (d.get('prof') or {}).get('coins') else '')
+             + (f'<div class="ks"><span>{esc(t["f_coins"])} / {esc(t["f_pairs"])}</span><b>{_num(_cp.get("coins"), 0)} / {_num(_cp.get("pairs"), 0)}</b></div>'
+                if (_cp := d.get('api') or d.get('prof') or {}).get('coins') else '')
              + fee)
     pr = ''
     qs = set()
@@ -1991,7 +1991,7 @@ def xc_detail_page(lang, xid, ver):
                + (f'<button type="button" class="btn ghost mkmore">{esc(t["more"])}</button>' if len(pairs) > 30 else '') + '</section>' if pr else '')
             + (f'<section class="section card"><h2>{esc(t["chart"])}</h2>{_xvsvg([(ts, v * btc) for ts, v in d["chart"]])}</section>' if d.get('chart') else '')
             + xc_reserves_block(lang, xid, name)
-            + f'<p class="note">{esc(t["src"].format(d=XCH.get("updated", "")))}</p>')
+            + f'<p class="note">{esc(t["src"].format(d=XCH.get("updated", "")))}{f" · {esc(t["pairs_h"].format(name=name) if "{name}" in t["pairs_h"] else t["pairs_h"])}: {esc(name)} API, {esc(d["tp"])} UTC" if d.get("src") == "api" and d.get("tp") else ""}</p>')
     path = 'crypto-exchanges/' + xid
     ld = {"@context": "https://schema.org", "@type": "Organization", "name": name, "url": e.get('url') or '', "foundingDate": str(e.get('year') or '')}
     return path, shell(lang, path, f'{h1} | {BRAND}', lead, body, {}, ver, [ld])

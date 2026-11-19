@@ -7,7 +7,9 @@
   derivatives: top 60 derivatives venues (open interest, 24h volume in BTC, perpetual / futures pair counts)
 Run daily by .github/workflows/exchanges.yml. Public rate limit is tight, so calls are spaced out.
 """
-import json, os, time, urllib.request
+import json, os, sys, time, urllib.request
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import exchange_apis   # pairs straight from the big exchanges' own public APIs
 from datetime import datetime, timezone
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -101,6 +103,12 @@ def main():
     if not out['spot']:
         out['spot'] = old.get('spot', [])
     out['reserves'] = reserves(out['spot']) or old.get('reserves', {})     # fast (DefiLlama) — before the slow CoinGecko loop
+    api = exchange_apis.fetch_all()     # Binance, OKX, Bybit, Gate, KuCoin, MEXC, Bitget: all spot pairs from the exchange itself
+    now = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M')
+    for xid, v in api.items():
+        d = out['detail'].setdefault(xid, {})
+        d.update(pairs=v['pairs'], src='api', tp=now)
+        d['api'] = {'pairs': v['n_pairs'], 'coins': v['n_coins'], 'vol_usd': v['vol_usd']}
     t0 = time.time()
     budget = float(os.environ.get('XC_BUDGET', 35 * 60))
     top = out['spot'][:100]
@@ -127,7 +135,7 @@ def main():
                 tk['tickers'] = sorted(tt['tickers'], key=lambda t: -((t.get('converted_volume') or {}).get('usd') or 0))
         if tk:
             d['t'] = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M')
-        if tk and tk.get('tickers'):
+        if tk and tk.get('tickers') and e['id'] not in api:
             d['pairs'] = [{k: v for k, v in dict(b=t.get('base'), q=t.get('target'), cg=t.get('coin_id'), last=num(t.get('last')),
                                                     usd=num((t.get('converted_volume') or {}).get('usd')), spread=num(t.get('bid_ask_spread_percentage')),
                                                     trust=t.get('trust_score'), stale=t.get('is_stale') or None).items() if v is not None}
