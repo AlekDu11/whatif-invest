@@ -1,13 +1,19 @@
 name: Scheduled deploy
 
 # Vercel builds only commits with [deploy] in the message (scripts/vercel_ignore.sh), to stay under the
-# 10 GB deployment-storage limit of the Hobby plan. At most every 4 hours: if anything that affects the site changed
-# since the last deploy, push an empty "[deploy]" commit. GitHub often skips scheduled runs, so the job is checked
-# every hour and only deploys when the last deploy is at least 3h50m old (missed slots are picked up an hour later).
+# 10 GB deployment-storage limit of the Hobby plan (one deploy of ~23k pages is >1 GB). Four fixed slots a day:
+# 05:23, 11:23, 17:23, 23:23 UTC (08:23 Kyiv = right after the morning market wrap). If GitHub skips a slot run,
+# the next hourly run deploys once the last deploy is older than 6.5 h. A plain manual run follows the same rules;
+# only a manual run with force=true deploys now, and even then at most 6 deploys per 24 h.
 on:
   schedule:
     - cron: '23 * * * *'
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 'Urgent fix: deploy now (still max 6 deploys per 24 h)'
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -34,9 +40,15 @@ jobs:
             changed=yes
           fi
           if [ -z "$changed" ]; then echo "Nothing to deploy"; exit 0; fi
-          if [ -n "$last" ] && [ "${{ github.event_name }}" = "schedule" ]; then
+          if [ "${{ inputs.force }}" = "true" ]; then
+            n=$(git log --since='24 hours ago' --format=%s | grep -c '\[deploy\]' || true)
+            if [ "$n" -ge 6 ]; then echo "Already $n deploys in 24 h — waiting for the next slot"; exit 0; fi
+          elif [ -n "$last" ]; then
             age=$(( $(date +%s) - $(git log -1 --format=%ct "$last") ))
-            if [ "$age" -lt 13800 ]; then echo "Last deploy ${age}s ago — waiting for the 4-hour slot"; exit 0; fi
+            h=$(date -u +%H)
+            case "$h" in 05|11|17|23) slot=1 ;; *) slot=0 ;; esac
+            if [ "$age" -lt 3600 ]; then echo "Deployed ${age}s ago"; exit 0; fi
+            if [ "$slot" = 0 ] && [ "$age" -lt 23400 ]; then echo "Not a deploy slot (05/11/17/23 UTC); last deploy ${age}s ago"; exit 0; fi
           fi
           if [ -n "$HOOK" ]; then          # preferred: Vercel Deploy Hook (git auto-deploys are off, so pushes cost nothing)
             curl -fsS -X POST "$HOOK" && git config user.name "whatif-bot" && git config user.email "whatif-bot@users.noreply.github.com" \
