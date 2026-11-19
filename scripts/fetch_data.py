@@ -483,6 +483,11 @@ LOGO_DOMAIN = {
 }
 
 
+# official logos from Wikimedia Commons where the company site blocks foreign servers (Google favicon = blank globe)
+LOGO_URL = {k: 'https://commons.wikimedia.org/wiki/Special:FilePath/' + v.replace(' ', '%20') + '?width=128' for k, v in {
+    'gazp': 'Gazprom logo.svg', 'magn': 'Magnitogorsk Iron and Steel Works logo.svg', 'nlmk': 'NLMK Logo.svg', 'rosn': 'Rosneft 201x logo.svg'}.items()}
+
+
 def fetch_logos(assets):
     try:
         from PIL import Image, ImageDraw
@@ -516,6 +521,8 @@ def fetch_logos(assets):
             continue
         tk = a.get('tk', '')
         urls = []
+        if aid in LOGO_URL:
+            urls.append(LOGO_URL[aid])
         if a.get('logo'):
             urls.append(a['logo'].replace('/large/', '/small/'))
         if a.get('cat') == 'crypto':
