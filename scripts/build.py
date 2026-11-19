@@ -65,7 +65,7 @@ BASE = ''
 SITE = 'https://whatifstack.com'
 BRAND = 'WhatIfStack'
 AMOUNT = 10
-TOP_N = 200            # asset pages in languages outside FULL
+TOP_N = 200            # asset pages in languages outside FULL (all-language pages for every asset will be rendered on demand — see CLAUDE.md, storage limit)
 
 market = json.load(open(os.path.join(ROOT, 'data/market.json'), encoding='utf-8'))
 pinned = json.load(open(os.path.join(ROOT, 'data/assets.json'), encoding='utf-8'))
@@ -419,9 +419,12 @@ def spark(arr, w=110, h=34, band=0):
         mid = sum(arr) / len(arr)
         mn, mx = min(mn, mid * (1 - band)), max(mx, mid * (1 + band))
     r = (mx - mn) or 1
-    pts = ' '.join(f"{i / (len(arr) - 1) * w:.1f},{h - 2 - (v - mn) / r * (h - 4):.1f}" for i, v in enumerate(arr))
+    if len(arr) > 14:   # lighter pages: at most ~13 points, integer coordinates
+        st = (len(arr) - 1) / 12
+        arr = [arr[round(k * st)] for k in range(13)]
+    pts = ' '.join(f"{round(i / (len(arr) - 1) * w)},{round(h - 2 - (v - mn) / r * (h - 4))}" for i, v in enumerate(arr))
     up = arr[-1] >= arr[0]
-    return (f'<svg class="spk {"up" if up else "dn"}" width="{w}" height="{h}" viewBox="0 0 {w} {h}" aria-hidden="true">'
+    return (f'<svg class="spk {"up" if up else "dn"}" width="{w}" height="{h}" viewBox="0 0 {w} {h}">'
             f'<polygon points="0,{h} {pts} {w},{h}"/><polyline points="{pts}"/></svg>')
 
 
@@ -2237,7 +2240,7 @@ def coin_markets_block(lang, aid):
     tot = sum(r[5] for r in rows) or 1
     tr = ''
     qs = set()
-    for k, (xid, xn, b, q, px, vol, spr, trust, _u) in enumerate(rows[:40]):
+    for k, (xid, xn, b, q, px, vol, spr, trust, _u) in enumerate(rows[:25]):   # 25 rows: lighter pages (all 20 languages)
         g = _qg(q)
         qs.add(g)
         xl = f'<a href="{url(lang, "crypto-exchanges/" + xid)}">{esc(xn)}</a>' if xc_has(lang, xid) else esc(xn)
