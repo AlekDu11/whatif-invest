@@ -1457,6 +1457,8 @@ def side_block(lang, aid):
 def long_block(lang, aid):
     """Full description lower on the page (CryptoRank-style): our hand-written profile, or the source text in the page language."""
     a, prof, own = A[aid], PROFILES.get(lang, {}).get(aid), DESC.get(lang, {}).get(aid)
+    if prof and prof.get('kind') == 'analysis':   # the full analysis is already on the page (analysis_block)
+        return ''
     if prof and own:
         return (f'<section class="card section long"><h2>{esc(prof.get("title") or nm(a, lang))}</h2>'
                 f'<div class="artbody iprof">{md(prof["body"], lang)}</div></section>')
