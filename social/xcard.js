@@ -50,7 +50,8 @@ async function wisCard(o) {
   d.font = `400 26px ${F}`; d.fillStyle = MUTED; d.fillText(o.date || new Date().toISOString().slice(0, 10), 64, 600);
   d.textAlign = 'right'; d.fillText('whatifstack.com', W - 64, 600); d.textAlign = 'left';
   const blob = await new Promise(r => c.toBlob(r, 'image/jpeg', 0.9));
-  const inp = document.querySelector('input[type=file][data-testid="fileInput"]') || document.querySelector('input[type=file]');
+  for (let i = 0; i < 20 && !document.querySelector('[role=dialog] input[type=file]'); i++) await new Promise(r => setTimeout(r, 500));
+  const inp = document.querySelector('[role=dialog] input[type=file]') || document.querySelector('input[type=file][data-testid="fileInput"]') || document.querySelector('input[type=file]');
   if (!inp) return { err: 'no file input: open https://x.com/compose/post first' };
   const dt = new DataTransfer(); dt.items.add(new File([blob], 'whatifstack.jpg', { type: 'image/jpeg' }));
   inp.files = dt.files; inp.dispatchEvent(new Event('change', { bubbles: true }));
