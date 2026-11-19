@@ -21,7 +21,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PINNED = os.path.join(ROOT, 'data/assets.json')
 OUT = os.path.join(ROOT, 'data/market.json')
 MIN_START = '2000-01'
-TOP_CRYPTO = 1000
+TOP_CRYPTO = 2000   # owner 2026-11-20: more coins; pages outside the top 200 exist only in uk+en (build.py TOP_N), so the deploy grows ~6%
 MARKETS = os.path.join(ROOT, 'data/markets.json')   # ETFs + national stocks (Ukraine, Poland, Germany...)
 FX_TICKER = {c: c + '=X' for c in 'PLN EUR GBP TRY JPY KRW INR BRL HKD CNY TWD IDR THB PHP VND SAR CHF CAD AUD MXN RUB'.split()}   # Yahoo: units per 1 USD
 SUFFIX_CCY = {'.WA': 'PLN', '.DE': 'EUR', '.PA': 'EUR', '.MC': 'EUR', '.MI': 'EUR', '.AS': 'EUR', '.L': 'GBp', '.IS': 'TRY', '.T': 'JPY', '.KS': 'KRW',
@@ -290,7 +290,7 @@ def _spark7(pts, n=24):
 
 def coingecko_meta():
     meta = {}
-    for page in (1, 2, 3, 4):
+    for page in range(1, 9):   # top 2000 by market cap
         d = get_json(f"https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page={page}&price_change_percentage=1h,24h,7d,30d,1y&sparkline=true", tries=2)
         if not isinstance(d, list):
             break
