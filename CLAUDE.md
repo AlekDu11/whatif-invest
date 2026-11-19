@@ -40,6 +40,12 @@ Content: 2–3 blog posts a week on trending queries (content/blog/<lang>/), wee
 - Before pushing: run `python3 scripts/build.py` and check pages in a headless browser.
 - Deploys (since 2026-11-18, after hitting the Hobby limit of 100 deployments/day): git auto-deploys are OFF (vercel.json git.deploymentEnabled=false), pushes cost nothing. .github/workflows/deploy.yml deploys at most once every 5 h 50 min (≈4 a day) when the site changed; it runs hourly by cron, on every push to main and after the data workflows (GitHub fires this repo's cron rarely), and POSTs the Vercel Deploy Hook (GitHub secret VERCEL_DEPLOY_HOOK, hook «scheduled» on main) and adds a «[deploy]» marker commit. Owner (2026-11-19): too many deploys fill the storage (one deploy >1 GB) — do NOT dispatch deploys for routine changes; wait for the slot. Only a real breakage on the live site: gh workflow run deploy.yml -f force=true (max 6 deploys/24 h).
 
+## Deploy cadence goal (owner, 2026-11-20)
+Now: set up, fill and optimise (≈4 deploys/day). Later: deploy only 1–2 times a WEEK. So build everything so pages do not go stale
+between deploys: live prices stay client-side; numbers that change daily (DCA results, 7d, market cap, exchange rankings) should come
+from small JSON files the browser loads (like dist/assets/mkt.json), refreshed by the data workflows; daily articles need either a light
+articles-only update or client-side loading. Watch the deploy size (≈1.4 GB at 24k pages; plan before it reaches ~1.8 GB).
+
 ## Partner links
 src/ref.js (buy buttons) and PARTNERS / POLY in scripts/build.py (/exchanges/ page, Polymarket block). All /go/<id> targets: api/_partners.js. Also: TradingView ref on every live chart (tvref), pump.fun card on /memes/, monobank/Privat24 CTAs on OVDP broker pages (OB_GO), Inzhur REIT card on Ukrainian pages (INZ).
 
