@@ -54,7 +54,7 @@ jobs:
             h=$(date -u +%H)
             # owner 2026-11-20: ONE deploy a day, in the morning after the market wrap (≥ 05:00 UTC = 08:00 Kyiv);
             # if a day was missed (> 30 h), deploy at the next check whatever the hour
-            if [ "$age" -lt 72000 ]; then echo "Last deploy ${age}s ago — one deploy a day"; exit 0; fi
+            if [ "$age" -lt 86400 ]; then echo "Last deploy ${age}s ago — one deploy a day (24 h, so the previous copy has expired from Vercel storage)"; exit 0; fi
             if [ "$h" -lt 5 ] && [ "$age" -lt 108000 ]; then echo "Waiting for the morning window (05:00 UTC)"; exit 0; fi
           fi
           if [ -n "$HOOK" ]; then          # preferred: Vercel Deploy Hook (git auto-deploys are off, so pushes cost nothing)
