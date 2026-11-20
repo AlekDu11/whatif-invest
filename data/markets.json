@@ -6606,5 +6606,605 @@
 "yahoo": "PRI",
 "name": "Primerica",
 "cat": "stock"
+},
+{
+"tk": "PSN",
+"yahoo": "PSN",
+"name": "Parsons",
+"cat": "stock"
+},
+{
+"tk": "PVH",
+"yahoo": "PVH",
+"name": "PVH",
+"cat": "stock"
+},
+{
+"tk": "QLYS",
+"yahoo": "QLYS",
+"name": "Qualys",
+"cat": "stock"
+},
+{
+"tk": "R",
+"yahoo": "R",
+"name": "Ryder",
+"cat": "stock"
+},
+{
+"tk": "RBA",
+"yahoo": "RBA",
+"name": "RB Global",
+"cat": "stock"
+},
+{
+"tk": "RBC",
+"yahoo": "RBC",
+"name": "RBC Bearings",
+"cat": "stock"
+},
+{
+"tk": "REXR",
+"yahoo": "REXR",
+"name": "Rexford Industrial Realty",
+"cat": "stock"
+},
+{
+"tk": "RGA",
+"yahoo": "RGA",
+"name": "Reinsurance Group of America",
+"cat": "stock"
+},
+{
+"tk": "RGEN",
+"yahoo": "RGEN",
+"name": "Repligen",
+"cat": "stock"
+},
+{
+"tk": "RGLD",
+"yahoo": "RGLD",
+"name": "Royal Gold",
+"cat": "stock"
+},
+{
+"tk": "RH",
+"yahoo": "RH",
+"name": "RH",
+"cat": "stock"
+},
+{
+"tk": "RLI",
+"yahoo": "RLI",
+"name": "RLI",
+"cat": "stock"
+},
+{
+"tk": "RMBS",
+"yahoo": "RMBS",
+"name": "Rambus",
+"cat": "stock"
+},
+{
+"tk": "RNR",
+"yahoo": "RNR",
+"name": "RenaissanceRe",
+"cat": "stock"
+},
+{
+"tk": "ROIV",
+"yahoo": "ROIV",
+"name": "Roivant Sciences",
+"cat": "stock"
+},
+{
+"tk": "ROKU",
+"yahoo": "ROKU",
+"name": "Roku",
+"cat": "stock"
+},
+{
+"tk": "RPM",
+"yahoo": "RPM",
+"name": "RPM International",
+"cat": "stock"
+},
+{
+"tk": "RRC",
+"yahoo": "RRC",
+"name": "Range Resources",
+"cat": "stock"
+},
+{
+"tk": "RRX",
+"yahoo": "RRX",
+"name": "Regal Rexnord",
+"cat": "stock"
+},
+{
+"tk": "RS",
+"yahoo": "RS",
+"name": "Reliance",
+"cat": "stock"
+},
+{
+"tk": "RYAN",
+"yahoo": "RYAN",
+"name": "Ryan Specialty",
+"cat": "stock"
+},
+{
+"tk": "RYN",
+"yahoo": "RYN",
+"name": "Rayonier",
+"cat": "stock"
+},
+{
+"tk": "SAIA",
+"yahoo": "SAIA",
+"name": "Saia",
+"cat": "stock"
+},
+{
+"tk": "SAIC",
+"yahoo": "SAIC",
+"name": "Science Applications International",
+"cat": "stock"
+},
+{
+"tk": "SANM",
+"yahoo": "SANM",
+"name": "Sanmina",
+"cat": "stock"
+},
+{
+"tk": "SARO",
+"yahoo": "SARO",
+"name": "StandardAero",
+"cat": "stock"
+},
+{
+"tk": "SBRA",
+"yahoo": "SBRA",
+"name": "Sabra Health Care REIT",
+"cat": "stock"
+},
+{
+"tk": "SCI",
+"yahoo": "SCI",
+"name": "Service Corporation International",
+"cat": "stock"
+},
+{
+"tk": "SEIC",
+"yahoo": "SEIC",
+"name": "SEI Investments",
+"cat": "stock"
+},
+{
+"tk": "SF",
+"yahoo": "SF",
+"name": "Stifel",
+"cat": "stock"
+},
+{
+"tk": "SFM",
+"yahoo": "SFM",
+"name": "Sprouts Farmers Market",
+"cat": "stock"
+},
+{
+"tk": "SGI",
+"yahoo": "SGI",
+"name": "Somnigroup International",
+"cat": "stock"
+},
+{
+"tk": "SHC",
+"yahoo": "SHC",
+"name": "Sotera Health",
+"cat": "stock"
+},
+{
+"tk": "SIGI",
+"yahoo": "SIGI",
+"name": "Selective Insurance Group",
+"cat": "stock"
+},
+{
+"tk": "SIRI",
+"yahoo": "SIRI",
+"name": "SiriusXM",
+"cat": "stock"
+},
+{
+"tk": "SITM",
+"yahoo": "SITM",
+"name": "SiTime",
+"cat": "stock"
+},
+{
+"tk": "SLAB",
+"yahoo": "SLAB",
+"name": "Silicon Labs",
+"cat": "stock"
+},
+{
+"tk": "SLGN",
+"yahoo": "SLGN",
+"name": "Silgan Holdings",
+"cat": "stock"
+},
+{
+"tk": "SLM",
+"yahoo": "SLM",
+"name": "SLM Corp",
+"cat": "stock"
+},
+{
+"tk": "SMG",
+"yahoo": "SMG",
+"name": "Scotts Miracle-Gro",
+"cat": "stock"
+},
+{
+"tk": "SMTC",
+"yahoo": "SMTC",
+"name": "Semtech",
+"cat": "stock"
+},
+{
+"tk": "SN",
+"yahoo": "SN",
+"name": "SharkNinja",
+"cat": "stock"
+},
+{
+"tk": "SNX",
+"yahoo": "SNX",
+"name": "TD Synnex",
+"cat": "stock"
+},
+{
+"tk": "SOLS",
+"yahoo": "SOLS",
+"name": "Solstice Advanced Materials",
+"cat": "stock"
+},
+{
+"tk": "SON",
+"yahoo": "SON",
+"name": "Sonoco",
+"cat": "stock"
+},
+{
+"tk": "SPXC",
+"yahoo": "SPXC",
+"name": "SPX Technologies",
+"cat": "stock"
+},
+{
+"tk": "SR",
+"yahoo": "SR",
+"name": "Spire",
+"cat": "stock"
+},
+{
+"tk": "SSB",
+"yahoo": "SSB",
+"name": "SouthState Bank",
+"cat": "stock"
+},
+{
+"tk": "SSD",
+"yahoo": "SSD",
+"name": "Simpson Manufacturing",
+"cat": "stock"
+},
+{
+"tk": "ST",
+"yahoo": "ST",
+"name": "Sensata Technologies",
+"cat": "stock"
+},
+{
+"tk": "STAG",
+"yahoo": "STAG",
+"name": "STAG Industrial",
+"cat": "stock"
+},
+{
+"tk": "STRL",
+"yahoo": "STRL",
+"name": "Sterling Infrastructure",
+"cat": "stock"
+},
+{
+"tk": "STWD",
+"yahoo": "STWD",
+"name": "Starwood Property Trust",
+"cat": "stock"
+},
+{
+"tk": "SUI",
+"yahoo": "SUI",
+"name": "Sun Communities",
+"cat": "stock"
+},
+{
+"tk": "SWX",
+"yahoo": "SWX",
+"name": "Southwest Gas",
+"cat": "stock"
+},
+{
+"tk": "SYNA",
+"yahoo": "SYNA",
+"name": "Synaptics",
+"cat": "stock"
+},
+{
+"tk": "TCBI",
+"yahoo": "TCBI",
+"name": "Texas Capital Bancshares",
+"cat": "stock"
+},
+{
+"tk": "TEX",
+"yahoo": "TEX",
+"name": "Terex",
+"cat": "stock"
+},
+{
+"tk": "THC",
+"yahoo": "THC",
+"name": "Tenet Healthcare",
+"cat": "stock"
+},
+{
+"tk": "THG",
+"yahoo": "THG",
+"name": "Hanover Insurance",
+"cat": "stock"
+},
+{
+"tk": "THO",
+"yahoo": "THO",
+"name": "Thor Industries",
+"cat": "stock"
+},
+{
+"tk": "TKR",
+"yahoo": "TKR",
+"name": "Timken",
+"cat": "stock"
+},
+{
+"tk": "TLN",
+"yahoo": "TLN",
+"name": "Talen Energy",
+"cat": "stock"
+},
+{
+"tk": "TNL",
+"yahoo": "TNL",
+"name": "Travel + Leisure",
+"cat": "stock"
+},
+{
+"tk": "TOL",
+"yahoo": "TOL",
+"name": "Toll Brothers",
+"cat": "stock"
+},
+{
+"tk": "TOST",
+"yahoo": "TOST",
+"name": "Toast",
+"cat": "stock"
+},
+{
+"tk": "TREX",
+"yahoo": "TREX",
+"name": "Trex",
+"cat": "stock"
+},
+{
+"tk": "TRU",
+"yahoo": "TRU",
+"name": "TransUnion",
+"cat": "stock"
+},
+{
+"tk": "TTC",
+"yahoo": "TTC",
+"name": "Toro",
+"cat": "stock"
+},
+{
+"tk": "TTEK",
+"yahoo": "TTEK",
+"name": "Tetra Tech",
+"cat": "stock"
+},
+{
+"tk": "TTMI",
+"yahoo": "TTMI",
+"name": "TTM Technologies",
+"cat": "stock"
+},
+{
+"tk": "TXNM",
+"yahoo": "TXNM",
+"name": "TXNM Energy",
+"cat": "stock"
+},
+{
+"tk": "TXRH",
+"yahoo": "TXRH",
+"name": "Texas Roadhouse",
+"cat": "stock"
+},
+{
+"tk": "UBSI",
+"yahoo": "UBSI",
+"name": "United Bankshares",
+"cat": "stock"
+},
+{
+"tk": "UFPI",
+"yahoo": "UFPI",
+"name": "UFP Industries",
+"cat": "stock"
+},
+{
+"tk": "UGI",
+"yahoo": "UGI",
+"name": "UGI",
+"cat": "stock"
+},
+{
+"tk": "ULS",
+"yahoo": "ULS",
+"name": "UL Solutions",
+"cat": "stock"
+},
+{
+"tk": "UMBF",
+"yahoo": "UMBF",
+"name": "UMB Financial",
+"cat": "stock"
+},
+{
+"tk": "UNM",
+"yahoo": "UNM",
+"name": "Unum",
+"cat": "stock"
+},
+{
+"tk": "USFD",
+"yahoo": "USFD",
+"name": "US Foods",
+"cat": "stock"
+},
+{
+"tk": "UTHR",
+"yahoo": "UTHR",
+"name": "United Therapeutics",
+"cat": "stock"
+},
+{
+"tk": "VAL",
+"yahoo": "VAL",
+"name": "Valaris",
+"cat": "stock"
+},
+{
+"tk": "VC",
+"yahoo": "VC",
+"name": "Visteon",
+"cat": "stock"
+},
+{
+"tk": "VFC",
+"yahoo": "VFC",
+"name": "VF Corporation",
+"cat": "stock"
+},
+{
+"tk": "VIAV",
+"yahoo": "VIAV",
+"name": "Viavi Solutions",
+"cat": "stock"
+},
+{
+"tk": "VICR",
+"yahoo": "VICR",
+"name": "Vicor",
+"cat": "stock"
+},
+{
+"tk": "VLY",
+"yahoo": "VLY",
+"name": "Valley Bank",
+"cat": "stock"
+},
+{
+"tk": "VMI",
+"yahoo": "VMI",
+"name": "Valmont Industries",
+"cat": "stock"
+},
+{
+"tk": "VNO",
+"yahoo": "VNO",
+"name": "Vornado Realty Trust",
+"cat": "stock"
+},
+{
+"tk": "VNOM",
+"yahoo": "VNOM",
+"name": "Viper Energy",
+"cat": "stock"
+},
+{
+"tk": "VNT",
+"yahoo": "VNT",
+"name": "Vontier",
+"cat": "stock"
+},
+{
+"tk": "VOYA",
+"yahoo": "VOYA",
+"name": "Voya Financial",
+"cat": "stock"
+},
+{
+"tk": "VVV",
+"yahoo": "VVV",
+"name": "Valvoline",
+"cat": "stock"
+},
+{
+"tk": "WAL",
+"yahoo": "WAL",
+"name": "Western Alliance Bancorporation",
+"cat": "stock"
+},
+{
+"tk": "WCC",
+"yahoo": "WCC",
+"name": "WESCO International",
+"cat": "stock"
+},
+{
+"tk": "WEX",
+"yahoo": "WEX",
+"name": "WEX",
+"cat": "stock"
+},
+{
+"tk": "WFRD",
+"yahoo": "WFRD",
+"name": "Weatherford International",
+"cat": "stock"
+},
+{
+"tk": "WH",
+"yahoo": "WH",
+"name": "Wyndham Hotels & Resorts",
+"cat": "stock"
+},
+{
+"tk": "WHR",
+"yahoo": "WHR",
+"name": "Whirlpool",
+"cat": "stock"
+},
+{
+"tk": "WING",
+"yahoo": "WING",
+"name": "Wingstop",
+"cat": "stock"
 }
 ]
