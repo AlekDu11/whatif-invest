@@ -544,9 +544,9 @@ def cover(kind, lang, slug):
 # Microsoft Clarity (heatmaps): loaded only after the page has finished loading and the browser is idle, so it never slows the first paint
 CLARITY = ('<script>addEventListener("load",function(){var go=function(){(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};'
            't=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,"clarity","script","zekg137lbv")};window.requestIdleCallback?requestIdleCallback(go,{timeout:3000}):setTimeout(go,1500)})</script>')
-# Google Analytics 4 (owner, 2026-11-20; Google tag GTM-5ZSJKWX2, stream "WhatIfStack site"): same lazy load as Clarity, never blocks the first paint
-CLARITY += ('<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());'
-            'addEventListener("load",function(){var go=function(){var t=document.createElement("script");t.async=1;t.src="https://www.googletagmanager.com/gtm.js?id=GTM-5ZSJKWX2";document.head.appendChild(t)};'
+# Google Analytics 4 (owner, 2026-11-20; measurement ID G-1Z0DV7H95K, stream "WhatIfStack site"): same lazy load as Clarity, never blocks the first paint
+CLARITY += ('<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());gtag("config","G-1Z0DV7H95K");'
+            'addEventListener("load",function(){var go=function(){var t=document.createElement("script");t.async=1;t.src="https://www.googletagmanager.com/gtag/js?id=G-1Z0DV7H95K";document.head.appendChild(t)};'
             'window.requestIdleCallback?requestIdleCallback(go,{timeout:3000}):setTimeout(go,1500)})</script>')
 # Sentry error monitoring (owner, 2026-11-20; org whatifstack-hd, project whatifstack-web, EU): the tiny loader script loads the SDK only when an error happens
 CLARITY += '<script src="https://js-de.sentry-cdn.com/8ffd53d4b42a0cb29a938ff3f2526ba5.min.js" crossorigin="anonymous" defer></script>'
