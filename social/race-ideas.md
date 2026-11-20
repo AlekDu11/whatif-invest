@@ -12,7 +12,7 @@ comparisons that get thousands of views on crypto X. Keep the matchup a real que
   input[data-testid=fileInput]` (only the dialog's input — the home page has its own), set `.files` via DataTransfer and
   dispatch `change` (the dialog input can take ~30 s to appear in a hidden pane — keep the File in window and retry); wait until `[role=dialog] [data-testid=attachments]` says "Ready". Type the text by clicking the
   dialog's "What's happening?" box and typing line by line (Enter for new lines), then click `[role=dialog]
-  [data-testid=tweetButton]`. If the video is not deployed yet (Vercel skips commits without `[deploy]`), do the relay step yourself: on any whatifstack.com page fetch the raw.githubusercontent.com MP4, base64 it and set location.href to `https://x.com/compose/post#wisf=<slug>.mp4:<base64>`. Fallback if the hash route fails: `python3 scripts/race_snippet.py ...` prints JS that renders
+  [data-testid=tweetButton]`. If the video is not deployed yet (Vercel skips commits without `[deploy]`), do the relay step yourself: on any whatifstack.com page fetch the raw.githubusercontent.com MP4, base64 it and set location.href to `https://x.com/compose/post#wisf=<slug>.mp4:<base64>`. Tested 2026-11-20: raw URL by commit SHA (raw.githubusercontent.com/.../<sha>/content/video/...) works right after push while /main/ still 404s for a few minutes (CDN cache); in Telegram the JS .click() on the modal send button did nothing — a real left_click on it sends. Fallback if the hash route fails: `python3 scripts/race_snippet.py ...` prints JS that renders
   and encodes the same video inside the page (WebCodecs) into window.__wisRaceFile.
 - **Telegram Web** can fetch it directly: `fetch('https://raw.githubusercontent.com/AlekDu11/whatif-invest/main/content/video/<slug>.mp4')`,
   File -> window.__wisNext + the patched HTMLInputElement.prototype.click from the Telegram task -> Attach -> "Photo or Video",
@@ -23,7 +23,7 @@ comparisons that get thousands of views on crypto X. Keep the matchup a real que
 - ✅ 2026-11-17 okb bnb cro | exchange tokens since launch
 - ✅ 2026-11-18 btc eth sol | the big three L1s
 - ✅ 2026-11-19 nvda amd intc | chip makers
-- aapl msft googl | big tech classics
+- ✅ 2026-11-20 aapl msft googl | big tech classics
 - spy qqq vt | ETF trio
 - gold silver platinum | precious metals
 - doge shib pepe | memecoins
@@ -48,7 +48,8 @@ comparisons that get thousands of views on crypto X. Keep the matchup a real que
 ## Log
 | date | ids | X URL | Telegram | views |
 |---|---|---|---|---|
-| 2026-11-17 | btc gold spy (since 2016-01) | https://x.com/WhatIfStack/status/2122690567314292871 | msg 1474 | X 13 · TG 59 (2026-11-19) |
-| 2026-11-17 | okb bnb cro (since 2020-02) | https://x.com/WhatIfStack/status/2122729649189044275 | msg 1475 | X 14 · TG 103 (2026-11-19) |
-| 2026-11-18 | btc eth sol (since 2020-04) | https://x.com/WhatIfStack/status/2123077127801298975 | msg 1479 | X 9 · TG 1.2K (2026-11-19) |
-| 2026-11-19 | nvda amd intc (since 2000-01) | https://x.com/WhatIfStack/status/2123439207024910576 | msg 1483 | |
+| 2026-11-17 | btc gold spy (since 2016-01) | https://x.com/WhatIfStack/status/2122690567314292871 | msg 1474 | X 14 · TG 69 (2026-11-20) |
+| 2026-11-17 | okb bnb cro (since 2020-02) | https://x.com/WhatIfStack/status/2122729649189044275 | msg 1475 | X 15 · TG 118 (2026-11-20) |
+| 2026-11-18 | btc eth sol (since 2020-04) | https://x.com/WhatIfStack/status/2123077127801298975 | msg 1479 | X 10 · TG 1.2K (2026-11-20) |
+| 2026-11-19 | nvda amd intc (since 2000-01) | https://x.com/WhatIfStack/status/2123439207024910576 | msg 1483 | X 5 · TG 1.4K (2026-11-20) |
+| 2026-11-20 18:35 | aapl msft googl (since 2004-08) | https://x.com/WhatIfStack/status/2123801362022707579 | msg 1488 | |
