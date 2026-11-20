@@ -49,6 +49,7 @@ articles-only update or client-side loading. Watch the deploy size (≈1.4 GB at
 languages (our «фішка»). Static pages for that would be ~3–4 GB per deploy, so the plan is: keep static pages for uk/en (all assets) and the
 top 200 in other languages (TOP_N), and serve the rest on demand from a Vercel function (Python, reuses build.py's page code + data, CDN
 cache s-maxage≈1 day) — no deployment storage. Descriptions are already written for all assets in all 20 languages.
+2026-11-20 BUILT: api/page.py (Python function, imports scripts/build.py) renders asset pages that have no static file (static_asset() in build.py: uk/en + TOP_N + local market); vercel.json rewrites /<lang>/<asset>/ → /api/page (filesystem first), CDN-Cache-Control s-maxage=86400; has_page() now True for every asset in every language (links, hreflang, sitemaps). Once verified live, lower TOP_N (1000 → ~300) to shrink each deploy.
 
 ## Partner links
 src/ref.js (buy buttons) and PARTNERS / POLY in scripts/build.py (/exchanges/ page, Polymarket block). All /go/<id> targets: api/_partners.js. Also: TradingView ref on every live chart (tvref), pump.fun card on /memes/, monobank/Privat24 CTAs on OVDP broker pages (OB_GO), Inzhur REIT card on Ukrainian pages (INZ).
