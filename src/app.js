@@ -1156,3 +1156,24 @@ $$('details.dd').forEach(d=>d.addEventListener('toggle',()=>{ if(d.open) $$('det
 /* footer columns collapse on phones */
 if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
 })();
+
+/* ---------- click-to-sort for static tables (largest companies, «where it trades», exchanges, stablecoins) ---------- */
+(function(){
+  const MULT=[[/трлн|trn|tn\b|bio\.?|bln\b|T\b|兆/i,1e12],[/млрд|mrd|bn\b|B\b|tỷ|miliar|億/i,1e9],[/млн|mio|mln|M\b|triệu|juta|百万/i,1e6],[/тис|tys|K\b|k\b|nghìn|ribu|千/i,1e3]];
+  const val=td=>{ const u=td.querySelector('[data-u]'); if(u) return +u.dataset.u;
+    let t=(td.innerText||'').trim(); if(!t||t==='—') return null;
+    let m=1; for(const [re,v] of MULT) if(re.test(t)){ m=v; break }
+    t=t.replace(/[−–]/g,'-').replace(/[^\d,.\-]/g,'');
+    if(/,\d{1,2}$/.test(t)&&!/\.\d{1,2}$/.test(t)) t=t.replace(/\./g,'').replace(',','.'); else t=t.replace(/,/g,'');
+    const n=parseFloat(t); return isNaN(n)?(td.innerText||'').trim().toLowerCase():n*m };
+  document.querySelectorAll('table.mt').forEach(tb=>{ if(tb.querySelector('#mthead')||!tb.tHead||!tb.tBodies[0]) return;
+    const ths=[...tb.tHead.rows[0].cells]; let last=-1, dir=-1;
+    ths.forEach((th,ci)=>{ if(!th.innerText.trim()) return; th.classList.add('sortable'); th.style.cursor='pointer'; th.title='↕';
+      th.addEventListener('click',()=>{ dir=(last===ci)?-dir:(ci<=1?1:-1); last=ci;
+        const body=tb.tBodies[0], rows=[...body.rows];
+        rows.sort((a,b)=>{ const x=val(a.cells[ci]||a), y=val(b.cells[ci]||b); if(x==null) return 1; if(y==null) return -1;
+          return (typeof x==='number'&&typeof y==='number'? x-y : String(x).localeCompare(String(y)))*dir });
+        rows.forEach(r=>{ r.classList.remove('xh'); body.appendChild(r) });
+        ths.forEach(h=>h.classList.remove('asc','desc')); th.classList.add(dir>0?'asc':'desc');
+        const more=tb.closest('section')&&tb.closest('section').querySelector('.mkmore'); if(more) more.remove() }) }) });
+})();

@@ -2002,7 +2002,8 @@ def _xc_shell(lang, ver, kind, h1, lead, th, rows, pg=1, np_=1, total=0):
     body = (f'<h1>{esc(h1)}</h1><p class="lead">{esc(lead)}</p><div class="cchips lcchips">{tabs}</div>'
             f'<section class="section"><div class="tw"><table class="mt lct">{"<thead>" + th + "</thead>"}<tbody>{rows}</tbody></table></div>{pager(lang, base, pg, np_, total)}</section>'
             f'<p class="note">{esc(t["src"].format(d=XCH.get("updated", "")))} {esc(t["aff"])}: ↗</p>')
-    return path, shell(lang, path, f'{h1}{" — " + str(pg) if pg > 1 else ""} | {BRAND}', lead, body, {}, ver)
+    return path, shell(lang, path, f'{h1}{" — " + str(pg) if pg > 1 else ""} | {BRAND}', lead, body, {}, ver).replace(
+        '<link rel="canonical"', '<meta name="robots" content="noindex, follow"><link rel="canonical"', 1)   # hidden for now (owner 2026-11-20)
 
 
 def stable_icon(tk):
@@ -2198,6 +2199,9 @@ def _pnum(v):
     return _num(v, 6 if v < 1 else 2) if v is not None else '—'
 
 
+XSP = {e['id']: e for e in XCH.get('derivatives', []) + XCH.get('spot', [])}
+
+
 def coin_markets_block(lang, aid):
     a = A[aid]
     cg = a.get('cgid')
@@ -2230,6 +2234,8 @@ def coin_markets_block(lang, aid):
                     r[4], r[5], r[6] = px or r[4], pr['usd'], pr.get('spread', r[6])
                 else:
                     rows.append([xid, nm_.get(xid, xid), pr.get('b'), pr.get('q'), px, pr['usd'], pr.get('spread'), None, ''])
+    # owner 2026-11-20: for now only USDT and USDC pairs (other quote currencies are still being collected)
+    rows = [r for r in rows if (r[3] or '').upper() in ('USDT', 'USDC')]
     if len(rows) < 2:
         return ''
     # CoinMarketCap-style order: exchanges with a high trust score first (CoinGecko trust 1–10), then by volume
@@ -2244,7 +2250,8 @@ def coin_markets_block(lang, aid):
     for k, (xid, xn, b, q, px, vol, spr, trust, _u) in enumerate(rows[:25]):   # 25 rows: lighter pages (all 20 languages)
         g = _qg(q)
         qs.add(g)
-        xl = f'<a href="{url(lang, "crypto-exchanges/" + xid)}">{esc(xn)}</a>' if xc_has(lang, xid) else esc(xn)
+        lg = _xlogo(XSP.get(xid) or {'id': xid, 'name': xn, 'img': ''})
+        xl = f'<a class="xn" href="{url(lang, "crypto-exchanges/" + xid)}">{lg}{esc(xn)}</a>' if xc_has(lang, xid) else f'<span class="xn">{lg}{esc(xn)}</span>'
         go = xc_partner(xn)
         if go:
             xl += f' <a class="xgo" href="/go/{go}?from=mk-{aid}&l={lang}" target="_blank" rel="sponsored noopener" title="{esc(t["go"].format(x=xn))}">↗</a>'
@@ -2540,7 +2547,9 @@ def st_page(lang, sid, ver):
     t = XC[lang]
     mkt = (f'<section class="section mkt" id="markets"><h2>{esc(T["where"])}</h2><div class="tw"><table class="mt"><thead><tr><th class="l">{esc(t["name"])}</th>'
            f'<th class="l">{esc(t["pair"])}</th><th>{esc(t["price"])}</th><th>{esc(t["vol"])}</th><th class="hide-sm">{esc(t["spread"])}</th></tr></thead><tbody>{mk}</tbody></table></div></section>' if mk else '')
-    about = f'<section class="section card"><h2>{esc(T["what"])}</h2><p>{esc((T["about_gold"] if gold else T["about_usd"]).format(name=name, tk=tk))}</p><p class="muted">{esc(T["risk"])}</p></section>'
+    own = DESC.get(lang, {}).get(sid)   # written for this coin by the descriptions task (20 languages)
+    about = (f'<section class="section card"><h2>{esc(T["what"])}</h2>{f"<p>{esc(own)}</p>" if own else ""}'
+             f'<p>{esc((T["about_gold"] if gold else T["about_usd"]).format(name=name, tk=tk))}</p><p class="muted">{esc(T["risk"])}</p></section>')
     cv = f'<p><a class="btn ghost" href="{url(lang, "converter")}">{esc(TR[lang]["x"].get("cv_nav") or "Converter")} →</a></p>' if sid in SBA else ''
     others = ''.join(f'<a class="chip" href="{url(lang, o)}">{esc(SB[o.upper()]["name"])} <small>{esc(o.upper())}</small></a>' for o in st_ids() if o != sid)[:6000]
     body = (f'<nav class="crumbs"><a href="{url(lang, "crypto")}">{esc(TR[lang]["ui"]["crypto"])}</a> / <a href="{url(lang, "stablecoins")}">{esc(T["nav"])}</a> / {esc(name)}</nav>'
@@ -2892,10 +2901,8 @@ def calc_hub_page(lang, ver):
 
 def xc_menu(lang):
     items = [('exchanges', EX[lang]['h1'].split(':')[0].split('：')[0].split('？')[0])]
-    if XCH.get('spot'):
-        items.append(('crypto-exchanges', XC[lang]['nav']))
-    if XCH.get('derivatives'):
-        items.append(('crypto-exchanges/derivatives', XC[lang]['nav'] + ' · ' + XC[lang]['tab_der']))
+    # owner 2026-11-20: the exchange ranking and derivatives lists are hidden from the menu until they look right
+    # (pages stay reachable, noindex; exchange detail pages stay, linked from «where it trades»)
     return items
 
 

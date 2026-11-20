@@ -911,3 +911,6 @@ a.pgb,span.pgb{display:inline-flex;align-items:center;justify-content:center;tex
 .xnotice{background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.4);border-radius:10px;padding:10px 12px;font-size:14px}
 .xbar{display:inline-block;width:80px;height:6px;border-radius:3px;background:var(--line,#253041);vertical-align:middle;margin-right:6px;overflow:hidden}.xbar i{display:block;height:100%;background:var(--accent,#34d399)}
 .mkt td.l>a small{margin-left:4px}
+.mkt .xn{display:inline-flex;align-items:center;gap:8px}
+table.mt th.sortable{user-select:none;white-space:nowrap}table.mt th.sortable::after{content:" ↕";opacity:.35;font-size:.85em}
+table.mt th.asc::after{content:" ↑";opacity:1;color:var(--accent,#34d399)}table.mt th.desc::after{content:" ↓";opacity:1;color:var(--accent,#34d399)}

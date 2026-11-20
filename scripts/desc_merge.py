@@ -10,6 +10,10 @@ import json, os, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LANGS = ['en', 'uk', 'ru', 'es', 'de', 'pt', 'pl', 'tr', 'fr', 'it', 'nl', 'id', 'vi', 'th', 'hi', 'ja', 'ko', 'zh', 'ar', 'fil']
 A = json.load(open(os.path.join(ROOT, 'data', 'market.json')))['assets']
+try:   # stablecoin pages (/<ticker>/) are valid ids too
+    A.update({k.lower(): 1 for k in (json.load(open(os.path.join(ROOT, 'data', 'stables.json'))).get('s') or {})})
+except Exception:
+    pass
 B = json.load(open(sys.argv[1], encoding='utf-8'))
 added = {}
 for lg in LANGS:

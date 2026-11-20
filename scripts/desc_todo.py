@@ -15,6 +15,13 @@ lang = sys.argv[1]
 n = int(sys.argv[2]) if len(sys.argv) > 2 else 120
 LANGS = ['en', 'uk', 'ru', 'es', 'de', 'pt', 'pl', 'tr', 'fr', 'it', 'nl', 'id', 'vi', 'th', 'hi', 'ja', 'ko', 'zh', 'ar', 'fil']
 A = json.load(open(os.path.join(ROOT, 'data', 'market.json')))['assets']
+# stablecoins + gold tokens have their own pages (/<ticker>/) but are not market.json assets: queue them first
+try:
+    for _tk, _v in (json.load(open(os.path.join(ROOT, 'data', 'stables.json'))).get('s') or {}).items():
+        if _tk.lower() not in A and _v.get('price'):
+            A[_tk.lower()] = dict(name=_v.get('name'), tk=_tk, cat='stable', p=[1], cgid=_v.get('cgid'), gold=_v.get('gold'))
+except Exception:
+    pass
 SI = json.load(open(os.path.join(ROOT, 'data', 'stockinfo.json')))
 CI = json.load(open(os.path.join(ROOT, 'data', 'coininfo.json')))
 def load(lg):
@@ -27,6 +34,8 @@ done = {} if lang == 'all' else D[lang]
 
 
 def score(k, a):
+    if a['cat'] == 'stable':
+        return 1e16
     if a['cat'] in ('metal', 'cmd', 'etf'):
         return 1e15
     if a['cat'] == 'crypto':
