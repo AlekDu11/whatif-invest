@@ -172,3 +172,31 @@ MEM3 = {k: dict(zip(K3, v)) for k, v in {
 }.items()}
 for _k in MEM2:
     MEM2[_k].update(MEM3[_k])
+
+# Round 3 (2026-11-21): Fomo-style tabs and the token page /memes/token/.
+# t_trend t_gain t_vol t_new = tabs; back = link to the list; tx = transactions 24h; ca = contract address; copy / copied; links; chart; nodata = data temporarily unavailable
+K4 = 't_trend t_gain t_vol t_new back tx ca copy copied links chart nodata'.split()
+MEM4 = {k: dict(zip(K4, v)) for k, v in {
+ 'en': ('Trending', 'Top gainers', 'Top volume', 'New pairs', 'All memecoins', 'Trades 24h', 'Contract', 'Copy', 'Copied', 'Links', 'Chart', 'Data is temporarily unavailable — retrying…'),
+ 'uk': ('Тренди', 'Найбільше виросли', 'Найбільший обсяг', 'Нові пари', 'Усі мемкоїни', 'Угоди 24г', 'Контракт', 'Копіювати', 'Скопійовано', 'Посилання', 'Графік', 'Дані тимчасово недоступні — пробуємо ще раз…'),
+ 'ru': ('Тренды', 'Больше всего выросли', 'Наибольший объём', 'Новые пары', 'Все мемкоины', 'Сделки 24ч', 'Контракт', 'Копировать', 'Скопировано', 'Ссылки', 'График', 'Данные временно недоступны — пробуем ещё раз…'),
+ 'es': ('Tendencia', 'Mayores subidas', 'Mayor volumen', 'Pares nuevos', 'Todas las memecoins', 'Operaciones 24h', 'Contrato', 'Copiar', 'Copiado', 'Enlaces', 'Gráfico', 'Datos no disponibles por ahora — reintentando…'),
+ 'pt': ('Em alta', 'Maiores altas', 'Maior volume', 'Pares novos', 'Todas as memecoins', 'Negócios 24h', 'Contrato', 'Copiar', 'Copiado', 'Links', 'Gráfico', 'Dados indisponíveis no momento — tentando de novo…'),
+ 'de': ('Trends', 'Top-Gewinner', 'Höchstes Volumen', 'Neue Paare', 'Alle Memecoins', 'Trades 24 h', 'Kontrakt', 'Kopieren', 'Kopiert', 'Links', 'Chart', 'Daten gerade nicht verfügbar — neuer Versuch…'),
+ 'fr': ('Tendances', 'Plus fortes hausses', 'Plus gros volume', 'Nouvelles paires', 'Tous les memecoins', 'Transactions 24 h', 'Contrat', 'Copier', 'Copié', 'Liens', 'Graphique', 'Données indisponibles pour le moment — nouvel essai…'),
+ 'it': ('Di tendenza', 'Maggiori rialzi', 'Volume più alto', 'Nuove coppie', 'Tutte le memecoin', 'Scambi 24 h', 'Contratto', 'Copia', 'Copiato', 'Link', 'Grafico', 'Dati momentaneamente non disponibili — nuovo tentativo…'),
+ 'pl': ('Na topie', 'Największe wzrosty', 'Największy wolumen', 'Nowe pary', 'Wszystkie memecoiny', 'Transakcje 24 h', 'Kontrakt', 'Kopiuj', 'Skopiowano', 'Linki', 'Wykres', 'Dane chwilowo niedostępne — ponawiamy…'),
+ 'tr': ('Trend', 'En çok yükselenler', 'En yüksek hacim', 'Yeni pariteler', 'Tüm memecoinler', 'İşlem 24s', 'Kontrat', 'Kopyala', 'Kopyalandı', 'Bağlantılar', 'Grafik', 'Veriler geçici olarak alınamıyor — yeniden deneniyor…'),
+ 'nl': ('Trending', 'Grootste stijgers', 'Hoogste volume', 'Nieuwe paren', 'Alle memecoins', 'Trades 24u', 'Contract', 'Kopiëren', 'Gekopieerd', 'Links', 'Grafiek', 'Gegevens tijdelijk niet beschikbaar — opnieuw proberen…'),
+ 'id': ('Trending', 'Kenaikan terbesar', 'Volume terbesar', 'Pair baru', 'Semua memecoin', 'Transaksi 24j', 'Kontrak', 'Salin', 'Disalin', 'Tautan', 'Grafik', 'Data sementara tidak tersedia — mencoba lagi…'),
+ 'vi': ('Xu hướng', 'Tăng mạnh nhất', 'Khối lượng lớn nhất', 'Cặp mới', 'Tất cả memecoin', 'Giao dịch 24h', 'Hợp đồng', 'Sao chép', 'Đã sao chép', 'Liên kết', 'Biểu đồ', 'Tạm thời chưa có dữ liệu — đang thử lại…'),
+ 'th': ('มาแรง', 'ขึ้นแรงสุด', 'วอลุ่มสูงสุด', 'คู่ใหม่', 'เหรียญมีมทั้งหมด', 'ธุรกรรม 24 ชม.', 'สัญญา', 'คัดลอก', 'คัดลอกแล้ว', 'ลิงก์', 'กราฟ', 'ข้อมูลยังไม่พร้อมชั่วคราว — กำลังลองใหม่…'),
+ 'hi': ('ट्रेंडिंग', 'सबसे ज़्यादा बढ़े', 'सबसे ज़्यादा वॉल्यूम', 'नए पेयर', 'सभी मीमकॉइन', 'ट्रेड 24 घं.', 'कॉन्ट्रैक्ट', 'कॉपी करें', 'कॉपी हो गया', 'लिंक', 'चार्ट', 'डेटा अभी उपलब्ध नहीं — फिर से कोशिश…'),
+ 'ja': ('トレンド', '上昇率上位', '出来高上位', '新規ペア', 'すべてのミームコイン', '取引数 24h', 'コントラクト', 'コピー', 'コピーしました', 'リンク', 'チャート', 'データを一時的に取得できません。再試行中…'),
+ 'ko': ('트렌딩', '상승률 상위', '거래량 상위', '신규 페어', '전체 밈코인', '거래 24시간', '컨트랙트', '복사', '복사됨', '링크', '차트', '데이터를 잠시 불러올 수 없습니다 — 다시 시도 중…'),
+ 'zh': ('热门', '涨幅榜', '成交量榜', '新交易对', '全部 Meme 币', '24小时交易', '合约', '复制', '已复制', '链接', '图表', '数据暂时无法获取——正在重试…'),
+ 'ar': ('الرائجة', 'الأكثر ارتفاعًا', 'الأعلى حجمًا', 'أزواج جديدة', 'كل عملات الميم', 'صفقات 24 س', 'العقد', 'نسخ', 'تم النسخ', 'روابط', 'الرسم البياني', 'البيانات غير متاحة مؤقتًا — نعيد المحاولة…'),
+ 'fil': ('Trending', 'Pinakamalaking akyat', 'Pinakamalaking volume', 'Bagong pairs', 'Lahat ng memecoin', 'Trades 24h', 'Contract', 'Kopyahin', 'Nakopya', 'Mga link', 'Chart', 'Pansamantalang walang data — sinusubukan ulit…'),
+}.items()}
+for _k in MEM2:
+    MEM2[_k].update(MEM4[_k])

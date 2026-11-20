@@ -883,46 +883,73 @@ $$('section.mkt').forEach(sec=>{ const rows=[...sec.querySelectorAll('tbody tr')
   if(!$('#be').value){ const d=today(); d.setFullYear(d.getFullYear()+1); $('#be').value=iso(d) }
   document.addEventListener('wi:bonds',draw); sym(); draw();
 })();
-/* ---------- memecoins: live DEX movers + trending pools (GeckoTerminal, called from the visitor's browser) ---------- */
-(function(){
-  const box=$('#dexb'); if(!box||!PAGE.memes) return; const L=PAGE.memes.t; let net='all';
+/* ---------- memecoins: DEX hub (/memes/) and token page (/memes/token/) — data from /api/chart?dex=… (cached server fetch of GeckoTerminal) ---------- */
+const DEXU=(()=>{
   const NETN={solana:'Solana',base:'Base',bsc:'BNB',eth:'Ethereum',ton:'TON',tron:'TRON',arbitrum:'Arbitrum',polygon_pos:'Polygon',avax:'Avalanche',sui:'Sui','sui-network':'Sui',hyperevm:'HyperEVM',robinhood:'Robinhood',abstract:'Abstract',unichain:'Unichain',monad:'Monad'};
-  const GT='https://api.geckoterminal.com/api/v2/networks/';
   const big=v=>{ v=+v||0; return v>=1e9?'$'+(v/1e9).toFixed(2)+'B':v>=1e6?'$'+(v/1e6).toFixed(2)+'M':v>=1e3?'$'+(v/1e3).toFixed(1)+'K':'$'+v.toFixed(0) };
   let RT; try{ RT=new Intl.RelativeTimeFormat(T.intl||'en',{numeric:'auto',style:'short'}) }catch(e){}
   const age=d=>{ const h=(Date.now()-Date.parse(d))/36e5; if(!isFinite(h)||!RT) return ''; return h<1?RT.format(-Math.round(h*60),'minute'):h<48?RT.format(-Math.round(h),'hour'):RT.format(-Math.round(h/24),'day') };
-  const get=u=>fetch(u,{headers:{accept:'application/json'}}).then(r=>{ if(!r.ok) throw r.status; return r.json() });
-  function parse(d){ const toks={}; (d.included||[]).forEach(x=>{ if(x.type==='token') toks[x.id]=x.attributes });
-    return (d.data||[]).map(p=>{ const a=p.attributes||{}, bt=toks[(p.relationships&&p.relationships.base_token&&p.relationships.base_token.data||{}).id]||{}, pc=a.price_change_percentage||{};
-      const n=String(p.id||'').split('_')[0];
-      return { n, addr:bt.address||'', sym:bt.symbol||(a.name||'').split(' / ')[0], name:bt.name||'', img:bt.image_url&&bt.image_url!=='missing.png'?bt.image_url:'',
-        pr:+a.base_token_price_usd, mc:+a.market_cap_usd||+a.fdv_usd||0, c1:+pc.h1/100, c24:+pc.h24/100, liq:+a.reserve_in_usd||0, vol:+(a.volume_usd||{}).h24||0, at:a.pool_created_at } }).filter(r=>r.sym) }
-  // quality filter (on by default): enough liquidity and volume, not brand new, no wash-trading pattern, one row per token
-  const good=r=>r.liq>=100000&&r.vol>=50000&&(Date.now()-Date.parse(r.at))/36e5>=24&&r.vol/r.liq<=60&&isFinite(r.c24);
-  const qOn=()=>{ const q=$('#dexq'); return !q||q.checked };
-  const uniq=l=>{ const s=new Set(); return l.filter(r=>{ const k=r.n+r.addr; if(s.has(k)) return false; s.add(k); return true }) };
-  const pick=l=>uniq(qOn()?l.filter(good):l);
-  const go=(r,p,where)=>`/go/${p}?from=${encodeURIComponent('memes-'+where+':'+r.n)}&l=${lang}&c=${encodeURIComponent(r.n)}&a=${encodeURIComponent(r.addr)}`;
+  const pc=v=>v==null?null:v/100;
   const GM=new Set(['solana','base','bsc','eth','tron']);
-  const ic=r=>r.img?`<span class="ic"><img src="${esc(r.img)}" alt="" loading="lazy" width="26" height="26"></span>`:`<span class="ic" style="background:#64748b">${esc(r.sym.slice(0,2))}</span>`;
+  const go=(r,p,where)=>`/go/${p}?from=${encodeURIComponent('memes-'+where+':'+r.n)}&l=${lang}&c=${encodeURIComponent(r.n)}&a=${encodeURIComponent(r.a)}`;
   const btns=(r,w)=>`<span class="dexgo">${GM.has(r.n)?`<a class="buy" href="${go(r,'gmgn',w)}" target="_blank" rel="sponsored nofollow noopener">GMGN</a>`:''}<a class="buy" href="${go(r,'okx-wallet',w)}" target="_blank" rel="sponsored nofollow noopener">OKX</a></span>`;
-  function row(r){ const f=[]; if(!qOn()){ const hrs=(Date.now()-Date.parse(r.at))/36e5;
+  const ic=(r,sz=26)=>r.img?`<span class="ic"><img src="${esc(r.img)}" alt="" loading="lazy" width="${sz}" height="${sz}"></span>`:`<span class="ic" style="background:#64748b">${esc((r.s||'?').slice(0,2))}</span>`;
+  const api=q=>fetch('/api/chart?'+q).then(r=>{ if(!r.ok) throw r.status; return r.json() });
+  return {NETN,big,age,pc,btns,ic,api};
+})();
+(function(){
+  const box=$('#dexb'); if(!box||!PAGE.memes) return; const L=PAGE.memes.t, U=DEXU; let net='all', view='trend', last=[], tmr;
+  const good=r=>r.liq>=100000&&r.vol>=50000&&(Date.now()-Date.parse(r.at))/36e5>=24&&r.vol/r.liq<=60&&r.c24!=null;
+  const goodNew=r=>r.liq>=20000&&r.vol>=10000;
+  const qOn=()=>{ const q=$('#dexq'); return !q||q.checked };
+  const uniq=l=>{ const s=new Set(); return l.filter(r=>{ const k=r.n+(r.a||r.p); if(s.has(k)) return false; s.add(k); return true }) };
+  const link=r=>`${PAGE.memes.tok}?n=${encodeURIComponent(r.n)}&p=${encodeURIComponent(r.p)}`;
+  function row(r){ const f=[]; if(!qOn()||view==='new'){ const hrs=(Date.now()-Date.parse(r.at))/36e5;
     if(hrs<72) f.push(`<i class="rf">${esc(L.new)}</i>`); if(r.liq<50000) f.push(`<i class="rf">${esc(L.lowliq)}</i>`); if(r.liq>0&&r.vol/r.liq>20) f.push(`<i class="rf">${esc(L.hot)}</i>`) }
-    return `<tr><td class="l"><span class="asset">${ic(r)}<span><span class="nm">${esc(r.name||r.sym)}</span><span class="tk">${esc(r.sym)} <i class="dexnet">${esc(NETN[r.n]||r.n)}</i> ${f.join('')}</span></span></span></td>
-      <td class="num">${fmtPrice(r.pr)}</td><td class="num hide-sm">${r.mc?big(r.mc):'—'}</td><td class="num ${cls(r.c1)}">${fmtPct(r.c1)}</td><td class="num ${cls(r.c24)}">${fmtPct(r.c24)}</td>
-      <td class="num hide-sm">${big(r.vol)}</td><td class="num hide-sm">${big(r.liq)}</td><td class="num hide-sm">${age(r.at)}</td><td>${btns(r,'table')}</td></tr>` }
+    return `<tr data-href="${link(r)}"><td class="l"><a class="asset" href="${link(r)}">${U.ic(r)}<span><span class="nm">${esc(r.nm||r.s)}</span><span class="tk">${esc(r.s)} <i class="dexnet">${esc(U.NETN[r.n]||r.n)}</i> ${f.join('')}</span></span></a></td>
+      <td class="num">${fmtPrice(r.pr)}</td><td class="num hide-sm">${r.mc?U.big(r.mc):'—'}</td><td class="num hide-sm ${cls(U.pc(r.c1))}">${fmtPct(U.pc(r.c1))}</td><td class="num ${cls(U.pc(r.c24))}">${fmtPct(U.pc(r.c24))}</td>
+      <td class="num hide-sm">${U.big(r.vol)}</td><td class="num hide-sm">${U.big(r.liq)}</td><td class="num hide-sm">${U.age(r.at)}</td><td>${U.btns(r,'table')}</td></tr>` }
   function movers(list){ const ok=uniq(list.filter(good));
-    const put=(id,arr)=>{ const el=$('#dex_'+id); if(el) el.innerHTML=arr.length?arr.map(r=>`<div class="mrow">${ic(r)}<span class="mn"><b>${esc(r.sym)}</b><span>${esc(NETN[r.n]||r.n)} · ${big(r.liq)}</span></span>
-      <span class="mp">${fmtPrice(r.pr)}</span><span class="mc ${cls(r.c24)}">${fmtPct(r.c24)}</span>${btns(r,id)}</div>`).join(''):'<div class="empty">—</div>' };
+    const put=(id,arr)=>{ const el=$('#dex_'+id); if(el) el.innerHTML=arr.length?arr.map(r=>`<a class="mrow" href="${link(r)}">${U.ic(r)}<span class="mn"><b>${esc(r.s)}</b><span>${esc(U.NETN[r.n]||r.n)} · ${U.big(r.mc||r.liq)}</span></span>
+      <span class="mp">${fmtPrice(r.pr)}</span><span class="mc ${cls(U.pc(r.c24))}">${fmtPct(U.pc(r.c24))}</span></a>`).join(''):'<div class="empty">—</div>' };
     put('gain',[...ok].filter(r=>r.c24>0).sort((a,b)=>b.c24-a.c24).slice(0,5)); put('lose',[...ok].filter(r=>r.c24<0).sort((a,b)=>a.c24-b.c24).slice(0,5)) }
-  const fail=()=>{ box.innerHTML='<tr><td colspan="9" class="empty">—</td></tr>' }; let last=[];
-  const draw=()=>{ box.innerHTML=pick(last).slice(0,25).map(row).join('')||'<tr><td colspan="9" class="empty">—</td></tr>' };
-  const pages=(base,n)=>Promise.all(Array.from({length:n},(_,i)=>get(`${base}trending_pools?page=${i+1}&include=base_token`).then(parse).catch(()=>[]))).then(a=>a.flat());
-  function load(){
-    pages(net==='all'?GT:`${GT}${net}/`, net==='all'?3:2).then(l=>{ if(!l.length) return fail(); last=l; if(net==='all') movers(l); draw() }) }
+  function draw(){ let l=uniq(last); if(qOn()) l=l.filter(view==='new'?goodNew:good);
+    if(view==='gain') l=l.filter(r=>r.c24!=null).sort((a,b)=>b.c24-a.c24); else if(view==='vol') l=l.sort((a,b)=>b.vol-a.vol); else if(view==='new') l=l.sort((a,b)=>Date.parse(b.at)-Date.parse(a.at));
+    box.innerHTML=l.slice(0,30).map(row).join('')||'<tr><td colspan="9" class="empty">—</td></tr>' }
+  let seq=0;
+  function load(){ const my=++seq; clearTimeout(tmr); const v=view==='gain'?'trend':view;
+    U.api(`dex=${v}&n=${net}`).then(j=>{ if(my!==seq) return; $('#dexerr').hidden=true; last=j.d||[]; if(v==='trend'&&net==='all') movers(last); draw(); tmr=setTimeout(load,90000) })
+      .catch(()=>{ if(my!==seq) return; if(!last.length) $('#dexerr').hidden=false; tmr=setTimeout(load,15000) }) }
+  if(view!=='trend'||net!=='all') U.api('dex=trend&n=all').then(j=>movers(j.d||[])).catch(()=>{});
+  $$('#dexn button').forEach(b=>b.onclick=()=>{ net=b.dataset.n; $$('#dexn button').forEach(x=>x.classList.toggle('on',x===b)); last=[]; box.innerHTML='<tr><td colspan="9" class="empty">…</td></tr>'; load() });
+  $$('#dexv button').forEach(b=>b.onclick=()=>{ const nv=b.dataset.v, same=(nv==='gain'?'trend':nv)===(view==='gain'?'trend':view); view=nv; $$('#dexv button').forEach(x=>x.classList.toggle('on',x===b)); if(same) draw(); else { last=[]; box.innerHTML='<tr><td colspan="9" class="empty">…</td></tr>'; load() } });
   const q=$('#dexq'); if(q) q.onchange=draw;
-  $$('#dexn button').forEach(b=>b.onclick=()=>{ net=b.dataset.n; $$('#dexn button').forEach(x=>x.classList.toggle('on',x===b)); box.innerHTML='<tr><td colspan="9" class="empty">…</td></tr>'; load() });
-  load(); setInterval(()=>{ if(!document.hidden) load() },60000);
+  box.addEventListener('click',e=>{ if(e.target.closest('a')) return; const tr=e.target.closest('tr[data-href]'); if(tr) location.href=tr.dataset.href });
+  document.addEventListener('visibilitychange',()=>{ if(!document.hidden&&!last.length) load() });
+  load();
+})();
+(function(){
+  const box=$('#dexpool'); if(!box||!PAGE.dexpool) return; const L=PAGE.dexpool.t, U=DEXU;
+  const q=new URLSearchParams(location.search), n=q.get('n')||'', p=q.get('p')||'';
+  if(!/^[a-z0-9_-]{2,30}$/.test(n)||!/^[A-Za-z0-9_:\-]{20,80}$/.test(p)){ location.replace(PAGE.dexpool.list); return }
+  const stat=(k,v)=>`<div class="dps"><small class="muted">${esc(k)}</small><b>${v}</b></div>`;
+  const chg=(k,v)=>`<div class="dpc"><small class="muted">${k}</small><b class="${cls(U.pc(v))}">${fmtPct(U.pc(v))}</b></div>`;
+  function show(r){ const inf=r.info||{}; if(inf.img&&!r.img) r.img=inf.img;
+    document.title=`${r.nm||r.s} (${r.s}) — ${fmtPrice(r.pr)} | WhatIfStack`;
+    const links=[...(inf.web||[]).map(w=>[w.replace(/^https?:\/\/(www\.)?/,'').replace(/\/$/,''),w]), inf.x?['X @'+inf.x,'https://x.com/'+inf.x]:null, inf.tg?['Telegram','https://t.me/'+inf.tg]:null].filter(Boolean);
+    const desc=(inf.d||'').trim(); const short=desc.length>320?desc.slice(0,320).replace(/\s+\S*$/,'')+'…':desc;
+    box.innerHTML=`<div class="dph">${U.ic(r,48)}<div><h1>${esc(r.nm||r.s)} <span class="muted">${esc(r.s)}</span></h1><span class="dexnet">${esc(U.NETN[r.n]||r.n)}</span>${r.q?` <span class="muted" style="font-size:13px">${esc(r.s)}/${esc(r.q)}</span>`:''}</div></div>
+      <div class="dpp"><b class="dpprice">${fmtPrice(r.pr)}</b><span class="${cls(U.pc(r.c24))}">${fmtPct(U.pc(r.c24))} · 24h</span></div>
+      <div class="dpbtn">${['solana','base','bsc','eth','tron'].includes(r.n)?`<a class="btn" href="/go/gmgn?from=memes-token:${encodeURIComponent(r.n)}&l=${lang}&c=${encodeURIComponent(r.n)}&a=${encodeURIComponent(r.a)}" target="_blank" rel="sponsored nofollow noopener">${esc(L.trade)} · GMGN</a>`:''}<a class="btn ghost" href="/go/okx-wallet?from=memes-token:${encodeURIComponent(r.n)}&l=${lang}" target="_blank" rel="sponsored nofollow noopener">${esc(L.trade)} · OKX Wallet</a></div>
+      <div class="dpchg">${chg('5m',r.c5)}${chg('1h',r.c1)}${chg('6h',r.c6)}${chg('24h',r.c24)}</div>
+      <div class="card dpchart"><iframe title="${esc(L.chart)}" loading="lazy" src="https://www.geckoterminal.com/${encodeURIComponent(r.n)}/pools/${encodeURIComponent(r.p)}?embed=1&info=0&swaps=0&grayscale=0&light_chart=${document.documentElement.dataset.theme==='dark'?0:1}" allow="clipboard-write"></iframe></div>
+      <div class="dpstats">${stat(L.mc,r.mc?U.big(r.mc):'—')}${stat(L.liq,U.big(r.liq))}${stat(L.vol,U.big(r.vol))}${stat(L.tx,(r.tx||0).toLocaleString(T.intl||'en'))}${stat(L.age,U.age(r.at))}</div>
+      ${short?`<p class="dpdesc">${esc(short)}</p>`:''}
+      ${links.length?`<div class="dplinks">${links.map(([t,h])=>`<a class="bchip" href="${esc(h)}" target="_blank" rel="nofollow noopener">${esc(t)}</a>`).join('')}</div>`:''}
+      <div class="dpca"><small class="muted">${esc(L.ca)}</small><code>${esc(r.a)}</code><button class="btn ghost" type="button" id="dpcopy">${esc(L.copy)}</button></div>`;
+    const c=$('#dpcopy'); if(c) c.onclick=()=>{ try{ navigator.clipboard.writeText(r.a); c.textContent=L.copied }catch(e){} } }
+  const load=()=>U.api(`dex=pool&n=${encodeURIComponent(n)}&p=${encodeURIComponent(p)}`).then(show).catch(()=>{ box.innerHTML=`<p class="muted">${esc(L.nodata)}</p>`; setTimeout(load,15000) });
+  load();
 })();
 /* ---------- share: one button -> phone share sheet, or a menu (networks + copy link) ---------- */
 (function(){
