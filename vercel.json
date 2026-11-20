@@ -5,6 +5,12 @@
   "installCommand": "true",
   "framework": null,
   "trailingSlash": true,
+  "functions": {
+    "api/page.py": {
+      "maxDuration": 10,
+      "excludeFiles": "{dist,.git,.github,content/covers,content/video,social,reports,ads,partners,data/feed,src/og,node_modules}/**"
+    }
+  },
   "redirects": [
     {
       "source": "/tg",
@@ -185,6 +191,14 @@
     {
       "source": "/stats/",
       "destination": "/api/stats"
+    },
+    {
+      "source": "/:lang(es|pt|de|fr|it|pl|tr|nl|ru|id|vi|th|hi|ja|ko|zh|ar|fil)/:aid",
+      "destination": "/api/page?l=:lang&a=:aid"
+    },
+    {
+      "source": "/:lang(es|pt|de|fr|it|pl|tr|nl|ru|id|vi|th|hi|ja|ko|zh|ar|fil)/:aid/",
+      "destination": "/api/page?l=:lang&a=:aid"
     }
   ],
   "git": {

@@ -236,6 +236,11 @@ def has_page(lang, aid):
         return aid[5:] in NEWS.get(lang, {})
     if aid == 'blog' or (aid or '').startswith('blog/'):
         return lang in BLOG_LANGS and (aid == 'blog' or aid[5:] in POSTS.get(lang, {}))
+    return lang in FULL or aid in A   # every asset exists in every language; static_asset() says which are files, the rest render on demand (api/page.py)
+
+
+def static_asset(lang, aid):
+    """Asset pages written as static files; the long tail in other languages is rendered by api/page.py (CDN-cached) to keep each deploy small."""
     return lang in FULL or aid in TOP or (aid in A and MKT_LANG.get(A[aid].get('mkt')) == lang)
 
 
@@ -639,7 +644,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
     mnav += f'<button type="button" id="mmore"><span>☰</span>{esc(X["nav_tools"])}</button>'
     msheet = ('<div class="msheet" id="msheet" hidden>' + ''.join(f'<a href="{url(lang, k)}">{esc(v)}</a>' for k, v in
               [('me', PF[lang]['h1']), ('portfolios', BP[lang]['nav']), ('compound-interest', IC[lang]['nav']), ('activities', ACT[lang]['nav']), ('ai', AIS[lang]['h1'].split(':')[0])] + xc_menu(lang)[1:2] + [x for x in tools_menu(lang) if x]) + '</div>')
-    cfg = dict(cfg, lang=lang, base=BASE, prefix=url(lang).rstrip('/'), full=lang in FULL, topn=TOP_N,
+    cfg = dict(cfg, lang=lang, base=BASE, prefix=url(lang).rstrip('/'), full=lang in FULL, topn=10**6,
                names={'gold': S['gold'], 'silver': S['silver'], **{k: v[lang] for k, v in CMD_NAMES.items()}})
     return f"""<!DOCTYPE html>
 <html lang="{S['loc']}" dir="{S['dir']}">
@@ -4498,6 +4503,7 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
  if(r.mode==='navigate'){{e.respondWith(fetch(r).then(res=>{{const cp=res.clone();caches.open(C).then(c=>c.put(r,cp));return res}}).catch(()=>caches.match(r).then(m=>m||caches.match('/'))))}}
 }});""")
     ver = dict(css=h8(css), js=h8(js), ref=h8(ref), index=h8(index_js))
+    write('assets/ver.json', json.dumps(ver))   # api/page.py renders on-demand pages with the same asset versions
     json.dump({i: alert_src(i) for i in A if alert_src(i)}, open(os.path.join(DIST, 'assets/alerts-map.json'), 'w'), separators=(',', ':'))
     # Pages of assets that dropped out (stale / delisted / renamed) must not turn into 404s that Google already knows:
     # write a redirect stub (instant meta refresh + canonical) to the renamed asset or to the category list.
@@ -4532,7 +4538,8 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
         write(pre + 'index.html', home(lang, ver))
         write(pre + 'compare/index.html', compare(lang, ver))
         for aid in assets_:
-            write(f'{pre}{aid}/index.html', asset(aid, lang, ver))
+            if static_asset(lang, aid):
+                write(f'{pre}{aid}/index.html', asset(aid, lang, ver))
         for slug in HUBS:
             write(f'{pre}{slug}/index.html', hub(lang, slug, ver))
         for slug in CSLUG:
