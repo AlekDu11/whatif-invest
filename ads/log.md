@@ -106,3 +106,9 @@
 - Пауза #11: CVR 55% (у якісних 7–14%), той самий профіль, що власник назвав ботами (#7/#8).
 - Розширення бази не робили (переможця за каналами нема, канальні не відкручують при CPM 0.10).
 - Пропозиція (чекає «так»): +2 на #6, +2 на #9, +1.5 на #12 (CPM 0.11); нове #13 tier-1 users, promote_url t.me/WhatIfStack/1484 (золото), CPM 0.11, 2 Gram. Разом 7.5 Gram.
+
+### 2026-11-20 14:25
+- За «так» власника: #6 +2 Gram (до «ні» власника; решту плану tier-1 не запускали).
+- Власник: мережа каналів-прикладів, «треба більший список». Пошуковики й архіви реклами (telegramadsarchive/analytics, tgmetrics) недоступні; Ads getSimilarChannels для всіх каналів мережі = 0 (ізольовані). Приватні посилання з постів (NFTowersds, CoreMineCustomer, Assetloom, dasad91) таргетувати не можна.
+- #13 WIS Owner network 16 post1485: 16 каналів (Market_Wire33, Crypto_Mdskfne, skcmjff, CryptoMnsdfe, A_CryptoGeekCommunity0, LatestCryptocurrency2323223, LatestCryptocurrency9, Crypto_Commentator8p, DigitalAssetCompass45, Trippier_Encryption, safasfe66, LatestCryptocurrency9K, LatestCryptocurrency2U, ALatestCryptocurrency, LatestCryptocurrencyNews152, lootmakdeals), CPM 0.3, 1 Gram, promote_url t.me/WhatIfStack/1485 (перевірка: кліки → перегляди поста). Баланс 18,92.
+- Власник: на посилання на сайт у постах майже немає переходів при великих охопленнях → підозра, що більшість переглядів — боти.
