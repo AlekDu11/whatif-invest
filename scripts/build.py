@@ -26,7 +26,7 @@ from i18n_mem import MEM  # noqa: E402
 from i18n_act import ACT  # noqa: E402
 from i18n_prof import P as PROF_T  # noqa: E402
 from i18n_pf import PF  # noqa: E402
-from i18n_pf2 import PF2, TRK  # noqa: E402
+from i18n_pf2 import PF2, TRK, STK2  # noqa: E402
 from i18n_dep import DEP, MONTH as DEP_M, MONTH_T as DEP_MT  # noqa: E402
 from i18n_bp import BP  # noqa: E402
 from i18n_ai import AIC  # noqa: E402
@@ -1795,13 +1795,17 @@ def stock_block(lang, aid):
 
 
 
+ANW = {'en': 'analysis', 'uk': 'аналіз', 'ru': 'анализ', 'es': 'análisis', 'de': 'Analyse', 'pt': 'análise'}
+
+
 def analysis_block(lang, aid):
     """Full written analysis of the asset (content/profiles/<lang>/<id>.md with `kind: analysis`), shown in full on the page."""
     prof = PROFILES.get(lang, {}).get(aid)
     if not prof or prof.get('kind') != 'analysis':
         return ''
     return (f'<section class="section card anl"><h2>{esc(prof.get("title", ""))}</h2>'
-            f'<p class="muted anld">{esc(prof.get("date", ""))}</p><div class="artbody clamp" data-more="{esc(XC[lang]["more"])}">{md(prof["body"], lang)}</div></section>')
+            f'<p class="muted anld">{esc(prof.get("date", ""))}</p><div class="artbody clamp" data-more="{esc(XC[lang]["more"])}">{md(prof["body"], lang)}</div></section>'
+            + track_block(lang, [aid]))   # the analysis reads like an article: same «Track it» call to action as news and articles
 
 def stock_faq(lang, aid):
     f = stock_facts(lang, aid)
@@ -2781,6 +2785,10 @@ def asset(aid, lang, ver):
     title, desc = AP[lang]['title'].format(**_apf), AP[lang]['desc'].format(**_apf)
     if m.get('price') and ' — ' in title:   # a live number in the snippet: «Bitcoin (BTC): price, chart and news — $64,215»
         title = title.rsplit(' — ', 1)[0] + MCALC[lang] + ' — ' + _re.sub(r'<[^>]+>', '', usd(m['price']) if 1 <= m['price'] < 1e6 else price(m['price']))
+    if (PROFILES.get(lang, {}).get(aid) or {}).get('kind') == 'analysis' and lang in ANW:
+        sep = ': ' if ': ' in title else (') ' if ') ' in title else None)
+        if sep:
+            title = title.replace(sep, sep + ANW[lang] + ', ', 1)
     fe = dict(f, name=esc(n), inv=usd_h(r['inv']), val=usd_h(r['val']), roi=f'<span class="{cls(r["roi"])}">{pct(r["roi"])}</span>')
     faq = [(S['q1'].format(**f), S['a1'].format(**f)), (S['q2'].format(**f), S['a2'].format(**f)),
            (S['q4'].format(**f), S['a4'].format(**f)), (S['q3'], S['a3'])]
@@ -3586,6 +3594,16 @@ def hub(lang, slug, ver):
         cards = ''.join(hl_card(lang, i, nm(A[i], lang), 'chg', S['ui']['chg']) for i in sorted(big, key=lambda i: -METRICS[i]['chg'])[:4])
     title = h1 + ' | ' + BRAND
     filt = f'<div class="toolbar"><div class="filter">{SEARCH_ICON}<input id="flt" type="search" autocomplete="off"></div></div>'
+    if cat == 'stock' and lc_ids('mcap', None):   # owner 2026-11-20: the stocks page = the «largest companies» ranking + a DCA calculator table
+        t = LC[lang]
+        _, lch = lc_page(lang, 'mcap', None, ver, 1)
+        i0 = lch.index('<div class="cchips lcchips">'); i1 = lch.index('<p class="note">', i0)
+        rank = lch[i0:i1]
+        body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / {esc(label)}</nav><h1>{esc(h1)}</h1>'
+                f'<p class="lead">{esc(desc)}</p>{rank}'
+                f'<section class="section"><h2>🧮 {esc(STK2[lang]["dca_h"])}</h2><p class="muted">{esc(STK2[lang]["dca_d"])}</p>'
+                f'<div class="hl">{cards}</div><div class="tabs" id="tabs" hidden></div>{filt}{table_block(lang, ids[:150], dca=True)}</section>')
+        return shell(lang, slug, title, desc, body, dict(tab=cat, dca=1), ver)
     body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / {esc(label)}</nav><h1>{esc(h1)}</h1>'
             f'<p class="lead">{esc(desc)}</p>{country_chips(lang) if cat == "stock" else ""}'
             f'{f"<p><a class=chip href={url(lang, chr(115) + "tablecoins")}>💵 {esc(STX[lang]["nav"])} →</a></p>" if cat == "crypto" and SB else ""}<div class="hl">{cards}</div><div class="tabs" id="tabs"></div>{filt}{table_block(lang, ids[:150])}')

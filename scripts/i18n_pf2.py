@@ -134,3 +134,28 @@ TV = {
 }
 TRK = {lg: dict(zip(TK, v)) for lg, v in TV.items()}
 assert len(TRK) == 20 and all(len(v) == len(TK) for v in TV.values())
+
+# stocks page: DCA calculator section under the ranking (owner 2026-11-20)
+STK2 = {
+ 'en': dict(dca_h='DCA calculator: what $10 a day in each stock grew to', dca_d='Results of buying every day for 1, 3 and 5 years, dividends not included. Open a company to change the amount, frequency and start date.'),
+ 'uk': dict(dca_h='DCA-калькулятор: скільки дали б $10 на день у кожну акцію', dca_d='Результат щоденних покупок за 1, 3 і 5 років, без дивідендів. Відкрийте компанію, щоб змінити суму, частоту й дату старту.'),
+ 'ru': dict(dca_h='DCA-калькулятор: сколько дали бы $10 в день в каждую акцию', dca_d='Результат ежедневных покупок за 1, 3 и 5 лет, без дивидендов. Откройте компанию, чтобы изменить сумму, частоту и дату старта.'),
+ 'es': dict(dca_h='Calculadora DCA: cuánto habrían dado $10 al día en cada acción', dca_d='Resultado de comprar cada día durante 1, 3 y 5 años, sin dividendos. Abre una empresa para cambiar el importe, la frecuencia y la fecha de inicio.'),
+ 'de': dict(dca_h='DCA-Rechner: was aus 10 $ am Tag in jeder Aktie wurde', dca_d='Ergebnis täglicher Käufe über 1, 3 und 5 Jahre, ohne Dividenden. Öffne ein Unternehmen, um Betrag, Rhythmus und Startdatum zu ändern.'),
+ 'pt': dict(dca_h='Calculadora DCA: quanto renderiam US$ 10 por dia em cada ação', dca_d='Resultado de compras diárias por 1, 3 e 5 anos, sem dividendos. Abra uma empresa para mudar o valor, a frequência e a data de início.'),
+ 'pl': dict(dca_h='Kalkulator DCA: ile dałoby 10 $ dziennie w każdą akcję', dca_d='Wynik codziennych zakupów przez 1, 3 i 5 lat, bez dywidend. Otwórz spółkę, aby zmienić kwotę, częstotliwość i datę startu.'),
+ 'tr': dict(dca_h='DCA hesaplayıcı: her hisseye günde 10 $ ne kazandırırdı', dca_d='1, 3 ve 5 yıl boyunca her gün alımın sonucu, temettüler hariç. Tutarı, sıklığı ve başlangıç tarihini değiştirmek için şirketi aç.'),
+ 'fr': dict(dca_h='Calculateur DCA : ce qu’auraient donné 10 $ par jour dans chaque action', dca_d='Résultat d’achats quotidiens sur 1, 3 et 5 ans, hors dividendes. Ouvrez une entreprise pour changer le montant, la fréquence et la date de départ.'),
+ 'it': dict(dca_h='Calcolatore PAC: quanto avrebbero reso 10 $ al giorno in ogni azione', dca_d='Risultato di acquisti giornalieri per 1, 3 e 5 anni, dividendi esclusi. Apri un’azienda per cambiare importo, frequenza e data di inizio.'),
+ 'nl': dict(dca_h='DCA-calculator: wat $10 per dag in elk aandeel had opgeleverd', dca_d='Resultaat van dagelijks kopen over 1, 3 en 5 jaar, zonder dividend. Open een bedrijf om bedrag, frequentie en startdatum te wijzigen.'),
+ 'id': dict(dca_h='Kalkulator DCA: hasil $10 per hari di setiap saham', dca_d='Hasil membeli setiap hari selama 1, 3 dan 5 tahun, tanpa dividen. Buka perusahaan untuk mengubah jumlah, frekuensi dan tanggal mulai.'),
+ 'vi': dict(dca_h='Máy tính DCA: $10 mỗi ngày vào từng cổ phiếu sẽ thành bao nhiêu', dca_d='Kết quả mua mỗi ngày trong 1, 3 và 5 năm, chưa gồm cổ tức. Mở một công ty để đổi số tiền, tần suất và ngày bắt đầu.'),
+ 'th': dict(dca_h='เครื่องคำนวณ DCA: ลงทุนวันละ $10 ในแต่ละหุ้นจะได้เท่าไร', dca_d='ผลจากการซื้อทุกวันเป็นเวลา 1, 3 และ 5 ปี ไม่รวมเงินปันผล เปิดหน้าบริษัทเพื่อเปลี่ยนจำนวนเงิน ความถี่ และวันเริ่ม'),
+ 'hi': dict(dca_h='DCA कैलकुलेटर: हर शेयर में रोज़ $10 कितना बनता', dca_d='1, 3 और 5 साल तक रोज़ खरीदने का नतीजा, डिविडेंड शामिल नहीं। राशि, अंतराल और शुरुआत बदलने के लिए कंपनी खोलें।'),
+ 'ja': dict(dca_h='積立計算：各株に毎日10ドル投資していたら', dca_d='1年・3年・5年間毎日買い続けた結果（配当除く）。金額・頻度・開始日を変えるには企業ページを開いてください。'),
+ 'ko': dict(dca_h='적립식 계산기: 각 주식에 매일 $10씩 넣었다면', dca_d='1년·3년·5년 동안 매일 매수한 결과(배당 제외). 금액·주기·시작일을 바꾸려면 기업 페이지를 여세요.'),
+ 'zh': dict(dca_h='定投计算器：每天在每只股票投入 10 美元的结果', dca_d='连续 1、3、5 年每天买入的结果，不含股息。打开公司页面可修改金额、频率和开始日期。'),
+ 'ar': dict(dca_h='حاسبة الاستثمار الدوري: ماذا كان سيصبح 10 دولارات يوميًا في كل سهم', dca_d='نتيجة الشراء اليومي لمدة 1 و3 و5 سنوات دون توزيعات الأرباح. افتح صفحة الشركة لتغيير المبلغ والتكرار وتاريخ البدء.'),
+ 'fil': dict(dca_h='DCA calculator: magkano sana ang $10 kada araw sa bawat stock', dca_d='Resulta ng araw-araw na pagbili sa loob ng 1, 3 at 5 taon, hindi kasama ang dibidendo. Buksan ang kompanya para baguhin ang halaga, dalas at petsa ng simula.'),
+}
+assert len(STK2) == 20

@@ -86,7 +86,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
     ST=(M.st||[]).filter(x=>x.r&&x.pr).map(x=>{ const prev=cr.filter(a=>a.rk<x.r).pop(); return {i:'st-'+x.t.toLowerCase(), st:1, c:'crypto', n:x.n, t:x.t, pr:x.pr, ch:x.ch, l:x.l, mc:x.mc, vo:x.vo, w7:x.w7, k7:x.k7, rk:x.r, o:(prev?prev.o:-1)+0.5-1/(x.r+2)} });
     draw() }).catch(()=>{});
   function draw(){
-    COLS=(PAGE.home||tab==='lead'||tab==='lag')?COLS_DCA:COLS_MKT;   // home keeps its approved DCA columns
+    COLS=(PAGE.home||PAGE.dca||tab==='lead'||tab==='lag')?COLS_DCA:COLS_MKT;   // home keeps its approved DCA columns
     let rows=(tab==='crypto'?IDX.concat(ST):IDX).filter(a=>{
       if(tab==='crypto'||tab==='stock'||tab==='etf'||tab==='metal'||tab==='cmd'){ if(a.c!==tab) return false }
       if((tab==='lead'||tab==='lag')&&a.r5==null) return false;
