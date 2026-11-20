@@ -59,6 +59,9 @@ Default share image per language: src/og/<lang>.jpg from scripts/og.py (re-run w
 Every blog/news post needs a branded cover: run `python3 scripts/cover.py --missing` (pip install pillow fonttools) before building and commit content/covers/. Covers are the share image (og:image) and the article hero.
 
 ## Content automation
+Tasks merged 2026-11-20 (owner: 23 → 18): news briefs 4×/day now include the movers rubric; «article of the day» 07:43 = trend article, AI article Mon/Wed/Fri, monthly report on the 1st; search-demand task 16:19 also writes one regional article; profiles = crypto only (stocks get deep-dives). Disabled (kept, not deleted): movers, AI desk, regional, syndication drafts (owner doesn't post Reddit/LinkedIn/Quora), monthly report.
+Fresh posts between deploys: scripts/feed.py → data/feed/<lang>.json + data/feed/<lang>/<kind>-<slug>.html (workflow feed.yml on content push); /news/ and /blog/ load it from GitHub raw, unbuilt posts open in /<lang>/read/ (noindex).
+Google Analytics 4 (2026-11-20): account WhatIfStack, property whatifstack.com, Google tag GTM-5ZSJKWX2, lazy-loaded next to Clarity (CLARITY in build.py).
 Scheduled tasks: daily Insights article (6 or 20 languages, category analytics/guides), monthly market report on the 1st (category reports).
 Movers rubric «What's happening with X» (tag `movers`): twice a day 10:47/19:47 Kyiv, scripts/movers.py lists candidates, briefs in en/uk/ru/es show on the asset page.
 Regional articles: daily 14:23 Kyiv, 3 languages per day about their own market (front matter `region: yes`).
