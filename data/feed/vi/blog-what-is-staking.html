@@ -1,0 +1,47 @@
+<p><b>Staking</b> là việc khóa coin tiền mã hóa để giúp một blockchain vận hành — và nhận coin mới làm phần thưởng. Staking hay được so sánh với gửi tiết kiệm, nhưng cách hoạt động rất khác và có những rủi ro riêng.</p>
+<p>Bài hướng dẫn này giải thích staking hoạt động ra sao, &quot;thời gian khóa&quot; (lock-up) nghĩa là gì, staking trên sàn khác staking on-chain thế nào, và những gì có thể xảy ra sai sót.</p>
+<h2>Staking hoạt động như thế nào</h2>
+<p>Nhiều blockchain hiện đại — Ethereum, Solana, Cardano, Polkadot, Cosmos và các mạng khác — dùng cơ chế <b>proof of stake</b> (bằng chứng cổ phần). Thay vì dùng điện để bảo mật mạng lưới (như đào Bitcoin), chúng dựa vào các <b>validator</b> (trình xác thực): những máy tính kiểm tra giao dịch và thêm khối mới.</p>
+<p>Để trở thành validator, bạn phải đặt cọc coin như một sự bảo đảm rằng mình sẽ hành xử trung thực. Các bước đơn giản:</p>
+<ol><li>Bạn khóa (stake) coin trong mạng lưới, bằng cách tự chạy validator hoặc ủy quyền (delegate) cho một validator khác.</li><li>Validator xác nhận giao dịch và tạo khối.</li><li>Mạng lưới trả phần thưởng bằng coin mới, cộng thêm một phần phí giao dịch.</li><li>Nếu validator gian lận hoặc ngoại tuyến nghiêm trọng, một phần coin đặt cọc có thể bị cắt. Việc này gọi là <b>slashing</b>.</li></ol>
+<p>Bản thân Bitcoin không thể stake theo cách này — Bitcoin dùng proof of work. Các sản phẩm quảng cáo &quot;lãi Bitcoin&quot; thường là cho vay hoặc mô hình khác, không phải staking.</p>
+<h2>Phần thưởng staking đến từ đâu</h2>
+<p>Phần thưởng không phải tiền miễn phí. Chủ yếu đến từ:</p>
+<ul><li><b>Coin mới</b> do mạng lưới phát hành (lạm phát nguồn cung coin),</li><li><b>Phí giao dịch</b> do người dùng trả.</li></ul>
+<p>Điều này quan trọng: nếu mạng lưới phát hành thêm, giả sử, 5% coin mỗi năm và bạn nhận 5%, thì phần lớn bạn chỉ giữ nguyên tỷ trọng của mình trong mạng lưới chứ không giàu thêm. Phần thưởng lại được trả bằng chính coin đó — nếu giá coin giảm, tổng giá trị tài sản của bạn vẫn có thể giảm mạnh.</p>
+<p>Tỷ lệ phần thưởng thay đổi liên tục theo số người stake và quy tắc của mạng lưới. Hãy coi mọi con số phần trăm được quảng cáo chỉ là ảnh chụp nhanh, không phải lời hứa.</p>
+<h2>Thời gian khóa và unbonding: khi nào lấy lại được coin</h2>
+<p>Staking thường có nghĩa là coin của bạn không dùng được ngay. Mỗi mạng lưới có quy tắc riêng:</p>
+<ul><li><b>Ethereum</b> — rút coin đã có thể thực hiện từ bản nâng cấp &quot;Shapella&quot; năm 2023, nhưng việc thoát phải đi qua hàng đợi, có thể mất từ vài ngày đến vài tuần khi nhiều người rút cùng lúc.</li><li><b>Solana</b> — việc hủy stake có hiệu lực vào cuối một &quot;epoch&quot;, thường khoảng hai ngày.</li><li><b>Cosmos và Polkadot</b> — thời gian &quot;unbonding&quot; kéo dài vài tuần; trong thời gian đó coin không sinh lời và không bán được.</li><li><b>Cardano</b> — coin vẫn nằm trong ví của bạn và hoàn toàn không bị khóa.</li></ul>
+<p>Vì sao điều này quan trọng: nếu thị trường giảm trong thời gian unbonding, bạn không thể bán. Luôn kiểm tra quy tắc hiện hành của từng coin trước khi stake.</p>
+<h2>Staking trên sàn và staking on-chain</h2>
+<p>Có hai cách chính để người bình thường tham gia staking.</p>
+<h3>Staking trên sàn (lưu ký)</h3>
+<p>Bạn bấm &quot;Stake&quot; hoặc &quot;Earn&quot; trong ứng dụng sàn, và sàn lo phần kỹ thuật.</p>
+<ul><li>✅ Rất dễ, số tiền nhỏ cũng được, không cần thiết lập ví.</li><li>❌ Sàn giữ coin của bạn. Nếu sàn phá sản, bị hack hoặc đóng băng rút tiền, coin của bạn gặp rủi ro.</li><li>❌ Sàn giữ lại một phần phần thưởng làm phí.</li><li>❌ Một số sản phẩm &quot;earn&quot; thực chất là cho vay, không phải staking — rủi ro rất khác.</li></ul>
+<p>Các cơ quan quản lý đã theo dõi sát những dịch vụ này. Năm 2023, SEC Mỹ cáo buộc Kraken liên quan đến chương trình staking; Kraken nộp 30 triệu USD và đóng dịch vụ cho khách hàng Mỹ. Năm 2025, nhân viên SEC cho biết một số hình thức &quot;protocol staking&quot; trực tiếp không phải là giao dịch chứng khoán. Quy định khác nhau giữa các nước và liên tục thay đổi.</p>
+<h3>Staking on-chain (không lưu ký)</h3>
+<p>Bạn giữ coin trong ví của mình và ủy quyền cho một validator, hoặc tự chạy validator.</p>
+<ul><li>✅ Bạn giữ khóa riêng; không ai đóng băng được tài khoản của bạn.</li><li>✅ Phí thường thấp hơn.</li><li>❌ Kỹ thuật hơn: sai địa chỉ, lừa đảo phishing hay chọn validator kém là trách nhiệm của bạn.</li><li>❌ Tự chạy validator Ethereum cần 32 ETH và phần cứng ổn định.</li></ul>
+<h3>Liquid staking</h3>
+<p>Lựa chọn ở giữa: bạn stake qua một giao thức và nhận một token đại diện cho số coin đã stake (ví dụ token &quot;staked ETH&quot;). Bạn có thể giao dịch token này trong khi coin vẫn sinh phần thưởng. Đổi lại là thêm <b>rủi ro hợp đồng thông minh</b> và khả năng token được giao dịch thấp hơn giá trị số coin đứng sau nó.</p>
+<h2>Những rủi ro chính của staking</h2>
+<p>Staking có an toàn không? Ít rủi ro hơn nhiều sản phẩm crypto &quot;lợi nhuận cao&quot;, nhưng không bao giờ là không có rủi ro:</p>
+<ol><li><b>Rủi ro giá.</b> Lớn nhất. Phần thưởng vài phần trăm chẳng có nghĩa gì nếu coin giảm 50%. Xem mức biến động trên <a href="/vi/eth/">trang Ethereum</a> hoặc <a href="/vi/sol/">trang Solana</a>.</li><li><b>Rủi ro bị khóa.</b> Bạn có thể không bán được khi thị trường sập.</li><li><b>Rủi ro nền tảng.</b> Sàn và nền tảng cho vay có thể sụp đổ. Khi Celsius sụp đổ năm 2022, người dùng chương trình &quot;earn&quot; của nó mất quyền truy cập vào coin của mình.</li><li><b>Slashing.</b> Validator vi phạm có thể mất một phần coin đặt cọc — trên một số mạng, kể cả coin được ủy quyền.</li><li><b>Rủi ro hợp đồng thông minh</b> trong liquid staking và DeFi.</li><li><b>Thuế.</b> Ở nhiều nước, phần thưởng staking bị tính là thu nhập chịu thuế khi nhận. Hãy kiểm tra quy định tại nơi bạn sống.</li><li><b>Lừa đảo.</b> Trang staking giả và lời mời &quot;đảm bảo 20% mỗi tháng&quot; rất phổ biến. Đọc hướng dẫn <a href="/vi/blog/how-to-avoid-crypto-scams/">cách tránh lừa đảo crypto</a> của chúng tôi.</li></ol>
+<h2>Danh sách kiểm tra trước khi stake</h2>
+<ul><li>Chỉ stake số coin bạn vốn đã định giữ lâu dài.</li><li>Kiểm tra thời gian unbonding và liệu bạn có thể cần tiền sớm hơn không.</li><li>Hiểu rõ ai đang giữ coin của bạn — bạn hay một nền tảng.</li><li>So sánh phí: nền tảng giữ lại bao nhiêu phần thưởng?</li><li>Tránh các lời mời có lợi nhuận cố định rất cao — phần thưởng staking thật luôn thay đổi.</li><li>Bắt đầu với số nhỏ và thử rút ra một lần.</li></ul>
+<p>Staking không thay đổi câu hỏi chính: bản thân coin đó có phù hợp với kế hoạch dài hạn của bạn không? Một kế hoạch mua đều đặn như DCA phụ thuộc vào giá tài sản qua nhiều năm — bạn có thể tự thử với <a href="/vi/compare/">công cụ tính DCA</a>. Đây là kết quả của 10 USD mỗi ngày vào Ethereum trong 5 năm — chưa tính bất kỳ phần thưởng staking nào: $14,642 từ $18,260 đã đầu tư (−19.8%).</p>
+<a class="card postcard" href="/vi/eth/"><span class="ic sp lg" style="background-position:6.667% 0%"></span><div><b>Ethereum</b> <span class="badge">ETH</span><div class="muted">DCA $10/ngày · 5 năm: <b class="bad">−19.8%</b> · Giá <b data-p="eth">$1,756.69</b></div></div><span class="calc">Máy tính →</span></a>
+<a class="card postcard" href="/vi/sol/"><span class="ic sp lg" style="background-position:13.33% 0%"></span><div><b>Solana</b> <span class="badge">SOL</span><div class="muted">DCA $10/ngày · 5 năm: <b class="good">+37.4%</b> · Giá <b data-p="sol">$72.81</b></div></div><span class="calc">Máy tính →</span></a>
+<h2>Câu hỏi thường gặp</h2>
+<h3>Staking có giống nhận lãi tiết kiệm không?</h3>
+<p>Không. Lãi đến từ người đi vay; phần thưởng staking đến từ chính mạng lưới vì bạn giúp bảo mật nó. Phần thưởng được trả bằng coin, nên giá trị của nó biến động theo giá coin.</p>
+<h3>Staking có thể bị lỗ không?</h3>
+<p>Có. Giá coin có thể giảm, nền tảng có thể sụp đổ, và trong trường hợp hiếm, slashing có thể cắt bớt coin đặt cọc. Phần thưởng không bảo vệ bạn khỏi việc giá giảm.</p>
+<h3>Có stake được Bitcoin không?</h3>
+<p>Không theo cách gốc — Bitcoin dùng proof of work. Các lời mời &quot;lãi Bitcoin&quot; thường là cho vay hoặc sản phẩm khác với rủi ro khác.</p>
+<h3>Nên staking trên sàn hay staking trong ví?</h3>
+<p>Staking trên sàn đơn giản hơn; staking trong ví giúp bạn tự kiểm soát khóa. Lựa chọn phù hợp tùy vào việc bạn có thoải mái tự quản lý ví hay không — xem hướng dẫn về <a href="/vi/blog/crypto-wallets-hot-vs-cold/">ví nóng và ví lạnh</a> của chúng tôi.</p>
+<h2>Nguồn tham khảo</h2>
+<ul><li><a href="https://ethereum.org/en/staking/">ethereum.org — Staking Ethereum</a></li><li><a href="https://ethereum.org/en/staking/withdrawals/">ethereum.org — Rút coin đã stake</a></li><li><a href="https://solana.com/staking">Solana — Staking</a></li><li><a href="https://www.sec.gov/news/press-release/2023-25">SEC Mỹ — Kraken ngừng chương trình staking, nộp 30 triệu USD (2023)</a></li><li><a href="https://www.skadden.com/insights/publications/2025/06/sec-certain-protocol-staking-activities-are-not-securities-transactions">Skadden — SEC: một số hoạt động protocol staking không phải giao dịch chứng khoán (2025)</a></li></ul>
+<p><em>Không phải lời khuyên đầu tư. Bài viết giải thích cách staking hoạt động và không khuyến nghị bất kỳ coin, nền tảng hay validator nào.</em></p>

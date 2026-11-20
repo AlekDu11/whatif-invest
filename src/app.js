@@ -513,7 +513,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
 /* ---------- insights category tabs ---------- */
 /* ---------- blog list: category chips + numbered pager «‹ 1 2 3 ›», 20 posts a page (same pager as the asset tables) ---------- */
 (function(){ const box=$('.posts[data-per]'); if(!box) return;
-  const PER=+box.dataset.per||20, all=$$('.post',box); let cat='', pg=0;
+  const PER=+box.dataset.per||20; let all=$$('.post',box), cat='', pg=0;
   const nav=document.createElement('div'); nav.className='pager'; box.after(nav);
   function draw(scroll){ const L=all.filter(p=>!cat||p.dataset.c===cat), np=Math.max(1,Math.ceil(L.length/PER)); if(pg>=np) pg=np-1;
     all.forEach(p=>p.hidden=true); L.slice(pg*PER,pg*PER+PER).forEach(p=>p.hidden=false);
@@ -525,6 +525,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
     if(scroll) ($('#bcats')||box).scrollIntoView({block:'start',behavior:'smooth'}) }
   $$('#bcats button').forEach(b=>b.onclick=()=>{ $$('#bcats button').forEach(x=>x.classList.toggle('on',x===b)); cat=b.dataset.c; pg=0; draw() });
   const m=/^#p(\d+)$/.exec(location.hash); if(m) pg=+m[1]-1;
+  document.addEventListener('wi:posts',()=>{ all=$$('.post',box); draw() });
   draw() })();
 /* ---------- one-question poll ---------- */
 (function(){ const box=$('#poll'); if(!box) return; let done; try{ done=localStorage.getItem('wi_poll1') }catch(e){}
@@ -1176,4 +1177,30 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
         rows.forEach(r=>{ r.classList.remove('xh'); body.appendChild(r) });
         ths.forEach(h=>h.classList.remove('asc','desc')); th.classList.add(dir>0?'asc':'desc');
         const more=tb.closest('section')&&tb.closest('section').querySelector('.mkmore'); if(more) more.remove() }) }) });
+})();
+
+/* ---------- fresh posts between deploys: data/feed/<lang>.json (GitHub raw, made by scripts/feed.py) ---------- */
+(function(){
+  const RAW='https://raw.githubusercontent.com/AlekDu11/whatif-invest/main/data/feed/', L=PAGE.lang||'en', P=PAGE.prefix||'';
+  const nl=document.querySelector('.nlist.own'), posts=document.querySelector('.posts[data-per]'), rd=document.getElementById('reader');
+  if(!nl&&!posts&&!rd) return;
+  const esc2=s=>String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const rurl=r=>`${P}/read/?k=${r.k}&s=${encodeURIComponent(r.s)}`;
+  fetch(RAW+L+'.json',{cache:'no-cache'}).then(r=>r.ok?r.json():null).then(F=>{ if(!F) return; const items=F.items||[];
+    if(nl){ const have=new Set([...nl.querySelectorAll('a.nrow')].map(a=>a.getAttribute('href')));
+      const tags=(PAGE.news&&PAGE.news.tags)||{};
+      const add=items.filter(r=>r.k==='news'&&!have.has(`${P}/news/${r.s}/`)).map(r=>`<a class="nrow fresh" data-g="${esc2((r.g||[]).join(' '))}" href="${rurl(r)}"><b>${esc2(r.t)}</b><span class="muted">WhatIfStack · <time data-t="${esc2(r.d)}">${esc2(r.d)}</time> ${(r.g||[]).filter(g=>tags[g]).map(g=>`<i class="badge">${esc2(tags[g])}</i>`).join(' ')}</span></a>`).join('');
+      if(add) nl.insertAdjacentHTML('afterbegin',add) }
+    if(posts){ const have=new Set([...posts.querySelectorAll('a.post')].map(a=>a.getAttribute('href')));
+      const cats={}; document.querySelectorAll('#bcats button[data-c]').forEach(b=>cats[b.dataset.c]=b.textContent.trim());
+      const add=items.filter(r=>r.k==='blog'&&!have.has(`${P}/blog/${r.s}/`)).map(r=>`<a class="card post fresh" data-c="${esc2(r.c)}" href="${rurl(r)}">${r.cv?`<img class="thumb" src="${esc2(r.cv)}" alt="" width="600" height="315" loading="lazy">`:''}<div class="muted">${cats[r.c]?`<span class="badge">${esc2(cats[r.c])}</span> `:''}${esc2(r.d)}</div><h2>${esc2(r.t)}</h2><p>${esc2(r.x)}</p></a>`).join('');
+      if(add){ posts.insertAdjacentHTML('afterbegin',add); document.dispatchEvent(new Event('wi:posts')) } }
+    if(rd){ const q=new URLSearchParams(location.search), k=q.get('k'), s=q.get('s'), r=items.find(x=>x.k===k&&x.s===s);
+      // once the daily deploy has built the real page, go there
+      fetch(`${P}/${k}/${s}/`,{method:'HEAD'}).then(x=>{ if(x.ok&&!x.redirected) location.replace(`${P}/${k}/${s}/`) }).catch(()=>{});
+      if(!r){ rd.innerHTML='<p class="muted">—</p>'; return }
+      document.title=r.t+' | WhatIfStack';
+      fetch(`${RAW}${L}/${k}-${encodeURIComponent(s)}.html`,{cache:'no-cache'}).then(x=>x.ok?x.text():'').then(h=>{
+        rd.innerHTML=`<h1>${esc2(r.t)}</h1>${r.cv?`<img class="cover" src="${esc2(r.cv)}" alt="" width="1200" height="630">`:''}<div class="muted byline">WhatIfStack Research · ${esc2(r.d)}</div><div class="artbody">${h}</div>` }) }
+  }).catch(()=>{});
 })();

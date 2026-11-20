@@ -1,0 +1,37 @@
+<p><b>Wat is een DEX?</b> Een DEX (gedecentraliseerde exchange) is een set smart contracts op een blockchain waarmee je de ene token direct vanuit je eigen wallet voor een andere ruilt. Er is geen bedrijf dat je geld bewaart, geen account en meestal geen identiteitscontrole. Uniswap op Ethereum en Raydium, Orca en Meteora op Solana zijn bekende voorbeelden.</p>
+<p>Een gewone crypto-exchange zoals Binance, Coinbase of Kraken is een <b>CEX</b> (gecentraliseerde exchange): een bedrijf dat je tegoed bewaart, kopers en verkopers in zijn eigen systeem aan elkaar koppelt en zich aan financiële regels moet houden.</p>
+<h2>Hoe een DEX werkt</h2>
+<h3>Automated market makers (AMM&#x27;s)</h3>
+<p>De meeste DEX&#x27;en hebben geen orderboek met kopers en verkopers. In plaats daarvan gebruiken ze een <b>automated market maker</b>: een formule die de prijs bepaalt.</p>
+<p>De klassieke versie, gebruikt door Uniswap v2, is de &quot;constant product&quot;-regel: een pool bevat twee tokens, en de hoeveelheid token A vermenigvuldigd met de hoeveelheid token B moet na elke trade gelijk blijven. Koop je token A, dan voeg je token B toe aan de pool en haal je token A eruit; A wordt schaarser in de pool en de prijs stijgt.</p>
+<p>Je hoeft de som niet zelf te maken. Het kernidee: <b>hoe groter de pool, hoe minder jouw trade de prijs beweegt.</b></p>
+<h3>Liquiditeitspools</h3>
+<p>De tokens in de pool komen van <b>liquiditeitsverschaffers</b>: mensen die paren van tokens storten en een deel van de handelskosten verdienen (vaak 0,05–1% per swap). Hun risico is dat de prijzen van de twee tokens uit elkaar lopen, waardoor ze slechter af kunnen zijn dan wanneer ze de tokens gewoon hadden vastgehouden (&quot;impermanent loss&quot;).</p>
+<p>Bij nieuw gelanceerde tokens zet de maker meestal de eerste pool op. Daarom zijn liquidity locks belangrijk: wie de pool beheert, kan hem opnemen.</p>
+<h3>Je wallet is je account</h3>
+<p>Om een DEX te gebruiken koppel je een self-custody wallet zoals MetaMask (Ethereum en vergelijkbare chains) of Phantom (Solana). Elke trade is een transactie die je zelf ondertekent. Je <b>herstelzin (seed phrase)</b> is de hoofdsleutel: verlies je hem, dan is het geld weg; deel je hem, dan neemt iemand anders het geld.</p>
+<h3>Gas en kosten</h3>
+<p>Elke DEX-trade betaalt een netwerkfee, op Ethereum <b>gas</b> genoemd. Op Ethereum stijgt die als het netwerk druk is; layer-2-netwerken en Solana zijn meestal veel goedkoper. De basisfee op Solana is 0,000005 SOL per handtekening. Bovenop gas betaal je de poolfee, en bij kleine of snel bewegende tokens krijg je mogelijk te maken met <b>slippage</b> en <b>price impact</b>.</p>
+<h2>DEX vs CEX: de belangrijkste verschillen</h2>
+<ul><li><b>Wie bewaart je tegoed:</b> bij een DEX jij zelf (je wallet); bij een CEX de exchange.</li><li><b>Account en ID-check:</b> een DEX vraagt meestal niets; een CEX vereist identiteitscontrole (KYC).</li><li><b>Keuze aan tokens:</b> een DEX biedt bijna elke token, ook gloednieuwe; een CEX noteert alleen geselecteerde tokens.</li><li><b>Kopen met kaart of bank:</b> meestal niet direct mogelijk op een DEX; standaard bij een CEX.</li><li><b>Kosten:</b> DEX: gas, poolfee en slippage; CEX: handelskosten, spread en opnamekosten.</li><li><b>Hulp als er iets misgaat:</b> een DEX heeft geen helpdesk; een CEX heeft klantenservice en soms beschermingsregelingen.</li><li><b>Grootste risico&#x27;s:</b> DEX: scamtokens, verkeerde approvals en je eigen fouten; CEX: hacks, geblokkeerde accounts en faillissement.</li></ul>
+<h2>Voordelen van een DEX</h2>
+<ul><li><b>Self-custody.</b> Niemand kan je account bevriezen of je geld kwijtraken in een faillissement.</li><li><b>Open toegang.</b> Iedereen met een wallet kan handelen, van bijna overal.</li><li><b>Nieuwe tokens eerst.</b> Tokens verschijnen op DEX&#x27;en lang voordat (of in plaats van dat) ze op een exchange worden genoteerd.</li><li><b>Transparantie.</b> Pools, trades en holders zijn zichtbaar op de blockchain.</li></ul>
+<h2>Nadelen van een DEX</h2>
+<ul><li><b>Jij bent de bank.</b> Eén fout (een verkeerd adres, een nepsite, een kwaadaardige approval) en je geld is voorgoed weg.</li><li><b>Scamtokens.</b> Iedereen kan in een paar minuten een token en een pool aanmaken. De meeste nieuwe tokens verliezen bijna al hun waarde; zie onze <a href="/nl/blog/how-to-spot-a-rug-pull/">rug pull-checklist</a>.</li><li><b>Verborgen kosten.</b> Slippage en price impact kunnen meer kosten dan de zichtbare fee.</li><li><b>Geen makkelijke instap.</b> Meestal moet je eerst crypto kopen op een CEX en die naar je wallet sturen.</li><li><b>Smart-contractrisico.</b> Bugs of hacks in DEX-code hebben tot grote verliezen geleid.</li></ul>
+<h2>Welke moet je als beginner gebruiken?</h2>
+<p>Veel mensen gebruiken allebei: een CEX met vergunning om euro&#x27;s om te zetten in crypto, en een DEX voor tokens die alleen on-chain bestaan. Voor periodiek, langdurig kopen van grote assets zoals Bitcoin of Ethereum is een CEX met lage kosten meestal eenvoudiger; vergelijk de opties op onze <a href="/nl/exchanges/">exchangepagina</a>.</p>
+<p>Wil je memecoins en andere on-chain tokens verkennen, begin dan met heel kleine bedragen, een aparte wallet en de meest gevestigde munten op onze <a href="/nl/memes/">memecoinpagina</a>. Onze stap-voor-stapgids <a href="/nl/blog/how-to-buy-memecoins-on-solana/">memecoin kopen op Solana</a> laat het hele proces zien, inclusief tools zoals <a href="/go/gmgn?from=blog&amp;l=nl">GMGN</a>.</p>
+<h2>Veelgebruikte DEX-termen</h2>
+<ul><li><b>Swap</b>: de ene token ruilen voor een andere.</li><li><b>Pair</b>: de twee tokens in een pool, zoals SOL/USDC.</li><li><b>Slippage tolerance</b>: de maximale prijsverandering die je accepteert.</li><li><b>Approve</b>: toestemming voor een contract om een token uit je wallet te verplaatsen (vooral op Ethereum-achtige chains). Trek oude approvals in die je niet meer nodig hebt.</li><li><b>Aggregator</b>: een dienst die je trade over meerdere DEX&#x27;en verdeelt voor een betere prijs, zoals Jupiter op Solana of 1inch op Ethereum.</li></ul>
+<h2>Veelgestelde vragen</h2>
+<h3>Is een DEX veiliger dan een CEX?</h3>
+<p>Het haalt het risico weg dat de exchange je geld kwijtraakt of bevriest, maar voegt het risico toe van je eigen fouten en scamtokens. Geen van beide is zonder risico.</p>
+<h3>Heb ik een ID nodig om een DEX te gebruiken?</h3>
+<p>Meestal niet, want je handelt vanuit je eigen wallet. De lokale wetten en belastingregels gelden wel gewoon voor jou.</p>
+<h3>Waarom mislukte mijn DEX-trade?</h3>
+<p>Veelvoorkomende redenen: niet genoeg van de native munt voor gas, slippage te laag ingesteld voor een snel bewegende koers, of een token die verkopen blokkeert.</p>
+<h3>Moet ik belasting betalen over DEX-trades?</h3>
+<p>In veel landen wel: een swap van de ene token naar de andere kan als verkoop tellen. Houd je trades bij.</p>
+<h2>Bronnen</h2>
+<ul><li><a href="https://docs.uniswap.org/contracts/v2/concepts/protocol-overview/how-uniswap-works">Hoe Uniswap werkt (Uniswap-documentatie)</a></li><li><a href="https://ethereum.org/en/developers/docs/gas/">Gas en kosten (ethereum.org)</a></li><li><a href="https://solana.com/docs/core/fees/fee-structure">Solana-documentatie: kostenstructuur</a></li></ul>
+<p><em>Geen beleggingsadvies. Deze gids legt uit hoe DEX&#x27;en werken en raadt geen enkel platform of token aan.</em></p>

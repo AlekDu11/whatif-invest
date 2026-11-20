@@ -1,0 +1,37 @@
+name: Fresh posts feed
+# The site deploys once a day. New news briefs and blog posts must appear right away, so on every push that adds
+# content this job renders the last 4 days of posts into data/feed/ (scripts/feed.py); the site loads them from
+# GitHub raw and shows them in /news/ and /blog/ (reader page /<lang>/read/) until the next deploy builds their pages.
+on:
+  push:
+    branches: [main]
+    paths: ['content/news/**', 'content/blog/**', 'content/covers/**']
+  workflow_dispatch: {}
+permissions:
+  contents: write
+concurrency:
+  group: feed
+  cancel-in-progress: true
+jobs:
+  feed:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Render the feed
+        run: python scripts/feed.py
+      - name: Commit
+        run: |
+          git config user.name "whatif-bot"
+          git config user.email "whatif-bot@users.noreply.github.com"
+          git add data/feed
+          git diff --cached --quiet && exit 0
+          git commit -m "feed: fresh posts"
+          for i in 1 2 3; do
+            git pull --rebase -X theirs || (git rebase --abort; git pull --rebase -X theirs)
+            git push && break
+            sleep 5
+          done

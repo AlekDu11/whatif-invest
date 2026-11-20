@@ -4233,6 +4233,14 @@ def blog_post(lang, slug, ver):
     return shell(lang, 'blog/' + slug, title, desc, body, dict({'_og': cv} if cv else {}, _sec='activities' if m.get('category') == 'activities' else None), ver, jsonld)
 
 
+def reader_page(lang, ver):
+    """/<lang>/read/?k=news|blog&s=<slug>: shows a fresh post from data/feed (GitHub raw) before the next deploy builds its page."""
+    body = (f'<nav class="crumbs"><a href="{url(lang, "news")}">{esc(NW[lang]["n_nav"])}</a></nav>'
+            f'<article class="art" id="reader"><p class="muted">…</p></article>')
+    return shell(lang, 'read', BRAND, BRAND, body, {'read': 1}, ver).replace(
+        '<link rel="canonical"', '<meta name="robots" content="noindex, follow"><link rel="canonical"', 1)
+
+
 def rfc822(d):
     """'2026-11-16' -> 'Mon, 16 Nov 2026 08:00:00 +0000' (RSS readers, Pinterest, Flipboard and Google News need RFC-822 dates)."""
     import email.utils, datetime as _dt
@@ -4487,6 +4495,7 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
             for s in POSTS[lang]:
                 write(f'{pre}blog/{s}/index.html', blog_post(lang, s, ver))
             extra_pages += ['blog'] + ['blog/' + s for s in POSTS[lang]]
+        write(f'{pre}read/index.html', reader_page(lang, ver))   # fresh posts before the next deploy (not in the sitemap)
         per_lang[lang] = [None, 'compare'] + list(HUBS) + extra_pages_c + TOOLS + extra_pages + assets_
     # sitemaps: one per language + index
     for lang, pages in per_lang.items():
