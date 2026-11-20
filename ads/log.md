@@ -113,3 +113,17 @@
 - #13 WIS Owner network 16 post1485: 16 каналів (Market_Wire33, Crypto_Mdskfne, skcmjff, CryptoMnsdfe, A_CryptoGeekCommunity0, LatestCryptocurrency2323223, LatestCryptocurrency9, Crypto_Commentator8p, DigitalAssetCompass45, Trippier_Encryption, safasfe66, LatestCryptocurrency9K, LatestCryptocurrency2U, ALatestCryptocurrency, LatestCryptocurrencyNews152, lootmakdeals), CPM 0.3, 1 Gram, promote_url t.me/WhatIfStack/1485 (перевірка: кліки → перегляди поста). Баланс 18,92.
 - Власник: на посилання на сайт у постах майже немає переходів при великих охопленнях → підозра, що більшість переглядів — боти.
 - 2026-11-20 14:36: Telegram Ads не дозволяє зовнішні посилання («You can't promote external links») → тест сайту через пост. З дозволу власника опубліковано пост 1486 («November so far…», цифри з data/market.json 2026-11-20) з посиланням whatifstack.com/en/largest-companies/?utm_source=tg_ad_post&utm_medium=telegram&utm_campaign=post_test. #14 WIS post1486 site-click test: tier-1 users, EN, CPM 0.11, 1 Gram, promote_url t.me/WhatIfStack/1486. Мірило: кліки оголошення → перегляди поста 1486 → візити /en/largest-companies/ з utm у Vercel Analytics. #13 (мережа власника, 16 каналів) — Active. Баланс 17,92.
+
+### 2026-11-20 16:06 Київ — раунд тестів аудиторій (за «так» власника: 4–5 оголошень по 1 Gram, пауза #14)
+- Власник: «багато ботів лізе», але тестувати далі різні аудиторії — навіть 10% живих при CPA ~0.002 вигідно (≈0.02 Gram за живого проти ~0.05 у tier-1).
+- #14 у кабінеті немає (видалено разом із постом 1486) — паузити нічого. #7 EU-EN (ферма) ще Active з залишком 0.17 → він і є контролем ферми, окреме #19 не запускали (−1 Gram).
+- Увага: #7 (0.17), #8 (0.39), #11 (0.08) у кабінеті Active, хоча в лозі 18–19.11 записані як On Hold.
+- Тексти (data/market.json 2026-11-20): TA «$10 a day for 5 years: Nvidia → $59,734, gold → $26,784, S&P 500 → $26,246, Bitcoin → $26,166. $18,260 in. Real numbers daily, plain English.»; TB «November so far: Bitcoin −20%, Nvidia −29%, gold −8%, S&P 500 −5%. What moves markets each day, in plain English. No signals.»
+- Створено через createAd (Aj.apiRequest на /account/ad/new), усі 1 Gram, 1 показ/користувача, Active:
+  - #15 WIS C2 small fresh 50 TA — 50 малих EN крипто-каналів, яких ще не було в тестах (топ за ER), placement у каналах, CPM 0.3.
+  - #16 WIS D large fresh 15 TB — 15 великих (>50k) нових (notcoin, WatcherGuru, whale_alert_io, unfolded, cryptoquant_alert…), CPM 0.3.
+  - #17 WIS B news-research 40 TA — 40 англ. новинних/аналітичних каналів зі «similar» від unfolded/WatcherGuru (cointelegraph, the_block_crypto, glassnode, CoinBureau, DecryptNews, blockworks_news…), CPM 0.3.
+  - #18 WIS Users finance US-GB-CA-AU TB — users, US/GB/CA/AU, EN, теми Investments + Economy & Finance + Business (без Crypto), виключено підписників WhatIfStack; мін. CPM для цього таргету 0.13 → 0.13.
+- Ризик: канальні оголошення при CPM 0.3 раніше майже не відкручували (17–18.11). Якщо за добу <500 показів — запропонувати CPM 0.5 або перевести в users-таргет.
+- Як міряємо живих (через 48–72 год): Actions/CPA по кожному; % підписників, що лишились; перегляди нових постів; переходи /tg/ у Vercel UTM. Ферма = CTR >5% і CVR >40%.
+- Баланс до запуску ~17.9 Gram → ~13.9 у бюджетах/на балансі.
