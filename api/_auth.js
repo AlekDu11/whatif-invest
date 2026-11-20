@@ -78,6 +78,19 @@ module.exports = async (req, res) => {
       if (hash !== String(b.hash || '') || Date.now() / 1000 - +d.auth_date > 86400) return send(401, { e: 'tg' });
       return send(200, await session('t:' + d.id, { tg: d.username || d.id, name: d.first_name || d.username || 'Telegram' }));
     }
+    if (k === 'tgapp') {                       // inside the Telegram Mini App (bot menu «Portfolio»): signed initData → session, no button needed
+      const bot = process.env.TG_BOT_TOKEN;
+      if (!bot) return send(503, { e: 'tg-off' });
+      const p = new URLSearchParams(String(b.d || '')), hash = p.get('hash') || '';
+      p.delete('hash');
+      const check = [...p.entries()].map(([x, v]) => `${x}=${v}`).sort().join('\n');
+      const secret = crypto.createHmac('sha256', 'WebAppData').update(bot).digest();
+      const calc = crypto.createHmac('sha256', secret).update(check).digest('hex');
+      if (calc !== hash || Date.now() / 1000 - +(p.get('auth_date') || 0) > 86400) return send(401, { e: 'tg' });
+      let usr = {}; try { usr = JSON.parse(p.get('user') || '{}'); } catch (e) {}
+      if (!usr.id) return send(400, { e: 'user' });
+      return send(200, await session('t:' + usr.id, { tg: usr.username || String(usr.id), name: usr.first_name || usr.username || 'Telegram' }));
+    }
     const me = await whoami(req);
     if (!me) return send(401, { e: 'session' });
     if (k === 'me') { const [u] = await redis([['HGET', 'au:users', me.uid]]); return send(200, { uid: me.uid, ...(u ? JSON.parse(u) : {}) }); }

@@ -7,6 +7,6 @@ const AUTH = require('./_auth');
 module.exports = (req, res) => {
   const k = (req.query || {}).k;
   if (k === 'fb') return FB(req, res);
-  if (['login', 'verify', 'tg', 'me', 'data', 'logout'].includes(k)) return AUTH(req, res);
+  if (['login', 'verify', 'tg', 'tgapp', 'me', 'data', 'logout'].includes(k)) return AUTH(req, res);
   return NL(req, res);
 };
