@@ -548,6 +548,8 @@ CLARITY = ('<script>addEventListener("load",function(){var go=function(){(functi
 CLARITY += ('<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date());'
             'addEventListener("load",function(){var go=function(){var t=document.createElement("script");t.async=1;t.src="https://www.googletagmanager.com/gtm.js?id=GTM-5ZSJKWX2";document.head.appendChild(t)};'
             'window.requestIdleCallback?requestIdleCallback(go,{timeout:3000}):setTimeout(go,1500)})</script>')
+# Sentry error monitoring (owner, 2026-11-20; org whatifstack-hd, project whatifstack-web, EU): the tiny loader script loads the SDK only when an error happens
+CLARITY += '<script src="https://js-de.sentry-cdn.com/8ffd53d4b42a0cb29a938ff3f2526ba5.min.js" crossorigin="anonymous" defer></script>'
 AHREFS = ('<meta name="ahrefs-site-verification" content="f5a16ec7b7cfa87b5d531c2c5286aac58ddf73ffe836a8b623afe21b43719d5a">'
           '<meta name="p:domain_verify" content="a0820406d681ddd5d800b84175a15303">')   # + Pinterest site claim   # Ahrefs Webmaster Tools ownership
 
