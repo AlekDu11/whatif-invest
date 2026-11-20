@@ -896,26 +896,32 @@ $$('section.mkt').forEach(sec=>{ const rows=[...sec.querySelectorAll('tbody tr')
     return (d.data||[]).map(p=>{ const a=p.attributes||{}, bt=toks[(p.relationships&&p.relationships.base_token&&p.relationships.base_token.data||{}).id]||{}, pc=a.price_change_percentage||{};
       const n=String(p.id||'').split('_')[0];
       return { n, addr:bt.address||'', sym:bt.symbol||(a.name||'').split(' / ')[0], name:bt.name||'', img:bt.image_url&&bt.image_url!=='missing.png'?bt.image_url:'',
-        pr:+a.base_token_price_usd, c1:+pc.h1/100, c24:+pc.h24/100, liq:+a.reserve_in_usd||0, vol:+(a.volume_usd||{}).h24||0, at:a.pool_created_at } }).filter(r=>r.sym) }
+        pr:+a.base_token_price_usd, mc:+a.market_cap_usd||+a.fdv_usd||0, c1:+pc.h1/100, c24:+pc.h24/100, liq:+a.reserve_in_usd||0, vol:+(a.volume_usd||{}).h24||0, at:a.pool_created_at } }).filter(r=>r.sym) }
+  // quality filter (on by default): enough liquidity and volume, not brand new, no wash-trading pattern, one row per token
+  const good=r=>r.liq>=100000&&r.vol>=50000&&(Date.now()-Date.parse(r.at))/36e5>=24&&r.vol/r.liq<=60&&isFinite(r.c24);
+  const qOn=()=>{ const q=$('#dexq'); return !q||q.checked };
+  const uniq=l=>{ const s=new Set(); return l.filter(r=>{ const k=r.n+r.addr; if(s.has(k)) return false; s.add(k); return true }) };
+  const pick=l=>uniq(qOn()?l.filter(good):l);
   const go=(r,p,where)=>`/go/${p}?from=${encodeURIComponent('memes-'+where+':'+r.n)}&l=${lang}&c=${encodeURIComponent(r.n)}&a=${encodeURIComponent(r.addr)}`;
   const GM=new Set(['solana','base','bsc','eth','tron']);
   const ic=r=>r.img?`<span class="ic"><img src="${esc(r.img)}" alt="" loading="lazy" width="26" height="26"></span>`:`<span class="ic" style="background:#64748b">${esc(r.sym.slice(0,2))}</span>`;
   const btns=(r,w)=>`<span class="dexgo">${GM.has(r.n)?`<a class="buy" href="${go(r,'gmgn',w)}" target="_blank" rel="sponsored nofollow noopener">GMGN</a>`:''}<a class="buy" href="${go(r,'okx-wallet',w)}" target="_blank" rel="sponsored nofollow noopener">OKX</a></span>`;
-  function row(r){ const hrs=(Date.now()-Date.parse(r.at))/36e5, f=[];
-    if(hrs<72) f.push(`<i class="rf">${esc(L.new)}</i>`); if(r.liq<50000) f.push(`<i class="rf">${esc(L.lowliq)}</i>`); if(r.liq>0&&r.vol/r.liq>20) f.push(`<i class="rf">${esc(L.hot)}</i>`);
+  function row(r){ const f=[]; if(!qOn()){ const hrs=(Date.now()-Date.parse(r.at))/36e5;
+    if(hrs<72) f.push(`<i class="rf">${esc(L.new)}</i>`); if(r.liq<50000) f.push(`<i class="rf">${esc(L.lowliq)}</i>`); if(r.liq>0&&r.vol/r.liq>20) f.push(`<i class="rf">${esc(L.hot)}</i>`) }
     return `<tr><td class="l"><span class="asset">${ic(r)}<span><span class="nm">${esc(r.name||r.sym)}</span><span class="tk">${esc(r.sym)} <i class="dexnet">${esc(NETN[r.n]||r.n)}</i> ${f.join('')}</span></span></span></td>
-      <td class="num">${fmtPrice(r.pr)}</td><td class="num ${cls(r.c1)}">${fmtPct(r.c1)}</td><td class="num ${cls(r.c24)}">${fmtPct(r.c24)}</td>
+      <td class="num">${fmtPrice(r.pr)}</td><td class="num hide-sm">${r.mc?big(r.mc):'—'}</td><td class="num ${cls(r.c1)}">${fmtPct(r.c1)}</td><td class="num ${cls(r.c24)}">${fmtPct(r.c24)}</td>
       <td class="num hide-sm">${big(r.vol)}</td><td class="num hide-sm">${big(r.liq)}</td><td class="num hide-sm">${age(r.at)}</td><td>${btns(r,'table')}</td></tr>` }
-  function movers(list){ const ok=list.filter(r=>isFinite(r.c24)&&r.liq>=10000);
+  function movers(list){ const ok=uniq(list.filter(good));
     const put=(id,arr)=>{ const el=$('#dex_'+id); if(el) el.innerHTML=arr.length?arr.map(r=>`<div class="mrow">${ic(r)}<span class="mn"><b>${esc(r.sym)}</b><span>${esc(NETN[r.n]||r.n)} · ${big(r.liq)}</span></span>
       <span class="mp">${fmtPrice(r.pr)}</span><span class="mc ${cls(r.c24)}">${fmtPct(r.c24)}</span>${btns(r,id)}</div>`).join(''):'<div class="empty">—</div>' };
     put('gain',[...ok].filter(r=>r.c24>0).sort((a,b)=>b.c24-a.c24).slice(0,5)); put('lose',[...ok].filter(r=>r.c24<0).sort((a,b)=>a.c24-b.c24).slice(0,5)) }
-  const fail=()=>{ box.innerHTML='<tr><td colspan="8" class="empty">—</td></tr>' };
+  const fail=()=>{ box.innerHTML='<tr><td colspan="9" class="empty">—</td></tr>' }; let last=[];
+  const draw=()=>{ box.innerHTML=pick(last).slice(0,25).map(row).join('')||'<tr><td colspan="9" class="empty">—</td></tr>' };
+  const pages=(base,n)=>Promise.all(Array.from({length:n},(_,i)=>get(`${base}trending_pools?page=${i+1}&include=base_token`).then(parse).catch(()=>[]))).then(a=>a.flat());
   function load(){
-    if(net==='all') Promise.all([1,2].map(pg=>get(`${GT}trending_pools?page=${pg}&include=base_token`).then(parse).catch(()=>[]))).then(([a,b])=>{
-      if(!a.length&&!b.length) return fail(); movers([...a,...b]); box.innerHTML=a.slice(0,20).map(row).join('') });
-    else get(`${GT}${net}/trending_pools?page=1&include=base_token`).then(parse).then(l=>{ box.innerHTML=l.slice(0,20).map(row).join('')||'<tr><td colspan="8" class="empty">—</td></tr>' }).catch(fail) }
-  $$('#dexn button').forEach(b=>b.onclick=()=>{ net=b.dataset.n; $$('#dexn button').forEach(x=>x.classList.toggle('on',x===b)); box.innerHTML='<tr><td colspan="8" class="empty">…</td></tr>'; load() });
+    pages(net==='all'?GT:`${GT}${net}/`, net==='all'?3:2).then(l=>{ if(!l.length) return fail(); last=l; if(net==='all') movers(l); draw() }) }
+  const q=$('#dexq'); if(q) q.onchange=draw;
+  $$('#dexn button').forEach(b=>b.onclick=()=>{ net=b.dataset.n; $$('#dexn button').forEach(x=>x.classList.toggle('on',x===b)); box.innerHTML='<tr><td colspan="9" class="empty">…</td></tr>'; load() });
   load(); setInterval(()=>{ if(!document.hidden) load() },60000);
 })();
 /* ---------- share: one button -> phone share sheet, or a menu (networks + copy link) ---------- */

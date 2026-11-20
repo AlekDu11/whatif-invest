@@ -3537,13 +3537,33 @@ MEME_IDS = [i for i in ('doge', 'shib', 'pepe', 'bonk', 'wif', 'floki', 'trump',
 MEME_POSTS = ('how-to-trade-memecoins', 'memecoin-scams-rug-pull')   # guides linked from /memes/ when they exist in the language
 
 
+MEME_STORY = ('doge', 'pepe', 'shib', 'floki', 'bonk')
+
+
+def meme_stories(lang, t):
+    """$100 at the first month in our data → today and at the monthly peak (honest: survivors only, note under the cards)."""
+    cards = []
+    for i in MEME_STORY:
+        if i not in A or not A[i].get('p'):
+            continue
+        a, p = A[i], A[i]['p']
+        now, pk = 100 * METRICS[i]['price'] / p[0], 100 * max(p) / p[0]
+        k = max(range(len(p)), key=lambda j: p[j])
+        cards.append(f'<a class="card mst" href="{url(lang, i)}"><span class="mstn">{icon(a)}<b>{esc(nm(a, lang))}</b></span>'
+                     f'<small class="muted">{esc(t["st_from"].format(m=mlabel(a["start"], lang)))}</small>'
+                     f'<span class="mstv {cls(now - 100)}">{money(now, "USD")}</span><small class="muted">{esc(t["st_now"])}</small>'
+                     f'<span class="mstp">{money(pk, "USD")} <small class="muted">{esc(t["st_peak"])} · {esc(mlabel(i2ym(ym2i(a["start"]) + k), lang))}</small></span></a>')
+    return (f'<section class="section"><h2>🏆 {esc(t["st_h"])}</h2><div class="mstg">{"".join(cards)}</div>'
+            f'<p class="muted" style="font-size:12px;margin-top:6px">{esc(t["st_note"])}</p></section>')
+
+
 def memes_page(lang, ver):
-    """DEX memecoin hub: live movers + trending pools from GeckoTerminal (loaded in the visitor's browser, no load on our site),
-    trade buttons to GMGN / OKX Wallet via /go/ (referral), risk box, guides, then known memecoins with the DCA table."""
+    """DEX memecoin hub: meme stories, live movers + trending pools from GeckoTerminal (loaded in the visitor's browser, no load on our site),
+    quality filter on by default, trade buttons to GMGN / OKX Wallet via /go/ (referral), then guides, known memecoins and the risk box at the bottom."""
     S, t, u = TR[lang], MEM[lang], TR[lang]['ui']
     chains = [('all', t['all']), ('solana', 'Solana'), ('base', 'Base'), ('bsc', 'BNB Chain'), ('eth', 'Ethereum'), ('ton', 'TON')]
     seg = ''.join(f'<button data-n="{k}"{" class=on" if k == "all" else ""}>{esc(v)}</button>' for k, v in chains)
-    head = (f'<tr><th class="l">{u["name"]}</th><th>{u["price"]}</th><th>1h</th><th>{u["chg"]}</th><th class="hide-sm">{esc(t["vol"])}</th>'
+    head = (f'<tr><th class="l">{u["name"]}</th><th>{u["price"]}</th><th class="hide-sm">{esc(t["mc"])}</th><th>1h</th><th>{u["chg"]}</th><th class="hide-sm">{esc(t["vol"])}</th>'
             f'<th class="hide-sm">{esc(t["liq"])}</th><th class="hide-sm">{esc(t["age"])}</th><th></th></tr>')
     mv = lambda k, ic: (f'<div class="card wd dexmv"><div class="wt">{ic} {esc(t[k])}</div><div id="dex_{k}"><div class="empty">…</div></div></div>')
     risks = ''.join(f'<li>{esc(t[k])}</li>' for k in ('r1', 'r2', 'r3', 'r4'))
@@ -3553,16 +3573,17 @@ def memes_page(lang, ver):
             f'<span class="livebadge"><i></i>{esc(t["upd"])}</span></div>'
             f'<section class="section"><div class="dexmvs">{mv("gain", "🚀")}{mv("lose", "📉")}</div></section>'
             f'<section class="section"><div class="charthead"><h2>🔥 {esc(t["live"])}</h2></div>'
-            f'<div class="seg" id="dexn">{seg}</div><div class="tw" style="margin-top:10px"><table class="mt" id="dext"><thead>{head}</thead><tbody id="dexb"><tr><td colspan="8" class="empty">…</td></tr></tbody></table></div>'
+            f'<div class="dexbar"><div class="seg" id="dexn">{seg}</div><label class="dexflt"><input type="checkbox" id="dexq" checked> {esc(t["flt"])}</label></div>'
+            f'<div class="tw" style="margin-top:10px"><table class="mt" id="dext"><thead>{head}</thead><tbody id="dexb"><tr><td colspan="9" class="empty">…</td></tr></tbody></table></div>'
             f'<p class="muted" style="font-size:12px">{esc(t["src"])} · <a href="https://www.geckoterminal.com/" target="_blank" rel="noopener">GeckoTerminal</a></p></section>'
-            f'<section class="section card dexrisk"><h2>⚠️ {esc(t["risk_h"])}</h2><ul>{risks}</ul><p class="muted">{esc(t["disc"])}</p></section>'
+            + meme_stories(lang, t)
             + (f'<section class="section"><h2>{esc(t["read"])}</h2><div class="hgrid">{reads}</div></section>' if reads else '')
             + f'<section class="section">{table_block(lang, MEME_IDS, "🐸 " + t["est"], interactive=False)}</section>'
             f'<section class="section"><div class="hgrid"><a class="card hcard" href="/go/gmgn?from=memes-card&l={lang}" target="_blank" rel="sponsored nofollow noopener"><span>🦎</span><b>GMGN</b><small>Memecoin trading · Wallet tracking</small></a>'
             f'<a class="card hcard" href="/go/okx-wallet?from=memes-card&l={lang}" target="_blank" rel="sponsored nofollow noopener"><span>◼️</span><b>OKX Wallet</b><small>DEX · Swap · 100+ chains</small></a>'
             f'<a class="card hcard" href="/go/pumpfun?from=memes-card&l={lang}" target="_blank" rel="sponsored nofollow noopener"><span>💊</span><b>pump.fun</b><small>Memecoin launchpad · code alessa</small></a>'
-            f'<a class="card hcard" href="{url(lang, "exchanges")}"><span>₿</span><b>{esc(EX[lang]["h1"])}</b></a></div>'
-            f'<p class="muted" style="font-size:12px">{esc(t["disc"])}</p></section>')
+            f'<a class="card hcard" href="{url(lang, "exchanges")}"><span>₿</span><b>{esc(EX[lang]["h1"])}</b></a></div></section>'
+            f'<section class="section dexrisk"><h3>{esc(t["risk_h"])}</h3><ul>{risks}</ul><p class="muted">{esc(t["disc"])}</p></section>')
     cfg = dict(memes=dict(t=dict(trade=t['trade'], new=t['new'], lowliq=t['lowliq'], hot=t['hot'], net=t['net'])))
     return shell(lang, 'memes', f'{t["h1"]} | {BRAND}', t['d'], body, cfg, ver)
 

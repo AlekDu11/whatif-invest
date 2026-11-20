@@ -144,3 +144,31 @@ MEM2 = {k: dict(zip(K, v)) for k, v in {
         'Para sa impormasyon lamang ang pahinang ito. Hindi ito payo sa pamumuhunan o rekomendasyong bumili o magbenta; ikaw ang magpapasya at mananagot sa panganib.',
         'Basahin bago mag-trade', 'Live · nire-refresh bawat minuto'),
 }.items()}
+
+# Round 2 (2026-11-21): quality filter, market cap column, «meme success stories» cards.
+# flt = filter chip (on by default), mc = market cap, st_h = stories heading, st_from = «$100 in {m}», st_now / st_peak, st_note = survivorship note
+K3 = 'flt mc st_h st_from st_now st_peak st_note'.split()
+MEM3 = {k: dict(zip(K3, v)) for k, v in {
+ 'en': ('Only quality: liquidity $100K+, 1 day+', 'Mkt cap', 'Meme stories: $100 back then — what now', '$100 in {m}', 'today', 'at the peak', 'These are the survivors — most memecoins go to zero.'),
+ 'uk': ('Лише якісні: ліквідність від $100K, від 1 дня', 'Кап.', 'Історії мемів: $100 тоді — скільки зараз', '$100 у {m}', 'зараз', 'на піку', 'Це ті, хто вижив, — більшість мемкоїнів іде в нуль.'),
+ 'ru': ('Только качественные: ликвидность от $100K, от 1 дня', 'Кап.', 'Истории мемов: $100 тогда — сколько сейчас', '$100 в {m}', 'сейчас', 'на пике', 'Это выжившие — большинство мемкоинов уходит в ноль.'),
+ 'es': ('Solo calidad: liquidez $100K+, 1 día+', 'Cap.', 'Historias de memes: $100 entonces, ¿cuánto hoy?', '$100 en {m}', 'hoy', 'en el pico', 'Son los supervivientes: la mayoría de las memecoins acaba en cero.'),
+ 'pt': ('Só qualidade: liquidez US$ 100 mil+, 1 dia+', 'Cap.', 'Histórias de memes: US$ 100 na época — quanto hoje', 'US$ 100 em {m}', 'hoje', 'no pico', 'Estas são as sobreviventes — a maioria das memecoins vai a zero.'),
+ 'de': ('Nur Qualität: Liquidität ab 100K $, ab 1 Tag', 'Mkt.-Kap.', 'Meme-Geschichten: 100 $ damals — wie viel heute', '100 $ im {m}', 'heute', 'am Hoch', 'Das sind die Überlebenden — die meisten Memecoins enden bei null.'),
+ 'fr': ('Qualité seulement : liquidité 100 K$+, 1 jour+', 'Capi.', 'Histoires de memes : 100 $ à l’époque, combien aujourd’hui', '100 $ en {m}', 'aujourd’hui', 'au sommet', 'Ce sont les survivants : la plupart des memecoins finissent à zéro.'),
+ 'it': ('Solo qualità: liquidità da 100K $, da 1 giorno', 'Cap.', 'Storie di meme: 100 $ allora, quanto oggi', '100 $ a {m}', 'oggi', 'al picco', 'Sono i sopravvissuti: la maggior parte delle memecoin finisce a zero.'),
+ 'pl': ('Tylko jakościowe: płynność od 100 tys. $, od 1 dnia', 'Kap.', 'Historie memów: 100 $ wtedy — ile dziś', '100 $ w {m}', 'dziś', 'na szczycie', 'To ci, którzy przetrwali — większość memecoinów spada do zera.'),
+ 'tr': ('Yalnızca kaliteli: likidite 100 bin $+, 1 gün+', 'Piy. değ.', 'Meme hikâyeleri: o zaman 100 $ — bugün ne kadar', '{m} ayında 100 $', 'bugün', 'zirvede', 'Bunlar hayatta kalanlar — memecoinlerin çoğu sıfıra gider.'),
+ 'nl': ('Alleen kwaliteit: liquiditeit $100K+, 1 dag+', 'Mkt.-kap.', 'Meme-verhalen: $100 toen — hoeveel nu', '$100 in {m}', 'nu', 'op de top', 'Dit zijn de overlevers — de meeste memecoins gaan naar nul.'),
+ 'id': ('Hanya berkualitas: likuiditas $100 rb+, 1 hari+', 'Kap. pasar', 'Kisah meme: $100 dulu — berapa sekarang', '$100 pada {m}', 'sekarang', 'di puncak', 'Ini yang bertahan — sebagian besar memecoin jatuh ke nol.'),
+ 'vi': ('Chỉ chất lượng: thanh khoản từ 100K USD, từ 1 ngày', 'Vốn hóa', 'Chuyện meme: 100 USD khi ấy — giờ bao nhiêu', '100 USD vào {m}', 'hiện tại', 'ở đỉnh', 'Đây là những đồng sống sót — phần lớn memecoin về 0.'),
+ 'th': ('เฉพาะที่ผ่านเกณฑ์: สภาพคล่อง $100K+ อายุ 1 วัน+', 'มูลค่าตลาด', 'เรื่องเล่าเหรียญมีม: $100 ตอนนั้น — ตอนนี้เท่าไร', '$100 ใน {m}', 'ตอนนี้', 'ที่จุดสูงสุด', 'นี่คือเหรียญที่รอด — เหรียญมีมส่วนใหญ่กลายเป็นศูนย์'),
+ 'hi': ('सिर्फ़ गुणवत्ता: लिक्विडिटी $100K+, 1 दिन+', 'मार्केट कैप', 'मीम कहानियाँ: तब $100 — अब कितना', '{m} में $100', 'अभी', 'शिखर पर', 'ये बचे हुए हैं — ज़्यादातर मीमकॉइन शून्य हो जाते हैं।'),
+ 'ja': ('良質のみ：流動性10万ドル以上・1日以上', '時価総額', 'ミームの物語：当時の100ドルは今いくら', '{m}に100ドル', '現在', 'ピーク時', 'これは生き残った銘柄です。多くのミームコインはゼロになります。'),
+ 'ko': ('우량만: 유동성 10만 달러+, 1일+', '시가총액', '밈 이야기: 그때 100달러, 지금은 얼마', '{m}에 100달러', '현재', '고점에서', '살아남은 코인들입니다. 대부분의 밈코인은 0이 됩니다.'),
+ 'zh': ('仅优质：流动性 10 万美元以上、上线 1 天以上', '市值', 'Meme 故事：当年 100 美元，现在值多少', '{m} 投入 100 美元', '现在', '最高点', '这些是幸存者——大多数 Meme 币最终归零。'),
+ 'ar': ('الجيدة فقط: سيولة 100 ألف$+، يوم واحد+', 'القيمة السوقية', 'قصص الميم: 100$ آنذاك — كم الآن', '100$ في {m}', 'الآن', 'عند القمة', 'هذه العملات الناجية — معظم عملات الميم تنتهي إلى الصفر.'),
+ 'fil': ('De-kalidad lang: liquidity $100K+, 1 araw+', 'Market cap', 'Mga kuwento ng meme: $100 noon — magkano ngayon', '$100 noong {m}', 'ngayon', 'sa tuktok', 'Ito ang mga nakaligtas — karamihan ng memecoin ay napupunta sa zero.'),
+}.items()}
+for _k in MEM2:
+    MEM2[_k].update(MEM3[_k])
