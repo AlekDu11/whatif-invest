@@ -793,7 +793,7 @@ $$('.clamp').forEach(el=>{ if(el.scrollHeight<760) return; el.classList.add('cla
 /* ---------- weekly e-mail report signup (api/subscribe.js) ---------- */
 $$('form.nlf').forEach(f=>f.onsubmit=async e=>{ e.preventDefault(); const em=$('input[type=email]',f).value.trim(), b=$('button',f), box=f.closest('.nlbox'), note=$('.nln',box);
   b.disabled=true;
-  try{ const r=await fetch('/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({em,l:lang,src:(f.dataset.src||'')+' '+location.pathname,hp:f.hp.value})});
+  try{ const r=await fetch('/api/forms?k=nl',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({em,l:lang,src:(f.dataset.src||'')+' '+location.pathname,hp:f.hp.value})});
     if(!r.ok) throw 0; f.remove(); note.textContent=f.dataset.ok; note.className='good nln'; try{ localStorage.setItem('wi_nl','1') }catch(x){} }
   catch(x){ note.textContent=f.dataset.err; note.className='bad nln'; b.disabled=false } });
 try{ if(localStorage.getItem('wi_nl')) $$('.nlbox').forEach(x=>x.remove()) }catch(e){}
@@ -886,7 +886,7 @@ $$('section.mkt').forEach(sec=>{ const rows=[...sec.querySelectorAll('tbody tr')
 /* ---------- memecoins: live DEX movers + trending pools (GeckoTerminal, called from the visitor's browser) ---------- */
 (function(){
   const box=$('#dexb'); if(!box||!PAGE.memes) return; const L=PAGE.memes.t; let net='all';
-  const NETN={solana:'Solana',base:'Base',bsc:'BNB',eth:'Ethereum',ton:'TON',tron:'TRON',arbitrum:'Arbitrum',polygon_pos:'Polygon',avax:'Avalanche',sui:'Sui','sui-network':'Sui',hyperevm:'HyperEVM'};
+  const NETN={solana:'Solana',base:'Base',bsc:'BNB',eth:'Ethereum',ton:'TON',tron:'TRON',arbitrum:'Arbitrum',polygon_pos:'Polygon',avax:'Avalanche',sui:'Sui','sui-network':'Sui',hyperevm:'HyperEVM',robinhood:'Robinhood',abstract:'Abstract',unichain:'Unichain',monad:'Monad'};
   const GT='https://api.geckoterminal.com/api/v2/networks/';
   const big=v=>{ v=+v||0; return v>=1e9?'$'+(v/1e9).toFixed(2)+'B':v>=1e6?'$'+(v/1e6).toFixed(2)+'M':v>=1e3?'$'+(v/1e3).toFixed(1)+'K':'$'+v.toFixed(0) };
   let RT; try{ RT=new Intl.RelativeTimeFormat(T.intl||'en',{numeric:'auto',style:'short'}) }catch(e){}
@@ -1080,7 +1080,7 @@ document.addEventListener('click',async e=>{
     $('.aifbl',P).onclick=()=>fbMode(true); $('.aifbx',FBF).onclick=()=>fbMode(false);
     FBF.onsubmit=async e=>{ e.preventDefault(); const t=$('textarea',FBF).value.trim(), em=$('input',FBF).value.trim(), m=$('.aifbm',FBF); if(t.length<3) return;
       const sb=$('[type=submit]',FBF); sb.disabled=true;
-      try{ const r=await fetch('/api/feedback',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({t,em,l:lang,p:location.pathname,w:Date.now()-fbT})});
+      try{ const r=await fetch('/api/forms?k=fb',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({t,em,l:lang,p:location.pathname,w:Date.now()-fbT})});
         if(!r.ok) throw 0; m.textContent=C.fb.ok; m.className='aifbm good'; $('textarea',FBF).value=''; setTimeout(()=>{ fbMode(false); m.textContent='' },2200) }
       catch(x){ m.textContent=C.fb.err; m.className='aifbm bad' } sb.disabled=false } }
   btn.onclick=()=>open(P.hidden); $('.aix',P).onclick=()=>{ open(false); btn.focus() };

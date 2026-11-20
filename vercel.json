@@ -161,14 +161,6 @@
   ],
   "rewrites": [
     {
-      "source": "/api/subscribe",
-      "destination": "/api/forms?k=nl"
-    },
-    {
-      "source": "/api/feedback",
-      "destination": "/api/forms?k=fb"
-    },
-    {
       "source": "/v/:ch/:vid",
       "destination": "/api/v?ch=:ch&vid=:vid"
     },
