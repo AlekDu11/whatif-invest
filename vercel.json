@@ -12,8 +12,8 @@
       "permanent": false
     },
     {
-      "source": "/tg/:path*",
-      "destination": "/:path*?utm_source=telegram&utm_medium=channel",
+      "source": "/tg/:path(.*)",
+      "destination": "/:path?utm_source=telegram&utm_medium=channel",
       "permanent": false
     },
     {
@@ -22,8 +22,8 @@
       "permanent": true
     },
     {
-      "source": "/whatif/:path*",
-      "destination": "/:path*",
+      "source": "/whatif/:path(.*)",
+      "destination": "/:path",
       "permanent": true
     },
     {
