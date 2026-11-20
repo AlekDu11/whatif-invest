@@ -674,6 +674,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
 <script src="{BASE}/assets/ref.js?v={ver['ref']}" defer></script>
 <script src="{BASE}/assets/app.js?v={ver['js']}" defer></script>
 <script defer src="/_vercel/insights/script.js"></script>
+<script>window.si=window.si||function(){{(window.siq=window.siq||[]).push(arguments)}}</script><script defer src="/_vercel/speed-insights/script.js" data-sample-rate="0.25"></script>
 {CLARITY}
 </body>
 </html>
