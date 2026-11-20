@@ -883,27 +883,38 @@ $$('section.mkt').forEach(sec=>{ const rows=[...sec.querySelectorAll('tbody tr')
   if(!$('#be').value){ const d=today(); d.setFullYear(d.getFullYear()+1); $('#be').value=iso(d) }
   document.addEventListener('wi:bonds',draw); sym(); draw();
 })();
-/* ---------- memecoins: live DEX trending (GeckoTerminal) ---------- */
+/* ---------- memecoins: live DEX movers + trending pools (GeckoTerminal, called from the visitor's browser) ---------- */
 (function(){
-  const box=$('#dexb'); if(!box||!PAGE.memes) return; const L=PAGE.memes.t; let net='solana';
-  const GMGN={solana:'sol',base:'base',bsc:'bsc',eth:'eth'};
+  const box=$('#dexb'); if(!box||!PAGE.memes) return; const L=PAGE.memes.t; let net='all';
+  const NETN={solana:'Solana',base:'Base',bsc:'BNB',eth:'Ethereum',ton:'TON',tron:'TRON',arbitrum:'Arbitrum',polygon_pos:'Polygon',avax:'Avalanche',sui:'Sui','sui-network':'Sui',hyperevm:'HyperEVM'};
+  const GT='https://api.geckoterminal.com/api/v2/networks/';
   const big=v=>{ v=+v||0; return v>=1e9?'$'+(v/1e9).toFixed(2)+'B':v>=1e6?'$'+(v/1e6).toFixed(2)+'M':v>=1e3?'$'+(v/1e3).toFixed(1)+'K':'$'+v.toFixed(0) };
   let RT; try{ RT=new Intl.RelativeTimeFormat(T.intl||'en',{numeric:'auto',style:'short'}) }catch(e){}
   const age=d=>{ const h=(Date.now()-Date.parse(d))/36e5; if(!isFinite(h)||!RT) return ''; return h<1?RT.format(-Math.round(h*60),'minute'):h<48?RT.format(-Math.round(h),'hour'):RT.format(-Math.round(h/24),'day') };
+  const get=u=>fetch(u,{headers:{accept:'application/json'}}).then(r=>{ if(!r.ok) throw r.status; return r.json() });
+  function parse(d){ const toks={}; (d.included||[]).forEach(x=>{ if(x.type==='token') toks[x.id]=x.attributes });
+    return (d.data||[]).map(p=>{ const a=p.attributes||{}, bt=toks[(p.relationships&&p.relationships.base_token&&p.relationships.base_token.data||{}).id]||{}, pc=a.price_change_percentage||{};
+      const n=String(p.id||'').split('_')[0];
+      return { n, addr:bt.address||'', sym:bt.symbol||(a.name||'').split(' / ')[0], name:bt.name||'', img:bt.image_url&&bt.image_url!=='missing.png'?bt.image_url:'',
+        pr:+a.base_token_price_usd, c1:+pc.h1/100, c24:+pc.h24/100, liq:+a.reserve_in_usd||0, vol:+(a.volume_usd||{}).h24||0, at:a.pool_created_at } }).filter(r=>r.sym) }
+  const go=(r,p,where)=>`/go/${p}?from=${encodeURIComponent('memes-'+where+':'+r.n)}&l=${lang}&c=${encodeURIComponent(r.n)}&a=${encodeURIComponent(r.addr)}`;
+  const GM=new Set(['solana','base','bsc','eth','tron']);
+  const ic=r=>r.img?`<span class="ic"><img src="${esc(r.img)}" alt="" loading="lazy" width="26" height="26"></span>`:`<span class="ic" style="background:#64748b">${esc(r.sym.slice(0,2))}</span>`;
+  const btns=(r,w)=>`<span class="dexgo">${GM.has(r.n)?`<a class="buy" href="${go(r,'gmgn',w)}" target="_blank" rel="sponsored nofollow noopener">GMGN</a>`:''}<a class="buy" href="${go(r,'okx-wallet',w)}" target="_blank" rel="sponsored nofollow noopener">OKX</a></span>`;
+  function row(r){ const hrs=(Date.now()-Date.parse(r.at))/36e5, f=[];
+    if(hrs<72) f.push(`<i class="rf">${esc(L.new)}</i>`); if(r.liq<50000) f.push(`<i class="rf">${esc(L.lowliq)}</i>`); if(r.liq>0&&r.vol/r.liq>20) f.push(`<i class="rf">${esc(L.hot)}</i>`);
+    return `<tr><td class="l"><span class="asset">${ic(r)}<span><span class="nm">${esc(r.name||r.sym)}</span><span class="tk">${esc(r.sym)} <i class="dexnet">${esc(NETN[r.n]||r.n)}</i> ${f.join('')}</span></span></span></td>
+      <td class="num">${fmtPrice(r.pr)}</td><td class="num ${cls(r.c1)}">${fmtPct(r.c1)}</td><td class="num ${cls(r.c24)}">${fmtPct(r.c24)}</td>
+      <td class="num hide-sm">${big(r.vol)}</td><td class="num hide-sm">${big(r.liq)}</td><td class="num hide-sm">${age(r.at)}</td><td>${btns(r,'table')}</td></tr>` }
+  function movers(list){ const ok=list.filter(r=>isFinite(r.c24)&&r.liq>=10000);
+    const put=(id,arr)=>{ const el=$('#dex_'+id); if(el) el.innerHTML=arr.length?arr.map(r=>`<div class="mrow">${ic(r)}<span class="mn"><b>${esc(r.sym)}</b><span>${esc(NETN[r.n]||r.n)} · ${big(r.liq)}</span></span>
+      <span class="mp">${fmtPrice(r.pr)}</span><span class="mc ${cls(r.c24)}">${fmtPct(r.c24)}</span>${btns(r,id)}</div>`).join(''):'<div class="empty">—</div>' };
+    put('gain',[...ok].filter(r=>r.c24>0).sort((a,b)=>b.c24-a.c24).slice(0,5)); put('lose',[...ok].filter(r=>r.c24<0).sort((a,b)=>a.c24-b.c24).slice(0,5)) }
+  const fail=()=>{ box.innerHTML='<tr><td colspan="8" class="empty">—</td></tr>' };
   function load(){
-    fetch(`https://api.geckoterminal.com/api/v2/networks/${net}/trending_pools?page=1&include=base_token`).then(r=>r.json()).then(d=>{
-      const toks={}; (d.included||[]).forEach(x=>{ if(x.type==='token') toks[x.id]=x.attributes });
-      const rows=(d.data||[]).slice(0,20).map(p=>{ const a=p.attributes, bt=toks[(p.relationships&&p.relationships.base_token&&p.relationships.base_token.data||{}).id]||{};
-        const c1=+(a.price_change_percentage||{}).h1/100, c24=+(a.price_change_percentage||{}).h24/100, liq=+a.reserve_in_usd||0, vol=+(a.volume_usd||{}).h24||0;
-        const hrs=(Date.now()-Date.parse(a.pool_created_at))/36e5, flags=[];
-        if(hrs<72) flags.push(`<i class="rf">${esc(L.new)}</i>`); if(liq<50000) flags.push(`<i class="rf">${esc(L.lowliq)}</i>`); if(liq>0&&vol/liq>20) flags.push(`<i class="rf">${esc(L.hot)}</i>`);
-        const sym=bt.symbol||(a.name||'').split(' / ')[0], img=bt.image_url&&bt.image_url!=='missing.png'?bt.image_url:'';
-        const go=`/go/gmgn?from=${encodeURIComponent('memes:'+net+':'+(bt.address||''))}&l=${lang}`;
-        return `<tr><td class="l"><span class="asset">${img?`<span class="ic"><img src="${esc(img)}" alt="" loading="lazy" width="26" height="26"></span>`:`<span class="ic" style="background:#64748b">${esc(sym.slice(0,2))}</span>`}<span><span class="nm">${esc(bt.name||sym)}</span><span class="tk">${esc(sym)} ${flags.join('')}</span></span></span></td>
-          <td class="num">${fmtPrice(+a.base_token_price_usd)}</td><td class="num ${cls(c1)}">${fmtPct(c1)}</td><td class="num ${cls(c24)}">${fmtPct(c24)}</td>
-          <td class="num hide-sm">${big(vol)}</td><td class="num hide-sm">${big(liq)}</td><td class="num hide-sm">${age(a.pool_created_at)}</td>
-          <td><a class="buy" href="${go}" target="_blank" rel="sponsored nofollow noopener">${esc(L.trade)}</a></td></tr>` });
-      box.innerHTML=rows.join('')||'<tr><td colspan="8" class="empty">—</td></tr>' }).catch(()=>{ box.innerHTML='<tr><td colspan="8" class="empty">—</td></tr>' }) }
+    if(net==='all') Promise.all([1,2].map(pg=>get(`${GT}trending_pools?page=${pg}&include=base_token`).then(parse).catch(()=>[]))).then(([a,b])=>{
+      if(!a.length&&!b.length) return fail(); movers([...a,...b]); box.innerHTML=a.slice(0,20).map(row).join('') });
+    else get(`${GT}${net}/trending_pools?page=1&include=base_token`).then(parse).then(l=>{ box.innerHTML=l.slice(0,20).map(row).join('')||'<tr><td colspan="8" class="empty">—</td></tr>' }).catch(fail) }
   $$('#dexn button').forEach(b=>b.onclick=()=>{ net=b.dataset.n; $$('#dexn button').forEach(x=>x.classList.toggle('on',x===b)); box.innerHTML='<tr><td colspan="8" class="empty">…</td></tr>'; load() });
   load(); setInterval(()=>{ if(!document.hidden) load() },60000);
 })();

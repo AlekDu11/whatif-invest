@@ -23,6 +23,12 @@ module.exports = async (req, res) => {
   let dest = P[id];
   if (!dest) { res.statusCode = 302; res.setHeader('Location', '/'); return res.end(); }
   if (id === 'polymarket' && q.e && /^[a-z0-9-]{1,200}$/.test(q.e)) dest = `https://polymarket.com/event/${q.e}?via=alek-du`;
+  // memecoin pages: open the exact token on GMGN with our referral code (gmgn.ai/<chain>/token/<code>_<address>)
+  const GMC = { solana: 'sol', base: 'base', bsc: 'bsc', eth: 'eth', tron: 'tron' };
+  if (id === 'gmgn' && GMC[q.c] && /^[A-Za-z0-9]{20,70}$/.test(String(q.a || ''))) {
+    const code = (P.gmgn.match(/\/r\/([A-Za-z0-9]+)/) || [])[1];
+    if (code) dest = `https://gmgn.ai/${GMC[q.c]}/token/${code}_${q.a}`;
+  }
   const h = req.headers || {};
   if (id === 'polymarket') {
     const c = String(h['x-vercel-ip-country'] || '').toUpperCase(), r = String(h['x-vercel-ip-country-region'] || '').toUpperCase();
