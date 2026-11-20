@@ -878,7 +878,7 @@ tr.xh{display:none}.mkmore{margin-top:10px}.xgo{text-decoration:none;color:var(-
 /* personal home + market in 60 seconds */
 .myh{margin:14px 0 22px}.myhh,.brief .bh{display:flex;align-items:baseline;justify-content:space-between;gap:10px;flex-wrap:wrap}
 .myhh h2{margin:0;font-size:1.15rem}
-.mygrid{align-items:start;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:10px}
+.mygrid{align-items:stretch;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin-top:10px}
 .mypf{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:inherit;height:100%;box-sizing:border-box}.mypf .v{font-size:1.9rem;line-height:1.1}
 .brief{padding:0}.brief summary{list-style:none;cursor:pointer;padding:14px 44px 14px 18px;position:relative;display:flex;flex-direction:column;gap:4px}
 .brief summary::-webkit-details-marker{display:none}
@@ -886,7 +886,10 @@ tr.xh{display:none}.mkmore{margin-top:10px}.xgo{text-decoration:none;color:var(-
 .brief[open] summary::after{transform:rotate(180deg)}
 .brief .bv{font-weight:600;font-size:.95rem}.brief .bbody{padding:0 18px 14px}
 .brief .bh b{font-size:1.05rem}.btg{display:inline-flex;margin-top:12px}
-.mycol{display:flex;flex-direction:column;gap:12px}.mycol .brief{margin:0}
+.mycol{display:flex;flex-direction:column;gap:12px}
+.mygrid>*{min-width:0}.mygrid .card{display:flex;flex-direction:column;margin:0}.mypfh{display:flex;justify-content:space-between;align-items:center}
+.mypf .eye{background:none;border:1px solid var(--line);border-radius:8px;padding:2px 8px;cursor:pointer;font-size:.95rem;line-height:1.4;color:inherit}
+.mypf .v small{font-size:.9rem;font-weight:500}.myal{margin-top:6px}.mymore{margin-top:auto;padding-top:10px;font-weight:600;font-size:.9rem;text-decoration:none;color:var(--accent,#10b981)}.mycol .brief{margin:0}
 .bchips{display:flex;flex-wrap:wrap;gap:8px}
 .bchip{display:inline-flex;align-items:center;gap:7px;padding:6px 10px;border:1px solid var(--line);border-radius:999px;text-decoration:none;color:inherit;font-size:.92rem;white-space:nowrap}
 .bchip:hover{border-color:var(--accent,#1a6dff)}.bchip .bn{color:var(--muted,#667)}
@@ -965,3 +968,4 @@ table.mt th.asc::after{content:" ↑";opacity:1;color:var(--accent,#34d399)}tabl
 .trkb{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 .pfccy{display:flex;align-items:center;gap:6px;font-size:13px}.pfccy select{height:40px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--text);font:600 14px var(--fb);padding:0 8px}
 .depcalc{margin:18px 0}.deptab td.best{color:var(--good);font-weight:700}.deptab td.num{white-space:nowrap}
+#mypf{display:flex}#mypf>.card{flex:1}

@@ -1289,7 +1289,7 @@ def brief_block(lang):
 
 def my_block(lang):
     """Personal home: filled in the browser from the visitor's watchlist and portfolio (stays empty and hidden for everyone else)."""
-    cfg = dict(MY[lang], me=url(lang, 'me'), nf=f'/assets/nf/{lang}.json', code=hccy(lang)[0], rate=hccy(lang)[1])
+    cfg = dict(MY[lang], wlu=url(lang, 'watchlist'), hide=PF2[lang]['hide'], me=url(lang, 'me'), nf=f'/assets/nf/{lang}.json', code=hccy(lang)[0], rate=hccy(lang)[1])
     return f'<section class="section myh" id="myh" hidden data-cfg="{esc(json.dumps(cfg, ensure_ascii=False))}"></section>'
 
 
