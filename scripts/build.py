@@ -26,6 +26,7 @@ from i18n_mem import MEM  # noqa: E402
 from i18n_act import ACT  # noqa: E402
 from i18n_prof import P as PROF_T  # noqa: E402
 from i18n_pf import PF  # noqa: E402
+from i18n_pf2 import PF2  # noqa: E402
 from i18n_bp import BP  # noqa: E402
 from i18n_ai import AIC  # noqa: E402
 from i18n_emb import EMB, EXT  # noqa: E402
@@ -3365,13 +3366,27 @@ def me_page(lang, ver):
     S, t = TR[lang], ME[lang]
     code, rate = hccy(lang)
     per = HB[lang]['per'].split('|')
-    hold = (f'<section class="section"><h2 class="sr">{esc(t["hold"])}</h2><div class="hl" id="htot"></div><div class="abar" id="abar"></div><div id="hold"><p class="muted">{esc(t["hempty"])}</p></div>'
-            f'<div class="card hcalc" id="holdform"><div class="hrow">'
-            f'<label class="f">{S["w"]["q_asset"]}<div class="inp"><input id="ha" list="palist" autocomplete="off" placeholder="Bitcoin"></div></label>'
-            f'<label class="f">&nbsp;<div class="inp"><select id="hmode"><option value="sum">{esc(t["by_sum"])}</option><option value="qty">{esc(t["by_qty"])}</option></select></div></label>'
-            f'<label class="f">{esc(t["amount"])}<div class="inp"><input id="hamt" type="number" min="0" step="any" value="{nice(100 * rate):.0f}"><span class="muted" id="hunit">{CCY_SYM.get(code, code)}</span></div></label>'
-            f'<label class="f">{esc(t["date"])}<div class="inp"><input id="hdate" type="month" value="{END}"></div></label></div>'
-            f'<button class="btn" id="hsave">{esc(t["add"])}</button></div></section>')
+    q = PF2[lang]
+    hold = (f'<section class="section pf2" id="pf"><div class="pfbar"><select id="pfsel" aria-label="{esc(q["nav_pf"])}"></select>'
+            f'<button class="btn ghost sm" id="pfnew" type="button">＋ {esc(q["new"])}</button><button class="btn ghost sm" id="pfren" type="button">✎ {esc(q["rename"])}</button>'
+            f'<button class="btn ghost sm" id="pfdel" type="button">🗑 {esc(q["delete"])}</button><button class="btn pfaddb" id="pfadd" type="button">＋ {esc(q["addtx"])}</button></div>'
+            f'<div class="pfgrid"><div class="card pfsum" id="pfsum"></div><div class="card pfmain"><div class="pftabs" role="tablist">'
+            f'<button class="on" data-tab="bal" type="button">{esc(q["t_bal"])}</button><button data-tab="alloc" type="button">{esc(q["t_alloc"])}</button><button data-tab="tx" type="button">{esc(q["t_tx"])}</button></div>'
+            f'<div class="pfpane" data-pane="bal"><div class="pfrng">' + ''.join(f'<button type="button" data-r="{r}"{" class=on" if r == "30" else ""}>{lbl}</button>' for r, lbl in (("7", "7D"), ("30", "30D"), ("90", "90D"), ("365", "1Y"), ("all", q["all"]))) +
+            f'</div><div id="pfchart"></div><p class="muted pfest">{esc(q["est"])}</p></div>'
+            f'<div class="pfpane" data-pane="alloc" hidden><div id="pfalloc"></div></div><div class="pfpane" data-pane="tx" hidden><div id="pftx"></div></div></div></div>'
+            f'<div class="charthead pfah"><h2>{esc(q["yours"])}</h2><div class="pftools"><input id="pffilter" type="search" placeholder="{esc(q["filter"])}"><button class="btn ghost sm" id="pfcsv" type="button">⬇ {esc(q["csv"])}</button></div></div>'
+            f'<div id="hold"><p class="muted">{esc(q["empty"])}</p></div>'
+            f'<dialog id="txm" class="txm"><form method="dialog" id="txf"><div class="txh"><b>{esc(q["addtx"])}</b><button type="button" class="txx" aria-label="{esc(q["cancel"])}">✕</button></div>'
+            f'<div class="txside"><button type="button" class="on" data-s="1">{esc(q["buy"])}</button><button type="button" data-s="-1">{esc(q["sell"])}</button></div>'
+            f'<label class="f">{esc(q["asset"])}<div class="inp"><input id="txa" list="palist" autocomplete="off" placeholder="Bitcoin (BTC)" required></div></label>'
+            f'<div class="txrow"><label class="f">{esc(q["qty"])}<div class="inp"><input id="txq" type="number" min="0" step="any" placeholder="0.00"><span class="muted" id="txtk"></span></div></label>'
+            f'<label class="f">{esc(q["price"])}<div class="inp"><input id="txp" type="number" min="0" step="any"><span class="muted">USD</span></div></label></div>'
+            f'<div class="txrow"><label class="f">{esc(q["when"])}<div class="inp"><input id="txd" type="datetime-local"></div></label>'
+            f'<label class="f">{esc(q["fee"])}<div class="inp"><input id="txfee" type="number" min="0" step="any" placeholder="0"><span class="muted">USD</span></div></label></div>'
+            f'<label class="f">{esc(q["note"])}<div class="inp"><input id="txn" maxlength="120" autocomplete="off"></div></label>'
+            f'<label class="f"><span id="txtl">{esc(q["spent"])}</span><div class="inp txtot"><input id="txt" type="number" min="0" step="any" placeholder="0.00"><span class="muted">USD</span></div></label>'
+            f'<p class="muted txloc" id="txloc"></p><button class="btn" id="txok" type="submit">{esc(q["addtx"])}</button></form></dialog></section>')
     pf = PF[lang]
     bonds = ''
     if lang in OVP:
@@ -3396,19 +3411,25 @@ def me_page(lang, ver):
                  f'<button class="btn ghost" id="btpl" type="button">⬇ {esc(o["tmpl"])}</button></div>'
                  f'<details class="bpaste"><summary>{esc(o["paste"])}</summary><textarea id="bpt" rows="4" placeholder="UA4000227045;privatbank;UAH;50000;15.5;2026-03-01;2027-03-01"></textarea>'
                  f'<button class="btn ghost" id="bpgo" type="button">{esc(o["paste_go"])}</button></details><p class="muted" id="bmsg" style="font-size:13px"></p></div></section>')
-    body = (f'<h1>{esc(pf["h1"])}</h1><p class="lead">{esc(pf["d"])}</p>{hold}{bonds}'
-            f'<section class="section"><h2>☆ {esc(t["watch"])}</h2><div id="watch"><p class="muted">{esc(t["empty"])}</p></div></section>'
-            f'<section class="section"><h2>📈 {esc(t["plans"])}</h2><div class="hl" id="metot"></div><div id="plans"></div>'
+    body = (f'<h1>{esc(pf["h1"])}</h1><p class="lead">{esc(pf["d"])}</p>'
+            f'<nav class="pfnav"><a href="#pf">💼 {esc(q["nav_pf"])}</a><a href="#wl">★ {esc(q["nav_wl"])}</a><a href="#dca">📈 {esc(q["nav_plans"])}</a>'
+            + (f'<a href="#bonds">🇺🇦 {esc(OVP[lang]["h"])}</a>' if lang in UA_LANGS and lang in OVP else '') + f'</nav>{hold}'
+            f'<section class="section" id="wl"><div class="charthead"><h2>★ {esc(q["wl"])}</h2></div><div class="pfbar"><select id="wlsel" aria-label="{esc(q["wl"])}"></select>'
+            f'<button class="btn ghost sm" id="wlnew" type="button">＋ {esc(q["new"])}</button><button class="btn ghost sm" id="wlren" type="button">✎ {esc(q["rename"])}</button>'
+            f'<button class="btn ghost sm" id="wldel" type="button">🗑 {esc(q["delete"])}</button></div><div class="hl" id="wlsum"></div>'
+            f'<div class="wladd"><div class="inp"><input id="wla" list="palist" autocomplete="off" placeholder="{esc(q["wl_add"])}…"></div><button class="btn ghost" id="wlgo" type="button">＋ {esc(q["wl_add"])}</button></div>'
+            f'<div id="watch"><p class="muted">{esc(t["empty"])}</p></div></section>{bonds}'
+            f'<section class="section" id="dca"><h2>📈 {esc(t["plans"])}</h2><div class="hl" id="metot"></div><div id="plans"></div>'
             f'<div class="card hcalc" id="planform"><div class="hrow">'
             f'<label class="f">{S["w"]["q_asset"]}<div class="inp"><input id="pa" list="palist" autocomplete="off" placeholder="Bitcoin"><datalist id="palist"></datalist></div></label>'
             f'<label class="f">{esc(t["amount"])}<div class="inp"><input id="pm" type="number" min="0" step="any" value="{nice(10 * rate):.0f}"><span class="muted">{CCY_SYM.get(code, code)}</span></div></label>'
             f'<label class="f">&nbsp;<div class="inp"><select id="pf"><option value="d">{esc(per[0])}</option><option value="w">{esc(per[1])}</option><option value="m" selected>{esc(per[2])}</option></select></div></label>'
             f'<label class="f">{esc(t["start"])}<div class="inp"><input id="ps" type="month" value="{END_I // 12 - 2}-01"></div></label></div>'
             f'<button class="btn" id="psave">{esc(t["save"])}</button></div></section>'
-            f'<p class="muted" style="font-size:13px">{esc(t["note"])}</p>'
+            f'<p class="muted" style="font-size:13px">{esc(q["local"])} {esc(t["note"])}</p>'
             f'<div class="pfbk"><button class="btn ghost" id="pfexp" type="button">⬇ {esc(pf["backup"])}</button>'
             f'<label class="btn ghost">⬆ {esc(pf["restore"])}<input type="file" id="pfimp" accept="application/json" hidden></label></div>')
-    cfg = dict(me=dict(code=code, rate=rate, t=dict(t, **pf), per=dict(zip('dwm', per))))
+    cfg = dict(me=dict(code=code, rate=rate, t=dict(t, **pf), q=q, per=dict(zip('dwm', per))))
     if lang in OVP:
         cfg['me']['ob'] = dict(t=OVP[lang], b={b['id']: b['name'] for b in OB})
     return shell(lang, 'me', f'{pf["h1"]} | {BRAND}', pf['d'], body, cfg, ver).replace('<link rel="canonical"', '<meta name="robots" content="noindex, follow"><link rel="canonical"', 1)   # personal page: keep out of search
@@ -4326,6 +4347,13 @@ def main():
             e['y'] = a['yahoo']   # USD-listed: live quote via /api/quote
         idx.append({k: (round(v, 4) if isinstance(v, float) and k in ('ch', 'r1', 'r3', 'r5') else v) for k, v in e.items() if v is not None})
         write(f'assets/p/{aid}.json', json.dumps({'start': a['start'], 'end': a['end'], 'p': a['p'], 'n': nm(a, 'en'), 't': a['tk']}, separators=(',', ':')))
+    sym = {}
+    for aid in ORDERED:
+        a = A[aid]
+        bsym = a.get('binance') or (a['tk'] + 'USDT' if a['cat'] == 'crypto' and a.get('src') == 'yahoo' else None)
+        if bsym or a.get('yahoo'):
+            sym[aid] = [bsym or 0, a.get('yahoo') or 0]
+    write('assets/sym.json', json.dumps(sym, separators=(',', ':')))
     mk = {}
     for aid in ORDERED:
         mc, vol, c7, s7 = mkt_of(aid)

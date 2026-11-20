@@ -533,8 +533,32 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
   $$('#poll button').forEach(b=>b.onclick=()=>{ fetch(`/api/poll/?o=${b.dataset.o}&l=${lang}`).catch(()=>{}); try{ localStorage.setItem('wi_poll1',b.dataset.o) }catch(e){}
     box.querySelector('.pollb').innerHTML=`<span class="good">✓ ${esc(box.dataset.thanks)}</span>` }) })();
 /* ---------- watchlist stars (localStorage) ---------- */
-const WL={ get(){ try{ return JSON.parse(localStorage.getItem('wi_watch')||'[]') }catch(e){ return [] } },
-  set(v){ try{ localStorage.setItem('wi_watch',JSON.stringify(v)) }catch(e){} document.dispatchEvent(new Event('wi:watch')) } };
+/* ---------- stores: several watchlists (wi_wls) and portfolios with transactions (wi_pfs); wi_watch / wi_hold stay as mirrors for older code ---------- */
+const WLS={ rd(){ let S=null; try{ S=JSON.parse(localStorage.getItem('wi_wls')||'null') }catch(e){}
+    if(!S||!Array.isArray(S.list)||!S.list.length){ let w=[]; try{ w=JSON.parse(localStorage.getItem('wi_watch')||'[]') }catch(e){} S={cur:0,list:[{n:'',ids:Array.isArray(w)?w:[]}]} }
+    if(!S.list[S.cur]) S.cur=0; return S },
+  wr(S){ try{ localStorage.setItem('wi_wls',JSON.stringify(S)); localStorage.setItem('wi_watch',JSON.stringify(S.list[S.cur].ids)) }catch(e){} document.dispatchEvent(new Event('wi:watch')) } };
+const WL={ get(){ const S=WLS.rd(); return S.list[S.cur].ids.slice() }, set(v){ const S=WLS.rd(); S.list[S.cur].ids=v; WLS.wr(S) } };
+const PFS=(function(){
+  const rd=k=>{ try{ return JSON.parse(localStorage.getItem(k)||'null') }catch(e){ return null } };
+  function calc(p){ const by={}; let realized=0, invested=0;
+    p.tx.map((x,k)=>Object.assign({k},x)).sort((a,b)=>a.t<b.t?-1:a.t>b.t?1:a.k-b.k).forEach(x=>{
+      const g=by[x.a]||(by[x.a]={id:x.a,qty:0,cost:0,real:0}), f=+x.f||0;
+      if(x.s>0){ g.qty+=x.q; g.cost+=x.q*x.p+f; invested+=x.q*x.p+f }
+      else { const qq=Math.min(x.q,g.qty), avg=g.qty?g.cost/g.qty:0, r=qq*x.p-f-avg*qq; g.real+=r; realized+=r; g.cost-=avg*qq; g.qty-=qq } });
+    return {pos:Object.values(by), realized, invested} }
+  let S=rd('wi_pfs');
+  function save(){ try{ localStorage.setItem('wi_pfs',JSON.stringify(S)) }catch(e){}
+    const m={}; S.list.forEach(p=>calc(p).pos.forEach(g=>{ if(g.qty<=1e-12) return; const x=m[g.id]||(m[g.id]={id:g.id,qty:0,cost:0}); x.qty+=g.qty; x.cost+=g.cost }));
+    try{ localStorage.setItem('wi_hold',JSON.stringify(Object.values(m))) }catch(e){} document.dispatchEvent(new Event('wi:pf')) }
+  if(!S||!Array.isArray(S.list)||!S.list.length){ S={cur:0,list:[{n:'',tx:[]}]}; const old=rd('wi_hold')||[];   // migrate the old single portfolio
+    old.forEach(x=>{ if(!x||!x.id||!x.qty) return; const d=x.d||WI.u.slice(0,7), t=d.length===7?d+'-15T12:00':String(d).slice(0,16);
+      if(x.qty>0) S.list[0].tx.push({a:x.id,s:1,q:x.qty,p:x.cost/x.qty,f:0,t}); else S.list[0].tx.push({a:x.id,s:-1,q:-x.qty,p:x.px||Math.abs(x.cost/x.qty),f:0,t}) });
+    if(old.length) save() }
+  if(!S.list[S.cur]) S.cur=0;
+  return { get S(){ return S }, cur(){ return S.list[S.cur]||S.list[0] }, save, calc, add(tx){ this.cur().tx.push(tx); save() } };
+})();
+window.WIPF=PFS;
 function paintStars(){ const w=new Set(WL.get()); $$('.star[data-s]').forEach(b=>{ const on=w.has(b.dataset.s); b.textContent=on?'★':'☆'; b.classList.toggle('on',on) });
 }
 document.addEventListener('click',e=>{ const b=e.target.closest('.star[data-s]'); if(!b) return; e.preventDefault(); e.stopPropagation();
@@ -574,56 +598,163 @@ new MutationObserver(()=>{ clearTimeout(window._wiStar); window._wiStar=setTimeo
     if(!id){ $('#pa').focus(); $('#pa').classList.add('bad'); return } if(!(amt>0)) return;
     const v=PL.get(); v.push({id,amt,f:$('#pf').value,from:from.slice(0,7)}); PL.set(v); $('#pa').value=''; drawPlans();
     const w=WL.get(); if(!w.includes(id)){ w.unshift(id); WL.set(w) } };
-  function drawWatch(){ const w=WL.get().filter(i=>BYID[i]), box=$('#watch'); if(!w.length){ box.innerHTML=`<p class="muted">${esc(t.empty)}</p>`; return }
-    box.innerHTML=`<div class="tw"><table class="mt"><thead><tr><th class="l">${esc(T.name||'')}</th><th>${esc(T.price||'')}</th><th>${esc(T.chg||'')}</th><th class="hide-sm">${esc(T.d1||'')}</th><th>${esc(T.d5||'')}</th><th class="hide-sm">${esc(T.spark||'')}</th></tr></thead><tbody>`+
-      w.map(i=>{ const a=BYID[i]; return `<tr><td class="l"><button class="star" data-s="${a.i}">★</button><a class="asset" href="${url(a.i)}">${icon(a)}<span><span class="nm">${esc(nm(a))}</span><span class="tk">${esc(a.t)}</span></span></a></td>
-        <td class="num" data-p="${a.i}">${fmtPrice(a.pr)}</td><td class="num ${cls(a.ch)}" data-c="${a.i}">${fmtPct(a.ch)}</td><td class="num hide-sm ${cls(a.r1)}">${fmtPct(a.r1)}</td><td><span class="pill ${cls(a.r5)}">${fmtPct(a.r5)}</span></td><td class="hide-sm">${spark(a.sp)}</td></tr>` }).join('')+'</tbody></table></div>' }
-  /* portfolio (holdings): buy, buy more, sell part, history, backup */
-  const HL={ get(){ try{ return JSON.parse(localStorage.getItem('wi_hold')||'[]') }catch(e){ return [] } }, set(v){ try{ localStorage.setItem('wi_hold',JSON.stringify(v)) }catch(e){} } };
-  const PAL=['#1a6dff','#f59e0b','#14a44d','#e5484d','#8b5cf6','#0ea5e9','#ec4899','#64748b','#84cc16','#f97316'];
-  $('#hmode').onchange=()=>{ $('#hunit').textContent=$('#hmode').value==='qty'?'':(new Intl.NumberFormat(T.intl||'en',{style:'currency',currency:C.code}).formatToParts(1).find(p=>p.type==='currency')||{}).value||C.code };
-  $('#hsave').onclick=async()=>{ const id=findId($('#ha').value), v=+$('#hamt').value, d=($('#hdate').value||END).slice(0,7);
-    if(!id){ $('#ha').focus(); $('#ha').classList.add('bad'); return } if(!(v>0)) return;
-    const a=BYID[id]; let px=a.pr;
-    if(d<END){ try{ const P=await load(id), k=ym2i(d)-ym2i(P.start); if(k>=0&&k<P.p.length) px=P.p[k] }catch(e){} }
-    const qty=$('#hmode').value==='qty'?v:(v/C.rate)/px, cost=qty*px;
-    const h=HL.get(); h.push({id,qty,cost,d,px}); HL.set(h); $('#ha').value=''; $('#ha').classList.remove('bad'); drawHold() };
-  const open=new Set();
-  function drawHold(){
-    const raw=HL.get(), agg={}; let realized=0;
-    raw.forEach((x,k)=>{ if(!BYID[x.id]) return; const g=agg[x.id]||(agg[x.id]={id:x.id,qty:0,cost:0,tx:[]}); g.qty+=x.qty; g.cost+=x.cost; g.tx.push(Object.assign({k},x)); realized+=x.r||0 });
-    const L=Object.values(agg).filter(g=>g.qty>1e-12).map(g=>{ const a=BYID[g.id]; return Object.assign(g,{a,val:g.qty*a.pr}) }).sort((x,y)=>y.val-x.val);
-    if(!L.length){ $('#hold').innerHTML=`<p class="muted">${esc(t.hempty)}</p>`; $('#htot').innerHTML=''; $('#abar').innerHTML=''; return }
-    const tv=L.reduce((s,g)=>s+g.val,0), tc=L.reduce((s,g)=>s+g.cost,0), d24=L.reduce((s,g)=>s+g.val*(g.a.ch||0)/(1+(g.a.ch||0)),0), roi=tc?tv/tc-1:0;
-    $('#htot').innerHTML=`<div class="card"><div class="k">${esc(t.total)}</div><div class="v">${nf(tv*C.rate)}</div><div class="s">${esc(T.invested||'')}: ${nf(tc*C.rate)}</div></div>
-      <div class="card"><div class="k">${esc(t.profit)}</div><div class="v ${cls(roi)}">${fmtPct(roi)}</div><div class="s ${cls(roi)}">${nf((tv-tc)*C.rate)}</div></div>
-      <div class="card"><div class="k">${esc(T.chg||'24h')}</div><div class="v ${cls(d24)}">${fmtPct(tv-d24?d24/(tv-d24):0)}</div><div class="s ${cls(d24)}">${nf(d24*C.rate)}</div></div>`
-      +(realized?`<div class="card"><div class="k">${esc(t.realized)}</div><div class="v ${cls(realized)}">${nf(realized*C.rate)}</div></div>`:'');
-    $('#abar').innerHTML=L.map((g,i)=>`<i style="width:${(g.val/tv*100).toFixed(2)}%;background:${PAL[i%PAL.length]}" title="${esc(g.a.t)} ${(g.val/tv*100).toFixed(1)}%"></i>`).join('');
-    const q=v=>v.toLocaleString(T.intl||'en',{maximumSignificantDigits:6});
-    $('#hold').innerHTML=`<div class="tw"><table class="mt pft"><thead><tr><th class="l">${esc(T.name||'')}</th><th class="hide-sm">${esc(t.qty)}</th><th class="hide-sm">${esc(t.avg)}</th><th>${esc(T.value||'')}</th><th>${esc(t.profit)}</th><th class="hide-sm">${esc(T.chg||'')}</th><th class="hide-sm">${esc(t.share)}</th><th></th></tr></thead><tbody>`+
-      L.map((g,i)=>{ const r=g.cost?g.val/g.cost-1:0, op=open.has(g.id);
-        return `<tr><td class="l"><i class="dot" style="background:${PAL[i%PAL.length]}"></i><a class="asset" href="${url(g.id)}">${icon(g.a)}<span><span class="nm">${esc(nm(g.a))}</span><span class="tk">${esc(g.a.t)}</span></span></a></td>
-        <td class="num hide-sm">${q(g.qty)}</td><td class="num hide-sm">${fmtPrice(g.cost/g.qty)}</td><td class="num"><b>${nf(g.val*C.rate)}</b></td>
-        <td class="num ${cls(r)}">${fmtPct(r)}<br><small>${nf((g.val-g.cost)*C.rate)}</small></td><td class="num hide-sm ${cls(g.a.ch)}">${fmtPct(g.a.ch)}</td><td class="num hide-sm">${(g.val/tv*100).toFixed(1)}%</td>
-        <td class="pfact"><button class="pb" data-buy="${g.id}" title="${esc(t.buy)}">＋</button><button class="pb" data-sell="${g.id}" title="${esc(t.sell)}">−</button><button class="pb" data-hist="${g.id}" title="${esc(t.txs)}">${op?'▴':'▾'}</button></td></tr>`
-        +`<tr class="pfx" data-x="${g.id}" hidden><td colspan="8"><div class="pfsell"><input type="number" min="0" step="any" placeholder="${esc(t.amount)} (${esc(C.code)})"><button class="btn" data-go="${g.id}">${esc(t.sell)}</button><button class="btn ghost" data-all="${g.id}">${esc(t.sell_all)}</button></div></td></tr>`
-        +(op?`<tr class="pfh"><td colspan="8">`+g.tx.map(x=>`<div class="tx"><span class="${x.qty<0?'bad':'good'}">${esc(x.qty<0?t.sold:t.bought)}</span><span>${esc(x.d||'')}</span><span>${q(Math.abs(x.qty))} ${esc(g.a.t)}</span><span>${nf(Math.abs(x.qty)*(x.px||Math.abs(x.cost/x.qty))*C.rate)}</span>${x.r?`<span class="${cls(x.r)}">${nf(x.r*C.rate)}</span>`:'<span></span>'}<button class="toggle" data-tx="${x.k}" aria-label="${esc(t.remove)}">✕</button></div>`).join('')+`<div class="tx"><span></span><span></span><span></span><span></span><span></span><button class="toggle" data-hdel="${g.id}" title="${esc(t.remove)}">🗑</button></div></td></tr>`:'') }).join('')+'</tbody></table></div>';
-    const sell=(id,usd,all)=>{ const g=agg[id], a=BYID[id], avg=g.cost/g.qty; let qq=all?g.qty:Math.min(g.qty,usd/a.pr); if(!(qq>0)) return;
-      const h=HL.get(); h.push({id,qty:-qq,cost:-avg*qq,d:END,px:a.pr,r:(a.pr-avg)*qq}); HL.set(h); drawHold() };
-    $$('#hold [data-buy]').forEach(b=>b.onclick=()=>{ const a=BYID[b.dataset.buy]; $('#ha').value=`${nm(a)} (${a.t})`; $('#hmode').value='sum'; $('#hdate').value=END; $('#holdform').scrollIntoView({behavior:'smooth',block:'center'}); setTimeout(()=>$('#hamt').focus(),400) });
-    $$('#hold [data-sell]').forEach(b=>b.onclick=()=>{ const r=$(`#hold tr.pfx[data-x="${b.dataset.sell}"]`); r.hidden=!r.hidden; if(!r.hidden) r.querySelector('input').focus() });
-    $$('#hold [data-go]').forEach(b=>b.onclick=()=>{ const v=+b.parentNode.querySelector('input').value; if(v>0) sell(b.dataset.go,v/C.rate,false) });
-    $$('#hold [data-all]').forEach(b=>b.onclick=()=>sell(b.dataset.all,0,true));
-    $$('#hold [data-hist]').forEach(b=>b.onclick=()=>{ const id=b.dataset.hist; open.has(id)?open.delete(id):open.add(id); drawHold() });
-    $$('#hold [data-tx]').forEach(b=>b.onclick=()=>{ const h=HL.get(); h.splice(+b.dataset.tx,1); HL.set(h); drawHold() });
-    $$('#hold [data-hdel]').forEach(b=>b.onclick=()=>{ HL.set(HL.get().filter(x=>x.id!==b.dataset.hdel)); drawHold() }) }
+  /* ---------- portfolio v2 (owner 2026-11-20, CryptoRank-style): several portfolios, transactions, balance chart, allocation ---------- */
+  const q=C.q, PAL=['#1a6dff','#f59e0b','#14a44d','#e5484d','#8b5cf6','#0ea5e9','#ec4899','#64748b','#84cc16','#f97316'];
+  const usd=v=>nf(v*C.rate), sgn=v=>(v<0?'−':'+')+usd(Math.abs(v));
+  let hide=false; try{ hide=localStorage.getItem('wi_pfhide')==='1' }catch(e){}
+  const H=s=>hide?'•••••':s;
+  const nowT=()=>new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,16);
+  const pname=(p,i)=>p.n||(i?`${q.main} ${i+1}`:q.main);
+  const qf=v=>(+v).toLocaleString(T.intl||'en',{maximumSignificantDigits:8});
+  function ask(title,val,ok,danger){ let d=$('#askm'); if(!d){ d=document.createElement('dialog'); d.id='askm'; d.className='txm askm'; document.body.appendChild(d) }
+    d.innerHTML=`<form method="dialog"><div class="txh"><b>${esc(title)}</b></div>${val!=null?`<div class="inp"><input maxlength="40" value="${esc(val)}"></div>`:''}<div class="pfb"><button class="btn${danger?' danger':''}" value="ok">${esc(danger?q.delete:q.save)}</button><button class="btn ghost" value="no" formnovalidate>${esc(q.cancel)}</button></div></form>`;
+    d.returnValue=''; d.onclose=()=>{ if(d.returnValue==='ok') ok(val!=null?d.querySelector('input').value.trim():true) }; d.showModal(); const i=d.querySelector('input'); if(i){ i.focus(); i.select() } }
+  function bar(){ const S=PFS.S; $('#pfsel').innerHTML=S.list.map((p,i)=>`<option value="${i}"${i===S.cur?' selected':''}>${esc(pname(p,i))}</option>`).join(''); $('#pfdel').disabled=S.list.length<2 }
+  $('#pfsel').onchange=e=>{ PFS.S.cur=+e.target.value; PFS.save(); drawHold() };
+  $('#pfnew').onclick=()=>ask(q.new,`${q.main} ${PFS.S.list.length+1}`,n=>{ PFS.S.list.push({n:n.slice(0,40),tx:[]}); PFS.S.cur=PFS.S.list.length-1; PFS.save(); drawHold() });
+  $('#pfren').onclick=()=>ask(q.rename,pname(PFS.cur(),PFS.S.cur),n=>{ if(n){ PFS.cur().n=n.slice(0,40); PFS.save(); drawHold() } });
+  $('#pfdel').onclick=()=>{ if(PFS.S.list.length<2) return; ask(`${q.delete} «${pname(PFS.cur(),PFS.S.cur)}»? ${q.confirm}`,null,()=>{ PFS.S.list.splice(PFS.S.cur,1); PFS.S.cur=0; PFS.save(); drawHold() },true) };
+  // tabs
+  let tab='bal'; $$('.pftabs button').forEach(b=>b.onclick=()=>{ tab=b.dataset.tab; $$('.pftabs button').forEach(x=>x.classList.toggle('on',x===b)); $$('.pfpane').forEach(p=>p.hidden=p.dataset.pane!==tab); paneDraw() });
+  let rng='30'; $$('.pfrng button').forEach(b=>b.onclick=()=>{ rng=b.dataset.r; $$('.pfrng button').forEach(x=>x.classList.toggle('on',x===b)); chart() });
+  let R=null;
+  function model(){ const p=PFS.cur(), r=PFS.calc(p); let tv=0,d24=0,unreal=0;
+    r.pos=r.pos.filter(g=>BYID[g.id]); r.pos.forEach(g=>{ const a=BYID[g.id], v=g.qty>1e-12?g.qty*a.pr:0; g.a=a; g.val=v; tv+=v; d24+=v*(a.ch||0)/(1+(a.ch||0)); if(g.qty>1e-12) unreal+=v-g.cost });
+    r.live=r.pos.filter(g=>g.qty>1e-12).sort((x,y)=>y.val-x.val); r.tv=tv; r.d24=d24; r.unreal=unreal; r.p=p; return r }
+  function drawSum(){ const r=R, dp=r.tv-r.d24?r.d24/(r.tv-r.d24):0, pnl=r.realized+r.unreal, pp=r.invested?pnl/r.invested:0;
+    $('#pfsum').innerHTML=`<div class="pfk"><span>${esc(q.bal)}</span><button type="button" class="eye" title="${esc(q.hide)}" aria-label="${esc(q.hide)}">${hide?'🙈':'👁'}</button></div>
+      <div class="pfv">${H(usd(r.tv))}</div><div class="pfd ${cls(r.d24)}">${H(sgn(r.d24))} (${fmtPct(dp)}) <small class="muted">${esc(q.chg24)}</small></div>
+      <div class="pfg"><div><small>${esc(q.inv)}</small><b>${H(usd(r.invested))}</b></div><div><small>${esc(q.pnl)}</small><b class="${cls(pnl)}">${H(sgn(pnl))}<br><span>${fmtPct(pp)}</span></b></div>
+      <div><small>${esc(C.t.realized)}</small><b class="${cls(r.realized)}">${H(sgn(r.realized))}</b></div><div><small>${esc(q.unreal)}</small><b class="${cls(r.unreal)}">${H(sgn(r.unreal))}</b></div></div>`;
+    $('#pfsum .eye').onclick=()=>{ hide=!hide; try{ localStorage.setItem('wi_pfhide',hide?'1':'0') }catch(e){} drawHold() } }
+  function drawTable(){ const r=R, f=($('#pffilter').value||'').trim().toLowerCase();
+    if(!r.live.length){ $('#hold').innerHTML=`<div class="card pfempty"><p>${esc(q.empty)}</p><button class="btn" type="button" data-new>＋ ${esc(q.addtx)}</button></div>`; $('#hold [data-new]').onclick=()=>openTx(1); return }
+    const L=r.live.filter(g=>!f||nm(g.a).toLowerCase().includes(f)||g.a.t.toLowerCase().includes(f));
+    $('#hold').innerHTML=`<div class="tw"><table class="mt pft"><thead><tr><th class="l">${esc(T.name||'')}</th><th>${esc(T.price||'')}</th><th class="hide-sm">${esc(q.p24)}</th><th>${esc(q.pnl.split('/')[0].trim())}</th><th class="hide-sm">${esc(q.avg)}</th><th>${esc(q.hold)}</th><th>${esc(q.act)}</th></tr></thead><tbody>`+
+      L.map(g=>{ const a=g.a, r1=g.cost?g.val/g.cost-1:0, p24=g.val*(a.ch||0)/(1+(a.ch||0));
+        return `<tr><td class="l"><a class="asset" href="${url(a.i)}">${icon(a)}<span><span class="nm">${esc(nm(a))}</span><span class="tk">${esc(a.t)}</span></span></a></td>
+        <td class="num" data-p="${a.i}">${fmtPrice(a.pr)}</td><td class="num hide-sm ${cls(p24)}">${H(sgn(p24))}<br><small>${fmtPct(a.ch)}</small></td>
+        <td class="num ${cls(r1)}">${H(sgn(g.val-g.cost))}<br><small>${fmtPct(r1)}</small></td><td class="num hide-sm">${fmtPrice(g.cost/g.qty)}</td>
+        <td class="num"><b>${H(usd(g.val))}</b><br><small class="muted">${H(qf(g.qty))} ${esc(a.t)}</small></td>
+        <td class="pfact"><button class="pb" type="button" data-buy="${a.i}" title="${esc(q.buy)}">＋</button><button class="pb" type="button" data-sell="${a.i}" title="${esc(q.sell)}">⇄</button><button class="pb" type="button" data-del="${a.i}" title="${esc(q.delete)}">🗑</button></td></tr>` }).join('')+'</tbody></table></div>';
+    $$('#hold [data-buy]').forEach(b=>b.onclick=()=>openTx(1,b.dataset.buy));
+    $$('#hold [data-sell]').forEach(b=>b.onclick=()=>openTx(-1,b.dataset.sell));
+    $$('#hold [data-del]').forEach(b=>b.onclick=()=>{ const a=BYID[b.dataset.del]; ask(`${q.delete} ${nm(a)}? ${q.confirm}`,null,()=>{ const p=PFS.cur(); p.tx=p.tx.filter(x=>x.a!==a.i); PFS.save(); drawHold() },true) }) }
+  $('#pffilter').oninput=()=>drawTable();
+  function drawAlloc(){ const r=R, box=$('#pfalloc'); if(!r.live.length){ box.innerHTML=`<p class="muted">${esc(q.nochart)}</p>`; return }
+    let L=r.live.map(g=>({n:nm(g.a),t:g.a.t,a:g.a,v:g.val})); if(L.length>9){ const rest=L.slice(8); L=L.slice(0,8).concat([{n:'…',t:'',v:rest.reduce((s,x)=>s+x.v,0)}]) }
+    const tv=r.tv||1; let acc=0; const R0=60, cx=80, cy=80, C0=2*Math.PI*R0;
+    const arcs=L.map((x,i)=>{ const f=x.v/tv, s=`<circle r="${R0}" cx="${cx}" cy="${cy}" fill="none" stroke="${PAL[i%PAL.length]}" stroke-width="22" stroke-dasharray="${(f*C0).toFixed(2)} ${C0.toFixed(2)}" stroke-dashoffset="${(-acc*C0).toFixed(2)}" transform="rotate(-90 ${cx} ${cy})"><title>${esc(x.t||x.n)} ${(f*100).toFixed(1)}%</title></circle>`; acc+=f; return s }).join('');
+    box.innerHTML=`<div class="pfal"><svg viewBox="0 0 160 160" width="190" height="190" role="img" aria-label="${esc(q.t_alloc)}">${arcs}<text x="80" y="76" text-anchor="middle" class="dt">${esc(L[0].t||L[0].n)}</text><text x="80" y="96" text-anchor="middle" class="dv">${(L[0].v/tv*100).toFixed(1)}%</text></svg>
+      <table class="mt pfat"><thead><tr><th class="l">${esc(q.asset)}</th><th>${esc(q.hold)}</th><th>%</th></tr></thead><tbody>${L.map((x,i)=>`<tr><td class="l"><i class="dot" style="background:${PAL[i%PAL.length]}"></i>${x.a?icon(x.a):''}<b>${esc(x.t||x.n)}</b> <span class="muted">${esc(x.t?x.n:'')}</span></td><td class="num">${H(usd(x.v))}</td><td class="num">${(x.v/tv*100).toFixed(2)}%</td></tr>`).join('')}</tbody></table></div>` }
+  function drawTx(){ const p=PFS.cur(), box=$('#pftx'); if(!p.tx.length){ box.innerHTML=`<p class="muted">${esc(q.nochart)}</p>`; return }
+    const L=p.tx.map((x,k)=>Object.assign({k},x)).filter(x=>BYID[x.a]).sort((a,b)=>a.t<b.t?1:a.t>b.t?-1:b.k-a.k); let day='';
+    box.innerHTML=`<div class="tw"><table class="mt pftx"><thead><tr><th class="l">${esc(q.type)}</th><th>${esc(q.qty)}</th><th class="hide-sm">${esc(q.price)}</th><th>${esc(C.t.total||'Total')}</th><th class="hide-sm">${esc(q.when)}</th><th></th></tr></thead><tbody>`+
+      L.map(x=>{ const a=BYID[x.a], d=(x.t||'').slice(0,10), hd=d!==day?(day=d,`<tr class="pfday"><td colspan="6">${esc(new Date(d+'T12:00').toLocaleDateString(T.intl||'en',{year:'numeric',month:'short',day:'numeric'}))}</td></tr>`):'';
+        const tot=x.q*x.p+(x.s>0?1:-1)*(x.f||0);
+        return hd+`<tr><td class="l"><span class="txi ${x.s>0?'good':'bad'}">${x.s>0?'↓':'↑'}</span> ${esc(x.s>0?q.buy:q.sell)} <b>${esc(a.t)}</b>${x.m?`<br><small class="muted">${esc(x.m)}</small>`:''}</td>
+          <td class="num ${x.s>0?'good':'bad'}">${x.s>0?'+':'−'}${H(qf(x.q))} ${esc(a.t)}</td><td class="num hide-sm">${fmtPrice(x.p)}</td><td class="num">${H(usd(tot))}</td>
+          <td class="num hide-sm">${esc((x.t||'').slice(11,16))}</td><td class="pfact"><button class="pb" type="button" data-ed="${x.k}" title="${esc(q.edit)}">✎</button><button class="pb" type="button" data-rm="${x.k}" title="${esc(q.delete)}">🗑</button></td></tr>` }).join('')+'</tbody></table></div>';
+    $$('#pftx [data-ed]').forEach(b=>b.onclick=()=>openTx(0,null,+b.dataset.ed));
+    $$('#pftx [data-rm]').forEach(b=>b.onclick=()=>ask(`${q.delete}? ${q.confirm}`,null,()=>{ PFS.cur().tx.splice(+b.dataset.rm,1); PFS.save(); drawHold() },true)) }
+  $('#pfcsv').onclick=()=>{ const p=PFS.cur(), e=v=>`"${String(v==null?'':v).replace(/"/g,'""')}"`;
+    const rows=[['Date','Type','Asset','Ticker','Quantity','Price USD','Fee USD','Total USD','Note']].concat(p.tx.filter(x=>BYID[x.a]).sort((a,b)=>a.t<b.t?-1:1).map(x=>{ const a=BYID[x.a]; return [x.t,x.s>0?'buy':'sell',nm(a),a.t,x.q,x.p,x.f||0,(x.q*x.p+(x.s>0?1:-1)*(x.f||0)).toFixed(2),x.m||''] }));
+    const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob(['﻿'+rows.map(r=>r.map(e).join(',')).join('\n')],{type:'text/csv'})); a.download=`whatifstack-${(pname(p,PFS.S.cur)||'portfolio').replace(/[^\w-]+/g,'_')}.csv`; a.click() };
+  /* balance chart: daily closes (Binance / Yahoo via /api/chart), monthly closes as a fallback; values in USD shown in the local currency */
+  let SYM=null, CH=null, SER=null; const SC={};
+  const loadLib=()=>window.LightweightCharts?Promise.resolve():new Promise((ok,no)=>{ const s=document.createElement('script'); s.src=`${BASE}/assets/vendor/lwc-5.3.0.js`; s.onload=ok; s.onerror=no; document.head.appendChild(s) });
+  async function series(id,long){ const key=id+(long?'w':'d'); if(SC[key]) return SC[key];
+    return SC[key]=(async()=>{ const a=BYID[id]; if(!SYM){ try{ SYM=await fetch(`${BASE}/assets/sym.json?v=${WI.v}`).then(r=>r.json()) }catch(e){ SYM={} } }
+      const s=SYM[id]||[]; let out=null;
+      if(s[0]){ try{ const k=await fetch(`https://data-api.binance.vision/api/v3/klines?symbol=${s[0]}&interval=${long?'1w':'1d'}&limit=${long?1000:400}`).then(r=>r.ok?r.json():Promise.reject()); if(k.length>1) out=k.map(x=>[x[0]/1e3,+x[4]]) }catch(e){} }
+      if(!out&&s[1]){ try{ const j=await fetch(`/api/chart?s=${encodeURIComponent(s[1])}&r=${long?'max':'5y'}`).then(r=>r.ok?r.json():Promise.reject()); if(j.d&&j.d.length>1) out=j.d.map(x=>[x[0],x[4]]) }catch(e){} }
+      if(!out){ try{ const P=await load(id), s0=ym2i(P.start); out=P.p.map((v,i)=>{ const k=s0+i; return [Date.UTC(Math.floor(k/12),k%12,28)/1e3,v] }) }catch(e){ out=[] } }
+      if(out.length&&a.pr){ const f=a.pr/out[out.length-1][1]; if(isFinite(f)&&f>0) out=out.map(x=>[x[0],x[1]*f]) }   // currency/units -> today's USD price
+      return out })() }
+  let chartTok=0;
+  async function chart(){ const tok=++chartTok, box=$('#pfchart'), p=PFS.cur(), txs=p.tx.filter(x=>BYID[x.a]&&x.t).map(x=>Object.assign({ts:Date.parse(x.t)/1e3},x)).sort((a,b)=>a.ts-b.ts);
+    if(!txs.length){ box.innerHTML=`<p class="muted pfnochart">${esc(q.nochart)}</p>`; CH=null; return }
+    const now=Date.now()/1e3, first=txs[0].ts, from=rng==='all'?first:Math.max(first,now-(+rng)*864e2), span=now-from, long=span>400*864e2;
+    if(!CH) box.innerHTML='<div class="bload"><i></i></div>';
+    const ids=[...new Set(txs.map(x=>x.a))];
+    let S; try{ [S]=await Promise.all([Promise.all(ids.map(i=>series(i,long))),loadLib()]) }catch(e){ return } if(tok!==chartTok) return;
+    const step=long?7*864e2:864e2, pts=[], ptr=ids.map(()=>0), qty={}; let ti=0;
+    for(let t=Math.floor(from/step)*step; t<=now+step; t+=step){ const tt=Math.min(t,now);
+      while(ti<txs.length&&txs[ti].ts<=tt){ const x=txs[ti++]; qty[x.a]=Math.max(0,(qty[x.a]||0)+x.s*x.q) }
+      let v=0; ids.forEach((id,j)=>{ const d=S[j]; if(!d.length||!qty[id]) return; while(ptr[j]+1<d.length&&d[ptr[j]+1][0]<=tt) ptr[j]++; const px=d[ptr[j]][0]<=tt?d[ptr[j]][1]:d[0][1]; v+=qty[id]*px });
+      pts.push({time:Math.floor(tt),value:+(v*C.rate).toFixed(2)}); if(tt>=now) break }
+    // the last point = live value
+    if(pts.length){ pts[pts.length-1].value=+(R.tv*C.rate).toFixed(2) }
+    const L=window.LightweightCharts, css=getComputedStyle(document.documentElement), cv=k=>css.getPropertyValue(k).trim();
+    const up=pts.length>1&&pts[pts.length-1].value>=pts[0].value, col=up?(cv('--good')||'#16a34a'):(cv('--bad')||'#dc2626');
+    if(!CH){ box.innerHTML=''; CH=L.createChart(box,{autoSize:true,height:300,layout:{background:{color:'transparent'},textColor:cv('--muted')||'#666',fontFamily:getComputedStyle(document.body).fontFamily,attributionLogo:true},
+        grid:{vertLines:{visible:false},horzLines:{color:cv('--line2')||'#eee'}},rightPriceScale:{borderVisible:false},timeScale:{borderVisible:false},crosshair:{mode:L.CrosshairMode.Normal},localization:{locale:T.intl||'en',priceFormatter:v=>hide?'•••':nf(v)}});
+      SER=CH.addSeries(L.AreaSeries,{lineWidth:2}) }
+    SER.applyOptions({lineColor:col,topColor:col+'40',bottomColor:col+'05',priceFormat:{type:'custom',formatter:v=>hide?'•••':nf(v)}});
+    const seen=new Set(); SER.setData(pts.filter(x=>{ if(seen.has(x.time)) return false; seen.add(x.time); return true })); CH.timeScale().fitContent() }
+  function paneDraw(){ if(tab==='bal') chart(); else if(tab==='alloc') drawAlloc(); else drawTx() }
+  function drawHold(){ bar(); R=model(); drawSum(); drawTable(); paneDraw() }
+  /* add / edit transaction (modal) */
+  const M=$('#txm'); let side=1, editK=null;
+  const setSide=s=>{ side=s; $$('.txside button').forEach(b=>b.classList.toggle('on',+b.dataset.s===s)); $('#txtl').textContent=s>0?q.spent:q.recv; $('#txok').textContent=editK!=null?q.save:(s>0?q.buy:q.sell); recalc('q') };
+  $$('.txside button').forEach(b=>b.onclick=()=>setSide(+b.dataset.s));
+  const num=id=>+($(id).value||0);
+  function recalc(src){ const p=num('#txp'), f=num('#txfee');
+    if(src==='t'){ const t=num('#txt'); if(p>0) $('#txq').value=+(Math.max(0,(t-side*f))/p).toPrecision(10) }
+    else { const qq=num('#txq'); $('#txt').value=qq&&p?+(qq*p+side*f).toFixed(2):'' }
+    const t=num('#txt'); $('#txloc').textContent=C.code!=='USD'&&t?`≈ ${nf(t*C.rate)}`:'' }
+  ['#txq','#txp','#txfee'].forEach(s=>$(s).oninput=()=>recalc('q')); $('#txt').oninput=()=>recalc('t');
+  async function priceAt(id,t){ const a=BYID[id]; if(!a) return 0; if(!t||Date.parse(t)>Date.now()-864e5) return a.pr;
+    try{ const d=await series(id,false); const ts=Date.parse(t)/1e3; if(d.length&&ts>=d[0][0]){ let px=d[0][1]; for(const x of d){ if(x[0]<=ts) px=x[1]; else break } return px } }catch(e){}
+    try{ const P=await load(id), k=ym2i(t.slice(0,7))-ym2i(P.start); if(k>=0&&k<P.p.length) return P.p[k] }catch(e){} return a.pr }
+  let prTok=0; async function autoPrice(){ const id=findId($('#txa').value); $('#txtk').textContent=id?BYID[id].t:''; if(!id) return; const tok=++prTok; const p=await priceAt(id,$('#txd').value); if(tok!==prTok||!p) return; $('#txp').value=+p.toPrecision(8); recalc('q') }
+  $('#txa').onchange=autoPrice; $('#txd').onchange=autoPrice;
+  function openTx(s,id,k){ editK=k==null?null:k; const x=k!=null?PFS.cur().tx[k]:null;
+    $('#txa').value=x?`${nm(BYID[x.a])} (${BYID[x.a].t})`:id&&BYID[id]?`${nm(BYID[id])} (${BYID[id].t})`:''; $('#txa').classList.remove('bad');
+    $('#txq').value=x?x.q:''; $('#txp').value=x?x.p:(id&&BYID[id]?+BYID[id].pr.toPrecision(8):''); $('#txfee').value=x&&x.f?x.f:''; $('#txn').value=x&&x.m||''; $('#txd').value=x?x.t:nowT(); $('#txd').max=nowT();
+    $('#txtk').textContent=x?BYID[x.a].t:id&&BYID[id]?BYID[id].t:''; $('.txh b',M).textContent=x?q.edit:q.addtx; setSide(x?x.s:(s||1));
+    if(s<0&&id){ const g=R.live.find(g=>g.id===id); if(g){ $('#txq').value=+g.qty.toPrecision(10); recalc('q') } }
+    M.showModal(); setTimeout(()=>(x||id?$('#txq'):$('#txa')).focus(),50) }
+  $('#pfadd').onclick=()=>openTx(1); $('.txx',M).onclick=()=>M.close();
+  M.addEventListener('click',e=>{ if(e.target===M) M.close() });
+  $('#txf').onsubmit=e=>{ e.preventDefault(); const id=findId($('#txa').value), qq=num('#txq'), p=num('#txp');
+    if(!id){ $('#txa').classList.add('bad'); $('#txa').focus(); return } if(!(qq>0)){ $('#txq').focus(); return } if(!(p>0)){ $('#txp').focus(); return }
+    const tx={a:id,s:side,q:qq,p,f:num('#txfee')||0,t:$('#txd').value||nowT()}; const m=$('#txn').value.trim(); if(m) tx.m=m;
+    const pf=PFS.cur(); if(editK!=null) pf.tx[editK]=tx; else pf.tx.push(tx); PFS.save(); M.close(); drawHold();
+    const w=WL.get(); if(!w.includes(id)){ w.unshift(id); WL.set(w) } };
+  if(new URLSearchParams(location.search).get('add')){ const id=new URLSearchParams(location.search).get('add'); if(BYID[id]) setTimeout(()=>openTx(1,id),300) }
   // backup / restore (data lives only in this browser)
-  $('#pfexp')&&($('#pfexp').onclick=()=>{ const data={v:1,hold:HL.get(),plans:PL.get(),watch:WL.get(),bonds:(()=>{ try{ return JSON.parse(localStorage.getItem('wi_bonds')||'[]') }catch(e){ return [] } })()}; const a=document.createElement('a');
+  /* ---------- watchlists v2: several lists, summary cards, add asset, market columns ---------- */
+  let MK=null; fetch(`${BASE}/assets/mkt.json?v=${WI.v}`).then(r=>r.json()).then(j=>{ MK=j.a||{}; drawWatch() }).catch(()=>{});
+  const fb=v=>v==null?'—':(v>=1e12?(v/1e12).toFixed(2)+'T':v>=1e9?(v/1e9).toFixed(2)+'B':v>=1e6?(v/1e6).toFixed(2)+'M':Math.round(v).toLocaleString(T.intl||'en'));
+  const wname=(l,i)=>l.n||(i?`${q.wl_main} ${i+1}`:q.wl_main);
+  function wlbar(){ const S=WLS.rd(); $('#wlsel').innerHTML=S.list.map((l,i)=>`<option value="${i}"${i===S.cur?' selected':''}>${esc(wname(l,i))} (${l.ids.filter(x=>BYID[x]).length})</option>`).join(''); $('#wldel').disabled=S.list.length<2 }
+  $('#wlsel').onchange=e=>{ const S=WLS.rd(); S.cur=+e.target.value; WLS.wr(S) };
+  $('#wlnew').onclick=()=>ask(q.new,`${q.wl_main} ${WLS.rd().list.length+1}`,n=>{ const S=WLS.rd(); S.list.push({n:n.slice(0,40),ids:[]}); S.cur=S.list.length-1; WLS.wr(S) });
+  $('#wlren').onclick=()=>{ const S=WLS.rd(); ask(q.rename,wname(S.list[S.cur],S.cur),n=>{ if(n){ const S2=WLS.rd(); S2.list[S2.cur].n=n.slice(0,40); WLS.wr(S2) } }) };
+  $('#wldel').onclick=()=>{ const S=WLS.rd(); if(S.list.length<2) return; ask(`${q.delete} «${wname(S.list[S.cur],S.cur)}»? ${q.confirm}`,null,()=>{ const S2=WLS.rd(); S2.list.splice(S2.cur,1); S2.cur=0; WLS.wr(S2) },true) };
+  const wadd=()=>{ const id=findId($('#wla').value); if(!id){ $('#wla').classList.add('bad'); $('#wla').focus(); return } const w=WL.get(); if(!w.includes(id)) w.unshift(id); WL.set(w); $('#wla').value=''; $('#wla').classList.remove('bad') };
+  $('#wlgo').onclick=wadd; $('#wla').onkeydown=e=>{ if(e.key==='Enter'){ e.preventDefault(); wadd() } };
+  function drawWatch(){ wlbar(); const w=WL.get().filter(i=>BYID[i]), box=$('#watch'), sum=$('#wlsum');
+    if(!w.length){ box.innerHTML=`<p class="muted">${esc(t.empty)}</p>`; sum.innerHTML=''; return }
+    const m=i=>(MK&&MK[i])||[]; let mc=0, up=0, dn=0, avg=0;
+    w.forEach(i=>{ const a=BYID[i]; mc+=m(i)[0]||0; if((a.ch||0)>0) up++; else if((a.ch||0)<0) dn++; avg+=(a.ch||0) }); avg/=w.length;
+    sum.innerHTML=`<div class="card"><div class="k">${esc(q.wl_mcap)}</div><div class="v">${mc?'$'+fb(mc):'—'}</div></div>
+      <div class="card"><div class="k">${esc(q.wl_gl)}</div><div class="v"><span class="good">${up}</span> / <span class="bad">${dn}</span></div><div class="glbar"><i style="width:${(up/((up+dn)||1)*100).toFixed(1)}%"></i></div></div>
+      <div class="card"><div class="k">${esc(q.wl_avg)}</div><div class="v ${cls(avg)}">${fmtPct(avg)}</div></div>`;
+    box.innerHTML=`<div class="tw"><table class="mt"><thead><tr><th class="l">${esc(T.name||'')}</th><th>${esc(T.price||'')}</th><th>${esc(T.chg||'')}</th><th class="hide-sm">${esc(T.mk_d7||'7d')}</th><th class="hide-md">${esc(T.mk_mcap||'')}</th><th class="hide-md">${esc(T.mk_vol||'')}</th><th class="hide-sm">${esc(T.mk_k7||'')}</th><th></th></tr></thead><tbody>`+
+      w.map(i=>{ const a=BYID[i], k=m(i); return `<tr><td class="l"><button class="star" data-s="${a.i}">★</button><a class="asset" href="${url(a.i)}">${icon(a)}<span><span class="nm">${esc(nm(a))}</span><span class="tk">${esc(a.t)}</span></span></a></td>
+        <td class="num" data-p="${a.i}">${fmtPrice(a.pr)}</td><td class="num ${cls(a.ch)}" data-c="${a.i}">${fmtPct(a.ch)}</td><td class="num hide-sm ${cls(k[2])}">${k[2]!=null?fmtPct(k[2]):'—'}</td>
+        <td class="num hide-md">${k[0]?'$'+fb(k[0]):'—'}</td><td class="num hide-md">${k[1]?'$'+fb(k[1]):'—'}</td><td class="hide-sm">${spark(k[3]||a.sp)}</td><td class="pfact"><button class="pb" type="button" data-pfa="${a.i}" title="${esc(q.addtx)}">＋</button></td></tr>` }).join('')+'</tbody></table></div>';
+    $$('#watch [data-pfa]').forEach(b=>b.onclick=()=>{ $('#pf').scrollIntoView({block:'start'}); openTx(1,b.dataset.pfa) }) }
+  $('#pfexp')&&($('#pfexp').onclick=()=>{ const g=k=>{ try{ return JSON.parse(localStorage.getItem(k)||'null') }catch(e){ return null } };
+    const data={v:2,pfs:PFS.S,wls:WLS.rd(),plans:PL.get(),bonds:g('wi_bonds')||[],hold:g('wi_hold')||[],watch:WL.get()}; const a=document.createElement('a');
     a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,1)],{type:'application/json'})); a.download='whatifstack-portfolio.json'; a.click() });
-  $('#pfimp')&&($('#pfimp').onchange=e=>{ const f=e.target.files[0]; if(!f) return; f.text().then(s=>{ const d=JSON.parse(s);
-    if(Array.isArray(d.hold)) HL.set(d.hold); if(Array.isArray(d.plans)) PL.set(d.plans); if(Array.isArray(d.watch)) WL.set(d.watch); if(Array.isArray(d.bonds)){ try{ localStorage.setItem('wi_bonds',JSON.stringify(d.bonds)) }catch(e){} document.dispatchEvent(new Event('wi:bonds')) } drawHold(); drawPlans(); drawWatch() }).catch(()=>{}) });
-  let ht; document.addEventListener('wi:tick',()=>{ clearTimeout(ht); ht=setTimeout(drawHold,1500) });
+  $('#pfimp')&&($('#pfimp').onchange=e=>{ const f=e.target.files[0]; if(!f) return; f.text().then(s=>{ const d=JSON.parse(s), w=(k,v)=>{ try{ localStorage.setItem(k,JSON.stringify(v)) }catch(e){} };
+    if(d.pfs&&Array.isArray(d.pfs.list)) w('wi_pfs',d.pfs); else if(Array.isArray(d.hold)){ try{ localStorage.removeItem('wi_pfs') }catch(e){} w('wi_hold',d.hold) }
+    if(d.wls&&Array.isArray(d.wls.list)) w('wi_wls',d.wls); else if(Array.isArray(d.watch)){ try{ localStorage.removeItem('wi_wls') }catch(e){} w('wi_watch',d.watch) }
+    if(Array.isArray(d.plans)) w('wi_plans',d.plans); if(Array.isArray(d.bonds)) w('wi_bonds',d.bonds); location.reload() }).catch(()=>{}) });
+  let ht; document.addEventListener('wi:tick',()=>{ clearTimeout(ht); ht=setTimeout(()=>{ R=model(); drawSum(); if(!document.activeElement||document.activeElement.id!=='pffilter') drawTable(); if(tab==='alloc') drawAlloc() },1500) });
   document.addEventListener('wi:watch',drawWatch); drawWatch(); drawPlans(); drawHold();
 })();
 /* ---------- long texts (stock analyses): show the first screen, «Show more» opens the rest ---------- */
@@ -858,8 +989,8 @@ document.addEventListener('click',async e=>{
     let px=(BYID[id]||{}).pr;
     try{ const P=await fetch(`${BASE}/assets/p/${id}.json?v=${WI.v}`).then(r=>r.json()); const ym=s=>{const [y,m]=s.split('-').map(Number);return y*12+m-1}, k=ym(d)-ym(P.start);
       if(!px) px=P.p[P.p.length-1]; if(d<END&&k>=0&&k<P.p.length) px=P.p[k] }catch(e){}
-    if(!px) return; const qty=(v/C.rate)/px; let h=[]; try{ h=JSON.parse(localStorage.getItem('wi_hold')||'[]') }catch(e){}
-    h.push({id,qty,cost:qty*px,d,px}); try{ localStorage.setItem('wi_hold',JSON.stringify(h)) }catch(e){}
+    if(!px) return; const qty=(v/C.rate)/px, nowT=new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,16);
+    PFS.add({a:id,s:1,q:qty,p:px,f:0,t:d<END?d+'-15T12:00':nowT});
     pop.querySelector('.pmsg').innerHTML=`✓ ${esc(C.t.added)} · <a href="${C.me}">${esc(C.t.open)} →</a>`; pop.querySelector('.pfb').remove() };
 });
 
