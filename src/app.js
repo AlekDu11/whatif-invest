@@ -1431,3 +1431,61 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
     $('#dp_h').innerHTML=R.map((P,i)=>{ if(!P||P.p.length<13) return ''; const a=BYID[H[i][0]], ch=P.p[P.p.length-1]/P.p[P.p.length-13]-1;
       return `<div class="kv"><span>${a?icon(a):''} ${esc(H[i][1]||(a?nm(a):H[i][0]))}</span><b class="${cls(ch)}">${fmtPct(ch)}</b></div>` }).join('') });
 })();
+
+/* ---------- accounts: sign in by e-mail link / Telegram and sync portfolios, watchlists and bonds (api/_auth.js via /api/forms) ---------- */
+(function(){
+  const KEYS=['wi_pfs','wi_wls','wi_bonds','wi_pfccy','wi_hold','wi_watch'];
+  const ls={ get:k=>{ try{ return localStorage.getItem(k) }catch(e){ return null } }, set:(k,v)=>{ try{ v==null?localStorage.removeItem(k):_set.call(localStorage,k,v) }catch(e){} } };
+  let _set; try{ _set=Storage.prototype.setItem }catch(e){ return }
+  const sid=()=>ls.get('wi_sid');
+  const api=(k,opt={})=>fetch('/api/forms?k='+k,{method:opt.body?'POST':'GET',headers:Object.assign({'Content-Type':'application/json'},sid()?{'x-sid':sid()}:{}),body:opt.body?JSON.stringify(opt.body):undefined})
+    .then(async r=>{ const j=await r.json().catch(()=>({})); if(!r.ok){ const e=new Error(j.e||r.status); e.status=r.status; throw e } return j });
+  const J=s=>{ try{ return JSON.parse(s) }catch(e){ return null } };
+  const snap=()=>{ const d={}; KEYS.forEach(k=>{ const v=ls.get(k); if(v!=null) d[k]=v }); return d };
+  function merge(loc,srv){   // union: portfolios/watchlists by name, transactions and ids without duplicates; local wins on simple values
+    const out=Object.assign({},srv,loc);
+    const pl=J(loc.wi_pfs), ps=J(srv.wi_pfs);
+    if(pl&&ps&&pl.list&&ps.list){ const by={}; [...ps.list,...pl.list].forEach(p=>{ const k=p.n||''; const g=by[k]||(by[k]={n:p.n,tx:[]}); const seen=new Set(g.tx.map(t=>JSON.stringify([t.a,t.s,t.q,t.p,t.t]))); (p.tx||[]).forEach(t=>{ const id=JSON.stringify([t.a,t.s,t.q,t.p,t.t]); if(!seen.has(id)){ seen.add(id); g.tx.push(t) } }) });
+      out.wi_pfs=JSON.stringify({cur:pl.cur||0,list:Object.values(by)}) }
+    const wl=J(loc.wi_wls), ws=J(srv.wi_wls);
+    if(wl&&ws&&wl.list&&ws.list){ const by={}; [...ws.list,...wl.list].forEach(w=>{ const g=by[w.n]||(by[w.n]={n:w.n,ids:[]}); (w.ids||[]).forEach(i=>{ if(!g.ids.includes(i)) g.ids.push(i) }) }); out.wi_wls=JSON.stringify({cur:wl.cur||0,list:Object.values(by)}) }
+    const bl=J(loc.wi_bonds), bs=J(srv.wi_bonds);
+    if(Array.isArray(bl)&&Array.isArray(bs)){ const seen=new Set(bl.map(x=>JSON.stringify(x))); out.wi_bonds=JSON.stringify([...bl,...bs.filter(x=>!seen.has(JSON.stringify(x)))]) }
+    return out }
+  let t, busy=false;
+  const push=()=>{ if(!sid()) return; clearTimeout(t); t=setTimeout(()=>{ if(busy) return push(); busy=true;
+    api('data',{body:{d:snap()}}).then(j=>{ ls.set('wi_syncv',String(j.v)); ls.set('wi_dirty',null); document.dispatchEvent(new CustomEvent('wi:synced')) }).catch(e=>{ if(e.status===401) ls.set('wi_sid',null) }).finally(()=>{ busy=false }) },1500) };
+  Storage.prototype.setItem=function(k,v){ _set.call(this,k,v); if(this===localStorage&&KEYS.includes(k)&&sid()){ _set.call(this,'wi_dirty','1'); push() } };
+  async function pull(){ if(!sid()) return;
+    try{ const s=await api('data'); const sv=+ls.get('wi_syncv')||0, dirty=!!ls.get('wi_dirty');
+      if(s.d&&s.v>sv){ const loc=snap(); const has=Object.keys(loc).length;
+        const nd=(dirty||!sv)&&has?merge(loc,s.d):s.d; const changed=KEYS.some(k=>(nd[k]||null)!==(loc[k]||null));
+        KEYS.forEach(k=>ls.set(k,nd[k]==null?null:nd[k])); ls.set('wi_syncv',String(s.v));
+        if(nd!==s.d) { ls.set('wi_dirty','1'); push() } else ls.set('wi_dirty',null);
+        if(changed&&!sessionStorage.getItem('wi_reloaded')){ sessionStorage.setItem('wi_reloaded','1'); location.reload(); return } }
+      else if(!s.d||dirty) push();
+      document.dispatchEvent(new CustomEvent('wi:synced')) }catch(e){ if(e.status===401) ls.set('wi_sid',null) } }
+  window.WIACC={api,pull,sid,set:ls.set,get:ls.get};
+  pull();
+})();
+(function(){ const {T,esc,lang}=window.WIX||{}; const $=s=>document.querySelector(s);
+  const box=$('#acct'); if(!box) return; let C; try{ C=JSON.parse(box.dataset.cfg) }catch(e){ return }
+  const A=window.WIACC, inn=box.querySelector('.acct-in'), out=box.querySelector('.acct-out'), msg=$('#acctmsg');
+  const say=(t,bad)=>{ if(!msg) return; msg.hidden=false; msg.textContent=t; msg.classList.toggle('bad',!!bad) };
+  function show(){ const u=JSON.parse(A.get('wi_user')||'null');
+    if(A.sid()&&u){ out.hidden=true; inn.hidden=false;
+      const v=+A.get('wi_syncv'); inn.innerHTML=`<span>✅ ${esc(C.in)} <b>${esc(u.name||'')}</b></span><span class="muted">${v?esc(C.sync)+' '+new Date(v).toLocaleTimeString(T.intl||'en',{hour:'2-digit',minute:'2-digit'}):''}</span><button class="btn ghost sm" type="button" id="acctout">${esc(C.out)}</button>`;
+      $('#acctout').onclick=()=>{ A.api('logout',{body:{}}).catch(()=>{}).finally(()=>{ A.set('wi_sid',null); A.set('wi_user',null); A.set('wi_syncv',null); show() }) } }
+    else { out.hidden=false; inn.hidden=true } }
+  async function start(j){ A.set('wi_sid',j.sid); A.set('wi_user',JSON.stringify({name:j.name})); A.set('wi_syncv',null); A.set('wi_dirty','1'); show(); await A.pull(); show() }
+  const q=new URLSearchParams(location.search), tok=q.get('login');
+  if(tok){ history.replaceState(null,'',location.pathname+location.hash);
+    A.api('verify',{body:{t:tok}}).then(start).catch(e=>say(e.status===410?C.exp:C.err,true)) }
+  const f=$('#acctf'); if(f) f.onsubmit=e=>{ e.preventDefault(); const b=f.querySelector('button'); b.disabled=true;
+    A.api('login',{body:{em:f.em.value,l:lang,hp:f.hp.value}}).then(()=>{ say(C.sent); f.hidden=true }).catch(()=>say(C.err,true)).finally(()=>{ b.disabled=false }) };
+  if(C.tg&&!A.sid()){ window.wiTgAuth=u=>A.api('tg',{body:u}).then(start).catch(()=>say(C.err,true));
+    const s=document.createElement('script'); s.async=true; s.src='https://telegram.org/js/telegram-widget.js?22';
+    s.setAttribute('data-telegram-login',C.tg); s.setAttribute('data-size','large'); s.setAttribute('data-radius','10'); s.setAttribute('data-onauth','wiTgAuth(user)'); s.setAttribute('data-request-access','write');
+    $('#tglogin').appendChild(s) }
+  document.addEventListener('wi:synced',show); show();
+})();

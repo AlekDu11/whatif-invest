@@ -818,7 +818,7 @@ def main():
         if base in pinned_crypto:                      # long Yahoo history already; take live price + logo
             a = assets[pinned_crypto[base]]
             if r:
-                a['price'], a['chg'] = r['price'], r['chg']
+                a['price'], a['chg'], a['binance'] = r['price'], r['chg'], r['symbol']
             a.update({k: m[k] for k in ('logo', 'rank') + INFO_KEYS if m.get(k)})
             s = binance_monthly(r['symbol']) if r else None   # use Binance if Yahoo failed or has a shorter history
             if s and ('p' not in a or s['start'] < a['start']):

@@ -23,6 +23,7 @@ from i18n_p import P as POLL, OPTS as POLL_OPTS  # noqa: E402
 from i18n_ai import AI as AIS  # noqa: E402
 from i18n_me import ME  # noqa: E402
 from i18n_mem import MEM  # noqa: E402
+from i18n_acc import ACC  # noqa: E402
 from i18n_mem2 import MEM2  # noqa: E402
 for _lg in MEM:
     MEM[_lg].update(MEM2.get(_lg, MEM2['en']))
@@ -2421,6 +2422,7 @@ def investor_page(lang, fid, ver):
 
 
 # ---------------- Telegram price alerts ----------------
+AUTH_EMAIL = False   # True once Vercel env BREVO_KEY (+ AUTH_FROM) is set: shows «sign in by e-mail» on /me/ (api/_auth.js)
 TG_BOT = ''   # bot username without @ (set when the owner creates it in @BotFather); empty = no alert button
 
 
@@ -3462,6 +3464,21 @@ def watch_page(lang, ver):
     return shell(lang, 'watchlist', f'{q["wl"]} | {BRAND}', k['wl_d'], body, cfg, ver).replace('<link rel="canonical"', '<meta name="robots" content="noindex, follow"><link rel="canonical"', 1)
 
 
+def acct_block(lang):
+    """Sign in by e-mail link and/or Telegram (no password) to sync portfolios, watchlists and bonds; filled by app.js. Hidden until a method is configured."""
+    if not (AUTH_EMAIL or TG_BOT):
+        return ''
+    a = ACC[lang]
+    cfg = dict(a, mail=bool(AUTH_EMAIL), tg=TG_BOT)
+    orw = f'<span class="muted">{esc(a["or"])}</span>' if AUTH_EMAIL else ''
+    return (f'<section class="card acct" id="acct" data-cfg="{esc(json.dumps(cfg, ensure_ascii=False))}"><div class="acct-in" hidden></div>'
+            f'<div class="acct-out"><b>🔐 {esc(a["h"])}</b><p class="muted">{esc(a["d"])}</p>'
+            + (f'<form class="acctf" id="acctf"><input type="email" name="em" required placeholder="{esc(a["em"])}" autocomplete="email"><input name="hp" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">'
+               f'<button class="btn" type="submit">{esc(a["send"])}</button></form><p class="acctmsg muted" id="acctmsg" hidden></p>' if AUTH_EMAIL else '')
+            + (f'<div class="accttg">{orw}<div id="tglogin"></div></div>' if TG_BOT else '')
+            + '</div></section>')
+
+
 def me_page(lang, ver):
     S, t = TR[lang], ME[lang]
     code, rate = hccy(lang)
@@ -3513,7 +3530,7 @@ def me_page(lang, ver):
                  f'<button class="btn ghost" id="bpgo" type="button">{esc(o["paste_go"])}</button></details><p class="muted" id="bmsg" style="font-size:13px"></p></div></section>')
     body = (f'<h1>{esc(pf["h1"])}</h1><p class="lead">{esc(pf["d"])}</p>'
             f'<nav class="pfnav"><a href="#pf">💼 {esc(q["nav_pf"])}</a><a href="{url(lang, "watchlist")}">★ {esc(q["nav_wl"])}</a><a href="#dca">📈 {esc(q["nav_plans"])}</a>'
-            + (f'<a href="#bonds">🇺🇦 {esc(OVP[lang]["h"])}</a>' if lang in UA_LANGS and lang in OVP else '') + f'</nav>{hold}'
+            + (f'<a href="#bonds">🇺🇦 {esc(OVP[lang]["h"])}</a>' if lang in UA_LANGS and lang in OVP else '') + f'</nav>{acct_block(lang)}{hold}'
             f'{bonds}'
             f'<section class="section" id="dca"><h2>📈 {esc(t["plans"])}</h2><div class="hl" id="metot"></div><div id="plans"></div>'
             f'<div class="card hcalc" id="planform"><div class="hrow">'
@@ -4497,7 +4514,7 @@ def main():
             e['h'] = HOME_POS[aid]   # missing = 9999 (app.js)
         if a.get('yahoo') in ('HG=F', 'ALI=F'):
             e['u'] = 1   # copper/aluminum are quoted per lb / tonne, not per oz
-        if a.get('binance') or (a['cat'] == 'crypto' and a.get('src') == 'yahoo'):
+        if a.get('binance') or (a['cat'] == 'crypto' and a.get('src') in ('yahoo', 'binance')):   # pinned coins (ETH…) have src=binance but no symbol
             e['bn'] = 1
         if a['cat'] in ('stock', 'etf', 'metal', 'cmd') and a.get('yahoo') and not any(ch in a['yahoo'] for ch in '.:'):
             e['y'] = a['yahoo']   # USD-listed: live quote via /api/quote
@@ -4506,7 +4523,7 @@ def main():
     sym = {}
     for aid in ORDERED:
         a = A[aid]
-        bsym = a.get('binance') or (a['tk'] + 'USDT' if a['cat'] == 'crypto' and a.get('src') == 'yahoo' else None)
+        bsym = a.get('binance') or (a['tk'] + 'USDT' if a['cat'] == 'crypto' and a.get('src') in ('yahoo', 'binance') else None)
         if bsym or a.get('yahoo'):
             sym[aid] = [bsym or 0, a.get('yahoo') or 0]
     write('assets/sym.json', json.dumps(sym, separators=(',', ':')))
