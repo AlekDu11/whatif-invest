@@ -75,3 +75,6 @@ LEAD = {lg: dict(zip(('p', 'w', 'm', 'v'), v)) for lg, v in _L.items()}
 FG = {'en': 'Fear & Greed', 'uk': 'Страх і жадібність', 'ru': 'Страх и жадность', 'es': 'Miedo y codicia', 'de': 'Angst & Gier', 'pt': 'Medo e ganância',
       'pl': 'Strach i chciwość', 'tr': 'Korku ve açgözlülük', 'fr': 'Peur et avidité', 'it': 'Paura e avidità', 'nl': 'Angst & hebzucht', 'id': 'Takut & serakah',
       'vi': 'Sợ hãi & tham lam', 'th': 'กลัวและโลภ', 'hi': 'डर और लालच', 'ja': '恐怖と強欲', 'ko': '공포·탐욕', 'zh': '恐惧与贪婪', 'ar': 'الخوف والطمع', 'fil': 'Takot at kasakiman'}
+
+# appended to asset page <title> before the live price: people search «<coin> profit calculator» (Search Console, 2026-11-20)
+CALC = {'en': ', profit calculator', 'uk': ', калькулятор прибутку', 'ru': ', калькулятор прибыли', 'es': ', calculadora de ganancias', 'pt': ', calculadora de lucro', 'de': ', Gewinnrechner', 'fr': ', calculateur de gains', 'it': ', calcolatore di profitto', 'pl': ', kalkulator zysku', 'tr': ', kâr hesaplayıcı', 'nl': ', winstcalculator', 'id': ', kalkulator profit', 'vi': ', máy tính lợi nhuận', 'th': ' เครื่องคำนวณกำไร', 'hi': ', प्रॉफिट कैलकुलेटर', 'ja': '・利益計算機', 'ko': ', 수익 계산기', 'zh': '、收益计算器', 'ar': '، حاسبة الأرباح', 'fil': ', profit calculator'}

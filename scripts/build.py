@@ -46,7 +46,7 @@ from i18n_tgj import TGJ  # noqa: E402
 from i18n_my import MY, BR  # noqa: E402
 from i18n_ch import CH  # noqa: E402
 from i18n_inv import INV  # noqa: E402
-from i18n_mkt import MKT, LEAD as MLEAD, FG as MFG  # noqa: E402
+from i18n_mkt import MKT, LEAD as MLEAD, FG as MFG, CALC as MCALC  # noqa: E402
 from i18n_st import ST as STX  # noqa: E402
 from i18n_xc2 import XC2  # noqa: E402
 from i18n_ua import UA_LANGS, UA_ASOF, OB, OBI, OBT, UA_SRC, BUYG, BUYG_SRC, OVP, OB_GO, INZ  # noqa: E402
@@ -2710,7 +2710,7 @@ def asset(aid, lang, ver):
     _apf = dict(f, price=price(m['price']), ten=_re.sub(r'<[^>]+>', '', TEN))
     title, desc = AP[lang]['title'].format(**_apf), AP[lang]['desc'].format(**_apf)
     if m.get('price') and ' — ' in title:   # a live number in the snippet: «Bitcoin (BTC): price, chart and news — $64,215»
-        title = title.rsplit(' — ', 1)[0] + ' — ' + _re.sub(r'<[^>]+>', '', usd(m['price']) if 1 <= m['price'] < 1e6 else price(m['price']))
+        title = title.rsplit(' — ', 1)[0] + MCALC[lang] + ' — ' + _re.sub(r'<[^>]+>', '', usd(m['price']) if 1 <= m['price'] < 1e6 else price(m['price']))
     fe = dict(f, name=esc(n), inv=usd_h(r['inv']), val=usd_h(r['val']), roi=f'<span class="{cls(r["roi"])}">{pct(r["roi"])}</span>')
     faq = [(S['q1'].format(**f), S['a1'].format(**f)), (S['q2'].format(**f), S['a2'].format(**f)),
            (S['q4'].format(**f), S['a4'].format(**f)), (S['q3'], S['a3'])]
