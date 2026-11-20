@@ -27,6 +27,7 @@ from i18n_act import ACT  # noqa: E402
 from i18n_prof import P as PROF_T  # noqa: E402
 from i18n_pf import PF  # noqa: E402
 from i18n_pf2 import PF2, TRK  # noqa: E402
+from i18n_dep import DEP, MONTH as DEP_M, MONTH_T as DEP_MT  # noqa: E402
 from i18n_bp import BP  # noqa: E402
 from i18n_ai import AIC  # noqa: E402
 from i18n_emb import EMB, EXT  # noqa: E402
@@ -74,7 +75,7 @@ OG_LANGS = {f[:-4] for f in os.listdir(os.path.join(ROOT, 'src', 'og')) if f.end
 END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
-RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide', 'commodities', 'widgets', 'embed', 'dividends', 'average-price', 'ovdp', 'largest-companies', 'crypto-exchanges', 'partners', 'buy-stocks-ukraine', 'calculators', 'investors', 'watchlist', 'read'}
+RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide', 'commodities', 'widgets', 'embed', 'dividends', 'average-price', 'ovdp', 'largest-companies', 'crypto-exchanges', 'partners', 'buy-stocks-ukraine', 'calculators', 'investors', 'watchlist', 'read', 'deposits-ukraine'}
 RESERVED |= {v[0] for v in MKTS.values()} | {'world-assets', 'activities', 'editorial-policy', 'about', 'portfolios'}
 # asset ids that clash with a language folder or a section get a suffix (ko -> ko-stock, fil -> fil-crypto)
 _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
@@ -927,7 +928,8 @@ def ovdp_page(lang, ver):
              f'<p class="muted icnote2">{esc(t["src"])}</p></section>')
     lk = _calc_links(lang, ['compound-interest', 'dividends', 'average-price'])
     if lang in UA_LANGS:
-        lk = (f'<a class="card hcard" href="{url(lang, "ovdp/brokers")}"><span>🏦</span><b>{esc(OBT[lang]["nav"])}</b></a>'
+        lk = (f'<a class="card hcard" href="{url(lang, "deposits-ukraine")}"><span>💰</span><b>{esc(DEP[lang]["nav"])}</b></a>'
+              f'<a class="card hcard" href="{url(lang, "ovdp/brokers")}"><span>🏦</span><b>{esc(OBT[lang]["nav"])}</b></a>'
               f'<a class="card hcard" href="{url(lang, "me")}#bonds"><span>🏛️</span><b>{esc(OBT[lang]["port"])}</b></a>' + lk)
     elif lang in OVP:
         lk = f'<a class="card hcard" href="{url(lang, "me")}#bonds"><span>🏛️</span><b>{esc(OVP[lang]["h"])}</b></a>' + lk
@@ -965,6 +967,58 @@ def inzhur_card(lang, src):
             f'<a class="btn ghost" href="/go/inzhur?from={src}&l={lang}" target="_blank" rel="sponsored noopener">{esc(b)} ↗</a></section>')
 
 
+DEPO = {}
+for _c in ('ua',):
+    _f = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data', 'deposits', _c + '.json')
+    if os.path.exists(_f):
+        DEPO[_c] = json.load(open(_f, encoding='utf-8'))
+
+
+def deposits_page(lang, ver):
+    """/deposits-ukraine/ (uk, ru): bank deposit rates table + after-tax calculator + deposit vs OVDP (owner 2026-11-20; template for other countries)."""
+    D, t = DEPO['ua'], DEP[lang]
+    B = [b for b in D['banks'] if b['uah'][0]]
+    n = len(D['banks'])
+    mx = max(b['uah'][0] for b in B)
+    mu = max((b['usd'][0] or 0) for b in D['banks'])
+    y, mo = int(D['asof'][:4]), int(D['asof'][5:7])
+    fmt = lambda v: (f'{v:.2f}'.rstrip('0').rstrip('.') if v is not None else '—').replace('.', ',')
+    net = fmt(round(mx * (1 - D['tax'] / 100), 2))
+    top = ', '.join(b['n'] for b in sorted(B, key=lambda b: -b['uah'][0])[:3])
+    F = dict(m=f'{DEP_M[lang][mo - 1]} {y}', n=n, mx=fmt(mx), mu=fmt(mu), avg=fmt(D['uird12']), nbu=fmt(D['nbu']), net=net, ovdp=fmt(D['ovdp']['uah']), top=top, p=D['period'])
+    tf = lambda x: x.format(**F)
+    kt = '<blockquote class="kt"><b>' + esc(t['kt']) + '</b><ul>' + ''.join(f'<li>{esc(tf(x))}</li>' for x in t['kts']) + '</ul></blockquote>'
+    def table(key, cap):
+        rows = sorted([b for b in D['banks'] if b[key][0] is not None or any(b[key])], key=lambda b: -(b[key][0] or 0))
+        th = ''.join(f'<th class="{"l" if i == 0 else ""}">{esc(h)}</th>' for i, h in enumerate(t['th']))
+        tb = ''.join(f'<tr><td class="l"><b>{esc(b["n"])}</b>{"*" if b["cond"] else ""}</td>' + ''.join(f'<td class="num{" best" if j == 0 and v is not None and v >= (mx if key == "uah" else mu) else ""}" data-u="{v if v is not None else -1}">{fmt(v)}</td>' for j, v in enumerate(b[key])) + '</tr>' for b in rows)
+        return f'<section class="section"><h2>{esc(cap)}</h2><div class="tw"><table class="mt deptab"><thead><tr>{th}</tr></thead><tbody>{tb}</tbody></table></div><p class="muted" style="font-size:13px">{esc(t["cond"])}</p></section>'
+    opts = ''.join(f'<option value="{b["n"]}">{esc(b["n"])}</option>' for b in sorted(B, key=lambda b: -b['uah'][0]))
+    terms = ''.join(f'<button type="button" data-v="{k}"{" class=on" if k == 12 else ""}>{k} {esc(t["m"])}</button>' for k in (3, 6, 9, 12))
+    left = (f'<section class="card icl"><h2>🧮 {esc(t["calc"])}</h2>{_cnum("dpa", t["amt"], 100000, "")}'
+            f'<div class="f">{esc(t["ccy"])}<div class="seg full" id="dpc"><button type="button" class="on" data-v="uah">₴ UAH</button><button type="button" data-v="usd">$ USD</button></div></div>'
+            f'<div class="f">{esc(t["term"])}<div class="seg full" id="dpt">{terms}</div></div>'
+            f'<label class="f">{esc(t["bank"])}<div class="inp"><select id="dpb">{opts}<option value="">{esc(t["own"])}</option></select></div></label>'
+            f'{_cnum("dpr", t["rate"], mx, "%", " step=0.01")}{_cnum("dpi", t["infl"], D["infl"], "%", " step=0.1")}</section>')
+    right = (f'<section class="card icr2"><div class="icsum"><div class="kv big"><span>💰 {esc(t["r_net"])}</span><b class="good" id="dp_n">—</b></div>'
+             f'<div class="kv"><span>{esc(t["r_gross"])}</span><b id="dp_g">—</b></div><div class="kv"><span>{esc(t["r_tax"])}</span><b class="bad" id="dp_t">—</b></div>'
+             f'<div class="kv"><span>{esc(t["r_end"])}</span><b id="dp_e">—</b></div><div class="kv"><span>{esc(t["r_eff"])}</span><b id="dp_r">—</b></div>'
+             f'<div class="kv"><span>🏛️ {esc(t["r_ovdp"])}</span><b id="dp_o">—</b></div><div class="kv"><span>{esc(t["r_real"])}</span><b id="dp_x">—</b></div></div>'
+             f'<div class="icbox" style="margin-top:14px"><h3>📊 {esc(t["hist_h"])}</h3><div id="dp_h"></div><p class="muted icnote2">{esc(t["hist_n"])}</p></div></section>')
+    lk = [(url(lang, 'ovdp'), '🧮', t['links'][0]), (url(lang, 'ovdp/brokers'), '🏦', t['links'][1]), (url(lang, 'me') + '#bonds', '🏛️', t['links'][2]), (url(lang, 'compare'), '⚖️', t['links'][3])]
+    links = '<section class="section"><div class="hgrid">' + ''.join(f'<a class="card hcard" href="{u_}"><span>{ic}</span><b>{esc(x)}</b></a>' for u_, ic, x in lk) + '</div></section>'
+    vs = f'<section class="section card"><h2>{esc(t["vs_h"])}</h2>' + ''.join(f'<p>{esc(x)}</p>' for x in t['vs']) + '</section>'
+    g = f'<section class="section card"><h2>🛡️ {esc(t["g_h"])}</h2><p>{esc(t["g"])}</p></section>'
+    faq = [(tf(q_), tf(a_)) for q_, a_ in t['faq']]
+    src = (f'<section class="section"><h2>{esc(t["src"])}</h2><ul class="srcl">' + ''.join(f'<li><a href="{esc(u_)}" target="_blank" rel="nofollow noopener">{esc(n_)}</a></li>' for n_, u_ in D['src'])
+           + f'</ul><p class="muted" style="font-size:13px">{esc(tf(t["asof"]))}</p></section>')
+    body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / {esc(t["nav"])}</nav><h1>{esc(tf(t["h1"]))}</h1><p class="lead">{esc(tf(t["lead"]))}</p>{kt}'
+            f'<div class="icgrid2 depcalc">{left}{right}</div>' + table('uah', t['t_uah']) + table('usd', t['t_usd']) + vs + g + links + _ua_faq_html(faq) + src)
+    cfg = dict(dep=dict(banks={b['n']: [b['uah'], b['usd']] for b in D['banks']}, tax=D['tax'], ovdp=D['ovdp'], code='UAH'))
+    ti = tf(t['title']).replace(F['m'], f'{DEP_MT[lang][mo - 1]} {y}')
+    return shell(lang, 'deposits-ukraine', ti + ' | ' + BRAND, tf(t['d']), body, cfg, ver, [_ua_faq(lang, faq)])
+
+
 def ovdp_brokers_page(lang, ver):
     t = OBT[lang]
     n = len(OB)
@@ -977,6 +1031,7 @@ def ovdp_brokers_page(lang, ver):
     th = ''.join(f'<th class="{c}">{esc(h)}</th>' for h, c in zip(t['th'], ['l n', 'l', 'l', '', 'hide-sm', '', 'hide-sm']))
     kt = '<blockquote class="kt"><b>' + esc(t['kt']) + '</b><ul>' + ''.join(f'<li>{esc(x)}</li>' for x in t['kts']) + '</ul></blockquote>'
     port = (f'<section class="section"><div class="hgrid"><a class="card hcard" href="{url(lang, "ovdp")}"><span>🧮</span><b>{esc(t["calc"])}</b></a>'
+            f'<a class="card hcard" href="{url(lang, "deposits-ukraine")}"><span>💰</span><b>{esc(DEP[lang]["nav"])}</b></a>'
             f'<a class="card hcard" href="{url(lang, "me")}#bonds"><span>🏛️</span><b>{esc(t["port"])}</b><small>{esc(t["port_d"])}</small></a>'
             f'<a class="card hcard" href="{url(lang, "buy-stocks-ukraine")}"><span>🇺🇦</span><b>{esc(BUYG[lang]["nav"])}</b></a></div></section>')
     body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / <a href="{url(lang, "ovdp")}">{esc(OV[lang]["nav"])}</a> / {esc(t["nav"])}</nav>'
@@ -4511,6 +4566,9 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
             write(pre + 'ovdp/brokers/index.html', ovdp_brokers_page(lang, ver))
             write(pre + 'buy-stocks-ukraine/index.html', buyg_page(lang, ver))
             extra_pages += ['ovdp/brokers', 'buy-stocks-ukraine']
+            if 'ua' in DEPO:
+                write(pre + 'deposits-ukraine/index.html', deposits_page(lang, ver))
+                extra_pages.append('deposits-ukraine')
             for _b in OB:
                 write(f'{pre}ovdp/brokers/{_b["id"]}/index.html', ovdp_broker_page(lang, _b, ver))
                 extra_pages.append('ovdp/brokers/' + _b['id'])

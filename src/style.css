@@ -964,3 +964,4 @@ table.mt th.asc::after{content:" ↑";opacity:1;color:var(--accent,#34d399)}tabl
 .trbtn{margin-left:auto;display:flex;gap:8px;align-items:center}.trbtn .star{font-size:20px}
 .trkb{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 .pfccy{display:flex;align-items:center;gap:6px;font-size:13px}.pfccy select{height:40px;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--text);font:600 14px var(--fb);padding:0 8px}
+.depcalc{margin:18px 0}.deptab td.best{color:var(--good);font-weight:700}.deptab td.num{white-space:nowrap}

@@ -1356,3 +1356,25 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
         rd.innerHTML=`<h1>${esc2(r.t)}</h1>${r.cv?`<img class="cover" src="${esc2(r.cv)}" alt="" width="1200" height="630">`:''}<div class="muted byline">WhatIfStack Research · ${esc2(r.d)}</div><div class="artbody">${h}</div>` }) }
   }).catch(()=>{});
 })();
+
+/* ---------- deposits calculator (/deposits-ukraine/): rate from the bank table, 23% tax, vs OVDP (tax-free) and inflation, 12-month history of other assets ---------- */
+(function(){ const {T,nm,esc,fmtPct,cls,icon,BYID}=window.WIX||{}; const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+  const C=(window.PAGE||{}).dep; if(!C||!$('#dpa')||!T) return;
+  let ccy='uah', term=12; const TI={12:0,9:1,6:2,3:3};
+  const sym=()=>ccy==='uah'?'₴':'$';
+  const f=v=>(Math.round(v)).toLocaleString(T.intl||'uk')+' '+sym(), pc=v=>(v*100).toFixed(2).replace('.',',')+'%';
+  const bankRate=()=>{ const b=C.banks[$('#dpb').value]; if(!b) return null; const L=b[ccy==='uah'?0:1]; let r=L[TI[term]]; if(r==null){ for(const k of [12,9,6,3]){ if(L[TI[k]]!=null){ r=L[TI[k]]; break } } } return r };
+  const setRate=()=>{ const r=bankRate(); if(r!=null) $('#dpr').value=r; calc() };
+  function calc(){ const A=+$('#dpa').value||0, r=(+$('#dpr').value||0)/100, inf=(+$('#dpi').value||0)/100, y=term/12;
+    const g=A*r*y, tx=g*C.tax/100, n=g-tx, ov=A*((ccy==='uah'?C.ovdp.uah:C.ovdp.usd)/100)*y, real=(A+n)/Math.pow(1+inf,y)-A;
+    $('#dp_g').textContent=f(g); $('#dp_t').textContent='−'+f(tx); $('#dp_n').textContent='+'+f(n); $('#dp_e').textContent=f(A+n); $('#dp_r').textContent=pc(r*(1-C.tax/100));
+    $('#dp_o').textContent='+'+f(ov)+(ov>n?` (+${f(ov-n)})`:''); const x=$('#dp_x'); x.textContent=(real>=0?'+':'−')+f(Math.abs(real)); x.className=real>=0?'good':'bad' }
+  $$('#dpc button').forEach(b=>b.onclick=()=>{ ccy=b.dataset.v; $$('#dpc button').forEach(x=>x.classList.toggle('on',x===b)); if(ccy==='usd'&&+$('#dpa').value===100000) $('#dpa').value=2500; if(ccy==='uah'&&+$('#dpa').value===2500) $('#dpa').value=100000; $('#dpi').closest('.f').style.display=ccy==='uah'?'':'none'; setRate() });
+  $$('#dpt button').forEach(b=>b.onclick=()=>{ term=+b.dataset.v; $$('#dpt button').forEach(x=>x.classList.toggle('on',x===b)); setRate() });
+  $('#dpb').onchange=setRate; ['#dpa','#dpr','#dpi'].forEach(s=>$(s).oninput=calc); setRate();
+  // history: lump sum a year ago in other assets (USD price change)
+  const H=[['spy','S&P 500'],['gold',null],['btc',null]];
+  Promise.all(H.map(([id])=>fetch(`/assets/p/${id}.json?v=${window.WI.v}`).then(r=>r.json()).catch(()=>null))).then(R=>{
+    $('#dp_h').innerHTML=R.map((P,i)=>{ if(!P||P.p.length<13) return ''; const a=BYID[H[i][0]], ch=P.p[P.p.length-1]/P.p[P.p.length-13]-1;
+      return `<div class="kv"><span>${a?icon(a):''} ${esc(H[i][1]||(a?nm(a):H[i][0]))}</span><b class="${cls(ch)}">${fmtPct(ch)}</b></div>` }).join('') });
+})();
