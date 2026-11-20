@@ -1,0 +1,24 @@
+# Search-demand articles — queue + log
+
+Task: twice a day (10:19 and 16:19 Kyiv) turn real Google Search Console queries into articles. 16:19 also writes one regional article. Sundays 10:19: improve one existing article at position 5–40.
+
+## Queue (seed 2026-11-20, take in order if still uncovered)
+1. ~~How to invest in Hong Kong stocks (es, vi, en, zh)~~ — done 2026-11-20
+2. Best Japanese stocks (de, en, ja) — note: ja regional «日本株の積立» exists (2026-11-20); the de/en piece should focus on «beste japanische Aktien / japan aktien», link the ja article's numbers
+3. German stocks / the German stock exchange (nl, en, de) — «duitse aandelen» 4 impr pos 12, «duitse beurs» 3 / 50
+4. Bitcoin vs Ethereum — the difference (ja, uk, ru, en) — «ビットコイン イーサリアム 違い» 3 / 75
+5. Crypto staking providers compared (de, en) — «krypto-staking anbieter vergleich» 4 / 23, «crypto staking» 9 / 47
+6. «An exchange froze my funds — scam or not, what to do» (es, en) — «bloquear fondos exchange estafa» 8 / 62
+Other big uncovered groups seen 2026-11-20: how to buy bitcoin in ja/es/fr/pt/tr/vi (many queries, pos 16–70 — check whether the existing how-to-buy-bitcoin posts can be improved on a Sunday); «s p500 etf» 136 / 10 (best-sp500-etf exists — Sunday candidate); «dex crypto» 15 / 19 (what-is-a-dex exists).
+
+## Log
+date | topic | queries (impr / pos) | languages | slugs | status
+---|---|---|---|---|---
+2026-11-20 | How to invest in Hong Kong stocks | invertir en acciones de hong kong 5/36.6; invertir en acciones hk 5/40.4; cómo invertir en acciones hk 5/43; đầu tư vào cổ phiếu hk 4/43; comprar acciones de hong kong 3/28.3; đầu tư cổ phiếu hong kong 3/54.7; inversión en acciones de hong kong 3/57.7; 홍콩 주식 투자 2/44; best hong kong stocks 2/52; investing in hong kong share 2/68.5 | en, es, vi, zh | how-to-invest-in-hong-kong-stocks | published
+2026-11-20 | regional: 日本株の積立 (Japan, 228 impr from JP in Countries tab, no ja regional yet) | japan aktien 5/50; beste japanische aktien 4/60 (market interest); JP country 228 impr / pos 40.8 | ja | nihon-kabu-tsumitate-10-doru-5-nen | published, regional
+
+## Snapshots
+### 2026-11-20 (last 28 days: 7 clicks, 2.5k impressions, avg pos 23.2; 514 queries)
+Countries: US 722 / 12.0; Brazil 262 / 13.2; Japan 228 / 40.8; Ukraine 133 / 34.0; Spain 107 / 35.1; Netherlands 106 / 27.7; Germany 81 / 39.8; Mexico 57 / 30.7; Italy 47 / 7.2; South Korea 47 / 21.0; France 47 / 33.5; Thailand 46 / 31.9; Singapore 41 / 51.2
+Top 50 queries (impr / pos):
+s p500 etf 136/10.1 · sp500 etf 35/7.9 · dex crypto 15/18.9 · イーサリアム 15/24.3 · como comprar bitcoin 15/36.8 · ethereum 14/42.4 · 仮想通貨 買い方 11/16.4 · dex 11/47.6 · acheter bitcoin 10/28.2 · ethereum криптовалюта 10/38.2 · crypto staking 9/47.1 · ethereum eth 9/52.1 · bankrcoin bnkr cryptocurrency article 8/7.9 · como comprar bitcoins 8/18.8 · ethとは 8/20.1 · ビットコイン 購入 8/33.5 · криптовалюта ethereum 8/52.6 · bloquear fondos exchange estafa 8/61.8 · ビットコイン 買い方 8/69.1 · "orlen" "grupa zelazny" 7/7.0 · como comprar criptomoedas 7/29.9 · comment acheter des bitcoins 7/44.0 · staking 7/62.1 · "orlen grupa zelazny" 6/6.2 · "orbio" 6/8.0 · イーサリアムとは 6/35.7 · криптовалюта ефіріум 6/41.5 · comment acheter bitcoin 6/46.7 · ビットコイン 始め方 6/54.5 · eth 6/54.8 · bitcoin nasıl alınır 6/55.0 · estafas cripto 6/65.5 · precio render 6/65.7 · albemarle pfizer intel equinix investment partnership project 5/2.8 · "gww" 5/4.2 · "bch" 5/9.0 · comprar bitcoin 5/16.4 · investir sp500 5/18.0 · dex cripto 5/27.0 · jasmy calculator 5/28.0 · invertir en acciones de hong kong 5/36.6 · achat bitcoin 5/38.2 · comment acheter du bitcoin 5/39.4 · exchange descentralizado dex 5/40.0 · invertir en acciones hk 5/40.4 · cómo invertir en acciones hk 5/43.0 · japan aktien 5/50.2 · eth криптовалюта 5/50.8 · ビットコインを買う方法 5/59.8 · ビット コイン 購入 方法 5/66.0
