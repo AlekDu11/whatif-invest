@@ -26,7 +26,7 @@ from i18n_mem import MEM  # noqa: E402
 from i18n_act import ACT  # noqa: E402
 from i18n_prof import P as PROF_T  # noqa: E402
 from i18n_pf import PF  # noqa: E402
-from i18n_pf2 import PF2  # noqa: E402
+from i18n_pf2 import PF2, TRK  # noqa: E402
 from i18n_bp import BP  # noqa: E402
 from i18n_ai import AIC  # noqa: E402
 from i18n_emb import EMB, EXT  # noqa: E402
@@ -74,7 +74,7 @@ OG_LANGS = {f[:-4] for f in os.listdir(os.path.join(ROOT, 'src', 'og')) if f.end
 END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
-RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide', 'commodities', 'widgets', 'embed', 'dividends', 'average-price', 'ovdp', 'largest-companies', 'crypto-exchanges', 'partners', 'buy-stocks-ukraine', 'calculators', 'investors'}
+RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide', 'commodities', 'widgets', 'embed', 'dividends', 'average-price', 'ovdp', 'largest-companies', 'crypto-exchanges', 'partners', 'buy-stocks-ukraine', 'calculators', 'investors', 'watchlist', 'read'}
 RESERVED |= {v[0] for v in MKTS.values()} | {'world-assets', 'activities', 'editorial-policy', 'about', 'portfolios'}
 # asset ids that clash with a language folder or a section get a suffix (ko -> ko-stock, fil -> fil-crypto)
 _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
@@ -664,6 +664,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
   <a class="logo" href="{url(lang)}"><svg class="mk" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="15" width="18" height="5" rx="2.5" fill="var(--gold)"/><rect x="5" y="9.5" width="14" height="4.5" rx="2.25" fill="var(--accent)"/><rect x="7.5" y="4" width="9" height="4.5" rx="2.25" fill="var(--text)"/></svg><span>whatif<b>stack</b></span></a>
   <div class="gsearch">{SEARCH_ICON}<input id="gs" type="search" autocomplete="off" aria-label="search"><div class="gres" id="gres"></div></div>
   <nav class="nav">{nav}</nav>
+  <a class="thm me" href="{url(lang, 'watchlist')}" title="{esc(PF2[lang]['wl'])}" aria-label="{esc(PF2[lang]['wl'])}">★</a>
   <a class="thm me" href="{url(lang, 'me')}" title="{esc(PF[lang]['h1'])}" aria-label="{esc(PF[lang]['h1'])}">💼</a>
   <button class="thm" id="thm" type="button" aria-label="theme"><span class="m">☾</span><span class="s">☀</span></button>
   {lang_menu(lang, p)}
@@ -2064,9 +2065,7 @@ def xc_detail_page(lang, xid, ver):
     body = (f'<nav class="crumbs"><a href="{url(lang, "crypto-exchanges")}">{esc(t["nav"])}</a> / {esc(name)}</nav>'
             f'<div class="ahead">{_xlogo(e)}<div><h1>{esc(h1)}</h1></div></div><p class="lead">{esc(lead)}</p><p>{cta}</p>'
             f'<section class="section"><div class="ktiles">{tiles}</div></section>' + xc_facts_block(lang, xid, e)
-            + (f'<section class="section mkt"><h2>{esc(t["pairs_h"].format(x=name))}</h2>{_qtabs(t, qs)}<div class="tw"><table class="mt"><thead><tr><th class="l">{esc(t["pair"])}</th>'
-               f'<th>{esc(t["price"])}</th><th>{esc(t["vol"])}</th><th class="hide-sm">%</th><th class="hide-sm">{esc(t["spread"])}</th></tr></thead><tbody>{pr}</tbody></table></div>'
-               + (f'<button type="button" class="btn ghost mkmore">{esc(t["more"])}</button>' if len(pairs) > 30 else '') + '</section>' if pr else '')
+            
             + (f'<section class="section card"><h2>{esc(t["chart"])}</h2>{_xvsvg([(ts, v * btc) for ts, v in d["chart"]])}</section>' if d.get('chart') else '')
             + xc_reserves_block(lang, xid, name)
             + f'<p class="note">{esc(t["src"].format(d=XCH.get("updated", "")))}{f" · {esc(t["pairs_h"].format(name=name) if "{name}" in t["pairs_h"] else t["pairs_h"])}: {esc(name)} API, {esc(d["tp"])} UTC" if d.get("src") == "api" and d.get("tp") else ""}</p>')
@@ -2153,7 +2152,7 @@ def xc_facts_block(lang, xid, e):
     note = f'<p class="xnotice">⚠️ {esc(nt)}</p>' if nt else ''
     return (f'<section class="section card xfacts"><h2>{esc(t["f_h"])}</h2>{note}<p>{para}</p>'
             + (('<table class="mt"><tbody>' + ''.join(f'<tr><td class="l muted">{esc(k)}</td><td class="l"><b>{v}</b></td></tr>' for k, v in rows) + '</tbody></table>') if rows else '')
-            + '</section>' + xc_topcoins_block(lang, xid, e))
+            + '</section>')   # owner 2026-11-20: no coin / pair lists on exchange pages for now (data + description only)
 
 
 def xc_topcoins_block(lang, xid, e):
@@ -2262,10 +2261,10 @@ def coin_markets_block(lang, aid):
         if go:
             xl += f' <a class="xgo" href="/go/{go}?from=mk-{aid}&l={lang}" target="_blank" rel="sponsored noopener" title="{esc(t["go"].format(x=xn))}">↗</a>'
         dot = {'green': 'up', 'yellow': 'mid', 'red': 'dn'}.get(trust or '', '')
-        tr += (f'<tr data-q="{g}"{" class=xh" if k >= 15 else ""}><td class="l n">{k + 1}</td><td class="l">{xl}</td><td class="l"><b>{esc(b or "")}/{esc(q or "")}</b></td>'
+        tr += (f'<tr data-q="{g}"{" class=xh" if k >= 5 else ""}><td class="l n">{k + 1}</td><td class="l">{xl}</td><td class="l"><b>{esc(b or "")}/{esc(q or "")}</b></td>'
                f'<td class="num">{usd(px) if px else "—"}</td><td class="num"><b>{usd_h(vol)}</b></td><td class="num hide-sm">{pctu(vol / tot)}</td>'
                f'<td class="num hide-sm">{pctu(spr / 100) if spr is not None else "—"}</td><td class="hide-sm">{f"<i class=tdot title={dot}></i>" if dot else ""}</td></tr>')
-    more = f'<button type="button" class="btn ghost mkmore">{esc(t["more"])}</button>' if len(rows) > 15 else ''
+    more = f'<button type="button" class="btn ghost mkmore">{esc(t["more"])}</button>' if len(rows) > 5 else ''
     return (f'<section class="section mkt" id="markets"><h2>{esc(t["mk_h"].format(x=nm(a, lang)))}</h2>{_qtabs(t, qs)}<div class="tw"><table class="mt mkt-t"><thead><tr>'
             f'<th class="l n">#</th><th class="l">{esc(t["name"])}</th><th class="l">{esc(t["pair"])}</th><th>{esc(t["price"])}</th><th>{esc(t["vol"])}</th>'
             f'<th class="hide-sm">{esc(t["share"])}</th><th class="hide-sm">{esc(t["spread"])}</th><th class="hide-sm">{esc(t["trust"])}</th></tr></thead><tbody>{tr}</tbody></table></div>'
@@ -3246,11 +3245,26 @@ def news_items(lang):
     return sorted(NEWS.get(lang, {}).items(), key=lambda kv: kv[1].get('date', ''), reverse=True)
 
 
-def news_row(lang, slug, m, tl):
+def news_row(lang, slug, m, tl, thumb=False):
     tags = ''.join(f' <i class="badge">{esc(tl.get(t, t))}</i>' for t in (x.strip() for x in m.get('tags', '').split(',')) if t)
     g = ' '.join(x.strip() for x in m.get('tags', '').split(',') if x.strip())
-    return (f'<a class="nrow" data-g="{esc(g)}" href="{url(lang, "news/" + slug)}"><b>{esc(m.get("title", ""))}</b>'
-            f'<span class="muted">WhatIfStack · <time data-t="{esc(m.get("date", ""))}">{esc(m.get("date", "")[:16])}</time>{tags}</span></a>')
+    cv = cover('news', lang, slug) if thumb else None
+    return (f'<a class="nrow{" nth" if cv else ""}" data-g="{esc(g)}" href="{url(lang, "news/" + slug)}">'
+            + (f'<img class="nthumb" src="{cv}" alt="" width="160" height="84" loading="lazy">' if cv else '') +
+            f'<span class="ntx"><b>{esc(m.get("title", ""))}</b>'
+            f'<span class="muted">WhatIfStack · <time data-t="{esc(m.get("date", ""))}">{esc(m.get("date", "")[:16])}</time>{tags}</span></span></a>')
+
+
+def track_block(lang, ids):
+    """«Track it on WhatIfStack» under news and articles: star + add-to-portfolio per asset, links to the watchlist, portfolio and Telegram (owner 2026-11-20)."""
+    k, q = TRK[lang], PF2[lang]
+    ids = [i for i in dict.fromkeys(ids or []) if i in A][:4]
+    rows = ''.join(f'<div class="trow">{icon(A[i])}<a href="{aurl(lang, i)}"><b>{esc(nm(A[i], lang))}</b> <span class="muted">{esc(A[i]["tk"])}</span></a>'
+                   f'<span class="trbtn"><button class="star" type="button" data-s="{i}" title="{esc(k["wl"])}" aria-label="{esc(k["wl"])}">☆</button>'
+                   f'<a class="btn ghost sm" href="{url(lang, "me")}?add={i}">＋ {esc(k["pf"])}</a></span></div>' for i in ids)
+    return (f'<section class="card trk"><h2>👀 {esc(k["h"])}</h2><p class="muted">{esc(k["d"])}</p>{rows}'
+            f'<div class="trkb"><a class="btn" href="{url(lang, "watchlist")}">★ {esc(q["wl"])}</a><a class="btn ghost" href="{url(lang, "me")}">💼 {esc(q["nav_pf"])}</a>'
+            f'<a class="btn ghost" href="https://t.me/WhatIfStack" target="_blank" rel="noopener">✈️ {esc(k["tg"])}</a></div></section>')
 
 
 def news_page(lang, ver):
@@ -3258,8 +3272,8 @@ def news_page(lang, ver):
     tl = news_tl(lang)
     chips = f'<button class="on" data-t="">{esc(n["n_all"])}</button>' + ''.join(f'<button data-t="{k}">{esc(v)}</button>' for k, v in tl.items())
     own = news_items(lang)[:60]
-    own_html = (f'<section class="section"><h2>{esc(n["own"])}</h2><div class="card nlist own">' + ''.join(news_row(lang, k, m, tl) for k, m in own) + '</div></section>') if own else ''
-    body = (f'<h1>{esc(n["n_h1"])}</h1><p class="lead">{esc(n["n_d"])}</p><div class="seg nchips" id="ntags">{chips}</div>{own_html}'
+    own_html = (f'<section class="section"><h2>{esc(n["own"])}</h2><div class="card nlist own">' + ''.join(news_row(lang, k, m, tl, True) for k, m in own) + '</div></section>') if own else ''
+    body = (f'<h1>{esc(n["n_h1"])}</h1><p class="lead">{esc(n["n_d"])}</p><div class="seg nchips" id="ntags">{chips}</div>{own_html}{track_block(lang, [])}'
             f'<section class="section"><h2>{esc(n["live"])}</h2>'
             f'<div class="card nlist" id="nlist"><div class="bload"><i></i></div></div><button class="toggle" id="nmore" hidden>{esc(n["more"])}</button>'
             f'<p class="muted" style="font-size:13px">{esc(n["n_note"])}</p></section>{poly_block(lang)}')
@@ -3282,7 +3296,7 @@ def news_article(lang, slug, ver):
     body = (f'<nav class="crumbs"><a href="{url(lang, "news")}">{n["n_nav"]}</a></nav><article class="art"><h1>{esc(title)}</h1>'
             f'<div class="muted byline"><a href="{about}">WhatIfStack Research</a> · <time data-t="{esc(m.get("date", ""))}">{esc(m.get("date", ""))}</time> · {tags}</div>'
             + (f'<img class="cover" src="{cv}" alt="" width="1200" height="630">' if cv else '') +
-            f'<p class="lead">{esc(desc)}</p><div class="postcards">{cards}</div><div class="artbody">{md(m["body"], lang)}</div>{nl_block(lang, 'news')}{follow_block(lang)}</article>'
+            f'<p class="lead">{esc(desc)}</p><div class="postcards">{cards}</div><div class="artbody">{md(m["body"], lang)}</div>{track_block(lang, m["assets"])}{nl_block(lang, 'news')}{follow_block(lang)}</article>'
             f'{poll_block(lang)}<section class="banner section"><div><b>{w["cta"]}</b><p>{w["cta_text"]}</p></div><a class="btn" id="ctaBuy2" href="{url(lang, "exchanges")}">{EX[lang]["nav"]} →</a></section>'
             + (f'<section class="section"><h2>{esc(n["own"])}</h2><div class="card nlist own">{rel_html}</div></section>' if rel else ''))
     d = m.get('date', '').replace(' ', 'T')
@@ -3363,6 +3377,20 @@ def ai_page(lang, ver):
     return shell(lang, 'ai', f'{t["h1"]} | {BRAND}', t['d'], body, {}, ver, [faq])
 
 
+def watch_page(lang, ver):
+    """/watchlist/: several watchlists on their own page (owner 2026-11-20: watchlist and portfolio separately, ★ in the header)."""
+    t, q, k = ME[lang], PF2[lang], TRK[lang]
+    body = (f'<h1>★ {esc(q["wl"])}</h1><p class="lead">{esc(k["wl_d"])}</p><nav class="pfnav"><a href="{url(lang, "me")}">💼 {esc(q["nav_pf"])}</a><a href="{url(lang, "me")}#dca">📈 {esc(q["nav_plans"])}</a></nav>'
+            f'<section class="section" id="wl"><div class="charthead"><h2>★ {esc(q["wl"])}</h2></div><div class="pfbar"><select id="wlsel" aria-label="{esc(q["wl"])}"></select>'
+            f'<button class="btn ghost sm" id="wlnew" type="button">＋ {esc(q["new"])}</button><button class="btn ghost sm" id="wlren" type="button">✎ {esc(q["rename"])}</button>'
+            f'<button class="btn ghost sm" id="wldel" type="button">🗑 {esc(q["delete"])}</button></div><div class="hl" id="wlsum"></div>'
+            f'<div class="wladd"><div class="inp"><input id="wla" list="palist" autocomplete="off" placeholder="{esc(q["wl_add"])}…"></div><button class="btn ghost" id="wlgo" type="button">＋ {esc(q["wl_add"])}</button></div>'
+            f'<div id="watch"><p class="muted">{esc(t["empty"])}</p></div></section>'
+            f'<datalist id="palist"></datalist><p class="muted" style="font-size:13px">{esc(q["local"])}</p>')
+    cfg = dict(wl=dict(q=q, empty=t['empty'], me=url(lang, 'me')))
+    return shell(lang, 'watchlist', f'{q["wl"]} | {BRAND}', k['wl_d'], body, cfg, ver).replace('<link rel="canonical"', '<meta name="robots" content="noindex, follow"><link rel="canonical"', 1)
+
+
 def me_page(lang, ver):
     S, t = TR[lang], ME[lang]
     code, rate = hccy(lang)
@@ -3370,7 +3398,7 @@ def me_page(lang, ver):
     q = PF2[lang]
     hold = (f'<section class="section pf2" id="pf"><div class="pfbar"><select id="pfsel" aria-label="{esc(q["nav_pf"])}"></select>'
             f'<button class="btn ghost sm" id="pfnew" type="button">＋ {esc(q["new"])}</button><button class="btn ghost sm" id="pfren" type="button">✎ {esc(q["rename"])}</button>'
-            f'<button class="btn ghost sm" id="pfdel" type="button">🗑 {esc(q["delete"])}</button><button class="btn pfaddb" id="pfadd" type="button">＋ {esc(q["addtx"])}</button></div>'
+            f'<button class="btn ghost sm" id="pfdel" type="button">🗑 {esc(q["delete"])}</button><label class="pfccy"><span class="muted">{esc(TRK[lang]["ccy"])}</span><select id="pfccy"></select></label><button class="btn pfaddb" id="pfadd" type="button">＋ {esc(q["addtx"])}</button></div>'
             f'<div class="pfgrid"><div class="card pfsum" id="pfsum"></div><div class="card pfmain"><div class="pftabs" role="tablist">'
             f'<button class="on" data-tab="bal" type="button">{esc(q["t_bal"])}</button><button data-tab="alloc" type="button">{esc(q["t_alloc"])}</button><button data-tab="tx" type="button">{esc(q["t_tx"])}</button></div>'
             f'<div class="pfpane" data-pane="bal"><div class="pfrng">' + ''.join(f'<button type="button" data-r="{r}"{" class=on" if r == "30" else ""}>{lbl}</button>' for r, lbl in (("7", "7D"), ("30", "30D"), ("90", "90D"), ("365", "1Y"), ("all", q["all"]))) +
@@ -3413,13 +3441,9 @@ def me_page(lang, ver):
                  f'<details class="bpaste"><summary>{esc(o["paste"])}</summary><textarea id="bpt" rows="4" placeholder="UA4000227045;privatbank;UAH;50000;15.5;2026-03-01;2027-03-01"></textarea>'
                  f'<button class="btn ghost" id="bpgo" type="button">{esc(o["paste_go"])}</button></details><p class="muted" id="bmsg" style="font-size:13px"></p></div></section>')
     body = (f'<h1>{esc(pf["h1"])}</h1><p class="lead">{esc(pf["d"])}</p>'
-            f'<nav class="pfnav"><a href="#pf">💼 {esc(q["nav_pf"])}</a><a href="#wl">★ {esc(q["nav_wl"])}</a><a href="#dca">📈 {esc(q["nav_plans"])}</a>'
+            f'<nav class="pfnav"><a href="#pf">💼 {esc(q["nav_pf"])}</a><a href="{url(lang, "watchlist")}">★ {esc(q["nav_wl"])}</a><a href="#dca">📈 {esc(q["nav_plans"])}</a>'
             + (f'<a href="#bonds">🇺🇦 {esc(OVP[lang]["h"])}</a>' if lang in UA_LANGS and lang in OVP else '') + f'</nav>{hold}'
-            f'<section class="section" id="wl"><div class="charthead"><h2>★ {esc(q["wl"])}</h2></div><div class="pfbar"><select id="wlsel" aria-label="{esc(q["wl"])}"></select>'
-            f'<button class="btn ghost sm" id="wlnew" type="button">＋ {esc(q["new"])}</button><button class="btn ghost sm" id="wlren" type="button">✎ {esc(q["rename"])}</button>'
-            f'<button class="btn ghost sm" id="wldel" type="button">🗑 {esc(q["delete"])}</button></div><div class="hl" id="wlsum"></div>'
-            f'<div class="wladd"><div class="inp"><input id="wla" list="palist" autocomplete="off" placeholder="{esc(q["wl_add"])}…"></div><button class="btn ghost" id="wlgo" type="button">＋ {esc(q["wl_add"])}</button></div>'
-            f'<div id="watch"><p class="muted">{esc(t["empty"])}</p></div></section>{bonds}'
+            f'{bonds}'
             f'<section class="section" id="dca"><h2>📈 {esc(t["plans"])}</h2><div class="hl" id="metot"></div><div id="plans"></div>'
             f'<div class="card hcalc" id="planform"><div class="hrow">'
             f'<label class="f">{S["w"]["q_asset"]}<div class="inp"><input id="pa" list="palist" autocomplete="off" placeholder="Bitcoin"><datalist id="palist"></datalist></div></label>'
@@ -4246,7 +4270,7 @@ def blog_post(lang, slug, ver):
     body = (f'<nav class="crumbs"><a href="{crumb[0]}">{crumb[1]}</a></nav><article class="art"><h1>{esc(title)}</h1>'
             + (f'<img class="cover" src="{cv}" alt="" width="1200" height="630">' if cv else '') +
             f'<div class="muted byline"><a href="{url(lang if lang in ABOUT else "en", "about")}">WhatIfStack Research</a> · {esc(m.get("date", ""))} · {S["updated"]} {UPDATED} · <a href="{pol_url(lang)}">{esc(ACT[lang]["pol"])}</a></div>'
-            + (act_facts(lang, m) + f'<div class="card awarn">⚠️ {esc(ACT[lang]["warn"])}</div>' if m.get('category') == 'activities' else '') + f'<div class="artbody">{html_body}</div>{nl_block(lang, 'blog')}{follow_block(lang)}</article>'
+            + (act_facts(lang, m) + f'<div class="card awarn">⚠️ {esc(ACT[lang]["warn"])}</div>' if m.get('category') == 'activities' else '') + f'<div class="artbody">{html_body}</div>{track_block(lang, m["assets"])}{nl_block(lang, 'blog')}{follow_block(lang)}</article>'
             f'<div class="postcards">{cards}</div>{poll_block(lang)}'
             f'<section class="banner section"><div><b>{w["cta"]}</b><p>{w["cta_text"]}</p></div><a class="btn" id="ctaBuy2" href="{url(lang, "exchanges")}">{w["cta"]} →</a></section>'
             + (f'<section class="section"><h2>{X["related"]}</h2><div class="posts">{rel_html}</div></section>' if rel else ''))
@@ -4498,6 +4522,7 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
         write(pre + 'exchanges/index.html', exchanges_page(lang, ver))
         write(pre + 'ai/index.html', ai_page(lang, ver))
         write(pre + 'me/index.html', me_page(lang, ver))
+        write(pre + 'watchlist/index.html', watch_page(lang, ver))
         write(pre + 'memes/index.html', memes_page(lang, ver))
         write(pre + 'world-assets/index.html', world_page(lang, ver))
         write(pre + 'activities/index.html', activities_page(lang, ver))

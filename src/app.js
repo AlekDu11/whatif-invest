@@ -15,7 +15,7 @@ const fmt = (s,o)=>String(s).replace(/\{(\w+)\}/g,(m,k)=>o[k]!=null?o[k]:m);
 /* ---------- helpers ---------- */
 const NAMES=PAGE.names||{};
 const nm = a => ((a.c==='metal'||a.c==='cmd')&&NAMES[a.i]) ? NAMES[a.i] : lang==='uk' ? a.n : (a.ne||a.n);
-const url = id => { const a=BYID[id]; return (PAGE.full||(a&&a.o<PAGE.topn)) ? `${PAGE.prefix}/${id}/` : `${BASE}/en/${id}/` };
+const url = id => { const a=BYID[id]; if(a&&a.st) return `${PAGE.prefix||''}/${a.t.toLowerCase()}/`; return (PAGE.full||(a&&a.o<PAGE.topn)) ? `${PAGE.prefix}/${id}/` : `${BASE}/en/${id}/` };
 const esc = s => String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 // Display currency (header switcher): all JS-rendered money and server numbers marked [data-u] are converted from USD
 let CCY='USD'; try{ CCY=localStorage.getItem('wi_ccy')||'USD' }catch(e){}
@@ -117,7 +117,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
       <td class="hide-sm">${spark(a.k7||a.sp)}</td>`;
     const tr=(a,i)=>a.st?`<tr class="strow">
       <td class="l n hide-sm">${off+i+1}</td>
-      <td class="l"><a class="asset" href="${PAGE.prefix}/${a.t.toLowerCase()}/">${icon(a)}<span><span class="nm">${esc(a.n)}</span><span class="tk">${esc(a.t)} · ${esc(T.mk_stable||'Stablecoin')}</span></span></a></td>
+      <td class="l"><button class="star" data-s="${a.i}" aria-label="☆">☆</button><a class="asset" href="${PAGE.prefix}/${a.t.toLowerCase()}/">${icon(a)}<span><span class="nm">${esc(a.n)}</span><span class="tk">${esc(a.t)} · ${esc(T.mk_stable||'Stablecoin')}</span></span></a></td>
       <td class="hide-sm"></td><td class="num">${fmtPrice(a.pr)}</td><td class="num ${cls(a.ch)}">${fmtPct(a.ch)}</td>${cells(a)}
       <td class="hide-sm"></td></tr>`:`<tr>
       <td class="l n hide-sm">${off+i+1}</td>
@@ -559,6 +559,14 @@ const PFS=(function(){
   return { get S(){ return S }, cur(){ return S.list[S.cur]||S.list[0] }, save, calc, add(tx){ this.cur().tx.push(tx); save() } };
 })();
 window.WIPF=PFS;
+/* stablecoins (mkt.json) as light pseudo-assets so they can be watched and held: ids st-<ticker> */
+const STBL=(()=>{ let pr=null; return ()=>pr||(pr=fetch(`${BASE}/assets/mkt.json?v=${WI.v}`).then(r=>r.json()).then(M=>{ (M.st||[]).filter(x=>x.pr&&x.t).forEach(x=>{ const i='st-'+x.t.toLowerCase(); if(!BYID[i]) BYID[i]={i,st:1,c:'crypto',n:x.n,t:x.t,pr:x.pr,ch:x.ch||0,l:x.l,o:0,mc:x.mc,vo:x.vo,w7:x.w7,k7:x.k7} }); return M }).catch(()=>({}))) })();
+const STLIST=()=>Object.values(BYID).filter(a=>a.st);
+const findAsset=v=>{ const m=/\(([^)]+)\)\s*$/.exec(v||''); const tk=String(m?m[1]:v).toLowerCase(), nv=String(v||'').toLowerCase(); const a=IDX.find(x=>x.t.toLowerCase()===tk||nm(x).toLowerCase()===nv)||STLIST().find(x=>x.t.toLowerCase()===tk||x.n.toLowerCase()===nv); return a&&a.i };
+const fillPalist=()=>{ const d=$('#palist'); if(d) d.innerHTML=[...IDX.slice(0,1200),...STLIST()].map(a=>`<option value="${esc(nm(a))} (${esc(a.t)})">`).join('') };
+function askDlg(title,val,ok,danger,L){ let d=$('#askm'); if(!d){ d=document.createElement('dialog'); d.id='askm'; d.className='txm askm'; document.body.appendChild(d) }
+  d.innerHTML=`<form method="dialog"><div class="txh"><b>${esc(title)}</b></div>${val!=null?`<div class="inp"><input maxlength="40" value="${esc(val)}"></div>`:''}<div class="pfb"><button class="btn${danger?' danger':''}" value="ok">${esc(danger?L.delete:L.save)}</button><button class="btn ghost" value="no" formnovalidate>${esc(L.cancel)}</button></div></form>`;
+  d.returnValue=''; d.onclose=()=>{ if(d.returnValue==='ok') ok(val!=null?d.querySelector('input').value.trim():true) }; d.showModal(); const i=d.querySelector('input'); if(i){ i.focus(); i.select() } }
 function paintStars(){ const w=new Set(WL.get()); $$('.star[data-s]').forEach(b=>{ const on=w.has(b.dataset.s); b.textContent=on?'★':'☆'; b.classList.toggle('on',on) });
 }
 document.addEventListener('click',e=>{ const b=e.target.closest('.star[data-s]'); if(!b) return; e.preventDefault(); e.stopPropagation();
@@ -577,8 +585,8 @@ new MutationObserver(()=>{ clearTimeout(window._wiStar); window._wiStar=setTimeo
     for(let i=from;i<=e;i++){ const y=Math.floor(i/12), m=i%12+1, d=i===ym2i(END)?END_DAY:new Date(y,m,0).getDate(); const c=f==='d'?amt*d:f==='w'?amt*d/7:(i===ym2i(END)&&END_DAY<28&&i!==from?0:amt); u+=c/P.p[i-s0]; inv+=c }
     return {inv,val:u*P.p[e-s0]} }
   // datalist
-  $('#palist').innerHTML=IDX.slice(0,1200).map(a=>`<option value="${esc(nm(a))} (${esc(a.t)})" data-i="${a.i}">`).join('');
-  const findId=v=>{ const m=/\(([^)]+)\)\s*$/.exec(v||''); const tk=m?m[1]:v; const a=IDX.find(x=>x.t.toLowerCase()===String(tk).toLowerCase()||nm(x).toLowerCase()===String(v).toLowerCase()); return a&&a.i };
+  fillPalist(); STBL().then(fillPalist);
+  const findId=findAsset;
   async function drawPlans(){
     const plans=PL.get(), box=$('#plans'); if(!plans.length){ box.innerHTML=''; $('#metot').innerHTML=''; return }
     let tInv=0,tVal=0,tSpy=0; const rows=[];
@@ -600,15 +608,20 @@ new MutationObserver(()=>{ clearTimeout(window._wiStar); window._wiStar=setTimeo
     const w=WL.get(); if(!w.includes(id)){ w.unshift(id); WL.set(w) } };
   /* ---------- portfolio v2 (owner 2026-11-20, CryptoRank-style): several portfolios, transactions, balance chart, allocation ---------- */
   const q=C.q, PAL=['#1a6dff','#f59e0b','#14a44d','#e5484d','#8b5cf6','#0ea5e9','#ec4899','#64748b','#84cc16','#f97316'];
-  const usd=v=>nf(v*C.rate), sgn=v=>(v<0?'−':'+')+usd(Math.abs(v));
+  // display currency (owner 2026-11-20): USD by default, also USDT / USDC / EUR / the visitor's local currency
+  const CCY=[...new Set(['USD','USDT','USDC','EUR',C.code])];
+  let CC='USD'; try{ const v=localStorage.getItem('wi_pfccy'); if(v&&CCY.includes(v)) CC=v }catch(e){}
+  const rateOf=c=>c==='USD'?1:(c==='USDT'||c==='USDC')?1/((BYID['st-'+c.toLowerCase()]||{}).pr||1):c===C.code?C.rate:((WI.fx||{})[c]||1);
+  const nfc=v=>{ const d=Math.abs(v)>=100?0:2; if(CC==='USDT'||CC==='USDC') return v.toLocaleString(T.intl||'en',{minimumFractionDigits:d,maximumFractionDigits:d})+' '+CC;
+    try{ return new Intl.NumberFormat(T.intl||'en',{style:'currency',currency:CC,maximumFractionDigits:d}).format(v) }catch(e){ return Math.round(v)+' '+CC } };
+  const usd=v=>nfc(v*rateOf(CC)), sgn=v=>(v<0?'−':'+')+usd(Math.abs(v));
+  { const sel=$('#pfccy'); if(sel){ sel.innerHTML=CCY.map(c=>`<option${c===CC?' selected':''}>${c}</option>`).join(''); sel.onchange=()=>{ CC=sel.value; try{ localStorage.setItem('wi_pfccy',CC) }catch(e){} drawHold() } } }
   let hide=false; try{ hide=localStorage.getItem('wi_pfhide')==='1' }catch(e){}
   const H=s=>hide?'•••••':s;
   const nowT=()=>new Date(Date.now()-new Date().getTimezoneOffset()*6e4).toISOString().slice(0,16);
   const pname=(p,i)=>p.n||(i?`${q.main} ${i+1}`:q.main);
   const qf=v=>(+v).toLocaleString(T.intl||'en',{maximumSignificantDigits:8});
-  function ask(title,val,ok,danger){ let d=$('#askm'); if(!d){ d=document.createElement('dialog'); d.id='askm'; d.className='txm askm'; document.body.appendChild(d) }
-    d.innerHTML=`<form method="dialog"><div class="txh"><b>${esc(title)}</b></div>${val!=null?`<div class="inp"><input maxlength="40" value="${esc(val)}"></div>`:''}<div class="pfb"><button class="btn${danger?' danger':''}" value="ok">${esc(danger?q.delete:q.save)}</button><button class="btn ghost" value="no" formnovalidate>${esc(q.cancel)}</button></div></form>`;
-    d.returnValue=''; d.onclose=()=>{ if(d.returnValue==='ok') ok(val!=null?d.querySelector('input').value.trim():true) }; d.showModal(); const i=d.querySelector('input'); if(i){ i.focus(); i.select() } }
+  const ask=(title,val,ok,danger)=>askDlg(title,val,ok,danger,q);
   function bar(){ const S=PFS.S; $('#pfsel').innerHTML=S.list.map((p,i)=>`<option value="${i}"${i===S.cur?' selected':''}>${esc(pname(p,i))}</option>`).join(''); $('#pfdel').disabled=S.list.length<2 }
   $('#pfsel').onchange=e=>{ PFS.S.cur=+e.target.value; PFS.save(); drawHold() };
   $('#pfnew').onclick=()=>ask(q.new,`${q.main} ${PFS.S.list.length+1}`,n=>{ PFS.S.list.push({n:n.slice(0,40),tx:[]}); PFS.S.cur=PFS.S.list.length-1; PFS.save(); drawHold() });
@@ -668,6 +681,7 @@ new MutationObserver(()=>{ clearTimeout(window._wiStar); window._wiStar=setTimeo
       const s=SYM[id]||[]; let out=null;
       if(s[0]){ try{ const k=await fetch(`https://data-api.binance.vision/api/v3/klines?symbol=${s[0]}&interval=${long?'1w':'1d'}&limit=${long?1000:400}`).then(r=>r.ok?r.json():Promise.reject()); if(k.length>1) out=k.map(x=>[x[0]/1e3,+x[4]]) }catch(e){} }
       if(!out&&s[1]){ try{ const j=await fetch(`/api/chart?s=${encodeURIComponent(s[1])}&r=${long?'max':'5y'}`).then(r=>r.ok?r.json():Promise.reject()); if(j.d&&j.d.length>1) out=j.d.map(x=>[x[0],x[4]]) }catch(e){} }
+      if(!out&&a.st) out=[[0,a.pr],[Date.now()/1e3,a.pr]];
       if(!out){ try{ const P=await load(id), s0=ym2i(P.start); out=P.p.map((v,i)=>{ const k=s0+i; return [Date.UTC(Math.floor(k/12),k%12,28)/1e3,v] }) }catch(e){ out=[] } }
       if(out.length&&a.pr){ const f=a.pr/out[out.length-1][1]; if(isFinite(f)&&f>0) out=out.map(x=>[x[0],x[1]*f]) }   // currency/units -> today's USD price
       return out })() }
@@ -682,15 +696,15 @@ new MutationObserver(()=>{ clearTimeout(window._wiStar); window._wiStar=setTimeo
     for(let t=Math.floor(from/step)*step; t<=now+step; t+=step){ const tt=Math.min(t,now);
       while(ti<txs.length&&txs[ti].ts<=tt){ const x=txs[ti++]; qty[x.a]=Math.max(0,(qty[x.a]||0)+x.s*x.q) }
       let v=0; ids.forEach((id,j)=>{ const d=S[j]; if(!d.length||!qty[id]) return; while(ptr[j]+1<d.length&&d[ptr[j]+1][0]<=tt) ptr[j]++; const px=d[ptr[j]][0]<=tt?d[ptr[j]][1]:d[0][1]; v+=qty[id]*px });
-      pts.push({time:Math.floor(tt),value:+(v*C.rate).toFixed(2)}); if(tt>=now) break }
+      pts.push({time:Math.floor(tt),value:+(v*rateOf(CC)).toFixed(2)}); if(tt>=now) break }
     // the last point = live value
-    if(pts.length){ pts[pts.length-1].value=+(R.tv*C.rate).toFixed(2) }
+    if(pts.length){ pts[pts.length-1].value=+(R.tv*rateOf(CC)).toFixed(2) }
     const L=window.LightweightCharts, css=getComputedStyle(document.documentElement), cv=k=>css.getPropertyValue(k).trim();
     const up=pts.length>1&&pts[pts.length-1].value>=pts[0].value, col=up?(cv('--good')||'#16a34a'):(cv('--bad')||'#dc2626');
     if(!CH){ box.innerHTML=''; CH=L.createChart(box,{autoSize:true,height:300,layout:{background:{color:'transparent'},textColor:cv('--muted')||'#666',fontFamily:getComputedStyle(document.body).fontFamily,attributionLogo:true},
-        grid:{vertLines:{visible:false},horzLines:{color:cv('--line2')||'#eee'}},rightPriceScale:{borderVisible:false},timeScale:{borderVisible:false},crosshair:{mode:L.CrosshairMode.Normal},localization:{locale:T.intl||'en',priceFormatter:v=>hide?'•••':nf(v)}});
+        grid:{vertLines:{visible:false},horzLines:{color:cv('--line2')||'#eee'}},rightPriceScale:{borderVisible:false},timeScale:{borderVisible:false},crosshair:{mode:L.CrosshairMode.Normal},localization:{locale:T.intl||'en',priceFormatter:v=>hide?'•••':nfc(v)}});
       SER=CH.addSeries(L.AreaSeries,{lineWidth:2}) }
-    SER.applyOptions({lineColor:col,topColor:col+'40',bottomColor:col+'05',priceFormat:{type:'custom',formatter:v=>hide?'•••':nf(v)}});
+    SER.applyOptions({lineColor:col,topColor:col+'40',bottomColor:col+'05',priceFormat:{type:'custom',formatter:v=>hide?'•••':nfc(v)}});
     const seen=new Set(); SER.setData(pts.filter(x=>{ if(seen.has(x.time)) return false; seen.add(x.time); return true })); CH.timeScale().fitContent() }
   function paneDraw(){ if(tab==='bal') chart(); else if(tab==='alloc') drawAlloc(); else drawTx() }
   function drawHold(){ bar(); R=model(); drawSum(); drawTable(); paneDraw() }
@@ -702,7 +716,7 @@ new MutationObserver(()=>{ clearTimeout(window._wiStar); window._wiStar=setTimeo
   function recalc(src){ const p=num('#txp'), f=num('#txfee');
     if(src==='t'){ const t=num('#txt'); if(p>0) $('#txq').value=+(Math.max(0,(t-side*f))/p).toPrecision(10) }
     else { const qq=num('#txq'); $('#txt').value=qq&&p?+(qq*p+side*f).toFixed(2):'' }
-    const t=num('#txt'); $('#txloc').textContent=C.code!=='USD'&&t?`≈ ${nf(t*C.rate)}`:'' }
+    const t=num('#txt'); $('#txloc').textContent=CC!=='USD'&&t?`≈ ${usd(t)}`:'' }
   ['#txq','#txp','#txfee'].forEach(s=>$(s).oninput=()=>recalc('q')); $('#txt').oninput=()=>recalc('t');
   async function priceAt(id,t){ const a=BYID[id]; if(!a) return 0; if(!t||Date.parse(t)>Date.now()-864e5) return a.pr;
     try{ const d=await series(id,false); const ts=Date.parse(t)/1e3; if(d.length&&ts>=d[0][0]){ let px=d[0][1]; for(const x of d){ if(x[0]<=ts) px=x[1]; else break } return px } }catch(e){}
@@ -722,31 +736,8 @@ new MutationObserver(()=>{ clearTimeout(window._wiStar); window._wiStar=setTimeo
     const tx={a:id,s:side,q:qq,p,f:num('#txfee')||0,t:$('#txd').value||nowT()}; const m=$('#txn').value.trim(); if(m) tx.m=m;
     const pf=PFS.cur(); if(editK!=null) pf.tx[editK]=tx; else pf.tx.push(tx); PFS.save(); M.close(); drawHold();
     const w=WL.get(); if(!w.includes(id)){ w.unshift(id); WL.set(w) } };
-  if(new URLSearchParams(location.search).get('add')){ const id=new URLSearchParams(location.search).get('add'); if(BYID[id]) setTimeout(()=>openTx(1,id),300) }
+  { const id=new URLSearchParams(location.search).get('add'); if(id) STBL().then(()=>{ if(BYID[id]){ R=model(); openTx(1,id) } }) }
   // backup / restore (data lives only in this browser)
-  /* ---------- watchlists v2: several lists, summary cards, add asset, market columns ---------- */
-  let MK=null; fetch(`${BASE}/assets/mkt.json?v=${WI.v}`).then(r=>r.json()).then(j=>{ MK=j.a||{}; drawWatch() }).catch(()=>{});
-  const fb=v=>v==null?'—':(v>=1e12?(v/1e12).toFixed(2)+'T':v>=1e9?(v/1e9).toFixed(2)+'B':v>=1e6?(v/1e6).toFixed(2)+'M':Math.round(v).toLocaleString(T.intl||'en'));
-  const wname=(l,i)=>l.n||(i?`${q.wl_main} ${i+1}`:q.wl_main);
-  function wlbar(){ const S=WLS.rd(); $('#wlsel').innerHTML=S.list.map((l,i)=>`<option value="${i}"${i===S.cur?' selected':''}>${esc(wname(l,i))} (${l.ids.filter(x=>BYID[x]).length})</option>`).join(''); $('#wldel').disabled=S.list.length<2 }
-  $('#wlsel').onchange=e=>{ const S=WLS.rd(); S.cur=+e.target.value; WLS.wr(S) };
-  $('#wlnew').onclick=()=>ask(q.new,`${q.wl_main} ${WLS.rd().list.length+1}`,n=>{ const S=WLS.rd(); S.list.push({n:n.slice(0,40),ids:[]}); S.cur=S.list.length-1; WLS.wr(S) });
-  $('#wlren').onclick=()=>{ const S=WLS.rd(); ask(q.rename,wname(S.list[S.cur],S.cur),n=>{ if(n){ const S2=WLS.rd(); S2.list[S2.cur].n=n.slice(0,40); WLS.wr(S2) } }) };
-  $('#wldel').onclick=()=>{ const S=WLS.rd(); if(S.list.length<2) return; ask(`${q.delete} «${wname(S.list[S.cur],S.cur)}»? ${q.confirm}`,null,()=>{ const S2=WLS.rd(); S2.list.splice(S2.cur,1); S2.cur=0; WLS.wr(S2) },true) };
-  const wadd=()=>{ const id=findId($('#wla').value); if(!id){ $('#wla').classList.add('bad'); $('#wla').focus(); return } const w=WL.get(); if(!w.includes(id)) w.unshift(id); WL.set(w); $('#wla').value=''; $('#wla').classList.remove('bad') };
-  $('#wlgo').onclick=wadd; $('#wla').onkeydown=e=>{ if(e.key==='Enter'){ e.preventDefault(); wadd() } };
-  function drawWatch(){ wlbar(); const w=WL.get().filter(i=>BYID[i]), box=$('#watch'), sum=$('#wlsum');
-    if(!w.length){ box.innerHTML=`<p class="muted">${esc(t.empty)}</p>`; sum.innerHTML=''; return }
-    const m=i=>(MK&&MK[i])||[]; let mc=0, up=0, dn=0, avg=0;
-    w.forEach(i=>{ const a=BYID[i]; mc+=m(i)[0]||0; if((a.ch||0)>0) up++; else if((a.ch||0)<0) dn++; avg+=(a.ch||0) }); avg/=w.length;
-    sum.innerHTML=`<div class="card"><div class="k">${esc(q.wl_mcap)}</div><div class="v">${mc?'$'+fb(mc):'—'}</div></div>
-      <div class="card"><div class="k">${esc(q.wl_gl)}</div><div class="v"><span class="good">${up}</span> / <span class="bad">${dn}</span></div><div class="glbar"><i style="width:${(up/((up+dn)||1)*100).toFixed(1)}%"></i></div></div>
-      <div class="card"><div class="k">${esc(q.wl_avg)}</div><div class="v ${cls(avg)}">${fmtPct(avg)}</div></div>`;
-    box.innerHTML=`<div class="tw"><table class="mt"><thead><tr><th class="l">${esc(T.name||'')}</th><th>${esc(T.price||'')}</th><th>${esc(T.chg||'')}</th><th class="hide-sm">${esc(T.mk_d7||'7d')}</th><th class="hide-md">${esc(T.mk_mcap||'')}</th><th class="hide-md">${esc(T.mk_vol||'')}</th><th class="hide-sm">${esc(T.mk_k7||'')}</th><th></th></tr></thead><tbody>`+
-      w.map(i=>{ const a=BYID[i], k=m(i); return `<tr><td class="l"><button class="star" data-s="${a.i}">★</button><a class="asset" href="${url(a.i)}">${icon(a)}<span><span class="nm">${esc(nm(a))}</span><span class="tk">${esc(a.t)}</span></span></a></td>
-        <td class="num" data-p="${a.i}">${fmtPrice(a.pr)}</td><td class="num ${cls(a.ch)}" data-c="${a.i}">${fmtPct(a.ch)}</td><td class="num hide-sm ${cls(k[2])}">${k[2]!=null?fmtPct(k[2]):'—'}</td>
-        <td class="num hide-md">${k[0]?'$'+fb(k[0]):'—'}</td><td class="num hide-md">${k[1]?'$'+fb(k[1]):'—'}</td><td class="hide-sm">${spark(k[3]||a.sp)}</td><td class="pfact"><button class="pb" type="button" data-pfa="${a.i}" title="${esc(q.addtx)}">＋</button></td></tr>` }).join('')+'</tbody></table></div>';
-    $$('#watch [data-pfa]').forEach(b=>b.onclick=()=>{ $('#pf').scrollIntoView({block:'start'}); openTx(1,b.dataset.pfa) }) }
   $('#pfexp')&&($('#pfexp').onclick=()=>{ const g=k=>{ try{ return JSON.parse(localStorage.getItem(k)||'null') }catch(e){ return null } };
     const data={v:2,pfs:PFS.S,wls:WLS.rd(),plans:PL.get(),bonds:g('wi_bonds')||[],hold:g('wi_hold')||[],watch:WL.get()}; const a=document.createElement('a');
     a.href=URL.createObjectURL(new Blob([JSON.stringify(data,null,1)],{type:'application/json'})); a.download='whatifstack-portfolio.json'; a.click() });
@@ -755,7 +746,35 @@ new MutationObserver(()=>{ clearTimeout(window._wiStar); window._wiStar=setTimeo
     if(d.wls&&Array.isArray(d.wls.list)) w('wi_wls',d.wls); else if(Array.isArray(d.watch)){ try{ localStorage.removeItem('wi_wls') }catch(e){} w('wi_watch',d.watch) }
     if(Array.isArray(d.plans)) w('wi_plans',d.plans); if(Array.isArray(d.bonds)) w('wi_bonds',d.bonds); location.reload() }).catch(()=>{}) });
   let ht; document.addEventListener('wi:tick',()=>{ clearTimeout(ht); ht=setTimeout(()=>{ R=model(); drawSum(); if(!document.activeElement||document.activeElement.id!=='pffilter') drawTable(); if(tab==='alloc') drawAlloc() },1500) });
-  document.addEventListener('wi:watch',drawWatch); drawWatch(); drawPlans(); drawHold();
+  drawPlans(); STBL().then(()=>drawHold()); drawHold();
+})();
+/* ---------- watchlists page (/watchlist/): several lists, summary cards, add asset, market columns ---------- */
+(function(){ const W=PAGE.wl; if(!W||!$('#wl')) return; const q=W.q, t={empty:W.empty};
+  const ask=(title,val,ok,danger)=>askDlg(title,val,ok,danger,q); fillPalist();
+  /* ---------- watchlists v2: several lists, summary cards, add asset, market columns ---------- */
+  let MK=null; STBL().then(j=>{ MK=j.a||{}; fillPalist(); drawWatch() });
+  const fb=v=>v==null?'—':(v>=1e12?(v/1e12).toFixed(2)+'T':v>=1e9?(v/1e9).toFixed(2)+'B':v>=1e6?(v/1e6).toFixed(2)+'M':Math.round(v).toLocaleString(T.intl||'en'));
+  const wname=(l,i)=>l.n||(i?`${q.wl_main} ${i+1}`:q.wl_main);
+  function wlbar(){ const S=WLS.rd(); $('#wlsel').innerHTML=S.list.map((l,i)=>`<option value="${i}"${i===S.cur?' selected':''}>${esc(wname(l,i))} (${l.ids.filter(x=>BYID[x]).length})</option>`).join(''); $('#wldel').disabled=S.list.length<2 }
+  $('#wlsel').onchange=e=>{ const S=WLS.rd(); S.cur=+e.target.value; WLS.wr(S) };
+  $('#wlnew').onclick=()=>ask(q.new,`${q.wl_main} ${WLS.rd().list.length+1}`,n=>{ const S=WLS.rd(); S.list.push({n:n.slice(0,40),ids:[]}); S.cur=S.list.length-1; WLS.wr(S) });
+  $('#wlren').onclick=()=>{ const S=WLS.rd(); ask(q.rename,wname(S.list[S.cur],S.cur),n=>{ if(n){ const S2=WLS.rd(); S2.list[S2.cur].n=n.slice(0,40); WLS.wr(S2) } }) };
+  $('#wldel').onclick=()=>{ const S=WLS.rd(); if(S.list.length<2) return; ask(`${q.delete} «${wname(S.list[S.cur],S.cur)}»? ${q.confirm}`,null,()=>{ const S2=WLS.rd(); S2.list.splice(S2.cur,1); S2.cur=0; WLS.wr(S2) },true) };
+  const wadd=()=>{ const id=findAsset($('#wla').value); if(!id){ $('#wla').classList.add('bad'); $('#wla').focus(); return } const w=WL.get(); if(!w.includes(id)) w.unshift(id); WL.set(w); $('#wla').value=''; $('#wla').classList.remove('bad') };
+  $('#wlgo').onclick=wadd; $('#wla').onkeydown=e=>{ if(e.key==='Enter'){ e.preventDefault(); wadd() } };
+  function drawWatch(){ wlbar(); const w=WL.get().filter(i=>BYID[i]), box=$('#watch'), sum=$('#wlsum');
+    if(!w.length){ box.innerHTML=`<p class="muted">${esc(t.empty)}</p>`; sum.innerHTML=''; return }
+    const m=i=>{ const a=BYID[i]; return a&&a.st?[a.mc,a.vo,a.w7,a.k7]:(MK&&MK[i])||[] }; let mc=0, up=0, dn=0, avg=0;
+    w.forEach(i=>{ const a=BYID[i]; mc+=m(i)[0]||0; if((a.ch||0)>0) up++; else if((a.ch||0)<0) dn++; avg+=(a.ch||0) }); avg/=w.length;
+    sum.innerHTML=`<div class="card"><div class="k">${esc(q.wl_mcap)}</div><div class="v">${mc?'$'+fb(mc):'—'}</div></div>
+      <div class="card"><div class="k">${esc(q.wl_gl)}</div><div class="v"><span class="good">${up}</span> / <span class="bad">${dn}</span></div><div class="glbar"><i style="width:${(up/((up+dn)||1)*100).toFixed(1)}%"></i></div></div>
+      <div class="card"><div class="k">${esc(q.wl_avg)}</div><div class="v ${cls(avg)}">${fmtPct(avg)}</div></div>`;
+    box.innerHTML=`<div class="tw"><table class="mt"><thead><tr><th class="l">${esc(T.name||'')}</th><th>${esc(T.price||'')}</th><th>${esc(T.chg||'')}</th><th class="hide-sm">${esc(T.mk_d7||'7d')}</th><th class="hide-md">${esc(T.mk_mcap||'')}</th><th class="hide-md">${esc(T.mk_vol||'')}</th><th class="hide-sm">${esc(T.mk_k7||'')}</th><th></th></tr></thead><tbody>`+
+      w.map(i=>{ const a=BYID[i], k=m(i); return `<tr><td class="l"><button class="star" data-s="${a.i}">★</button><a class="asset" href="${url(a.i)}">${icon(a)}<span><span class="nm">${esc(nm(a))}</span><span class="tk">${esc(a.t)}</span></span></a></td>
+        <td class="num" data-p="${a.i}">${fmtPrice(a.pr)}</td><td class="num ${cls(a.ch)}" data-c="${a.i}">${fmtPct(a.ch)}</td><td class="num hide-sm ${cls(k[2])}">${k[2]!=null?fmtPct(k[2]):'—'}</td>
+        <td class="num hide-md">${k[0]?'$'+fb(k[0]):'—'}</td><td class="num hide-md">${k[1]?'$'+fb(k[1]):'—'}</td><td class="hide-sm">${spark(k[3]||a.sp)}</td><td class="pfact"><button class="pb" type="button" data-pfa="${a.i}" title="${esc(q.addtx)}">＋</button></td></tr>` }).join('')+'</tbody></table></div>';
+    $$('#watch [data-pfa]').forEach(b=>b.onclick=()=>{ location.href=`${W.me}?add=${encodeURIComponent(b.dataset.pfa)}` }) }
+  document.addEventListener('wi:watch',drawWatch); drawWatch();
 })();
 /* ---------- long texts (stock analyses): show the first screen, «Show more» opens the rest ---------- */
 $$('.clamp').forEach(el=>{ if(el.scrollHeight<760) return; el.classList.add('clamped');
@@ -978,6 +997,8 @@ document.querySelectorAll('.side').forEach(sd => {
 /* ---------- "Add to portfolio" button on asset pages ---------- */
 document.addEventListener('click',async e=>{
   const b=e.target.closest('.addpf'); if(!b) return; const C=JSON.parse(b.dataset.cfg), id=b.dataset.add, old=document.querySelector('.pfpop');
+  // owner 2026-11-20: the same «Add transaction» window as in the portfolio (quantity, price, date, fee, USD by default)
+  if(C.me){ e.preventDefault(); location.href=`${C.me}?add=${encodeURIComponent(id)}`; return }
   if(old){ old.remove(); if(old.dataset.id===id) return }
   const END=WI.u.slice(0,7), pop=document.createElement('div'); pop.className='pfpop card'; pop.dataset.id=id;
   pop.innerHTML=`<label>${esc(C.t.qty_or_sum)}<div class="inp"><input type="number" min="0" step="any" value="100" class="pa"><span class="muted">${esc(C.code)}</span></div></label>
@@ -1313,14 +1334,14 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
 /* ---------- fresh posts between deploys: data/feed/<lang>.json (GitHub raw, made by scripts/feed.py) ---------- */
 (function(){
   const RAW='https://raw.githubusercontent.com/AlekDu11/whatif-invest/main/data/feed/', L=PAGE.lang||'en', P=PAGE.prefix||'';
-  const nl=document.querySelector('.nlist.own'), posts=document.querySelector('.posts[data-per]'), rd=document.getElementById('reader');
+  const nl=/\/news\/$/.test(location.pathname)?document.querySelector('.nlist.own'):null, posts=document.querySelector('.posts[data-per]'), rd=document.getElementById('reader');
   if(!nl&&!posts&&!rd) return;
   const esc2=s=>String(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const rurl=r=>`${P}/read/?k=${r.k}&s=${encodeURIComponent(r.s)}`;
   fetch(RAW+L+'.json',{cache:'no-cache'}).then(r=>r.ok?r.json():null).then(F=>{ if(!F) return; const items=F.items||[];
     if(nl){ const have=new Set([...nl.querySelectorAll('a.nrow')].map(a=>a.getAttribute('href')));
       const tags=(PAGE.news&&PAGE.news.tags)||{};
-      const add=items.filter(r=>r.k==='news'&&!have.has(`${P}/news/${r.s}/`)).map(r=>`<a class="nrow fresh" data-g="${esc2((r.g||[]).join(' '))}" href="${rurl(r)}"><b>${esc2(r.t)}</b><span class="muted">WhatIfStack · <time data-t="${esc2(r.d)}">${esc2(r.d)}</time> ${(r.g||[]).filter(g=>tags[g]).map(g=>`<i class="badge">${esc2(tags[g])}</i>`).join(' ')}</span></a>`).join('');
+      const add=items.filter(r=>r.k==='news'&&!have.has(`${P}/news/${r.s}/`)).map(r=>`<a class="nrow fresh${r.cv?' nth':''}" data-g="${esc2((r.g||[]).join(' '))}" href="${rurl(r)}">${r.cv?`<img class="nthumb" src="${esc2(r.cv)}" alt="" width="160" height="84" loading="lazy">`:''}<span class="ntx"><b>${esc2(r.t)}</b><span class="muted">WhatIfStack · <time data-t="${esc2(r.d)}">${esc2(r.d)}</time> ${(r.g||[]).filter(g=>tags[g]).map(g=>`<i class="badge">${esc2(tags[g])}</i>`).join(' ')}</span></span></a>`).join('');
       if(add) nl.insertAdjacentHTML('afterbegin',add) }
     if(posts){ const have=new Set([...posts.querySelectorAll('a.post')].map(a=>a.getAttribute('href')));
       const cats={}; document.querySelectorAll('#bcats button[data-c]').forEach(b=>cats[b.dataset.c]=b.textContent.trim());
