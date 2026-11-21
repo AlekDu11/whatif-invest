@@ -72,6 +72,17 @@ module.exports = async (req, res) => {
     if (!out.length) return send(502, { e: 'upstream' }, 'public, s-maxage=30');
     return send(200, { at: Date.now(), c: out }, 'public, s-maxage=300, stale-while-revalidate=900, stale-if-error=7200');
   }
+  if ((req.query || {}).xt) {   // coins on KuCoin / Bitget / HTX / BingX only: xt=k:PIPI-USDT,b:PIPIUSDT,h:pipiusdt,n:PIPI-USDT → {sym: [price, 24h change]}
+    const items = String(req.query.xt).split(',').map(x => x.split(':')).filter(x => /^[kbhn]$/.test(x[0]) && /^[A-Za-z0-9-]{2,20}$/.test(x[1] || '')).slice(0, 20);
+    const one = async ([e, s]) => {
+      if (e === 'k') { const d = await j(`https://api.kucoin.com/api/v1/market/stats?symbol=${s}`); const t = (d || {}).data || {}; return t.last ? [+t.last, t.changeRate != null ? +t.changeRate : null] : null }
+      if (e === 'b') { const d = await j(`https://api.bitget.com/api/v2/spot/market/tickers?symbol=${s}`); const t = ((d || {}).data || [])[0] || {}; return t.lastPr ? [+t.lastPr, t.change24h != null ? +t.change24h : null] : null }
+      if (e === 'h') { const d = await j(`https://api.huobi.pro/market/detail/merged?symbol=${s.toLowerCase()}`); const t = (d || {}).tick || {}; return t.close ? [+t.close, t.open ? t.close / t.open - 1 : null] : null }
+      const d = await j(`https://open-api.bingx.com/openApi/spot/v1/ticker/24hr?symbol=${s}&timestamp=${Date.now()}`); const t = ((d || {}).data || [])[0] || {};
+      return t.lastPrice ? [+t.lastPrice, t.openPrice ? t.lastPrice / t.openPrice - 1 : null] : null };
+    const out = {}; (await Promise.all(items.map(one))).forEach((r, i) => { if (r) out[items[i][1]] = r });
+    return send(200, out, 'public, s-maxage=15, stale-while-revalidate=60');
+  }
   if ((req.query || {}).mx) {   // live prices of coins traded on MEXC (its WebSocket is protobuf-only): one ticker call, CDN 15 s
     const want = new Set(String(req.query.mx).toUpperCase().split(',').filter(x => /^[A-Z0-9]{1,15}$/.test(x)).slice(0, 60).map(x => x + 'USDT'));
     const d = await j('https://api.mexc.com/api/v3/ticker/24hr');

@@ -1,0 +1,32 @@
+name: Coin venues (exchange or DEX pool for coins outside our main exchanges)
+on:
+  schedule:
+    - cron: '23 6 * * *'    # daily 06:23 UTC, after coin markets
+  workflow_dispatch:
+    inputs:
+      n:
+        description: coins per run
+        default: '120'
+permissions:
+  contents: write
+concurrency:
+  group: coin-venues
+  cancel-in-progress: false
+jobs:
+  venues:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/fetch_coin_venues.py ${{ github.event.inputs.n || '120' }}
+      - name: Commit
+        run: |
+          git config user.name "whatif-bot"
+          git config user.email "whatif-bot@users.noreply.github.com"
+          git add data/coin_venues.json
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git commit -m "Coin venues $(date -u +%F)"
+          for i in 1 2 3; do git pull --rebase -X theirs origin main && git push origin main && break; sleep 5; done

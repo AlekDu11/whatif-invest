@@ -41,7 +41,7 @@ function spark(arr,w=110,h=34){ if(!arr||arr.length<2) return '';
   return `<svg class="spk ${up?'up':'dn'}" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" aria-hidden="true"><polygon points="0,${h} ${pts} ${w},${h}"/><polyline points="${pts}"/></svg>` }
 const goUrl=(u,extra)=>u&&u.startsWith('/go/')?`${u}?from=${encodeURIComponent(location.pathname)}&l=${lang}${extra||''}`:u;
 // crypto: send buyers only to an exchange that really lists the coin (index: bn = Binance, x = g Gate / m MEXC / y Bybit / o OKX); none → no button
-const XREF={g:{url:'/go/gate',where:'Gate'},m:{url:'/go/mexc',where:'MEXC'},y:{url:'/go/bybit',where:'Bybit'}};
+const XREF={g:{url:'/go/gate',where:'Gate'},m:{url:'/go/mexc',where:'MEXC'},y:{url:'/go/bybit',where:'Bybit'},n:{url:'/go/bingx',where:'BingX'}};
 function refFor(a){ const RL=(window.REF_LANG||{})[a.c]; let r=REF[a.i];
   if(!r&&a.c==='crypto'){ if(a.bn) r=(RL&&RL.langs.includes(lang)&&a.o<=150)?RL:REF_DEFAULT.crypto; else r=XREF[a.x]||null }
   if(!r) r=(RL&&RL.langs.includes(lang)?RL:null)||(a.c==='crypto'?null:REF_DEFAULT[a.c]);
@@ -1557,7 +1557,7 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
     g:{url:'wss://api.gateio.ws/ws/v4/', sub:t=>[{time:Math.floor(Date.now()/1000),channel:'spot.tickers',event:'subscribe',payload:t.map(x=>x+'_USDT')}], ping:()=>JSON.stringify({time:Math.floor(Date.now()/1000),channel:'spot.ping'}),
        msg:m=>{ const d=m.result; if(m.event!=='update'||!d||!d.currency_pair) return; const a=byTk['g'+d.currency_pair.replace(/_USDT$/,'')]; if(a) put(a,+d.last,d.change_percentage!=null?d.change_percentage/100:null) }}};
   const open={}; let want='', mxT=null;
-  function stop(){ Object.values(open).forEach(o=>{ o.dead=1; clearInterval(o.pi); try{o.ws.close()}catch(e){} }); for(const k in open) delete open[k]; clearInterval(mxT); mxT=null }
+  function stop(){ Object.values(open).forEach(o=>{ o.dead=1; clearInterval(o.pi); try{o.ws.close()}catch(e){} }); for(const k in open) delete open[k]; clearInterval(mxT); mxT=null; clearInterval(window.__xtT) }
   function start(){ const L=coins(); want=L.map(a=>a.i).join(','); if(!L.length) return;
     for(const k in byTk) delete byTk[k]; L.forEach(a=>byTk[a.x+a.t.toUpperCase()]=a);
     Object.keys(EX).forEach(k=>{ const t=L.filter(a=>a.x===k).map(a=>a.t.toUpperCase()); if(!t.length) return; const E=EX[k];
@@ -1566,6 +1566,11 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
         ws.onmessage=ev=>{ if(ev.data==='pong') return; let m; try{ m=JSON.parse(ev.data) }catch(e){ return } E.msg(m) };
         ws.onclose=()=>{ clearInterval(o.pi); if(!o.dead&&!document.hidden&&n<5) setTimeout(()=>go(n+1),3000*(n+1)) } };
       go(0) });
+    const xt=L.filter(a=>'kbhn'.includes(a.x)&&a.xs), dx=L.filter(a=>a.x==='d'&&a.xs);
+    if(xt.length||dx.length){ const poll2=()=>{ if(document.hidden) return;
+      if(xt.length) fetch(`${(window.PAGE||{}).base||''}/api/quote?xt=${xt.map(a=>a.x+':'+a.xs).join(',')}`).then(r=>r.ok?r.json():null).then(Q=>{ if(Q) xt.forEach(a=>{ const q=Q[a.xs]; if(q) put(a,q[0],q[1]) }) }).catch(()=>{});
+      dx.forEach(a=>{ const [n,p]=a.xs.split('/'); fetch(`${(window.PAGE||{}).base||''}/api/chart?dex=pool&n=${n}&p=${p}`).then(r=>r.ok?r.json():null).then(q=>{ if(q&&q.pr) put(a,+q.pr,q.c24!=null?q.c24/100:null) }).catch(()=>{}) }) };
+      poll2(); clearInterval(window.__xtT); window.__xtT=setInterval(poll2,30000) }
     const mx=L.filter(a=>a.x==='m'); if(mx.length){ const poll=()=>{ if(document.hidden) return;
       fetch(`${(window.PAGE||{}).base||''}/api/quote?mx=${mx.map(a=>a.t.toUpperCase()).join(',')}`).then(r=>r.ok?r.json():null).then(Q=>{ if(Q) mx.forEach(a=>{ const q=Q[a.t.toUpperCase()]; if(q) put(a,q[0],q[1]) }) }).catch(()=>{}) };
       poll(); mxT=setInterval(poll,15000) } }

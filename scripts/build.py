@@ -136,8 +136,13 @@ def tv_symbol(a):
     if a['cat'] == 'crypto':
         if a.get('src') in ('kraken', 'yahoo-cc'):   # delisted from Binance (Monero...): Kraken's USD pair
             return f"KRAKEN:{a['tk']}USD"
-        if a.get('src') in ('coingecko', 'cg-spot'):   # on no exchange we read (TradingView shows «Invalid symbol») → own chart from CoinGecko
-            return 'CG:' + (a.get('cgid') or a['tk'].lower())
+        if a.get('src') in ('coingecko', 'cg-spot'):   # not on our main exchanges: the exchange/DEX pool found by fetch_coin_venues.py
+            v = VENUES.get(a.get('cgid') or '') or {}
+            if v.get('x') in TV_EX:
+                return f"{TV_EX[v['x']]}:{a['tk']}USDT"
+            if v.get('dex'):
+                return 'GT:' + '/'.join(v['dex'])
+            return 'CG:' + (a.get('cgid') or a['tk'].lower())   # nothing found yet → own chart until the next check
         ex = {'gate': 'GATEIO', 'mexc': 'MEXC', 'okx': 'OKX', 'bybit': 'BYBIT'}.get(a.get('src'), 'BINANCE')
         return f"{ex}:{a['tk']}USDT"
     if a['cat'] == 'metal' and a['tk'] in ('XAU', 'XAG'):
@@ -1500,6 +1505,8 @@ def _jload(name):
 
 
 COININFO, STOCKINFO = _jload('coininfo.json'), _jload('stockinfo.json')
+VENUES = _jload('coin_venues.json')   # scripts/fetch_coin_venues.py: KuCoin/Bitget/HTX/BingX pair or DEX pool for coins outside our main exchanges
+TV_EX = {'kucoin': 'KUCOIN', 'bitget': 'BITGET', 'htx': 'HTX', 'bingx': 'BINGX'}
 STOCKSTATS = _jload('stockstats.json')   # key stats from scripts/stock_stats.py (rotating daily refresh)
 
 
@@ -3046,7 +3053,14 @@ def asset(aid, lang, ver):
     w = S['w']
     loc = TV_LOC.get(lang, 'en')
     tvs = tv_symbol(a)
-    if tvs and tvs.startswith(TV_NOCHART):   # chart not embeddable: own chart, keep fundamentals
+    if tvs and tvs.startswith('GT:'):   # DEX-only coin: GeckoTerminal's chart (TradingView charting library) of its most liquid pool
+        net, pool = tvs[3:].split('/', 1)
+        tv = (f'<section class="card tvcard"><div class="charthead"><h2>{w["live_chart"]} · {esc(tk)}</h2><span class="livebadge"><i></i>{w["live"]}</span>'
+              f'<a class="tvref" href="https://www.geckoterminal.com/{esc(net)}/pools/{esc(pool)}" target="_blank" rel="noopener">GeckoTerminal ↗</a></div>'
+              f'<iframe class="gtchart" loading="lazy" title="{esc(tk)} chart" src="https://www.geckoterminal.com/{esc(net)}/pools/{esc(pool)}?embed=1&info=0&swaps=0&grayscale=0&light_chart=0" '
+              f'style="width:100%;height:480px;border:0;border-radius:12px" allow="clipboard-write"></iframe></section>')
+        tech_news = ''
+    elif tvs and tvs.startswith(TV_NOCHART):   # chart not embeddable: own chart, keep fundamentals
         tv = own_chart(lang, a, aid)
         tech_news = ''
         if a['cat'] in ('stock', 'etf'):
@@ -4773,6 +4787,12 @@ def main():
             e['bn'] = 1
         elif a['cat'] == 'crypto' and a.get('src') in ('gate', 'mexc', 'okx', 'bybit'):
             e['x'] = a['src'][0] if a['src'] != 'bybit' else 'y'   # live price from that exchange (app.js: WebSocket g/o/y, MEXC via /api/quote?mx=)
+        elif a['cat'] == 'crypto' and a.get('src') in ('coingecko', 'cg-spot'):
+            v = VENUES.get(a.get('cgid') or '') or {}
+            if v.get('x') in TV_EX:
+                e['x'], e['xs'] = {'kucoin': 'k', 'bitget': 'b', 'htx': 'h', 'bingx': 'n'}[v['x']], v['s']   # polled via /api/quote?xt=
+            elif v.get('dex'):
+                e['x'], e['xs'] = 'd', '/'.join(v['dex'])   # DEX pool price via /api/chart?dex=pool
         if a['cat'] in ('stock', 'etf', 'metal', 'cmd') and a.get('yahoo') and not any(ch in a['yahoo'] for ch in '.:'):
             e['y'] = a['yahoo']   # USD-listed: live quote via /api/quote
         idx.append({k: (round(v, 4) if isinstance(v, float) and k in ('ch', 'r1', 'r3', 'r5') else v) for k, v in e.items() if v is not None})
