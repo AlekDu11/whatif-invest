@@ -25,8 +25,10 @@ def get(url):
 
 def clean(n):
     n = re.sub(r'\b(PAO|PJSC|OAO|OJSC|AO|JSC|MKPAO|IPJSC|PLC|ao|ap|-ao|-ap)\b\.?', '', n or '', flags=re.I)
+    n = re.sub(r'\b(ORD SHS|Public JS Com\w*|Ltd\.?|Corp\.)', '', n, flags=re.I)
+    n = re.sub(r'-\d+$', '', n.strip())                      # «MGTS-5», «Yakovlev-3» = share issue numbers
     n = re.sub(r'\s+(ord|pref|ao|ap)$', '', n.strip(), flags=re.I)
-    return re.sub(r'\s{2,}', ' ', n).strip(' ,.-"«»') or None
+    return re.sub(r'\s{2,}', ' ', n.replace('"', '')).strip(' ,.-«»') or None
 
 
 def main():
