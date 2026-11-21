@@ -1,7 +1,7 @@
 # WhatIfStack (whatifstack.com) — project brief for Claude
 
 Owner: AlekDu11. Claude acts as head of product + engineering, SEO, design, copywriting and data.
-Full strategy doc: https://claude.ai/artifact/BWtJfaiRLWutsvaYkUqyoC
+Business strategy (money goal, roadmap, backlog, partner programs, reports archive) lives in the PRIVATE repo github.com/AlekDu11/whatif-private (STRATEGY.md) — owner 2026-11-22: keep business know-how out of this public repo; never copy it back here.
 
 ## Mission
 The most useful and fastest markets site for ordinary people worldwide — a modern, better version of
@@ -18,19 +18,6 @@ in one place, fast, no ad clutter. Owner (2026-11-17): the essence is what peopl
 5. Whole world — 20+ languages with local phrasing and local partners.
 6. Search and trends — every feature is also an SEO page or a reason to share.
 7. Money without hurting users — referrals, one honest Pro plan, native ads only; never become worse than competitors.
-
-## Money goal (owner, 2026-11-19)
-$5k+/month income. Path: Telegram channel ad posts (now) → exchange rev-share + labelled fixed-fee packages (no paid ranking) →
-native banner slots (one per page, never on the home first screen, no casinos/«guaranteed profit»/anonymous tokens) →
-Pro = no ads + «support the site» + extra tools. Rough math: 1M page views/month ≈ $10–30k/month from all streams.
-
-## Roadmap (next phase starts only when the previous gate is met)
-1. Foundation (Nov–Dec 2026): domain whatifstack.com (done), Search Console (done 2026-11-15: domain property verified via Vercel DNS TXT, sitemap submitted), analytics, dark theme, PWA, local currencies, OG share images, referral links. Gate: site indexed.
-2. Retention (Jan–Feb 2027): accounts, watchlist, price alerts (Telegram built 2026-11-18, waiting for the bot token; email later), portfolio tracker + backtest. Gate: 10k visitors/month.
-3. Pro (Mar–Apr 2027): Pro ~$5/mo or $39/yr (ad-free, unlimited alerts, backtests, AI helper), exchange/broker ranking, dividends. Gate: 50k/month, 100 paying.
-4. Scale (May 2027+): API + embeddable widgets, mobile app, native ads. Gate: 200k/month.
-
-Content: 2–3 blog posts a week on trending queries (content/blog/<lang>/), weekly DCA market recap.
 
 ## Architecture (see README.md for details)
 - data/market.json — daily via .github/workflows/update-prices.yml (scripts/fetch_data.py: Binance, Yahoo, CoinGecko, alternative.me)
@@ -86,7 +73,7 @@ Search-demand articles: daily 16:19 Kyiv — reads Search Console queries, write
 Asset profiles: daily 16:52 Kyiv, 3 assets/day → content/profiles/<lang>/<asset id>.md (About block on the asset page).
 Guide: content/guide/<lang>.md → /guide/ (every tool explained; keep it updated when a feature is added).
 Free distribution: social/syndication.md (platform rules, communities per language, log); daily drafts in social/syndication/YYYY-MM-DD.md. RSS per language (/<lang>/blog/rss.xml, with cover images → Pinterest/Flipboard auto-publish) and Google News sitemap /sitemap-news.xml are built by scripts/build.py.
-Partnerships: /partners/ page (en, uk) with partners@whatifstack.com; partner program list partners/programs.md (refresh only when the owner asks).
+Partnerships: /partners/ page (en, uk) with partners@whatifstack.com; partner program list in the private repo (whatif-private/partners/programs.md; refresh only when the owner asks).
 Offers: offer_card() in build.py (Telegram Wallet bonus, strings in scripts/i18n_offer.py) on home + crypto asset pages; clicks via /go/tgwallet?from=<placement>.
 Crypto exchange rankings: data/exchanges.json via .github/workflows/exchanges.yml (CoinGecko, daily 03:11 UTC) → /crypto-exchanges/ (spot, by trust rank), /crypto-exchanges/derivatives/ (open interest), /crypto-exchanges/<id>/ (top 100, all 20 languages: 30-day volume, 100 pairs with quote tabs, facts + socials from CoinGecko /exchanges/{id}, proof-of-reserves block from DefiLlama api.llama.fi (category CEX: total, 7d/30d, by chain, top tokens, 1-year chart), partner CTA via XC_PARTNER).
 Ukraine pages (uk, ru; scripts/i18n_ua.py): /ovdp/brokers/ ranking + /ovdp/brokers/<id>/ (OB list: fee, currencies, issues, score — refresh facts when tariffs change), /buy-stocks-ukraine/ guide (Freedom24 CTA via /go/freedom24). Portfolio /me/#bonds: OVDP holdings (localStorage wi_bonds, CSV import name;broker;currency;amount;rate;bought;matures, uk/ru/en).
@@ -105,16 +92,3 @@ DEX memecoin hub /memes/ (2026-11-21, v3): movers + Fomo-style tabs Trending / T
 Accounts (2026-11-21, built, hidden until configured): sign in on /me/ by e-mail link (Brevo transactional API) or Telegram Login Widget, no passwords; api/_auth.js via /api/forms?k=login|verify|tg|me|data|logout; Upstash keys au:tok:*, au:ses:* (180 d), au:users, au:data:<uid>; browser keeps wi_sid/wi_user/wi_syncv/wi_dirty; app.js syncs wi_pfs, wi_wls, wi_bonds, wi_pfccy (+ mirrors) on every page (pull on load, merge by portfolio/watchlist name with de-duplicated transactions, debounced push on change). Turn on: Vercel env BREVO_KEY + AUTH_FROM (sender verified in Brevo, DKIM in Vercel DNS) → AUTH_EMAIL = True in build.py; Telegram: bot token in Vercel env TG_BOT_TOKEN, BotFather /setdomain whatifstack.com, TG_BOT = '<username>' in build.py (also enables price alerts). ETH live price fix: pinned coins with src=binance now stream from Binance (bn flag).
 Telegram bot @WhatIfStack_Bot (2026-11-21, api/tg.js + api/_alerts.js MENU uk/ru/en): /start menu (💼 portfolio Mini App = /me/?tgapp=1 with silent sign-in via signed initData → /api/forms?k=tgapp, 📈 prices, 🔔 alerts, 📣 channel t.me/WhatIfStack, 🤝 share, site), ticker → price + page link, /price, /portfolio, /share, /list, /del, /stop, inline mode (@WhatIfStack_Bot btc → price card; needs /setinline in BotFather), menu button «Portfolio». Setup after env TG_BOT_TOKEN + ALERTS_KEY: open /api/tg?setup=<ALERTS_KEY> (webhook, commands, descriptions, menu button). Users who pressed /start: Upstash set tg:users. 💬 Support (/support or button): next message is stored in Upstash list tg:support and forwarded to the owner if Vercel env TG_ADMIN_CHAT is set (his chat id: send /myid to the bot); the owner replies to the forwarded message → the bot copies it to the user. 🌐 Language (/lang): uk en ru es de pl tr pt, saved in tg:lang:<chat> (bot texts uk/ru/en, site links in the chosen language). Google sign-in (2026-11-21: Google Cloud project «whatifstack», OAuth client «whatifstack.com sign-in», consent screen In production, support email whatifstack-support@googlegroups.com, dev contact support@whatifstack.com; public client id in build.py GOOGLE_CLIENT_ID and api/_auth.js; /privacy/ and /terms/ pages en+uk): Google Identity Services button on /me/, ID token checked via oauth2.googleapis.com/tokeninfo in api/_auth.js (k=google), same uid as the e-mail link (e:sha(email)). Brevo: domain whatifstack.com authenticated (TXT brevo-code, CNAME brevo1/brevo2._domainkey, TXT _dmarc in Vercel DNS), sender login@whatifstack.com.
 News aggregator: api/news.js (Vercel function, RSS headlines only, links to originals).
-
-## Backlog agreed with the owner (2026-11-17)
-Taken from CompaniesMarketCap / StockAnalysis / Simply Wall St:
-1. DONE 2026-11-17: /largest-companies/ rankings (market cap, revenue, earnings, employees, dividend, P/E) + 27 country pages, rank-change arrows, 20 languages (scripts/i18n_lc.py, lc_pages() in build.py); stock pages show "#N in the world" and 1-year change.
-2. DONE 2026-11-18 (market cap for the top 1500 stocks in en+uk; revenue/earnings appear as stock_stats.py fills hy/hr/hn): per-stock metric pages /<id>/market-cap/, /<id>/revenue/, /<id>/earnings/ (en+uk first, light pages) with multi-year history: add annual income statement (4-5 years) and shares outstanding to scripts/stock_stats.py; market-cap history = monthly price x shares (labelled as an estimate); one-sentence answer ("As of <month> X is worth $..., #N in the world").
-3. Then: a visual health score for each stock in our own style (valuation, growth, profit, debt, dividend), not a copy of Simply Wall St's snowflake; tags on stock pages (sector, index membership such as Dow Jones / S&P 500 / DAX).
-
-## Ideas saved for later (owner, 2026-11-19: «do it when we find a sponsor»)
-- Trading tournaments section on /activities/: live exchange/prop competitions (Binance, Bybit, OKX…), prize, dates, conditions, risk note, our referral links; 20 languages (like trading-tournaments.com, owner's friend's site).
-- Free «Virtual portfolio league»: everyone gets virtual $10,000 in real assets, monthly leaderboard, share your rank; no real money; prizes from a sponsor/partner later. Needs nicknames + Upstash storage.
-
-## Waiting on the owner
-Done 2026-11-18: e-mail forwarding via ImprovMX (free; MX mx1/mx2.improvmx.com + SPF TXT in Vercel DNS) — any address @whatifstack.com, incl. partners@ (business, on /partners/) and support@ (readers, in the footer of every page), goes to the owner's mailbox. Partner programs to apply for: partners/programs.md (owner signs up himself; Claude wires the links). Done 2026-11-17: Kraken referral (crypto buy buttons on English pages via REF_LANG — Binance does not serve US/UK; Kraken row in /exchanges/ table, Pro 0.40%/0.80%, recurring buy 1%). Freedom24 referral (stocks/ETF buy buttons on uk/de/fr/it/es/pt/pl/nl pages via REF_LANG in src/ref.js; EU only, not US/UK) and FG Wallet (USDT TRC-20 wallet, /exchanges/ wallets). Done 2026-11-16: Vercel Web Analytics enabled (Hobby, free); deployment retention set to 1 day for all types (each deploy is ~200 MB, Hobby limit 10 GB).
