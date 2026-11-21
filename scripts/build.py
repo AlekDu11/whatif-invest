@@ -80,7 +80,7 @@ END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
 RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide', 'commodities', 'widgets', 'embed', 'dividends', 'average-price', 'ovdp', 'largest-companies', 'crypto-exchanges', 'partners', 'buy-stocks-ukraine', 'calculators', 'investors', 'watchlist', 'read', 'deposits-ukraine'}
-RESERVED |= {v[0] for v in MKTS.values()} | {'world-assets', 'activities', 'editorial-policy', 'about', 'portfolios'}
+RESERVED |= {v[0] for v in MKTS.values()} | {'world-assets', 'activities', 'editorial-policy', 'about', 'portfolios', 'privacy', 'terms'}
 # asset ids that clash with a language folder or a section get a suffix (ko -> ko-stock, fil -> fil-crypto)
 _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
 # delisted or stale series (last price older than a month) are dropped: "today" numbers would be false
@@ -224,6 +224,8 @@ def has_page(lang, aid):
         return xc_has(lang, None if aid in ('crypto-exchanges', 'crypto-exchanges/derivatives') else aid.split('/', 1)[1])
     if aid == 'editorial-policy':
         return lang in POLICY
+    if aid in ('privacy', 'terms'):
+        return lang in LEGAL[aid]
     if aid == 'guide':
         return lang in GUIDE
     if aid in CSLUG:
@@ -534,7 +536,7 @@ def footer_cols(lang):
     mk += [(url(lang, sl), CTRY[lang][3][m][0]) for m, (sl, fl) in sorted(MKTS.items(), key=lambda kv: (MKT_LANG.get(kv[0]) != lang, kv[0] != 'ua')) if has_page(lang, sl)][:5]
     tools = [(url(lang, k), v) for k, v in [x for x in tools_menu(lang) if x]]
     ins = [(url(lang if lang in GUIDE else 'en', 'guide'), guide_meta(lang).get('nav', 'Guide')), (url(lang, 'news'), n['n_nav']), (url(blog_l, 'blog'), n['i_nav']), (url(blog_l, 'blog') + 'rss.xml', 'RSS'),
-           (url(lang, 'activities'), ACT[lang]['nav']), (url(lang, 'exchanges'), EX[lang]['nav']), (url(lang if lang in ABOUT else 'en', 'about'), n['about']), (pol_url(lang), ACT[lang]['pol']),
+           (url(lang, 'activities'), ACT[lang]['nav']), (url(lang, 'exchanges'), EX[lang]['nav']), (url(lang if lang in ABOUT else 'en', 'about'), n['about']), (pol_url(lang), ACT[lang]['pol']), (legal_url(lang, 'privacy'), LEGAL['privacy'].get(lang, LEGAL['privacy']['en'])['nav']), (legal_url(lang, 'terms'), LEGAL['terms'].get(lang, LEGAL['terms']['en'])['nav']),
            (url(lang if lang in PARTNER_TXT else 'en', 'partners'), PARTNER_NAV[lang])]
     cols = [(f[0], pop), (f[1], mk), (TR[lang]['x']['nav_tools'], tools), (n['i_nav'], ins)]
     if SOCIAL:
@@ -2422,7 +2424,7 @@ def investor_page(lang, fid, ver):
 
 
 # ---------------- Telegram price alerts ----------------
-GOOGLE_CLIENT_ID = ''   # public OAuth client id from Google Cloud (also Vercel env GOOGLE_CLIENT_ID): shows «Sign in with Google» on /me/
+GOOGLE_CLIENT_ID = '930815987991-42dlv5pn1onokham9bcq0dqbo4pstpc3.apps.googleusercontent.com'   # public OAuth client id from Google Cloud (also Vercel env GOOGLE_CLIENT_ID): shows «Sign in with Google» on /me/
 AUTH_EMAIL = False   # True once Vercel env BREVO_KEY (+ AUTH_FROM) is set: shows «sign in by e-mail» on /me/ (api/_auth.js)
 TG_BOT = 'WhatIfStack_bot'   # bot username without @ (set when the owner creates it in @BotFather); empty = no alert button
 
@@ -4109,6 +4111,17 @@ def load_guides(sub='guide'):
 
 GUIDE = load_guides()
 POLICY = load_guides('policy')   # editorial policy: content/policy/<lang>.md
+LEGAL = {'privacy': load_guides('privacy'), 'terms': load_guides('terms')}   # content/privacy|terms/<lang>.md (en, uk; other languages link to English)
+
+
+def legal_url(lang, kind):
+    return url(lang if lang in LEGAL[kind] else 'en', kind)
+
+
+def legal_page(lang, kind, ver):
+    g = LEGAL[kind][lang]
+    body = f'<article class="art guide"><h1>{esc(g["title"])}</h1><p class="lead">{esc(g["description"])}</p><div class="artbody">{md(g["body"], lang)}</div></article>'
+    return shell(lang, kind, f'{g["title"]} | {BRAND}', g['description'], body, {}, ver)
 
 
 def pol_url(lang):
@@ -4688,6 +4701,10 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
         if lang in POLICY:
             write(pre + 'editorial-policy/index.html', policy_page(lang, ver))
             extra_pages.append('editorial-policy')
+        for kind in ('privacy', 'terms'):
+            if lang in LEGAL[kind]:
+                write(pre + kind + '/index.html', legal_page(lang, kind, ver))
+                extra_pages.append(kind)
         if lang in GUIDE:
             write(pre + 'guide/index.html', guide_page(lang, ver))
             extra_pages.append('guide')
