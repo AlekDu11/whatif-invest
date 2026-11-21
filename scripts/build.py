@@ -52,7 +52,7 @@ from i18n_nl import NL  # noqa: E402
 from i18n_tgj import TGJ  # noqa: E402
 from i18n_my import MY, BR  # noqa: E402
 from i18n_ch import CH  # noqa: E402
-from i18n_inv import INV  # noqa: E402
+from i18n_inv import INV, INV2, INV_BIO  # noqa: E402
 from i18n_mkt import MKT, LEAD as MLEAD, FG as MFG, CALC as MCALC  # noqa: E402
 from i18n_st import ST as STX  # noqa: E402
 from i18n_xc2 import XC2  # noqa: E402
@@ -2569,18 +2569,33 @@ def _inv_name(row, lang):
     return f'<span class="asset"><span class="ic" style="background:hsl({hue(tk or issuer)} 45% 45%)">{esc((tk or issuer)[:2])}</span><span><span class="nm">{esc(issuer.title())}</span><span class="tk">{esc(tk)}</span></span></span>'
 
 
+def inv_y1(d):
+    """Weighted 12-month price change of the fund's current holdings that we have prices for (not the fund's own return)."""
+    num = den = 0.0
+    for r in d.get('top') or []:
+        a = tk2aid(r[0])
+        if not a or len(A[a]['p']) < 13 or not A[a]['p'][-13]:
+            continue
+        num += r[3] * (A[a]['p'][-1] / A[a]['p'][-13] - 1)
+        den += r[3]
+    return num / den if den >= 0.3 else None
+
+
 def investors_page(lang, ver):
     t = INV[lang]
     rows = ''
     for k, fid in enumerate(inv_order()):
         d = INVD[fid]
         top = d['top'][0] if d.get('top') else None
+        logos = ''.join(icon(A[a]) for a in [x for x in (tk2aid(r[0]) for r in d['top'][:6]) if x][:3])
+        y1 = inv_y1(d)
         rows += (f'<tr><td class="l n">{k + 1}</td><td class="l"><a class="asset" href="{url(lang, "investors/" + fid)}"><span class="ic" style="background:hsl({hue(fid)} 50% 42%)">{esc("".join(w[0] for w in d["name"].split()[:2]))}</span>'
-                 f'<span><span class="nm">{esc(d["name"])}</span><span class="tk">{esc(d["fund"])}</span></span></a></td><td class="num"><b>{usd_h(d["value"])}</b></td>'
+                 f'<span><span class="nm">{esc(d["name"])}</span><span class="tk">{esc(d["fund"])}</span></span></a><span class="invlogos hide-sm">{logos}</span></td><td class="num"><b>{usd_h(d["value"])}</b></td>'
+                 f'<td class="num hide-sm {cls(y1 or 0)}">{pct(y1) if y1 is not None else "—"}</td>'
                  f'<td class="num hide-sm">{d["n"]}</td><td class="l hide-sm">{esc(top[0] or top[1].title()) if top else "—"} <span class="muted">{pctu(top[3]) if top else ""}</span></td>'
                  f'<td class="hide-sm">{esc(_qlabel(d.get("period"), lang))}</td></tr>')
     body = (f'<h1>{esc(t["h1"])}</h1><p class="lead">{esc(t["lead"])}</p><section class="section"><div class="tw"><table class="mt"><thead><tr><th class="l n">#</th>'
-            f'<th class="l">{esc(t["c_inv"])}</th><th>{esc(t["c_val"])}</th><th class="hide-sm">{esc(t["c_n"])}</th><th class="l hide-sm">{esc(t["c_top"])}</th><th class="hide-sm">{esc(t["c_per"])}</th></tr></thead>'
+            f'<th class="l">{esc(t["c_inv"])}</th><th>{esc(t["c_val"])}</th><th class="hide-sm" title="{esc(INV2[lang]["y1n"])}">{esc(INV2[lang]["y1"])}</th><th class="hide-sm">{esc(t["c_n"])}</th><th class="l hide-sm">{esc(t["c_top"])}</th><th class="hide-sm">{esc(t["c_per"])}</th></tr></thead>'
             f'<tbody>{rows}</tbody></table></div><p class="note">{esc(t["note"])}</p></section>')
     ld = {"@context": "https://schema.org", "@type": "ItemList", "name": t['h1'],
           "itemListElement": [{"@type": "ListItem", "position": k + 1, "name": INVD[f]['name'], "url": SITE + url(lang, 'investors/' + f)} for k, f in enumerate(inv_order())]}
@@ -2600,11 +2615,17 @@ def investor_page(lang, fid, ver):
                  f'<td class="num">{usd_h(r[2])}</td><td class="num hide-sm">{_num(r[4], 0)}</td><td class="num">{ch}</td></tr>')
     sold = ''.join(f'<tr><td class="l">{_inv_name(r, lang)}</td><td class="num muted">{usd_h(r[2])}</td></tr>' for r in d.get('sold') or [])
     w10 = sum(r[3] for r in d['top'][:10])
+    y1 = inv_y1(d)
+    bio = (INV_BIO.get(fid) or (None, None, None))[{'en': 0, 'uk': 1, 'ru': 2}[lang]] if lang in ('en', 'uk', 'ru') else None
+    fids = [a for a in dict.fromkeys(tk2aid(r[0]) for r in d['top'][:20]) if a]
     others = ''.join(f'<a class="chip" href="{url(lang, "investors/" + o)}">{esc(INVD[o]["name"])}</a>' for o in inv_order() if o != fid)
     body = (f'<nav class="crumbs"><a href="{url(lang, "investors")}">{esc(t["nav"])}</a> / {esc(d["name"])}</nav><h1>{esc(t["p_h1"].format(**f))}</h1>'
             f'<p class="lead">{esc(t["p_lead"].format(**f))}</p>'
             f'<div class="ktiles obtiles smtiles"><div class="ks"><span>{esc(t["c_val"])}</span><b>{usd_h(d["value"])}</b></div><div class="ks"><span>{esc(t["c_n"])}</span><b>{d["n"]}</b></div>'
-            f'<div class="ks"><span>{esc(t["c_per"])}</span><b>{esc(q)}</b></div><div class="ks"><span>Top 10</span><b>{pctu(w10)}</b></div></div>'
+            f'<div class="ks"><span>{esc(t["c_per"])}</span><b>{esc(q)}</b></div><div class="ks"><span>Top 10</span><b>{pctu(w10)}</b></div>'
+            + (f'<div class="ks" title="{esc(INV2[lang]["y1n"])}"><span>{esc(INV2[lang]["y1"])}</span><b class="{cls(y1)}">{pct(y1)}</b></div>' if y1 is not None else '') + '</div>'
+            + (f'<section class="card invbio"><h2>👤 {esc(INV2[lang]["about"])}</h2><p>{esc(bio)}</p></section>' if bio else '')
+            + f'<p><button type="button" class="btn" id="invfollow" data-n="{esc(d["name"])}" data-ids="{esc(",".join(fids))}" data-cfg="{esc(json.dumps(dict(done=INV2[lang]["done"], open=INV2[lang]["open"], u=url(lang, "watchlist")), ensure_ascii=False))}">{esc(INV2[lang]["follow"])}</button></p>'
             f'<section class="section"><h2>{esc(t["top10"].format(w=pctu(w10)))}</h2><div class="tw"><table class="mt"><thead><tr><th class="l n">#</th><th class="l">{esc(t["c_stock"])}</th>'
             f'<th>{esc(t["c_w"])}</th><th>{esc(t["c_val"])}</th><th class="hide-sm">{esc(t["c_sh"])}</th><th>{esc(t["c_chg"])}</th></tr></thead><tbody>{rows}</tbody></table></div>'
             + (f'<button type="button" class="seasmore" onclick="this.previousElementSibling.querySelectorAll(\'.inv-more\').forEach(r=>r.hidden=false);this.remove()">▾ {len(d["top"])}</button>' if len(d['top']) > 10 else '') + '</section>'

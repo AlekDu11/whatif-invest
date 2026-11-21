@@ -66,3 +66,46 @@ _V = {
 INV = {lg: dict(zip(_K, v)) for lg, v in _V.items()}
 for _lg, _v in _V.items():
     assert len(_v) == len(_K), _lg
+
+# v2 (owner 2026-11-21): follow a portfolio (adds its stocks as a watchlist), 1-year change of the current holdings, «who is it»
+INV2 = {l: dict(zip('follow done open y1 y1n about'.split(), v)) for l, v in {
+    'en': ('★ Follow this portfolio', 'Added as the watchlist «{n}»', 'Open watchlist', 'Current holdings, 1 year', 'price change of today’s holdings over the last 12 months, weighted by size', 'Who is it'),
+    'uk': ('★ Стежити за портфелем', 'Додано як список стеження «{n}»', 'Відкрити список', 'Поточні акції за рік', 'зміна ціни нинішніх акцій портфеля за 12 місяців, з урахуванням їхньої частки', 'Хто це'),
+    'ru': ('★ Следить за портфелем', 'Добавлено как список отслеживания «{n}»', 'Открыть список', 'Текущие акции за год', 'изменение цены нынешних акций портфеля за 12 месяцев с учётом их доли', 'Кто это'),
+    'es': ('★ Seguir esta cartera', 'Añadida como lista «{n}»', 'Abrir lista', 'Posiciones actuales, 1 año', 'cambio de precio de las posiciones actuales en 12 meses, ponderado por peso', 'Quién es'),
+    'pt': ('★ Seguir esta carteira', 'Adicionada como lista «{n}»', 'Abrir lista', 'Posições atuais, 1 ano', 'variação de preço das posições atuais em 12 meses, ponderada pelo peso', 'Quem é'),
+    'de': ('★ Portfolio folgen', 'Als Watchlist «{n}» hinzugefügt', 'Watchlist öffnen', 'Aktuelle Positionen, 1 Jahr', 'Kursveränderung der heutigen Positionen über 12 Monate, nach Gewicht', 'Wer ist das'),
+    'fr': ('★ Suivre ce portefeuille', 'Ajouté comme liste «{n}»', 'Ouvrir la liste', 'Positions actuelles, 1 an', 'variation de cours des positions actuelles sur 12 mois, pondérée', 'Qui est-ce'),
+    'it': ('★ Segui questo portafoglio', 'Aggiunto come lista «{n}»', 'Apri la lista', 'Posizioni attuali, 1 anno', 'variazione di prezzo delle posizioni attuali in 12 mesi, ponderata', 'Chi è'),
+    'pl': ('★ Obserwuj ten portfel', 'Dodano jako listę «{n}»', 'Otwórz listę', 'Obecne pozycje, 1 rok', 'zmiana ceny obecnych pozycji w 12 miesięcy, ważona udziałem', 'Kto to jest'),
+    'tr': ('★ Bu portföyü takip et', '«{n}» listesi olarak eklendi', 'Listeyi aç', 'Mevcut pozisyonlar, 1 yıl', 'bugünkü pozisyonların 12 aylık fiyat değişimi, ağırlıklı', 'Kim bu'),
+    'nl': ('★ Volg deze portefeuille', 'Toegevoegd als lijst «{n}»', 'Lijst openen', 'Huidige posities, 1 jaar', 'koersverandering van de huidige posities over 12 maanden, gewogen', 'Wie is het'),
+    'id': ('★ Ikuti portofolio ini', 'Ditambahkan sebagai daftar «{n}»', 'Buka daftar', 'Kepemilikan saat ini, 1 tahun', 'perubahan harga kepemilikan saat ini dalam 12 bulan, berbobot', 'Siapa dia'),
+    'vi': ('★ Theo dõi danh mục này', 'Đã thêm thành danh sách «{n}»', 'Mở danh sách', 'Cổ phiếu hiện tại, 1 năm', 'biến động giá của các cổ phiếu hiện tại trong 12 tháng, theo tỷ trọng', 'Đây là ai'),
+    'th': ('★ ติดตามพอร์ตนี้', 'เพิ่มเป็นรายการ «{n}» แล้ว', 'เปิดรายการ', 'หุ้นที่ถืออยู่ 1 ปี', 'การเปลี่ยนแปลงราคาของหุ้นที่ถืออยู่ใน 12 เดือน ถ่วงตามสัดส่วน', 'เขาคือใคร'),
+    'hi': ('★ इस पोर्टफ़ोलियो को फ़ॉलो करें', 'वॉचलिस्ट «{n}» के रूप में जोड़ा गया', 'वॉचलिस्ट खोलें', 'मौजूदा होल्डिंग्स, 1 साल', 'आज की होल्डिंग्स का 12 महीने का भाव बदलाव, हिस्से के अनुसार', 'यह कौन हैं'),
+    'ja': ('★ このポートフォリオをフォロー', 'ウォッチリスト「{n}」として追加しました', 'リストを開く', '現在の保有銘柄（1年）', '現在の保有銘柄の過去12か月の値動き（比率で加重）', 'どんな人？'),
+    'ko': ('★ 이 포트폴리오 팔로우', '관심 목록 «{n}»으로 추가했어요', '목록 열기', '현재 보유 종목, 1년', '현재 보유 종목의 12개월 가격 변동(비중 가중)', '누구인가요'),
+    'zh': ('★ 关注这个组合', '已添加为自选列表「{n}」', '打开列表', '当前持仓，1 年', '当前持仓过去 12 个月的价格变化（按权重）', '他是谁'),
+    'ar': ('★ تابع هذه المحفظة', 'أُضيفت كقائمة «{n}»', 'افتح القائمة', 'المراكز الحالية، سنة', 'تغير سعر المراكز الحالية خلال 12 شهرًا، مرجّحًا بالحصة', 'من هو'),
+    'fil': ('★ Sundan ang portfolio na ito', 'Idinagdag bilang listahang «{n}»', 'Buksan ang listahan', 'Kasalukuyang hawak, 1 taon', 'galaw ng presyo ng mga hawak ngayon sa 12 buwan, ayon sa bigat', 'Sino siya'),
+}.items()}
+
+# «who is it» in plain words (en, uk, ru); other languages use the data sentence only
+INV_BIO = {
+ 'buffett': ('The best-known investor alive: since 1965 he has turned Berkshire Hathaway from a textile mill into a giant that owns insurers, railroads and big stakes in companies like Apple and Coca-Cola. He buys businesses he understands and holds them for decades.',
+             'Найвідоміший живий інвестор: з 1965 року перетворив текстильну фабрику Berkshire Hathaway на гіганта зі страховими компаніями, залізницями та великими частками в Apple і Coca-Cola. Купує зрозумілий бізнес і тримає його десятиліттями.',
+             'Самый известный из ныне живущих инвесторов: с 1965 года превратил текстильную фабрику Berkshire Hathaway в гиганта со страховыми компаниями, железными дорогами и крупными долями в Apple и Coca-Cola. Покупает понятный бизнес и держит его десятилетиями.'),
+ 'ackman': ('Bill Ackman runs Pershing Square: a small number of large, concentrated bets on quality companies, often with a push for changes at the top. Known for loud public campaigns and a big 2020 hedge that paid off in the market crash.',
+            'Білл Екман керує Pershing Square: кілька великих концентрованих ставок на якісні компанії, часто з тиском на керівництво. Відомий гучними публічними кампаніями й великим хеджем 2020 року, який спрацював під час обвалу.',
+            'Билл Экман управляет Pershing Square: несколько крупных концентрированных ставок на качественные компании, часто с давлением на руководство. Известен громкими публичными кампаниями и крупным хеджем 2020 года, сработавшим во время обвала.'),
+ 'burry': ('Michael Burry of Scion Asset Management became famous for betting against the US housing market before 2008 (the «Big Short»). He hunts for unloved, cheap stocks and often changes his portfolio sharply from quarter to quarter.',
+           'Майкл Беррі (Scion Asset Management) прославився ставкою проти ринку житла США до 2008 року («Гра на пониження»). Шукає недооцінені акції, які всі ігнорують, і часто різко змінює портфель від кварталу до кварталу.',
+           'Майкл Бьюрри (Scion Asset Management) прославился ставкой против рынка жилья США до 2008 года («Игра на понижение»). Ищет недооценённые акции, которые все игнорируют, и часто резко меняет портфель от квартала к кварталу.'),
+ 'dalio': ('Ray Dalio founded Bridgewater Associates, one of the world’s largest hedge funds. Its US stock filing shows a very broad, diversified mix — the fund thinks in terms of economic cycles and balance across assets.',
+           'Рей Даліо заснував Bridgewater Associates — один із найбільших хедж-фондів світу. У звіті по акціях США дуже широкий, диверсифікований набір: фонд мислить економічними циклами й балансом між активами.',
+           'Рэй Далио основал Bridgewater Associates — один из крупнейших хедж-фондов мира. В отчёте по акциям США очень широкий, диверсифицированный набор: фонд мыслит экономическими циклами и балансом между активами.'),
+ 'wood': ('Cathie Wood runs ARK Invest, which bets on «disruptive innovation»: Tesla, genomics, AI, fintech and crypto-related companies. Her funds swing much more than the market — huge gains in 2020, deep losses after.',
+          'Кеті Вуд керує ARK Invest, яка ставить на «проривні інновації»: Tesla, геноміку, ШІ, фінтех і крипто-компанії. Її фонди коливаються значно сильніше за ринок — величезний ріст у 2020-му й глибокі падіння потім.',
+          'Кэти Вуд управляет ARK Invest, которая ставит на «прорывные инновации»: Tesla, геномику, ИИ, финтех и криптокомпании. Её фонды колеблются намного сильнее рынка — огромный рост в 2020-м и глубокие падения потом.'),
+}

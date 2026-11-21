@@ -549,6 +549,7 @@ const WLS={ rd(){ let S=null; try{ S=JSON.parse(localStorage.getItem('wi_wls')||
     if(!S.list[S.cur]) S.cur=0; return S },
   wr(S){ try{ localStorage.setItem('wi_wls',JSON.stringify(S)); localStorage.setItem('wi_watch',JSON.stringify(S.list[S.cur].ids)) }catch(e){} document.dispatchEvent(new Event('wi:watch')) } };
 const WL={ get(){ const S=WLS.rd(); return S.list[S.cur].ids.slice() }, set(v){ const S=WLS.rd(); S.list[S.cur].ids=v; WLS.wr(S) } };
+window.WLS=WLS;
 const PFS=(function(){
   const rd=k=>{ try{ return JSON.parse(localStorage.getItem(k)||'null') }catch(e){ return null } };
   function calc(p){ const by={}; let realized=0, invested=0;
@@ -1641,4 +1642,12 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
     if(s.id==='glper') per=b.dataset.k; else min=+b.dataset.m; if(D) draw(); else load() });
   function load(){ fetch(`${(window.PAGE||{}).base||''}/api/quote?gl=1`).then(r=>r.ok?r.json():null).then(j=>{ if(j&&j.c){ D=j; draw() } }).catch(()=>{}) }
   load(); setInterval(()=>{ if(!document.hidden) load() },300000);
+})();
+
+/* ---------- /investors/<id>/: «Follow this portfolio» → its stocks become a watchlist named after the investor ---------- */
+(function(){ const b=document.getElementById('invfollow'), WLS=window.WLS, esc=(window.WIX||{}).esc||(x=>x); if(!b||!WLS) return; let C={}; try{ C=JSON.parse(b.dataset.cfg) }catch(e){}
+  b.onclick=()=>{ const ids=(b.dataset.ids||'').split(',').filter(Boolean), n=b.dataset.n; const S=WLS.rd();
+    let k=S.list.findIndex(w=>w.n===n); if(k<0){ S.list.push({n,ids:[]}); k=S.list.length-1 }
+    ids.forEach(i=>{ if(!S.list[k].ids.includes(i)) S.list[k].ids.push(i) }); S.cur=k; WLS.wr(S);
+    b.outerHTML=`<span class="pill up">✓ ${esc((C.done||'').replace('{n}',n))}</span> <a class="btn ghost sm" href="${C.u}">${esc(C.open||'')} →</a>` };
 })();
