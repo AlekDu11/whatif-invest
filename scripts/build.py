@@ -24,7 +24,7 @@ from i18n_ai import AI as AIS  # noqa: E402
 from i18n_me import ME  # noqa: E402
 from i18n_mem import MEM  # noqa: E402
 from i18n_acc import ACC, ACC2  # noqa: E402
-from i18n_tags import CATS, TG, VS, VS_PAIRS  # noqa: E402
+from i18n_tags import CATS, TG, VS, VS_PAIRS, EMB2  # noqa: E402
 from i18n_mem2 import MEM2  # noqa: E402
 for _lg in MEM:
     MEM[_lg].update(MEM2.get(_lg, MEM2['en']))
@@ -71,7 +71,8 @@ BASE = ''
 SITE = 'https://whatifstack.com'
 BRAND = 'WhatIfStack'
 AMOUNT = 10
-TOP_N = 1000           # asset pages in languages outside FULL — step 1 towards every asset in every language (1 deploy/day frees storage); next steps after checking Vercel Deployment Storage
+TOP_N = 300            # 2026-11-21: 1000 → 300 (smaller deploys; the rest is rendered on demand by api/page.py).
+# asset pages in languages outside FULL — step 1 towards every asset in every language (1 deploy/day frees storage); next steps after checking Vercel Deployment Storage
 
 market = json.load(open(os.path.join(ROOT, 'data/market.json'), encoding='utf-8'))
 pinned = json.load(open(os.path.join(ROOT, 'data/assets.json'), encoding='utf-8'))
@@ -625,6 +626,48 @@ fetch('/assets/p/'+id+'.json').then(r=>r.json()).then(P=>{
 </script></body></html>"""
 
 
+def embed_price_page():
+    """/embed/price/?a=btc,eth,sol,gold&l=uk&th=light|dark|auto — live price table for other sites (Binance REST + WebSocket for coins,
+    last stored price otherwise). The backlink sits under the iframe in the copied code (an iframe's own link passes no SEO value)."""
+    L = {lg: dict(anchor=EMB2[lg]['anchor'], upd=EMB2[lg]['upd'], intl=TR[lg]['intl'], dir=TR[lg]['dir'], pre='' if lg == DEFAULT else '/' + lg) for lg in ORDER}
+    return """<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex"><title>WhatIfStack live prices</title><style>
+:root{--bg:#fff;--tx:#10231b;--mu:#5d6f67;--ln:#e3ebe7;--ac:#0b7a55;--gd:#0f8a4e;--bd:#c8463d}
+.dark{--bg:#0f1a16;--tx:#e8f1ed;--mu:#93a49c;--ln:#22332c;--ac:#3fd19b;--gd:#3fd19b;--bd:#ff7a6e}
+*{box-sizing:border-box}html,body{margin:0;background:transparent}body{font:14px/1.35 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:var(--tx)}
+.w{background:var(--bg);border:1px solid var(--ln);border-radius:14px;padding:6px 14px 8px;max-width:520px}
+a.r{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--ln);color:inherit;text-decoration:none}a.r:hover b{color:var(--ac)}
+.r img{width:22px;height:22px;border-radius:50%}.r b{flex:1}.r small{color:var(--mu);font-weight:600;margin-left:6px}.p{font-variant-numeric:tabular-nums;font-weight:700}
+.c{min-width:64px;text-align:right;font-weight:700;font-variant-numeric:tabular-nums}.up{color:var(--gd)}.dn{color:var(--bd)}
+.f{display:flex;justify-content:space-between;padding-top:6px;font-size:12px;color:var(--mu)}.f a{color:var(--ac);font-weight:700;text-decoration:none}
+.lv{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--gd);margin-right:5px;vertical-align:middle}
+</style></head><body><div class="w" id="w">…</div><script>
+const L=""" + json.dumps(L, ensure_ascii=False, separators=(',', ':')) + r""";
+const Q=new URLSearchParams(location.search),lg=L[Q.get('l')]?Q.get('l'):'en',T=L[lg],th=Q.get('th')||'light';
+if(th==='dark'||(th==='auto'&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.className='dark';
+document.documentElement.lang=lg;document.documentElement.dir=T.dir;
+const ids=(Q.get('a')||'btc,eth,sol,gold').toLowerCase().split(',').map(s=>s.replace(/[^a-z0-9-]/g,'')).filter(Boolean).slice(0,8);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fp=v=>{const d=v>=1?2:v>=0.01?4:8;try{return new Intl.NumberFormat(T.intl,{style:'currency',currency:'USD',currencyDisplay:'narrowSymbol',minimumFractionDigits:v>=1?2:0,maximumFractionDigits:d}).format(v)}catch(e){return '$'+v}};
+const fc=c=>c==null?'':(c>=0?'+':'−')+Math.abs(c*100).toFixed(2)+'%';
+Promise.all(ids.map(i=>fetch('/assets/p/'+i+'.json').then(r=>r.ok?r.json():null).catch(()=>null))).then(P=>{
+  const rows=ids.map((i,k)=>P[k]&&{i,n:P[k].n,t:P[k].t,p:P[k].p[P[k].p.length-1],c:null}).filter(Boolean);
+  const draw=()=>{document.getElementById('w').innerHTML=rows.map(r=>`<a class="r" target="_blank" rel="noopener" href="https://whatifstack.com${T.pre}/${r.i}/?utm_source=embed&utm_medium=price"><img src="/assets/logo/${r.i}.webp" alt="" onerror="this.style.visibility='hidden'"><b>${esc(r.n)}<small>${esc(r.t)}</small></b><span class="p" id="p-${r.i}">${fp(r.p)}</span><span class="c ${r.c==null?'':r.c>=0?'up':'dn'}" id="c-${r.i}">${fc(r.c)}</span></a>`).join('')
+    +`<div class="f"><span><i class="lv"></i>${esc(T.upd)}</span><a href="https://whatifstack.com${T.pre}/" target="_blank" rel="noopener">WhatIfStack</a></div>`};
+  draw();
+  const set=(r,p,c)=>{r.p=p;if(c!=null)r.c=c;const a=document.getElementById('p-'+r.i),b=document.getElementById('c-'+r.i);if(a)a.textContent=fp(p);if(b){b.textContent=fc(r.c);b.className='c '+(r.c>=0?'up':'dn')}};
+  const sym={};rows.forEach(r=>{if(/^[A-Z0-9]{2,10}$/.test(r.t))sym[r.t+'USDT']=r});
+  const S=Object.keys(sym);if(!S.length)return;
+  fetch('https://data-api.binance.vision/api/v3/ticker/24hr?symbols='+encodeURIComponent(JSON.stringify(S))).then(r=>r.ok?r.json():[]).then(d=>{
+    const ok=[];(Array.isArray(d)?d:[]).forEach(x=>{const r=sym[x.symbol];if(r&&+x.lastPrice>0){set(r,+x.lastPrice,+x.priceChangePercent/100);ok.push(x.symbol.toLowerCase()+'@miniTicker')}});
+    if(!ok.length||!('WebSocket' in window))return;
+    const ws=new WebSocket('wss://data-stream.binance.vision/stream?streams='+ok.join('/'));
+    ws.onmessage=e=>{let m;try{m=JSON.parse(e.data).data}catch(x){return}const r=m&&sym[m.s];if(r&&+m.c>0)set(r,+m.c,+m.o>0?m.c/m.o-1:null)};
+  }).catch(()=>{});
+});
+</script></body></html>"""
+
+
 def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
     og_img = SITE + (cfg.pop('_og', None) or (f'/assets/og/{lang}.jpg' if lang in OG_LANGS else '/assets/og/en.jpg'))
     sec = cfg.pop('_sec', None) or p   # section to highlight in the nav
@@ -777,6 +820,8 @@ def widgets_page(lang, ver):
     e = EMB[lang]
     body = (f'<h1>{esc(e["h1"])}</h1><p class="lead">{esc(e["d"])}</p>'
             f'<section class="card section"><div class="embuild" data-cfg="{esc(json.dumps(emb_cfg(lang, "btc") | dict(pickable=1), ensure_ascii=False))}"></div></section>'
+            f'<section class="card section"><h2>📈 {esc(EMB2[lang]["h"])}</h2><p class="muted">{esc(EMB2[lang]["d"])}</p>'
+            f'<div class="embprice" data-cfg="{esc(json.dumps(dict(l=lang, pick=EMB2[lang]["pick"], anchor=EMB2[lang]["anchor"], theme=e["theme"], light=e["light"], dark=e["dark"], auto=e["auto"], copy=TR[lang]["ui"]["copy"], copied=TR[lang]["ui"]["copied"], help=e["help"]), ensure_ascii=False))}"></div></section>'
             f'<section class="card section"><h2>{esc(e["how"])}</h2><p>{esc(e["help"])}</p><p class="muted">{esc(e["why"])}</p></section>')
     return shell(lang, 'widgets', f'{e["h1"]} | {BRAND}', e['d'], body, {}, ver)
 
@@ -4707,6 +4752,8 @@ def main():
         shutil.copytree(os.path.join(ROOT, 'content', 'video'), os.path.join(OUT, 'assets', 'video'), dirs_exist_ok=True)
     os.makedirs(os.path.join(DIST, 'embed'), exist_ok=True)
     open(os.path.join(DIST, 'embed', 'index.html'), 'w', encoding='utf-8').write(embed_page())
+    os.makedirs(os.path.join(DIST, 'embed', 'price'), exist_ok=True)
+    open(os.path.join(DIST, 'embed', 'price', 'index.html'), 'w', encoding='utf-8').write(embed_price_page())
     shutil.copytree(os.path.join(ROOT, 'src', 'vendor'), os.path.join(OUT, 'assets', 'vendor'), dirs_exist_ok=True)   # Lightweight Charts (Apache-2.0, TradingView)
     shutil.copytree(os.path.join(ROOT, 'social', 'launch'), os.path.join(OUT, 'assets', 'press'), ignore=shutil.ignore_patterns('*.md'))   # press kit images   # hands covers to the X composer
     if os.path.isdir(os.path.join(ROOT, 'content', 'covers')):

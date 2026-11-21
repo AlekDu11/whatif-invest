@@ -103,3 +103,27 @@ VS_PAIRS = [('btc', 'eth'), ('btc', 'gold'), ('btc', 'sol'), ('eth', 'sol'), ('b
             ('spy', 'qqq'), ('voo', 'spy'), ('voo', 'qqq'), ('ivv', 'voo'), ('nvda', 'amd'), ('nvda', 'intc'), ('aapl', 'msft'),
             ('msft', 'googl'), ('amzn', 'wmt'), ('tsla', 'byd'), ('meta', 'googl'), ('nvda', 'tsm'), ('ko-stock', 'pep'), ('v', 'ma'),
             ('btc', 'nvda'), ('btc', 'mstr')]
+
+# live price ticker widget (/embed/price/): heading, help, anchor text of the backlink under the iframe, field label, «24h»
+EMB2 = {l: dict(zip('h d anchor pick upd'.split(), v)) for l, v in {
+    'en': ('Live price widget', 'A small table of live prices that updates every second. Pick up to 8 coins, stocks or gold.', 'Live crypto prices — WhatIfStack', 'Assets (comma-separated tickers)', 'live'),
+    'uk': ('Віджет живих цін', 'Невелика таблиця цін, що оновлюється щосекунди. Вибери до 8 монет, акцій чи золото.', 'Ціни криптовалют наживо — WhatIfStack', 'Активи (тікери через кому)', 'наживо'),
+    'ru': ('Виджет живых цен', 'Небольшая таблица цен, которая обновляется каждую секунду. Выбери до 8 монет, акций или золото.', 'Цены криптовалют онлайн — WhatIfStack', 'Активы (тикеры через запятую)', 'онлайн'),
+    'es': ('Widget de precios en vivo', 'Una pequeña tabla de precios que se actualiza cada segundo. Elige hasta 8 monedas, acciones u oro.', 'Precios de criptomonedas en vivo — WhatIfStack', 'Activos (tickers separados por comas)', 'en vivo'),
+    'pt': ('Widget de preços ao vivo', 'Uma pequena tabela de preços que atualiza a cada segundo. Escolha até 8 moedas, ações ou ouro.', 'Preços de criptomoedas ao vivo — WhatIfStack', 'Ativos (tickers separados por vírgula)', 'ao vivo'),
+    'de': ('Live-Kurs-Widget', 'Eine kleine Kurstabelle, die sich jede Sekunde aktualisiert. Bis zu 8 Coins, Aktien oder Gold wählen.', 'Kryptokurse live — WhatIfStack', 'Werte (Ticker, durch Komma getrennt)', 'live'),
+    'fr': ('Widget de cours en direct', 'Un petit tableau de cours mis à jour chaque seconde. Choisissez jusqu’à 8 cryptos, actions ou l’or.', 'Cours des cryptos en direct — WhatIfStack', 'Actifs (tickers séparés par des virgules)', 'direct'),
+    'it': ('Widget prezzi in tempo reale', 'Una piccola tabella di prezzi aggiornata ogni secondo. Scegli fino a 8 monete, azioni o l’oro.', 'Prezzi crypto in tempo reale — WhatIfStack', 'Asset (ticker separati da virgola)', 'live'),
+    'pl': ('Widżet cen na żywo', 'Mała tabela cen odświeżana co sekundę. Wybierz do 8 kryptowalut, akcji lub złoto.', 'Ceny kryptowalut na żywo — WhatIfStack', 'Aktywa (tickery po przecinku)', 'na żywo'),
+    'tr': ('Canlı fiyat widget’ı', 'Her saniye güncellenen küçük bir fiyat tablosu. En fazla 8 coin, hisse ya da altın seç.', 'Canlı kripto fiyatları — WhatIfStack', 'Varlıklar (virgülle ayrılmış semboller)', 'canlı'),
+    'nl': ('Widget met live koersen', 'Een kleine koerstabel die elke seconde ververst. Kies tot 8 munten, aandelen of goud.', 'Live cryptokoersen — WhatIfStack', 'Activa (tickers, gescheiden door komma’s)', 'live'),
+    'id': ('Widget harga langsung', 'Tabel harga kecil yang diperbarui setiap detik. Pilih hingga 8 koin, saham, atau emas.', 'Harga kripto langsung — WhatIfStack', 'Aset (ticker dipisah koma)', 'langsung'),
+    'vi': ('Widget giá trực tiếp', 'Bảng giá nhỏ cập nhật mỗi giây. Chọn tối đa 8 coin, cổ phiếu hoặc vàng.', 'Giá tiền mã hóa trực tiếp — WhatIfStack', 'Tài sản (mã, cách nhau bằng dấu phẩy)', 'trực tiếp'),
+    'th': ('วิดเจ็ตราคาสด', 'ตารางราคาขนาดเล็กที่อัปเดตทุกวินาที เลือกได้สูงสุด 8 เหรียญ หุ้น หรือทองคำ', 'ราคาคริปโตสด — WhatIfStack', 'สินทรัพย์ (ตัวย่อ คั่นด้วยจุลภาค)', 'สด'),
+    'hi': ('लाइव प्राइस विजेट', 'हर सेकंड अपडेट होने वाली छोटी कीमत तालिका। 8 तक कॉइन, शेयर या सोना चुनें।', 'लाइव क्रिप्टो कीमतें — WhatIfStack', 'एसेट (कॉमा से अलग टिकर)', 'लाइव'),
+    'ja': ('リアルタイム価格ウィジェット', '毎秒更新される小さな価格表。暗号資産・株・金から最大8銘柄を選べます。', '暗号資産のリアルタイム価格 — WhatIfStack', '銘柄（ティッカーをカンマ区切り）', 'ライブ'),
+    'ko': ('실시간 시세 위젯', '매초 업데이트되는 작은 시세표. 코인, 주식, 금 중 최대 8개를 고르세요.', '실시간 코인 시세 — WhatIfStack', '자산 (쉼표로 구분한 티커)', '실시간'),
+    'zh': ('实时价格小组件', '每秒更新的小型价格表。最多选择 8 个币种、股票或黄金。', '加密货币实时价格 — WhatIfStack', '资产（逗号分隔的代码）', '实时'),
+    'ar': ('أداة الأسعار المباشرة', 'جدول أسعار صغير يتحدّث كل ثانية. اختر حتى 8 عملات أو أسهم أو الذهب.', 'أسعار العملات المشفرة مباشرة — WhatIfStack', 'الأصول (رموز مفصولة بفواصل)', 'مباشر'),
+    'fil': ('Widget ng live na presyo', 'Maliit na talaan ng presyo na nag-a-update bawat segundo. Pumili ng hanggang 8 coin, stock o ginto.', 'Live na presyo ng crypto — WhatIfStack', 'Mga asset (ticker na pinaghiwalay ng kuwit)', 'live'),
+}.items()}

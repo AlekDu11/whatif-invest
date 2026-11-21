@@ -1604,3 +1604,22 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
   document.addEventListener('click',e=>{ if(e.target.closest('.star[data-s],.addpf,[data-add],a[href*="?add="]')) setTimeout(show,1200) },true);
   if(has()) setTimeout(show,25000);   // a returning visitor who already tracks something
 })();
+
+/* ---------- live price widget builder (/widgets/): tickers → iframe /embed/price/ + a real backlink under it ---------- */
+(function(){ const box=document.querySelector('.embprice'); if(!box) return; let C; try{ C=JSON.parse(box.dataset.cfg) }catch(e){ return }
+  const W=window.WIX||{}, esc=W.esc||(s=>s), $$=s=>[...box.querySelectorAll(s)];
+  let list='BTC, ETH, SOL, XRP, GOLD', th='light';
+  box.innerHTML=`<div class="embf"><label class="f">${esc(C.pick)}<div class="inp"><input class="ep" value="${esc(list)}"></div></label>
+    <div class="f">${esc(C.theme)}<div class="seg">${[['light',C.light],['dark',C.dark],['auto',C.auto]].map(([v,l])=>`<button type="button" data-v="${v}"${v===th?' class="on"':''}>${esc(l)}</button>`).join('')}</div></div></div>
+    <div class="embprev"><iframe title="preview" loading="lazy" style="height:290px"></iframe></div><p class="muted embhelp">${esc(C.help)}</p>
+    <div class="embcode"><textarea readonly rows="4"></textarea><button type="button" class="btn">${esc(C.copy)}</button></div>`;
+  const ifr=box.querySelector('iframe'), ta=box.querySelector('textarea');
+  const ids=()=>{ const out=[]; list.split(/[,\s]+/).map(x=>x.trim().toLowerCase()).filter(Boolean).forEach(t=>{ const a=(W.IDX||[]).find(y=>y.i===t)||(W.IDX||[]).find(y=>y.t.toLowerCase()===t); if(a&&!out.includes(a.i)) out.push(a.i) }); return out.slice(0,8) };
+  const upd=()=>{ const a=ids(); if(!a.length) return; const q=`a=${a.join(',')}&l=${C.l}&th=${th}`, base='https://whatifstack.com', h=60+a.length*39;
+    ifr.src=`/embed/price/?${q}`; ifr.style.height=h+'px';
+    ta.value=`<iframe src="${base}/embed/price/?${q}" width="100%" height="${h}" style="border:0;max-width:520px" loading="lazy" title="${esc(C.anchor)}"></iframe>\n<p style="margin:4px 0;font-size:13px"><a href="${base}${C.l==='uk'?'':'/'+C.l}/crypto/">${esc(C.anchor)}</a></p>` };
+  box.querySelector('.ep').addEventListener('input',e=>{ list=e.target.value; clearTimeout(box._t); box._t=setTimeout(upd,500) });
+  box.addEventListener('click',e=>{ const b=e.target.closest('.seg button'); if(b){ th=b.dataset.v; $$('.seg button').forEach(x=>x.classList.toggle('on',x===b)); upd() }
+    if(e.target.closest('.embcode .btn')){ ta.select(); (navigator.clipboard?navigator.clipboard.writeText(ta.value):Promise.reject()).catch(()=>document.execCommand('copy')); const bt=e.target.closest('.btn'); bt.textContent=C.copied; setTimeout(()=>bt.textContent=C.copy,1600) } });
+  upd();
+})();
