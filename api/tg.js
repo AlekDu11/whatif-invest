@@ -3,7 +3,7 @@
 // One-time setup after adding TG_BOT_TOKEN and ALERTS_KEY in Vercel env: open /api/tg?setup=<ALERTS_KEY>
 // (sets the webhook, commands, menu button «Portfolio», descriptions in uk/ru/en). Inline mode also needs /setinline in @BotFather.
 const { kv, tg, amap, prices, fmt, T, tpl, M, LP } = require('./_alerts');
-const SITE = 'https://whatifstack.com', BOT = 'WhatIfStack_Bot', CH = 'https://t.me/WhatIfStack';
+const SITE = 'https://whatifstack.com', BOT = 'WhatIfStack_bot', CH = 'https://t.me/WhatIfStack';
 const TOP = ['btc', 'eth', 'sol', 'gold', 'spy', 'nvda'];
 
 function find(map, q) {
