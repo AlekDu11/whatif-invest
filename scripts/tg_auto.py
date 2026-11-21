@@ -81,7 +81,8 @@ def main():
     day = now.strftime('%Y-%m-%d')
     slot = sys.argv[1] if len(sys.argv) > 1 else ('day' if now.hour < 19 else 'eve')
     lo, hi = (13, 19) if slot == 'day' else (19, 24)
-    if now.hour * 60 + now.minute < lo * 60 + 75 or logged(day, lo, hi)   # give the normal 13:41 / 19:41 run until :15 past the next hour or glob.glob(os.path.join(Q, '*.json')):
+    # give the normal 13:41 / 19:41 run until :56 (lo:00 + 75 min + the run's own minutes)
+    if now.hour * 60 + now.minute < lo * 60 + 75 or logged(day, lo, hi) or glob.glob(os.path.join(Q, '*.json')):
         print('nothing to do', slot, now.isoformat()); return
     if slot == 'day':
         import build as b
