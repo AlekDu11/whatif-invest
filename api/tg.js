@@ -66,7 +66,7 @@ module.exports = async (req, res) => {
     if (q.setup !== process.env.ALERTS_KEY) return done(403, { e: 'key' });
     const host = 'https://' + (req.headers['x-forwarded-host'] || req.headers.host);
     const out = {};
-    out.webhook = await tg('setWebhook', { url: host + '/api/tg', secret_token: process.env.ALERTS_KEY, allowed_updates: ['message', 'callback_query', 'inline_query'] });
+    out.webhook = await tg('setWebhook', { url: host + '/api/tg/', secret_token: process.env.ALERTS_KEY, allowed_updates: ['message', 'callback_query', 'inline_query'] });
     for (const l of ['en', 'uk', 'ru']) {
       const m = M(l), lc = l === 'en' ? {} : { language_code: l };
       await tg('setMyCommands', { commands: Object.entries(m.cmd).map(([command, description]) => ({ command, description })), ...lc });

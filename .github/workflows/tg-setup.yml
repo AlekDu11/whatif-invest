@@ -13,6 +13,13 @@ jobs:
         run: |
           if [ -z "$KEY" ]; then echo "ALERTS_KEY secret not set"; exit 1; fi
           curl -sS -L --max-time 60 "https://whatifstack.com/api/tg?setup=$KEY" | head -c 2000; echo
+      - name: Point the webhook at /api/tg/ (vercel trailingSlash makes /api/tg answer 308)
+        env:
+          TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          KEY: ${{ secrets.ALERTS_KEY }}
+        run: |
+          curl -sS --max-time 30 "https://api.telegram.org/bot$TOKEN/setWebhook" --data-urlencode "url=https://whatifstack.com/api/tg/" --data-urlencode "secret_token=$KEY" --data-urlencode 'allowed_updates=["message","callback_query","inline_query"]'; echo
+          sleep 8
       - name: Webhook status (no secrets printed)
         env:
           TOKEN: ${{ secrets.TG_BOT_TOKEN }}
