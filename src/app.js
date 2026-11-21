@@ -1407,7 +1407,9 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
       if(!r){ rd.innerHTML='<p class="muted">—</p>'; return }
       document.title=r.t+' | WhatIfStack';
       fetch(`${RAW}${L}/${k}-${encodeURIComponent(s)}.html`,{cache:'no-cache'}).then(x=>x.ok?x.text():'').then(h=>{
-        rd.innerHTML=`<h1>${esc2(r.t)}</h1>${r.cv?`<img class="cover" src="${esc2(r.cv)}" alt="" width="1200" height="630">`:''}<div class="muted byline">WhatIfStack Research · ${esc2(r.d)}</div><div class="artbody">${h}</div>` }) }
+        const [body,tail]=h.split('<!--wi-tail-->');
+        rd.innerHTML=`<h1>${esc2(r.t)}</h1>${r.cv?`<img class="cover" src="${esc2(r.cv)}" alt="" width="1200" height="630">`:''}<div class="muted byline">WhatIfStack Research · ${esc2(r.d)}</div><div class="artbody">${body}</div>${tail||''}`;
+        if(typeof paintStars==='function') paintStars() }) }
   }).catch(()=>{});
 })();
 

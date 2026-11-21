@@ -37,6 +37,8 @@ for lang in sorted(langs):
                     break
             try:
                 html = B.md(m['body'], lang)
+                # owner 2026-11-21: fresh posts must carry the same closing blocks as built pages: «Track it on WhatIfStack» + follow us
+                html += '<!--wi-tail-->' + B.track_block(lang, B._alist(m) if not isinstance(m.get('assets'), list) else m['assets']) + B.follow_block(lang)
             except Exception as e:   # one bad post must not stop the feed
                 print(f'  {lang}/{kind}/{slug}: {e}', file=sys.stderr)
                 continue
