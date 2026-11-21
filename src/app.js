@@ -40,7 +40,12 @@ function spark(arr,w=110,h=34){ if(!arr||arr.length<2) return '';
   const pts=arr.map((v,i)=>`${(i/(arr.length-1)*w).toFixed(1)},${(h-2-(v-mn)/r*(h-4)).toFixed(1)}`).join(' ');
   return `<svg class="spk ${up?'up':'dn'}" width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" aria-hidden="true"><polygon points="0,${h} ${pts} ${w},${h}"/><polyline points="${pts}"/></svg>` }
 const goUrl=(u,extra)=>u&&u.startsWith('/go/')?`${u}?from=${encodeURIComponent(location.pathname)}&l=${lang}${extra||''}`:u;
-function refFor(a){ const RL=(window.REF_LANG||{})[a.c]; const r=REF[a.i]||(RL&&RL.langs.includes(lang)?RL:null)||REF_DEFAULT[a.c]; return r&&r.url?Object.assign({},r,{url:goUrl(r.url)}):null }
+// crypto: send buyers only to an exchange that really lists the coin (index: bn = Binance, x = g Gate / m MEXC / y Bybit / o OKX); none → no button
+const XREF={g:{url:'/go/gate',where:'Gate'},m:{url:'/go/mexc',where:'MEXC'},y:{url:'/go/bybit',where:'Bybit'}};
+function refFor(a){ const RL=(window.REF_LANG||{})[a.c]; let r=REF[a.i];
+  if(!r&&a.c==='crypto'){ if(a.bn) r=(RL&&RL.langs.includes(lang)&&a.o<=150)?RL:REF_DEFAULT.crypto; else r=XREF[a.x]||null }
+  if(!r) r=(RL&&RL.langs.includes(lang)?RL:null)||(a.c==='crypto'?null:REF_DEFAULT[a.c]);
+  return r&&r.url?Object.assign({},r,{url:goUrl(r.url)}):null }
 function buyBtn(a){ const r=refFor(a); return r?`<a class="buy" href="${esc(r.url)}" target="_blank" rel="sponsored noopener" title="${esc(r.where)} · ${T.aff}">${T.buy}</a>`:'' }
 window.WIX={T,nm,url,esc,fmtUsd,fmtPrice,fmtPct,cls,icon,spark,buyBtn,BYID,IDX,lang};
 const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.dataset.id]); if(r) bs.innerHTML=`<a class="btn" href="${esc(r.url)}" target="_blank" rel="sponsored noopener">${T.buy} ${esc(BYID[bs.dataset.id].t)} · ${esc(r.where)}</a>` }

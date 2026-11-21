@@ -129,15 +129,15 @@ FUT_TV = {'PL=F': 'OANDA:XPTUSD', 'PA=F': 'OANDA:XPDUSD', 'HG=F': 'OANDA:XCUUSD'
           'ZS=F': 'OANDA:SOYBNUSD', 'SB=F': 'OANDA:SUGARUSD', 'NG=F': 'OANDA:NATGASUSD', 'CL=F': 'OANDA:WTICOUSD', 'BZ=F': 'OANDA:BCOUSD'}
 
 # Exchanges whose charts TradingView does not allow in free embeds (they fall back to AAPL) -> our own chart
-TV_NOCHART = ('LSE:', 'BIST:', 'TSE:', 'KRX:', 'HKEX:', 'TWSE:', 'SET:', 'HOSE:', 'TADAWUL:', 'BMV:')
+TV_NOCHART = ('CG:', 'LSE:', 'BIST:', 'TSE:', 'KRX:', 'HKEX:', 'TWSE:', 'SET:', 'HOSE:', 'TADAWUL:', 'BMV:')
 
 
 def tv_symbol(a):
     if a['cat'] == 'crypto':
         if a.get('src') in ('kraken', 'yahoo-cc'):   # delisted from Binance (Monero...): Kraken's USD pair
             return f"KRAKEN:{a['tk']}USD"
-        if a.get('src') in ('coingecko', 'cg-spot'):   # on no exchange we read: TradingView's aggregated CRYPTO index
-            return f"CRYPTO:{a['tk']}USD"
+        if a.get('src') in ('coingecko', 'cg-spot'):   # on no exchange we read (TradingView shows «Invalid symbol») → own chart from CoinGecko
+            return 'CG:' + (a.get('cgid') or a['tk'].lower())
         ex = {'gate': 'GATEIO', 'mexc': 'MEXC', 'okx': 'OKX', 'bybit': 'BYBIT'}.get(a.get('src'), 'BINANCE')
         return f"{ex}:{a['tk']}USDT"
     if a['cat'] == 'metal' and a['tk'] in ('XAU', 'XAG'):
@@ -756,8 +756,14 @@ def tvw(kind, cfg, height):
 def own_chart(lang, a, aid):
     """Monthly price chart drawn from our own data (no TradingView symbol available). CSS-only range tabs."""
     ps, st = a.get('p') or [], a.get('start')
-    if len(ps) < 3 or not st:
+    cg = a.get('cat') == 'crypto' and a.get('src') in ('coingecko', 'cg-spot') and a.get('cgid')
+    if (len(ps) < 3 or not st) and not cg:
         return ''
+    if len(ps) < 3:   # «spot only» coin: no monthly series yet, the daily chart comes from CoinGecko (api/chart?s=cg:<id>)
+        lw = dict(y='cg:' + a['cgid'], t=OWN_CH2[lang][0], avg=OWN_CH2[lang][1], all=OWN_CH[lang][1],
+                  yrs=[BP[lang]['yrs'].format(n=n) for n in (1, 3, 5)], intl=TR[lang]['loc'])
+        return (f'<section class="card tvcard ownchart" data-lw="{esc(json.dumps(lw, ensure_ascii=False))}"><div class="charthead"><h2>{esc(OWN_CH[lang][0])} · {esc(a["tk"])}</h2></div>'
+                f'<div class="oc"><p class="muted">…</p></div></section>')
     y0, m0 = map(int, st.split('-'))
     W, H, L, R, T, B = 720, 300, 8, 80, 12, 26
     uid = 'oc' + _re.sub(r'[^a-z0-9]', '', aid)
@@ -798,7 +804,7 @@ def own_chart(lang, a, aid):
                  f'<svg viewBox="0 0 {W} {H}" role="img" aria-label="{esc(OWN_CH[lang][0])}">{grid}'
                  f'<polygon points="{X(0):.1f},{H - B} {pts} {X(k - 1):.1f},{H - B}" fill="{col}" opacity=".08"/>'
                  f'<polyline points="{pts}" fill="none" stroke="{col}" stroke-width="2" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></svg></div>')
-    lw = dict(y=a.get('yahoo') or '', t=OWN_CH2[lang][0], avg=OWN_CH2[lang][1], all=OWN_CH[lang][1],
+    lw = dict(y=('cg:' + a['cgid']) if cg else (a.get('yahoo') or ''), t=OWN_CH2[lang][0], avg=OWN_CH2[lang][1], all=OWN_CH[lang][1],
               yrs=[BP[lang]['yrs'].format(n=n) for n in (1, 3, 5)], intl=TR[lang]['loc'])
     return (f'<section class="card tvcard ownchart" data-lw="{esc(json.dumps(lw, ensure_ascii=False))}"><div class="charthead"><h2>{esc(OWN_CH[lang][0])} · {esc(a["tk"])}</h2></div>'
             f'<div class="oc">{tabs}<div class="ocs">{svgs}</div></div></section>')

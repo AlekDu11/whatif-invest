@@ -7,6 +7,17 @@ module.exports = async (req, res) => {
   if (q.dex) return DEX(req, res);
   if (G.over(req, 60, 'chart')) { res.statusCode = 429; res.setHeader('Retry-After', '60'); return res.end('{"e":"limit"}') }
   const s = String(q.s || '');
+  if (/^cg:[a-z0-9-]{1,80}$/.test(s)) {   // coins on no exchange we read: CoinGecko OHLC (365 days, 4-day candles), same shape as Yahoo
+    try {
+      const r = await fetch(`https://api.coingecko.com/api/v3/coins/${s.slice(3)}/ohlc?vs_currency=usd&days=365`, { headers: { Accept: 'application/json', 'User-Agent': 'Mozilla/5.0 (WhatIfStack chart)' } });
+      const d = r.ok ? await r.json() : null;
+      if (Array.isArray(d) && d.length > 1) {
+        res.statusCode = 200; res.setHeader('Content-Type', 'application/json; charset=utf-8'); res.setHeader('Cache-Control', 'public, s-maxage=3600, stale-while-revalidate=86400');
+        return res.end(JSON.stringify({ cur: 'USD', iv: '4d', d: d.map(x => [Math.round(x[0] / 1000), +(+x[1]).toPrecision(7), +(+x[2]).toPrecision(7), +(+x[3]).toPrecision(7), +(+x[4]).toPrecision(7)]) }));
+      }
+    } catch (e) { /* fall through */ }
+    res.statusCode = 502; res.setHeader('Content-Type', 'application/json'); return res.end('{"e":"upstream"}');
+  }
   const r = q.r === 'max' ? 'max' : '5y';
   const send = (code, obj, cache) => { res.statusCode = code; res.setHeader('Content-Type', 'application/json; charset=utf-8');
     res.setHeader('Cache-Control', cache || 'no-store'); res.end(JSON.stringify(obj)) };
