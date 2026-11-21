@@ -1,0 +1,38 @@
+name: MOEX stock list
+
+on:
+  schedule:
+    - cron: '17 3 * * 0'    # weekly, Sunday 03:17 UTC: new Moscow Exchange listings
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: moex-list
+  cancel-in-progress: false
+
+jobs:
+  list:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Add all sizeable TQBR shares to data/markets.json
+        run: python scripts/moex_list.py
+      - name: Commit and fetch prices
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "whatif-bot"
+          git config user.email "whatif-bot@users.noreply.github.com"
+          git add data/markets.json
+          if git diff --cached --quiet; then echo "No changes"; exit 0; fi
+          git commit -m "Stocks: Moscow Exchange list $(date -u +%F)"
+          git pull --rebase -X theirs || (git rebase --abort; git pull --rebase -X theirs)
+          git push
+          gh workflow run update-prices.yml --ref main   # key numbers follow in the daily stock-stats run

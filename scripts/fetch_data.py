@@ -195,11 +195,12 @@ def moex_monthly(secid):
 
 
 def moex_last(secids):
-    d = get_json(f"{MOEX}.json?securities={','.join(secids)}&iss.only=marketdata&marketdata.columns=SECID,LAST,LASTTOPREVPRICE&iss.meta=off", tries=2)
     out = {}
-    for sid, last, chg in ((d or {}).get('marketdata', {}).get('data') or []):
-        if last:
-            out[sid] = (float(last), (chg or 0) / 100)
+    for i in range(0, len(secids), 80):   # ~300 MOEX shares since 2026-11-21: keep URLs short
+        d = get_json(f"{MOEX}.json?securities={','.join(secids[i:i + 80])}&iss.only=marketdata&marketdata.columns=SECID,LAST,LASTTOPREVPRICE&iss.meta=off", tries=2)
+        for sid, last, chg in ((d or {}).get('marketdata', {}).get('data') or []):
+            if last:
+                out[sid] = (float(last), (chg or 0) / 100)
     return out
 
 
