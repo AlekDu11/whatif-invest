@@ -1476,6 +1476,7 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
   const A=window.WIACC, inn=box.querySelector('.acct-in'), out=box.querySelector('.acct-out'), msg=$('#acctmsg');
   const say=(t,bad)=>{ if(!msg) return; msg.hidden=false; msg.textContent=t; msg.classList.toggle('bad',!!bad) };
   function show(){ const u=JSON.parse(A.get('wi_user')||'null');
+    box.hidden=!(A.sid()&&u)&&!C.mail&&!C.tg;   // sign-in itself is in the header popup; this card only shows the signed-in status
     if(A.sid()&&u){ out.hidden=true; inn.hidden=false;
       const v=+A.get('wi_syncv'); inn.innerHTML=`<span>✅ ${esc(C.in)} <b>${esc(u.name||'')}</b></span><span class="muted">${v?esc(C.sync)+' '+new Date(v).toLocaleTimeString(T.intl||'en',{hour:'2-digit',minute:'2-digit'}):''}</span><button class="btn ghost sm" type="button" id="acctout">${esc(C.out)}</button>`;
       $('#acctout').onclick=()=>{ A.api('logout',{body:{}}).catch(()=>{}).finally(()=>{ A.set('wi_sid',null); A.set('wi_user',null); A.set('wi_syncv',null); show() }) } }

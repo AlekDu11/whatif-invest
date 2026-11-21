@@ -3610,14 +3610,14 @@ def acct_block(lang):
     if not (AUTH_EMAIL or (TG_BOT and TG_LOGIN) or GOOGLE_CLIENT_ID):
         return ''
     a = dict(ACC[lang], d=ACC2[lang]['d1'] if not AUTH_EMAIL and not TG_LOGIN else ACC[lang]['d'])
-    cfg = dict(a, mail=bool(AUTH_EMAIL), tg=TG_BOT if TG_LOGIN else '', g=GOOGLE_CLIENT_ID, loc=TR[lang]['loc'])
+    # owner 2026-11-21: sign-in lives in the header popup only; /me/ keeps this block for the signed-in status, e-mail links and the bot's Mini App
+    cfg = dict(a, mail=bool(AUTH_EMAIL), tg=TG_BOT if TG_LOGIN else '', g='', loc=TR[lang]['loc'])
     orw = f'<span class="muted">{esc(a["or"])}</span>' if AUTH_EMAIL else ''
-    return (f'<section class="card acct" id="acct" data-cfg="{esc(json.dumps(cfg, ensure_ascii=False))}"><div class="acct-in" hidden></div>'
-            f'<div class="acct-out"><b>🔐 {esc(a["h"])}</b><p class="muted">{esc(a["d"])}</p>'
+    return (f'<section class="card acct" id="acct"{"" if AUTH_EMAIL else " hidden"} data-cfg="{esc(json.dumps(cfg, ensure_ascii=False))}"><div class="acct-in" hidden></div>'
+            f'<div class="acct-out"{"" if AUTH_EMAIL else " style=\"display:none\""}><b>🔐 {esc(a["h"])}</b><p class="muted">{esc(a["d"])}</p>'
             + (f'<form class="acctf" id="acctf"><input type="email" name="em" required placeholder="{esc(a["em"])}" autocomplete="email"><input name="hp" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">'
                f'<button class="btn" type="submit">{esc(a["send"])}</button></form><p class="acctmsg muted" id="acctmsg" hidden></p>' if AUTH_EMAIL else '')
             + (f'<div class="accttg">{orw}<div id="tglogin"></div></div>' if TG_BOT and TG_LOGIN else '')
-            + ('<div class="accttg"><div id="glogin"></div></div>' if GOOGLE_CLIENT_ID else '')
             + '</div></section>')
 
 
