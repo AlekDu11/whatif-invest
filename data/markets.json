@@ -7206,5 +7206,964 @@
 "yahoo": "WING",
 "name": "Wingstop",
 "cat": "stock"
+},
+{
+"tk": "SIBN",
+"yahoo": "MOEX:SIBN",
+"name": "Gazprom neft",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "GAZT",
+"yahoo": "MOEX:GAZT",
+"name": "GAZ-Tek",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "AKRN",
+"yahoo": "MOEX:AKRN",
+"name": "Acron",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "DOMRF",
+"yahoo": "MOEX:DOMRF",
+"name": "DOM.RF",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "UNAC",
+"yahoo": "MOEX:UNAC",
+"name": "Ob.aviastroitelnaya korp",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "CBOM",
+"yahoo": "MOEX:CBOM",
+"name": "MKB",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "VSMO",
+"yahoo": "MOEX:VSMO",
+"name": "Corp. VSMPO-AVISMA",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "HYDR",
+"yahoo": "MOEX:HYDR",
+"name": "RusGidro",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "SVCB",
+"yahoo": "MOEX:SVCB",
+"name": "Sovcombank",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "IRKT",
+"yahoo": "MOEX:IRKT",
+"name": "Yakovlev-3",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "LENT",
+"yahoo": "MOEX:LENT",
+"name": "Lenta ORD SHS",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "FESH",
+"yahoo": "MOEX:FESH",
+"name": "DVMP",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "EVRZ",
+"yahoo": "MOEX:EVRZ",
+"name": "EVRAZ",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "ENPG",
+"yahoo": "MOEX:ENPG",
+"name": "EN+ GROUP ORD SHS",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "FLOT",
+"yahoo": "MOEX:FLOT",
+"name": "Sovcomflot",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "GAZS",
+"yahoo": "MOEX:GAZS",
+"name": "Gaz-servis",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "BANE",
+"yahoo": "MOEX:BANE",
+"name": "Bashneft ANK",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "GCHE",
+"yahoo": "MOEX:GCHE",
+"name": "Cherkizovo Group",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "GAZC",
+"yahoo": "MOEX:GAZC",
+"name": "Gazkon",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "UGLD",
+"yahoo": "MOEX:UGLD",
+"name": "UGC",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "VEON-RX",
+"yahoo": "MOEX:VEON-RX",
+"name": "VEON Ltd. ORD SHS",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "RTKM",
+"yahoo": "MOEX:RTKM",
+"name": "Rostelecom",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "FEES",
+"yahoo": "MOEX:FEES",
+"name": "FGC ROSSETI",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "NMTP",
+"yahoo": "MOEX:NMTP",
+"name": "NMTP",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "VKCO",
+"yahoo": "MOEX:VKCO",
+"name": "VK International Public JS Com",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "LSNG",
+"yahoo": "MOEX:LSNG",
+"name": "Rosseti LenEnrg",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "MGTS",
+"yahoo": "MOEX:MGTS",
+"name": "MGTS-5",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "BSPB",
+"yahoo": "MOEX:BSPB",
+"name": "BSP",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "MDMG",
+"yahoo": "MOEX:MDMG",
+"name": "MD Medical Group",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "PRMD",
+"yahoo": "MOEX:PRMD",
+"name": "iPROMOMED",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "LSRG",
+"yahoo": "MOEX:LSRG",
+"name": "LSR",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "POSI",
+"yahoo": "MOEX:POSI",
+"name": "Positive Group",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "RGSS",
+"yahoo": "MOEX:RGSS",
+"name": "Rosgosstrakh",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "KZOS",
+"yahoo": "MOEX:KZOS",
+"name": "Organicheskiy Sintez",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "LEAS",
+"yahoo": "MOEX:LEAS",
+"name": "Europlan",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "MSRS",
+"yahoo": "MOEX:MSRS",
+"name": "Rosseti Moscow Region",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "RASP",
+"yahoo": "MOEX:RASP",
+"name": "Raspadskaya",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "NKNC",
+"yahoo": "MOEX:NKNC",
+"name": "Niznekamskneftekhim",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "CNRU",
+"yahoo": "MOEX:CNRU",
+"name": "Cian",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "GEMC",
+"yahoo": "MOEX:GEMC",
+"name": "UMG",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "UTAR",
+"yahoo": "MOEX:UTAR",
+"name": "UTAir Aviacompany",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "UPRO",
+"yahoo": "MOEX:UPRO",
+"name": "Unipro",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "KFBA",
+"yahoo": "MOEX:KFBA",
+"name": "INGRAD",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "TRMK",
+"yahoo": "MOEX:TRMK",
+"name": "TMK",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "USBN",
+"yahoo": "MOEX:USBN",
+"name": "BANK URALSIB",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "RAGR",
+"yahoo": "MOEX:RAGR",
+"name": "RUSAGRO GROUP",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "MRKP",
+"yahoo": "MOEX:MRKP",
+"name": "Rosseti Centr i Privoljye",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "KAZT",
+"yahoo": "MOEX:KAZT",
+"name": "Kuib.Azot",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "UWGN",
+"yahoo": "MOEX:UWGN",
+"name": "OVK",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "FIXR",
+"yahoo": "MOEX:FIXR",
+"name": "Fix Price",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "MRKU",
+"yahoo": "MOEX:MRKU",
+"name": "Rosseti Ural",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "OZPH",
+"yahoo": "MOEX:OZPH",
+"name": "Ozon Pharmaceuticals",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "SGZH",
+"yahoo": "MOEX:SGZH",
+"name": "Segezha",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "MRKY",
+"yahoo": "MOEX:MRKY",
+"name": "Rosseti South",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "APTK",
+"yahoo": "MOEX:APTK",
+"name": "Apteki 36,6",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "MSNG",
+"yahoo": "MOEX:MSNG",
+"name": "MosEnrg",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "TNSE",
+"yahoo": "MOEX:TNSE",
+"name": "GK \"TNS energo",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "ELMT",
+"yahoo": "MOEX:ELMT",
+"name": "ELEMENT",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "VSEH",
+"yahoo": "MOEX:VSEH",
+"name": "VI.ru",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "VJGZ",
+"yahoo": "MOEX:VJGZ",
+"name": "Var'eganneftegaz",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "MRKS",
+"yahoo": "MOEX:MRKS",
+"name": "Rosseti Sibir",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "ASTR",
+"yahoo": "MOEX:ASTR",
+"name": "Astra Group",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "AVAN",
+"yahoo": "MOEX:AVAN",
+"name": "AKB \"AVANGARD",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "KMAZ",
+"yahoo": "MOEX:KMAZ",
+"name": "KAMAZ",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "MRKV",
+"yahoo": "MOEX:MRKV",
+"name": "Rosseti Volga",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "RENI",
+"yahoo": "MOEX:RENI",
+"name": "Renaissance Insurance",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "UKUZ",
+"yahoo": "MOEX:UKUZ",
+"name": "Uzhnyi Kuzbass",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "MBNK",
+"yahoo": "MOEX:MBNK",
+"name": "MTS Bank",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "BELU",
+"yahoo": "MOEX:BELU",
+"name": "NovaBev Group",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "SELG",
+"yahoo": "MOEX:SELG",
+"name": "Seligdar",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "OGKB",
+"yahoo": "MOEX:OGKB",
+"name": "OGK-2",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "MRKC",
+"yahoo": "MOEX:MRKC",
+"name": "Rosseti Centr",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "MRKK",
+"yahoo": "MOEX:MRKK",
+"name": "Rosseti Severnyy Kavkaz",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "VSYD",
+"yahoo": "MOEX:VSYD",
+"name": "Viborgskii sudostr. Zavod",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "AQUA",
+"yahoo": "MOEX:AQUA",
+"name": "INARCTIKA",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "MFGS",
+"yahoo": "MOEX:MFGS",
+"name": "Megion",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "DVEC",
+"yahoo": "MOEX:DVEC",
+"name": "DEC",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "SFIN",
+"yahoo": "MOEX:SFIN",
+"name": "SFI",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "YAKG",
+"yahoo": "MOEX:YAKG",
+"name": "YaTEK",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "AMEZ",
+"yahoo": "MOEX:AMEZ",
+"name": "Ashinckiy metzavod",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "OMZZP",
+"yahoo": "MOEX:OMZZP",
+"name": "OMZ (pref)",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "BTBR",
+"yahoo": "MOEX:BTBR",
+"name": "B2B-RTS",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "NKHP",
+"yahoo": "MOEX:NKHP",
+"name": "NKHP",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "JNOS",
+"yahoo": "MOEX:JNOS",
+"name": "Slavneft-JANOS",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "KCHE",
+"yahoo": "MOEX:KCHE",
+"name": "Kamchatskenergo",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "DATA",
+"yahoo": "MOEX:DATA",
+"name": "Arenadata Group",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "RNFT",
+"yahoo": "MOEX:RNFT",
+"name": "RussNeft NK",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "BAZA",
+"yahoo": "MOEX:BAZA",
+"name": "GC BASIS",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "RTSB",
+"yahoo": "MOEX:RTSB",
+"name": "TNS energo Rostov-na-Dony",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "ELFV",
+"yahoo": "MOEX:ELFV",
+"name": "El5-Ener",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "MSTT",
+"yahoo": "MOEX:MSTT",
+"name": "Mostotrest",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "SPBE",
+"yahoo": "MOEX:SPBE",
+"name": "SPB Exchange",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "RKKE",
+"yahoo": "MOEX:RKKE",
+"name": "RKK Energia",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "TGKA",
+"yahoo": "MOEX:TGKA",
+"name": "TGK-1",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "KBSB",
+"yahoo": "MOEX:KBSB",
+"name": "TNS energo Kuban Company",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "SOFL",
+"yahoo": "MOEX:SOFL",
+"name": "Softline",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "MTLR",
+"yahoo": "MOEX:MTLR",
+"name": "Mechel",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "PMSB",
+"yahoo": "MOEX:PMSB",
+"name": "Perm' EnergoSbyt",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "ETLN",
+"yahoo": "MOEX:ETLN",
+"name": "Etalon Group",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "WTCM",
+"yahoo": "MOEX:WTCM",
+"name": "CMT",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "APRI",
+"yahoo": "MOEX:APRI",
+"name": "APRI",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "LPSB",
+"yahoo": "MOEX:LPSB",
+"name": "LESK",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "ZILL",
+"yahoo": "MOEX:ZILL",
+"name": "ZIL",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "ZAYM",
+"yahoo": "MOEX:ZAYM",
+"name": "Zaymer",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "TTLK",
+"yahoo": "MOEX:TTLK",
+"name": "Tattelekom",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "ABRD",
+"yahoo": "MOEX:ABRD",
+"name": "Abrau-Durso",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "DIAS",
+"yahoo": "MOEX:DIAS",
+"name": "Diasoft",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "PAZA",
+"yahoo": "MOEX:PAZA",
+"name": "Pavlovo Bus",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "MRKZ",
+"yahoo": "MOEX:MRKZ",
+"name": "Rosseti Severo-Zapad",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "KROT",
+"yahoo": "MOEX:KROT",
+"name": "KrasnyiOctyabr",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "URKZ",
+"yahoo": "MOEX:URKZ",
+"name": "Uralskaya kuznica",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "KRSB",
+"yahoo": "MOEX:KRSB",
+"name": "Krashojarskenergosbyt",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "HNFG",
+"yahoo": "MOEX:HNFG",
+"name": "HENDERSON",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "SAGO",
+"yahoo": "MOEX:SAGO",
+"name": "SamaraEnergo",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "SVAV",
+"yahoo": "MOEX:SVAV",
+"name": "Sollers Avto",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "VRSB",
+"yahoo": "MOEX:VRSB",
+"name": "TNS energo Voroneg",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "CHMK",
+"yahoo": "MOEX:CHMK",
+"name": "CMK",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "YRSB",
+"yahoo": "MOEX:YRSB",
+"name": "TNS energo Yaroslavl'",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "ROLO",
+"yahoo": "MOEX:ROLO",
+"name": "Rusolovo",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "NNSB",
+"yahoo": "MOEX:NNSB",
+"name": "TNS energo Nizhniy-Novgorod",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "LMBZ",
+"yahoo": "MOEX:LMBZ",
+"name": "Lambumiz",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "GLRX",
+"yahoo": "MOEX:GLRX",
+"name": "GLORAX",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "BLNG",
+"yahoo": "MOEX:BLNG",
+"name": "Belon",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "INCB",
+"yahoo": "MOEX:INCB",
+"name": "Incab Holding",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "MVID",
+"yahoo": "MOEX:MVID",
+"name": "M.video",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "GAZA",
+"yahoo": "MOEX:GAZA",
+"name": "Gaz",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "CHKZ",
+"yahoo": "MOEX:CHKZ",
+"name": "CKPZ",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "KRKN",
+"yahoo": "MOEX:KRKN",
+"name": "Saratovskiy NPZ",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "BRZL",
+"yahoo": "MOEX:BRZL",
+"name": "Buryatzoloto",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "RZSB",
+"yahoo": "MOEX:RZSB",
+"name": "Ryazanenergosbyt",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "DELI",
+"yahoo": "MOEX:DELI",
+"name": "Carsharing Russia",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "TGKB",
+"yahoo": "MOEX:TGKB",
+"name": "TGK-2",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "SLEN",
+"yahoo": "MOEX:SLEN",
+"name": "Sakhalinenergo",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "KOGK",
+"yahoo": "MOEX:KOGK",
+"name": "Korshunovskii GOK",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "MISB",
+"yahoo": "MOEX:MISB",
+"name": "TNS energo Mariy El",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "IVAT",
+"yahoo": "MOEX:IVAT",
+"name": "IVA",
+"cat": "stock",
+"mkt": "ru"
+},
+{
+"tk": "RUSI",
+"yahoo": "MOEX:RUSI",
+"name": "RUSS-INVEST IC",
+"cat": "stock",
+"mkt": "ru"
 }
 ]
