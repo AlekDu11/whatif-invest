@@ -311,8 +311,15 @@ def coingecko_meta():
     meta = {}
     for page in range(1, CG_PAGES + 1):   # top 4000 by market cap
         if page > 1:
-            time.sleep(4)   # stay under CoinGecko's free rate limit
-        d = get_json(f"https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page={page}&price_change_percentage=1h,24h,7d,30d,1y&sparkline=true", tries=2)
+            time.sleep(8)   # stay under CoinGecko's free rate limit (2026-11-21: 4 s hit 429 at page 6 of 16)
+        u = f"https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page={page}&price_change_percentage=1h,24h,7d,30d,1y&sparkline=true"
+        d = get_json(u, tries=2)
+        for wait in (45, 75):          # rate-limited: wait for the window to reset instead of stopping at ~1200 coins
+            if isinstance(d, list):
+                break
+            log(f"  CoinGecko page {page}: waiting {wait} s")
+            time.sleep(wait)
+            d = get_json(u, tries=1)
         if not isinstance(d, list):
             break
         for c in d:
