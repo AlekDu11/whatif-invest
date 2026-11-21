@@ -682,7 +682,8 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
     S = TR[lang]
     canon = SITE + url(lang, p)
     alts = ''.join(f'<link rel="alternate" hreflang="{TR[lg]["loc"]}" href="{SITE + url(lg, p)}">' for lg in ORDER if has_page(lg, p) and (p not in A or page_ok(p, lg)))
-    alts += f'<link rel="alternate" hreflang="x-default" href="{SITE + url("en", p)}">'
+    if p not in A or page_ok(p, 'en'):   # x-default only to an indexable English page
+        alts += f'<link rel="alternate" hreflang="x-default" href="{SITE + url("en", p)}">'
     ld = ''.join(f'<script type="application/ld+json">{json.dumps(j, ensure_ascii=False)}</script>' for j in jsonld)
     X = S['x']
     blog_l = lang if lang in BLOG_LANGS else 'en'
