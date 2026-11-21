@@ -1006,3 +1006,4 @@ a.badge.tagc{text-decoration:none;color:inherit;border:1px solid var(--line)}a.b
 .glgrid .card{padding:14px}.glgrid h2{margin:0 0 8px;font-size:18px}@media (max-width:1500px){.glgrid{grid-template-columns:1fr}}
 .invlogos{display:inline-flex;gap:2px;margin-left:10px;vertical-align:middle}.invlogos .ic{width:20px;height:20px}.invbio p{margin:0;line-height:1.6}
 .lvd{color:inherit;font-weight:700;text-decoration:underline dotted;text-underline-offset:3px}.lvd:hover{text-decoration-style:solid}
+@media(max-width:639px){.acpop{max-width:calc(100vw - 24px)}.acpop #gpop{display:flex;justify-content:center}}

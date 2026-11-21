@@ -1591,7 +1591,9 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
   // header popup: sign in with Google right here (like every site does), or — when signed in — cabinet / watchlist / sign out
   if(btn&&N){ btn.addEventListener('click',e=>{ if(e.metaKey||e.ctrlKey) return; e.preventDefault(); let pop=$('#acpop'); if(pop){ pop.remove(); return }
     pop=document.createElement('div'); pop.id='acpop'; pop.className='card acpop';
-    const r=btn.getBoundingClientRect(); pop.style.top=(r.bottom+window.scrollY+8)+'px'; pop.style.right=Math.max(8,document.documentElement.clientWidth-r.right)+'px';
+    const r=btn.getBoundingClientRect(), vw=document.documentElement.clientWidth;
+    if(vw<640){ pop.style.position='fixed'; pop.style.top=Math.max(8,r.bottom+8)+'px'; pop.style.left='12px'; pop.style.right='12px'; pop.style.width='auto' }   // phone: full width under the header, never off-screen
+    else{ pop.style.top=(r.bottom+window.scrollY+8)+'px'; pop.style.right=Math.max(8,Math.min(vw-r.right,vw-308))+'px' }
     if(signed()){ let n=''; try{ n=(JSON.parse(g('wi_user'))||{}).name||'' }catch(e){}
       pop.innerHTML=`<b>👤 ${esc(n)}</b><a href="${esc(N.me)}">💼 ${esc(N.cab)}</a><a href="${esc(N.wlu)}">★ ${esc(N.wl)}</a><button type="button" class="btn ghost sm" id="acpout">${esc(N.out)}</button>`;
       document.body.appendChild(pop);
