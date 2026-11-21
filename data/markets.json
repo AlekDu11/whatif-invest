@@ -9717,5 +9717,11 @@
 "name": "IndiGo",
 "cat": "stock",
 "mkt": "in"
+},
+{
+"tk": "BMNR",
+"yahoo": "BMNR",
+"name": "BitMine Immersion Technologies",
+"cat": "stock"
 }
 ]

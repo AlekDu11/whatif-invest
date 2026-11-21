@@ -2014,7 +2014,9 @@ def stock_block(lang, aid):
 
 
 
-ANW = {'en': 'analysis', 'uk': 'аналіз', 'ru': 'анализ', 'es': 'análisis', 'de': 'Analyse', 'pt': 'análise'}
+ANW = {'en': 'analysis', 'uk': 'аналіз', 'ru': 'анализ', 'es': 'análisis', 'de': 'Analyse', 'pt': 'análise', 'pl': 'analiza', 'tr': 'analiz',
+       'fr': 'analyse', 'it': 'analisi', 'nl': 'analyse', 'id': 'analisis', 'vi': 'phân tích', 'th': 'บทวิเคราะห์', 'hi': 'विश्लेषण', 'ja': '分析',
+       'ko': '분석', 'zh': '分析', 'ar': 'تحليل', 'fil': 'pagsusuri'}
 
 
 def analysis_block(lang, aid):
@@ -3041,12 +3043,17 @@ def asset(aid, lang, ver):
              bench=nm(A[b1], lang), ra=pct(ra5['roi']), rb=pct(rb5['roi']), r1=pct(m['r1']), r5=pct(m['r5']), ten=TEN)
     _apf = dict(f, price=price(m['price']), ten=_re.sub(r'<[^>]+>', '', TEN))
     title, desc = AP[lang]['title'].format(**_apf), AP[lang]['desc'].format(**_apf)
+    if lang == 'ja' and a['cat'] not in ('stock', 'etf'):   # 株価 = share price; coins and metals have a 価格
+        title, desc = title.replace('株価', '価格'), desc.replace('株価', '価格')
     if m.get('price') and ' — ' in title:   # a live number in the snippet: «Bitcoin (BTC): price, chart and news — $64,215»
         title = title.rsplit(' — ', 1)[0] + MCALC[lang] + ' — ' + _re.sub(r'<[^>]+>', '', usd(m['price']) if 1 <= m['price'] < 1e6 else price(m['price']))
     if (PROFILES.get(lang, {}).get(aid) or {}).get('kind') == 'analysis' and lang in ANW:
-        sep = ': ' if ': ' in title else (') ' if ') ' in title else None)
-        if sep:
-            title = title.replace(sep, sep + ANW[lang] + ', ', 1)
+        w = ANW[lang]
+        for sep, ins in (('）', '）' + w + ('・' if lang == 'ja' else '、')), ('), ', '), ' + w + ', '), (': ', ': ' + w + ', '),
+                         (') ', ') ' + w + ('، ' if lang == 'ar' else ' ' if lang == 'th' else ', '))):
+            if sep in title:
+                title = title.replace(sep, ins, 1)
+                break
     fe = dict(f, name=esc(n), inv=usd_h(r['inv']), val=usd_h(r['val']), roi=f'<span class="{cls(r["roi"])}">{pct(r["roi"])}</span>')
     faq = [(S['q1'].format(**f), S['a1'].format(**f)), (S['q2'].format(**f), S['a2'].format(**f)),
            (S['q4'].format(**f), S['a4'].format(**f)), (S['q3'], S['a3'])]
