@@ -23,7 +23,7 @@ from i18n_p import P as POLL, OPTS as POLL_OPTS  # noqa: E402
 from i18n_ai import AI as AIS  # noqa: E402
 from i18n_me import ME  # noqa: E402
 from i18n_mem import MEM  # noqa: E402
-from i18n_acc import ACC  # noqa: E402
+from i18n_acc import ACC, ACC2  # noqa: E402
 from i18n_tags import CATS, TG, VS, VS_PAIRS  # noqa: E402
 from i18n_mem2 import MEM2  # noqa: E402
 for _lg in MEM:
@@ -641,6 +641,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
     nav = (''.join(f'<a href="{url(lang, k)}" class="{"on" if k == p or (k == "stocks" and (p or "").startswith("stocks")) else ""}">{v}</a>' for k, v in ((None, HM[lang]['nav']), ('crypto', S['ui']['crypto']), ('stocks', S['ui']['stock'])))
            + f'<details class="dd"><summary class="{"on" if p == "exchanges" or (p or "").startswith("crypto-exchanges") else ""}">{EX[lang]["nav"]}</summary><div>'
            + ''.join(f'<a href="{url(lang, k)}">{esc(v)}</a>' for k, v in xc_menu(lang)) + '</div></details>'
+           + f'<a href="{url(lang, "memes")}" class="{"on" if (p or "").startswith("memes") else ""}">🐸 {esc(MEM[lang]["nav"])}</a>'
            + f'<details class="dd"><summary class="{"on" if news_on else ""}">{NW[lang]["n_nav"]}</summary><div>'
            + f'<a href="{url(lang, "news")}">{NW[lang]["n_nav"]}</a><a href="{url(blog_l, "blog")}">{NW[lang]["i_nav"]}</a>'
            + f'<a href="{url(lang, "ai")}">{AIS[lang]["nav"]}</a><a href="{url(lang, "activities")}">{ACT[lang]["nav"]}</a></div></details>'
@@ -653,7 +654,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
     mnav += f'<button type="button" id="mmore"><span>☰</span>{esc(X["nav_tools"])}</button>'
     msheet = ('<div class="msheet" id="msheet" hidden>' + ''.join(f'<a href="{url(lang, k)}">{esc(v)}</a>' for k, v in
               [('me', PF[lang]['h1']), ('portfolios', BP[lang]['nav']), ('compound-interest', IC[lang]['nav']), ('activities', ACT[lang]['nav']), ('ai', AIS[lang]['h1'].split(':')[0])] + xc_menu(lang)[1:2] + [x for x in tools_menu(lang) if x]) + '</div>')
-    cfg = dict(cfg, lang=lang, base=BASE, prefix=url(lang).rstrip('/'), full=lang in FULL, topn=10**6,
+    cfg = dict(cfg, lang=lang, base=BASE, prefix=url(lang).rstrip('/'), full=lang in FULL, topn=10**6, nudge=acct_nudge_cfg(lang),
                names={'gold': S['gold'], 'silver': S['silver'], **{k: v[lang] for k, v in CMD_NAMES.items()}})
     return f"""<!DOCTYPE html>
 <html lang="{S['loc']}" dir="{S['dir']}">
@@ -681,7 +682,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
   <nav class="nav">{nav}</nav>
   <a class="thm me" href="{url(lang, 'watchlist')}" title="{esc(PF2[lang]['wl'])}" aria-label="{esc(PF2[lang]['wl'])}">★</a>
   <a class="thm me" href="{url(lang, 'me')}" title="{esc(PF[lang]['h1'])}" aria-label="{esc(PF[lang]['h1'])}">💼</a>
-  <button class="thm" id="thm" type="button" aria-label="theme"><span class="m">☾</span><span class="s">☀</span></button>
+  {acct_btn(lang)}<button class="thm" id="thm" type="button" aria-label="theme"><span class="m">☾</span><span class="s">☀</span></button>
   {lang_menu(lang, p)}
 </div></div>
 <nav class="mnav">{mnav}</nav>{msheet}
@@ -3585,18 +3586,37 @@ def watch_page(lang, ver):
     return shell(lang, 'watchlist', f'{q["wl"]} | {BRAND}', k['wl_d'], body, cfg, ver).replace('<link rel="canonical"', '<meta name="robots" content="noindex, follow"><link rel="canonical"', 1)
 
 
+TG_LOGIN = False   # owner 2026-11-21: Telegram login asks for a phone number — Google only on the site for now (the bot keeps working)
+
+
+def acct_btn(lang):
+    """Header account button: «Sign in» → /me/#acct; app.js turns it into the user's initial once signed in."""
+    if not (AUTH_EMAIL or GOOGLE_CLIENT_ID or (TG_BOT and TG_LOGIN)):
+        return ''
+    a = ACC2[lang]
+    return (f'<a class="thm acctb" id="acctb" href="{url(lang, "me")}#acct" title="{esc(a["login"])}" aria-label="{esc(a["login"])}" '
+            f'data-in="{esc(a["cab"])}"><span>👤</span><span class="acl">{esc(a["login"])}</span></a>')
+
+
+def acct_nudge_cfg(lang):
+    a = ACC2[lang]
+    return dict(h=a['nh'], d=a['nd'], b=a['nb'], save=a['save'], u=url(lang, 'me') + '#acct', login=a['login'], cab=a['cab'], d1=a['d1'],
+                out=ACC[lang]['out'], err=ACC[lang]['err'], wl=PF2[lang]['wl'], wlu=url(lang, 'watchlist'), me=url(lang, 'me'),
+                g=GOOGLE_CLIENT_ID, loc=TR[lang]['loc']) if GOOGLE_CLIENT_ID or AUTH_EMAIL else None
+
+
 def acct_block(lang):
     """Sign in by e-mail link and/or Telegram (no password) to sync portfolios, watchlists and bonds; filled by app.js. Hidden until a method is configured."""
-    if not (AUTH_EMAIL or TG_BOT or GOOGLE_CLIENT_ID):
+    if not (AUTH_EMAIL or (TG_BOT and TG_LOGIN) or GOOGLE_CLIENT_ID):
         return ''
-    a = ACC[lang]
-    cfg = dict(a, mail=bool(AUTH_EMAIL), tg=TG_BOT, g=GOOGLE_CLIENT_ID, loc=TR[lang]['loc'])
+    a = dict(ACC[lang], d=ACC2[lang]['d1'] if not AUTH_EMAIL and not TG_LOGIN else ACC[lang]['d'])
+    cfg = dict(a, mail=bool(AUTH_EMAIL), tg=TG_BOT if TG_LOGIN else '', g=GOOGLE_CLIENT_ID, loc=TR[lang]['loc'])
     orw = f'<span class="muted">{esc(a["or"])}</span>' if AUTH_EMAIL else ''
     return (f'<section class="card acct" id="acct" data-cfg="{esc(json.dumps(cfg, ensure_ascii=False))}"><div class="acct-in" hidden></div>'
             f'<div class="acct-out"><b>🔐 {esc(a["h"])}</b><p class="muted">{esc(a["d"])}</p>'
             + (f'<form class="acctf" id="acctf"><input type="email" name="em" required placeholder="{esc(a["em"])}" autocomplete="email"><input name="hp" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">'
                f'<button class="btn" type="submit">{esc(a["send"])}</button></form><p class="acctmsg muted" id="acctmsg" hidden></p>' if AUTH_EMAIL else '')
-            + (f'<div class="accttg">{orw}<div id="tglogin"></div></div>' if TG_BOT else '')
+            + (f'<div class="accttg">{orw}<div id="tglogin"></div></div>' if TG_BOT and TG_LOGIN else '')
             + ('<div class="accttg"><div id="glogin"></div></div>' if GOOGLE_CLIENT_ID else '')
             + '</div></section>')
 

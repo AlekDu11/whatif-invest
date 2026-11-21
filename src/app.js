@@ -1565,3 +1565,41 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
   let rt; document.addEventListener('wi:rows',()=>{ clearTimeout(rt); rt=setTimeout(()=>{ if(document.hidden) return; const L=coins().map(a=>a.i).join(','); if(L!==want){ stop(); start() } },500) });
   setTimeout(start,800);
 })();
+
+/* ---------- account button in the header + «sign in so you don't lose it» nudges (owner 2026-11-21) ----------
+   Signed in → the header button shows the user's initial and opens the cabinet. Not signed in → after starring an asset or adding
+   to the portfolio, or on a return visit with a watchlist/portfolio, a small card invites to sign in with Google (once per 3 days). */
+(function(){ const P=window.PAGE||{}, N=P.nudge; const $=s=>document.querySelector(s);
+  const g=k=>{ try{ return localStorage.getItem(k) }catch(e){ return null } }, s=(k,v)=>{ try{ localStorage.setItem(k,v) }catch(e){} };
+  const esc=x=>String(x||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const signed=()=>!!g('wi_sid')&&!!g('wi_user');
+  const btn=$('#acctb');
+  // header popup: sign in with Google right here (like every site does), or — when signed in — cabinet / watchlist / sign out
+  if(btn&&N){ btn.addEventListener('click',e=>{ if(e.metaKey||e.ctrlKey) return; e.preventDefault(); let pop=$('#acpop'); if(pop){ pop.remove(); return }
+    pop=document.createElement('div'); pop.id='acpop'; pop.className='card acpop';
+    const r=btn.getBoundingClientRect(); pop.style.top=(r.bottom+window.scrollY+8)+'px'; pop.style.right=Math.max(8,document.documentElement.clientWidth-r.right)+'px';
+    if(signed()){ let n=''; try{ n=(JSON.parse(g('wi_user'))||{}).name||'' }catch(e){}
+      pop.innerHTML=`<b>👤 ${esc(n)}</b><a href="${esc(N.me)}">💼 ${esc(N.cab)}</a><a href="${esc(N.wlu)}">★ ${esc(N.wl)}</a><button type="button" class="btn ghost sm" id="acpout">${esc(N.out)}</button>`;
+      document.body.appendChild(pop);
+      $('#acpout').onclick=()=>{ const A=window.WIACC; (A?A.api('logout',{body:{}}):Promise.resolve()).catch(()=>{}).finally(()=>{ ['wi_sid','wi_user','wi_syncv'].forEach(k=>{ try{ localStorage.removeItem(k) }catch(e){} }); location.reload() }) } }
+    else{ pop.innerHTML=`<b>${esc(N.login)}</b><p class="muted">${esc(N.d1)}</p><div id="gpop"></div><p class="acperr bad" hidden></p>`; document.body.appendChild(pop);
+      const go=()=>{ try{ google.accounts.id.initialize({client_id:N.g, callback:res=>{ const A=window.WIACC; if(!A) return;
+          A.api('google',{body:{c:res.credential}}).then(async j=>{ A.set('wi_sid',j.sid); A.set('wi_user',JSON.stringify({name:j.name})); A.set('wi_syncv',null); A.set('wi_dirty','1'); await A.pull(); location.reload() })
+            .catch(()=>{ const m=pop.querySelector('.acperr'); m.hidden=false; m.textContent=N.err }) }});
+        google.accounts.id.renderButton($('#gpop'),{theme:'outline',size:'large',shape:'pill',width:260,locale:(N.loc||'').split('-')[0]}) }catch(e){} };
+      if(window.google&&google.accounts) go(); else { const sc=document.createElement('script'); sc.src='https://accounts.google.com/gsi/client'; sc.async=true; sc.onload=go; document.head.appendChild(sc) } }
+    setTimeout(()=>document.addEventListener('click',function off(ev){ if(!pop.contains(ev.target)&&ev.target!==btn&&!btn.contains(ev.target)){ pop.remove(); document.removeEventListener('click',off) } }),0) }) }
+  function paint(){ if(!btn) return; if(signed()){ let n=''; try{ n=(JSON.parse(g('wi_user'))||{}).name||'' }catch(e){}
+      btn.classList.add('on'); btn.title=btn.dataset.in; btn.setAttribute('aria-label',btn.dataset.in); btn.href=btn.href.split('#')[0];
+      btn.innerHTML=`<span class="acin">${esc((n.trim()[0]||'✓').toUpperCase())}</span>` } }
+  paint(); document.addEventListener('wi:synced',paint);
+  if(!N||signed()||/\/me\/?$/.test(location.pathname)) return;
+  const has=()=>{ try{ return (JSON.parse(g('wi_watch')||'[]').length+JSON.parse(g('wi_hold')||'[]').length)>0 }catch(e){ return false } };
+  function show(){ if(signed()||$('#acnudge')) return; const last=+g('wi_nudge')||0; if(Date.now()-last<3*864e5) return; s('wi_nudge',String(Date.now()));
+    const d=document.createElement('div'); d.id='acnudge'; d.className='card acnudge'; d.setAttribute('role','dialog');
+    d.innerHTML=`<button class="x" type="button" aria-label="×">×</button><b>💾 ${esc(N.h)}</b><p>${esc(N.d)}</p><a class="btn" href="${esc(N.u)}"><svg width="16" height="16" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.2 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 12.9 4 4 12.9 4 24s8.9 20 20 20 20-8.9 20-20c0-1.3-.1-2.4-.4-3.5z"/><path fill="#FF3D00" d="M6.3 14.7l6.6 4.8C14.7 15.1 19 12 24 12c3.1 0 5.8 1.2 7.9 3.1l5.7-5.7C34 6.1 29.3 4 24 4 16.3 4 9.7 8.3 6.3 14.7z"/><path fill="#4CAF50" d="M24 44c5.2 0 9.9-2 13.4-5.2l-6.2-5.2C29.2 35.1 26.7 36 24 36c-5.2 0-9.6-3.3-11.3-8l-6.5 5C9.5 39.6 16.2 44 24 44z"/><path fill="#1976D2" d="M43.6 20.5H42V20H24v8h11.3c-.8 2.2-2.2 4.2-4.1 5.6l6.2 5.2C37 39.2 44 34 44 24c0-1.3-.1-2.4-.4-3.5z"/></svg> ${esc(N.b)}</a>`;
+    document.body.appendChild(d); d.querySelector('.x').onclick=()=>d.remove();
+    if(btn) d.querySelector('a.btn').onclick=e=>{ e.preventDefault(); d.remove(); window.scrollTo({top:0,behavior:'smooth'}); setTimeout(()=>btn.click(),250) } }
+  document.addEventListener('click',e=>{ if(e.target.closest('.star[data-s],.addpf,[data-add],a[href*="?add="]')) setTimeout(show,1200) },true);
+  if(has()) setTimeout(show,25000);   // a returning visitor who already tracks something
+})();
