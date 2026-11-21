@@ -1,0 +1,47 @@
+name: Telegram channel backup poster
+# The channel normally gets posts from scheduled tasks that use Telegram Web on the owner's computer. When that computer is
+# off, (1) those tasks queue the post in social/queue/tg/ instead, or (2) scripts/tg_auto.py notices the missing 13:41 / 19:41
+# post (no row in social/telegram-log.md by 14:56 / 20:56 Kyiv) and queues a data-driven one; scripts/tg_queue.py sends the
+# queue with @WhatIfStack_Bot (GitHub secret TG_BOT_TOKEN; the bot must be a channel admin). GitHub's cron is unreliable here,
+# so it also runs on every push to main (the news task pushes ~4 times a day without the owner's computer).
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: '7,37 * * * *'
+  workflow_dispatch: {}
+permissions:
+  contents: write
+concurrency:
+  group: tg-queue
+  cancel-in-progress: false
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Missed post? Queue a backup one
+        env:
+          HAS_TOKEN: ${{ secrets.TG_BOT_TOKEN != '' }}
+        run: |
+          if [ "$HAS_TOKEN" != "true" ]; then echo "TG_BOT_TOKEN not set — backup poster is off"; exit 0; fi
+          pip install -q pillow fonttools
+          python scripts/tg_auto.py day
+          python scripts/tg_auto.py eve
+      - name: Send the queue
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
+          TELEGRAM_CHANNEL: ${{ secrets.TG_CHANNEL }}
+        run: python scripts/tg_queue.py
+      - name: Commit
+        run: |
+          git config user.name "whatif-bot"
+          git config user.email "whatif-bot@users.noreply.github.com"
+          git add -A social/queue/tg social/telegram-log.md content/covers/x
+          git diff --cached --quiet && exit 0
+          git commit -m "social: Telegram backup post"
+          for i in 1 2 3; do git pull --rebase origin main && git push origin main && break; sleep 5; done
