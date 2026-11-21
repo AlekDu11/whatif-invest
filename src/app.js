@@ -1519,6 +1519,7 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
     const cgp={}; (D.c||[]).forEach(x=>cgp[x[1]]=x);
     const tr=(D.t||[]).map(x=>{ const a=bySym[x[0]], m=cgp[x[1]]; return a&&m?[a,m[2],m[3]]:null }).filter(Boolean).slice(0,5);
     if(tr.length>=3) fill('trend',tr);
+    document.dispatchEvent(new Event('wi:rows'));   // new coins in the cards → live streams resubscribe
   }).catch(()=>{});
   // news: newest briefs from data/feed (GitHub raw), so the card is never a day old
   const nl=document.getElementById('hnews'); if(!nl) return;
