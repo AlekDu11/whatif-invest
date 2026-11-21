@@ -8697,5 +8697,1025 @@
 "name": "Banco de Chile",
 "cat": "stock",
 "mkt": "cl"
+},
+{
+"tk": "SNOW",
+"yahoo": "SNOW",
+"name": "Snowflake",
+"cat": "stock"
+},
+{
+"tk": "NET",
+"yahoo": "NET",
+"name": "Cloudflare",
+"cat": "stock"
+},
+{
+"tk": "RIVN",
+"yahoo": "RIVN",
+"name": "Rivian",
+"cat": "stock"
+},
+{
+"tk": "LCID",
+"yahoo": "LCID",
+"name": "Lucid Group",
+"cat": "stock"
+},
+{
+"tk": "NIO",
+"yahoo": "NIO",
+"name": "NIO",
+"cat": "stock"
+},
+{
+"tk": "SE",
+"yahoo": "SE",
+"name": "Sea Limited",
+"cat": "stock"
+},
+{
+"tk": "SPOT",
+"yahoo": "SPOT",
+"name": "Spotify",
+"cat": "stock"
+},
+{
+"tk": "RBLX",
+"yahoo": "RBLX",
+"name": "Roblox",
+"cat": "stock"
+},
+{
+"tk": "AFRM",
+"yahoo": "AFRM",
+"name": "Affirm",
+"cat": "stock"
+},
+{
+"tk": "DKNG",
+"yahoo": "DKNG",
+"name": "DraftKings",
+"cat": "stock"
+},
+{
+"tk": "SNAP",
+"yahoo": "SNAP",
+"name": "Snap",
+"cat": "stock"
+},
+{
+"tk": "LYFT",
+"yahoo": "LYFT",
+"name": "Lyft",
+"cat": "stock"
+},
+{
+"tk": "ETSY",
+"yahoo": "ETSY",
+"name": "Etsy",
+"cat": "stock"
+},
+{
+"tk": "Z",
+"yahoo": "Z",
+"name": "Zillow",
+"cat": "stock"
+},
+{
+"tk": "MARA",
+"yahoo": "MARA",
+"name": "MARA Holdings",
+"cat": "stock"
+},
+{
+"tk": "RIOT",
+"yahoo": "RIOT",
+"name": "Riot Platforms",
+"cat": "stock"
+},
+{
+"tk": "SOUN",
+"yahoo": "SOUN",
+"name": "SoundHound AI",
+"cat": "stock"
+},
+{
+"tk": "ACHR",
+"yahoo": "ACHR",
+"name": "Archer Aviation",
+"cat": "stock"
+},
+{
+"tk": "JOBY",
+"yahoo": "JOBY",
+"name": "Joby Aviation",
+"cat": "stock"
+},
+{
+"tk": "ASTS",
+"yahoo": "ASTS",
+"name": "AST SpaceMobile",
+"cat": "stock"
+},
+{
+"tk": "OKLO",
+"yahoo": "OKLO",
+"name": "Oklo",
+"cat": "stock"
+},
+{
+"tk": "SMR",
+"yahoo": "SMR",
+"name": "NuScale Power",
+"cat": "stock"
+},
+{
+"tk": "CRCL",
+"yahoo": "CRCL",
+"name": "Circle",
+"cat": "stock"
+},
+{
+"tk": "FIG",
+"yahoo": "FIG",
+"name": "Figma",
+"cat": "stock"
+},
+{
+"tk": "ZM",
+"yahoo": "ZM",
+"name": "Zoom",
+"cat": "stock"
+},
+{
+"tk": "UPST",
+"yahoo": "UPST",
+"name": "Upstart",
+"cat": "stock"
+},
+{
+"tk": "LUNR",
+"yahoo": "LUNR",
+"name": "Intuitive Machines",
+"cat": "stock"
+},
+{
+"tk": "CHYM",
+"yahoo": "CHYM",
+"name": "Chime",
+"cat": "stock"
+},
+{
+"tk": "KLAR",
+"yahoo": "KLAR",
+"name": "Klarna",
+"cat": "stock"
+},
+{
+"tk": "ONON",
+"yahoo": "ONON",
+"name": "On Holding",
+"cat": "stock"
+},
+{
+"tk": "SEB-A",
+"yahoo": "SEB-A.ST",
+"name": "SEB",
+"cat": "stock",
+"mkt": "se"
+},
+{
+"tk": "SWED-A",
+"yahoo": "SWED-A.ST",
+"name": "Swedbank",
+"cat": "stock",
+"mkt": "se"
+},
+{
+"tk": "ASSA-B",
+"yahoo": "ASSA-B.ST",
+"name": "Assa Abloy",
+"cat": "stock",
+"mkt": "se"
+},
+{
+"tk": "SAND",
+"yahoo": "SAND.ST",
+"name": "Sandvik",
+"cat": "stock",
+"mkt": "se"
+},
+{
+"tk": "EVO",
+"yahoo": "EVO.ST",
+"name": "Evolution",
+"cat": "stock",
+"mkt": "se"
+},
+{
+"tk": "AKRBP",
+"yahoo": "AKRBP.OL",
+"name": "Aker BP",
+"cat": "stock",
+"mkt": "no"
+},
+{
+"tk": "ORK",
+"yahoo": "ORK.OL",
+"name": "Orkla",
+"cat": "stock",
+"mkt": "no"
+},
+{
+"tk": "YAR",
+"yahoo": "YAR.OL",
+"name": "Yara",
+"cat": "stock",
+"mkt": "no"
+},
+{
+"tk": "KOG",
+"yahoo": "KOG.OL",
+"name": "Kongsberg Gruppen",
+"cat": "stock",
+"mkt": "no"
+},
+{
+"tk": "DANSKE",
+"yahoo": "DANSKE.CO",
+"name": "Danske Bank",
+"cat": "stock",
+"mkt": "dk"
+},
+{
+"tk": "PNDORA",
+"yahoo": "PNDORA.CO",
+"name": "Pandora",
+"cat": "stock",
+"mkt": "dk"
+},
+{
+"tk": "VWS",
+"yahoo": "VWS.CO",
+"name": "Vestas",
+"cat": "stock",
+"mkt": "dk"
+},
+{
+"tk": "GMAB",
+"yahoo": "GMAB.CO",
+"name": "Genmab",
+"cat": "stock",
+"mkt": "dk"
+},
+{
+"tk": "NSIS-B",
+"yahoo": "NSIS-B.CO",
+"name": "Novonesis",
+"cat": "stock",
+"mkt": "dk"
+},
+{
+"tk": "UPM",
+"yahoo": "UPM.HE",
+"name": "UPM-Kymmene",
+"cat": "stock",
+"mkt": "fi"
+},
+{
+"tk": "FORTUM",
+"yahoo": "FORTUM.HE",
+"name": "Fortum",
+"cat": "stock",
+"mkt": "fi"
+},
+{
+"tk": "WRT1V",
+"yahoo": "WRT1V.HE",
+"name": "Wärtsilä",
+"cat": "stock",
+"mkt": "fi"
+},
+{
+"tk": "ELISA",
+"yahoo": "ELISA.HE",
+"name": "Elisa",
+"cat": "stock",
+"mkt": "fi"
+},
+{
+"tk": "AGS",
+"yahoo": "AGS.BR",
+"name": "Ageas",
+"cat": "stock",
+"mkt": "be"
+},
+{
+"tk": "ACKB",
+"yahoo": "ACKB.BR",
+"name": "Ackermans & van Haaren",
+"cat": "stock",
+"mkt": "be"
+},
+{
+"tk": "SYENS",
+"yahoo": "SYENS.BR",
+"name": "Syensqo",
+"cat": "stock",
+"mkt": "be"
+},
+{
+"tk": "ELI",
+"yahoo": "ELI.BR",
+"name": "Elia Group",
+"cat": "stock",
+"mkt": "be"
+},
+{
+"tk": "BG",
+"yahoo": "BG.VI",
+"name": "BAWAG",
+"cat": "stock",
+"mkt": "at"
+},
+{
+"tk": "VIG",
+"yahoo": "VIG.VI",
+"name": "Vienna Insurance Group",
+"cat": "stock",
+"mkt": "at"
+},
+{
+"tk": "ANDR",
+"yahoo": "ANDR.VI",
+"name": "Andritz",
+"cat": "stock",
+"mkt": "at"
+},
+{
+"tk": "EDPR",
+"yahoo": "EDPR.LS",
+"name": "EDP Renováveis",
+"cat": "stock",
+"mkt": "pt"
+},
+{
+"tk": "SON",
+"yahoo": "SON.LS",
+"name": "Sonae",
+"cat": "stock",
+"mkt": "pt"
+},
+{
+"tk": "NOS",
+"yahoo": "NOS.LS",
+"name": "NOS",
+"cat": "stock",
+"mkt": "pt"
+},
+{
+"tk": "NVG",
+"yahoo": "NVG.LS",
+"name": "The Navigator Company",
+"cat": "stock",
+"mkt": "pt"
+},
+{
+"tk": "KRX",
+"yahoo": "KRX.IR",
+"name": "Kingspan",
+"cat": "stock",
+"mkt": "ie"
+},
+{
+"tk": "RYA",
+"yahoo": "RYA.IR",
+"name": "Ryanair",
+"cat": "stock",
+"mkt": "ie"
+},
+{
+"tk": "C5H",
+"yahoo": "C5H.IR",
+"name": "Cairn Homes",
+"cat": "stock",
+"mkt": "ie"
+},
+{
+"tk": "ALPHA",
+"yahoo": "ALPHA.AT",
+"name": "Alpha Bank",
+"cat": "stock",
+"mkt": "gr"
+},
+{
+"tk": "TPEIR",
+"yahoo": "TPEIR.AT",
+"name": "Piraeus Bank",
+"cat": "stock",
+"mkt": "gr"
+},
+{
+"tk": "HTO",
+"yahoo": "HTO.AT",
+"name": "OTE",
+"cat": "stock",
+"mkt": "gr"
+},
+{
+"tk": "MOH",
+"yahoo": "MOH.AT",
+"name": "Motor Oil Hellas",
+"cat": "stock",
+"mkt": "gr"
+},
+{
+"tk": "TABAK",
+"yahoo": "TABAK.PR",
+"name": "Philip Morris ČR",
+"cat": "stock",
+"mkt": "cz"
+},
+{
+"tk": "CZG",
+"yahoo": "CZG.PR",
+"name": "Colt CZ Group",
+"cat": "stock",
+"mkt": "cz"
+},
+{
+"tk": "KOFOL",
+"yahoo": "KOFOL.PR",
+"name": "Kofola",
+"cat": "stock",
+"mkt": "cz"
+},
+{
+"tk": "MTELEKOM",
+"yahoo": "MTELEKOM.BD",
+"name": "Magyar Telekom",
+"cat": "stock",
+"mkt": "hu"
+},
+{
+"tk": "4IG",
+"yahoo": "4IG.BD",
+"name": "4iG",
+"cat": "stock",
+"mkt": "hu"
+},
+{
+"tk": "DSCT",
+"yahoo": "DSCT.TA",
+"name": "Israel Discount Bank",
+"cat": "stock",
+"mkt": "il"
+},
+{
+"tk": "MZTF",
+"yahoo": "MZTF.TA",
+"name": "Mizrahi Tefahot",
+"cat": "stock",
+"mkt": "il"
+},
+{
+"tk": "ESLT",
+"yahoo": "ESLT.TA",
+"name": "Elbit Systems",
+"cat": "stock",
+"mkt": "il"
+},
+{
+"tk": "BEZQ",
+"yahoo": "BEZQ.TA",
+"name": "Bezeq",
+"cat": "stock",
+"mkt": "il"
+},
+{
+"tk": "CPI",
+"yahoo": "CPI.JO",
+"name": "Capitec",
+"cat": "stock",
+"mkt": "za"
+},
+{
+"tk": "ABG",
+"yahoo": "ABG.JO",
+"name": "Absa",
+"cat": "stock",
+"mkt": "za"
+},
+{
+"tk": "SOL",
+"yahoo": "SOL.JO",
+"name": "Sasol",
+"cat": "stock",
+"mkt": "za"
+},
+{
+"tk": "GFI",
+"yahoo": "GFI.JO",
+"name": "Gold Fields",
+"cat": "stock",
+"mkt": "za"
+},
+{
+"tk": "SHP",
+"yahoo": "SHP.JO",
+"name": "Shoprite",
+"cat": "stock",
+"mkt": "za"
+},
+{
+"tk": "EAST",
+"yahoo": "EAST.CA",
+"name": "Eastern Company",
+"cat": "stock",
+"mkt": "eg"
+},
+{
+"tk": "HRHO",
+"yahoo": "HRHO.CA",
+"name": "EFG Holding",
+"cat": "stock",
+"mkt": "eg"
+},
+{
+"tk": "SWDY",
+"yahoo": "SWDY.CA",
+"name": "Elsewedy Electric",
+"cat": "stock",
+"mkt": "eg"
+},
+{
+"tk": "ABUK",
+"yahoo": "ABUK.CA",
+"name": "Abu Qir Fertilizers",
+"cat": "stock",
+"mkt": "eg"
+},
+{
+"tk": "C6L",
+"yahoo": "C6L.SI",
+"name": "Singapore Airlines",
+"cat": "stock",
+"mkt": "sg"
+},
+{
+"tk": "S63",
+"yahoo": "S63.SI",
+"name": "ST Engineering",
+"cat": "stock",
+"mkt": "sg"
+},
+{
+"tk": "S68",
+"yahoo": "S68.SI",
+"name": "SGX",
+"cat": "stock",
+"mkt": "sg"
+},
+{
+"tk": "BN4",
+"yahoo": "BN4.SI",
+"name": "Keppel",
+"cat": "stock",
+"mkt": "sg"
+},
+{
+"tk": "F34",
+"yahoo": "F34.SI",
+"name": "Wilmar",
+"cat": "stock",
+"mkt": "sg"
+},
+{
+"tk": "1023",
+"yahoo": "1023.KL",
+"name": "CIMB",
+"cat": "stock",
+"mkt": "my"
+},
+{
+"tk": "5225",
+"yahoo": "5225.KL",
+"name": "IHH Healthcare",
+"cat": "stock",
+"mkt": "my"
+},
+{
+"tk": "5183",
+"yahoo": "5183.KL",
+"name": "Petronas Chemicals",
+"cat": "stock",
+"mkt": "my"
+},
+{
+"tk": "4863",
+"yahoo": "4863.KL",
+"name": "Telekom Malaysia",
+"cat": "stock",
+"mkt": "my"
+},
+{
+"tk": "IFT",
+"yahoo": "IFT.NZ",
+"name": "Infratil",
+"cat": "stock",
+"mkt": "nz"
+},
+{
+"tk": "CEN",
+"yahoo": "CEN.NZ",
+"name": "Contact Energy",
+"cat": "stock",
+"mkt": "nz"
+},
+{
+"tk": "SPK",
+"yahoo": "SPK.NZ",
+"name": "Spark New Zealand",
+"cat": "stock",
+"mkt": "nz"
+},
+{
+"tk": "MFT",
+"yahoo": "MFT.NZ",
+"name": "Mainfreight",
+"cat": "stock",
+"mkt": "nz"
+},
+{
+"tk": "BMA",
+"yahoo": "BMA.BA",
+"name": "Banco Macro",
+"cat": "stock",
+"mkt": "ar"
+},
+{
+"tk": "TGSU2",
+"yahoo": "TGSU2.BA",
+"name": "Transportadora de Gas del Sur",
+"cat": "stock",
+"mkt": "ar"
+},
+{
+"tk": "TXAR",
+"yahoo": "TXAR.BA",
+"name": "Ternium Argentina",
+"cat": "stock",
+"mkt": "ar"
+},
+{
+"tk": "CEPU",
+"yahoo": "CEPU.BA",
+"name": "Central Puerto",
+"cat": "stock",
+"mkt": "ar"
+},
+{
+"tk": "COPEC",
+"yahoo": "COPEC.SN",
+"name": "Empresas Copec",
+"cat": "stock",
+"mkt": "cl"
+},
+{
+"tk": "BSANTANDER",
+"yahoo": "BSANTANDER.SN",
+"name": "Banco Santander Chile",
+"cat": "stock",
+"mkt": "cl"
+},
+{
+"tk": "CENCOSUD",
+"yahoo": "CENCOSUD.SN",
+"name": "Cencosud",
+"cat": "stock",
+"mkt": "cl"
+},
+{
+"tk": "LTM",
+"yahoo": "LTM.SN",
+"name": "LATAM Airlines",
+"cat": "stock",
+"mkt": "cl"
+},
+{
+"tk": "8002",
+"yahoo": "8002.T",
+"name": "Marubeni",
+"cat": "stock",
+"mkt": "jp"
+},
+{
+"tk": "8053",
+"yahoo": "8053.T",
+"name": "Sumitomo Corporation",
+"cat": "stock",
+"mkt": "jp"
+},
+{
+"tk": "6301",
+"yahoo": "6301.T",
+"name": "Komatsu",
+"cat": "stock",
+"mkt": "jp"
+},
+{
+"tk": "6752",
+"yahoo": "6752.T",
+"name": "Panasonic",
+"cat": "stock",
+"mkt": "jp"
+},
+{
+"tk": "4901",
+"yahoo": "4901.T",
+"name": "Fujifilm",
+"cat": "stock",
+"mkt": "jp"
+},
+{
+"tk": "8591",
+"yahoo": "8591.T",
+"name": "ORIX",
+"cat": "stock",
+"mkt": "jp"
+},
+{
+"tk": "7201",
+"yahoo": "7201.T",
+"name": "Nissan",
+"cat": "stock",
+"mkt": "jp"
+},
+{
+"tk": "6723",
+"yahoo": "6723.T",
+"name": "Renesas Electronics",
+"cat": "stock",
+"mkt": "jp"
+},
+{
+"tk": "EMBR3",
+"yahoo": "EMBR3.SA",
+"name": "Embraer",
+"cat": "stock",
+"mkt": "br"
+},
+{
+"tk": "BBSE3",
+"yahoo": "BBSE3.SA",
+"name": "BB Seguridade",
+"cat": "stock",
+"mkt": "br"
+},
+{
+"tk": "SANB11",
+"yahoo": "SANB11.SA",
+"name": "Santander Brasil",
+"cat": "stock",
+"mkt": "br"
+},
+{
+"tk": "TOTS3",
+"yahoo": "TOTS3.SA",
+"name": "Totvs",
+"cat": "stock",
+"mkt": "br"
+},
+{
+"tk": "VBBR3",
+"yahoo": "VBBR3.SA",
+"name": "Vibra Energia",
+"cat": "stock",
+"mkt": "br"
+},
+{
+"tk": "LHA",
+"yahoo": "LHA.DE",
+"name": "Lufthansa",
+"cat": "stock",
+"mkt": "de"
+},
+{
+"tk": "PUM",
+"yahoo": "PUM.DE",
+"name": "Puma",
+"cat": "stock",
+"mkt": "de"
+},
+{
+"tk": "KBX",
+"yahoo": "KBX.DE",
+"name": "Knorr-Bremse",
+"cat": "stock",
+"mkt": "de"
+},
+{
+"tk": "TLX",
+"yahoo": "TLX.DE",
+"name": "Talanx",
+"cat": "stock",
+"mkt": "de"
+},
+{
+"tk": "EVK",
+"yahoo": "EVK.DE",
+"name": "Evonik",
+"cat": "stock",
+"mkt": "de"
+},
+{
+"tk": "UNI",
+"yahoo": "UNI.MC",
+"name": "Unicaja",
+"cat": "stock",
+"mkt": "es"
+},
+{
+"tk": "ENG",
+"yahoo": "ENG.MC",
+"name": "Enagás",
+"cat": "stock",
+"mkt": "es"
+},
+{
+"tk": "LOG",
+"yahoo": "LOG.MC",
+"name": "Logista",
+"cat": "stock",
+"mkt": "es"
+},
+{
+"tk": "SCYR",
+"yahoo": "SCYR.MC",
+"name": "Sacyr",
+"cat": "stock",
+"mkt": "es"
+},
+{
+"tk": "ASRNL",
+"yahoo": "ASRNL.AS",
+"name": "ASR Nederland",
+"cat": "stock",
+"mkt": "nl"
+},
+{
+"tk": "SBMO",
+"yahoo": "SBMO.AS",
+"name": "SBM Offshore",
+"cat": "stock",
+"mkt": "nl"
+},
+{
+"tk": "VPK",
+"yahoo": "VPK.AS",
+"name": "Vopak",
+"cat": "stock",
+"mkt": "nl"
+},
+{
+"tk": "AALB",
+"yahoo": "AALB.AS",
+"name": "Aalberts",
+"cat": "stock",
+"mkt": "nl"
+},
+{
+"tk": "PE&OLES",
+"yahoo": "PE&OLES.MX",
+"name": "Peñoles",
+"cat": "stock",
+"mkt": "mx"
+},
+{
+"tk": "GCARSOA1",
+"yahoo": "GCARSOA1.MX",
+"name": "Grupo Carso",
+"cat": "stock",
+"mkt": "mx"
+},
+{
+"tk": "KIMBERA",
+"yahoo": "KIMBERA.MX",
+"name": "Kimberly-Clark de México",
+"cat": "stock",
+"mkt": "mx"
+},
+{
+"tk": "GCC",
+"yahoo": "GCC.MX",
+"name": "GCC",
+"cat": "stock",
+"mkt": "mx"
+},
+{
+"tk": "ALSEA",
+"yahoo": "ALSEA.MX",
+"name": "Alsea",
+"cat": "stock",
+"mkt": "mx"
+},
+{
+"tk": "VAKBN",
+"yahoo": "VAKBN.IS",
+"name": "VakıfBank",
+"cat": "stock",
+"mkt": "tr"
+},
+{
+"tk": "HALKB",
+"yahoo": "HALKB.IS",
+"name": "Halkbank",
+"cat": "stock",
+"mkt": "tr"
+},
+{
+"tk": "CCOLA",
+"yahoo": "CCOLA.IS",
+"name": "Coca-Cola İçecek",
+"cat": "stock",
+"mkt": "tr"
+},
+{
+"tk": "AEFES",
+"yahoo": "AEFES.IS",
+"name": "Anadolu Efes",
+"cat": "stock",
+"mkt": "tr"
+},
+{
+"tk": "RKT",
+"yahoo": "RKT.L",
+"name": "Reckitt",
+"cat": "stock",
+"mkt": "gb"
+},
+{
+"tk": "NXT",
+"yahoo": "NXT.L",
+"name": "Next",
+"cat": "stock",
+"mkt": "gb"
+},
+{
+"tk": "HLMA",
+"yahoo": "HLMA.L",
+"name": "Halma",
+"cat": "stock",
+"mkt": "gb"
+},
+{
+"tk": "SN",
+"yahoo": "SN.L",
+"name": "Smith & Nephew",
+"cat": "stock",
+"mkt": "gb"
+},
+{
+"tk": "AUTO",
+"yahoo": "AUTO.L",
+"name": "Auto Trader",
+"cat": "stock",
+"mkt": "gb"
+},
+{
+"tk": "BAJAJ-AUTO",
+"yahoo": "BAJAJ-AUTO.NS",
+"name": "Bajaj Auto",
+"cat": "stock",
+"mkt": "in"
+},
+{
+"tk": "HINDALCO",
+"yahoo": "HINDALCO.NS",
+"name": "Hindalco",
+"cat": "stock",
+"mkt": "in"
+},
+{
+"tk": "CIPLA",
+"yahoo": "CIPLA.NS",
+"name": "Cipla",
+"cat": "stock",
+"mkt": "in"
+},
+{
+"tk": "EICHERMOT",
+"yahoo": "EICHERMOT.NS",
+"name": "Eicher Motors",
+"cat": "stock",
+"mkt": "in"
+},
+{
+"tk": "INDIGO",
+"yahoo": "INDIGO.NS",
+"name": "IndiGo",
+"cat": "stock",
+"mkt": "in"
 }
 ]
