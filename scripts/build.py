@@ -4651,6 +4651,8 @@ def main():
             e['u'] = 1   # copper/aluminum are quoted per lb / tonne, not per oz
         if a.get('binance') or (a['cat'] == 'crypto' and a.get('src') in ('yahoo', 'binance')):   # pinned coins (ETH…) have src=binance but no symbol
             e['bn'] = 1
+        elif a['cat'] == 'crypto' and a.get('src') in ('gate', 'mexc', 'okx', 'bybit'):
+            e['x'] = a['src'][0] if a['src'] != 'bybit' else 'y'   # live price from that exchange (app.js: WebSocket g/o/y, MEXC via /api/quote?mx=)
         if a['cat'] in ('stock', 'etf', 'metal', 'cmd') and a.get('yahoo') and not any(ch in a['yahoo'] for ch in '.:'):
             e['y'] = a['yahoo']   # USD-listed: live quote via /api/quote
         idx.append({k: (round(v, 4) if isinstance(v, float) and k in ('ch', 'r1', 'r3', 'r5') else v) for k, v in e.items() if v is not None})

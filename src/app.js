@@ -1527,3 +1527,39 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
     [...nl.querySelectorAll('a.nrow')].slice(4).forEach(a=>a.remove());
   }).catch(()=>{});
 })();
+
+/* ---------- live prices for coins outside Binance (owner 2026-11-21): OKX, Bybit and Gate WebSockets, MEXC every 15 s via /api/quote?mx= ----------
+   Only coins shown on the page (and the portfolio's holdings); connections close when the tab is hidden. Index field x: g=Gate, o=OKX, y=Bybit, m=MEXC. */
+(function(){ const W=window.WIX||{}; if(!('WebSocket' in window)||!W.IDX||document.querySelector('.art')) return;
+  const {BYID,fmtPrice,fmtPct,cls}=W, $$=s=>[...document.querySelectorAll(s)];
+  const coins=()=>{ const ids=new Set($$('[data-p],[data-c],[data-h]').map(el=>el.dataset.p||el.dataset.c||el.dataset.h));
+    if(document.getElementById('hold')) try{ JSON.parse(localStorage.getItem('wi_hold')||'[]').forEach(x=>ids.add(x.id)) }catch(e){}
+    return [...ids].map(i=>BYID[i]).filter(a=>a&&a.c==='crypto'&&!a.bn&&a.x).slice(0,120) };
+  const byTk={}; const put=(a,p,ch)=>{ if(!(p>0)) return; const old=a.pr; a.pr=p; if(ch!=null&&isFinite(ch)) a.ch=ch;
+    $$(`[data-p="${a.i}"]`).forEach(el=>{ el.textContent=fmtPrice(p); if(old&&p!==old){ el.classList.remove('flash-up','flash-dn'); void el.offsetWidth; el.classList.add(p>old?'flash-up':'flash-dn') } });
+    if(ch!=null) $$(`[data-c="${a.i}"]`).forEach(el=>{ el.textContent=fmtPct(a.ch); el.classList.remove('good','bad'); el.classList.add(cls(a.ch)) });
+    document.dispatchEvent(new CustomEvent('wi:tick',{detail:a})) };
+  const EX={
+    o:{url:'wss://ws.okx.com:8443/ws/v5/public', sub:t=>[{op:'subscribe',args:t.map(x=>({channel:'tickers',instId:x+'-USDT'}))}], ping:'ping',
+       msg:m=>(m.data||[]).forEach(d=>{ const a=byTk['o'+(d.instId||'').replace('-USDT','')]; if(a) put(a,+d.last,+d.open24h>0?d.last/d.open24h-1:null) })},
+    y:{url:'wss://stream.bybit.com/v5/public/spot', sub:t=>{ const r=[]; for(let i=0;i<t.length;i+=10) r.push({op:'subscribe',args:t.slice(i,i+10).map(x=>'tickers.'+x+'USDT')}); return r }, ping:'{"op":"ping"}',
+       msg:m=>{ const d=m.data; if(!d||!d.symbol) return; const a=byTk['y'+d.symbol.replace(/USDT$/,'')]; if(a) put(a,+d.lastPrice,d.price24hPcnt!=null?+d.price24hPcnt:null) }},
+    g:{url:'wss://api.gateio.ws/ws/v4/', sub:t=>[{time:Math.floor(Date.now()/1000),channel:'spot.tickers',event:'subscribe',payload:t.map(x=>x+'_USDT')}], ping:()=>JSON.stringify({time:Math.floor(Date.now()/1000),channel:'spot.ping'}),
+       msg:m=>{ const d=m.result; if(m.event!=='update'||!d||!d.currency_pair) return; const a=byTk['g'+d.currency_pair.replace(/_USDT$/,'')]; if(a) put(a,+d.last,d.change_percentage!=null?d.change_percentage/100:null) }}};
+  const open={}; let want='', mxT=null;
+  function stop(){ Object.values(open).forEach(o=>{ o.dead=1; clearInterval(o.pi); try{o.ws.close()}catch(e){} }); for(const k in open) delete open[k]; clearInterval(mxT); mxT=null }
+  function start(){ const L=coins(); want=L.map(a=>a.i).join(','); if(!L.length) return;
+    for(const k in byTk) delete byTk[k]; L.forEach(a=>byTk[a.x+a.t.toUpperCase()]=a);
+    Object.keys(EX).forEach(k=>{ const t=L.filter(a=>a.x===k).map(a=>a.t.toUpperCase()); if(!t.length) return; const E=EX[k];
+      const go=(n)=>{ let ws; try{ ws=new WebSocket(E.url) }catch(e){ return } const o=open[k]={ws};
+        ws.onopen=()=>{ E.sub(t).forEach(m=>ws.send(JSON.stringify(m))); o.pi=setInterval(()=>{ try{ ws.send(typeof E.ping==='function'?E.ping():E.ping) }catch(e){} },20000) };
+        ws.onmessage=ev=>{ if(ev.data==='pong') return; let m; try{ m=JSON.parse(ev.data) }catch(e){ return } E.msg(m) };
+        ws.onclose=()=>{ clearInterval(o.pi); if(!o.dead&&!document.hidden&&n<5) setTimeout(()=>go(n+1),3000*(n+1)) } };
+      go(0) });
+    const mx=L.filter(a=>a.x==='m'); if(mx.length){ const poll=()=>{ if(document.hidden) return;
+      fetch(`${(window.PAGE||{}).base||''}/api/quote?mx=${mx.map(a=>a.t.toUpperCase()).join(',')}`).then(r=>r.ok?r.json():null).then(Q=>{ if(Q) mx.forEach(a=>{ const q=Q[a.t.toUpperCase()]; if(q) put(a,q[0],q[1]) }) }).catch(()=>{}) };
+      poll(); mxT=setInterval(poll,15000) } }
+  document.addEventListener('visibilitychange',()=>{ if(document.hidden) stop(); else start() });
+  let rt; document.addEventListener('wi:rows',()=>{ clearTimeout(rt); rt=setTimeout(()=>{ if(document.hidden) return; const L=coins().map(a=>a.i).join(','); if(L!==want){ stop(); start() } },500) });
+  setTimeout(start,800);
+})();

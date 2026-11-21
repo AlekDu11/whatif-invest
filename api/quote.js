@@ -60,6 +60,14 @@ module.exports = async (req, res) => {
     res.setHeader('Cache-Control', cache || 'no-store'); res.end(JSON.stringify(obj)) };
   if (G.over(req, 30, 'quote')) return send(429, { e: 'limit' });
   if ((req.query || {}).mv) return movers(req, send);
+  if ((req.query || {}).mx) {   // live prices of coins traded on MEXC (its WebSocket is protobuf-only): one ticker call, CDN 15 s
+    const want = new Set(String(req.query.mx).toUpperCase().split(',').filter(x => /^[A-Z0-9]{1,15}$/.test(x)).slice(0, 60).map(x => x + 'USDT'));
+    const d = await j('https://api.mexc.com/api/v3/ticker/24hr');
+    if (!Array.isArray(d)) return send(502, { e: 'upstream' }, 'public, s-maxage=10');
+    const out = {};
+    for (const t of d) if (want.has(t.symbol) && +t.lastPrice > 0) out[t.symbol.slice(0, -4)] = [+t.lastPrice, +t.openPrice > 0 ? +(t.lastPrice / t.openPrice - 1).toFixed(5) : null];
+    return send(200, out, 'public, s-maxage=15, stale-while-revalidate=60');
+  }
   const list = String((req.query || {}).s || '').split(',').map(x => x.trim()).filter(x => /^[A-Z0-9.\-=^]{1,20}$/i.test(x)).slice(0, 25);
   if (!list.length) return send(400, { e: 'symbols' });
   const out = {};
