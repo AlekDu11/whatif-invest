@@ -865,18 +865,30 @@ def main():
         elif prev.get('tk') == base and prev.get('src') in ('gate', 'mexc', 'okx', 'kraken', 'yahoo-cc', 'bybit', 'coingecko') and extend_old(prev, m.get('price'), now):
             s, src = extend_old(prev, m.get('price'), now), prev['src']    # history already stored
         else:
-            if base in nohist or new_left <= 0 or (m.get('vol') or 0) < 1e4:   # dead volume, recently failed, or this run's budget is spent
-                continue
-            new_left -= 1
-            s, src = other_monthly(base)
-            time.sleep(0.12)
-            if not s and cg_left > 0 and m.get('cgid'):
-                cg_left -= 1
-                s, src = coingecko_monthly(m['cgid']), 'coingecko'
-                time.sleep(4)
-            if not s:
-                nohist[base] = today
-        if not s or looks_stable(s) or broken(s):
+            # owner 2026-11-21: every top-4000 coin gets a page; without any price history it starts as «spot only» (today's price,
+            # live chart from TradingView, no DCA numbers yet) and keeps adding a month each run while we retry the history weekly
+            spot = lambda: (to_series([(now.strftime('%Y-%m'), m['price'])]), 'cg-spot') if m.get('price') and (m.get('vol') or 0) >= 1e4 else (None, None)
+            if (m.get('vol') or 0) < 1e4:
+                continue                                  # dead volume
+            if base in nohist or new_left <= 0:            # recently failed, or this run's budget is spent
+                if prev.get('tk') == base and prev.get('src') == 'cg-spot' and extend_old(prev, m.get('price'), now):
+                    s, src = extend_old(prev, m['price'], now), 'cg-spot'
+                elif base in nohist:
+                    s, src = spot()
+                else:
+                    continue
+            else:
+                new_left -= 1
+                s, src = other_monthly(base)
+                time.sleep(0.12)
+                if not s and cg_left > 0 and m.get('cgid'):
+                    cg_left -= 1
+                    s, src = coingecko_monthly(m['cgid']), 'coingecko'
+                    time.sleep(4)
+                if not s:
+                    nohist[base] = today
+                    s, src = (extend_old(prev, m.get('price'), now), 'cg-spot') if prev.get('src') == 'cg-spot' and prev.get('tk') == base else spot()
+        if not s or (len(s['p']) >= 3 and looks_stable(s)) or broken(s):
             continue
         if not r and m.get('price') and not (m['price'] / 3 < s['p'][-1] < m['price'] * 3):
             continue                                    # same ticker, different coin on that exchange

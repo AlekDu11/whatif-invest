@@ -136,7 +136,9 @@ def tv_symbol(a):
     if a['cat'] == 'crypto':
         if a.get('src') in ('kraken', 'yahoo-cc'):   # delisted from Binance (Monero...): Kraken's USD pair
             return f"KRAKEN:{a['tk']}USD"
-        ex = {'gate': 'GATEIO', 'mexc': 'MEXC', 'okx': 'OKX'}.get(a.get('src'), 'BINANCE')
+        if a.get('src') in ('coingecko', 'cg-spot'):   # on no exchange we read: TradingView's aggregated CRYPTO index
+            return f"CRYPTO:{a['tk']}USD"
+        ex = {'gate': 'GATEIO', 'mexc': 'MEXC', 'okx': 'OKX', 'bybit': 'BYBIT'}.get(a.get('src'), 'BINANCE')
         return f"{ex}:{a['tk']}USDT"
     if a['cat'] == 'metal' and a['tk'] in ('XAU', 'XAG'):
         return 'OANDA:XAUUSD' if a['tk'] == 'XAU' else 'OANDA:XAGUSD'
