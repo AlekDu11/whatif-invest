@@ -21,11 +21,17 @@ async function quote(lang, aid) {
   return { aid, n: s[2] || aid.toUpperCase(), p: px[s[1]], url: `${SITE}${LP(lang)}/${aid}/?utm_source=tg_bot` };
 }
 const refUrl = (chat) => 'https://t.me/' + BOT + (chat ? '?start=r_' + chat : '');
+const shareUrl = (m, chat) => `https://t.me/share/url?url=${encodeURIComponent(refUrl(chat))}&text=${encodeURIComponent(m.share)}`;
+// Points (owner 2026-11-21): +RF per verified friend (human check + channel subscription), +WB welcome bonus. Sorted set tg:pts, names tg:name:<chat>.
+// Exchange for gifts/crypto is announced later; points have no cash value yet.
+const RF = 10, WB = 5;
+const short = (f) => ((f.first_name || 'User').slice(0, 14) + (f.last_name ? ' ' + f.last_name[0] + '.' : '')).replace(/[<>@]/g, '');
 const menu = (lang, chat) => { const m = M(lang); return { inline_keyboard: [
   [{ text: m.pf, web_app: { url: `${SITE}${LP(lang)}/me/?tgapp=1` } }],
   [{ text: m.px, callback_data: 'px' }, { text: m.al, callback_data: 'al' }],
-  [{ text: m.dg, callback_data: 'dg' }, { text: m.sh, url: `https://t.me/share/url?url=${encodeURIComponent(refUrl(chat))}&text=${encodeURIComponent(m.share)}` }],
-  [{ text: m.ch, url: CH }, { text: m.sup, callback_data: 'sup' }],
+  [{ text: m.dg, callback_data: 'dg' }, { text: m.pts, callback_data: 'pts' }],
+  [{ text: m.ptsinv, url: shareUrl(m, chat) }, { text: m.ch, url: CH }],
+  [{ text: m.sup, callback_data: 'sup' }],
   [{ text: m.lng, callback_data: 'lng' }, { text: m.site, url: `${SITE}${LP(lang)}/?utm_source=tg_bot` }]] } };
 // Gate for new users (ads t.me/<bot>?start=ad_<tag>, referrals start=r_<chat>, plain /start):
 // step 1 tap the named emoji, step 2 a sum written in words (answers stored server-side, <1.2 s taps rejected, 3 mistakes = 24 h ban),
@@ -72,9 +78,9 @@ module.exports = async (req, res) => {
   }
   if (q.stats) {
     if (q.stats !== process.env.ALERTS_KEY) return done(403, { e: 'key' });
-    const [ads, users, human, dg] = await kv([['HGETALL', 'tg:ads'], ['SCARD', 'tg:users'], ['SCARD', 'tg:human'], ['SCARD', 'tg:dgusers']]);
+    const [ads, users, human, dg, pts] = await kv([['HGETALL', 'tg:ads'], ['SCARD', 'tg:users'], ['SCARD', 'tg:human'], ['SCARD', 'tg:dgusers'], ['ZCARD', 'tg:pts']]);
     const o = {}; for (let i = 0; i < (ads || []).length; i += 2) o[ads[i]] = +ads[i + 1];
-    return done(200, { ads: o, users, human, daily_brief: dg });
+    return done(200, { ads: o, users, human, daily_brief: dg, with_points: pts });
   }
   if (req.method !== 'POST' || req.headers['x-telegram-bot-api-secret-token'] !== process.env.ALERTS_KEY) return done(403);
   let u = req.body || {};
@@ -111,6 +117,15 @@ module.exports = async (req, res) => {
       const rows = []; for (let i = 0; i < list.length; i += 4) rows.push(list.slice(i, i + 4));
       rows.push([{ text: m.dgdone, callback_data: 'dg:ok' }, { text: m.dgstop, callback_data: 'dg:off' }]);
       return { inline_keyboard: rows }; };
+    const showPts = async () => {
+      const [p, rk, n, top] = await kv([['ZSCORE', 'tg:pts', String(chat)], ['ZREVRANK', 'tg:pts', String(chat)], ['HGET', 'tg:refs', String(chat)], ['ZREVRANGE', 'tg:pts', 0, 9, 'WITHSCORES']]);
+      const ids = [], sc = []; for (let i = 0; i < (top || []).length; i += 2) { ids.push(top[i]); sc.push(Math.round(+top[i + 1])); }
+      const names = ids.length ? await kv(ids.map(c => ['GET', `tg:name:${c}`])) : [];
+      const medal = ['🥇', '🥈', '🥉'];
+      const board = ids.map((c, i) => `${medal[i] || (i + 1) + '.'} ${names[i] || 'User'} — ${sc[i]}${c === String(chat) ? ' ⬅️' : ''}`).join('\n');
+      return say(tpl(m.ptsmsg, { p: Math.round(+p || 0), r: rk == null ? '—' : rk + 1, n: n || 0, rf: RF, wb: WB, u: refUrl(chat) }) + (board ? '\n\n' + m.ptstop + '\n' + board : ''),
+        { reply_markup: { inline_keyboard: [[{ text: m.ptsinv, url: shareUrl(m, chat) }], [{ text: '⬅️ Menu', callback_data: 'menu' }]] } });
+    };
     const [capRaw, gate, ban] = await kv([['GET', `tg:cap:${chat}`], ['GET', `tg:gate:${chat}`], ['GET', `tg:ban:${chat}`]]);
     const isAdmin = admin && String(chat) === String(admin);
     if (!isAdmin && (capRaw || gate || ban)) {                 // user is inside the gate: only gate answers count
@@ -135,8 +150,12 @@ module.exports = async (req, res) => {
         const r = await tg('getChatMember', { chat_id: '@WhatIfStack', user_id: from.id });
         const st2 = r && r.result && r.result.status, inCh = ['member', 'administrator', 'creator'].includes(st2) || (st2 === 'restricted' && r.result.is_member);
         if (r && r.ok && !inCh) return subMsg(tag, m.subno).then(() => done(200));
-        await kv([['DEL', `tg:gate:${chat}`], ['SADD', 'tg:human', String(chat)], ['HINCRBY', 'tg:ads', tag + (r && r.ok ? ':sub' : ':subunk'), 1]]);
-        if (refby) { const [n] = await kv([['HINCRBY', 'tg:refs', refby, 1]]); await tg('sendMessage', { chat_id: refby, text: tpl(m.inv, { u: refUrl(refby), n }) }); }
+        await kv([['DEL', `tg:gate:${chat}`], ['SADD', 'tg:human', String(chat)], ['HINCRBY', 'tg:ads', tag + (r && r.ok ? ':sub' : ':subunk'), 1],
+          ['ZINCRBY', 'tg:pts', WB, String(chat)], ['SET', `tg:name:${chat}`, short(from)]]);
+        if (refby) {
+          const [n, p, rl] = await kv([['HINCRBY', 'tg:refs', refby, 1], ['ZINCRBY', 'tg:pts', RF, refby], ['GET', `tg:lang:${refby}`]]);
+          await tg('sendMessage', { chat_id: refby, text: tpl(M(rl || 'en').refok, { rf: RF, p: Math.round(p), n }), reply_markup: { inline_keyboard: [[{ text: M(rl || 'en').pts, callback_data: 'pts' }]] } });
+        }
         await say(m.welcome + '\n\n' + m.hi, { reply_markup: menu(lang, chat) });
         return say(m.dgask, { reply_markup: await dgKb() }).then(() => done(200));
       }
@@ -157,6 +176,8 @@ module.exports = async (req, res) => {
     };
     if (cb) {
       await tg('answerCallbackQuery', { callback_query_id: cb.id });
+      if (cb.data === 'menu') { await say(m.hi, { reply_markup: menu(lang, chat) }); return done(200); }
+      if (cb.data === 'pts') { await showPts(); return done(200); }
       if (cb.data === 'dg') { await say(m.dgask, { reply_markup: await dgKb() }); return done(200); }
       if (/^dg:/.test(cb.data)) {
         const v = cb.data.slice(3);
@@ -215,7 +236,7 @@ module.exports = async (req, res) => {
       await kv([['HINCRBY', 'tg:ads', tag + ':start', 1]]);
       return gateStart(tag).then(() => done(200));
     }
-    if (/^\/invite/.test(text)) { const [n] = await kv([['HGET', 'tg:refs', String(chat)]]); return say(tpl(m.inv, { u: refUrl(chat), n: n || 0 })).then(() => done(200)); }
+    if (/^\/(invite|points)/.test(text)) return showPts().then(() => done(200));
     if (/^\/(start|menu|help)\b/.test(text)) { await kv([['SADD', 'tg:users', String(chat)]]); return say(m.hi, { reply_markup: menu(lang, chat) }).then(() => done(200)); }
     if (/^\/portfolio/.test(text)) return say(m.pf, { reply_markup: { inline_keyboard: [[{ text: m.pf, web_app: { url: `${SITE}${LP(lang)}/me/?tgapp=1` } }]] } }).then(() => done(200));
     if (/^\/share/.test(text)) return say(m.share + '\n' + refUrl(chat), { reply_markup: { inline_keyboard: [[{ text: m.sh, url: `https://t.me/share/url?url=${encodeURIComponent(refUrl(chat))}&text=${encodeURIComponent(m.share)}` }]] } }).then(() => done(200));
