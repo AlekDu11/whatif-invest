@@ -2422,7 +2422,7 @@ def investor_page(lang, fid, ver):
 
 
 # ---------------- Telegram price alerts ----------------
-AUTH_EMAIL = True   # True once Vercel env BREVO_KEY (+ AUTH_FROM) is set: shows «sign in by e-mail» on /me/ (api/_auth.js)
+AUTH_EMAIL = False   # True once Vercel env BREVO_KEY (+ AUTH_FROM) is set: shows «sign in by e-mail» on /me/ (api/_auth.js)
 TG_BOT = 'WhatIfStack_bot'   # bot username without @ (set when the owner creates it in @BotFather); empty = no alert button
 
 
