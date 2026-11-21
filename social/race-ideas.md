@@ -25,7 +25,7 @@ comparisons that get thousands of views on crypto X. Keep the matchup a real que
 - ✅ 2026-11-19 nvda amd intc | chip makers
 - ✅ 2026-11-20 aapl msft googl | big tech classics
 - ✅ 2026-11-21 spy qqq vt | ETF trio
-- gold silver platinum | precious metals
+- ✅ 2026-11-21 gold silver platinum | precious metals
 - doge shib pepe | memecoins
 - eth sol ada --since 2021-01 | "ETH killers" since the 2021 cycle
 - tsla byd toyota | car makers
@@ -51,6 +51,7 @@ comparisons that get thousands of views on crypto X. Keep the matchup a real que
 | 2026-11-17 | btc gold spy (since 2016-01) | https://x.com/WhatIfStack/status/2122690567314292871 | msg 1474 | X 14 · TG 69 (2026-11-20) |
 | 2026-11-17 | okb bnb cro (since 2020-02) | https://x.com/WhatIfStack/status/2122729649189044275 | msg 1475 | X 15 · TG 118 (2026-11-20) |
 | 2026-11-18 | btc eth sol (since 2020-04) | https://x.com/WhatIfStack/status/2123077127801298975 | msg 1479 | X 10 · TG 1.2K (2026-11-20) |
-| 2026-11-19 | nvda amd intc (since 2000-01) | https://x.com/WhatIfStack/status/2123439207024910576 | msg 1483 | X 5 · TG 1.4K (2026-11-20) |
-| 2026-11-20 18:35 | aapl msft googl (since 2004-08) | https://x.com/WhatIfStack/status/2123801362022707579 | msg 1488 | X 1 (2026-11-21) |
-| 2026-11-21 11:30 | spy qqq vt (since 2008-06) | https://x.com/WhatIfStack/status/2124072647394750506 | — | |
+| 2026-11-19 | nvda amd intc (since 2000-01) | https://x.com/WhatIfStack/status/2123439207024910576 | msg 1483 | X 6 · TG 1.4K (2026-11-21) |
+| 2026-11-20 18:35 | aapl msft googl (since 2004-08) | https://x.com/WhatIfStack/status/2123801362022707579 | msg 1488 | X 4 · TG 1.4K (2026-11-21) |
+| 2026-11-21 11:30 | spy qqq vt (since 2008-06) | https://x.com/WhatIfStack/status/2124072647394750506 | — | X 13 (2026-11-21) |
+| 2026-11-21 18:30 | gold silver platinum (since 2000-08) | https://x.com/WhatIfStack/status/2124163264862884319 | msg 1493 | |
