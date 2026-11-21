@@ -22,10 +22,44 @@ async function one(s) {
   }
   return null;
 }
+// Home «Today in the markets» between deploys: GET /api/quote?mv=1&s=<our biggest US stocks> → live crypto movers (CoinGecko top 250),
+// trending coins and the stocks' day change (Yahoo spark, 20 symbols per call). One CDN-cached answer (5 min) for every visitor.
+const UA = { 'User-Agent': 'Mozilla/5.0 (WhatIfStack movers)', Accept: 'application/json' };
+async function j(u) { try { const r = await fetch(u, { headers: UA }); return r.ok ? await r.json() : null } catch (e) { return null } }
+async function spark(list) {
+  const out = {};
+  for (let i = 0; i < list.length; i += 20) {
+    const part = list.slice(i, i + 20).join(',');
+    let d = null;
+    for (const h of ['query1', 'query2']) { d = await j(`https://${h}.finance.yahoo.com/v7/finance/spark?symbols=${encodeURIComponent(part)}&range=1d&interval=1d`); if (d) break }
+    for (const r of (((d || {}).spark || {}).result || [])) {
+      const m = ((r.response || [])[0] || {}).meta || {};
+      const p = m.regularMarketPrice, pc = m.chartPreviousClose || m.previousClose;
+      if (p != null && pc) out[r.symbol] = [+p.toPrecision(8), +(p / pc - 1).toFixed(5)];
+    }
+  }
+  if (!Object.keys(out).length) {   // spark unavailable: the chart endpoint for the 40 biggest
+    await Promise.all(list.slice(0, 40).map(async s => { const q = await one(s); if (q && q.cur === 'USD' && q.c != null) out[s] = [q.p, q.c] }));
+  }
+  return out;
+}
+async function movers(req, send) {
+  const list = String((req.query || {}).s || '').split(',').map(x => x.trim()).filter(x => /^[A-Z0-9\-]{1,10}$/i.test(x)).slice(0, 160);
+  const [cg, tr, st] = await Promise.all([
+    j('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=1&price_change_percentage=24h'),
+    j('https://api.coingecko.com/api/v3/search/trending'),
+    list.length ? spark(list) : {}]);
+  const c = (Array.isArray(cg) ? cg : []).filter(x => x.current_price != null && x.price_change_percentage_24h != null)
+    .map(x => [String(x.symbol || '').toUpperCase(), x.id, +(+x.current_price).toPrecision(8), +(x.price_change_percentage_24h / 100).toFixed(5), Math.round(x.market_cap || 0)]);
+  const t = (((tr || {}).coins) || []).map(x => x.item || {}).map(x => [String(x.symbol || '').toUpperCase(), x.id, (((x.data || {}).price_change_percentage_24h || {}).usd ?? null)]).slice(0, 15);
+  if (!c.length && !Object.keys(st).length) return send(502, { e: 'upstream' }, 'public, s-maxage=30');
+  return send(200, { at: Date.now(), c, t, s: st }, 'public, s-maxage=300, stale-while-revalidate=600, stale-if-error=3600');
+}
 module.exports = async (req, res) => {
   const send = (code, obj, cache) => { res.statusCode = code; res.setHeader('Content-Type', 'application/json; charset=utf-8');
     res.setHeader('Cache-Control', cache || 'no-store'); res.end(JSON.stringify(obj)) };
   if (G.over(req, 30, 'quote')) return send(429, { e: 'limit' });
+  if ((req.query || {}).mv) return movers(req, send);
   const list = String((req.query || {}).s || '').split(',').map(x => x.trim()).filter(x => /^[A-Z0-9.\-=^]{1,20}$/i.test(x)).slice(0, 25);
   if (!list.length) return send(400, { e: 'symbols' });
   const out = {};

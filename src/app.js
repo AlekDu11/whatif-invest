@@ -1496,3 +1496,34 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
       if(W.initData&&!A.sid()) A.api('tgapp',{body:{d:W.initData}}).then(start).catch(()=>{}) }; document.head.appendChild(s) }
   document.addEventListener('wi:synced',show); show();
 })();
+
+/* ---------- home «Today in the markets»: live movers, trending and fresh news between deploys (owner 2026-11-21) ---------- */
+(function(){ const W=window.WIX||{}; if(!(window.PAGE||{}).home||!W.T||!document.querySelector('[data-mv]')) return;
+  const {IDX,BYID,esc,fmtPrice,fmtPct,icon,url,nm}=W;
+  const row=(a,p,c)=>`<a class="mrow" href="${url(a.i)}">${icon(a)}<span class="mn"><b>${esc(a.t)}</b><span>${esc(nm(a))}</span></span><span class="mp" data-p="${a.i}">${fmtPrice(p)}</span><span class="mc ${c>=0?'good':'bad'}">${fmtPct(c)}</span></a>`;
+  const fill=(k,rows)=>{ const el=document.querySelector(`[data-mv="${k}"]`); if(!el||!rows.length) return; const h=el.querySelector('.wt').outerHTML; el.innerHTML=h+rows.map(r=>row(...r)).join('') };
+  // crypto: CoinGecko symbol → our coin (biggest one with that ticker)
+  const bySym={}; IDX.filter(a=>a.c==='crypto'&&!a.st).sort((x,y)=>x.o-y.o).forEach(a=>{ const t=a.t.toUpperCase(); if(!bySym[t]) bySym[t]=a });
+  const stocks=IDX.filter(a=>a.c==='stock'&&a.y).sort((x,y)=>x.o-y.o).slice(0,150);
+  fetch(`${(window.PAGE||{}).base||''}/api/quote?mv=1&s=${stocks.map(a=>a.y).join(',')}`).then(r=>r.ok?r.json():null).then(D=>{ if(!D) return;
+    const cr=(D.c||[]).filter(x=>x[4]>=1e9&&bySym[x[0]]).map(x=>[bySym[x[0]],x[2],x[3]]);
+    cr.forEach(([a,p,c])=>{ a.pr=p; a.ch=c });
+    const up=cr.filter(x=>x[2]>0).sort((x,y)=>y[2]-x[2]).slice(0,5), dn=cr.filter(x=>x[2]<0).sort((x,y)=>x[2]-y[2]).slice(0,5);
+    fill('crypto+',up); fill('crypto-',dn);
+    const st=stocks.filter(a=>D.s&&D.s[a.y]).map(a=>[a,D.s[a.y][0],D.s[a.y][1]]);
+    if(st.length>=20){ fill('stock+',st.filter(x=>x[2]>0).sort((x,y)=>y[2]-x[2]).slice(0,5)); fill('stock-',st.filter(x=>x[2]<0).sort((x,y)=>x[2]-y[2]).slice(0,5)) }
+    const cgp={}; (D.c||[]).forEach(x=>cgp[x[1]]=x);
+    const tr=(D.t||[]).map(x=>{ const a=bySym[x[0]], m=cgp[x[1]]; return a&&m?[a,m[2],m[3]]:null }).filter(Boolean).slice(0,5);
+    if(tr.length>=3) fill('trend',tr);
+  }).catch(()=>{});
+  // news: newest briefs from data/feed (GitHub raw), so the card is never a day old
+  const nl=document.getElementById('hnews'); if(!nl) return;
+  const PG=window.PAGE||{}, P=PG.prefix||'', L=PG.lang||'en'; let tags={}; try{ tags=JSON.parse(nl.dataset.tags||'{}') }catch(e){}
+  fetch(`https://raw.githubusercontent.com/AlekDu11/whatif-invest/main/data/feed/${L}.json`,{cache:'no-cache'}).then(r=>r.ok?r.json():null).then(F=>{ if(!F) return;
+    const have=new Set([...nl.querySelectorAll('a.nrow')].map(a=>a.getAttribute('href')));
+    const fresh=(F.items||[]).filter(r=>r.k==='news'&&!have.has(`${P}/news/${r.s}/`)).sort((x,y)=>(y.d||'').localeCompare(x.d||'')).slice(0,4);
+    if(!fresh.length) return;
+    nl.insertAdjacentHTML('afterbegin',fresh.map(r=>`<a class="nrow fresh" href="${P}/read/?k=news&s=${encodeURIComponent(r.s)}"><span class="ntx"><b>${esc(r.t)}</b><span class="muted">WhatIfStack · <time data-t="${esc(r.d)}">${esc(r.d)}</time> ${(r.g||[]).filter(g=>tags[g]).map(g=>`<i class="badge">${esc(tags[g])}</i>`).join(' ')}</span></span></a>`).join(''));
+    [...nl.querySelectorAll('a.nrow')].slice(4).forEach(a=>a.remove());
+  }).catch(()=>{});
+})();

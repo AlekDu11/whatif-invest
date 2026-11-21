@@ -1354,7 +1354,7 @@ def home(lang, ver):
     trend = [s.lower() for s in (G.get('trending') or []) if s.lower() in A and (A[s.lower()].get('mcap') or 0) >= 1e8][:5]
     if not trend:
         trend = [i for i in ids if A[i]['cat'] == 'crypto'][:5]
-    w_tr = (f'<div class="card wd"><div class="wt">🔥 {w["trending"]}</div>' +
+    w_tr = (f'<div class="card wd" data-mv="trend"><div class="wt">🔥 {w["trending"]}</div>' +
             ''.join(mini_row(lang, i, f'<span class="mc {cls(METRICS[i]["chg"])}" data-c="{i}">{pct(METRICS[i]["chg"])}</span>') for i in trend) + '</div>')
     big = lambda i: A[i]['cat'] != 'crypto' or (A[i].get('mcap') or 0) >= 1e9   # no micro-caps on the home page
     movers = [i for i in ids if METRICS[i]['chg'] is not None and ORD[i] < 400 and big(i)]
@@ -1390,14 +1390,14 @@ def home(lang, ver):
     rest = ''
     tl = news_tl(lang)
     nws = news_items(lang)[:4]
-    w_news = (f'<div class="card wd wnews"><div class="wt">📰 {esc(hm["news"])}</div><div class="nlist own">' + ''.join(news_row(lang, k, m, tl) for k, m in nws)
+    w_news = (f'<div class="card wd wnews"><div class="wt">📰 {esc(hm["news"])}</div><div class="nlist own" id="hnews" data-tags="{esc(json.dumps(tl, ensure_ascii=False))}">' + ''.join(news_row(lang, k, m, tl) for k, m in nws)
               + f'</div><a class="calc" href="{url(lang, "news")}">{esc(hm["all"])} →</a></div>') if nws else w_tr
     def mv(cat, sign):
         pool = [i for i in ids if A[i]['cat'] == cat and METRICS[i]['chg'] is not None and big(i) and ORD[i] < (400 if cat == 'crypto' else 900)]
         pool.sort(key=lambda i: -sign * METRICS[i]['chg'])
         pool = [i for i in pool if sign * METRICS[i]['chg'] > 0][:5]
         ttl = f'{"🚀" if sign > 0 else "📉"} {S["ui"][cat]} · {w["gainers"] if sign > 0 else w["losers"]}'
-        return (f'<div class="card wd"><div class="wt">{esc(ttl)}</div>'
+        return (f'<div class="card wd" data-mv="{cat}{"+" if sign > 0 else "-"}"><div class="wt">{esc(ttl)}</div>'
                 + ''.join(mini_row(lang, i, f'<span class="mc {"good" if sign > 0 else "bad"}">{pct(METRICS[i]["chg"])}</span>') for i in pool) + '</div>')
     today = (f'<section class="section today"><h2>{esc(hm["today"])}</h2><div class="tgrid">'
              f'{mv("crypto", 1)}{mv("crypto", -1)}{mv("stock", 1)}{mv("stock", -1)}{w_news}</div></section>')
