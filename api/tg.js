@@ -2,7 +2,7 @@
 // Deep link for alerts from the site: t.me/<bot>?start=a_<aid>_<u|d>_<price with p for the dot>_<lang>
 // One-time setup after adding TG_BOT_TOKEN and ALERTS_KEY in Vercel env: open /api/tg?setup=<ALERTS_KEY>
 // (sets the webhook, commands, menu button «Portfolio», descriptions in uk/ru/en). Inline mode also needs /setinline in @BotFather.
-const { kv, tg, amap, prices, fmt, T, tpl, M, LP } = require('./_alerts');
+const { kv, tg, amap, prices, fmt, T, tpl, M, LP, DG } = require('./_alerts');
 const SITE = 'https://whatifstack.com', BOT = 'WhatIfStack_bot', CH = 'https://t.me/WhatIfStack';
 const TOP = ['btc', 'eth', 'sol', 'gold', 'spy', 'nvda'];
 
@@ -20,17 +20,28 @@ async function quote(lang, aid) {
   const px = await prices([{ s: s[0], k: s[1] }]);
   return { aid, n: s[2] || aid.toUpperCase(), p: px[s[1]], url: `${SITE}${LP(lang)}/${aid}/?utm_source=tg_bot` };
 }
-const menu = (lang) => { const m = M(lang); return { inline_keyboard: [
+const refUrl = (chat) => 'https://t.me/' + BOT + (chat ? '?start=r_' + chat : '');
+const menu = (lang, chat) => { const m = M(lang); return { inline_keyboard: [
   [{ text: m.pf, web_app: { url: `${SITE}${LP(lang)}/me/?tgapp=1` } }],
   [{ text: m.px, callback_data: 'px' }, { text: m.al, callback_data: 'al' }],
-  [{ text: m.ch, url: CH }, { text: m.sh, url: `https://t.me/share/url?url=${encodeURIComponent('https://t.me/' + BOT)}&text=${encodeURIComponent(m.share)}` }],
-  [{ text: m.sup, callback_data: 'sup' }, { text: m.lng, callback_data: 'lng' }],
-  [{ text: m.site, url: `${SITE}${LP(lang)}/?utm_source=tg_bot` }]] } };
-// Bot filter for ad traffic: t.me/<bot>?start=ad_<tag> → one-tap human check → menu + a per-tag channel invite link
-// (Telegram counts joins per invite link). Counters in Upstash hash tg:ads: <tag>:start, <tag>:pass, <tag>:fail. Stats: /api/tg?stats=<ALERTS_KEY>
-const CAP = [['🪙', 'coin'], ['🍎', 'apple'], ['🚗', 'car'], ['🐶', 'dog'], ['⚽', 'ball'], ['🌙', 'moon']];
-const capKb = (tag, n) => { const pick = CAP.slice().sort(() => Math.random() - 0.5).slice(0, 4), ok = pick[Math.floor(Math.random() * 4)];
-  return { e: ok[0], kb: { inline_keyboard: [pick.map(([e]) => ({ text: e, callback_data: `cap:${e === ok[0] ? 1 : 0}:${n}:${tag}` }))] } }; };
+  [{ text: m.dg, callback_data: 'dg' }, { text: m.sh, url: `https://t.me/share/url?url=${encodeURIComponent(refUrl(chat))}&text=${encodeURIComponent(m.share)}` }],
+  [{ text: m.ch, url: CH }, { text: m.sup, callback_data: 'sup' }],
+  [{ text: m.lng, callback_data: 'lng' }, { text: m.site, url: `${SITE}${LP(lang)}/?utm_source=tg_bot` }]] } };
+// Gate for new users (ads t.me/<bot>?start=ad_<tag>, referrals start=r_<chat>, plain /start):
+// step 1 tap the named emoji, step 2 a sum written in words (answers stored server-side, <1.2 s taps rejected, 3 mistakes = 24 h ban),
+// step 3 join @WhatIfStack (checked with getChatMember; the bot must be a channel admin) → the bot opens.
+// Upstash: tg:cap:<chat> (current question), tg:gate:<chat>='sub', tg:ban:<chat>, tg:human, tg:src:<chat>, tg:refby:<chat>, tg:refs (hash),
+// counters tg:ads <tag>:start|pass|fail|sub|subunk. Per-tag channel invite links tg:inv:<tag>. Stats: /api/tg?stats=<ALERTS_KEY>
+const EMO = ['🪙', '🍎', '🚗', '🐶', '⚽', '🌙', '🎸', '🌵'];
+const rnd = n => Math.floor(Math.random() * n);
+const shuffle = a => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = rnd(i + 1); [a[i], a[j]] = [a[j], a[i]] } return a; };
+function question(r, m) {
+  if (r === 1) { const pick = shuffle(EMO).slice(0, 4), ok = pick[rnd(4)];
+    return { a: ok, text: tpl(m.cap, { e: ok }), kb: { inline_keyboard: [pick.map(e => ({ text: e, callback_data: 'cap:' + e }))] } }; }
+  const x = 1 + rnd(5), y = 1 + rnd(5), ans = x + y, opts = new Set([ans]);
+  while (opts.size < 4) opts.add(2 + rnd(9));
+  return { a: String(ans), text: tpl(m.cap2, { q: `${m.nums[x]} ${m.plus} ${m.nums[y]}` }), kb: { inline_keyboard: [shuffle([...opts]).map(n => ({ text: String(n), callback_data: 'cap:' + n }))] } };
+}
 async function invite(tag) {
   const [have] = await kv([['GET', `tg:inv:${tag}`]]);
   if (have) return have;
@@ -61,9 +72,9 @@ module.exports = async (req, res) => {
   }
   if (q.stats) {
     if (q.stats !== process.env.ALERTS_KEY) return done(403, { e: 'key' });
-    const [ads, users, human] = await kv([['HGETALL', 'tg:ads'], ['SCARD', 'tg:users'], ['SCARD', 'tg:human']]);
+    const [ads, users, human, dg] = await kv([['HGETALL', 'tg:ads'], ['SCARD', 'tg:users'], ['SCARD', 'tg:human'], ['SCARD', 'tg:dgusers']]);
     const o = {}; for (let i = 0; i < (ads || []).length; i += 2) o[ads[i]] = +ads[i + 1];
-    return done(200, { ads: o, users, human });
+    return done(200, { ads: o, users, human, daily_brief: dg });
   }
   if (req.method !== 'POST' || req.headers['x-telegram-bot-api-secret-token'] !== process.env.ALERTS_KEY) return done(403);
   let u = req.body || {};
@@ -90,6 +101,49 @@ module.exports = async (req, res) => {
     let t = T(lang); let m = M(lang);
     const admin = process.env.TG_ADMIN_CHAT;
     const say = (s, extra) => tg('sendMessage', Object.assign({ chat_id: chat, text: s, disable_web_page_preview: true }, extra || {}));
+    const ask = async (r, w, tag, pre) => { const qn = question(r, m);
+      await kv([['SET', `tg:cap:${chat}`, JSON.stringify({ r, a: qn.a, w, tag, ts: Date.now() }), 'EX', 86400]]);
+      return say((pre ? pre + '\n\n' : '') + qn.text, { reply_markup: qn.kb }); };
+    const subMsg = async (tag, pre) => say((pre ? pre + '\n\n' : '') + m.sub, { reply_markup: { inline_keyboard: [[{ text: m.subbtn, url: await invite(tag) }], [{ text: m.subok, callback_data: 'sub' }]] } });
+    const gateStart = async (tag) => { await kv([['DEL', `tg:gate:${chat}`], ['SET', `tg:src:${chat}`, tag], ['SET', `tg:lang:${chat}`, lang, 'NX']]); return ask(1, 0, tag); };
+    const dgKb = async () => { const map = await amap(), [cur] = await kv([['SMEMBERS', `tg:dg:${chat}`]]), on = new Set(cur || []);
+      const list = DG.filter(i => map[i]).map(i => ({ text: (on.has(i) ? '✅ ' : '') + (map[i][2] || i.toUpperCase()), callback_data: 'dg:' + i }));
+      const rows = []; for (let i = 0; i < list.length; i += 4) rows.push(list.slice(i, i + 4));
+      rows.push([{ text: m.dgdone, callback_data: 'dg:ok' }, { text: m.dgstop, callback_data: 'dg:off' }]);
+      return { inline_keyboard: rows }; };
+    const [capRaw, gate, ban] = await kv([['GET', `tg:cap:${chat}`], ['GET', `tg:gate:${chat}`], ['GET', `tg:ban:${chat}`]]);
+    const isAdmin = admin && String(chat) === String(admin);
+    if (!isAdmin && (capRaw || gate || ban)) {                 // user is inside the gate: only gate answers count
+      if (ban) { if (cb) await tg('answerCallbackQuery', { callback_query_id: cb.id }); return say(m.capban).then(() => done(200)); }
+      let st = {}; try { st = JSON.parse(capRaw || '{}') } catch (e) {}
+      if (cb && capRaw && /^cap:/.test(cb.data)) {
+        await tg('answerCallbackQuery', { callback_query_id: cb.id });
+        if (Date.now() - (st.ts || 0) < 1200) return say(m.capfast).then(() => done(200));
+        if (cb.data.slice(4) === st.a) {
+          if (st.r === 1) return ask(2, st.w, st.tag).then(() => done(200));
+          await kv([['DEL', `tg:cap:${chat}`], ['SET', `tg:gate:${chat}`, 'sub', 'EX', 30 * 86400], ['HINCRBY', 'tg:ads', st.tag + ':pass', 1]]);
+          return subMsg(st.tag).then(() => done(200));
+        }
+        const w = (st.w || 0) + 1;
+        await kv([['HINCRBY', 'tg:ads', st.tag + ':fail', 1]]);
+        if (w >= 3) { await kv([['DEL', `tg:cap:${chat}`], ['SET', `tg:ban:${chat}`, '1', 'EX', 86400]]); return say(m.capban).then(() => done(200)); }
+        return ask(st.r, w, st.tag, m.capbad).then(() => done(200));
+      }
+      if (cb && gate === 'sub' && cb.data === 'sub') {
+        await tg('answerCallbackQuery', { callback_query_id: cb.id });
+        const [src, refby] = await kv([['GET', `tg:src:${chat}`], ['GET', `tg:refby:${chat}`]]); const tag = src || 'organic';
+        const r = await tg('getChatMember', { chat_id: '@WhatIfStack', user_id: from.id });
+        const st2 = r && r.result && r.result.status, inCh = ['member', 'administrator', 'creator'].includes(st2) || (st2 === 'restricted' && r.result.is_member);
+        if (r && r.ok && !inCh) return subMsg(tag, m.subno).then(() => done(200));
+        await kv([['DEL', `tg:gate:${chat}`], ['SADD', 'tg:human', String(chat)], ['HINCRBY', 'tg:ads', tag + (r && r.ok ? ':sub' : ':subunk'), 1]]);
+        if (refby) { const [n] = await kv([['HINCRBY', 'tg:refs', refby, 1]]); await tg('sendMessage', { chat_id: refby, text: tpl(m.inv, { u: refUrl(refby), n }) }); }
+        await say(m.welcome + '\n\n' + m.hi, { reply_markup: menu(lang, chat) });
+        return say(m.dgask, { reply_markup: await dgKb() }).then(() => done(200));
+      }
+      if (cb) await tg('answerCallbackQuery', { callback_query_id: cb.id });
+      if (gate === 'sub') return subMsg(st.tag || 'organic').then(() => done(200));
+      return ask(st.r || 1, st.w || 0, st.tag || 'organic').then(() => done(200));
+    }
     const ids = await kv([['SMEMBERS', `al:chat:${chat}`]]).then(r => (r[0] || []).sort((a, b) => a - b));
     const listAlerts = async () => {
       if (!ids.length) return say(t.none + '\n\n' + t.hi);
@@ -99,27 +153,27 @@ module.exports = async (req, res) => {
     };
     const topPrices = async () => {
       const qs = (await Promise.all(TOP.map(i => quote(lang, i)))).filter(x => x && x.p);
-      return say(m.top + '\n' + qs.map(x => `• ${x.n}: $${fmt(x.p)}`).join('\n') + '\n\n' + m.nf.split('.')[1].trim(), { reply_markup: menu(lang) });
+      return say(m.top + '\n' + qs.map(x => `• ${x.n}: $${fmt(x.p)}`).join('\n') + '\n\n' + m.nf.split('.')[1].trim(), { reply_markup: menu(lang, chat) });
     };
     if (cb) {
       await tg('answerCallbackQuery', { callback_query_id: cb.id });
-      if (/^cap:/.test(cb.data)) {
-        const [, ok, n, tag] = cb.data.split(':');
-        if (ok === '1') {
-          const [was] = await kv([['SADD', 'tg:human', String(chat)]]);
-          if (was) await kv([['HINCRBY', 'tg:ads', tag + ':pass', 1]]);
-          const inv = await invite(tag);
-          await say(m.capok + '\n\n' + m.hi, { reply_markup: { inline_keyboard: [[{ text: m.join, url: inv }], ...menu(lang).inline_keyboard] } });
-        } else {
-          await kv([['HINCRBY', 'tg:ads', tag + ':fail', 1]]);
-          if (+n < 2) { const c = capKb(tag, +n + 1); await say(tpl(m.capbad, { e: c.e }), { reply_markup: c.kb }); }
-        }
+      if (cb.data === 'dg') { await say(m.dgask, { reply_markup: await dgKb() }); return done(200); }
+      if (/^dg:/.test(cb.data)) {
+        const v = cb.data.slice(3);
+        if (v === 'off') { await kv([['DEL', `tg:dg:${chat}`], ['SREM', 'tg:dgusers', String(chat)]]); await say(m.dgoff, { reply_markup: menu(lang, chat) }); return done(200); }
+        if (v === 'ok') { const [cur] = await kv([['SMEMBERS', `tg:dg:${chat}`]]), map = await amap();
+          await say(cur && cur.length ? tpl(m.dgon, { l: cur.map(i => (map[i] || [])[2] || i.toUpperCase()).join(', ') }) : m.dgoff, { reply_markup: menu(lang, chat) }); return done(200); }
+        const [has, cnt] = await kv([['SISMEMBER', `tg:dg:${chat}`, v], ['SCARD', `tg:dg:${chat}`]]);
+        if (has) await kv([['SREM', `tg:dg:${chat}`, v]]);
+        else if (cnt < 5) await kv([['SADD', `tg:dg:${chat}`, v], ['SADD', 'tg:dgusers', String(chat)], ['SET', `tg:lang:${chat}`, lang, 'NX']]);
+        const [left] = await kv([['SCARD', `tg:dg:${chat}`]]); if (!left) await kv([['SREM', 'tg:dgusers', String(chat)]]);
+        await tg('editMessageReplyMarkup', { chat_id: chat, message_id: msg.message_id, reply_markup: await dgKb() });
         return done(200);
       }
       if (cb.data === 'px') await topPrices(); else if (cb.data === 'al') await listAlerts();
       else if (cb.data === 'sup') { await kv([['SET', `tg:sup:${chat}`, '1', 'EX', 3600]]); await say(m.supask, { reply_markup: { force_reply: true } }); }
       else if (cb.data === 'lng') await say(m.lng, { reply_markup: { inline_keyboard: [LANGS.slice(0, 4), LANGS.slice(4)].map(r => r.map(([c, n]) => ({ text: n, callback_data: 'l:' + c }))) } });
-      else if (/^l:[a-z]{2}$/.test(cb.data)) { lang = cb.data.slice(2); await kv([['SET', `tg:lang:${chat}`, lang]]); m = M(lang); t = T(lang); await say(m.lngok + '\n\n' + m.hi, { reply_markup: menu(lang) }); }
+      else if (/^l:[a-z]{2}$/.test(cb.data)) { lang = cb.data.slice(2); await kv([['SET', `tg:lang:${chat}`, lang]]); m = M(lang); t = T(lang); await say(m.lngok + '\n\n' + m.hi, { reply_markup: menu(lang, chat) }); }
       return done(200);
     }
     const text = String(msg.text || msg.caption || '').trim();
@@ -132,7 +186,7 @@ module.exports = async (req, res) => {
       await kv([['DEL', `tg:sup:${chat}`], ['LPUSH', 'tg:support', JSON.stringify({ c: chat, u: from.username || '', n: from.first_name || '', l: lang, t: Date.now(), m: text.slice(0, 2000) })], ['LTRIM', 'tg:support', 0, 999]]);
       if (admin) { const f = await tg('forwardMessage', { chat_id: admin, from_chat_id: chat, message_id: msg.message_id });
         if (f && f.result) await kv([['SET', `tg:supmap:${f.result.message_id}`, String(chat), 'EX', 30 * 86400]]); }
-      return say(m.supok, { reply_markup: menu(lang) }).then(() => done(200));
+      return say(m.supok, { reply_markup: menu(lang, chat) }).then(() => done(200));
     }
     if (!text) return done(200);
     if (/^\/support/.test(text)) { await kv([['SET', `tg:sup:${chat}`, '1', 'EX', 3600]]); return say(m.supask, { reply_markup: { force_reply: true } }).then(() => done(200)); }
@@ -150,20 +204,21 @@ module.exports = async (req, res) => {
       const id = (await kv([['INCR', 'al:seq']]))[0];
       const al = { id, c: chat, a: aid, n: src[2] || aid.toUpperCase(), s: src[0], k: src[1], d: dir, p: price, l: lg || lang.slice(0, 2), t: Date.now() };
       await kv([['HSET', 'al:items', String(id), JSON.stringify(al)], ['SADD', `al:chat:${chat}`, String(id)], ['INCR', 'al:created']]);
-      return say(tpl(t.set, { n: al.n, d: dir === 'u' ? t.up : t.dn, p: fmt(price), c: now ? fmt(now) : '—' }), { reply_markup: menu(lg || lang) }).then(() => done(200));
+      return say(tpl(t.set, { n: al.n, d: dir === 'u' ? t.up : t.dn, p: fmt(price), c: now ? fmt(now) : '—' }), { reply_markup: menu(lg || lang, chat) }).then(() => done(200));
     }
-    if (/^\/start ad_[\w-]{1,20}$/.test(text)) {               // visitor from an ad → human check first
-      const tag = text.slice(10);
-      const [isNew] = await kv([['SADD', 'tg:users', String(chat)]]);
-      if (isNew) await kv([['HINCRBY', 'tg:ads', tag + ':start', 1], ['SET', `tg:src:${chat}`, tag]]);
-      const [hum] = await kv([['SISMEMBER', 'tg:human', String(chat)]]);
-      if (hum) return say(m.hi, { reply_markup: menu(lang) }).then(() => done(200));
-      const c = capKb(tag, 0);
-      return say(tpl(m.cap, { e: c.e }), { reply_markup: c.kb }).then(() => done(200));
+    if (/^\/start (ad|r)_[\w-]{1,20}$/.test(text) || text === '/start') {   // new visitor from an ad, a friend's link or plain start → gate
+      const arg = text.slice(7), [isNew, hum] = await kv([['SADD', 'tg:users', String(chat)], ['SISMEMBER', 'tg:human', String(chat)]]);
+      if (!isNew || hum) return say(m.hi, { reply_markup: menu(lang, chat) }).then(() => done(200));
+      let tag = 'organic';
+      if (/^ad_/.test(arg)) tag = arg.slice(3);
+      else if (/^r_\d+$/.test(arg) && arg.slice(2) !== String(chat)) { tag = 'ref'; await kv([['SET', `tg:refby:${chat}`, arg.slice(2)]]); }
+      await kv([['HINCRBY', 'tg:ads', tag + ':start', 1]]);
+      return gateStart(tag).then(() => done(200));
     }
-    if (/^\/(start|menu|help)\b/.test(text)) { await kv([['SADD', 'tg:users', String(chat)]]); return say(m.hi, { reply_markup: menu(lang) }).then(() => done(200)); }
+    if (/^\/invite/.test(text)) { const [n] = await kv([['HGET', 'tg:refs', String(chat)]]); return say(tpl(m.inv, { u: refUrl(chat), n: n || 0 })).then(() => done(200)); }
+    if (/^\/(start|menu|help)\b/.test(text)) { await kv([['SADD', 'tg:users', String(chat)]]); return say(m.hi, { reply_markup: menu(lang, chat) }).then(() => done(200)); }
     if (/^\/portfolio/.test(text)) return say(m.pf, { reply_markup: { inline_keyboard: [[{ text: m.pf, web_app: { url: `${SITE}${LP(lang)}/me/?tgapp=1` } }]] } }).then(() => done(200));
-    if (/^\/share/.test(text)) return say(m.share + '\nhttps://t.me/' + BOT, { reply_markup: { inline_keyboard: [[{ text: m.sh, url: `https://t.me/share/url?url=${encodeURIComponent('https://t.me/' + BOT)}&text=${encodeURIComponent(m.share)}` }]] } }).then(() => done(200));
+    if (/^\/share/.test(text)) return say(m.share + '\n' + refUrl(chat), { reply_markup: { inline_keyboard: [[{ text: m.sh, url: `https://t.me/share/url?url=${encodeURIComponent(refUrl(chat))}&text=${encodeURIComponent(m.share)}` }]] } }).then(() => done(200));
     if (/^\/list/.test(text)) return listAlerts().then(() => done(200));
     if (/^\/del\s+\d+/.test(text)) {
       const k = parseInt(text.split(/\s+/)[1], 10) - 1, id = ids[k];
@@ -177,7 +232,7 @@ module.exports = async (req, res) => {
     if (/^\/price\s*$/.test(text)) return topPrices().then(() => done(200));
     const qtext = text.replace(/^\/price\s+/, '');           // «btc», «/price nvda» → price + link
     const map = await amap(), aid = find(map, qtext.split(/\s+/)[0]);
-    if (!aid) return say(tpl(m.nf, { q: qtext.slice(0, 30) }), { reply_markup: menu(lang) }).then(() => done(200));
+    if (!aid) return say(tpl(m.nf, { q: qtext.slice(0, 30) }), { reply_markup: menu(lang, chat) }).then(() => done(200));
     const x = await quote(lang, aid);
     return say(`${x.n}: ${x.p ? '$' + fmt(x.p) : '—'}`, { reply_markup: { inline_keyboard: [[{ text: tpl(m.page, { n: x.n }), url: x.url }], [{ text: '🔔 ' + m.al.replace(/^\S+\s/, ''), url: x.url }]] } }).then(() => done(200));
   } catch (e) { return done(200) }
