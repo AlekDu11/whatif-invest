@@ -1,6 +1,6 @@
 ---
-title: Como investir no S&P 500 de qualquer lugar: fundos de índice e ETFs explicados
-description: Como investir no S&P 500 a partir do Brasil ou de outro país: o que é o índice, como funcionam ETFs como SPY e VOO, quanto custa e como foi comprar todo mês.
+title: "Como investir no S&P 500 do Brasil: ETF S&P 500 (IVVB11, VOO, SPY) explicado"
+description: Como investir no S&P 500 a partir do Brasil: o que é o índice, qual ETF S&P 500 comprar (IVVB11 na B3, VOO ou SPY nos EUA), quanto custa e quanto rendeu comprar todo mês.
 date: 2026-11-16
 category: guides
 assets: spy, qqq, gold
@@ -41,6 +41,14 @@ O caminho depende de onde você mora, mas costuma ser assim:
 5. **Compre o ETF** — muitas corretoras permitem comprar frações, então dá para começar com pouco.
 
 Alguns fundos pagam dividendos; outros (chamados "de acumulação") reinvestem automaticamente. Os de acumulação podem ser mais práticos para quem investe regularmente no longo prazo.
+
+## Qual ETF S&P 500 comprar no Brasil
+
+- **Pela B3, em reais:** **IVVB11** (BlackRock, taxa 0,23%, o mais negociado) ou **SPXI11** (Itaú, 0,21%). Também existe o BDR **BIVB39**, que acompanha o IVV americano.
+- **Direto nos EUA:** **VOO**, **IVV** (0,03%) ou **SPY** (0,0945%), por uma corretora internacional.
+- A diferença de retorno entre eles é pequena; o que mais pesa é a taxa, o câmbio e os impostos de cada caminho.
+
+Comparação completa, com tabela: [melhor ETF S&P 500 em 2026]({lang}/blog/best-sp500-etf/).
 
 ## Quanto custa
 

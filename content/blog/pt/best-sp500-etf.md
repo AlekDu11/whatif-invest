@@ -1,6 +1,6 @@
 ---
-title: "Melhor ETF do S&P 500 em 2026: VOO, IVV, SPYM ou SPY — taxas a partir de 0,02%"
-description: SPY, VOO, IVV e SPYM seguem o mesmo S&P 500. A diferença está na taxa anual (0,02%–0,0945%) e em onde você mora. Comparação simples, com opções para o Brasil e a Europa.
+title: "Melhor ETF S&P 500 em 2026: IVVB11, SPXI11, VOO ou SPY — taxas de 0,02% a 0,23%"
+description: Qual ETF S&P 500 comprar: IVVB11 e SPXI11 na B3 (0,21%–0,23%), BDR BIVB39 ou VOO, IVV e SPY nos EUA (0,02%–0,0945%). Comparação simples para quem investe do Brasil.
 date: 2026-11-19 14:00
 category: guides
 assets: spy, voo, ivv, qqq
@@ -13,7 +13,7 @@ stat_label: menor taxa anual de um ETF do S&P 500 (SPYM)
 > - O SPYM é o mais barato, com 0,02% ao ano; VOO e IVV cobram 0,03%; SPY cobra 0,0945%.
 > - Em US$ 10.000, isso dá cerca de US$ 2, US$ 3 e US$ 9,45 por ano — pouco, mas se acumula por décadas.
 > - O SPY é o mais negociado, o que importa para traders, não para quem compra e segura.
-> - No Brasil existe o IVVB11 (B3), que replica o S&P 500 em reais; na Europa, usam-se versões UCITS (CSPX, VUAA).
+> - No Brasil, pela B3 em reais: IVVB11 (0,23%, o mais líquido), SPXI11 (0,21%) e o BDR BIVB39; na Europa, versões UCITS (CSPX, VUAA).
 
 ## Os quatro grandes ETFs americanos do S&P 500
 
@@ -32,9 +32,22 @@ Preços agora: VOO {{price:voo}}, IVV {{price:ivv}}, SPY {{price:spy}}. Preço m
 - **Você opera com frequência ou usa opções:** SPY, pelo volume e pelos spreads mais apertados.
 - **Já tem um deles:** normalmente não vale trocar. Vender pode gerar imposto, e a diferença entre VOO e SPYM é de 0,01% ao ano.
 
-## Se você está no Brasil, em Portugal ou em outro país
+## ETF S&P 500 no Brasil: IVVB11, SPXI11, SPXB11 ou BIVB39
 
-- **Brasil:** o **IVVB11** (iShares, na B3) acompanha o S&P 500 em reais, com variação do dólar embutida. Também é possível comprar VOO/IVV por corretoras internacionais.
+Dá para ter o S&P 500 sem abrir conta no exterior, comprando pela B3 em reais, pelo mesmo home broker das ações brasileiras. Em todas essas opções a cotação acompanha o S&P 500 **e** o dólar.
+
+| Ticker (B3) | O que é | Gestora | Taxa anual | Bom saber |
+|---|---|---|---|---|
+| **IVVB11** | ETF que compra o IVV americano | BlackRock (iShares) | 0,23% | O mais negociado: cerca de R$ 57 milhões por dia |
+| **SPXI11** | ETF que compra o VUAA (Vanguard, Irlanda) | Itaú Asset (It Now) | 0,21% | Desde 2026 usa o VUAA, que reinveste os dividendos |
+| **SPXB11** | ETF do S&P 500 | BTG Pactual | variável | Volume bem menor (cerca de R$ 0,4 milhão por dia) |
+| **BIVB39** | BDR do próprio IVV | BlackRock | a do IVV (0,03%) | Você paga a taxa do ETF americano, em reais |
+
+**Na prática:** quem quer simplicidade e liquidez costuma ficar com o **IVVB11**; quem olha cada centavo de taxa compara com o **SPXI11** ou o BDR **BIVB39**. Comprar **VOO, IVV ou SPYM** direto nos EUA tem a menor taxa (0,02%–0,03%), mas exige corretora internacional e envio de dinheiro ao exterior — com câmbio e spread que podem custar mais do que a diferença de taxa em valores pequenos.
+
+Ainda não existe BDR do SPY nem do VOO na B3. Impostos são diferentes entre ETF na B3, BDR e ETF no exterior — confira as regras atuais com a sua corretora ou um contador antes de escolher.
+
+## Se você está em Portugal ou em outro país
 - **Europa (Portugal incluído):** muitas corretoras não vendem ETFs domiciliados nos EUA a pequenos investidores. As versões UCITS seguem o mesmo índice: **CSPX / SXR8** (iShares, 0,07%), **VUAA / VUSA** (Vanguard, 0,07%) e **SPYL** (SPDR, cerca de 0,03%).
 
 Fundos "de acumulação" reinvestem os dividendos; os "de distribuição" pagam a você. As regras de imposto dependem do país — confira antes de comprar.
@@ -56,6 +69,10 @@ O S&P 500 já teve quedas fortes — cerca de −50% em 2008–2009 e −34% no 
 - [etf.com: VOO vs SPY vs IVV em 2026](https://www.etf.com/sections/news/voo-vs-spy-vs-ivv-which-sp-500-etf-should-you-buy-2026)
 - [NerdWallet: os principais ETFs do S&P 500, novembro de 2026](https://nerdwallet.com/article/investing/spy-etf)
 - [Optimized Portfolio: SPYM (antigo SPLG)](https://www.optimizedportfolio.com/spym/)
+- [B3 Bora Investir: comparador IVVB11 x SPXB11](https://borainvestir.b3.com.br/comparador-de-etfs/IVVB11/SPXB11/)
+- [ETFs Brasil: IVVB11 x SPXI11 (taxas e carteira)](https://www.etfsbrasil.com.br/comparador/ivvb11/spxi11)
+- [Suno: diferenças entre SPXI11 e IVVB11](https://www.suno.com.br/noticias/?p=666404)
+- [Educação Financeira Brasil: ETFs e BDRs do S&P 500](https://educacaofinanceirabrasil.com.br/artigos/melhores-etfs-sp500)
 - [justETF: CSPX vs VUAA](https://www.justetf.com/uk/asset-comparisons/etf-comparisons/IE00B5BMR087-ishares-core-sp500-acc-vs-IE00BFMXXD54-vanguard-sp500-acc)
 
 *Não é recomendação de investimento. Resultados passados não são previsão.*
