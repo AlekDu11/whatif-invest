@@ -681,7 +681,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
     sec = cfg.pop('_sec', None) or p   # section to highlight in the nav
     S = TR[lang]
     canon = SITE + url(lang, p)
-    alts = ''.join(f'<link rel="alternate" hreflang="{TR[lg]["loc"]}" href="{SITE + url(lg, p)}">' for lg in ORDER if has_page(lg, p))
+    alts = ''.join(f'<link rel="alternate" hreflang="{TR[lg]["loc"]}" href="{SITE + url(lg, p)}">' for lg in ORDER if has_page(lg, p) and (p not in A or page_ok(p, lg)))
     alts += f'<link rel="alternate" hreflang="x-default" href="{SITE + url("en", p)}">'
     ld = ''.join(f'<script type="application/ld+json">{json.dumps(j, ensure_ascii=False)}</script>' for j in jsonld)
     X = S['x']
@@ -2985,6 +2985,22 @@ def offer_card(lang, src):
             f'<span class="ofi" aria-hidden="true">🎁</span><span class="oft"><b>{esc(o["t"])}</b><span>{esc(o["d"])}</span><small>{esc(o["note"])}</small></span>'
             f'<span class="btn">{esc(o["cta"])}</span></a>')
 
+def page_ok(aid, lang):
+    """Quality gate (owner 2026-11-21, Google «scaled content abuse»): an asset page is indexable only when it is complete in
+    this language — a description written for it (or the source text for English), price history, and key numbers for stocks.
+    Incomplete pages stay open for people but get noindex and stay out of the sitemap; they join automatically once filled."""
+    a = A.get(aid)
+    if not a or aid not in METRICS:
+        return False
+    d = DESC.get(lang, {}).get(aid) or PROFILES.get(lang, {}).get(aid)
+    if not d and lang == 'en':
+        src = ((COININFO.get(a.get('cgid') or '', {}) if a['cat'] == 'crypto' else STOCKINFO.get(a.get('yahoo') or '', {})).get('ds') or {}).get('en')
+        d = src and len(src) > 120
+    if not d or a.get('src') == 'cg-spot' or len(a.get('p') or []) < (2 if a['cat'] == 'crypto' else 6):
+        return False
+    return a['cat'] != 'stock' or bool(STOCKSTATS.get(a.get('yahoo') or ''))
+
+
 def asset(aid, lang, ver):
     S, u = TR[lang], TR[lang]['ui']
     a, m = A[aid], METRICS[aid]
@@ -3109,7 +3125,8 @@ def asset(aid, lang, ver):
                   {"@type": "ListItem", "position": 1, "name": BRAND, "item": SITE + url(lang)},
                   {"@type": "ListItem", "position": 2, "name": n, "item": SITE + url(lang, aid)}]}]
     sel = [aid] + list(bench(aid))[:2]
-    return shell(lang, aid, title, desc, body, dict(sel=sel, since=since, asset=aid), ver, jsonld)
+    page = shell(lang, aid, title, desc, body, dict(sel=sel, since=since, asset=aid), ver, jsonld)
+    return page if page_ok(aid, lang) else page.replace('<link rel="canonical"', '<meta name="robots" content="noindex, follow"><link rel="canonical"', 1)
 
 
 
@@ -5008,7 +5025,9 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
     for lang, pages in per_lang.items():
         sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
         for p in pages:
-            alts = ''.join(f'<xhtml:link rel="alternate" hreflang="{TR[lg]["loc"]}" href="{SITE + url(lg, p)}"/>' for lg in ORDER if has_page(lg, p))
+            if p in A and not page_ok(p, lang):   # incomplete asset pages: not in the sitemap until filled
+                continue
+            alts = ''.join(f'<xhtml:link rel="alternate" hreflang="{TR[lg]["loc"]}" href="{SITE + url(lg, p)}"/>' for lg in ORDER if has_page(lg, p) and (p not in A or page_ok(p, lg)))
             sm.append(f'<url><loc>{SITE + url(lang, p)}</loc><lastmod>{UPDATED}</lastmod>{alts}</url>')
         sm.append('</urlset>')
         write(f'sitemap-{lang}.xml', '\n'.join(sm))
