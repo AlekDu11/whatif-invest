@@ -31,7 +31,7 @@ const menu = (lang, chat) => { const m = M(lang); return { inline_keyboard: [
   [{ text: m.px, callback_data: 'px' }, { text: m.al, callback_data: 'al' }],
   [{ text: m.dg, callback_data: 'dg' }, { text: m.pts, callback_data: 'pts' }],
   [{ text: m.ptsinv, url: shareUrl(m, chat) }, { text: m.ch, url: CH }],
-  [{ text: m.sup, callback_data: 'sup' }],
+  [{ text: m.nw, callback_data: 'nw' }, { text: m.sup, callback_data: 'sup' }],
   [{ text: m.lng, callback_data: 'lng' }, { text: m.site, url: `${SITE}${LP(lang)}/?utm_source=tg_bot` }]] } };
 // Gate for new users (ads t.me/<bot>?start=ad_<tag>, referrals start=r_<chat>, plain /start):
 // step 1 tap the named emoji, step 2 a sum written in words (answers stored server-side, <1.2 s taps rejected, 3 mistakes = 24 h ban),
@@ -78,9 +78,9 @@ module.exports = async (req, res) => {
   }
   if (q.stats) {
     if (q.stats !== process.env.ALERTS_KEY) return done(403, { e: 'key' });
-    const [ads, users, human, dg, pts] = await kv([['HGETALL', 'tg:ads'], ['SCARD', 'tg:users'], ['SCARD', 'tg:human'], ['SCARD', 'tg:dgusers'], ['ZCARD', 'tg:pts']]);
+    const [ads, users, human, dg, pts, nwl] = await kv([['HGETALL', 'tg:ads'], ['SCARD', 'tg:users'], ['SCARD', 'tg:human'], ['SCARD', 'tg:dgusers'], ['ZCARD', 'tg:pts'], ['SMEMBERS', 'tg:nwlangs']]);
     const o = {}; for (let i = 0; i < (ads || []).length; i += 2) o[ads[i]] = +ads[i + 1];
-    return done(200, { ads: o, users, human, daily_brief: dg, with_points: pts });
+    return done(200, { ads: o, users, human, daily_brief: dg, with_points: pts, news: nwl ? Object.fromEntries(await Promise.all(nwl.map(async l => [l, (await kv([['SCARD', `tg:nwu:${l}`]]))[0]]))) : {} });
   }
   if (req.method !== 'POST' || req.headers['x-telegram-bot-api-secret-token'] !== process.env.ALERTS_KEY) return done(403);
   let u = req.body || {};
@@ -176,6 +176,18 @@ module.exports = async (req, res) => {
     };
     if (cb) {
       await tg('answerCallbackQuery', { callback_query_id: cb.id });
+      if (cb.data === 'nw' || /^nw:/.test(cb.data)) {           // news from the site → this chat (sent by api/alerts.js from data/feed/<lang>.json)
+        const v = cb.data.slice(3), fl = lang.slice(0, 2), [old] = await kv([['GET', `tg:nwl:${chat}`]]);
+        if (!v) { await say(m.nwask, { reply_markup: { inline_keyboard: [[{ text: m.nwall, callback_data: 'nw:all' }], [{ text: m.nwmy, callback_data: 'nw:my' }], [{ text: m.nwoff, callback_data: 'nw:off' }]] } }); return done(200); }
+        const cmds = old ? [['SREM', `tg:nwu:${old}`, String(chat)]] : [];
+        if (v === 'off') { await kv([...cmds, ['DEL', `tg:nw:${chat}`, `tg:nwl:${chat}`]]); await say(m.nwoffok, { reply_markup: menu(lang, chat) }); return done(200); }
+        const [cur] = await kv([['SMEMBERS', `tg:dg:${chat}`]]);
+        if (v === 'my' && !(cur && cur.length)) { await say(m.nwnone, { reply_markup: await dgKb() }); return done(200); }
+        await kv([...cmds, ['SET', `tg:nw:${chat}`, v], ['SET', `tg:nwl:${chat}`, fl], ['SADD', `tg:nwu:${fl}`, String(chat)], ['SADD', 'tg:nwlangs', fl]]);
+        const map = await amap();
+        await say(v === 'all' ? m.nwonall : tpl(m.nwonmy, { l: cur.map(i => (map[i] || [])[2] || i.toUpperCase()).join(', ') }), { reply_markup: menu(lang, chat) });
+        return done(200);
+      }
       if (cb.data === 'menu') { await say(m.hi, { reply_markup: menu(lang, chat) }); return done(200); }
       if (cb.data === 'pts') { await showPts(); return done(200); }
       if (cb.data === 'dg') { await say(m.dgask, { reply_markup: await dgKb() }); return done(200); }
@@ -236,6 +248,7 @@ module.exports = async (req, res) => {
       await kv([['HINCRBY', 'tg:ads', tag + ':start', 1]]);
       return gateStart(tag).then(() => done(200));
     }
+    if (/^\/news/.test(text)) return say(m.nwask, { reply_markup: { inline_keyboard: [[{ text: m.nwall, callback_data: 'nw:all' }], [{ text: m.nwmy, callback_data: 'nw:my' }], [{ text: m.nwoff, callback_data: 'nw:off' }]] } }).then(() => done(200));
     if (/^\/(invite|points)/.test(text)) return showPts().then(() => done(200));
     if (/^\/(start|menu|help)\b/.test(text)) { await kv([['SADD', 'tg:users', String(chat)]]); return say(m.hi, { reply_markup: menu(lang, chat) }).then(() => done(200)); }
     if (/^\/portfolio/.test(text)) return say(m.pf, { reply_markup: { inline_keyboard: [[{ text: m.pf, web_app: { url: `${SITE}${LP(lang)}/me/?tgapp=1` } }]] } }).then(() => done(200));
