@@ -113,6 +113,7 @@ module.exports = async (req, res) => {
     const subMsg = async (tag, pre) => say((pre ? pre + '\n\n' : '') + m.sub, { reply_markup: { inline_keyboard: [[{ text: m.subbtn, url: await invite(tag) }], [{ text: m.subok, callback_data: 'sub' }]] } });
     const langKb = { inline_keyboard: [LANGS.slice(0, 2), LANGS.slice(2, 4), LANGS.slice(4, 6), LANGS.slice(6)].map(r => r.map(([c, n]) => ({ text: n, callback_data: 'gl:' + c }))) };
     const langAsk = () => say('🌐 Choose your language · Обери мову · Выбери язык', { reply_markup: langKb });
+    const stage = (tag, name, cmds) => kv([['HINCRBY', 'tg:ads', tag + ':' + name, 1], ['HSET', `tg:u:${chat}`, 'st', name, 'ts', String(Date.now())], ...(cmds || [])]);
     const gateStart = async (tag) => { await kv([['SET', `tg:gate:${chat}`, 'lang', 'EX', 30 * 86400], ['SET', `tg:src:${chat}`, tag]]); return langAsk(); };
     const dgKb = async () => { const map = await amap(), [cur] = await kv([['SMEMBERS', `tg:dg:${chat}`]]), on = new Set(cur || []);
       const list = DG.filter(i => map[i]).map(i => ({ text: (on.has(i) ? '✅ ' : '') + (map[i][2] || i.toUpperCase()), callback_data: 'dg:' + i }));
@@ -128,6 +129,7 @@ module.exports = async (req, res) => {
       return say(tpl(m.ptsmsg, { p: Math.round(+p || 0), r: rk == null ? '—' : rk + 1, n: n || 0, rf: RF, wb: WB, u: refUrl(chat) }) + (board ? '\n\n' + m.ptstop + '\n' + board : ''),
         { reply_markup: { inline_keyboard: [[{ text: m.ptsinv, url: shareUrl(m, chat) }], [{ text: '⬅️ Menu', callback_data: 'menu' }]] } });
     };
+    const text0 = String(msg.text || '').trim();
     const [capRaw, gate, ban] = await kv([['GET', `tg:cap:${chat}`], ['GET', `tg:gate:${chat}`], ['GET', `tg:ban:${chat}`]]);
     const isAdmin = admin && String(chat) === String(admin);
     if (!isAdmin && (capRaw || gate || ban)) {                 // user is inside the gate: only gate answers count
@@ -137,20 +139,21 @@ module.exports = async (req, res) => {
         await tg('answerCallbackQuery', { callback_query_id: cb.id });
         if (Date.now() - (st.ts || 0) < 1200) return say(m.capfast).then(() => done(200));
         if (cb.data.slice(4) === st.a) {
-          if (st.r === 1) return ask(2, st.w, st.tag).then(() => done(200));
-          await kv([['DEL', `tg:cap:${chat}`], ['SET', `tg:gate:${chat}`, 'sub', 'EX', 30 * 86400], ['HINCRBY', 'tg:ads', st.tag + ':pass', 1]]);
+          if (st.r === 1) { await stage(st.tag, 's1'); return ask(2, st.w, st.tag).then(() => done(200)); }
+          await stage(st.tag, 'pass', [['DEL', `tg:cap:${chat}`], ['SET', `tg:gate:${chat}`, 'sub', 'EX', 30 * 86400]]);
           return subMsg(st.tag).then(() => done(200));
         }
         const w = (st.w || 0) + 1;
         await kv([['HINCRBY', 'tg:ads', st.tag + ':fail', 1]]);
-        if (w >= 3) { await kv([['DEL', `tg:cap:${chat}`], ['SET', `tg:ban:${chat}`, '1', 'EX', 86400]]); return say(m.capban).then(() => done(200)); }
+        if (w >= 3) { await stage(st.tag, 'ban', [['DEL', `tg:cap:${chat}`], ['SET', `tg:ban:${chat}`, '1', 'EX', 86400]]); return say(m.capban).then(() => done(200)); }
         return ask(st.r, w, st.tag, m.capbad).then(() => done(200));
       }
       if (gate === 'lang') {                                   // step 0: language first, then the human check
         if (cb && /^gl:[a-z]{2}$/.test(cb.data)) {
           await tg('answerCallbackQuery', { callback_query_id: cb.id });
           lang = cb.data.slice(3); m = M(lang); t = T(lang);
-          const [src] = await kv([['SET', `tg:lang:${chat}`, lang], ['DEL', `tg:gate:${chat}`], ['GET', `tg:src:${chat}`]]).then(r => [r[2]]);
+          const [src] = await kv([['SET', `tg:lang:${chat}`, lang], ['DEL', `tg:gate:${chat}`], ['GET', `tg:src:${chat}`], ['HSET', `tg:u:${chat}`, 'l', lang]]).then(r => [r[2]]);
+          await stage(src || 'organic', 'lang');
           return ask(1, 0, src || 'organic').then(() => done(200));
         }
         if (cb) await tg('answerCallbackQuery', { callback_query_id: cb.id });
@@ -162,7 +165,8 @@ module.exports = async (req, res) => {
         const r = await tg('getChatMember', { chat_id: '@WhatIfStack', user_id: from.id });
         const st2 = r && r.result && r.result.status, inCh = ['member', 'administrator', 'creator'].includes(st2) || (st2 === 'restricted' && r.result.is_member);
         if (r && r.ok && !inCh) return subMsg(tag, m.subno).then(() => done(200));
-        await kv([['DEL', `tg:gate:${chat}`], ['SADD', 'tg:human', String(chat)], ['HINCRBY', 'tg:ads', tag + (r && r.ok ? ':sub' : ':subunk'), 1],
+        await stage(tag, r && r.ok ? 'sub' : 'subunk');
+        await kv([['DEL', `tg:gate:${chat}`], ['SADD', 'tg:human', String(chat)],
           ['ZINCRBY', 'tg:pts', WB, String(chat)], ['SET', `tg:name:${chat}`, short(from)]]);
         if (refby) {
           const [n, p, rl] = await kv([['HINCRBY', 'tg:refs', refby, 1], ['ZINCRBY', 'tg:pts', RF, refby], ['GET', `tg:lang:${refby}`]]);
@@ -173,6 +177,27 @@ module.exports = async (req, res) => {
       if (cb) await tg('answerCallbackQuery', { callback_query_id: cb.id });
       if (gate === 'sub') return subMsg(st.tag || 'organic').then(() => done(200));
       return ask(st.r || 1, st.w || 0, st.tag || 'organic').then(() => done(200));
+    }
+    if (!isAdmin) {                                            // first real action after the gate → «active» in the funnel
+      const [src, acted] = await kv([['GET', `tg:src:${chat}`], ['EXISTS', `tg:act:${chat}`]]);
+      if (src && !acted && !(text0 === '/start' || /^\/start /.test(text0))) await stage(src, 'act', [['SET', `tg:act:${chat}`, cb ? cb.data.slice(0, 20) : text0.slice(0, 20)]]);
+    }
+    if (isAdmin && /^\/(stats|users)/.test(text0)) {             // owner only: funnel per ad tag and the latest people
+      if (/^\/stats/.test(text0)) {
+        const [h] = await kv([['HGETALL', 'tg:ads']]); const o = {};
+        for (let i = 0; i < (h || []).length; i += 2) { const [tg_, k] = h[i].split(':'); (o[tg_] = o[tg_] || {})[k] = +h[i + 1]; }
+        const pct = (a, b) => b ? Math.round(a / b * 100) + '%' : '—';
+        const lines = Object.entries(o).map(([tag, c]) => { const s0 = c.start || 0;
+          return `<b>${tag}</b>: Start ${s0} → мова ${c.lang || 0} → крок1 ${c.s1 || 0} → крок2 ${c.pass || 0} → підписка ${(c.sub || 0) + (c.subunk || 0)} (${pct((c.sub || 0) + (c.subunk || 0), s0)}) → активні ${c.act || 0} (${pct(c.act || 0, s0)})\nпомилки ${c.fail || 0}, бан ${c.ban || 0}`; });
+        return say(lines.join('\n\n') || 'Поки порожньо', { parse_mode: 'HTML' }).then(() => done(200));
+      }
+      const [list] = await kv([['LRANGE', 'tg:ulist', 0, 24]]);
+      const us = list && list.length ? await kv(list.map(c => ['HGETALL', `tg:u:${c}`])) : [];
+      const SL = { start: '⏸ мова не вибрана', lang: '⏸ крок 1', s1: '⏸ крок 2', pass: '⏸ не підписався', sub: '✅ підписався', subunk: '✅ (без перевірки)', act: '🟢 користується', ban: '⛔ бан' };
+      const rows = us.map(a => { const x = {}; for (let i = 0; i < (a || []).length; i += 2) x[a[i]] = a[i + 1];
+        const tm = x.ts ? new Date(+x.ts).toLocaleString('uk-UA', { timeZone: 'Europe/Kyiv', day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }) : '';
+        return `${x.n || '?'}${x.un ? ' @' + x.un : ''} · ${x.l || x.lc || '?'} · ${x.tag || '?'} · ${SL[x.st] || x.st || '?'} · ${tm}`; });
+      return say(rows.join('\n') || 'Поки порожньо').then(() => done(200));
     }
     const ids = await kv([['SMEMBERS', `al:chat:${chat}`]]).then(r => (r[0] || []).sort((a, b) => a - b));
     const listAlerts = async () => {
@@ -256,7 +281,8 @@ module.exports = async (req, res) => {
       let tag = 'organic';
       if (/^ad_/.test(arg)) tag = arg.slice(3);
       else if (/^r_\d+$/.test(arg) && arg.slice(2) !== String(chat)) { tag = 'ref'; await kv([['SET', `tg:refby:${chat}`, arg.slice(2)]]); }
-      await kv([['HINCRBY', 'tg:ads', tag + ':start', 1]]);
+      await stage(tag, 'start', [['HSET', `tg:u:${chat}`, 'tag', tag, 'n', short(from), 'un', from.username || '', 'lc', from.language_code || '', 't0', String(Date.now())],
+        ['LPUSH', 'tg:ulist', String(chat)], ['LTRIM', 'tg:ulist', 0, 999]]);
       return gateStart(tag).then(() => done(200));
     }
     if (/^\/news/.test(text)) return say(m.nwask, { reply_markup: { inline_keyboard: [[{ text: m.nwall, callback_data: 'nw:all' }], [{ text: m.nwmy, callback_data: 'nw:my' }], [{ text: m.nwoff, callback_data: 'nw:off' }]] } }).then(() => done(200));
