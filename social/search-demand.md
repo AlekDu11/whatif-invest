@@ -5,7 +5,7 @@ Task: twice a day (10:19 and 16:19 Kyiv) turn real Google Search Console queries
 ## Queue (seed 2026-11-20, take in order if still uncovered)
 1. ~~How to invest in Hong Kong stocks (es, vi, en, zh)~~ — done 2026-11-20
 2. ~~Best Japanese stocks (de, en, ja)~~ — done 2026-11-21; — note: ja regional «日本株の積立» exists (2026-11-20); the de/en piece should focus on «beste japanische Aktien / japan aktien», link the ja article's numbers
-3. German stocks / the German stock exchange (nl, en, de) — «duitse aandelen» 4 impr pos 12, «duitse beurs» 3 / 50
+3. ~~German stocks / the German stock exchange (nl, en, de)~~ — done 2026-11-21 (16:19) — «duitse aandelen» 4 impr pos 12, «duitse beurs» 3 / 50
 4. Bitcoin vs Ethereum — the difference (ja, uk, ru, en) — «ビットコイン イーサリアム 違い» 3 / 75
 5. Crypto staking providers compared (de, en) — «krypto-staking anbieter vergleich» 4 / 23, «crypto staking» 9 / 47 (2026-11-21: group grew to ~55 impr — crypto staking 14/47.7, staking 9/62.7, krypto-staking anbieter 5/42, wat is crypto staking 3/16 nl, was ist krypto staking 3/54.7 — biggest uncovered group)
 6. «An exchange froze my funds — scam or not, what to do» (es, en) — «bloquear fondos exchange estafa» 8 / 62
@@ -17,6 +17,8 @@ date | topic | queries (impr / pos) | languages | slugs | status
 2026-11-20 | How to invest in Hong Kong stocks | invertir en acciones de hong kong 5/36.6; invertir en acciones hk 5/40.4; cómo invertir en acciones hk 5/43; đầu tư vào cổ phiếu hk 4/43; comprar acciones de hong kong 3/28.3; đầu tư cổ phiếu hong kong 3/54.7; inversión en acciones de hong kong 3/57.7; 홍콩 주식 투자 2/44; best hong kong stocks 2/52; investing in hong kong share 2/68.5 | en, es, vi, zh | how-to-invest-in-hong-kong-stocks | published
 2026-11-20 | regional: 日本株の積立 (Japan, 228 impr from JP in Countries tab, no ja regional yet) | japan aktien 5/50; beste japanische aktien 4/60 (market interest); JP country 228 impr / pos 40.8 | ja | nihon-kabu-tsumitate-10-doru-5-nen | published, regional
 2026-11-21 | Best Japanese stocks / Japan-Aktien / Japan-ETF | japan aktien 6/52.7; beste japanische aktien 5/61.8; japanische aktien 2/74; etf japan empfehlung 1/4 (GSC 28 d, read 2026-11-21) | en, de, ja | best-japanese-stocks | published
+2026-11-21 | German stocks / the German stock exchange (DAX, Xetra) | duitse aandelen 4/12.0; duitse beurs 3/50.0; dax 40 empresas 1/76; aktienindex brasilien (n/a); GSC 28 d read 2026-11-21 16:20 | en, de, nl | german-stocks | published
+2026-11-21 | regional: 한국 대형주 24종목 하루 10달러 5년 (+79.7%) — ko had no regional yet; South Korea 47 impr / pos 21 in Countries; südkoreanische aktien 1/64 | ko | hanguk-daehyeongju-haru-10-dallo-5nyeon | published, regional
 
 ## Snapshots
 ### 2026-11-20 (last 28 days: 7 clicks, 2.5k impressions, avg pos 23.2; 514 queries)
