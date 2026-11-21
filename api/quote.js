@@ -60,6 +60,18 @@ module.exports = async (req, res) => {
     res.setHeader('Cache-Control', cache || 'no-store'); res.end(JSON.stringify(obj)) };
   if (G.over(req, 30, 'quote')) return send(429, { e: 'limit' });
   if ((req.query || {}).mv) return movers(req, send);
+  if ((req.query || {}).gl) {   // /crypto/gainers-losers/: top 1000 by market cap with 24h and 7d change, one CDN-cached answer (5 min)
+    const out = [];
+    for (let pg = 1; pg <= 4; pg++) {
+      const d = await j(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page=${pg}&price_change_percentage=24h,7d`);
+      if (!Array.isArray(d)) break;
+      for (const x of d) if (x.current_price != null) out.push([String(x.symbol || '').toUpperCase(), x.name, +(+x.current_price).toPrecision(8),
+        x.price_change_percentage_24h_in_currency != null ? +(x.price_change_percentage_24h_in_currency / 100).toFixed(5) : null,
+        x.price_change_percentage_7d_in_currency != null ? +(x.price_change_percentage_7d_in_currency / 100).toFixed(5) : null, Math.round(x.market_cap || 0), x.market_cap_rank || null]);
+    }
+    if (!out.length) return send(502, { e: 'upstream' }, 'public, s-maxage=30');
+    return send(200, { at: Date.now(), c: out }, 'public, s-maxage=300, stale-while-revalidate=900, stale-if-error=7200');
+  }
   if ((req.query || {}).mx) {   // live prices of coins traded on MEXC (its WebSocket is protobuf-only): one ticker call, CDN 15 s
     const want = new Set(String(req.query.mx).toUpperCase().split(',').filter(x => /^[A-Z0-9]{1,15}$/.test(x)).slice(0, 60).map(x => x + 'USDT'));
     const d = await j('https://api.mexc.com/api/v3/ticker/24hr');

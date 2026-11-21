@@ -1623,3 +1623,22 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
     if(e.target.closest('.embcode .btn')){ ta.select(); (navigator.clipboard?navigator.clipboard.writeText(ta.value):Promise.reject()).catch(()=>document.execCommand('copy')); const bt=e.target.closest('.btn'); bt.textContent=C.copied; setTimeout(()=>bt.textContent=C.copy,1600) } });
   upd();
 })();
+
+/* ---------- /crypto/gainers-losers/: live top-1000 movers (api/quote?gl=1, CoinGecko, CDN 5 min), 24h / 7d, market-cap filter ---------- */
+(function(){ const bar=document.getElementById('glbar'); if(!bar) return; const W=window.WIX||{}; const {IDX,esc,fmtPrice,fmtPct,icon,url,nm,fmtUsd}=W;
+  let C={}; try{ C=JSON.parse(bar.dataset.cfg) }catch(e){} let per='d', min=0, D=null;
+  const bySym={}; (IDX||[]).filter(a=>a.c==='crypto'&&!a.st).sort((x,y)=>x.o-y.o).forEach(a=>{ const t=a.t.toUpperCase(); if(!bySym[t]) bySym[t]=a });
+  const mc=v=>v>=1e12?'$'+(v/1e12).toFixed(2)+'T':v>=1e9?'$'+(v/1e9).toFixed(2)+'B':v>=1e6?'$'+(v/1e6).toFixed(1)+'M':'$'+Math.round(v/1e3)+'K';
+  function draw(){ if(!D) return; const k=per==='d'?3:4;
+    const L=D.c.filter(x=>x[k]!=null&&x[5]>=min&&bySym[x[0]]);
+    const row=(x,n)=>{ const a=bySym[x[0]]; return `<tr><td class="l n hide-sm">${n}</td><td class="l"><a class="asset" href="${url(a.i)}">${icon(a)}<span><span class="nm">${esc(nm(a))}</span><span class="tk">${esc(a.t)}</span></span></a></td><td data-p="${a.i}">${fmtPrice(x[2])}</td><td class="${x[k]>=0?'good':'bad'}">${fmtPct(x[k])}</td><td class="hide-sm">${mc(x[5])}</td></tr>` };
+    document.getElementById('glup').innerHTML=L.filter(x=>x[k]>0).sort((a,b)=>b[k]-a[k]).slice(0,30).map((x,i)=>row(x,i+1)).join('');
+    document.getElementById('gldn').innerHTML=L.filter(x=>x[k]<0).sort((a,b)=>a[k]-b[k]).slice(0,30).map((x,i)=>row(x,i+1)).join('');
+    document.querySelectorAll('th#glk').forEach(th=>th.textContent=per==='d'?C.t24:C.t7);
+    const u=document.getElementById('glupd'); if(u&&(window.PAGE||{}).glupd) u.textContent='· '+PAGE.glupd;
+    document.dispatchEvent(new Event('wi:rows')) }
+  bar.addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; const s=b.parentNode; s.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
+    if(s.id==='glper') per=b.dataset.k; else min=+b.dataset.m; if(D) draw(); else load() });
+  function load(){ fetch(`${(window.PAGE||{}).base||''}/api/quote?gl=1`).then(r=>r.ok?r.json():null).then(j=>{ if(j&&j.c){ D=j; draw() } }).catch(()=>{}) }
+  load(); setInterval(()=>{ if(!document.hidden) load() },300000);
+})();

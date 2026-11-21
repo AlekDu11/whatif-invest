@@ -24,7 +24,7 @@ from i18n_ai import AI as AIS  # noqa: E402
 from i18n_me import ME  # noqa: E402
 from i18n_mem import MEM  # noqa: E402
 from i18n_acc import ACC, ACC2  # noqa: E402
-from i18n_tags import CATS, TG, VS, VS_PAIRS, EMB2  # noqa: E402
+from i18n_tags import CATS, TG, VS, VS_PAIRS, EMB2, GL  # noqa: E402
 from i18n_mem2 import MEM2  # noqa: E402
 for _lg in MEM:
     MEM[_lg].update(MEM2.get(_lg, MEM2['en']))
@@ -228,7 +228,7 @@ def has_page(lang, aid):
         return lang in POLICY
     if aid in ('privacy', 'terms'):
         return lang in LEGAL[aid]
-    if aid == 'categories' or (aid or '').startswith('categories/') or (aid or '').startswith('compare/'):
+    if aid in ('categories', 'crypto/gainers-losers') or (aid or '').startswith('categories/') or (aid or '').startswith('compare/'):
         return True
     if aid == 'guide':
         return lang in GUIDE
@@ -1784,6 +1784,32 @@ def _mc(aid):
     if a['cat'] == 'crypto':
         return a.get('mcap') or 0
     return (stock_stats(a) or {}).get('mcap') and to_usd(stock_stats(a)['mcap'], stock_stats(a).get('ccy') or 'USD') or 0
+
+
+def gainers_page(lang, ver):
+    """/crypto/gainers-losers/: biggest 24h / 7d movers among the top 1000 coins. Static first view from our data, then live (api/quote?gl=1)."""
+    t = GL[lang]
+    pool = [i for i in ORDERED if A[i]['cat'] == 'crypto' and METRICS[i]['chg'] is not None and (A[i].get('mcap') or 0) > 0][:1000]
+    def rows(ids, key):
+        out = ''
+        for k, i in enumerate(ids, 1):
+            v = METRICS[i]['chg'] if key == 'd' else A[i].get('c7')
+            out += (f'<tr><td class="l n hide-sm">{k}</td><td class="l"><a class="asset" href="{aurl(lang, i)}">{icon(A[i])}<span><span class="nm">{esc(nm(A[i], lang))}</span>'
+                    f'<span class="tk">{esc(A[i]["tk"])}</span></span></a></td><td data-p="{i}">{price(METRICS[i]["price"])}</td>'
+                    f'<td class="{cls(v or 0)}">{pct(v)}</td><td class="hide-sm">{usd_h(A[i].get("mcap"))}</td></tr>')
+        return out
+    up = sorted(pool, key=lambda i: -(METRICS[i]['chg'] or 0))[:30]
+    dn = sorted(pool, key=lambda i: (METRICS[i]['chg'] or 0))[:30]
+    head = f'<tr><th class="l n hide-sm">#</th><th class="l">{esc(TR[lang]["ui"]["name"])}</th><th>{esc(TR[lang]["ui"]["price"])}</th><th id="glk">{esc(t["t24"])}</th><th class="hide-sm">{esc(MKT[lang]["mcap"])}</th></tr>'
+    mcs = ''.join(f'<button type="button" data-m="{v}"{" class=on" if v == 0 else ""}>{lab}</button>' for v, lab in ((0, esc(t['all'])), (1e7, '$10M'), (1e8, '$100M'), (1e9, '$1B')))
+    cfg = dict(t24=t['t24'], t7=t['t7'])
+    body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / <a href="{url(lang, "crypto")}">{esc(TR[lang]["ui"]["crypto"])}</a> / {esc(t["nav"])}</nav>'
+            f'<h1>{esc(t["h1"])}</h1><p class="lead">{esc(t["d"])}</p>'
+            f'<div class="glctl" id="glbar" data-cfg="{esc(json.dumps(cfg, ensure_ascii=False))}"><div class="seg" id="glper"><button type="button" data-k="d" class="on">{esc(t["t24"])}</button><button type="button" data-k="w">{esc(t["t7"])}</button></div>'
+            f'<span class="muted">{esc(t["mc"])}</span><div class="seg" id="glmc">{mcs}</div><span class="muted" id="glupd"></span></div>'
+            f'<div class="glgrid"><section class="card"><h2>🚀 {esc(t["gain"])}</h2><div class="tw"><table class="mt"><thead>{head}</thead><tbody id="glup">{rows(up, "d")}</tbody></table></div></section>'
+            f'<section class="card"><h2>📉 {esc(t["lose"])}</h2><div class="tw"><table class="mt"><thead>{head}</thead><tbody id="gldn">{rows(dn, "d")}</tbody></table></div></section></div>')
+    return shell(lang, 'crypto/gainers-losers', f'{t["h1"]} | {BRAND}', t['d'], body, dict(glupd=t['upd']), ver)
 
 
 def categories_hub(lang, ver):
@@ -3869,7 +3895,7 @@ def hub(lang, slug, ver):
     body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / {esc(label)}</nav><h1>{esc(h1)}</h1>'
             f'<p class="lead">{esc(desc)}</p>{country_chips(lang) if cat == "stock" else ""}'
             f'{f"<p><a class=chip href={url(lang, chr(115) + "tablecoins")}>💵 {esc(STX[lang]["nav"])} →</a></p>" if cat == "crypto" and SB else ""}'
-            + ('<div class="chips">' + ''.join(f'<a class="chip" href="{url(lang, "categories/" + k)}">{esc(CATS[k][2][lang])}</a>' for k in CAT_IDS if CATS[k][0] == 'c') + '</div>' if cat == 'crypto' else '')
+            + ('<div class="chips">' + f'<a class="chip" href="{url(lang, "crypto/gainers-losers")}">🚀 {esc(GL[lang]["nav"])}</a>' + ''.join(f'<a class="chip" href="{url(lang, "categories/" + k)}">{esc(CATS[k][2][lang])}</a>' for k in CAT_IDS if CATS[k][0] == 'c') + '</div>' if cat == 'crypto' else '')
             + f'<div class="hl">{cards}</div><div class="tabs" id="tabs"></div>{filt}{table_block(lang, ids[:150])}')
     return shell(lang, slug, title, desc, body, dict(tab=cat), ver)
 
@@ -4890,6 +4916,8 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
         if lang in POLICY:
             write(pre + 'editorial-policy/index.html', policy_page(lang, ver))
             extra_pages.append('editorial-policy')
+        write(pre + 'crypto/gainers-losers/index.html', gainers_page(lang, ver))
+        extra_pages.append('crypto/gainers-losers')
         write(pre + 'categories/index.html', categories_hub(lang, ver))
         extra_pages.append('categories')
         for k in CAT_IDS:

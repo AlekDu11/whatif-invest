@@ -1002,3 +1002,5 @@ a.badge.tagc{text-decoration:none;color:inherit;border:1px solid var(--line)}a.b
 .thm.acctb:not(.on){width:auto;padding:0 12px;gap:6px;display:inline-flex;align-items:center;font:600 13px var(--fb);color:var(--text);text-decoration:none}
 @media (max-width:1440px){.thm.acctb .acl{display:none}.thm.acctb:not(.on){padding:0;width:36px;justify-content:center}}
 @media (max-width:480px){.top .thm.me[href$="/me/"]{display:none}}
+.glctl{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:12px 0 16px}.glgrid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+.glgrid .card{padding:14px}.glgrid h2{margin:0 0 8px;font-size:18px}@media (max-width:1500px){.glgrid{grid-template-columns:1fr}}
