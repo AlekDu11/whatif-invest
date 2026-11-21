@@ -24,6 +24,7 @@ from i18n_ai import AI as AIS  # noqa: E402
 from i18n_me import ME  # noqa: E402
 from i18n_mem import MEM  # noqa: E402
 from i18n_acc import ACC  # noqa: E402
+from i18n_tags import CATS, TG, VS, VS_PAIRS  # noqa: E402
 from i18n_mem2 import MEM2  # noqa: E402
 for _lg in MEM:
     MEM[_lg].update(MEM2.get(_lg, MEM2['en']))
@@ -80,7 +81,7 @@ END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
 RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide', 'commodities', 'widgets', 'embed', 'dividends', 'average-price', 'ovdp', 'largest-companies', 'crypto-exchanges', 'partners', 'buy-stocks-ukraine', 'calculators', 'investors', 'watchlist', 'read', 'deposits-ukraine'}
-RESERVED |= {v[0] for v in MKTS.values()} | {'world-assets', 'activities', 'editorial-policy', 'about', 'portfolios', 'privacy', 'terms'}
+RESERVED |= {v[0] for v in MKTS.values()} | {'world-assets', 'activities', 'editorial-policy', 'about', 'portfolios', 'privacy', 'terms', 'categories'}
 # asset ids that clash with a language folder or a section get a suffix (ko -> ko-stock, fil -> fil-crypto)
 _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
 # delisted or stale series (last price older than a month) are dropped: "today" numbers would be false
@@ -226,6 +227,8 @@ def has_page(lang, aid):
         return lang in POLICY
     if aid in ('privacy', 'terms'):
         return lang in LEGAL[aid]
+    if aid == 'categories' or (aid or '').startswith('categories/') or (aid or '').startswith('compare/'):
+        return True
     if aid == 'guide':
         return lang in GUIDE
     if aid in CSLUG:
@@ -1419,7 +1422,9 @@ def home(lang, ver):
 def compare(lang, ver):
     S = TR[lang]
     sel = [i for i in ('btc', 'nvda', 'gold', 'spy', 'eth') if i in A]
-    body = f'<h1>{S["cmp_h1"]}</h1><p class="lead">{S["cmp_lead"]}</p>{calc_block(lang)}'
+    pairs = ''.join(f'<a class="chip" href="{url(lang, vs_slug(x, y))}">{esc(nm(A[x], lang))} vs {esc(nm(A[y], lang))}</a>' for x, y in VS_OK)
+    body = (f'<h1>{S["cmp_h1"]}</h1><p class="lead">{S["cmp_lead"]}</p>{calc_block(lang)}'
+            f'<section class="section"><h2>{esc(VS[lang]["more"])}</h2><div class="chips">{pairs}</div></section>')
     return shell(lang, 'compare', S['cmp_title'], S['cmp_desc'], body, dict(sel=sel, since=i2ym(END_I - 60)), ver)
 
 
@@ -1698,6 +1703,119 @@ def pctu(p):
 
 def stock_stats(a):
     return STOCKSTATS.get(a.get('yahoo') or '', {}) if a.get('cat') in ('stock', 'etf') else {}
+
+
+# ---------- categories (niche tags, CryptoRank-style) and «X vs Y» pages ----------
+def _cat_of(aid):
+    """Category slugs of an asset: crypto from CoinGecko categories (data/coininfo.json), stocks from Yahoo sector/industry (data/stockstats.json)."""
+    a, out = A[aid], []
+    if a['cat'] == 'crypto':
+        cc = set((COININFO.get(a.get('cgid') or '') or {}).get('cat') or [])
+        out = [k for k, (kind, m, _) in CATS.items() if kind == 'c' and cc & set(m)]
+    elif a['cat'] == 'stock':
+        si = stock_stats(a)
+        for k, (kind, m, _) in CATS.items():
+            if kind != 's':
+                continue
+            f, v = m
+            if (f == 'sec' and si.get('sec') == v) or (f == 'ind' and (si.get('ind') or '').startswith(v)):
+                out.append(k)
+    return out
+
+
+ASSET_CATS = {aid: _cat_of(aid) for aid in A}
+CAT_IDS = {k: [i for i in ORDERED if k in ASSET_CATS.get(i, ())] for k in CATS}
+CAT_IDS = {k: v for k, v in CAT_IDS.items() if len(v) >= 3}   # a category page needs at least 3 assets
+
+
+def cat_chips(lang, aid, n=4):
+    ks = [k for k in ASSET_CATS.get(aid, []) if k in CAT_IDS][:n]
+    return ''.join(f' <a class="badge tagc" href="{url(lang, "categories/" + k)}">{esc(CATS[k][2][lang])}</a>' for k in ks)
+
+
+def _mc(aid):
+    a = A[aid]
+    if a['cat'] == 'crypto':
+        return a.get('mcap') or 0
+    return (stock_stats(a) or {}).get('mcap') and to_usd(stock_stats(a)['mcap'], stock_stats(a).get('ccy') or 'USD') or 0
+
+
+def categories_hub(lang, ver):
+    t = TG[lang]
+    def card(k):
+        ids = CAT_IDS[k]
+        big = sorted(ids, key=lambda i: -_mc(i))[:3]
+        chg = [METRICS[i]['chg'] for i in ids[:30] if METRICS[i]['chg'] is not None]
+        avg = sum(chg) / len(chg) if chg else None
+        logos = ''.join(icon(A[i]) for i in big)
+        return (f'<a class="card catc" href="{url(lang, "categories/" + k)}"><span class="catl">{logos}</span><b>{esc(CATS[k][2][lang])}</b>'
+                f'<small class="muted">{esc(t["n"].format(n=len(ids)))}</small><span class="{cls(avg or 0)}">{pct(avg)} · 24h</span></a>')
+    cr = ''.join(card(k) for k in CAT_IDS if CATS[k][0] == 'c')
+    st = ''.join(card(k) for k in CAT_IDS if CATS[k][0] == 's')
+    body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / {esc(t["nav"])}</nav><h1>{esc(t["hub_h1"])}</h1><p class="lead">{esc(t["hub_d"])}</p>'
+            f'<section class="section"><h2>🪙 {esc(t["crypto"])}</h2><div class="catg">{cr}</div></section>'
+            f'<section class="section"><h2>🏢 {esc(t["stock"])}</h2><div class="catg">{st}</div></section>')
+    return shell(lang, 'categories', f'{t["hub_h1"]} | {BRAND}', t['hub_d'], body, {}, ver)
+
+
+def category_page(lang, k, ver):
+    t, name = TG[lang], CATS[k][2][lang]
+    ids = CAT_IDS[k]
+    big = [i for i in ids if METRICS[i]['chg'] is not None][:60]
+    cards = ''.join(hl_card(lang, i, nm(A[i], lang), 'chg', TR[lang]['ui']['chg']) for i in sorted(big, key=lambda i: -METRICS[i]['chg'])[:4])
+    others = ''.join(f'<a class="chip" href="{url(lang, "categories/" + o)}">{esc(CATS[o][2][lang])}</a>' for o in CAT_IDS if o != k and CATS[o][0] == CATS[k][0])
+    filt = f'<div class="toolbar"><div class="filter">{SEARCH_ICON}<input id="flt" type="search" autocomplete="off"></div></div>'
+    h1, d = t['h1'].format(name=name), t['d'].format(name=name, n=len(ids))
+    body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / <a href="{url(lang, "categories")}">{esc(t["nav"])}</a> / {esc(name)}</nav>'
+            f'<h1>{esc(h1)}</h1><p class="lead">{esc(d)}</p><div class="hl">{cards}</div><div class="tabs" id="tabs" hidden></div>{filt}{table_block(lang, ids[:200])}'
+            f'<section class="section"><h2>{esc(t["more"])}</h2><div class="chips">{others}</div></section>')
+    return shell(lang, 'categories/' + k, f'{h1} | {BRAND}', d, body, dict(tab='all', only=ids), ver)
+
+
+def _pchg(aid, months):
+    p = A[aid]['p']
+    return p[-1] / p[-1 - months] - 1 if len(p) > months and p[-1 - months] else None
+
+
+def vs_slug(a, b):
+    return f'compare/{a}-vs-{b}'
+
+
+def vs_page(lang, a, b, ver):
+    S, v = TR[lang], VS[lang]
+    na, nb = nm(A[a], lang), nm(A[b], lang)
+    def cell(fn, i):
+        x = fn(i)
+        return f'<td class="num {cls(x or 0) if isinstance(x, float) else ""}">{pct(x) if isinstance(x, float) else x}</td>'
+    rows = [(S['ui']['price'], lambda i: price(METRICS[i]['price'])), (S['ui']['chg'], lambda i: METRICS[i]['chg']),
+            (v['row_mc'], lambda i: usd_h(_mc(i)) if _mc(i) else '—'),
+            (v['row_y1'], lambda i: _pchg(i, 12)), (v['row_y3'], lambda i: _pchg(i, 36)), (v['row_y5'], lambda i: _pchg(i, 60)),
+            (v['row_d1'], lambda i: METRICS[i]['r1']), (v['row_d3'], lambda i: METRICS[i]['r3']), (v['row_d5'], lambda i: METRICS[i]['r5']),
+            (v['row_start'], lambda i: mlabel(A[i]['start'], lang))]
+    th = f'<tr><th></th><th><a href="{aurl(lang, a)}">{icon(A[a])} {esc(na)}</a></th><th><a href="{aurl(lang, b)}">{icon(A[b])} {esc(nb)}</a></th></tr>'
+    tb = ''.join(f'<tr><td class="l">{esc(lab)}</td>{cell(fn, a)}{cell(fn, b)}</tr>' for lab, fn in rows)
+    ra, rb = METRICS[a]['r5'], METRICS[b]['r5']
+    verdict = ''
+    if ra is not None and rb is not None:
+        w, l = (a, b) if ra >= rb else (b, a)
+        verdict = '<p class="lead">' + esc(v['verdict'].format(w=nm(A[w], lang), l=nm(A[l], lang), wr=pct(METRICS[w]['r5']), lr=pct(METRICS[l]['r5']))) + '</p>'
+    chip = lambda x, y: f'<a class="chip" href="{url(lang, vs_slug(x, y))}">{esc(nm(A[x], lang))} vs {esc(nm(A[y], lang))}</a>'
+    near = [p_ for p_ in VS_OK if p_ != (a, b) and ({p_[0], p_[1]} & {a, b})][:8]
+    far = [p_ for p_ in VS_OK if not ({p_[0], p_[1]} & {a, b})][:6]
+    more = ''.join(chip(x, y) for x, y in near + far)
+    h1 = v['h1'].format(a=na, b=nb)
+    d = v['d'].format(a=na, b=nb)
+    body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / <a href="{url(lang, "compare")}">{esc(S["nav_cmp"])}</a> / {esc(na)} vs {esc(nb)}</nav>'
+            f'<h1>{esc(h1)}</h1><p class="muted">{esc(v["lead"].format(a=na, b=nb))}</p>{verdict}'
+            f'<div class="tw"><table class="rt vst"><thead>{th}</thead><tbody>{tb}</tbody></table></div>'
+            f'<p><button class="star big" data-s="{a}">☆</button> <button class="star big" data-s="{b}">☆</button> <span class="muted">{esc(v["both"])}</span></p>'
+            f'<section class="section"><h2>🧮 {esc(v["tool"])}</h2>{calc_block(lang)}</section>'
+            f'<section class="section"><h2>{esc(v["more"])}</h2><div class="chips">{more}</div></section>')
+    since = i2ym(max(ym2i(A[a]['start']), ym2i(A[b]['start']), END_I - 60))
+    return shell(lang, vs_slug(a, b), f'{h1} | {BRAND}', d, body, dict(sel=[a, b], since=since), ver)
+
+
+VS_OK = [(x, y) for x, y in VS_PAIRS if x in A and y in A]
 
 
 def stock_ctry(lang, a, st):
@@ -2818,7 +2936,7 @@ def asset(aid, lang, ver):
     sim = sim[:10]
     cat = S['cat_' + a['cat']]
     crumbs = f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / {esc(cat)} / {esc(n)}</nav>'
-    badges = f'<span class="badge">{esc(tk)}</span> <span class="badge">{esc(cat)}</span>' + (f' <span class="badge">{esc(a["sector"])}</span>' if a.get('sector') else '')
+    badges = f'<span class="badge">{esc(tk)}</span> <span class="badge">{esc(cat)}</span>' + (cat_chips(lang, aid) or (f' <span class="badge">{esc(a["sector"])}</span>' if a.get('sector') else ''))
     head = (f'{crumbs}<div class="ahead">{icon(a, True)}<div><h1>{esc(AP[lang]["h1"].format(name=n, tk=tk))}</h1><div style="margin-top:4px">{badges}</div></div>'
             f'<div class="price"><span class="v" data-p="{aid}">{price(m["price"])}</span><span class="pill {cls(m["chg"])}" data-c="{aid}">{pct(m["chg"])}</span>{local_price(a, lang)}<span id="buyslot" data-id="{aid}"></span><button class="star big" data-s="{aid}" title="{esc(ME[lang]["star"])}">☆</button>'
             f'<button class="addpf" type="button" data-add="{aid}" data-cfg="{esc(json.dumps(dict(code=hccy(lang)[0], rate=hccy(lang)[1], me=url(lang, "me"), t={k: PF[lang][k] for k in ("addpf", "added", "open", "cancel", "qty_or_sum")}, d=ME[lang]["date"]), ensure_ascii=False))}">＋ {esc(PF[lang]["addpf"])}</button>{alert_btn(lang, aid)}</div></div>')
@@ -2950,7 +3068,7 @@ def tools_menu(lang):
     t = TT[lang]
     S = TR[lang]
     items = [('compare', S['nav_cmp']), ('converter', HCONV[lang]), ('largest-companies', LC[lang]['nav']), ('world-assets', WA[lang]['nav']),
-             ('memes', MEM[lang]['nav']), ('bitcoin-halving', t['v_nav']), ('calculators', CH[lang][0])]
+             ('memes', MEM[lang]['nav']), ('categories', TG[lang]['nav']), ('bitcoin-halving', t['v_nav']), ('calculators', CH[lang][0])]
     if INVD:
         items.insert(3, ('investors', INV[lang]['nav']))
     if lang == 'uk':
@@ -3685,7 +3803,9 @@ def hub(lang, slug, ver):
         return shell(lang, slug, title, desc, body, dict(tab=cat, dca=1), ver)
     body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / {esc(label)}</nav><h1>{esc(h1)}</h1>'
             f'<p class="lead">{esc(desc)}</p>{country_chips(lang) if cat == "stock" else ""}'
-            f'{f"<p><a class=chip href={url(lang, chr(115) + "tablecoins")}>💵 {esc(STX[lang]["nav"])} →</a></p>" if cat == "crypto" and SB else ""}<div class="hl">{cards}</div><div class="tabs" id="tabs"></div>{filt}{table_block(lang, ids[:150])}')
+            f'{f"<p><a class=chip href={url(lang, chr(115) + "tablecoins")}>💵 {esc(STX[lang]["nav"])} →</a></p>" if cat == "crypto" and SB else ""}'
+            + ('<div class="chips">' + ''.join(f'<a class="chip" href="{url(lang, "categories/" + k)}">{esc(CATS[k][2][lang])}</a>' for k in CAT_IDS if CATS[k][0] == 'c') + '</div>' if cat == 'crypto' else '')
+            + f'<div class="hl">{cards}</div><div class="tabs" id="tabs"></div>{filt}{table_block(lang, ids[:150])}')
     return shell(lang, slug, title, desc, body, dict(tab=cat), ver)
 
 
@@ -4701,6 +4821,14 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
         if lang in POLICY:
             write(pre + 'editorial-policy/index.html', policy_page(lang, ver))
             extra_pages.append('editorial-policy')
+        write(pre + 'categories/index.html', categories_hub(lang, ver))
+        extra_pages.append('categories')
+        for k in CAT_IDS:
+            write(pre + f'categories/{k}/index.html', category_page(lang, k, ver))
+            extra_pages.append('categories/' + k)
+        for x, y in VS_OK:
+            write(pre + vs_slug(x, y) + '/index.html', vs_page(lang, x, y, ver))
+            extra_pages.append(vs_slug(x, y))
         for kind in ('privacy', 'terms'):
             if lang in LEGAL[kind]:
                 write(pre + kind + '/index.html', legal_page(lang, kind, ver))

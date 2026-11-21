@@ -69,7 +69,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
 (function(){
   const tb=$('#mt'); if(!tb) return;
   let tab=PAGE.tab||'all', q='', sortK=PAGE.sort||'o', sortDir=1, shown=PAGE.home?20:100, pg=0; const STEP=PAGE.home?50:100, PER=PAGE.home?20:50;
-  const TABS=['all','crypto','stock','etf','metal','cmd','lead','lag'];
+  const TABS=['all','crypto','stock','etf','metal','cmd','lead','lag'], ONLY=PAGE.only?new Set(PAGE.only):null;   // category pages: only their assets
   $('#tabs').innerHTML=TABS.map(t=>`<button data-t="${t}" class="${t===tab?'on':''}">${T[t]}</button>`).join('')+(PAGE.wa?`<a class="tablink" href="${PAGE.wau}">🌍 ${esc(PAGE.wa)}</a>`:'');
   $$('#tabs button').forEach(b=>b.onclick=()=>{tab=b.dataset.t; $$('#tabs button').forEach(x=>x.classList.toggle('on',x===b));
     if(tab==='lead'){sortK='r5';sortDir=-1} else if(tab==='lag'){sortK='r5';sortDir=1} else if(sortK==='r5'&&(sortDir)){sortK='o';sortDir=1}
@@ -87,7 +87,8 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
     draw() }).catch(()=>{});
   function draw(){
     COLS=(PAGE.home||PAGE.dca||tab==='lead'||tab==='lag')?COLS_DCA:COLS_MKT;   // home keeps its approved DCA columns
-    let rows=(tab==='crypto'?IDX.concat(ST):IDX).filter(a=>{
+    let rows=(tab==='crypto'&&!ONLY?IDX.concat(ST):IDX).filter(a=>{
+      if(ONLY&&!ONLY.has(a.i)) return false;
       if(tab==='crypto'||tab==='stock'||tab==='etf'||tab==='metal'||tab==='cmd'){ if(a.c!==tab) return false }
       if((tab==='lead'||tab==='lag')&&a.r5==null) return false;
       return !q||a.t.toLowerCase().includes(q)||nm(a).toLowerCase().includes(q) });
