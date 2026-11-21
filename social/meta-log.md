@@ -39,8 +39,13 @@ Note (2026-11-19 20:47 run): nvda-amd-intc.mp4 not deployed yet (relay returned 
 Note (2026-11-20 11:4x run): numbers recomputed with simulate() on data/market.json (2026-11-20 09:26 UTC data). ASML is now +78% ($32,512), not +87% as in the X post at 09:21 (data refreshed after it); the other four match. Instagram still logged out — owner must log in again in the built-in browser. Facebook skipped (20:47 run only). Bluesky: clicking the "Новий пост" ref did not open the composer — the floating pencil button (left column) by coordinate did; one synthetic paste again attached the image twice (removed one).
 
 | 2026-11-20 20:51 | Threads | Race video: $100/mo since Aug 2004 AAPL vs MSFT vs GOOGL (Apple $1.32M +4,828%, Microsoft $364.1K +1,259%, Alphabet $355.2K +1,226%, $26,800 in each; same as X 18:35 / TG msg 1488) + link /en/aapl/ | https://www.threads.com/@whatifstack/post/Df-VpVYEwuI | |
-| 2026-11-20 20:52 | Bluesky | same race video + link /en/aapl/ (langs en) | https://bsky.app/profile/whatifstack.bsky.social/post/3n2razwffx22i | |
+| 2026-11-20 20:52 | Bluesky | same race video + link /en/aapl/ (langs en) | https://bsky.app/profile/whatifstack.bsky.social/post/3n2razwffx22i | 0 likes (2026-11-21 11:5x) |
 | 2026-11-20 20:55 | Facebook (posted as Reel, public) | same race video + link /en/aapl/ | https://www.facebook.com/reel/1451066363224664 | |
 
 Note (2026-11-20 20:47 run): video taken from GitHub raw (not deployed yet) via a new hand-off — whatifstack.com/x-relay.html page fetches raw.githubusercontent.com (CORS *), base64 → navigate to <platform>#wisf=<name>:<b64>; Threads/Bluesky/FB CSP blocks fetching raw GitHub directly. Numbers re-checked with race_snippet.py (identical to the X post). Instagram not used (owner). Threads composer dialog stayed open with the text after publishing (post was live) — navigated away with force.
 
+
+| 2026-11-21 11:51 | Threads | Race video: $100/mo since Jun 2008 QQQ vs SPY vs VT (Nasdaq-100 $143.5K +546%, S&P 500 $88.6K +299%, World VT $62.2K +180%, $22,200 in each; same as X 11:30) + link /en/qqq/ | https://www.threads.com/@whatifstack/post/Df_8prRE4AH | |
+| 2026-11-21 11:52 | Bluesky | same race video + link /en/qqq/ (langs en) | https://bsky.app/profile/whatifstack.bsky.social/post/3n2stckh2j224 | |
+
+Note (2026-11-21 11:4x run): video from GitHub raw via the x-relay hash hand-off (worked first try on both). Threads: find-ref click on the inline box opened the dialog, `__setF` on the dialog input, find "textbox" ref click then typed. Bluesky: floating pencil (130,432 in 800-wide frame) → one synthetic paste attached the video once → language «англійська». Bluesky likes for older posts unchanged (11-18 Big Tech card 2, rest 0). Facebook skipped (20:47 run only).
