@@ -49,3 +49,9 @@ Note (2026-11-20 20:47 run): video taken from GitHub raw (not deployed yet) via 
 | 2026-11-21 11:52 | Bluesky | same race video + link /en/qqq/ (langs en) | https://bsky.app/profile/whatifstack.bsky.social/post/3n2stckh2j224 | |
 
 Note (2026-11-21 11:4x run): video from GitHub raw via the x-relay hash hand-off (worked first try on both). Threads: find-ref click on the inline box opened the dialog, `__setF` on the dialog input, find "textbox" ref click then typed. Bluesky: floating pencil (130,432 in 800-wide frame) → one synthetic paste attached the video once → language «англійська». Bluesky likes for older posts unchanged (11-18 Big Tech card 2, rest 0). Facebook skipped (20:47 run only).
+
+| 2026-11-21 20:50 | Threads | Race video: $100/mo since Aug 2000 Gold vs Silver vs Platinum (Gold $134.0K +324%, Silver $103.6K +228%, Platinum $41.2K +30%, $31,600 in each; same as X 18:30 / TG msg 1493) + link /en/gold/ | https://www.threads.com/@whatifstack/post/DgA6Wv6k5wG | |
+| 2026-11-21 20:52 | Bluesky | same race video + link /en/gold/ (langs en) | https://bsky.app/profile/whatifstack.bsky.social/post/3n2trhij47c2m | |
+| 2026-11-21 20:55 | Facebook (posted as Reel, public) | same race video + link /en/gold/ | https://www.facebook.com/reel/1974025420247027 | |
+
+Note (2026-11-21 20:47 run): video from GitHub raw by commit SHA via the x-relay hash hand-off (worked first try on all three). Bluesky: first pencil click came before the page loaded — second click opened the composer; one paste attached the video once. FB: the "Фото/видео" ref click did nothing — clicking the green photo icon by coordinate (right of the "Что у вас нового" box) opened the composer with the video attached. Bluesky likes for posts of the last 7 days: all 0 (11-18 Big Tech card 2).
