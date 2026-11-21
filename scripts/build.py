@@ -19,6 +19,7 @@ from i18n_s import S as SEA  # noqa: E402
 from i18n_i import I as INF  # noqa: E402
 from i18n_world import W as WA, WN, WD  # noqa: E402
 from i18n_ctry import C as CTRY, MKTS, MKT_LANG, CCY_SIGN  # noqa: E402  # noqa: E402
+from i18n_ctry3 import SUFFIX3  # noqa: E402  (Yahoo suffix -> market, currency, TradingView exchange)
 from i18n_p import P as POLL, OPTS as POLL_OPTS  # noqa: E402
 from i18n_ai import AI as AIS  # noqa: E402
 from i18n_me import ME  # noqa: E402
@@ -155,7 +156,7 @@ def tv_symbol(a):
     for suf, ex in (('.WA', 'GPW'), ('.DE', 'XETR'), ('.L', 'LSE'), ('.PA', 'EURONEXT'), ('.AS', 'EURONEXT'), ('.MC', 'BME'), ('.MI', 'MIL'),
                     ('.IS', 'BIST'), ('.T', 'TSE'), ('.KS', 'KRX'), ('.NS', 'BSE'), ('.SA', 'BMFBOVESPA'), ('.HK', 'HKEX'), ('.SS', 'SSE'),
                     ('.SZ', 'SZSE'), ('.TW', 'TWSE'), ('.JK', 'IDX'), ('.BK', 'SET'), ('.PS', 'PSE'), ('.VN', 'HOSE'), ('.SR', 'TADAWUL'),
-                    ('.SW', 'SIX'), ('.TO', 'TSX'), ('.AX', 'ASX'), ('.MX', 'BMV')):
+                    ('.SW', 'SIX'), ('.TO', 'TSX'), ('.AX', 'ASX'), ('.MX', 'BMV')) + tuple((k, v[2]) for k, v in SUFFIX3.items()):
         if y.endswith(suf):
             t = y[:-len(suf)]
             return f"{ex}:{t.lstrip('0') if suf == '.HK' else t.replace('-', '.')}"
@@ -1531,6 +1532,7 @@ def to_usd(v, ccy):
 SUFFIX_CCY = {'.DE': 'EUR', '.PA': 'EUR', '.MC': 'EUR', '.MI': 'EUR', '.AS': 'EUR', '.L': 'GBp', '.T': 'JPY', '.KS': 'KRW', '.KQ': 'KRW', '.NS': 'INR', '.BO': 'INR',
               '.WA': 'PLN', '.IS': 'TRY', '.HK': 'HKD', '.TO': 'CAD', '.AX': 'AUD', '.SW': 'CHF', '.SA': 'BRL', '.MX': 'MXN', '.BK': 'THB', '.JK': 'IDR',
               '.TW': 'TWD', '.TWO': 'TWD', '.SR': 'SAR', '.SS': 'CNY', '.SZ': 'CNY', '.PS': 'PHP', '.VN': 'VND', '.ME': 'RUB'}
+SUFFIX_CCY.update({k: v[1] for k, v in SUFFIX3.items()})
 
 
 def sym_ccy(sym):

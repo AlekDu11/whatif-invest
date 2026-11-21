@@ -8165,5 +8165,537 @@
 "name": "Russ-Invest",
 "cat": "stock",
 "mkt": "ru"
+},
+{
+"tk": "VOLV-B",
+"yahoo": "VOLV-B.ST",
+"name": "Volvo",
+"cat": "stock",
+"mkt": "se"
+},
+{
+"tk": "ERIC-B",
+"yahoo": "ERIC-B.ST",
+"name": "Ericsson",
+"cat": "stock",
+"mkt": "se"
+},
+{
+"tk": "ATCO-A",
+"yahoo": "ATCO-A.ST",
+"name": "Atlas Copco",
+"cat": "stock",
+"mkt": "se"
+},
+{
+"tk": "INVE-B",
+"yahoo": "INVE-B.ST",
+"name": "Investor AB",
+"cat": "stock",
+"mkt": "se"
+},
+{
+"tk": "HM-B",
+"yahoo": "HM-B.ST",
+"name": "H&M",
+"cat": "stock",
+"mkt": "se"
+},
+{
+"tk": "EQNR",
+"yahoo": "EQNR.OL",
+"name": "Equinor",
+"cat": "stock",
+"mkt": "no"
+},
+{
+"tk": "DNB",
+"yahoo": "DNB.OL",
+"name": "DNB Bank",
+"cat": "stock",
+"mkt": "no"
+},
+{
+"tk": "TEL",
+"yahoo": "TEL.OL",
+"name": "Telenor",
+"cat": "stock",
+"mkt": "no"
+},
+{
+"tk": "NHY",
+"yahoo": "NHY.OL",
+"name": "Norsk Hydro",
+"cat": "stock",
+"mkt": "no"
+},
+{
+"tk": "MOWI",
+"yahoo": "MOWI.OL",
+"name": "Mowi",
+"cat": "stock",
+"mkt": "no"
+},
+{
+"tk": "NOVO-B",
+"yahoo": "NOVO-B.CO",
+"name": "Novo Nordisk",
+"cat": "stock",
+"mkt": "dk"
+},
+{
+"tk": "MAERSK-B",
+"yahoo": "MAERSK-B.CO",
+"name": "Maersk",
+"cat": "stock",
+"mkt": "dk"
+},
+{
+"tk": "DSV",
+"yahoo": "DSV.CO",
+"name": "DSV",
+"cat": "stock",
+"mkt": "dk"
+},
+{
+"tk": "ORSTED",
+"yahoo": "ORSTED.CO",
+"name": "Ørsted",
+"cat": "stock",
+"mkt": "dk"
+},
+{
+"tk": "CARL-B",
+"yahoo": "CARL-B.CO",
+"name": "Carlsberg",
+"cat": "stock",
+"mkt": "dk"
+},
+{
+"tk": "NOKIA",
+"yahoo": "NOKIA.HE",
+"name": "Nokia",
+"cat": "stock",
+"mkt": "fi"
+},
+{
+"tk": "NESTE",
+"yahoo": "NESTE.HE",
+"name": "Neste",
+"cat": "stock",
+"mkt": "fi"
+},
+{
+"tk": "KNEBV",
+"yahoo": "KNEBV.HE",
+"name": "Kone",
+"cat": "stock",
+"mkt": "fi"
+},
+{
+"tk": "SAMPO",
+"yahoo": "SAMPO.HE",
+"name": "Sampo",
+"cat": "stock",
+"mkt": "fi"
+},
+{
+"tk": "NDA-FI",
+"yahoo": "NDA-FI.HE",
+"name": "Nordea",
+"cat": "stock",
+"mkt": "fi"
+},
+{
+"tk": "ABI",
+"yahoo": "ABI.BR",
+"name": "AB InBev",
+"cat": "stock",
+"mkt": "be"
+},
+{
+"tk": "UCB",
+"yahoo": "UCB.BR",
+"name": "UCB",
+"cat": "stock",
+"mkt": "be"
+},
+{
+"tk": "KBC",
+"yahoo": "KBC.BR",
+"name": "KBC Group",
+"cat": "stock",
+"mkt": "be"
+},
+{
+"tk": "ARGX",
+"yahoo": "ARGX.BR",
+"name": "argenx",
+"cat": "stock",
+"mkt": "be"
+},
+{
+"tk": "SOLB",
+"yahoo": "SOLB.BR",
+"name": "Solvay",
+"cat": "stock",
+"mkt": "be"
+},
+{
+"tk": "EBS",
+"yahoo": "EBS.VI",
+"name": "Erste Group",
+"cat": "stock",
+"mkt": "at"
+},
+{
+"tk": "OMV",
+"yahoo": "OMV.VI",
+"name": "OMV",
+"cat": "stock",
+"mkt": "at"
+},
+{
+"tk": "VER",
+"yahoo": "VER.VI",
+"name": "Verbund",
+"cat": "stock",
+"mkt": "at"
+},
+{
+"tk": "RBI",
+"yahoo": "RBI.VI",
+"name": "Raiffeisen Bank International",
+"cat": "stock",
+"mkt": "at"
+},
+{
+"tk": "EDP",
+"yahoo": "EDP.LS",
+"name": "EDP",
+"cat": "stock",
+"mkt": "pt"
+},
+{
+"tk": "GALP",
+"yahoo": "GALP.LS",
+"name": "Galp",
+"cat": "stock",
+"mkt": "pt"
+},
+{
+"tk": "JMT",
+"yahoo": "JMT.LS",
+"name": "Jerónimo Martins",
+"cat": "stock",
+"mkt": "pt"
+},
+{
+"tk": "BCP",
+"yahoo": "BCP.LS",
+"name": "Millennium bcp",
+"cat": "stock",
+"mkt": "pt"
+},
+{
+"tk": "KRZ",
+"yahoo": "KRZ.IR",
+"name": "Kerry Group",
+"cat": "stock",
+"mkt": "ie"
+},
+{
+"tk": "BIRG",
+"yahoo": "BIRG.IR",
+"name": "Bank of Ireland",
+"cat": "stock",
+"mkt": "ie"
+},
+{
+"tk": "A5G",
+"yahoo": "A5G.IR",
+"name": "AIB Group",
+"cat": "stock",
+"mkt": "ie"
+},
+{
+"tk": "GL9",
+"yahoo": "GL9.IR",
+"name": "Glanbia",
+"cat": "stock",
+"mkt": "ie"
+},
+{
+"tk": "ETE",
+"yahoo": "ETE.AT",
+"name": "National Bank of Greece",
+"cat": "stock",
+"mkt": "gr"
+},
+{
+"tk": "OPAP",
+"yahoo": "OPAP.AT",
+"name": "OPAP",
+"cat": "stock",
+"mkt": "gr"
+},
+{
+"tk": "PPC",
+"yahoo": "PPC.AT",
+"name": "PPC",
+"cat": "stock",
+"mkt": "gr"
+},
+{
+"tk": "EUROB",
+"yahoo": "EUROB.AT",
+"name": "Eurobank",
+"cat": "stock",
+"mkt": "gr"
+},
+{
+"tk": "CEZ",
+"yahoo": "CEZ.PR",
+"name": "ČEZ",
+"cat": "stock",
+"mkt": "cz"
+},
+{
+"tk": "KOMB",
+"yahoo": "KOMB.PR",
+"name": "Komerční banka",
+"cat": "stock",
+"mkt": "cz"
+},
+{
+"tk": "MONET",
+"yahoo": "MONET.PR",
+"name": "Moneta Money Bank",
+"cat": "stock",
+"mkt": "cz"
+},
+{
+"tk": "OTP",
+"yahoo": "OTP.BD",
+"name": "OTP Bank",
+"cat": "stock",
+"mkt": "hu"
+},
+{
+"tk": "MOL",
+"yahoo": "MOL.BD",
+"name": "MOL Group",
+"cat": "stock",
+"mkt": "hu"
+},
+{
+"tk": "RICHTER",
+"yahoo": "RICHTER.BD",
+"name": "Gedeon Richter",
+"cat": "stock",
+"mkt": "hu"
+},
+{
+"tk": "TEVA",
+"yahoo": "TEVA.TA",
+"name": "Teva",
+"cat": "stock",
+"mkt": "il"
+},
+{
+"tk": "LUMI",
+"yahoo": "LUMI.TA",
+"name": "Bank Leumi",
+"cat": "stock",
+"mkt": "il"
+},
+{
+"tk": "POLI",
+"yahoo": "POLI.TA",
+"name": "Bank Hapoalim",
+"cat": "stock",
+"mkt": "il"
+},
+{
+"tk": "ICL",
+"yahoo": "ICL.TA",
+"name": "ICL Group",
+"cat": "stock",
+"mkt": "il"
+},
+{
+"tk": "NICE",
+"yahoo": "NICE.TA",
+"name": "NICE",
+"cat": "stock",
+"mkt": "il"
+},
+{
+"tk": "NPN",
+"yahoo": "NPN.JO",
+"name": "Naspers",
+"cat": "stock",
+"mkt": "za"
+},
+{
+"tk": "FSR",
+"yahoo": "FSR.JO",
+"name": "FirstRand",
+"cat": "stock",
+"mkt": "za"
+},
+{
+"tk": "SBK",
+"yahoo": "SBK.JO",
+"name": "Standard Bank",
+"cat": "stock",
+"mkt": "za"
+},
+{
+"tk": "MTN",
+"yahoo": "MTN.JO",
+"name": "MTN Group",
+"cat": "stock",
+"mkt": "za"
+},
+{
+"tk": "AGL",
+"yahoo": "AGL.JO",
+"name": "Anglo American",
+"cat": "stock",
+"mkt": "za"
+},
+{
+"tk": "COMI",
+"yahoo": "COMI.CA",
+"name": "Commercial International Bank",
+"cat": "stock",
+"mkt": "eg"
+},
+{
+"tk": "TMGH",
+"yahoo": "TMGH.CA",
+"name": "Talaat Moustafa Group",
+"cat": "stock",
+"mkt": "eg"
+},
+{
+"tk": "ETEL",
+"yahoo": "ETEL.CA",
+"name": "Telecom Egypt",
+"cat": "stock",
+"mkt": "eg"
+},
+{
+"tk": "D05",
+"yahoo": "D05.SI",
+"name": "DBS",
+"cat": "stock",
+"mkt": "sg"
+},
+{
+"tk": "O39",
+"yahoo": "O39.SI",
+"name": "OCBC",
+"cat": "stock",
+"mkt": "sg"
+},
+{
+"tk": "U11",
+"yahoo": "U11.SI",
+"name": "UOB",
+"cat": "stock",
+"mkt": "sg"
+},
+{
+"tk": "Z74",
+"yahoo": "Z74.SI",
+"name": "Singtel",
+"cat": "stock",
+"mkt": "sg"
+},
+{
+"tk": "1155",
+"yahoo": "1155.KL",
+"name": "Maybank",
+"cat": "stock",
+"mkt": "my"
+},
+{
+"tk": "1295",
+"yahoo": "1295.KL",
+"name": "Public Bank",
+"cat": "stock",
+"mkt": "my"
+},
+{
+"tk": "5347",
+"yahoo": "5347.KL",
+"name": "Tenaga Nasional",
+"cat": "stock",
+"mkt": "my"
+},
+{
+"tk": "FPH",
+"yahoo": "FPH.NZ",
+"name": "Fisher & Paykel Healthcare",
+"cat": "stock",
+"mkt": "nz"
+},
+{
+"tk": "AIA",
+"yahoo": "AIA.NZ",
+"name": "Auckland Airport",
+"cat": "stock",
+"mkt": "nz"
+},
+{
+"tk": "MEL",
+"yahoo": "MEL.NZ",
+"name": "Meridian Energy",
+"cat": "stock",
+"mkt": "nz"
+},
+{
+"tk": "YPFD",
+"yahoo": "YPFD.BA",
+"name": "YPF",
+"cat": "stock",
+"mkt": "ar"
+},
+{
+"tk": "GGAL",
+"yahoo": "GGAL.BA",
+"name": "Grupo Financiero Galicia",
+"cat": "stock",
+"mkt": "ar"
+},
+{
+"tk": "PAMP",
+"yahoo": "PAMP.BA",
+"name": "Pampa Energía",
+"cat": "stock",
+"mkt": "ar"
+},
+{
+"tk": "SQM-B",
+"yahoo": "SQM-B.SN",
+"name": "SQM",
+"cat": "stock",
+"mkt": "cl"
+},
+{
+"tk": "FALABELLA",
+"yahoo": "FALABELLA.SN",
+"name": "Falabella",
+"cat": "stock",
+"mkt": "cl"
+},
+{
+"tk": "CHILE",
+"yahoo": "CHILE.SN",
+"name": "Banco de Chile",
+"cat": "stock",
+"mkt": "cl"
 }
 ]

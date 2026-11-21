@@ -31,6 +31,11 @@ FX_TICKER = {c: c + '=X' for c in 'PLN EUR GBP TRY JPY KRW INR BRL HKD CNY TWD I
 SUFFIX_CCY = {'.WA': 'PLN', '.DE': 'EUR', '.PA': 'EUR', '.MC': 'EUR', '.MI': 'EUR', '.AS': 'EUR', '.L': 'GBp', '.IS': 'TRY', '.T': 'JPY', '.KS': 'KRW',
               '.NS': 'INR', '.SA': 'BRL', '.HK': 'HKD', '.SS': 'CNY', '.SZ': 'CNY', '.TW': 'TWD', '.JK': 'IDR', '.BK': 'THB', '.PS': 'PHP', '.VN': 'VND',
               '.SR': 'SAR', '.SW': 'CHF', '.TO': 'CAD', '.AX': 'AUD', '.MX': 'MXN', 'MOEX:': 'RUB'}
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from i18n_ctry3 import SUFFIX3  # noqa: E402  (19 more markets, 2026-11-21)
+SUFFIX_CCY.update({suf: v[1] for suf, v in SUFFIX3.items()})
+CENT = {'GBp': 'GBP', 'ILA': 'ILS', 'ZAc': 'ZAR'}   # Yahoo quotes London in pence, Tel Aviv in agorot, Johannesburg in cents
+FX_TICKER.update({c: c + '=X' for c in {CENT.get(v[1], v[1]) for v in SUFFIX3.values()} if c != 'EUR'})
 CMDTY_T = {'brent': 'BZ=F', 'ng': 'NG=F', 'copper': 'HG=F'}   # for the world-assets page
 CMDTY = {}
 INFO_KEYS = ('ath', 'athd', 'mcap', 'cgid', 'circ', 'supply', 'maxs', 'fdv', 'vol', 'atl', 'atld', 'c7', 's7')   # c7/s7: 7-day change + 7-day sparkline
@@ -245,8 +250,8 @@ def to_usd(series, ccy, fxm):
     """Convert a monthly local-currency series to USD with monthly FX (units per USD)."""
     if not series or ccy == 'USD':
         return series
-    div = 100.0 if ccy == 'GBp' else 1.0
-    fx = fxm.get(FX_TICKER.get(ccy.upper() if ccy != 'GBp' else 'GBP'))
+    div = 100.0 if ccy in CENT else 1.0
+    fx = fxm.get(FX_TICKER.get(CENT.get(ccy, ccy)))
     if not fx:
         return None
     f0 = ym2i(fx['start'])
@@ -773,7 +778,7 @@ def main():
             if aid in assets:
                 continue
             raw = mm.get(r['yahoo'])
-            ser = to_usd(fix_x100(raw) if ccy == 'GBp' else raw, ccy, fxm)
+            ser = to_usd(fix_x100(raw) if ccy in CENT else raw, ccy, fxm)
             if ser and broken(ser):
                 ser = trim_breaks(ser)
                 log(f"  {r['yahoo']}: jump in history, kept from {ser['start'] if ser else '-'}")
@@ -798,9 +803,9 @@ def main():
                 a['c7'], a['s7'] = YW[a['yahoo']]
             ccy = a.get('ccy', 'USD')
             if ccy != 'USD':
-                rate = (yd.get(FX_TICKER['GBP' if ccy == 'GBp' else ccy]) or [None])[0] or (fxm.get(FX_TICKER['GBP' if ccy == 'GBp' else ccy], {}).get('p') or [None])[-1]
+                rate = (yd.get(FX_TICKER[CENT.get(ccy, ccy)]) or [None])[0] or (fxm.get(FX_TICKER[CENT.get(ccy, ccy)], {}).get('p') or [None])[-1]
                 a['lp'] = a['price']
-                a['price'] = a['price'] / (100.0 if ccy == 'GBp' else 1.0) / rate if rate else None
+                a['price'] = a['price'] / (100.0 if ccy in CENT else 1.0) / rate if rate else None
 
     # 4) crypto via Binance (+ CoinGecko names/logos)
     cg = coingecko_meta()
