@@ -1,0 +1,15 @@
+name: Telegram bot setup
+# One click instead of opening /api/tg?setup=<ALERTS_KEY> by hand: connects the bot's webhook, commands, descriptions and menu button.
+on:
+  workflow_dispatch: {}
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Connect the bot
+        env:
+          KEY: ${{ secrets.ALERTS_KEY }}
+        run: |
+          if [ -z "$KEY" ]; then echo "ALERTS_KEY secret not set"; exit 1; fi
+          curl -sS -L --max-time 60 "https://whatifstack.com/api/tg?setup=$KEY" | head -c 2000; echo

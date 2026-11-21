@@ -16,4 +16,4 @@ jobs:
           KEY: ${{ secrets.ALERTS_KEY }}
         run: |
           if [ -z "$KEY" ]; then echo "ALERTS_KEY secret not set yet"; exit 0; fi
-          curl -fsS --max-time 60 "https://whatifstack.com/api/alerts?key=$KEY" || true
+          curl -fsSL --max-time 60 "https://whatifstack.com/api/alerts?key=$KEY" || true
