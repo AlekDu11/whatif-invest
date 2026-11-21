@@ -92,7 +92,7 @@ module.exports = async (req, res) => {
       return send(200, await session('t:' + usr.id, { tg: usr.username || String(usr.id), name: usr.first_name || usr.username || 'Telegram' }));
     }
     if (k === 'google') {                      // «Sign in with Google» (Google Identity Services): ID token checked by Google, same account as the e-mail link
-      const cid = process.env.GOOGLE_CLIENT_ID;
+      const cid = process.env.GOOGLE_CLIENT_ID || '930815987991-42dlv5pn1onokham9bcq0dqbo4pstpc3.apps.googleusercontent.com';   // public OAuth client id (project whatifstack)
       if (!cid) return send(503, { e: 'google-off' });
       const r = await fetch('https://oauth2.googleapis.com/tokeninfo?id_token=' + encodeURIComponent(String(b.c || '')));
       const g = r.ok ? await r.json() : {};
