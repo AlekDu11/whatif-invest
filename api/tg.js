@@ -24,7 +24,9 @@ const menu = (lang) => { const m = M(lang); return { inline_keyboard: [
   [{ text: m.pf, web_app: { url: `${SITE}${LP(lang)}/me/?tgapp=1` } }],
   [{ text: m.px, callback_data: 'px' }, { text: m.al, callback_data: 'al' }],
   [{ text: m.ch, url: CH }, { text: m.sh, url: `https://t.me/share/url?url=${encodeURIComponent('https://t.me/' + BOT)}&text=${encodeURIComponent(m.share)}` }],
+  [{ text: m.sup, callback_data: 'sup' }, { text: m.lng, callback_data: 'lng' }],
   [{ text: m.site, url: `${SITE}${LP(lang)}/?utm_source=tg_bot` }]] } };
+const LANGS = [['uk', '🇺🇦 Українська'], ['en', '🇬🇧 English'], ['ru', 'Русский'], ['es', '🇪🇸 Español'], ['de', '🇩🇪 Deutsch'], ['pl', '🇵🇱 Polski'], ['tr', '🇹🇷 Türkçe'], ['pt', '🇧🇷 Português']];
 
 module.exports = async (req, res) => {
   const q = req.query || {};
@@ -63,9 +65,11 @@ module.exports = async (req, res) => {
     const msg = u.message || (cb && cb.message) || {};
     const chat = msg.chat && msg.chat.id;
     const from = (cb && cb.from) || msg.from || {};
-    const lang = from.language_code || 'en';
-    let t = T(lang); const m = M(lang);
     if (!chat) return done(200);
+    const [saved] = await kv([['GET', `tg:lang:${chat}`]]);
+    let lang = saved || from.language_code || 'en';
+    let t = T(lang); let m = M(lang);
+    const admin = process.env.TG_ADMIN_CHAT;
     const say = (s, extra) => tg('sendMessage', Object.assign({ chat_id: chat, text: s, disable_web_page_preview: true }, extra || {}));
     const ids = await kv([['SMEMBERS', `al:chat:${chat}`]]).then(r => (r[0] || []).sort((a, b) => a - b));
     const listAlerts = async () => {
@@ -81,10 +85,27 @@ module.exports = async (req, res) => {
     if (cb) {
       await tg('answerCallbackQuery', { callback_query_id: cb.id });
       if (cb.data === 'px') await topPrices(); else if (cb.data === 'al') await listAlerts();
+      else if (cb.data === 'sup') { await kv([['SET', `tg:sup:${chat}`, '1', 'EX', 3600]]); await say(m.supask, { reply_markup: { force_reply: true } }); }
+      else if (cb.data === 'lng') await say(m.lng, { reply_markup: { inline_keyboard: [LANGS.slice(0, 4), LANGS.slice(4)].map(r => r.map(([c, n]) => ({ text: n, callback_data: 'l:' + c }))) } });
+      else if (/^l:[a-z]{2}$/.test(cb.data)) { lang = cb.data.slice(2); await kv([['SET', `tg:lang:${chat}`, lang]]); m = M(lang); t = T(lang); await say(m.lngok + '\n\n' + m.hi, { reply_markup: menu(lang) }); }
       return done(200);
     }
-    const text = String(msg.text || '').trim();
+    const text = String(msg.text || msg.caption || '').trim();
+    if (admin && String(chat) === String(admin) && msg.reply_to_message) {      // the owner answers a forwarded support message → back to the user
+      const [to] = await kv([['GET', `tg:supmap:${msg.reply_to_message.message_id}`]]);
+      if (to) { await tg('copyMessage', { chat_id: to, from_chat_id: chat, message_id: msg.message_id }); return say('↩️ sent').then(() => done(200)); }
+    }
+    const [inSup] = await kv([['GET', `tg:sup:${chat}`]]);
+    if (inSup && !/^\//.test(text)) {                                        // support message: keep it and pass it to the owner
+      await kv([['DEL', `tg:sup:${chat}`], ['LPUSH', 'tg:support', JSON.stringify({ c: chat, u: from.username || '', n: from.first_name || '', l: lang, t: Date.now(), m: text.slice(0, 2000) })], ['LTRIM', 'tg:support', 0, 999]]);
+      if (admin) { const f = await tg('forwardMessage', { chat_id: admin, from_chat_id: chat, message_id: msg.message_id });
+        if (f && f.result) await kv([['SET', `tg:supmap:${f.result.message_id}`, String(chat), 'EX', 30 * 86400]]); }
+      return say(m.supok, { reply_markup: menu(lang) }).then(() => done(200));
+    }
     if (!text) return done(200);
+    if (/^\/support/.test(text)) { await kv([['SET', `tg:sup:${chat}`, '1', 'EX', 3600]]); return say(m.supask, { reply_markup: { force_reply: true } }).then(() => done(200)); }
+    if (/^\/lang/.test(text)) return say(m.lng, { reply_markup: { inline_keyboard: [LANGS.slice(0, 4), LANGS.slice(4)].map(r => r.map(([c, n]) => ({ text: n, callback_data: 'l:' + c }))) } }).then(() => done(200));
+    if (/^\/myid/.test(text)) return say(String(chat)).then(() => done(200));
     if (/^\/start a_/.test(text)) {                           // price alert from the site
       const p = text.slice(9).split('_');
       const lg = p.pop(), pr = p.pop(), dr = p.pop(), aid = p.join('_');
