@@ -17,7 +17,7 @@ date | topic | queries (impr / pos) | languages | slugs | status
 2026-11-20 | How to invest in Hong Kong stocks | invertir en acciones de hong kong 5/36.6; invertir en acciones hk 5/40.4; cómo invertir en acciones hk 5/43; đầu tư vào cổ phiếu hk 4/43; comprar acciones de hong kong 3/28.3; đầu tư cổ phiếu hong kong 3/54.7; inversión en acciones de hong kong 3/57.7; 홍콩 주식 투자 2/44; best hong kong stocks 2/52; investing in hong kong share 2/68.5 | en, es, vi, zh | how-to-invest-in-hong-kong-stocks | published
 2026-11-20 | regional: 日本株の積立 (Japan, 228 impr from JP in Countries tab, no ja regional yet) | japan aktien 5/50; beste japanische aktien 4/60 (market interest); JP country 228 impr / pos 40.8 | ja | nihon-kabu-tsumitate-10-doru-5-nen | published, regional
 2026-11-21 | Best Japanese stocks / Japan-Aktien / Japan-ETF | japan aktien 6/52.7; beste japanische aktien 5/61.8; japanische aktien 2/74; etf japan empfehlung 1/4 (GSC 28 d, read 2026-11-21) | en, de, ja | best-japanese-stocks | published
-2026-11-21 | German stocks / the German stock exchange (DAX, Xetra) | duitse aandelen 4/12.0; duitse beurs 3/50.0; dax 40 empresas 1/76; aktienindex brasilien (n/a); GSC 28 d read 2026-11-21 16:20 | en, de, nl | german-stocks | published
+2026-11-21 | German stocks / the German stock exchange (DAX, Xetra) | duitse aandelen 4/12.0; duitse beurs 3/50.0; dax 40 empresas 1/76; GSC 28 d read 2026-11-21 16:20 | en, de, nl | german-stocks | published
 2026-11-21 | regional: 한국 대형주 24종목 하루 10달러 5년 (+79.7%) — ko had no regional yet; South Korea 47 impr / pos 21 in Countries; südkoreanische aktien 1/64 | ko | hanguk-daehyeongju-haru-10-dallo-5nyeon | published, regional
 
 ## Snapshots
