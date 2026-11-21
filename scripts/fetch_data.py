@@ -21,7 +21,11 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 PINNED = os.path.join(ROOT, 'data/assets.json')
 OUT = os.path.join(ROOT, 'data/market.json')
 MIN_START = '2000-01'
-TOP_CRYPTO = 2000   # owner 2026-11-20: more coins; pages outside the top 200 exist only in uk+en (build.py TOP_N), so the deploy grows ~6%
+TOP_CRYPTO = 4000   # owner 2026-11-21: top 1–4000 by market cap like CoinMarketCap/CryptoRank (2026-11-20: 2000); pages outside TOP_N are static only in uk+en, the rest on demand
+CG_PAGES = 16       # CoinGecko /coins/markets pages of 250 = top 4000
+NEW_HIST_BUDGET = 450   # new coins whose history is looked up per run (the rest wait for the next run) — keeps the workflow under ~1 h
+CG_HIST_BUDGET = 40     # of those, at most this many via CoinGecko market_chart (365 days, keyless rate limit)
+NOHIST = os.path.join(ROOT, 'data/crypto_nohist.json')   # coins with no history anywhere: retried after 7 days
 MARKETS = os.path.join(ROOT, 'data/markets.json')   # ETFs + national stocks (Ukraine, Poland, Germany...)
 FX_TICKER = {c: c + '=X' for c in 'PLN EUR GBP TRY JPY KRW INR BRL HKD CNY TWD IDR THB PHP VND SAR CHF CAD AUD MXN RUB'.split()}   # Yahoo: units per 1 USD
 SUFFIX_CCY = {'.WA': 'PLN', '.DE': 'EUR', '.PA': 'EUR', '.MC': 'EUR', '.MI': 'EUR', '.AS': 'EUR', '.L': 'GBp', '.IS': 'TRY', '.T': 'JPY', '.KS': 'KRW',
@@ -140,6 +144,10 @@ def other_monthly(base):
     d = get_json(f"https://www.okx.com/api/v5/market/history-candles?instId={base}-USDT&bar=1Mutc&limit=100", tries=1, timeout=10)
     if isinstance(d, dict) and d.get('data'):
         return to_series((datetime.fromtimestamp(int(r[0]) / 1000, timezone.utc).strftime('%Y-%m'), r[4]) for r in d['data']), 'okx'
+    d = get_json(f"https://api.bybit.com/v5/market/kline?category=spot&symbol={base}USDT&interval=M&limit=1000", tries=1, timeout=10)
+    rows = ((d or {}).get('result') or {}).get('list') if isinstance(d, dict) else None
+    if rows:
+        return to_series((datetime.fromtimestamp(int(r[0]) / 1000, timezone.utc).strftime('%Y-%m'), r[4]) for r in rows), 'bybit'
     # coins delisted from Binance/Gate/MEXC/OKX (Monero, Helium...): Kraken 15-day candles, then Yahoo <TK>-USD
     d = get_json(f"https://api.kraken.com/0/public/OHLC?pair={base}USD&interval=21600", tries=1, timeout=15)
     res = (d or {}).get('result') if isinstance(d, dict) else None
@@ -154,6 +162,17 @@ def other_monthly(base):
     except Exception as e:
         log(f"  yahoo {base}-USD: {e}")
     return None, None
+
+
+def coingecko_monthly(cgid):
+    """Last resort for coins on no exchange we read: CoinGecko daily prices for 365 days (the keyless limit) -> month-end closes."""
+    if not cgid:
+        return None
+    d = get_json(f"https://api.coingecko.com/api/v3/coins/{cgid}/market_chart?vs_currency=usd&days=365&interval=daily", tries=1, timeout=15)
+    pts = (d or {}).get('prices') if isinstance(d, dict) else None
+    if not pts or len(pts) < 45:
+        return None
+    return to_series((datetime.fromtimestamp(t / 1000, timezone.utc).strftime('%Y-%m'), v) for t, v in pts)
 
 
 MOEX = 'https://iss.moex.com/iss/engines/stock/markets/shares/boards/TQBR/securities'
@@ -290,7 +309,7 @@ def _spark7(pts, n=24):
 
 def coingecko_meta():
     meta = {}
-    for page in range(1, 9):   # top 2000 by market cap
+    for page in range(1, CG_PAGES + 1):   # top 4000 by market cap
         if page > 1:
             time.sleep(4)   # stay under CoinGecko's free rate limit
         d = get_json(f"https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=250&page={page}&price_change_percentage=1h,24h,7d,30d,1y&sparkline=true", tries=2)
@@ -805,6 +824,13 @@ def main():
         order = order + exchange_extras(cg, set(order))     # coins traded on the big exchanges but outside the top-1000 list
     log(f"crypto candidates: {len(order)}")
     n, other = 0, 0
+    try:
+        nohist = json.load(open(NOHIST, encoding='utf-8'))
+    except Exception:
+        nohist = {}
+    today = now.strftime('%Y-%m-%d')
+    nohist = {k: v for k, v in nohist.items() if (datetime.strptime(today, '%Y-%m-%d') - datetime.strptime(v, '%Y-%m-%d')).days < 7}
+    new_left, cg_left = NEW_HIST_BUDGET, CG_HIST_BUDGET
     for base in order:
         if n >= (20 if quick else TOP_CRYPTO):
             break
@@ -829,11 +855,20 @@ def main():
             s, src = binance_monthly(r['symbol']), 'binance'
         elif quick:
             continue
-        elif prev.get('tk') == base and prev.get('src') in ('gate', 'mexc', 'okx', 'kraken', 'yahoo-cc') and extend_old(prev, m.get('price'), now):
+        elif prev.get('tk') == base and prev.get('src') in ('gate', 'mexc', 'okx', 'kraken', 'yahoo-cc', 'bybit', 'coingecko') and extend_old(prev, m.get('price'), now):
             s, src = extend_old(prev, m.get('price'), now), prev['src']    # history already stored
         else:
+            if base in nohist or new_left <= 0 or (m.get('vol') or 0) < 1e4:   # dead volume, recently failed, or this run's budget is spent
+                continue
+            new_left -= 1
             s, src = other_monthly(base)
             time.sleep(0.12)
+            if not s and cg_left > 0 and m.get('cgid'):
+                cg_left -= 1
+                s, src = coingecko_monthly(m['cgid']), 'coingecko'
+                time.sleep(4)
+            if not s:
+                nohist[base] = today
         if not s or looks_stable(s) or broken(s):
             continue
         if not r and m.get('price') and not (m['price'] / 3 < s['p'][-1] < m['price'] * 3):
@@ -848,7 +883,9 @@ def main():
                            **{k: m[k] for k in INFO_KEYS if m.get(k)}, **s)
         n += 1
         other += not r
-    log(f"crypto: {n} coins ({other} with history from Gate/MEXC/OKX)")
+    log(f"crypto: {n} coins ({other} with history from Gate/MEXC/OKX/Bybit/CoinGecko); new-coin budget left {new_left}, CoinGecko history left {cg_left}, no history {len(nohist)}")
+    if not quick:
+        json.dump(nohist, open(NOHIST, 'w', encoding='utf-8'), separators=(',', ':'), sort_keys=True)
 
     # 5) keep yesterday's data for anything that failed today; drop empties
     final, kept, dropped = {}, 0, 0
