@@ -45,6 +45,11 @@ def main():
     if not token:
         print('TELEGRAM_BOT_TOKEN not set — nothing sent'); return
     chat = os.environ.get('TELEGRAM_CHANNEL') or '@WhatIfStack'
+    if '--check' in sys.argv:   # is the bot an admin of the channel with the right to post?
+        me = call(token, 'getMe', {})['result']
+        m = call(token, 'getChatMember', dict(chat_id=chat, user_id=me['id']))['result']
+        print('bot', me['username'], 'in', chat, '→', m.get('status'), 'can_post_messages =', m.get('can_post_messages'))
+        return
     now = datetime.datetime.now(datetime.timezone.utc)
     os.makedirs(os.path.join(Q, 'sent'), exist_ok=True)
     sent = 0
