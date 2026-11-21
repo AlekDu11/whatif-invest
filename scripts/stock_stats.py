@@ -74,6 +74,38 @@ def history(t):
     return dict(hy=ys, hr=hr, hn=hn) if len(ys) >= 2 else {}
 
 
+def moex(sec):
+    """Russian stocks are not on Yahoo: key numbers from the Moscow Exchange ISS API (free, no key) — market cap, shares,
+    52-week range from weekly candles, dividends of the last 12 months. Revenue/earnings are not in ISS (left empty)."""
+    import urllib.request
+    def iss(path):
+        with urllib.request.urlopen(urllib.request.Request('https://iss.moex.com/iss/' + path, headers={'User-Agent': 'whatifstack.com data bot'}), timeout=30) as r:
+            return json.load(r)
+    def rows(d, block):
+        b = d.get(block) or {}
+        return [dict(zip(b.get('columns') or [], r)) for r in b.get('data') or []]
+    d = iss(f'engines/stock/markets/shares/boards/TQBR/securities/{sec}.json?iss.meta=off&iss.only=securities,marketdata')
+    se, md = (rows(d, 'securities') or [{}])[0], (rows(d, 'marketdata') or [{}])[0]
+    price = md.get('LAST') or md.get('LCURRENTPRICE') or se.get('PREVPRICE')
+    sh = se.get('ISSUESIZE')
+    rec = {'ccy': 'RUB', 'cty': 'Russia', 'd': time.strftime('%Y-%m-%d')}
+    if sh:
+        rec['sh'] = int(sh)
+    cap = md.get('ISSUECAPITALIZATION') or (price * sh if price and sh else None)
+    if cap:
+        rec['mcap'] = int(cap)
+    since = time.strftime('%Y-%m-%d', time.gmtime(time.time() - 366 * 86400))
+    c = rows(iss(f'engines/stock/markets/shares/boards/TQBR/securities/{sec}/candles.json?iss.meta=off&interval=7&from={since}'), 'candles')
+    if c:
+        rec['h52'], rec['l52'] = max(x['high'] for x in c), min(x['low'] for x in c)
+    dv = [x for x in rows(iss(f'securities/{sec}/dividends.json?iss.meta=off'), 'dividends')
+          if (x.get('registryclosedate') or '') >= since and x.get('currencyid') in (None, 'RUB', 'SUR')]
+    if dv and price:
+        dps = sum(x.get('value') or 0 for x in dv)
+        rec['dps'], rec['dy'] = round(dps, 4), round(dps / price * 100, 2)
+    return rec
+
+
 def main():
     import yfinance as yf
     assets = json.load(open(MARKET, encoding='utf-8'))['assets']
@@ -108,6 +140,15 @@ def main():
         time.sleep(0.5)
         if n % 50 == 0:
             json.dump(stats, open(OUT, 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
+    for s in sorted({a['yahoo'] for a in assets.values() if a.get('cat') == 'stock' and (a.get('yahoo') or '').startswith('MOEX:')}):
+        try:
+            rec = moex(s.split(':', 1)[1])
+            if len(rec) > 3:
+                stats[s] = dict(stats.get(s, {}), **rec)
+                n += 1
+        except Exception as e:
+            print(f'  {s}: {str(e)[:80]}', flush=True)
+        time.sleep(0.3)
     json.dump(stats, open(OUT, 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'), sort_keys=True)
     print(f'stock stats: updated {n}, failed {fail}, total {len(stats)} of {len(syms)}')
 

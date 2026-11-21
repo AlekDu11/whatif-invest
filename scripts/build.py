@@ -2007,7 +2007,7 @@ def stock_block(lang, aid):
     summ = stock_summary(lang, f)
     smn = _sm_links(lang, aid) if lang in SM_LANGS and sm_ok(aid, 'market-cap') else ''
     return (f'<section class="section kstats"><h2>{esc(k["h"])} · {esc(f["tk"])}</h2>{smn}<div class="kgrid"><div class="card kcard"><div class="ktiles">{"".join(tiles)}</div>{rng}</div>'
-            f'<div class="card kside">{an}{ern}<h3>{esc(k["sum_h"])}</h3><p>{esc(" ".join(summ))}</p><p class="muted ksrc">{esc(k["src"].format(d=f["d"]))} {esc(k["notadv"])}</p></div></div></section>')
+            f'<div class="card kside">{an}{ern}<h3>{esc(k["sum_h"])}</h3><p>{esc(" ".join(summ))}</p><p class="muted ksrc">{esc(k["src"].format(d=f["d"]).replace("Yahoo Finance", "Moscow Exchange (MOEX)") if (A[aid].get("yahoo") or "").startswith("MOEX:") else k["src"].format(d=f["d"]))} {esc(k["notadv"])}</p></div></div></section>')
 
 
 
