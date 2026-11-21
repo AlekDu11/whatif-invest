@@ -6,6 +6,7 @@ Read this before writing any article, news brief, guide, profile or post. The go
 - Reader: an ordinary person who invests small amounts regularly or is thinking about it. Smart, busy, not a trader.
 - Every piece answers one clear question in the first two sentences ("Why is bitcoin falling?", "What would $10 a day in Toyota have made?").
 - Our edge is real numbers: what regular buying actually returned, computed from our data. Use the shortcodes ({{dca}}, {{dcainv}}, {{dcaroi}}, {{price}}, {{table}}, {{card}}) or numbers from scripts/build.py simulate(), never estimates.
+- LIVE NUMBERS RULE (owner 2026-11-22): never write today's price, today's market value, a recent % change or a «$10 a day» result as plain text — they go stale. Use the live shortcodes, which the page updates in real time and links to the calculator: {{price:<id>}} (live price + 24h change), {{chg1y:<id>}} (live 12-month change), {{ath:<id>}} + {{athd:<id>}} (record high and its month, refreshed daily), {{dca:<id>:<years>}} / {{dcaroi:<id>:<years>}} / {{dcainv:<years>}} (live «$10 a day» result). Plain-text numbers are only for dated facts from reports and history («revenue $478.8 billion in fiscal 2026», «about $20,000 in late 2017»).
 
 ## 2. Headlines (title)
 - Specific fact or number + the reader's angle. 55–75 characters is ideal.

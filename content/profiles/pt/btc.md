@@ -24,7 +24,7 @@ A oferta é fixa e conhecida de antemão, então ninguém pode diluí-la com inf
 
 - Preço hoje: {{price:btc}}
 - Recorde: US$ 126.080 em 6 de outubro de 2025
-- Nos últimos 12 meses o preço caiu de cerca de US$ 90.000 para cerca de US$ 60.000
+- Variação do preço em 12 meses: {{chg1y:btc}}
 - US$ 10 por dia durante 10 anos: {{dca:btc:10}} com {{dcainv:10}} investidos ({{dcaroi:btc:10}})
 
 ## Sua história

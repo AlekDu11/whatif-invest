@@ -24,7 +24,7 @@ Het aanbod ligt vast en is vooraf bekend, dus niemand kan het met inflatie verwa
 
 - Koers nu: {{price:btc}}
 - Recordkoers: $126.080 op 6 oktober 2025
-- In de afgelopen 12 maanden daalde de koers van ongeveer $90.000 naar ongeveer $60.000
+- Koersverandering over 12 maanden: {{chg1y:btc}}
 - $10 per dag gedurende 10 jaar: {{dca:btc:10}} bij {{dcainv:10}} ingelegd ({{dcaroi:btc:10}})
 
 ## Het verhaal tot nu toe

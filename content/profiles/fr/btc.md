@@ -24,7 +24,7 @@ L'offre est fixe et connue à l'avance : personne ne peut la diluer par l'inflat
 
 - Cours actuel : {{price:btc}}
 - Record : 126 080 $ le 6 octobre 2025
-- Sur les 12 derniers mois, le cours est passé d'environ 90 000 $ à environ 60 000 $
+- Variation du cours sur 12 mois: {{chg1y:btc}}
 - 10 $ par jour pendant 10 ans : {{dca:btc:10}} pour {{dcainv:10}} investis ({{dcaroi:btc:10}})
 
 ## Son histoire

@@ -24,7 +24,7 @@ The supply is fixed and known in advance, so nobody can inflate it away. You can
 
 - Price today: {{price:btc}}
 - Record high: $126,080 on 6 October 2025
-- Over the last 12 months the price fell from about $90,000 to about $60,000
+- Price change over 12 months: {{chg1y:btc}}
 - $10 a day for 10 years: {{dca:btc:10}} from {{dcainv:10}} invested ({{dcaroi:btc:10}})
 
 ## Its story so far

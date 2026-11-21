@@ -4315,8 +4315,10 @@ DESC = {f[:-5]: json.load(open(os.path.join(ROOT, 'data', 'desc', f), encoding='
 NEWS = load_posts('news')   # own news briefs: content/news/<lang>/<slug>.md
 
 
-def sc_value(kind, args, lang):
-    """Shortcodes give numbers computed from today's data, so articles stay current."""
+def sc_value(kind, args, lang, live=False):
+    """Shortcodes give numbers computed from today's data, so articles stay current.
+    live=True (article/profile bodies, owner 2026-11-22): price and the «$10 a day» results are live — app.js updates them
+    on every price tick (units bought × live price), and the result links to the asset's calculator."""
     if kind == 'dcainv':
         yrs = int(args[0]) if args else 5
         return usd(simulate('btc', END_I - yrs * 12)['inv'])
@@ -4325,6 +4327,13 @@ def sc_value(kind, args, lang):
         return '—'
     yrs = int(args[1]) if len(args) > 1 else 5
     st = max(END_I - yrs * 12, ym2i(A[aid]['start'])) if aid else END_I - yrs * 12
+    if kind in ('dca', 'dcaroi') and live:
+        r = simulate(aid, st)
+        lp = A[aid]['p'][-1]
+        du = f'data-du="{r["val"] / lp:.10g}" data-dv="{r["inv"]:.2f}"' if lp else ''
+        if kind == 'dca':
+            return f'<a class="lvd" href="{aurl(lang, aid)}#calc" data-di="{aid}" data-u="{r["val"]:.2f}" {du}>{usd(r["val"])}</a>'
+        return f'<span class="{cls(r["roi"])}" data-dr="{aid}" {du}>{pct(r["roi"])}</span>'
     if kind == 'dca':
         return usd(simulate(aid, st)['val'])
     if kind == 'dcaroi':
@@ -4334,7 +4343,21 @@ def sc_value(kind, args, lang):
     if kind in ('lump', 'lumproi'):
         k = A[aid]['p'][-1] / A[aid]['p'][min(st - ym2i(A[aid]['start']), len(A[aid]['p']) - 1)]
         return usd(1000 * k) if kind == 'lump' else pct(k - 1)
+    if kind == 'ath':   # record high from data/market.json (CoinGecko for crypto), refreshed every day
+        return price(A[aid].get('ath')) if A[aid].get('ath') else '—'
+    if kind == 'athd':
+        d = A[aid].get('athd') or ''
+        return mlabel(d[:7], lang, long=True) if len(d) >= 7 else '—'
+    if kind == 'chg1y':   # price change over 12 months; live: live price vs the close 12 months ago
+        P = A[aid]['p']
+        if len(P) < 13 or not P[-13]:
+            return '—'
+        c = METRICS[aid]['price'] / P[-13] - 1
+        return f'<span class="{cls(c)}" data-y0="{P[-13]:.10g}" data-yi="{aid}">{pct(c)}</span>' if live else pct(c)
     if kind == 'price':
+        if live:
+            return (f'<b class="lvp" data-p="{aid}">{price(METRICS[aid]["price"])}</b> '
+                    f'<span class="{cls(METRICS[aid]["chg"])}" data-c="{aid}">{pct(METRICS[aid]["chg"])}</span>')
         return price(METRICS[aid]['price'])
     if kind == 'r':
         return pct(METRICS[aid]['r' + str(yrs)] if ('r' + str(yrs)) in METRICS[aid] else None)
@@ -4373,7 +4396,7 @@ def sc_block(kind, args, lang):
 
 def inline_md(s, lang):
     s = esc(s)
-    s = _re.sub(r'\{\{(\w+)(?::([^}]*))?\}\}', lambda m: sc_value(m.group(1), (m.group(2) or '').split(':') if m.group(2) else [], lang), s)
+    s = _re.sub(r'\{\{(\w+)(?::([^}]*))?\}\}', lambda m: sc_value(m.group(1), (m.group(2) or '').split(':') if m.group(2) else [], lang, live=True), s)
     s = _re.sub(r'\*\*(.+?)\*\*', r'<b>\1</b>', s)
     s = _re.sub(r'(?<!\*)\*(?!\s)(.+?)\*', r'<em>\1</em>', s)
     s = _re.sub(r'\[([^\]]+)\]\(([^)]+)\)', lambda m: f'<a href="{m.group(2).replace("{lang}", url(lang).rstrip("/"))}">{m.group(1)}</a>', s)

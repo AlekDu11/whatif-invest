@@ -24,7 +24,7 @@ Nakapirmi at alam na nang maaga ang supply, kaya walang makakapagpahina nito sa 
 
 - Presyo ngayon: {{price:btc}}
 - Pinakamataas na presyo: $126,080 noong 6 Oktubre 2025
-- Sa nakalipas na 12 buwan, bumaba ang presyo mula mga $90,000 hanggang mga $60,000
+- Pagbabago ng presyo sa loob ng 12 buwan: {{chg1y:btc}}
 - $10 kada araw sa loob ng 10 taon: {{dca:btc:10}} mula sa {{dcainv:10}} na inilagay ({{dcaroi:btc:10}})
 
 ## Ang kuwento nito hanggang ngayon

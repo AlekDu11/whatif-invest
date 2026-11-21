@@ -30,6 +30,7 @@ function fmtPrice(v){ if(v==null) return '—'; const x=v*ccyRate(); const d=x>=
 function fmtPct(p,dec){ if(p==null||!isFinite(p)) return '—'; const a=Math.abs(p*100);
   return (p>=0?'+':'−')+NF('p'+(dec!=null?dec:(a>=100?0:a>=10?1:2)),{maximumFractionDigits:dec!=null?dec:(a>=100?0:a>=10?1:2)}).format(a)+'%' }
 const cls = p => p==null?'':p>=0?'good':'bad';
+window.WIF={fmtUsd:v=>fmtUsd(v),fmtPct:(p,d)=>fmtPct(p,d),cls,BYID};   // for IIFEs appended outside the main scope
 function hue(s){let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))%360;return h}
 function icon(a,big){ const c=big?' lg':''; if(a.mi) return `<span class="ic${c} mi" style="background:${a.mi[0]}">${a.mi[1]}</span>`; const k=(WI.sp||{})[a.i];
   if(k!=null){ const [C,R]=WI.spc; return `<span class="ic sp${c}" style="background-position:${(k%C*100/(C-1)).toFixed(3)}% ${(Math.floor(k/C)*100/Math.max(1,R-1)).toFixed(3)}%"></span>` }
@@ -1661,4 +1662,18 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
     let k=S.list.findIndex(w=>w.n===n); if(k<0){ S.list.push({n,ids:[]}); k=S.list.length-1 }
     ids.forEach(i=>{ if(!S.list[k].ids.includes(i)) S.list[k].ids.push(i) }); S.cur=k; WLS.wr(S);
     b.outerHTML=`<span class="pill up">✓ ${esc((C.done||'').replace('{n}',n))}</span> <a class="btn ghost sm" href="${C.u}">${esc(C.open||'')} →</a>` };
+})();
+
+/* ---------- live «$10 a day» results inside articles and analyses (owner 2026-11-22): units bought × live price ---------- */
+(function(){
+  const F=window.WIF; if(!F) return; const {fmtUsd,fmtPct,cls,BYID}=F, $$=s=>[...document.querySelectorAll(s)];
+  const els=$$('[data-di],[data-dr],[data-yi]'); if(!els.length) return;
+  function upd(a){ if(!a||!(a.pr>0)) return;
+    $$(`[data-di="${a.i}"]`).forEach(el=>{ const u=+el.dataset.du; if(!u) return; const v=u*a.pr; el.dataset.u=v; el.textContent=fmtUsd(v) });
+    $$(`[data-dr="${a.i}"]`).forEach(el=>{ const u=+el.dataset.du, inv=+el.dataset.dv; if(!u||!inv) return; const r=u*a.pr/inv-1;
+      el.textContent=fmtPct(r); el.classList.remove('good','bad'); el.classList.add(cls(r)) });
+    $$(`[data-yi="${a.i}"]`).forEach(el=>{ const y0=+el.dataset.y0; if(!y0) return; const r=a.pr/y0-1;
+      el.textContent=fmtPct(r); el.classList.remove('good','bad'); el.classList.add(cls(r)) }) }
+  new Set(els.map(el=>el.dataset.di||el.dataset.dr||el.dataset.yi)).forEach(i=>upd(BYID[i]));
+  document.addEventListener('wi:tick',e=>upd(e.detail));
 })();

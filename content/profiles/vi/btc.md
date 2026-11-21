@@ -24,7 +24,7 @@ Nguồn cung cố định và được biết trước, nên không ai có thể
 
 - Giá hôm nay: {{price:btc}}
 - Đỉnh kỷ lục: 126.080 USD ngày 6/10/2025
-- Trong 12 tháng qua, giá giảm từ khoảng 90.000 USD xuống khoảng 60.000 USD
+- Biến động giá trong 12 tháng: {{chg1y:btc}}
 - 10 USD mỗi ngày trong 10 năm: {{dca:btc:10}} từ {{dcainv:10}} đã đầu tư ({{dcaroi:btc:10}})
 
 ## Câu chuyện của bitcoin

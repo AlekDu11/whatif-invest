@@ -24,7 +24,7 @@ Podaż jest stała i znana z góry, więc nikt nie może jej rozwodnić inflacj�
 
 - Cena teraz: {{price:btc}}
 - Rekord: 126 080 $ 6 października 2025 r.
-- W ciągu ostatnich 12 miesięcy cena spadła z ok. 90 000 $ do ok. 60 000 $
+- Zmiana ceny w ciągu 12 miesięcy: {{chg1y:btc}}
 - 10 $ dziennie przez 10 lat: {{dca:btc:10}} przy wpłaconych {{dcainv:10}} ({{dcaroi:btc:10}})
 
 ## Jego historia

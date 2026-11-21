@@ -24,7 +24,7 @@ Pasokannya tetap dan sudah diketahui sejak awal, jadi tidak ada yang bisa mengge
 
 - Harga hari ini: {{price:btc}}
 - Rekor tertinggi: $126.080 pada 6 Oktober 2025
-- Dalam 12 bulan terakhir harga turun dari sekitar $90.000 menjadi sekitar $60.000
+- Perubahan harga dalam 12 bulan: {{chg1y:btc}}
 - $10 per hari selama 10 tahun: {{dca:btc:10}} dari {{dcainv:10}} yang diinvestasikan ({{dcaroi:btc:10}})
 
 ## Kisahnya sejauh ini

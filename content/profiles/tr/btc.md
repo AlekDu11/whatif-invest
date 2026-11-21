@@ -24,7 +24,7 @@ Arz sabit ve önceden biliniyor, bu yüzden kimse onu enflasyonla eritemez. Bitc
 
 - Bugünkü fiyat: {{price:btc}}
 - Rekor: 6 Ekim 2025'te 126.080 $
-- Son 12 ayda fiyat yaklaşık 90.000 $'dan yaklaşık 60.000 $'a geriledi
+- 12 aylık fiyat değişimi: {{chg1y:btc}}
 - 10 yıl boyunca günde 10 $: {{dca:btc:10}}, yatırılan {{dcainv:10}} ({{dcaroi:btc:10}})
 
 ## Hikâyesi

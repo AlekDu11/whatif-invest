@@ -24,7 +24,7 @@ Das Angebot ist fest und im Voraus bekannt, niemand kann es durch Inflation verw
 
 - Kurs heute: {{price:btc}}
 - Rekordhoch: 126.080 $ am 6. Oktober 2025
-- In den letzten 12 Monaten fiel der Kurs von etwa 90.000 $ auf etwa 60.000 $
+- Kursveränderung in 12 Monaten: {{chg1y:btc}}
 - 10 $ am Tag über 10 Jahre: {{dca:btc:10}} bei {{dcainv:10}} Einsatz ({{dcaroi:btc:10}})
 
 ## Seine Geschichte
