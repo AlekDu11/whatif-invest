@@ -111,7 +111,9 @@ module.exports = async (req, res) => {
       await kv([['SET', `tg:cap:${chat}`, JSON.stringify({ r, a: qn.a, w, tag, ts: Date.now() }), 'EX', 86400]]);
       return say((pre ? pre + '\n\n' : '') + qn.text, { reply_markup: qn.kb }); };
     const subMsg = async (tag, pre) => say((pre ? pre + '\n\n' : '') + m.sub, { reply_markup: { inline_keyboard: [[{ text: m.subbtn, url: await invite(tag) }], [{ text: m.subok, callback_data: 'sub' }]] } });
-    const gateStart = async (tag) => { await kv([['DEL', `tg:gate:${chat}`], ['SET', `tg:src:${chat}`, tag], ['SET', `tg:lang:${chat}`, lang, 'NX']]); return ask(1, 0, tag); };
+    const langKb = { inline_keyboard: [LANGS.slice(0, 2), LANGS.slice(2, 4), LANGS.slice(4, 6), LANGS.slice(6)].map(r => r.map(([c, n]) => ({ text: n, callback_data: 'gl:' + c }))) };
+    const langAsk = () => say('🌐 Choose your language · Обери мову · Выбери язык', { reply_markup: langKb });
+    const gateStart = async (tag) => { await kv([['SET', `tg:gate:${chat}`, 'lang', 'EX', 30 * 86400], ['SET', `tg:src:${chat}`, tag]]); return langAsk(); };
     const dgKb = async () => { const map = await amap(), [cur] = await kv([['SMEMBERS', `tg:dg:${chat}`]]), on = new Set(cur || []);
       const list = DG.filter(i => map[i]).map(i => ({ text: (on.has(i) ? '✅ ' : '') + (map[i][2] || i.toUpperCase()), callback_data: 'dg:' + i }));
       const rows = []; for (let i = 0; i < list.length; i += 4) rows.push(list.slice(i, i + 4));
@@ -144,6 +146,16 @@ module.exports = async (req, res) => {
         if (w >= 3) { await kv([['DEL', `tg:cap:${chat}`], ['SET', `tg:ban:${chat}`, '1', 'EX', 86400]]); return say(m.capban).then(() => done(200)); }
         return ask(st.r, w, st.tag, m.capbad).then(() => done(200));
       }
+      if (gate === 'lang') {                                   // step 0: language first, then the human check
+        if (cb && /^gl:[a-z]{2}$/.test(cb.data)) {
+          await tg('answerCallbackQuery', { callback_query_id: cb.id });
+          lang = cb.data.slice(3); m = M(lang); t = T(lang);
+          const [src] = await kv([['SET', `tg:lang:${chat}`, lang], ['DEL', `tg:gate:${chat}`], ['GET', `tg:src:${chat}`]]).then(r => [r[2]]);
+          return ask(1, 0, src || 'organic').then(() => done(200));
+        }
+        if (cb) await tg('answerCallbackQuery', { callback_query_id: cb.id });
+        return langAsk().then(() => done(200));
+      }
       if (cb && gate === 'sub' && cb.data === 'sub') {
         await tg('answerCallbackQuery', { callback_query_id: cb.id });
         const [src, refby] = await kv([['GET', `tg:src:${chat}`], ['GET', `tg:refby:${chat}`]]); const tag = src || 'organic';
@@ -156,8 +168,7 @@ module.exports = async (req, res) => {
           const [n, p, rl] = await kv([['HINCRBY', 'tg:refs', refby, 1], ['ZINCRBY', 'tg:pts', RF, refby], ['GET', `tg:lang:${refby}`]]);
           await tg('sendMessage', { chat_id: refby, text: tpl(M(rl || 'en').refok, { rf: RF, p: Math.round(p), n }), reply_markup: { inline_keyboard: [[{ text: M(rl || 'en').pts, callback_data: 'pts' }]] } });
         }
-        await say(m.welcome + '\n\n' + m.hi, { reply_markup: menu(lang, chat) });
-        return say(m.dgask, { reply_markup: await dgKb() }).then(() => done(200));
+        return say(m.welcome + '\n\n' + m.hi, { reply_markup: menu(lang, chat) }).then(() => done(200));
       }
       if (cb) await tg('answerCallbackQuery', { callback_query_id: cb.id });
       if (gate === 'sub') return subMsg(st.tag || 'organic').then(() => done(200));
