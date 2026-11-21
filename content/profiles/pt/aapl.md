@@ -1,28 +1,55 @@
 ---
-title: O que é a Apple (AAPL)?
-description: Apple explicada de forma simples: como a fabricante do iPhone fatura US$ 479 bilhões por ano, por que os serviços importam e os principais riscos.
-date: 2026-11-16
+title: Ações da Apple (AAPL): a fabricante do iPhone que passou de US$ 5 trilhões
+description: Apple sem complicação: US$ 478,8 bilhões de receita no ano fiscal 2026, metade do iPhone, novo CEO, riscos e o que saber se você compra regularmente.
+date: 2026-11-18
+kind: analysis
 ---
-**A Apple** fabrica o iPhone, o Mac, o iPad e o Apple Watch — e lucra mais do que quase qualquer empresa do mundo vendendo serviços para quem já tem esses aparelhos. Foi fundada em 1976, na Califórnia, por Steve Jobs e Steve Wozniak.
+A **Apple** fabrica iPhone, Mac, iPad, Apple Watch e AirPods — e depois ganha dinheiro todo mês com quem usa esses aparelhos, por meio da App Store, iCloud, Apple Music, AppleCare e Apple Pay. O grande trunfo é o "ecossistema": quando todos os seus dispositivos funcionam juntos, trocar de marca dá trabalho. Em novembro de 2026 o valor de mercado da empresa passou de US$ 5 trilhões, tornando-a a companhia mais valiosa do mundo.
+
+> **O essencial**
+> - Receita: US$ 478,8 bilhões no ano fiscal 2026 (até 26 de setembro), alta de 15%; lucro líquido de US$ 132,2 bilhões.
+> - O iPhone trouxe US$ 254,1 bilhões, cerca de 53% das vendas; Serviços somaram US$ 123,3 bilhões, cerca de 26%.
+> - Em um ano a Apple gastou US$ 86,4 bilhões em recompra de ações e US$ 15,7 bilhões em dividendos.
+> - John Ternus substituiu Tim Cook como CEO em 1º de setembro de 2026 — o quarto CEO da história da empresa.
 
 ## Como ganha dinheiro
 
-No ano fiscal de 2026 (até 26 de setembro), a Apple faturou US$ 478,8 bilhões e teve lucro líquido de US$ 132,2 bilhões. Só o iPhone trouxe US$ 254,1 bilhões, 53% da receita. Em segundo vêm os Serviços — App Store, iCloud, Apple Music, Apple Pay, AppleCare e o valor que o Google paga para ser o buscador padrão do Safari —, com US$ 123,3 bilhões, cerca de um quarto das vendas. Eles pesam mais do que parece: são bem mais lucrativos que o hardware e são pagos de novo todo mês.
+A maior parte do dinheiro da Apple ainda vem da venda de aparelhos. No ano fiscal 2026 o iPhone faturou US$ 254,1 bilhões, o Mac US$ 37,9 bilhões, o iPad US$ 27,9 bilhões e a linha de vestíveis, casa e acessórios (Watch, AirPods, Vision Pro e outros) US$ 35,6 bilhões. O segundo motor são os Serviços: a comissão da App Store, armazenamento no iCloud, assinaturas, AppleCare, pagamentos e publicidade, incluindo o que o Google paga para ser o buscador padrão no Safari. Serviços renderam US$ 123,3 bilhões — menos que o iPhone, mas é uma receita que se repete todo mês e não depende da troca anual de celular.
 
-## Por que importa
+## Os números agora
 
-Mais de 2 bilhões de aparelhos Apple estão em uso ativo, e cada dono é um provável comprador do próximo iPhone e de novas assinaturas. A Apple devolve a maior parte do caixa aos acionistas com dividendos (US$ 0,27 por ação a cada trimestre) e algumas das maiores recompras de ações da história. Curiosidade: a Apple projeta os próprios chips (séries M e A), mas quase todos os aparelhos são montados por parceiros, principalmente na China, na Índia e no Vietnã.
+No trimestre de setembro a Apple teve receita de US$ 114,5 bilhões, recorde para esse trimestre e 12% acima de um ano antes. Só o iPhone rendeu US$ 57,6 bilhões e Serviços, US$ 31,6 bilhões. O lucro líquido foi de US$ 30,7 bilhões, ou US$ 2,10 por ação; a margem bruta ficou em 47,9%, com cerca de um ponto vindo de reembolsos de tarifas. No ano completo o lucro líquido subiu para US$ 132,2 bilhões, de US$ 112,0 bilhões, e o fluxo de caixa operacional foi de US$ 145,1 bilhões.
 
-## Números principais
+No fim de setembro a Apple tinha US$ 36,3 bilhões em caixa e mais US$ 100,6 bilhões em títulos negociáveis, contra US$ 80,1 bilhões de dívida. Paga dividendo trimestral de US$ 0,27 por ação. A Apple não divulga uma projeção formal de receita no comunicado de resultados.
+
+## A história da ação
+
+O iPhone foi lançado em 2007 e colocou a Apple entre as maiores empresas do mundo. Quando Tim Cook assumiu em 2011, a Apple valia cerca de US$ 348 bilhões; quando ele passou o cargo ao chefe de hardware John Ternus em 2026 (Cook segue como presidente executivo do conselho), ela valia cerca de US$ 4 trilhões e a receita anual tinha quadruplicado. Em janeiro de 2026 a Apple anunciou que usaria a tecnologia de IA do Google para melhorar a Siri. No outono (do hemisfério norte) de 2026 as ações emendaram recordes: o fechamento recorde foi de US$ 350,69 em 9 de novembro de 2026 (ajustado por desdobramentos), e o valor de mercado passou de US$ 5 trilhões.
 
 - Preço hoje: {{price:aapl}}
-- US$ 10 por dia durante 5 anos: {{dca:aapl:5}} de {{dcainv:5}} investidos ({{dcaroi:aapl:5}})
-- US$ 10 por dia durante 10 anos: {{dca:aapl:10}} de {{dcainv:10}} investidos ({{dcaroi:aapl:10}})
+- US$ 10 por dia durante 10 anos: {{dca:aapl:10}} com {{dcainv:10}} investidos ({{dcaroi:aapl:10}})
 
-Compare com Microsoft ou Nvidia na [página de comparação]({lang}/compare/).
+## Concorrentes
+
+Em celulares a Apple disputa com Samsung, Xiaomi, Huawei e outros fabricantes de Android, com o Android do Google como plataforma rival. Os Macs concorrem com PCs Windows da Lenovo, HP e Dell; os serviços, com Spotify, Netflix, Google e Amazon. Em IA a Apple está atrás de Google, Microsoft e OpenAI — por isso escolheu trabalhar com o Google na Siri.
 
 ## Principais riscos
 
-A Apple depende muito de um único produto: um ano fraco do iPhone afeta a empresa inteira. A China é ao mesmo tempo fábrica e mercado-chave, então tensões comerciais e tarifas doem em dobro. Reguladores dos EUA e da Europa pressionam as taxas da App Store e o acordo de busca com o Google, que alimentam os Serviços. A Apple também precisa provar que não está ficando para trás em inteligência artificial. Comprar um valor fixo com regularidade suaviza as oscilações, mas não elimina o risco.
+- **Um produto domina:** o iPhone é cerca de metade da receita, então um ciclo fraco de trocas atinge a empresa inteira.
+- **Regulação:** a UE e outros reguladores estão forçando mudanças na App Store e nos pagamentos; o processo sobre buscas nos EUA limita acordos exclusivos como o que faz o Google pagar à Apple.
+- **China e tarifas:** a Apple fabrica a maioria dos aparelhos na Ásia e vende muito na China, então disputas comerciais e concorrência local pesam.
+- **Atraso em IA:** se os recursos de IA dos rivais fizerem as pessoas trocarem de celular, a vantagem do ecossistema enfraquece.
+- **Preço alto:** depois da alta de 2026 muita notícia boa já está no preço da ação, e o novo CEO ainda precisa mostrar serviço.
+
+## O que significa se você compra regularmente
+
+A Apple é uma empresa gigante e lucrativa, mas isso não protege a ação de quedas fortes — até gigantes podem perder boa parte do valor em um ano ruim. Comprar um valor fixo regularmente significa levar mais ações quando o preço está baixo e menos quando está alto, sem tentar acertar o momento. Muita gente mantém uma única empresa só como parte de uma carteira mais ampla. Resultados passados não garantem retornos futuros.
 
 *Não é recomendação de investimento.*
+
+## Fontes
+
+- [Apple Q4 fiscal 2026 results, Form 8-K exhibit 99.1 (SEC)](https://www.sec.gov/Archives/edgar/data/0000320193/000032019326000024/a8-kex991q4202609262026.htm)
+- [Tim Cook steps down as Apple CEO, John Ternus takes over (The Next Web)](https://thenextweb.com/news/tim-cook-steps-down-apple-ceo-john-ternus)
+- [Google's parent joins $4 trillion club; Apple to use Google AI for Siri (AP via WTOP)](https://wtop.com/national/2026/01/googles-corporate-parent-joins-4-trillion-club-as-investors-continue-to-bet-on-ai-breakthroughs/)
+- [Apple shares hit new all-time closing high (MacDailyNews)](https://macdailynews.com/2026/11/09/apple-shares-hit-new-all-time-closing-high-261109/)
