@@ -1487,6 +1487,9 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
     const s=document.createElement('script'); s.async=true; s.src='https://telegram.org/js/telegram-widget.js?22';
     s.setAttribute('data-telegram-login',C.tg); s.setAttribute('data-size','large'); s.setAttribute('data-radius','10'); s.setAttribute('data-onauth','wiTgAuth(user)'); s.setAttribute('data-request-access','write');
     $('#tglogin').appendChild(s) }
+  if(C.g&&!A.sid()){ const s=document.createElement('script'); s.src='https://accounts.google.com/gsi/client'; s.async=true; s.onload=()=>{ try{
+      google.accounts.id.initialize({client_id:C.g, callback:r=>A.api('google',{body:{c:r.credential}}).then(start).catch(()=>say(C.err,true))});
+      google.accounts.id.renderButton($('#glogin'),{theme:document.documentElement.dataset.theme==='dark'?'filled_black':'outline',size:'large',shape:'pill',locale:(C.loc||'').split('-')[0]}) }catch(e){} }; document.head.appendChild(s) }
   if(/[?&]tgapp=1/.test(location.search)){   // opened from the bot's «Portfolio» button: sign in silently with Telegram's signed data
     const s=document.createElement('script'); s.src='https://telegram.org/js/telegram-web-app.js'; s.onload=()=>{ const W=window.Telegram&&Telegram.WebApp; if(!W) return; try{ W.ready(); W.expand() }catch(e){}
       if(W.initData&&!A.sid()) A.api('tgapp',{body:{d:W.initData}}).then(start).catch(()=>{}) }; document.head.appendChild(s) }

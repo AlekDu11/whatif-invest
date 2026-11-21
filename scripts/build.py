@@ -2422,6 +2422,7 @@ def investor_page(lang, fid, ver):
 
 
 # ---------------- Telegram price alerts ----------------
+GOOGLE_CLIENT_ID = ''   # public OAuth client id from Google Cloud (also Vercel env GOOGLE_CLIENT_ID): shows «Sign in with Google» on /me/
 AUTH_EMAIL = False   # True once Vercel env BREVO_KEY (+ AUTH_FROM) is set: shows «sign in by e-mail» on /me/ (api/_auth.js)
 TG_BOT = 'WhatIfStack_bot'   # bot username without @ (set when the owner creates it in @BotFather); empty = no alert button
 
@@ -3466,16 +3467,17 @@ def watch_page(lang, ver):
 
 def acct_block(lang):
     """Sign in by e-mail link and/or Telegram (no password) to sync portfolios, watchlists and bonds; filled by app.js. Hidden until a method is configured."""
-    if not (AUTH_EMAIL or TG_BOT):
+    if not (AUTH_EMAIL or TG_BOT or GOOGLE_CLIENT_ID):
         return ''
     a = ACC[lang]
-    cfg = dict(a, mail=bool(AUTH_EMAIL), tg=TG_BOT)
+    cfg = dict(a, mail=bool(AUTH_EMAIL), tg=TG_BOT, g=GOOGLE_CLIENT_ID, loc=TR[lang]['loc'])
     orw = f'<span class="muted">{esc(a["or"])}</span>' if AUTH_EMAIL else ''
     return (f'<section class="card acct" id="acct" data-cfg="{esc(json.dumps(cfg, ensure_ascii=False))}"><div class="acct-in" hidden></div>'
             f'<div class="acct-out"><b>🔐 {esc(a["h"])}</b><p class="muted">{esc(a["d"])}</p>'
             + (f'<form class="acctf" id="acctf"><input type="email" name="em" required placeholder="{esc(a["em"])}" autocomplete="email"><input name="hp" tabindex="-1" autocomplete="off" class="hp" aria-hidden="true">'
                f'<button class="btn" type="submit">{esc(a["send"])}</button></form><p class="acctmsg muted" id="acctmsg" hidden></p>' if AUTH_EMAIL else '')
             + (f'<div class="accttg">{orw}<div id="tglogin"></div></div>' if TG_BOT else '')
+            + ('<div class="accttg"><div id="glogin"></div></div>' if GOOGLE_CLIENT_ID else '')
             + '</div></section>')
 
 

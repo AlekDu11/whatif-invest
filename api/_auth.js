@@ -5,7 +5,7 @@
 //   au:ses:<sid>    → uid, 180 days (session; the browser keeps sid in localStorage wi_sid)
 //   au:user:<uid>   → {name, em|tg, at}
 //   au:data:<uid>   → {v: timestamp, d: {wi_pfs, wi_wls, wi_bonds, wi_pfccy}} (max 300 KB)
-// Env: KV_REST_API_URL/TOKEN (Upstash), BREVO_KEY + AUTH_FROM (e-mail links), TG_BOT_TOKEN (Telegram login check).
+// Env: KV_REST_API_URL/TOKEN (Upstash), BREVO_KEY + AUTH_FROM (e-mail links), TG_BOT_TOKEN (Telegram login check), GOOGLE_CLIENT_ID (Google sign-in).
 const crypto = require('crypto');
 const SES_TTL = 180 * 86400;
 const LANGS = new Set('uk en ru es pt de fr it pl tr nl id vi th hi ja ko zh ar fil'.split(' '));
@@ -90,6 +90,15 @@ module.exports = async (req, res) => {
       let usr = {}; try { usr = JSON.parse(p.get('user') || '{}'); } catch (e) {}
       if (!usr.id) return send(400, { e: 'user' });
       return send(200, await session('t:' + usr.id, { tg: usr.username || String(usr.id), name: usr.first_name || usr.username || 'Telegram' }));
+    }
+    if (k === 'google') {                      // «Sign in with Google» (Google Identity Services): ID token checked by Google, same account as the e-mail link
+      const cid = process.env.GOOGLE_CLIENT_ID;
+      if (!cid) return send(503, { e: 'google-off' });
+      const r = await fetch('https://oauth2.googleapis.com/tokeninfo?id_token=' + encodeURIComponent(String(b.c || '')));
+      const g = r.ok ? await r.json() : {};
+      if (g.aud !== cid || !['accounts.google.com', 'https://accounts.google.com'].includes(g.iss) || String(g.email_verified) !== 'true' || !g.email) return send(401, { e: 'google' });
+      const em = String(g.email).toLowerCase();
+      return send(200, await session('e:' + sha(em), { em, name: g.given_name || g.name || em.split('@')[0] }));
     }
     const me = await whoami(req);
     if (!me) return send(401, { e: 'session' });
