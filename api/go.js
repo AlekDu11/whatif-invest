@@ -29,6 +29,12 @@ module.exports = async (req, res) => {
     const code = (P.gmgn.match(/\/r\/([A-Za-z0-9]+)/) || [])[1];
     if (code) dest = `https://gmgn.ai/${GMC[q.c]}/token/${code}_${q.a}`;
   }
+  // Binance Wallet: open the exact token page with our referral code attached (ref=…); without a token → the referral landing page
+  const BNW = { solana: 'sol', bsc: 'bsc', base: 'base' };
+  if (id === 'binance-web3' && BNW[q.c] && /^[A-Za-z0-9]{20,70}$/.test(String(q.a || ''))) {
+    const ref = (P['binance-web3'].match(/ref=([A-Za-z0-9]+)/) || [])[1];
+    if (ref) dest = `https://web3.binance.com/en/token/${BNW[q.c]}/${q.a}?ref=${ref}`;
+  }
   const h = req.headers || {};
   if (id === 'polymarket') {
     const c = String(h['x-vercel-ip-country'] || '').toUpperCase(), r = String(h['x-vercel-ip-country-region'] || '').toUpperCase();

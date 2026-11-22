@@ -8,6 +8,7 @@ module.exports = {
   'okx-wallet': 'https://web3.okx.com/join/ALEKSDU',
   hyperliquid: 'https://app.hyperliquid.xyz/join/ALEKSDU',
   gmgn: 'https://gmgn.ai/r/YEIKWyEq?chain=eth',
+  'binance-web3': 'https://web3.binance.com/m/referral?ref=ZKSEL5CR',   // owner 2026-11-22: Binance Wallet (Web3 / Meme Rush) referral
   polymarket: 'https://polymarket.com/?via=alek-du',
   freedom24: 'https://freedom24.com/invite_from/1756798',
   kraken: 'https://proinvite.kraken.com/9f1e/vd2jmvyj',

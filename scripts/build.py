@@ -19,6 +19,7 @@ from i18n_s import S as SEA  # noqa: E402
 from i18n_i import I as INF  # noqa: E402
 from i18n_world import W as WA, WN, WD  # noqa: E402
 from i18n_ctry import C as CTRY, MKTS, MKT_LANG, CCY_SIGN  # noqa: E402  # noqa: E402
+from i18n_mem4 import MEM4  # noqa: E402  (memes: Binance Web3 stages + security check)
 from i18n_mem3 import MEM3  # noqa: E402  (memes hub: start here, honest numbers, 5 checks)
 from i18n_learn import LRN, TRACKS, TRACK_ICON  # noqa: E402  («Learn» section)
 from i18n_earn import EARN, WD as WDAY  # noqa: E402  (stocks today + earnings calendar)
@@ -3972,8 +3973,10 @@ def memes_page(lang, ver):
     S, t, u = TR[lang], MEM[lang], TR[lang]['ui']
     chains = [('all', t['all']), ('solana', 'Solana'), ('base', 'Base'), ('bsc', 'BNB Chain'), ('eth', 'Ethereum'), ('ton', 'TON')]
     seg = ''.join(f'<button data-n="{k}"{" class=on" if k == "all" else ""}>{esc(v)}</button>' for k, v in chains)
-    tabs = ''.join(f'<button data-v="{k}"{" class=on" if k == "trend" else ""}>{ic} {esc(t["t_" + k])}</button>'
-                   for k, ic in (('trend', '🔥'), ('gain', '🚀'), ('vol', '📊'), ('new', '🌱')))
+    M4 = MEM4[lang]
+    tl = dict(trend=t['t_trend'], gain=t['t_gain'], vol=t['t_vol'], new=M4['t_new'], soon=M4['t_soon'], done=M4['t_done'])
+    tabs = ''.join(f'<button data-v="{k}"{" class=on" if k == "trend" else ""}>{ic} {esc(tl[k])}</button>'
+                   for k, ic in (('trend', '🔥'), ('gain', '🚀'), ('vol', '📊'), ('new', '🌱'), ('soon', '⏳'), ('done', '✅')))
     head = (f'<tr><th class="l">{u["name"]}</th><th>{u["price"]}</th><th class="hide-sm">{esc(t["mc"])}</th><th class="hide-sm">1h</th><th>{u["chg"]}</th><th class="hide-sm">{esc(t["vol"])}</th>'
             f'<th class="hide-sm">{esc(t["liq"])}</th><th class="hide-sm">{esc(t["age"])}</th><th></th></tr>')
     mv = lambda k, ic: (f'<div class="card wd dexmv"><div class="wt">{ic} {esc(t[k])}</div><div id="dex_{k}"><div class="empty">…</div></div></div>')
@@ -4002,14 +4005,15 @@ def memes_page(lang, ver):
             f'<div class="dexbar"><div class="seg" id="dexn">{seg}</div><label class="dexflt"><input type="checkbox" id="dexq" checked> {esc(t["flt"])}</label></div>'
             f'<p class="muted dexerr" id="dexerr" hidden>{esc(t["nodata"])}</p>'
             f'<div class="tw" style="margin-top:10px"><table class="mt dext" id="dext"><thead>{head}</thead><tbody id="dexb"><tr><td colspan="9" class="empty">…</td></tr></tbody></table></div>'
-            f'<p class="muted" style="font-size:12px">{esc(t["src"])} · <a href="https://www.geckoterminal.com/" target="_blank" rel="noopener">GeckoTerminal</a></p></section>'
+            f'<p class="muted" style="font-size:12px">{esc(M4["src"])} · <a href="https://web3.binance.com/" target="_blank" rel="noopener">Binance Web3</a> · <a href="https://www.geckoterminal.com/" target="_blank" rel="noopener">GeckoTerminal</a></p></section>'
             + check_blk
-            + f'<section class="section"><div class="hgrid"><a class="card hcard" href="/go/gmgn?from=memes-card&l={lang}" target="_blank" rel="sponsored nofollow noopener"><span>🦎</span><b>GMGN</b><small>Memecoin trading · Wallet tracking</small></a>'
+            + f'<section class="section"><div class="hgrid"><a class="card hcard" href="/go/binance-web3?from=memes-card&l={lang}" target="_blank" rel="sponsored nofollow noopener"><span>🟡</span><b>Binance Wallet</b><small>Meme Rush · DEX · Security check</small></a>'
+            f'<a class="card hcard" href="/go/gmgn?from=memes-card&l={lang}" target="_blank" rel="sponsored nofollow noopener"><span>🦎</span><b>GMGN</b><small>Memecoin trading · Wallet tracking</small></a>'
             f'<a class="card hcard" href="/go/okx-wallet?from=memes-card&l={lang}" target="_blank" rel="sponsored nofollow noopener"><span>◼️</span><b>OKX Wallet</b><small>DEX · Swap · 100+ chains</small></a>'
             f'<a class="card hcard" href="/go/pumpfun?from=memes-card&l={lang}" target="_blank" rel="sponsored nofollow noopener"><span>💊</span><b>pump.fun</b><small>Memecoin launchpad · code alessa</small></a>'
             f'<a class="card hcard" href="{url(lang, "exchanges")}"><span>₿</span><b>{esc(EX[lang]["h1"])}</b></a></div></section>'
             f'<section class="section dexrisk"><h3>{esc(t["risk_h"])}</h3><ul>{risks}</ul><p class="muted">{esc(t["disc"])}</p></section>')
-    cfg = dict(memes=dict(tok=url(lang, 'memes/token'), t=dict(trade=t['trade'], new=t['new'], lowliq=t['lowliq'], hot=t['hot'], net=t['net'])))
+    cfg = dict(memes=dict(tok=url(lang, 'memes/token'), t=dict(trade=t['trade'], new=t['new'], lowliq=t['lowliq'], hot=t['hot'], net=t['net'], hold=M4['hold'], top10=M4['top10'], curve=M4['curve'])))
     return shell(lang, 'memes', f'{t["h1"]} | {BRAND}', t['d'], body, cfg, ver)
 
 
@@ -4018,7 +4022,8 @@ def meme_token_page(lang, ver):
     contract copy and GMGN / OKX buttons. Filled in the browser from /api/chart?dex=pool (noindex: one URL serves every token)."""
     t, u = MEM[lang], TR[lang]['ui']
     L = dict(mc=t['mc'], liq=t['liq'], vol=t['vol'], age=t['age'], tx=t['tx'], ca=t['ca'], copy=t['copy'], copied=t['copied'], links=t['links'],
-             chart=t['chart'], nodata=t['nodata'], disc=t['disc'], net=t['net'], price=u['price'], trade=t['trade'])
+             chart=t['chart'], nodata=t['nodata'], disc=t['disc'], net=t['net'], price=u['price'], trade=t['trade'],
+             rsk=MEM4[lang]['rsk'], low=MEM4[lang]['low'], med=MEM4[lang]['med'], high=MEM4[lang]['high'], note=MEM4[lang]['note'])
     body = (f'<nav class="crumbs"><a href="{url(lang, "memes")}">← {esc(t["back"])}</a></nav>'
             f'<div id="dexpool"><p class="muted">…</p></div>'
             f'<p class="muted" style="font-size:12px;margin-top:18px">{esc(t["disc"])} · {esc(t["src"])} · <a href="https://www.geckoterminal.com/" target="_blank" rel="noopener">GeckoTerminal</a></p>')

@@ -900,29 +900,34 @@ const DEXU=(()=>{
   const pc=v=>v==null?null:v/100;
   const GM=new Set(['solana','base','bsc','eth','tron']);
   const go=(r,p,where)=>`/go/${p}?from=${encodeURIComponent('memes-'+where+':'+r.n)}&l=${lang}&c=${encodeURIComponent(r.n)}&a=${encodeURIComponent(r.a)}`;
-  const btns=(r,w)=>`<span class="dexgo">${GM.has(r.n)?`<a class="buy" href="${go(r,'gmgn',w)}" target="_blank" rel="sponsored nofollow noopener">GMGN</a>`:''}<a class="buy" href="${go(r,'okx-wallet',w)}" target="_blank" rel="sponsored nofollow noopener">OKX</a></span>`;
+  const BW=new Set(['solana','bsc','base']);   // Binance Wallet (owner's referral, token deep link via /go/binance-web3)
+  const btns=(r,w)=>`<span class="dexgo">${BW.has(r.n)?`<a class="buy bnw" href="${go(r,'binance-web3',w)}" target="_blank" rel="sponsored nofollow noopener">Binance</a>`:''}${GM.has(r.n)?`<a class="buy" href="${go(r,'gmgn',w)}" target="_blank" rel="sponsored nofollow noopener">GMGN</a>`:''}<a class="buy" href="${go(r,'okx-wallet',w)}" target="_blank" rel="sponsored nofollow noopener">OKX</a></span>`;
   const ic=(r,sz=26)=>r.img?`<span class="ic"><img src="${esc(r.img)}" alt="" loading="lazy" width="${sz}" height="${sz}"></span>`:`<span class="ic" style="background:#64748b">${esc((r.s||'?').slice(0,2))}</span>`;
   const api=q=>fetch('/api/chart?'+q).then(r=>{ if(!r.ok) throw r.status; return r.json() });
-  return {NETN,big,age,pc,btns,ic,api};
+  return {NETN,big,age,pc,btns,ic,api,go,BW};
 })();
 (function(){
   const box=$('#dexb'); if(!box||!PAGE.memes) return; const L=PAGE.memes.t, U=DEXU; let net='all', view='trend', last=[], tmr;
   const good=r=>r.liq>=100000&&r.vol>=50000&&(Date.now()-Date.parse(r.at))/36e5>=24&&r.vol/r.liq<=60&&r.c24!=null;
   const goodNew=r=>r.liq>=20000&&r.vol>=10000;
+  const RUSH=new Set(['new','soon','done']);   // Binance Meme Rush stages: quality = no heavy insider / top-10 / dev concentration
+  const goodRush=r=>(r.t10==null||r.t10<=40)&&(r.ins==null||r.ins<=15)&&(r.dev==null||r.dev<=10)&&(r.liq||0)>=3000;
   const qOn=()=>{ const q=$('#dexq'); return !q||q.checked };
   const uniq=l=>{ const s=new Set(); return l.filter(r=>{ const k=r.n+(r.a||r.p); if(s.has(k)) return false; s.add(k); return true }) };
-  const link=r=>`${PAGE.memes.tok}?n=${encodeURIComponent(r.n)}&p=${encodeURIComponent(r.p)}`;
-  function row(r){ const f=[]; if(!qOn()||view==='new'){ const hrs=(Date.now()-Date.parse(r.at))/36e5;
+  const link=r=>`${PAGE.memes.tok}?n=${encodeURIComponent(r.n)}&${r.p?'p='+encodeURIComponent(r.p):'a='+encodeURIComponent(r.a)}`;
+  function row(r){ const f=[]; if(r.t10!=null&&r.t10>40) f.push(`<i class="rf">${esc(L.top10)} ${Math.round(r.t10)}%</i>`);
+    if(!qOn()||RUSH.has(view)){ const hrs=(Date.now()-Date.parse(r.at))/36e5;
     if(hrs<72) f.push(`<i class="rf">${esc(L.new)}</i>`); if(r.liq<50000) f.push(`<i class="rf">${esc(L.lowliq)}</i>`); if(r.liq>0&&r.vol/r.liq>20) f.push(`<i class="rf">${esc(L.hot)}</i>`) }
     return `<tr data-href="${link(r)}"><td class="l"><a class="asset" href="${link(r)}">${U.ic(r)}<span><span class="nm">${esc(r.nm||r.s)}</span><span class="tk">${esc(r.s)} <i class="dexnet">${esc(U.NETN[r.n]||r.n)}</i> ${f.join('')}</span></span></a></td>
-      <td class="num">${fmtPrice(r.pr)}</td><td class="num hide-sm">${r.mc?U.big(r.mc):'—'}</td><td class="num hide-sm ${cls(U.pc(r.c1))}">${fmtPct(U.pc(r.c1))}</td><td class="num ${cls(U.pc(r.c24))}">${fmtPct(U.pc(r.c24))}</td>
+      <td class="num">${fmtPrice(r.pr)}</td><td class="num hide-sm">${r.mc?U.big(r.mc):'—'}</td>${RUSH.has(view)&&view!=='done'&&r.prog!=null?`<td class="num hide-sm"><span class="dprog" title="${esc(L.curve)}"><i style="width:${Math.min(100,r.prog)}%"></i></span>${Math.round(r.prog)}%</td>`:`<td class="num hide-sm ${cls(U.pc(r.c1))}">${fmtPct(U.pc(r.c1))}</td>`}<td class="num ${cls(U.pc(r.c24))}">${fmtPct(U.pc(r.c24))}</td>
       <td class="num hide-sm">${U.big(r.vol)}</td><td class="num hide-sm">${U.big(r.liq)}</td><td class="num hide-sm">${U.age(r.at)}</td><td>${U.btns(r,'table')}</td></tr>` }
   function movers(list){ const ok=uniq(list.filter(good));
     const put=(id,arr)=>{ const el=$('#dex_'+id); if(el) el.innerHTML=arr.length?arr.map(r=>`<a class="mrow" href="${link(r)}">${U.ic(r)}<span class="mn"><b>${esc(r.s)}</b><span>${esc(U.NETN[r.n]||r.n)} · ${U.big(r.mc||r.liq)}</span></span>
       <span class="mp">${fmtPrice(r.pr)}</span><span class="mc ${cls(U.pc(r.c24))}">${fmtPct(U.pc(r.c24))}</span></a>`).join(''):'<div class="empty">—</div>' };
     put('gain',[...ok].filter(r=>r.c24>0).sort((a,b)=>b.c24-a.c24).slice(0,5)); put('lose',[...ok].filter(r=>r.c24<0).sort((a,b)=>a.c24-b.c24).slice(0,5)) }
-  function draw(){ let l=uniq(last); if(qOn()) l=l.filter(view==='new'?goodNew:good);
-    if(view==='gain') l=l.filter(r=>r.c24!=null).sort((a,b)=>b.c24-a.c24); else if(view==='vol') l=l.sort((a,b)=>b.vol-a.vol); else if(view==='new') l=l.sort((a,b)=>Date.parse(b.at)-Date.parse(a.at));
+  function draw(){ let l=uniq(last); if(qOn()) l=l.filter(RUSH.has(view)?(l[0]&&l[0].src==='bn'?goodRush:goodNew):good);
+    if(view==='gain') l=l.filter(r=>r.c24!=null).sort((a,b)=>b.c24-a.c24); else if(view==='vol') l=l.sort((a,b)=>b.vol-a.vol);
+    else if(view==='soon') l=l.sort((a,b)=>(b.prog||0)-(a.prog||0)); else if(RUSH.has(view)) l=l.sort((a,b)=>Date.parse(b.at)-Date.parse(a.at));
     box.innerHTML=l.slice(0,30).map(row).join('')||'<tr><td colspan="9" class="empty">—</td></tr>' }
   let seq=0;
   function load(){ const my=++seq; clearTimeout(tmr); const v=view==='gain'?'trend':view;
@@ -938,8 +943,8 @@ const DEXU=(()=>{
 })();
 (function(){
   const box=$('#dexpool'); if(!box||!PAGE.dexpool) return; const L=PAGE.dexpool.t, U=DEXU;
-  const q=new URLSearchParams(location.search), n=q.get('n')||'', p=q.get('p')||'';
-  if(!/^[a-z0-9_-]{2,30}$/.test(n)||!/^[A-Za-z0-9_:\-]{20,80}$/.test(p)){ location.replace(PAGE.dexpool.list); return }
+  const q=new URLSearchParams(location.search), n=q.get('n')||'', p=q.get('p')||'', a0=q.get('a')||'', AD=/^[A-Za-z0-9_:\-]{20,80}$/;
+  if(!/^[a-z0-9_-]{2,30}$/.test(n)||!(AD.test(p)||AD.test(a0))){ location.replace(PAGE.dexpool.list); return }
   const stat=(k,v)=>`<div class="dps"><small class="muted">${esc(k)}</small><b>${v}</b></div>`;
   const chg=(k,v)=>`<div class="dpc"><small class="muted">${k}</small><b class="${cls(U.pc(v))}">${fmtPct(U.pc(v))}</b></div>`;
   function show(r){ const inf=r.info||{}; if(inf.img&&!r.img) r.img=inf.img;
@@ -948,14 +953,15 @@ const DEXU=(()=>{
     const desc=(inf.d||'').trim(); const short=desc.length>320?desc.slice(0,320).replace(/\s+\S*$/,'')+'…':desc;
     box.innerHTML=`<div class="dph">${U.ic(r,48)}<div><h1>${esc(r.nm||r.s)} <span class="muted">${esc(r.s)}</span></h1><span class="dexnet">${esc(U.NETN[r.n]||r.n)}</span>${r.q?` <span class="muted" style="font-size:13px">${esc(r.s)}/${esc(r.q)}</span>`:''}</div></div>
       <div class="dpp"><b class="dpprice">${fmtPrice(r.pr)}</b><span class="${cls(U.pc(r.c24))}">${fmtPct(U.pc(r.c24))} · 24h</span></div>
-      <div class="dpbtn">${['solana','base','bsc','eth','tron'].includes(r.n)?`<a class="btn" href="/go/gmgn?from=memes-token:${encodeURIComponent(r.n)}&l=${lang}&c=${encodeURIComponent(r.n)}&a=${encodeURIComponent(r.a)}" target="_blank" rel="sponsored nofollow noopener">${esc(L.trade)} · GMGN</a>`:''}<a class="btn ghost" href="/go/okx-wallet?from=memes-token:${encodeURIComponent(r.n)}&l=${lang}" target="_blank" rel="sponsored nofollow noopener">${esc(L.trade)} · OKX Wallet</a></div>
+      <div class="dpbtn">${U.BW.has(r.n)?`<a class="btn bnw" href="${U.go(r,'binance-web3','token')}" target="_blank" rel="sponsored nofollow noopener">${esc(L.trade)} · Binance Wallet</a>`:''}${['solana','base','bsc','eth','tron'].includes(r.n)?`<a class="btn" href="/go/gmgn?from=memes-token:${encodeURIComponent(r.n)}&l=${lang}&c=${encodeURIComponent(r.n)}&a=${encodeURIComponent(r.a)}" target="_blank" rel="sponsored nofollow noopener">${esc(L.trade)} · GMGN</a>`:''}<a class="btn ghost" href="/go/okx-wallet?from=memes-token:${encodeURIComponent(r.n)}&l=${lang}" target="_blank" rel="sponsored nofollow noopener">${esc(L.trade)} · OKX Wallet</a></div>
       <div class="dpchg">${chg('5m',r.c5)}${chg('1h',r.c1)}${chg('6h',r.c6)}${chg('24h',r.c24)}</div>
       <div class="dpstats">${stat(L.mc,r.mc?U.big(r.mc):'—')}${stat(L.liq,U.big(r.liq))}${stat(L.vol,U.big(r.vol))}${stat(L.tx,(r.tx||0).toLocaleString(T.intl||'en'))}${stat(L.age,U.age(r.at))}</div>
+      ${r.risk&&r.risk.lvl?`<div class="card dprisk r-${esc(r.risk.lvl.toLowerCase())}"><b>🛡️ ${esc(L.rsk)}: ${esc(L[{LOW:'low',MEDIUM:'med',HIGH:'high'}[r.risk.lvl]]||r.risk.lvl)}</b>${r.risk.hits&&r.risk.hits.length?`<ul>${r.risk.hits.map(h=>`<li>${esc(h)}</li>`).join('')}</ul>`:''}<small class="muted">${esc(L.note)}</small></div>`:''}
       ${short?`<p class="dpdesc">${esc(short)}</p>`:''}
       ${links.length?`<div class="dplinks">${links.map(([t,h])=>`<a class="bchip" href="${esc(h)}" target="_blank" rel="nofollow noopener">${esc(t)}</a>`).join('')}</div>`:''}
       <div class="dpca"><small class="muted">${esc(L.ca)}</small><code>${esc(r.a)}</code><button class="btn ghost" type="button" id="dpcopy">${esc(L.copy)}</button></div>`;
     const c=$('#dpcopy'); if(c) c.onclick=()=>{ try{ navigator.clipboard.writeText(r.a); c.textContent=L.copied }catch(e){} } }
-  const load=()=>U.api(`dex=pool&n=${encodeURIComponent(n)}&p=${encodeURIComponent(p)}`).then(show).catch(()=>{ box.innerHTML=`<p class="muted">${esc(L.nodata)}</p>`; setTimeout(load,15000) });
+  const load=()=>U.api(`dex=pool&n=${encodeURIComponent(n)}&${AD.test(p)?'p='+encodeURIComponent(p):'a='+encodeURIComponent(a0)}`).then(show).catch(()=>{ box.innerHTML=`<p class="muted">${esc(L.nodata)}</p>`; setTimeout(load,15000) });
   load();
 })();
 /* ---------- share: one button -> phone share sheet, or a menu (networks + copy link) ---------- */

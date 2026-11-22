@@ -6,4 +6,4 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
-      - run: bash scripts/probe_binance.sh
+      - run: node scripts/test_dex.js
