@@ -121,6 +121,37 @@ async function kline(n, a, i) {
   return d.map(c => [Math.floor(+c[5] / 1000), +c[0], +c[1], +c[2], +c[3], +c[4]]).filter(c => c[0] && isFinite(c[4]));
 }
 
+// «Pick of the day» (owner 2026-11-22: Binance = the whole market, WhatIfStack = the quality filter).
+// Trending lists of Solana / BNB Chain / Base → strict filter → social buzz from Binance's hype board → top 12.
+const riskHigh = v => v != null && (/HIGH/i.test(String(v)) || (+v >= 4));
+async function picks() {
+  const chains = ['CT_501', '56', '8453'], rows = [], hype = {};
+  await Promise.all(chains.map(async c => {
+    try {
+      const d = await bnPost('/v1/public/wallet-direct/buw/wallet/market/token/pulse/unified/rank/list/ai',
+        { rankType: 10, chainId: c, period: 50, sortBy: 70, orderAsc: false, page: 1, size: 200, liquidityMin: 50000, volumeMin: 100000 });
+      ((d || {}).tokens || []).filter(t => !stockish(t)).forEach(t => rows.push(Object.assign(bnUnified(t), { rl: (t.auditInfo || {}).riskLevel })));
+    } catch (e) { /* skip chain */ }
+    try {
+      const r = await fetch(`${BN}/v1/public/wallet-direct/buw/wallet/market/token/pulse/social/hype/rank/leaderboard/ai?chainId=${c}&targetLanguage=en&timeRange=1`,
+        { headers: { 'Accept-Encoding': 'identity', 'User-Agent': 'binance-web3/1.1 (Skill)' } });
+      const j = await r.json();
+      (((j.data || {}).leaderBoardList) || []).forEach(x => { const m = x.metaInfo || {}, h = x.socialHypeInfo || {};
+        if (m.contractAddress) hype[String(m.contractAddress).toLowerCase()] = { b: h.socialSummaryBrief || '', s: h.sentiment || '', v: +h.socialHype || 0 } });
+    } catch (e) { /* no buzz data */ }
+  }));
+  const day = 864e5, now = Date.now(), seen = new Set();
+  const ok = rows.filter(r => {
+    const k = String(r.a).toLowerCase(); if (seen.has(k)) return false; seen.add(k);
+    const age = r.at ? now - Date.parse(r.at) : 0;
+    return r.s && !SKIP.has(String(r.s).toUpperCase()) && !FAKE.test(r.s) && age >= day && (r.liq || 0) >= 50000 && (r.vol || 0) >= 100000
+      && (r.h == null || r.h >= 500) && r.t10 != null && r.t10 <= 30 && !riskHigh(r.rl);
+  });
+  ok.forEach(r => { const h = hype[String(r.a).toLowerCase()]; if (h) { r.hb = h.b; r.hs = h.s; r.hv = h.v } delete r.rl; });
+  ok.sort((a, b) => ((b.hv || 0) > 0) - ((a.hv || 0) > 0) || (b.hv || 0) - (a.hv || 0) || b.vol - a.vol);
+  return ok.slice(0, 12);
+}
+
 async function list(view, n) {
   if ((n === 'all' || BNC[n]) && ['trend', 'vol', 'new', 'soon', 'done', 'gain'].includes(view)) {
     try { return await bnList(view === 'gain' ? 'trend' : view, n) } catch (e) { /* fall back to GeckoTerminal */ }
@@ -165,6 +196,7 @@ module.exports = async (req, res) => {
   const n = String(q.n || 'all');
   if (n !== 'all' && !NETS.includes(n) && !/^[a-z0-9_-]{2,30}$/.test(n)) return send(400, { e: 'network' }, 'no-store');
   try {
+    if (q.dex === 'picks') return send(200, { t: Date.now(), d: await picks() }, 'public, s-maxage=300, stale-while-revalidate=1800, stale-if-error=86400');
     if (q.dex === 'kline') {
       const aa = String(q.a || ''), ii = KI[q.i] ? q.i : '15m';
       if (!BNC[n] || !ADDR.test(aa)) return send(400, { e: 'kline' }, 'no-store');

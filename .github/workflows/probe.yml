@@ -6,4 +6,4 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
-      - run: node scripts/probe_bn2.js
+      - run: node scripts/test_dex.js

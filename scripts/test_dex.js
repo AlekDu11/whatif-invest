@@ -2,6 +2,7 @@
 const h = require('../api/_dex.js');
 const call = q => new Promise(ok => { const res = { h: {}, setHeader(k, v) { this.h[k] = v }, end(b) { ok({ code: this.statusCode, j: JSON.parse(b) }) } }; h({ query: q }, res) });
 (async () => {
+  { const t = Date.now(), r = await call({ dex: 'picks' }); const d = r.j.d || []; console.log('picks', r.code, d.length, Date.now() - t + 'ms', d.map(x => `${x.s}/${x.n} t10=${Math.round(x.t10)} h=${x.h} liq=${Math.round(x.liq)} hype=${x.hv || 0}`).join(' | '), JSON.stringify(d[0] || {}).slice(0, 600)); }
   for (const v of ['trend', 'vol', 'new', 'soon', 'done']) for (const n of ['all', 'solana', 'bsc']) {
     const t = Date.now(), r = await call({ dex: v, n }); const d = r.j.d || [];
     console.log(v.padEnd(5), n.padEnd(6), r.code, d.length, (d[0] || {}).src || 'gt', Date.now() - t + 'ms', d.slice(0, 3).map(x => `${x.s} mc=${Math.round(x.mc || 0)} prog=${x.prog ?? ''}`).join(' | '));
