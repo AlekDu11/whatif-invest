@@ -5,7 +5,7 @@ Plain step-by-step lessons for complete beginners: «what to press, in what orde
 The hub /learn/ lists them by track and step; each lesson links to the next one. Mark a line `✅ <date>` when it is published in all 20 languages.
 
 ## start — First steps
-1. What investing is, in plain words (saving vs investing, inflation eats cash; link {lang}/inflation/)
+1. ✅ 2026-11-22 What investing is, in plain words (what-is-investing, all 20 languages; saving vs investing, inflation eats cash; link {lang}/inflation/)
 2. Buying a little every month (DCA): why it works for beginners ({{dca}} shortcodes, link {lang}/compare/)
 3. Risk in plain words: why prices fall, how much you can lose, «only money you can afford to lose»
 4. Diversification: don't put everything in one coin or one stock
@@ -36,7 +36,7 @@ The hub /learn/ lists them by track and step; each lesson links to the next one.
 5. What the S&P 500 is and why everyone compares to it ({lang}/spy/)
 
 ## memes — Memecoins: lessons and stories
-1. What memecoins are and why 95%+ of new ones die (CoinGecko/Bitquery survival stats, cited)
+1. ✅ 2026-11-22 What memecoins are and why 95%+ of new ones die (what-are-memecoins, all 20 languages; CoinGecko/Dune/Solidus stats, cited)
 2. ✅ 2026-11-22 How to buy memecoins on Solana (how-to-buy-memecoins-on-solana, all 20 languages)
 3. ✅ How to trade memecoins on a DEX (exists: how-to-trade-memecoins — translate to all 20)
 4. ✅ Memecoin scams and rug pulls (exists: memecoin-scams-rug-pull — translate to all 20)
