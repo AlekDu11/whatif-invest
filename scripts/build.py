@@ -5249,7 +5249,14 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
     body404 = ''.join(f'<h1>{a}</h1><p class="lead">{b}</p><p><a class="btn" href="{url(lg)}">{HM[lg]["nav"]} →</a></p>' for lg, (a, b) in nf.items())
     write('404.html', shell('en', None, 'Page not found | ' + BRAND, nf['en'][1], body404, {}, ver).replace('<link rel="canonical"', '<meta name="robots" content="noindex"><link rel="canonical"'))
     write('79eea7b784b383a4b1696da51540fdf0.txt', '79eea7b784b383a4b1696da51540fdf0')
-    write('robots.txt', f'User-agent: *\nAllow: /\nDisallow: /go/\nDisallow: /api/\nDisallow: /stats\nSitemap: {SITE}{BASE}/sitemap.xml\nSitemap: {SITE}{BASE}/sitemap-news.xml\n')
+    # owner 2026-11-23: AI-training crawlers and SEO-tool bots used ~75% of the Vercel CDN requests → blocked;
+    # search bots (Google, Bing, OAI-SearchBot, ChatGPT-User, PerplexityBot) stay allowed
+    NOBOT = ['GPTBot', 'meta-externalagent', 'Meta-ExternalAgent', 'FacebookBot', 'ExaBot', 'CCBot', 'Bytespider',
+             'ClaudeBot', 'anthropic-ai', 'Google-Extended', 'Applebot-Extended', 'Amazonbot', 'cohere-ai',
+             'Diffbot', 'ImagesiftBot', 'Omgilibot', 'PetalBot', 'SERankingBacklinksBot', 'SE Ranking',
+             'AhrefsBot', 'SemrushBot', 'MJ12bot', 'DotBot', 'DataForSeoBot', 'BLEXBot']
+    nob = ''.join(f'User-agent: {b}\n' for b in NOBOT) + 'Disallow: /\n\n'
+    write('robots.txt', nob + f'User-agent: *\nAllow: /\nDisallow: /go/\nDisallow: /api/\nDisallow: /stats\nSitemap: {SITE}{BASE}/sitemap.xml\nSitemap: {SITE}{BASE}/sitemap-news.xml\n')
     total = sum(len(p) for p in per_lang.values())
     print(f"built {total} pages in {len(ORDER)} languages · {len(A)} assets · data {UPDATED}")
 
