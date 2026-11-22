@@ -6,7 +6,7 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
-      - run: node scripts/test_dex.js
+      - run: node scripts/test_chart.js
       - name: Official Binance Web3 key works on the live site?
         env: { KEY: "${{ secrets.ALERTS_KEY }}" }
         run: curl -sSL --max-time 30 "https://whatifstack.com/api/chart?dex=w3&w3test=$KEY"; echo

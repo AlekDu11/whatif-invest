@@ -135,7 +135,21 @@ FUT_TV = {'PL=F': 'OANDA:XPTUSD', 'PA=F': 'OANDA:XPDUSD', 'HG=F': 'OANDA:XCUUSD'
           'ZS=F': 'OANDA:SOYBNUSD', 'SB=F': 'OANDA:SUGARUSD', 'NG=F': 'OANDA:NATGASUSD', 'CL=F': 'OANDA:WTICOUSD', 'BZ=F': 'OANDA:BCOUSD'}
 
 # Exchanges whose charts TradingView does not allow in free embeds (they fall back to AAPL) -> our own chart
-TV_NOCHART = ('CG:', 'LSE:', 'BIST:', 'TSE:', 'KRX:', 'HKEX:', 'TWSE:', 'SET:', 'HOSE:', 'TADAWUL:', 'BMV:')
+TV_NOCHART = ('CG:', 'LSE:', 'BIST:', 'TSE:', 'KRX:', 'HKEX:', 'TWSE:', 'SET:', 'HOSE:', 'TADAWUL:', 'BMV:',
+              'SGX:', 'JSE:', 'MYX:', 'NZX:', 'BCS:')   # 2026-11-22: checked one by one in the widget («only available on TradingView»)
+# data/tv_ok.json (scripts/tv_check.py, daily): {symbol: [1|0, date]} from TradingView's symbol search. A symbol TradingView does
+# not know would show Apple in the widget → our own chart instead. Crypto on smaller exchanges must be confirmed first.
+_tvp = os.path.join(ROOT, 'data', 'tv_ok.json')
+TV_OK = json.load(open(_tvp)) if os.path.exists(_tvp) else {}
+
+
+def tv_embeddable(sym):
+    if not sym or sym.startswith(TV_NOCHART) or sym.startswith('GT:'):
+        return False
+    v = TV_OK.get(sym)
+    if v is not None:
+        return bool(v[0])
+    return not sym.startswith(('GATEIO:', 'MEXC:', 'HTX:', 'BINGX:', 'KUCOIN:', 'BITGET:', 'KRAKEN:', 'BYBIT:', 'OKX:'))   # unconfirmed small-exchange pair → own chart
 
 
 def tv_symbol(a):
@@ -164,6 +178,8 @@ def tv_symbol(a):
                     ('.SW', 'SIX'), ('.TO', 'TSX'), ('.AX', 'ASX'), ('.MX', 'BMV')) + tuple((k, v[2]) for k, v in SUFFIX3.items()):
         if y.endswith(suf):
             t = y[:-len(suf)]
+            if ex in ('OMXSTO', 'OMXCOP', 'OMXHEX', 'OSL'):   # Nordic share classes: TradingView writes VOLV_B, not VOLV.B
+                return f"{ex}:{t.replace('-', '_').replace('.', '_')}"
             return f"{ex}:{t.lstrip('0') if suf == '.HK' else t.replace('-', '.')}"
     return a['tk'].replace('-', '.')
 
@@ -818,7 +834,9 @@ def own_chart(lang, a, aid):
                  f'<svg viewBox="0 0 {W} {H}" role="img" aria-label="{esc(OWN_CH[lang][0])}">{grid}'
                  f'<polygon points="{X(0):.1f},{H - B} {pts} {X(k - 1):.1f},{H - B}" fill="{col}" opacity=".08"/>'
                  f'<polyline points="{pts}" fill="none" stroke="{col}" stroke-width="2" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></svg></div>')
-    lw = dict(y=('cg:' + a['cgid']) if cg else (a.get('yahoo') or ''), t=OWN_CH2[lang][0], avg=OWN_CH2[lang][1], all=OWN_CH[lang][1],
+    xs = {'binance': 'binance', 'gate': 'gate', 'mexc': 'mexc', 'okx': 'okx', 'bybit': 'bybit'}.get(a.get('src') or ('binance' if a.get('binance') else ''))
+    ysrc = f"x:{xs}:{a['tk']}" if a.get('cat') == 'crypto' and xs else (('cg:' + a['cgid']) if cg else (a.get('yahoo') or ''))
+    lw = dict(y=ysrc, t=OWN_CH2[lang][0], avg=OWN_CH2[lang][1], all=OWN_CH[lang][1],
               yrs=[BP[lang]['yrs'].format(n=n) for n in (1, 3, 5)], intl=TR[lang]['loc'])
     return (f'<section class="card tvcard ownchart" data-lw="{esc(json.dumps(lw, ensure_ascii=False))}"><div class="charthead"><h2>{esc(OWN_CH[lang][0])} · {esc(a["tk"])}</h2></div>'
             f'<div class="oc">{tabs}<div class="ocs">{svgs}</div></div></section>')
@@ -1655,7 +1673,7 @@ def side_block(lang, aid):
         body = f'<div class="artbody iprof sclip">{md(prof["body"], lang)}</div>'
     elif desc:
         body = f'<p class="swhat">{esc(what)}</p><div class="sclip"{"" if dlang == lang else f" lang=\"{dlang}\""}><p>{esc(desc)}</p></div>'
-    elif a['cat'] in ('stock', 'etf') and tv_symbol(a) and lang == 'en':   # no English description fetched yet -> TradingView profile
+    elif a['cat'] in ('stock', 'etf') and tv_embeddable(tv_symbol(a)) and lang == 'en':   # no English description fetched yet -> TradingView profile
         body = tvw('symbol-profile', dict(width='100%', height='100%', isTransparent=True, colorTheme='light', symbol=tv_symbol(a), locale=TV_LOC.get(lang, 'en')), 400)
     else:
         body = f'<p class="swhat">{esc(what)}</p>'
@@ -3195,13 +3213,9 @@ def asset(aid, lang, ver):
               f'<iframe class="gtchart" loading="lazy" title="{esc(tk)} chart" src="https://www.geckoterminal.com/{esc(net)}/pools/{esc(pool)}?embed=1&info=0&swaps=0&grayscale=0&light_chart=0" '
               f'style="width:100%;height:480px;border:0;border-radius:12px" allow="clipboard-write"></iframe></section>')
         tech_news = ''
-    elif tvs and tvs.startswith(TV_NOCHART):   # chart not embeddable: own chart, keep fundamentals
+    elif tvs and not tv_embeddable(tvs):   # TradingView cannot show it (would fall back to Apple): our own chart from exchange / Yahoo data
         tv = own_chart(lang, a, aid)
         tech_news = ''
-        if a['cat'] in ('stock', 'etf'):
-            tech_news = (f'<section class="card section"><h2>{X["fund"]} · {esc(tk)}</h2>'
-                         + tvw('financials', dict(isTransparent=True, displayMode='regular', width='100%', height='100%', colorTheme='light', symbol=tvs, locale=loc), 520)
-                         + '</section>')
     elif tvs:
         tv = (f'<section class="card tvcard"><div class="charthead"><h2>{w["live_chart"]} · {esc(tk)}</h2><span class="livebadge"><i></i>{w["live"]}</span><a class="tvref" href="https://www.tradingview.com/chart/?symbol={_up.quote(tvs)}&share_your_love=AleksDu" target="_blank" rel="sponsored noopener" title="TradingView">TradingView ↗</a></div>'
               + tvw('advanced-chart', dict(autosize=True, symbol=tv_symbol(a), interval='D', timezone='Etc/UTC', theme='light', style='1', locale=loc,
