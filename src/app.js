@@ -956,11 +956,31 @@ const DEXU=(()=>{
       <div class="dpbtn">${U.BW.has(r.n)?`<a class="btn bnw" href="${U.go(r,'binance-web3','token')}" target="_blank" rel="sponsored nofollow noopener">${esc(L.trade)} · Binance Wallet</a>`:''}${['solana','base','bsc','eth','tron'].includes(r.n)?`<a class="btn" href="/go/gmgn?from=memes-token:${encodeURIComponent(r.n)}&l=${lang}&c=${encodeURIComponent(r.n)}&a=${encodeURIComponent(r.a)}" target="_blank" rel="sponsored nofollow noopener">${esc(L.trade)} · GMGN</a>`:''}<a class="btn ghost" href="/go/okx-wallet?from=memes-token:${encodeURIComponent(r.n)}&l=${lang}" target="_blank" rel="sponsored nofollow noopener">${esc(L.trade)} · OKX Wallet</a></div>
       <div class="dpchg">${chg('5m',r.c5)}${chg('1h',r.c1)}${chg('6h',r.c6)}${chg('24h',r.c24)}</div>
       <div class="dpstats">${stat(L.mc,r.mc?U.big(r.mc):'—')}${stat(L.liq,U.big(r.liq))}${stat(L.vol,U.big(r.vol))}${stat(L.tx,(r.tx||0).toLocaleString(T.intl||'en'))}${stat(L.age,U.age(r.at))}</div>
+      ${U.BW.has(r.n)&&r.a?`<div class="card dpch"><div class="dpchh"><b>${esc(L.chart)}</b><span class="dpiv">${['1m','5m','15m','1h','4h','1d'].map(i=>`<button type="button" data-i="${i}"${i==='15m'?' class=on':''}>${i}</button>`).join('')}</span></div><div id="dpchart" style="height:320px"><div class="bload"><i></i></div></div><small class="muted">Binance Web3</small></div>`:''}
       ${r.risk&&r.risk.lvl?`<div class="card dprisk r-${esc(r.risk.lvl.toLowerCase())}"><b>🛡️ ${esc(L.rsk)}: ${esc(L[{LOW:'low',MEDIUM:'med',HIGH:'high'}[r.risk.lvl]]||r.risk.lvl)}</b>${r.risk.hits&&r.risk.hits.length?`<ul>${r.risk.hits.map(h=>`<li>${esc(h)}</li>`).join('')}</ul>`:''}<small class="muted">${esc(L.note)}</small></div>`:''}
       ${short?`<p class="dpdesc">${esc(short)}</p>`:''}
       ${links.length?`<div class="dplinks">${links.map(([t,h])=>`<a class="bchip" href="${esc(h)}" target="_blank" rel="nofollow noopener">${esc(t)}</a>`).join('')}</div>`:''}
       <div class="dpca"><small class="muted">${esc(L.ca)}</small><code>${esc(r.a)}</code><button class="btn ghost" type="button" id="dpcopy">${esc(L.copy)}</button></div>`;
-    const c=$('#dpcopy'); if(c) c.onclick=()=>{ try{ navigator.clipboard.writeText(r.a); c.textContent=L.copied }catch(e){} } }
+    const c=$('#dpcopy'); if(c) c.onclick=()=>{ try{ navigator.clipboard.writeText(r.a); c.textContent=L.copied }catch(e){} }
+    if($('#dpchart')) candles(r) }
+  /* candle chart from Binance Web3 klines, our colours; the last candle and the price refresh every 15 s */
+  let CHT=null, CS=null, iv='15m', ktok=0, kt=null;
+  const lib=()=>window.LightweightCharts?Promise.resolve():new Promise((ok,no)=>{ const s=document.createElement('script'); s.src=`${BASE}/assets/vendor/lwc-5.3.0.js`; s.onload=ok; s.onerror=no; document.head.appendChild(s) });
+  async function candles(r){
+    $$('.dpiv button').forEach(b=>b.onclick=()=>{ iv=b.dataset.i; $$('.dpiv button').forEach(x=>x.classList.toggle('on',x===b)); draw(true) });
+    const box=$('#dpchart'), pe=$('.dpprice');
+    async function draw(fit){ const tok=++ktok; let d;
+      try{ [d]=await Promise.all([U.api(`dex=kline&n=${encodeURIComponent(r.n)}&a=${encodeURIComponent(r.a)}&i=${iv}`),lib()]) }catch(e){ if(!CHT) box.innerHTML=`<p class="muted">${esc(L.nodata)}</p>`; return }
+      if(tok!==ktok) return; const k=(d.d||[]); if(k.length<2){ if(!CHT) box.innerHTML=`<p class="muted">${esc(L.nodata)}</p>`; return }
+      const LW=window.LightweightCharts, css=getComputedStyle(document.documentElement), cv=x=>css.getPropertyValue(x).trim(), up=cv('--good')||'#16a34a', dn=cv('--bad')||'#dc2626';
+      if(!CHT){ box.innerHTML=''; CHT=LW.createChart(box,{autoSize:true,layout:{background:{color:'transparent'},textColor:cv('--muted')||'#666',fontFamily:getComputedStyle(document.body).fontFamily,attributionLogo:true},
+          grid:{vertLines:{visible:false},horzLines:{color:cv('--line2')||'#eee'}},rightPriceScale:{borderVisible:false},timeScale:{borderVisible:false,timeVisible:true},crosshair:{mode:LW.CrosshairMode.Normal},localization:{locale:T.intl||'en',priceFormatter:v=>fmtPrice(v)}});
+        CS=CHT.addSeries(LW.CandlestickSeries,{upColor:up,downColor:dn,borderVisible:false,wickUpColor:up,wickDownColor:dn,priceFormat:{type:'custom',formatter:v=>fmtPrice(v),minMove:1e-12}}) }
+      const seen=new Set(); CS.setData(k.filter(c=>!seen.has(c[0])&&seen.add(c[0])).sort((a,b)=>a[0]-b[0]).map(c=>({time:c[0],open:c[1],high:c[2],low:c[3],close:c[4]})));
+      if(fit) CHT.timeScale().fitContent();
+      const last=k[k.length-1][4]; if(pe&&last>0){ pe.textContent=fmtPrice(last); document.title=document.title.replace(/— [^|]+\|/,`— ${fmtPrice(last)} |`) }
+      clearTimeout(kt); kt=setTimeout(()=>{ if(!document.hidden) draw(false); else kt=setTimeout(()=>draw(false),15000) },15000) }
+    draw(true) }
   const load=()=>U.api(`dex=pool&n=${encodeURIComponent(n)}&${AD.test(p)?'p='+encodeURIComponent(p):'a='+encodeURIComponent(a0)}`).then(show).catch(()=>{ box.innerHTML=`<p class="muted">${esc(L.nodata)}</p>`; setTimeout(load,15000) });
   load();
 })();

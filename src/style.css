@@ -1026,3 +1026,6 @@ a.badge.tagc{text-decoration:none;color:inherit;border:1px solid var(--line)}a.b
 .dprisk ul{margin:6px 0;padding-left:18px;font-size:13px}.dprisk small{display:block;margin-top:4px}
 .dextabs{overflow-x:auto;flex-wrap:nowrap;scrollbar-width:none}.dextabs button{flex:none}
 .buy.bnw,.btn.bnw{background:#f0b90b;color:#111;border-color:#f0b90b}
+.dpch{padding:12px 14px;margin:12px 0}.dpchh{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.dpiv{display:flex;gap:4px}.dpiv button{font:inherit;font-size:12px;padding:3px 8px;border:1px solid var(--line2,#ddd);border-radius:6px;background:transparent;color:inherit;cursor:pointer}.dpiv button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.dpiv{overflow-x:auto;max-width:100%;scrollbar-width:none}.dpiv button{flex:none;padding:3px 7px}
