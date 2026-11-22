@@ -201,3 +201,13 @@
 - 19:55 (власник): новим користувачам спершу вибір мови (8 мов), потім перевірка; прибрано автоматичне «Обери до 5 активів» після підписки (лишилось у меню ☀️).
 - 19:58 (власник: «запусти рекламу на бота»): створено «WIS Bot gate t1» → t.me/WhatIfStack_bot?start=ad_t1, users-таргет US GB CA AU DE NL SE IE, мова EN, теми Cryptocurrencies + Investments + Economy & Finance, CPM 0.1, бюджет 2 Gram, In Review. Текст: «Free markets bot: crypto, stock and gold prices, price alerts, a daily 9:00 brief and news from WhatIfStack. Real data, no signals.» Баланс 7.37. Мовний крок і прибраний автопоказ «до 5 активів» — з наступним деплоєм (≈22.11 19:35 Київ); до того бот бере мову з Telegram. Метрики: /api/tg?stats=<ALERTS_KEY> → t1:start/pass/fail/sub.
 - 20:20: воронка в боті: етапи start → lang → s1 → pass → sub → act (перша дія після підписки) по кожному тегу (tg:ads), профіль tg:u:<chat> (імʼя, @, мова, тег, етап, час), список tg:ulist. Власнику (TG_ADMIN_CHAT) команди /stats (воронка з %) і /users (останні 25, хто де застряг).
+
+## 2026-11-22 — тест бота, хвиля 1 (власник: «запускай все щоб працювало»)
+- Повернення: #22 (0 показів) −1.00 повністю. Правило: з оголошення, що показувалось, лишається ≥1 Gram; посилання в старому оголошенні змінити не можна («Create a new ad to change the promoted channel»). #25/#26 на паузі, вивести 1.00+1.00 після 10 хв.
+- Увімкнено старі з ~1 Gram: #3, #5 (Topics), #19–21, #24 (на канал / пост 1490) — щоб відкрутити заблоковані залишки.
+- t1 users tier-1 (активне знову): 6 194 покази, 3 дії, бюджет 1.38.
+- t2 channels EN, теми Crypto+Investments → ad_t2, 2 Gram.
+- t3 SEARCH (10 запитів: bitcoin, bitcoin price, crypto news, crypto price, eth price, stock market, gold price, price alert, crypto bot, crypto portfolio) → t.me/WhatIfStack_Bot (start-параметр у пошуку не підтримується → у воронці це «organic»), 2 Gram. Пошук не показується в RU/UA. Запити додаються лише через API searchTargetQuery (мін. 4 символи, ліміт 10).
+- t4 channels EN, теми Economy & Finance + Business, інший текст → ad_t4, 2 Gram.
+- t5 users PL DE CZ IT ES GB, мова українська, теми крипта/інвестиції/фінанси, укр. текст → ad_t5, 2 Gram (UA у таргеті: «Budget replenishment is currently unavailable»).
+- Баланс 0.37.
