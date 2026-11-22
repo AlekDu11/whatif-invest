@@ -1,0 +1,18 @@
+name: TradingView symbol check
+on:
+  schedule: [{ cron: '23 2 * * *' }]
+  workflow_dispatch: { inputs: { n: { description: 'max requests', default: '1500' } } }
+permissions: { contents: write }
+concurrency: { group: tv-check, cancel-in-progress: false }
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 scripts/tv_check.py ${{ github.event.inputs.n || '1500' }}
+      - name: Save
+        run: |
+          git config user.name "whatif-bot" && git config user.email "whatif-bot@users.noreply.github.com"
+          git add data/tv_ok.json && git commit -m "TradingView symbol check" -q || exit 0
+          for i in 1 2 3; do git pull -q --rebase -X theirs && git push -q && break; sleep 5; done
