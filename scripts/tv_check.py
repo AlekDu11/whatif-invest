@@ -31,6 +31,10 @@ def exists(sym):
 
 
 def main():
+    if os.environ.get('TV_TEST'):   # TV_TEST="GATEIO:DIGIUSDT BINANCE:BTCUSDT" → print the verdicts only
+        for s in os.environ['TV_TEST'].split():
+            print('TEST', s, exists(s))
+        return
     budget = int(sys.argv[1]) if len(sys.argv) > 1 else 1500
     db = json.load(open(OUT)) if os.path.exists(OUT) else {}
     today = time.strftime('%Y-%m-%d')
