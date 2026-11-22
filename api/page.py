@@ -11,7 +11,7 @@ import re
 import sys
 import urllib.request
 from http.server import BaseHTTPRequestHandler
-from urllib.parse import parse_qs, urlparse
+from urllib.parse import parse_qs, unquote, urlparse
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, 'scripts'))
@@ -53,9 +53,9 @@ def not_found(host):
 class handler(BaseHTTPRequestHandler):
     def do_GET(self):
         q = parse_qs(urlparse(self.path).query)
-        lang, aid = (q.get('l') or [''])[0], (q.get('a') or [''])[0].lower()
+        lang, aid = (q.get('l') or [''])[0], unquote((q.get('a') or [''])[0]).lower()
         host = self.headers.get('x-forwarded-host') or self.headers.get('host') or 'whatifstack.com'
-        if lang in LANGS and re.fullmatch(r'[a-z0-9][a-z0-9.\-]*', aid) and aid in build.A:
+        if lang in LANGS and 0 < len(aid) <= 80 and '/' not in aid and aid in build.A:   # ids can be non-Latin (Chinese memecoins)
             try:
                 build.set_numfmt(lang)
                 body = build.asset(aid, lang, ver(host)).encode('utf-8')

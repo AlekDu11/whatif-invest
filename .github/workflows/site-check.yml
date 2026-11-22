@@ -1,0 +1,18 @@
+name: Site check (all asset pages live)
+on:
+  schedule: [{ cron: '17 6 * * *' }]
+  workflow_dispatch: {}
+permissions: { contents: write }
+concurrency: { group: site-check, cancel-in-progress: false }
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 scripts/site_check.py
+      - name: Save the report
+        run: |
+          git config user.name "whatif-bot" && git config user.email "whatif-bot@users.noreply.github.com"
+          git add reports/site-check.md && git commit -m "Site check report" -q || exit 0
+          for i in 1 2 3; do git pull -q --rebase -X theirs && git push -q && break; sleep 5; done
