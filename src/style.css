@@ -1015,3 +1015,9 @@ a.badge.tagc{text-decoration:none;color:inherit;border:1px solid var(--line)}a.b
 .lsteps{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px}.lsteps li::marker{color:var(--accent);font-weight:700}
 .lsteps a{display:flex;flex-direction:column;gap:2px;padding:8px 0;text-decoration:none;color:var(--text)}.lsteps a:hover b{color:var(--accent)}.lsteps .muted{font-size:13px}
 .lnext{display:flex;flex-direction:column;gap:4px;padding:16px;margin:18px 0;text-decoration:none;color:var(--text)}.lnext:hover b{color:var(--accent)}
+.mgrid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:14px}@media(max-width:820px){.mgrid{grid-template-columns:minmax(0,1fr)}}
+.mstart h2,.mhonest h2,.mcheck h2{font-size:19px;margin:0 0 6px}.mstart .chip{margin-top:10px;display:inline-block}
+.mstats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:10px 0}.mstat{padding:12px;display:flex;flex-direction:column;gap:4px;background:var(--bg)}
+.mstat span{font-size:20px}.mstat b{font-size:22px;font-variant-numeric:tabular-nums}.mstat small{font-size:12px;color:var(--muted);line-height:1.35}
+@media(max-width:520px){.mstats{grid-template-columns:minmax(0,1fr)}.mstat{flex-direction:row;align-items:baseline;gap:8px}}
+.mcheck ol{margin:6px 0 0;padding-left:22px;display:flex;flex-direction:column;gap:8px}

@@ -19,6 +19,7 @@ from i18n_s import S as SEA  # noqa: E402
 from i18n_i import I as INF  # noqa: E402
 from i18n_world import W as WA, WN, WD  # noqa: E402
 from i18n_ctry import C as CTRY, MKTS, MKT_LANG, CCY_SIGN  # noqa: E402  # noqa: E402
+from i18n_mem3 import MEM3  # noqa: E402  (memes hub: start here, honest numbers, 5 checks)
 from i18n_learn import LRN, TRACKS, TRACK_ICON  # noqa: E402  («Learn» section)
 from i18n_earn import EARN, WD as WDAY  # noqa: E402  (stocks today + earnings calendar)
 from i18n_ctry3 import SUFFIX3  # noqa: E402  (Yahoo suffix -> market, currency, TradingView exchange)
@@ -3979,14 +3980,30 @@ def memes_page(lang, ver):
     risks = ''.join(f'<li>{esc(t[k])}</li>' for k in ('r1', 'r2', 'r3', 'r4'))
     posts = [s_ for s_ in MEME_POSTS if s_ in POSTS.get(lang, {})]
     reads = ''.join(f'<a class="card hcard" href="{url(lang, "blog/" + s_)}"><span>📖</span><b>{esc(post_meta_title(POSTS[lang][s_], lang))}</b></a>' for s_ in posts)
+    M3 = MEM3[lang]
+    dec = ',' if lang in ('uk', 'ru', 'es', 'de', 'pt', 'pl', 'tr', 'fr', 'it', 'nl', 'id', 'vi') else '.'
+    th = '\u202f' if lang in ('uk', 'ru', 'fr', 'pl') else ('.' if dec == ',' else ',')
+    stats = [('💀', f'68{dec}67%', M3['s1']), ('🌱', f'4{dec}55%', M3['s2']), ('🏭', f'~68{th}000', M3['s3'])]
+    stat_html = ''.join(f'<div class="card mstat"><span>{ic}</span><b>{v}</b><small>{esc(lb)}</small></div>' for ic, v, lb in stats)
+    les = lessons(lang).get('memes') or []
+    if len(les) < len(lessons('en').get('memes') or []):   # lesson not yet translated → link the English one
+        have = {sl for sl, _ in les}
+        les = [(sl, POSTS[lang][sl] if sl in have else m) for sl, m in lessons('en')['memes']]
+    steps = ''.join(f'<li><a href="{url(lang if sl in POSTS.get(lang, {}) else "en", "blog/" + sl)}">{esc(post_meta_title(m, lang))}</a></li>' for sl, m in les[:6])
+    learn_blk = (f'<section class="section"><div class="mgrid"><div class="card mstart"><h2>🎓 {esc(M3["start_h"])}</h2><p class="muted">{esc(M3["start_d"])}</p>'
+                 f'<ol class="lsteps">{steps}</ol><a class="chip" href="{url(lang, "learn")}">{esc(M3["all"])} →</a></div>'
+                 f'<div class="card mhonest"><h2>{esc(M3["stats_h"])}</h2><div class="mstats">{stat_html}</div><p class="muted" style="font-size:12px">{esc(M3["src"])}</p></div></div></section>')
+    checks = ''.join(f'<li>{esc(M3[k])}</li>' for k in ('c1', 'c2', 'c3', 'c4', 'c5'))
+    check_blk = f'<section class="section card mcheck"><h2>✅ {esc(M3["chk_h"])}</h2><ol>{checks}</ol></section>'
     body = (f'<div class="dexhero"><h1>{esc(t["h1"])}</h1><span class="livebadge"><i></i>{esc(t["upd"])}</span></div>'
+            f'{learn_blk}'
             f'<section class="section"><div class="dexmvs">{mv("gain", "🚀")}{mv("lose", "📉")}</div></section>'
             f'<section class="section"><div class="seg dextabs" id="dexv">{tabs}</div>'
             f'<div class="dexbar"><div class="seg" id="dexn">{seg}</div><label class="dexflt"><input type="checkbox" id="dexq" checked> {esc(t["flt"])}</label></div>'
             f'<p class="muted dexerr" id="dexerr" hidden>{esc(t["nodata"])}</p>'
             f'<div class="tw" style="margin-top:10px"><table class="mt dext" id="dext"><thead>{head}</thead><tbody id="dexb"><tr><td colspan="9" class="empty">…</td></tr></tbody></table></div>'
             f'<p class="muted" style="font-size:12px">{esc(t["src"])} · <a href="https://www.geckoterminal.com/" target="_blank" rel="noopener">GeckoTerminal</a></p></section>'
-            + (f'<section class="section"><h2>{esc(t["read"])}</h2><div class="hgrid">{reads}</div></section>' if reads else '')
+            + check_blk
             + f'<section class="section"><div class="hgrid"><a class="card hcard" href="/go/gmgn?from=memes-card&l={lang}" target="_blank" rel="sponsored nofollow noopener"><span>🦎</span><b>GMGN</b><small>Memecoin trading · Wallet tracking</small></a>'
             f'<a class="card hcard" href="/go/okx-wallet?from=memes-card&l={lang}" target="_blank" rel="sponsored nofollow noopener"><span>◼️</span><b>OKX Wallet</b><small>DEX · Swap · 100+ chains</small></a>'
             f'<a class="card hcard" href="/go/pumpfun?from=memes-card&l={lang}" target="_blank" rel="sponsored nofollow noopener"><span>💊</span><b>pump.fun</b><small>Memecoin launchpad · code alessa</small></a>'
