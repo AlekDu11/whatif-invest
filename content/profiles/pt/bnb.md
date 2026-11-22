@@ -1,27 +1,57 @@
 ---
-title: O que é o BNB (BNB)?
-description: BNB explicado de forma simples: a moeda nascida na corretora Binance que hoje movimenta a BNB Chain, como as queimas trimestrais reduzem a oferta e os riscos.
-date: 2026-11-17
+title: BNB explicado de forma simples: a moeda da Binance, queimas trimestrais rumo a 100 milhões e recorde de US$ 1.370
+description: BNB em linguagem simples: como funcionam a moeda da Binance e a BNB Chain, por que há queimas a cada trimestre, recorde, quedas, riscos e o que saber.
+date: 2026-11-22
+kind: analysis
 ---
-**O BNB** é a moeda da Binance, a maior corretora de criptomoedas do mundo, e o combustível da BNB Chain, uma das blockchains mais usadas para transferências baratas e apps de trading. Surgiu em 2017 como um token de desconto nas taxas e virou uma das cinco maiores criptomoedas.
+**BNB** é a moeda da Binance, a maior corretora de criptomoedas do mundo, e da BNB Chain, a blockchain construída em torno dela. As pessoas a usam para pagar taxas de negociação menores na Binance e para pagar transações na BNB Chain. Em novembro de 2026 valia cerca de US$ 71 bilhões, um dos cinco maiores criptoativos.
 
-## Como funciona e para que serve
+> **Pontos principais**
+> - O BNB surgiu em julho de 2017 com 200 milhões de moedas; queimas regulares buscam reduzir a oferta para 100 milhões.
+> - A 37ª queima trimestral, em outubro de 2026, retirou cerca de 1,65 milhão de BNB, no valor de mais de US$ 1 bilhão.
+> - O preço recorde até agora é US$ 1.369,99 (13 de outubro de 2025); em novembro de 2026 o BNB era negociado mais de 55% abaixo disso.
+> - O seu destino está muito ligado a uma única empresa: a Binance e seu fundador, Changpeng Zhao (CZ).
 
-O BNB foi vendido em uma ICO em julho de 2017, dias antes de a Binance abrir. Em 2019 passou para sua própria rede, hoje chamada BNB Chain. Agora tem várias funções: paga as taxas («gas») na BNB Smart Chain, pode ser colocado em staking com os validadores da rede e reduz as taxas da Binance — até 25% nas operações à vista.
+## Como funciona
 
-## Por que importa
+O BNB vive na BNB Smart Chain, uma rede parecida com o Ethereum que roda o mesmo tipo de contratos inteligentes, mas com transações mais baratas e rápidas. Só um pequeno grupo de validadores — escolhidos conforme a quantidade de BNB em staking com eles — confirma os blocos, o que mantém as taxas baixas, mas torna a rede menos descentralizada que o Ethereum. A cada trimestre a BNB Foundation queima moedas usando uma fórmula de "Auto-Burn" baseada no preço do BNB e no número de blocos produzidos; parte de cada taxa de gas também é queimada. As queimas vão continuar até a oferta total cair para 100 milhões.
 
-O BNB é a única grande cripto com uma «queima» embutida, parecida com uma recompra de ações. A cada trimestre, uma fórmula baseada no preço e na atividade da rede envia moedas para um endereço do qual ninguém consegue gastá-las; parte de cada taxa também é queimada. A meta é reduzir a oferta dos 200 milhões iniciais para 100 milhões. Depois da queima de julho de 2026, restavam cerca de 133,2 milhões de BNB. Curiosidade: só essa queima trimestral destruiu moedas no valor de uns US$ 930 milhões.
+## Por que as pessoas acham que ele tem valor
 
-## Números principais
+O BNB é útil de três formas. Na Binance, reduz as taxas de negociação e dá acesso a vendas de tokens e a recompensas do "Launchpool" de moedas novas. Na BNB Chain, paga o gas de cada transação, da negociação de memecoins ao uso de aplicativos de empréstimo. E quem tem BNB pode fazer staking. Como há queima de moedas a cada trimestre, a oferta diminui com o tempo — desde que a Binance mantenha o programa.
+
+## Os números agora
 
 - Preço hoje: {{price:bnb}}
+- Recorde: {{ath:bnb}} ({{athd:bnb}})
+- Variação do preço em 12 meses: {{chg1y:bnb}}
 - US$ 10 por dia durante 5 anos: {{dca:bnb:5}} com {{dcainv:5}} investidos ({{dcaroi:bnb:5}})
 
-Compare com outras moedas na [página de cripto]({lang}/crypto/) ou com o [Bitcoin]({lang}/btc/) no [comparador]({lang}/compare/).
+## Sua história
+
+A Binance vendeu o BNB numa oferta inicial de moedas em julho de 2017 por cerca de US$ 0,15. No início ele rodava no Ethereum, em 2019 migrou para a blockchain própria da Binance, e a BNB Smart Chain foi lançada em setembro de 2020. No boom de 2021 o BNB subiu para cerca de US$ 690, enquanto a BNB Chain se enchia de aplicativos DeFi baratos. Em outubro de 2022 um hacker explorou uma ponte e criou cerca de 2 milhões de BNB, e a rede ficou parada por horas. Em novembro de 2023 a Binance aceitou pagar US$ 4,3 bilhões para encerrar acusações nos EUA, e CZ se declarou culpado de violar regras contra lavagem de dinheiro e deixou o cargo; ele cumpriu quatro meses de prisão em 2024 e foi perdoado pelo presidente dos EUA em outubro de 2025. Naquele mesmo mês o BNB bateu o recorde acima de US$ 1.369, antes de recuar em 2026.
+
+## Alternativas
+
+Outras corretoras também têm moedas próprias — [OKB]({lang}/okb/) da OKX, [Cronos]({lang}/cro/) da Crypto.com e [KCS da KuCoin]({lang}/kcs/). Como plataforma de contratos inteligentes, a BNB Chain concorre com [Ethereum]({lang}/eth/), [Solana]({lang}/sol/) e [TRON]({lang}/trx/).
 
 ## Principais riscos
 
-O destino do BNB está ligado a uma única empresa. Em 2023 a Binance aceitou pagar US$ 4,3 bilhões em penalidades nos EUA por falhas contra lavagem de dinheiro e sanções e hoje opera sob um monitor independente; novos problemas legais podem derrubar o preço. A BNB Smart Chain roda com apenas 45 validadores, bem menos que Bitcoin ou Ethereum, então é mais centralizada. Em mercados de baixa, as criptos podem cair 50–80%. Comprar um valor fixo com regularidade suaviza as oscilações, mas não elimina o risco.
+- **Uma única empresa:** o BNB depende do negócio, da reputação e das decisões da Binance; problemas na corretora atingiriam a moeda diretamente.
+- **Regulação:** a Binance já pagou bilhões em multas e sofre restrições em vários países; novas ações são possíveis.
+- **Centralização:** poucos validadores operam a BNB Chain, o que facilita pausá-la ou controlá-la.
+- **Ataques hacker:** pontes e aplicativos da BNB Chain já foram invadidos, inclusive no ataque de 2022.
+- **Grandes oscilações:** o BNB caiu cerca de 70% entre 2021 e 2022 e voltou a perder mais da metade do valor desde o recorde de 2025.
+
+## O que isso significa se você compra regularmente
+
+Comprar um valor fixo de BNB com regularidade suaviza o preço que você paga, mas a aposta continua concentrada numa única empresa e na sua situação jurídica. Muita gente limita as criptomoedas a uma parte pequena das economias, que pode suportar ver cair bastante. Resultados passados não garantem retornos futuros.
 
 *Não é recomendação de investimento.*
+
+## Fontes
+
+- [BNB Auto-Burn (bnbburn.info, BNB Chain)](https://www.bnbburn.info/)
+- [Binance conclui a 37ª queima trimestral (TradingKey via Mitrade, outubro de 2026)](https://www.mitrade.com/insights/news/live-news/article-3-2173520-20261019)
+- [Binance e seu CEO se declaram culpados de acusações federais (Departamento de Justiça dos EUA, novembro de 2023)](https://www.justice.gov/opa/pr/binance-and-ceo-plead-guilty-federal-charges-4b-resolution)
+- [Preço do BNB, capitalização de mercado e máxima histórica (CoinGecko)](https://www.coingecko.com/en/coins/bnb)
