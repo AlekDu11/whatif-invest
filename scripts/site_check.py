@@ -36,7 +36,7 @@ def check(u):
         except urllib.error.HTTPError as e:
             if e.code == 404 or attempt:
                 return u, f'HTTP {e.code}'
-        except Exception as e:
+        except Exception as e:   # network hiccup: retried once, then reported
             if attempt:
                 return u, f'error {type(e).__name__}'
         time.sleep(2)
@@ -44,15 +44,16 @@ def check(u):
 
 
 def main():
-    A = json.load(open('data/market.json'))['assets']
-    ids = sorted(A)
+    sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__))))
+    import build   # the site's own asset ids (ids that clash with a language code or a section get a -<cat> suffix)
+    ids = sorted(build.A)
     random.seed(time.strftime('%Y-%m-%d'))
     urls = [url(l, h) for l in ['uk'] + LANGS for h in HUBS]
     urls += [url('uk', f'{i}/') for i in ids] + [url('en', f'{i}/') for i in ids]
     for l in LANGS[1:]:
         urls += [url(l, f'{i}/') for i in random.sample(ids, min(150, len(ids)))]
     t0, bad = time.time(), []
-    with cf.ThreadPoolExecutor(24) as ex:
+    with cf.ThreadPoolExecutor(16) as ex:
         for u, err in ex.map(check, urls):
             if err:
                 bad.append((u, err))
