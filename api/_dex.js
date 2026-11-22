@@ -92,6 +92,16 @@ async function bnAudit(n, a) {
   return { lvl: lv, n: d.riskLevel, hits: hits.slice(0, 6), bt: ex.buyTax, st: ex.sellTax };
 }
 
+// candles for the token page chart (Binance Web3 kline service): [open, high, low, close, volume, ts_ms, count]
+const KI = { '1m': '1min', '5m': '5min', '15m': '15min', '1h': '1h', '4h': '4h', '1d': '1d' };
+async function kline(n, a, i) {
+  const r = await fetch(`https://dquery.sintral.io/u-kline/v1/k-line/candles?platform=${n === 'bsc' ? 'bsc' : n}&address=${encodeURIComponent(a)}&interval=${KI[i]}&limit=300&pm=p`,
+    { headers: { 'Accept-Encoding': 'identity', 'User-Agent': 'binance-web3/1.1 (Skill)' } });
+  if (!r.ok) throw new Error('kl ' + r.status);
+  const j = await r.json(), d = Array.isArray(j) ? j : (j.data || []);
+  return d.map(c => [Math.floor(+c[5] / 1000), +c[0], +c[1], +c[2], +c[3], +c[4]]).filter(c => c[0] && isFinite(c[4]));
+}
+
 async function list(view, n) {
   if ((n === 'all' || BNC[n]) && ['trend', 'vol', 'new', 'soon', 'done', 'gain'].includes(view)) {
     try { return await bnList(view === 'gain' ? 'trend' : view, n) } catch (e) { /* fall back to GeckoTerminal */ }
@@ -132,6 +142,11 @@ module.exports = async (req, res) => {
   const n = String(q.n || 'all');
   if (n !== 'all' && !NETS.includes(n) && !/^[a-z0-9_-]{2,30}$/.test(n)) return send(400, { e: 'network' }, 'no-store');
   try {
+    if (q.dex === 'kline') {
+      const aa = String(q.a || ''), ii = KI[q.i] ? q.i : '15m';
+      if (!BNC[n] || !ADDR.test(aa)) return send(400, { e: 'kline' }, 'no-store');
+      return send(200, { i: ii, d: await kline(n, aa, ii) }, `public, s-maxage=${ii === '1m' ? 30 : 60}, stale-while-revalidate=300`);
+    }
     if (q.dex === 'pool') {
       const pp = String(q.p || ''), aa = String(q.a || '');
       if (n === 'all' || !(ADDR.test(pp) || ADDR.test(aa))) return send(400, { e: 'pool' }, 'no-store');
