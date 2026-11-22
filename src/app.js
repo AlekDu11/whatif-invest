@@ -1508,7 +1508,7 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
 })();
 
 /* ---------- home «Today in the markets»: live movers, trending and fresh news between deploys (owner 2026-11-21) ---------- */
-(function(){ const W=window.WIX||{}; if(!(window.PAGE||{}).home||!W.T||!document.querySelector('[data-mv]')) return;
+(function(){ const W=window.WIX||{}, PG0=window.PAGE||{}; if(!(PG0.home||PG0.stx)||!W.T||!document.querySelector('[data-mv]')) return;   // home + /stocks/ «Stocks today»
   const {IDX,BYID,esc,fmtPrice,fmtPct,icon,url,nm}=W;
   const row=(a,p,c)=>`<a class="mrow" href="${url(a.i)}">${icon(a)}<span class="mn"><b>${esc(a.t)}</b><span>${esc(nm(a))}</span></span><span class="mp" data-p="${a.i}">${fmtPrice(p)}</span><span class="mc ${c>=0?'good':'bad'}">${fmtPct(c)}</span></a>`;
   const fill=(k,rows)=>{ const el=document.querySelector(`[data-mv="${k}"]`); if(!el||!rows.length) return; const h=el.querySelector('.wt').outerHTML; el.innerHTML=h+rows.map(r=>row(...r)).join('') };
@@ -1679,3 +1679,7 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
   new Set(els.map(el=>el.dataset.di||el.dataset.dr||el.dataset.yi)).forEach(i=>upd(BYID[i]));
   document.addEventListener('wi:tick',e=>upd(e.detail));
 })();
+
+/* ---------- earnings calendar: hide days that are already over (pages are rebuilt once a day) ---------- */
+(function(){ const els=document.querySelectorAll('[data-ed]'); if(!els.length) return; const today=new Date().toISOString().slice(0,10);
+  els.forEach(el=>{ if(el.dataset.ed<today) el.remove() }) })();

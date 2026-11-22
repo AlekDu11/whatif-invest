@@ -6,7 +6,7 @@ Output: per language — home, compare and asset pages; index.js, per-asset pric
 Only the Python standard library is used, so it runs in Vercel's build image as is.
 Run: python3 scripts/build.py
 """
-import calendar, hashlib, html, json, math, os, re as _re, shutil, sys
+import calendar, hashlib, html, json, math, os, re as _re, shutil, sys, time
 import urllib.parse as _up
 from datetime import date, datetime, timedelta, timezone
 
@@ -19,6 +19,7 @@ from i18n_s import S as SEA  # noqa: E402
 from i18n_i import I as INF  # noqa: E402
 from i18n_world import W as WA, WN, WD  # noqa: E402
 from i18n_ctry import C as CTRY, MKTS, MKT_LANG, CCY_SIGN  # noqa: E402  # noqa: E402
+from i18n_earn import EARN, WD as WDAY  # noqa: E402  (stocks today + earnings calendar)
 from i18n_ctry3 import SUFFIX3  # noqa: E402  (Yahoo suffix -> market, currency, TradingView exchange)
 from i18n_p import P as POLL, OPTS as POLL_OPTS  # noqa: E402
 from i18n_ai import AI as AIS  # noqa: E402
@@ -236,7 +237,7 @@ def has_page(lang, aid):
         return lang in POLICY
     if aid in ('privacy', 'terms'):
         return lang in LEGAL[aid]
-    if aid in ('categories', 'crypto/gainers-losers') or (aid or '').startswith('categories/') or (aid or '').startswith('compare/'):
+    if aid in ('categories', 'crypto/gainers-losers', 'earnings-calendar') or (aid or '').startswith('categories/') or (aid or '').startswith('compare/'):
         return True
     if aid == 'guide':
         return lang in GUIDE
@@ -742,7 +743,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
 <nav class="mnav">{mnav}</nav>{msheet}
 <main class="wrap">
 {body}
-<div class="sharebar" data-l="{esc(SHARE[lang])}"></div>{footer_cols(lang)}<footer><span>{BRAND} · {S['by']} <a href="https://mytimebox.app/">Timebox</a> · {S['sources']} · <a href="{url(lang if lang in ABOUT else 'en', 'about')}">{NW[lang]['about']}</a> · <a href="{pol_url(lang)}">{ACT[lang]['pol']}</a></span><span>{S['disclaimer']}</span></footer>
+<div class="sharebar" data-l="{esc(SHARE[lang])}"></div>{footer_cols(lang)}<footer><span>{BRAND} · {S['by']} <a href="https://mytimebox.app/">Timebox</a> · {S['sources']} · <a href="{url(lang if lang in ABOUT else 'en', 'about')}">{NW[lang]['about']}</a> · <a href="{pol_url(lang)}">{ACT[lang]['pol']}</a> · <a href="https://github.com/jdecked/twemoji" rel="nofollow noopener" target="_blank">Twemoji</a> (CC-BY 4.0)</span><span>{S['disclaimer']}</span></footer>
 <nav class="langs">{' · '.join(f'<a href="{url(lg, p) if has_page(lg, p) else url(lg)}" hreflang="{TR[lg]["loc"]}">{esc(TR[lg]["name"])}</a>' for lg in ORDER)}</nav>
 </main>
 {ai_widget(lang, cfg)}
@@ -1804,6 +1805,85 @@ def _mc(aid):
     if a['cat'] == 'crypto':
         return a.get('mcap') or 0
     return (stock_stats(a) or {}).get('mcap') and to_usd(stock_stats(a)['mcap'], stock_stats(a).get('ccy') or 'USD') or 0
+
+
+def earnings_list(days=21):
+    """Upcoming quarterly reports of our stocks (Yahoo earningsTimestamp in data/stockstats.json), soonest first, biggest first per day."""
+    now = time.time()
+    out = []
+    for i, a in A.items():
+        if a['cat'] != 'stock':
+            continue
+        t = (STOCKSTATS.get(a.get('yahoo') or '') or {}).get('ern')
+        if t and now - 6 * 3600 < t < now + days * 86400:
+            out.append((t, i))
+    big = lambda i: -_mcap(i)
+    return sorted(out, key=lambda x: (time.strftime('%Y-%m-%d', time.gmtime(x[0])), big(x[1])))
+
+
+def _mcap(i):
+    return A[i].get('mcap') or (STOCKSTATS.get(A[i].get('yahoo') or '') or {}).get('mcap') or 0
+
+
+def earn_day(lang, ts):
+    g = time.gmtime(ts)
+    wd, d, m = WDAY[lang][g.tm_wday], g.tm_mday, g.tm_mon
+    if lang in ('ja', 'zh'):
+        return f'{m}月{d}日（{wd}）'
+    if lang == 'ko':
+        return f'{m}월 {d}일 {wd}'
+    if lang == 'en':
+        return f'{wd}, {TR[lang]["months"][m - 1]} {d}'
+    return f'{wd}, {d:02d}.{m:02d}'
+
+
+def earn_when(lang, aid, ts):
+    if A[aid].get('mkt') not in (None, 'us'):
+        return ''
+    h = time.gmtime(ts).tm_hour + time.gmtime(ts).tm_min / 60
+    return EARN[lang]['bmo' if h < 14.5 else 'amc' if h >= 20 else 'dur']
+
+
+def earn_block(lang, days=7, per_day=6):
+    """«Earnings this week» on /stocks/: one small card per day."""
+    E = EARN[lang]
+    by = {}
+    for t, i in earnings_list(days):
+        by.setdefault(time.strftime('%Y-%m-%d', time.gmtime(t)), []).append((t, i))
+    if not by:
+        return ''
+    cards = ''
+    for d, rows in sorted(by.items()):
+        cards += (f'<div class="card wd" data-ed="{d}"><div class="wt">📅 {esc(earn_day(lang, rows[0][0]))}</div>'
+                  + ''.join(mini_row(lang, i, f'<span class="mc muted">{esc(earn_when(lang, i, t))}</span>') for t, i in rows[:per_day])
+                  + (f'<a class="calc" href="{url(lang, "earnings-calendar")}#d{d}">+{len(rows) - per_day} →</a>' if len(rows) > per_day else '') + '</div>')
+    return (f'<section class="section today earn"><h2>{esc(E["cal_h"])}</h2><p class="muted">{esc(E["cal_d"])}</p><div class="egrid">{cards}</div>'
+            f'<p><a class="chip" href="{url(lang, "earnings-calendar")}">📅 {esc(E["cal_all"])} →</a></p></section>')
+
+
+def earnings_page(lang, ver):
+    """/earnings-calendar/ (owner 2026-11-22): next 3 weeks of quarterly reports, by day, all 20 languages."""
+    E, u = EARN[lang], TR[lang]['ui']
+    by = {}
+    for t, i in earnings_list(21):
+        by.setdefault(time.strftime('%Y-%m-%d', time.gmtime(t)), []).append((t, i))
+    head = (f'<tr><th class="l">{esc(u["name"])}</th><th class="l">{esc(E["when"])}</th><th>{esc(u["price"])}</th><th>{esc(TR[lang]["ui"]["chg"])}</th>'
+            f'<th class="hide-sm">{esc(E["mc"])}</th></tr>')
+    secs = ''
+    for d, rows in sorted(by.items()):
+        tr = ''.join(f'<tr><td class="l"><a class="asset" href="{aurl(lang, i)}">{icon(A[i])}<span><span class="nm">{flag(A[i].get("mkt") or "us")}{esc(nm(A[i], lang))}</span>'
+                     f'<span class="tk">{esc(A[i]["tk"])}</span></span></a></td><td class="l muted">{esc(earn_when(lang, i, t))}</td>'
+                     f'<td data-p="{i}">{price(METRICS[i]["price"])}</td><td class="{cls(METRICS[i]["chg"] or 0)}" data-c="{i}">{pct(METRICS[i]["chg"])}</td>'
+                     f'<td class="hide-sm">{usd_h(_mcap(i) or None)}</td></tr>' for t, i in rows)
+        secs += (f'<section class="section card" id="d{d}" data-ed="{d}"><h2>📅 {esc(earn_day(lang, rows[0][0]))} <span class="cn">{len(rows)}</span></h2>'
+                 f'<div class="tw"><table class="mt"><thead>{head}</thead><tbody>{tr}</tbody></table></div></section>')
+    if not secs:
+        secs = f'<p class="muted">{esc(E["cal_none"])}</p>'
+    body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / <a href="{url(lang, "stocks")}">{esc(u["stock"])}</a> / {esc(E["cal_h"])}</nav>'
+            f'<h1>{esc(E["cal_t"])}</h1><p class="lead">{esc(E["cal_lead"])}</p>{secs}<p class="note">Yahoo Finance · {UPDATED[:10]}</p>')
+    ld = {"@context": "https://schema.org", "@type": "ItemList", "name": E['cal_t'],
+          "itemListElement": [{"@type": "ListItem", "position": k + 1, "name": nm(A[i], 'en'), "url": SITE + aurl(lang, i)} for k, (t, i) in enumerate(earnings_list(21)[:30])]}
+    return shell(lang, 'earnings-calendar', f'{E["cal_t"]} | {BRAND}', E['cal_lead'][:160], body, {}, ver, [ld])
 
 
 def gainers_page(lang, ver):
@@ -3959,11 +4039,21 @@ def hub(lang, slug, ver):
         _, lch = lc_page(lang, 'mcap', None, ver, 1)
         i0 = lch.index('<div class="cchips lcchips">'); i1 = lch.index('<p class="note">', i0)
         rank = lch[i0:i1]
+        j0 = rank.index('<div class="cchips lcchips">', 1); j1 = rank.index('</div>', j0) + 6   # country row → every market (49) with stock counts, to the country pages
+        rank = rank[:j0] + country_chips(lang, counts=True).replace('class="cchips"', 'class="cchips lcchips stkc"', 1) + rank[j1:]
+        w = TR[lang]['w']
+        def smv(sign):   # «Stocks today» (owner 2026-11-22): biggest movers among the ~300 largest companies; app.js refreshes them live (/api/quote?mv=1)
+            pool = [i for i in lc_ids('mcap', None)[:300] if METRICS[i]['chg'] is not None and sign * METRICS[i]['chg'] > 0]
+            pool.sort(key=lambda i: -sign * METRICS[i]['chg'])
+            ttl = f'{"🚀" if sign > 0 else "📉"} {w["gainers"] if sign > 0 else w["losers"]}'
+            return (f'<div class="card wd" data-mv="stock{"+" if sign > 0 else "-"}"><div class="wt">{esc(ttl)}</div>'
+                    + ''.join(mini_row(lang, i, f'<span class="mc {"good" if sign > 0 else "bad"}">{pct(METRICS[i]["chg"])}</span>') for i in pool[:5]) + '</div>')
+        today = f'<section class="section today stoday"><h2>{esc(EARN[lang]["today"])}</h2><div class="sgrid">{smv(1)}{smv(-1)}</div></section>'
         body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / {esc(label)}</nav><h1>{esc(h1)}</h1>'
-                f'<p class="lead">{esc(desc)}</p>{rank}'
+                f'<p class="lead">{esc(desc)}</p>{today}{earn_block(lang)}{rank}'
                 f'<section class="section"><h2>🧮 {esc(STK2[lang]["dca_h"])}</h2><p class="muted">{esc(STK2[lang]["dca_d"])}</p>'
                 f'<div class="hl">{cards}</div><div class="tabs" id="tabs" hidden></div>{filt}{table_block(lang, ids[:150], dca=True)}</section>')
-        return shell(lang, slug, title, desc, body, dict(tab=cat, dca=1), ver)
+        return shell(lang, slug, title, desc, body, dict(tab=cat, dca=1, stx=1), ver)
     body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / {esc(label)}</nav><h1>{esc(h1)}</h1>'
             f'<p class="lead">{esc(desc)}</p>{country_chips(lang) if cat == "stock" else ""}'
             f'{f"<p><a class=chip href={url(lang, chr(115) + "tablecoins")}>💵 {esc(STX[lang]["nav"])} →</a></p>" if cat == "crypto" and SB else ""}'
@@ -4041,13 +4131,14 @@ def flag(m):
     return f'<img class="flag" src="/assets/flags/{m}.svg" alt="" width="18" height="18" loading="lazy">'
 
 
-def country_chips(lang, cur=None, limit=None):
+def country_chips(lang, cur=None, limit=None, counts=False):
     if not MKT_N:
         for a in A.values():
-            if a.get('mkt'):
+            if a.get('mkt') and a['cat'] == 'stock':
                 MKT_N[a['mkt']] = MKT_N.get(a['mkt'], 0) + 1
     mk = sorted(MKTS.items(), key=lambda kv: (MKT_LANG.get(kv[0]) != lang, kv[0] != 'ua', -MKT_N.get(kv[0], 0)))   # own country first
-    ch = [(sl, f'{flag(m)}{esc(CTRY[lang][3][m][0])}') for m, (sl, fl) in mk if has_page(lang, sl)]
+    ch = [(sl, f'{flag(m)}{esc(CTRY[lang][3][m][0])}' + (f' <span class="cn">{MKT_N.get(m, 0)}</span>' if counts and MKT_N.get(m) else ''))
+          for m, (sl, fl) in mk if has_page(lang, sl)]
     if limit and len(ch) > limit:
         ch = ch[:limit] + [('stocks', '…')]
     if not ch:
@@ -5019,6 +5110,8 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
             extra_pages.append('editorial-policy')
         write(pre + 'crypto/gainers-losers/index.html', gainers_page(lang, ver))
         extra_pages.append('crypto/gainers-losers')
+        write(pre + 'earnings-calendar/index.html', earnings_page(lang, ver))
+        extra_pages.append('earnings-calendar')
         write(pre + 'categories/index.html', categories_hub(lang, ver))
         extra_pages.append('categories')
         for k in CAT_IDS:
