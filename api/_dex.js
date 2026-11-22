@@ -36,7 +36,9 @@ function norm(d) {
 const BN = 'https://web3.binance.com/bapi/defi';
 const BNC = { solana: 'CT_501', bsc: '56', base: '8453' };
 const BNN = { CT_501: 'solana', 56: 'bsc', 8453: 'base' };
-const SKIP = new Set(['SOL', 'WSOL', 'ETH', 'WETH', 'BTC', 'WBTC', 'CBBTC', 'BNB', 'WBNB', 'USDC', 'USDT', 'USD1', 'DAI', 'FDUSD', 'USDE', 'PYUSD', 'JITOSOL', 'MSOL', 'STETH', 'CBETH']);
+const SKIP = new Set(['SOL', 'WSOL', 'ETH', 'WETH', 'BTC', 'WBTC', 'CBBTC', 'BNB', 'WBNB', 'USDC', 'USDT', 'USD1', 'DAI', 'FDUSD', 'USDE', 'PYUSD', 'JITOSOL', 'MSOL', 'STETH', 'CBETH', 'ZEC', 'HYPE', 'HSOL', 'BNSOL', 'JUPSOL', 'XRP', 'DOGE', 'ADA', 'TRX', 'SUI', 'LINK', 'LTC', 'BCH', 'TON', 'AVAX', 'DOT', 'XLM', 'USDS', 'USDG']);
+// look-alike tickers (Armenian / Cherokee / Lisu letters posing as USDT etc.) are scam clones
+const FAKE = /[\u0530-\u058F\u13A0-\u13FF\uA4D0-\uA4FF\u2160-\u218F]/;
 const bnPost = async (path, body) => {
   const r = await fetch(BN + path, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept-Encoding': 'identity', 'User-Agent': 'binance-web3/1.1 (Skill)' }, body: JSON.stringify(body) });
   if (!r.ok) throw new Error('bn ' + r.status);
@@ -76,7 +78,7 @@ async function bnList(view, n) {
       }
     } catch (e) { /* other chains still count */ }
   }));
-  const res = out.filter(r => r.s && r.a && !SKIP.has(String(r.s).toUpperCase()));
+  const res = out.filter(r => r.s && r.a && !SKIP.has(String(r.s).toUpperCase()) && !FAKE.test(r.s));
   if (!res.length) throw new Error('bn empty');
   return res;
 }
@@ -86,7 +88,8 @@ async function bnAudit(n, a) {
   const hits = [];
   (d.riskItems || []).forEach(it => (it.details || []).forEach(x => { if (x.isHit) hits.push(x.title) }));
   const ex = d.extraInfo || {};
-  return { lvl: d.riskLevelEnum || null, n: d.riskLevel, hits: hits.slice(0, 6), bt: ex.buyTax, st: ex.sellTax };
+  const lv = d.riskLevelEnum || (d.riskLevel == null ? null : d.riskLevel <= 1 ? 'LOW' : d.riskLevel <= 3 ? 'MEDIUM' : 'HIGH');
+  return { lvl: lv, n: d.riskLevel, hits: hits.slice(0, 6), bt: ex.buyTax, st: ex.sellTax };
 }
 
 async function list(view, n) {
