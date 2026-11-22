@@ -23,6 +23,8 @@ def exists(sym):
     req = urllib.request.Request('https://symbol-search.tradingview.com/symbol_search/v3/?' + q, headers=H)
     with urllib.request.urlopen(req, timeout=20) as r:
         j = json.loads(r.read())
+    if os.environ.get('TV_DEBUG'):
+        print('RAW', sym, json.dumps(j.get('symbols', [])[:3])[:700])
     for s in j.get('symbols', []):
         name = (s.get('symbol') or '').replace('<em>', '').replace('</em>', '')
         if name.upper() == tk.upper() and (s.get('exchange') or '').upper() == ex.upper() or (s.get('prefix') or '').upper() == ex.upper() and name.upper() == tk.upper():

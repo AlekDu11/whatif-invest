@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: python3 scripts/tv_check.py ${{ github.event.inputs.n || '1500' }}
-        env: { TV_TEST: "${{ github.event.inputs.test }}" }
+        env: { TV_TEST: "${{ github.event.inputs.test }}", TV_DEBUG: "${{ github.event.inputs.test }}" }
       - name: Save
         run: |
           git config user.name "whatif-bot" && git config user.email "whatif-bot@users.noreply.github.com"
