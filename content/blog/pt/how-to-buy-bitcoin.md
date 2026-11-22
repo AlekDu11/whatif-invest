@@ -1,13 +1,20 @@
 ---
-title: Como comprar bitcoin: guia passo a passo para iniciantes
-description: Como comprar bitcoin com segurança em 6 passos: escolha uma corretora regulada, verifique a conta, deposite, compre, programe compras DCA e proteja as moedas.
+title: Como comprar bitcoin em 2026: 6 passos seguros, a partir de R$ 50
+description: Como comprar bitcoin passo a passo em 2026: corretora autorizada, verificação, Pix, compra a partir de R$ 50, compras recorrentes e segurança.
 date: 2026-11-15
 category: guides
 assets: btc, eth
+stat: +37%
+stat_label: BTC, US$ 10 por dia, 5 anos (nov. 2026)
 ---
-Hoje, **comprar bitcoin** leva mais ou menos o mesmo tempo que abrir o app do banco. A parte difícil não é apertar o botão: é escolher um lugar seguro, não pagar taxas demais e não entrar em pânico na primeira vez que o preço cair 20%.
+**Como comprar bitcoin?** Abra conta numa corretora autorizada no seu país, verifique a identidade, deposite reais por Pix (ou euros por transferência) e compre o valor que quiser: não precisa de um bitcoin inteiro, dá para começar com cerca de R$ 50 ou 10 €. O processo leva de 15 minutos a um dia; o que importa mesmo é escolher um lugar seguro, pagar pouca taxa e proteger as moedas depois.
 
-Este guia mostra como comprar bitcoin passo a passo, em linguagem simples. Agora um bitcoin custa {{price:btc}}, mas você não precisa comprar uma moeda inteira: quase todas as corretoras deixam comprar um pedacinho, muitas vezes a partir de R$ 50 ou US$ 10.
+Agora um bitcoin custa {{price:btc}}. Abaixo estão os 6 passos, quanto custa de verdade, a melhor forma de comprar bitcoin com segurança no Brasil e em Portugal, e o que aconteceu com quem comprou um pouco todo dia.
+
+> **Principais pontos**
+> - Para comprar bitcoin basta uma corretora autorizada, um documento e cerca de R$ 50: você compra frações de BTC (até 8 casas decimais).
+> - No Brasil, as prestadoras de serviços de ativos virtuais precisam de autorização do Banco Central; em Portugal, vale a licença europeia MiCA.
+> - US$ 10 por dia em bitcoin durante 5 anos: **{{dca:btc:5}}** a partir de **{{dcainv:5}}** investidos ({{dcaroi:btc:5}}), com quedas de mais de 50% no caminho.
 
 ## Passo 1. Escolha uma corretora regulada no seu país
 
@@ -81,6 +88,32 @@ O básico de segurança que evita a maioria das perdas:
 
 "Not your keys, not your coins" ("sem as chaves, as moedas não são suas") é um ditado popular: se uma corretora quebrar, as moedas guardadas lá podem ser congeladas. A autocustódia elimina esse risco, mas cria outro: se você perder a frase de recuperação, ninguém consegue devolver o acesso.
 
+## O que isso significa se você compra regularmente
+
+Comprar o mesmo valor todo dia, semana ou mês dilui o preço de entrada, mas não elimina o risco. Com US$ 10 por dia em bitcoin, o resultado depende muito do prazo:
+
+- **1 ano:** {{dca:btc:1}} a partir de {{dcainv:1}} ({{dcaroi:btc:1}}).
+- **3 anos:** {{dcaroi:btc:3}}.
+- **5 anos:** {{dca:btc:5}} a partir de {{dcainv:5}} ({{dcaroi:btc:5}}).
+
+Ou seja: em prazos curtos um plano recorrente pode ficar no vermelho por meses; em prazos longos o histórico foi melhor, mas passado não é promessa. Muitos investidores recorrentes escolhem um valor que não faz falta e mantêm o plano também nas quedas.
+
+## Quanto custa comprar 1 bitcoin (e uma fração)
+
+Um bitcoin inteiro custa {{price:btc}}, mas ele se divide em 100 milhões de unidades (satoshis), então com R$ 50 você compra uma pequena fração de BTC. Ao preço somam-se os custos: a taxa de negociação (no modo *spot* costuma ficar entre 0,1% e 0,5%), o *spread* da tela simples de "Comprar" e, no cartão, mais 1–4%. Para compras pequenas e frequentes, Pix ou transferência costumam sair mais baratos. Converta qualquer valor no nosso [conversor BTC–BRL]({lang}/converter/btc-brl/).
+
+## Qual a melhor forma de comprar bitcoin com segurança
+
+A maioria das perdas não vem do preço, e sim de golpes e descuidos. Cinco regras: compre só em corretoras autorizadas pelo regulador; nunca invista por indicação de alguém que chamou você primeiro; ative 2FA por aplicativo; jamais compartilhe a frase de recuperação; e desconfie de rendimento "garantido". Se uma plataforma não deixa sacar e pede para "pagar uma taxa" para liberar o dinheiro, é golpe — explicamos no guia [como evitar golpes com cripto]({lang}/blog/how-to-avoid-crypto-scams/).
+
+## Como comprar bitcoin no Brasil e em Portugal
+
+**No Brasil**, a Lei 14.478/2022 colocou as corretoras de cripto sob a supervisão do Banco Central, que publicou as regras de autorização das prestadoras de serviços de ativos virtuais; confira no site do BC se a empresa está autorizada. O caminho mais comum é depositar por Pix e comprar na própria corretora. **Em Portugal**, procure uma empresa com licença MiCA (pode estar autorizada noutro país da UE) e deposite por transferência SEPA; ganhos com criptoativos detidos menos de 365 dias são tributados a 28%. Compare plataformas no nosso [ranking de corretoras cripto]({lang}/crypto-exchanges/).
+
+## Como comprar criptomoedas além do bitcoin
+
+O processo é o mesmo para ether e outras criptomoedas: mesma corretora, mesma conta, outro par de negociação. Quanto menor e mais nova a moeda, maior o risco — muitos iniciantes começam pelo bitcoin e pelo [ethereum]({lang}/eth/) antes de qualquer outra coisa.
+
 ## Impostos e registros
 
 Em muitos países, vender ou trocar bitcoin gera imposto. No Brasil, por exemplo, há regras da Receita Federal para declarar criptoativos e ganhos. Baixe o histórico de operações da corretora uma vez por ano e confira as regras do fisco do seu país. Manter registros desde o primeiro dia evita muita dor de cabeça.
@@ -109,6 +142,16 @@ Corretoras reguladas exigem verificação de identidade por lei. Plataformas que
 ### Qual é o melhor momento para comprar bitcoin?
 
 Ninguém consegue prever o preço no curto prazo. Por isso muitos iniciantes fazem compras regulares de valor fixo (DCA) em vez de tentar acertar o momento.
+
+## Como acompanhar no WhatIfStack
+
+- Veja o preço do bitcoin ao vivo, o gráfico e a calculadora de rentabilidade na [página do bitcoin]({lang}/btc/): teste qualquer valor e prazo.
+- Adicione BTC à sua lista de acompanhamento ou registre suas compras em [Meu WhatIfStack]({lang}/me/): grátis, sem cadastro, salvo no seu navegador.
+- Compare bitcoin com ouro, S&P 500 ou ethereum em [Comparar]({lang}/compare/).
+- Escolha a plataforma com o [ranking de corretoras cripto]({lang}/crypto-exchanges/) (volume, pares, prova de reservas).
+- Acompanhe o que move o mercado nas nossas [notícias]({lang}/news/).
+
+Salve whatifstack.com nos favoritos (Ctrl+D, ou «Adicionar à tela inicial» no celular) e siga [nosso canal no Telegram](https://t.me/WhatIfStack) para o resumo diário do mercado.
 
 ## Fontes
 

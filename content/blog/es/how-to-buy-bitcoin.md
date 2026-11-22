@@ -1,13 +1,20 @@
 ---
-title: Cómo comprar bitcoin: guía paso a paso para principiantes
-description: Cómo comprar bitcoin de forma segura en 6 pasos: elige un exchange regulado, verifica tu cuenta, deposita, compra, programa compras DCA y protege tus monedas.
+title: Cómo comprar bitcoin en 2026: 6 pasos seguros, desde 10 €, sin errores
+description: Cómo comprar bitcoin paso a paso en 2026: exchange regulado, verificación, depósito, compra desde 10 €, compras periódicas y seguridad.
 date: 2026-11-15
 category: guides
 assets: btc, eth
+stat: +37%
+stat_label: BTC, 10 $ al día, 5 años (nov. 2026)
 ---
-Hoy, **comprar bitcoin** lleva más o menos lo mismo que abrir la app del banco. Lo difícil no es pulsar el botón: es elegir un sitio seguro, no pagar comisiones de más y no entrar en pánico la primera vez que el precio cae un 20%.
+**¿Cómo comprar bitcoin?** Abre una cuenta en un exchange regulado en tu país, verifica tu identidad, deposita euros (o tu moneda local) y compra la cantidad que quieras: no hace falta un bitcoin entero, se puede empezar con unos 10 €. Todo lleva entre 15 minutos y un día; lo que de verdad importa es elegir un sitio seguro, pagar pocas comisiones y proteger tus monedas después.
 
-En esta guía te explicamos cómo comprar bitcoin paso a paso y en lenguaje sencillo. Ahora mismo un bitcoin cuesta {{price:btc}}, pero no necesitas comprar una moneda entera: casi todos los exchanges te dejan comprar una pequeña parte, a menudo desde 10 € o 10 $.
+Ahora mismo un bitcoin cuesta {{price:btc}}. Abajo tienes los 6 pasos para comprar bitcoins, cuánto cuesta realmente, cómo hacerlo de forma segura y qué le pasó a quien compró un poco cada día.
+
+> **Claves**
+> - Para comprar bitcoin solo necesitas un exchange regulado, tu DNI y unos 10 €: compras fracciones de BTC con hasta 8 decimales.
+> - Desde julio de 2026, en la UE solo pueden operar proveedores con licencia MiCA; en España la autoridad es la CNMV.
+> - 10 $ al día en bitcoin durante 5 años: **{{dca:btc:5}}** a partir de **{{dcainv:5}}** ({{dcaroi:btc:5}}), con caídas de más del 50% por el camino.
 
 ## Paso 1. Elige un exchange regulado en tu país
 
@@ -81,6 +88,28 @@ Lo básico de seguridad que evita la mayoría de pérdidas:
 
 "Not your keys, not your coins" ("si no son tus claves, no son tus monedas") es un dicho popular: si un exchange quiebra, las monedas que tengas allí pueden quedar congeladas. La autocustodia elimina ese riesgo pero añade otro: si pierdes la frase de recuperación, nadie puede devolverte el acceso.
 
+## Qué significa si compras de forma regular
+
+Comprar la misma cantidad cada día, semana o mes reparte el precio de entrada, pero no elimina el riesgo. Con 10 $ al día en bitcoin, el resultado depende mucho del plazo:
+
+- **1 año:** {{dca:btc:1}} a partir de {{dcainv:1}} ({{dcaroi:btc:1}}).
+- **3 años:** {{dcaroi:btc:3}}.
+- **5 años:** {{dca:btc:5}} a partir de {{dcainv:5}} ({{dcaroi:btc:5}}).
+
+Es decir: en plazos cortos un plan periódico puede estar en pérdidas durante meses, y en plazos largos el historial ha sido mejor, pero el pasado no es una promesa. Muchos compradores regulares fijan una cantidad que no les duela y la mantienen también en las caídas.
+
+## Cuánto cuesta comprar 1 bitcoin (y una fracción)
+
+Un bitcoin entero cuesta {{price:btc}}, pero se divide en 100 millones de unidades (satoshis), así que con 10 € compras una pequeña fracción de BTC. Al precio hay que sumar el coste de compra: la comisión de trading (en el modo *spot* suele rondar el 0,1–0,5%), el *spread* de la pantalla sencilla de "Comprar" y, si pagas con tarjeta, un 1–4% extra. Para compras pequeñas y frecuentes, una transferencia SEPA o en tu moneda local suele salir más barata. Puedes convertir cualquier cantidad con nuestro [conversor BTC–EUR]({lang}/converter/btc-eur/).
+
+## Cómo comprar bitcoin de forma segura
+
+La mayoría de pérdidas no vienen del precio sino de estafas y descuidos. Cinco reglas: compra solo en plataformas que aparezcan en el registro del regulador (CNMV en España); nunca inviertas por consejo de alguien que te escribió primero; activa 2FA con app; no compartas jamás la frase de recuperación; y desconfía de rentabilidades "garantizadas". Si un exchange no te deja retirar y te pide "pagar impuestos" para liberar el dinero, es una estafa: lo explicamos en [cómo evitar estafas cripto]({lang}/blog/how-to-avoid-crypto-scams/).
+
+## Dónde comprar bitcoin en España y Latinoamérica
+
+En España, busca un proveedor con licencia MiCA (puede estar autorizado en otro país de la UE y operar aquí con pasaporte europeo) y compruébalo en el registro de la CNMV o de la ESMA. En México, Argentina, Colombia o Chile, las reglas cambian por país: revisa siempre la web del regulador local. En nuestra [página de exchanges]({lang}/exchanges/) y en el [ranking de exchanges cripto]({lang}/crypto-exchanges/) comparas comisiones, volumen y reservas.
+
 ## Impuestos y registros
 
 En muchos países, vender o intercambiar bitcoin tributa (en España, por ejemplo, las ganancias se declaran en el IRPF). Descarga una vez al año el historial de operaciones del exchange y consulta las reglas de tu agencia tributaria. Llevar registros desde el primer día te ahorra muchos dolores de cabeza.
@@ -110,8 +139,19 @@ Los exchanges regulados exigen verificar tu identidad por ley. Las plataformas q
 
 Nadie puede predecir el precio a corto plazo. Por eso muchos principiantes hacen compras periódicas y fijas (DCA) en lugar de intentar acertar el momento.
 
+## Cómo seguirlo en WhatIfStack
+
+- Mira el precio de bitcoin en vivo, el gráfico y la calculadora de rentabilidad en la [página de bitcoin]({lang}/btc/): prueba cualquier importe y plazo.
+- Añade BTC a tu lista de seguimiento o registra tus compras en [Mi WhatIfStack]({lang}/me/): gratis, sin registro y guardado en tu navegador.
+- Compara bitcoin con el oro, el S&P 500 o ethereum en [Comparar]({lang}/compare/).
+- Elige plataforma con el [ranking de exchanges cripto]({lang}/crypto-exchanges/) (volumen, pares y prueba de reservas).
+- Sigue lo que mueve el mercado en nuestras [noticias]({lang}/news/).
+
+Guarda whatifstack.com en favoritos (Ctrl+D, o «Añadir a pantalla de inicio» en el móvil) y sigue [nuestro canal de Telegram](https://t.me/WhatIfStack) para el resumen diario del mercado.
+
 ## Fuentes
 
+- [CNMV — Criptoactivos](https://www.cnmv.es/portal/criptoactivos)
 - [ESMA — Reglamento de Mercados de Criptoactivos (MiCA)](https://www.esma.europa.eu/esmas-activities/digital-finance-and-innovation/markets-crypto-assets-regulation-mica)
 - [FCA — Cryptoassets: our work](https://www.fca.org.uk/firms/cryptoassets)
 - [Investor.gov — Alertas sobre inversión en criptoactivos](https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-alerts/investor-alert-watch-out-fraudulent-digital-asset-and-crypto-trading-websites)
