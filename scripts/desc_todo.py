@@ -56,9 +56,34 @@ def key(kv):
     # owner 2026-11-23: obscure coins with no source text kept blocking the head of the queue every run — they go to the
     # end until data/coininfo.json gets their CoinGecko text (top-300 coins stay: they can be described from general knowledge)
     k, a = kv
-    blocked = a['cat'] == 'crypto' and (a.get('rank') or 9999) > 300 and not has_source(a)
-    return (blocked, -score(k, a))
+    return (later(k, a), -score(k, a))
 
+
+def later(k, a):
+    """No source text and too small to describe from general knowledge → «later» list (owner 2026-11-23: process everything else
+    first, then decide what to do with these). Crypto outside the top 300, stocks under ~$2 bn market cap."""
+    if has_source(a):
+        return False
+    if a['cat'] == 'crypto':
+        return (a.get('rank') or 9999) > 300
+    if a['cat'] == 'stock':
+        return score(k, a) < 2e9
+    return False
+
+
+if lang == 'later':   # python3 scripts/desc_todo.py later → reports/desc-later.md (the «decide later» column)
+    rows = [(k, a) for k, a in sorted(A.items(), key=lambda kv: -score(*kv)) if a.get('p') and later(k, a)
+            and any(k not in json.load(open(os.path.join(ROOT, 'data', 'desc', lg + '.json'), encoding='utf-8')) for lg in ('en',))]
+    os.makedirs(os.path.join(ROOT, 'reports'), exist_ok=True)
+    with open(os.path.join(ROOT, 'reports', 'desc-later.md'), 'w', encoding='utf-8') as f:
+        f.write('# Assets left for later (no source text, too small to describe from knowledge)\n\n'
+                'Owner 2026-11-23: they wait at the end of the description queue; decide what to do with them after everything else is done.\n\n'
+                f'Total: {len(rows)}\n\n| id | name | ticker | type |\n|---|---|---|---|\n')
+        for k, a in rows:
+            nm = a.get('name'); nm = nm.get('en') if isinstance(nm, dict) else nm
+            f.write(f"| {k} | {nm} | {a['tk']} | {a['cat']} |\n")
+    print(len(rows), 'assets → reports/desc-later.md')
+    sys.exit(0)
 
 out = []
 for k, a in sorted(A.items(), key=key):
