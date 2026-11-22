@@ -55,3 +55,8 @@ Note (2026-11-21 11:4x run): video from GitHub raw via the x-relay hash hand-off
 | 2026-11-21 20:55 | Facebook (posted as Reel, public) | same race video + link /en/gold/ | https://www.facebook.com/reel/1974025420247027 | |
 
 Note (2026-11-21 20:47 run): video from GitHub raw by commit SHA via the x-relay hash hand-off (worked first try on all three). Bluesky: first pencil click came before the page loaded — second click opened the composer; one paste attached the video once. FB: the "Фото/видео" ref click did nothing — clicking the green photo icon by coordinate (right of the "Что у вас нового" box) opened the composer with the video attached. Bluesky likes for posts of the last 7 days: all 0 (11-18 Big Tech card 2).
+
+| 2026-11-22 11:50 | Threads | Race video: $100/mo since May 2023 Pepe vs Dogecoin vs Shiba Inu (Pepe $4,824 +12.2%, Dogecoin $2,147 −50.1%, Shiba Inu $1,745 −59.4%, $4,300 in each; same as X 11:30) + link /en/pepe/ | https://www.threads.com/@whatifstack/post/DgChVueE6CY | |
+| 2026-11-22 11:51 | Bluesky | same race video + link /en/pepe/ (langs en) | https://bsky.app/profile/whatifstack.bsky.social/post/3n2vdp7r6js2d | 0 likes (2026-11-22 11:5x) |
+
+Note (2026-11-22 11:4x run): video from GitHub raw by commit SHA via the x-relay hash hand-off (worked first try on both). Threads: first ref click on the inline box went stale (page re-rendered) — re-find and click worked. Bluesky: pencil (118,346) → one paste attached the video once → language «англійська». Bluesky likes for posts of the last 7 days: all 0. Threads doesn't show view counts on the profile. Facebook skipped (20:47 run only).
