@@ -13,6 +13,8 @@ in one place, fast, no ad clutter. Owner (2026-11-17): the essence is what peopl
 ## Current focus (owner 2026-11-22, for ~1 month)
 QUALITY + OPTIMISATION of what exists, then SEO — no new features. Every asset page complete and correct in every language (right chart or none, description, key numbers, analysis for the top assets), all automation lean and verified (daily site check + boss), careful SEO (quality + SEO task). After a month of this, move on.
 
+Crypto list FROZEN (owner 2026-11-23): CRYPTO_FROZEN = True in scripts/fetch_data.py — no new coins (1,991 now); the existing ones keep updating and get completed.
+
 ## Principles (check every decision against them)
 1. Usefulness first — every page answers a real question ("what would I have…", "what to buy…", "what's the market doing").
 2. Speed — <1 s load, no jank, works on every device (mobile first).
