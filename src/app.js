@@ -959,24 +959,21 @@ const DEXU=(()=>{
   if(!/^[a-z0-9_-]{2,30}$/.test(n)||!(AD.test(p)||AD.test(a0))){ location.replace(PAGE.dexpool.list); return }
   const stat=(k,v)=>`<div class="dps"><small class="muted">${esc(k)}</small><b>${v}</b></div>`;
   const chg=(k,v)=>`<div class="dpc"><small class="muted">${k}</small><b class="${cls(U.pc(v))}">${fmtPct(U.pc(v))}</b></div>`;
-  function show(r){ const inf=r.info||{}; if(inf.img&&!r.img) r.img=inf.img;
+  function infoHtml(inf){ inf=inf||{};
+    const links=[...(inf.web||[]).map(w=>[w.replace(/^https?:\/\/(www\.)?/,'').replace(/\/$/,''),w]), inf.x?['X @'+inf.x,'https://x.com/'+inf.x]:null, inf.tg?['Telegram','https://t.me/'+inf.tg]:null].filter(Boolean);
+    const desc=(inf.d||'').trim(), short=desc.length>320?desc.slice(0,320).replace(/\s+\S*$/,'')+'…':desc;
+    return (short?`<p class="dpdesc">${esc(short)}</p>`:'')+(links.length?`<div class="dplinks">${links.map(([t,h])=>`<a class="bchip" href="${esc(h)}" target="_blank" rel="nofollow noopener">${esc(t)}</a>`).join('')}</div>`:'') }
+  let shown=false;
+  function show(r){ shown=true; const inf=r.info||{}; if(inf.img&&!r.img) r.img=inf.img;
     try{ const k=JSON.parse(sessionStorage.getItem('wi_dexrow')||'null'); if(k&&k.a===r.a){ ['h','t10','dev','ins','hb'].forEach(f=>{ if(r[f]==null&&k[f]!=null) r[f]=k[f] }); if(!r.at&&k.at) r.at=k.at } }catch(e){}
     document.title=`${r.nm||r.s} (${r.s}) — ${fmtPrice(r.pr)} | WhatIfStack`;
-    const links=[...(inf.web||[]).map(w=>[w.replace(/^https?:\/\/(www\.)?/,'').replace(/\/$/,''),w]), inf.x?['X @'+inf.x,'https://x.com/'+inf.x]:null, inf.tg?['Telegram','https://t.me/'+inf.tg]:null].filter(Boolean);
-    const desc=(inf.d||'').trim(); const short=desc.length>320?desc.slice(0,320).replace(/\s+\S*$/,'')+'…':desc;
     box.innerHTML=`<div class="dph">${U.ic(r,48)}<div><h1>${esc(r.nm||r.s)} <span class="muted">${esc(r.s)}</span></h1><span class="dexnet">${esc(U.NETN[r.n]||r.n)}</span>${r.q?` <span class="muted" style="font-size:13px">${esc(r.s)}/${esc(r.q)}</span>`:''}</div></div>
       <div class="dpp"><b class="dpprice">${fmtPrice(r.pr)}</b><span class="${cls(U.pc(r.c24))}">${fmtPct(U.pc(r.c24))} · 24h</span></div>
-      ${L.l5?U.lightHtml(r,L.l5):''}
       ${U.BW.has(r.n)&&r.a?`<div class="card dpch"><div class="dpchh"><b>${esc(L.chart)}</b><span class="dpiv">${['1m','5m','15m','1h','4h','1d'].map(i=>`<button type="button" data-i="${i}"${i==='15m'?' class=on':''}>${i}</button>`).join('')}</span></div><div id="dpchart" style="height:320px"><div class="bload"><i></i></div></div><small class="muted">Binance Web3</small></div>`:''}
       <div class="dpbtn">${U.BW.has(r.n)?`<a class="btn bnw" href="${U.go(r,'binance-web3','token')}" target="_blank" rel="sponsored nofollow noopener">${esc(L.trade)} · Binance Wallet</a>`:''}${['solana','base','bsc','eth','tron'].includes(r.n)?`<a class="btn" href="/go/gmgn?from=memes-token:${encodeURIComponent(r.n)}&l=${lang}&c=${encodeURIComponent(r.n)}&a=${encodeURIComponent(r.a)}" target="_blank" rel="sponsored nofollow noopener">${esc(L.trade)} · GMGN</a>`:''}<a class="btn ghost" href="/go/okx-wallet?from=memes-token:${encodeURIComponent(r.n)}&l=${lang}" target="_blank" rel="sponsored nofollow noopener">${esc(L.trade)} · OKX Wallet</a></div>
-      <div class="dpchg">${chg('5m',r.c5)}${chg('1h',r.c1)}${chg('6h',r.c6)}${chg('24h',r.c24)}</div>
-      <div class="dpstats">${stat(L.mc,r.mc?U.big(r.mc):'—')}${stat(L.liq,U.big(r.liq))}${stat(L.vol,U.big(r.vol))}${stat(L.tx,(r.tx||0).toLocaleString(T.intl||'en'))}${stat(L.age,U.age(r.at))}</div>
-      ${r.hb?`<p class="dphype"><b>🗣 ${esc(L.l5.why)}</b>${lang!=='en'?' <small class="muted">(EN)</small>':''}<br>${esc(r.hb)}</p>`:''}
-      ${r.risk&&r.risk.lvl?`<div class="card dprisk r-${esc(r.risk.lvl.toLowerCase())}"><b>🛡️ ${esc(L.rsk)}: ${esc(L[{LOW:'low',MEDIUM:'med',HIGH:'high'}[r.risk.lvl]]||r.risk.lvl)}</b>${r.risk.hits&&r.risk.hits.length?`<ul>${r.risk.hits.map(h=>`<li>${esc(h)}</li>`).join('')}</ul>`:''}<small class="muted">${esc(L.note)}</small></div>`:''}
-      ${short?`<p class="dpdesc">${esc(short)}</p>`:''}
-      ${links.length?`<div class="dplinks">${links.map(([t,h])=>`<a class="bchip" href="${esc(h)}" target="_blank" rel="nofollow noopener">${esc(t)}</a>`).join('')}</div>`:''}
-      <div class="dpca"><small class="muted">${esc(L.ca)}</small><code>${esc(r.a)}</code><button class="btn ghost" type="button" id="dpcopy">${esc(L.copy)}</button></div>
-      ${L.learn&&L.learn.ls.length?`<div class="card mstart dplearn"><h2>🎓 ${esc(L.learn.h)}</h2><p class="muted">${esc(L.learn.d)}</p><ol class="lsteps">${L.learn.ls.map(([h,t])=>`<li><a href="${esc(h)}">${esc(t)}</a></li>`).join('')}</ol><a class="chip" href="${esc(L.learn.url)}">${esc(L.learn.all)} →</a></div>`:''}`;
+      <div class="dpstats">${stat(L.mc,r.mc?U.big(r.mc):'—')}${stat(L.liq,U.big(r.liq))}${stat(L.vol,U.big(r.vol))}${r.h?stat(L.hold,Math.round(r.h).toLocaleString(T.intl||'en')):stat(L.tx,(r.tx||0).toLocaleString(T.intl||'en'))}${stat(L.age,U.age(r.at))}</div>
+      <div id="dpinfo">${infoHtml(inf)}</div>
+      <div class="dpca"><small class="muted">${esc(L.ca)}</small><code>${esc(r.a)}</code><button class="btn ghost" type="button" id="dpcopy">${esc(L.copy)}</button></div>`;
     const c=$('#dpcopy'); if(c) c.onclick=()=>{ try{ navigator.clipboard.writeText(r.a); c.textContent=L.copied }catch(e){} }
     if($('#dpchart')) candles(r) }
   /* candle chart from Binance Web3 klines, our colours; the last candle and the price refresh every 15 s */
@@ -997,8 +994,31 @@ const DEXU=(()=>{
       const last=k[k.length-1][4]; if(pe&&last>0){ pe.textContent=fmtPrice(last); document.title=document.title.replace(/— [^|]+\|/,`— ${fmtPrice(last)} |`) }
       clearTimeout(kt); kt=setTimeout(()=>{ if(!document.hidden) draw(false); else kt=setTimeout(()=>draw(false),15000) },15000) }
     draw(true) }
-  const load=()=>U.api(`dex=pool&n=${encodeURIComponent(n)}&${AD.test(p)?'p='+encodeURIComponent(p):'a='+encodeURIComponent(a0)}`).then(show).catch(()=>{ box.innerHTML=`<p class="muted">${esc(L.nodata)}</p>`; setTimeout(load,15000) });
+  let row=null; try{ const k=JSON.parse(sessionStorage.getItem('wi_dexrow')||'null'); if(k&&k.n===n&&(k.a===a0||(p&&k.p===p))) row=k }catch(e){}
+  if(row) show(row);
+  const load=()=>U.api(`dex=pool&n=${encodeURIComponent(n)}&${AD.test(p)?'p='+encodeURIComponent(p):'a='+encodeURIComponent(a0)}`)
+    .then(r=>{ if(!shown) show(r); else { const el=$('#dpinfo'); if(el) el.innerHTML=infoHtml(r.info) } })
+    .catch(()=>{ if(!shown){ box.innerHTML=`<p class="muted">${esc(L.nodata)}</p>`; setTimeout(load,15000) } });
   load();
+})();
+/* ---------- memes v5 (owner 2026-11-22): one simple list like Fomo — tabs, network chips, rows (icon · name · price · market cap · 24h) ---------- */
+(function(){
+  const box=$('#mrows'); if(!box||!PAGE.memes5) return; const U=DEXU, P=PAGE.memes; let view='trend', net='all', rows=[], tok=0;
+  const RUSH={done:'done',soon:'soon',new:'new'};
+  const okRush=r=>(r.t10==null||r.t10<=40)&&(r.ins==null||r.ins<=15)&&(r.dev==null||r.dev<=10)&&(r.liq||0)>=3000;   // hide obvious junk silently
+  const link=r=>`${P.tok}?n=${encodeURIComponent(r.n)}&a=${encodeURIComponent(r.a)}`;
+  const row=r=>`<a class="mrow" href="${link(r)}" data-a="${esc(r.a)}">${U.ic(r,40)}<span class="mrn"><b>${esc(r.s)}</b><small class="muted">${fmtPrice(r.pr)}</small></span>
+    <span class="mrv"><b>${U.big(r.mc)} <small class="muted">MC</small></b><small class="${cls(U.pc(r.c24))}">${fmtPct(U.pc(r.c24))}</small></span></a>`;
+  function draw(){ let l=rows.slice(); const seen=new Set(); l=l.filter(r=>r.a&&!seen.has(r.a)&&seen.add(r.a));
+    if(RUSH[view]) l=l.filter(okRush); else l=l.filter(r=>(r.liq||0)>=10000);
+    if(view==='gain') l.sort((a,b)=>(b.c24||0)-(a.c24||0)); else if(view==='most') l.sort((a,b)=>(b.h||0)-(a.h||0));
+    else if(view==='soon') l.sort((a,b)=>(b.prog||0)-(a.prog||0)); else if(RUSH[view]) l.sort((a,b)=>Date.parse(b.at)-Date.parse(a.at));
+    box.innerHTML=l.slice(0,50).map(row).join('')||`<div class="empty">—</div>` }
+  async function load(){ const t=++tok; try{ const j=await U.api(`dex=${RUSH[view]||'trend'}&n=${net}`); if(t!==tok) return; rows=j.d||[]; draw() }catch(e){ if(t===tok&&!rows.length) box.innerHTML='<div class="empty">—</div>' } }
+  $$('#mtab button').forEach(b=>b.onclick=()=>{ $$('#mtab button').forEach(x=>x.classList.toggle('on',x===b)); const was=RUSH[view]||'trend'; view=b.dataset.v; if((RUSH[view]||'trend')===was) draw(); else { box.innerHTML='<div class="empty">…</div>'; load() } });
+  $$('#mnet button').forEach(b=>b.onclick=()=>{ $$('#mnet button').forEach(x=>x.classList.toggle('on',x===b)); net=b.dataset.n; box.innerHTML='<div class="empty">…</div>'; load() });
+  box.addEventListener('click',e=>{ const a=e.target.closest('.mrow'); if(!a) return; const r=rows.find(x=>x.a===a.dataset.a); if(r) U.keep(r) });
+  load(); setInterval(()=>{ if(!document.hidden) load() },45000);
 })();
 /* ---------- memes «Pick of the day»: strict filter + Binance social buzz, traffic light in plain words ---------- */
 (function(){
@@ -1537,7 +1557,7 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
   const A=window.WIACC, inn=box.querySelector('.acct-in'), out=box.querySelector('.acct-out'), msg=$('#acctmsg');
   const say=(t,bad)=>{ if(!msg) return; msg.hidden=false; msg.textContent=t; msg.classList.toggle('bad',!!bad) };
   function show(){ const u=JSON.parse(A.get('wi_user')||'null');
-    box.hidden=!(A.sid()&&u)&&!C.mail&&!C.tg;   // sign-in itself is in the header popup; this card only shows the signed-in status
+    box.hidden=(A.sid()&&u)||(!C.mail&&!C.tg);   // owner 2026-11-22: no «Signed in as … Synced … Sign out» bar — account + sign-out live in the header 👤 popup
     if(A.sid()&&u){ out.hidden=true; inn.hidden=false;
       const v=+A.get('wi_syncv'); inn.innerHTML=`<span>✅ ${esc(C.in)} <b>${esc(u.name||'')}</b></span><span class="muted">${v?esc(C.sync)+' '+new Date(v).toLocaleTimeString(T.intl||'en',{hour:'2-digit',minute:'2-digit'}):''}</span><button class="btn ghost sm" type="button" id="acctout">${esc(C.out)}</button>`;
       $('#acctout').onclick=()=>{ A.api('logout',{body:{}}).catch(()=>{}).finally(()=>{ A.set('wi_sid',null); A.set('wi_user',null); A.set('wi_syncv',null); show() }) } }

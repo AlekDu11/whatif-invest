@@ -17,7 +17,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, 'scripts'))
 import build  # noqa: E402  (loads data once per cold start, ~0.6 s)
 
-LANGS = {l for l in build.ORDER if l not in build.FULL}
+LANGS = set(build.ORDER)   # uk/en too: since 2026-11-22 their incomplete (noindex) pages are not static files either
 _VER = {}
 _404 = {}
 

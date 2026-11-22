@@ -193,11 +193,15 @@
       "destination": "/api/stats"
     },
     {
-      "source": "/:lang(es|pt|de|fr|it|pl|tr|nl|ru|id|vi|th|hi|ja|ko|zh|ar|fil)/:aid",
+      "source": "/:aid([a-z0-9][a-z0-9.\\-]*)/",
+      "destination": "/api/page?l=uk&a=:aid"
+    },
+    {
+      "source": "/:lang(en|es|pt|de|fr|it|pl|tr|nl|ru|id|vi|th|hi|ja|ko|zh|ar|fil)/:aid",
       "destination": "/api/page?l=:lang&a=:aid"
     },
     {
-      "source": "/:lang(es|pt|de|fr|it|pl|tr|nl|ru|id|vi|th|hi|ja|ko|zh|ar|fil)/:aid/",
+      "source": "/:lang(en|es|pt|de|fr|it|pl|tr|nl|ru|id|vi|th|hi|ja|ko|zh|ar|fil)/:aid/",
       "destination": "/api/page?l=:lang&a=:aid"
     }
   ],

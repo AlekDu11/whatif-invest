@@ -19,7 +19,7 @@ from i18n_s import S as SEA  # noqa: E402
 from i18n_i import I as INF  # noqa: E402
 from i18n_world import W as WA, WN, WD  # noqa: E402
 from i18n_ctry import C as CTRY, MKTS, MKT_LANG, CCY_SIGN  # noqa: E402  # noqa: E402
-from i18n_mem5 import MEM5  # noqa: E402  (memes: pick of the day + traffic light)
+from i18n_mem5 import MEM5, MOST  # noqa: E402  (memes: pick of the day + traffic light)
 from i18n_mem4 import MEM4  # noqa: E402  (memes: Binance Web3 stages + security check)
 from i18n_mem3 import MEM3  # noqa: E402  (memes hub: start here, honest numbers, 5 checks)
 from i18n_learn import LRN, TRACKS, TRACK_ICON  # noqa: E402  («Learn» section)
@@ -699,8 +699,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
     tools_on = p in ('portfolios', 'compound-interest') or (p or '').startswith('portfolios/') or p in TOOLS or (p in CALCS and p not in ("exchanges", "news", "about", "compound-interest")) or (p or "").startswith("habits") or p in ('memes', 'world-assets', 'calculators', 'largest-companies')
     # top nav (owner + UX audit 2026-11-19): Markets · Crypto · Stocks first; DCA portfolios and the investment calculator moved into Tools
     nav = (''.join(f'<a href="{url(lang, k)}" class="{"on" if k == p or (k == "stocks" and (p or "").startswith("stocks")) else ""}">{v}</a>' for k, v in ((None, HM[lang]['nav']), ('crypto', S['ui']['crypto']), ('stocks', S['ui']['stock'])))
-           + f'<details class="dd"><summary class="{"on" if p == "exchanges" or (p or "").startswith("crypto-exchanges") else ""}">{EX[lang]["nav"]}</summary><div>'
-           + ''.join(f'<a href="{url(lang, k)}">{esc(v)}</a>' for k, v in xc_menu(lang)) + '</div></details>'
+           # owner 2026-11-22: «Exchanges» out of the top nav until the page is reworked (pages stay, linked from Tools/footer)
            + f'<a href="{url(lang, "memes")}" class="{"on" if (p or "").startswith("memes") else ""}">🐸 {esc(MEM[lang]["nav"])}</a>'
            + f'<details class="dd"><summary class="{"on" if news_on else ""}">{NW[lang]["n_nav"]}</summary><div>'
            + f'<a href="{url(lang, "news")}">{NW[lang]["n_nav"]}</a><a href="{url(blog_l, "blog")}">{NW[lang]["i_nav"]}</a>'
@@ -710,7 +709,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
     i18n = dict(S['ui'], months=S['months'], intl=S['intl'], **{'mk_' + k: v for k, v in MKT[lang].items() if k in ('d7', 'mcap', 'vol', 'k7', 'stable')})
     mnav = ''.join(f'<a href="{h}" class="{"on" if on else ""}"><span>{ic}</span>{esc(lb)}</a>' for h, ic, lb, on in (
         (url(lang), '◎', HM[lang]['nav'], p is None), (url(lang, 'news'), '▤', NW[lang]['n_nav'], p == 'news'),
-        (url(lang, 'exchanges'), '₿', EX[lang]['nav'], p == 'exchanges'), (url(blog_l, 'blog'), '✎', NW[lang]['i_nav'], (p or '').startswith('blog'))))
+        (url(lang, 'stocks'), '📈', S['ui']['stock'], (p or '').startswith('stocks')), (url(blog_l, 'blog'), '✎', NW[lang]['i_nav'], (p or '').startswith('blog'))))
     mnav += f'<button type="button" id="mmore"><span>☰</span>{esc(X["nav_tools"])}</button>'
     msheet = ('<div class="msheet" id="msheet" hidden>' + ''.join(f'<a href="{url(lang, k)}">{esc(v)}</a>' for k, v in
               [('me', PF[lang]['h1']), ('portfolios', BP[lang]['nav']), ('compound-interest', IC[lang]['nav']), ('activities', ACT[lang]['nav']), ('ai', AIS[lang]['h1'].split(':')[0])] + xc_menu(lang)[1:2] + [x for x in tools_menu(lang) if x]) + '</div>')
@@ -4004,25 +4003,15 @@ def memes_page(lang, ver):
                  f'<div class="card mhonest"><h2>{esc(M3["stats_h"])}</h2><div class="mstats">{stat_html}</div><p class="muted" style="font-size:12px">{esc(M3["src"])}</p></div></div></section>')
     checks = ''.join(f'<li>{esc(M3[k])}</li>' for k in ('c1', 'c2', 'c3', 'c4', 'c5'))
     check_blk = f'<section class="section card mcheck"><h2>✅ {esc(M3["chk_h"])}</h2><ol>{checks}</ol></section>'
-    M5 = MEM5[lang]
-    pick_blk = (f'<section class="section mpick"><h2>⭐ {esc(M5["pick_h"])}</h2><p class="muted">{esc(M5["pick_d"])}</p>'
-                f'<div class="mpgrid" id="mpick"><div class="empty">…</div></div></section>')
+    # v5 (owner 2026-11-22: «chaos, nothing is clear, too many warnings») — one simple Fomo-style list: tabs + rows, one line of fine print
+    tl5 = dict(trend=('🔥', t['t_trend']), gain=('🚀', t['t_gain']), most=('👥', MOST[lang]), done=('✅', M4['t_done']), soon=('⏳', M4['t_soon']), new=('🌱', M4['t_new']))
+    tabs5 = ''.join(f'<button data-v="{k}"{" class=on" if k == "trend" else ""}>{ic} {esc(lb)}</button>' for k, (ic, lb) in tl5.items())
+    nets5 = ''.join(f'<button data-n="{k}"{" class=on" if k == "all" else ""}>{esc(v)}</button>' for k, v in (('all', t['all']), ('solana', 'Solana'), ('bsc', 'BNB Chain'), ('base', 'Base')))
     body = (f'<div class="dexhero"><h1>{esc(t["h1"])}</h1><span class="livebadge"><i></i>{esc(t["upd"])}</span></div>'
-            f'{pick_blk}{learn_blk}'
-            f'<section class="section"><div class="dexmvs">{mv("gain", "🚀")}{mv("lose", "📉")}</div></section>'
-            f'<section class="section"><div class="seg dextabs" id="dexv">{tabs}</div>'
-            f'<div class="dexbar"><div class="seg" id="dexn">{seg}</div><label class="dexflt"><input type="checkbox" id="dexq" checked> {esc(t["flt"])}</label></div>'
-            f'<p class="muted dexerr" id="dexerr" hidden>{esc(t["nodata"])}</p>'
-            f'<div class="tw" style="margin-top:10px"><table class="mt dext" id="dext"><thead>{head}</thead><tbody id="dexb"><tr><td colspan="9" class="empty">…</td></tr></tbody></table></div>'
-            f'<p class="muted" style="font-size:12px">{esc(M4["src"])} · <a href="https://web3.binance.com/" target="_blank" rel="noopener">Binance Web3</a> · <a href="https://www.geckoterminal.com/" target="_blank" rel="noopener">GeckoTerminal</a></p></section>'
-            + check_blk
-            + f'<section class="section"><div class="hgrid"><a class="card hcard" href="/go/binance-web3?from=memes-card&l={lang}" target="_blank" rel="sponsored nofollow noopener"><span>🟡</span><b>Binance Wallet</b><small>Meme Rush · DEX · Security check</small></a>'
-            f'<a class="card hcard" href="/go/gmgn?from=memes-card&l={lang}" target="_blank" rel="sponsored nofollow noopener"><span>🦎</span><b>GMGN</b><small>Memecoin trading · Wallet tracking</small></a>'
-            f'<a class="card hcard" href="/go/okx-wallet?from=memes-card&l={lang}" target="_blank" rel="sponsored nofollow noopener"><span>◼️</span><b>OKX Wallet</b><small>DEX · Swap · 100+ chains</small></a>'
-            f'<a class="card hcard" href="/go/pumpfun?from=memes-card&l={lang}" target="_blank" rel="sponsored nofollow noopener"><span>💊</span><b>pump.fun</b><small>Memecoin launchpad · code alessa</small></a>'
-            f'<a class="card hcard" href="{url(lang, "exchanges")}"><span>₿</span><b>{esc(EX[lang]["h1"])}</b></a></div></section>'
-            f'<section class="section dexrisk"><h3>{esc(t["risk_h"])}</h3><ul>{risks}</ul><p class="muted">{esc(t["disc"])}</p></section>')
-    cfg = dict(memes=dict(tok=url(lang, 'memes/token'), t=dict(trade=t['trade'], new=t['new'], lowliq=t['lowliq'], hot=t['hot'], net=t['net'], hold=M4['hold'], top10=M4['top10'], curve=M4['curve'], mcs=t['mc'], vols=t['vol']), l5=MEM5[lang]))
+            f'<section class="section mlist"><div class="seg mtabs" id="mtab">{tabs5}</div><div class="seg mnets" id="mnet">{nets5}</div>'
+            f'<div class="mrows card" id="mrows"><div class="empty">…</div></div>'
+            f'<p class="muted mfine">{esc(t["disc"])} · Binance Web3</p></section>')
+    cfg = dict(memes5=1, memes=dict(tok=url(lang, 'memes/token'), t=dict(trade=t['trade'], new=t['new'], lowliq=t['lowliq'], hot=t['hot'], net=t['net'], hold=M4['hold'], top10=M4['top10'], curve=M4['curve'], mcs=t['mc'], vols=t['vol']), l5=MEM5[lang]))
     return shell(lang, 'memes', f'{t["h1"]} | {BRAND}', t['d'], body, cfg, ver)
 
 
@@ -4032,10 +4021,10 @@ def meme_token_page(lang, ver):
     t, u = MEM[lang], TR[lang]['ui']
     L = dict(mc=t['mc'], liq=t['liq'], vol=t['vol'], age=t['age'], tx=t['tx'], ca=t['ca'], copy=t['copy'], copied=t['copied'], links=t['links'],
              chart=t['chart'], nodata=t['nodata'], disc=t['disc'], net=t['net'], price=u['price'], trade=t['trade'],
-             rsk=MEM4[lang]['rsk'], low=MEM4[lang]['low'], med=MEM4[lang]['med'], high=MEM4[lang]['high'], note=MEM4[lang]['note'], l5=MEM5[lang])
+             hold=MEM4[lang]['hold'], rsk=MEM4[lang]['rsk'], low=MEM4[lang]['low'], med=MEM4[lang]['med'], high=MEM4[lang]['high'], note=MEM4[lang]['note'], l5=MEM5[lang])
     body = (f'<nav class="crumbs"><a href="{url(lang, "memes")}">← {esc(t["back"])}</a></nav>'
             f'<div id="dexpool"><p class="muted">…</p></div>'
-            f'<p class="muted" style="font-size:12px;margin-top:18px">{esc(t["disc"])} · {esc(t["src"])} · <a href="https://www.geckoterminal.com/" target="_blank" rel="noopener">GeckoTerminal</a></p>')
+            f'<p class="muted" style="font-size:12px;margin-top:18px">{esc(t["disc"])} · Binance Web3 · <a href="https://www.geckoterminal.com/" target="_blank" rel="noopener">GeckoTerminal</a></p>')
     M3 = MEM3[lang]
     L['learn'] = dict(h=M3['start_h'], d=M3['start_d'], all=M3['all'], url=url(lang, 'learn'), ls=meme_lessons(lang)[:6])
     return shell(lang, 'memes/token', f'{t["h1"]} | {BRAND}', t['d'], body, dict(dexpool=dict(t=L, list=url(lang, 'memes'))), ver).replace(
@@ -4108,10 +4097,8 @@ def hub(lang, slug, ver):
                     + ''.join(mini_row(lang, i, f'<span class="mc {"good" if sign > 0 else "bad"}">{pct(METRICS[i]["chg"])}</span>') for i in pool[:5]) + '</div>')
         today = f'<section class="section today stoday"><h2>{esc(EARN[lang]["today"])}</h2><div class="sgrid">{smv(1)}{smv(-1)}</div></section>'
         body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / {esc(label)}</nav><h1>{esc(h1)}</h1>'
-                f'<p class="lead">{esc(desc)}</p>{earn_block(lang)}{rank}'
-                f'<section class="section"><h2>🧮 {esc(STK2[lang]["dca_h"])}</h2><p class="muted">{esc(STK2[lang]["dca_d"])}</p>'
-                f'<div class="hl">{cards}</div><div class="tabs" id="tabs" hidden></div>{filt}{table_block(lang, ids[:150], dca=True)}</section>{today}')   # owner 2026-11-22: «Stocks today» at the very bottom
-        return shell(lang, slug, title, desc, body, dict(tab=cat, dca=1, stx=1), ver)
+                f'<p class="lead">{esc(desc)}</p>{rank}{earn_block(lang)}{today}')   # owner 2026-11-22: ranking → earnings this week → «Stocks today»; the DCA table is gone (each stock page has the calculator)
+        return shell(lang, slug, title, desc, body, dict(tab=cat, stx=1), ver)
     body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / {esc(label)}</nav><h1>{esc(h1)}</h1>'
             f'<p class="lead">{esc(desc)}</p>{country_chips(lang) if cat == "stock" else ""}'
             f'{f"<p><a class=chip href={url(lang, chr(115) + "tablecoins")}>💵 {esc(STX[lang]["nav"])} →</a></p>" if cat == "crypto" and SB else ""}'
