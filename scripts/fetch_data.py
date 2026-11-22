@@ -659,7 +659,8 @@ def coin_info(assets, budget=320):
     todo = sorted((a for a in assets.values() if a.get('cat') == 'crypto' and a.get('cgid')), key=lambda a: a.get('rank') or 9999)
     from datetime import timedelta
     cutoff = (datetime.now(timezone.utc) - timedelta(days=45)).strftime('%Y-%m-%d')
-    todo = [a for a in todo if info.get(a['cgid'], {}).get('d', '') < cutoff]   # new coins first (by rank), then stale ones
+    todo = [a for a in todo if info.get(a['cgid'], {}).get('d', '') < cutoff]
+    todo.sort(key=lambda a: (a['cgid'] in info, a.get('rank') or 9999))   # coins with no info at all first (the description task waits for them), then stale ones
     n = 0
     for a in todo[:budget]:
         if time.time() - T0 > BUDGET:

@@ -46,8 +46,22 @@ def score(k, a):
     return mc
 
 
+def has_source(a):
+    si = SI.get(a.get('yahoo') or '', {}) or {}
+    ci = CI.get(a.get('cgid') or '', {}) or {}
+    return bool(((si.get('ds') or ci.get('ds') or {}).get('en') or '').strip())
+
+
+def key(kv):
+    # owner 2026-11-23: obscure coins with no source text kept blocking the head of the queue every run — they go to the
+    # end until data/coininfo.json gets their CoinGecko text (top-300 coins stay: they can be described from general knowledge)
+    k, a = kv
+    blocked = a['cat'] == 'crypto' and (a.get('rank') or 9999) > 300 and not has_source(a)
+    return (blocked, -score(k, a))
+
+
 out = []
-for k, a in sorted(A.items(), key=lambda kv: -score(*kv)):
+for k, a in sorted(A.items(), key=key):
     if k in done or not a.get('p'):
         continue
     miss = [lg for lg in D if k not in D[lg]]
