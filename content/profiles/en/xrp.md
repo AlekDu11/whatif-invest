@@ -1,33 +1,57 @@
 ---
-title: What is XRP (XRP)?
-description: XRP in plain language: the token of the XRP Ledger, built for fast cross-border payments, what drives its price and the main risks for regular buyers.
-date: 2026-11-16
+title: XRP explained: 100 billion coins, Ripple's escrow and a $3.65 record
+description: XRP in plain language: how the XRP Ledger works, Ripple's role and escrow, the SEC case, ETFs, its record and crashes, the main risks and what regular buyers should know.
+date: 2026-11-22
+kind: analysis
 ---
-**XRP** is the native token of the XRP Ledger, a blockchain built to move money across borders in seconds for a fraction of a cent — and one of the oldest and largest cryptocurrencies still trading.
+**XRP** is the coin of the XRP Ledger, a blockchain built for fast, cheap payments, and it is closely linked to the US company Ripple, which uses it for cross-border money transfers. All 100 billion XRP were created at the start in 2012, and the company holds a large share. XRP was worth about $58 billion in November 2026, among the ten largest crypto assets.
+
+> **Key takeaways**
+> - All 100 billion XRP were created in 2012; about 63.5 billion are in circulation and much of the rest sits in Ripple's escrow.
+> - The SEC sued Ripple in December 2020; the case ended in 2025, and US spot XRP ETFs launched in November 2025.
+> - The record price so far is $3.65 (July 2025); in November 2026 XRP traded below $1, about 75% lower.
+> - A transfer settles in about 3–5 seconds and costs a fraction of a cent.
 
 ## How it works
 
-The XRP Ledger went live in 2012. It has no miners: a network of independent validators agrees on the order of transactions, and a payment settles in about 3–5 seconds. Each transaction burns a tiny amount of XRP as a fee, which protects the network from spam. XRP can act as a "bridge" between two currencies, for example dollars to pesos, without banks holding money in advance in both countries.
+The XRP Ledger has no miners and no staking. A set of independent validators — run by universities, exchanges, companies and Ripple — agree on the order of transactions every few seconds; each user chooses which validators to trust. Every transaction burns a tiny amount of XRP as a fee, which protects the network from spam. The ledger also has a built-in exchange, so people can swap XRP for other tokens and stablecoins, including Ripple's own dollar stablecoin RLUSD, launched in December 2024.
 
-## Why it matters
+## Why people think it has value
 
-All 100 billion XRP were created at launch; no more can ever be made. Ripple, the US company behind much of XRP's development, holds a large share in escrow and since late 2017 has unlocked up to 1 billion XRP a month, returning what it does not use. In 2023 a US court ruled that XRP sold on public exchanges is not a security, and the SEC case ended in 2025 with a $125 million penalty for Ripple. That cleared the way for the first US spot XRP ETFs in November 2025. The surprising part: many of Ripple's own payment customers use its network without touching XRP at all.
+XRP is meant as a "bridge" currency: a bank or payment firm can convert dollars into XRP, send it abroad in seconds and convert it into pesos or yen on the other side, instead of keeping money parked in foreign accounts. Ripple sells payment services built on this idea. Fans also value XRP's large, loyal community, its listing on almost every exchange, and access through ETFs. Critics point out that many of Ripple's clients use its software without buying XRP.
 
-## Key numbers
+## The numbers right now
 
 - Price today: {{price:xrp}}
+- Record high: {{ath:xrp}} ({{athd:xrp}})
+- Price change over 12 months: {{chg1y:xrp}}
 - $10 a day for 5 years: {{dca:xrp:5}} from {{dcainv:5}} invested ({{dcaroi:xrp:5}})
 
-Compare it with bitcoin and ether on the [comparison page]({lang}/compare/).
+## Its story so far
+
+Jed McCaleb, Chris Larsen and Arthur Britto launched the XRP Ledger in 2012 and gave 80 billion XRP to the company that became Ripple. In December 2017 Ripple locked 55 billion XRP in escrow, releasing up to 1 billion a month and usually locking most of it back. XRP jumped to about $3.40 in January 2018 and then lost more than 90%. In December 2020 the US SEC sued Ripple, saying XRP was sold as an unregistered security; exchanges delisted it and the price collapsed. A July 2023 ruling found that XRP sold on exchanges was not a security, Ripple paid a $125 million penalty in 2024, and the case was closed in 2025. XRP set a new record in July 2025, US ETFs followed in November 2025, but by November 2026 the price had fallen below $1 as ETF holders pulled money out.
+
+## Alternatives
+
+For fast, cheap payments XRP's closest rival is [Stellar]({lang}/xlm/), founded by XRP co-creator Jed McCaleb. Dollar stablecoins compete for the same job of moving money across borders. As an investment, people usually compare XRP with [Bitcoin]({lang}/btc/), [Ethereum]({lang}/eth/) and [Solana]({lang}/sol/).
 
 ## Main risks
 
-XRP is volatile: after its January 2018 peak it lost more than 90% of its value. Ripple's large holdings and monthly unlocks can add selling pressure. Real-world demand for the token is still smaller than its fame, and rules for crypto differ by country. Buying a fixed amount regularly smooths the swings but does not remove the risk.
+- **Concentration:** Ripple and its founders control a large part of the supply, and regular escrow releases can add selling pressure.
+- **Adoption:** the price depends on hopes that banks will use XRP itself, not only Ripple's software; that has been slow.
+- **Big swings:** XRP fell more than 90% after 2018 and about 75% from its 2025 record.
+- **Regulation:** the US case is over, but rules elsewhere can change, and a single company in focus is an easy target.
+- **ETF flows:** money leaving ETFs can push the price down, as in November 2026.
+
+## What it means if you buy regularly
+
+XRP has spent long periods far below its peaks. Buying a fixed amount regularly averages the price you pay and spares you from guessing the bottom, but it does not remove the risk of losses. Many people keep crypto to a small share of savings they can afford to see fall sharply. Past results do not guarantee future returns.
 
 *Not investment advice.*
 
 ## Sources
 
-- [XRP Ledger developer docs: introduction, supply and escrow](https://git.inftf.org/ARCHIVE/xrpl-dev-portal/raw/commit/2b4592f1e45ce7b4a446fa22156e94f59feeae08/content/concept-xrp-ledger-intro.md)
-- [Ripple pays $125M to end the SEC case (Briefs, Oct 2025)](https://www.briefs.co/news/ripple-pays-125m-to-end-legal-battle-what-it-means-for-xrp-investors/)
-- [XRP: from SEC lawsuit to spot ETFs (BlockEden)](https://blockeden.xyz/forum/t/xrp-from-sec-lawsuit-to-7-etfs-a-tokenomics-analysis-of-the-comeback/236)
+- [XRP Ledger: About XRP (xrpl.org)](https://xrpl.org/about/xrp)
+- [Ripple: XRP escrow and supply](https://ripple.com/insights/ripple-escrows-55-billion-xrp-for-supply-predictability/)
+- [US spot XRP ETFs see largest weekly outflows in 8 months (KuCoin, November 2026)](https://www.kucoin.com/blog/xrp-etf-outflows-8-month-high-2026)
+- [XRP price, market cap and all-time high (CoinGecko)](https://www.coingecko.com/en/coins/ripple)
