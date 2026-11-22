@@ -708,7 +708,19 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
     alts = ''.join(f'<link rel="alternate" hreflang="{TR[lg]["loc"]}" href="{SITE + url(lg, p)}">' for lg in ORDER if has_page(lg, p) and (p not in A or page_ok(p, lg)))
     if p not in A or page_ok(p, 'en'):   # x-default only to an indexable English page
         alts += f'<link rel="alternate" hreflang="x-default" href="{SITE + url("en", p)}">'
+    # SEO (2026-11-23): BreadcrumbList from the page's own visible crumbs (Google shows the path instead of the raw URL)
+    _cm = _re.search(r'<nav class="crumbs">(.*?)</nav>', body, _re.S)
+    if _cm:
+        _items = [(_re.sub(r'<[^>]+>', '', t).strip(), h) for h, t in _re.findall(r'<a href="([^"]+)">(.*?)</a>', _cm.group(1))]
+        _last = _re.sub(r'<[^>]+>', '', _cm.group(1).split('</a>')[-1]).strip(' /\n')
+        _items = [(t, h if h.startswith('http') else SITE + h) for t, h in _items if t] + ([(html.unescape(_last), canon)] if _last else [])
+        if len(_items) >= 2:
+            jsonld = list(jsonld) + [{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+                {"@type": "ListItem", "position": i + 1, "name": html.unescape(t), "item": h} for i, (t, h) in enumerate(_items)]}]
     ld = ''.join(f'<script type="application/ld+json">{json.dumps(j, ensure_ascii=False)}</script>' for j in jsonld)
+    # SEO: Google cuts snippets at ~160 characters — trim long descriptions at a word boundary instead of mid-word
+    if len(desc) > 160:
+        desc = desc[:157].rsplit(' ', 1)[0].rstrip(' ,.;:—–-') + '…'
     X = S['x']
     blog_l = lang if lang in BLOG_LANGS else 'en'
     news_on = p in ('news', 'ai') or sec == 'activities' or (sec or '').startswith('blog') or (p or '').startswith('news/')
