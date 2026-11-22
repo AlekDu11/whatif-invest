@@ -94,7 +94,26 @@ async function bnAudit(n, a) {
 
 // candles for the token page chart (Binance Web3 kline service): [open, high, low, close, volume, ts_ms, count]
 const KI = { '1m': '1min', '5m': '5min', '15m': '15min', '1h': '1h', '4h': '4h', '1d': '1d' };
+// Official Binance Web3 API (owner's key, Market permission only): Vercel env BW3_KEY + BW3_SECRET. HMAC-SHA256 over
+// timestamp + METHOD + '/build' + path + '?' + query (+ body), base64; headers X-OC-APIKEY / X-OC-TIMESTAMP / X-OC-SIGN.
+const W3 = 'https://web3.binance.com/build';
+async function w3get(path, params) {
+  const key = process.env.BW3_KEY, sec = process.env.BW3_SECRET;
+  if (!key || !sec) throw new Error('no key');
+  const qs = new URLSearchParams(Object.entries(params).filter(([, v]) => v != null)).toString();
+  const ts = new Date().toISOString();
+  const sign = require('crypto').createHmac('sha256', sec).update(`${ts}GET/build${path}${qs ? '?' + qs : ''}`).digest('base64');
+  const r = await fetch(`${W3}${path}${qs ? '?' + qs : ''}`, { headers: { 'X-OC-APIKEY': key, 'X-OC-TIMESTAMP': ts, 'X-OC-SIGN': sign, 'X-OC-RECV-WINDOW': '15000' } });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok || j.code !== 0) throw new Error('w3 ' + r.status + ' ' + (j.code ?? '') + ' ' + (j.msg || ''));
+  return j.data;
+}
 async function kline(n, a, i) {
+  try {   // official Market API first, the public kline service as a fallback
+    const d = await w3get('/api/v1/dex/market/candles', { binanceChainId: BNC[n], tokenContractAddress: a, bar: i, limit: 300 });
+    const k = (d || []).map(c => [Math.floor(+c[5] / 1000), +c[0], +c[1], +c[2], +c[3], +c[4]]).filter(c => c[0] && isFinite(c[4]));
+    if (k.length > 1) return k;
+  } catch (e) { console.log('w3 candles', String(e.message || e)) }
   const r = await fetch(`https://dquery.sintral.io/u-kline/v1/k-line/candles?platform=${n === 'bsc' ? 'bsc' : n}&address=${encodeURIComponent(a)}&interval=${KI[i]}&limit=300&pm=p`,
     { headers: { 'Accept-Encoding': 'identity', 'User-Agent': 'binance-web3/1.1 (Skill)' } });
   if (!r.ok) throw new Error('kl ' + r.status);
@@ -136,6 +155,10 @@ async function pool(n, p, a) {
 }
 
 module.exports = async (req, res) => {
+  if (req.query && req.query.w3test === process.env.ALERTS_KEY && process.env.ALERTS_KEY) {   // owner check: /api/chart?w3test=<ALERTS_KEY>
+    let out; try { const d = await w3get('/api/v1/dex/market/supported/chain', {}); out = { ok: true, chains: (d || []).length } } catch (e) { out = { ok: false, e: String(e.message || e) } }
+    res.setHeader('Content-Type', 'application/json'); res.setHeader('Cache-Control', 'no-store'); return res.end(JSON.stringify(out));
+  }
   const q = req.query || {};
   const send = (code, obj, cache) => { res.statusCode = code; res.setHeader('Content-Type', 'application/json; charset=utf-8'); res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Cache-Control', 'public, max-age=30'); res.setHeader('CDN-Cache-Control', cache); res.end(JSON.stringify(obj)); };
