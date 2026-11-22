@@ -19,6 +19,7 @@ from i18n_s import S as SEA  # noqa: E402
 from i18n_i import I as INF  # noqa: E402
 from i18n_world import W as WA, WN, WD  # noqa: E402
 from i18n_ctry import C as CTRY, MKTS, MKT_LANG, CCY_SIGN  # noqa: E402  # noqa: E402
+from i18n_mem5 import MEM5  # noqa: E402  (memes: pick of the day + traffic light)
 from i18n_mem4 import MEM4  # noqa: E402  (memes: Binance Web3 stages + security check)
 from i18n_mem3 import MEM3  # noqa: E402  (memes hub: start here, honest numbers, 5 checks)
 from i18n_learn import LRN, TRACKS, TRACK_ICON  # noqa: E402  («Learn» section)
@@ -3998,8 +3999,11 @@ def memes_page(lang, ver):
                  f'<div class="card mhonest"><h2>{esc(M3["stats_h"])}</h2><div class="mstats">{stat_html}</div><p class="muted" style="font-size:12px">{esc(M3["src"])}</p></div></div></section>')
     checks = ''.join(f'<li>{esc(M3[k])}</li>' for k in ('c1', 'c2', 'c3', 'c4', 'c5'))
     check_blk = f'<section class="section card mcheck"><h2>✅ {esc(M3["chk_h"])}</h2><ol>{checks}</ol></section>'
+    M5 = MEM5[lang]
+    pick_blk = (f'<section class="section mpick"><h2>⭐ {esc(M5["pick_h"])}</h2><p class="muted">{esc(M5["pick_d"])}</p>'
+                f'<div class="mpgrid" id="mpick"><div class="empty">…</div></div></section>')
     body = (f'<div class="dexhero"><h1>{esc(t["h1"])}</h1><span class="livebadge"><i></i>{esc(t["upd"])}</span></div>'
-            f'{learn_blk}'
+            f'{pick_blk}{learn_blk}'
             f'<section class="section"><div class="dexmvs">{mv("gain", "🚀")}{mv("lose", "📉")}</div></section>'
             f'<section class="section"><div class="seg dextabs" id="dexv">{tabs}</div>'
             f'<div class="dexbar"><div class="seg" id="dexn">{seg}</div><label class="dexflt"><input type="checkbox" id="dexq" checked> {esc(t["flt"])}</label></div>'
@@ -4013,7 +4017,7 @@ def memes_page(lang, ver):
             f'<a class="card hcard" href="/go/pumpfun?from=memes-card&l={lang}" target="_blank" rel="sponsored nofollow noopener"><span>💊</span><b>pump.fun</b><small>Memecoin launchpad · code alessa</small></a>'
             f'<a class="card hcard" href="{url(lang, "exchanges")}"><span>₿</span><b>{esc(EX[lang]["h1"])}</b></a></div></section>'
             f'<section class="section dexrisk"><h3>{esc(t["risk_h"])}</h3><ul>{risks}</ul><p class="muted">{esc(t["disc"])}</p></section>')
-    cfg = dict(memes=dict(tok=url(lang, 'memes/token'), t=dict(trade=t['trade'], new=t['new'], lowliq=t['lowliq'], hot=t['hot'], net=t['net'], hold=M4['hold'], top10=M4['top10'], curve=M4['curve'])))
+    cfg = dict(memes=dict(tok=url(lang, 'memes/token'), t=dict(trade=t['trade'], new=t['new'], lowliq=t['lowliq'], hot=t['hot'], net=t['net'], hold=M4['hold'], top10=M4['top10'], curve=M4['curve'], mcs=t['mc'], vols=t['vol']), l5=MEM5[lang]))
     return shell(lang, 'memes', f'{t["h1"]} | {BRAND}', t['d'], body, cfg, ver)
 
 
@@ -4023,7 +4027,7 @@ def meme_token_page(lang, ver):
     t, u = MEM[lang], TR[lang]['ui']
     L = dict(mc=t['mc'], liq=t['liq'], vol=t['vol'], age=t['age'], tx=t['tx'], ca=t['ca'], copy=t['copy'], copied=t['copied'], links=t['links'],
              chart=t['chart'], nodata=t['nodata'], disc=t['disc'], net=t['net'], price=u['price'], trade=t['trade'],
-             rsk=MEM4[lang]['rsk'], low=MEM4[lang]['low'], med=MEM4[lang]['med'], high=MEM4[lang]['high'], note=MEM4[lang]['note'])
+             rsk=MEM4[lang]['rsk'], low=MEM4[lang]['low'], med=MEM4[lang]['med'], high=MEM4[lang]['high'], note=MEM4[lang]['note'], l5=MEM5[lang])
     body = (f'<nav class="crumbs"><a href="{url(lang, "memes")}">← {esc(t["back"])}</a></nav>'
             f'<div id="dexpool"><p class="muted">…</p></div>'
             f'<p class="muted" style="font-size:12px;margin-top:18px">{esc(t["disc"])} · {esc(t["src"])} · <a href="https://www.geckoterminal.com/" target="_blank" rel="noopener">GeckoTerminal</a></p>')

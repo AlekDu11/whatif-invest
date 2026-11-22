@@ -36,7 +36,7 @@ function norm(d) {
 const BN = 'https://web3.binance.com/bapi/defi';
 const BNC = { solana: 'CT_501', bsc: '56', base: '8453' };
 const BNN = { CT_501: 'solana', 56: 'bsc', 8453: 'base' };
-const SKIP = new Set(['SOL', 'WSOL', 'ETH', 'WETH', 'BTC', 'WBTC', 'CBBTC', 'BNB', 'WBNB', 'USDC', 'USDT', 'USD1', 'DAI', 'FDUSD', 'USDE', 'PYUSD', 'JITOSOL', 'MSOL', 'STETH', 'CBETH', 'ZEC', 'HYPE', 'HSOL', 'BNSOL', 'JUPSOL', 'XRP', 'DOGE', 'ADA', 'TRX', 'SUI', 'LINK', 'LTC', 'BCH', 'TON', 'AVAX', 'DOT', 'XLM', 'USDS', 'USDG']);
+const SKIP = new Set(['SOL', 'WSOL', 'ETH', 'WETH', 'BTC', 'WBTC', 'CBBTC', 'BNB', 'WBNB', 'USDC', 'USDT', 'USD1', 'DAI', 'FDUSD', 'USDE', 'PYUSD', 'JITOSOL', 'MSOL', 'STETH', 'CBETH', 'ZEC', 'HYPE', 'HSOL', 'BNSOL', 'JUPSOL', 'XRP', 'DOGE', 'ADA', 'TRX', 'SUI', 'LINK', 'LTC', 'BCH', 'TON', 'AVAX', 'DOT', 'XLM', 'USDS', 'USDG', 'RAY', 'JUP', 'ORCA', 'JTO', 'PYTH', 'CAKE', 'AERO', 'DRIFT', 'KMNO', 'MOOLAH', 'XVS', 'TWT']);
 // look-alike tickers (Armenian / Cherokee / Lisu letters posing as USDT etc.) are scam clones
 const FAKE = /[\u0530-\u058F\u13A0-\u13FF\uA4D0-\uA4FF\u2160-\u218F]/;
 const bnPost = async (path, body) => {
@@ -149,7 +149,7 @@ async function picks() {
   });
   ok.forEach(r => { const h = hype[String(r.a).toLowerCase()]; if (h) { r.hb = h.b; r.hs = h.s; r.hv = h.v } delete r.rl; });
   ok.sort((a, b) => ((b.hv || 0) > 0) - ((a.hv || 0) > 0) || (b.hv || 0) - (a.hv || 0) || b.vol - a.vol);
-  return ok.slice(0, 12);
+  return ok.slice(0, 9);
 }
 
 async function list(view, n) {

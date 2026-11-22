@@ -904,7 +904,18 @@ const DEXU=(()=>{
   const btns=(r,w)=>`<span class="dexgo">${BW.has(r.n)?`<a class="buy bnw" href="${go(r,'binance-web3',w)}" target="_blank" rel="sponsored nofollow noopener">Binance</a>`:''}${GM.has(r.n)?`<a class="buy" href="${go(r,'gmgn',w)}" target="_blank" rel="sponsored nofollow noopener">GMGN</a>`:''}<a class="buy" href="${go(r,'okx-wallet',w)}" target="_blank" rel="sponsored nofollow noopener">OKX</a></span>`;
   const ic=(r,sz=26)=>r.img?`<span class="ic"><img src="${esc(r.img)}" alt="" loading="lazy" width="${sz}" height="${sz}"></span>`:`<span class="ic" style="background:#64748b">${esc((r.s||'?').slice(0,2))}</span>`;
   const api=q=>fetch('/api/chart?'+q).then(r=>{ if(!r.ok) throw r.status; return r.json() });
-  return {NETN,big,age,pc,btns,ic,api,go,BW};
+  /* traffic light in plain words (owner 2026-11-22): Binance numbers → 🟢🟡🔴 + short reasons; F = strings MEM5 */
+  const light=(r,F)=>{ const why=[], d=r.at?(Date.now()-Date.parse(r.at))/864e5:null, nf=v=>Math.round(v).toLocaleString(T.intl||'en'), lv=r.risk&&r.risk.lvl?r.risk.lvl:(r.risk>=4?'HIGH':null);
+    let red=0, warn=0;
+    if(lv==='HIGH'){ red++; why.push(F.risk_hi) }
+    if(r.t10!=null){ if(r.t10>30){ (r.t10>50?red++:warn++); why.push(F.top10.replace('{p}',Math.round(r.t10))) } else if(r.h) why.push(F.spread.replace('{h}',nf(r.h))) }
+    if(r.liq!=null){ if(r.liq<10000){ red++; why.push(F.liq_low) } else if(r.liq<50000) warn++; else why.push(F.liq_ok) }
+    if(d!=null){ if(d<1){ warn++; why.push(F.new) } else why.push(F.old.replace('{d}',nf(d))) }
+    if(lv==='LOW') why.push(F.risk_ok); else if(lv==='MEDIUM') warn++;
+    const c=red?'r':(warn||r.t10==null?'y':'g'); return {c,t:F[c],why:why.slice(0,3)} };
+  const lightHtml=(r,F)=>{ const l=light(r,F); return `<div class="tl tl-${l.c}"><b>${{g:'🟢',y:'🟡',r:'🔴'}[l.c]} ${esc(l.t)}</b><ul>${l.why.map(w=>`<li>${esc(w)}</li>`).join('')}</ul></div>` };
+  const keep=r=>{ try{ sessionStorage.setItem('wi_dexrow',JSON.stringify(r)) }catch(e){} };
+  return {NETN,big,age,pc,btns,ic,api,go,BW,light,lightHtml,keep};
 })();
 (function(){
   const box=$('#dexb'); if(!box||!PAGE.memes) return; const L=PAGE.memes.t, U=DEXU; let net='all', view='trend', last=[], tmr;
@@ -915,6 +926,7 @@ const DEXU=(()=>{
   const qOn=()=>{ const q=$('#dexq'); return !q||q.checked };
   const uniq=l=>{ const s=new Set(); return l.filter(r=>{ const k=r.n+(r.a||r.p); if(s.has(k)) return false; s.add(k); return true }) };
   const link=r=>`${PAGE.memes.tok}?n=${encodeURIComponent(r.n)}&${r.p?'p='+encodeURIComponent(r.p):'a='+encodeURIComponent(r.a)}`;
+  box.addEventListener('click',e=>{ const a=e.target.closest('a[href*="?n="]'); if(!a) return; const k=new URL(a.href,location.href).searchParams; const r=last.find(x=>x.a===k.get('a')||(x.p&&x.p===k.get('p'))); if(r) U.keep(r) });
   function row(r){ const f=[]; if(r.t10!=null&&r.t10>40) f.push(`<i class="rf">${esc(L.top10)} ${Math.round(r.t10)}%</i>`);
     if(!qOn()||RUSH.has(view)){ const hrs=(Date.now()-Date.parse(r.at))/36e5;
     if(hrs<72) f.push(`<i class="rf">${esc(L.new)}</i>`); if(r.liq<50000) f.push(`<i class="rf">${esc(L.lowliq)}</i>`); if(r.liq>0&&r.vol/r.liq>20) f.push(`<i class="rf">${esc(L.hot)}</i>`) }
@@ -948,15 +960,18 @@ const DEXU=(()=>{
   const stat=(k,v)=>`<div class="dps"><small class="muted">${esc(k)}</small><b>${v}</b></div>`;
   const chg=(k,v)=>`<div class="dpc"><small class="muted">${k}</small><b class="${cls(U.pc(v))}">${fmtPct(U.pc(v))}</b></div>`;
   function show(r){ const inf=r.info||{}; if(inf.img&&!r.img) r.img=inf.img;
+    try{ const k=JSON.parse(sessionStorage.getItem('wi_dexrow')||'null'); if(k&&k.a===r.a){ ['h','t10','dev','ins','hb'].forEach(f=>{ if(r[f]==null&&k[f]!=null) r[f]=k[f] }); if(!r.at&&k.at) r.at=k.at } }catch(e){}
     document.title=`${r.nm||r.s} (${r.s}) — ${fmtPrice(r.pr)} | WhatIfStack`;
     const links=[...(inf.web||[]).map(w=>[w.replace(/^https?:\/\/(www\.)?/,'').replace(/\/$/,''),w]), inf.x?['X @'+inf.x,'https://x.com/'+inf.x]:null, inf.tg?['Telegram','https://t.me/'+inf.tg]:null].filter(Boolean);
     const desc=(inf.d||'').trim(); const short=desc.length>320?desc.slice(0,320).replace(/\s+\S*$/,'')+'…':desc;
     box.innerHTML=`<div class="dph">${U.ic(r,48)}<div><h1>${esc(r.nm||r.s)} <span class="muted">${esc(r.s)}</span></h1><span class="dexnet">${esc(U.NETN[r.n]||r.n)}</span>${r.q?` <span class="muted" style="font-size:13px">${esc(r.s)}/${esc(r.q)}</span>`:''}</div></div>
       <div class="dpp"><b class="dpprice">${fmtPrice(r.pr)}</b><span class="${cls(U.pc(r.c24))}">${fmtPct(U.pc(r.c24))} · 24h</span></div>
+      ${L.l5?U.lightHtml(r,L.l5):''}
       <div class="dpbtn">${U.BW.has(r.n)?`<a class="btn bnw" href="${U.go(r,'binance-web3','token')}" target="_blank" rel="sponsored nofollow noopener">${esc(L.trade)} · Binance Wallet</a>`:''}${['solana','base','bsc','eth','tron'].includes(r.n)?`<a class="btn" href="/go/gmgn?from=memes-token:${encodeURIComponent(r.n)}&l=${lang}&c=${encodeURIComponent(r.n)}&a=${encodeURIComponent(r.a)}" target="_blank" rel="sponsored nofollow noopener">${esc(L.trade)} · GMGN</a>`:''}<a class="btn ghost" href="/go/okx-wallet?from=memes-token:${encodeURIComponent(r.n)}&l=${lang}" target="_blank" rel="sponsored nofollow noopener">${esc(L.trade)} · OKX Wallet</a></div>
       <div class="dpchg">${chg('5m',r.c5)}${chg('1h',r.c1)}${chg('6h',r.c6)}${chg('24h',r.c24)}</div>
       <div class="dpstats">${stat(L.mc,r.mc?U.big(r.mc):'—')}${stat(L.liq,U.big(r.liq))}${stat(L.vol,U.big(r.vol))}${stat(L.tx,(r.tx||0).toLocaleString(T.intl||'en'))}${stat(L.age,U.age(r.at))}</div>
       ${U.BW.has(r.n)&&r.a?`<div class="card dpch"><div class="dpchh"><b>${esc(L.chart)}</b><span class="dpiv">${['1m','5m','15m','1h','4h','1d'].map(i=>`<button type="button" data-i="${i}"${i==='15m'?' class=on':''}>${i}</button>`).join('')}</span></div><div id="dpchart" style="height:320px"><div class="bload"><i></i></div></div><small class="muted">Binance Web3</small></div>`:''}
+      ${r.hb?`<p class="dphype"><b>🗣 ${esc(L.l5.why)}</b>${lang!=='en'?' <small class="muted">(EN)</small>':''}<br>${esc(r.hb)}</p>`:''}
       ${r.risk&&r.risk.lvl?`<div class="card dprisk r-${esc(r.risk.lvl.toLowerCase())}"><b>🛡️ ${esc(L.rsk)}: ${esc(L[{LOW:'low',MEDIUM:'med',HIGH:'high'}[r.risk.lvl]]||r.risk.lvl)}</b>${r.risk.hits&&r.risk.hits.length?`<ul>${r.risk.hits.map(h=>`<li>${esc(h)}</li>`).join('')}</ul>`:''}<small class="muted">${esc(L.note)}</small></div>`:''}
       ${short?`<p class="dpdesc">${esc(short)}</p>`:''}
       ${links.length?`<div class="dplinks">${links.map(([t,h])=>`<a class="bchip" href="${esc(h)}" target="_blank" rel="nofollow noopener">${esc(t)}</a>`).join('')}</div>`:''}
@@ -983,6 +998,19 @@ const DEXU=(()=>{
     draw(true) }
   const load=()=>U.api(`dex=pool&n=${encodeURIComponent(n)}&${AD.test(p)?'p='+encodeURIComponent(p):'a='+encodeURIComponent(a0)}`).then(show).catch(()=>{ box.innerHTML=`<p class="muted">${esc(L.nodata)}</p>`; setTimeout(load,15000) });
   load();
+})();
+/* ---------- memes «Pick of the day»: strict filter + Binance social buzz, traffic light in plain words ---------- */
+(function(){
+  const box=$('#mpick'); if(!box||!PAGE.memes) return; const U=DEXU, F=PAGE.memes.l5;
+  const link=r=>`${PAGE.memes.tok}?n=${encodeURIComponent(r.n)}&a=${encodeURIComponent(r.a)}`;
+  const card=r=>`<a class="card mpc" href="${link(r)}" data-a="${esc(r.a)}"><div class="mph">${U.ic(r,36)}<div><b>${esc(r.s)}</b> <span class="dexnet">${esc(U.NETN[r.n]||r.n)}</span><small class="muted">${esc(r.nm||'')}</small></div>
+      <div class="mpp"><b>${fmtPrice(r.pr)}</b><span class="${cls(U.pc(r.c24))}">${fmtPct(U.pc(r.c24))}</span></div></div>
+      ${U.lightHtml(r,F)}${r.hb?`<p class="mphype"><b>🗣 ${esc(F.why)}${lang!=='en'?' (EN)':''}:</b> ${esc(r.hb.length>170?r.hb.slice(0,170).replace(/\s+\S*$/,'')+'…':r.hb)}</p>`:''}
+      <small class="muted">${esc(PAGE.memes.t.mcs||'MC')} ${U.big(r.mc)} · ${esc(PAGE.memes.t.vols||'Vol')} ${U.big(r.vol)}</small></a>`;
+  let rows=[];
+  box.addEventListener('click',e=>{ const a=e.target.closest('.mpc'); if(!a) return; const r=rows.find(x=>x.a===a.dataset.a); if(r) U.keep(r) });
+  const load=()=>U.api('dex=picks').then(j=>{ rows=j.d||[]; box.innerHTML=rows.length?rows.map(card).join(''):`<p class="muted">${esc(F.none)}</p>` }).catch(()=>{ box.innerHTML=`<p class="muted">${esc(F.none)}</p>` });
+  load(); setInterval(()=>{ if(!document.hidden) load() },300000);
 })();
 /* ---------- share: one button -> phone share sheet, or a menu (networks + copy link) ---------- */
 (function(){
