@@ -17,8 +17,12 @@ OUT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 
 H = {'Origin': 'https://www.tradingview.com', 'Referer': 'https://www.tradingview.com/', 'User-Agent': 'Mozilla/5.0 (WhatIfStack tv-check)'}
 
 
+ALIAS = {'GATEIO': 'GATE', 'MOEX': 'RUS'}   # TradingView renamed these in its search; the widget accepts both names
+
+
 def exists(sym):
-    ex, tk = sym.split(':', 1)
+    ex0, tk = sym.split(':', 1)
+    ex = ALIAS.get(ex0, ex0)
     q = urllib.parse.urlencode({'text': tk, 'exchange': ex, 'hl': '0', 'lang': 'en', 'domain': 'production'})
     req = urllib.request.Request('https://symbol-search.tradingview.com/symbol_search/v3/?' + q, headers=H)
     with urllib.request.urlopen(req, timeout=20) as r:
@@ -27,7 +31,8 @@ def exists(sym):
         print('RAW', sym, json.dumps(j.get('symbols', [])[:3])[:700])
     for s in j.get('symbols', []):
         name = (s.get('symbol') or '').replace('<em>', '').replace('</em>', '')
-        if name.upper() == tk.upper() and (s.get('exchange') or '').upper() == ex.upper() or (s.get('prefix') or '').upper() == ex.upper() and name.upper() == tk.upper():
+        ids = {(s.get(k) or '').upper() for k in ('exchange', 'prefix', 'source_id')}
+        if name.upper() == tk.upper() and ex.upper() in ids:
             return 1
     return 0
 
