@@ -14,7 +14,7 @@ from the last successful run, so the site never breaks because of one bad day.
 Run: python3 scripts/fetch_data.py            (everything)
      python3 scripts/fetch_data.py --quick    (curated assets only, for testing)
 """
-import csv, io, json, math, os, sys, time, urllib.request
+import csv, io, json, math, os, sys, time, urllib.request, urllib.parse
 from datetime import datetime, timezone
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -63,6 +63,7 @@ BUDGET = 50 * 60
 
 
 def get_json(url, tries=3, timeout=30):
+    url = urllib.parse.quote(url, safe=':/?&=%,.-_~+')   # non-Latin tickers (e.g. 币安人生) → percent-encoded
     for k in range(tries):
         try:
             with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=timeout) as r:
