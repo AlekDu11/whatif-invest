@@ -23,6 +23,9 @@ OUT = os.path.join(ROOT, 'data/market.json')
 MIN_START = '2000-01'
 TOP_CRYPTO = 4000   # owner 2026-11-21: top 1–4000 by market cap like CoinMarketCap/CryptoRank (2026-11-20: 2000); pages outside TOP_N are static only in uk+en, the rest on demand
 CG_PAGES = 16       # CoinGecko /coins/markets pages of 250 = top 4000
+# owner 2026-11-23: STOP adding new coins for now — bring the existing ones to full quality first. Coins already in
+# market.json keep updating; a coin not there yet is skipped. Set False to grow again.
+CRYPTO_FROZEN = True
 NEW_HIST_BUDGET = 450   # new coins whose history is looked up per run (the rest wait for the next run) — keeps the workflow under ~1 h
 CG_HIST_BUDGET = 40     # of those, at most this many via CoinGecko market_chart (365 days, keyless rate limit)
 NOHIST = os.path.join(ROOT, 'data/crypto_nohist.json')   # coins with no history anywhere: retried after 7 days
@@ -865,6 +868,8 @@ def main():
                 a.update(s, src='binance')
             continue
         prev = old.get(base.lower()) or old.get(base.lower() + '-token') or {}
+        if CRYPTO_FROZEN and not quick and prev.get('tk') != base:
+            continue                                      # frozen: no new coins
         if r:
             s, src = binance_monthly(r['symbol']), 'binance'
         elif quick:
