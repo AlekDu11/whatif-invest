@@ -211,3 +211,4 @@
 - t4 channels EN, теми Economy & Finance + Business, інший текст → ad_t4, 2 Gram.
 - t5 users PL DE CZ IT ES GB, мова українська, теми крипта/інвестиції/фінанси, укр. текст → ad_t5, 2 Gram (UA у таргеті: «Budget replenishment is currently unavailable»).
 - Баланс 0.37.
+- 19:00: виведено #26 −1.00 (повністю) і #25 −0.99 (лишився 1.00). Баланс 2.36 Gram. Поповнення t1 (+2) чекає явного «так» власника.
