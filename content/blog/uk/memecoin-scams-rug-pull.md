@@ -2,11 +2,13 @@
 title: Скам із мемкоїнами: як працює rug pull і 7 перевірок за 2 хвилини
 description: 93% пулів на Raydium мали ознаки «м'якого» rug pull. Як працюють rug pull, honeypot і pump-and-dump та 7 швидких перевірок перед купівлею нового мемкоїна.
 date: 2026-11-20
-category: guides
+category: learn
 tags: memecoins, scams, rug-pull, dex
 assets: doge, pepe, bonk, sol
 stat: 93%
 stat_label: пулів Raydium з ознаками rug pull
+track: memes
+step: 4
 ---
 **Rug pull** («висмикнути килим») — це коли автори токена забирають гроші з пулу для торгівлі або скидають власні монети, і покупці лишаються з токеном, який ніхто не купить. Це найпоширеніший спосіб втратити гроші на мемкоїнах: Solidus Labs виявила, що **93%** із 361 тис. пулів ліквідності на Raydium (Solana) мали ознаки «м'якого» rug pull.
 

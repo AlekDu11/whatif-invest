@@ -2,8 +2,10 @@
 title: Jak kupić memecoina na Solanie: instrukcja krok po kroku z GMGN
 description: Jak bezpiecznie kupić memecoina na Solanie: załóż portfel, zasil go SOL, sprawdź kontrakt, płynność i holderów, ustaw slippage, opłać prowizje i sprzedaj.
 date: 2026-11-16
-category: guides
+category: learn
 assets: sol, bonk, wif
+track: memes
+step: 2
 ---
 **Jak kupić memecoina na Solanie?** W skrócie: zakładasz portfel z samodzielną kontrolą kluczy (self-custody), wpłacasz na niego trochę SOL, znajdujesz adres kontraktu tokena, sprawdzasz, czy to nie pułapka, i wymieniasz SOL na token na zdecentralizowanej giełdzie (DEX) albo w narzędziu tradingowym takim jak [GMGN](/go/gmgn?from=blog&l=pl). Ten poradnik prostym językiem przeprowadzi cię przez każdy krok.
 

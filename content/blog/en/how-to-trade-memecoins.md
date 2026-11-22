@@ -2,11 +2,13 @@
 title: How to trade memecoins on a DEX: 98.6% of new tokens fail, so here are the rules
 description: How memecoin trading on a DEX works, where to find trending tokens, how to check liquidity and age, and why 98.6% of Pump.fun tokens failed. Plain rules, no promises.
 date: 2026-11-20
-category: guides
+category: learn
 tags: memecoins, dex, solana, trading
 assets: doge, shib, pepe, bonk, wif, sol
 stat: 98.6%
 stat_label: of Pump.fun tokens were rug pulls or pump-and-dumps
+track: memes
+step: 3
 ---
 Trading memecoins means buying joke-themed tokens on a decentralized exchange (DEX), usually hours or days after they launch, and hoping to sell higher. It can multiply money fast, but it is closer to a casino than to investing: a 2025 Solidus Labs study found that **98.6%** of tokens launched on Pump.fun were rug pulls or pump-and-dump schemes.
 

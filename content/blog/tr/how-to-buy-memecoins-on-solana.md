@@ -2,8 +2,10 @@
 title: Solana'da memecoin nasıl alınır? GMGN ile adım adım rehber
 description: Solana'da memecoin nasıl alınır: cüzdan kurulumu, SOL yükleme, kontrat, likidite ve sahip kontrolü, slippage ayarı, işlem ücretleri ve satış adım adım.
 date: 2026-11-16
-category: guides
+category: learn
 assets: sol, bonk, wif
+track: memes
+step: 2
 ---
 **Solana'da memecoin nasıl alınır?** Kısaca: kendi kontrolünüzdeki bir cüzdan kurarsınız, içine biraz SOL koyarsınız, token'ın kontrat adresini bulursunuz, bunun bir tuzak olmadığını kontrol edersiniz ve SOL'u merkeziyetsiz bir borsada (DEX) ya da [GMGN](/go/gmgn?from=blog&l=tr) gibi bir işlem aracında token'a çevirirsiniz. Bu rehber her adımı sade bir dille anlatıyor.
 

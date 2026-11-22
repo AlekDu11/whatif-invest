@@ -2,8 +2,10 @@
 title: Como comprar memecoins na Solana: passo a passo com a GMGN
 description: Como comprar uma memecoin na Solana com segurança: crie a carteira, coloque SOL, confira contrato, liquidez e holders, ajuste o slippage e venda.
 date: 2026-11-16
-category: guides
+category: learn
 assets: sol, bonk, wif
+track: memes
+step: 2
 ---
 **Como comprar uma memecoin na Solana?** Resumindo: você cria uma carteira de autocustódia, coloca um pouco de SOL nela, encontra o endereço do contrato do token, confere se não é uma armadilha e troca SOL pelo token em uma exchange descentralizada (DEX) ou em uma ferramenta de trading como a [GMGN](/go/gmgn?from=blog&l=pt). Este guia explica cada etapa em linguagem simples.
 

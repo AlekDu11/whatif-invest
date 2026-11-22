@@ -2,8 +2,10 @@
 title: Cara beli memecoin di Solana: panduan langkah demi langkah dengan GMGN
 description: Cara beli memecoin di Solana dengan aman: siapkan wallet, isi SOL, cek kontrak, likuiditas dan holder, atur slippage, pahami biaya, sampai cara menjualnya.
 date: 2026-11-16
-category: guides
+category: learn
 assets: sol, bonk, wif
+track: memes
+step: 2
 ---
 **Bagaimana cara beli memecoin di Solana?** Singkatnya: Anda membuat wallet yang Anda kendalikan sendiri, mengisinya dengan sedikit SOL, mencari alamat kontrak token, memastikan token itu bukan jebakan, lalu menukar SOL dengan token tersebut di bursa terdesentralisasi (DEX) atau alat trading seperti [GMGN](/go/gmgn?from=blog&l=id). Panduan ini menjelaskan setiap langkah dengan bahasa sederhana.
 

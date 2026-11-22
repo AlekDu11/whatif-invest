@@ -2,8 +2,10 @@
 title: 如何在 Solana 上买 Meme 币：用 GMGN 的详细步骤
 description: Solana Meme 币怎么买才安全？从创建钱包、充值 SOL，到检查合约、流动性和持币地址，再到设置滑点、手续费和卖出，一步步讲清楚。
 date: 2026-11-16
-category: guides
+category: learn
 assets: sol, bonk, wif
+track: memes
+step: 2
 ---
 **如何在 Solana 上买 Meme 币？** 简单说：先创建一个自托管钱包，往里面转一些 SOL，找到代币的合约地址，确认它不是陷阱，然后在去中心化交易所（DEX）或 [GMGN](/go/gmgn?from=blog&l=zh) 这类交易工具上用 SOL 兑换代币。本文用大白话把每一步讲清楚。
 

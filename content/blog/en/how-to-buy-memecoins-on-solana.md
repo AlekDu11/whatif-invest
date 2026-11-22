@@ -2,8 +2,10 @@
 title: How to buy a memecoin on Solana: step-by-step with GMGN
 description: How to buy a memecoin on Solana safely: set up a wallet, fund it with SOL, check the contract, liquidity and holders, set slippage, pay fees and sell.
 date: 2026-11-16
-category: guides
+category: learn
 assets: sol, bonk, wif
+track: memes
+step: 2
 ---
 **How do you buy a memecoin on Solana?** In short: you set up a self-custody wallet, put some SOL in it, find the token's contract address, check that it is not a trap, and swap SOL for the token on a decentralised exchange (DEX) or a trading tool such as [GMGN](/go/gmgn?from=blog&l=en). This guide walks through every step in plain language.
 

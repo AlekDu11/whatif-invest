@@ -1012,3 +1012,6 @@ a.badge.tagc{text-decoration:none;color:inherit;border:1px solid var(--line)}a.b
 @media(max-width:640px){.stkc{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:4px}.stkc::-webkit-scrollbar{display:none}.stkc .chip,.stkc b{flex:none}}
 .egrid,.sgrid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}.sgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
 @media(max-width:700px){.sgrid{grid-template-columns:minmax(0,1fr)}}
+.lsteps{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px}.lsteps li::marker{color:var(--accent);font-weight:700}
+.lsteps a{display:flex;flex-direction:column;gap:2px;padding:8px 0;text-decoration:none;color:var(--text)}.lsteps a:hover b{color:var(--accent)}.lsteps .muted{font-size:13px}
+.lnext{display:flex;flex-direction:column;gap:4px;padding:16px;margin:18px 0;text-decoration:none;color:var(--text)}.lnext:hover b{color:var(--accent)}

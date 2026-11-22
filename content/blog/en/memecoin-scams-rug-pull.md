@@ -2,11 +2,13 @@
 title: Memecoin scams: how rug pulls work and 7 signs to check in 2 minutes
 description: 93% of Raydium pools showed soft rug pull traits. How rug pulls, honeypots and pump-and-dumps work, and 7 quick checks before buying a new memecoin.
 date: 2026-11-20
-category: guides
+category: learn
 tags: memecoins, scams, rug-pull, dex
 assets: doge, pepe, bonk, sol
 stat: 93%
 stat_label: of Raydium pools showed soft rug pull traits
+track: memes
+step: 4
 ---
 A **rug pull** is when the people behind a token pull the money out of its trading pool or dump their own coins, leaving buyers with a token nobody can buy back. It is the most common way people lose money on memecoins: Solidus Labs found that **93%** of 361,000 liquidity pools on Solana's Raydium showed «soft rug pull» traits.
 

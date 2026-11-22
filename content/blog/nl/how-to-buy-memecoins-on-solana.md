@@ -2,8 +2,10 @@
 title: Memecoin kopen op Solana: stap voor stap met GMGN
 description: Zo koop je een memecoin op Solana: wallet aanmaken, SOL storten, contract, liquiditeit en holders checken, slippage instellen, kosten betalen en verkopen.
 date: 2026-11-16
-category: guides
+category: learn
 assets: sol, bonk, wif
+track: memes
+step: 2
 ---
 **Hoe koop je een memecoin op Solana?** Kort gezegd: je maakt een wallet aan die je zelf beheert, zet er wat SOL op, zoekt het contractadres van de token op, controleert of het geen val is en ruilt SOL voor de token op een gedecentraliseerde exchange (DEX) of een tradingtool zoals [GMGN](/go/gmgn?from=blog&l=nl). Deze gids loopt elke stap in gewone taal met je door.
 

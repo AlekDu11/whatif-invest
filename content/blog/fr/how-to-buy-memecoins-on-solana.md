@@ -2,8 +2,10 @@
 title: Comment acheter un memecoin sur Solana : le guide pas à pas avec GMGN
 description: Acheter un memecoin sur Solana sans se faire piéger : wallet, approvisionnement en SOL, contrat, liquidité, holders, slippage, frais et revente.
 date: 2026-11-16
-category: guides
+category: learn
 assets: sol, bonk, wif
+track: memes
+step: 2
 ---
 **Comment acheter un memecoin sur Solana ?** En bref : vous créez un wallet en auto-garde, vous y déposez un peu de SOL, vous trouvez l'adresse du contrat du token, vous vérifiez que ce n'est pas un piège, puis vous échangez vos SOL contre le token sur un exchange décentralisé (DEX) ou un outil de trading comme [GMGN](/go/gmgn?from=blog&l=fr). Ce guide détaille chaque étape en langage simple.
 

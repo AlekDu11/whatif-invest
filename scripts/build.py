@@ -19,6 +19,7 @@ from i18n_s import S as SEA  # noqa: E402
 from i18n_i import I as INF  # noqa: E402
 from i18n_world import W as WA, WN, WD  # noqa: E402
 from i18n_ctry import C as CTRY, MKTS, MKT_LANG, CCY_SIGN  # noqa: E402  # noqa: E402
+from i18n_learn import LRN, TRACKS, TRACK_ICON  # noqa: E402  («Learn» section)
 from i18n_earn import EARN, WD as WDAY  # noqa: E402  (stocks today + earnings calendar)
 from i18n_ctry3 import SUFFIX3  # noqa: E402  (Yahoo suffix -> market, currency, TradingView exchange)
 from i18n_p import P as POLL, OPTS as POLL_OPTS  # noqa: E402
@@ -84,7 +85,7 @@ END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
 RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide', 'commodities', 'widgets', 'embed', 'dividends', 'average-price', 'ovdp', 'largest-companies', 'crypto-exchanges', 'partners', 'buy-stocks-ukraine', 'calculators', 'investors', 'watchlist', 'read', 'deposits-ukraine'}
-RESERVED |= {v[0] for v in MKTS.values()} | {'world-assets', 'activities', 'editorial-policy', 'about', 'portfolios', 'privacy', 'terms', 'categories'}
+RESERVED |= {v[0] for v in MKTS.values()} | {'learn', 'earnings-calendar', 'world-assets', 'activities', 'editorial-policy', 'about', 'portfolios', 'privacy', 'terms', 'categories'}
 # asset ids that clash with a language folder or a section get a suffix (ko -> ko-stock, fil -> fil-crypto)
 _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
 # delisted or stale series (last price older than a month) are dropped: "today" numbers would be false
@@ -237,7 +238,7 @@ def has_page(lang, aid):
         return lang in POLICY
     if aid in ('privacy', 'terms'):
         return lang in LEGAL[aid]
-    if aid in ('categories', 'crypto/gainers-losers', 'earnings-calendar') or (aid or '').startswith('categories/') or (aid or '').startswith('compare/'):
+    if aid in ('categories', 'crypto/gainers-losers', 'earnings-calendar', 'learn') or (aid or '').startswith('categories/') or (aid or '').startswith('compare/'):
         return True
     if aid == 'guide':
         return lang in GUIDE
@@ -260,7 +261,8 @@ def has_page(lang, aid):
 
 def static_asset(lang, aid):
     """Asset pages written as static files; the long tail in other languages is rendered by api/page.py (CDN-cached) to keep each deploy small."""
-    return lang in FULL or aid in TOP or (aid in A and MKT_LANG.get(A[aid].get('mkt')) == lang)
+    # 2026-11-22 (going to 10k stocks): uk/en static only for complete pages (page_ok) — incomplete ones are noindex anyway and render on demand
+    return aid in TOP or (lang in FULL and page_ok(aid, lang)) or (aid in A and MKT_LANG.get(A[aid].get('mkt')) == lang)
 
 
 # ---------------- math (mirrors src/app.js) ----------------
@@ -1886,6 +1888,29 @@ def earnings_page(lang, ver):
     return shell(lang, 'earnings-calendar', f'{E["cal_t"]} | {BRAND}', E['cal_lead'][:160], body, {}, ver, [ld])
 
 
+def lessons(lang):
+    """Lessons of the «Learn» section by track: blog posts with category: learn, ordered by step (then date)."""
+    by = {t: [] for t in TRACKS}
+    for slug, m in POSTS.get(lang, {}).items():
+        if m.get('category') == 'learn' and m.get('track') in by:
+            by[m['track']].append((int(m.get('step') or 99), m.get('date', ''), slug, m))
+    return {t: [x[2:] for x in sorted(v)] for t, v in by.items()}
+
+
+def learn_page(lang, ver):
+    """/learn/ (owner 2026-11-22): plain step-by-step lessons for complete beginners, grouped by track, 20 languages."""
+    L = LRN[lang]
+    secs = ''
+    for t, rows in lessons(lang).items():
+        if not rows:
+            continue
+        secs += (f'<section class="section card lrn"><h2>{TRACK_ICON[t]} {esc(L[t])}</h2><ol class="lsteps">'
+                 + ''.join(f'<li><a href="{url(lang, "blog/" + slug)}"><b>{esc(post_meta_title(m, lang))}</b><span class="muted">{esc(post_meta_title(dict(title=m.get("description", "")), lang))}</span></a></li>' for slug, m in rows)
+                 + '</ol></section>')
+    body = (f'<h1>{esc(L["h1"])}</h1><p class="lead">{esc(L["lead"])}</p>{secs or ""}<p class="muted">🎓 {esc(L["soon"])}</p>')
+    return shell(lang, 'learn', f'{L["h1"]} | {BRAND}', L['lead'][:160], body, {}, ver)
+
+
 def gainers_page(lang, ver):
     """/crypto/gainers-losers/: biggest 24h / 7d movers among the top 1000 coins. Static first view from our data, then live (api/quote?gl=1)."""
     t = GL[lang]
@@ -3291,7 +3316,7 @@ def habit_page(lang, sc, ver):
 def tools_menu(lang):
     t = TT[lang]
     S = TR[lang]
-    items = [('compare', S['nav_cmp']), ('converter', HCONV[lang]), ('largest-companies', LC[lang]['nav']), ('world-assets', WA[lang]['nav']),
+    items = [('learn', '🎓 ' + LRN[lang]['nav']), ('compare', S['nav_cmp']), ('converter', HCONV[lang]), ('largest-companies', LC[lang]['nav']), ('world-assets', WA[lang]['nav']),
              ('memes', MEM[lang]['nav']), ('categories', TG[lang]['nav']), ('bitcoin-halving', t['v_nav']), ('calculators', CH[lang][0])]
     if INVD:
         items.insert(3, ('investors', INV[lang]['nav']))
@@ -4050,9 +4075,9 @@ def hub(lang, slug, ver):
                     + ''.join(mini_row(lang, i, f'<span class="mc {"good" if sign > 0 else "bad"}">{pct(METRICS[i]["chg"])}</span>') for i in pool[:5]) + '</div>')
         today = f'<section class="section today stoday"><h2>{esc(EARN[lang]["today"])}</h2><div class="sgrid">{smv(1)}{smv(-1)}</div></section>'
         body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / {esc(label)}</nav><h1>{esc(h1)}</h1>'
-                f'<p class="lead">{esc(desc)}</p>{today}{earn_block(lang)}{rank}'
+                f'<p class="lead">{esc(desc)}</p>{earn_block(lang)}{rank}'
                 f'<section class="section"><h2>🧮 {esc(STK2[lang]["dca_h"])}</h2><p class="muted">{esc(STK2[lang]["dca_d"])}</p>'
-                f'<div class="hl">{cards}</div><div class="tabs" id="tabs" hidden></div>{filt}{table_block(lang, ids[:150], dca=True)}</section>')
+                f'<div class="hl">{cards}</div><div class="tabs" id="tabs" hidden></div>{filt}{table_block(lang, ids[:150], dca=True)}</section>{today}')   # owner 2026-11-22: «Stocks today» at the very bottom
         return shell(lang, slug, title, desc, body, dict(tab=cat, dca=1, stx=1), ver)
     body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / {esc(label)}</nav><h1>{esc(h1)}</h1>'
             f'<p class="lead">{esc(desc)}</p>{country_chips(lang) if cat == "stock" else ""}'
@@ -4803,8 +4828,8 @@ def blog_index(lang, ver):
     X = TR[lang]['x']
     items = sorted(POSTS.get(lang, {}).items(), key=lambda kv: kv[1].get('date', ''), reverse=True)
     cl = NW[lang]['cats'].split('|')
-    cmap = dict(zip(('analytics', 'guides', 'reports'), cl[1:]), ai=AIS[lang]['nav'], activities=ACT[lang]['nav'])
-    cats = [c for c in ('analytics', 'ai', 'activities', 'guides', 'reports') if any(m.get('category', 'analytics') == c for _, m in items)]
+    cmap = dict(zip(('analytics', 'guides', 'reports'), cl[1:]), ai=AIS[lang]['nav'], activities=ACT[lang]['nav'], learn=LRN[lang]['nav'])
+    cats = [c for c in ('analytics', 'ai', 'learn', 'activities', 'guides', 'reports') if any(m.get('category', 'analytics') == c for _, m in items)]
     tabs = (f'<div class="seg nchips" id="bcats"><button class="on" data-c="">{esc(cl[0])}</button>' + ''.join(f'<button data-c="{c}">{esc(cmap[c])}</button>' for c in cats) + '</div>') if len(cats) > 1 else ''
     cards = ''.join(
         f'<a class="card post" data-c="{m.get("category", "analytics")}" href="{url(lang, "blog/" + slug)}">'
@@ -4826,11 +4851,20 @@ def blog_post(lang, slug, ver):
     cards = ''.join(sc_block('card', [i], lang) for i in m['assets'][:4])
     w = S['w']
     cv = cover('blog', lang, slug)
-    crumb = (url(lang, 'activities'), ACT[lang]['nav']) if m.get('category') == 'activities' else (url(lang, 'blog'), NW[lang]['i_nav'])
+    crumb = ((url(lang, 'activities'), ACT[lang]['nav']) if m.get('category') == 'activities' else
+             (url(lang, 'learn'), '🎓 ' + LRN[lang]['nav']) if m.get('category') == 'learn' else (url(lang, 'blog'), NW[lang]['i_nav']))
+    nxt = ''
+    if m.get('category') == 'learn' and m.get('track') in TRACKS:   # «Next lesson» inside the same track
+        seq = [x[0] for x in lessons(lang)[m['track']]]
+        k = seq.index(slug) if slug in seq else -1
+        if 0 <= k < len(seq) - 1:
+            nm_ = post_meta_title(POSTS[lang][seq[k + 1]], lang)
+            nxt = f'<a class="card lnext" href="{url(lang, "blog/" + seq[k + 1])}"><span class="muted">{esc(LRN[lang]["next"])} →</span><b>{esc(nm_)}</b></a>'
+        nxt += f'<p><a class="chip" href="{url(lang, "learn")}">🎓 {esc(LRN[lang]["back"])}</a></p>'
     body = (f'<nav class="crumbs"><a href="{crumb[0]}">{crumb[1]}</a></nav><article class="art"><h1>{esc(title)}</h1>'
             + (f'<img class="cover" src="{cv}" alt="" width="1200" height="630">' if cv else '') +
             f'<div class="muted byline"><a href="{url(lang if lang in ABOUT else "en", "about")}">WhatIfStack Research</a> · {esc(m.get("date", ""))} · {S["updated"]} {UPDATED} · <a href="{pol_url(lang)}">{esc(ACT[lang]["pol"])}</a></div>'
-            + (act_facts(lang, m) + f'<div class="card awarn">⚠️ {esc(ACT[lang]["warn"])}</div>' if m.get('category') == 'activities' else '') + f'<div class="artbody">{html_body}</div>{track_block(lang, m["assets"])}{nl_block(lang, 'blog')}{follow_block(lang)}</article>'
+            + (act_facts(lang, m) + f'<div class="card awarn">⚠️ {esc(ACT[lang]["warn"])}</div>' if m.get('category') == 'activities' else '') + f'<div class="artbody">{html_body}</div>{nxt}{track_block(lang, m["assets"])}{nl_block(lang, 'blog')}{follow_block(lang)}</article>'
             f'<div class="postcards">{cards}</div>{poll_block(lang)}'
             f'<section class="banner section"><div><b>{w["cta"]}</b><p>{w["cta_text"]}</p></div><a class="btn" id="ctaBuy2" href="{url(lang, "exchanges")}">{w["cta"]} →</a></section>'
             + (f'<section class="section"><h2>{X["related"]}</h2><div class="posts">{rel_html}</div></section>' if rel else ''))
@@ -5111,6 +5145,8 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
         write(pre + 'crypto/gainers-losers/index.html', gainers_page(lang, ver))
         extra_pages.append('crypto/gainers-losers')
         write(pre + 'earnings-calendar/index.html', earnings_page(lang, ver))
+        write(pre + 'learn/index.html', learn_page(lang, ver))
+        extra_pages.append('learn')
         extra_pages.append('earnings-calendar')
         write(pre + 'categories/index.html', categories_hub(lang, ver))
         extra_pages.append('categories')

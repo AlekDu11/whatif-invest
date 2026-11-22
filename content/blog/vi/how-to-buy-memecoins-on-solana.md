@@ -2,8 +2,10 @@
 title: Cách mua memecoin trên Solana: hướng dẫn từng bước với GMGN
 description: Cách mua memecoin trên Solana an toàn: tạo ví, nạp SOL, kiểm tra hợp đồng, thanh khoản và holder, cài slippage, hiểu các loại phí và cách bán ra.
 date: 2026-11-16
-category: guides
+category: learn
 assets: sol, bonk, wif
+track: memes
+step: 2
 ---
 **Mua memecoin trên Solana như thế nào?** Nói ngắn gọn: bạn tạo một ví tự lưu ký, nạp vào một ít SOL, tìm địa chỉ hợp đồng của token, kiểm tra xem nó có phải bẫy không, rồi đổi SOL lấy token trên một sàn phi tập trung (DEX) hoặc công cụ giao dịch như [GMGN](/go/gmgn?from=blog&l=vi). Bài này giải thích từng bước bằng ngôn ngữ dễ hiểu.
 
