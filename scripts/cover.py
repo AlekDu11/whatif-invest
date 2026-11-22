@@ -32,6 +32,16 @@ BG, CARD, LINE = (12, 22, 19), (18, 32, 27), (24, 42, 36)
 TEXT, MUTED, GREEN, GOLD = (236, 244, 240), (150, 172, 163), (63, 209, 155), (240, 181, 58)
 LOGOS = os.path.join(ROOT, 'data', 'logos')
 _B = None
+# Non-Latin scripts: system fonts (Noto CJK, TLWG, FreeFont, DejaVu; libraqm shapes Arabic/Devanagari). Skipped when missing.
+_CJK = '/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc'
+SCRIPT_FONTS = {'ja': (_CJK, 0), 'ko': (_CJK, 1), 'zh': (_CJK, 2), 'th': ('/usr/share/fonts/opentype/tlwg/Loma-Bold.otf', 0),
+                'hi': ('/usr/share/fonts/truetype/freefont/FreeSansBold.ttf', 0), 'ar': ('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf', 0)}
+CHAR_WRAP = {'ja', 'zh'}   # no spaces between words
+
+
+def script_font(lang):
+    f = SCRIPT_FONTS.get(lang)
+    return f if f and os.path.exists(f[0]) else None
 
 
 def B():
@@ -56,10 +66,10 @@ def fits(text):
     return all(ord(c) in CMAP or c in ' \n' for c in text)
 
 
-def wrap(draw, text, font, width):
-    words, lines, cur = text.split(), [], ''
+def wrap(draw, text, font, width, chars=False):
+    words, lines, cur = (re.findall(r'[A-Za-z0-9.,%$~+\-–]+|.', text) if chars else text.split()), [], ''
     for w in words:
-        t = (cur + ' ' + w).strip()
+        t = (cur + w) if chars else (cur + ' ' + w).strip()
         if draw.textlength(t, font=font) <= width:
             cur = t
         else:
@@ -68,6 +78,12 @@ def wrap(draw, text, font, width):
             cur = w
     if cur:
         lines.append(cur)
+    if chars:   # CJK: a line never starts with closing punctuation
+        for i in range(1, len(lines)):
+            while lines[i] and lines[i][0] in '？！、。，）」』：；?!,.):;%':
+                lines[i - 1] += lines[i][0]
+                lines[i] = lines[i][1:]
+        lines = [ln.strip() for ln in lines if ln.strip()]
     return lines
 
 
@@ -91,8 +107,15 @@ def render(kind, lang, slug, meta, out):
         title = B().post_meta_title(dict(meta), lang)
     title = re.sub(r'\s+', ' ', title).strip()
     stat, stat_l = meta.get('stat', ''), meta.get('stat_label', '')
+    sf_ = None
     if not title or not fits(title + stat + stat_l + label(kind, lang, meta.get('category', 'analytics'))):
-        return False
+        sf_ = script_font(lang) if title else None
+        if not sf_:
+            return False
+    rtl = sf_ is not None and lang == 'ar'
+    kw = {'direction': 'rtl'} if rtl else {}
+    def TF(path, size):   # title/label font: the script font when the text is not Latin/Cyrillic
+        return ImageFont.truetype(sf_[0], size, index=sf_[1]) if sf_ else ImageFont.truetype(path, size)
     im = Image.new('RGB', (W, H), BG)
     d = ImageDraw.Draw(im)
     for x in range(0, W, 60):
@@ -118,24 +141,25 @@ def render(kind, lang, slug, meta, out):
     # brand + category
     stack(d, 64, 46, 2.1)
     d.text((120, 52), 'whatifstack', font=ImageFont.truetype(F_BOLD, 30), fill=TEXT)
-    cf = ImageFont.truetype(F_SEMI, 24)
+    cf = TF(F_SEMI, 24)
     cat = meta.get('label') or label(kind, lang, meta.get('category', 'analytics'))
-    cw = d.textlength(cat, font=cf)
+    cw = d.textlength(cat, font=cf, **kw)
     d.rounded_rectangle([W - 64 - cw - 36, 46, W - 64, 92], radius=23, fill=CARD, outline=LINE, width=2)
-    d.text((W - 64 - cw - 18, 55), cat, font=cf, fill=GREEN)
+    d.text((W - 64 - cw - 18, 55 if not sf_ else 53), cat, font=cf, fill=GREEN, **kw)
     # title: largest size that fits in 4 lines
     right = 64 + (360 if stat else 0)
     tw = W - 128 - (380 if stat else 0)
     for size in (68, 62, 56, 50, 46, 42):
-        f = ImageFont.truetype(F_BOLD, size)
-        lines = wrap(d, title, f, tw)
+        f = TF(F_BOLD, size)
+        lines = wrap(d, title, f, tw, chars=sf_ is not None and lang in CHAR_WRAP)
         if len(lines) <= 4:
             break
     lines = lines[:4]
     y = 150 + (4 - len(lines)) * size * 0.28
     for ln in lines:
-        d.text((64, y), ln, font=f, fill=TEXT)
-        y += size * 1.14
+        x0 = (64 + tw - d.textlength(ln, font=f, **kw)) if rtl else 64
+        d.text((x0, y), ln, font=f, fill=TEXT, **kw)
+        y += size * (1.14 if not sf_ else 1.3)
     # optional big number on the right
     if stat:
         for ss in (96, 84, 72, 62, 54, 46):   # shrink long stats so they never run into the title
@@ -145,9 +169,9 @@ def render(kind, lang, slug, meta, out):
                 break
         d.text((W - 64 - sw, 230), stat, font=sf, fill=GOLD if not stat.startswith(('-', '−')) else (240, 110, 110))
         if stat_l:
-            lf = ImageFont.truetype(F_TEXT, 24)
-            for k, ln in enumerate(wrap(d, stat_l, lf, 330)[:2]):
-                d.text((W - 64 - d.textlength(ln, font=lf), 350 + k * 32), ln, font=lf, fill=MUTED)
+            lf = TF(F_TEXT, 24)
+            for k, ln in enumerate(wrap(d, stat_l, lf, 330, chars=sf_ is not None and lang in CHAR_WRAP)[:2]):
+                d.text((W - 64 - d.textlength(ln, font=lf, **kw), 350 + k * 32), ln, font=lf, fill=MUTED, **kw)
     # bottom: asset logos + date + site
     x = 64
     for aid in [a.strip() for a in meta.get('assets', '').split(',') if a.strip()][:4]:
