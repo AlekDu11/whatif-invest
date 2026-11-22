@@ -40,8 +40,9 @@ The hub /learn/ lists them by track and step; each lesson links to the next one.
 2. ✅ 2026-11-22 How to buy memecoins on Solana (how-to-buy-memecoins-on-solana, all 20 languages)
 3. ✅ How to trade memecoins on a DEX (exists: how-to-trade-memecoins — translate to all 20)
 4. ✅ Memecoin scams and rug pulls (exists: memecoin-scams-rug-pull — translate to all 20)
-5. How to create a Solana wallet step by step (Phantom / OKX Wallet: install, seed phrase, address)
-6. How to check a memecoin before buying: liquidity, holders, age, contract (RugCheck, Bubblemaps, GeckoTerminal)
+5. NEXT (owner 2026-11-22: «everything from Binance for now») How to create a Binance Wallet (Web3 wallet in the Binance app) step by step: install/open, create wallet, back up, fund it, find a token by contract, buy with the Meme Rush / swap screen, check Binance's security audit first; link /go/binance-web3 as the sign-up link
+5b. How to connect Binance Wallet to a DEX site and move coins between Binance and the wallet (networks, test transfer)
+6. How to check a memecoin before buying: liquidity, holders, top-10 share, age, Binance security audit (and WhatIfStack's traffic light on /memes/)
 7. Story: Dogecoin — the joke that became a top-10 coin
 8. Story: Shiba Inu — from «Dogecoin killer» to one of the largest memecoins
 9. Story: PEPE, BONK, WIF — the 2023–2024 memecoin wave

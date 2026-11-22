@@ -3967,6 +3967,15 @@ def meme_stories(lang, t):
             f'<p class="muted" style="font-size:12px;margin-top:6px">{esc(t["st_note"])}</p></section>')
 
 
+def meme_lessons(lang):
+    """Memes learning track as (url, title): the language's lessons, the English one where a lesson is not translated yet."""
+    les = lessons(lang).get('memes') or []
+    if len(les) < len(lessons('en').get('memes') or []):
+        have = {sl for sl, _ in les}
+        les = [(sl, POSTS[lang][sl] if sl in have else m) for sl, m in lessons('en')['memes']]
+    return [(url(lang if sl in POSTS.get(lang, {}) else 'en', 'blog/' + sl), post_meta_title(m, lang)) for sl, m in les]
+
+
 def memes_page(lang, ver):
     """DEX memecoin hub (Fomo-style): movers + tabs Trending / Top gainers / Top volume / New pairs by network.
     Data comes from /api/chart?dex=… (our function, one cached GeckoTerminal fetch for everyone). Rows open /memes/token/;
@@ -3989,11 +3998,7 @@ def memes_page(lang, ver):
     th = '\u202f' if lang in ('uk', 'ru', 'fr', 'pl') else ('.' if dec == ',' else ',')
     stats = [('💀', f'68{dec}67%', M3['s1']), ('🌱', f'4{dec}55%', M3['s2']), ('🏭', f'~68{th}000', M3['s3'])]
     stat_html = ''.join(f'<div class="card mstat"><span>{ic}</span><b>{v}</b><small>{esc(lb)}</small></div>' for ic, v, lb in stats)
-    les = lessons(lang).get('memes') or []
-    if len(les) < len(lessons('en').get('memes') or []):   # lesson not yet translated → link the English one
-        have = {sl for sl, _ in les}
-        les = [(sl, POSTS[lang][sl] if sl in have else m) for sl, m in lessons('en')['memes']]
-    steps = ''.join(f'<li><a href="{url(lang if sl in POSTS.get(lang, {}) else "en", "blog/" + sl)}">{esc(post_meta_title(m, lang))}</a></li>' for sl, m in les[:6])
+    steps = ''.join(f'<li><a href="{h}">{esc(ti)}</a></li>' for h, ti in meme_lessons(lang)[:6])
     learn_blk = (f'<section class="section"><div class="mgrid"><div class="card mstart"><h2>🎓 {esc(M3["start_h"])}</h2><p class="muted">{esc(M3["start_d"])}</p>'
                  f'<ol class="lsteps">{steps}</ol><a class="chip" href="{url(lang, "learn")}">{esc(M3["all"])} →</a></div>'
                  f'<div class="card mhonest"><h2>{esc(M3["stats_h"])}</h2><div class="mstats">{stat_html}</div><p class="muted" style="font-size:12px">{esc(M3["src"])}</p></div></div></section>')
@@ -4031,6 +4036,8 @@ def meme_token_page(lang, ver):
     body = (f'<nav class="crumbs"><a href="{url(lang, "memes")}">← {esc(t["back"])}</a></nav>'
             f'<div id="dexpool"><p class="muted">…</p></div>'
             f'<p class="muted" style="font-size:12px;margin-top:18px">{esc(t["disc"])} · {esc(t["src"])} · <a href="https://www.geckoterminal.com/" target="_blank" rel="noopener">GeckoTerminal</a></p>')
+    M3 = MEM3[lang]
+    L['learn'] = dict(h=M3['start_h'], d=M3['start_d'], all=M3['all'], url=url(lang, 'learn'), ls=meme_lessons(lang)[:6])
     return shell(lang, 'memes/token', f'{t["h1"]} | {BRAND}', t['d'], body, dict(dexpool=dict(t=L, list=url(lang, 'memes'))), ver).replace(
         '<link rel="canonical"', '<meta name="robots" content="noindex, follow"><link rel="canonical"', 1)
 
