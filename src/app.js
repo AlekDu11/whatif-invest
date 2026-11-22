@@ -902,7 +902,7 @@ const DEXU=(()=>{
   const go=(r,p,where)=>`/go/${p}?from=${encodeURIComponent('memes-'+where+':'+r.n)}&l=${lang}&c=${encodeURIComponent(r.n)}&a=${encodeURIComponent(r.a)}`;
   const BW=new Set(['solana','bsc','base']);   // Binance Wallet (owner's referral, token deep link via /go/binance-web3)
   const btns=(r,w)=>`<span class="dexgo">${BW.has(r.n)?`<a class="buy bnw" href="${go(r,'binance-web3',w)}" target="_blank" rel="sponsored nofollow noopener">Binance</a>`:''}${GM.has(r.n)?`<a class="buy" href="${go(r,'gmgn',w)}" target="_blank" rel="sponsored nofollow noopener">GMGN</a>`:''}<a class="buy" href="${go(r,'okx-wallet',w)}" target="_blank" rel="sponsored nofollow noopener">OKX</a></span>`;
-  const ic=(r,sz=26)=>r.img?`<span class="ic"><img src="${esc(r.img)}" alt="" loading="lazy" width="${sz}" height="${sz}"></span>`:`<span class="ic" style="background:#64748b">${esc((r.s||'?').slice(0,2))}</span>`;
+  const ic=(r,sz=26)=>r.img?`<span class="ic"><img src="${esc(r.img)}" alt="" loading="lazy" referrerpolicy="no-referrer" width="${sz}" height="${sz}" onerror="this.parentNode.textContent='${esc((r.s||'?').slice(0,2)).replace(/'/g,'')}'"></span>`:`<span class="ic" style="background:#64748b">${esc((r.s||'?').slice(0,2))}</span>`;
   const api=q=>fetch('/api/chart?'+q).then(r=>{ if(!r.ok) throw r.status; return r.json() });
   /* traffic light in plain words (owner 2026-11-22): Binance numbers → 🟢🟡🔴 + short reasons; F = strings MEM5 */
   const light=(r,F)=>{ const why=[], d=r.at?(Date.now()-Date.parse(r.at))/864e5:null, nf=v=>Math.round(v).toLocaleString(T.intl||'en'), lv=r.risk&&r.risk.lvl?r.risk.lvl:(r.risk>=4?'HIGH':null);
@@ -1007,13 +1007,19 @@ const DEXU=(()=>{
   const RUSH={done:'done',soon:'soon',new:'new'};
   const okRush=r=>(r.t10==null||r.t10<=40)&&(r.ins==null||r.ins<=15)&&(r.dev==null||r.dev<=10)&&(r.liq||0)>=3000;   // hide obvious junk silently
   const link=r=>`${P.tok}?n=${encodeURIComponent(r.n)}&a=${encodeURIComponent(r.a)}`;
-  const row=r=>`<a class="mrow" href="${link(r)}" data-a="${esc(r.a)}">${U.ic(r,40)}<span class="mrn"><b>${esc(r.s)}</b><small class="muted">${fmtPrice(r.pr)}</small></span>
-    <span class="mrv"><b>${U.big(r.mc)} <small class="muted">MC</small></b><small class="${cls(U.pc(r.c24))}">${fmtPct(U.pc(r.c24))}</small></span></a>`;
+  const H=P.h||{}, num=v=>v==null?'—':Math.round(v).toLocaleString(T.intl||'en');
+  const head=`<div class="mrow mhead"><span class="mrk">#</span><span class="mrn">${esc(H.name||'')}</span><span class="mc-p">${esc(H.price||'')}</span><span class="mc-c">24h</span><span class="mc-m">${esc(H.mc||'')}</span><span class="mc-v">${esc(H.vol||'')}</span><span class="mc-l">${esc(H.liq||'')}</span><span class="mc-h">${esc(H.hold||'')}</span><span class="mc-a">${esc(H.age||'')}</span></div>`;
+  const row=(r,i)=>`<a class="mrow" href="${link(r)}" data-a="${esc(r.a)}"><span class="mrk">${i+1}</span>
+    <span class="mrn">${U.ic(r,36)}<span class="mrt"><b>${esc(r.s)}</b><small class="muted">${esc((r.nm&&r.nm!==r.s?r.nm+' · ':'')+(U.NETN[r.n]||r.n))}</small></span></span>
+    <span class="mc-p"><b>${fmtPrice(r.pr)}</b><small class="mob muted">${U.big(r.mc)} MC</small></span>
+    <span class="mc-c ${cls(U.pc(r.c24))}">${fmtPct(U.pc(r.c24))}</span>
+    <span class="mc-m">${U.big(r.mc)}</span><span class="mc-v">${U.big(r.vol)}</span><span class="mc-l">${U.big(r.liq)}</span>
+    <span class="mc-h">${num(r.h)}</span><span class="mc-a">${esc(U.age(r.at))}</span></a>`;
   function draw(){ let l=rows.slice(); const seen=new Set(); l=l.filter(r=>r.a&&!seen.has(r.a)&&seen.add(r.a));
     if(RUSH[view]) l=l.filter(okRush); else l=l.filter(r=>(r.liq||0)>=10000);
     if(view==='gain') l.sort((a,b)=>(b.c24||0)-(a.c24||0)); else if(view==='most') l.sort((a,b)=>(b.h||0)-(a.h||0));
     else if(view==='soon') l.sort((a,b)=>(b.prog||0)-(a.prog||0)); else if(RUSH[view]) l.sort((a,b)=>Date.parse(b.at)-Date.parse(a.at));
-    box.innerHTML=l.slice(0,50).map(row).join('')||`<div class="empty">—</div>` }
+    box.innerHTML=l.length?head+l.slice(0,50).map(row).join(''):`<div class="empty">—</div>` }
   async function load(){ const t=++tok; try{ const j=await U.api(`dex=${RUSH[view]||'trend'}&n=${net}`); if(t!==tok) return; rows=j.d||[]; draw() }catch(e){ if(t===tok&&!rows.length) box.innerHTML='<div class="empty">—</div>' } }
   $$('#mtab button').forEach(b=>b.onclick=()=>{ $$('#mtab button').forEach(x=>x.classList.toggle('on',x===b)); const was=RUSH[view]||'trend'; view=b.dataset.v; if((RUSH[view]||'trend')===was) draw(); else { box.innerHTML='<div class="empty">…</div>'; load() } });
   $$('#mnet button').forEach(b=>b.onclick=()=>{ $$('#mnet button').forEach(x=>x.classList.toggle('on',x===b)); net=b.dataset.n; box.innerHTML='<div class="empty">…</div>'; load() });

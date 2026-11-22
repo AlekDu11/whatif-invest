@@ -834,7 +834,7 @@ def own_chart(lang, a, aid):
                  f'<svg viewBox="0 0 {W} {H}" role="img" aria-label="{esc(OWN_CH[lang][0])}">{grid}'
                  f'<polygon points="{X(0):.1f},{H - B} {pts} {X(k - 1):.1f},{H - B}" fill="{col}" opacity=".08"/>'
                  f'<polyline points="{pts}" fill="none" stroke="{col}" stroke-width="2" vector-effect="non-scaling-stroke" stroke-linejoin="round"/></svg></div>')
-    xs = {'binance': 'binance', 'gate': 'gate', 'mexc': 'mexc', 'okx': 'okx', 'bybit': 'bybit'}.get(a.get('src') or ('binance' if a.get('binance') else ''))
+    xs = {'binance': 'binance', 'gate': 'gate', 'mexc': 'mexc', 'okx': 'okx'}.get(a.get('src') or ('binance' if a.get('binance') else ''))
     ysrc = f"x:{xs}:{a['tk']}" if a.get('cat') == 'crypto' and xs else (('cg:' + a['cgid']) if cg else (a.get('yahoo') or ''))
     lw = dict(y=ysrc, t=OWN_CH2[lang][0], avg=OWN_CH2[lang][1], all=OWN_CH[lang][1],
               yrs=[BP[lang]['yrs'].format(n=n) for n in (1, 3, 5)], intl=TR[lang]['loc'])
@@ -4025,7 +4025,7 @@ def memes_page(lang, ver):
             f'<section class="section mlist"><div class="seg mtabs" id="mtab">{tabs5}</div><div class="seg mnets" id="mnet">{nets5}</div>'
             f'<div class="mrows card" id="mrows"><div class="empty">…</div></div>'
             f'<p class="muted mfine">{esc(t["disc"])} · Binance Web3</p></section>')
-    cfg = dict(memes5=1, memes=dict(tok=url(lang, 'memes/token'), t=dict(trade=t['trade'], new=t['new'], lowliq=t['lowliq'], hot=t['hot'], net=t['net'], hold=M4['hold'], top10=M4['top10'], curve=M4['curve'], mcs=t['mc'], vols=t['vol']), l5=MEM5[lang]))
+    cfg = dict(memes5=1, memes=dict(tok=url(lang, 'memes/token'), h=dict(name=u['name'], price=u['price'], mc=t['mc'], vol=t['vol'], liq=t['liq'], hold=M4['hold'], age=t['age']), t=dict(trade=t['trade'], new=t['new'], lowliq=t['lowliq'], hot=t['hot'], net=t['net'], hold=M4['hold'], top10=M4['top10'], curve=M4['curve'], mcs=t['mc'], vols=t['vol']), l5=MEM5[lang]))
     return shell(lang, 'memes', f'{t["h1"]} | {BRAND}', t['d'], body, cfg, ver)
 
 
