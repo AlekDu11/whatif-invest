@@ -1,27 +1,57 @@
 ---
-title: Sky (SKY) nedir?
-description: Sky (eski adıyla MakerDAO) sade bir dille: DAI ve USDS stablecoinlerinin arkasındaki protokol, SKY token ne işe yarar, geri alımlar ve başlıca riskler.
-date: 2026-11-21
+title: Sky (SKY) nedir: eski MakerDAO, MKR başına 24.000 SKY ve 0,10 $ rekor
+description: Sky sade bir dille: DAI ve USDS stablecoin'lerinin arkasındaki protokol, SKY token ne işe yarar, geri alımlar, hikâyesi, rakipleri ve başlıca riskleri.
+date: 2026-11-23
+kind: analysis
 ---
-**Sky**, merkeziyetsiz finansın en eski projelerinden biri olan ve kriptoda milyarlarca doların dayandığı dijital dolarlar, yani DAI ve USDS stablecoinlerini çıkaran MakerDAO'nun yeni adı. SKY ise protokolü yöneten ve kârından pay alan token.
+**Sky**, merkeziyetsiz finansın en eski projelerinden MakerDAO'nun yeni adıdır; milyarlarca dolarlık kripto faaliyetinin dayandığı dijital dolarlar olan DAI ve USDS stablecoin'lerini çıkarır. SKY, protokolü yöneten ve kârından pay alan token'dır. Kasım 2026'da dolaşımdaki tüm SKY'ların değeri yaklaşık 970 milyon dolardı; kripto paralar arasında 70. sıra civarındaydı.
 
-## Nasıl çalışır?
+> **Öne çıkanlar**
+> - MakerDAO, DAI'yi Aralık 2017'de başlattı; 2024'te Sky oldu ve her eski MKR token'ı 24.000 SKY ile takas edilebiliyor.
+> - Yaklaşık 23,4 milyar SKY dolaşımda; bu, yaklaşık 23,5 milyarlık azami arza çok yakın.
+> - Protokol fazlasının bir kısmı piyasadan SKY alıyor; şimdiye kadar geri alımlara 100 milyon USDS'den fazla harcandı.
+> - Şimdiye kadarki rekor 0,101 $ (5 Ekim 2026); Kasım 2026'da SKY bunun yaklaşık %60 altında işlem görüyordu.
 
-Sky, teminatla desteklenen ve dolara sabitlenen stablecoinler üretir: kripto krediler, rezervdeki USDC ve tokenize ABD Hazine tahvilleri. Peg Stability Module herkesin USDC'yi bire bir DAI/USDS'ye çevirmesine izin verir; bu da fiyatı 1 $ civarında tutar. USDS yatıranlar, protokolün topladığı faizden ödenen Sky Savings Rate getirisini alır. SKY sahipleri faiz oranları, teminatlar ve risk ayarları için oy kullanır; SKY stake etmek ödül getirir ve protokol fazlasının bir kısmıyla piyasadan **SKY geri alımı** yapar.
+## Nasıl çalışır
 
-## Neden önemli?
+Sky, teminatla desteklenen ve dolara sabitlenen stablecoin'ler çıkarır: kripto krediler, rezervde tutulan USDC ve tokenize ABD hazine tahvilleri. Peg Stability Module adlı araç herkesin USDC'yi bire bir DAI ya da USDS ile takas etmesine izin verir; bu da fiyatı 1 $ civarında tutar. USDS yatıranlar, protokolün kredi ve rezervlerden kazandığı faizle ödenen Sky Savings Rate getirisini alır. Kredi platformu Spark gibi bazı birimler, Sky ekosisteminde yarı bağımsız "Star"lar olarak çalışır.
 
-MakerDAO, Rune Christensen tarafından kuruldu ve DAI'yi Aralık 2017'de başlattı; blokzincir üzerinde borç vermenin öncülerinden biri. 2024'te adı Sky oldu, USDS'yi çıkardı ve her eski MKR tokenını 24.000 SKY'ye çevirdi; SKY'nin birkaç sent etmesi ve dolaşımda yaklaşık 23,4 milyar token olması bundan. Şaşırtıcı bir bilgi: borç verme hizmeti Spark gibi yan projeler artık Sky ekosistemi içinde yarı bağımsız "Star"lar olarak çalışıyor.
+## Token ne işe yarar
 
-## Temel rakamlar
+SKY sahipleri faiz oranları, kabul edilen teminatlar ve risk ayarları için oy verir; yani protokolü fiilen onlar yönetir. SKY stake etmek ödül kazandırır ve protokol kârının bir kısmını açık piyasadan SKY geri almak için kullanır. Dolayısıyla token'ın değeri, ne kadar USDS ve DAI kullanıldığına ve protokolün bunlardan ne kadar faiz kazandığına bağlıdır. SKY'ın kendisi stablecoin değildir: fiyatı serbestçe hareket eder.
+
+## Şu anki rakamlar
 
 - Bugünkü fiyat: {{price:sky}}
+- Rekor: {{ath:sky}} ({{athd:sky}})
+- 12 aylık fiyat değişimi: {{chg1y:sky}}
 - 1 yıl boyunca günde 10 $: {{dca:sky:1}}, yatırılan {{dcainv:1}} ({{dcaroi:sky:1}})
 
-Zirveden ne kadar uzak olduğunu [zirveden uzaklık sayfamızda]({lang}/ath/) görün.
+## Hikâyesi
+
+Rune Christensen MakerDAO'yu 2014'te kurdu; DAI ise Aralık 2017'de Ethereum'da devreye girdi ve zincir üstü borç vermenin öncülerinden oldu. Protokol, bir çöküşün sistemi yetersiz teminatla bıraktığı Mart 2020'deki "Kara Perşembe"yi atlattı; daha sonra rezervlerine USDC ve hazine tahvili gibi gerçek dünya varlıkları ekledi. 2024'te MakerDAO adını Sky olarak değiştirdi, USDS'yi çıkardı ve her MKR'ı 24.000 SKY'a böldü; SKY'ın birkaç sent etmesinin nedeni bu. Kasım 2026'da bir rapor, hack ve yaptırımla bağlantılı 518 milyon dolarlık geçmiş akışı Sky'ın takas modülüyle ilişkilendirdi ve SKY bir günde yaklaşık %26 düştü; Sky ekibi bu sonuçlara itiraz ediyor.
+
+## Alternatifler
+
+Stablecoin'ler arasında USDS ve DAI, şirketlerin çıkardığı Tether'ın USDT'si ve Circle'ın USDC'siyle, ayrıca [Ethena]({lang}/ena/) gibi kripto tabanlı modellerle rekabet ediyor. Zincir üstü borç vermede ana rakip [Aave]({lang}/aave/); [Curve]({lang}/crv/) da kendi stablecoin'ini işletiyor.
 
 ## Başlıca riskler
 
-Sky büyük ölçüde USDC'ye bağımlı: rezervin yaklaşık 2,7 milyar doları tek bir Ethereum adresinde duruyor ve Circle mahkeme ya da devlet talebiyle adresleri teknik olarak dondurabilir. Kasım 2026'da bir rapor, hack ve yaptırımlarla bağlantılı 518 milyon dolarlık geçmiş akışı Sky'ın takas modülüyle ilişkilendirdi ve SKY bir günde yaklaşık %26 düştü; vakıf bu sonuçlara itiraz ediyor. Diğer riskler: akıllı sözleşme hataları, bir stablecoinin sabitini kaybetmesi, yönetimin birkaç büyük sahibin elinde olması ve stablecoin düzenlemeleri. Token, Ekim 2026 zirvesinin çok altında. Düzenli alım dalgalanmaları yumuşatır ama riski ortadan kaldırmaz.
+- **Sert dalgalanmalar:** SKY, Ekim 2026 rekoru ile kasım sonu arasında yaklaşık %60 değer kaybetti.
+- **USDC bağımlılığı:** rezervlerin büyük kısmı, çıkarıcısının mahkeme ya da devlet talebiyle dondurabileceği USDC'de.
+- **Uyum:** takas modülünden geçen yasa dışı akışlara dair Kasım 2026 raporu düzenleyicileri ve dondurmaları gündeme getirebilir.
+- **Yoğunlaşma:** yönetimi birkaç büyük sahip belirliyor ve kurucunun etkisi güçlü kalıyor.
+- **Teknoloji:** akıllı sözleşme hataları ya da bir stablecoin'in 1 $ bağını kaybetmesi zarara yol açabilir.
+
+## Düzenli alım yapıyorsanız bu ne anlama geliyor
+
+SKY yeni adıyla bir yılı biraz aşkın süredir işlem görüyor: Ekim 2026'da rekora çıktı, ardından sert düştü. Düzenli olarak sabit tutarda almak, fiyat düşükken daha çok, yüksekken daha az almak demektir; dibi tahmin etmeye çalışmazsınız ama kayıp riski ortadan kalkmaz. Birçok kişi SKY gibi token'ları, sert düşüşünü kaldırabileceği küçük bir birikim payıyla sınırlı tutar. Geçmiş sonuçlar gelecekteki getirilerin garantisi değildir.
 
 *Yatırım tavsiyesi değildir.*
+
+## Kaynaklar
+
+- [Sky — resmî site (sky.money)](https://sky.money/)
+- [What is Sky (SKY)? (Binance Academy)](https://www.binance.com/en/academy/articles/what-is-sky-sky)
+- [North Korean hackers used Sky's stablecoin system (CoinDesk, 19 Kasım 2026)](https://www.coindesk.com/business/2026/11/19/north-korean-hackers-used-sky-s-stablecoin-system-putting-billions-at-freeze-risk)
+- [Sky fiyatı, piyasa değeri ve tüm zamanların zirvesi (CoinGecko)](https://www.coingecko.com/en/coins/sky)
