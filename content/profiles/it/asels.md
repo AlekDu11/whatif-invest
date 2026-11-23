@@ -1,6 +1,6 @@
 ---
 title: Azioni Aselsan (ASELS) spiegate semplice: il colosso turco della difesa con 30,7 miliardi di dollari di ordini
-description: Aselsan in parole semplici: ordini record di 30,7 miliardi $, utile a 9 mesi +75%, Cupola d'acciaio, i rischi e cosa sapere se compri con regolarità.
+description: Aselsan in parole semplici: ordini per 30,7 miliardi $ a fine settembre 2026, utile a 9 mesi +75%, Cupola d'acciaio e i rischi.
 date: 2026-11-22
 kind: analysis
 stat: 30,7 mld $
@@ -33,6 +33,8 @@ Aselsan è stata fondata ad Ankara nel 1975, dopo l'embargo sulle armi imposto d
 Attenzione alla valuta. L'inflazione annua turca era ancora al 29,77% a ottobre 2026, quindi prezzi e cambio della lira si muovono molto: un guadagno misurato in lire sembra molto più grande dello stesso guadagno misurato in dollari.
 
 - Prezzo oggi: {{price:asels}}
+- Valore di mercato: {{mcap:asels}}
+- Massimo storico: {{ath:asels}} ({{athd:asels}}), {{fromath:asels}} da lì
 - 10 $ al giorno per 10 anni: {{dca:asels:10}} con {{dcainv:10}} investiti ({{dcaroi:asels:10}})
 
 ## Concorrenti

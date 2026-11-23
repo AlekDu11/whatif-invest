@@ -1,6 +1,6 @@
 ---
 title: Broadcom (AVGO) hissesi sade dille: Google, OpenAI ve Meta'nın arkasındaki özel yapay zekâ çipleri
-description: Broadcom sade dille: bir çeyrekte 16,7 milyar $ yapay zekâ çipi satışı (+%221), VMware yazılımı, Haziran 2026 rekorunun %34 altında bir hisse ve riskler.
+description: Broadcom sade dille: Ağustos 2026'ya kadarki çeyrekte 16,7 milyar $ yapay zekâ çipi satışı (+%221), VMware yazılımı, hissenin hikâyesi ve riskler.
 date: 2026-11-23
 kind: analysis
 ---
@@ -10,7 +10,7 @@ kind: analysis
 > - Gelir: 2 Ağustos 2026'da biten çeyrekte 29,6 milyar $, yıllık +%86; yalnızca yapay zekâ çipleri 16,7 milyar $ (+%221).
 > - Serbest nakit akışı 13,7 milyar $ — her 1 dolarlık gelirin 46 senti.
 > - Yönetim, 2027 mali yılında 2026'daki 58 milyar $'a karşılık yaklaşık 115 milyar $ yapay zekâ geliri bekliyor — bu bir tahmin, garanti değil.
-> - Hisse Haziran 2026'da 481,57 $ ile rekor kapanış yaptı ve 10 Kasım'da bunun yaklaşık %34 altındaydı.
+> - Rekor: {{ath:avgo}} ({{athd:avgo}}), ondan {{fromath:avgo}}
 
 ## Nasıl para kazanıyor
 
@@ -31,6 +31,8 @@ Broadcom, 2009'da halka açılan eski bir Hewlett-Packard çip birimi olan Avago
 Yapay zekâ, istikrarlı bir temettü ödeyicisini dünyanın en değerli şirketlerinden birine dönüştürdü. Hisse Haziran 2026'da 481,57 $ ile rekor kapanış yaptı. Eylül'deki rekor sonuçlardan sonra bile geriledi — finans direktörü özel çiplerin marjları baskıladığı uyarısında bulundu — ve Kasım'daki çip satış dalgasında daha da düştü. 10 Kasım'da %8,8 sıçrayarak 319,48 $'a çıktı, ancak yine de zirvenin yaklaşık %34 altındaydı.
 
 - Bugünkü fiyat: {{price:avgo}}
+- Piyasa değeri: {{mcap:avgo}}
+- Rekor: {{ath:avgo}} ({{athd:avgo}}), ondan {{fromath:avgo}}
 - 10 yıl boyunca günde 10 $: {{dca:avgo:10}}, yatırılan {{dcainv:10}} ({{dcaroi:avgo:10}})
 
 ## Rakipler

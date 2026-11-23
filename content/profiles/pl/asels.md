@@ -1,6 +1,6 @@
 ---
 title: Akcje Aselsan (ASELS) prostym językiem: turecki gigant zbrojeniowy z portfelem zamówień 30,7 mld $
-description: Aselsan w prostych słowach: rekordowy portfel zamówień 30,7 mld $, zysk po 9 miesiącach +75%, Stalowa Kopuła, ryzyka i co powinni wiedzieć regularnie kupujący.
+description: Aselsan w prostych słowach: portfel zamówień 30,7 mld $ na koniec września 2026, zysk po 9 miesiącach +75%, Stalowa Kopuła i ryzyka.
 date: 2026-11-22
 kind: analysis
 stat: 30,7 mld $
@@ -33,6 +33,8 @@ Aselsan powstał w Ankarze w 1975 roku, po amerykańskim embargu na broń, któr
 Pamiętaj o walucie. Roczna inflacja w Turcji wciąż wynosiła 29,77% w październiku 2026 roku, więc ceny i kurs liry mocno się wahają: zysk liczony w lirach wygląda na dużo większy niż ten sam zysk w dolarach.
 
 - Cena teraz: {{price:asels}}
+- Wartość rynkowa: {{mcap:asels}}
+- Rekord: {{ath:asels}} ({{athd:asels}}), {{fromath:asels}} od niego
 - 10 $ dziennie przez 10 lat: {{dca:asels:10}} przy wpłaconych {{dcainv:10}} ({{dcaroi:asels:10}})
 
 ## Konkurenci

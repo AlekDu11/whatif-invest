@@ -1,6 +1,6 @@
 ---
 title: Azioni Broadcom (AVGO) spiegate semplice: i chip IA su misura dietro Google, OpenAI e Meta
-description: Broadcom in parole semplici: 16,7 miliardi $ di chip IA in un trimestre (+221%), il software VMware, un titolo 34% sotto il record di giugno 2026 e i rischi.
+description: Broadcom in parole semplici: 16,7 miliardi $ di chip IA nel trimestre ad agosto 2026 (+221%), il software VMware, la storia del titolo e i rischi.
 date: 2026-11-23
 kind: analysis
 ---
@@ -10,7 +10,7 @@ kind: analysis
 > - Ricavi: 29,6 miliardi $ nel trimestre chiuso il 2 agosto 2026, +86% sull'anno; i soli chip IA 16,7 miliardi $ (+221%).
 > - Flusso di cassa libero di 13,7 miliardi $ — 46 centesimi per ogni dollaro di ricavi.
 > - Il management prevede circa 115 miliardi $ di ricavi IA nell'esercizio 2027, contro i 58 miliardi $ del 2026 — una previsione, non una garanzia.
-> - Il titolo ha chiuso al record di 481,57 $ a giugno 2026 e il 10 novembre valeva circa il 34% in meno.
+> - Massimo storico: {{ath:avgo}} ({{athd:avgo}}), {{fromath:avgo}} da lì
 
 ## Come guadagna
 
@@ -31,6 +31,8 @@ Broadcom è nata come Avago Technologies, ex divisione chip di Hewlett-Packard q
 L'IA ha trasformato un tranquillo pagatore di dividendi in una delle aziende più preziose al mondo. Il titolo ha chiuso al record di 481,57 $ a giugno 2026. È sceso perfino dopo i risultati record di settembre — il CFO ha avvertito che i chip su misura pesano sui margini — e ha perso ancora nella vendita generalizzata dei titoli dei chip di novembre. Il 10 novembre è balzato dell'8,8% a 319,48 $, ancora circa il 34% sotto il massimo.
 
 - Prezzo oggi: {{price:avgo}}
+- Valore di mercato: {{mcap:avgo}}
+- Massimo storico: {{ath:avgo}} ({{athd:avgo}}), {{fromath:avgo}} da lì
 - 10 $ al giorno per 10 anni: {{dca:avgo:10}} con {{dcainv:10}} investiti ({{dcaroi:avgo:10}})
 
 ## Concorrenti

@@ -1,6 +1,6 @@
 ---
 title: Saham Broadcom (AVGO) dijelaskan sederhana: chip AI khusus di balik Google, OpenAI dan Meta
-description: Broadcom dengan bahasa sederhana: penjualan chip AI $16,7 miliar dalam satu kuartal (+221%), software VMware, saham 34% di bawah rekor Juni 2026, dan risikonya.
+description: Broadcom dengan bahasa sederhana: penjualan chip AI $16,7 miliar pada kuartal hingga Agustus 2026 (+221%), software VMware, kisah sahamnya, dan risikonya.
 date: 2026-11-23
 kind: analysis
 ---
@@ -10,7 +10,7 @@ kind: analysis
 > - Pendapatan: $29,6 miliar pada kuartal hingga 2 Agustus 2026, naik 86% dalam setahun; chip AI saja $16,7 miliar (+221%).
 > - Arus kas bebas $13,7 miliar — 46 sen dari setiap dolar pendapatan.
 > - Manajemen memperkirakan pendapatan AI sekitar $115 miliar pada tahun fiskal 2027, naik dari $58 miliar pada 2026 — ini perkiraan, bukan jaminan.
-> - Saham ditutup pada rekor $481,57 pada Juni 2026 dan sekitar 34% lebih rendah pada 10 November.
+> - Rekor tertinggi: {{ath:avgo}} ({{athd:avgo}}), {{fromath:avgo}} dari rekor itu
 
 ## Cara menghasilkan uang
 
@@ -31,6 +31,8 @@ Broadcom berawal sebagai Avago Technologies, bekas unit chip Hewlett-Packard yan
 AI mengubah pembayar dividen yang stabil menjadi salah satu perusahaan paling berharga di dunia. Harga saham ditutup pada rekor $481,57 pada Juni 2026. Saham turun bahkan setelah hasil rekor September — CFO memperingatkan bahwa chip khusus menekan margin — dan jatuh lebih jauh dalam aksi jual saham chip November. Pada 10 November saham melonjak 8,8% ke $319,48, masih sekitar 34% di bawah puncaknya.
 
 - Harga hari ini: {{price:avgo}}
+- Nilai pasar: {{mcap:avgo}}
+- Rekor tertinggi: {{ath:avgo}} ({{athd:avgo}}), {{fromath:avgo}} dari rekor itu
 - $10 per hari selama 10 tahun: {{dca:avgo:10}} dari {{dcainv:10}} yang diinvestasikan ({{dcaroi:avgo:10}})
 
 ## Pesaing

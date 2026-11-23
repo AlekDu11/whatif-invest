@@ -1,6 +1,6 @@
 ---
 title: Aandeel Broadcom (AVGO) eenvoudig uitgelegd: de AI-chips op maat achter Google, OpenAI en Meta
-description: Broadcom in gewone taal: $16,7 miljard aan AI-chips in één kwartaal (+221%), VMware-software, een aandeel 34% onder het record van juni 2026, en de risico's.
+description: Broadcom in gewone taal: $16,7 miljard aan AI-chips in het kwartaal tot augustus 2026 (+221%), VMware-software, het verhaal van het aandeel en de risico's.
 date: 2026-11-23
 kind: analysis
 ---
@@ -10,7 +10,7 @@ kind: analysis
 > - Omzet: $29,6 miljard in het kwartaal tot 2 augustus 2026, +86% op jaarbasis; alleen AI-chips al $16,7 miljard (+221%).
 > - Vrije kasstroom $13,7 miljard — 46 cent van elke dollar omzet.
 > - Het management verwacht in boekjaar 2027 ongeveer $115 miljard AI-omzet, tegen $58 miljard in 2026 — een prognose, geen garantie.
-> - Het aandeel sloot in juni 2026 op een record van $481,57 en stond op 10 november ongeveer 34% lager.
+> - Recordkoers: {{ath:avgo}} ({{athd:avgo}}), {{fromath:avgo}} daarvan af
 
 ## Hoe het geld verdient
 
@@ -31,6 +31,8 @@ Broadcom begon als Avago Technologies, een voormalige chipdivisie van Hewlett-Pa
 AI veranderde een degelijke dividendbetaler in een van de meest waardevolle bedrijven ter wereld. Het aandeel sloot in juni 2026 op een record van $481,57. Het zakte zelfs na recordcijfers in september — de CFO waarschuwde dat chips op maat de marges drukken — en daalde verder in de chipuitverkoop van november. Op 10 november sprong het 8,8% omhoog naar $319,48, nog altijd ongeveer 34% onder de top.
 
 - Koers nu: {{price:avgo}}
+- Marktwaarde: {{mcap:avgo}}
+- Recordkoers: {{ath:avgo}} ({{athd:avgo}}), {{fromath:avgo}} daarvan af
 - $10 per dag gedurende 10 jaar: {{dca:avgo:10}} bij {{dcainv:10}} ingelegd ({{dcaroi:avgo:10}})
 
 ## Concurrenten

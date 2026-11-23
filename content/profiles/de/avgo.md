@@ -1,6 +1,6 @@
 ---
 title: Broadcom-Aktie (AVGO): die maßgeschneiderten KI-Chips hinter Google, OpenAI und Meta
-description: Broadcom einfach erklärt: 16,7 Mrd. $ KI-Chip-Umsatz in einem Quartal (+221 %), VMware-Software, Aktie 34 % unter dem Rekord vom Juni 2026, Risiken.
+description: Broadcom einfach erklärt: 16,7 Mrd. $ KI-Chip-Umsatz im Quartal bis August 2026 (+221 %), VMware-Software, die Geschichte der Aktie und die Risiken.
 date: 2026-11-23
 kind: analysis
 ---
@@ -10,7 +10,7 @@ kind: analysis
 > - Umsatz: 29,6 Mrd. $ im Quartal bis 2. August 2026, +86 % zum Vorjahr; allein KI-Chips 16,7 Mrd. $ (+221 %).
 > - Freier Cashflow 13,7 Mrd. $ – 46 Cent von jedem Umsatzdollar.
 > - Das Management erwartet im Geschäftsjahr 2027 rund 115 Mrd. $ KI-Umsatz nach 58 Mrd. $ in 2026 – eine Prognose, keine Garantie.
-> - Die Aktie schloss im Juni 2026 auf dem Rekord von 481,57 $ und lag am 10. November rund 34 % tiefer.
+> - Rekordhoch: {{ath:avgo}} ({{athd:avgo}}), {{fromath:avgo}} davon entfernt
 
 ## Womit das Unternehmen Geld verdient
 
@@ -31,6 +31,8 @@ Broadcom begann als Avago Technologies, eine frühere Chipsparte von Hewlett-Pac
 KI machte aus einem soliden Dividendenzahler eines der wertvollsten Unternehmen der Welt. Die Aktie schloss im Juni 2026 auf dem Rekord von 481,57 $. Sie gab sogar nach den Rekordzahlen im September nach – der Finanzchef warnte, maßgeschneiderte Chips drückten auf die Margen – und fiel beim Chip-Ausverkauf im November weiter. Am 10. November sprang sie um 8,8 % auf 319,48 $, lag aber immer noch rund 34 % unter dem Hoch.
 
 - Kurs aktuell: {{price:avgo}}
+- Marktwert: {{mcap:avgo}}
+- Rekordhoch: {{ath:avgo}} ({{athd:avgo}}), {{fromath:avgo}} davon entfernt
 - 10 $ pro Tag über 10 Jahre: {{dca:avgo:10}} bei {{dcainv:10}} Einsatz ({{dcaroi:avgo:10}})
 
 ## Konkurrenten

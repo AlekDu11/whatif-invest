@@ -1,6 +1,6 @@
 ---
 title: Acciones de Broadcom (AVGO): los chips de IA a medida detrás de Google, OpenAI y Meta
-description: Broadcom explicada fácil: 16.700 millones en ventas de chips de IA en un trimestre (+221%), software VMware, acción un 34% bajo su récord de junio y riesgos.
+description: Broadcom explicada fácil: 16.700 millones $ en chips de IA en el trimestre a agosto de 2026 (+221%), software VMware, la historia de la acción y riesgos.
 date: 2026-11-23
 kind: analysis
 ---
@@ -10,7 +10,7 @@ kind: analysis
 > - Ingresos: 29.600 millones de dólares en el trimestre cerrado el 2 de agosto de 2026, un 86% más que hace un año; solo los chips de IA, 16.700 millones (+221%).
 > - Flujo de caja libre de 13.700 millones: 46 centavos de cada dólar de ingresos.
 > - La dirección espera unos 115.000 millones de ingresos de IA en el año fiscal 2027, frente a 58.000 millones en 2026: es una previsión, no una garantía.
-> - La acción cerró en un récord de 481,57 dólares en junio de 2026 y el 10 de noviembre estaba alrededor de un 34% por debajo.
+> - Máximo histórico: {{ath:avgo}} ({{athd:avgo}}), {{fromath:avgo}} desde él
 
 ## Cómo gana dinero
 
@@ -31,6 +31,8 @@ Broadcom nació como Avago Technologies, una antigua división de chips de Hewle
 La IA convirtió a una pagadora de dividendos estable en una de las empresas más valiosas del mundo. La acción cerró en un récord de 481,57 dólares en junio de 2026. Cayó incluso después de los resultados récord de septiembre —el director financiero advirtió que los chips a medida presionan los márgenes— y bajó más en la ola de ventas de chips de noviembre. El 10 de noviembre subió un 8,8%, hasta 319,48 dólares, aún cerca de un 34% por debajo del máximo.
 
 - Precio actual: {{price:avgo}}
+- Valor de mercado: {{mcap:avgo}}
+- Máximo histórico: {{ath:avgo}} ({{athd:avgo}}), {{fromath:avgo}} desde él
 - 10 $ al día durante 10 años: {{dca:avgo:10}} con {{dcainv:10}} invertidos ({{dcaroi:avgo:10}})
 
 ## Competidores

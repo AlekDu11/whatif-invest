@@ -1,6 +1,6 @@
 ---
 title: Akcje Broadcom (AVGO) prostym językiem: chipy AI na zamówienie dla Google, OpenAI i Meta
-description: Broadcom w prostych słowach: 16,7 mld $ ze sprzedaży chipów AI w kwartał (+221%), oprogramowanie VMware, akcje 34% poniżej rekordu z czerwca 2026 i ryzyka.
+description: Broadcom w prostych słowach: 16,7 mld $ ze sprzedaży chipów AI w kwartale do sierpnia 2026 (+221%), oprogramowanie VMware, historia akcji i ryzyka.
 date: 2026-11-23
 kind: analysis
 ---
@@ -10,7 +10,7 @@ kind: analysis
 > - Przychody: 29,6 mld $ w kwartale do 2 sierpnia 2026 r., +86% rok do roku; same chipy AI 16,7 mld $ (+221%).
 > - Wolne przepływy pieniężne 13,7 mld $ — 46 centów z każdego dolara przychodu.
 > - Zarząd oczekuje ok. 115 mld $ przychodów z AI w roku obrotowym 2027 wobec 58 mld $ w 2026 — to prognoza, a nie gwarancja.
-> - Akcje zamknęły się na rekordowym poziomie 481,57 $ w czerwcu 2026 r., a 10 listopada były ok. 34% niżej.
+> - Rekord: {{ath:avgo}} ({{athd:avgo}}), {{fromath:avgo}} od niego
 
 ## Jak zarabia
 
@@ -31,6 +31,8 @@ Broadcom zaczynał jako Avago Technologies — dawny dział chipów Hewlett-Pack
 AI zmieniła stabilnego płatnika dywidend w jedną z najcenniejszych firm świata. Akcje zamknęły się na rekordowym poziomie 481,57 $ w czerwcu 2026 r. Spadały nawet po rekordowych wynikach we wrześniu — dyrektor finansowy ostrzegł, że chipy na zamówienie obniżają marże — i potaniały jeszcze bardziej podczas listopadowej wyprzedaży spółek chipowych. 10 listopada podskoczyły o 8,8%, do 319,48 $, ale wciąż były ok. 34% poniżej szczytu.
 
 - Cena teraz: {{price:avgo}}
+- Wartość rynkowa: {{mcap:avgo}}
+- Rekord: {{ath:avgo}} ({{athd:avgo}}), {{fromath:avgo}} od niego
 - 10 $ dziennie przez 10 lat: {{dca:avgo:10}} przy wpłaconych {{dcainv:10}} ({{dcaroi:avgo:10}})
 
 ## Konkurenci

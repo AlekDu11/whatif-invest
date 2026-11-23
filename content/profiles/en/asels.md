@@ -1,6 +1,6 @@
 ---
 title: Aselsan (ASELS) stock explained: Turkey's defence giant with a $30.7 billion backlog
-description: Aselsan in plain language: a record $30.7 billion order backlog, nine-month profit up 75%, Steel Dome air defence, risks and what regular buyers should know.
+description: Aselsan in plain language: $30.7 billion order backlog at end-September 2026, nine-month profit up 75%, Steel Dome, risks and what regular buyers should know.
 date: 2026-11-22
 kind: analysis
 stat: $30.7bn
@@ -33,6 +33,8 @@ Aselsan was founded in Ankara in 1975, after the US arms embargo that followed T
 Remember the currency. Turkish annual inflation was still 29.77% in October 2026, so prices and the lira's exchange rate move a lot: a gain measured in lira looks much bigger than the same gain measured in dollars.
 
 - Price today: {{price:asels}}
+- Market value: {{mcap:asels}}
+- Record high: {{ath:asels}} ({{athd:asels}}), {{fromath:asels}} from it
 - $10 a day for 10 years: {{dca:asels:10}} from {{dcainv:10}} invested ({{dcaroi:asels:10}})
 
 ## Competitors

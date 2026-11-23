@@ -1,6 +1,6 @@
 ---
 title: Aandeel Aselsan (ASELS) eenvoudig uitgelegd: de Turkse defensiereus met $30,7 miljard aan orders
-description: Aselsan in gewone taal: recordorderboek van $30,7 miljard, winst over negen maanden +75%, luchtverdediging Steel Dome, risico's en tips voor regelmatige kopers.
+description: Aselsan in gewone taal: orderboek van $30,7 miljard eind september 2026, winst over negen maanden +75%, Steel Dome, risico's en tips voor regelmatige kopers.
 date: 2026-11-22
 kind: analysis
 stat: $30.7bn
@@ -33,6 +33,8 @@ Aselsan werd in 1975 in Ankara opgericht, na het Amerikaanse wapenembargo dat vo
 Let op de valuta. De jaarlijkse inflatie in Turkije was in oktober 2026 nog 29,77%, dus prijzen en de wisselkoers van de lira bewegen flink: een winst gemeten in lira lijkt veel groter dan dezelfde winst gemeten in dollars.
 
 - Koers nu: {{price:asels}}
+- Marktwaarde: {{mcap:asels}}
+- Recordkoers: {{ath:asels}} ({{athd:asels}}), {{fromath:asels}} daarvan af
 - $10 per dag gedurende 10 jaar: {{dca:asels:10}} bij {{dcainv:10}} ingelegd ({{dcaroi:asels:10}})
 
 ## Concurrenten

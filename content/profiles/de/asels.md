@@ -1,6 +1,6 @@
 ---
 title: Aselsan-Aktie (ASELS): der türkische Rüstungsriese mit 30,7 Mrd. $ Auftragsbestand
-description: Aselsan einfach erklärt: Rekord-Auftragsbestand von 30,7 Mrd. $, Gewinn nach 9 Monaten +75 %, Stahlkuppel, Risiken und was regelmäßige Käufer wissen sollten.
+description: Aselsan einfach erklärt: 30,7 Mrd. $ Auftragsbestand Ende September 2026, Gewinn nach 9 Monaten +75 %, Stahlkuppel, Risiken und Tipps für regelmäßige Käufer.
 date: 2026-11-22
 kind: analysis
 stat: 30,7 Mrd. $
@@ -33,6 +33,8 @@ Aselsan wurde 1975 in Ankara gegründet, nach dem US-Waffenembargo, das auf die 
 Denk an die Währung. Die Jahresinflation in der Türkei lag im Oktober 2026 noch bei 29,77 %, daher schwanken Preise und Lira-Kurs stark: Ein Gewinn in Lira sieht viel größer aus als derselbe Gewinn in Dollar.
 
 - Kurs aktuell: {{price:asels}}
+- Marktwert: {{mcap:asels}}
+- Rekordhoch: {{ath:asels}} ({{athd:asels}}), {{fromath:asels}} davon entfernt
 - 10 $ pro Tag über 10 Jahre: {{dca:asels:10}} bei {{dcainv:10}} Einsatz ({{dcaroi:asels:10}})
 
 ## Konkurrenten

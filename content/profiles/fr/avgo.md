@@ -1,6 +1,6 @@
 ---
 title: Action Broadcom (AVGO) expliquée simplement : les puces IA sur mesure derrière Google, OpenAI et Meta
-description: Broadcom en clair : 16,7 Md$ de puces IA vendues en un trimestre (+221 %), le logiciel VMware, une action 34 % sous son record de juin 2026 et les risques.
+description: Broadcom en clair : 16,7 Md$ de puces IA vendues au trimestre clos en août 2026 (+221 %), le logiciel VMware, l'histoire de l'action et les risques.
 date: 2026-11-23
 kind: analysis
 ---
@@ -10,7 +10,7 @@ kind: analysis
 > - Chiffre d'affaires : 29,6 Md$ sur le trimestre clos le 2 août 2026, +86 % sur un an ; les puces IA à elles seules 16,7 Md$ (+221 %).
 > - Flux de trésorerie disponible de 13,7 Md$ — 46 cents pour chaque dollar de chiffre d'affaires.
 > - La direction prévoit environ 115 Md$ de revenus IA sur l'exercice 2027, contre 58 Md$ en 2026 — une prévision, pas une garantie.
-> - L'action a clôturé à un record de 481,57 $ en juin 2026 et valait environ 34 % de moins le 10 novembre.
+> - Record : {{ath:avgo}} ({{athd:avgo}}), {{fromath:avgo}} depuis
 
 ## Comment elle gagne de l'argent
 
@@ -31,6 +31,8 @@ Broadcom a commencé sous le nom d'Avago Technologies, une ancienne division de 
 L'IA a transformé un payeur de dividendes régulier en l'une des entreprises les plus valorisées au monde. L'action a clôturé à un record de 481,57 $ en juin 2026. Elle a reculé même après des résultats record en septembre — le directeur financier a averti que les puces sur mesure pèsent sur les marges — puis a encore baissé lors de la vague de ventes sur les puces en novembre. Le 10 novembre, elle a bondi de 8,8 % à 319,48 $, toujours environ 34 % sous son sommet.
 
 - Cours actuel : {{price:avgo}}
+- Valeur de marché : {{mcap:avgo}}
+- Record : {{ath:avgo}} ({{athd:avgo}}), {{fromath:avgo}} depuis
 - 10 $ par jour pendant 10 ans : {{dca:avgo:10}} pour {{dcainv:10}} investis ({{dcaroi:avgo:10}})
 
 ## Concurrents

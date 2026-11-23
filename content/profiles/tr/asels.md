@@ -1,6 +1,6 @@
 ---
 title: Aselsan (ASELS) hisse analizi: 30,7 milyar $ sipariş bakiyesiyle Türkiye'nin savunma devi
-description: Aselsan hisse sade dille: rekor 30,7 milyar $ sipariş bakiyesi, 9 ayda net kâr %75 arttı, Çelik Kubbe, riskler ve düzenli alım yapanların bilmesi gerekenler.
+description: Aselsan hisse sade dille: Eylül 2026 sonunda 30,7 milyar $ sipariş bakiyesi, 9 ayda net kâr %75 arttı, Çelik Kubbe ve riskler.
 date: 2026-11-22
 kind: analysis
 stat: 30,7 milyar $
@@ -33,6 +33,8 @@ Aselsan, Türkiye'nin 1974 Kıbrıs Barış Harekâtı'nın ardından ABD'nin uy
 Para birimini unutmayın. Türkiye'de yıllık enflasyon Ekim 2026'da hâlâ %29,77'ydi; bu yüzden fiyatlar ve TL'nin kuru çok oynak: TL bazında ölçülen bir kazanç, dolar bazında ölçülen aynı kazançtan çok daha büyük görünür.
 
 - Bugünkü fiyat: {{price:asels}}
+- Piyasa değeri: {{mcap:asels}}
+- Rekor: {{ath:asels}} ({{athd:asels}}), ondan {{fromath:asels}}
 - 10 yıl boyunca günde 10 $: {{dca:asels:10}}, yatırılan {{dcainv:10}} ({{dcaroi:asels:10}})
 
 ## Rakipler

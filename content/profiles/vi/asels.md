@@ -1,6 +1,6 @@
 ---
 title: Cổ phiếu Aselsan (ASELS) giải thích dễ hiểu: gã khổng lồ quốc phòng Thổ Nhĩ Kỳ với 30,7 tỷ USD đơn hàng
-description: Aselsan bằng ngôn ngữ đơn giản: lượng đơn hàng kỷ lục 30,7 tỷ USD, lãi 9 tháng tăng 75%, phòng không Steel Dome, rủi ro và điều người mua định kỳ cần biết.
+description: Aselsan bằng ngôn ngữ đơn giản: 30,7 tỷ USD đơn hàng tồn cuối tháng 9/2026, lãi 9 tháng tăng 75%, phòng không Steel Dome, và rủi ro.
 date: 2026-11-22
 kind: analysis
 stat: $30.7bn
@@ -33,6 +33,8 @@ Aselsan được thành lập tại Ankara năm 1975, sau lệnh cấm vận vũ
 Hãy nhớ yếu tố tiền tệ. Lạm phát hằng năm của Thổ Nhĩ Kỳ vẫn ở mức 29,77% vào tháng 10/2026, nên giá cả và tỷ giá lira biến động mạnh: một khoản lãi tính bằng lira trông lớn hơn nhiều so với cùng khoản lãi đó tính bằng USD.
 
 - Giá hôm nay: {{price:asels}}
+- Vốn hóa thị trường: {{mcap:asels}}
+- Đỉnh kỷ lục: {{ath:asels}} ({{athd:asels}}), cách đỉnh {{fromath:asels}}
 - 10 USD mỗi ngày trong 10 năm: {{dca:asels:10}} từ {{dcainv:10}} đã đầu tư ({{dcaroi:asels:10}})
 
 ## Đối thủ

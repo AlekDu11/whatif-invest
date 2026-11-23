@@ -1,6 +1,6 @@
 ---
 title: Action Aselsan (ASELS) expliquée simplement : le géant turc de la défense et ses 30,7 milliards de dollars de commandes
-description: Aselsan en clair : carnet record de 30,7 Md$, bénéfice sur 9 mois +75 %, Dôme d'acier, risques et ce qu'il faut savoir si vous achetez régulièrement.
+description: Aselsan en clair : carnet de 30,7 Md$ fin septembre 2026, bénéfice sur 9 mois +75 %, Dôme d'acier, risques et conseils aux acheteurs réguliers.
 date: 2026-11-22
 kind: analysis
 stat: 30,7 Md$
@@ -33,6 +33,8 @@ Aselsan a été fondé à Ankara en 1975, après l'embargo américain sur les ar
 Attention à la devise. L'inflation annuelle turque était encore de 29,77 % en octobre 2026 : les prix et le cours de la livre bougent beaucoup, et un gain mesuré en livres paraît bien plus gros que le même gain mesuré en dollars.
 
 - Cours actuel : {{price:asels}}
+- Valeur de marché : {{mcap:asels}}
+- Record : {{ath:asels}} ({{athd:asels}}), {{fromath:asels}} depuis
 - 10 $ par jour pendant 10 ans : {{dca:asels:10}} pour {{dcainv:10}} investis ({{dcaroi:asels:10}})
 
 ## Concurrents

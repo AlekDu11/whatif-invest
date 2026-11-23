@@ -1,6 +1,6 @@
 ---
 title: Ações da Aselsan (ASELS): a gigante turca de defesa com carteira de US$ 30,7 bilhões
-description: Aselsan sem complicação: carteira recorde de US$ 30,7 bilhões, lucro em 9 meses +75%, Domo de Aço, riscos e o que saber se você compra regularmente.
+description: Aselsan sem complicação: carteira de US$ 30,7 bilhões no fim de setembro de 2026, lucro em 9 meses +75%, Domo de Aço, riscos e dicas.
 date: 2026-11-22
 kind: analysis
 stat: US$ 30,7 bi
@@ -33,6 +33,8 @@ A Aselsan foi fundada em Ancara em 1975, após o embargo de armas dos EUA que se
 Atenção à moeda. A inflação anual turca ainda era de 29,77% em outubro de 2026, então os preços e o câmbio da lira oscilam muito: um ganho medido em liras parece bem maior do que o mesmo ganho medido em dólares.
 
 - Preço hoje: {{price:asels}}
+- Valor de mercado: {{mcap:asels}}
+- Máxima histórica: {{ath:asels}} ({{athd:asels}}), {{fromath:asels}} desde ela
 - US$ 10 por dia durante 10 anos: {{dca:asels:10}} com {{dcainv:10}} investidos ({{dcaroi:asels:10}})
 
 ## Concorrentes

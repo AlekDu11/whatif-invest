@@ -1,6 +1,6 @@
 ---
 title: Broadcom (AVGO) stock sa simpleng paliwanag: ang gumagawa ng custom AI chips para sa Google, OpenAI at Meta
-description: Broadcom sa simpleng salita: $16.7 bilyong benta ng AI chips sa isang quarter (+221%), VMware software, stock na 34% baba sa record ng Hunyo 2026, mga panganib.
+description: Broadcom sa simpleng salita: $16.7 bilyong benta ng AI chips sa quarter hanggang Agosto 2026 (+221%), VMware software, kuwento ng stock at mga panganib.
 date: 2026-11-23
 kind: analysis
 ---
@@ -10,7 +10,7 @@ Ang **Broadcom** ang kompanyang gumagawa ng AI chips ayon sa order ng malalaking
 > - Kita: $29.6 bilyon sa quarter hanggang 2 Agosto 2026, +86% kumpara noong nakaraang taon; ang AI chips lang ay $16.7 bilyon (+221%).
 > - Free cash flow na $13.7 bilyon — 46 sentimo sa bawat dolyar ng kita.
 > - Inaasahan ng management ang mga $115 bilyong kita mula sa AI sa fiscal 2027, mula $58 bilyon noong 2026 — forecast ito, hindi garantiya.
-> - Nagsara ang stock sa record na $481.57 noong Hunyo 2026 at mga 34% na mas mababa noong 10 Nobyembre.
+> - Pinakamataas na presyo: {{ath:avgo}} ({{athd:avgo}}), {{fromath:avgo}} mula roon
 
 ## Paano ito kumikita
 
@@ -31,6 +31,8 @@ Nagsimula ang Broadcom bilang Avago Technologies, dating chip unit ng Hewlett-Pa
 Ginawa ng AI ang isang matatag na nagbabayad ng dividend bilang isa sa pinakamahahalagang kompanya sa mundo. Nagsara ang presyo ng share sa record na $481.57 noong Hunyo 2026. Bumaba ito kahit matapos ang record na resulta noong Setyembre — nagbabala ang CFO na pinabababa ng custom chips ang margins — at lalo pang bumagsak sa chip sell-off noong Nobyembre. Noong 10 Nobyembre, tumalon ito nang 8.8% sa $319.48, pero mga 34% pa ring mas mababa sa tuktok.
 
 - Presyo ngayon: {{price:avgo}}
+- Halaga sa merkado: {{mcap:avgo}}
+- Pinakamataas na presyo: {{ath:avgo}} ({{athd:avgo}}), {{fromath:avgo}} mula roon
 - $10 kada araw sa loob ng 10 taon: {{dca:avgo:10}} mula sa {{dcainv:10}} na inilagay ({{dcaroi:avgo:10}})
 
 ## Mga kakumpitensya

@@ -1,6 +1,6 @@
 ---
 title: Aselsan (ASELS) stock sa simpleng paliwanag: ang higanteng depensa ng Turkey na may $30.7 bilyong order
-description: Aselsan sa simpleng salita: rekord na $30.7 bilyong backlog, tubo sa 9 na buwan +75%, Steel Dome air defense, mga panganib at tips para sa regular na bumibili.
+description: Aselsan sa simpleng salita: $30.7 bilyong backlog sa katapusan ng Setyembre 2026, tubo sa 9 na buwan +75%, Steel Dome at mga panganib.
 date: 2026-11-22
 kind: analysis
 stat: $30.7bn
@@ -33,6 +33,8 @@ Itinatag ang Aselsan sa Ankara noong 1975, matapos ang arms embargo ng US na kas
 Tandaan ang currency. Nasa 29.77% pa rin ang taunang inflation sa Turkey noong Oktubre 2026, kaya malaki ang galaw ng presyo at ng palitan ng lira: mas malaki ang tingin sa kitang sinusukat sa lira kaysa sa parehong kita kapag sinukat sa dolyar.
 
 - Presyo ngayon: {{price:asels}}
+- Halaga sa merkado: {{mcap:asels}}
+- Pinakamataas na presyo: {{ath:asels}} ({{athd:asels}}), {{fromath:asels}} mula roon
 - $10 kada araw sa loob ng 10 taon: {{dca:asels:10}} mula sa {{dcainv:10}} na inilagay ({{dcaroi:asels:10}})
 
 ## Mga kakumpitensya

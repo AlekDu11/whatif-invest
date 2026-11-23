@@ -1,6 +1,6 @@
 ---
 title: Cổ phiếu Broadcom (AVGO) giải thích dễ hiểu: chip AI đặt riêng đứng sau Google, OpenAI và Meta
-description: Broadcom bằng ngôn ngữ đơn giản: 16,7 tỷ USD doanh số chip AI trong một quý (+221%), phần mềm VMware, cổ phiếu thấp hơn 34% so với đỉnh tháng 6/2026 và rủi ro.
+description: Broadcom bằng ngôn ngữ đơn giản: 16,7 tỷ USD doanh số chip AI trong quý đến tháng 8/2026 (+221%), phần mềm VMware, câu chuyện cổ phiếu và rủi ro.
 date: 2026-11-23
 kind: analysis
 ---
@@ -10,7 +10,7 @@ kind: analysis
 > - Doanh thu: 29,6 tỷ USD trong quý kết thúc ngày 2/8/2026, tăng 86% so với năm trước; riêng chip AI đạt 16,7 tỷ USD (+221%).
 > - Dòng tiền tự do 13,7 tỷ USD — 46 cent trên mỗi đô la doanh thu.
 > - Ban lãnh đạo kỳ vọng doanh thu AI khoảng 115 tỷ USD trong năm tài chính 2027, tăng từ 58 tỷ USD năm 2026 — đây là dự báo, không phải cam kết.
-> - Cổ phiếu đóng cửa ở mức kỷ lục 481,57 USD vào tháng 6/2026 và thấp hơn khoảng 34% vào ngày 10/11.
+> - Đỉnh kỷ lục: {{ath:avgo}} ({{athd:avgo}}), cách đỉnh {{fromath:avgo}}
 
 ## Broadcom kiếm tiền thế nào
 
@@ -31,6 +31,8 @@ Broadcom khởi đầu là Avago Technologies, đơn vị chip cũ của Hewlett
 AI đã biến một công ty trả cổ tức đều đặn thành một trong những công ty giá trị nhất thế giới. Giá cổ phiếu đóng cửa ở mức kỷ lục 481,57 USD vào tháng 6/2026. Cổ phiếu giảm ngay cả sau kết quả kỷ lục tháng 9 — giám đốc tài chính cảnh báo chip đặt riêng làm giảm biên lợi nhuận — và giảm sâu hơn trong đợt bán tháo cổ phiếu chip tháng 11. Ngày 10/11, cổ phiếu tăng vọt 8,8% lên 319,48 USD, vẫn thấp hơn đỉnh khoảng 34%.
 
 - Giá hôm nay: {{price:avgo}}
+- Vốn hóa thị trường: {{mcap:avgo}}
+- Đỉnh kỷ lục: {{ath:avgo}} ({{athd:avgo}}), cách đỉnh {{fromath:avgo}}
 - 10 USD mỗi ngày trong 10 năm: {{dca:avgo:10}} từ {{dcainv:10}} đã đầu tư ({{dcaroi:avgo:10}})
 
 ## Đối thủ

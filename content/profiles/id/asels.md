@@ -1,6 +1,6 @@
 ---
 title: Saham Aselsan (ASELS) dijelaskan sederhana: raksasa pertahanan Turki dengan pesanan $30,7 miliar
-description: Aselsan dengan bahasa sederhana: rekor pesanan $30,7 miliar, laba sembilan bulan naik 75%, pertahanan udara Steel Dome, risiko dan tips bagi pembeli rutin.
+description: Aselsan dengan bahasa sederhana: pesanan $30,7 miliar per akhir September 2026, laba sembilan bulan naik 75%, Steel Dome, risiko dan tips bagi pembeli rutin.
 date: 2026-11-22
 kind: analysis
 stat: $30.7bn
@@ -33,6 +33,8 @@ Aselsan didirikan di Ankara pada 1975, setelah embargo senjata AS yang menyusul 
 Ingat soal mata uang. Inflasi tahunan Turki masih 29,77% pada Oktober 2026, sehingga harga dan kurs lira bergerak tajam: keuntungan yang dihitung dalam lira terlihat jauh lebih besar daripada keuntungan yang sama dalam dolar.
 
 - Harga hari ini: {{price:asels}}
+- Nilai pasar: {{mcap:asels}}
+- Rekor tertinggi: {{ath:asels}} ({{athd:asels}}), {{fromath:asels}} dari rekor itu
 - $10 per hari selama 10 tahun: {{dca:asels:10}} dari {{dcainv:10}} yang diinvestasikan ({{dcaroi:asels:10}})
 
 ## Pesaing

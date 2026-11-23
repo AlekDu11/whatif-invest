@@ -1,6 +1,6 @@
 ---
 title: Broadcom (AVGO) explained: the custom AI chips behind Google, OpenAI and Meta
-description: Broadcom in plain language: $16.7 billion of AI chip sales in one quarter (+221%), VMware software, a stock 34% below its June 2026 record, and the risks.
+description: "Broadcom in plain language: $16.7 billion of AI chip sales in the quarter to August 2026 (+221%), VMware software, the stock's story and the risks."
 date: 2026-11-18
 kind: analysis
 ---
@@ -10,7 +10,7 @@ kind: analysis
 > - Revenue: $29.6 billion in the quarter to 2 August 2026, +86% a year; AI chips alone $16.7 billion (+221%).
 > - Free cash flow $13.7 billion — 46 cents of every dollar of revenue.
 > - Management expects about $115 billion of AI revenue in fiscal 2027, up from $58 billion in 2026 — a forecast, not a guarantee.
-> - The stock closed at a record $481.57 in June 2026 and was about 34% lower on 10 November.
+> - Record high: {{ath:avgo}} ({{athd:avgo}}), {{fromath:avgo}} from it
 
 ## How it makes money
 
@@ -31,6 +31,8 @@ Broadcom started life as Avago Technologies, a former Hewlett-Packard chip unit 
 AI turned a steady dividend payer into one of the world's most valuable companies. The share price closed at a record $481.57 in June 2026. It slid even after record September results — the CFO warned that custom chips weigh on margins — and fell further in the November chip sell-off. On 10 November it jumped 8.8% to $319.48, still about 34% below the peak.
 
 - Price today: {{price:avgo}}
+- Market value: {{mcap:avgo}}
+- Record high: {{ath:avgo}} ({{athd:avgo}}), {{fromath:avgo}} from it
 - $10 a day for 10 years: {{dca:avgo:10}} from {{dcainv:10}} invested ({{dcaroi:avgo:10}})
 
 ## Competitors
