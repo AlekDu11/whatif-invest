@@ -1,10 +1,10 @@
 ---
-title: Orlen-Aktie (PKN): Polens Energieriese verdiente in 9 Monaten 21 Mrd. Złoty
-description: Orlen einfach erklärt – Kraftstoff, Gas, Strom und Tankstellen, 5,6 Mrd. Złoty Gewinn im 3. Quartal 2026, Rekorddividende, Staatskontrolle und Risiken.
+title: Orlen (PKN) Aktie: Polens Energieriese und sein Gewinn von 21 Mrd. Złoty in neun Monaten 2026
+description: Orlen einfach erklärt – Kraftstoff, Gas, Strom und Tankstellen, 5,6 Mrd. Złoty Gewinn im 3. Quartal 2026, 8 Złoty Dividende für 2025, Staatskontrolle, Risiken.
 date: 2026-11-19
 kind: analysis
 ---
-**Orlen** ist Polens größtes Unternehmen und der größte Energiekonzern Mitteleuropas. Er verarbeitet Rohöl zu Benzin und Diesel, fördert und verkauft Erdgas, erzeugt und verteilt Strom, stellt Kunststoffe und Chemikalien her und betreibt Tankstellen in Polen, Deutschland, Tschechien, Litauen und weiteren Ländern – hierzulande unter der Marke Star. Seit 1999 an der Warschauer Börse notiert, wurde Orlen 2022 durch die Übernahme des Rivalen Lotos und des Gaskonzerns PGNiG deutlich größer; der polnische Staat hält 49,9 % der Aktien.
+**Orlen** ist eines der größten Unternehmen Polens und der größte Energiekonzern Mitteleuropas. Er verarbeitet Rohöl zu Benzin und Diesel, fördert und verkauft Erdgas, erzeugt und verteilt Strom, stellt Kunststoffe und Chemikalien her und betreibt Tankstellen in Polen, Deutschland, Tschechien, Litauen und weiteren Ländern – hierzulande unter der Marke Star. Seit 1999 an der Warschauer Börse notiert, wurde Orlen 2022 durch die Übernahme des Rivalen Lotos und des Gaskonzerns PGNiG deutlich größer; der polnische Staat hält 49,9 % der Aktien.
 
 > **Das Wichtigste**
 > - Nettogewinn: 5,6 Mrd. Złoty im 3. Quartal 2026 und 21,3 Mrd. Złoty in den ersten neun Monaten des Jahres.
@@ -18,14 +18,16 @@ Orlen berichtet über vier Hauptsegmente, gemessen am LIFO-EBITDA (operativer Ge
 
 ## Die Zahlen aktuell
 
-Im Quartal bis 30. September 2026 erzielte Orlen 80,1 Mrd. Złoty Umsatz, rund 14,7 Mrd. Złoty LIFO-EBITDA (+66 % zum Vorjahr) und 5,6 Mrd. Złoty Nettogewinn. Analysten hatten mehr erwartet – etwa 15,3 Mrd. Złoty EBITDA und über 7,5 Mrd. Złoty Gewinn. Im Quartal investierte Orlen 7,8 Mrd. Złoty und hat etwas mehr Barmittel als Schulden. Im gesamten Jahr 2025 verdiente der Konzern 11,2 Mrd. Złoty bei 267,3 Mrd. Złoty Umsatz. Laut Management fallen nach Polens Übergewinnsteuer-Gesetz rund 2,4 Mrd. Złoty an, die im 4. Quartal verbucht werden.
+- Kurs aktuell: {{price:pkn}}
+- Marktwert: {{mcap:pkn}} ({{rank:pkn}} unter den größten Unternehmen der Welt auf WhatIfStack)
+- Rekordhoch: {{ath:pkn}} ({{athd:pkn}}), {{fromath:pkn}} davon entfernt
+- 10 $ täglich über 10 Jahre: {{dca:pkn:10}} bei {{dcainv:10}} Einsatz ({{dcaroi:pkn:10}})
+
+Im Quartal bis 30. September 2026 erzielte Orlen 80,1 Mrd. Złoty Umsatz, rund 14,7 Mrd. Złoty LIFO-EBITDA (+66 % zum Vorjahr) und 5,6 Mrd. Złoty Nettogewinn. Analysten hatten mehr erwartet – etwa 15,3 Mrd. Złoty EBITDA und über 7,5 Mrd. Złoty Gewinn. Im Quartal investierte Orlen 7,8 Mrd. Złoty und hatte Ende September etwas mehr Barmittel als Schulden. Im gesamten Jahr 2025 verdiente der Konzern 11,2 Mrd. Złoty bei 267,3 Mrd. Złoty Umsatz. Laut Management fallen nach Polens Übergewinnsteuer-Gesetz rund 2,4 Mrd. Złoty an, die im 4. Quartal verbucht werden.
 
 ## Die Geschichte der Aktie
 
-Jahrelang war Orlen billig bewertet, auch weil Anleger fürchteten, dass die Interessen des Staates vor denen der Aktionäre stehen. Die Fusionen mit Lotos und PGNiG 2022 vervielfachten die Größe des Konzerns, und 2024 übernahm ein neues Management unter CEO Ireneusz Fąfara, nachdem der frühere Chef Daniel Obajtek abberufen worden war. Starke Gewinne und Rekorddividenden lösten danach eine Rally aus: Der Börsenwert verdoppelte sich in zwölf Monaten, und der Kurs überstieg im Juli 2026 erstmals 150 Złoty. Seitdem hat er etwas nachgegeben; unsere Zahlen sind in US-Dollar, daher zählen auch Złoty-Schwankungen mit.
-
-- Kurs aktuell: {{price:pkn}}
-- 10 $ täglich über 10 Jahre: {{dca:pkn:10}} bei {{dcainv:10}} Einsatz ({{dcaroi:pkn:10}})
+Jahrelang war Orlen billig bewertet, auch weil Anleger fürchteten, dass die Interessen des Staates vor denen der Aktionäre stehen. Die Fusionen mit Lotos und PGNiG 2022 vervielfachten die Größe des Konzerns, und 2024 übernahm ein neues Management unter CEO Ireneusz Fąfara, nachdem der frühere Chef Daniel Obajtek abberufen worden war. Starke Gewinne und Rekorddividenden lösten danach eine Rally aus: Der Börsenwert verdoppelte sich in zwölf Monaten, und der Kurs überstieg im Juli 2026 erstmals 150 Złoty. Bis November 2026 hatte er von diesem Niveau etwas nachgegeben; unsere Zahlen sind in US-Dollar, daher zählen auch Złoty-Schwankungen mit.
 
 ## Konkurrenten
 

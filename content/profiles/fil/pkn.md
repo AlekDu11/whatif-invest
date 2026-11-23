@@ -1,10 +1,10 @@
 ---
-title: Orlen (PKN) stock sa simpleng paliwanag: kumita ng PLN 21 bilyon sa 9 na buwan ang energy giant ng Poland
-description: Orlen sa simpleng salita: gasolina, gas, kuryente at gasolinahan, PLN 5.6 bilyong kita sa Q3 2026, record na PLN 8 dividend, kontrol ng estado at mga panganib.
+title: Orlen (PKN) stock: ang energy giant ng Poland at ang PLN 21 bilyong kita nito sa unang siyam na buwan ng 2026
+description: Orlen sa simpleng salita: gasolina, gas, kuryente at gasolinahan, PLN 5.6 bilyong kita sa Q3 2026, PLN 8 dividend sa 2025, kontrol ng estado at mga panganib.
 date: 2026-11-23
 kind: analysis
 ---
-Ang **Orlen** ang pinakamalaking kumpanya sa Poland at pinakamalaking energy group sa Central Europe. Ginagawa nitong gasolina at diesel ang krudo, gumagawa at nagbebenta ng natural gas, lumilikha at namamahagi ng kuryente, gumagawa ng plastik at kemikal, at nagpapatakbo ng mga gasolinahan sa Poland, Germany, Czechia, Lithuania at iba pang bansa. Nakalista sa Warsaw mula 1999, lalo itong lumaki noong 2022 nang isama nito ang karibal na Lotos at ang gas company na PGNiG; 49.9% ng shares ay pag-aari ng estado ng Poland.
+Ang **Orlen** ay isa sa pinakamalalaking kumpanya sa Poland at ang pinakamalaking energy group sa Central Europe. Ginagawa nitong gasolina at diesel ang krudo, gumagawa at nagbebenta ng natural gas, lumilikha at namamahagi ng kuryente, gumagawa ng plastik at kemikal, at nagpapatakbo ng mga gasolinahan sa Poland, Germany, Czechia, Lithuania at iba pang bansa. Nakalista sa Warsaw mula 1999, lalo itong lumaki noong 2022 nang isama nito ang karibal na Lotos at ang gas company na PGNiG; 49.9% ng shares ay pag-aari ng estado ng Poland.
 
 > **Mahahalagang punto**
 > - Net profit: PLN 5.6 bilyon sa Q3 2026 at PLN 21.3 bilyon sa unang siyam na buwan ng taon.
@@ -18,14 +18,16 @@ Apat na pangunahing segment ang iniuulat ng Orlen, sinusukat sa LIFO EBITDA (ope
 
 ## Ang mga numero ngayon
 
-Sa quarter na nagtapos noong 30 Setyembre 2026, PLN 80.1 bilyon ang kita ng Orlen, mga PLN 14.7 bilyon ang LIFO EBITDA (+66% kumpara noong nakaraang taon) at PLN 5.6 bilyon ang net profit. Mas mataas ang inasahan ng mga analyst — mga PLN 15.3 bilyong EBITDA at higit PLN 7.5 bilyong profit. Nag-invest ito ng PLN 7.8 bilyon sa quarter at bahagyang mas marami ang cash nito kaysa utang. Sa buong 2025, kumita ito ng PLN 11.2 bilyon mula sa PLN 267.3 bilyong kita. Sinabi ng management na magbabayad ito ng mga PLN 2.4 bilyon sa ilalim ng windfall tax law ng Poland, na itatala sa Q4.
+- Presyo ngayon: {{price:pkn}}
+- Halaga sa merkado: {{mcap:pkn}} ({{rank:pkn}} sa pinakamalalaking kumpanya sa mundo sa WhatIfStack)
+- Pinakamataas na presyo: {{ath:pkn}} ({{athd:pkn}}), {{fromath:pkn}} mula roon
+- $10 kada araw sa loob ng 10 taon: {{dca:pkn:10}} mula sa {{dcainv:10}} na inilagay ({{dcaroi:pkn:10}})
+
+Sa quarter na nagtapos noong 30 Setyembre 2026, PLN 80.1 bilyon ang kita ng Orlen, mga PLN 14.7 bilyon ang LIFO EBITDA (+66% kumpara noong nakaraang taon) at PLN 5.6 bilyon ang net profit. Mas mataas ang inasahan ng mga analyst — mga PLN 15.3 bilyong EBITDA at higit PLN 7.5 bilyong profit. Nag-invest ito ng PLN 7.8 bilyon sa quarter at sa katapusan ng Setyembre ay bahagyang mas marami ang cash nito kaysa utang. Sa buong 2025, kumita ito ng PLN 11.2 bilyon mula sa PLN 267.3 bilyong kita. Sinabi ng management na magbabayad ito ng mga PLN 2.4 bilyon sa ilalim ng windfall tax law ng Poland, na itatala sa Q4.
 
 ## Ang kuwento ng stock
 
-Sa loob ng maraming taon, mura ang presyo ng Orlen, bahagi dahil nag-aalala ang mga investor na inuuna ang interes ng estado kaysa sa mga shareholder. Pinalaki nang ilang ulit ng mga merger noong 2022 sa Lotos at PGNiG ang laki nito, at noong 2024 pumalit ang bagong management sa ilalim ni CEO Ireneusz Fąfara matapos tanggalin ang dating pinuno na si Daniel Obajtek. Ang malalakas na profit at record na dividend ang nagpasigla sa rally: dumoble ang market value sa loob ng labindalawang buwan at unang lumampas sa PLN 150 ang presyo ng share noong Hulyo 2026. Bahagya itong bumaba mula noon; nasa US dollars ang aming mga numero, kaya mahalaga rin ang galaw ng zloty.
-
-- Presyo ngayon: {{price:pkn}}
-- $10 kada araw sa loob ng 10 taon: {{dca:pkn:10}} mula sa {{dcainv:10}} na inilagay ({{dcaroi:pkn:10}})
+Sa loob ng maraming taon, mura ang presyo ng Orlen, bahagi dahil nag-aalala ang mga investor na inuuna ang interes ng estado kaysa sa mga shareholder. Pinalaki nang ilang ulit ng mga merger noong 2022 sa Lotos at PGNiG ang laki nito, at noong 2024 pumalit ang bagong management sa ilalim ni CEO Ireneusz Fąfara matapos tanggalin ang dating pinuno na si Daniel Obajtek. Ang malalakas na profit at record na dividend ang nagpasigla sa rally: dumoble ang market value sa loob ng labindalawang buwan at unang lumampas sa PLN 150 ang presyo ng share noong Hulyo 2026. Pagsapit ng Nobyembre 2026, bahagya na itong bumaba mula sa antas na iyon; nasa US dollars ang aming mga numero, kaya mahalaga rin ang galaw ng zloty.
 
 ## Mga kakumpitensya
 

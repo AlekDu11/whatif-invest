@@ -1,10 +1,10 @@
 ---
-title: Akcje Orlenu (PKN) prostym językiem: polski gigant energetyczny zarobił 21 mld zł w 9 miesięcy
-description: Orlen w prostych słowach: paliwa, gaz, prąd i stacje, 5,6 mld zł zysku w III kw. 2026, rekordowe 8 zł dywidendy, kontrola państwa i ryzyka.
+title: Orlen (PKN): polski gigant energetyczny i jego 21 mld zł zysku za dziewięć miesięcy 2026
+description: Orlen w prostych słowach: paliwa, gaz, prąd i stacje, 5,6 mld zł zysku w III kw. 2026, 8 zł dywidendy za 2025, kontrola państwa i ryzyka.
 date: 2026-11-23
 kind: analysis
 ---
-**Orlen** to największa polska spółka i największa grupa energetyczna w Europie Środkowej. Przerabia ropę naftową na benzynę i olej napędowy, wydobywa i sprzedaje gaz ziemny, wytwarza i dystrybuuje energię elektryczną, produkuje tworzywa sztuczne i chemikalia, a także prowadzi stacje paliw w Polsce, Niemczech, Czechach, na Litwie i w innych krajach. Notowany na GPW od 1999 roku, w 2022 roku mocno urósł dzięki przejęciu konkurencyjnego Lotosu i gazowego PGNiG. Skarb Państwa ma 49,9% akcji.
+**Orlen** to jedna z największych polskich spółek i największa grupa energetyczna w Europie Środkowej. Przerabia ropę naftową na benzynę i olej napędowy, wydobywa i sprzedaje gaz ziemny, wytwarza i dystrybuuje energię elektryczną, produkuje tworzywa sztuczne i chemikalia, a także prowadzi stacje paliw w Polsce, Niemczech, Czechach, na Litwie i w innych krajach. Notowany na GPW od 1999 roku, w 2022 roku mocno urósł dzięki przejęciu konkurencyjnego Lotosu i gazowego PGNiG. Skarb Państwa ma 49,9% akcji.
 
 > **Najważniejsze**
 > - Zysk netto: 5,6 mld zł w III kwartale 2026 roku i 21,3 mld zł w pierwszych dziewięciu miesiącach roku.
@@ -18,14 +18,16 @@ Orlen raportuje cztery główne segmenty, a ich wyniki mierzy EBITDA LIFO (zysk 
 
 ## Liczby teraz
 
-W kwartale zakończonym 30 września 2026 roku Orlen miał 80,1 mld zł przychodów, około 14,7 mld zł EBITDA LIFO (+66% rok do roku) i 5,6 mld zł zysku netto. Analitycy liczyli na więcej — około 15,3 mld zł EBITDA i ponad 7,5 mld zł zysku. W kwartale spółka zainwestowała 7,8 mld zł, a gotówki ma nieco więcej niż długu. W całym 2025 roku zarobiła 11,2 mld zł przy 267,3 mld zł przychodów. Zarząd zapowiedział, że w ramach ustawy o podatku od nadzwyczajnych zysków zapłaci około 2,4 mld zł, co zostanie ujęte w IV kwartale.
+- Cena teraz: {{price:pkn}}
+- Wartość rynkowa: {{mcap:pkn}} ({{rank:pkn}} wśród największych firm świata na WhatIfStack)
+- Rekord: {{ath:pkn}} ({{athd:pkn}}), {{fromath:pkn}} od niego
+- 10 $ dziennie przez 10 lat: {{dca:pkn:10}} przy wpłaconych {{dcainv:10}} ({{dcaroi:pkn:10}})
+
+W kwartale zakończonym 30 września 2026 roku Orlen miał 80,1 mld zł przychodów, około 14,7 mld zł EBITDA LIFO (+66% rok do roku) i 5,6 mld zł zysku netto. Analitycy liczyli na więcej — około 15,3 mld zł EBITDA i ponad 7,5 mld zł zysku. W kwartale spółka zainwestowała 7,8 mld zł, a na koniec września miała nieco więcej gotówki niż długu. W całym 2025 roku zarobiła 11,2 mld zł przy 267,3 mld zł przychodów. Zarząd zapowiedział, że w ramach ustawy o podatku od nadzwyczajnych zysków zapłaci około 2,4 mld zł, co zostanie ujęte w IV kwartale.
 
 ## Historia akcji
 
-Przez lata Orlen był tani na giełdzie, m.in. dlatego, że inwestorzy obawiali się, iż interes państwa stawiany jest przed interesem akcjonariuszy. Fuzje z Lotosem i PGNiG w 2022 roku zwielokrotniły jego skalę, a w 2024 roku, po odwołaniu poprzedniego prezesa Daniela Obajtka, stery przejął nowy zarząd z prezesem Ireneuszem Fąfarą na czele. Wysokie zyski i rekordowe dywidendy napędziły potem hossę: w ciągu dwunastu miesięcy wartość rynkowa się podwoiła, a w lipcu 2026 roku kurs po raz pierwszy przekroczył 150 zł. Od tego czasu nieco się cofnął. Nasze dane podajemy w dolarach, więc liczą się też wahania złotego.
-
-- Cena teraz: {{price:pkn}}
-- 10 $ dziennie przez 10 lat: {{dca:pkn:10}} przy wpłaconych {{dcainv:10}} ({{dcaroi:pkn:10}})
+Przez lata Orlen był tani na giełdzie, m.in. dlatego, że inwestorzy obawiali się, iż interes państwa stawiany jest przed interesem akcjonariuszy. Fuzje z Lotosem i PGNiG w 2022 roku zwielokrotniły jego skalę, a w 2024 roku, po odwołaniu poprzedniego prezesa Daniela Obajtka, stery przejął nowy zarząd z prezesem Ireneuszem Fąfarą na czele. Wysokie zyski i rekordowe dywidendy napędziły potem hossę: w ciągu dwunastu miesięcy wartość rynkowa się podwoiła, a w lipcu 2026 roku kurs po raz pierwszy przekroczył 150 zł. Do listopada 2026 roku nieco się od tego poziomu cofnął. Nasze dane podajemy w dolarach, więc liczą się też wahania złotego.
 
 ## Konkurenci
 

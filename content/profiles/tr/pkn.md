@@ -1,10 +1,10 @@
 ---
-title: Orlen (PKN) hissesi sade dille: Polonya'nın enerji devi 9 ayda 21 milyar zloti kâr etti
-description: Orlen sade dille: akaryakıt, gaz, elektrik ve istasyonlar, 2026 3. çeyrekte 5,6 milyar zloti kâr, rekor 8 zloti temettü, devlet kontrolü ve riskler.
+title: Orlen (PKN) hissesi: Polonya'nın enerji devi ve 2026'nın ilk dokuz ayındaki 21 milyar zloti kârı
+description: Orlen sade dille: akaryakıt, gaz, elektrik ve istasyonlar, 2026 3. çeyrekte 5,6 milyar zloti kâr, 2025 için 8 zloti temettü, devlet kontrolü ve riskler.
 date: 2026-11-23
 kind: analysis
 ---
-**Orlen**, Polonya'nın en büyük şirketi ve Orta Avrupa'nın en büyük enerji grubudur. Ham petrolü benzin ve dizele dönüştürür, doğal gaz üretip satar, elektrik üretir ve dağıtır, plastik ve kimyasallar üretir; ayrıca Polonya, Almanya, Çekya, Litvanya ve diğer ülkelerde akaryakıt istasyonları işletir. 1999'dan beri Varşova borsasında işlem gören şirket, 2022'de rakibi Lotos'u ve gaz şirketi PGNiG'yi bünyesine katarak çok büyüdü; hisselerin %49,9'u Polonya devletine ait.
+**Orlen**, Polonya'nın en büyük şirketlerinden biri ve Orta Avrupa'nın en büyük enerji grubudur. Ham petrolü benzin ve dizele dönüştürür, doğal gaz üretip satar, elektrik üretir ve dağıtır, plastik ve kimyasallar üretir; ayrıca Polonya, Almanya, Çekya, Litvanya ve diğer ülkelerde akaryakıt istasyonları işletir. 1999'dan beri Varşova borsasında işlem gören şirket, 2022'de rakibi Lotos'u ve gaz şirketi PGNiG'yi bünyesine katarak çok büyüdü; hisselerin %49,9'u Polonya devletine ait.
 
 > **Öne çıkanlar**
 > - Net kâr: 2026'nın 3. çeyreğinde 5,6 milyar zloti, yılın ilk dokuz ayında 21,3 milyar zloti.
@@ -18,14 +18,16 @@ Orlen dört ana segment raporlar ve bunları LIFO FAVÖK ile ölçer (amortisman
 
 ## Şu anki rakamlar
 
-30 Eylül 2026'da biten çeyrekte Orlen 80,1 milyar zloti gelir, yaklaşık 14,7 milyar zloti LIFO FAVÖK (yıllık +%66) ve 5,6 milyar zloti net kâr elde etti. Analistler daha fazlasını bekliyordu — yaklaşık 15,3 milyar zloti FAVÖK ve 7,5 milyar zlotinin üzerinde kâr. Şirket çeyrekte 7,8 milyar zloti yatırım yaptı ve elindeki nakit borcundan biraz fazla. 2025'in tamamında 267,3 milyar zloti gelirle 11,2 milyar zloti kazandı. Yönetim, Polonya'nın olağanüstü kâr vergisi yasası kapsamında yaklaşık 2,4 milyar zloti ödeyeceğini ve bunun 4. çeyreğe yazılacağını açıkladı.
+- Bugünkü fiyat: {{price:pkn}}
+- Piyasa değeri: {{mcap:pkn}} (WhatIfStack'teki dünyanın en büyük şirketleri arasında {{rank:pkn}})
+- Rekor: {{ath:pkn}} ({{athd:pkn}}), ondan {{fromath:pkn}}
+- 10 yıl boyunca günde 10 $: {{dca:pkn:10}}, yatırılan {{dcainv:10}} ({{dcaroi:pkn:10}})
+
+30 Eylül 2026'da biten çeyrekte Orlen 80,1 milyar zloti gelir, yaklaşık 14,7 milyar zloti LIFO FAVÖK (yıllık +%66) ve 5,6 milyar zloti net kâr elde etti. Analistler daha fazlasını bekliyordu — yaklaşık 15,3 milyar zloti FAVÖK ve 7,5 milyar zlotinin üzerinde kâr. Şirket çeyrekte 7,8 milyar zloti yatırım yaptı ve eylül sonunda elindeki nakit borcundan biraz fazlaydı. 2025'in tamamında 267,3 milyar zloti gelirle 11,2 milyar zloti kazandı. Yönetim, Polonya'nın olağanüstü kâr vergisi yasası kapsamında yaklaşık 2,4 milyar zloti ödeyeceğini ve bunun 4. çeyreğe yazılacağını açıkladı.
 
 ## Hissenin hikâyesi
 
-Orlen yıllarca ucuz fiyatlandı; bunun bir nedeni, yatırımcıların devletin çıkarlarının hissedarlarınkinden önce geldiği endişesiydi. 2022'deki Lotos ve PGNiG birleşmeleri şirketin büyüklüğünü katladı; 2024'te önceki CEO Daniel Obajtek görevden alındıktan sonra yönetimi CEO Ireneusz Fąfara liderliğindeki yeni ekip devraldı. Güçlü kârlar ve rekor temettüler ardından bir yükselişi besledi: piyasa değeri on iki ayda ikiye katlandı ve hisse fiyatı Temmuz 2026'da ilk kez 150 zlotiyi geçti. O zamandan beri biraz geriledi; rakamlarımız ABD doları cinsinden olduğu için zlotideki hareketler de etkili.
-
-- Bugünkü fiyat: {{price:pkn}}
-- 10 yıl boyunca günde 10 $: {{dca:pkn:10}}, yatırılan {{dcainv:10}} ({{dcaroi:pkn:10}})
+Orlen yıllarca ucuz fiyatlandı; bunun bir nedeni, yatırımcıların devletin çıkarlarının hissedarlarınkinden önce geldiği endişesiydi. 2022'deki Lotos ve PGNiG birleşmeleri şirketin büyüklüğünü katladı; 2024'te önceki CEO Daniel Obajtek görevden alındıktan sonra yönetimi CEO Ireneusz Fąfara liderliğindeki yeni ekip devraldı. Güçlü kârlar ve rekor temettüler ardından bir yükselişi besledi: piyasa değeri on iki ayda ikiye katlandı ve hisse fiyatı Temmuz 2026'da ilk kez 150 zlotiyi geçti. Kasım 2026'ya gelindiğinde bu seviyeden biraz gerilemişti; rakamlarımız ABD doları cinsinden olduğu için zlotideki hareketler de etkili.
 
 ## Rakipler
 

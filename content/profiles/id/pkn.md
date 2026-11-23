@@ -1,10 +1,10 @@
 ---
-title: Saham Orlen (PKN) dijelaskan sederhana: raksasa energi Polandia untung 21 miliar zloty dalam 9 bulan
-description: Orlen dengan bahasa sederhana: BBM, gas, listrik dan SPBU, laba 5,6 miliar zloty di kuartal III 2026, dividen rekor 8 zloty, kendali negara dan risikonya.
+title: Orlen (PKN): raksasa energi Polandia dan laba 21 miliar zloty dalam sembilan bulan 2026
+description: Orlen dengan bahasa sederhana: BBM, gas, listrik dan SPBU, laba 5,6 miliar zloty di kuartal III 2026, dividen 8 zloty untuk 2025, kendali negara dan risikonya.
 date: 2026-11-23
 kind: analysis
 ---
-**Orlen** adalah perusahaan terbesar di Polandia dan grup energi terbesar di Eropa Tengah. Orlen mengolah minyak mentah menjadi bensin dan solar, memproduksi dan menjual gas alam, membangkitkan dan menyalurkan listrik, membuat plastik dan bahan kimia, serta mengelola SPBU di Polandia, Jerman, Ceko, Lituania, dan negara lain. Tercatat di bursa Warsawa sejak 1999, Orlen tumbuh jauh lebih besar pada 2022 setelah mengambil alih pesaingnya Lotos dan perusahaan gas PGNiG; negara Polandia memiliki 49,9% sahamnya.
+**Orlen** adalah salah satu perusahaan terbesar di Polandia dan grup energi terbesar di Eropa Tengah. Orlen mengolah minyak mentah menjadi bensin dan solar, memproduksi dan menjual gas alam, membangkitkan dan menyalurkan listrik, membuat plastik dan bahan kimia, serta mengelola SPBU di Polandia, Jerman, Ceko, Lituania, dan negara lain. Tercatat di bursa Warsawa sejak 1999, Orlen tumbuh jauh lebih besar pada 2022 setelah mengambil alih pesaingnya Lotos dan perusahaan gas PGNiG; negara Polandia memiliki 49,9% sahamnya.
 
 > **Poin penting**
 > - Laba bersih: 5,6 miliar zloty pada kuartal III 2026 dan 21,3 miliar zloty dalam sembilan bulan pertama tahun ini.
@@ -18,14 +18,16 @@ Orlen melaporkan empat segmen utama yang diukur dengan EBITDA LIFO (laba operasi
 
 ## Angka saat ini
 
-Pada kuartal yang berakhir 30 September 2026, Orlen membukukan pendapatan 80,1 miliar zloty, sekitar 14,7 miliar zloty EBITDA LIFO (+66% setahun), dan laba bersih 5,6 miliar zloty. Analis mengharapkan lebih — sekitar 15,3 miliar zloty EBITDA dan laba di atas 7,5 miliar zloty. Perusahaan berinvestasi 7,8 miliar zloty dalam kuartal itu dan kasnya sedikit lebih besar daripada utangnya. Sepanjang 2025 Orlen meraih laba 11,2 miliar zloty dari pendapatan 267,3 miliar zloty. Manajemen menyatakan akan membayar sekitar 2,4 miliar zloty berdasarkan undang-undang pajak laba luar biasa (windfall tax) Polandia, yang akan dicatat di kuartal IV.
+- Harga hari ini: {{price:pkn}}
+- Nilai pasar: {{mcap:pkn}} ({{rank:pkn}} di antara perusahaan terbesar dunia di WhatIfStack)
+- Rekor tertinggi: {{ath:pkn}} ({{athd:pkn}}), {{fromath:pkn}} dari rekor itu
+- $10 per hari selama 10 tahun: {{dca:pkn:10}} dari {{dcainv:10}} yang diinvestasikan ({{dcaroi:pkn:10}})
+
+Pada kuartal yang berakhir 30 September 2026, Orlen membukukan pendapatan 80,1 miliar zloty, sekitar 14,7 miliar zloty EBITDA LIFO (+66% setahun), dan laba bersih 5,6 miliar zloty. Analis mengharapkan lebih — sekitar 15,3 miliar zloty EBITDA dan laba di atas 7,5 miliar zloty. Perusahaan berinvestasi 7,8 miliar zloty dalam kuartal itu dan pada akhir September kasnya sedikit lebih besar daripada utangnya. Sepanjang 2025 Orlen meraih laba 11,2 miliar zloty dari pendapatan 267,3 miliar zloty. Manajemen menyatakan akan membayar sekitar 2,4 miliar zloty berdasarkan undang-undang pajak laba luar biasa (windfall tax) Polandia, yang akan dicatat di kuartal IV.
 
 ## Kisah sahamnya
 
-Selama bertahun-tahun saham Orlen diperdagangkan murah, salah satunya karena investor khawatir kepentingan negara didahulukan di atas kepentingan pemegang saham. Merger dengan Lotos dan PGNiG pada 2022 melipatgandakan ukurannya, dan pada 2024 manajemen baru di bawah CEO Ireneusz Fąfara mengambil alih setelah pemimpin sebelumnya, Daniel Obajtek, diberhentikan. Laba yang kuat dan dividen rekor kemudian memicu reli: nilai pasarnya berlipat dua dalam dua belas bulan dan harga sahamnya melewati 150 zloty untuk pertama kalinya pada Juli 2026. Sejak itu harganya sedikit turun; angka kami dalam dolar AS, jadi pergerakan zloty juga berpengaruh.
-
-- Harga hari ini: {{price:pkn}}
-- $10 per hari selama 10 tahun: {{dca:pkn:10}} dari {{dcainv:10}} yang diinvestasikan ({{dcaroi:pkn:10}})
+Selama bertahun-tahun saham Orlen diperdagangkan murah, salah satunya karena investor khawatir kepentingan negara didahulukan di atas kepentingan pemegang saham. Merger dengan Lotos dan PGNiG pada 2022 melipatgandakan ukurannya, dan pada 2024 manajemen baru di bawah CEO Ireneusz Fąfara mengambil alih setelah pemimpin sebelumnya, Daniel Obajtek, diberhentikan. Laba yang kuat dan dividen rekor kemudian memicu reli: nilai pasarnya berlipat dua dalam dua belas bulan dan harga sahamnya melewati 150 zloty untuk pertama kalinya pada Juli 2026. Pada November 2026 harganya sudah sedikit turun dari level itu; angka kami dalam dolar AS, jadi pergerakan zloty juga berpengaruh.
 
 ## Pesaing
 

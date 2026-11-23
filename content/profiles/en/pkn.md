@@ -1,10 +1,10 @@
 ---
-title: Orlen (PKN) explained: Poland's energy giant made PLN 21 billion profit in 9 months
-description: Orlen in plain language — fuel, gas, power and petrol stations, PLN 5.6 billion Q3 2026 profit, a record PLN 8 dividend, state control and the risks to watch.
+title: Orlen (PKN) stock: Poland's energy giant and its PLN 21 billion nine-month 2026 profit
+description: Orlen in plain language — fuel, gas, power and petrol stations, PLN 5.6 billion Q3 2026 profit, a PLN 8 dividend for 2025, state control and the risks to watch.
 date: 2026-11-19
 kind: analysis
 ---
-**Orlen** is Poland's biggest company and Central Europe's largest energy group. It refines crude oil into petrol and diesel, produces and sells natural gas, generates and distributes electricity, makes plastics and chemicals, and runs petrol stations across Poland, Germany, Czechia, Lithuania and other countries. Listed in Warsaw since 1999, it grew much bigger in 2022 by absorbing rivals Lotos and the gas company PGNiG; the Polish state owns 49.9% of the shares.
+**Orlen** is one of Poland's biggest companies and Central Europe's largest energy group. It refines crude oil into petrol and diesel, produces and sells natural gas, generates and distributes electricity, makes plastics and chemicals, and runs petrol stations across Poland, Germany, Czechia, Lithuania and other countries. Listed in Warsaw since 1999, it grew much bigger in 2022 by absorbing rivals Lotos and the gas company PGNiG; the Polish state owns 49.9% of the shares.
 
 > **Key takeaways**
 > - Net profit: PLN 5.6 billion in Q3 2026 and PLN 21.3 billion in the first nine months of the year.
@@ -18,14 +18,16 @@ Orlen reports four main segments, measured by LIFO EBITDA (operating profit befo
 
 ## The numbers right now
 
-In the quarter to 30 September 2026 Orlen made PLN 80.1 billion in revenue, about PLN 14.7 billion of LIFO EBITDA (+66% a year) and PLN 5.6 billion of net profit. Analysts had expected more — around PLN 15.3 billion of EBITDA and over PLN 7.5 billion of profit. It invested PLN 7.8 billion in the quarter and holds slightly more cash than debt. In all of 2025 it earned PLN 11.2 billion on PLN 267.3 billion of revenue. Management said it will pay about PLN 2.4 billion under Poland's windfall tax law, to be booked in Q4.
+- Price today: {{price:pkn}}
+- Market value: {{mcap:pkn}} ({{rank:pkn}} among the world's largest companies on WhatIfStack)
+- Record high: {{ath:pkn}} ({{athd:pkn}}), {{fromath:pkn}} from it
+- $10 a day for 10 years: {{dca:pkn:10}} from {{dcainv:10}} invested ({{dcaroi:pkn:10}})
+
+In the quarter to 30 September 2026 Orlen made PLN 80.1 billion in revenue, about PLN 14.7 billion of LIFO EBITDA (+66% a year) and PLN 5.6 billion of net profit. Analysts had expected more — around PLN 15.3 billion of EBITDA and over PLN 7.5 billion of profit. It invested PLN 7.8 billion in the quarter and at the end of September held slightly more cash than debt. In all of 2025 it earned PLN 11.2 billion on PLN 267.3 billion of revenue. Management said it will pay about PLN 2.4 billion under Poland's windfall tax law, to be booked in Q4.
 
 ## The stock's story
 
-For years Orlen traded cheaply, partly because investors worried that the state's interests came before shareholders'. The 2022 mergers with Lotos and PGNiG multiplied its size, and a new management under CEO Ireneusz Fąfara took over in 2024 after the previous chief, Daniel Obajtek, was dismissed. Strong profits and record dividends then fuelled a rally: the market value doubled in twelve months and the share price passed PLN 150 for the first time in July 2026. It has eased back since; our figures are in US dollars, so zloty moves count too.
-
-- Price today: {{price:pkn}}
-- $10 a day for 10 years: {{dca:pkn:10}} from {{dcainv:10}} invested ({{dcaroi:pkn:10}})
+For years Orlen traded cheaply, partly because investors worried that the state's interests came before shareholders'. The 2022 mergers with Lotos and PGNiG multiplied its size, and a new management under CEO Ireneusz Fąfara took over in 2024 after the previous chief, Daniel Obajtek, was dismissed. Strong profits and record dividends then fuelled a rally: the market value doubled in twelve months and the share price passed PLN 150 for the first time in July 2026. By November 2026 it had eased back from that level; our figures are in US dollars, so zloty moves count too.
 
 ## Competitors
 

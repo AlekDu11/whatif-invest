@@ -1,10 +1,10 @@
 ---
-title: Ações da Orlen (PKN): a gigante polonesa de energia lucrou 21 bilhões de zlotys em 9 meses
-description: Orlen explicada de forma simples: combustível, gás, energia e postos, lucro de 5,6 bilhões de zlotys no 3º tri de 2026, dividendo recorde e riscos.
+title: Orlen (PKN): a gigante polonesa de energia e seu lucro de 21 bilhões de zlotys em nove meses de 2026
+description: Orlen explicada de forma simples: combustível, gás, energia e postos, lucro de 5,6 bilhões de zlotys no 3º tri de 2026, dividendo de 8 zlotys por 2025 e riscos.
 date: 2026-11-19
 kind: analysis
 ---
-A **Orlen** é a maior empresa da Polônia e o maior grupo de energia da Europa Central. Ela refina petróleo para produzir gasolina e diesel, extrai e vende gás natural, gera e distribui eletricidade, fabrica plásticos e produtos químicos e opera postos de combustível na Polônia, Alemanha, Tchéquia, Lituânia e outros países. Listada na Bolsa de Varsóvia desde 1999, ficou muito maior em 2022 ao absorver a rival Lotos e a empresa de gás PGNiG; o Estado polonês detém 49,9% das ações.
+A **Orlen** é uma das maiores empresas da Polônia e o maior grupo de energia da Europa Central. Ela refina petróleo para produzir gasolina e diesel, extrai e vende gás natural, gera e distribui eletricidade, fabrica plásticos e produtos químicos e opera postos de combustível na Polônia, Alemanha, Tchéquia, Lituânia e outros países. Listada na Bolsa de Varsóvia desde 1999, ficou muito maior em 2022 ao absorver a rival Lotos e a empresa de gás PGNiG; o Estado polonês detém 49,9% das ações.
 
 > **O essencial**
 > - Lucro líquido: 5,6 bilhões de zlotys no 3º trimestre de 2026 e 21,3 bilhões nos primeiros nove meses do ano.
@@ -18,14 +18,16 @@ A Orlen divulga quatro segmentos principais, medidos pelo EBITDA LIFO (lucro ope
 
 ## Os números agora
 
-No trimestre encerrado em 30 de setembro de 2026, a Orlen teve receita de 80,1 bilhões de zlotys, cerca de 14,7 bilhões de EBITDA LIFO (+66% em um ano) e 5,6 bilhões de lucro líquido. Os analistas esperavam mais — algo como 15,3 bilhões de EBITDA e mais de 7,5 bilhões de lucro. A empresa investiu 7,8 bilhões no trimestre e tem um pouco mais de caixa do que dívida. Em todo o ano de 2025, lucrou 11,2 bilhões de zlotys sobre uma receita de 267,3 bilhões. A administração disse que vai pagar cerca de 2,4 bilhões pela lei polonesa de imposto sobre lucros extraordinários, a serem contabilizados no 4º trimestre.
+- Preço hoje: {{price:pkn}}
+- Valor de mercado: {{mcap:pkn}} ({{rank:pkn}} entre as maiores empresas do mundo no WhatIfStack)
+- Máxima histórica: {{ath:pkn}} ({{athd:pkn}}), {{fromath:pkn}} desde ela
+- US$ 10 por dia durante 10 anos: {{dca:pkn:10}} com {{dcainv:10}} investidos ({{dcaroi:pkn:10}})
+
+No trimestre encerrado em 30 de setembro de 2026, a Orlen teve receita de 80,1 bilhões de zlotys, cerca de 14,7 bilhões de EBITDA LIFO (+66% em um ano) e 5,6 bilhões de lucro líquido. Os analistas esperavam mais — algo como 15,3 bilhões de EBITDA e mais de 7,5 bilhões de lucro. A empresa investiu 7,8 bilhões no trimestre e no fim de setembro tinha um pouco mais de caixa do que dívida. Em todo o ano de 2025, lucrou 11,2 bilhões de zlotys sobre uma receita de 267,3 bilhões. A administração disse que vai pagar cerca de 2,4 bilhões pela lei polonesa de imposto sobre lucros extraordinários, a serem contabilizados no 4º trimestre.
 
 ## A história da ação
 
-Durante anos a Orlen foi negociada barata, em parte porque os investidores temiam que os interesses do Estado viessem antes dos interesses dos acionistas. As fusões de 2022 com a Lotos e a PGNiG multiplicaram seu tamanho, e uma nova gestão sob o CEO Ireneusz Fąfara assumiu em 2024, depois que o chefe anterior, Daniel Obajtek, foi demitido. Lucros fortes e dividendos recordes então impulsionaram uma alta: o valor de mercado dobrou em doze meses e a ação passou dos 150 zlotys pela primeira vez em julho de 2026. Desde então recuou um pouco; nossos números são em dólares americanos, então as variações do zloty também contam.
-
-- Preço hoje: {{price:pkn}}
-- US$ 10 por dia durante 10 anos: {{dca:pkn:10}} com {{dcainv:10}} investidos ({{dcaroi:pkn:10}})
+Durante anos a Orlen foi negociada barata, em parte porque os investidores temiam que os interesses do Estado viessem antes dos interesses dos acionistas. As fusões de 2022 com a Lotos e a PGNiG multiplicaram seu tamanho, e uma nova gestão sob o CEO Ireneusz Fąfara assumiu em 2024, depois que o chefe anterior, Daniel Obajtek, foi demitido. Lucros fortes e dividendos recordes então impulsionaram uma alta: o valor de mercado dobrou em doze meses e a ação passou dos 150 zlotys pela primeira vez em julho de 2026. Em novembro de 2026 já tinha recuado um pouco desse nível; nossos números são em dólares americanos, então as variações do zloty também contam.
 
 ## Concorrentes
 
