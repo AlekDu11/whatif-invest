@@ -1055,3 +1055,6 @@ a.badge.tagc{text-decoration:none;color:inherit;border:1px solid var(--line)}a.b
 
 /* smooth same-site page switches instead of a white flash (Chrome/Edge/Safari 18) — owner 2026-11-23 */
 @media (prefers-reduced-motion:no-preference){@view-transition{navigation:auto}}
+/* home «Today in the markets»: bottom row lines up with the movers grid above (owner 2026-11-23) */
+@media (min-width:981px){.today .wgrid3{grid-template-columns:repeat(2,minmax(0,1fr)) minmax(0,1.25fr)}}
+.wgrid3>*{min-width:0}
