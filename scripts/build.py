@@ -49,6 +49,7 @@ from i18n_home2 import HM  # noqa: E402
 from i18n_ks import KS, SECT  # noqa: E402
 from i18n_offer import OFFER_TGW  # noqa: E402
 from i18n_lc import LC, LC_CT  # noqa: E402
+from i18n_lcw import LCW  # noqa: E402
 from i18n_xc import XC  # noqa: E402
 from i18n_cv import CV, CV_CCY  # noqa: E402
 from i18n_fb import FB  # noqa: E402
@@ -2310,6 +2311,8 @@ def lc_page(lang, tab='mcap', mkt=None, ver=None, pg=1):
     top = ids[:3]
     desc = (t['lead'] + ' ' + ', '.join(f'{nm(A[i], lang)}' for i in top)).strip()[:300]
     ttl = f'{h1} ({UPDATED[:4]})'
+    if mkt is None and tab == 'mcap' and lang in LCW:   # world ranking: its own search-shaped description (owner 2026-11-23)
+        desc = LCW[lang].format(y=UPDATED[:4], n=total, top=('、' if lang in ('ja', 'zh') else ', ').join(nm(A[i], lang) for i in top))[:300]
     if mkt is not None and lang in LC_CT:  # country pages: search-shaped title + country-specific description (growth 2026-11-23)
         ttl = LC_CT[lang][0].format(c=cn, y=UPDATED[:4])
         desc = LC_CT[lang][1].format(c=cn, n=total, top=('、' if lang in ('ja', 'zh') else ', ').join(nm(A[i], lang) for i in top))[:300]
