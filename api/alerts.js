@@ -74,9 +74,9 @@ module.exports = async (req, res) => {
   for (const a of items) {
     const now = px[a.k];
     if (!now || !((a.d === 'u' && now >= a.p) || (a.d === 'd' && now <= a.p))) continue;
-    const t = T(a.l), path = (a.l && a.l !== 'uk' ? '/' + a.l : '') + '/' + a.a + '/';
+    const t = T(a.l), pre = (a.l && a.l !== 'uk' ? '/' + a.l : ''), link = a.s === 'x' ? `https://whatifstack.com${pre}/${a.a}&utm_source=tg_alert` : `https://whatifstack.com${pre}/${a.a}/?utm_source=tg_alert`;
     await tg('sendMessage', { chat_id: a.c, text: tpl(t.hit, { n: a.n, d: a.d === 'u' ? t.up : t.dn, p: fmt(a.p), c: fmt(now) }),
-      reply_markup: { inline_keyboard: [[{ text: tpl(t.open, { n: a.n }), url: 'https://whatifstack.com' + path + '?utm_source=tg_alert' }]] } });
+      reply_markup: { inline_keyboard: [[{ text: tpl(t.open, { n: a.n }), url: link }]] } });
     await kv([['HDEL', 'al:items', String(a.id)], ['SREM', `al:chat:${a.c}`, String(a.id)], ['INCR', 'al:sent']]);
     sent++;
   }

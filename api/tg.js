@@ -2,7 +2,7 @@
 // Deep link for alerts from the site: t.me/<bot>?start=a_<aid>_<u|d>_<price with p for the dot>_<lang>
 // One-time setup after adding TG_BOT_TOKEN and ALERTS_KEY in Vercel env: open /api/tg?setup=<ALERTS_KEY>
 // (sets the webhook, commands, menu button «Portfolio», descriptions in uk/ru/en). Inline mode also needs /setinline in @BotFather.
-const { kv, tg, amap, prices, fmt, T, tpl, M, LP, DG } = require('./_alerts');
+const { kv, tg, amap, prices, fmt, T, tpl, M, LP, DG, dexToken } = require('./_alerts');
 const SITE = 'https://whatifstack.com', BOT = 'WhatIfStack_bot', CH = 'https://t.me/WhatIfStack';
 const TOP = ['btc', 'eth', 'sol', 'gold', 'spy', 'nvda'];
 
@@ -261,6 +261,19 @@ module.exports = async (req, res) => {
     if (/^\/support/.test(text)) { await kv([['SET', `tg:sup:${chat}`, '1', 'EX', 3600]]); return say(m.supask, { reply_markup: { force_reply: true } }).then(() => done(200)); }
     if (/^\/lang/.test(text)) return say(m.lng, { reply_markup: { inline_keyboard: [LANGS.slice(0, 4), LANGS.slice(4)].map(r => r.map(([c, n]) => ({ text: n, callback_data: 'l:' + c }))) } }).then(() => done(200));
     if (/^\/myid/.test(text)) return say(String(chat)).then(() => done(200));
+    if (/^\/start x_/.test(text)) {                           // DEX memecoin alert from /memes/token/: x_<net code><address>_<u|d>_<price e.g. 937e-8>_<lang>
+      const p = text.slice(9).split('_');
+      const NC = { s: 'solana', b: 'bsc', a: 'base', e: 'eth' }, net = NC[(p[0] || '')[0]], raw = (p[0] || '').slice(1);
+      const addr = net && net !== 'solana' ? '0x' + raw.toLowerCase() : raw, dir = p[1] === 'd' ? 'd' : 'u', price = parseFloat(p[2] || ''), lg = p[3] || '';
+      if (lg) t = T(lg);
+      if (!net || !/^[A-Za-z0-9]{32,44}$|^0x[0-9a-f]{40}$/.test(addr) || !(price > 0)) return say(t.bad).then(() => done(200));
+      if (ids.length >= 10) return say(t.lim).then(() => done(200));
+      const tk = await dexToken(net, addr);
+      const id = (await kv([['INCR', 'al:seq']]))[0];
+      const al = { id, c: chat, a: `memes/token/?n=${net}&a=${addr}`, n: (tk.s || addr.slice(0, 6)).toUpperCase(), s: 'x', k: `${net}:${addr}`, d: dir, p: price, l: lg || lang.slice(0, 2), t: Date.now() };
+      await kv([['HSET', 'al:items', String(id), JSON.stringify(al)], ['SADD', `al:chat:${chat}`, String(id)], ['INCR', 'al:created']]);
+      return say(tpl(t.set, { n: al.n, d: dir === 'u' ? t.up : t.dn, p: fmt(price), c: tk.p ? fmt(tk.p) : '—' }), { reply_markup: menu(lg || lang, chat) }).then(() => done(200));
+    }
     if (/^\/start a_/.test(text)) {                           // price alert from the site
       const p = text.slice(9).split('_');
       const lg = p.pop(), pr = p.pop(), dr = p.pop(), aid = p.join('_');

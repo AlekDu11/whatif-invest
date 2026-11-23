@@ -16,7 +16,7 @@ async function amap() {
   try { MAP = await (await fetch('https://whatifstack.com/assets/alerts-map.json')).json() } catch (e) { MAP = {} }
   return MAP;
 }
-async function prices(items) {   // items: [{s:'c'|'y', k: cgid|yahoo}] -> {k: usd price}
+async function prices(items) {   // items: [{s:'c'|'y'|'x', k: cgid|yahoo|'<net>:<address>'}] -> {k: usd price}
   const out = {};
   const cg = [...new Set(items.filter(i => i.s === 'c').map(i => i.k))];
   for (let i = 0; i < cg.length; i += 200) {
@@ -24,6 +24,17 @@ async function prices(items) {   // items: [{s:'c'|'y', k: cgid|yahoo}] -> {k: u
       const j = await (await fetch('https://api.coingecko.com/api/v3/simple/price?vs_currencies=usd&ids=' + cg.slice(i, i + 200).join(','), { headers: { Accept: 'application/json' } })).json();
       for (const [k, v] of Object.entries(j || {})) if (v && v.usd) out[k] = v.usd;
     } catch (e) {}
+  }
+  const xs = {};   // DEX memecoins (owner 2026-11-23): k = '<network>:<address>' -> GeckoTerminal multi-token price, 30 per call
+  items.filter(i => i.s === 'x').forEach(i => { const [n, a] = i.k.split(':'); (xs[n] = xs[n] || new Set()).add(a) });
+  for (const [n, set] of Object.entries(xs)) {
+    const l = [...set];
+    for (let i = 0; i < l.length; i += 30) {
+      try {
+        const j = await (await fetch(`https://api.geckoterminal.com/api/v2/networks/${n}/tokens/multi/${l.slice(i, i + 30).join(',')}`, { headers: { Accept: 'application/json' } })).json();
+        (j.data || []).forEach(d => { const at = d.attributes || {}; const a = l.find(x => x.toLowerCase() === String(at.address || '').toLowerCase()); if (a && +at.price_usd) out[`${n}:${a}`] = +at.price_usd });
+      } catch (e) {}
+    }
   }
   const ys = [...new Set(items.filter(i => i.s === 'y').map(i => i.k))].slice(0, 60);
   await Promise.all(ys.map(async s => {
@@ -89,3 +100,10 @@ async function changes(items) {
 }
 const DG = ['btc', 'eth', 'sol', 'xrp', 'ton', 'doge', 'gold', 'silver', 'spy', 'qqq', 'nvda', 'aapl', 'tsla', 'msft'];
 module.exports.changes = changes; module.exports.DG = DG;
+
+// DEX token symbol + price for a new alert (GeckoTerminal)
+async function dexToken(n, a) {
+  try { const at = ((await (await fetch(`https://api.geckoterminal.com/api/v2/networks/${n}/tokens/${a}`, { headers: { Accept: 'application/json' } })).json()).data || {}).attributes || {};
+    return { s: at.symbol || '', p: +at.price_usd || null } } catch (e) { return { s: '', p: null } }
+}
+module.exports.dexToken = dexToken;

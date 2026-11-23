@@ -981,7 +981,7 @@ const DEXW={ key:'wi_dexw',
   function show(r){ shown=true; const inf=r.info||{}; if(inf.img&&!r.img) r.img=inf.img;
     try{ const k=JSON.parse(sessionStorage.getItem('wi_dexrow')||'null'); if(k&&k.a===r.a){ ['h','t10','dev','ins','hb'].forEach(f=>{ if(r[f]==null&&k[f]!=null) r[f]=k[f] }); if(!r.at&&k.at) r.at=k.at } }catch(e){}
     document.title=`${r.nm||r.s} (${r.s}) — ${fmtPrice(r.pr)} | WhatIfStack`;
-    box.innerHTML=`<div class="dph">${U.ic(r,48)}<div><h1>${esc(r.nm||r.s)} <span class="muted">${esc(r.s)}</span></h1><span class="dexnet">${esc(U.NETN[r.n]||r.n)}</span>${r.q?` <span class="muted" style="font-size:13px">${esc(r.s)}/${esc(r.q)}</span>`:''}</div>${M6.watch?`<button type="button" class="btn ghost dpw${DEXW.has(r)?' on':''}" id="dpw">${esc(DEXW.has(r)?M6.watching:M6.watch)}</button>`:''}</div>
+    box.innerHTML=`<div class="dph">${U.ic(r,48)}<div><h1>${esc(r.nm||r.s)} <span class="muted">${esc(r.s)}</span></h1><span class="dexnet">${esc(U.NETN[r.n]||r.n)}</span>${r.q?` <span class="muted" style="font-size:13px">${esc(r.s)}/${esc(r.q)}</span>`:''}</div><span class="dpact">${M6.watch?`<button type="button" class="btn ghost dpw${DEXW.has(r)?' on':''}" id="dpw">${esc(DEXW.has(r)?M6.watching:M6.watch)}</button>`:''}${L.al&&{solana:1,bsc:1,base:1,eth:1}[r.n]?`<button type="button" class="btn ghost" id="dpal">${esc(L.al.t.btn)}</button>`:''}</span></div>
       <div class="dpp"><b class="dpprice">${fmtPrice(r.pr)}</b><span class="${cls(U.pc(r.c24))}">${fmtPct(U.pc(r.c24))} · 24h</span></div>
       ${[['5m',r.c5],['1h',r.c1],['6h',r.c6],['24h',r.c24]].some(x=>x[1]!=null)?`<div class="dpchg" aria-label="${esc(M6.chg||'')}">${[['5m',r.c5],['1h',r.c1],['6h',r.c6],['24h',r.c24]].filter(x=>x[1]!=null).map(([k,v])=>chg(k,v)).join('')}</div>`:''}
       <div class="dpgrid"><div class="dpl">
@@ -994,6 +994,15 @@ const DEXW={ key:'wi_dexw',
       ${L.learn&&L.learn.ls&&L.learn.ls.length?`<section class="card dplearn"><h2>🎓 ${esc(L.learn.h)}</h2><p class="muted">${esc(L.learn.d)}</p><ol class="lsteps">${L.learn.ls.map(([h,t])=>`<li><a href="${esc(h)}">${esc(t)}</a></li>`).join('')}</ol><a class="chip" href="${esc(L.learn.url)}">${esc(L.learn.all)} →</a></section>`:''}`;
     const c=$('#dpcopy'); if(c) c.onclick=()=>{ try{ navigator.clipboard.writeText(r.a); c.textContent=L.copied }catch(e){} }
     const w=$('#dpw'); if(w) w.onclick=()=>{ const on=DEXW.toggle(r); w.classList.toggle('on',on); w.textContent=on?M6.watching:M6.watch };
+    const ab=$('#dpal'); if(ab) ab.onclick=()=>{ const old=$('.alpop'); if(old){ old.remove(); return } const C=L.al, cur=+r.pr||0;
+      const NC={solana:'s',bsc:'b',base:'a',eth:'e'}, addr=r.n==='solana'?r.a:String(r.a).replace(/^0x/i,'').toLowerCase();
+      const enc=v=>{ const [m,e]=(+v).toExponential(3).split('e'); let d=m.replace('.','').replace(/0+$/,''); const ex=+e-(m.replace('.','').length-1)+(m.replace('.','').length-d.length); return d+'e'+ex };
+      const pop=document.createElement('div'); pop.className='alpop card';
+      pop.innerHTML=`<b>${esc(C.t.h.replace('{tk}',r.s))}</b><div class="alrow"><label><input type="radio" name="ald" value="u" checked> ${esc(C.t.up)}</label><label><input type="radio" name="ald" value="d"> ${esc(C.t.dn)}</label></div>
+        <div class="inp"><span class="muted">$</span><input type="number" min="0" step="any" value="${+(cur*1.5).toPrecision(4)}"></div><a class="btn" target="_blank" rel="noopener">✈️ ${esc(C.t.go)}</a><p class="muted">${esc(C.t.note)}</p>`;
+      ab.closest('.dph').after(pop); const inp=$('input[type=number]',pop), go=$('a',pop);
+      const upd=()=>{ const d=$('input[name=ald]:checked',pop).value, v=+inp.value; go.href=v>0?`https://t.me/${C.bot}?start=${`x_${NC[r.n]}${addr}_${d}_${enc(v)}_${lang}`}`:'#' };
+      $$('input[name=ald]',pop).forEach(x=>x.onchange=()=>{ inp.value=+(cur*(x.value==='u'?1.5:0.7)).toPrecision(4); upd() }); inp.oninput=upd; upd(); inp.focus() };
     trending(r);
     if($('#dpchart')) candles(r) }
   /* candle chart from Binance Web3 klines, our colours; the last candle and the price refresh every 15 s */

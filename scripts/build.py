@@ -4120,6 +4120,8 @@ def meme_token_page(lang, ver):
     L['learn'] = dict(h=M3['start_h'], d=M3['start_d'], all=M3['all'], url=url(lang, 'learn'), ls=meme_lessons(lang)[:6])
     L['m6'] = MEM6[lang]
     L['m7'] = MEM7[lang]
+    if TG_BOT:   # 🔔 Telegram price alert for DEX tokens (owner 2026-11-23): t.me/<bot>?start=x_<net code><address>_<u|d>_<price>_<lang>
+        L['al'] = dict(bot=TG_BOT, t=dict(AL[lang], note=AL[lang]['note'].format(bot=TG_BOT)))
     return shell(lang, 'memes/token', f'{t["h1"]} | {BRAND}', t['d'], body, dict(dexpool=dict(t=L, list=url(lang, 'memes'))), ver).replace(
         '<link rel="canonical"', '<meta name="robots" content="noindex, follow"><link rel="canonical"', 1)
 
