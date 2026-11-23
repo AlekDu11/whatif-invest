@@ -1051,3 +1051,6 @@ a.badge.tagc{text-decoration:none;color:inherit;border:1px solid var(--line)}a.b
 .mrow:last-child{border-bottom:0}.mrow:hover{background:rgba(127,127,127,.07)}
 .mrv{display:flex;flex-direction:column;align-items:flex-end;text-align:right}.mrv small{font-size:12px}.mfine{font-size:12px;margin-top:10px}
 .mc-a{white-space:nowrap;font-size:13px}
+
+/* smooth same-site page switches instead of a white flash (Chrome/Edge/Safari 18) — owner 2026-11-23 */
+@media (prefers-reduced-motion:no-preference){@view-transition{navigation:auto}}

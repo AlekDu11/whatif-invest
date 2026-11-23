@@ -705,6 +705,14 @@ Promise.all(ids.map(i=>fetch('/assets/p/'+i+'.json').then(r=>r.ok?r.json():null)
 </script></body></html>"""
 
 
+# Instant page switches (owner 2026-11-23: tabs like Revenue / Market cap / Earnings felt like a full reload): Chrome/Edge
+# fetch the next page's HTML when the pointer rests on a link (~200 ms) or on touch, so the click opens it from memory.
+# Prefetch only (no prerender): no page scripts or analytics run for pages the visitor never opens.
+SPEC_RULES = ('<script type="speculationrules">{"prefetch":[{"where":{"and":[{"href_matches":"/*"},'
+              '{"not":{"href_matches":"/go/*"}},{"not":{"href_matches":"/api/*"}},'
+              '{"not":{"selector_matches":"[target=_blank],[rel~=nofollow],[download]"}}]},"eagerness":"moderate"}]}</script>')
+
+
 def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
     og_img = SITE + (cfg.pop('_og', None) or (f'/assets/og/{lang}.jpg' if lang in OG_LANGS else '/assets/og/en.jpg'))
     sec = cfg.pop('_sec', None) or p   # section to highlight in the nav
@@ -764,7 +772,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
 <link rel="icon" href="/favicon.ico" sizes="48x48"><link rel="icon" href="{BASE}/assets/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="{BASE}/assets/icon-192.png"><link rel="manifest" href="{BASE}/manifest.webmanifest">
 <link rel="preload" href="{BASE}/assets/onest.woff2" as="font" type="font/woff2" crossorigin><link rel="preload" href="{BASE}/assets/geologica-700.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{BASE}/assets/style.css?v={ver['css']}">{SPRITE_CSS}
-{ld}
+{ld}{SPEC_RULES}
 </head>
 <body>
 {strip(lang, home=p is None)}
