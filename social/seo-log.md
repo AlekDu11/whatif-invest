@@ -9,7 +9,6 @@ date | url | query | impressions | position | CTR | what changed | result after 
 2026-11-23 | /ja/blog/what-is-ethereum/ | イーサリアム (18 / 25.7); ethとは 9 / 20.0; イーサリアムとは 8 / 37.9 | 94 | 42.6 | 0 % | title «イーサリアム(ETH)とは?仕組みとビットコインとの違いをわかりやすく解説», description (2015, smart contracts, gas, staking), first sentence «イーサリアム(ETH)とは…»; new cover. Live check OK | due 2026-12-07
 2026-11-23 | /th/blog/how-to-invest-in-sp500/ | วิธีซื้อกองทุน s&p 500 (13 / 16.8); s p500 etf 10 / 6.5; sp 500 etf 6 / 8.0 | 76 | 32.8 | 0 % | title «วิธีซื้อกองทุน S&P 500 สำหรับคนไทย: 2 ทางเลือก, ETF อย่าง SPY/VOO และค่าใช้จ่าย», description, new first paragraph answering the 2 ways (Thai fund in THB / foreign broker ETF); new cover. Live check OK | due 2026-12-07
 2026-11-23 | /es/blog/what-is-a-dex/ | dex crypto (13 / 32.1); que es un dex crypto 12 / 32.2; dex cripto 10 / 32.3; dex criptomonedas 8 / 35.4 | 52 | 33.6 | 0 % | title «Qué es un DEX en cripto: cómo funciona un exchange descentralizado frente a un CEX», description (0,05–1 % per swap), first sentence «¿Qué es un DEX en cripto?»; new cover. Live check OK | due 2026-12-07
-
 2026-11-23 | /ru/largest-companies/ + /tr/largest-companies/ (world page, all 20 languages) | крупнейшие компании мира по капитализации (87 / 8.8); dünyanın en büyük şirketleri 2026 (14 / 7.2) | 87 + 52 | 8.8 / 16.8 | 0 % | owner «так»: own meta description per language (scripts/i18n_lcw.py LCW: year + top 3 + number of companies) instead of the shared generic lead | due 2026-12-07
 
 ## Notes (not changed — template/code pages, for the owner)
