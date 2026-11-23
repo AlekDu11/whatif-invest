@@ -1,6 +1,6 @@
 ---
 title: Monero (XMR) explained: private by default, no supply cap and delistings from Binance to the EU
-description: Monero in plain language: how ring signatures and stealth addresses hide payments, tail emission, the 2026 record, exchange delistings, the main risks and DCA.
+description: Monero in plain language: how ring signatures and stealth addresses hide payments, tail emission, exchange delistings, the main risks and DCA.
 date: 2026-11-22
 kind: analysis
 ---
@@ -23,7 +23,8 @@ XMR is used to pay fees and to send value privately, and it is what miners earn.
 ## The numbers right now
 
 - Price today: {{price:xmr}}
-- Record high: {{ath:xmr}} ({{athd:xmr}})
+- Record high: {{ath:xmr}} ({{athd:xmr}}), {{fromath:xmr}} from it
+- Market value: {{mcap:xmr}} ({{rank:xmr}} among cryptocurrencies)
 - Price change over 12 months: {{chg1y:xmr}}
 - $10 a day for 5 years: {{dca:xmr:5}} from {{dcainv:5}} invested ({{dcaroi:xmr:5}})
 

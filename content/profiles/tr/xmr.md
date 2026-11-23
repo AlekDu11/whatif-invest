@@ -1,6 +1,6 @@
 ---
 title: Monero (XMR) sade dille: varsayılan olarak gizli, arz sınırı yok, Binance'ten AB'ye borsalardan çıkarıldı
-description: Monero sade dille: halka imzalar ve gizli adresler ödemeleri nasıl saklar, kuyruk ihracı, 2026 rekoru, borsa delistingleri, riskler ve düzenli alım.
+description: Monero sade dille: halka imzalar ve gizli adresler ödemeleri nasıl saklar, kuyruk ihracı, borsa delistingleri, riskler ve düzenli alım.
 date: 2026-11-22
 kind: analysis
 ---
@@ -23,7 +23,8 @@ XMR, ücretleri ödemek ve değeri gizlice göndermek için kullanılır; madenc
 ## Şu anki rakamlar
 
 - Bugünkü fiyat: {{price:xmr}}
-- Rekor: {{ath:xmr}} ({{athd:xmr}})
+- Rekor: {{ath:xmr}} ({{athd:xmr}}), ondan {{fromath:xmr}}
+- Piyasa değeri: {{mcap:xmr}} (kripto paralar arasında {{rank:xmr}})
 - 12 aylık fiyat değişimi: {{chg1y:xmr}}
 - 5 yıl boyunca günde 10 $: {{dca:xmr:5}}, yatırılan {{dcainv:5}} ({{dcaroi:xmr:5}})
 

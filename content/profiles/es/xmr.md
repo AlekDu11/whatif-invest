@@ -1,6 +1,6 @@
 ---
 title: Monero (XMR) explicado fácil: privado por defecto, sin límite de emisión y retirado de Binance a la UE
-description: Monero en lenguaje sencillo: firmas en anillo, direcciones ocultas, emisión de cola, el récord de 2026, exclusiones de exchanges, riesgos y compras regulares.
+description: Monero en lenguaje sencillo: firmas en anillo, direcciones ocultas, emisión de cola, exclusiones de exchanges, riesgos y compras regulares.
 date: 2026-11-22
 kind: analysis
 ---
@@ -23,7 +23,8 @@ XMR sirve para pagar comisiones y enviar valor de forma privada, y es lo que gan
 ## Las cifras actuales
 
 - Precio hoy: {{price:xmr}}
-- Récord: {{ath:xmr}} ({{athd:xmr}})
+- Máximo histórico: {{ath:xmr}} ({{athd:xmr}}), {{fromath:xmr}} desde él
+- Valor de mercado: {{mcap:xmr}} ({{rank:xmr}} entre las criptomonedas)
 - Variación del precio en 12 meses: {{chg1y:xmr}}
 - 10 $ al día durante 5 años: {{dca:xmr:5}} con {{dcainv:5}} invertidos ({{dcaroi:xmr:5}})
 

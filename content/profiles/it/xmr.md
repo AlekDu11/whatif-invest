@@ -1,6 +1,6 @@
 ---
 title: Monero (XMR) spiegato semplice: privato per impostazione, senza tetto di offerta e rimosso da Binance all'UE
-description: Monero in parole semplici: firme ad anello, indirizzi stealth, tail emission, il record del 2026, i delisting degli exchange, rischi e acquisti regolari.
+description: Monero in parole semplici: firme ad anello, indirizzi stealth, tail emission, i delisting degli exchange, rischi e acquisti regolari.
 date: 2026-11-22
 kind: analysis
 ---
@@ -23,7 +23,8 @@ XMR serve a pagare le commissioni e a trasferire valore in modo privato, ed è c
 ## I numeri di oggi
 
 - Prezzo oggi: {{price:xmr}}
-- Record: {{ath:xmr}} ({{athd:xmr}})
+- Massimo storico: {{ath:xmr}} ({{athd:xmr}}), {{fromath:xmr}} da lì
+- Valore di mercato: {{mcap:xmr}} ({{rank:xmr}} tra le criptovalute)
 - Variazione del prezzo in 12 mesi: {{chg1y:xmr}}
 - 10 $ al giorno per 5 anni: {{dca:xmr:5}} con {{dcainv:5}} investiti ({{dcaroi:xmr:5}})
 

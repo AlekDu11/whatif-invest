@@ -1,6 +1,6 @@
 ---
 title: Monero (XMR) sa simpleng paliwanag: pribado bilang default, walang supply cap at mga delisting mula Binance hanggang EU
-description: Monero sa simpleng paliwanag: paano itinatago ng ring signature at stealth address ang bayad, tail emission, record ng 2026, delisting at mga panganib.
+description: Monero sa simpleng paliwanag: paano itinatago ng ring signature at stealth address ang bayad, tail emission, delisting at mga panganib.
 date: 2026-11-22
 kind: analysis
 ---
@@ -23,7 +23,8 @@ Ginagamit ang XMR para magbayad ng network fees at magpadala ng halaga nang prib
 ## Ang mga numero ngayon
 
 - Presyo ngayon: {{price:xmr}}
-- Pinakamataas na presyo: {{ath:xmr}} ({{athd:xmr}})
+- Pinakamataas na presyo: {{ath:xmr}} ({{athd:xmr}}), {{fromath:xmr}} mula roon
+- Halaga sa merkado: {{mcap:xmr}} ({{rank:xmr}} sa mga cryptocurrency)
 - Pagbabago ng presyo sa loob ng 12 buwan: {{chg1y:xmr}}
 - $10 kada araw sa loob ng 5 taon: {{dca:xmr:5}} mula sa {{dcainv:5}} na inilagay ({{dcaroi:xmr:5}})
 

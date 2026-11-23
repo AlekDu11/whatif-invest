@@ -1,6 +1,6 @@
 ---
 title: Monero (XMR) giải thích dễ hiểu: riêng tư mặc định, không giới hạn nguồn cung và bị hủy niêm yết từ Binance đến EU
-description: Monero giải thích dễ hiểu: chữ ký vòng và địa chỉ ẩn che giấu giao dịch thế nào, phát hành đuôi, kỷ lục 2026, hủy niêm yết, rủi ro chính và mua định kỳ.
+description: Monero giải thích dễ hiểu: chữ ký vòng và địa chỉ ẩn che giấu giao dịch thế nào, phát hành đuôi, hủy niêm yết, rủi ro chính và mua định kỳ.
 date: 2026-11-22
 kind: analysis
 ---
@@ -23,7 +23,8 @@ XMR dùng để trả phí mạng và chuyển giá trị một cách riêng tư
 ## Các con số hiện tại
 
 - Giá hôm nay: {{price:xmr}}
-- Đỉnh kỷ lục: {{ath:xmr}} ({{athd:xmr}})
+- Đỉnh kỷ lục: {{ath:xmr}} ({{athd:xmr}}), cách đỉnh {{fromath:xmr}}
+- Vốn hóa thị trường: {{mcap:xmr}} ({{rank:xmr}} trong các đồng tiền mã hóa)
 - Biến động giá trong 12 tháng: {{chg1y:xmr}}
 - 10 USD mỗi ngày trong 5 năm: {{dca:xmr:5}} từ {{dcainv:5}} đã đầu tư ({{dcaroi:xmr:5}})
 

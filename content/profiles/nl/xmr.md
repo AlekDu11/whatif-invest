@@ -1,6 +1,6 @@
 ---
 title: Monero (XMR) eenvoudig uitgelegd: standaard privé, geen maximale voorraad en delistings van Binance tot de EU
-description: Monero eenvoudig uitgelegd: hoe ringhandtekeningen en stealth-adressen betalingen verbergen, tail emission, het record van 2026, delistings en risico's.
+description: Monero eenvoudig uitgelegd: hoe ringhandtekeningen en stealth-adressen betalingen verbergen, tail emission, delistings en risico's.
 date: 2026-11-22
 kind: analysis
 ---
@@ -23,7 +23,8 @@ XMR wordt gebruikt om transactiekosten te betalen en om privé waarde te verstur
 ## De cijfers nu
 
 - Koers nu: {{price:xmr}}
-- Recordkoers: {{ath:xmr}} ({{athd:xmr}})
+- Recordkoers: {{ath:xmr}} ({{athd:xmr}}), {{fromath:xmr}} daarvan af
+- Marktwaarde: {{mcap:xmr}} ({{rank:xmr}} onder de cryptomunten)
 - Koersverandering over 12 maanden: {{chg1y:xmr}}
 - $10 per dag gedurende 5 jaar: {{dca:xmr:5}} bij {{dcainv:5}} ingelegd ({{dcaroi:xmr:5}})
 

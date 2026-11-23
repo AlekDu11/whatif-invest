@@ -1,6 +1,6 @@
 ---
 title: Monero (XMR) einfach erklärt: standardmäßig privat, ohne Mengenobergrenze und von Binance bis zur EU ausgelistet
-description: Monero verständlich erklärt: Ringsignaturen, Stealth-Adressen, Tail Emission, der Rekord 2026, Delistings, Risiken und was Sparplan-Anleger wissen sollten.
+description: Monero verständlich erklärt: Ringsignaturen, Stealth-Adressen, Tail Emission, Delistings, Risiken und was Sparplan-Anleger wissen sollten.
 date: 2026-11-22
 kind: analysis
 ---
@@ -23,7 +23,8 @@ Mit XMR bezahlt man Gebühren und überträgt Werte privat, und Miner werden in 
 ## Die Zahlen jetzt
 
 - Kurs heute: {{price:xmr}}
-- Rekordhoch: {{ath:xmr}} ({{athd:xmr}})
+- Rekordhoch: {{ath:xmr}} ({{athd:xmr}}), {{fromath:xmr}} davon entfernt
+- Marktwert: {{mcap:xmr}} ({{rank:xmr}} unter den Kryptowährungen)
 - Kursveränderung in 12 Monaten: {{chg1y:xmr}}
 - 10 $ am Tag über 5 Jahre: {{dca:xmr:5}} bei {{dcainv:5}} Einsatz ({{dcaroi:xmr:5}})
 

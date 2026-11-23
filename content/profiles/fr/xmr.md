@@ -1,6 +1,6 @@
 ---
 title: Monero (XMR) expliqué simplement : privé par défaut, sans plafond d'émission et retiré de Binance à l'UE
-description: Monero en clair : signatures en anneau, adresses furtives, émission de queue, le record de 2026, retraits des plateformes, risques et achat régulier.
+description: Monero en clair : signatures en anneau, adresses furtives, émission de queue, retraits des plateformes, risques et achat régulier.
 date: 2026-11-22
 kind: analysis
 ---
@@ -23,7 +23,8 @@ Le XMR sert à payer les frais et à transférer de la valeur en toute confident
 ## Les chiffres actuels
 
 - Cours actuel : {{price:xmr}}
-- Record : {{ath:xmr}} ({{athd:xmr}})
+- Record : {{ath:xmr}} ({{athd:xmr}}), {{fromath:xmr}} depuis
+- Valeur de marché : {{mcap:xmr}} ({{rank:xmr}} parmi les cryptomonnaies)
 - Variation du cours sur 12 mois : {{chg1y:xmr}}
 - 10 $ par jour pendant 5 ans : {{dca:xmr:5}} pour {{dcainv:5}} investis ({{dcaroi:xmr:5}})
 

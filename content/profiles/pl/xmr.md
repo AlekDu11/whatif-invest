@@ -1,6 +1,6 @@
 ---
 title: Monero (XMR) prostym językiem: prywatność domyślnie, brak limitu podaży i delisting od Binance po UE
-description: Monero w prostych słowach: podpisy pierścieniowe i adresy ukryte, emisja ogonowa, rekord z 2026 r., wycofania z giełd, ryzyka i regularne zakupy.
+description: Monero w prostych słowach: podpisy pierścieniowe i adresy ukryte, emisja ogonowa, wycofania z giełd, ryzyka i regularne zakupy.
 date: 2026-11-22
 kind: analysis
 ---
@@ -23,7 +23,8 @@ XMR służy do opłacania prowizji i prywatnego przesyłania wartości, a górni
 ## Liczby teraz
 
 - Cena teraz: {{price:xmr}}
-- Rekord: {{ath:xmr}} ({{athd:xmr}})
+- Rekord: {{ath:xmr}} ({{athd:xmr}}), {{fromath:xmr}} od niego
+- Wartość rynkowa: {{mcap:xmr}} ({{rank:xmr}} wśród kryptowalut)
 - Zmiana ceny w ciągu 12 miesięcy: {{chg1y:xmr}}
 - 10 $ dziennie przez 5 lat: {{dca:xmr:5}} przy wpłaconych {{dcainv:5}} ({{dcaroi:xmr:5}})
 

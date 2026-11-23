@@ -1,6 +1,6 @@
 ---
 title: Monero (XMR) dijelaskan sederhana: privat secara bawaan, tanpa batas pasokan, dan delisting dari Binance hingga UE
-description: Monero dijelaskan sederhana: cara ring signature dan stealth address menyembunyikan pembayaran, tail emission, rekor 2026, delisting, risiko utama dan DCA.
+description: Monero dijelaskan sederhana: cara ring signature dan stealth address menyembunyikan pembayaran, tail emission, delisting, risiko utama dan DCA.
 date: 2026-11-22
 kind: analysis
 ---
@@ -23,7 +23,8 @@ XMR dipakai untuk membayar biaya jaringan dan mengirim nilai secara privat, dan 
 ## Angka saat ini
 
 - Harga hari ini: {{price:xmr}}
-- Rekor tertinggi: {{ath:xmr}} ({{athd:xmr}})
+- Rekor tertinggi: {{ath:xmr}} ({{athd:xmr}}), {{fromath:xmr}} dari rekor itu
+- Nilai pasar: {{mcap:xmr}} ({{rank:xmr}} di antara mata uang kripto)
 - Perubahan harga dalam 12 bulan: {{chg1y:xmr}}
 - $10 per hari selama 5 tahun: {{dca:xmr:5}} dari {{dcainv:5}} yang diinvestasikan ({{dcaroi:xmr:5}})
 
