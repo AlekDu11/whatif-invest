@@ -19,7 +19,7 @@ kind: analysis
 ## 지금의 숫자
 
 - 현재 주가: {{price:aapl}}
-- 시가총액: {{mcap:aapl}}
+- 시가총액: {{mcap:aapl}} (WhatIfStack 세계 대기업 순위 {{rank:aapl}})
 - 사상 최고가: {{ath:aapl}}({{athd:aapl}}), 최고가 대비 {{fromath:aapl}}
 - 10년간 매일 10달러: 투자금 {{dcainv:10}}이 {{dca:aapl:10}}로 ({{dcaroi:aapl:10}})
 

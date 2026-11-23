@@ -19,7 +19,7 @@ Phần lớn tiền của Apple vẫn đến từ bán thiết bị. Trong năm 
 ## Các con số hiện tại
 
 - Giá hôm nay: {{price:aapl}}
-- Vốn hóa thị trường: {{mcap:aapl}}
+- Vốn hóa thị trường: {{mcap:aapl}} ({{rank:aapl}} trong số các công ty lớn nhất thế giới trên WhatIfStack)
 - Đỉnh kỷ lục: {{ath:aapl}} ({{athd:aapl}}), cách đỉnh {{fromath:aapl}}
 - 10 USD mỗi ngày trong 10 năm: {{dca:aapl:10}} từ {{dcainv:10}} đã đầu tư ({{dcaroi:aapl:10}})
 

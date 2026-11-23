@@ -19,7 +19,7 @@ Większość pieniędzy Apple wciąż pochodzi ze sprzedaży urządzeń. W roku 
 ## Liczby teraz
 
 - Cena teraz: {{price:aapl}}
-- Wartość rynkowa: {{mcap:aapl}}
+- Wartość rynkowa: {{mcap:aapl}} ({{rank:aapl}} wśród największych firm świata na WhatIfStack)
 - Rekord: {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} od niego
 - 10 $ dziennie przez 10 lat: {{dca:aapl:10}} przy wpłaconych {{dcainv:10}} ({{dcaroi:aapl:10}})
 
