@@ -1,5 +1,5 @@
 ---
-title: TRON (TRX) sade dille: tüm USDT'nin yaklaşık yarısını taşıyan blokzincir, 27 seçilmiş doğrulayıcı, 0,43 $ rekor
+title: TRON (TRX) sade dille: tüm USDT'nin yaklaşık yarısını taşıyan blokzincir ve 27 seçilmiş doğrulayıcı
 description: TRON sade dille: energy ve bandwidth ücretleri, neden bu kadar USDT TRON'da, Justin Sun, SEC davası, Tron Inc., riskler ve düzenli alım için bilgiler.
 date: 2026-11-22
 kind: analysis
@@ -10,7 +10,7 @@ kind: analysis
 > - Eylül 2026 sonunda TRON'da yaklaşık 92 milyar dolarlık USDT vardı; bu, tüm USDT'nin yaklaşık yarısı ve Ethereum'dakinden fazla.
 > - Yaklaşık her 3 saniyede yeni bir blok oluşur; blokları, TRX stake edenlerin seçtiği 27 "Süper Temsilci" üretir.
 > - Azami arz yoktur: yaklaşık 95 milyar TRX bulunur, yeni coinler doğrulayıcılara ödenir, TRX ile ödenen ücretler yakılır.
-> - Şimdiye kadarki rekor kapanış yaklaşık 0,43 $ (Aralık 2024); genel bir altcoin yükselişinde, önceki zirveden neredeyse yedi yıl sonra görüldü.
+> - Rekor fiyatı {{ath:trx}} ({{athd:trx}}); bugün fiyat ondan {{fromath:trx}} uzakta.
 
 ## Nasıl çalışır
 

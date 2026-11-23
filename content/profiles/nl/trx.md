@@ -1,5 +1,5 @@
 ---
-title: TRON (TRX) eenvoudig uitgelegd: de blockchain met ongeveer de helft van alle USDT, 27 gekozen validators, een record van $0,43
+title: TRON (TRX) eenvoudig uitgelegd: de blockchain met ongeveer de helft van alle USDT en 27 gekozen validators
 description: TRON in gewone taal: kosten met energy en bandwidth, waarom er zoveel USDT over gaat, Justin Sun, de SEC-zaak, Tron Inc., risico's en tips.
 date: 2026-11-22
 kind: analysis
@@ -10,7 +10,7 @@ kind: analysis
 > - Eind september 2026 stond er ongeveer $92 miljard aan USDT op TRON — grofweg de helft van alle USDT en meer dan op Ethereum.
 > - Ongeveer elke 3 seconden komt er een nieuw blok; de blokken worden gemaakt door 27 'Super Representatives', gekozen door mensen die TRX staken.
 > - Er is geen maximale voorraad: er bestaan ongeveer 95 miljard TRX, nieuwe munten betalen de validators en kosten in TRX worden verbrand.
-> - De hoogste slotkoers tot nu toe is ongeveer $0,43 (december 2024), bereikt in een brede altcoinrally, bijna zeven jaar na de vorige top.
+> - De recordkoers is {{ath:trx}} ({{athd:trx}}); vandaag staat de koers {{fromath:trx}} daarvan af.
 
 ## Hoe het werkt
 

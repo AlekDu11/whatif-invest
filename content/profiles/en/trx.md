@@ -1,5 +1,5 @@
 ---
-title: TRON (TRX) explained: the blockchain carrying about half of all USDT, 27 elected validators, a $0.43 record
+title: TRON (TRX) explained: the blockchain carrying about half of all USDT, with 27 elected validators
 description: TRON in plain language: energy and bandwidth fees, why so much USDT moves on it, Justin Sun, the SEC case, Tron Inc., risks and tips for regular buyers.
 date: 2026-11-22
 kind: analysis
@@ -10,7 +10,7 @@ kind: analysis
 > - At the end of September 2026 about $92 billion of USDT sat on TRON — roughly half of all USDT, more than on Ethereum.
 > - A block arrives about every 3 seconds, produced by 27 "Super Representatives" elected by TRX stakers.
 > - No maximum supply: about 95 billion TRX exist; new coins pay validators and fees paid in TRX are burned.
-> - TRX's record close so far is about $0.43 (December 2024), almost seven years after its previous peak.
+> - Its record high is {{ath:trx}} ({{athd:trx}}); today the price is {{fromath:trx}} from it.
 
 ## How it works
 

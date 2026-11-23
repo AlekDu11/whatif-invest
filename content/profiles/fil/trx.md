@@ -1,5 +1,5 @@
 ---
-title: TRON (TRX) sa simpleng paliwanag: ang blockchain na may halos kalahati ng lahat ng USDT, 27 nahalal na validator, record na $0.43
+title: TRON (TRX) sa simpleng paliwanag: ang blockchain na may halos kalahati ng lahat ng USDT at 27 nahalal na validator
 description: TRON sa simpleng salita: energy at bandwidth na bayad, bakit maraming USDT dito, si Justin Sun, kaso ng SEC, Tron Inc., panganib at payo sa bumibili.
 date: 2026-11-22
 kind: analysis
@@ -10,7 +10,7 @@ Ang **TRON** ay blockchain na ginawa para sa mabilis at murang pagpapadala ng pe
 > - Sa katapusan ng Setyembre 2026, may humigit-kumulang $92 bilyong USDT sa TRON — halos kalahati ng lahat ng USDT at mas marami kaysa sa Ethereum.
 > - May bagong block bawat 3 segundo humigit-kumulang; gumagawa nito ang 27 "Super Representative" na hinahalal ng mga nag-i-stake ng TRX.
 > - Walang maximum supply: may mga 95 bilyong TRX, ibinabayad ang bagong coin sa mga validator, at sinusunog ang bayad na nasa TRX.
-> - Ang pinakamataas na closing price sa ngayon ay mga $0.43 (Disyembre 2024), naabot sa malawakang pag-akyat ng mga altcoin, halos pitong taon matapos ang dating rurok.
+> - Ang pinakamataas na presyo nito ay {{ath:trx}} ({{athd:trx}}); ngayon, {{fromath:trx}} ang presyo mula roon.
 
 ## Paano ito gumagana
 

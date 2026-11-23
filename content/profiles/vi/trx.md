@@ -1,5 +1,5 @@
 ---
-title: TRON (TRX) giải thích dễ hiểu: blockchain chứa khoảng một nửa lượng USDT, 27 validator được bầu, kỷ lục 0,43 USD
+title: TRON (TRX) giải thích dễ hiểu: blockchain chứa khoảng một nửa lượng USDT và 27 validator được bầu
 description: TRON bằng ngôn ngữ đơn giản: phí energy và bandwidth hoạt động ra sao, vì sao nhiều USDT chạy trên TRON, Justin Sun, vụ kiện SEC, Tron Inc., rủi ro chính.
 date: 2026-11-22
 kind: analysis
@@ -10,7 +10,7 @@ kind: analysis
 > - Cuối tháng 9/2026, có khoảng 92 tỷ USD USDT trên TRON — gần một nửa tổng lượng USDT và nhiều hơn so với trên Ethereum.
 > - Cứ khoảng 3 giây có một khối mới; các khối do 27 "Siêu đại diện" (Super Representative) tạo ra, được bầu bởi những người staking TRX.
 > - Không có nguồn cung tối đa: hiện có khoảng 95 tỷ TRX, coin mới dùng để trả thưởng cho validator, còn phí trả bằng TRX bị đốt.
-> - Giá đóng cửa kỷ lục đến nay khoảng 0,43 USD (tháng 12/2024), đạt được trong đợt tăng chung của altcoin, gần bảy năm sau đỉnh trước đó.
+> - Đỉnh kỷ lục là {{ath:trx}} ({{athd:trx}}); giá hiện tại cách đỉnh {{fromath:trx}}.
 
 ## Cách hoạt động
 

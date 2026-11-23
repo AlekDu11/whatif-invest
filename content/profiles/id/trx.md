@@ -1,5 +1,5 @@
 ---
-title: TRON (TRX) dijelaskan sederhana: blockchain yang membawa sekitar separuh dari semua USDT, 27 validator terpilih, rekor $0,43
+title: TRON (TRX) dijelaskan sederhana: blockchain yang membawa sekitar separuh dari semua USDT dan 27 validator terpilih
 description: TRON dengan bahasa sederhana: biaya energy dan bandwidth, mengapa banyak USDT di sana, Justin Sun, kasus SEC, Tron Inc., risiko, dan tips pembeli rutin.
 date: 2026-11-22
 kind: analysis
@@ -10,7 +10,7 @@ kind: analysis
 > - Pada akhir September 2026 ada sekitar $92 miliar USDT di TRON — kira-kira separuh dari semua USDT dan lebih banyak daripada di Ethereum.
 > - Blok baru muncul kira-kira setiap 3 detik; blok dibuat oleh 27 "Super Representative" yang dipilih oleh para pemegang yang melakukan staking TRX.
 > - Tidak ada pasokan maksimum: ada sekitar 95 miliar TRX, koin baru membayar validator, dan biaya yang dibayar dengan TRX dibakar.
-> - Harga penutupan tertinggi sejauh ini sekitar $0,43 (Desember 2024), tercapai saat altcoin naik serentak, hampir tujuh tahun setelah puncak sebelumnya.
+> - Rekor tertingginya {{ath:trx}} ({{athd:trx}}); kini harganya {{fromath:trx}} dari rekor itu.
 
 ## Cara kerjanya
 
