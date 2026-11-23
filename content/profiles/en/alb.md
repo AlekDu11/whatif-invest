@@ -1,6 +1,6 @@
 ---
-title: Albemarle (ALB) explained: the lithium giant that fell 84% and bounced back
-description: Albemarle in plain language: $1.55 billion of Q3 2026 sales, 72% from lithium, profit back after losses, a boom-and-bust stock and its real risks.
+title: Albemarle (ALB) stock: one of the world's biggest lithium producers
+description: Albemarle in plain language: $1.55 billion of Q3 2026 sales, 72% from lithium, a return to profit after losses, a boom-and-bust stock and its risks.
 date: 2026-11-20
 kind: analysis
 ---
@@ -10,22 +10,24 @@ kind: analysis
 > - Net sales: $1.553 billion in Q3 2026, +18.8% a year; lithium (Energy Storage) brought $1.119 billion, about 72%.
 > - Back in profit: net income $296.8 million in the quarter after a $160.7 million loss a year earlier; free cash flow $325.4 million.
 > - The average lithium price Albemarle received almost doubled (+94.7%) to $20.02 per kg, while volumes fell 18.8%.
-> - The stock dropped about 84% from its November 2022 record (about $325) to April 2025, then more than tripled into spring 2026 before falling again.
+> - The stock dropped about 84% from its November 2022 high (about $325 intraday) to April 2025, then roughly doubled by April 2026 before falling again.
 
 ## How it makes money
 
-Albemarle reports two main businesses. **Energy Storage** sells lithium carbonate and lithium hydroxide to battery and car makers, often on contracts linked to market prices; in Q3 2026 it shipped 56,000 tonnes of lithium carbonate equivalent (LCE). Much of its rock comes from Greenbushes in Western Australia through the Talison joint venture. **Specialties** ($388.6 million in Q3) sells bromine — used in flame retardants, oil drilling and medicines — and lithium products for industry and pharmaceuticals; its Jordan Bromine joint venture had a record quarter. A third business, the refining catalysts maker Ketjen, was cut back: Albemarle sold 51% of its refining catalyst business on 2 March 2026 and now books only its share of the profit.
+Albemarle reports two main businesses. **Energy Storage** sells lithium carbonate and lithium hydroxide to battery and car makers, often on contracts linked to market prices; in Q3 2026 it shipped 56,000 tonnes of lithium carbonate equivalent (LCE). Much of its rock comes from Greenbushes in Western Australia through the Talison joint venture. **Specialties** ($388.6 million in Q3) sells bromine — used in flame retardants, oil drilling and medicines — and lithium products for industry and pharmaceuticals; its Jordan Bromine joint venture had its best quarter so far in Q3 2026. A third business, the refining catalysts maker Ketjen, was cut back: Albemarle sold 51% of its refining catalyst business on 2 March 2026 and now books only its share of the profit.
 
 ## The numbers right now
+
+- Price today: {{price:alb}}
+- Market value: {{mcap:alb}} ({{rank:alb}} among the world's largest companies on WhatIfStack)
+- Record high: {{ath:alb}} ({{athd:alb}}), {{fromath:alb}} from it
+- $10 a day for 10 years: {{dca:alb:10}} from {{dcainv:10}} invested ({{dcaroi:alb:10}})
 
 In the quarter to 30 September 2026 Albemarle's net sales rose 18.8% to $1.553 billion and adjusted EBITDA (profit before interest, tax and depreciation) almost tripled to $645.5 million. Diluted earnings were $2.15 per share, against a loss of $1.72 a year earlier. The company held $1.85 billion of cash against about $1.9 billion of debt. It cut 2026 capital spending to $300–350 million from about $500 million and says cost savings passed $150 million a year. Management expects Q4 sales and profit to fall from Q3 because of lower lithium prices and expensive rock bought earlier. A June fire delayed the ramp-up of a new processing plant at Talison, and the Kemerton plant in Australia was put on care and maintenance.
 
 ## The stock's story
 
-For years Albemarle was a quiet chemicals company. The electric car boom changed that: when lithium prices exploded in 2021–2022, the stock hit a record of about $325 in November 2022. Then China flooded the market with new supply, lithium prices collapsed, and Albemarle swung to losses — by April 2025 the shares were about 84% below the peak. A lithium price recovery and cost cuts lifted the monthly close from about $97 in October 2025 to about $195 in April 2026. Since then lithium prices in China turned lower again and the shares have more than halved, to about $83 in November 2026.
-
-- Price today: {{price:alb}}
-- $10 a day for 10 years: {{dca:alb:10}} from {{dcainv:10}} invested ({{dcaroi:alb:10}})
+For years Albemarle was a quiet chemicals company. The electric car boom changed that: when lithium prices exploded in 2021–2022, the stock reached about $325 during trading in November 2022. Then China flooded the market with new supply, lithium prices collapsed, and Albemarle swung to losses — by April 2025 the shares were about 84% below the peak. A lithium price recovery and cost cuts lifted the monthly close from about $97 in October 2025 to about $195 in April 2026. After that, lithium prices in China turned lower again, and by November 2026 the shares had more than halved, to about $83.
 
 ## Competitors
 
