@@ -21,7 +21,7 @@ Through the 2020s the business has been moving from one-off licences to cloud su
 ## The numbers right now
 
 - Price today: {{price:sap}}
-- Market value: {{mcap:sap}} ({{rank:sap}} among the world's largest companies on WhatIfStack)
+- Market value: {{mcap:sap}}
 - Record high: {{ath:sap}} ({{athd:sap}}), {{fromath:sap}} from it
 - $10 a day for 10 years: {{dca:sap:10}} from {{dcainv:10}} invested ({{dcaroi:sap:10}})
 
