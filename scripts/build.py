@@ -2183,13 +2183,21 @@ ANW = {'en': 'analysis', 'uk': 'аналіз', 'ru': 'анализ', 'es': 'aná
        'ko': '분석', 'zh': '分析', 'ar': 'تحليل', 'fil': 'pagsusuri'}
 
 
+TOCW = {'en': 'In this analysis', 'uk': 'У цьому аналізі', 'ru': 'В этом анализе', 'es': 'En este análisis', 'pt': 'Nesta análise', 'de': 'In dieser Analyse',
+        'fr': 'Dans cette analyse', 'it': 'In questa analisi', 'pl': 'W tej analizie', 'tr': 'Bu analizde', 'nl': 'In deze analyse', 'id': 'Dalam analisis ini',
+        'vi': 'Trong bài phân tích', 'th': 'ในบทวิเคราะห์นี้', 'hi': 'इस विश्लेषण में', 'ja': 'この分析の内容', 'ko': '이 분석의 내용', 'zh': '本文内容',
+        'ar': 'في هذا التحليل', 'fil': 'Sa pagsusuring ito'}
+
+
 def analysis_block(lang, aid):
     """Full written analysis of the asset (content/profiles/<lang>/<id>.md with `kind: analysis`), shown in full on the page."""
     prof = PROFILES.get(lang, {}).get(aid)
     if not prof or prof.get('kind') != 'analysis':
         return ''
-    return (f'<section class="section card anl"><h2>{esc(prof.get("title", ""))}</h2>'
-            f'<p class="muted anld">{esc(prof.get("date", ""))}</p><div class="artbody clamp" data-more="{esc(XC[lang]["more"])}">{md(prof["body"], lang)}</div></section>'
+    # owner 2026-11-23: the text looked like «half a page» — wide screens get a sticky table of contents on the right (filled by app.js)
+    return (f'<section class="section card anl"><div class="anlw"><div class="anlm"><h2>{esc(prof.get("title", ""))}</h2>'
+            f'<p class="muted anld">{esc(prof.get("date", ""))}</p><div class="artbody clamp" data-more="{esc(XC[lang]["more"])}">{md(prof["body"], lang)}</div></div>'
+            f'<aside class="anltoc" data-h="{esc(TOCW.get(lang, TOCW["en"]))}" hidden></aside></div></section>'
             + track_block(lang, [aid]))   # the analysis reads like an article: same «Track it» call to action as news and articles
 
 def stock_faq(lang, aid):

@@ -797,6 +797,14 @@ new MutationObserver(()=>{ clearTimeout(window._wiStar); window._wiStar=setTimeo
   document.addEventListener('wi:watch',drawWatch); drawWatch();
 })();
 /* ---------- long texts (stock analyses): show the first screen, «Show more» opens the rest ---------- */
+/* analysis: sticky table of contents on wide screens (owner 2026-11-23); a click opens the clamped text and scrolls to the section */
+$$('.anltoc').forEach(as=>{ const body=as.closest('.anl')&&as.closest('.anl').querySelector('.artbody'); if(!body) return;
+  const hs=[...body.querySelectorAll('h2')]; if(hs.length<3) return;
+  hs.forEach((h,i)=>{ if(!h.id) h.id='s-'+(i+1) });
+  as.innerHTML=`<b>${esc(as.dataset.h||'')}</b><ol>${hs.map(h=>`<li><a href="#${h.id}">${esc(h.textContent)}</a></li>`).join('')}</ol>`; as.hidden=false;
+  as.addEventListener('click',e=>{ const a=e.target.closest('a'); if(!a) return; e.preventDefault(); const t=document.getElementById(a.getAttribute('href').slice(1));
+    if(body.classList.contains('clamped')){ const b=body.parentNode.querySelector('.clampbtn'); if(b) b.click() }
+    setTimeout(()=>t&&t.scrollIntoView({block:'start',behavior:'smooth'}),60) }) });
 $$('.clamp').forEach(el=>{ if(el.scrollHeight<760) return; el.classList.add('clamped');
   const b=document.createElement('button'); b.type='button'; b.className='btn ghost clampbtn'; b.textContent=(el.dataset.more||'Show more')+' ▾';
   b.onclick=()=>{ const open=el.classList.toggle('clamped')===false; b.textContent=open?'▴':(el.dataset.more||'Show more')+' ▾'; if(!open) el.scrollIntoView({block:'start',behavior:'smooth'}) };
