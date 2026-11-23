@@ -1,6 +1,6 @@
 ---
-title: "AMD (AMD) hissesi sade dille: 1,61 dolardan 1 trilyon dolarlık şirkete yükselen çip üreticisi"
-description: "AMD sade dille: 2026 3. çeyrekte rekor 13,4 milyar $ gelir, yapay zekâ çiplerinin neden gelirin çoğunu getirdiği, hissenin hikâyesi, riskler ve düzenli alım."
+title: "AMD (AMD) hissesi: Ryzen, Radeon ve Instinct yapay zekâ çiplerinin tasarımcısı"
+description: "AMD sade dille: 2026 3. çeyrekte 13,4 milyar $ gelir (+%45), veri merkezi yapay zekâ çiplerinin neden en çok kazandırdığı, hikâye, riskler ve düzenli alım."
 date: 2026-11-23
 kind: analysis
 ---
@@ -20,14 +20,16 @@ Müşterileri bulut ve yapay zekâ şirketleri, PC ve konsol üreticileridir. AM
 
 ## Şu anki rakamlar
 
+- Bugünkü fiyat: {{price:amd}}
+- Piyasa değeri: {{mcap:amd}}
+- Rekor: {{ath:amd}} ({{athd:amd}}), ondan {{fromath:amd}}
+- 10 yıl boyunca günde 10 $: {{dca:amd:10}}, yatırılan {{dcainv:10}} ({{dcaroi:amd:10}})
+
 26 Eylül 2026'da biten çeyrekte AMD %54 brüt marjla 13,4 milyar $ gelir elde etti. Net kâr 2,4 milyar $ (hisse başına 1,46 $) oldu; bir yıl öncesine göre %95 fazla. Çeyreği 15,8 milyar $ nakit ve kısa vadeli yatırımla, 7,1 milyar $ borçla kapattı; AMD 4,7 milyar $ borçlanınca borç çeyrek içinde iki katından fazla arttı. 4. çeyrek için yaklaşık 17 milyar $ gelir (±%3) ve yaklaşık %55 non-GAAP brüt marj öngörüyor.
 
 ## Hissenin hikâyesi
 
 2010'ların başında AMD uçurumun kenarındaydı: Temmuz 2015'te hisse 1,61 dolara düştü. 2014'ten beri CEO olan Lisa Su şirketi yeni çip tasarımlarına adadı; ilk Ryzen ve EPYC işlemciler 2017'de çıktı ve Intel'den pazar payı almaya başladı. Bir sonraki sıçrama yapay zekâdan geldi: Ekim 2025'te OpenAI anlaşması açıklandığında hisse bir sabah içinde yaklaşık %30 yükseldi. 21 Eylül 2026'da 613,31 $ ile rekor kırdı ve şirketin piyasa değeri 1 trilyon doları geçti. Son 52 haftada fiyat 188,22 $ ile 658,52 $ arasında gidip geldi; yani burada yüzlerce dolarlık dalgalanmalar olağan.
-
-- Bugünkü fiyat: {{price:amd}}
-- 10 yıl boyunca günde 10 $: {{dca:amd:10}}, yatırılan {{dcainv:10}} ({{dcaroi:amd:10}})
 
 ## Rakipler
 

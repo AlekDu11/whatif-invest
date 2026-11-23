@@ -1,16 +1,16 @@
 ---
-title: Applied Materials (AMAT) stock: the machine maker behind every AI chip
-description: Applied Materials in plain language — how it made a record $10.41 billion in a quarter selling chip-making machines, China rules, the stock's swings and risks.
+title: "Applied Materials (AMAT) stock: the machine maker behind every AI chip"
+description: "Applied Materials in plain language: $34.45 billion of revenue in fiscal 2026 from chip-making machines, China rules, the stock's swings and risks."
 date: 2026-11-21
 kind: analysis
 ---
-**Applied Materials** does not make chips — it builds the machines that chip factories use to make them. Companies like TSMC, Samsung, Intel and memory makers buy its equipment to lay down, etch and inspect the ultra-thin layers inside every processor and memory chip. The AI boom has just given the Santa Clara, California, company its best year ever.
+**Applied Materials** does not make chips — it builds the machines that chip factories use to make them. Companies like TSMC, Samsung, Intel and memory makers buy its equipment to lay down, etch and inspect the ultra-thin layers inside every processor and memory chip. Thanks to the AI boom, fiscal 2026 (to October) was the biggest sales year in the history of the Santa Clara, California, company.
 
 > **Key takeaways**
 > - Record revenue: $10.41 billion in the quarter to 25 October 2026, +53% a year; $34.45 billion for fiscal 2026, +21%.
 > - China's share of sales fell to 25% last quarter from 29% a year earlier; Taiwan was the largest region at 28%.
 > - For the next quarter Applied guided to $11.1 billion, plus or minus $500 million, and expects chip-equipment spending to grow more than 30% in 2027.
-> - The stock dropped to $316.95 on 5 November 2026 — 57% below its 52-week high of $739.67.
+> - The stock fell to $316.95 on 5 November 2026, 57% below the 52-week high of $739.67 it had set that summer; record high today: {{ath:amat}} ({{athd:amat}}).
 
 ## How it makes money
 
@@ -20,6 +20,11 @@ About three-quarters of revenue comes from **Semiconductor Systems** — the mac
 
 ## The numbers right now
 
+- Price today: {{price:amat}}
+- Market value: {{mcap:amat}}
+- Record high: {{ath:amat}} ({{athd:amat}}), {{fromath:amat}} from it
+- $10 a day for 10 years: {{dca:amat:10}} from {{dcainv:10}} invested ({{dcaroi:amat:10}})
+
 In fiscal 2026 Applied earned $10.09 billion of net profit, up 44%, at a 50.0% gross margin. In the fourth quarter alone it generated a record $2.62 billion of free cash flow and returned $2.42 billion to shareholders — $2.00 billion in buybacks, the most in a quarter in over eight years, and $421 million in dividends.
 
 CEO Gary Dickerson says AI keeps pushing demand for advanced chips above supply and that customers are asking for machines earlier. Management named one limit for 2027: there are not enough finished cleanrooms — factory buildings — to put the new equipment in.
@@ -27,9 +32,6 @@ CEO Gary Dickerson says AI keeps pushing demand for advanced chips above supply 
 ## The stock's story
 
 Applied has traded on Nasdaq for decades and moves with the chip cycle. In 2022, when chip demand cooled, it lost about half its value. In 2026 the AI building wave sent it to a 52-week high of $739.67 by summer. Then the swings got violent: $547.25 on 2 October, $316.95 on 5 November amid doubts about AI spending, then a rebound of about 25% into the 12 November results — still up 49% for the year at that point.
-
-- Price today: {{price:amat}}
-- $10 a day for 10 years: {{dca:amat:10}} from {{dcainv:10}} invested ({{dcaroi:amat:10}})
 
 ## Competitors
 

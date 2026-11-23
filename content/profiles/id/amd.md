@@ -1,6 +1,6 @@
 ---
-title: "Saham AMD (AMD) dijelaskan sederhana: pembuat chip yang naik dari $1,61 jadi perusahaan $1 triliun"
-description: "AMD dijelaskan sederhana: pendapatan rekor $13,4 miliar di Q3 2026, mengapa chip AI kini jadi sumber utama, kisah sahamnya, risiko, dan angka DCA."
+title: "Saham AMD (AMD): perancang chip Ryzen, Radeon, dan chip AI Instinct"
+description: "AMD dijelaskan sederhana: pendapatan $13,4 miliar di Q3 2026 (+45%), mengapa chip AI pusat data paling menghasilkan, kisah saham, risiko, dan angka DCA."
 date: 2026-11-23
 kind: analysis
 ---
@@ -20,14 +20,16 @@ Pelanggannya adalah perusahaan cloud dan AI, pembuat PC, serta pembuat konsol. A
 
 ## Angka saat ini
 
+- Harga hari ini: {{price:amd}}
+- Nilai pasar: {{mcap:amd}}
+- Rekor tertinggi: {{ath:amd}} ({{athd:amd}}), {{fromath:amd}} dari rekor itu
+- $10 per hari selama 10 tahun: {{dca:amd:10}} dari {{dcainv:10}} yang diinvestasikan ({{dcaroi:amd:10}})
+
 Pada kuartal hingga 26 September 2026, AMD meraih pendapatan $13,4 miliar dengan margin kotor 54%. Laba bersih $2,4 miliar ($1,46 per saham), naik 95% dari setahun sebelumnya. Di akhir kuartal AMD memiliki $15,8 miliar kas dan investasi jangka pendek, dibanding utang $7,1 miliar; utang naik lebih dari dua kali lipat dalam kuartal itu setelah AMD meminjam $4,7 miliar. Untuk kuartal IV, AMD memproyeksikan pendapatan sekitar $17 miliar (±3%) dan margin kotor non-GAAP sekitar 55%.
 
 ## Kisah sahamnya
 
 Di awal 2010-an AMD nyaris tumbang: pada Juli 2015 sahamnya jatuh ke $1,61. Lisa Su, CEO sejak 2014, mempertaruhkan perusahaan pada desain chip baru; Ryzen dan EPYC pertama hadir pada 2017 dan mulai merebut pangsa pasar dari Intel. Lompatan berikutnya datang dari AI: saat kesepakatan dengan OpenAI diumumkan pada Oktober 2025, saham naik sekitar 30% dalam satu pagi. Pada 21 September 2026 saham mencetak rekor $613,31 dan nilai pasar perusahaan melewati $1 triliun. Dalam 52 minggu terakhir harganya bergerak antara $188,22 dan $658,52, jadi ayunan ratusan dolar adalah hal biasa di sini.
-
-- Harga hari ini: {{price:amd}}
-- $10 per hari selama 10 tahun: {{dca:amd:10}} dari {{dcainv:10}} yang diinvestasikan ({{dcaroi:amd:10}})
 
 ## Pesaing
 

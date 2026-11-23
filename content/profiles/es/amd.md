@@ -1,6 +1,6 @@
 ---
-title: "Acciones de AMD (AMD): el fabricante de chips que pasó de 1,61 $ a valer un billón de dólares"
-description: "AMD explicada fácil: ingresos récord de 13.400 millones en el 3T 2026, por qué los chips de IA aportan ya la mayor parte, historia de la acción, riesgos y DCA."
+title: "Acciones de AMD (AMD): el diseñador de los chips Ryzen, Radeon e Instinct para IA"
+description: "AMD explicada fácil: 13.400 millones $ de ingresos en el 3T 2026 (+45%), por qué los chips de IA para centros de datos aportan más, historia, riesgos y DCA."
 date: 2026-11-23
 kind: analysis
 ---
@@ -20,14 +20,16 @@ Sus clientes son empresas de nube e IA, fabricantes de PC y de consolas. AMD dic
 
 ## Las cifras ahora
 
+- Precio actual: {{price:amd}}
+- Valor de mercado: {{mcap:amd}}
+- Máximo histórico: {{ath:amd}} ({{athd:amd}}), {{fromath:amd}} desde él
+- 10 $ al día durante 10 años: {{dca:amd:10}} con {{dcainv:10}} invertidos ({{dcaroi:amd:10}})
+
 En el trimestre cerrado el 26 de septiembre de 2026, AMD ingresó 13.400 millones de dólares con un margen bruto del 54%. El beneficio neto fue de 2.400 millones (1,46 $ por acción), un 95% más que un año antes. Terminó el trimestre con 15.800 millones en efectivo e inversiones a corto plazo frente a 7.100 millones de deuda; la deuda se duplicó con creces en el trimestre después de que AMD pidiera prestados 4.700 millones. Para el cuarto trimestre prevé unos 17.000 millones de ingresos (±3%) y un margen bruto non-GAAP de alrededor del 55%.
 
 ## La historia de la acción
 
 A principios de la década de 2010 AMD estaba al borde del abismo: en julio de 2015 la acción cayó a 1,61 dólares. Lisa Su, consejera delegada desde 2014, apostó la empresa a nuevos diseños, y los primeros Ryzen y EPYC llegaron en 2017 y empezaron a quitarle cuota a Intel. El siguiente salto vino de la IA: cuando se anunció el acuerdo con OpenAI en octubre de 2025, la acción subió cerca de un 30% en una mañana. El 21 de septiembre de 2026 marcó un récord de 613,31 dólares y la empresa superó el billón de valor. En las últimas 52 semanas el precio osciló entre 188,22 y 658,52 dólares, así que aquí los vaivenes de cientos de dólares son normales.
-
-- Precio actual: {{price:amd}}
-- 10 $ al día durante 10 años: {{dca:amd:10}} con {{dcainv:10}} invertidos ({{dcaroi:amd:10}})
 
 ## Competidores
 

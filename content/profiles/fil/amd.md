@@ -1,6 +1,6 @@
 ---
-title: "AMD (AMD) stock sa simpleng paliwanag: ang chipmaker na umakyat mula $1.61 tungo sa $1 trilyong kompanya"
-description: "AMD sa simpleng paliwanag: record na $13.4 bilyong kita sa Q3 2026, bakit AI chips na ang nagdadala ng karamihan ng benta, kuwento ng stock, panganib at DCA."
+title: "AMD (AMD) stock: ang nagdidisenyo ng Ryzen, Radeon at Instinct AI chips"
+description: "AMD sa simpleng paliwanag: $13.4 bilyong kita sa Q3 2026 (+45%), bakit AI chips para sa data center ang pinakamalaking kita, kuwento ng stock, panganib at DCA."
 date: 2026-11-23
 kind: analysis
 ---
@@ -20,14 +20,16 @@ Ang mga customer nito ay mga cloud at AI company, gumagawa ng PC at gumagawa ng 
 
 ## Ang mga numero ngayon
 
+- Presyo ngayon: {{price:amd}}
+- Halaga sa merkado: {{mcap:amd}}
+- Pinakamataas na presyo: {{ath:amd}} ({{athd:amd}}), {{fromath:amd}} mula roon
+- $10 kada araw sa loob ng 10 taon: {{dca:amd:10}} mula sa {{dcainv:10}} na inilagay ({{dcaroi:amd:10}})
+
 Sa quarter hanggang 26 Setyembre 2026, kumita ang AMD ng $13.4 bilyon na may 54% gross margin. Ang net income ay $2.4 bilyon ($1.46 kada share), 95% na mas mataas kaysa isang taon bago. Nagtapos ito ng quarter na may $15.8 bilyong cash at short-term investments laban sa $7.1 bilyong utang; higit dumoble ang utang sa quarter matapos humiram ang AMD ng $4.7 bilyon. Para sa Q4, inaasahan nito ang mga $17 bilyong kita (±3%) at non-GAAP gross margin na mga 55%.
 
 ## Ang kuwento ng stock
 
 Noong unang bahagi ng 2010s, halos bumagsak ang AMD: noong Hulyo 2015, bumaba sa $1.61 ang share. Si Lisa Su, CEO mula 2014, ay itinaya ang kompanya sa mga bagong chip design; dumating ang unang Ryzen at EPYC processors noong 2017 at nagsimulang agawin ang market share ng Intel. Ang sunod na talon ay galing sa AI: nang ianunsyo ang deal sa OpenAI noong Oktubre 2025, tumaas ang stock nang mga 30% sa loob ng isang umaga. Noong 21 Setyembre 2026, umabot ito sa record na $613.31 at lumampas sa $1 trilyon ang market value ng kompanya. Sa nakaraang 52 linggo, gumalaw ang presyo mula $188.22 hanggang $658.52, kaya normal dito ang paggalaw na daan-daang dolyar.
-
-- Presyo ngayon: {{price:amd}}
-- $10 kada araw sa loob ng 10 taon: {{dca:amd:10}} mula sa {{dcainv:10}} na inilagay ({{dcaroi:amd:10}})
 
 ## Mga kakumpitensya
 

@@ -1,6 +1,6 @@
 ---
-title: AMD (AMD) explained: the chipmaker that went from $1.61 to a $1 trillion company
-description: AMD in plain language — how it made a record $13.4 billion in Q3 2026, why AI chips now bring most of its revenue, the stock's story, risks and DCA numbers.
+title: "AMD (AMD) stock: the chip designer behind Ryzen, Radeon and Instinct AI chips"
+description: "AMD in plain language: $13.4 billion of revenue in Q3 2026 (+45%), why data-centre AI chips bring the most money, the stock's story, risks and DCA numbers."
 date: 2026-11-18
 kind: analysis
 ---
@@ -10,7 +10,7 @@ kind: analysis
 > - Record revenue of $13.4 billion in Q3 2026, up 45% in a year; data centre sales nearly doubled (+97%) to $8.5 billion.
 > - Management expects about $17 billion in Q4 2026, which would be roughly 66% more than a year earlier.
 > - A 2025 deal with OpenAI covers 6 gigawatts of AMD GPUs and a warrant for up to 160 million AMD shares (about 10% of the company).
-> - The stock rose about 185% in 2026 by late September and trades at roughly 105 times last year's profit.
+> - The stock rose about 185% in 2026 by late September and traded at roughly 105 times the previous year's profit.
 
 ## How it makes money
 
@@ -20,14 +20,16 @@ Its customers are cloud and AI companies, PC makers and console makers. AMD says
 
 ## The numbers right now
 
+- Price today: {{price:amd}}
+- Market value: {{mcap:amd}}
+- Record high: {{ath:amd}} ({{athd:amd}}), {{fromath:amd}} from it
+- $10 a day for 10 years: {{dca:amd:10}} from {{dcainv:10}} invested ({{dcaroi:amd:10}})
+
 In the quarter to 26 September 2026 AMD earned $13.4 billion in revenue with a 54% gross margin. Net profit was $2.4 billion ($1.46 per share), up 95% from a year earlier. It ended the quarter with $15.8 billion in cash and short-term investments against $7.1 billion of debt; debt more than doubled during the quarter after AMD borrowed $4.7 billion. For Q4 it guided to about $17 billion in revenue (plus or minus 3%) and a non-GAAP gross margin of about 55%.
 
 ## The stock's story
 
-AMD was close to the edge in the early 2010s: the share price fell to $1.61 in July 2015. Lisa Su, CEO since 2014, bet the company on new chip designs, and the first Ryzen and EPYC processors arrived in 2017 and started taking market share from Intel. The next jump came from AI: when the OpenAI deal was announced in October 2025, the stock rose about 30% in a morning. On 21 September 2026 it hit a record $613.31 and the company passed $1 trillion in market value. Over the past 52 weeks the price ranged from $188.22 to $658.52, so swings of hundreds of dollars are normal here.
-
-- Price today: {{price:amd}}
-- $10 a day for 10 years: {{dca:amd:10}} from {{dcainv:10}} invested ({{dcaroi:amd:10}})
+AMD was close to the edge in the early 2010s: the share price fell to $1.61 in July 2015. Lisa Su, CEO since 2014, bet the company on new chip designs, and the first Ryzen and EPYC processors arrived in 2017 and started taking market share from Intel. The next jump came from AI: when the OpenAI deal was announced in October 2025, the stock rose about 30% in a morning. On 21 September 2026 it closed at $613.31, a record at that time, and the company passed $1 trillion in market value. In the 52 weeks to November 2026 the price ranged from $188.22 to $658.52, so swings of hundreds of dollars are normal here.
 
 ## Competitors
 

@@ -1,16 +1,16 @@
 ---
-title: Acciones de Applied Materials (AMAT): quién fabrica las máquinas de cada chip de IA
-description: Applied Materials explicada fácil: ingresos récord de 10.410 M$ en un trimestre con máquinas para chips, reglas sobre China, vaivenes de la acción y riesgos.
+title: "Acciones de Applied Materials (AMAT): quién fabrica las máquinas de cada chip de IA"
+description: "Applied Materials explicada fácil: 34.450 M$ de ingresos en el año fiscal 2026 con máquinas para chips, reglas sobre China, vaivenes de la acción y riesgos."
 date: 2026-11-21
 kind: analysis
 ---
-**Applied Materials** no fabrica chips: construye las máquinas con las que se fabrican. TSMC, Samsung, Intel y los fabricantes de memoria usan sus equipos para crear e inspeccionar las capas finísimas de cada chip. La empresa, con sede en Santa Clara (California), acaba de cerrar gracias a la IA el mejor año de su historia.
+**Applied Materials** no fabrica chips: construye las máquinas con las que se fabrican. TSMC, Samsung, Intel y los fabricantes de memoria usan sus equipos para crear e inspeccionar las capas finísimas de cada chip. La empresa, con sede en Santa Clara (California), cerró gracias a la IA el año fiscal 2026 (hasta octubre) con las mayores ventas de su historia.
 
 > **Lo esencial**
 > - Ingresos récord: 10.410 M$ en el trimestre cerrado el 25 de octubre de 2026 (+53%); 34.450 M$ en el ejercicio 2026 (+21%).
 > - China bajó al 25% de las ventas del trimestre desde el 29%; Taiwán fue la mayor región, con el 28%.
 > - Prevé 11.100 M$ (±500 M$) para el próximo trimestre y un aumento de más del 30% del gasto en equipos para chips en 2027.
-> - La acción cayó a 316,95 $ el 5 de noviembre de 2026, un 57% por debajo de su máximo de 52 semanas, 739,67 $.
+> - La acción cayó a 316,95 $ el 5 de noviembre de 2026, un 57% por debajo del máximo de 52 semanas de 739,67 $ marcado ese verano; récord actual: {{ath:amat}} ({{athd:amat}}).
 
 ## Cómo gana dinero
 
@@ -20,6 +20,11 @@ Cerca de tres cuartas partes de los ingresos vienen de **Semiconductor Systems**
 
 ## Las cifras ahora
 
+- Precio actual: {{price:amat}}
+- Valor de mercado: {{mcap:amat}}
+- Máximo histórico: {{ath:amat}} ({{athd:amat}}), {{fromath:amat}} desde él
+- 10 $ al día durante 10 años: {{dca:amat:10}} con {{dcainv:10}} invertidos ({{dcaroi:amat:10}})
+
 En el ejercicio 2026 Applied ganó 10.090 millones de dólares netos, un 44% más, con un margen bruto del 50,0%. En el cuarto trimestre generó un flujo de caja libre récord de 2.620 millones y devolvió 2.420 millones al accionista: 2.000 millones en recompras (récord en más de ocho años) y 421 millones en dividendos.
 
 El consejero delegado, Gary Dickerson, dice que la demanda de chips avanzados supera a la oferta y que los clientes piden las máquinas antes. El freno para 2027: faltan salas limpias, los edificios donde se instalan los equipos.
@@ -27,9 +32,6 @@ El consejero delegado, Gary Dickerson, dice que la demanda de chips avanzados su
 ## La historia de la acción
 
 Applied cotiza en el Nasdaq desde hace décadas y sigue el ciclo de los chips: en 2022, cuando se enfrió la demanda, perdió cerca de la mitad de su valor. En 2026 la ola de construcción para la IA la llevó en verano a un máximo de 52 semanas de 739,67 $. Luego llegaron los bandazos: 547,25 $ el 2 de octubre, 316,95 $ el 5 de noviembre por dudas sobre el gasto en IA y un rebote de un 25% hasta los resultados del 12 de noviembre, cuando aún ganaba un 49% en el año.
-
-- Precio actual: {{price:amat}}
-- 10 $ al día durante 10 años: {{dca:amat:10}} con {{dcainv:10}} invertidos ({{dcaroi:amat:10}})
 
 ## Competidores
 

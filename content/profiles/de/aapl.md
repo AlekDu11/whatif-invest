@@ -19,7 +19,7 @@ Den Großteil seines Geldes verdient Apple weiterhin mit Geräten. Im Geschäfts
 ## Die Zahlen aktuell
 
 - Kurs aktuell: {{price:aapl}}
-- Marktwert: {{mcap:aapl}} ({{rank:aapl}} unter den größten Unternehmen der Welt auf WhatIfStack)
+- Marktwert: {{mcap:aapl}}
 - Rekordhoch: {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} davon entfernt
 - 10 $ pro Tag über 10 Jahre: {{dca:aapl:10}} bei {{dcainv:10}} Einsatz ({{dcaroi:aapl:10}})
 

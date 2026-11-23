@@ -1,6 +1,6 @@
 ---
-title: "Action AMD (AMD) expliquée simplement : le fabricant de puces passé de 1,61 $ à 1 000 milliards de dollars"
-description: "AMD simplement : chiffre d'affaires record de 13,4 Md$ au T3 2026, pourquoi les puces d'IA rapportent l'essentiel, histoire de l'action, risques, DCA."
+title: "Action AMD (AMD) : le concepteur des puces Ryzen, Radeon et Instinct pour l'IA"
+description: "AMD simplement : 13,4 Md$ de chiffre d'affaires au T3 2026 (+45 %), pourquoi les puces d'IA pour data centers rapportent le plus, histoire, risques, DCA."
 date: 2026-11-23
 kind: analysis
 ---
@@ -20,14 +20,16 @@ Ses clients sont des entreprises de cloud et d'IA, des fabricants de PC et de co
 
 ## Les chiffres actuels
 
+- Cours actuel : {{price:amd}}
+- Valeur de marché : {{mcap:amd}}
+- Record : {{ath:amd}} ({{athd:amd}}), {{fromath:amd}} depuis
+- 10 $ par jour pendant 10 ans : {{dca:amd:10}} pour {{dcainv:10}} investis ({{dcaroi:amd:10}})
+
 Sur le trimestre clos le 26 septembre 2026, AMD a réalisé 13,4 Md$ de chiffre d'affaires avec une marge brute de 54 %. Le bénéfice net a atteint 2,4 Md$ (1,46 $ par action), +95 % sur un an. Elle a terminé le trimestre avec 15,8 Md$ de trésorerie et placements à court terme pour 7,1 Md$ de dette ; la dette a plus que doublé sur le trimestre après un emprunt de 4,7 Md$. Pour le quatrième trimestre, AMD vise environ 17 Md$ de chiffre d'affaires (±3 %) et une marge brute non-GAAP d'environ 55 %.
 
 ## L'histoire de l'action
 
 Au début des années 2010, AMD était au bord du gouffre : en juillet 2015, l'action est tombée à 1,61 $. Lisa Su, PDG depuis 2014, a misé l'entreprise sur de nouvelles architectures ; les premiers Ryzen et EPYC sont arrivés en 2017 et ont commencé à prendre des parts de marché à Intel. Le bond suivant est venu de l'IA : à l'annonce de l'accord avec OpenAI en octobre 2025, l'action a pris environ 30 % en une matinée. Le 21 septembre 2026, elle a atteint un record de 613,31 $ et la capitalisation a dépassé 1 000 milliards de dollars. Sur les 52 dernières semaines, le cours a évolué entre 188,22 $ et 658,52 $ : des écarts de plusieurs centaines de dollars sont normaux ici.
-
-- Cours actuel : {{price:amd}}
-- 10 $ par jour pendant 10 ans : {{dca:amd:10}} pour {{dcainv:10}} investis ({{dcaroi:amd:10}})
 
 ## Concurrents
 

@@ -1,6 +1,6 @@
 ---
-title: "Ações da AMD (AMD): a fabricante de chips que foi de US$ 1,61 a uma empresa de US$ 1 trilhão"
-description: "AMD explicada de forma simples: receita recorde de US$ 13,4 bilhões no 3º tri de 2026, por que os chips de IA já trazem a maior parte, história, riscos e DCA."
+title: "Ações da AMD (AMD): a criadora dos chips Ryzen, Radeon e Instinct para IA"
+description: "AMD explicada de forma simples: US$ 13,4 bilhões de receita no 3º tri de 2026 (+45%), por que chips de IA para data centers rendem mais, história, riscos e DCA."
 date: 2026-11-23
 kind: analysis
 ---
@@ -20,14 +20,16 @@ Os clientes são empresas de nuvem e IA, fabricantes de PCs e de consoles. A AMD
 
 ## Os números agora
 
+- Preço hoje: {{price:amd}}
+- Valor de mercado: {{mcap:amd}}
+- Máxima histórica: {{ath:amd}} ({{athd:amd}}), {{fromath:amd}} desde ela
+- US$ 10 por dia durante 10 anos: {{dca:amd:10}} com {{dcainv:10}} investidos ({{dcaroi:amd:10}})
+
 No trimestre encerrado em 26 de setembro de 2026, a AMD teve receita de US$ 13,4 bilhões com margem bruta de 54%. O lucro líquido foi de US$ 2,4 bilhões (US$ 1,46 por ação), 95% maior que um ano antes. Terminou o trimestre com US$ 15,8 bilhões em caixa e aplicações de curto prazo contra US$ 7,1 bilhões de dívida; a dívida mais que dobrou no trimestre depois que a AMD tomou US$ 4,7 bilhões emprestados. Para o 4º trimestre, a projeção é de cerca de US$ 17 bilhões de receita (±3%) e margem bruta non-GAAP de cerca de 55%.
 
 ## A história da ação
 
 No começo dos anos 2010 a AMD esteve à beira do precipício: em julho de 2015 a ação caiu para US$ 1,61. Lisa Su, CEO desde 2014, apostou a empresa em novos projetos de chips, e os primeiros Ryzen e EPYC chegaram em 2017 e começaram a tirar participação da Intel. O salto seguinte veio da IA: quando o acordo com a OpenAI foi anunciado em outubro de 2025, a ação subiu cerca de 30% em uma manhã. Em 21 de setembro de 2026 bateu o recorde de US$ 613,31 e a empresa passou de US$ 1 trilhão em valor de mercado. Nas últimas 52 semanas o preço variou de US$ 188,22 a US$ 658,52 — oscilações de centenas de dólares são normais aqui.
-
-- Preço hoje: {{price:amd}}
-- US$ 10 por dia durante 10 anos: {{dca:amd:10}} com {{dcainv:10}} investidos ({{dcaroi:amd:10}})
 
 ## Concorrentes
 

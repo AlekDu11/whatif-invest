@@ -19,7 +19,7 @@ Sebagian besar uang Apple masih berasal dari penjualan perangkat. Pada tahun fis
 ## Angka saat ini
 
 - Harga hari ini: {{price:aapl}}
-- Nilai pasar: {{mcap:aapl}} ({{rank:aapl}} di antara perusahaan terbesar dunia di WhatIfStack)
+- Nilai pasar: {{mcap:aapl}}
 - Rekor tertinggi: {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} dari rekor itu
 - $10 per hari selama 10 tahun: {{dca:aapl:10}} dari {{dcainv:10}} yang diinvestasikan ({{dcaroi:aapl:10}})
 

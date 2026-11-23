@@ -1,6 +1,6 @@
 ---
-title: "AMD-Aktie (AMD): der Chipentwickler, der von 1,61 $ zum Billionen-Konzern wurde"
-description: "AMD einfach erklärt: Rekordumsatz von 13,4 Mrd. $ im 3. Quartal 2026, warum KI-Chips den Großteil bringen, Geschichte der Aktie, Risiken und Sparplan-Zahlen."
+title: "AMD-Aktie (AMD): der Entwickler der Ryzen-, Radeon- und Instinct-KI-Chips"
+description: "AMD einfach erklärt: 13,4 Mrd. $ Umsatz im 3. Quartal 2026 (+45 %), warum KI-Chips für Rechenzentren am meisten bringen, Geschichte, Risiken und Sparplan."
 date: 2026-11-23
 kind: analysis
 ---
@@ -20,14 +20,16 @@ Kunden sind Cloud- und KI-Firmen, PC- und Konsolenhersteller. Laut AMD nutzen An
 
 ## Die Zahlen aktuell
 
+- Kurs aktuell: {{price:amd}}
+- Marktwert: {{mcap:amd}}
+- Rekordhoch: {{ath:amd}} ({{athd:amd}}), {{fromath:amd}} davon entfernt
+- 10 $ pro Tag über 10 Jahre: {{dca:amd:10}} bei {{dcainv:10}} Einsatz ({{dcaroi:amd:10}})
+
 Im Quartal bis 26. September 2026 setzte AMD 13,4 Mrd. $ um, bei einer Bruttomarge von 54 %. Der Nettogewinn lag bei 2,4 Mrd. $ (1,46 $ je Aktie), 95 % mehr als ein Jahr zuvor. Am Quartalsende hatte AMD 15,8 Mrd. $ an Barmitteln und kurzfristigen Anlagen bei 7,1 Mrd. $ Schulden; die Schulden haben sich im Quartal mehr als verdoppelt, weil AMD 4,7 Mrd. $ aufgenommen hat. Für das 4. Quartal stellt AMD rund 17 Mrd. $ Umsatz (±3 %) und eine Non-GAAP-Bruttomarge von etwa 55 % in Aussicht.
 
 ## Die Geschichte der Aktie
 
 Anfang der 2010er stand AMD am Abgrund: Im Juli 2015 fiel die Aktie auf 1,61 $. Lisa Su, Chefin seit 2014, setzte alles auf neue Chip-Designs; 2017 kamen die ersten Ryzen- und EPYC-Prozessoren und nahmen Intel Marktanteile ab. Den nächsten Sprung brachte KI: Als im Oktober 2025 der Deal mit OpenAI bekannt wurde, stieg die Aktie an einem Vormittag um rund 30 %. Am 21. September 2026 erreichte sie ein Rekordhoch von 613,31 $, und der Börsenwert überschritt 1 Billion $. In den letzten 52 Wochen schwankte der Kurs zwischen 188,22 $ und 658,52 $ – Ausschläge von mehreren Hundert Dollar sind hier normal.
-
-- Kurs aktuell: {{price:amd}}
-- 10 $ pro Tag über 10 Jahre: {{dca:amd:10}} bei {{dcainv:10}} Einsatz ({{dcaroi:amd:10}})
 
 ## Konkurrenten
 

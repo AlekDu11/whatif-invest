@@ -1,6 +1,6 @@
 ---
-title: "Akcje AMD (AMD) prostym językiem: producent chipów, który urósł z 1,61 $ do spółki za bilion dolarów"
-description: "AMD prosto: rekordowe 13,4 mld $ przychodów w III kw. 2026, dlaczego chipy AI dają już większość pieniędzy, historia akcji, ryzyka i liczby dla DCA."
+title: "Akcje AMD (AMD): projektant chipów Ryzen, Radeon i akceleratorów AI Instinct"
+description: "AMD prosto: 13,4 mld $ przychodów w III kw. 2026 (+45%), dlaczego chipy AI do centrów danych dają najwięcej, historia akcji, ryzyka i liczby dla DCA."
 date: 2026-11-23
 kind: analysis
 ---
@@ -20,14 +20,16 @@ Klientami są firmy chmurowe i AI, producenci komputerów i konsol. AMD podaje, 
 
 ## Liczby teraz
 
+- Cena teraz: {{price:amd}}
+- Wartość rynkowa: {{mcap:amd}}
+- Rekord: {{ath:amd}} ({{athd:amd}}), {{fromath:amd}} od niego
+- 10 $ dziennie przez 10 lat: {{dca:amd:10}} przy wpłaconych {{dcainv:10}} ({{dcaroi:amd:10}})
+
 W kwartale do 26 września 2026 roku AMD miało 13,4 mld $ przychodów przy marży brutto 54%. Zysk netto wyniósł 2,4 mld $ (1,46 $ na akcję), o 95% więcej niż rok wcześniej. Na koniec kwartału spółka miała 15,8 mld $ gotówki i krótkoterminowych inwestycji przy 7,1 mld $ długu; dług wzrósł w kwartale ponad dwukrotnie, bo AMD pożyczyło 4,7 mld $. Na IV kwartał prognoza to około 17 mld $ przychodów (±3%) i marża brutto non-GAAP około 55%.
 
 ## Historia akcji
 
 Na początku lat 2010. AMD było na krawędzi: w lipcu 2015 roku akcja spadła do 1,61 $. Lisa Su, prezeska od 2014 roku, postawiła wszystko na nowe konstrukcje chipów, a pierwsze Ryzeny i EPYC-i w 2017 roku zaczęły odbierać rynek Intelowi. Kolejny skok dało AI: gdy w październiku 2025 roku ogłoszono umowę z OpenAI, akcja w ciągu jednego poranka wzrosła o ok. 30%. 21 września 2026 roku ustanowiła rekord 613,31 $, a wartość spółki przekroczyła bilion dolarów. W ostatnich 52 tygodniach kurs wahał się od 188,22 $ do 658,52 $, więc ruchy o setki dolarów są tu normą.
-
-- Cena teraz: {{price:amd}}
-- 10 $ dziennie przez 10 lat: {{dca:amd:10}} przy wpłaconych {{dcainv:10}} ({{dcaroi:amd:10}})
 
 ## Konkurenci
 

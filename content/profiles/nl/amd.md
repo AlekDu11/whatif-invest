@@ -1,6 +1,6 @@
 ---
-title: "Aandeel AMD (AMD) eenvoudig uitgelegd: de chipmaker die van $1,61 naar $1 biljoen ging"
-description: "AMD eenvoudig uitgelegd: recordomzet van $13,4 miljard in Q3 2026, waarom AI-chips nu het meeste opleveren, het verhaal van het aandeel, risico's en DCA."
+title: "Aandeel AMD (AMD): de ontwerper van de Ryzen-, Radeon- en Instinct-AI-chips"
+description: "AMD eenvoudig uitgelegd: $13,4 miljard omzet in Q3 2026 (+45%), waarom AI-chips voor datacenters het meeste opleveren, het verhaal, risico's en DCA."
 date: 2026-11-23
 kind: analysis
 ---
@@ -20,14 +20,16 @@ Klanten zijn cloud- en AI-bedrijven, pc-makers en consolemakers. Volgens AMD dra
 
 ## De cijfers nu
 
+- Koers nu: {{price:amd}}
+- Marktwaarde: {{mcap:amd}}
+- Recordkoers: {{ath:amd}} ({{athd:amd}}), {{fromath:amd}} daarvan af
+- $10 per dag gedurende 10 jaar: {{dca:amd:10}} bij {{dcainv:10}} ingelegd ({{dcaroi:amd:10}})
+
 In het kwartaal tot 26 september 2026 boekte AMD $13,4 miljard omzet bij een brutomarge van 54%. De nettowinst was $2,4 miljard ($1,46 per aandeel), 95% meer dan een jaar eerder. Het sloot het kwartaal af met $15,8 miljard aan cash en kortlopende beleggingen tegenover $7,1 miljard schuld; de schuld verdubbelde ruim in het kwartaal nadat AMD $4,7 miljard leende. Voor het vierde kwartaal verwacht AMD zo'n $17 miljard omzet (±3%) en een non-GAAP-brutomarge van ongeveer 55%.
 
 ## Het verhaal van het aandeel
 
 Begin jaren 2010 stond AMD aan de rand van de afgrond: in juli 2015 zakte het aandeel naar $1,61. Lisa Su, topvrouw sinds 2014, zette alles op nieuwe chipontwerpen; de eerste Ryzen- en EPYC-processors kwamen in 2017 en begonnen marktaandeel af te snoepen van Intel. De volgende sprong kwam van AI: toen de deal met OpenAI in oktober 2025 werd aangekondigd, steeg het aandeel op één ochtend zo'n 30%. Op 21 september 2026 bereikte het een record van $613,31 en ging de beurswaarde over $1 biljoen. In de afgelopen 52 weken schommelde de koers tussen $188,22 en $658,52, dus uitslagen van honderden dollars zijn hier normaal.
-
-- Koers nu: {{price:amd}}
-- $10 per dag gedurende 10 jaar: {{dca:amd:10}} bij {{dcainv:10}} ingelegd ({{dcaroi:amd:10}})
 
 ## Concurrenten
 

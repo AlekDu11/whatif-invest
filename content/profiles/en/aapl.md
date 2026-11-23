@@ -19,7 +19,7 @@ Most of Apple's money still comes from selling devices. In fiscal 2026 the iPhon
 ## The numbers right now
 
 - Price today: {{price:aapl}}
-- Market value: {{mcap:aapl}} ({{rank:aapl}} among the world's largest companies on WhatIfStack)
+- Market value: {{mcap:aapl}}
 - Record high: {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} from it
 - $10 a day for 10 years: {{dca:aapl:10}} from {{dcainv:10}} invested ({{dcaroi:aapl:10}})
 

@@ -1,16 +1,16 @@
 ---
-title: Applied-Materials-Aktie (AMAT): wer die Maschinen für jeden KI-Chip baut
-description: Applied Materials einfach erklärt: 10,41 Mrd. $ Rekordumsatz im Quartal mit Anlagen für Chipfabriken, China-Regeln, Kursschwankungen und Risiken.
+title: "Applied-Materials-Aktie (AMAT): wer die Maschinen für jeden KI-Chip baut"
+description: "Applied Materials einfach erklärt: 34,45 Mrd. $ Umsatz im Geschäftsjahr 2026 mit Anlagen für Chipfabriken, China-Regeln, Kursschwankungen und Risiken."
 date: 2026-11-21
 kind: analysis
 ---
-**Applied Materials** stellt keine Chips her – das Unternehmen baut die Maschinen, mit denen Chipfabriken sie fertigen. TSMC, Samsung, Intel und Speicherhersteller kaufen seine Anlagen, um die hauchdünnen Schichten in jedem Prozessor und Speicherchip aufzutragen, zu ätzen und zu prüfen. Der KI-Boom hat dem Konzern aus Santa Clara (Kalifornien) gerade sein bestes Jahr beschert.
+**Applied Materials** stellt keine Chips her – das Unternehmen baut die Maschinen, mit denen Chipfabriken sie fertigen. TSMC, Samsung, Intel und Speicherhersteller kaufen seine Anlagen, um die hauchdünnen Schichten in jedem Prozessor und Speicherchip aufzutragen, zu ätzen und zu prüfen. Dank des KI-Booms war das Geschäftsjahr 2026 (bis Oktober) für den Konzern aus Santa Clara (Kalifornien) das umsatzstärkste seiner Geschichte.
 
 > **Das Wichtigste**
 > - Rekordumsatz: 10,41 Mrd. US-Dollar im Quartal bis 25. Oktober 2026, +53 % zum Vorjahr; im Geschäftsjahr 2026 34,45 Mrd. Dollar, +21 %.
 > - Chinas Anteil am Quartalsumsatz sank auf 25 % von 29 % ein Jahr zuvor; größte Region war Taiwan mit 28 %.
 > - Für das nächste Quartal erwartet Applied 11,1 Mrd. Dollar (±500 Mio.) und rechnet 2027 mit mehr als 30 % Wachstum bei den Ausgaben für Chip-Anlagen.
-> - Am 5. November 2026 fiel die Aktie auf 316,95 $ – 57 % unter ihrem 52-Wochen-Hoch von 739,67 $.
+> - Am 5. November 2026 fiel die Aktie auf 316,95 $ – 57 % unter dem 52-Wochen-Hoch von 739,67 $ aus dem Sommer; Rekordhoch aktuell: {{ath:amat}} ({{athd:amat}}).
 
 ## Wie das Unternehmen Geld verdient
 
@@ -20,6 +20,11 @@ Rund drei Viertel des Umsatzes kommen aus **Semiconductor Systems**, also den Ma
 
 ## Die Zahlen aktuell
 
+- Kurs aktuell: {{price:amat}}
+- Marktwert: {{mcap:amat}}
+- Rekordhoch: {{ath:amat}} ({{athd:amat}}), {{fromath:amat}} davon entfernt
+- 10 $ täglich über 10 Jahre: {{dca:amat:10}} bei {{dcainv:10}} Einsatz ({{dcaroi:amat:10}})
+
 Im Geschäftsjahr 2026 verdiente Applied netto 10,09 Mrd. Dollar, 44 % mehr, bei 50,0 % Bruttomarge. Allein im vierten Quartal erwirtschaftete der Konzern einen Rekord-Free-Cashflow von 2,62 Mrd. Dollar und gab 2,42 Mrd. an die Aktionäre zurück: 2,00 Mrd. für Aktienrückkäufe – so viel wie seit über acht Jahren in keinem Quartal – und 421 Mio. als Dividende.
 
 Konzernchef Gary Dickerson sagt, wegen KI liege die Nachfrage nach modernen Chips weiter über dem Angebot; Kunden wollen ihre Maschinen früher geliefert bekommen. Als Engpass für 2027 nannte das Management vor allem fehlende fertige Reinräume – also Fabrikgebäude, in die die neuen Anlagen gestellt werden können.
@@ -27,9 +32,6 @@ Konzernchef Gary Dickerson sagt, wegen KI liege die Nachfrage nach modernen Chip
 ## Die Geschichte der Aktie
 
 Applied ist seit Jahrzehnten an der Nasdaq notiert und schwankt mit dem Chipzyklus. 2022, als die Chipnachfrage abkühlte, verlor die Aktie etwa die Hälfte ihres Werts. 2026 trieb die KI-Bauwelle sie bis zum Sommer auf ein 52-Wochen-Hoch von 739,67 $. Danach wurde es wild: 547,25 $ am 2. Oktober, 316,95 $ am 5. November inmitten von Zweifeln an den KI-Ausgaben, dann ein Plus von etwa 25 % bis zu den Zahlen am 12. November – da lag die Aktie seit Jahresbeginn noch 49 % im Plus.
-
-- Kurs aktuell: {{price:amat}}
-- 10 $ täglich über 10 Jahre: {{dca:amat:10}} bei {{dcainv:10}} Einsatz ({{dcaroi:amat:10}})
 
 ## Konkurrenz
 

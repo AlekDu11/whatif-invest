@@ -1,6 +1,6 @@
 ---
-title: "Cổ phiếu AMD (AMD) giải thích dễ hiểu: hãng chip đi từ 1,61 USD lên công ty nghìn tỷ USD"
-description: "AMD dễ hiểu: doanh thu kỷ lục 13,4 tỷ USD quý 3/2026, vì sao chip AI giờ mang lại phần lớn doanh thu, câu chuyện cổ phiếu, rủi ro và con số mua định kỳ."
+title: "Cổ phiếu AMD (AMD): hãng thiết kế chip Ryzen, Radeon và chip AI Instinct"
+description: "AMD dễ hiểu: doanh thu 13,4 tỷ USD quý 3/2026 (+45%), vì sao chip AI cho trung tâm dữ liệu mang lại nhiều tiền nhất, câu chuyện cổ phiếu, rủi ro và DCA."
 date: 2026-11-23
 kind: analysis
 ---
@@ -20,14 +20,16 @@ Khách hàng là các công ty điện toán đám mây và AI, hãng sản xu�
 
 ## Các con số hiện tại
 
+- Giá hôm nay: {{price:amd}}
+- Vốn hóa thị trường: {{mcap:amd}}
+- Đỉnh kỷ lục: {{ath:amd}} ({{athd:amd}}), cách đỉnh {{fromath:amd}}
+- 10 USD mỗi ngày trong 10 năm: {{dca:amd:10}} từ {{dcainv:10}} đã đầu tư ({{dcaroi:amd:10}})
+
 Trong quý kết thúc ngày 26/9/2026, AMD đạt doanh thu 13,4 tỷ USD với biên lợi nhuận gộp 54%. Lợi nhuận ròng 2,4 tỷ USD (1,46 USD/cổ phiếu), tăng 95% so với một năm trước. Cuối quý, hãng có 15,8 tỷ USD tiền mặt và đầu tư ngắn hạn so với 7,1 tỷ USD nợ; nợ tăng hơn gấp đôi trong quý sau khi AMD vay 4,7 tỷ USD. Cho quý 4, AMD dự báo doanh thu khoảng 17 tỷ USD (±3%) và biên lợi nhuận gộp non-GAAP khoảng 55%.
 
 ## Câu chuyện của cổ phiếu
 
 Đầu thập niên 2010, AMD đứng bên bờ vực: tháng 7/2015 cổ phiếu rơi xuống 1,61 USD. Bà Lisa Su, CEO từ năm 2014, đặt cược cả công ty vào thiết kế chip mới; những bộ xử lý Ryzen và EPYC đầu tiên ra đời năm 2017 và bắt đầu giành thị phần từ Intel. Cú nhảy tiếp theo đến từ AI: khi thỏa thuận với OpenAI được công bố vào tháng 10/2025, cổ phiếu tăng khoảng 30% chỉ trong một buổi sáng. Ngày 21/9/2026, cổ phiếu lập kỷ lục 613,31 USD và vốn hóa vượt 1 nghìn tỷ USD. Trong 52 tuần qua, giá dao động từ 188,22 đến 658,52 USD, nên biến động hàng trăm USD ở đây là chuyện bình thường.
-
-- Giá hôm nay: {{price:amd}}
-- 10 USD mỗi ngày trong 10 năm: {{dca:amd:10}} từ {{dcainv:10}} đã đầu tư ({{dcaroi:amd:10}})
 
 ## Đối thủ
 

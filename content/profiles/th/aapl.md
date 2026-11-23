@@ -19,7 +19,7 @@ kind: analysis
 ## ตัวเลขล่าสุด
 
 - ราคาวันนี้: {{price:aapl}}
-- มูลค่าตลาด: {{mcap:aapl}} (อันดับ {{rank:aapl}} ในบรรดาบริษัทที่ใหญ่ที่สุดในโลกบน WhatIfStack)
+- มูลค่าตลาด: {{mcap:aapl}}
 - ราคาสูงสุดตลอดกาล: {{ath:aapl}} ({{athd:aapl}}) ห่างจากจุดนั้น {{fromath:aapl}}
 - วันละ 10 ดอลลาร์ เป็นเวลา 10 ปี: {{dca:aapl:10}} จากเงินลงทุน {{dcainv:10}} ({{dcaroi:aapl:10}})
 
