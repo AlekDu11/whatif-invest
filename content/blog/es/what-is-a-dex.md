@@ -1,11 +1,11 @@
 ---
-title: Qué es un DEX y en qué se diferencia de un exchange de criptomonedas
-description: ¿Qué es un DEX? Guía sencilla sobre los exchanges descentralizados: AMM, pools de liquidez, wallets, comisiones de gas y ventajas y desventajas frente a un CEX.
+title: Qué es un DEX en cripto: cómo funciona un exchange descentralizado frente a un CEX
+description: Qué es un DEX en cripto: cómo funcionan Uniswap o Raydium, pools de liquidez, wallets, gas, comisiones del 0,05–1% por swap y diferencias con un CEX.
 date: 2026-11-16
 category: guides
 assets: eth, sol, uni
 ---
-**¿Qué es un DEX?** Un DEX (exchange descentralizado) es un conjunto de contratos inteligentes en una blockchain que te permite cambiar un token por otro directamente desde tu propia wallet. No hay ninguna empresa que guarde tu dinero, no hay cuenta y normalmente no hay verificación de identidad. Uniswap en Ethereum, y Raydium, Orca y Meteora en Solana, son ejemplos conocidos.
+**¿Qué es un DEX en cripto?** Un DEX (exchange descentralizado de criptomonedas) es un conjunto de contratos inteligentes en una blockchain que te permite cambiar un token por otro directamente desde tu propia wallet. No hay ninguna empresa que guarde tu dinero, no hay cuenta y normalmente no hay verificación de identidad. Uniswap en Ethereum, y Raydium, Orca y Meteora en Solana, son ejemplos conocidos.
 
 Un exchange de criptomonedas normal como Binance, Coinbase o Kraken es un **CEX** (exchange centralizado): una empresa que guarda tus fondos, cruza compradores y vendedores en su propio sistema y tiene que cumplir las normas financieras.
 

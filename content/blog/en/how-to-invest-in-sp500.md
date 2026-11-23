@@ -1,13 +1,13 @@
 ---
-title: How to invest in the S&P 500 from anywhere: index funds and ETFs explained
-description: How to invest in the S&P 500 from any country: what the index is, how ETFs like SPY and VOO work, what it costs, and how regular buying worked.
+title: How to invest in the S&P 500: 5 steps, the 3 main ETFs and what it costs
+description: How to invest in the S&P 500 in 5 steps from any country: pick a broker, choose an ETF like SPY, VOO or IVV, compare fees, and see what regular buying returned.
 date: 2026-11-16
 category: guides
 assets: spy, qqq, gold
 ---
-The **S&P 500** is a list of about 500 of the largest companies listed in the United States — Apple, Microsoft, Nvidia, Amazon and hundreds more. When people say "the market went up today", they usually mean this index.
+**How to invest in the S&P 500:** you cannot buy the index itself, so you buy a fund that copies it — an S&P 500 ETF such as SPY, VOO or IVV, or a local index fund — through a regulated broker. With fractional shares you can start with a few dollars, and that one purchase gives you a small piece of about 500 of the largest US companies at once.
 
-You cannot buy an index directly. But you can buy a fund that copies it, and that is one of the simplest ways to own a small piece of hundreds of big companies at once.
+The **S&P 500** is that list of companies — Apple, Microsoft, Nvidia, Amazon and hundreds more. When people say "the market went up today", they usually mean this index. Below are the 5 steps, the costs and what regular buying has actually returned.
 
 ## What the S&P 500 actually is
 
