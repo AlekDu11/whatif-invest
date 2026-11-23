@@ -49,6 +49,7 @@ from i18n_home2 import HM  # noqa: E402
 from i18n_ks import KS, SECT  # noqa: E402
 from i18n_offer import OFFER_TGW  # noqa: E402
 from i18n_lc import LC, LC_CT  # noqa: E402
+from i18n_mem6 import MEM6  # noqa: E402
 from i18n_lcw import LCW  # noqa: E402
 from i18n_xc import XC  # noqa: E402
 from i18n_cv import CV, CV_CCY  # noqa: E402
@@ -4058,14 +4059,22 @@ def memes_page(lang, ver):
     checks = ''.join(f'<li>{esc(M3[k])}</li>' for k in ('c1', 'c2', 'c3', 'c4', 'c5'))
     check_blk = f'<section class="section card mcheck"><h2>✅ {esc(M3["chk_h"])}</h2><ol>{checks}</ol></section>'
     # v5 (owner 2026-11-22: «chaos, nothing is clear, too many warnings») — one simple Fomo-style list: tabs + rows, one line of fine print
-    tl5 = dict(trend=('🔥', t['t_trend']), gain=('🚀', t['t_gain']), most=('👥', MOST[lang]), done=('✅', M4['t_done']), soon=('⏳', M4['t_soon']), new=('🌱', M4['t_new']))
+    M6 = MEM6[lang]
+    tl5 = dict(trend=('🔥', t['t_trend']), gain=('🚀', t['t_gain']), most=('👥', MOST[lang]), done=('✅', M4['t_done']), soon=('⏳', M4['t_soon']), new=('🌱', M4['t_new']), fav=('★', M6['fav']))
     tabs5 = ''.join(f'<button data-v="{k}"{" class=on" if k == "trend" else ""}>{ic} {esc(lb)}</button>' for k, (ic, lb) in tl5.items())
     nets5 = ''.join(f'<button data-n="{k}"{" class=on" if k == "all" else ""}>{esc(v)}</button>' for k, v in (('all', t['all']), ('solana', 'Solana'), ('bsc', 'BNB Chain'), ('base', 'Base')))
     body = (f'<div class="dexhero"><h1>{esc(t["h1"])}</h1><span class="livebadge"><i></i>{esc(t["upd"])}</span></div>'
-            f'<section class="section mlist"><div class="seg mtabs" id="mtab">{tabs5}</div><div class="seg mnets" id="mnet">{nets5}</div>'
+            f'<section class="section mlist"><div class="seg mtabs" id="mtab">{tabs5}</div>'
+            f'<div class="mbar"><div class="seg mnets" id="mnet">{nets5}</div>'
+            f'<label class="msearch"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2"/></svg>'
+            f'<input id="mq" type="search" autocomplete="off" placeholder="{esc(M6["q"])}" aria-label="{esc(M6["q"])}"></label>'
+            f'<label class="msort"><span>{esc(M6["sort"])}</span><select id="msort"><option value="">—</option>'
+            + ''.join(f'<option value="{k}">{esc(v)}</option>' for k, v in (('v', t['vol']), ('c', '24h'), ('m', t['mc']), ('l', t['liq']), ('h', M4['hold']), ('a', t['age'])))
+            + f'</select></label></div>'
             f'<div class="mrows card" id="mrows"><div class="empty">…</div></div>'
-            f'<p class="muted mfine">{esc(t["disc"])} · Binance Web3</p></section>')
-    cfg = dict(memes5=1, memes=dict(tok=url(lang, 'memes/token'), h=dict(name=u['name'], price=u['price'], mc=t['mc'], vol=t['vol'], liq=t['liq'], hold=M4['hold'], age=t['age']), t=dict(trade=t['trade'], new=t['new'], lowliq=t['lowliq'], hot=t['hot'], net=t['net'], hold=M4['hold'], top10=M4['top10'], curve=M4['curve'], mcs=t['mc'], vols=t['vol']), l5=MEM5[lang]))
+            f'<p class="muted mfine">{esc(t["disc"])} · Binance Web3</p></section>'
+            f'{learn_blk}{check_blk}')
+    cfg = dict(memes5=1, memes=dict(m6=M6, tok=url(lang, 'memes/token'), h=dict(name=u['name'], price=u['price'], mc=t['mc'], vol=t['vol'], liq=t['liq'], hold=M4['hold'], age=t['age']), t=dict(trade=t['trade'], new=t['new'], lowliq=t['lowliq'], hot=t['hot'], net=t['net'], hold=M4['hold'], top10=M4['top10'], curve=M4['curve'], mcs=t['mc'], vols=t['vol']), l5=MEM5[lang]))
     return shell(lang, 'memes', f'{t["h1"]} | {BRAND}', t['d'], body, cfg, ver)
 
 
@@ -4081,6 +4090,7 @@ def meme_token_page(lang, ver):
             f'<p class="muted" style="font-size:12px;margin-top:18px">{esc(t["disc"])} · Binance Web3 · <a href="https://www.geckoterminal.com/" target="_blank" rel="noopener">GeckoTerminal</a></p>')
     M3 = MEM3[lang]
     L['learn'] = dict(h=M3['start_h'], d=M3['start_d'], all=M3['all'], url=url(lang, 'learn'), ls=meme_lessons(lang)[:6])
+    L['m6'] = MEM6[lang]
     return shell(lang, 'memes/token', f'{t["h1"]} | {BRAND}', t['d'], body, dict(dexpool=dict(t=L, list=url(lang, 'memes'))), ver).replace(
         '<link rel="canonical"', '<meta name="robots" content="noindex, follow"><link rel="canonical"', 1)
 

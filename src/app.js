@@ -920,6 +920,11 @@ const DEXU=(()=>{
   const keep=r=>{ try{ sessionStorage.setItem('wi_dexrow',JSON.stringify(r)) }catch(e){} };
   return {NETN,big,age,pc,btns,ic,api,go,BW,light,lightHtml,keep};
 })();
+const DEXW={ key:'wi_dexw',
+  all(){ try{ const v=JSON.parse(localStorage.getItem(this.key)||'[]'); return Array.isArray(v)?v:[] }catch(e){ return [] } },
+  has(r){ return this.all().some(x=>x.a===r.a&&x.n===r.n) },
+  toggle(r){ let l=this.all(); const on=l.some(x=>x.a===r.a&&x.n===r.n); l=on?l.filter(x=>!(x.a===r.a&&x.n===r.n)):[{n:r.n,a:r.a,s:r.s,nm:r.nm,img:r.img,pr:r.pr,mc:r.mc,c24:r.c24,liq:r.liq,vol:r.vol,h:r.h,at:r.at,t10:r.t10}].concat(l).slice(0,50);
+    try{ localStorage.setItem(this.key,JSON.stringify(l)) }catch(e){} return !on } };
 (function(){
   const box=$('#dexb'); if(!box||!PAGE.memes) return; const L=PAGE.memes.t, U=DEXU; let net='all', view='trend', last=[], tmr;
   const good=r=>r.liq>=100000&&r.vol>=50000&&(Date.now()-Date.parse(r.at))/36e5>=24&&r.vol/r.liq<=60&&r.c24!=null;
@@ -957,7 +962,7 @@ const DEXU=(()=>{
   load();
 })();
 (function(){
-  const box=$('#dexpool'); if(!box||!PAGE.dexpool) return; const L=PAGE.dexpool.t, U=DEXU;
+  const box=$('#dexpool'); if(!box||!PAGE.dexpool) return; const L=PAGE.dexpool.t, U=DEXU; const M6=L.m6||{}, F5=L.l5||{};
   const q=new URLSearchParams(location.search), n=q.get('n')||'', p=q.get('p')||'', a0=q.get('a')||'', AD=/^[A-Za-z0-9_:\-]{20,80}$/;
   if(!/^[a-z0-9_-]{2,30}$/.test(n)||!(AD.test(p)||AD.test(a0))){ location.replace(PAGE.dexpool.list); return }
   const stat=(k,v)=>`<div class="dps"><small class="muted">${esc(k)}</small><b>${v}</b></div>`;
@@ -966,18 +971,29 @@ const DEXU=(()=>{
     const links=[...(inf.web||[]).map(w=>[w.replace(/^https?:\/\/(www\.)?/,'').replace(/\/$/,''),w]), inf.x?['X @'+inf.x,'https://x.com/'+inf.x]:null, inf.tg?['Telegram','https://t.me/'+inf.tg]:null].filter(Boolean);
     const desc=(inf.d||'').trim(), short=desc.length>320?desc.slice(0,320).replace(/\s+\S*$/,'')+'…':desc;
     return (short?`<p class="dpdesc">${esc(short)}</p>`:'')+(links.length?`<div class="dplinks">${links.map(([t,h])=>`<a class="bchip" href="${esc(h)}" target="_blank" rel="nofollow noopener">${esc(t)}</a>`).join('')}</div>`:'') }
-  let shown=false;
+  let shown=false, trDone=false;
+  function trending(r){ if(trDone||!M6.trend_h) return; trDone=true;   // keep people browsing: 6 other trending tokens on the same network
+    U.api(`dex=trend&n=${U.BW.has(r.n)?r.n:'all'}`).then(j=>{ const l=(j.d||[]).filter(x=>x.a&&x.a!==r.a&&(x.liq||0)>=10000).slice(0,6); if(!l.length) return;
+      const el=document.createElement('section'); el.className='card dptrend';
+      el.innerHTML=`<h2>🔥 ${esc(M6.trend_h)}</h2>`+l.map(x=>`<a class="mrow" href="?n=${encodeURIComponent(x.n)}&a=${encodeURIComponent(x.a)}" data-a="${esc(x.a)}">${U.ic(x,28)}<span class="mn"><b>${esc(x.s)}</b><span>${esc(x.nm||'')}</span></span><span class="mp">${fmtPrice(x.pr)}</span><span class="mc ${cls(U.pc(x.c24))}">${fmtPct(U.pc(x.c24))}</span></a>`).join('');
+      el.addEventListener('click',e=>{ const a=e.target.closest('a[data-a]'); if(!a) return; const x=l.find(y=>y.a===a.dataset.a); if(x) U.keep(x) });
+      const ca=$('.dpca'); (ca&&ca.parentNode?ca.parentNode:box).insertBefore(el, ca?ca.nextSibling:null) }).catch(()=>{}) }
   function show(r){ shown=true; const inf=r.info||{}; if(inf.img&&!r.img) r.img=inf.img;
     try{ const k=JSON.parse(sessionStorage.getItem('wi_dexrow')||'null'); if(k&&k.a===r.a){ ['h','t10','dev','ins','hb'].forEach(f=>{ if(r[f]==null&&k[f]!=null) r[f]=k[f] }); if(!r.at&&k.at) r.at=k.at } }catch(e){}
     document.title=`${r.nm||r.s} (${r.s}) — ${fmtPrice(r.pr)} | WhatIfStack`;
-    box.innerHTML=`<div class="dph">${U.ic(r,48)}<div><h1>${esc(r.nm||r.s)} <span class="muted">${esc(r.s)}</span></h1><span class="dexnet">${esc(U.NETN[r.n]||r.n)}</span>${r.q?` <span class="muted" style="font-size:13px">${esc(r.s)}/${esc(r.q)}</span>`:''}</div></div>
+    box.innerHTML=`<div class="dph">${U.ic(r,48)}<div><h1>${esc(r.nm||r.s)} <span class="muted">${esc(r.s)}</span></h1><span class="dexnet">${esc(U.NETN[r.n]||r.n)}</span>${r.q?` <span class="muted" style="font-size:13px">${esc(r.s)}/${esc(r.q)}</span>`:''}</div>${M6.watch?`<button type="button" class="btn ghost dpw${DEXW.has(r)?' on':''}" id="dpw">${esc(DEXW.has(r)?M6.watching:M6.watch)}</button>`:''}</div>
       <div class="dpp"><b class="dpprice">${fmtPrice(r.pr)}</b><span class="${cls(U.pc(r.c24))}">${fmtPct(U.pc(r.c24))} · 24h</span></div>
+      ${[['5m',r.c5],['1h',r.c1],['6h',r.c6],['24h',r.c24]].some(x=>x[1]!=null)?`<div class="dpchg" aria-label="${esc(M6.chg||'')}">${[['5m',r.c5],['1h',r.c1],['6h',r.c6],['24h',r.c24]].filter(x=>x[1]!=null).map(([k,v])=>chg(k,v)).join('')}</div>`:''}
+      <div class="dpgrid"><div class="dpl">
       ${U.BW.has(r.n)&&r.a?`<div class="card dpch"><div class="dpchh"><b>${esc(L.chart)}</b><span class="dpiv">${['1m','5m','15m','1h','4h','1d'].map(i=>`<button type="button" data-i="${i}"${i==='15m'?' class=on':''}>${i}</button>`).join('')}</span></div><div id="dpchart" style="height:320px"><div class="bload"><i></i></div></div><small class="muted">Binance Web3</small></div>`:''}
-      <div class="dpbtn">${U.BW.has(r.n)?`<a class="btn bnw" href="${U.go(r,'binance-web3','token')}" target="_blank" rel="sponsored nofollow noopener">${esc(L.trade)} · Binance Wallet</a>`:''}${['solana','base','bsc','eth','tron'].includes(r.n)?`<a class="btn" href="/go/gmgn?from=memes-token:${encodeURIComponent(r.n)}&l=${lang}&c=${encodeURIComponent(r.n)}&a=${encodeURIComponent(r.a)}" target="_blank" rel="sponsored nofollow noopener">${esc(L.trade)} · GMGN</a>`:''}<a class="btn ghost" href="/go/okx-wallet?from=memes-token:${encodeURIComponent(r.n)}&l=${lang}" target="_blank" rel="sponsored nofollow noopener">${esc(L.trade)} · OKX Wallet</a></div>
+      </div><div class="dpr"><div class="dpbtn">${U.BW.has(r.n)?`<a class="btn bnw" href="${U.go(r,'binance-web3','token')}" target="_blank" rel="sponsored nofollow noopener">${esc(L.trade)} · Binance Wallet</a>`:''}${['solana','base','bsc','eth','tron'].includes(r.n)?`<a class="btn" href="/go/gmgn?from=memes-token:${encodeURIComponent(r.n)}&l=${lang}&c=${encodeURIComponent(r.n)}&a=${encodeURIComponent(r.a)}" target="_blank" rel="sponsored nofollow noopener">${esc(L.trade)} · GMGN</a>`:''}<a class="btn ghost" href="/go/okx-wallet?from=memes-token:${encodeURIComponent(r.n)}&l=${lang}" target="_blank" rel="sponsored nofollow noopener">${esc(L.trade)} · OKX Wallet</a></div>
       <div class="dpstats">${stat(L.mc,r.mc?U.big(r.mc):'—')}${stat(L.liq,U.big(r.liq))}${stat(L.vol,U.big(r.vol))}${r.h?stat(L.hold,Math.round(r.h).toLocaleString(T.intl||'en')):stat(L.tx,(r.tx||0).toLocaleString(T.intl||'en'))}${stat(L.age,U.age(r.at))}</div>
+      ${F5.g?`<div class="card dpsafe"><b class="dpsafeh">🛡 ${esc(M6.safe_h||'')}</b>${U.lightHtml(r,F5)}</div>`:''}</div></div>
       <div id="dpinfo">${infoHtml(inf)}</div>
       <div class="dpca"><small class="muted">${esc(L.ca)}</small><code>${esc(r.a)}</code><button class="btn ghost" type="button" id="dpcopy">${esc(L.copy)}</button></div>`;
     const c=$('#dpcopy'); if(c) c.onclick=()=>{ try{ navigator.clipboard.writeText(r.a); c.textContent=L.copied }catch(e){} }
+    const w=$('#dpw'); if(w) w.onclick=()=>{ const on=DEXW.toggle(r); w.classList.toggle('on',on); w.textContent=on?M6.watching:M6.watch };
+    trending(r);
     if($('#dpchart')) candles(r) }
   /* candle chart from Binance Web3 klines, our colours; the last candle and the price refresh every 15 s */
   let CHT=null, CS=null, iv='15m', ktok=0, kt=null;
@@ -1004,36 +1020,51 @@ const DEXU=(()=>{
     .catch(()=>{ if(!shown){ box.innerHTML=`<p class="muted">${esc(L.nodata)}</p>`; setTimeout(load,15000) } });
   load();
 })();
-/* ---------- memes v5 (owner 2026-11-22): one simple list like Fomo — tabs, network chips, rows (icon · name · price · market cap · 24h) ---------- */
+/* ---------- memes v6 (owner 2026-11-22/23): one simple list like Fomo — tabs, networks, search, ★ watchlist, sortable columns, safety dot ---------- */
 (function(){
-  const box=$('#mrows'); if(!box||!PAGE.memes5) return; const U=DEXU, P=PAGE.memes; let view='trend', net='all', rows=[], tok=0;
+  const box=$('#mrows'); if(!box||!PAGE.memes5) return; const U=DEXU, P=PAGE.memes, M6=P.m6||{}, F=P.l5||{}; let view='trend', net='all', rows=[], tok=0, q='';
   const RUSH={done:'done',soon:'soon',new:'new'};
   const okRush=r=>(r.t10==null||r.t10<=40)&&(r.ins==null||r.ins<=15)&&(r.dev==null||r.dev<=10)&&(r.liq||0)>=3000;   // hide obvious junk silently
   const link=r=>`${P.tok}?n=${encodeURIComponent(r.n)}&a=${encodeURIComponent(r.a)}`;
   const H=P.h||{}, num=v=>v==null?'—':Math.round(v).toLocaleString(T.intl||'en');
-  let sk=null, sd=-1;   // owner 2026-11-23: sort by any column (click the header; click again = reverse)
+  let sk=null, sd=-1;   // sort by any column (click the header; click again = reverse); phones: the «Sort by» select
   const SK={p:r=>r.pr,c:r=>U.pc(r.c24),m:r=>r.mc,v:r=>r.vol,l:r=>r.liq,h:r=>r.h,a:r=>r.at?-Date.parse(r.at):null};
   const hc=(k,cl,t)=>`<span class="${cl} dxs${sk===k?' on':''}" data-k="${k}" role="button" tabindex="0">${esc(t)}${sk===k?(sd<0?' ↓':' ↑'):''}</span>`;
   const head=()=>`<div class="dxr dxh"><span class="mrk">#</span><span class="mrn">${esc(H.name||'')}</span>${hc('p','mc-p',H.price||'')}${hc('c','mc-c','24h')}${hc('m','mc-m',H.mc||'')}${hc('v','mc-v',H.vol||'')}${hc('l','mc-l',H.liq||'')}${hc('h','mc-h',H.hold||'')}${hc('a','mc-a',H.age||'')}</div>`;
-  const row=(r,i)=>`<a class="dxr" href="${link(r)}" data-a="${esc(r.a)}"><span class="mrk">${i+1}</span>
-    <span class="mrn">${U.ic(r,36)}<span class="mrt"><b>${esc(r.s)}</b><small class="muted">${esc((r.nm&&r.nm!==r.s?r.nm+' · ':'')+(U.NETN[r.n]||r.n))}</small></span></span>
+  const dot=r=>{ if(!F.g) return ''; const l=U.light(r,F); return `<i class="rd rd-${l.c}" title="${esc(l.t+(l.why.length?' — '+l.why.join('; '):''))}"></i>` };
+  const star=r=>{ const on=DEXW.has(r); return `<button type="button" class="dxw${on?' on':''}" data-w="${esc(r.n)}|${esc(r.a)}" aria-pressed="${on}" title="${esc(on?M6.watching:M6.watch)}">${on?'★':'☆'}</button>` };
+  const row=(r,i)=>`<a class="dxr" href="${link(r)}" data-a="${esc(r.a)}"><span class="mrk">${star(r)}<em>${i+1}</em></span>
+    <span class="mrn">${U.ic(r,36)}<span class="mrt"><b>${esc(r.s)} ${dot(r)}</b><small class="muted">${esc((r.nm&&r.nm!==r.s?r.nm+' · ':'')+(U.NETN[r.n]||r.n))}</small></span></span>
     <span class="mc-p"><b>${fmtPrice(r.pr)}</b><small class="mob muted">${U.big(r.mc)} MC</small></span>
     <span class="mc-c ${cls(U.pc(r.c24))}">${fmtPct(U.pc(r.c24))}</span>
     <span class="mc-m">${U.big(r.mc)}</span><span class="mc-v">${U.big(r.vol)}</span><span class="mc-l">${U.big(r.liq)}</span>
     <span class="mc-h">${num(r.h)}</span><span class="mc-a">${esc(U.age(r.at))}</span></a>`;
-  function draw(){ let l=rows.slice(); const seen=new Set(); l=l.filter(r=>r.a&&!seen.has(r.a)&&seen.add(r.a));
-    if(RUSH[view]) l=l.filter(okRush); else l=l.filter(r=>(r.liq||0)>=10000);
+  const isAddr=s=>/^(0x[0-9a-fA-F]{40}|[1-9A-HJ-NP-Za-km-z]{32,44})$/.test(s);
+  function draw(){ let l=rows.slice(); const seen=new Set(); l=l.filter(r=>r.a&&!seen.has(r.n+r.a)&&seen.add(r.n+r.a));
+    if(view==='fav'){} else if(RUSH[view]) l=l.filter(okRush); else l=l.filter(r=>(r.liq||0)>=10000);
     if(view==='gain') l.sort((a,b)=>(b.c24||0)-(a.c24||0)); else if(view==='most') l.sort((a,b)=>(b.h||0)-(a.h||0));
     else if(view==='soon') l.sort((a,b)=>(b.prog||0)-(a.prog||0)); else if(RUSH[view]) l.sort((a,b)=>Date.parse(b.at)-Date.parse(a.at));
+    if(q){ const s=q.toLowerCase(); l=l.filter(r=>(r.s||'').toLowerCase().includes(s)||(r.nm||'').toLowerCase().includes(s)||(r.a||'').toLowerCase()===s) }
     if(sk){ const f=SK[sk]; l.sort((a,b)=>{ const x=f(a), y=f(b); if(x==null&&y==null) return 0; if(x==null) return 1; if(y==null) return -1; return sd*(x-y) }) }
-    box.innerHTML=l.length?head()+l.slice(0,50).map(row).join(''):`<div class="empty">—</div>` }
-  async function load(){ const t=++tok; try{ const j=await U.api(`dex=${RUSH[view]||'trend'}&n=${net}`); if(t!==tok) return; rows=j.d||[]; draw() }catch(e){ if(t===tok&&!rows.length) box.innerHTML='<div class="empty">—</div>' } }
-  $$('#mtab button').forEach(b=>b.onclick=()=>{ $$('#mtab button').forEach(x=>x.classList.toggle('on',x===b)); const was=RUSH[view]||'trend'; view=b.dataset.v; if((RUSH[view]||'trend')===was) draw(); else { box.innerHTML='<div class="empty">…</div>'; load() } });
+    if(l.length){ box.innerHTML=head()+l.slice(0,50).map(row).join(''); return }
+    if(q&&isAddr(q)){ const nets=q.startsWith('0x')?['bsc','base','eth']:['solana'];
+      box.innerHTML=`<div class="empty">${esc(M6.nf||'')}<div class="mnf">${nets.map(n=>`<a class="btn ghost" href="${P.tok}?n=${n}&a=${encodeURIComponent(q)}">${esc(U.NETN[n]||n)}</a>`).join('')}</div></div>`; return }
+    box.innerHTML=`<div class="empty">${view==='fav'&&!q?esc(M6.fav0||'—'):'—'}</div>` }
+  async function load(){ const t=++tok;
+    if(view==='fav'){ rows=DEXW.all().filter(r=>net==='all'||r.n===net); draw();
+      for(const r of rows.slice(0,20)){ U.api(`dex=pool&n=${encodeURIComponent(r.n)}&a=${encodeURIComponent(r.a)}`).then(x=>{ if(t!==tok||!x) return; Object.assign(r,{pr:x.pr??r.pr,mc:x.mc??r.mc,c24:x.c24??r.c24,liq:x.liq??r.liq,vol:x.vol??r.vol,h:x.h??r.h}); draw() }).catch(()=>{}) }
+      return }
+    try{ const j=await U.api(`dex=${RUSH[view]||'trend'}&n=${net}`); if(t!==tok) return; rows=j.d||[]; draw() }catch(e){ if(t===tok&&!rows.length) box.innerHTML='<div class="empty">—</div>' } }
+  $$('#mtab button').forEach(b=>b.onclick=()=>{ $$('#mtab button').forEach(x=>x.classList.toggle('on',x===b)); const was=view==='fav'?'fav':(RUSH[view]||'trend'); view=b.dataset.v; const now=view==='fav'?'fav':(RUSH[view]||'trend'); if(now===was) draw(); else { box.innerHTML='<div class="empty">…</div>'; load() } });
   $$('#mnet button').forEach(b=>b.onclick=()=>{ $$('#mnet button').forEach(x=>x.classList.toggle('on',x===b)); net=b.dataset.n; box.innerHTML='<div class="empty">…</div>'; load() });
-  const sortBy=k=>{ if(sk===k) sd=-sd; else { sk=k; sd=-1 } draw() };
+  const mq=$('#mq'); if(mq){ let qt; mq.addEventListener('input',()=>{ clearTimeout(qt); qt=setTimeout(()=>{ q=mq.value.trim(); draw() },150) }) }
+  const ms=$('#msort'); if(ms) ms.onchange=()=>{ sk=ms.value||null; sd=-1; draw() };
+  const sortBy=k=>{ if(sk===k) sd=-sd; else { sk=k; sd=-1 } if(ms) ms.value=sk||''; draw() };
   box.addEventListener('keydown',e=>{ const h=e.target.closest('.dxs'); if(h&&(e.key==='Enter'||e.key===' ')){ e.preventDefault(); sortBy(h.dataset.k) } });
-  box.addEventListener('click',e=>{ const h=e.target.closest('.dxs'); if(h){ e.preventDefault(); sortBy(h.dataset.k); return } const a=e.target.closest('.dxr'); if(!a) return; const r=rows.find(x=>x.a===a.dataset.a); if(r) U.keep(r) });
-  load(); setInterval(()=>{ if(!wiAway()) load() },45000);
+  box.addEventListener('click',e=>{ const h=e.target.closest('.dxs'); if(h){ e.preventDefault(); sortBy(h.dataset.k); return }
+    const w=e.target.closest('.dxw'); if(w){ e.preventDefault(); e.stopPropagation(); const [n,a]=w.dataset.w.split('|'); const r=rows.find(x=>x.a===a&&x.n===n)||DEXW.all().find(x=>x.a===a&&x.n===n); if(r){ DEXW.toggle(r); if(view==='fav') rows=DEXW.all(); draw() } return }
+    const a=e.target.closest('.dxr'); if(!a) return; const r=rows.find(x=>x.a===a.dataset.a); if(r) U.keep(r) });
+  load(); setInterval(()=>{ if(!wiAway()&&view!=='fav') load() },45000);
 })();
 /* ---------- memes «Pick of the day»: strict filter + Binance social buzz, traffic light in plain words ---------- */
 (function(){
