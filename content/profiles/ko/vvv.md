@@ -1,10 +1,10 @@
 ---
-title: Venice Token(VVV) 쉽게 정리: 프라이빗 AI, 연 200만 개 신규 발행, 0.92달러에서 시작된 급등
-description: Venice Token을 쉽게 설명합니다: 프라이빗 AI Venice란, AI를 쓰게 해 주는 VVV 스테이킹과 DIEM, 소각, 최고가와 변동성, 주요 위험, 적립식으로 사는 사람이 알아야 할 점.
+title: Venice Token(VVV) 쉽게 정리: 프라이빗 AI, AI 이용을 위한 스테이킹, 연 200만 개 신규 발행
+description: Venice Token을 쉽게 설명합니다: 프라이빗 AI Venice란, AI를 쓰게 해 주는 VVV 스테이킹과 DIEM, 소각, 가격 변동, 주요 위험, 적립식으로 사는 사람이 알아야 할 점.
 date: 2026-11-22
 kind: analysis
 ---
-**Venice Token(VVV)**은 프라이버시를 중시하는 AI 채팅·이미지 앱 Venice의 토큰입니다. Venice는 개발자용 API도 제공하며, 암호화폐 기업가 에릭 부어히스(Erik Voorhees)가 창업했습니다. 보유자는 VVV를 스테이킹하면 Venice의 AI 연산 능력 일부를 무료로 쓸 수 있고, 회사 수익의 일부는 토큰을 되사서 소각하는 데 쓰입니다. 2026년 11월 기준 VVV의 시가총액은 약 12억 달러로, AI 관련 암호화폐 가운데 가장 큰 축에 속합니다.
+**Venice Token(VVV)**은 프라이버시를 중시하는 AI 채팅·이미지 앱 Venice의 토큰입니다. Venice는 개발자용 API도 제공하며, 암호화폐 기업가 에릭 부어히스(Erik Voorhees)가 창업했습니다. 보유자는 VVV를 스테이킹하면 Venice의 AI 연산 능력 일부를 무료로 쓸 수 있고, 회사 수익의 일부는 토큰을 되사서 소각하는 데 쓰입니다. 현재 시가총액은 {{mcap:vvv}}(암호화폐 중 {{rank:vvv}})입니다.
 
 > **핵심 요약**
 > - VVV는 2025년 1월 27일 이더리움 레이어 2인 Base에서 1억 개로 출시됐고, 그중 5,000만 개가 에어드롭으로 배포됐습니다.
@@ -23,7 +23,8 @@ VVV는 회사 지분이 아니라 AI 연산 능력에 대한 권리입니다. �
 ## 지금의 숫자
 
 - 현재 가격: {{price:vvv}}
-- 사상 최고가: {{ath:vvv}} ({{athd:vvv}})
+- 사상 최고가: {{ath:vvv}}({{athd:vvv}}), 최고가 대비 {{fromath:vvv}}
+- 시가총액: {{mcap:vvv}}(암호화폐 중 {{rank:vvv}})
 - 12개월 가격 변화: {{chg1y:vvv}}
 - 1년간 매일 10달러: 투자금 {{dcainv:1}}이 {{dca:vvv:1}}로 ({{dcaroi:vvv:1}})
 

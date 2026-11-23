@@ -1,10 +1,10 @@
 ---
-title: Venice Token (VVV) einfach erklärt: private KI, 2 Millionen neue Token pro Jahr und ein Anstieg ab 0,92 $
-description: Venice Token verständlich: die private KI Venice, wie VVV-Staking und DIEM KI-Zugang geben, Burns, Rekord, Risiken und was Sparplan-Anleger wissen sollten.
+title: Venice Token (VVV) einfach erklärt: private KI, Staking für KI-Zugang und 2 Millionen neue Token pro Jahr
+description: Venice Token verständlich: die private KI Venice, wie VVV-Staking und DIEM KI-Zugang geben, Burns, Schwankungen, Risiken und was Sparplan-Anleger wissen sollten.
 date: 2026-11-22
 kind: analysis
 ---
-**Venice Token (VVV)** ist der Token von Venice, einer privaten KI-App für Chat und Bilder mit einer API für Entwickler, gegründet vom Krypto-Unternehmer Erik Voorhees. Wer VVV hält, kann sie staken und bekommt dafür kostenlos einen Anteil an der KI-Rechenkapazität von Venice; ein Teil der Unternehmenseinnahmen fließt in den Rückkauf und das Verbrennen von Token. Im November 2026 war VVV rund 1,2 Milliarden Dollar wert und damit einer der größten Krypto-Assets mit KI-Bezug.
+**Venice Token (VVV)** ist der Token von Venice, einer privaten KI-App für Chat und Bilder mit einer API für Entwickler, gegründet vom Krypto-Unternehmer Erik Voorhees. Wer VVV hält, kann sie staken und bekommt dafür kostenlos einen Anteil an der KI-Rechenkapazität von Venice; ein Teil der Unternehmenseinnahmen fließt in den Rückkauf und das Verbrennen von Token. Heute liegt sein Marktwert bei {{mcap:vvv}} ({{rank:vvv}} unter den Kryptowährungen).
 
 > **Das Wichtigste**
 > - VVV startete am 27. Januar 2025 auf Base, einem Layer 2 von Ethereum, mit 100 Millionen Token; 50 Millionen wurden per Airdrop verteilt.
@@ -23,7 +23,8 @@ VVV ist ein Anspruch auf KI-Rechenleistung, keine Beteiligung am Unternehmen. Di
 ## Die Zahlen jetzt
 
 - Kurs heute: {{price:vvv}}
-- Rekordhoch: {{ath:vvv}} ({{athd:vvv}})
+- Rekordhoch: {{ath:vvv}} ({{athd:vvv}}), {{fromath:vvv}} davon entfernt
+- Marktwert: {{mcap:vvv}} ({{rank:vvv}} unter den Kryptowährungen)
 - Kursveränderung in 12 Monaten: {{chg1y:vvv}}
 - 10 $ am Tag über 1 Jahr: {{dca:vvv:1}} bei {{dcainv:1}} Einsatz ({{dcaroi:vvv:1}})
 

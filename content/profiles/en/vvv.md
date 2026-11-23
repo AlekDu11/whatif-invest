@@ -1,10 +1,10 @@
 ---
-title: Venice Token (VVV) explained: private AI, a 2 million yearly issuance and a rise from $0.92
-description: Venice Token in plain language: what the private AI platform Venice is, how VVV staking and DIEM give AI access, burns, its record and swings, main risks and what regular buyers should know.
+title: Venice Token (VVV) explained: private AI, staking for AI access and 2 million new tokens a year
+description: Venice Token in plain language: what the private AI platform Venice is, how VVV staking and DIEM give AI access, burns, price swings, main risks and what regular buyers should know.
 date: 2026-11-22
 kind: analysis
 ---
-**Venice Token (VVV)** is the token of Venice, a private AI chat and image app with an API for developers, founded by crypto entrepreneur Erik Voorhees. Holders stake VVV to get a share of Venice's AI computing capacity for free, and part of the company's revenue buys back and burns tokens. VVV was worth about $1.2 billion in November 2026, one of the largest AI-related crypto assets.
+**Venice Token (VVV)** is the token of Venice, a private AI chat and image app with an API for developers, founded by crypto entrepreneur Erik Voorhees. Holders stake VVV to get a share of Venice's AI computing capacity for free, and part of the company's revenue buys back and burns tokens. VVV's market value today is {{mcap:vvv}} ({{rank:vvv}} among cryptocurrencies).
 
 > **Key takeaways**
 > - VVV launched on 27 January 2025 on Base, an Ethereum layer 2, with 100 million tokens; 50 million were airdropped.
@@ -23,7 +23,8 @@ VVV is a claim on AI computing rather than a share in the company. Demand comes 
 ## The numbers right now
 
 - Price today: {{price:vvv}}
-- Record high: {{ath:vvv}} ({{athd:vvv}})
+- Record high: {{ath:vvv}} ({{athd:vvv}}), {{fromath:vvv}} from it
+- Market value: {{mcap:vvv}} ({{rank:vvv}} among cryptocurrencies)
 - Price change over 12 months: {{chg1y:vvv}}
 - $10 a day for 1 year: {{dca:vvv:1}} from {{dcainv:1}} invested ({{dcaroi:vvv:1}})
 

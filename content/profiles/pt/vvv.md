@@ -1,10 +1,10 @@
 ---
-title: Venice Token (VVV) explicado de forma simples: IA privada, emissão de 2 milhões por ano e alta desde US$ 0,92
-description: Venice Token simples: o que é a IA privada Venice, como o staking de VVV e o DIEM dão acesso à IA, queimas, recorde, riscos e o que saber se você compra sempre.
+title: Venice Token (VVV) explicado de forma simples: IA privada, staking para acesso à IA e emissão de 2 milhões por ano
+description: Venice Token simples: o que é a IA privada Venice, como o staking de VVV e o DIEM dão acesso à IA, queimas, oscilações, riscos e o que saber se você compra sempre.
 date: 2026-11-22
 kind: analysis
 ---
-**Venice Token (VVV)** é o token da Venice, um app privado de chat e imagens com IA que oferece uma API para desenvolvedores, fundado pelo empreendedor cripto Erik Voorhees. Quem tem VVV faz staking dos tokens para receber de graça uma parte da capacidade de computação de IA da Venice, e parte da receita da empresa é usada para recomprar e queimar tokens. Em novembro de 2026, o VVV valia cerca de US$ 1,2 bilhão, um dos maiores criptoativos ligados à IA.
+**Venice Token (VVV)** é o token da Venice, um app privado de chat e imagens com IA que oferece uma API para desenvolvedores, fundado pelo empreendedor cripto Erik Voorhees. Quem tem VVV faz staking dos tokens para receber de graça uma parte da capacidade de computação de IA da Venice, e parte da receita da empresa é usada para recomprar e queimar tokens. Hoje seu valor de mercado é de {{mcap:vvv}} ({{rank:vvv}} entre as criptomoedas).
 
 > **Pontos principais**
 > - O VVV foi lançado em 27 de janeiro de 2025 na Base, uma camada 2 do Ethereum, com 100 milhões de tokens; 50 milhões foram distribuídos em airdrop.
@@ -23,7 +23,8 @@ O VVV é um direito sobre computação de IA, não uma participação na empresa
 ## Os números agora
 
 - Preço hoje: {{price:vvv}}
-- Recorde: {{ath:vvv}} ({{athd:vvv}})
+- Máxima histórica: {{ath:vvv}} ({{athd:vvv}}), {{fromath:vvv}} desde ela
+- Valor de mercado: {{mcap:vvv}} ({{rank:vvv}} entre as criptomoedas)
 - Variação do preço em 12 meses: {{chg1y:vvv}}
 - US$ 10 por dia durante 1 ano: {{dca:vvv:1}} com {{dcainv:1}} investidos ({{dcaroi:vvv:1}})
 

@@ -1,10 +1,10 @@
 ---
-title: Venice Token (VVV) sade dille: özel yapay zekâ, yılda 2 milyon yeni token ve 0,92 $'dan yükseliş
-description: Venice Token sade dille: özel yapay zekâ Venice nedir, VVV staking ve DIEM nasıl erişim sağlar, yakımlar, rekor, riskler ve düzenli alım yapanlar için bilgiler.
+title: Venice Token (VVV) sade dille: özel yapay zekâ, yapay zekâ erişimi için staking ve yılda 2 milyon yeni token
+description: Venice Token sade dille: özel yapay zekâ Venice nedir, VVV staking ve DIEM nasıl erişim sağlar, yakımlar, dalgalanmalar, riskler ve düzenli alım yapanlar için bilgiler.
 date: 2026-11-22
 kind: analysis
 ---
-**Venice Token (VVV)**, kripto girişimcisi Erik Voorhees'in kurduğu, geliştiricilere API de sunan özel bir yapay zekâ sohbet ve görsel uygulaması olan Venice'in token'ıdır. Sahipleri VVV'yi stake ederek Venice'in yapay zekâ işlem kapasitesinden ücretsiz pay alır; şirket gelirinin bir kısmı da token geri alımına ve yakımına gider. Kasım 2026'da VVV'nin değeri yaklaşık 1,2 milyar dolardı ve yapay zekâyla ilgili en büyük kripto varlıklardan biriydi.
+**Venice Token (VVV)**, kripto girişimcisi Erik Voorhees'in kurduğu, geliştiricilere API de sunan özel bir yapay zekâ sohbet ve görsel uygulaması olan Venice'in token'ıdır. Sahipleri VVV'yi stake ederek Venice'in yapay zekâ işlem kapasitesinden ücretsiz pay alır; şirket gelirinin bir kısmı da token geri alımına ve yakımına gider. Bugünkü piyasa değeri {{mcap:vvv}} (kripto paralar arasında {{rank:vvv}}).
 
 > **Öne çıkanlar**
 > - VVV, 27 Ocak 2025'te Ethereum'un katman 2 ağı Base üzerinde 100 milyon token ile piyasaya çıktı; bunların 50 milyonu airdrop ile dağıtıldı.
@@ -23,7 +23,8 @@ VVV şirkette bir hisse değil, yapay zekâ işlem gücü üzerinde bir hak. Tal
 ## Şu anki rakamlar
 
 - Bugünkü fiyat: {{price:vvv}}
-- Rekor: {{ath:vvv}} ({{athd:vvv}})
+- Rekor: {{ath:vvv}} ({{athd:vvv}}), ondan {{fromath:vvv}}
+- Piyasa değeri: {{mcap:vvv}} (kripto paralar arasında {{rank:vvv}})
 - 12 aylık fiyat değişimi: {{chg1y:vvv}}
 - 1 yıl boyunca günde 10 $: {{dca:vvv:1}}, yatırılan {{dcainv:1}} ({{dcaroi:vvv:1}})
 

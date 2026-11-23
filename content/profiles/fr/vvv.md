@@ -1,10 +1,10 @@
 ---
-title: Venice Token (VVV) expliqué simplement : IA privée, 2 millions de jetons émis par an et une envolée depuis 0,92 $
-description: Venice Token en clair : l'IA privée Venice, comment le staking de VVV et DIEM donne accès à l'IA, rachats, record, risques et conseils si vous achetez souvent.
+title: Venice Token (VVV) expliqué simplement : IA privée, staking pour accéder à l'IA et 2 millions de jetons émis par an
+description: Venice Token en clair : l'IA privée Venice, comment le staking de VVV et DIEM donne accès à l'IA, rachats, variations, risques et conseils si vous achetez souvent.
 date: 2026-11-22
 kind: analysis
 ---
-**Venice Token (VVV)** est le jeton de Venice, une application privée de chat et d'images par IA dotée d'une API pour les développeurs, fondée par l'entrepreneur crypto Erik Voorhees. Les détenteurs mettent leurs VVV en staking pour obtenir gratuitement une part de la puissance de calcul IA de Venice, et une partie des revenus de l'entreprise sert à racheter et brûler des jetons. En novembre 2026, VVV valait environ 1,2 milliard de dollars, ce qui en fait l'un des plus gros crypto-actifs liés à l'IA.
+**Venice Token (VVV)** est le jeton de Venice, une application privée de chat et d'images par IA dotée d'une API pour les développeurs, fondée par l'entrepreneur crypto Erik Voorhees. Les détenteurs mettent leurs VVV en staking pour obtenir gratuitement une part de la puissance de calcul IA de Venice, et une partie des revenus de l'entreprise sert à racheter et brûler des jetons. Sa valeur de marché atteint aujourd'hui {{mcap:vvv}} ({{rank:vvv}} parmi les cryptomonnaies).
 
 > **À retenir**
 > - VVV a été lancé le 27 janvier 2025 sur Base, une couche 2 d'Ethereum, avec 100 millions de jetons ; 50 millions ont été distribués par airdrop.
@@ -23,7 +23,8 @@ VVV est un droit sur de la puissance de calcul IA, pas une part de l'entreprise.
 ## Les chiffres actuels
 
 - Cours actuel : {{price:vvv}}
-- Record : {{ath:vvv}} ({{athd:vvv}})
+- Record : {{ath:vvv}} ({{athd:vvv}}), {{fromath:vvv}} depuis
+- Valeur de marché : {{mcap:vvv}} ({{rank:vvv}} parmi les cryptomonnaies)
 - Variation du cours sur 12 mois : {{chg1y:vvv}}
 - 10 $ par jour pendant 1 an : {{dca:vvv:1}} pour {{dcainv:1}} investis ({{dcaroi:vvv:1}})
 

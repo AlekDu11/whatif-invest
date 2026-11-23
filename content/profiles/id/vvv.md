@@ -1,10 +1,10 @@
 ---
-title: Venice Token (VVV) dijelaskan sederhana: AI privat, penerbitan 2 juta per tahun dan kenaikan dari $0,92
-description: Venice Token secara sederhana: apa itu Venice, staking VVV dan DIEM untuk akses AI, burn, rekor, fluktuasi, risiko utama dan hal penting bagi pembeli rutin.
+title: Venice Token (VVV) dijelaskan sederhana: AI privat, staking untuk akses AI dan penerbitan 2 juta per tahun
+description: Venice Token secara sederhana: apa itu Venice, staking VVV dan DIEM untuk akses AI, burn, fluktuasi harga, risiko utama dan hal penting bagi pembeli rutin.
 date: 2026-11-22
 kind: analysis
 ---
-**Venice Token (VVV)** adalah token milik Venice, aplikasi chat dan pembuat gambar AI yang menjaga privasi, lengkap dengan API untuk pengembang, yang didirikan oleh pengusaha kripto Erik Voorhees. Pemegang melakukan staking VVV untuk mendapatkan bagian kapasitas komputasi AI Venice secara gratis, dan sebagian pendapatan perusahaan dipakai untuk membeli kembali lalu membakar token. Nilai VVV sekitar $1,2 miliar pada November 2026, menjadikannya salah satu aset kripto terkait AI terbesar.
+**Venice Token (VVV)** adalah token milik Venice, aplikasi chat dan pembuat gambar AI yang menjaga privasi, lengkap dengan API untuk pengembang, yang didirikan oleh pengusaha kripto Erik Voorhees. Pemegang melakukan staking VVV untuk mendapatkan bagian kapasitas komputasi AI Venice secara gratis, dan sebagian pendapatan perusahaan dipakai untuk membeli kembali lalu membakar token. Nilai pasarnya kini {{mcap:vvv}} ({{rank:vvv}} di antara mata uang kripto).
 
 > **Poin penting**
 > - VVV diluncurkan pada 27 Januari 2025 di Base, jaringan layer 2 Ethereum, dengan 100 juta token; 50 juta di antaranya dibagikan lewat airdrop.
@@ -23,7 +23,8 @@ VVV adalah hak atas daya komputasi AI, bukan saham perusahaan. Permintaan datang
 ## Angka saat ini
 
 - Harga hari ini: {{price:vvv}}
-- Rekor tertinggi: {{ath:vvv}} ({{athd:vvv}})
+- Rekor tertinggi: {{ath:vvv}} ({{athd:vvv}}), {{fromath:vvv}} dari rekor itu
+- Nilai pasar: {{mcap:vvv}} ({{rank:vvv}} di antara mata uang kripto)
 - Perubahan harga dalam 12 bulan: {{chg1y:vvv}}
 - $10 per hari selama 1 tahun: {{dca:vvv:1}} dari {{dcainv:1}} yang diinvestasikan ({{dcaroi:vvv:1}})
 

@@ -1,10 +1,10 @@
 ---
-title: Venice Token（VVV）通俗解读：私密AI、每年增发200万枚，以及从0.92美元起的暴涨
-description: 用大白话看Venice Token：私密AI平台Venice是什么、VVV质押与DIEM如何换取AI使用权、销毁、历史高点与波动、主要风险，以及定投者需要了解的事。
+title: Venice Token（VVV）通俗解读：私密AI、质押换取AI使用权、每年增发200万枚
+description: 用大白话看Venice Token：私密AI平台Venice是什么、VVV质押与DIEM如何换取AI使用权、销毁、价格波动、主要风险，以及定投者需要了解的事。
 date: 2026-11-22
 kind: analysis
 ---
-**Venice Token（VVV）**是Venice的代币。Venice是一款注重隐私的AI聊天和图像应用，也为开发者提供API，由加密货币创业者埃里克·沃里斯（Erik Voorhees）创立。持有者质押VVV，就能免费获得Venice一部分AI算力；公司还会用部分收入回购并销毁代币。2026年11月，VVV市值约12亿美元，是规模最大的AI相关加密资产之一。
+**Venice Token（VVV）**是Venice的代币。Venice是一款注重隐私的AI聊天和图像应用，也为开发者提供API，由加密货币创业者埃里克·沃里斯（Erik Voorhees）创立。持有者质押VVV，就能免费获得Venice一部分AI算力；公司还会用部分收入回购并销毁代币。当前市值{{mcap:vvv}}（在加密货币中排名{{rank:vvv}}）。
 
 > **要点**
 > - VVV于2025年1月27日在以太坊二层网络Base上推出，总量1亿枚，其中5000万枚通过空投发放。
@@ -23,7 +23,8 @@ VVV是对AI算力的使用权，而不是公司的股份。需求来自希望以
 ## 最新数据
 
 - 当前价格：{{price:vvv}}
-- 历史最高价：{{ath:vvv}}（{{athd:vvv}}）
+- 历史最高价：{{ath:vvv}}（{{athd:vvv}}），距高点{{fromath:vvv}}
+- 市值：{{mcap:vvv}}（在加密货币中排名{{rank:vvv}}）
 - 12个月价格变化：{{chg1y:vvv}}
 - 每天10美元、坚持1年：投入{{dcainv:1}}，变成{{dca:vvv:1}}（{{dcaroi:vvv:1}}）
 

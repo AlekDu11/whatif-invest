@@ -1,10 +1,10 @@
 ---
-title: Venice Token (VVV) eenvoudig uitgelegd: privé-AI, 2 miljoen nieuwe tokens per jaar en een stijging vanaf $0,92
-description: Venice Token simpel: de privé-AI Venice, hoe VVV-staking en DIEM toegang tot AI geven, burns, record, risico's en wat je moet weten als je regelmatig koopt.
+title: Venice Token (VVV) eenvoudig uitgelegd: privé-AI, staking voor AI-toegang en 2 miljoen nieuwe tokens per jaar
+description: Venice Token simpel: de privé-AI Venice, hoe VVV-staking en DIEM toegang tot AI geven, burns, schommelingen, risico's en wat je moet weten als je regelmatig koopt.
 date: 2026-11-22
 kind: analysis
 ---
-**Venice Token (VVV)** is de token van Venice, een privé-app voor AI-chat en afbeeldingen met een API voor ontwikkelaars, opgericht door crypto-ondernemer Erik Voorhees. Houders staken VVV om gratis een deel van de AI-rekenkracht van Venice te krijgen, en een deel van de omzet van het bedrijf gaat naar het terugkopen en verbranden van tokens. In november 2026 was VVV ongeveer $1,2 miljard waard, een van de grootste cryptoassets rond AI.
+**Venice Token (VVV)** is de token van Venice, een privé-app voor AI-chat en afbeeldingen met een API voor ontwikkelaars, opgericht door crypto-ondernemer Erik Voorhees. Houders staken VVV om gratis een deel van de AI-rekenkracht van Venice te krijgen, en een deel van de omzet van het bedrijf gaat naar het terugkopen en verbranden van tokens. De marktwaarde is vandaag {{mcap:vvv}} ({{rank:vvv}} onder de cryptomunten).
 
 > **Belangrijkste punten**
 > - VVV ging op 27 januari 2025 van start op Base, een layer 2 van Ethereum, met 100 miljoen tokens; 50 miljoen werden via een airdrop uitgedeeld.
@@ -23,7 +23,8 @@ VVV is een recht op AI-rekenkracht, geen aandeel in het bedrijf. De vraag komt v
 ## De cijfers nu
 
 - Koers nu: {{price:vvv}}
-- Recordkoers: {{ath:vvv}} ({{athd:vvv}})
+- Recordkoers: {{ath:vvv}} ({{athd:vvv}}), {{fromath:vvv}} daarvan af
+- Marktwaarde: {{mcap:vvv}} ({{rank:vvv}} onder de cryptomunten)
 - Koersverandering over 12 maanden: {{chg1y:vvv}}
 - $10 per dag gedurende 1 jaar: {{dca:vvv:1}} bij {{dcainv:1}} ingelegd ({{dcaroi:vvv:1}})
 

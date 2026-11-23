@@ -1,10 +1,10 @@
 ---
-title: Venice Token (VVV) spiegato semplice: IA privata, 2 milioni di nuovi token l'anno e un rialzo da 0,92 $
-description: Venice Token semplice: l'IA privata Venice, come lo staking di VVV e DIEM danno accesso all'IA, burn, record, rischi e cosa sapere se compri con regolarità.
+title: Venice Token (VVV) spiegato semplice: IA privata, staking per accedere all'IA e 2 milioni di nuovi token l'anno
+description: Venice Token semplice: l'IA privata Venice, come lo staking di VVV e DIEM danno accesso all'IA, burn, oscillazioni, rischi e cosa sapere se compri con regolarità.
 date: 2026-11-22
 kind: analysis
 ---
-**Venice Token (VVV)** è il token di Venice, un'app privata di chat e immagini con IA che offre un'API per sviluppatori, fondata dall'imprenditore cripto Erik Voorhees. Chi possiede VVV lo mette in staking per ricevere gratis una quota della capacità di calcolo IA di Venice, e una parte dei ricavi dell'azienda serve a riacquistare e bruciare token. A novembre 2026 VVV valeva circa 1,2 miliardi di dollari, uno dei maggiori cripto-asset legati all'IA.
+**Venice Token (VVV)** è il token di Venice, un'app privata di chat e immagini con IA che offre un'API per sviluppatori, fondata dall'imprenditore cripto Erik Voorhees. Chi possiede VVV lo mette in staking per ricevere gratis una quota della capacità di calcolo IA di Venice, e una parte dei ricavi dell'azienda serve a riacquistare e bruciare token. Oggi il suo valore di mercato è di {{mcap:vvv}} ({{rank:vvv}} tra le criptovalute).
 
 > **In sintesi**
 > - VVV è stato lanciato il 27 gennaio 2025 su Base, un layer 2 di Ethereum, con 100 milioni di token; 50 milioni sono stati distribuiti con un airdrop.
@@ -23,7 +23,8 @@ VVV è un diritto sulla capacità di calcolo IA, non una quota dell'azienda. La 
 ## I numeri di oggi
 
 - Prezzo oggi: {{price:vvv}}
-- Record: {{ath:vvv}} ({{athd:vvv}})
+- Massimo storico: {{ath:vvv}} ({{athd:vvv}}), {{fromath:vvv}} da lì
+- Valore di mercato: {{mcap:vvv}} ({{rank:vvv}} tra le criptovalute)
 - Variazione del prezzo in 12 mesi: {{chg1y:vvv}}
 - 10 $ al giorno per 1 anno: {{dca:vvv:1}} con {{dcainv:1}} investiti ({{dcaroi:vvv:1}})
 

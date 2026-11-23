@@ -1,10 +1,10 @@
 ---
-title: Venice Token (VVV) explicado fácil: IA privada, una emisión de 2 millones al año y una subida desde 0,92 $
-description: Venice Token fácil: qué es la IA privada Venice, cómo el staking de VVV y DIEM dan acceso a IA, quemas, récord, riesgos y qué saber si compras con regularidad.
+title: Venice Token (VVV) explicado fácil: IA privada, staking para acceder a la IA y una emisión de 2 millones al año
+description: Venice Token fácil: qué es la IA privada Venice, cómo el staking de VVV y DIEM dan acceso a IA, quemas, vaivenes, riesgos y qué saber si compras con regularidad.
 date: 2026-11-22
 kind: analysis
 ---
-**Venice Token (VVV)** es el token de Venice, una app privada de chat e imágenes con IA que ofrece una API para desarrolladores y que fundó el emprendedor cripto Erik Voorhees. Quienes tienen VVV lo ponen en staking para recibir gratis una parte de la capacidad de cómputo de IA de Venice, y una parte de los ingresos de la empresa se destina a recomprar y quemar tokens. En noviembre de 2026 VVV valía unos 1.200 millones de dólares, uno de los mayores criptoactivos relacionados con la IA.
+**Venice Token (VVV)** es el token de Venice, una app privada de chat e imágenes con IA que ofrece una API para desarrolladores y que fundó el emprendedor cripto Erik Voorhees. Quienes tienen VVV lo ponen en staking para recibir gratis una parte de la capacidad de cómputo de IA de Venice, y una parte de los ingresos de la empresa se destina a recomprar y quemar tokens. Hoy su valor de mercado es de {{mcap:vvv}} ({{rank:vvv}} entre las criptomonedas).
 
 > **Claves**
 > - VVV se lanzó el 27 de enero de 2025 en Base, una capa 2 de Ethereum, con 100 millones de tokens; 50 millones se repartieron en un airdrop.
@@ -23,7 +23,8 @@ VVV es un derecho sobre cómputo de IA, no una participación en la empresa. La 
 ## Las cifras actuales
 
 - Precio hoy: {{price:vvv}}
-- Récord: {{ath:vvv}} ({{athd:vvv}})
+- Máximo histórico: {{ath:vvv}} ({{athd:vvv}}), {{fromath:vvv}} desde él
+- Valor de mercado: {{mcap:vvv}} ({{rank:vvv}} entre las criptomonedas)
 - Variación del precio en 12 meses: {{chg1y:vvv}}
 - 10 $ al día durante 1 año: {{dca:vvv:1}} con {{dcainv:1}} invertidos ({{dcaroi:vvv:1}})
 

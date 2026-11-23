@@ -1,10 +1,10 @@
 ---
-title: Venice Token (VVV) giải thích dễ hiểu: AI riêng tư, phát hành 2 triệu mỗi năm và cú tăng từ 0,92 USD
-description: Venice Token dễ hiểu: Venice là gì, staking VVV và DIEM để dùng AI, cơ chế đốt, kỷ lục và biến động, rủi ro chính và điều người mua định kỳ cần biết.
+title: Venice Token (VVV) giải thích dễ hiểu: AI riêng tư, staking để dùng AI và phát hành 2 triệu mỗi năm
+description: Venice Token dễ hiểu: Venice là gì, staking VVV và DIEM để dùng AI, cơ chế đốt, biến động giá, rủi ro chính và điều người mua định kỳ cần biết.
 date: 2026-11-22
 kind: analysis
 ---
-**Venice Token (VVV)** là token của Venice, ứng dụng chat và tạo ảnh bằng AI chú trọng quyền riêng tư, kèm API cho nhà phát triển, do doanh nhân tiền mã hóa Erik Voorhees sáng lập. Người nắm giữ stake VVV để được dùng miễn phí một phần năng lực tính toán AI của Venice, và một phần doanh thu của công ty được dùng để mua lại rồi đốt token. Tháng 11/2026, VVV trị giá khoảng 1,2 tỷ USD, thuộc nhóm tài sản tiền mã hóa liên quan đến AI lớn nhất.
+**Venice Token (VVV)** là token của Venice, ứng dụng chat và tạo ảnh bằng AI chú trọng quyền riêng tư, kèm API cho nhà phát triển, do doanh nhân tiền mã hóa Erik Voorhees sáng lập. Người nắm giữ stake VVV để được dùng miễn phí một phần năng lực tính toán AI của Venice, và một phần doanh thu của công ty được dùng để mua lại rồi đốt token. Vốn hóa hiện là {{mcap:vvv}} ({{rank:vvv}} trong các đồng tiền mã hóa).
 
 > **Điểm chính**
 > - VVV ra mắt ngày 27/1/2025 trên Base, mạng layer 2 của Ethereum, với 100 triệu token; 50 triệu token được airdrop.
@@ -23,7 +23,8 @@ VVV là quyền sử dụng năng lực tính toán AI chứ không phải cổ 
 ## Các con số hiện tại
 
 - Giá hôm nay: {{price:vvv}}
-- Đỉnh kỷ lục: {{ath:vvv}} ({{athd:vvv}})
+- Đỉnh kỷ lục: {{ath:vvv}} ({{athd:vvv}}), cách đỉnh {{fromath:vvv}}
+- Vốn hóa thị trường: {{mcap:vvv}} ({{rank:vvv}} trong các đồng tiền mã hóa)
 - Biến động giá trong 12 tháng: {{chg1y:vvv}}
 - 10 USD mỗi ngày trong 1 năm: {{dca:vvv:1}} từ {{dcainv:1}} đã đầu tư ({{dcaroi:vvv:1}})
 

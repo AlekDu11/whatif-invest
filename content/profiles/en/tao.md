@@ -4,7 +4,7 @@ description: Bittensor in plain language: the decentralized AI network of subnet
 date: 2026-11-23
 kind: analysis
 ---
-**Bittensor** is a decentralized network where people compete to provide artificial-intelligence services — from text generation to price forecasts — and are paid in its token, TAO. Instead of one company owning the AI, many independent "subnets" run their own tasks and the network rewards the best work. Its market value today is {{mcap:tao}} ({{rank:tao}} among cryptocurrencies).
+**Bittensor** is a decentralized network where people compete to provide artificial-intelligence services — from text generation to price forecasts — and are paid in its token, TAO. Instead of one company owning the AI, many independent "subnets" run their own tasks and the network rewards the best work. TAO's market value today is {{mcap:tao}} ({{rank:tao}} among cryptocurrencies).
 
 > **Key takeaways**
 > - Like bitcoin, TAO has a hard cap of 21 million coins; about 11.7 million circulate.

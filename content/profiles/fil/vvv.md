@@ -1,10 +1,10 @@
 ---
-title: Venice Token (VVV) sa simpleng paliwanag: pribadong AI, 2 milyong bagong token kada taon at pag-akyat mula $0.92
-description: Venice Token sa simpleng salita: ano ang Venice, staking ng VVV at DIEM para sa AI, burn, record, galaw, panganib at ang dapat malaman ng regular na bumibili.
+title: Venice Token (VVV) sa simpleng paliwanag: pribadong AI, staking para sa AI at 2 milyong bagong token kada taon
+description: Venice Token sa simpleng salita: ano ang Venice, staking ng VVV at DIEM para sa AI, burn, galaw ng presyo, panganib at ang dapat malaman ng regular na bumibili.
 date: 2026-11-22
 kind: analysis
 ---
-Ang **Venice Token (VVV)** ang token ng Venice, isang pribadong AI chat at image app na may API para sa mga developer, na itinatag ng crypto entrepreneur na si Erik Voorhees. Ini-stake ng mga may hawak ang VVV para makakuha nang libre ng bahagi ng AI computing capacity ng Venice, at ginagamit ang bahagi ng kita ng kumpanya para bilhin muli at i-burn ang mga token. Mga $1.2 bilyon ang halaga ng VVV noong Nobyembre 2026, isa sa pinakamalalaking crypto asset na may kinalaman sa AI.
+Ang **Venice Token (VVV)** ang token ng Venice, isang pribadong AI chat at image app na may API para sa mga developer, na itinatag ng crypto entrepreneur na si Erik Voorhees. Ini-stake ng mga may hawak ang VVV para makakuha nang libre ng bahagi ng AI computing capacity ng Venice, at ginagamit ang bahagi ng kita ng kumpanya para bilhin muli at i-burn ang mga token. {{mcap:vvv}} ang halaga nito sa merkado ngayon ({{rank:vvv}} sa mga cryptocurrency).
 
 > **Mahahalagang punto**
 > - Inilunsad ang VVV noong 27 Enero 2025 sa Base, isang layer 2 ng Ethereum, na may 100 milyong token; 50 milyon dito ang ipinamigay sa airdrop.
@@ -23,7 +23,8 @@ Ang VVV ay karapatan sa AI computing, hindi bahagi ng pagmamay-ari sa kumpanya. 
 ## Ang mga numero ngayon
 
 - Presyo ngayon: {{price:vvv}}
-- Pinakamataas na presyo: {{ath:vvv}} ({{athd:vvv}})
+- Pinakamataas na presyo: {{ath:vvv}} ({{athd:vvv}}), {{fromath:vvv}} mula roon
+- Halaga sa merkado: {{mcap:vvv}} ({{rank:vvv}} sa mga cryptocurrency)
 - Pagbabago ng presyo sa loob ng 12 buwan: {{chg1y:vvv}}
 - $10 kada araw sa loob ng 1 taon: {{dca:vvv:1}} mula sa {{dcainv:1}} na inilagay ({{dcaroi:vvv:1}})
 
