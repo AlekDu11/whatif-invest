@@ -48,3 +48,14 @@ The hub /learn/ lists them by track and step; each lesson links to the next one.
 9. Story: PEPE, BONK, WIF — the 2023–2024 memecoin wave
 10. Story: pump.fun — the token factory and its survival numbers
 11. Story: celebrity and political memecoins (what happened to holders)
+12. Story: PEPE — the frog meme that became a multi-billion coin (separate deep story)
+13. Story: BONK and WIF — how Solana memecoins took off in 2023–2024
+14. Story: TRUMP and MELANIA — what happened to buyers of political memecoins
+15. How Binance Alpha works and why a listing there moves memecoins (link {lang}/memes/ «Just listed» block)
+16. Snipers, bundlers and dev wallets: how insiders profit at launch and how to spot them (link {lang}/memes/glossary/)
+17. Why most memecoin buyers lose money: the maths of launches, slippage and fees (use the launch pulse on {lang}/memes/)
+
+## memes — recurring (owner 2026-11-23)
+- GLOSSARY: data/glossary/en.json is the memecoin glossary (/memes/glossary/). Every run, translate it into 2 languages that do not have data/glossary/<lang>.json yet (same ids and order; natural native phrasing; keep terms like «rug pull» in Latin script where locals use them, explain them). A language without its own file shows English with noindex, so each translation makes a new indexable page.
+- MONTHLY (first run on or after the 2nd of each month): «Memecoin hall of fame and graveyard — <Month YYYY>»: the 5 memecoins that rose most and the 5 loudest collapses/rug pulls of the past month, dated facts with sources, «what beginners can learn», links to {lang}/memes/; category learn, track memes, in all 20 languages.
+
