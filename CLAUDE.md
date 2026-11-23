@@ -18,6 +18,8 @@ Crypto list FROZEN (owner 2026-11-23): CRYPTO_FROZEN = True in scripts/fetch_dat
 
 UX batch (owner 2026-11-23): onboarding tour on first visit (app.js «onboarding tour», strings scripts/i18n_tour.py → dist/assets/tour/<lang>.json, localStorage wi_tour, replay «✨» in Tools menu / #tour, skipped for bots); quick converter under every asset chart (qconv); /news/ = own news only, 10 a page with pager (other outlets' headlines removed); /memes/ hides real projects (NOMEME = crypto tickers whose CoinGecko categories have no «Meme»), pulse line + «Just listed» + «Meme narratives» removed, scam-filter card; /learn/ in 5 folders (start=Investing basics, stocks, crypto, trading, memes; safety → crypto); /investors/: fund logos (inv_icon), «Who holds the most crypto» from data/crypto_holders.json (refresh figures when companies report) with pages /investors/<id>/, analyses in content/investors/<lang>/<id>.md (buffett, strategy, satoshi in 20 languages; others to follow).
 
+Rankings + menu (owner 2026-11-24): /largest-companies/ (all 6 tabs) lists EVERY company with numbers (2,327), not the top 300 — pages 1–6 static (LC_STATIC), the rest rendered on demand by api/page.py ?lc=<tab>&p=<n> (vercel.json rewrites), out of the sitemap; top-menu «Stocks» is a dropdown: All stocks · Largest companies · 📅 Company earnings (ENAV/ALLST in i18n_earn.py). Guide /guide/ rewritten as the beginner's guide in all 20 languages (stocks first).
+
 ## Principles (check every decision against them)
 1. Usefulness first — every page answers a real question ("what would I have…", "what to buy…", "what's the market doing").
 2. Speed — <1 s load, no jank, works on every device (mobile first).

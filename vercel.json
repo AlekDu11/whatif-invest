@@ -193,6 +193,22 @@
       "destination": "/api/stats"
     },
     {
+      "source": "/largest-companies/:p(\\d+)/",
+      "destination": "/api/page?l=uk&lc=mcap&p=:p"
+    },
+    {
+      "source": "/largest-companies/:lc(revenue|earnings|employees|dividend|pe-ratio)/:p(\\d+)/",
+      "destination": "/api/page?l=uk&lc=:lc&p=:p"
+    },
+    {
+      "source": "/:lang(en|es|pt|de|fr|it|pl|tr|nl|ru|id|vi|th|hi|ja|ko|zh|ar|fil)/largest-companies/:p(\\d+)/",
+      "destination": "/api/page?l=:lang&lc=mcap&p=:p"
+    },
+    {
+      "source": "/:lang(en|es|pt|de|fr|it|pl|tr|nl|ru|id|vi|th|hi|ja|ko|zh|ar|fil)/largest-companies/:lc(revenue|earnings|employees|dividend|pe-ratio)/:p(\\d+)/",
+      "destination": "/api/page?l=:lang&lc=:lc&p=:p"
+    },
+    {
       "source": "/:aid([^/]+)/",
       "destination": "/api/page?l=uk&a=:aid"
     },

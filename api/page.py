@@ -55,6 +55,29 @@ class handler(BaseHTTPRequestHandler):
         q = parse_qs(urlparse(self.path).query)
         lang, aid = (q.get('l') or [''])[0], unquote((q.get('a') or [''])[0]).lower()
         host = self.headers.get('x-forwarded-host') or self.headers.get('host') or 'whatifstack.com'
+        lc, pg = (q.get('lc') or [None])[0], (q.get('p') or [''])[0]
+        if lang in LANGS and lc is not None:   # world company rankings past the static pages (owner 2026-11-24: every company, not only the top 300)
+            tab = {s or 'mcap': k for k, s in build.LC_TABS}.get(lc)
+            if tab and pg.isdigit() and 1 < int(pg) <= build.lc_np(tab, None):
+                try:
+                    build.set_numfmt(lang)
+                    _, html = build.lc_page(lang, tab, None, ver(host), int(pg))
+                    self.send_response(200)
+                    self.send_header('Content-Type', 'text/html; charset=utf-8')
+                    self.send_header('Cache-Control', 'public, max-age=0, must-revalidate')
+                    self.send_header('CDN-Cache-Control', 'public, s-maxage=86400, stale-while-revalidate=86400')
+                    self.send_header('X-Rendered', 'on-demand')
+                    self.end_headers()
+                    self.wfile.write(html.encode('utf-8'))
+                    return
+                except Exception as e:
+                    print('lc render failed', lang, lc, pg, repr(e))
+            body = not_found(host)
+            self.send_response(404)
+            self.send_header('Content-Type', 'text/html; charset=utf-8')
+            self.end_headers()
+            self.wfile.write(body)
+            return
         if lang in LANGS and 0 < len(aid) <= 80 and '/' not in aid and aid in build.A:   # ids can be non-Latin (Chinese memecoins)
             try:
                 build.set_numfmt(lang)

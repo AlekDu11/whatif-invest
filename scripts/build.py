@@ -23,7 +23,7 @@ from i18n_mem5 import MEM5, MOST  # noqa: E402  (memes: pick of the day + traffi
 from i18n_mem4 import MEM4  # noqa: E402  (memes: Binance Web3 stages + security check)
 from i18n_mem3 import MEM3  # noqa: E402  (memes hub: start here, honest numbers, 5 checks)
 from i18n_learn import LRN, TRACKS, TRACK_ICON  # noqa: E402  («Learn» section)
-from i18n_earn import EARN, WD as WDAY  # noqa: E402  (stocks today + earnings calendar)
+from i18n_earn import EARN, ENAV, ALLST, WD as WDAY  # noqa: E402  (stocks today + earnings calendar)
 from i18n_ctry3 import SUFFIX3  # noqa: E402  (Yahoo suffix -> market, currency, TradingView exchange)
 from i18n_p import P as POLL, OPTS as POLL_OPTS  # noqa: E402
 from i18n_ai import AI as AIS  # noqa: E402
@@ -743,9 +743,14 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
     X = S['x']
     blog_l = lang if lang in BLOG_LANGS else 'en'
     news_on = p in ('news', 'ai') or sec == 'activities' or (sec or '').startswith('blog') or (p or '').startswith('news/')
-    tools_on = p in ('portfolios', 'compound-interest') or (p or '').startswith('portfolios/') or p in TOOLS or (p in CALCS and p not in ("exchanges", "news", "about", "compound-interest")) or (p or "").startswith("habits") or p in ('memes', 'world-assets', 'calculators', 'largest-companies')
+    tools_on = p in ('portfolios', 'compound-interest') or (p or '').startswith('portfolios/') or p in TOOLS or (p in CALCS and p not in ("exchanges", "news", "about", "compound-interest")) or (p or "").startswith("habits") or p in ('memes', 'world-assets', 'calculators')
     # top nav (owner + UX audit 2026-11-19): Markets · Crypto · Stocks first; DCA portfolios and the investment calculator moved into Tools
-    nav = (''.join(f'<a href="{url(lang, k)}" class="{"on" if k == p or (k == "stocks" and (p or "").startswith("stocks")) else ""}">{v}</a>' for k, v in ((None, HM[lang]['nav']), ('crypto', S['ui']['crypto']), ('stocks', S['ui']['stock'])))
+    stk_on = (p or '').startswith('stocks') or p in ('earnings-calendar', 'largest-companies') or (p or '').startswith('largest-companies/')
+    nav = (''.join(f'<a href="{url(lang, k)}" class="{"on" if k == p else ""}">{v}</a>' for k, v in ((None, HM[lang]['nav']), ('crypto', S['ui']['crypto'])))
+           # owner 2026-11-24: «Stocks» opens a small menu with «Company earnings» (and the largest-companies ranking)
+           + f'<details class="dd"><summary class="{"on" if stk_on else ""}">{S["ui"]["stock"]}</summary><div>'
+           + f'<a href="{url(lang, "stocks")}">{esc(ALLST[lang])}</a><a href="{url(lang, "largest-companies")}">{esc(LC[lang]["nav"])}</a>'
+           + f'<a href="{url(lang, "earnings-calendar")}">📅 {esc(ENAV[lang])}</a></div></details>'
            # owner 2026-11-22: «Exchanges» out of the top nav until the page is reworked (pages stay, linked from Tools/footer)
            + f'<a href="{url(lang, "memes")}" class="{"on" if (p or "").startswith("memes") else ""}">🐸 {esc(MEM[lang]["nav"])}</a>'
            + f'<details class="dd"><summary class="{"on" if news_on else ""}">{NW[lang]["n_nav"]}</summary><div>'
@@ -2290,7 +2295,8 @@ def lc_ids(tab, mkt=None):
     return ids
 
 
-LC_MAX = 300   # global rankings: top 300 in 6 pages of 50
+LC_MAX = 100000   # owner 2026-11-24: global rankings list EVERY company with numbers (was top 300)
+LC_STATIC = 6     # world rankings: pages 1–6 are static files; the rest render on demand (api/page.py ?lc=), so the deploy does not grow
 
 
 def lc_page(lang, tab='mcap', mkt=None, ver=None, pg=1):
@@ -2362,7 +2368,7 @@ def lc_np(tab, mkt):
 
 
 def lc_pages(lang, ver):
-    out = [lc_page(lang, k, None, ver, pg) for k, _ in LC_TABS for pg in range(1, lc_np(k, None) + 1)]
+    out = [lc_page(lang, k, None, ver, pg) for k, _ in LC_TABS for pg in range(1, min(lc_np(k, None), LC_STATIC) + 1)]
     u = lc_universe()
     for m in sorted({v['mkt'] for i, v in u.items() if i != '__meta__'}):
         if len(lc_ids('mcap', m)) >= 5:

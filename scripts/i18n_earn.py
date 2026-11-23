@@ -259,3 +259,19 @@ WD = {'ar': ['الاثنين', 'الثلاثاء', 'الأربعاء', 'الخم
  'uk': ['понеділок', 'вівторок', 'середа', 'четвер', 'пʼятниця', 'субота', 'неділя'],
  'vi': ['Thứ Hai', 'Thứ Ba', 'Thứ Tư', 'Thứ Năm', 'Thứ Sáu', 'Thứ Bảy', 'Chủ Nhật'],
  'zh': ['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日']}
+
+
+# owner 2026-11-24: «Company earnings» link under «Stocks» in the top menu
+ENAV = {
+    'uk': 'Звіти компаній', 'en': 'Company earnings', 'ru': 'Отчёты компаний', 'es': 'Resultados de empresas',
+    'pt': 'Balanços das empresas', 'de': 'Quartalszahlen', 'fr': 'Résultats des entreprises', 'it': 'Trimestrali delle società',
+    'pl': 'Wyniki spółek', 'tr': 'Şirket bilançoları', 'nl': 'Bedrijfscijfers', 'id': 'Laporan keuangan perusahaan',
+    'vi': 'Báo cáo kết quả kinh doanh', 'th': 'งบบริษัท', 'hi': 'कंपनियों के नतीजे', 'ja': '決算発表', 'ko': '기업 실적 발표',
+    'zh': '公司财报', 'ar': 'نتائج الشركات', 'fil': 'Earnings ng mga kumpanya',
+}
+ALLST = {
+    'uk': 'Усі акції', 'en': 'All stocks', 'ru': 'Все акции', 'es': 'Todas las acciones', 'pt': 'Todas as ações',
+    'de': 'Alle Aktien', 'fr': 'Toutes les actions', 'it': 'Tutte le azioni', 'pl': 'Wszystkie akcje', 'tr': 'Tüm hisseler',
+    'nl': 'Alle aandelen', 'id': 'Semua saham', 'vi': 'Tất cả cổ phiếu', 'th': 'หุ้นทั้งหมด', 'hi': 'सभी शेयर', 'ja': 'すべての株式',
+    'ko': '전체 주식', 'zh': '全部股票', 'ar': 'كل الأسهم', 'fil': 'Lahat ng stocks',
+}
