@@ -1079,3 +1079,4 @@ a.badge.tagc{text-decoration:none;color:inherit;border:1px solid var(--line)}a.b
 .dpsafe{padding:14px}.dpsafeh{display:block;margin-bottom:6px}.dpsafe .tl{margin:0}
 .dptrend{margin-top:16px;padding:14px 16px}.dptrend h2{font-size:17px;margin:0 0 6px}
 @media(max-width:860px){.dpgrid{grid-template-columns:1fr}}
+.dptrend{display:block}@media(min-width:861px){.dptrend{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.dptrend h2{grid-column:1/-1}}

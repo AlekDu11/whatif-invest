@@ -990,7 +990,8 @@ const DEXW={ key:'wi_dexw',
       <div class="dpstats">${stat(L.mc,r.mc?U.big(r.mc):'—')}${stat(L.liq,U.big(r.liq))}${stat(L.vol,U.big(r.vol))}${r.h?stat(L.hold,Math.round(r.h).toLocaleString(T.intl||'en')):stat(L.tx,(r.tx||0).toLocaleString(T.intl||'en'))}${stat(L.age,U.age(r.at))}</div>
       ${F5.g?`<div class="card dpsafe"><b class="dpsafeh">🛡 ${esc(M6.safe_h||'')}</b>${U.lightHtml(r,F5)}</div>`:''}</div></div>
       <div id="dpinfo">${infoHtml(inf)}</div>
-      <div class="dpca"><small class="muted">${esc(L.ca)}</small><code>${esc(r.a)}</code><button class="btn ghost" type="button" id="dpcopy">${esc(L.copy)}</button></div>`;
+      <div class="dpca"><small class="muted">${esc(L.ca)}</small><code>${esc(r.a)}</code><button class="btn ghost" type="button" id="dpcopy">${esc(L.copy)}</button></div>
+      ${L.learn&&L.learn.ls&&L.learn.ls.length?`<section class="card dplearn"><h2>🎓 ${esc(L.learn.h)}</h2><p class="muted">${esc(L.learn.d)}</p><ol class="lsteps">${L.learn.ls.map(([h,t])=>`<li><a href="${esc(h)}">${esc(t)}</a></li>`).join('')}</ol><a class="chip" href="${esc(L.learn.url)}">${esc(L.learn.all)} →</a></section>`:''}`;
     const c=$('#dpcopy'); if(c) c.onclick=()=>{ try{ navigator.clipboard.writeText(r.a); c.textContent=L.copied }catch(e){} }
     const w=$('#dpw'); if(w) w.onclick=()=>{ const on=DEXW.toggle(r); w.classList.toggle('on',on); w.textContent=on?M6.watching:M6.watch };
     trending(r);
