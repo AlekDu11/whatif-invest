@@ -1,15 +1,15 @@
 ---
-title: Cardano (ADA) eenvoudig uitgelegd: een maximum van 45 miljard, stemmende houders en een record van $3,09
+title: Cardano (ADA) eenvoudig uitgelegd: een maximum van 45 miljard, proof of stake en stemmende houders
 description: Cardano in gewone taal: hoe proof of stake en stemmen on-chain werken, waarvoor ADA dient, de schatkist van 1,4 miljard ADA, de crashes en de risico's.
 date: 2026-11-23
 kind: analysis
 ---
-**Cardano** is een proof-of-stake-blockchain voor apps en betalingen die bewust langzaam wordt gebouwd: grote upgrades beginnen als wetenschappelijke artikelen met peerreview. Het netwerk ging in september 2017 live onder leiding van Charles Hoskinson, een van de medeoprichters van Ethereum. De munt ADA was in november 2026 in totaal ongeveer $5,4 miljard waard, rond plaats 18 onder de cryptomunten.
+**Cardano** is een proof-of-stake-blockchain voor apps en betalingen die bewust langzaam wordt gebouwd: grote upgrades beginnen als wetenschappelijke artikelen met peerreview. Het netwerk ging in september 2017 live onder leiding van Charles Hoskinson, een van de medeoprichters van Ethereum. De munt ADA heeft vandaag een waarde van {{mcap:ada}} ({{rank:ada}} onder de cryptomunten).
 
 > **Belangrijkste punten**
 > - De voorraad ADA is gemaximeerd op 45 miljard munten; in november 2026 waren er ongeveer 37 miljard in omloop.
 > - Ongeveer 58% van de ADA in omloop wordt gestaket, en houders stemmen over de besteding van een gezamenlijke schatkist van ongeveer 1,4 miljard ADA.
-> - De recordkoers tot nu toe is $3,09 (september 2021); in november 2026 stond ADA ongeveer 95% lager.
+> - De recordkoers is {{ath:ada}} ({{athd:ada}}); vandaag staat de koers {{fromath:ada}} daarvan af.
 > - Het geld dat vastzit in DeFi-apps op Cardano zakte in november 2026 onder $50 miljoen — weinig voor een netwerk van deze omvang.
 
 ## Hoe het werkt
@@ -23,7 +23,8 @@ ADA betaalt transactiekosten, beveiligt het netwerk via staking en is de stemkra
 ## De cijfers nu
 
 - Koers nu: {{price:ada}}
-- Recordkoers: {{ath:ada}} ({{athd:ada}})
+- Recordkoers: {{ath:ada}} ({{athd:ada}}), {{fromath:ada}} daarvan af
+- Marktwaarde: {{mcap:ada}} ({{rank:ada}} onder de cryptomunten)
 - Koersverandering over 12 maanden: {{chg1y:ada}}
 - $10 per dag gedurende 5 jaar: {{dca:ada:5}} bij {{dcainv:5}} ingelegd ({{dcaroi:ada:5}})
 

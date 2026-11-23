@@ -1,15 +1,15 @@
 ---
-title: Cardano (ADA) explicado fácil: un tope de 45.000 millones, voto de los holders y un récord de 3,09 $
+title: Cardano (ADA) explicado fácil: un tope de 45.000 millones, proof of stake y voto de los holders
 description: Cardano en lenguaje sencillo: cómo funcionan su proof of stake y el voto en la red, para qué sirve ADA, su tesoro de 1.400 millones de ADA, caídas y riesgos.
 date: 2026-11-23
 kind: analysis
 ---
-**Cardano** es una blockchain de proof of stake para apps y pagos que se construye despacio y a propósito: las grandes actualizaciones empiezan como artículos de investigación revisados por pares. Arrancó en septiembre de 2017 bajo la dirección de Charles Hoskinson, uno de los cofundadores de Ethereum. Su moneda, ADA, tenía un valor de mercado de unos 5.400 millones de dólares en noviembre de 2026, alrededor del puesto 18 entre las criptomonedas.
+**Cardano** es una blockchain de proof of stake para apps y pagos que se construye despacio y a propósito: las grandes actualizaciones empiezan como artículos de investigación revisados por pares. Arrancó en septiembre de 2017 bajo la dirección de Charles Hoskinson, uno de los cofundadores de Ethereum. Su moneda, ADA, tiene un valor de {{mcap:ada}} hoy ({{rank:ada}} entre las criptomonedas).
 
 > **Claves**
 > - El suministro de ADA tiene un tope de 45.000 millones de monedas; en noviembre de 2026 circulaban unos 37.000 millones.
 > - Cerca del 58% de los ADA en circulación está en staking, y los holders votan cómo se gasta un tesoro común de unos 1.400 millones de ADA.
-> - El récord de precio hasta ahora es de 3,09 $ (septiembre de 2021); en noviembre de 2026 ADA cotizaba alrededor de un 95% por debajo.
+> - Su máximo histórico es {{ath:ada}} ({{athd:ada}}); hoy el precio está {{fromath:ada}} por debajo.
 > - El dinero bloqueado en las apps DeFi de Cardano bajó de 50 millones de dólares en noviembre de 2026: poco para una red de su tamaño.
 
 ## Cómo funciona
@@ -23,7 +23,8 @@ ADA paga las comisiones de las transacciones, protege la red mediante el staking
 ## Las cifras actuales
 
 - Precio hoy: {{price:ada}}
-- Récord: {{ath:ada}} ({{athd:ada}})
+- Máximo histórico: {{ath:ada}} ({{athd:ada}}), {{fromath:ada}} desde él
+- Valor de mercado: {{mcap:ada}} ({{rank:ada}} entre las criptomonedas)
 - Variación del precio en 12 meses: {{chg1y:ada}}
 - 10 $ al día durante 5 años: {{dca:ada:5}} con {{dcainv:5}} invertidos ({{dcaroi:ada:5}})
 

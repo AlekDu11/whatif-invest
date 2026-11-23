@@ -1,15 +1,15 @@
 ---
-title: Cardano (ADA) sa simpleng paliwanag: limit na 45 bilyon, botohan ng holders at record na $3.09
+title: Cardano (ADA) sa simpleng paliwanag: limit na 45 bilyon, proof of stake at botohan ng holders
 description: Cardano sa simpleng paliwanag: proof of stake at on-chain na botohan, para saan ang ADA, treasury na 1.4 bilyong ADA, mga pagbagsak at panganib.
 date: 2026-11-23
 kind: analysis
 ---
-**Cardano** ay isang proof-of-stake na blockchain para sa mga app at bayad na sinasadyang buuin nang dahan-dahan: nagsisimula ang malalaking upgrade bilang mga research paper na sinuri ng kapwa eksperto. Nag-live ito noong Setyembre 2017 sa pamumuno ni Charles Hoskinson, isa sa mga co-founder ng Ethereum. Nasa humigit-kumulang $5.4 bilyon ang market value ng coin nitong ADA noong Nobyembre 2026, mga pang-18 sa mga cryptocurrency.
+**Cardano** ay isang proof-of-stake na blockchain para sa mga app at bayad na sinasadyang buuin nang dahan-dahan: nagsisimula ang malalaking upgrade bilang mga research paper na sinuri ng kapwa eksperto. Nag-live ito noong Setyembre 2017 sa pamumuno ni Charles Hoskinson, isa sa mga co-founder ng Ethereum. Ang coin nitong ADA ay may halagang {{mcap:ada}} ngayon ({{rank:ada}} sa mga cryptocurrency).
 
 > **Mahahalagang punto**
 > - Limitado sa 45 bilyong coin ang supply ng ADA; mga 37 bilyon ang umiikot noong Nobyembre 2026.
 > - Mga 58% ng umiikot na ADA ang naka-stake, at bumoboto ang mga may hawak kung paano gagastusin ang pinagsasaluhang treasury na mga 1.4 bilyong ADA.
-> - Ang record na presyo sa ngayon ay $3.09 (Setyembre 2021); noong Nobyembre 2026, mga 95% na mas mababa rito ang trading ng ADA.
+> - Ang pinakamataas na presyo nito ay {{ath:ada}} ({{athd:ada}}); ngayon, {{fromath:ada}} ang presyo mula roon.
 > - Bumaba sa ilalim ng $50 milyon ang perang naka-lock sa mga DeFi app ng Cardano noong Nobyembre 2026 — maliit para sa network na ganito kalaki.
 
 ## Paano ito gumagana
@@ -23,7 +23,8 @@ Pambayad ang ADA sa transaction fees, nagbabantay sa network sa pamamagitan ng s
 ## Ang mga numero ngayon
 
 - Presyo ngayon: {{price:ada}}
-- Pinakamataas na presyo: {{ath:ada}} ({{athd:ada}})
+- Pinakamataas na presyo: {{ath:ada}} ({{athd:ada}}), {{fromath:ada}} mula roon
+- Halaga sa merkado: {{mcap:ada}} ({{rank:ada}} sa mga cryptocurrency)
 - Pagbabago ng presyo sa loob ng 12 buwan: {{chg1y:ada}}
 - $10 kada araw sa loob ng 5 taon: {{dca:ada:5}} mula sa {{dcainv:5}} na inilagay ({{dcaroi:ada:5}})
 

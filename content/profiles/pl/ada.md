@@ -1,15 +1,15 @@
 ---
-title: Cardano (ADA) prostym językiem: limit 45 miliardów, głosowanie posiadaczy i rekord 3,09 $
+title: Cardano (ADA) prostym językiem: limit 45 miliardów, proof of stake i głosowanie posiadaczy
 description: Cardano w prostych słowach: jak działają proof of stake i głosowanie w sieci, do czego służy ADA, skarbiec 1,4 mld ADA, krachy i główne ryzyka.
 date: 2026-11-23
 kind: analysis
 ---
-**Cardano** to blockchain typu proof of stake dla aplikacji i płatności, budowany powoli i celowo: duże aktualizacje zaczynają się od recenzowanych prac naukowych. Sieć ruszyła we wrześniu 2017 r. pod kierunkiem Charlesa Hoskinsona, jednego ze współzałożycieli Ethereum. Jej moneta, ADA, miała w listopadzie 2026 r. wartość rynkową ok. 5,4 mld dolarów — mniej więcej 18. miejsce wśród kryptowalut.
+**Cardano** to blockchain typu proof of stake dla aplikacji i płatności, budowany powoli i celowo: duże aktualizacje zaczynają się od recenzowanych prac naukowych. Sieć ruszyła we wrześniu 2017 r. pod kierunkiem Charlesa Hoskinsona, jednego ze współzałożycieli Ethereum. Jej moneta, ADA, jest dziś warta {{mcap:ada}} ({{rank:ada}} wśród kryptowalut).
 
 > **Najważniejsze**
 > - Podaż ADA jest ograniczona do 45 mld monet; w listopadzie 2026 r. w obiegu było ok. 37 mld.
 > - Ok. 58% ADA w obiegu jest stakowane, a posiadacze głosują, na co wydać wspólny skarbiec o wartości ok. 1,4 mld ADA.
-> - Rekordowa cena to jak dotąd 3,09 $ (wrzesień 2021 r.); w listopadzie 2026 r. ADA była notowana ok. 95% niżej.
+> - Rekord ceny to {{ath:ada}} ({{athd:ada}}); dziś cena jest {{fromath:ada}} od niego.
 > - W listopadzie 2026 r. w aplikacjach DeFi na Cardano zablokowanych było mniej niż 50 mln dolarów — niewiele jak na sieć tej wielkości.
 
 ## Jak działa
@@ -23,7 +23,8 @@ ADA opłaca prowizje za transakcje, zabezpiecza sieć poprzez staking i jest si�
 ## Liczby teraz
 
 - Cena teraz: {{price:ada}}
-- Rekord: {{ath:ada}} ({{athd:ada}})
+- Rekord: {{ath:ada}} ({{athd:ada}}), {{fromath:ada}} od niego
+- Wartość rynkowa: {{mcap:ada}} ({{rank:ada}} wśród kryptowalut)
 - Zmiana ceny w ciągu 12 miesięcy: {{chg1y:ada}}
 - 10 $ dziennie przez 5 lat: {{dca:ada:5}} przy wpłaconych {{dcainv:5}} ({{dcaroi:ada:5}})
 

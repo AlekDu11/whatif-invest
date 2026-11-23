@@ -1,15 +1,15 @@
 ---
-title: Cardano (ADA) spiegato semplice: un tetto di 45 miliardi, il voto dei possessori e un record di 3,09 $
+title: Cardano (ADA) spiegato semplice: un tetto di 45 miliardi, proof of stake e il voto dei possessori
 description: Cardano in parole semplici: proof of stake e voto on-chain, a cosa serve ADA, la tesoreria da 1,4 miliardi di ADA, i crolli e i rischi principali.
 date: 2026-11-23
 kind: analysis
 ---
-**Cardano** è una blockchain proof of stake per app e pagamenti costruita lentamente e di proposito: i grandi aggiornamenti nascono come articoli di ricerca sottoposti a revisione paritaria. È partita a settembre 2017 sotto la guida di Charles Hoskinson, uno dei cofondatori di Ethereum. La sua moneta, ADA, aveva un valore di mercato di circa 5,4 miliardi di dollari a novembre 2026, intorno al 18° posto tra le criptovalute.
+**Cardano** è una blockchain proof of stake per app e pagamenti costruita lentamente e di proposito: i grandi aggiornamenti nascono come articoli di ricerca sottoposti a revisione paritaria. È partita a settembre 2017 sotto la guida di Charles Hoskinson, uno dei cofondatori di Ethereum. La sua moneta, ADA, oggi vale {{mcap:ada}} ({{rank:ada}} tra le criptovalute).
 
 > **In sintesi**
 > - L'offerta di ADA ha un tetto di 45 miliardi di monete; a novembre 2026 ne circolavano circa 37 miliardi.
 > - Circa il 58% degli ADA in circolazione è in staking, e i possessori votano su come spendere una tesoreria comune di circa 1,4 miliardi di ADA.
-> - Il record di prezzo finora è 3,09 $ (settembre 2021); a novembre 2026 ADA quotava circa il 95% sotto.
+> - Il suo massimo storico è {{ath:ada}} ({{athd:ada}}); oggi il prezzo è a {{fromath:ada}} da lì.
 > - Il denaro bloccato nelle app DeFi di Cardano è sceso sotto i 50 milioni di dollari a novembre 2026 — poco per una rete di queste dimensioni.
 
 ## Come funziona
@@ -23,7 +23,8 @@ ADA paga le commissioni delle transazioni, protegge la rete tramite lo staking e
 ## I numeri di oggi
 
 - Prezzo oggi: {{price:ada}}
-- Record: {{ath:ada}} ({{athd:ada}})
+- Massimo storico: {{ath:ada}} ({{athd:ada}}), {{fromath:ada}} da lì
+- Valore di mercato: {{mcap:ada}} ({{rank:ada}} tra le criptovalute)
 - Variazione del prezzo in 12 mesi: {{chg1y:ada}}
 - 10 $ al giorno per 5 anni: {{dca:ada:5}} con {{dcainv:5}} investiti ({{dcaroi:ada:5}})
 

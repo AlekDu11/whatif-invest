@@ -1,15 +1,15 @@
 ---
-title: Cardano (ADA) explained: a 45 billion cap, holder voting and a $3.09 record
+title: Cardano (ADA) explained: a 45 billion cap, proof of stake and holder voting
 description: Cardano in plain language: how proof of stake and on-chain voting work, what ADA is for, its 1.4 billion ADA treasury, its crashes and the main risks.
 date: 2026-11-23
 kind: analysis
 ---
-**Cardano** is a proof-of-stake blockchain for apps and payments that is built slowly and on purpose: big upgrades start as peer-reviewed research papers. It went live in September 2017, led by Charles Hoskinson, one of Ethereum's co-founders. Its coin, ADA, had a market value of about $5.4 billion in November 2026, around number 18 among cryptocurrencies.
+**Cardano** is a proof-of-stake blockchain for apps and payments that is built slowly and on purpose: big upgrades start as peer-reviewed research papers. It went live in September 2017, led by Charles Hoskinson, one of Ethereum's co-founders. Its coin, ADA, is worth {{mcap:ada}} today ({{rank:ada}} among cryptocurrencies).
 
 > **Key takeaways**
 > - ADA supply is capped at 45 billion coins; about 37 billion were in circulation in November 2026.
 > - About 58% of circulating ADA is staked, and holders vote on how a shared treasury of about 1.4 billion ADA is spent.
-> - The record price so far is $3.09 (September 2021); in November 2026 ADA traded about 95% below it.
+> - Its record high is {{ath:ada}} ({{athd:ada}}); today the price is {{fromath:ada}} from it.
 > - Money locked in Cardano DeFi apps fell below $50 million in November 2026 — small for a network of its size.
 
 ## How it works
@@ -23,7 +23,8 @@ ADA pays transaction fees, secures the network through staking and is the voting
 ## The numbers right now
 
 - Price today: {{price:ada}}
-- Record high: {{ath:ada}} ({{athd:ada}})
+- Record high: {{ath:ada}} ({{athd:ada}}), {{fromath:ada}} from it
+- Market value: {{mcap:ada}} ({{rank:ada}} among cryptocurrencies)
 - Price change over 12 months: {{chg1y:ada}}
 - $10 a day for 5 years: {{dca:ada:5}} from {{dcainv:5}} invested ({{dcaroi:ada:5}})
 

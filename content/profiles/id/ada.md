@@ -1,15 +1,15 @@
 ---
-title: Cardano (ADA) dijelaskan sederhana: batas 45 miliar, voting pemegang, dan rekor $3,09
+title: Cardano (ADA) dijelaskan sederhana: batas 45 miliar, proof of stake, dan voting pemegang
 description: Cardano dengan bahasa sederhana: cara kerja proof of stake dan voting on-chain, kegunaan ADA, kas 1,4 miliar ADA, kejatuhan harga, dan risiko utama.
 date: 2026-11-23
 kind: analysis
 ---
-**Cardano** adalah blockchain proof of stake untuk aplikasi dan pembayaran yang dibangun pelan-pelan dan dengan sengaja: setiap upgrade besar berawal dari makalah riset yang ditinjau sejawat. Jaringan ini aktif pada September 2017 di bawah pimpinan Charles Hoskinson, salah satu pendiri Ethereum. Koinnya, ADA, memiliki nilai pasar sekitar $5,4 miliar pada November 2026, di sekitar peringkat 18 di antara mata uang kripto.
+**Cardano** adalah blockchain proof of stake untuk aplikasi dan pembayaran yang dibangun pelan-pelan dan dengan sengaja: setiap upgrade besar berawal dari makalah riset yang ditinjau sejawat. Jaringan ini aktif pada September 2017 di bawah pimpinan Charles Hoskinson, salah satu pendiri Ethereum. Nilai pasar koinnya, ADA, kini {{mcap:ada}} ({{rank:ada}} di antara mata uang kripto).
 
 > **Poin penting**
 > - Pasokan ADA dibatasi 45 miliar koin; sekitar 37 miliar beredar pada November 2026.
 > - Sekitar 58% ADA yang beredar di-stake, dan pemegang memilih cara membelanjakan kas bersama sekitar 1,4 miliar ADA.
-> - Rekor harga sejauh ini $3,09 (September 2021); pada November 2026 ADA diperdagangkan sekitar 95% di bawahnya.
+> - Rekor tertingginya {{ath:ada}} ({{athd:ada}}); kini harganya {{fromath:ada}} dari rekor itu.
 > - Dana yang terkunci di aplikasi DeFi Cardano turun di bawah $50 juta pada November 2026 — kecil untuk jaringan sebesar ini.
 
 ## Cara kerjanya
@@ -23,7 +23,8 @@ ADA dipakai membayar biaya transaksi, mengamankan jaringan lewat staking, dan me
 ## Angka saat ini
 
 - Harga hari ini: {{price:ada}}
-- Rekor tertinggi: {{ath:ada}} ({{athd:ada}})
+- Rekor tertinggi: {{ath:ada}} ({{athd:ada}}), {{fromath:ada}} dari rekor itu
+- Nilai pasar: {{mcap:ada}} ({{rank:ada}} di antara mata uang kripto)
 - Perubahan harga dalam 12 bulan: {{chg1y:ada}}
 - $10 per hari selama 5 tahun: {{dca:ada:5}} dari {{dcainv:5}} yang diinvestasikan ({{dcaroi:ada:5}})
 

@@ -1,15 +1,15 @@
 ---
-title: Cardano (ADA) expliqué simplement : un plafond de 45 milliards, le vote des détenteurs et un record à 3,09 $
+title: Cardano (ADA) expliqué simplement : un plafond de 45 milliards, la preuve d'enjeu et le vote des détenteurs
 description: Cardano en clair : preuve d'enjeu et vote on-chain, l'utilité de l'ADA, sa trésorerie de 1,4 milliard d'ADA, ses krachs et ses principaux risques.
 date: 2026-11-23
 kind: analysis
 ---
-**Cardano** est une blockchain à preuve d'enjeu pour les applis et les paiements, construite lentement et délibérément : les grandes mises à jour commencent par des articles de recherche évalués par des pairs. Elle a été lancée en septembre 2017 sous la conduite de Charles Hoskinson, l'un des cofondateurs d'Ethereum. Sa crypto, l'ADA, avait une valeur de marché d'environ 5,4 milliards de dollars en novembre 2026, autour de la 18e place parmi les cryptomonnaies.
+**Cardano** est une blockchain à preuve d'enjeu pour les applis et les paiements, construite lentement et délibérément : les grandes mises à jour commencent par des articles de recherche évalués par des pairs. Elle a été lancée en septembre 2017 sous la conduite de Charles Hoskinson, l'un des cofondateurs d'Ethereum. Sa crypto, l'ADA, a une valeur de {{mcap:ada}} aujourd'hui ({{rank:ada}} parmi les cryptomonnaies).
 
 > **À retenir**
 > - L'offre d'ADA est plafonnée à 45 milliards de pièces ; environ 37 milliards circulaient en novembre 2026.
 > - Environ 58 % de l'ADA en circulation est staké, et les détenteurs votent sur l'utilisation d'une trésorerie commune d'environ 1,4 milliard d'ADA.
-> - Le record de cours à ce jour est de 3,09 $ (septembre 2021) ; en novembre 2026, l'ADA s'échangeait environ 95 % en dessous.
+> - Son record est de {{ath:ada}} ({{athd:ada}}) ; aujourd'hui, le cours est à {{fromath:ada}} de ce niveau.
 > - L'argent bloqué dans les applis DeFi de Cardano est tombé sous 50 millions de dollars en novembre 2026 — peu pour un réseau de cette taille.
 
 ## Comment il fonctionne
@@ -23,7 +23,8 @@ L'ADA paie les frais de transaction, sécurise le réseau par le staking et donn
 ## Les chiffres actuels
 
 - Cours actuel : {{price:ada}}
-- Record : {{ath:ada}} ({{athd:ada}})
+- Record : {{ath:ada}} ({{athd:ada}}), {{fromath:ada}} depuis
+- Valeur de marché : {{mcap:ada}} ({{rank:ada}} parmi les cryptomonnaies)
 - Variation du cours sur 12 mois : {{chg1y:ada}}
 - 10 $ par jour pendant 5 ans : {{dca:ada:5}} pour {{dcainv:5}} investis ({{dcaroi:ada:5}})
 

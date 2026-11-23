@@ -1,15 +1,15 @@
 ---
-title: Cardano (ADA) giải thích dễ hiểu: giới hạn 45 tỷ, người nắm giữ bỏ phiếu và kỷ lục 3,09 USD
+title: Cardano (ADA) giải thích dễ hiểu: giới hạn 45 tỷ, proof of stake và người nắm giữ bỏ phiếu
 description: Cardano giải thích dễ hiểu: proof of stake và bỏ phiếu on-chain, ADA dùng để làm gì, quỹ chung 1,4 tỷ ADA, các cú sập và rủi ro chính.
 date: 2026-11-23
 kind: analysis
 ---
-**Cardano** là một blockchain proof of stake cho ứng dụng và thanh toán, được xây dựng chậm rãi và có chủ đích: mỗi bản nâng cấp lớn đều bắt đầu từ một bài nghiên cứu được bình duyệt. Mạng ra mắt vào tháng 9/2017 dưới sự dẫn dắt của Charles Hoskinson, một trong những người đồng sáng lập Ethereum. Đồng coin của mạng, ADA, có giá trị thị trường khoảng 5,4 tỷ USD vào tháng 11/2026, quanh vị trí thứ 18 trong số các tiền mã hóa.
+**Cardano** là một blockchain proof of stake cho ứng dụng và thanh toán, được xây dựng chậm rãi và có chủ đích: mỗi bản nâng cấp lớn đều bắt đầu từ một bài nghiên cứu được bình duyệt. Mạng ra mắt vào tháng 9/2017 dưới sự dẫn dắt của Charles Hoskinson, một trong những người đồng sáng lập Ethereum. Vốn hóa của đồng coin ADA hiện là {{mcap:ada}} ({{rank:ada}} trong các đồng tiền mã hóa).
 
 > **Điểm chính**
 > - Nguồn cung ADA giới hạn ở 45 tỷ coin; khoảng 37 tỷ đang lưu hành vào tháng 11/2026.
 > - Khoảng 58% lượng ADA lưu hành đang được stake, và người nắm giữ bỏ phiếu quyết định cách chi tiêu một quỹ chung khoảng 1,4 tỷ ADA.
-> - Giá kỷ lục cho đến nay là 3,09 USD (tháng 9/2021); tháng 11/2026 ADA giao dịch thấp hơn mức đó khoảng 95%.
+> - Đỉnh kỷ lục là {{ath:ada}} ({{athd:ada}}); giá hiện tại cách đỉnh {{fromath:ada}}.
 > - Số tiền khóa trong các ứng dụng DeFi trên Cardano giảm xuống dưới 50 triệu USD vào tháng 11/2026 — quá nhỏ so với quy mô của mạng.
 
 ## Cách hoạt động
@@ -23,7 +23,8 @@ ADA dùng để trả phí giao dịch, bảo vệ mạng thông qua staking và
 ## Các con số hiện tại
 
 - Giá hôm nay: {{price:ada}}
-- Đỉnh kỷ lục: {{ath:ada}} ({{athd:ada}})
+- Đỉnh kỷ lục: {{ath:ada}} ({{athd:ada}}), cách đỉnh {{fromath:ada}}
+- Vốn hóa thị trường: {{mcap:ada}} ({{rank:ada}} trong các đồng tiền mã hóa)
 - Biến động giá trong 12 tháng: {{chg1y:ada}}
 - 10 USD mỗi ngày trong 5 năm: {{dca:ada:5}} từ {{dcainv:5}} đã đầu tư ({{dcaroi:ada:5}})
 

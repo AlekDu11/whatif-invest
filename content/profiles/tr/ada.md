@@ -1,15 +1,15 @@
 ---
-title: Cardano (ADA) sade dille: 45 milyar arz sınırı, sahiplerin oylaması ve 3,09 $ rekor
+title: Cardano (ADA) sade dille: 45 milyar arz sınırı, proof of stake ve sahiplerin oylaması
 description: Cardano sade dille: proof of stake ve ağ içi oylama nasıl çalışır, ADA ne işe yarar, 1,4 milyar ADA'lık hazine, çöküşleri ve başlıca riskler.
 date: 2026-11-23
 kind: analysis
 ---
-**Cardano**, uygulamalar ve ödemeler için yavaş ve bilinçli şekilde inşa edilen bir proof of stake blokzinciridir: büyük güncellemeler hakemli araştırma makaleleri olarak başlar. Ethereum'un kurucu ortaklarından Charles Hoskinson liderliğinde Eylül 2017'de faaliyete geçti. Coin'i ADA'nın Kasım 2026'da piyasa değeri yaklaşık 5,4 milyar dolardı; kripto paralar arasında 18. sıra civarındaydı.
+**Cardano**, uygulamalar ve ödemeler için yavaş ve bilinçli şekilde inşa edilen bir proof of stake blokzinciridir: büyük güncellemeler hakemli araştırma makaleleri olarak başlar. Ethereum'un kurucu ortaklarından Charles Hoskinson liderliğinde Eylül 2017'de faaliyete geçti. Coin'i ADA'nın bugünkü piyasa değeri {{mcap:ada}} (kripto paralar arasında {{rank:ada}}).
 
 > **Öne çıkanlar**
 > - ADA arzı 45 milyar coin ile sınırlı; Kasım 2026'da yaklaşık 37 milyarı dolaşımdaydı.
 > - Dolaşımdaki ADA'nın yaklaşık %58'i stake ediliyor ve sahipler yaklaşık 1,4 milyar ADA'lık ortak hazinenin nasıl harcanacağına oy veriyor.
-> - Şimdiye kadarki rekor fiyat 3,09 $ (Eylül 2021); Kasım 2026'da ADA bunun yaklaşık %95 altında işlem görüyordu.
+> - Rekor fiyatı {{ath:ada}} ({{athd:ada}}); bugün fiyat ondan {{fromath:ada}} uzakta.
 > - Kasım 2026'da Cardano DeFi uygulamalarında kilitli para 50 milyon doların altına indi — bu büyüklükte bir ağ için az.
 
 ## Nasıl çalışır
@@ -23,7 +23,8 @@ ADA işlem ücretlerini öder, staking yoluyla ağı güvence altına alır ve C
 ## Şu anki rakamlar
 
 - Bugünkü fiyat: {{price:ada}}
-- Rekor: {{ath:ada}} ({{athd:ada}})
+- Rekor: {{ath:ada}} ({{athd:ada}}), ondan {{fromath:ada}}
+- Piyasa değeri: {{mcap:ada}} (kripto paralar arasında {{rank:ada}})
 - 12 aylık fiyat değişimi: {{chg1y:ada}}
 - 5 yıl boyunca günde 10 $: {{dca:ada:5}}, yatırılan {{dcainv:5}} ({{dcaroi:ada:5}})
 

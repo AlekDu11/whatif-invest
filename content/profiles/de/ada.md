@@ -1,15 +1,15 @@
 ---
-title: Cardano (ADA) einfach erklärt: 45 Milliarden Höchstmenge, Abstimmungen der Halter und ein Rekord von 3,09 $
+title: Cardano (ADA) einfach erklärt: 45 Milliarden Höchstmenge, Proof of Stake und Abstimmungen der Halter
 description: Cardano einfach erklärt: wie Proof of Stake und On-Chain-Abstimmungen funktionieren, wofür ADA dient, die Kasse mit 1,4 Mrd. ADA, Crashs und Risiken.
 date: 2026-11-23
 kind: analysis
 ---
-**Cardano** ist eine Proof-of-Stake-Blockchain für Apps und Zahlungen, die langsam und mit Absicht gebaut wird: Große Upgrades beginnen als begutachtete Forschungsarbeiten. Sie ging im September 2017 an den Start, angeführt von Charles Hoskinson, einem der Mitgründer von Ethereum. Ihre Coin ADA hatte im November 2026 einen Marktwert von rund 5,4 Milliarden Dollar – etwa Platz 18 unter den Kryptowährungen.
+**Cardano** ist eine Proof-of-Stake-Blockchain für Apps und Zahlungen, die langsam und mit Absicht gebaut wird: Große Upgrades beginnen als begutachtete Forschungsarbeiten. Sie ging im September 2017 an den Start, angeführt von Charles Hoskinson, einem der Mitgründer von Ethereum. Ihre Coin ADA ist heute {{mcap:ada}} wert ({{rank:ada}} unter den Kryptowährungen).
 
 > **Das Wichtigste**
 > - Das Angebot an ADA ist auf 45 Milliarden Coins begrenzt; im November 2026 waren rund 37 Milliarden im Umlauf.
 > - Rund 58 % der umlaufenden ADA sind gestakt, und die Halter stimmen darüber ab, wofür eine gemeinsame Kasse von etwa 1,4 Milliarden ADA ausgegeben wird.
-> - Der bisherige Rekordkurs liegt bei 3,09 $ (September 2021); im November 2026 notierte ADA rund 95 % darunter.
+> - Sein Rekordhoch liegt bei {{ath:ada}} ({{athd:ada}}); heute steht der Kurs {{fromath:ada}} darunter.
 > - In Cardanos DeFi-Apps lagen im November 2026 weniger als 50 Millionen Dollar – wenig für ein Netzwerk dieser Größe.
 
 ## So funktioniert er
@@ -23,7 +23,8 @@ ADA bezahlt Transaktionsgebühren, sichert das Netzwerk über Staking und ist di
 ## Die Zahlen jetzt
 
 - Kurs heute: {{price:ada}}
-- Rekordhoch: {{ath:ada}} ({{athd:ada}})
+- Rekordhoch: {{ath:ada}} ({{athd:ada}}), {{fromath:ada}} davon entfernt
+- Marktwert: {{mcap:ada}} ({{rank:ada}} unter den Kryptowährungen)
 - Kursveränderung in 12 Monaten: {{chg1y:ada}}
 - 10 $ am Tag über 5 Jahre: {{dca:ada:5}} bei {{dcainv:5}} Einsatz ({{dcaroi:ada:5}})
 
