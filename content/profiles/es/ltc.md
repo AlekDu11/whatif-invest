@@ -1,27 +1,57 @@
 ---
-title: ¿Qué es Litecoin (LTC)?
-description: Litecoin explicado fácil: la «plata frente al oro de bitcoin» desde 2011, cómo funciona LTC, qué lo diferencia, su ETF al contado en EE. UU. y los riesgos.
-date: 2026-11-21
+title: Litecoin (LTC) explicado fácil: 84 millones de monedas, bloques cada 2,5 minutos y un récord de 410 $
+description: Litecoin explicado fácil: cómo funciona este primo de bitcoin, por qué solo habrá 84 millones, el halving, el ETF de 2025, sus caídas y los riesgos.
+date: 2026-11-23
+kind: analysis
 ---
-**Litecoin** es una de las criptomonedas más antiguas que siguen muy usadas: una copia más ligera y rápida de bitcoin que lanzó en octubre de 2011 el ex ingeniero de Google Charlie Lee, y a la que se suele llamar «la plata frente al oro de bitcoin».
+**Litecoin** es una de las criptomonedas más antiguas que todavía se usan de forma amplia: una copia más ligera y rápida de bitcoin que lanzó en octubre de 2011 Charlie Lee, exingeniero de Google, y a la que se suele llamar «la plata frente al oro de bitcoin». Se usa para pagos baratos y rápidos y como alternativa veterana a bitcoin. En noviembre de 2026 todos los litecoins juntos valían unos 3.100 millones de dólares, alrededor del puesto 24 entre las criptomonedas.
+
+> **Claves**
+> - Nunca habrá más de 84 millones de LTC, cuatro veces el límite de bitcoin; ya existen unos 77,9 millones.
+> - Llega un bloque nuevo cada 2,5 minutos en lugar de 10, y un pago normal suele costar una fracción de centavo.
+> - Desde octubre de 2025 los estadounidenses pueden comprarlo con un ETF al contado en Nasdaq (LTCC, de Canary).
+> - El récord hasta ahora es de 410 $ (mayo de 2021); en noviembre de 2026 LTC cotizaba alrededor de un 90 % por debajo.
 
 ## Cómo funciona
 
-Litecoin funciona casi como bitcoin —una blockchain pública protegida por mineros— con algunos cambios. Sale un bloque nuevo cada 2,5 minutos en lugar de 10, así que los pagos se confirman antes, y las comisiones suelen ser una fracción de céntimo. Usa otro algoritmo de minería (Scrypt) y desde 2014 se mina junto con Dogecoin, de modo que los mismos mineros protegen ambas redes. Nunca habrá más de 84 millones de LTC, cuatro veces el límite de bitcoin, y la recompensa de los mineros se reduce a la mitad cada cuatro años, aproximadamente (la última vez en agosto de 2023, a 6,25 LTC).
+Litecoin funciona de forma muy parecida a bitcoin: una cadena de bloques pública que mantienen miles de ordenadores y que protegen los mineros, que añaden un bloque de transacciones cada 2,5 minutos y reciben LTC nuevos como recompensa. Usa otro algoritmo de minería, Scrypt, y desde 2014 se mina junto con Dogecoin, de modo que las mismas máquinas protegen ambas redes. Cada 840.000 bloques —más o menos cada cuatro años— la recompensa se reduce a la mitad: en agosto de 2023 bajó a 6,25 LTC, y el próximo halving, a 3,125 LTC, se espera hacia mediados de 2027. Desde 2022 los usuarios también pueden enviar transacciones privadas opcionales mediante el MimbleWimble Extension Block (MWEB).
 
-## Por qué importa
+## Para qué sirve el token
 
-Litecoin lleva 15 años funcionando casi sin caídas, cotiza en casi todos los exchanges y lo aceptan muchos servicios de pago, por lo que es un «primer altcoin» habitual. También ha servido de banco de pruebas: SegWit y la Lightning Network funcionaron en Litecoin antes que en bitcoin, y en 2022 añadió transacciones privadas opcionales (MWEB). Desde octubre de 2025 los estadounidenses pueden comprarlo con un ETF al contado en Nasdaq (LTCC de Canary). Un dato sorprendente: Charlie Lee vendió casi todos sus LTC en diciembre de 2017, cerca del máximo, para evitar un conflicto de intereses.
+LTC está pensado para gastarse y moverse: sirve para pagar bienes y servicios, enviar dinero entre personas y pagar comisiones en su propia red. Como lleva 15 años funcionando casi sin caídas y cotiza en casi todos los exchanges, muchos servicios de pago lo aceptan, y a menudo es la «primera altcoin» de alguien. Sus poseedores también lo ven como un primo de bitcoin más barato y líquido, con una emisión fija y conocida. Litecoin ha servido además como banco de pruebas: SegWit y la Lightning Network funcionaron en él antes que en bitcoin.
 
-## Cifras clave
+## Las cifras actuales
 
 - Precio hoy: {{price:ltc}}
-- 10 $ al día durante 5 años: {{dca:ltc:5}} con {{dcainv:5}} invertidos ({{dcaroi:ltc:5}})
+- Récord: {{ath:ltc}} ({{athd:ltc}})
+- Variación del precio en 12 meses: {{chg1y:ltc}}
+- 10 $ al día durante 10 años: {{dca:ltc:10}} con {{dcainv:10}} invertidos ({{dcaroi:ltc:10}})
 
-Compáralo con [Bitcoin]({lang}/btc/) en nuestra [herramienta de comparación]({lang}/compare/).
+## Su historia
+
+Charlie Lee lanzó Litecoin el 7 de octubre de 2011 a partir del código de bitcoin. Subió con la primera ola cripto de 2013 y llegó a unos 375 $ en diciembre de 2017, cuando Lee vendió casi todos sus LTC para evitar un conflicto de intereses. Tras el desplome de 2018 perdió más del 90 %, y en mayo de 2021 marcó su récord de 410 $. En 2022 se activó la privacidad de MWEB y algunos exchanges, por ejemplo en Corea del Sur, retiraron LTC como respuesta. Después del halving de agosto de 2023 el precio se quedó por detrás de bitcoin, y en octubre de 2025 empezó a cotizar el primer ETF de Litecoin al contado en EE. UU.
+
+## Alternativas
+
+Como moneda de pago, LTC compite con [Bitcoin Cash]({lang}/bch/), [Dogecoin]({lang}/doge/) y [Dash]({lang}/dash/), y con el propio [bitcoin]({lang}/btc/) y su Lightning Network. Para pagos privados, la gente también elige [Monero]({lang}/xmr/) o [Zcash]({lang}/zec/). Y para los pagos cotidianos en cripto hoy se usan mucho más las stablecoins vinculadas al dólar.
 
 ## Principales riesgos
 
-Litecoin ofrece pocas funciones que no tengan ya bitcoin, las stablecoins o las nuevas redes más rápidas, así que su papel es fácil de cuestionar. Su precio sigue muy por debajo del récord de 2021 y lleva años rindiendo menos que bitcoin. La opción de transacciones privadas llevó a algunos exchanges, por ejemplo en Corea del Sur, a retirarlo, y las normas cambian según el país. Comprar de forma periódica suaviza los vaivenes, pero no elimina el riesgo.
+- **Grandes vaivenes:** LTC ha perdido más del 70 % varias veces y sigue muy por debajo de su récord de 2021.
+- **Papel poco claro:** bitcoin, las stablecoins y las nuevas redes rápidas ofrecen casi todo lo que hace Litecoin, así que la demanda podría apagarse.
+- **Minería:** la recompensa vuelve a reducirse a la mitad hacia 2027, y los ingresos de los mineros dependen en parte de Dogecoin.
+- **Regulación:** la opción de privacidad llevó a algunos exchanges a retirarlo, y las normas cambian de un país a otro.
+- **Custodia:** si un exchange quiebra o pierdes tu clave privada, las monedas pueden perderse para siempre.
+
+## Qué significa si compras con regularidad
+
+La historia de Litecoin muestra picos bruscos en 2017 y 2021 y largos años muy por debajo de ellos. Comprar una cantidad fija con regularidad significa comprar más cuando el precio está bajo y menos cuando está alto, sin intentar adivinar el suelo, pero no elimina el riesgo de pérdidas. Mucha gente limita las criptomonedas a una pequeña parte de sus ahorros que puede permitirse ver caer con fuerza. Los resultados pasados no garantizan rentabilidades futuras.
 
 *No es asesoramiento de inversión.*
+
+## Fuentes
+
+- [Litecoin: sitio oficial (litecoin.com)](https://litecoin.com/)
+- [El ETF de Litecoin al contado ya cotiza (Litecoin Foundation)](https://litecoin.com/news/litecoin-spot-etf-approved)
+- [Canary Capital lanza el Canary Litecoin ETF (LTCC) (Business Wire, octubre de 2025)](https://www.businesswire.com/news/home/20251028797380/en/Canary-Capital-Launches-Canary-Litecoin-ETF-LTCC)
+- [Precio, capitalización y máximo histórico de Litecoin (CoinGecko)](https://www.coingecko.com/en/coins/litecoin)

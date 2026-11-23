@@ -1,27 +1,57 @@
 ---
-title: Litecoin (LTC) nedir?
-description: Litecoin sade bir dille: 2011'den beri "bitcoinin altınına karşı gümüş", LTC nasıl çalışır, farkı ne, ABD'deki spot ETF'i ve başlıca riskler.
-date: 2026-11-21
+title: Litecoin (LTC) sade dille: 84 milyon coin, 2,5 dakikalık bloklar ve 410 $ rekor
+description: Litecoin sade dille: bitcoin'in bu kuzeni nasıl çalışır, neden yalnızca 84 milyon olacak, halving, 2025 ETF'si, sert düşüşler ve başlıca riskler.
+date: 2026-11-23
+kind: analysis
 ---
-**Litecoin**, hâlâ yaygın kullanılan en eski kripto paralardan biri: eski Google mühendisi Charlie Lee'nin Ekim 2011'de başlattığı, bitcoinin daha hafif ve hızlı bir kopyası; sık sık "bitcoinin altınına karşı gümüş" diye anılır.
+**Litecoin**, hâlâ yaygın olarak kullanılan en eski kripto paralardan biridir: eski Google mühendisi Charlie Lee'nin Ekim 2011'de başlattığı, bitcoin'in daha hafif ve daha hızlı bir kopyası. Sık sık "bitcoin altınsa Litecoin gümüştür" diye anılır. İnsanlar onu ucuz ve hızlı ödemeler için ve bitcoin'e uzun soluklu bir alternatif olarak kullanıyor. Kasım 2026'da tüm litecoin'lerin toplam değeri yaklaşık 3,1 milyar dolardı; bu da onu kripto paralar arasında 24. sıra civarına koyuyordu.
 
-## Nasıl çalışır?
+> **Öne çıkanlar**
+> - Hiçbir zaman 84 milyondan fazla LTC olmayacak — bu, bitcoin'in sınırının dört katı; yaklaşık 77,9 milyonu zaten mevcut.
+> - Yeni bir blok 10 yerine 2,5 dakikada bir gelir ve normal bir ödeme genellikle bir sentin çok küçük bir kısmına mal olur.
+> - Ekim 2025'ten beri ABD'li yatırımcılar LTC'yi Nasdaq'taki bir spot ETF ile alabiliyor (Canary'nin LTCC'si).
+> - Şimdiye kadarki rekor fiyat 410 $ (Mayıs 2021); Kasım 2026'da LTC bunun yaklaşık %90 altında işlem görüyordu.
 
-Litecoin büyük ölçüde bitcoin gibi çalışır — madencilerin koruduğu herkese açık bir blokzincir — ama birkaç farkla. Yeni blok 10 yerine 2,5 dakikada bir gelir, bu yüzden ödemeler daha hızlı onaylanır; ücretler genellikle bir sentin küçük bir kesridir. Farklı bir madencilik algoritması (Scrypt) kullanır ve 2014'ten beri Dogecoin ile birlikte kazılır; yani aynı madenciler iki ağı da korur. Hiçbir zaman 84 milyondan fazla LTC olmayacak, bu bitcoin limitinin dört katı; madenci ödülü de yaklaşık dört yılda bir yarıya iner (en son Ağustos 2023'te 6,25 LTC'ye).
+## Nasıl çalışır
 
-## Neden önemli?
+Litecoin bitcoin'e çok benzer şekilde çalışır: binlerce bilgisayarın tuttuğu, madencilerin güvence altına aldığı halka açık bir blok zinciri. Madenciler her 2,5 dakikada bir işlem bloğu ekler ve ödül olarak yeni LTC alır. Farklı bir madencilik algoritması, Scrypt kullanır ve 2014'ten beri Dogecoin ile birlikte kazılır; yani aynı makineler iki ağı birden korur. Her 840.000 blokta — kabaca dört yılda bir — ödül yarıya iner: Ağustos 2023'te 6,25 LTC'ye düştü, 3,125 LTC'ye inecek bir sonraki halving ise 2027 ortası civarında bekleniyor. 2022'den beri kullanıcılar MimbleWimble Extension Block (MWEB) üzerinden isteğe bağlı gizli işlemler de gönderebiliyor.
 
-Litecoin 15 yıldır neredeyse kesintisiz çalışıyor, hemen her borsada listeleniyor ve birçok ödeme hizmeti tarafından kabul ediliyor; bu yüzden pek çok kişi için "ilk altcoin". Aynı zamanda bir deneme alanı oldu: SegWit ve Lightning Network bitcoinden önce Litecoin'de çalıştı, 2022'de de isteğe bağlı gizli işlemler (MWEB) eklendi. Ekim 2025'ten beri Amerikalılar onu Nasdaq'taki bir spot ETF ile (Canary'nin LTCC'si) alabiliyor. Şaşırtıcı bir bilgi: Charlie Lee, çıkar çatışmasından kaçınmak için Aralık 2017'de, zirveye yakın bir noktada LTC'lerinin neredeyse tamamını sattı.
+## Token ne işe yarar
 
-## Temel rakamlar
+LTC harcanmak ve transfer edilmek için tasarlandı: mal ve hizmetlerin ödemesinde, kişiler arası transferlerde ve kendi ağındaki ücretlerde kullanılır. Ağ 15 yıldır neredeyse hiç kesintisiz çalıştığı ve coin hemen her borsada listelendiği için pek çok ödeme hizmeti onu kabul eder; çoğu kişi için de "ilk altcoin" odur. Sahipleri onu, arzı sabit ve önceden bilinen, bitcoin'in daha ucuz ve likit bir kuzeni olarak da görür. Litecoin aynı zamanda bir deneme sahası oldu: SegWit ve Lightning Network bitcoin'den önce onda çalıştı.
+
+## Şu anki rakamlar
 
 - Bugünkü fiyat: {{price:ltc}}
-- 5 yıl boyunca günde 10 $: {{dca:ltc:5}}, yatırılan {{dcainv:5}} ({{dcaroi:ltc:5}})
+- Rekor: {{ath:ltc}} ({{athd:ltc}})
+- 12 aylık fiyat değişimi: {{chg1y:ltc}}
+- 10 yıl boyunca günde 10 $: {{dca:ltc:10}}, yatırılan {{dcainv:10}} ({{dcaroi:ltc:10}})
 
-[Bitcoin]({lang}/btc/) ile [karşılaştırma aracımızda]({lang}/compare/) kıyaslayın.
+## Hikâyesi
+
+Charlie Lee, Litecoin'i 7 Ekim 2011'de bitcoin'in kodundan yola çıkarak başlattı. Coin 2013'teki ilk kripto dalgasıyla yükseldi ve Aralık 2017'de yaklaşık 375 $'a ulaştı — Lee de o dönemde çıkar çatışmasından kaçınmak için LTC'lerinin neredeyse tamamını sattı. 2018 çöküşünden sonra değerinin %90'ından fazlasını kaybetti, ardından Mayıs 2021'de 410 $ ile rekorunu kırdı. 2022'de MWEB gizliliği devreye girdi ve bazı borsalar, örneğin Güney Kore'de, buna karşılık LTC'yi listeden çıkardı. Ağustos 2023 halving'inden sonra fiyat bitcoin'in gerisinde kaldı; Ekim 2025'te ise ABD'deki ilk spot Litecoin ETF'si işlem görmeye başladı.
+
+## Alternatifler
+
+Bir ödeme coin'i olarak LTC; [Bitcoin Cash]({lang}/bch/), [Dogecoin]({lang}/doge/) ve [Dash]({lang}/dash/) ile, ayrıca [bitcoin]({lang}/btc/)'in kendisi ve onun Lightning Network'ü ile rekabet ediyor. Gizli ödemeler için insanlar [Monero]({lang}/xmr/) ya da [Zcash]({lang}/zec/) da seçiyor. Kriptoyla günlük ödemelerde ise artık dolara sabitlenmiş stablecoin'ler çok daha fazla kullanılıyor.
 
 ## Başlıca riskler
 
-Litecoin'in bitcoin, stablecoinler ya da yeni ve daha hızlı ağların sunmadığı pek az özelliği var; bu yüzden rolü kolayca sorgulanabiliyor. Fiyatı hâlâ 2021 rekorunun çok altında ve yıllardır bitcoinin gerisinde kalıyor. Gizli işlem seçeneği nedeniyle bazı borsalar, örneğin Güney Kore'de, LTC'yi listeden çıkardı; kripto kuralları da ülkeden ülkeye değişiyor. Düzenli alım dalgalanmaları yumuşatır ama riski ortadan kaldırmaz.
+- **Sert dalgalanmalar:** LTC birkaç kez %70'ten fazla değer kaybetti ve hâlâ 2021 rekorunun çok altında.
+- **Belirsiz rol:** bitcoin, stablecoin'ler ve yeni hızlı ağlar Litecoin'in sunduklarının çoğunu sağlıyor; talep zayıflayabilir.
+- **Madencilik:** ödül 2027 civarında yeniden yarıya inecek ve madencilerin geliri kısmen Dogecoin'e bağlı.
+- **Düzenleme:** gizlilik seçeneği bazı borsaların coin'i listeden çıkarmasına yol açtı ve kurallar ülkeden ülkeye değişiyor.
+- **Saklama:** bir borsa batarsa ya da özel anahtarınızı kaybederseniz coin'ler sonsuza dek gidebilir.
+
+## Düzenli alım yapıyorsanız bu ne anlama geliyor
+
+Litecoin'in geçmişi 2017 ve 2021'de keskin zirveler ve ardından bunların çok altında geçen uzun yıllar gösteriyor. Düzenli olarak sabit bir tutar almak, dibi tahmin etmeye çalışmadan fiyat düşükken daha çok, yüksekken daha az almak demektir — ama bu, zarar riskini ortadan kaldırmaz. Birçok kişi kriptoyu, sert düşmesini göze alabileceği küçük bir birikim payıyla sınırlı tutar. Geçmiş sonuçlar gelecekteki getirilerin garantisi değildir.
 
 *Yatırım tavsiyesi değildir.*
+
+## Kaynaklar
+
+- [Litecoin — resmî site (litecoin.com)](https://litecoin.com/)
+- [Spot Litecoin ETF'si artık işlem görüyor (Litecoin Foundation)](https://litecoin.com/news/litecoin-spot-etf-approved)
+- [Canary Capital, Canary Litecoin ETF'yi (LTCC) başlattı (Business Wire, Ekim 2025)](https://www.businesswire.com/news/home/20251028797380/en/Canary-Capital-Launches-Canary-Litecoin-ETF-LTCC)
+- [Litecoin fiyatı, piyasa değeri ve tüm zamanların zirvesi (CoinGecko)](https://www.coingecko.com/en/coins/litecoin)
