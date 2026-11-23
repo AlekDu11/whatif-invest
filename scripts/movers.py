@@ -7,6 +7,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 lim = float(sys.argv[1]) if len(sys.argv) > 1 else 12
 mr = int(sys.argv[2]) if len(sys.argv) > 2 else 200
 A = json.load(open(os.path.join(ROOT, 'data', 'market.json')))['assets']
+A = {k: a for k, a in A.items() if not (a.get('cat') == 'crypto' and a.get('src') in ('cg-spot', 'coingecko'))}   # owner 2026-11-23: no-exchange coins are off the site
 since = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=3)).strftime('%Y-%m-%d')
 recent = set()
 nd = os.path.join(ROOT, 'content', 'news', 'en')

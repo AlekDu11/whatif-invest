@@ -74,6 +74,14 @@ class handler(BaseHTTPRequestHandler):
                 self.send_header('Cache-Control', 'no-store')
                 self.end_headers()
                 return
+        _m = build.market['assets'].get(aid) if lang in LANGS else None
+        if _m:   # dropped asset (owner 2026-11-23: no-exchange coins, stale, delisted) → its list page, never a 404
+            hub = {v: k for k, v in build.HUBS.items()}.get(_m.get('cat'), 'crypto')
+            self.send_response(301)
+            self.send_header('Location', build.url(lang, hub))
+            self.send_header('CDN-Cache-Control', 'public, s-maxage=86400')
+            self.end_headers()
+            return
         body = not_found(host)
         self.send_response(404)
         self.send_header('Content-Type', 'text/html; charset=utf-8')

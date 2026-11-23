@@ -13,6 +13,7 @@ in one place, fast, no ad clutter. Owner (2026-11-17): the essence is what peopl
 ## Current focus (owner 2026-11-22, for ~1 month)
 QUALITY + OPTIMISATION of what exists, then SEO — no new features. Every asset page complete and correct in every language (right chart or none, description, key numbers, analysis for the top assets), all automation lean and verified (daily site check + boss), careful SEO (quality + SEO task). After a month of this, move on.
 
+Crypto QUALITY FILTER (owner 2026-11-23): only coins that trade on an exchange we read (Binance/Gate/MEXC/OKX/Kraken/Yahoo) are on the site — src cg-spot/coingecko (727 CoinGecko-only coins, no chart) are dropped in build.py (NOEX_SRC) → redirect stubs uk/en + 301 from api/page.py to /crypto/; DEX tokens stay on /memes/; desc/movers/coin-markets queues skip them; coin-venues.yml disabled. 1,264 coins remain.
 Crypto list FROZEN (owner 2026-11-23): CRYPTO_FROZEN = True in scripts/fetch_data.py — no new coins (1,991 now); the existing ones keep updating and get completed.
 
 ## Principles (check every decision against them)

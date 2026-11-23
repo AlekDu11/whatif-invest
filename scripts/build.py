@@ -91,9 +91,13 @@ RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs'
 RESERVED |= {v[0] for v in MKTS.values()} | {'learn', 'earnings-calendar', 'world-assets', 'activities', 'editorial-policy', 'about', 'portfolios', 'privacy', 'terms', 'categories'}
 # asset ids that clash with a language folder or a section get a suffix (ko -> ko-stock, fil -> fil-crypto)
 _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
+# owner 2026-11-23 quality filter: crypto only if it trades on an exchange we read (Binance/Gate/MEXC/OKX/Kraken/Yahoo);
+# CoinGecko-only coins (src cg-spot / coingecko: no exchange, no chart) are dropped → redirect stubs to /crypto/, DEX tokens live on /memes/
+NOEX_SRC = ('cg-spot', 'coingecko')
 # delisted or stale series (last price older than a month) are dropped: "today" numbers would be false
 A = {(f"{aid}-{a['cat']}" if aid in RESERVED else aid): a for aid, a in market['assets'].items()
-     if a.get('p') and (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(a['end']) >= _END_I0 - 1}
+     if a.get('p') and (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(a['end']) >= _END_I0 - 1
+     and not (a.get('cat') == 'crypto' and a.get('src') in NOEX_SRC)}
 # Yahoo quotes grains, softs and livestock futures in US cents (595 = $5.95 a bushel): show them in dollars
 CENT_FUT = {'ZW=F', 'ZC=F', 'ZS=F', 'ZL=F', 'ZO=F', 'SB=F', 'KC=F', 'CT=F', 'OJ=F', 'LE=F', 'HE=F', 'KE=F', 'GF=F'}
 for _a in A.values():
@@ -5085,7 +5089,7 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
     for _aid, _a in market['assets'].items():
         if _aid in A or _aid in RESERVED:
             continue
-        for _l in ORDER:
+        for _l in (ORDER if not (_a.get('cat') == 'crypto' and _a.get('src') in NOEX_SRC) else (DEFAULT, 'en')):   # other languages: api/page.py 301
             _d = os.path.join(DIST, *([_l] if _l != DEFAULT else []), _aid)
             if os.path.exists(os.path.join(_d, 'index.html')):
                 continue

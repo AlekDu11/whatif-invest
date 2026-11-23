@@ -15,6 +15,7 @@ lang = sys.argv[1]
 n = int(sys.argv[2]) if len(sys.argv) > 2 else 120
 LANGS = ['en', 'uk', 'ru', 'es', 'de', 'pt', 'pl', 'tr', 'fr', 'it', 'nl', 'id', 'vi', 'th', 'hi', 'ja', 'ko', 'zh', 'ar', 'fil']
 A = json.load(open(os.path.join(ROOT, 'data', 'market.json')))['assets']
+A = {k: a for k, a in A.items() if not (a.get('cat') == 'crypto' and a.get('src') in ('cg-spot', 'coingecko'))}   # owner 2026-11-23: no-exchange coins are off the site
 # stablecoins + gold tokens have their own pages (/<ticker>/) but are not market.json assets: queue them first
 try:
     for _tk, _v in (json.load(open(os.path.join(ROOT, 'data', 'stables.json'))).get('s') or {}).items():

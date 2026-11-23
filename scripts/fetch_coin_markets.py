@@ -43,6 +43,7 @@ def main():
     old = json.load(open(OUT, encoding='utf-8')) if os.path.exists(OUT) else {}
     cm = old.get('c', {})
     assets = json.load(open(os.path.join(ROOT, 'data/market.json'), encoding='utf-8'))['assets']
+    assets = {k: a for k, a in assets.items() if not (a.get('cat') == 'crypto' and a.get('src') in ('cg-spot', 'coingecko'))}   # owner 2026-11-23: no-exchange coins are off the site
     assets = assets.values() if isinstance(assets, dict) else assets
     coins = sorted({(a.get('rank') or 99999, a['cgid']) for a in assets if a.get('cat') == 'crypto' and a.get('cgid')})
     ids = [c for _, c in coins]
