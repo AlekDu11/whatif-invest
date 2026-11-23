@@ -94,7 +94,8 @@ def main():
         S[i] = vals
     inv = [a.amt * (j + 1) for j in range(len(months))]
     L, T = MON[a.lang], TXT[a.lang]
-    name = lambda i: A[i].get('tk') or i.upper()
+    # numeric exchange codes (1211, 7203) read badly — use the English name instead
+    name = lambda i: (A[i].get('tk') if A[i].get('tk') and not str(A[i]['tk']).split('.')[0].isdigit() else (A[i].get('name') or {}).get('en') or i.upper())
     col = {i: PALETTE[k % len(PALETTE)] for k, i in enumerate(ids)}
     lg = {i: logo(i, 64) or badge(name(i), col[i], 64) for i in ids}
     lg_big = {i: logo(i, 120) or badge(name(i), col[i], 120) for i in ids}
