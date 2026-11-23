@@ -1,14 +1,14 @@
 ---
-title: Solana (SOL) eenvoudig uitgelegd: de snelle chain van memecoins en ETF's, geen maximum, een record van $293
+title: Solana (SOL) eenvoudig uitgelegd: de snelle chain van memecoins en ETF's, geen maximum, live sinds 2020
 description: Solana eenvoudig uitgelegd: hoe het netwerk werkt, waarvoor SOL dient, storingen, de FTX-crash, ETF's, Firedancer en Alpenglow, risico's en wat regelmatige kopers moeten weten.
-date: 2026-11-22
+date: 2026-11-23
 kind: analysis
 ---
 **Solana** is een blockchain die draait om snelheid: transacties worden in ongeveer een seconde bevestigd voor een fractie van een cent, waardoor het de thuisbasis werd van tradingapps, memecoins en betalingen met stablecoins. De munt SOL betaalt de kosten en beveiligt het netwerk via staking. In november 2026 was SOL in totaal ongeveer $41,5 miljard waard, een van de grootste cryptomunten.
 
 > **Belangrijkste punten**
 > - Het mainnet van Solana ging in maart 2020 live; SOL heeft geen maximale voorraad en in november 2026 waren er ongeveer 592 miljoen munten in omloop.
-> - De recordkoers tot nu toe is $293,31 (19 januari 2025); in november 2026 stond SOL meer dan 70% lager.
+> - De recordkoers is {{ath:sol}} ({{athd:sol}}); vandaag staat de koers {{fromath:sol}} daarvan af.
 > - De eerste Amerikaanse spot-ETF's op Solana gingen eind oktober 2025 van start; tot augustus 2026 trokken ze ongeveer $1,22 miljard netto aan.
 > - Het netwerk lag meerdere keren volledig stil, het langst ongeveer 19 uur in februari 2023; de laatste volledige stilstand was in februari 2024.
 

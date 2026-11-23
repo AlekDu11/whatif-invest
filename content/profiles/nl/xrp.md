@@ -1,7 +1,7 @@
 ---
-title: XRP eenvoudig uitgelegd: 100 miljard munten, de escrow van Ripple en een record van $3,65
+title: XRP eenvoudig uitgelegd: 100 miljard munten, de escrow van Ripple en snelle betalingen sinds 2012
 description: XRP in gewone taal: hoe de XRP Ledger werkt, Ripple en de escrow, de SEC-zaak, ETF's, record en crashes, de risico's en wat regelmatige kopers moeten weten.
-date: 2026-11-22
+date: 2026-11-23
 kind: analysis
 ---
 **XRP** is de munt van de XRP Ledger, een blockchain voor snelle, goedkope betalingen, en is nauw verbonden met het Amerikaanse bedrijf Ripple, dat hem gebruikt voor internationale geldoverboekingen. Alle 100 miljard XRP zijn meteen bij de start in 2012 gemaakt, en het bedrijf bezit een groot deel. In november 2026 was XRP ongeveer $58 miljard waard en hoorde daarmee bij de tien grootste crypto-activa.
@@ -9,7 +9,7 @@ kind: analysis
 > **Belangrijkste punten**
 > - Alle 100 miljard XRP zijn in 2012 gemaakt; ongeveer 63,5 miljard zijn in omloop en een groot deel van de rest zit in de escrow van Ripple.
 > - De SEC daagde Ripple in december 2020 voor de rechter; de zaak eindigde in 2025 en in november 2025 gingen in de VS spot-XRP-ETF's van start.
-> - De recordkoers tot nu toe is $3,65 (juli 2025); in november 2026 noteerde XRP onder $1, ongeveer 75% lager.
+> - De recordkoers is {{ath:xrp}} ({{athd:xrp}}); vandaag staat de koers {{fromath:xrp}} daarvan af.
 > - Een overboeking is in ongeveer 3–5 seconden afgerond en kost een fractie van een cent.
 
 ## Hoe het werkt

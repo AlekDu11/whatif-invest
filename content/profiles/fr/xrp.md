@@ -1,7 +1,7 @@
 ---
-title: XRP expliqué simplement : 100 milliards de jetons, le séquestre de Ripple et un record à 3,65 $
+title: XRP expliqué simplement : 100 milliards de jetons, le séquestre de Ripple et des paiements rapides depuis 2012
 description: Le XRP en clair : le XRP Ledger, le rôle de Ripple et du séquestre, l'affaire SEC, les ETF, record et krachs, les risques et quoi savoir si vous achetez.
-date: 2026-11-22
+date: 2026-11-23
 kind: analysis
 ---
 Le **XRP** est la cryptomonnaie du XRP Ledger, une blockchain conçue pour des paiements rapides et bon marché, et il est étroitement lié à l'entreprise américaine Ripple, qui l'utilise pour les transferts d'argent internationaux. Les 100 milliards de XRP ont tous été créés dès le départ, en 2012, et l'entreprise en détient une grande part. En novembre 2026, le XRP valait environ 58 milliards de dollars, parmi les dix plus gros actifs crypto.
@@ -9,7 +9,7 @@ Le **XRP** est la cryptomonnaie du XRP Ledger, une blockchain conçue pour des p
 > **À retenir**
 > - Les 100 milliards de XRP ont été créés en 2012 ; environ 63,5 milliards sont en circulation et une bonne partie du reste est sous séquestre chez Ripple.
 > - La SEC a poursuivi Ripple en décembre 2020 ; l'affaire s'est terminée en 2025, et les ETF XRP au comptant ont été lancés aux États-Unis en novembre 2025.
-> - Le record à ce jour est de 3,65 $ (juillet 2025) ; en novembre 2026, le XRP s'échangeait sous 1 $, environ 75 % plus bas.
+> - Son record est de {{ath:xrp}} ({{athd:xrp}}) ; aujourd'hui, le cours est à {{fromath:xrp}} de ce niveau.
 > - Un transfert est réglé en 3 à 5 secondes environ et coûte une fraction de centime.
 
 ## Comment il fonctionne

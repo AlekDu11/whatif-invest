@@ -1,7 +1,7 @@
 ---
-title: XRP einfach erklärt: 100 Milliarden Coins, Ripples Escrow und ein Rekord von 3,65 $
+title: XRP einfach erklärt: 100 Milliarden Coins, Ripples Escrow und schnelle Zahlungen seit 2012
 description: XRP verständlich erklärt: XRP Ledger, Ripple und Escrow, der SEC-Fall, ETFs, Rekord und Crashs, Risiken und was Sparplan-Anleger wissen sollten.
-date: 2026-11-22
+date: 2026-11-23
 kind: analysis
 ---
 **XRP** ist der Coin des XRP Ledger, einer Blockchain für schnelle und günstige Zahlungen, und eng mit dem US-Unternehmen Ripple verbunden, das ihn für grenzüberschreitende Geldtransfers nutzt. Alle 100 Milliarden XRP wurden gleich zu Beginn 2012 geschaffen, und das Unternehmen hält einen großen Anteil. Im November 2026 war XRP rund 58 Milliarden Dollar wert und zählte zu den zehn größten Krypto-Assets.
@@ -9,7 +9,7 @@ kind: analysis
 > **Das Wichtigste**
 > - Alle 100 Milliarden XRP wurden 2012 geschaffen; rund 63,5 Milliarden sind im Umlauf, ein großer Teil des Rests liegt in Ripples Escrow.
 > - Die SEC verklagte Ripple im Dezember 2020; der Fall endete 2025, und im November 2025 starteten in den USA Spot-XRP-ETFs.
-> - Der bisherige Rekordkurs liegt bei 3,65 $ (Juli 2025); im November 2026 notierte XRP unter 1 $, rund 75 % tiefer.
+> - Sein Rekordhoch liegt bei {{ath:xrp}} ({{athd:xrp}}); heute steht der Kurs {{fromath:xrp}} darunter.
 > - Eine Überweisung ist in etwa 3–5 Sekunden abgewickelt und kostet einen Bruchteil eines Cents.
 
 ## So funktioniert XRP

@@ -1,7 +1,7 @@
 ---
-title: XRP explained: 100 billion coins, Ripple's escrow and a $3.65 record
-description: XRP in plain language: how the XRP Ledger works, Ripple's role and escrow, the SEC case, ETFs, its record and crashes, the main risks and what regular buyers should know.
-date: 2026-11-22
+title: XRP explained: 100 billion coins, Ripple's escrow and fast payments since 2012
+description: XRP in plain language: how the XRP Ledger works, Ripple's role and escrow, the SEC case, ETFs, its booms and crashes, the main risks and what regular buyers should know.
+date: 2026-11-23
 kind: analysis
 ---
 **XRP** is the coin of the XRP Ledger, a blockchain built for fast, cheap payments, and it is closely linked to the US company Ripple, which uses it for cross-border money transfers. All 100 billion XRP were created at the start in 2012, and the company holds a large share. XRP was worth about $58 billion in November 2026, among the ten largest crypto assets.
@@ -9,7 +9,7 @@ kind: analysis
 > **Key takeaways**
 > - All 100 billion XRP were created in 2012; about 63.5 billion are in circulation and much of the rest sits in Ripple's escrow.
 > - The SEC sued Ripple in December 2020; the case ended in 2025, and US spot XRP ETFs launched in November 2025.
-> - The record price so far is $3.65 (July 2025); in November 2026 XRP traded below $1, about 75% lower.
+> - Its record high is {{ath:xrp}} ({{athd:xrp}}); today the price is {{fromath:xrp}} from it.
 > - A transfer settles in about 3–5 seconds and costs a fraction of a cent.
 
 ## How it works

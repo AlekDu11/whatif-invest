@@ -1,7 +1,7 @@
 ---
-title: XRP dijelaskan sederhana: 100 miliar koin, escrow Ripple dan rekor $3,65
+title: XRP dijelaskan sederhana: 100 miliar koin, escrow Ripple dan pembayaran cepat sejak 2012
 description: XRP dengan bahasa sederhana: cara kerja XRP Ledger, peran dan escrow Ripple, kasus SEC, ETF, rekor dan kejatuhan, risiko utama dan tips bagi pembeli rutin.
-date: 2026-11-22
+date: 2026-11-23
 kind: analysis
 ---
 **XRP** adalah koin dari XRP Ledger, blockchain yang dibuat untuk pembayaran cepat dan murah, dan erat kaitannya dengan perusahaan AS Ripple, yang memakainya untuk transfer uang lintas negara. Seluruh 100 miliar XRP sudah dibuat sejak awal pada 2012, dan perusahaan itu memegang porsi besar. Nilai XRP sekitar $58 miliar pada November 2026, termasuk sepuluh aset kripto terbesar.
@@ -9,7 +9,7 @@ kind: analysis
 > **Poin penting**
 > - Seluruh 100 miliar XRP dibuat pada 2012; sekitar 63,5 miliar beredar, dan sebagian besar sisanya tersimpan di escrow Ripple.
 > - SEC menggugat Ripple pada Desember 2020; kasusnya selesai pada 2025, dan ETF XRP spot di AS diluncurkan pada November 2025.
-> - Harga rekor sejauh ini $3,65 (Juli 2025); pada November 2026 XRP diperdagangkan di bawah $1, sekitar 75% lebih rendah.
+> - Rekor tertingginya {{ath:xrp}} ({{athd:xrp}}); kini harganya {{fromath:xrp}} dari rekor itu.
 > - Satu transfer selesai dalam sekitar 3–5 detik dan biayanya hanya sepersekian sen.
 
 ## Cara kerjanya

@@ -1,7 +1,7 @@
 ---
-title: XRP giải thích dễ hiểu: 100 tỷ đồng, ký quỹ của Ripple và kỷ lục 3,65 USD
+title: XRP giải thích dễ hiểu: 100 tỷ đồng, ký quỹ của Ripple và thanh toán nhanh từ năm 2012
 description: XRP dễ hiểu: cách XRP Ledger hoạt động, vai trò và ký quỹ của Ripple, vụ kiện SEC, ETF, kỷ lục và những cú sập, rủi ro chính, điều người mua định kỳ cần biết.
-date: 2026-11-22
+date: 2026-11-23
 kind: analysis
 ---
 **XRP** là đồng coin của XRP Ledger, một blockchain được xây dựng cho thanh toán nhanh và rẻ, và gắn chặt với công ty Mỹ Ripple, đơn vị dùng nó để chuyển tiền xuyên biên giới. Toàn bộ 100 tỷ XRP đã được tạo ra ngay từ đầu vào năm 2012, và công ty này nắm giữ một phần lớn. Tháng 11/2026, XRP trị giá khoảng 58 tỷ USD, nằm trong nhóm mười tài sản tiền mã hóa lớn nhất.
@@ -9,7 +9,7 @@ kind: analysis
 > **Điểm chính**
 > - Toàn bộ 100 tỷ XRP được tạo ra năm 2012; khoảng 63,5 tỷ đang lưu hành, phần lớn số còn lại nằm trong ví ký quỹ (escrow) của Ripple.
 > - SEC kiện Ripple vào tháng 12/2020; vụ kiện kết thúc năm 2025, và các quỹ ETF XRP giao ngay tại Mỹ ra mắt tháng 11/2025.
-> - Giá kỷ lục cho đến nay là 3,65 USD (tháng 7/2025); tháng 11/2026 XRP giao dịch dưới 1 USD, thấp hơn khoảng 75%.
+> - Đỉnh kỷ lục là {{ath:xrp}} ({{athd:xrp}}); giá hiện tại cách đỉnh {{fromath:xrp}}.
 > - Một giao dịch chuyển tiền hoàn tất trong khoảng 3–5 giây với phí chỉ bằng một phần nhỏ của một xu.
 
 ## Cách hoạt động

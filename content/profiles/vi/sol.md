@@ -1,14 +1,14 @@
 ---
-title: Solana (SOL) giải thích dễ hiểu: mạng nhanh của memecoin và ETF, không giới hạn nguồn cung, kỷ lục 293 USD
+title: Solana (SOL) giải thích dễ hiểu: mạng nhanh của memecoin và ETF, không giới hạn nguồn cung, hoạt động từ năm 2020
 description: Solana giải thích dễ hiểu: mạng hoạt động thế nào, SOL dùng để làm gì, các sự cố, cú sập FTX, ETF, Firedancer và Alpenglow, rủi ro chính và điều người mua định kỳ cần biết.
-date: 2026-11-22
+date: 2026-11-23
 kind: analysis
 ---
 **Solana** là blockchain được xây dựng vì tốc độ: giao dịch được xác nhận trong khoảng một giây với phí chỉ một phần nhỏ của một cent, nên đây trở thành nơi tập trung ứng dụng giao dịch, memecoin và thanh toán bằng stablecoin. Đồng coin SOL dùng để trả phí và bảo vệ mạng lưới qua staking. Tháng 11/2026, giá trị thị trường của SOL vào khoảng 41,5 tỷ USD, thuộc nhóm tiền mã hóa lớn nhất.
 
 > **Điểm chính**
 > - Mạng chính Solana ra mắt tháng 3/2020; SOL không có nguồn cung tối đa, và khoảng 592 triệu đồng đang lưu hành vào tháng 11/2026.
-> - Giá kỷ lục đến nay là 293,31 USD (19/1/2025); tháng 11/2026, SOL giao dịch thấp hơn mức đó hơn 70%.
+> - Đỉnh kỷ lục là {{ath:sol}} ({{athd:sol}}); giá hiện tại cách đỉnh {{fromath:sol}}.
 > - Các ETF Solana giao ngay đầu tiên ở Mỹ bắt đầu giao dịch cuối tháng 10/2025; đến tháng 8/2026 chúng thu hút dòng tiền ròng khoảng 1,22 tỷ USD.
 > - Mạng lưới đã ngừng hoàn toàn vài lần, lâu nhất khoảng 19 giờ vào tháng 2/2023; lần ngừng toàn bộ gần nhất là tháng 2/2024.
 

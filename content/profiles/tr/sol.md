@@ -1,14 +1,14 @@
 ---
-title: Solana (SOL) sade dille: memecoin ve ETF'lerin hızlı ağı, arz sınırı yok, 293 $ rekor
+title: Solana (SOL) sade dille: memecoin ve ETF'lerin hızlı ağı, arz sınırı yok, 2020'den beri çalışıyor
 description: Solana sade dille: ağ nasıl çalışır, SOL ne işe yarar, kesintiler, FTX çöküşü, ETF'ler, Firedancer ve Alpenglow, başlıca riskler ve düzenli alım yapanların bilmesi gerekenler.
-date: 2026-11-22
+date: 2026-11-23
 kind: analysis
 ---
 **Solana**, hız için tasarlanmış bir blokzincirdir: işlemleri yaklaşık bir saniyede, bir sentin küçük bir kısmı kadar ücretle onaylar; bu yüzden alım satım uygulamalarının, memecoin'lerin ve stablecoin ödemelerinin merkezi hâline geldi. Coini SOL, ücretleri öder ve staking ile ağın güvenliğini sağlar. Kasım 2026'da SOL'un piyasa değeri yaklaşık 41,5 milyar dolardı; en büyük kripto paralardan biri.
 
 > **Öne çıkanlar**
 > - Solana ana ağı Mart 2020'de açıldı; SOL'un azami arzı yok ve Kasım 2026'da yaklaşık 592 milyon coin dolaşımdaydı.
-> - Şimdiye kadarki rekor fiyat 293,31 $ (19 Ocak 2025); Kasım 2026'da SOL bunun %70'ten fazla altında işlem görüyordu.
+> - Rekor fiyatı {{ath:sol}} ({{athd:sol}}); bugün fiyat ondan {{fromath:sol}} uzakta.
 > - ABD'deki ilk spot Solana ETF'leri Ekim 2025 sonunda işlem görmeye başladı; Ağustos 2026'ya kadar yaklaşık 1,22 milyar dolar net giriş çektiler.
 > - Ağ birkaç kez tamamen durdu; en uzunu Şubat 2023'te yaklaşık 19 saat sürdü, son tam duruş Şubat 2024'teydi.
 

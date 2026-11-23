@@ -1,7 +1,7 @@
 ---
-title: XRP sade dille: 100 milyar coin, Ripple'ın emanet hesabı ve 3,65 $ rekor
+title: XRP sade dille: 100 milyar coin, Ripple'ın emanet hesabı ve 2012'den beri hızlı ödemeler
 description: XRP sade dille: XRP Ledger nasıl çalışır, Ripple ve emanet hesabı, SEC davası, ETF'ler, rekor ve çöküşler, riskler ve düzenli alıcıların bilmesi gerekenler.
-date: 2026-11-22
+date: 2026-11-23
 kind: analysis
 ---
 **XRP**, hızlı ve ucuz ödemeler için kurulmuş bir blokzincir olan XRP Ledger'ın coinidir ve onu sınır ötesi para transferlerinde kullanan ABD şirketi Ripple ile yakından bağlantılıdır. 100 milyar XRP'nin tamamı en başta, 2012'de üretildi ve büyük bir kısmı şirketin elinde. Kasım 2026'da XRP'nin değeri yaklaşık 58 milyar dolardı; en büyük on kripto varlık arasındaydı.
@@ -9,7 +9,7 @@ kind: analysis
 > **Öne çıkanlar**
 > - 100 milyar XRP'nin tamamı 2012'de üretildi; yaklaşık 63,5 milyarı dolaşımda, geri kalanın büyük kısmı Ripple'ın emanet hesabında.
 > - SEC, Aralık 2020'de Ripple'a dava açtı; dava 2025'te sona erdi ve Kasım 2025'te ABD'de spot XRP ETF'leri işlem görmeye başladı.
-> - Şimdiye kadarki rekor fiyat 3,65 $ (Temmuz 2025); Kasım 2026'da XRP 1 $'ın altında, yaklaşık %75 aşağıda işlem görüyordu.
+> - Rekor fiyatı {{ath:xrp}} ({{athd:xrp}}); bugün fiyat ondan {{fromath:xrp}} uzakta.
 > - Bir transfer yaklaşık 3–5 saniyede tamamlanır ve bir sentin küçük bir kısmına mal olur.
 
 ## Nasıl çalışır

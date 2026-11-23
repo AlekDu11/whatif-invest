@@ -1,7 +1,7 @@
 ---
-title: XRP sa simpleng paliwanag: 100 bilyong coin, escrow ng Ripple at record na $3.65
+title: XRP sa simpleng paliwanag: 100 bilyong coin, escrow ng Ripple at mabilis na bayad mula 2012
 description: XRP sa simpleng salita: paano gumagana ang XRP Ledger, Ripple at escrow, kaso sa SEC, ETF, record at pagbagsak, panganib at payo sa regular na bumibili.
-date: 2026-11-22
+date: 2026-11-23
 kind: analysis
 ---
 Ang **XRP** ang coin ng XRP Ledger, isang blockchain na ginawa para sa mabilis at murang bayad, at malapit itong nakaugnay sa kumpanyang Ripple sa US, na gumagamit nito sa pagpapadala ng pera sa ibang bansa. Lahat ng 100 bilyong XRP ay nalikha na sa simula pa noong 2012, at malaking bahagi nito ang hawak ng kumpanya. Mga $58 bilyon ang halaga ng XRP noong Nobyembre 2026, kabilang sa sampung pinakamalaking crypto asset.
@@ -9,7 +9,7 @@ Ang **XRP** ang coin ng XRP Ledger, isang blockchain na ginawa para sa mabilis a
 > **Mahahalagang punto**
 > - Lahat ng 100 bilyong XRP ay nalikha noong 2012; mga 63.5 bilyon ang umiikot at malaking bahagi ng natitira ay nasa escrow ng Ripple.
 > - Kinasuhan ng SEC ang Ripple noong Disyembre 2020; natapos ang kaso noong 2025, at inilunsad ang mga spot XRP ETF sa US noong Nobyembre 2025.
-> - Ang pinakamataas na presyo sa ngayon ay $3.65 (Hulyo 2025); noong Nobyembre 2026, mas mababa sa $1 ang XRP, mga 75% na mas mababa.
+> - Ang pinakamataas na presyo nito ay {{ath:xrp}} ({{athd:xrp}}); ngayon, {{fromath:xrp}} ang presyo mula roon.
 > - Natatapos ang isang transfer sa mga 3–5 segundo at maliit na bahagi lang ng isang sentimo ang bayad.
 
 ## Paano ito gumagana

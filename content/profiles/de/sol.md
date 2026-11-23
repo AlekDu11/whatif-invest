@@ -1,14 +1,14 @@
 ---
-title: Solana (SOL) einfach erklärt: die schnelle Chain der Memecoins und ETFs, ohne Mengenlimit, ein Rekord von 293 $
+title: Solana (SOL) einfach erklärt: die schnelle Chain der Memecoins und ETFs, ohne Mengenlimit, seit 2020 live
 description: Solana einfach erklärt: wie das Netzwerk funktioniert, wofür SOL dient, Ausfälle, der FTX-Crash, ETFs, Firedancer und Alpenglow, Risiken und was regelmäßige Käufer wissen sollten.
-date: 2026-11-22
+date: 2026-11-23
 kind: analysis
 ---
 **Solana** ist eine Blockchain, die auf Tempo gebaut ist: Sie bestätigt Transaktionen in rund einer Sekunde für den Bruchteil eines Cents und wurde so zur Heimat von Trading-Apps, Memecoins und Stablecoin-Zahlungen. Der Coin SOL bezahlt die Gebühren und sichert das Netzwerk per Staking ab. Im November 2026 lag der Marktwert von SOL bei rund 41,5 Milliarden Dollar – damit gehört Solana zu den größten Kryptowährungen.
 
 > **Das Wichtigste**
 > - Das Solana-Mainnet startete im März 2020; SOL hat keine Höchstmenge, im November 2026 waren rund 592 Millionen Coins im Umlauf.
-> - Das bisherige Rekordhoch liegt bei 293,31 $ (19. Januar 2025); im November 2026 notierte SOL mehr als 70 % darunter.
+> - Sein Rekordhoch liegt bei {{ath:sol}} ({{athd:sol}}); heute steht der Kurs {{fromath:sol}} darunter.
 > - Die ersten US-Spot-ETFs auf Solana starteten Ende Oktober 2025; bis August 2026 flossen ihnen netto rund 1,22 Milliarden Dollar zu.
 > - Das Netzwerk stand mehrmals komplett still, am längsten rund 19 Stunden im Februar 2023; der letzte vollständige Stillstand war im Februar 2024.
 

@@ -1,7 +1,7 @@
 ---
-title: XRP explicado de forma simples: 100 bilhões de moedas, o escrow da Ripple e recorde de US$ 3,65
+title: XRP explicado de forma simples: 100 bilhões de moedas, o escrow da Ripple e pagamentos rápidos desde 2012
 description: XRP em linguagem simples: como funciona o XRP Ledger, a Ripple e o escrow, o caso na SEC, ETFs, recorde e quedas, riscos e o que saber se você compra sempre.
-date: 2026-11-22
+date: 2026-11-23
 kind: analysis
 ---
 **XRP** é a moeda do XRP Ledger, uma blockchain criada para pagamentos rápidos e baratos, e está muito ligada à empresa americana Ripple, que a usa para transferências internacionais de dinheiro. Todos os 100 bilhões de XRP foram criados logo no início, em 2012, e a empresa detém uma grande fatia. Em novembro de 2026 o XRP valia cerca de US$ 58 bilhões, entre os dez maiores criptoativos.
@@ -9,7 +9,7 @@ kind: analysis
 > **Pontos principais**
 > - Todos os 100 bilhões de XRP foram criados em 2012; cerca de 63,5 bilhões estão em circulação e boa parte do restante está no escrow da Ripple.
 > - A SEC processou a Ripple em dezembro de 2020; o caso terminou em 2025, e os ETFs de XRP à vista estrearam nos EUA em novembro de 2025.
-> - O preço recorde até agora é US$ 3,65 (julho de 2025); em novembro de 2026 o XRP era negociado abaixo de US$ 1, cerca de 75% abaixo.
+> - A máxima histórica é {{ath:xrp}} ({{athd:xrp}}); hoje o preço está {{fromath:xrp}} abaixo dela.
 > - Uma transferência é liquidada em cerca de 3–5 segundos e custa uma fração de centavo.
 
 ## Como funciona

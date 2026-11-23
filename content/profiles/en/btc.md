@@ -1,6 +1,6 @@
 ---
 title: Bitcoin (BTC) explained: 21 million coins, proof of work since 2009 and what moves the price
-description: Bitcoin in plain language: how it works, why only 21 million will exist, the halving, ETFs, its record and crashes, the main risks and what regular buyers should know.
+description: Bitcoin in plain language: how it works, why only 21 million will exist, the halving, ETFs, its booms and crashes, the main risks and what regular buyers should know.
 date: 2026-11-22
 kind: analysis
 ---
