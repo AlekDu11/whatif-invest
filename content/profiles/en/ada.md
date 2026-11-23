@@ -1,35 +1,57 @@
 ---
-title: What is Cardano (ADA)?
-description: Cardano in plain language: a research-driven blockchain where holders vote on spending, what ADA is used for, why its price fell and the main risks.
-date: 2026-11-20
+title: Cardano (ADA) explained: a 45 billion cap, holder voting and a $3.09 record
+description: Cardano in plain language: how proof of stake and on-chain voting work, what ADA is for, its 1.4 billion ADA treasury, its crashes and the main risks.
+date: 2026-11-23
+kind: analysis
 ---
-**Cardano** is a blockchain built slowly and on purpose: every major upgrade starts as a peer-reviewed research paper. It launched in 2017 after a 2015 token sale that raised about $72 million, and its co-founder Charles Hoskinson is one of crypto's best-known voices.
+**Cardano** is a proof-of-stake blockchain for apps and payments that is built slowly and on purpose: big upgrades start as peer-reviewed research papers. It went live in September 2017, led by Charles Hoskinson, one of Ethereum's co-founders. Its coin, ADA, had a market value of about $5.4 billion in November 2026, around number 18 among cryptocurrencies.
+
+> **Key takeaways**
+> - ADA supply is capped at 45 billion coins; about 37 billion were in circulation in November 2026.
+> - About 58% of circulating ADA is staked, and holders vote on how a shared treasury of about 1.4 billion ADA is spent.
+> - The record price so far is $3.09 (September 2021); in November 2026 ADA traded about 95% below it.
+> - Money locked in Cardano DeFi apps fell below $50 million in November 2026 — small for a network of its size.
 
 ## How it works
 
-Cardano uses proof of stake: instead of miners, about 58% of all ADA in circulation is "delegated" to stake pools that produce blocks and earn rewards for their holders. Coins never leave the owner's wallet while staked. ADA pays network fees, secures the chain and is the voting power in Cardano's on-chain government: since 2025 holders and their elected representatives (DReps) vote on how a shared treasury of about 1.4 billion ADA is spent.
+Cardano has no miners. Its consensus system, Ouroboros, picks "stake pools" to produce blocks in proportion to how much ADA is delegated to them; a new block appears about every 20 seconds. Holders delegate their coins to a pool and earn rewards — roughly 2–3% a year in 2026 — while the ADA never leaves their own wallet. Smart contracts arrived with the Alonzo upgrade in September 2021. The Chang (September 2024) and Plomin (January 2025) upgrades handed control of the network to holders, who vote directly or through elected representatives called DReps.
 
-## Why it matters
+## What the token is used for
 
-Cardano is one of the oldest large networks and is ranked around #18 by market value. The next big upgrade, the Dijkstra hard fork, adds Plutus V4 smart contracts and prepares Leios, a scaling design that reached about six times today's throughput on a test network. A second, independent node called Amaru began producing mainnet blocks in November 2026. One surprising fact: in November 2025 a faulty transaction split the chain in two for about 14 hours before it healed itself without a shutdown.
+ADA pays transaction fees, secures the network through staking and is the voting power in Cardano's on-chain government. Part of every epoch's rewards and fees flows into the treasury, and holders decide which projects get paid from it — in August 2026, for example, they approved 120 million ADA for a programme to grow DeFi on Cardano. Other tokens, such as the Midnight network's NIGHT token issued in December 2025, also live on Cardano as native assets.
 
-## Key numbers
+## The numbers right now
 
 - Price today: {{price:ada}}
+- Record high: {{ath:ada}} ({{athd:ada}})
+- Price change over 12 months: {{chg1y:ada}}
 - $10 a day for 5 years: {{dca:ada:5}} from {{dcainv:5}} invested ({{dcaroi:ada:5}})
-- $10 a day for 8 years: {{dca:ada:8}} from {{dcainv:8}} invested ({{dcaroi:ada:8}})
 
-Compare it with other coins on the [crypto page]({lang}/crypto/).
+## Its story so far
+
+ADA was sold in 2015–2017, mostly to buyers in Japan, and listed in late 2017 during the first big crypto boom; it reached about $1.30 in January 2018 and then lost more than 90%. Staking arrived in 2020. The smart-contract launch helped push ADA to its record of $3.09 in September 2021, but the 2022 crash erased most of that. In November 2025 a faulty transaction split the chain for about 14 hours before it healed itself without a shutdown. In 2026 ADA fell to its lowest prices since 2020, while developers prepared the Dijkstra upgrade and the Leios scaling design, and a second, independent node called Amaru began producing blocks in November.
+
+## Alternatives
+
+Cardano competes with other smart-contract networks for apps, users and investors' money: first of all [Ethereum]({lang}/eth/), then faster chains such as [Solana]({lang}/sol/) and [Avalanche]({lang}/avax/), and research-driven proof-of-stake networks such as [Polkadot]({lang}/dot/) and [Algorand]({lang}/algo/).
 
 ## Main risks
 
-ADA is about 95% below its 2021 peak of $3.09 and fell roughly 40% between early October and mid-November 2026. Real use is still small: money locked in Cardano DeFi apps fell below $50 million in November 2026. Upgrades often arrive later than promised, and treasury votes can be contested. Like any crypto, it can lose most of its value. Buying a fixed amount regularly smooths the swings but does not remove the risk.
+- **Big swings:** ADA has lost more than 90% from its peaks twice; such drops can happen again.
+- **Little real use:** activity in Cardano apps is small compared with rivals, so demand for ADA rests mostly on trading.
+- **Delays:** major upgrades have often arrived later than promised.
+- **Governance and concentration:** treasury votes can be contested, and early holders, founding entities and big stake pools carry much of the voting weight.
+- **Regulation:** crypto rules differ by country and can change quickly.
+
+## What it means if you buy regularly
+
+ADA's history shows sharp rises and long, deep falls. Buying a fixed amount regularly means you buy more when the price is low and less when it is high, without trying to guess the bottom — but it does not remove the risk of losses. Many people keep crypto to a small part of their savings that they can afford to see fall sharply. Past results do not guarantee future returns.
 
 *Not investment advice.*
 
 ## Sources
 
-- [Cardano falls below $0.16 as Hoskinson says "my job is done" (CryptoTicker)](https://cryptoticker.io/de/cardano-hoskinson-roadmap-kursrutsch/)
-- [Cardano ahead of the Dijkstra hard fork: Leios node expected in December (CryptoTicker)](https://cryptoticker.io/de/cardano-dijkstra-hardfork-leios-node/)
-- [Cardano treasury: Foundation asks 25 million ADA for 2027 events (CryptoTicker)](https://cryptoticker.io/de/cardano-treasury-foundation-events-2027/)
-- [Cardano chain split mastered (Börse Express)](https://www.boerse-express.com/news/articles/cardano-kettenspaltung-gemeistert-und-jetzt-844719)
+- [Cardano — official site (cardano.org)](https://cardano.org/)
+- [What is Cardano? Ouroboros, ADA and a treasury holding 1.4 billion coins (CryptoTicker, November 2026)](https://cryptoticker.io/en/what-is-cardano-ada/)
+- [Cardano: 120 million ADA for DeFi (Börse Express, August 2026)](https://www.boerse-express.com/news/articles/cardano-120-millionen-ada-fuer-defi-938724)
+- [Cardano price, market cap and all-time high (CoinGecko)](https://www.coingecko.com/en/coins/cardano)
