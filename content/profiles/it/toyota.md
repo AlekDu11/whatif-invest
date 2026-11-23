@@ -1,7 +1,7 @@
 ---
-title: Azioni Toyota (7203) spiegate semplice: il gigante degli ibridi con 27.000 miliardi di yen di vendite in un semestre
-description: Toyota in parole semplici: 26.960 miliardi di yen di ricavi in sei mesi, ibridi al 55,6% delle vendite, dazi USA, i rischi e cosa sapere se compri.
-date: 2026-11-22
+title: Azioni Toyota (7203) spiegate semplice: il gigante degli ibridi dietro Lexus, Prius e RAV4
+description: Toyota in parole semplici: come guadagna, ibridi al 55,6% delle vendite ad aprile–settembre 2026, dazi USA, i rischi e cosa sapere se compri con regolarità.
+date: 2026-11-23
 kind: analysis
 ---
 **Toyota** è il più grande costruttore di auto al mondo: Corolla, RAV4, Camry, Land Cruiser, Prius e il marchio di lusso Lexus. Ha puntato presto sugli ibridi (auto con un motore a benzina e uno elettrico insieme), e oggi è proprio questa scommessa a trainare l'azienda: più della metà delle Toyota e Lexus vendute da aprile a settembre 2026 aveva un motore elettrico. Le azioni sono quotate a Tokyo con il codice 7203 e a New York come TM.

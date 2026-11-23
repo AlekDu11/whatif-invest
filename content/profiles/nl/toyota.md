@@ -1,7 +1,7 @@
 ---
-title: Aandeel Toyota (7203) eenvoudig uitgelegd: de hybridereus met ¥27 biljoen omzet in een halfjaar
-description: Aandeel Toyota in gewone taal: ¥26,96 biljoen omzet in zes maanden, hybrides 55,6% van de verkoop, Amerikaanse importheffingen, de risico's en regelmatig kopen.
-date: 2026-11-22
+title: Aandeel Toyota (7203) eenvoudig uitgelegd: de hybridereus achter Lexus, Prius en RAV4
+description: Aandeel Toyota in gewone taal: hoe het geld verdient, hybrides 55,6% van de verkoop in april–september 2026, VS-heffingen, de risico's en regelmatig kopen.
+date: 2026-11-23
 kind: analysis
 ---
 **Toyota** is de grootste autofabrikant ter wereld: Corolla, RAV4, Camry, Land Cruiser, Prius en het luxemerk Lexus. Het zette al vroeg in op hybrides (auto's met zowel een benzinemotor als een elektromotor), en die keuze draagt nu het bedrijf: meer dan de helft van de Toyota's en Lexussen die het van april tot september 2026 verkocht, had een elektromotor. Het aandeel noteert in Tokio onder code 7203 en in New York als TM.

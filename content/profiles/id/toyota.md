@@ -1,7 +1,7 @@
 ---
-title: Saham Toyota (7203) dijelaskan sederhana: raksasa mobil hybrid dengan penjualan ¥27 triliun dalam setengah tahun
-description: Saham Toyota dengan bahasa sederhana: pendapatan ¥26,96 triliun dalam enam bulan, hybrid 55,6% penjualan, tarif AS, risiko dan hal penting bagi pembeli rutin.
-date: 2026-11-22
+title: Saham Toyota (7203) dijelaskan sederhana: raksasa hybrid di balik Lexus, Prius dan RAV4
+description: Saham Toyota dengan bahasa sederhana: cara menghasilkan uang, hybrid 55,6% penjualan pada April–September 2026, tarif AS, risiko dan catatan bagi pembeli rutin.
+date: 2026-11-23
 kind: analysis
 ---
 **Toyota** adalah produsen mobil terbesar di dunia: Corolla, RAV4, Camry, Land Cruiser, Prius, dan merek mewah Lexus. Toyota lebih awal bertaruh pada mobil hybrid (mobil dengan mesin bensin sekaligus motor listrik), dan kini taruhan itulah yang menopang perusahaan: lebih dari separuh mobil Toyota dan Lexus yang terjual pada April–September 2026 memakai motor listrik. Sahamnya diperdagangkan di Tokyo dengan kode 7203 dan di New York sebagai TM.

@@ -1,7 +1,7 @@
 ---
-title: Toyota (7203) stock sa simpleng paliwanag: ang higante ng hybrid na may ¥27 trilyong benta sa kalahating taon
-description: Toyota stock sa simpleng salita: ¥26.96 trilyong kita sa 6 na buwan, 55.6% ng benta ay electrified, taripa ng US, mga panganib at aral sa regular na bumibili.
-date: 2026-11-22
+title: Toyota (7203) stock sa simpleng paliwanag: ang higante ng hybrid sa likod ng Lexus, Prius at RAV4
+description: Toyota stock sa simpleng salita: paano kumikita, 55.6% ng benta noong Abril–Setyembre 2026 ay electrified, taripa ng US, mga panganib at aral sa buyer.
+date: 2026-11-23
 kind: analysis
 ---
 **Toyota** ang pinakamalaking carmaker sa mundo: Corolla, RAV4, Camry, Land Cruiser, Prius at ang luxury brand na Lexus. Maaga itong tumaya sa hybrid (mga kotseng may parehong gasoline engine at electric motor), at ang tayang iyon na ngayon ang bumubuhat sa kompanya: mahigit kalahati ng mga Toyota at Lexus na naibenta nito mula Abril hanggang Setyembre 2026 ay may electric motor. Ang shares nito ay tine-trade sa Tokyo sa code na 7203 at sa New York bilang TM.

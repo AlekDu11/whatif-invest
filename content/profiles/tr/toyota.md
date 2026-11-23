@@ -1,7 +1,7 @@
 ---
-title: Toyota (7203) hissesi sade dille: altı ayda 27 trilyon yen satış yapan hibrit devi
-description: Toyota sade dille: altı ayda 26,96 trilyon yen gelir, satışların %55,6'sı hibrit, ABD gümrük vergileri, riskler ve düzenli alım yapanların bilmesi gerekenler.
-date: 2026-11-22
+title: Toyota (7203) hissesi sade dille: Lexus, Prius ve RAV4'ün arkasındaki hibrit devi
+description: Toyota sade dille: nasıl para kazanıyor, Nisan–Eylül 2026'da satışların %55,6'sı hibrit, ABD gümrük vergileri, riskler ve düzenli alıcılar için notlar.
+date: 2026-11-23
 kind: analysis
 ---
 **Toyota** dünyanın en büyük otomobil üreticisidir: Corolla, RAV4, Camry, Land Cruiser, Prius ve lüks markası Lexus. Hibritlere (hem benzinli motoru hem elektrik motoru olan otomobiller) erken yatırım yaptı ve bugün şirketi bu bahis taşıyor: Nisan–Eylül 2026'da sattığı Toyota ve Lexus otomobillerinin yarısından fazlasında elektrik motoru vardı. Hisseleri Tokyo'da 7203 koduyla, New York'ta ise TM koduyla işlem görüyor.

@@ -1,7 +1,7 @@
 ---
-title: Acciones de Toyota (7203): el gigante de los híbridos con 27 billones de yenes en ventas en un semestre
-description: Toyota, fácil: 26,96 billones de yenes de ingresos en seis meses, híbridos al 55,6% de las ventas, aranceles de EE. UU., riesgos y qué saber al comprar.
-date: 2026-11-22
+title: Acciones de Toyota (7203): el gigante de los híbridos detrás de Lexus, Prius y RAV4
+description: Toyota, fácil: cómo gana dinero, híbridos al 55,6% de las ventas en abril–septiembre de 2026, aranceles de EE. UU., riesgos y qué saber al comprar seguido.
+date: 2026-11-23
 kind: analysis
 ---
 **Toyota** es el mayor fabricante de coches del mundo: Corolla, RAV4, Camry, Land Cruiser, Prius y la marca de lujo Lexus. Apostó pronto por los híbridos (coches con motor de gasolina y motor eléctrico a la vez), y esa apuesta es hoy la que tira de la empresa: más de la mitad de los Toyota y Lexus que vendió entre abril y septiembre de 2026 llevaban motor eléctrico. Sus acciones cotizan en Tokio con el código 7203 y en Nueva York como TM.

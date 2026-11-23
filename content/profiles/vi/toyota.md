@@ -1,7 +1,7 @@
 ---
-title: Cổ phiếu Toyota (7203) giải thích dễ hiểu: gã khổng lồ xe hybrid với doanh thu 27 nghìn tỷ yên trong nửa năm
-description: Toyota bằng ngôn ngữ đơn giản: doanh thu 26,96 nghìn tỷ yên trong 6 tháng, hybrid 55,6% doanh số, thuế quan Mỹ, rủi ro và điều người mua định kỳ cần biết.
-date: 2026-11-22
+title: Cổ phiếu Toyota (7203) giải thích dễ hiểu: gã khổng lồ xe hybrid đứng sau Lexus, Prius và RAV4
+description: Toyota bằng ngôn ngữ đơn giản: cách kiếm tiền, hybrid chiếm 55,6% doanh số tháng 4–9/2026, thuế quan Mỹ, rủi ro và điều người mua định kỳ cần biết.
+date: 2026-11-23
 kind: analysis
 ---
 **Toyota** là hãng xe hơi lớn nhất thế giới: Corolla, RAV4, Camry, Land Cruiser, Prius và thương hiệu hạng sang Lexus. Hãng đặt cược sớm vào xe hybrid (xe có cả động cơ xăng lẫn mô-tơ điện), và giờ đây chính canh bạc đó đang gánh cả công ty: hơn một nửa số xe Toyota và Lexus bán ra từ tháng 4 đến tháng 9/2026 có mô-tơ điện. Cổ phiếu được giao dịch tại Tokyo với mã 7203 và tại New York với mã TM.

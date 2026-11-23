@@ -1,7 +1,7 @@
 ---
-title: Akcje Toyoty (7203) prostym językiem: hybrydowy gigant z 27 bln jenów sprzedaży w pół roku
-description: Toyota w prostych słowach: 26,96 bln jenów przychodu w pół roku, hybrydy to 55,6% sprzedaży, cła USA, ryzyka i co powinni wiedzieć regularnie kupujący.
-date: 2026-11-22
+title: Akcje Toyoty (7203) prostym językiem: hybrydowy gigant stojący za Lexusem, Priusem i RAV4
+description: Toyota w prostych słowach: jak zarabia, hybrydy to 55,6% sprzedaży w kwietniu–wrześniu 2026, cła USA, ryzyka i co powinni wiedzieć regularnie kupujący.
+date: 2026-11-23
 kind: analysis
 ---
 **Toyota** to największy producent samochodów na świecie: Corolla, RAV4, Camry, Land Cruiser, Prius i luksusowa marka Lexus. Wcześnie postawiła na hybrydy (auta, które mają i silnik benzynowy, i elektryczny), i dziś to właśnie one ciągną firmę: ponad połowa samochodów Toyoty i Lexusa sprzedanych od kwietnia do września 2026 roku miała silnik elektryczny. Akcje są notowane w Tokio pod kodem 7203, a w Nowym Jorku jako TM.

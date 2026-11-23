@@ -1,10 +1,10 @@
 ---
-title: Toyota (7203) stock explained: the hybrid giant with ¥27 trillion in half-year sales
-description: Toyota stock in plain language: ¥26.96 trillion of revenue in six months, hybrids at 55.6% of sales, US tariffs, the risks and what regular buyers should know.
-date: 2026-11-22
+title: Toyota (7203) stock: the hybrid giant behind Lexus, Prius and RAV4
+description: Toyota stock in plain language: how it earns money, hybrids at 55.6% of sales in April–September 2026, US tariffs, the risks and what regular buyers need.
+date: 2026-11-23
 kind: analysis
 ---
-**Toyota** is the world's biggest carmaker: Corolla, RAV4, Camry, Land Cruiser, Prius and the luxury brand Lexus. It bet early on hybrids (cars with both a petrol engine and an electric motor), and that bet now carries the company: more than half of the Toyota and Lexus cars it sold from April to September 2026 had an electric motor. Its shares trade in Tokyo under the code 7203 and in New York as TM.
+**Toyota** is the world's biggest carmaker: Corolla, RAV4, Camry, Land Cruiser, Prius and the luxury brand Lexus. It bet early on hybrids (cars with both a petrol engine and an electric motor), and by 2026 that bet carried the company: more than half of the Toyota and Lexus cars it sold from April to September 2026 had an electric motor. Its shares trade in Tokyo under the code 7203 and in New York as TM.
 
 > **Key takeaways**
 > - Revenue: ¥26.96 trillion in April–September 2026, +9.5% on the year; net income ¥2.24 trillion, +26%.
@@ -20,7 +20,7 @@ Almost all of Toyota's money comes from building and selling cars, trucks and pa
 
 From April to September 2026 Toyota had revenue of ¥26.96 trillion and operating profit of ¥2.19 trillion, an 8.1% margin. Net income rose 26% to ¥2.24 trillion. It sold 4.76 million vehicles on a consolidated basis, about the same as a year earlier. North America swung back into profit thanks to price rises and a smaller tariff bill, while China stayed weak. Hybrids remain the core at 2.45 million in six months; battery EVs more than doubled to 231,000.
 
-For the full year to March 2027 Toyota now expects revenue of ¥53.5 trillion (trimmed from ¥54 trillion), operating profit of ¥3.9 trillion and net income of ¥3.57 trillion, assuming ¥157 per dollar. The year to March 2026 brought ¥50.68 trillion of revenue and ¥3.77 trillion of operating profit. Materials are expected to cost about ¥1.3 trillion more than last year. The interim dividend is ¥50 per share, and Toyota will cancel another 1 billion treasury shares.
+For the full year to March 2027 Toyota said in November 2026 that it expected revenue of ¥53.5 trillion (trimmed from ¥54 trillion), operating profit of ¥3.9 trillion and net income of ¥3.57 trillion, assuming ¥157 per dollar. The year to March 2026 brought ¥50.68 trillion of revenue and ¥3.77 trillion of operating profit. It expected materials to cost about ¥1.3 trillion more than last year. The interim dividend was ¥50 per share, and Toyota said it would cancel another 1 billion treasury shares.
 
 ## The stock's story
 

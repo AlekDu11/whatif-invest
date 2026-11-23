@@ -1,7 +1,7 @@
 ---
-title: Toyota-Aktie (7203): der Hybrid-Riese mit 27 Billionen Yen Umsatz im Halbjahr
-description: Toyota einfach erklärt: 26,96 Billionen Yen Umsatz in sechs Monaten, Hybride bei 55,6 % des Absatzes, US-Zölle, Risiken und was Dauerkäufer wissen sollten.
-date: 2026-11-22
+title: Toyota-Aktie (7203): der Hybrid-Riese hinter Lexus, Prius und RAV4
+description: Toyota einfach erklärt: wie der Konzern verdient, Hybride bei 55,6 % des Absatzes im April–September 2026, US-Zölle, Risiken und was Dauerkäufer wissen sollten.
+date: 2026-11-23
 kind: analysis
 ---
 **Toyota** ist der größte Autobauer der Welt: Corolla, RAV4, Camry, Land Cruiser, Prius und die Premiummarke Lexus. Der Konzern setzte früh auf Hybride (Autos mit Benzinmotor und Elektromotor zugleich), und genau diese Wette trägt ihn heute: Mehr als die Hälfte der Toyota- und Lexus-Fahrzeuge, die er von April bis September 2026 verkaufte, hatte einen Elektromotor an Bord. Die Aktie wird in Tokio unter dem Code 7203 und in New York als TM gehandelt.

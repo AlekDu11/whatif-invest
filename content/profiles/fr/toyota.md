@@ -1,7 +1,7 @@
 ---
-title: Action Toyota (7203) expliquée simplement : le géant de l'hybride à 27 000 milliards de yens de ventes en un semestre
-description: Toyota en clair : 26 960 milliards de yens de chiffre d'affaires en six mois, 55,6 % de ventes hybrides, droits de douane US, risques et achat régulier.
-date: 2026-11-22
+title: Action Toyota (7203) expliquée simplement : le géant de l'hybride derrière Lexus, Prius et RAV4
+description: Toyota en clair : comment le groupe gagne de l'argent, 55,6 % de ventes électrifiées d'avril à septembre 2026, droits de douane US, risques et achat régulier.
+date: 2026-11-23
 kind: analysis
 ---
 **Toyota** est le premier constructeur automobile du monde : Corolla, RAV4, Camry, Land Cruiser, Prius et la marque haut de gamme Lexus. Le groupe a misé très tôt sur l'hybride (des voitures qui ont à la fois un moteur essence et un moteur électrique), et ce pari le porte aujourd'hui : plus de la moitié des Toyota et Lexus vendues d'avril à septembre 2026 avaient un moteur électrique. L'action est cotée à Tokyo sous le code 7203 et à New York sous le symbole TM.

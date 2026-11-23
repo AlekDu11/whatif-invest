@@ -1,7 +1,7 @@
 ---
-title: Ações da Toyota (7203): a gigante dos híbridos com 27 trilhões de ienes em vendas no semestre
-description: Toyota sem complicação: 26,96 trilhões de ienes de receita em seis meses, híbridos com 55,6% das vendas, tarifas dos EUA, riscos e o que saber ao comprar.
-date: 2026-11-22
+title: Ações da Toyota (7203): a gigante dos híbridos por trás de Lexus, Prius e RAV4
+description: Toyota sem complicação: como ganha dinheiro, híbridos com 55,6% das vendas em abril–setembro de 2026, tarifas dos EUA, riscos e o que saber ao comprar sempre.
+date: 2026-11-23
 kind: analysis
 ---
 A **Toyota** é a maior montadora do mundo: Corolla, RAV4, Camry, Land Cruiser, Prius e a marca de luxo Lexus. Ela apostou cedo nos híbridos (carros com motor a gasolina e motor elétrico ao mesmo tempo), e essa aposta hoje sustenta a empresa: mais da metade dos Toyota e Lexus vendidos de abril a setembro de 2026 tinha motor elétrico. As ações são negociadas em Tóquio com o código 7203 e em Nova York como TM.
