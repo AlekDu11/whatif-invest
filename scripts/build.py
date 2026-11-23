@@ -48,7 +48,7 @@ from i18n_ap import AP  # noqa: E402
 from i18n_home2 import HM  # noqa: E402
 from i18n_ks import KS, SECT  # noqa: E402
 from i18n_offer import OFFER_TGW  # noqa: E402
-from i18n_lc import LC  # noqa: E402
+from i18n_lc import LC, LC_CT  # noqa: E402
 from i18n_xc import XC  # noqa: E402
 from i18n_cv import CV, CV_CCY  # noqa: E402
 from i18n_fb import FB  # noqa: E402
@@ -1584,12 +1584,19 @@ def sym_ccy(sym):
     return 'USD'
 
 
+def to_usd_main(v, ccy):
+    """Like to_usd, but for Yahoo totals and dividends of pence/agorot/cents listings (LSE GBp, TASE ILA, JSE ZAc): Yahoo
+    quotes the share price in the minor unit, but marketCap and dividendRate in the main unit (GBP/ILS/ZAR). Before 2026-11-23
+    every London market cap was 100x too small (HSBC $2.8B), so Compass Group led the UK ranking."""
+    return to_usd(v, {'GBp': 'GBP', 'GBX': 'GBP', 'ILA': 'ILS', 'ZAc': 'ZAR'}.get(ccy, ccy))
+
+
 for _sym, _inf in list(STOCKINFO.items()):   # convert every listing-currency market cap first
     if _inf.get('mcap') and sym_ccy(_sym) != 'USD':
-        _m = to_usd(_inf['mcap'], (STOCKSTATS.get(_sym) or {}).get('ccy') or sym_ccy(_sym))
+        _m = to_usd_main(_inf['mcap'], (STOCKSTATS.get(_sym) or {}).get('ccy') or sym_ccy(_sym))
         STOCKINFO[_sym] = dict(_inf, mcap=_m) if _m else {k: v for k, v in _inf.items() if k != 'mcap'}
 for _sym, _st in STOCKSTATS.items():   # stats refresh the older profile file; market cap always stored in USD
-    _m = to_usd(_st.get('mcap'), _st.get('ccy'))
+    _m = to_usd_main(_st.get('mcap'), _st.get('ccy'))
     STOCKINFO[_sym] = {**STOCKINFO.get(_sym, {}), **{k: v for k, v in _st.items() if k in ('web', 'sec', 'ind', 'cty', 'emp', 'ds')}}
     if _m:
         STOCKINFO[_sym]['mcap'] = _m
@@ -1842,7 +1849,7 @@ def _mc(aid):
     a = A[aid]
     if a['cat'] == 'crypto':
         return a.get('mcap') or 0
-    return (stock_stats(a) or {}).get('mcap') and to_usd(stock_stats(a)['mcap'], stock_stats(a).get('ccy') or 'USD') or 0
+    return (stock_stats(a) or {}).get('mcap') and to_usd_main(stock_stats(a)['mcap'], stock_stats(a).get('ccy') or 'USD') or 0
 
 
 def earnings_list(days=21):
@@ -2073,9 +2080,10 @@ def stock_facts(lang, aid):
     l52 = st['l52'] * lc if st.get('l52') and lc else None
     fc = st.get('fcy') or c
     # dividend yield from the dividend per share (yfinance's own yield field switched units between versions)
-    dy = (st['dps'] * lc / cur) if st.get('dps') and lc and cur else (st.get('dy') if (st.get('dy') or 0) < 0.25 else None)
+    lm = to_usd_main(1.0, c)   # dividends per share come in the main unit (GBP, not pence)
+    dy = (st['dps'] * lm / cur) if st.get('dps') and lm and cur else (st.get('dy') if (st.get('dy') or 0) < 0.25 else None)
     f = dict(name=nm(a, lang), tk=a['tk'], sec=SECT[lang].get(st.get('sec'), st.get('sec') or ''), cty=stock_ctry(lang, a, st),
-             mcap=to_usd(st.get('mcap'), c), rev=to_usd(st.get('rev'), fc), ni=to_usd(st.get('ni'), fc), revg=st.get('revg'), pm=st.get('pm'),
+             mcap=to_usd_main(st.get('mcap'), c), rev=to_usd(st.get('rev'), fc), ni=to_usd(st.get('ni'), fc), revg=st.get('revg'), pm=st.get('pm'),
              pe=st.get('pe'), dy=dy, beta=st.get('beta'), tgt=tgt, h52=h52, l52=l52, cur=cur, n=st.get('nan'),
              rec=k.get(st.get('rec') or '', None), ern=st.get('ern'), emp=st.get('emp'), d=st.get('d', ''))
     return f
@@ -2208,7 +2216,7 @@ def lc_universe():
         if not mc:
             continue
         c, fc = st.get('ccy'), st.get('fcy') or st.get('ccy')
-        lcf = to_usd(1.0, c)
+        lcf = to_usd_main(1.0, c)   # dividends per share in the main unit
         cur = METRICS[aid]['price']
         dy = (st['dps'] * lcf / cur) if st.get('dps') and lcf and cur else None
         _LCU[aid] = dict(mcap=mc, rev=to_usd(st.get('rev'), fc), ni=to_usd(st.get('ni'), fc), emp=st.get('emp'),
@@ -2293,13 +2301,18 @@ def lc_page(lang, tab='mcap', mkt=None, ver=None, pg=1):
         h1 = t['h_' + tab]
         path = base + ('/' + dict(LC_TABS)[tab] if tab != 'mcap' else '')
     else:
-        h1 = t['h_ctry'].format(c=cname(mkt))
+        cn = ('the ' if lang == 'en' and mkt in ('gb', 'us', 'nl', 'cz', 'ae', 'ph') else '') + cname(mkt)
+        h1 = t['h_ctry'].format(c=cn)
         path = base + '/' + lc_slug(mkt)
     tabs = ''.join(f'<a class="chip{" on" if k == tab and mkt is None else ""}" href="{url(lang, base + ("/" + s if s else ""))}">{esc(t["t_" + k])}</a>' for k, s in LC_TABS)
     mk = sorted({v['mkt'] for i, v in u.items() if i != '__meta__'}, key=lambda m: (MKT_LANG.get(m) != lang, -len(lc_ids('mcap', m))))
     ctry = ''.join(f'<a class="chip{" on" if m == mkt else ""}" href="{url(lang, base + "/" + lc_slug(m))}">{flag(m)}{esc(cname(m))}</a>' for m in mk if len(lc_ids('mcap', m)) >= 5)
     top = ids[:3]
     desc = (t['lead'] + ' ' + ', '.join(f'{nm(A[i], lang)}' for i in top)).strip()[:300]
+    ttl = f'{h1} ({UPDATED[:4]})'
+    if mkt is not None and lang in LC_CT:  # country pages: search-shaped title + country-specific description (growth 2026-11-23)
+        ttl = LC_CT[lang][0].format(c=cn, y=UPDATED[:4])
+        desc = LC_CT[lang][1].format(c=cn, n=total, top=('、' if lang in ('ja', 'zh') else ', ').join(nm(A[i], lang) for i in top))[:300]
     body = (f'<h1>{esc(h1)}</h1><p class="lead">{esc(t["lead"])}</p>'
             f'<div class="cchips lcchips"><b>{esc(t["by"])}:</b>{tabs}</div><div class="cchips lcchips"><b>{esc(t["ctry_h"])}:</b>{ctry}</div>'
             f'<section class="section"><div class="tw"><table class="mt lct"><thead>{th}</thead><tbody>{rows}</tbody></table></div>{pager(lang, path, pg, np_, total)}</section>'
@@ -2307,8 +2320,8 @@ def lc_page(lang, tab='mcap', mkt=None, ver=None, pg=1):
     ld = {"@context": "https://schema.org", "@type": "ItemList", "name": h1,
           "itemListElement": [{"@type": "ListItem", "position": k + 1, "name": nm(A[i], 'en'), "url": SITE + aurl(lang, i)} for k, i in enumerate(ids[:20])]}
     if pg > 1:
-        return paged_path(path, pg), shell(lang, paged_path(path, pg), f'{h1} ({UPDATED[:4]}) — {pg} | {BRAND}', desc, body, {}, ver, [ld])
-    return path, shell(lang, path, f'{h1} ({UPDATED[:4]}) | {BRAND}', desc, body, {}, ver, [ld])
+        return paged_path(path, pg), shell(lang, paged_path(path, pg), f'{ttl} — {pg} | {BRAND}', desc, body, {}, ver, [ld])
+    return path, shell(lang, path, f'{ttl} | {BRAND}', desc, body, {}, ver, [ld])
 
 
 def lc_np(tab, mkt):

@@ -106,3 +106,30 @@ _V = {
 LC = {lg: dict(zip(_K, v)) for lg, v in _V.items()}
 for _lg, _v in _V.items():
     assert len(_v) == len(_K), (_lg, len(_v))
+
+# Country ranking pages (/largest-companies/<country>/): search title + meta description (growth report 2026-11-23 —
+# queries «biggest uk companies by market cap», «イギリス 企業ランキング», «フランス 時価総額 ランキング», «крупнейшие компании … по капитализации»).
+# {c} country, {y} year, {n} companies in the ranking, {top} the three largest.
+LC_CT = {
+ 'uk': ('Найбільші компанії: {c} — рейтинг за капіталізацією {y}', '{n} найбільших публічних компаній ({c}) за ринковою капіталізацією: {top} та інші. Ціна, зміна за день і за рік, оновлення щодня.'),
+ 'en': ('Largest companies in {c} by market cap ({y} ranking)', 'The {n} largest public companies in {c} ranked by market capitalization: {top} and more. Price, daily and 1-year change, updated every day.'),
+ 'es': ('Mayores empresas de {c} por capitalización ({y})', 'Las {n} mayores empresas cotizadas de {c} por capitalización bursátil: {top} y más. Precio y variación diaria y anual, actualizado cada día.'),
+ 'pt': ('Maiores empresas: {c} — ranking por valor de mercado {y}', 'As {n} maiores empresas listadas ({c}) por valor de mercado: {top} e outras. Preço e variação no dia e no ano, atualizados diariamente.'),
+ 'de': ('Größte Unternehmen: {c} — Ranking nach Börsenwert {y}', 'Die {n} größten börsennotierten Unternehmen ({c}) nach Marktkapitalisierung: {top} und weitere. Kurs, Tages- und Jahresveränderung, täglich aktualisiert.'),
+ 'fr': ('Plus grandes entreprises : {c} — classement par capitalisation {y}', 'Les {n} plus grandes sociétés cotées ({c}) par capitalisation boursière : {top} et d’autres. Cours, variation sur un jour et sur un an, mis à jour chaque jour.'),
+ 'it': ('Aziende più grandi: {c} — classifica per capitalizzazione {y}', 'Le {n} maggiori società quotate ({c}) per capitalizzazione di mercato: {top} e altre. Prezzo, variazione giornaliera e annua, aggiornati ogni giorno.'),
+ 'pl': ('Największe spółki: {c} — ranking według kapitalizacji {y}', 'Największe spółki giełdowe ({c}) według kapitalizacji rynkowej, łącznie {n}: {top} i inne. Cena, zmiana dzienna i roczna, aktualizacja codziennie.'),
+ 'tr': ('En büyük şirketler: {c} — piyasa değerine göre {y} sıralaması', 'Piyasa değerine göre en büyük {n} halka açık şirket ({c}): {top} ve diğerleri. Fiyat, günlük ve yıllık değişim, her gün güncellenir.'),
+ 'nl': ('Grootste bedrijven: {c} — ranglijst op beurswaarde {y}', 'De {n} grootste beursgenoteerde bedrijven ({c}) op marktkapitalisatie: {top} en meer. Koers, dag- en jaarverandering, dagelijks bijgewerkt.'),
+ 'ru': ('Крупнейшие компании: {c} — рейтинг по капитализации {y}', 'Крупнейшие публичные компании ({c}) по рыночной капитализации, всего {n}: {top} и другие. Цена, изменение за день и за год, обновление ежедневно.'),
+ 'id': ('Perusahaan terbesar di {c} berdasarkan kapitalisasi pasar {y}', '{n} perusahaan terbuka terbesar di {c} berdasarkan kapitalisasi pasar: {top}, dan lainnya. Harga, perubahan harian dan tahunan, diperbarui setiap hari.'),
+ 'vi': ('Công ty lớn nhất tại {c} theo vốn hóa thị trường {y}', '{n} công ty niêm yết lớn nhất tại {c} xếp theo vốn hóa thị trường: {top} và các công ty khác. Giá, biến động ngày và năm, cập nhật hằng ngày.'),
+ 'th': ('บริษัทใหญ่ที่สุดใน{c} ตามมูลค่าตลาด ปี {y}', '{n} บริษัทจดทะเบียนที่ใหญ่ที่สุดใน{c} เรียงตามมูลค่าตลาด: {top} และอื่น ๆ พร้อมราคา การเปลี่ยนแปลงรายวันและรายปี อัปเดตทุกวัน'),
+ 'hi': ('{c} की सबसे बड़ी कंपनियाँ — मार्केट कैप रैंकिंग {y}', 'मार्केट कैप के हिसाब से {c} की {n} सबसे बड़ी लिस्टेड कंपनियाँ: {top} और अन्य। कीमत, दिन और साल का बदलाव, रोज़ अपडेट।'),
+ 'ja': ('{c}企業 時価総額ランキング（{y}年）', '{c}の上場企業{n}社を時価総額順にランキング：{top}など。株価・前日比・1年の変化を毎日更新。'),
+ 'ko': ('{c} 기업 시가총액 순위 ({y}년)', '시가총액 기준 {c} 상장기업 {n}곳 순위: {top} 등. 주가, 일간·연간 변동을 매일 업데이트합니다.'),
+ 'zh': ('{c}最大的公司：{y}年市值排行榜', '按市值排名的{c}上市公司（共{n}家）：{top}等。股价、日涨跌和年涨跌，每日更新。'),
+ 'ar': ('أكبر الشركات في {c} حسب القيمة السوقية {y}', 'أكبر {n} شركة مدرجة في {c} حسب القيمة السوقية: {top} وغيرها. السعر والتغير اليومي والسنوي، مع تحديث يومي.'),
+ 'fil': ('Pinakamalaking kumpanya sa {c} ayon sa market cap ({y})', 'Ang {n} pinakamalaking listed na kumpanya sa {c} ayon sa market cap: {top} at iba pa. Presyo at galaw sa araw at sa taon, updated araw-araw.'),
+}
+assert set(LC_CT) == set(_V), set(_V) ^ set(LC_CT)
