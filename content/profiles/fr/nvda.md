@@ -1,6 +1,6 @@
 ---
-title: Action Nvidia (NVDA) expliquée simplement : le géant des puces IA qui vient de perdre son PDG fondateur
-description: Nvidia en clair : 115,8 Md$ de chiffre d'affaires en un trimestre, le départ soudain du PDG Jensen Huang, la chute de l'action et les principaux risques.
+title: Action Nvidia (NVDA) : le géant des puces IA fondé en 1993
+description: Nvidia en clair : 115,8 Md$ de chiffre d'affaires au trimestre clos en octobre 2026, le départ du PDG Jensen Huang en novembre 2026, l'IA et les risques.
 date: 2026-11-22
 kind: analysis
 ---
@@ -20,6 +20,11 @@ L'avantage discret, c'est le logiciel. CUDA, la plateforme de programmation de N
 
 ## Les chiffres actuels
 
+- Cours actuel : {{price:nvda}}
+- Valeur de marché : {{mcap:nvda}} ({{rank:nvda}} parmi les plus grandes entreprises du monde sur WhatIfStack)
+- Record : {{ath:nvda}} ({{athd:nvda}}), {{fromath:nvda}} depuis
+- 10 $ par jour pendant 10 ans : {{dca:nvda:10}} pour {{dcainv:10}} investis ({{dcaroi:nvda:10}})
+
 Au troisième trimestre de son exercice 2027 (clos le 25 octobre 2026), Nvidia a réalisé 115,8 Md$ de chiffre d'affaires, 20 % de plus qu'au trimestre précédent, avec une marge brute de 74,8 %. Le flux de trésorerie disponible a atteint 43,8 Md$ ; 28,1 Md$ ont été rendus aux actionnaires en rachats d'actions et dividendes. Le dividende est minuscule au regard du cours — 0,25 $ par trimestre.
 
 Pour le trimestre suivant, Nvidia prévoit 130 Md$ de chiffre d'affaires, à plus ou moins 3 %, mais une marge brute plus faible, de 71 à 72 %. Cette prévision suppose zéro vente de puces de calcul pour centres de données en Chine, en raison des règles américaines sur les exportations.
@@ -29,9 +34,6 @@ Pour le trimestre suivant, Nvidia prévoit 130 Md$ de chiffre d'affaires, à plu
 Nvidia est entrée au Nasdaq en 1999 et a longtemps été un fabricant de puces pour le jeu vidéo. La vague de l'IA a décollé après l'arrivée de ChatGPT fin 2022 — l'année même où l'action a perdu plus de la moitié de sa valeur. Après une division par 10 en 2024 (nos cours sont ajustés), elle a continué de grimper jusqu'à une clôture record d'environ 239 $ le 6 octobre 2026, valorisant l'entreprise près de 6 000 Md$.
 
 Puis la chute a été rapide. Début novembre, les valeurs des semi-conducteurs ont été vendues sur fond de doutes sur les dépenses en IA et de hausse des taux ; le 9 novembre, des investisseurs ont lancé une action collective en justice ; et le 12 novembre, le conseil a annoncé que Jensen Huang quittait avec effet immédiat ses fonctions de président, de PDG et d'administrateur, sans en donner la raison. La directrice financière Colette Kress est devenue PDG par intérim et Harvey C. Jones le tout premier président du conseil. Ce jour-là, l'action a chuté jusqu'à 14 % en séance et sa valeur est passée sous 4 000 Md$, soit environ 12 fois les bénéfices attendus — son niveau le moins cher depuis 2012, selon LSEG.
-
-- Cours actuel : {{price:nvda}}
-- 10 $ par jour pendant 10 ans : {{dca:nvda:10}} pour {{dcainv:10}} investis ({{dcaroi:nvda:10}})
 
 ## Concurrents
 

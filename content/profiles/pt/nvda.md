@@ -1,6 +1,6 @@
 ---
-title: Ações da Nvidia (NVDA): a gigante dos chips de IA que acaba de perder o fundador e CEO
-description: Nvidia explicada de forma simples: US$ 115,8 bilhões de receita em um trimestre, a saída repentina de Jensen Huang, a queda desde o recorde e os riscos.
+title: Ações da Nvidia (NVDA): a gigante dos chips de IA fundada em 1993
+description: Nvidia explicada de forma simples: US$ 115,8 bilhões de receita no trimestre até outubro de 2026, a saída do CEO Jensen Huang, o negócio de IA e os riscos.
 date: 2026-11-18
 kind: analysis
 ---
@@ -20,6 +20,11 @@ A vantagem silenciosa é o software. O CUDA, plataforma de programação da Nvid
 
 ## Os números agora
 
+- Preço hoje: {{price:nvda}}
+- Valor de mercado: {{mcap:nvda}} ({{rank:nvda}} entre as maiores empresas do mundo no WhatIfStack)
+- Máxima histórica: {{ath:nvda}} ({{athd:nvda}}), {{fromath:nvda}} desde ela
+- US$ 10 por dia durante 10 anos: {{dca:nvda:10}} com {{dcainv:10}} investidos ({{dcaroi:nvda:10}})
+
 No terceiro trimestre do ano fiscal de 2027 (encerrado em 25 de outubro de 2026), a Nvidia teve receita de US$ 115,8 bilhões, 20% a mais que no trimestre anterior, com margem bruta de 74,8%. O fluxo de caixa livre foi de US$ 43,8 bilhões; US$ 28,1 bilhões voltaram aos acionistas em recompras e dividendos. O dividendo é minúsculo perto do preço da ação — US$ 0,25 por trimestre.
 
 Para o próximo trimestre, a Nvidia projeta receita de US$ 130 bilhões, com variação de 3% para mais ou para menos, mas margem bruta menor, de 71–72%. A projeção não considera nenhuma venda de chips de computação para data centers na China por causa das regras de exportação dos EUA.
@@ -29,9 +34,6 @@ Para o próximo trimestre, a Nvidia projeta receita de US$ 130 bilhões, com var
 A Nvidia abriu capital na Nasdaq em 1999 e por muito tempo foi uma empresa de chips para games. O boom da IA decolou depois que o ChatGPT surgiu no fim de 2022 — o mesmo ano em que a ação perdeu mais da metade do valor. Depois de um desdobramento de 10 para 1 em 2024 (nossos preços são ajustados pelo desdobramento), continuou subindo e fechou em um recorde de cerca de US$ 239 em 6 de outubro de 2026, com a empresa valendo quase US$ 6 trilhões.
 
 Aí veio uma queda rápida. No início de novembro, as ações de chips foram vendidas em massa por dúvidas sobre os gastos com IA e pela alta dos juros; em 9 de novembro, investidores entraram com uma ação coletiva sobre valores mobiliários; e em 12 de novembro o conselho anunciou que Jensen Huang havia renunciado aos cargos de presidente, CEO e conselheiro com efeito imediato, sem informar o motivo. Colette Kress virou CEO interina e Harvey C. Jones, o primeiro presidente do conselho da história da empresa. Naquele dia, a ação chegou a cair 14% durante o pregão e o valor de mercado ficou abaixo de US$ 4 trilhões — cerca de 12 vezes o lucro esperado, o mais barato desde 2012, segundo a LSEG.
-
-- Preço hoje: {{price:nvda}}
-- US$ 10 por dia durante 10 anos: {{dca:nvda:10}} com {{dcainv:10}} investidos ({{dcaroi:nvda:10}})
 
 ## Concorrentes
 

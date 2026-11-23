@@ -1,6 +1,6 @@
 ---
-title: Aandeel Nvidia (NVDA) eenvoudig uitgelegd: de AI-chipreus die net zijn oprichter-CEO verloor
-description: Nvidia in gewone taal: $115,8 miljard omzet in één kwartaal, het plotse vertrek van CEO Jensen Huang, de koersval vanaf het record en de grootste risico's.
+title: Aandeel Nvidia (NVDA): de AI-chipreus die in 1993 werd opgericht
+description: Nvidia in gewone taal: $115,8 miljard omzet in het kwartaal tot oktober 2026, het vertrek van CEO Jensen Huang in november 2026, de AI-tak en de risico's.
 date: 2026-11-22
 kind: analysis
 ---
@@ -20,6 +20,11 @@ Het stille voordeel is software. CUDA, het programmeerplatform dat Nvidia in 200
 
 ## De cijfers nu
 
+- Koers nu: {{price:nvda}}
+- Marktwaarde: {{mcap:nvda}} ({{rank:nvda}} onder de grootste bedrijven ter wereld op WhatIfStack)
+- Recordkoers: {{ath:nvda}} ({{athd:nvda}}), {{fromath:nvda}} daarvan af
+- $10 per dag gedurende 10 jaar: {{dca:nvda:10}} bij {{dcainv:10}} ingelegd ({{dcaroi:nvda:10}})
+
 In het derde kwartaal van boekjaar 2027 (tot 25 oktober 2026) boekte Nvidia $115,8 miljard omzet, 20% meer dan het kwartaal ervoor, bij een brutomarge van 74,8%. De vrije kasstroom was $43,8 miljard; $28,1 miljard ging terug naar aandeelhouders via inkoop van eigen aandelen en dividend. Het dividend is piepklein vergeleken met de koers — $0,25 per kwartaal.
 
 Voor het volgende kwartaal verwacht Nvidia $130 miljard omzet, plus of min 3%, maar een lagere brutomarge van 71–72%. Die verwachting gaat uit van nul verkoop van datacenterchips aan China vanwege Amerikaanse exportregels.
@@ -29,9 +34,6 @@ Voor het volgende kwartaal verwacht Nvidia $130 miljard omzet, plus of min 3%, m
 Nvidia ging in 1999 naar de Nasdaq en was lang een maker van gamechips. De AI-hausse kwam op gang nadat ChatGPT eind 2022 verscheen — hetzelfde jaar waarin het aandeel meer dan de helft van zijn waarde verloor. Na een splitsing van 10 op 1 in 2024 (onze koersen zijn daarvoor gecorrigeerd) bleef het stijgen en sloot het op 6 oktober 2026 op een record van ongeveer $239, wat het bedrijf bijna $6 biljoen waard maakte.
 
 Daarna ging het snel omlaag. Begin november werden chipaandelen verkocht door twijfels over AI-uitgaven en stijgende rentes; op 9 november dienden beleggers een collectieve effectenclaim in; en op 12 november maakte het bestuur bekend dat Jensen Huang met onmiddellijke ingang was opgestapt als president, CEO en bestuurslid, zonder reden te noemen. Financieel directeur Colette Kress werd interim-CEO en Harvey C. Jones de allereerste bestuursvoorzitter. Die dag zakte het aandeel tijdens de handel tot 14% en daalde de waarde onder $4 biljoen, of ongeveer 12 keer de verwachte winst — volgens LSEG het goedkoopst sinds 2012.
-
-- Koers nu: {{price:nvda}}
-- $10 per dag gedurende 10 jaar: {{dca:nvda:10}} bij {{dcainv:10}} ingelegd ({{dcaroi:nvda:10}})
 
 ## Concurrenten
 

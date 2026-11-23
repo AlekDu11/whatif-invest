@@ -1,6 +1,6 @@
 ---
-title: Nvidia (NVDA) explained: the AI chip giant that just lost its founder-CEO
-description: Nvidia in plain language: $115.8 billion of revenue in one quarter, the sudden exit of CEO Jensen Huang, the stock's slide from its record and the main risks.
+title: Nvidia (NVDA) stock: the AI chip giant founded in 1993
+description: Nvidia in plain language: $115.8 billion of revenue in the October 2026 quarter, Jensen Huang's exit as CEO in November 2026, the AI business and the risks.
 date: 2026-11-18
 kind: analysis
 ---
@@ -20,6 +20,11 @@ The quiet advantage is software. CUDA, Nvidia's programming platform launched in
 
 ## The numbers right now
 
+- Price today: {{price:nvda}}
+- Market value: {{mcap:nvda}} ({{rank:nvda}} among the world's largest companies on WhatIfStack)
+- Record high: {{ath:nvda}} ({{athd:nvda}}), {{fromath:nvda}} from it
+- $10 a day for 10 years: {{dca:nvda:10}} from {{dcainv:10}} invested ({{dcaroi:nvda:10}})
+
 In its third fiscal quarter of 2027 (ended 25 October 2026) Nvidia earned $115.8 billion in revenue, up 20% from the previous quarter at a 74.8% gross margin. Free cash flow was $43.8 billion; $28.1 billion went back to shareholders in buybacks and dividends. The dividend is tiny for the share price — $0.25 a quarter.
 
 For the next quarter Nvidia guided to $130 billion of revenue, plus or minus 3%, but a lower 71–72% gross margin. The outlook assumes zero data-center compute sales to China because of US export rules.
@@ -29,9 +34,6 @@ For the next quarter Nvidia guided to $130 billion of revenue, plus or minus 3%,
 Nvidia listed on Nasdaq in 1999 and was long a gaming-chip company. The AI boom took off after ChatGPT appeared in late 2022 — the same year the stock lost more than half its value. After a 10-for-1 split in 2024 (our prices are split-adjusted) it kept climbing and closed at a record of about $239 on 6 October 2026, valuing the company near $6 trillion.
 
 Then it slid fast. Chip stocks sold off in early November on AI-spending doubts and rising rates; on 9 November investors filed a securities class action; and on 12 November the board announced that Jensen Huang had resigned as president, CEO and director with immediate effect, without giving a reason. CFO Colette Kress became interim CEO and Harvey C. Jones the first-ever board chair. That day the stock fell as much as 14% intraday and its value dropped below $4 trillion, or about 12 times expected earnings — the cheapest since 2012, per LSEG.
-
-- Price today: {{price:nvda}}
-- $10 a day for 10 years: {{dca:nvda:10}} from {{dcainv:10}} invested ({{dcaroi:nvda:10}})
 
 ## Competitors
 

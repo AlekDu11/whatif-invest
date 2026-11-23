@@ -1,6 +1,6 @@
 ---
-title: Cổ phiếu Nvidia (NVDA) giải thích dễ hiểu: gã khổng lồ chip AI vừa mất CEO sáng lập
-description: Nvidia bằng ngôn ngữ đơn giản: doanh thu 115,8 tỷ USD trong một quý, CEO Jensen Huang bất ngờ rời đi, cổ phiếu giảm từ đỉnh và các rủi ro chính.
+title: Cổ phiếu Nvidia (NVDA): gã khổng lồ chip AI thành lập năm 1993
+description: Nvidia dễ hiểu: doanh thu 115,8 tỷ USD trong quý kết thúc tháng 10/2026, CEO Jensen Huang rời đi tháng 11/2026, mảng AI và các rủi ro chính.
 date: 2026-11-22
 kind: analysis
 ---
@@ -20,6 +20,11 @@ Lợi thế thầm lặng là phần mềm. CUDA, nền tảng lập trình Nvid
 
 ## Các con số hiện tại
 
+- Giá hôm nay: {{price:nvda}}
+- Vốn hóa thị trường: {{mcap:nvda}} ({{rank:nvda}} trong số các công ty lớn nhất thế giới trên WhatIfStack)
+- Đỉnh kỷ lục: {{ath:nvda}} ({{athd:nvda}}), cách đỉnh {{fromath:nvda}}
+- 10 USD mỗi ngày trong 10 năm: {{dca:nvda:10}} từ {{dcainv:10}} đã đầu tư ({{dcaroi:nvda:10}})
+
 Trong quý 3 năm tài chính 2027 (kết thúc ngày 25/10/2026), Nvidia đạt doanh thu 115,8 tỷ USD, tăng 20% so với quý trước, với biên lợi nhuận gộp 74,8%. Dòng tiền tự do đạt 43,8 tỷ USD; 28,1 tỷ USD được trả lại cho cổ đông qua mua lại cổ phiếu và cổ tức. Cổ tức rất nhỏ so với giá cổ phiếu — 0,25 USD mỗi quý.
 
 Cho quý tiếp theo, Nvidia dự báo doanh thu 130 tỷ USD, cộng trừ 3%, nhưng biên lợi nhuận gộp thấp hơn, 71–72%. Dự báo này giả định doanh số chip tính toán cho trung tâm dữ liệu tại Trung Quốc bằng 0 do quy định xuất khẩu của Mỹ.
@@ -29,9 +34,6 @@ Cho quý tiếp theo, Nvidia dự báo doanh thu 130 tỷ USD, cộng trừ 3%, 
 Nvidia niêm yết trên Nasdaq năm 1999 và trong thời gian dài là công ty chip chơi game. Cơn sốt AI bùng nổ sau khi ChatGPT xuất hiện cuối năm 2022 — cũng là năm cổ phiếu mất hơn một nửa giá trị. Sau đợt chia tách 10 đổi 1 năm 2024 (giá của chúng tôi đã điều chỉnh chia tách), cổ phiếu tiếp tục tăng và đóng cửa ở mức kỷ lục khoảng 239 USD ngày 6/10/2026, định giá công ty gần 6 nghìn tỷ USD.
 
 Sau đó cổ phiếu lao dốc nhanh. Đầu tháng 11, cổ phiếu ngành chip bị bán tháo vì nghi ngờ về chi tiêu cho AI và lãi suất tăng; ngày 9/11, các nhà đầu tư nộp đơn kiện tập thể về chứng khoán; và ngày 12/11, hội đồng quản trị thông báo Jensen Huang từ chức chủ tịch, CEO và thành viên hội đồng quản trị, có hiệu lực ngay, không nêu lý do. Giám đốc tài chính Colette Kress trở thành CEO tạm quyền và Harvey C. Jones là chủ tịch hội đồng quản trị đầu tiên trong lịch sử công ty. Hôm đó cổ phiếu có lúc giảm tới 14% trong phiên và vốn hóa rơi xuống dưới 4 nghìn tỷ USD, tức khoảng 12 lần lợi nhuận dự kiến — mức rẻ nhất kể từ năm 2012, theo LSEG.
-
-- Giá hôm nay: {{price:nvda}}
-- 10 USD mỗi ngày trong 10 năm: {{dca:nvda:10}} từ {{dcainv:10}} đã đầu tư ({{dcaroi:nvda:10}})
 
 ## Đối thủ
 

@@ -1,6 +1,6 @@
 ---
-title: Saham Nvidia (NVDA) dijelaskan sederhana: raksasa chip AI yang baru kehilangan CEO pendirinya
-description: Nvidia dengan bahasa sederhana: pendapatan $115,8 miliar dalam satu kuartal, mundurnya CEO Jensen Huang, saham turun dari rekor, dan risiko utamanya.
+title: Saham Nvidia (NVDA): raksasa chip AI yang didirikan pada 1993
+description: Nvidia dengan bahasa sederhana: pendapatan $115,8 miliar pada kuartal hingga Oktober 2026, mundurnya CEO Jensen Huang, bisnis AI, dan risikonya.
 date: 2026-11-22
 kind: analysis
 ---
@@ -20,6 +20,11 @@ Keunggulan yang jarang disadari adalah perangkat lunak. CUDA, platform pemrogram
 
 ## Angka saat ini
 
+- Harga hari ini: {{price:nvda}}
+- Nilai pasar: {{mcap:nvda}} ({{rank:nvda}} di antara perusahaan terbesar dunia di WhatIfStack)
+- Rekor tertinggi: {{ath:nvda}} ({{athd:nvda}}), {{fromath:nvda}} dari rekor itu
+- $10 per hari selama 10 tahun: {{dca:nvda:10}} dari {{dcainv:10}} yang diinvestasikan ({{dcaroi:nvda:10}})
+
 Pada kuartal ketiga tahun fiskal 2027 (berakhir 25 Oktober 2026) Nvidia membukukan pendapatan $115,8 miliar, naik 20% dari kuartal sebelumnya, dengan margin kotor 74,8%. Arus kas bebas $43,8 miliar; $28,1 miliar dikembalikan ke pemegang saham lewat pembelian kembali saham dan dividen. Dividennya sangat kecil dibanding harga saham — $0,25 per kuartal.
 
 Untuk kuartal berikutnya Nvidia memproyeksikan pendapatan $130 miliar, plus minus 3%, tetapi dengan margin kotor lebih rendah, 71–72%. Proyeksi ini mengasumsikan nol penjualan chip komputasi pusat data ke Tiongkok karena aturan ekspor AS.
@@ -29,9 +34,6 @@ Untuk kuartal berikutnya Nvidia memproyeksikan pendapatan $130 miliar, plus minu
 Nvidia melantai di Nasdaq pada 1999 dan lama dikenal sebagai perusahaan chip game. Ledakan AI dimulai setelah ChatGPT muncul pada akhir 2022 — tahun yang sama ketika sahamnya kehilangan lebih dari separuh nilainya. Setelah pemecahan saham 10 banding 1 pada 2024 (harga kami sudah disesuaikan), sahamnya terus naik dan ditutup di rekor sekitar $239 pada 6 Oktober 2026, sehingga nilai perusahaan mendekati $6 triliun.
 
 Lalu sahamnya merosot cepat. Awal November saham chip dilepas karena keraguan atas belanja AI dan suku bunga yang naik; pada 9 November investor mengajukan gugatan kelompok terkait sekuritas; dan pada 12 November dewan direksi mengumumkan bahwa Jensen Huang mundur sebagai presiden, CEO, dan direktur, berlaku seketika, tanpa menyebutkan alasan. CFO Colette Kress menjadi CEO sementara dan Harvey C. Jones menjadi ketua dewan pertama dalam sejarah perusahaan. Hari itu saham sempat turun hingga 14% di tengah perdagangan dan nilainya jatuh di bawah $4 triliun, atau sekitar 12 kali laba yang diperkirakan — termurah sejak 2012, menurut LSEG.
-
-- Harga hari ini: {{price:nvda}}
-- $10 per hari selama 10 tahun: {{dca:nvda:10}} dari {{dcainv:10}} yang diinvestasikan ({{dcaroi:nvda:10}})
 
 ## Pesaing
 

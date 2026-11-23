@@ -1,6 +1,6 @@
 ---
-title: Nvidia-Aktie (NVDA): der KI-Chip-Riese, der gerade seinen Gründer und CEO verloren hat
-description: Nvidia einfach erklärt: 115,8 Mrd. $ Umsatz in einem Quartal, der plötzliche Abgang von CEO Jensen Huang, der Absturz vom Rekord und die Hauptrisiken.
+title: Nvidia-Aktie (NVDA): der 1993 gegründete KI-Chip-Riese
+description: Nvidia einfach erklärt: 115,8 Mrd. $ Umsatz im Quartal bis Oktober 2026, der Abgang von CEO Jensen Huang im November 2026, das KI-Geschäft und die Risiken.
 date: 2026-11-18
 kind: analysis
 ---
@@ -20,6 +20,11 @@ Der stille Vorteil ist die Software. CUDA, Nvidias 2006 gestartete Programmierpl
 
 ## Die Zahlen aktuell
 
+- Kurs aktuell: {{price:nvda}}
+- Marktwert: {{mcap:nvda}} ({{rank:nvda}} unter den größten Unternehmen der Welt auf WhatIfStack)
+- Rekordhoch: {{ath:nvda}} ({{athd:nvda}}), {{fromath:nvda}} davon entfernt
+- 10 $ täglich über 10 Jahre: {{dca:nvda:10}} bei {{dcainv:10}} Einsatz ({{dcaroi:nvda:10}})
+
 Im dritten Quartal des Geschäftsjahres 2027 (bis 25. Oktober 2026) setzte Nvidia 115,8 Mrd. $ um, 20 % mehr als im Vorquartal, bei einer Bruttomarge von 74,8 %. Der freie Cashflow lag bei 43,8 Mrd. $; 28,1 Mrd. $ flossen über Aktienrückkäufe und Dividenden an die Aktionäre zurück. Die Dividende ist gemessen am Aktienkurs winzig – 0,25 $ pro Quartal.
 
 Für das nächste Quartal stellt Nvidia 130 Mrd. $ Umsatz in Aussicht, plus/minus 3 %, aber eine niedrigere Bruttomarge von 71–72 %. Die Prognose rechnet wegen der US-Exportregeln mit null Umsatz aus Rechenzentrums-Chips in China.
@@ -29,9 +34,6 @@ Für das nächste Quartal stellt Nvidia 130 Mrd. $ Umsatz in Aussicht, plus/minu
 Nvidia ging 1999 an die Nasdaq und war lange ein Hersteller von Gaming-Chips. Der KI-Boom begann, nachdem Ende 2022 ChatGPT erschien – im selben Jahr hatte die Aktie mehr als die Hälfte ihres Wertes verloren. Nach einem Aktiensplit von 10:1 im Jahr 2024 (unsere Kurse sind splitbereinigt) ging es weiter nach oben: Am 6. Oktober 2026 schloss die Aktie auf einem Rekord von rund 239 $, das Unternehmen war fast 6 Billionen $ wert.
 
 Dann ging es schnell abwärts. Anfang November wurden Chip-Aktien wegen Zweifeln an den KI-Ausgaben und steigender Zinsen abverkauft; am 9. November reichten Anleger eine Wertpapier-Sammelklage ein; und am 12. November gab der Verwaltungsrat bekannt, dass Jensen Huang mit sofortiger Wirkung als President, CEO und Board-Mitglied zurückgetreten ist – ohne Angabe von Gründen. Finanzchefin Colette Kress wurde Interims-CEO, Harvey C. Jones der erste Vorsitzende des Boards in der Firmengeschichte. An diesem Tag fiel die Aktie im Handelsverlauf um bis zu 14 %, der Börsenwert rutschte unter 4 Billionen $ – etwa das 12-Fache der erwarteten Gewinne und laut LSEG so günstig wie seit 2012 nicht mehr.
-
-- Kurs aktuell: {{price:nvda}}
-- 10 $ täglich über 10 Jahre: {{dca:nvda:10}} bei {{dcainv:10}} Einsatz ({{dcaroi:nvda:10}})
 
 ## Konkurrenten
 

@@ -1,6 +1,6 @@
 ---
-title: Nvidia (NVDA) stock sa simpleng paliwanag: ang higante ng AI chip na kawawala lang ng founder-CEO
-description: Nvidia sa simpleng salita: $115.8 bilyong kita sa isang quarter, biglang pag-alis ni CEO Jensen Huang, pagbagsak ng stock mula sa record at mga panganib.
+title: Nvidia (NVDA) stock: ang higante ng AI chip na itinatag noong 1993
+description: Nvidia sa simpleng salita: $115.8 bilyong kita sa quarter hanggang Oktubre 2026, pag-alis ni CEO Jensen Huang, ang AI na negosyo at mga panganib.
 date: 2026-11-22
 kind: analysis
 ---
@@ -20,6 +20,11 @@ Ang tahimik na bentahe ay software. Ang CUDA, ang programming platform ng Nvidia
 
 ## Ang mga numero ngayon
 
+- Presyo ngayon: {{price:nvda}}
+- Halaga sa merkado: {{mcap:nvda}} ({{rank:nvda}} sa pinakamalalaking kumpanya sa mundo sa WhatIfStack)
+- Pinakamataas na presyo: {{ath:nvda}} ({{athd:nvda}}), {{fromath:nvda}} mula roon
+- $10 kada araw sa loob ng 10 taon: {{dca:nvda:10}} mula sa {{dcainv:10}} na inilagay ({{dcaroi:nvda:10}})
+
 Sa ikatlong fiscal quarter ng 2027 (nagtapos noong 25 Oktubre 2026), kumita ang Nvidia ng $115.8 bilyon, 20% na mas mataas kaysa sa nakaraang quarter, na may 74.8% gross margin. Ang free cash flow ay $43.8 bilyon; $28.1 bilyon ang ibinalik sa mga shareholder sa pamamagitan ng buybacks at dividends. Napakaliit ng dividend kumpara sa presyo ng share — $0.25 kada quarter.
 
 Para sa susunod na quarter, $130 bilyong kita ang inaasahan ng Nvidia, plus o minus 3%, pero may mas mababang 71–72% gross margin. Ipinapalagay ng forecast na ito na zero ang benta ng data-center compute sa China dahil sa mga patakaran sa export ng US.
@@ -29,9 +34,6 @@ Para sa susunod na quarter, $130 bilyong kita ang inaasahan ng Nvidia, plus o mi
 Nailista ang Nvidia sa Nasdaq noong 1999 at matagal itong naging kumpanya ng gaming chip. Sumiklab ang AI boom matapos lumabas ang ChatGPT sa huling bahagi ng 2022 — ang parehong taon na nawalan ang stock ng mahigit kalahati ng halaga nito. Matapos ang 10-for-1 split noong 2024 (split-adjusted ang mga presyo namin), patuloy itong umakyat at nagsara sa record na mga $239 noong 6 Oktubre 2026, kaya halos $6 trilyon ang naging halaga ng kumpanya.
 
 Pagkatapos, mabilis itong bumagsak. Malakihang naibenta ang mga chip stock noong unang bahagi ng Nobyembre dahil sa pagdududa sa gastos sa AI at tumataas na interes; noong 9 Nobyembre, nagsampa ang mga investor ng securities class action; at noong 12 Nobyembre, inanunsyo ng board na nagbitiw si Jensen Huang bilang president, CEO at director nang epektibo agad, nang walang ibinigay na dahilan. Naging interim CEO si CFO Colette Kress, at si Harvey C. Jones ang kauna-unahang board chair ng kumpanya. Nang araw na iyon, bumaba ang stock nang hanggang 14% sa loob ng araw at bumagsak sa ilalim ng $4 trilyon ang halaga nito, o mga 12 beses ng inaasahang kita — ang pinakamura mula 2012, ayon sa LSEG.
-
-- Presyo ngayon: {{price:nvda}}
-- $10 kada araw sa loob ng 10 taon: {{dca:nvda:10}} mula sa {{dcainv:10}} na inilagay ({{dcaroi:nvda:10}})
 
 ## Mga kakumpitensya
 

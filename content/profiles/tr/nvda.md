@@ -1,6 +1,6 @@
 ---
-title: Nvidia (NVDA) hissesi sade dille: kurucu CEO'sunu yeni kaybeden yapay zekâ çipi devi
-description: Nvidia sade dille: bir çeyrekte 115,8 milyar $ gelir, CEO Jensen Huang'ın ani ayrılışı, hissenin rekordan düşüşü ve başlıca riskler.
+title: Nvidia (NVDA) hissesi: 1993'te kurulan yapay zekâ çipi devi
+description: Nvidia sade dille: Ekim 2026'da biten çeyrekte 115,8 milyar $ gelir, CEO Jensen Huang'ın Kasım 2026'da ayrılışı, yapay zekâ işi ve başlıca riskler.
 date: 2026-11-22
 kind: analysis
 ---
@@ -20,6 +20,11 @@ Sessiz avantaj yazılımdır. Nvidia'nın 2006'da başlattığı programlama pla
 
 ## Şu anki rakamlar
 
+- Bugünkü fiyat: {{price:nvda}}
+- Piyasa değeri: {{mcap:nvda}} (WhatIfStack'teki dünyanın en büyük şirketleri arasında {{rank:nvda}})
+- Rekor: {{ath:nvda}} ({{athd:nvda}}), ondan {{fromath:nvda}}
+- 10 yıl boyunca günde 10 $: {{dca:nvda:10}}, yatırılan {{dcainv:10}} ({{dcaroi:nvda:10}})
+
 2027 mali yılının üçüncü çeyreğinde (25 Ekim 2026'da sona erdi) Nvidia 115,8 milyar $ gelir elde etti; bu, önceki çeyreğe göre %20 artış ve brüt marj %74,8. Serbest nakit akışı 43,8 milyar $ oldu; 28,1 milyar $ hisse geri alımı ve temettü olarak hissedarlara döndü. Temettü hisse fiyatına göre çok küçük — çeyrekte 0,25 $.
 
 Gelecek çeyrek için Nvidia artı eksi %3 ile 130 milyar $ gelir öngörüyor, ancak brüt marjın %71–72'ye gerilemesini bekliyor. Tahmin, ABD ihracat kuralları nedeniyle Çin'e sıfır veri merkezi işlemci satışı varsayıyor.
@@ -29,9 +34,6 @@ Gelecek çeyrek için Nvidia artı eksi %3 ile 130 milyar $ gelir öngörüyor, 
 Nvidia 1999'da Nasdaq'ta halka açıldı ve uzun süre bir oyun çipi şirketiydi. Yapay zekâ patlaması, 2022 sonunda ChatGPT'nin ortaya çıkmasıyla başladı — hissenin değerinin yarıdan fazlasını kaybettiği yıl. 2024'teki 10'a 1 bölünmeden sonra (fiyatlarımız bölünmeye göre düzeltilmiştir) yükselişini sürdürdü ve 6 Ekim 2026'da yaklaşık 239 $ ile rekor kapanış yaptı; bu, şirkete 6 trilyon dolara yakın bir değer biçiyordu.
 
 Ardından hızlı bir düşüş geldi. Kasım başında yapay zekâ harcamalarına dair şüpheler ve yükselen faizlerle çip hisseleri satıldı; 9 Kasım'da yatırımcılar menkul kıymet toplu davası açtı; 12 Kasım'da yönetim kurulu, Jensen Huang'ın başkanlık, CEO'luk ve yönetim kurulu üyeliğinden derhal geçerli olmak üzere istifa ettiğini, gerekçe belirtmeden duyurdu. Finans direktörü Colette Kress geçici CEO, Harvey C. Jones ise şirket tarihinin ilk yönetim kurulu başkanı oldu. O gün hisse gün içinde %14'e kadar düştü ve değeri 4 trilyon doların altına, yani beklenen kârın yaklaşık 12 katına indi — LSEG'e göre 2012'den bu yana en ucuz seviye.
-
-- Bugünkü fiyat: {{price:nvda}}
-- 10 yıl boyunca günde 10 $: {{dca:nvda:10}}, yatırılan {{dcainv:10}} ({{dcaroi:nvda:10}})
 
 ## Rakipler
 
