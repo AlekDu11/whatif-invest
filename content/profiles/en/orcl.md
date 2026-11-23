@@ -21,7 +21,7 @@ The old software business brings in steady cash. The AI cloud needs chips and bu
 ## The numbers right now
 
 - Price today: {{price:orcl}}
-- Market value: {{mcap:orcl}} ({{rank:orcl}} among the world's largest companies on WhatIfStack)
+- Market value: {{mcap:orcl}}
 - Record high: {{ath:orcl}} ({{athd:orcl}}), {{fromath:orcl}} from it
 - $10 a day for 10 years: {{dca:orcl:10}} from {{dcainv:10}} invested ({{dcaroi:orcl:10}})
 
