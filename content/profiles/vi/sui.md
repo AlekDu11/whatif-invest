@@ -1,6 +1,6 @@
 ---
-title: Sui (SUI) giải thích dễ hiểu: blockchain tốc độ cao của cựu kỹ sư Meta, tối đa 10 tỷ đồng, kỷ lục 5,35 USD
-description: Sui bằng ngôn ngữ đơn giản: cách mạng lưới và ngôn ngữ Move hoạt động, SUI dùng để làm gì, mở khóa token, vụ hack Cetus, kỷ lục và cú sập, rủi ro chính.
+title: Sui (SUI) giải thích dễ hiểu: blockchain tốc độ cao của cựu kỹ sư Meta, tối đa 10 tỷ đồng, hoạt động từ 2023
+description: Sui bằng ngôn ngữ đơn giản: cách mạng lưới và ngôn ngữ Move hoạt động, SUI dùng để làm gì, mở khóa token, vụ hack Cetus, đà tăng và cú sập, rủi ro chính.
 date: 2026-11-22
 kind: analysis
 ---
@@ -8,7 +8,7 @@ kind: analysis
 
 > **Điểm chính**
 > - Mainnet của Sui ra mắt tháng 5/2023; sẽ không bao giờ có quá 10 tỷ SUI, và khoảng 4,1 tỷ đang lưu hành.
-> - Giá kỷ lục cho đến nay là 5,35 USD (tháng 1/2025); tháng 11/2026 SUI giao dịch thấp hơn mức đó hơn 85%.
+> - Giá kỷ lục là {{ath:sui}} ({{athd:sui}}); hôm nay SUI cách mức đó {{fromath:sui}}.
 > - Coin mới được mở khóa hằng tháng theo lịch kéo dài đến khoảng năm 2030.
 > - Tháng 5/2025, khoảng 220 triệu USD bị đánh cắp từ Cetus, ứng dụng sàn giao dịch lớn nhất trên Sui; các validator đã đóng băng phần lớn số tiền này.
 

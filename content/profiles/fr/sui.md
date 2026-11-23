@@ -1,6 +1,6 @@
 ---
-title: Sui (SUI) expliqué simplement : une blockchain rapide d'anciens ingénieurs de Meta, 10 milliards au maximum, un record à 5,35 $
-description: Sui en clair : le réseau et Move, à quoi sert le SUI, les déblocages, le piratage de Cetus, record et chute, les risques si vous achetez régulièrement.
+title: Sui (SUI) expliqué simplement : une blockchain rapide d'anciens ingénieurs de Meta, 10 milliards au maximum, en service depuis 2023
+description: Sui en clair : le réseau et Move, à quoi sert le SUI, les déblocages, le piratage de Cetus, envolée et chute, les risques si vous achetez régulièrement.
 date: 2026-11-22
 kind: analysis
 ---
@@ -8,7 +8,7 @@ kind: analysis
 
 > **À retenir**
 > - Le réseau principal de Sui a été lancé en mai 2023 ; il n'y aura jamais plus de 10 milliards de SUI, et environ 4,1 milliards sont en circulation.
-> - Le record de cours à ce jour est de 5,35 $ (janvier 2025) ; en novembre 2026, le SUI s'échangeait plus de 85 % en dessous.
+> - Son record est de {{ath:sui}} ({{athd:sui}}) ; aujourd'hui le SUI est à {{fromath:sui}} de ce niveau.
 > - De nouvelles unités sont débloquées chaque mois, selon un calendrier qui court jusque vers 2030.
 > - En mai 2025, environ 220 millions de dollars ont été volés sur Cetus, la plus grande plateforme d'échange de Sui ; les validateurs en ont gelé la majeure partie.
 

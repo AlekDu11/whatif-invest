@@ -1,6 +1,6 @@
 ---
-title: Sui (SUI) prostym językiem: szybki blockchain od byłych inżynierów Meta, maksymalnie 10 mld monet, rekord 5,35 $
-description: Sui w prostych słowach: jak działa sieć i Move, do czego służy SUI, odblokowania, atak na Cetus, rekord i krach, ryzyka i co wiedzieć, kupując regularnie.
+title: Sui (SUI) prostym językiem: szybki blockchain od byłych inżynierów Meta, maksymalnie 10 mld monet, działa od 2023 roku
+description: Sui w prostych słowach: jak działa sieć i Move, do czego służy SUI, odblokowania, atak na Cetus, wzrost i krach, ryzyka i co wiedzieć, kupując regularnie.
 date: 2026-11-22
 kind: analysis
 ---
@@ -8,7 +8,7 @@ kind: analysis
 
 > **Najważniejsze**
 > - Sieć główna Sui wystartowała w maju 2023 r.; nigdy nie będzie więcej niż 10 mld SUI, a w obiegu jest ok. 4,1 mld.
-> - Dotychczasowy rekord ceny to 5,35 $ (styczeń 2025 r.); w listopadzie 2026 r. SUI był notowany ponad 85% niżej.
+> - Rekord ceny to {{ath:sui}} ({{athd:sui}}); dziś SUI jest {{fromath:sui}} od niego.
 > - Co miesiąc odblokowywane są nowe monety, według harmonogramu sięgającego mniej więcej 2030 r.
 > - W maju 2025 r. z Cetus, największej giełdy-aplikacji w sieci Sui, skradziono ok. 220 mln dolarów; walidatorzy zamrozili większość środków.
 

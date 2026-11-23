@@ -1,5 +1,5 @@
 ---
-title: Gram（GRAM）をやさしく解説：2026年6月までトンコインだったTelegramの通貨、17億ドルの過去、2024年の最高値8.25ドル
+title: Gram（GRAM）をやさしく解説：2026年6月までトンコインだったTelegramの通貨とThe Open Network
 description: 旧トンコインのGramをやさしく解説。The Open Networkの仕組み、Telegramとの関係、SECとの裁判、2026年の名称変更、主なリスク、積立で買う人が知っておきたいこと。
 date: 2026-11-22
 kind: analysis
@@ -24,7 +24,6 @@ GramはTONでの手数料支払い、ステーキング、投票に使われま�
 
 - 現在の価格：{{price:gram}}
 - 最高値：{{ath:gram}}（{{athd:gram}}）
-- 12か月の価格変化：{{chg1y:gram}}
 - 2026年7月から毎日10ドル：{{dca:gram:1}}（{{dcaroi:gram:1}}）
 
 ## これまでの歩み

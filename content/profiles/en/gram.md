@@ -1,5 +1,5 @@
 ---
-title: Gram (GRAM) explained: Telegram's coin, Toncoin until June 2026, a $1.7 billion past and an $8.25 record from 2024
+title: Gram (GRAM) explained: Telegram's coin, called Toncoin until June 2026, and The Open Network behind it
 description: Gram, formerly Toncoin, in plain language: how The Open Network works, its Telegram links, the SEC case, the 2026 rename, main risks and what regular buyers should know.
 date: 2026-11-22
 kind: analysis
@@ -24,7 +24,6 @@ Gram pays fees, is staked and is used to vote — the rename itself was decided 
 
 - Price today: {{price:gram}}
 - Record high: {{ath:gram}} ({{athd:gram}})
-- Price change over 12 months: {{chg1y:gram}}
 - $10 a day since July 2026: {{dca:gram:1}} ({{dcaroi:gram:1}})
 
 ## Its story so far

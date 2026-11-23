@@ -1,6 +1,6 @@
 ---
-title: Sui (SUI) explicado de forma simples: blockchain rápida de ex-engenheiros da Meta, máximo de 10 bilhões de moedas, recorde de US$ 5,35
-description: Sui em linguagem simples: a rede e o Move, para que serve o SUI, desbloqueios, o hack da Cetus, recorde e queda, riscos e o que saber ao comprar regularmente.
+title: Sui (SUI) explicado de forma simples: blockchain rápida de ex-engenheiros da Meta, máximo de 10 bilhões de moedas, no ar desde 2023
+description: Sui em linguagem simples: a rede e o Move, para que serve o SUI, desbloqueios, o hack da Cetus, alta e queda, riscos e o que saber ao comprar regularmente.
 date: 2026-11-22
 kind: analysis
 ---
@@ -8,7 +8,7 @@ kind: analysis
 
 > **Pontos principais**
 > - A rede principal da Sui foi lançada em maio de 2023; nunca existirão mais de 10 bilhões de SUI, e cerca de 4,1 bilhões estão em circulação.
-> - O recorde de preço até agora é US$ 5,35 (janeiro de 2025); em novembro de 2026 o SUI era negociado mais de 85% abaixo disso.
+> - A máxima histórica é {{ath:sui}} ({{athd:sui}}); hoje o SUI está {{fromath:sui}} dela.
 > - Novas moedas são desbloqueadas todo mês, num cronograma que vai até cerca de 2030.
 > - Em maio de 2025 cerca de US$ 220 milhões foram roubados da Cetus, a maior corretora da Sui; os validadores congelaram a maior parte.
 

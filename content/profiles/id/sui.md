@@ -1,6 +1,6 @@
 ---
-title: Sui (SUI) dijelaskan sederhana: blockchain cepat dari mantan insinyur Meta, pasokan maksimum 10 miliar, rekor $5,35
-description: Sui dengan bahasa sederhana: cara kerja jaringan dan Move, kegunaan SUI, pembukaan token, peretasan Cetus, rekor dan kejatuhan, risiko, dan tips pembeli rutin.
+title: Sui (SUI) dijelaskan sederhana: blockchain cepat dari mantan insinyur Meta, pasokan maksimum 10 miliar, aktif sejak 2023
+description: Sui dengan bahasa sederhana: cara kerja jaringan dan Move, kegunaan SUI, pembukaan token, peretasan Cetus, lonjakan dan kejatuhan, risiko, dan tips pembeli rutin.
 date: 2026-11-22
 kind: analysis
 ---
@@ -8,7 +8,7 @@ kind: analysis
 
 > **Poin penting**
 > - Mainnet Sui diluncurkan pada Mei 2023; tidak akan pernah ada lebih dari 10 miliar SUI, dan sekitar 4,1 miliar sudah beredar.
-> - Harga rekor sejauh ini $5,35 (Januari 2025); pada November 2026 SUI diperdagangkan lebih dari 85% di bawahnya.
+> - Harga rekornya {{ath:sui}} ({{athd:sui}}); hari ini SUI berada {{fromath:sui}} dari level itu.
 > - Koin baru dibuka setiap bulan sesuai jadwal yang berjalan hingga sekitar 2030.
 > - Pada Mei 2025 sekitar $220 juta dicuri dari Cetus, aplikasi bursa terbesar di Sui; validator membekukan sebagian besar dana itu.
 

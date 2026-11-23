@@ -1,6 +1,6 @@
 ---
-title: Sui (SUI) sade dille: eski Meta mühendislerinden hızlı bir blokzincir, en fazla 10 milyar coin, 5,35 $ rekor
-description: Sui sade dille: ağ ve Move nasıl çalışır, SUI ne işe yarar, kilit açılımları, Cetus saldırısı, rekor ve çöküş, riskler ve düzenli alım yapanlar için bilgiler.
+title: Sui (SUI) sade dille: eski Meta mühendislerinden hızlı bir blokzincir, en fazla 10 milyar coin, 2023'ten beri aktif
+description: Sui sade dille: ağ ve Move nasıl çalışır, SUI ne işe yarar, kilit açılımları, Cetus saldırısı, yükseliş ve çöküş, riskler ve düzenli alım yapanlar için bilgiler.
 date: 2026-11-22
 kind: analysis
 ---
@@ -8,7 +8,7 @@ kind: analysis
 
 > **Öne çıkanlar**
 > - Sui ana ağı Mayıs 2023'te açıldı; hiçbir zaman 10 milyardan fazla SUI olmayacak, dolaşımda yaklaşık 4,1 milyar var.
-> - Şimdiye kadarki fiyat rekoru 5,35 $ (Ocak 2025); Kasım 2026'da SUI bunun %85'ten fazla altında işlem görüyordu.
+> - Fiyat rekoru {{ath:sui}} ({{athd:sui}}); SUI bugün bu seviyeden {{fromath:sui}} uzakta.
 > - Yaklaşık 2030'a kadar süren bir takvime göre her ay yeni coinlerin kilidi açılıyor.
 > - Mayıs 2025'te Sui'nin en büyük borsa uygulaması Cetus'tan yaklaşık 220 milyon dolar çalındı; doğrulayıcılar bunun büyük kısmını dondurdu.
 

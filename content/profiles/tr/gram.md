@@ -1,5 +1,5 @@
 ---
-title: Gram (GRAM) sade dille: Haziran 2026'ya kadar Toncoin olan Telegram coin'i, 1,7 milyar $'lık geçmiş ve 2024'ten 8,25 $ rekor
+title: Gram (GRAM) sade dille: Haziran 2026'ya kadar Toncoin olan Telegram coin'i ve The Open Network
 description: Eski adıyla Toncoin olan Gram sade dille: The Open Network nasıl çalışır, Telegram bağlantısı, SEC davası, 2026'daki isim değişikliği, riskler ve düzenli alım yapanların bilmesi gerekenler.
 date: 2026-11-22
 kind: analysis
@@ -24,7 +24,6 @@ Gram, TON'daki ücretleri öder, stake edilir ve oylamada kullanılır — isim 
 
 - Bugünkü fiyat: {{price:gram}}
 - Rekor: {{ath:gram}} ({{athd:gram}})
-- 12 aylık fiyat değişimi: {{chg1y:gram}}
 - Temmuz 2026'dan beri günde 10 $: {{dca:gram:1}} ({{dcaroi:gram:1}})
 
 ## Hikâyesi

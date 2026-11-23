@@ -1,6 +1,6 @@
 ---
-title: Sui (SUI) eenvoudig uitgelegd: een snelle blockchain van ex-Meta-engineers, maximaal 10 miljard munten, een record van $5,35
-description: Sui in gewone taal: het netwerk en Move, waarvoor SUI dient, unlocks, de Cetus-hack, record en crash, de risico's en wat je moet weten als je regelmatig koopt.
+title: Sui (SUI) eenvoudig uitgelegd: een snelle blockchain van ex-Meta-engineers, maximaal 10 miljard munten, live sinds 2023
+description: Sui in gewone taal: het netwerk en Move, waarvoor SUI dient, unlocks, de Cetus-hack, opmars en crash, de risico's en wat je moet weten als je regelmatig koopt.
 date: 2026-11-22
 kind: analysis
 ---
@@ -8,7 +8,7 @@ kind: analysis
 
 > **Belangrijkste punten**
 > - Het mainnet van Sui ging in mei 2023 live; er komen nooit meer dan 10 miljard SUI, en er circuleren er ongeveer 4,1 miljard.
-> - De recordkoers tot nu toe is $5,35 (januari 2025); in november 2026 noteerde SUI meer dan 85% lager.
+> - De recordkoers is {{ath:sui}} ({{athd:sui}}); vandaag staat SUI {{fromath:sui}} daarvan af.
 > - Elke maand komen er nieuwe munten vrij, volgens een schema dat tot ongeveer 2030 loopt.
 > - In mei 2025 werd zo'n $220 miljoen gestolen van Cetus, de grootste beurs-app op Sui; validators bevroren het grootste deel.
 

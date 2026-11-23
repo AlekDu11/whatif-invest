@@ -1,6 +1,6 @@
 ---
-title: Sui (SUI) sa simpleng paliwanag: mabilis na blockchain mula sa dating engineer ng Meta, 10 bilyong max supply, record na $5.35
-description: Sui sa simpleng salita: paano gumagana ang network, gamit ng SUI, token unlock, hack sa Cetus, record at pagbagsak, panganib at payo sa regular na bumibili.
+title: Sui (SUI) sa simpleng paliwanag: mabilis na blockchain mula sa dating engineer ng Meta, 10 bilyong max supply, live mula 2023
+description: Sui sa simpleng salita: paano gumagana ang network, gamit ng SUI, token unlock, hack sa Cetus, pag-akyat at pagbagsak, panganib at payo sa regular na bumibili.
 date: 2026-11-22
 kind: analysis
 ---
@@ -8,7 +8,7 @@ Ang **Sui** ay isang mabilis at murang blockchain para sa mga app, laro, bayaran
 
 > **Mahahalagang punto**
 > - Inilunsad ang mainnet ng Sui noong Mayo 2023; hindi kailanman lalampas sa 10 bilyon ang SUI, at mga 4.1 bilyon ang nasa sirkulasyon.
-> - Ang pinakamataas na presyo sa ngayon ay $5.35 (Enero 2025); noong Nobyembre 2026, mahigit 85% na mas mababa rito ang SUI.
+> - Ang record high ay {{ath:sui}} ({{athd:sui}}); ngayon ang SUI ay {{fromath:sui}} mula rito.
 > - May mga bagong coin na ina-unlock bawat buwan ayon sa iskedyul na tatagal hanggang mga 2030.
 > - Noong Mayo 2025, mga $220 milyon ang nanakaw mula sa Cetus, ang pinakamalaking exchange app sa Sui; na-freeze ng mga validator ang karamihan nito.
 

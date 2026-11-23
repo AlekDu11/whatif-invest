@@ -1,5 +1,5 @@
 ---
-title: Gram (GRAM) prostym językiem: moneta Telegrama, do czerwca 2026 Toncoin, 1,7 mld $ w przeszłości i rekord 8,25 $ z 2024 roku
+title: Gram (GRAM) prostym językiem: moneta Telegrama, do czerwca 2026 Toncoin, i sieć The Open Network
 description: Gram, dawniej Toncoin, prostym językiem: jak działa The Open Network, związek z Telegramem, sprawa SEC, zmiana nazwy w 2026, ryzyka i co powinni wiedzieć kupujący regularnie.
 date: 2026-11-22
 kind: analysis
@@ -24,7 +24,6 @@ Gram opłaca transakcje w TON, służy do stakingu i głosowania — sama zmiana
 
 - Cena teraz: {{price:gram}}
 - Rekord: {{ath:gram}} ({{athd:gram}})
-- Zmiana ceny w ciągu 12 miesięcy: {{chg1y:gram}}
 - 10 $ dziennie od lipca 2026: {{dca:gram:1}} ({{dcaroi:gram:1}})
 
 ## Jego historia

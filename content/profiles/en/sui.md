@@ -1,6 +1,6 @@
 ---
-title: Sui (SUI) explained: a fast blockchain from ex-Meta engineers, 10 billion max supply, a $5.35 record
-description: Sui in plain language: how the network and the Move language work, what SUI is used for, token unlocks, the Cetus hack, its record and crash, main risks and what regular buyers should know.
+title: Sui (SUI) explained: a fast blockchain from ex-Meta engineers, 10 billion max supply, live since 2023
+description: Sui in plain language: how the network and the Move language work, what SUI is used for, token unlocks, the Cetus hack, its boom and crash, main risks and what regular buyers should know.
 date: 2026-11-22
 kind: analysis
 ---
@@ -8,7 +8,7 @@ kind: analysis
 
 > **Key takeaways**
 > - Sui's mainnet launched in May 2023; there will never be more than 10 billion SUI, and about 4.1 billion circulate.
-> - The record price so far is $5.35 (January 2025); in November 2026 SUI traded more than 85% below it.
+> - Its record high is {{ath:sui}} ({{athd:sui}}); today SUI is {{fromath:sui}} from it.
 > - New coins are unlocked every month under a schedule that runs to about 2030.
 > - In May 2025 about $220 million was stolen from Cetus, Sui's largest exchange app; validators froze most of it.
 

@@ -1,5 +1,5 @@
 ---
-title: Gram (GRAM) dijelaskan sederhana: koin Telegram, bernama Toncoin hingga Juni 2026, masa lalu $1,7 miliar dan rekor $8,25 pada 2024
+title: Gram (GRAM) dijelaskan sederhana: koin Telegram, bernama Toncoin hingga Juni 2026, dan jaringan The Open Network
 description: Gram, dulu Toncoin, dijelaskan sederhana: cara kerja The Open Network, kaitannya dengan Telegram, kasus SEC, pergantian nama 2026, risiko utama dan yang perlu diketahui pembeli rutin.
 date: 2026-11-22
 kind: analysis
@@ -24,7 +24,6 @@ Gram membayar biaya di TON, dipakai untuk staking dan voting — pergantian nama
 
 - Harga hari ini: {{price:gram}}
 - Rekor tertinggi: {{ath:gram}} ({{athd:gram}})
-- Perubahan harga dalam 12 bulan: {{chg1y:gram}}
 - $10 per hari sejak Juli 2026: {{dca:gram:1}} ({{dcaroi:gram:1}})
 
 ## Kisahnya sejauh ini

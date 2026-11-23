@@ -1,5 +1,5 @@
 ---
-title: Gram（GRAM）通俗解读：2026年6月前名为Toncoin的Telegram币、17亿美元的往事、2024年8.25美元历史高点
+title: Gram（GRAM）通俗解读：2026年6月前名为Toncoin的Telegram币与The Open Network
 description: 通俗解读原名Toncoin的Gram：The Open Network如何运作、与Telegram的关系、SEC诉讼、2026年更名、主要风险，以及定投者需要知道的事。
 date: 2026-11-22
 kind: analysis
@@ -24,7 +24,6 @@ Gram用于支付TON上的手续费、质押和投票——更名本身就是通�
 
 - 当前价格：{{price:gram}}
 - 历史最高价：{{ath:gram}}（{{athd:gram}}）
-- 12个月价格变化：{{chg1y:gram}}
 - 自2026年7月起每天10美元：{{dca:gram:1}}（{{dcaroi:gram:1}}）
 
 ## 一路走来

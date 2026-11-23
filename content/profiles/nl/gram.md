@@ -1,5 +1,5 @@
 ---
-title: Gram (GRAM) eenvoudig uitgelegd: de munt van Telegram, tot juni 2026 Toncoin, een verleden van $1,7 miljard en een record van $8,25 uit 2024
+title: Gram (GRAM) eenvoudig uitgelegd: de munt van Telegram, tot juni 2026 Toncoin, en het netwerk The Open Network
 description: Gram, voorheen Toncoin, eenvoudig uitgelegd: hoe The Open Network werkt, de band met Telegram, de SEC-zaak, de naamswijziging in 2026, risico's en wat regelmatige kopers moeten weten.
 date: 2026-11-22
 kind: analysis
@@ -24,7 +24,6 @@ Gram betaalt de kosten op TON, wordt gestaket en gebruikt om te stemmen — de n
 
 - Koers nu: {{price:gram}}
 - Recordkoers: {{ath:gram}} ({{athd:gram}})
-- Koersverandering over 12 maanden: {{chg1y:gram}}
 - $10 per dag sinds juli 2026: {{dca:gram:1}} ({{dcaroi:gram:1}})
 
 ## Het verhaal tot nu toe

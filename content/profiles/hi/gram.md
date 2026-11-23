@@ -1,5 +1,5 @@
 ---
-title: Gram (GRAM) आसान भाषा में: Telegram का सिक्का, जून 2026 तक Toncoin, $1.7 अरब का अतीत और 2024 में $8.25 का रिकॉर्ड
+title: Gram (GRAM) आसान भाषा में: Telegram का सिक्का, जून 2026 तक Toncoin, और The Open Network नेटवर्क
 description: Gram, पहले Toncoin, आसान भाषा में: The Open Network कैसे काम करता है, Telegram से रिश्ता, SEC केस, 2026 में नाम बदलना, मुख्य जोखिम और नियमित ख़रीदारों के लिए ज़रूरी बातें।
 date: 2026-11-22
 kind: analysis
@@ -24,7 +24,6 @@ Gram से TON पर फ़ीस चुकाई जाती है, स्�
 
 - आज का भाव: {{price:gram}}
 - अब तक का रिकॉर्ड: {{ath:gram}} ({{athd:gram}})
-- 12 महीनों में भाव में बदलाव: {{chg1y:gram}}
 - जुलाई 2026 से रोज़ $10: {{dca:gram:1}} ({{dcaroi:gram:1}})
 
 ## अब तक की कहानी

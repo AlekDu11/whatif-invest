@@ -1,6 +1,6 @@
 ---
-title: Sui (SUI) einfach erklärt: eine schnelle Blockchain von Ex-Meta-Ingenieuren, maximal 10 Milliarden Coins, ein Rekord von 5,35 $
-description: Sui verständlich erklärt: Netzwerk und Move, wofür SUI dient, Token-Unlocks, der Cetus-Hack, Rekord und Absturz, Risiken und was Sparplan-Anleger wissen müssen.
+title: Sui (SUI) einfach erklärt: eine schnelle Blockchain von Ex-Meta-Ingenieuren, maximal 10 Milliarden Coins, live seit 2023
+description: Sui verständlich erklärt: Netzwerk und Move, wofür SUI dient, Token-Unlocks, der Cetus-Hack, Höhenflug und Absturz, Risiken und was Sparplan-Anleger wissen müssen.
 date: 2026-11-22
 kind: analysis
 ---
@@ -8,7 +8,7 @@ kind: analysis
 
 > **Das Wichtigste**
 > - Das Sui-Mainnet startete im Mai 2023; es wird nie mehr als 10 Milliarden SUI geben, rund 4,1 Milliarden sind im Umlauf.
-> - Der bisherige Rekordkurs liegt bei 5,35 $ (Januar 2025); im November 2026 notierte SUI mehr als 85 % darunter.
+> - Das Rekordhoch liegt bei {{ath:sui}} ({{athd:sui}}); heute notiert SUI {{fromath:sui}} davon entfernt.
 > - Jeden Monat werden neue Coins freigeschaltet – nach einem Plan, der bis etwa 2030 läuft.
 > - Im Mai 2025 wurden rund 220 Millionen Dollar von Cetus gestohlen, der größten Börsen-App auf Sui; die Validatoren froren den Großteil ein.
 

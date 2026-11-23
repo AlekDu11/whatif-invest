@@ -1,5 +1,5 @@
 ---
-title: 그램(GRAM) 쉽게 정리: 2026년 6월까지 톤코인이던 텔레그램의 코인, 17억 달러의 과거, 2024년 최고가 8.25달러
+title: 그램(GRAM) 쉽게 정리: 2026년 6월까지 톤코인이던 텔레그램의 코인과 The Open Network
 description: 옛 톤코인, 그램을 쉽게 정리했습니다. The Open Network의 작동 원리, 텔레그램과의 관계, SEC 소송, 2026년 이름 변경, 주요 위험과 적립식 투자자가 알아야 할 점.
 date: 2026-11-22
 kind: analysis
@@ -24,7 +24,6 @@ TON은 지분증명(proof-of-stake) 블록체인입니다. 검증인이 코인�
 
 - 현재 가격: {{price:gram}}
 - 사상 최고가: {{ath:gram}} ({{athd:gram}})
-- 12개월 가격 변화: {{chg1y:gram}}
 - 2026년 7월부터 매일 10달러: {{dca:gram:1}} ({{dcaroi:gram:1}})
 
 ## 지금까지의 이야기

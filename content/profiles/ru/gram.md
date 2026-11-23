@@ -1,5 +1,5 @@
 ---
-title: Gram (GRAM) простым языком: монета Telegram, до июня 2026 года Toncoin, $1,7 млрд в прошлом и рекорд $8,25 в 2024-м
+title: Gram (GRAM) простым языком: монета Telegram, до июня 2026 года Toncoin, и сеть The Open Network
 description: Gram, бывший Toncoin, простым языком: как работает The Open Network, связь с Telegram, дело SEC, переименование 2026 года, риски и что знать тем, кто покупает регулярно.
 date: 2026-11-22
 kind: analysis
@@ -24,7 +24,6 @@ Gram нужен, чтобы платить комиссии в TON, стейка
 
 - Цена сейчас: {{price:gram}}
 - Рекорд: {{ath:gram}} ({{athd:gram}})
-- Изменение цены за 12 месяцев: {{chg1y:gram}}
 - $10 в день с июля 2026 года: {{dca:gram:1}} ({{dcaroi:gram:1}})
 
 ## Его история
