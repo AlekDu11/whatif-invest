@@ -1,6 +1,6 @@
 ---
 title: Ametek (AME) explained: the maker of instruments hidden inside factories and planes
-description: Ametek in plain language — record $2.22 billion quarter, a $5 billion Indicor deal, orders up 35%, the debt that came with it and what regular buyers should know.
+description: Ametek in plain language: $2.22B of sales in Q3 2026 (+17%), the $5B Indicor deal, orders up 35%, the new debt and what regular buyers should know.
 date: 2026-11-20
 kind: analysis
 ---
@@ -22,7 +22,7 @@ In the quarter to 30 September 2026 Ametek earned an adjusted operating margin o
 
 ## The stock's story
 
-Ametek is known as a steady compounder rather than a rocket, but it is not immune to downturns: the stock fell about 35% in 2008 during the financial crisis and slipped about 4% in 2022. In 2026 it started the year near $200, reached a record of $261.16 on 13 August and closed at $248.58 on 3 November, up about 22% for the year. Over the past 52 weeks it traded between about $189 and $261. David A. Zapico is chairman and CEO.
+Ametek is known as a steady compounder rather than a rocket, but it is not immune to downturns: the stock fell about 35% in 2008 during the financial crisis and slipped about 4% in 2022. In 2026 it started the year near $200, closed at a high of $261.16 on 13 August and closed at $248.58 on 3 November, up about 22% for the year. Over the past 52 weeks it traded between about $189 and $261. David A. Zapico is chairman and CEO.
 
 - Price today: {{price:ame}}
 - $10 a day for 10 years: {{dca:ame:10}} from {{dcainv:10}} invested ({{dcaroi:ame:10}})

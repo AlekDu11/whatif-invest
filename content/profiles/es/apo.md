@@ -1,6 +1,6 @@
 ---
-title: Acciones de Apollo Global Management (APO): el prestamista privado de 1,07 billones de $
-description: Apollo en lenguaje claro: 1,07 billones de $ en activos, comisiones récord de 802 millones y por qué el miedo al crédito privado hundió la acción un 41%.
+title: Acciones de Apollo Global Management (APO): el prestamista privado y asegurador, explicado
+description: Apollo en lenguaje claro: crédito privado, la aseguradora Athene, 802 millones $ en comisiones en el 3T 2026 (+23%), por qué cayó la acción tras 2024 y riesgos.
 date: 2026-11-21
 kind: analysis
 ---
@@ -10,7 +10,7 @@ kind: analysis
 > - Activos gestionados: 1,07 billones de dólares a 30 de septiembre de 2026; récord de 114.000 millones en préstamos nuevos (originación) en el trimestre.
 > - El beneficio por comisiones (FRE) marcó un récord de 802 millones en el 3T 2026, un 23% más que hace un año; el beneficio neto ajustado fue de 2,07 $ por acción.
 > - Con normas GAAP, Apollo perdió 1.057 millones en el trimestre, sobre todo por pérdidas no realizadas al valorar inversiones a precio de mercado.
-> - La acción cerró a 111,16 $ el 20 de noviembre de 2026, alrededor de un 41% por debajo de su récord de 189,49 $ de diciembre de 2024.
+> - Precio hoy: {{price:apo}}; máximo {{ath:apo}} ({{athd:apo}}), {{fromath:apo}} desde él. El 20 de noviembre de 2026 cerró a 111,16 $, cerca de un 41% por debajo de su máximo de diciembre de 2024.
 
 ## Cómo gana dinero
 
@@ -26,7 +26,7 @@ Entraron 53.000 millones en el trimestre y 270.000 millones en doce meses. Athen
 
 ## La historia de la acción
 
-Apollo dejó de ser una sociedad de socios en 2019 y en enero de 2022 se fusionó con Athene. S&P anunció su inclusión en el S&P 500 el 6 de diciembre de 2024 (sustituyó a Qorvo el día 23), y la acción marcó su récord de 189,49 $ el 9 de diciembre.
+Apollo dejó de ser una sociedad de socios en 2019 y en enero de 2022 se fusionó con Athene. S&P anunció su inclusión en el S&P 500 el 6 de diciembre de 2024 (sustituyó a Qorvo el día 23), y el 9 de diciembre la acción cerró en un máximo de 189,49 $.
 
 Después llegó el susto del crédito privado. La acción perdió cerca de un 13% en 2025 y a principios de marzo de 2026 cayó hasta unos 99,56 $, por dudas sobre la calidad de los préstamos y sobre fondos minoristas llenos de créditos difíciles de vender. En junio de 2026, Apollo Debt Solutions, su fondo de unos 26.000 millones para particulares con patrimonio, recibió solicitudes de reembolso por cerca del 16,8% de sus participaciones, pero solo pagó el límite del 5%, y la acción bajó un 6% en un día.
 
@@ -45,7 +45,7 @@ Sus rivales más directos son las otras grandes gestoras alternativas: Blackston
 
 ## Qué significa si compras con regularidad
 
-Apollo pasó de récord a una caída del 41% en menos de dos años, aunque sus comisiones seguían subiendo. Comprar con regularidad reparte las compras entre esas subidas y bajadas, y el dividendo se puede reinvertir, pero un negocio ligado al crédito puede pasar años fuera de favor; mucha gente la tiene solo como parte de una cartera más amplia. Los resultados pasados no garantizan los futuros.
+Apollo pasó de un máximo en diciembre de 2024 a una caída de cerca del 41% en noviembre de 2026, aunque sus comisiones seguían subiendo. Comprar con regularidad reparte las compras entre esas subidas y bajadas, y el dividendo se puede reinvertir, pero un negocio ligado al crédito puede pasar años fuera de favor; mucha gente la tiene solo como parte de una cartera más amplia. Los resultados pasados no garantizan los futuros.
 
 *No es asesoramiento de inversión.*
 

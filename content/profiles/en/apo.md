@@ -1,6 +1,6 @@
 ---
-title: Apollo Global Management (APO) stock: the $1.07 trillion private lender, explained
-description: Apollo in plain language: $1.07 trillion of assets, record $802M fee earnings, why private-credit fears cut the stock 41% from its peak, and the risks.
+title: Apollo Global Management (APO) stock: the private lender and insurer, explained
+description: Apollo in plain language: private credit, the Athene insurer, $802M of fee earnings in Q3 2026 (+23%), why the stock fell after 2024 and the risks.
 date: 2026-11-21
 kind: analysis
 ---
@@ -10,7 +10,7 @@ kind: analysis
 > - Assets under management: $1.07 trillion on 30 September 2026; record origination of $114 billion in the quarter.
 > - Fee related earnings hit a record $802 million in Q3 2026, up 23% a year; adjusted net income was $2.07 per share.
 > - On a GAAP basis Apollo lost $1.06 billion in the quarter, mainly from unrealised mark-to-market losses on investments.
-> - The stock closed at $111.16 on 20 November 2026, about 41% below its record of $189.49 from December 2024.
+> - Price today: {{price:apo}}; high {{ath:apo}} ({{athd:apo}}), {{fromath:apo}} from it. On 20 November 2026 it closed at $111.16, about 41% below its December 2024 high.
 
 ## How it makes money
 
@@ -26,7 +26,7 @@ Money keeps arriving: $53 billion of inflows in the quarter and $270 billion ove
 
 ## The stock's story
 
-Apollo was long a buyout firm run as a partnership. In 2019 it became a regular corporation, and in January 2022 it merged with Athene, which turned it into a mix of asset manager and insurer. Index funds followed: S&P announced its inclusion on 6 December 2024, it replaced Qorvo in the S&P 500 on 23 December, and the stock set its record of $189.49 on 9 December 2024.
+Apollo was long a buyout firm run as a partnership. In 2019 it became a regular corporation, and in January 2022 it merged with Athene, which turned it into a mix of asset manager and insurer. Index funds followed: S&P announced its inclusion on 6 December 2024, it replaced Qorvo in the S&P 500 on 23 December, and on 9 December 2024 the stock closed at a high of $189.49.
 
 The stock lost about 13% in 2025, and in early March 2026 it fell to about $99.56 as investors worried about loan quality and about retail funds holding loans that cannot be sold quickly. In June 2026 Apollo Debt Solutions, its roughly $26 billion fund for wealthy individuals, received redemption requests for about 16.8% of its shares but paid out only the 5% cap, and the stock dropped 6% in a day.
 
@@ -46,7 +46,7 @@ Apollo's closest rivals are the other giant alternative managers: Blackstone, KK
 
 ## What it means if you buy regularly
 
-Apollo shows how fast sentiment can turn: a record high and S&P 500 entry in December 2024, then a 41% drop in under two years while fee earnings kept rising. Regular buying spreads purchases across those swings, and the dividend can be reinvested, but a business tied to credit can stay out of favour for a long time. Many people hold a stock like this as one part of a broader portfolio. Past results do not guarantee future returns.
+Apollo shows how fast sentiment can turn: a high and S&P 500 entry in December 2024, then a fall of about 41% by November 2026 while fee earnings kept rising. Regular buying spreads purchases across those swings, and the dividend can be reinvested, but a business tied to credit can stay out of favour for a long time. Many people hold a stock like this as one part of a broader portfolio. Past results do not guarantee future returns.
 
 *Not investment advice.*
 

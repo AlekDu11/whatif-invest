@@ -1,6 +1,6 @@
 ---
-title: Apollo-Aktie (APO): der private Kreditgeber mit 1,07 Bio. $ einfach erklärt
-description: Apollo einfach erklärt: 1,07 Bio. $ verwaltetes Vermögen, Rekord-Gebührengewinn von 802 Mio. $ und warum Angst vor Privatkrediten die Aktie 41 % drückte.
+title: Apollo-Aktie (APO): der private Kreditgeber und Versicherer einfach erklärt
+description: Apollo einfach erklärt: Privatkredite, Versicherer Athene, 802 Mio. $ Gebührengewinn im 3. Quartal 2026 (+23 %), warum die Aktie nach 2024 fiel, und Risiken.
 date: 2026-11-21
 kind: analysis
 ---
@@ -10,7 +10,7 @@ kind: analysis
 > - Verwaltetes Vermögen: 1,07 Bio. $ zum 30. September 2026; Rekord von 114 Mrd. $ neu vergebener Kredite (Origination) im Quartal.
 > - Der Gebührengewinn (FRE) erreichte im 3. Quartal 2026 den Rekord von 802 Mio. $, +23 % zum Vorjahr; der bereinigte Nettogewinn lag bei 2,07 $ je Aktie.
 > - Nach GAAP verlor Apollo im Quartal 1,06 Mrd. $ – vor allem durch nicht realisierte Bewertungsverluste bei Investments.
-> - Die Aktie schloss am 20. November 2026 bei 111,16 $, rund 41 % unter ihrem Rekord von 189,49 $ aus dem Dezember 2024.
+> - Kurs heute: {{price:apo}}; Hoch {{ath:apo}} ({{athd:apo}}), {{fromath:apo}} davon entfernt. Am 20. November 2026 schloss sie bei 111,16 $, rund 41 % unter ihrem Hoch vom Dezember 2024.
 
 ## Womit das Unternehmen Geld verdient
 
@@ -26,7 +26,7 @@ Das Geld fließt weiter: 53 Mrd. $ Zuflüsse im Quartal und 270 Mrd. $ in zwölf
 
 ## Die Geschichte der Aktie
 
-Lange war Apollo eine Übernahmefirma in Form einer Partnerschaft. 2019 wurde sie zu einer normalen Kapitalgesellschaft, im Januar 2022 folgte die Fusion mit Athene – seitdem ist Apollo eine Mischung aus Vermögensverwalter und Versicherer. Dann kamen die Indexfonds: S&P kündigte die Aufnahme am 6. Dezember 2024 an, am 23. Dezember ersetzte Apollo Qorvo im S&P 500, und den Rekord von 189,49 $ erreichte die Aktie am 9. Dezember 2024.
+Lange war Apollo eine Übernahmefirma in Form einer Partnerschaft. 2019 wurde sie zu einer normalen Kapitalgesellschaft, im Januar 2022 folgte die Fusion mit Athene – seitdem ist Apollo eine Mischung aus Vermögensverwalter und Versicherer. Dann kamen die Indexfonds: S&P kündigte die Aufnahme am 6. Dezember 2024 an, am 23. Dezember ersetzte Apollo Qorvo im S&P 500, und am 9. Dezember 2024 schloss die Aktie auf einem Hoch von 189,49 $.
 
 2025 verlor die Aktie rund 13 %, Anfang März 2026 fiel sie auf etwa 99,56 $ – Anleger sorgten sich um die Qualität der Kredite und um Privatanlegerfonds mit Darlehen, die sich nicht schnell verkaufen lassen. Im Juni 2026 erhielt Apollo Debt Solutions, ein rund 26 Mrd. $ schwerer Fonds für vermögende Privatanleger, Rückgabeanträge für etwa 16,8 % der Anteile, zahlte aber nur die Obergrenze von 5 % aus – die Aktie fiel an einem Tag um 6 %.
 
@@ -46,7 +46,7 @@ Die engsten Rivalen sind die anderen großen Alternative-Asset-Manager: Blacksto
 
 ## Was das bedeutet, wenn du regelmäßig kaufst
 
-Apollo zeigt, wie schnell die Stimmung kippen kann: Rekordhoch und Aufnahme in den S&P 500 im Dezember 2024, dann ein Minus von 41 % in weniger als zwei Jahren – obwohl der Gebührengewinn weiter stieg. Ein Sparplan verteilt die Käufe über solche Hochs und Tiefs, und die Dividende lässt sich wieder anlegen, aber ein Geschäft, das am Kreditmarkt hängt, kann lange in Ungnade bleiben. Viele halten so eine Aktie nur als Teil eines breiteren Depots. Vergangene Ergebnisse sind keine Garantie für die Zukunft.
+Apollo zeigt, wie schnell die Stimmung kippen kann: Hoch und Aufnahme in den S&P 500 im Dezember 2024, dann rund 41 % Minus bis November 2026 – obwohl der Gebührengewinn weiter stieg. Ein Sparplan verteilt die Käufe über solche Hochs und Tiefs, und die Dividende lässt sich wieder anlegen, aber ein Geschäft, das am Kreditmarkt hängt, kann lange in Ungnade bleiben. Viele halten so eine Aktie nur als Teil eines breiteren Depots. Vergangene Ergebnisse sind keine Garantie für die Zukunft.
 
 *Keine Anlageberatung.*
 
