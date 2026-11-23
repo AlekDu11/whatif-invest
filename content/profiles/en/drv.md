@@ -1,16 +1,16 @@
 ---
-title: Derive (DRV) explained: on-chain options, a fixed 1.5 billion supply and a $0.57 record
+title: Derive (DRV) explained: on-chain options, a fixed 1.5 billion supply, formerly Lyra
 description: Derive in plain language: the on-chain exchange for crypto options and perpetuals, formerly Lyra, what DRV is for, its story, rivals and the main risks.
-date: 2026-11-23
+date: 2026-11-24
 kind: analysis
 ---
-**Derive** is an on-chain exchange for crypto options and perpetual futures — the kind of trading usually done on big centralized platforms — where users keep control of their own funds. It started in 2021 as Lyra Finance and renamed itself Derive in August 2024. In November 2026 all DRV in circulation was worth about $390 million, around number 110 among cryptocurrencies.
+**Derive** is an on-chain exchange for crypto options and perpetual futures — the kind of trading usually done on big centralized platforms — where users keep control of their own funds. It started in 2021 as Lyra Finance and renamed itself Derive in August 2024. Today all DRV in circulation is worth {{mcap:drv}} ({{rank:drv}} among cryptocurrencies).
 
 > **Key takeaways**
 > - DRV launched in January 2025, swapped 1:1 for the old LYRA token; total supply is fixed at 1.5 billion, of which about 1.06 billion circulate.
 > - According to Derive's docs, 35% of protocol revenue is used to buy DRV on the open market.
 > - From its low of about $0.012 in April 2025 the price rose roughly 30-fold by November 2026.
-> - The record price so far is $0.569 (9 October 2026); in November 2026 DRV traded about 35% below it.
+> - Its record high is {{ath:drv}} ({{athd:drv}}); today the price is {{fromath:drv}} from it.
 
 ## How it works
 
@@ -23,7 +23,8 @@ Holders can stake DRV to get stDRV, which gives a vote on upgrades and earns wee
 ## The numbers right now
 
 - Price today: {{price:drv}}
-- Record high: {{ath:drv}} ({{athd:drv}})
+- Record high: {{ath:drv}} ({{athd:drv}}), {{fromath:drv}} from it
+- Market value: {{mcap:drv}} ({{rank:drv}} among cryptocurrencies)
 - Price change over 12 months: {{chg1y:drv}}
 - $10 a day for 1 year: {{dca:drv:1}} from {{dcainv:1}} invested ({{dcaroi:drv:1}})
 

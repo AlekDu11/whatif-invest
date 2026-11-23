@@ -1,16 +1,16 @@
 ---
-title: Derive (DRV) uitgelegd: on-chain opties, een vast aanbod van 1,5 miljard en een record van $0,57
+title: Derive (DRV) uitgelegd: on-chain opties, een vast aanbod van 1,5 miljard, voorheen Lyra
 description: Derive in gewone taal: de on-chain beurs voor crypto-opties en perpetuals, vroeger Lyra, waarvoor DRV dient, het verhaal, concurrenten en de grootste risico's.
-date: 2026-11-23
+date: 2026-11-24
 kind: analysis
 ---
-**Derive** is een on-chain beurs voor crypto-opties en eeuwigdurende futures (perpetuals) — handel die meestal op grote gecentraliseerde platforms plaatsvindt — waarbij gebruikers zelf de controle over hun geld houden. Het begon in 2021 als Lyra Finance en heet sinds augustus 2024 Derive. In november 2026 waren alle DRV in omloop samen ongeveer $390 miljoen waard, rond plaats 110 onder de cryptomunten.
+**Derive** is een on-chain beurs voor crypto-opties en eeuwigdurende futures (perpetuals) — handel die meestal op grote gecentraliseerde platforms plaatsvindt — waarbij gebruikers zelf de controle over hun geld houden. Het begon in 2021 als Lyra Finance en heet sinds augustus 2024 Derive. Vandaag zijn alle DRV in omloop samen {{mcap:drv}} waard ({{rank:drv}} onder de cryptomunten).
 
 > **Belangrijkste punten**
 > - DRV verscheen in januari 2025, één op één geruild tegen de oude LYRA-token; het totale aanbod ligt vast op 1,5 miljard, waarvan ongeveer 1,06 miljard circuleert.
 > - Volgens de documentatie van Derive gaat 35% van de protocolinkomsten naar aankopen van DRV op de open markt.
 > - Vanaf het dieptepunt van zo'n $0,012 in april 2025 steeg de koers tot november 2026 ongeveer dertigvoudig.
-> - Het record tot nu toe is $0,569 (9 oktober 2026); in november 2026 noteerde DRV zo'n 35% lager.
+> - De recordkoers is {{ath:drv}} ({{athd:drv}}); vandaag staat de koers {{fromath:drv}} daarvan af.
 
 ## Hoe het werkt
 
@@ -23,7 +23,8 @@ Houders kunnen DRV staken en krijgen dan stDRV, dat stemrecht over upgrades en w
 ## De cijfers nu
 
 - Koers nu: {{price:drv}}
-- Recordkoers: {{ath:drv}} ({{athd:drv}})
+- Recordkoers: {{ath:drv}} ({{athd:drv}}), {{fromath:drv}} daarvan af
+- Marktwaarde: {{mcap:drv}} ({{rank:drv}} onder de cryptomunten)
 - Koersverandering over 12 maanden: {{chg1y:drv}}
 - $10 per dag gedurende 1 jaar: {{dca:drv:1}} bij {{dcainv:1}} ingelegd ({{dcaroi:drv:1}})
 

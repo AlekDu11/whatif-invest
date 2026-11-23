@@ -1,16 +1,16 @@
 ---
-title: Derive (DRV) wyjaśniony: opcje on-chain, stała podaż 1,5 mld i rekord 0,57 $
+title: Derive (DRV) wyjaśniony: opcje on-chain, stała podaż 1,5 mld, dawniej Lyra
 description: Derive prostym językiem: giełda on-chain opcji i kontraktów wieczystych na kryptowaluty, dawniej Lyra, do czego służy DRV, historia, rywale i główne ryzyka.
-date: 2026-11-23
+date: 2026-11-24
 kind: analysis
 ---
-**Derive** to giełda on-chain dla opcji i wieczystych kontraktów terminowych (perpetuals) na kryptowaluty – czyli handlu, który zwykle odbywa się na dużych scentralizowanych platformach – ale tu użytkownicy sami kontrolują swoje środki. Wystartowała w 2021 r. jako Lyra Finance, a w sierpniu 2024 r. zmieniła nazwę na Derive. W listopadzie 2026 r. wszystkie DRV w obiegu były warte ok. 390 mln dolarów, co dawało mniej więcej 110. miejsce wśród kryptowalut.
+**Derive** to giełda on-chain dla opcji i wieczystych kontraktów terminowych (perpetuals) na kryptowaluty – czyli handlu, który zwykle odbywa się na dużych scentralizowanych platformach – ale tu użytkownicy sami kontrolują swoje środki. Wystartowała w 2021 r. jako Lyra Finance, a w sierpniu 2024 r. zmieniła nazwę na Derive. Dziś wszystkie DRV w obiegu są warte {{mcap:drv}} ({{rank:drv}} wśród kryptowalut).
 
 > **Najważniejsze**
 > - DRV pojawił się w styczniu 2025 r. w wymianie 1:1 za stary token LYRA; łączna podaż jest stała – 1,5 mld, z czego w obiegu jest ok. 1,06 mld.
 > - Według dokumentacji Derive 35% przychodów protokołu idzie na zakup DRV na otwartym rynku.
 > - Od dołka ok. 0,012 $ w kwietniu 2025 r. cena wzrosła do listopada 2026 r. mniej więcej 30-krotnie.
-> - Dotychczasowy rekord to 0,569 $ (9 października 2026 r.); w listopadzie 2026 r. DRV kosztował ok. 35% mniej.
+> - Rekord ceny to {{ath:drv}} ({{athd:drv}}); dziś cena jest {{fromath:drv}} od niego.
 
 ## Jak działa
 
@@ -23,7 +23,8 @@ Posiadacze mogą stakować DRV i otrzymać stDRV, który daje głos w sprawie ak
 ## Liczby teraz
 
 - Cena teraz: {{price:drv}}
-- Rekord: {{ath:drv}} ({{athd:drv}})
+- Rekord: {{ath:drv}} ({{athd:drv}}), {{fromath:drv}} od niego
+- Wartość rynkowa: {{mcap:drv}} ({{rank:drv}} wśród kryptowalut)
 - Zmiana ceny w ciągu 12 miesięcy: {{chg1y:drv}}
 - 10 $ dziennie przez 1 rok: {{dca:drv:1}} przy wpłaconych {{dcainv:1}} ({{dcaroi:drv:1}})
 

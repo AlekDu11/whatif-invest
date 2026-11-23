@@ -1,16 +1,16 @@
 ---
-title: Derive (DRV), ipinaliwanag: on-chain na options, nakapirming 1.5 bilyong supply at $0.57 na rekord
+title: Derive (DRV), ipinaliwanag: on-chain na options, nakapirming 1.5 bilyong supply, dating Lyra
 description: Derive sa simpleng salita: ang on-chain exchange para sa crypto options at perpetuals, dating Lyra, para saan ang DRV, kuwento, kakumpitensya at panganib.
-date: 2026-11-23
+date: 2026-11-24
 kind: analysis
 ---
-Ang **Derive** ay isang on-chain exchange para sa crypto options at perpetual futures — ang uri ng trading na karaniwang ginagawa sa malalaking sentralisadong platform — kung saan hawak pa rin ng mga user ang kontrol sa sarili nilang pondo. Nagsimula ito noong 2021 bilang Lyra Finance at pinalitan ang pangalan nito ng Derive noong Agosto 2024. Noong Nobyembre 2026, nasa humigit-kumulang $390 milyon ang halaga ng lahat ng DRV na umiikot, mga ika-110 puwesto sa mga cryptocurrency.
+Ang **Derive** ay isang on-chain exchange para sa crypto options at perpetual futures — ang uri ng trading na karaniwang ginagawa sa malalaking sentralisadong platform — kung saan hawak pa rin ng mga user ang kontrol sa sarili nilang pondo. Nagsimula ito noong 2021 bilang Lyra Finance at pinalitan ang pangalan nito ng Derive noong Agosto 2024. Ngayon, {{mcap:drv}} ang halaga ng lahat ng DRV na umiikot ({{rank:drv}} sa mga cryptocurrency).
 
 > **Mahahalagang punto**
 > - Inilunsad ang DRV noong Enero 2025, ipinalit nang 1:1 sa lumang LYRA token; nakapirmi sa 1.5 bilyon ang kabuuang supply, at mga 1.06 bilyon ang umiikot.
 > - Ayon sa docs ng Derive, 35% ng kita ng protocol ang ginagamit pambili ng DRV sa bukas na merkado.
 > - Mula sa pinakamababang mga $0.012 noong Abril 2025, tumaas ang presyo nang humigit-kumulang 30 ulit hanggang Nobyembre 2026.
-> - Ang pinakamataas na presyo sa ngayon ay $0.569 (9 Oktubre 2026); noong Nobyembre 2026, mga 35% na mas mababa ang presyo ng DRV.
+> - Ang pinakamataas na presyo nito ay {{ath:drv}} ({{athd:drv}}); ngayon, {{fromath:drv}} ang presyo mula roon.
 
 ## Paano ito gumagana
 
@@ -23,7 +23,8 @@ Puwedeng i-stake ng mga may hawak ang DRV para makakuha ng stDRV, na nagbibigay 
 ## Ang mga numero ngayon
 
 - Presyo ngayon: {{price:drv}}
-- Pinakamataas na presyo: {{ath:drv}} ({{athd:drv}})
+- Pinakamataas na presyo: {{ath:drv}} ({{athd:drv}}), {{fromath:drv}} mula roon
+- Halaga sa merkado: {{mcap:drv}} ({{rank:drv}} sa mga cryptocurrency)
 - Pagbabago ng presyo sa loob ng 12 buwan: {{chg1y:drv}}
 - $10 kada araw sa loob ng 1 taon: {{dca:drv:1}} mula sa {{dcainv:1}} na inilagay ({{dcaroi:drv:1}})
 

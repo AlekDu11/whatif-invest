@@ -1,16 +1,16 @@
 ---
-title: Derive (DRV) explicado: opções on-chain, oferta fixa de 1,5 bilhão e recorde de US$ 0,57
+title: Derive (DRV) explicado: opções on-chain, oferta fixa de 1,5 bilhão, antiga Lyra
 description: Derive em linguagem simples: a corretora on-chain de opções e perpétuos de cripto, antiga Lyra, para que serve o DRV, sua história, rivais e os principais riscos.
-date: 2026-11-23
+date: 2026-11-24
 kind: analysis
 ---
-**Derive** é uma corretora on-chain de opções e contratos futuros perpétuos de criptomoedas — o tipo de negociação que costuma acontecer em grandes plataformas centralizadas —, mas aqui os usuários mantêm o controle do próprio dinheiro. Ela começou em 2021 como Lyra Finance e passou a se chamar Derive em agosto de 2024. Em novembro de 2026, todos os DRV em circulação valiam cerca de US$ 390 milhões, por volta da 110ª posição entre as criptomoedas.
+**Derive** é uma corretora on-chain de opções e contratos futuros perpétuos de criptomoedas — o tipo de negociação que costuma acontecer em grandes plataformas centralizadas —, mas aqui os usuários mantêm o controle do próprio dinheiro. Ela começou em 2021 como Lyra Finance e passou a se chamar Derive em agosto de 2024. Hoje, todos os DRV em circulação valem {{mcap:drv}} ({{rank:drv}} entre as criptomoedas).
 
 > **Pontos principais**
 > - O DRV foi lançado em janeiro de 2025, trocado 1:1 pelo antigo token LYRA; a oferta total é fixa em 1,5 bilhão, dos quais cerca de 1,06 bilhão circulam.
 > - Segundo a documentação da Derive, 35% da receita do protocolo é usada para comprar DRV no mercado aberto.
 > - Da mínima de cerca de US$ 0,012 em abril de 2025, o preço subiu cerca de 30 vezes até novembro de 2026.
-> - O recorde até agora é US$ 0,569 (9 de outubro de 2026); em novembro de 2026 o DRV era negociado cerca de 35% abaixo.
+> - A máxima histórica é {{ath:drv}} ({{athd:drv}}); hoje o preço está {{fromath:drv}} abaixo dela.
 
 ## Como funciona
 
@@ -23,7 +23,8 @@ Os detentores podem fazer staking de DRV e receber stDRV, que dá voto sobre atu
 ## Os números agora
 
 - Preço hoje: {{price:drv}}
-- Recorde: {{ath:drv}} ({{athd:drv}})
+- Máxima histórica: {{ath:drv}} ({{athd:drv}}), {{fromath:drv}} desde ela
+- Valor de mercado: {{mcap:drv}} ({{rank:drv}} entre as criptomoedas)
 - Variação do preço em 12 meses: {{chg1y:drv}}
 - US$ 10 por dia durante 1 ano: {{dca:drv:1}} com {{dcainv:1}} investidos ({{dcaroi:drv:1}})
 

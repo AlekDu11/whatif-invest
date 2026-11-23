@@ -1,16 +1,16 @@
 ---
-title: Derive (DRV) là gì: quyền chọn on-chain, nguồn cung cố định 1,5 tỷ và đỉnh 0,57 USD
+title: Derive (DRV) là gì: quyền chọn on-chain, nguồn cung cố định 1,5 tỷ, tiền thân là Lyra
 description: Derive bằng ngôn ngữ dễ hiểu: sàn on-chain cho quyền chọn và hợp đồng vĩnh cửu tiền mã hóa, tiền thân là Lyra, DRV dùng làm gì, lịch sử, đối thủ và rủi ro.
-date: 2026-11-23
+date: 2026-11-24
 kind: analysis
 ---
-**Derive** là sàn giao dịch on-chain cho quyền chọn và hợp đồng tương lai vĩnh cửu (perpetual) tiền mã hóa — loại giao dịch thường diễn ra trên các nền tảng tập trung lớn — nhưng ở đây người dùng tự kiểm soát tiền của mình. Dự án khởi đầu năm 2021 với tên Lyra Finance và đổi tên thành Derive vào tháng 8/2024. Vào tháng 11/2026, toàn bộ DRV đang lưu hành trị giá khoảng 390 triệu USD, quanh vị trí thứ 110 trong số các tiền mã hóa.
+**Derive** là sàn giao dịch on-chain cho quyền chọn và hợp đồng tương lai vĩnh cửu (perpetual) tiền mã hóa — loại giao dịch thường diễn ra trên các nền tảng tập trung lớn — nhưng ở đây người dùng tự kiểm soát tiền của mình. Dự án khởi đầu năm 2021 với tên Lyra Finance và đổi tên thành Derive vào tháng 8/2024. Hiện toàn bộ DRV đang lưu hành trị giá {{mcap:drv}} ({{rank:drv}} trong các đồng tiền mã hóa).
 
 > **Điểm chính**
 > - DRV ra mắt tháng 1/2025, đổi 1:1 lấy token LYRA cũ; tổng cung cố định 1,5 tỷ, trong đó khoảng 1,06 tỷ đang lưu hành.
 > - Theo tài liệu của Derive, 35% doanh thu giao thức được dùng để mua DRV trên thị trường mở.
 > - Từ đáy khoảng 0,012 USD vào tháng 4/2025, giá đã tăng khoảng 30 lần tính đến tháng 11/2026.
-> - Đỉnh giá cho đến nay là 0,569 USD (9/10/2026); tháng 11/2026, DRV giao dịch thấp hơn khoảng 35%.
+> - Đỉnh kỷ lục là {{ath:drv}} ({{athd:drv}}); giá hiện tại cách đỉnh {{fromath:drv}}.
 
 ## Cách hoạt động
 
@@ -23,7 +23,8 @@ Người nắm giữ có thể stake DRV để nhận stDRV, cho quyền biểu 
 ## Các con số hiện tại
 
 - Giá hôm nay: {{price:drv}}
-- Đỉnh kỷ lục: {{ath:drv}} ({{athd:drv}})
+- Đỉnh kỷ lục: {{ath:drv}} ({{athd:drv}}), cách đỉnh {{fromath:drv}}
+- Vốn hóa thị trường: {{mcap:drv}} ({{rank:drv}} trong các đồng tiền mã hóa)
 - Biến động giá trong 12 tháng: {{chg1y:drv}}
 - 10 USD mỗi ngày trong 1 năm: {{dca:drv:1}} từ {{dcainv:1}} đã đầu tư ({{dcaroi:drv:1}})
 

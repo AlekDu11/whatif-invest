@@ -1,16 +1,16 @@
 ---
-title: Derive (DRV) expliqué : options sur blockchain, offre fixe de 1,5 milliard et record à 0,57 $
+title: Derive (DRV) expliqué : options sur blockchain, offre fixe de 1,5 milliard, anciennement Lyra
 description: Derive en termes simples : la plateforme on-chain d'options et de contrats perpétuels crypto, ex-Lyra, à quoi sert le DRV, son histoire, ses rivaux et les risques.
-date: 2026-11-23
+date: 2026-11-24
 kind: analysis
 ---
-**Derive** est une plateforme d'échange sur blockchain pour les options et les contrats à terme perpétuels sur cryptomonnaies — des opérations qui se font d'habitude sur de grandes plateformes centralisées —, où les utilisateurs gardent le contrôle de leurs fonds. Elle a démarré en 2021 sous le nom de Lyra Finance et s'appelle Derive depuis août 2024. En novembre 2026, l'ensemble des DRV en circulation valait environ 390 millions de dollars, vers la 110e place parmi les cryptomonnaies.
+**Derive** est une plateforme d'échange sur blockchain pour les options et les contrats à terme perpétuels sur cryptomonnaies — des opérations qui se font d'habitude sur de grandes plateformes centralisées —, où les utilisateurs gardent le contrôle de leurs fonds. Elle a démarré en 2021 sous le nom de Lyra Finance et s'appelle Derive depuis août 2024. Aujourd'hui, l'ensemble des DRV en circulation vaut {{mcap:drv}} ({{rank:drv}} parmi les cryptomonnaies).
 
 > **À retenir**
 > - Le DRV a été lancé en janvier 2025, échangé à un pour un contre l'ancien jeton LYRA ; l'offre totale est fixée à 1,5 milliard, dont environ 1,06 milliard en circulation.
 > - Selon la documentation de Derive, 35 % des revenus du protocole servent à acheter du DRV sur le marché.
 > - Depuis son plus bas d'environ 0,012 $ en avril 2025, le cours a été multiplié par une trentaine jusqu'en novembre 2026.
-> - Le record à ce jour est de 0,569 $ (9 octobre 2026) ; en novembre 2026, le DRV s'échangeait environ 35 % plus bas.
+> - Son record est de {{ath:drv}} ({{athd:drv}}) ; aujourd'hui, le cours est à {{fromath:drv}} de ce niveau.
 
 ## Comment il fonctionne
 
@@ -23,7 +23,8 @@ Les détenteurs peuvent staker leurs DRV pour obtenir des stDRV, qui donnent un 
 ## Les chiffres actuels
 
 - Cours actuel : {{price:drv}}
-- Record : {{ath:drv}} ({{athd:drv}})
+- Record : {{ath:drv}} ({{athd:drv}}), {{fromath:drv}} depuis
+- Valeur de marché : {{mcap:drv}} ({{rank:drv}} parmi les cryptomonnaies)
 - Variation du cours sur 12 mois : {{chg1y:drv}}
 - 10 $ par jour pendant 1 an : {{dca:drv:1}} pour {{dcainv:1}} investis ({{dcaroi:drv:1}})
 

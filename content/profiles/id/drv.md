@@ -1,16 +1,16 @@
 ---
-title: Derive (DRV) dijelaskan: opsi on-chain, pasokan tetap 1,5 miliar, dan rekor $0,57
+title: Derive (DRV) dijelaskan: opsi on-chain, pasokan tetap 1,5 miliar, dulu bernama Lyra
 description: Derive dengan bahasa sederhana: bursa on-chain untuk opsi dan kontrak perpetual kripto, dulu Lyra, kegunaan DRV, kisahnya, pesaing, dan risiko utamanya.
-date: 2026-11-23
+date: 2026-11-24
 kind: analysis
 ---
-**Derive** adalah bursa on-chain untuk opsi dan kontrak berjangka perpetual kripto — jenis perdagangan yang biasanya dilakukan di platform terpusat besar — tetapi di sini pengguna tetap memegang kendali atas dananya sendiri. Proyek ini dimulai pada 2021 sebagai Lyra Finance dan berganti nama menjadi Derive pada Agustus 2024. Pada November 2026, seluruh DRV yang beredar bernilai sekitar $390 juta, kira-kira peringkat 110 di antara mata uang kripto.
+**Derive** adalah bursa on-chain untuk opsi dan kontrak berjangka perpetual kripto — jenis perdagangan yang biasanya dilakukan di platform terpusat besar — tetapi di sini pengguna tetap memegang kendali atas dananya sendiri. Proyek ini dimulai pada 2021 sebagai Lyra Finance dan berganti nama menjadi Derive pada Agustus 2024. Kini seluruh DRV yang beredar bernilai {{mcap:drv}} ({{rank:drv}} di antara mata uang kripto).
 
 > **Poin penting**
 > - DRV diluncurkan pada Januari 2025, ditukar 1:1 dengan token lama LYRA; total pasokan tetap 1,5 miliar, dengan sekitar 1,06 miliar beredar.
 > - Menurut dokumentasi Derive, 35% pendapatan protokol dipakai membeli DRV di pasar terbuka.
 > - Dari titik terendah sekitar $0,012 pada April 2025, harganya naik kira-kira 30 kali lipat hingga November 2026.
-> - Rekor harga sejauh ini $0,569 (9 Oktober 2026); pada November 2026 DRV diperdagangkan sekitar 35% di bawahnya.
+> - Rekor tertingginya {{ath:drv}} ({{athd:drv}}); kini harganya {{fromath:drv}} dari rekor itu.
 
 ## Cara kerjanya
 
@@ -23,7 +23,8 @@ Pemegang bisa melakukan staking DRV untuk mendapat stDRV, yang memberi hak suara
 ## Angka saat ini
 
 - Harga hari ini: {{price:drv}}
-- Rekor tertinggi: {{ath:drv}} ({{athd:drv}})
+- Rekor tertinggi: {{ath:drv}} ({{athd:drv}}), {{fromath:drv}} dari rekor itu
+- Nilai pasar: {{mcap:drv}} ({{rank:drv}} di antara mata uang kripto)
 - Perubahan harga dalam 12 bulan: {{chg1y:drv}}
 - $10 per hari selama 1 tahun: {{dca:drv:1}} dari {{dcainv:1}} yang diinvestasikan ({{dcaroi:drv:1}})
 

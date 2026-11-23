@@ -1,16 +1,16 @@
 ---
-title: Derive (DRV) spiegato: opzioni on-chain, offerta fissa di 1,5 miliardi e un record di 0,57 $
+title: Derive (DRV) spiegato: opzioni on-chain, offerta fissa di 1,5 miliardi, ex Lyra
 description: Derive in parole semplici: l'exchange on-chain di opzioni e perpetui sulle cripto, ex Lyra, a cosa serve DRV, la sua storia, i rivali e i rischi principali.
-date: 2026-11-23
+date: 2026-11-24
 kind: analysis
 ---
-**Derive** è un exchange on-chain per opzioni e future perpetui sulle criptovalute, il tipo di trading che di solito avviene sulle grandi piattaforme centralizzate, ma qui gli utenti mantengono il controllo dei propri fondi. È nato nel 2021 come Lyra Finance e ad agosto 2024 ha cambiato nome in Derive. A novembre 2026 tutti i DRV in circolazione valevano circa 390 milioni di dollari, intorno al 110° posto tra le criptovalute.
+**Derive** è un exchange on-chain per opzioni e future perpetui sulle criptovalute, il tipo di trading che di solito avviene sulle grandi piattaforme centralizzate, ma qui gli utenti mantengono il controllo dei propri fondi. È nato nel 2021 come Lyra Finance e ad agosto 2024 ha cambiato nome in Derive. Oggi tutti i DRV in circolazione valgono {{mcap:drv}} ({{rank:drv}} tra le criptovalute).
 
 > **In sintesi**
 > - DRV è stato lanciato a gennaio 2025, scambiato 1:1 con il vecchio token LYRA; l'offerta totale è fissata a 1,5 miliardi, di cui circa 1,06 miliardi in circolazione.
 > - Secondo la documentazione di Derive, il 35% dei ricavi del protocollo serve a comprare DRV sul mercato aperto.
 > - Dal minimo di circa 0,012 $ di aprile 2025 il prezzo è salito di circa 30 volte fino a novembre 2026.
-> - Il record finora è 0,569 $ (9 ottobre 2026); a novembre 2026 DRV quotava circa il 35% sotto.
+> - Il suo massimo storico è {{ath:drv}} ({{athd:drv}}); oggi il prezzo è a {{fromath:drv}} da lì.
 
 ## Come funziona
 
@@ -23,7 +23,8 @@ I possessori possono mettere in staking DRV per ottenere stDRV, che dà diritto 
 ## I numeri di oggi
 
 - Prezzo oggi: {{price:drv}}
-- Record: {{ath:drv}} ({{athd:drv}})
+- Massimo storico: {{ath:drv}} ({{athd:drv}}), {{fromath:drv}} da lì
+- Valore di mercato: {{mcap:drv}} ({{rank:drv}} tra le criptovalute)
 - Variazione del prezzo in 12 mesi: {{chg1y:drv}}
 - 10 $ al giorno per 1 anno: {{dca:drv:1}} con {{dcainv:1}} investiti ({{dcaroi:drv:1}})
 

@@ -1,16 +1,16 @@
 ---
-title: Derive (DRV) erklärt: Optionen auf der Blockchain, feste 1,5 Milliarden Token und ein Rekord von 0,57 $
+title: Derive (DRV) erklärt: Optionen auf der Blockchain, feste 1,5 Milliarden Token, früher Lyra
 description: Derive einfach erklärt: die On-Chain-Börse für Krypto-Optionen und Perpetuals, früher Lyra, wofür DRV dient, Geschichte, Konkurrenten und die größten Risiken.
-date: 2026-11-23
+date: 2026-11-24
 kind: analysis
 ---
-**Derive** ist eine Börse auf der Blockchain für Krypto-Optionen und unbefristete Futures (Perpetuals) – Geschäfte, die sonst meist auf großen zentralen Plattformen laufen, hier aber behalten Nutzer die Kontrolle über ihr Geld. Sie startete 2021 als Lyra Finance und heißt seit August 2024 Derive. Im November 2026 waren alle umlaufenden DRV rund 390 Millionen Dollar wert, etwa Platz 110 unter den Kryptowährungen.
+**Derive** ist eine Börse auf der Blockchain für Krypto-Optionen und unbefristete Futures (Perpetuals) – Geschäfte, die sonst meist auf großen zentralen Plattformen laufen, hier aber behalten Nutzer die Kontrolle über ihr Geld. Sie startete 2021 als Lyra Finance und heißt seit August 2024 Derive. Heute sind alle umlaufenden DRV {{mcap:drv}} wert ({{rank:drv}} unter den Kryptowährungen).
 
 > **Das Wichtigste**
 > - DRV startete im Januar 2025 im Tausch 1:1 gegen den alten LYRA-Token; die Gesamtmenge ist auf 1,5 Milliarden festgelegt, davon sind rund 1,06 Milliarden im Umlauf.
 > - Laut Derive-Dokumentation fließen 35% der Protokolleinnahmen in Käufe von DRV am offenen Markt.
 > - Vom Tief bei rund 0,012 $ im April 2025 stieg der Kurs bis November 2026 etwa um das 30-Fache.
-> - Der bisherige Rekord liegt bei 0,569 $ (9. Oktober 2026); im November 2026 notierte DRV rund 35% darunter.
+> - Sein Rekordhoch liegt bei {{ath:drv}} ({{athd:drv}}); heute steht der Kurs {{fromath:drv}} darunter.
 
 ## So funktioniert es
 
@@ -23,7 +23,8 @@ Inhaber können DRV staken und erhalten stDRV, das Stimmrecht bei Upgrades und w
 ## Die Zahlen jetzt
 
 - Kurs heute: {{price:drv}}
-- Rekordhoch: {{ath:drv}} ({{athd:drv}})
+- Rekordhoch: {{ath:drv}} ({{athd:drv}}), {{fromath:drv}} davon entfernt
+- Marktwert: {{mcap:drv}} ({{rank:drv}} unter den Kryptowährungen)
 - Kursveränderung in 12 Monaten: {{chg1y:drv}}
 - 10 $ am Tag über 1 Jahr: {{dca:drv:1}} bei {{dcainv:1}} Einsatz ({{dcaroi:drv:1}})
 

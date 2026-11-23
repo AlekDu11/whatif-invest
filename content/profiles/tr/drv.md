@@ -1,16 +1,16 @@
 ---
-title: Derive (DRV) nedir: zincir üstü opsiyonlar, sabit 1,5 milyar arz ve 0,57 $ rekor
+title: Derive (DRV) nedir: zincir üstü opsiyonlar, sabit 1,5 milyar arz, eski adıyla Lyra
 description: Derive sade bir dille: kripto opsiyon ve vadesiz kontratlar için zincir üstü borsa, eski adıyla Lyra, DRV ne işe yarar, hikâyesi, rakipleri ve başlıca riskleri.
-date: 2026-11-23
+date: 2026-11-24
 kind: analysis
 ---
-**Derive**, kripto opsiyonları ve vadesiz vadeli işlem kontratları (perpetual) için zincir üstü bir borsadır; bu tür işlemler genelde büyük merkezi platformlarda yapılır, ama burada kullanıcılar kendi fonlarının kontrolünü elinde tutar. 2021'de Lyra Finance olarak başladı ve Ağustos 2024'te adını Derive olarak değiştirdi. Kasım 2026'da dolaşımdaki tüm DRV'lerin değeri yaklaşık 390 milyon dolardı; kripto paralar arasında 110. sıra civarındaydı.
+**Derive**, kripto opsiyonları ve vadesiz vadeli işlem kontratları (perpetual) için zincir üstü bir borsadır; bu tür işlemler genelde büyük merkezi platformlarda yapılır, ama burada kullanıcılar kendi fonlarının kontrolünü elinde tutar. 2021'de Lyra Finance olarak başladı ve Ağustos 2024'te adını Derive olarak değiştirdi. Bugün dolaşımdaki tüm DRV'lerin değeri {{mcap:drv}} (kripto paralar arasında {{rank:drv}}).
 
 > **Öne çıkanlar**
 > - DRV, Ocak 2025'te eski LYRA token'ıyla 1:1 takasla çıktı; toplam arz 1,5 milyarda sabit, bunun yaklaşık 1,06 milyarı dolaşımda.
 > - Derive belgelerine göre protokol gelirinin %35'i açık piyasadan DRV almak için kullanılıyor.
 > - Nisan 2025'teki yaklaşık 0,012 $'lık dipten Kasım 2026'ya kadar fiyat kabaca 30 kat arttı.
-> - Şimdiye kadarki rekor 0,569 $ (9 Ekim 2026); Kasım 2026'da DRV bunun yaklaşık %35 altında işlem görüyordu.
+> - Rekor fiyatı {{ath:drv}} ({{athd:drv}}); bugün fiyat ondan {{fromath:drv}} uzakta.
 
 ## Nasıl çalışır
 
@@ -23,7 +23,8 @@ Sahipler DRV'yi stake ederek stDRV alabilir; bu, yükseltmelerde oy hakkı ve ha
 ## Şu anki rakamlar
 
 - Bugünkü fiyat: {{price:drv}}
-- Rekor: {{ath:drv}} ({{athd:drv}})
+- Rekor: {{ath:drv}} ({{athd:drv}}), ondan {{fromath:drv}}
+- Piyasa değeri: {{mcap:drv}} (kripto paralar arasında {{rank:drv}})
 - 12 aylık fiyat değişimi: {{chg1y:drv}}
 - 1 yıl boyunca günde 10 $: {{dca:drv:1}}, yatırılan {{dcainv:1}} ({{dcaroi:drv:1}})
 
