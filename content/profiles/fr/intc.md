@@ -1,10 +1,10 @@
 ---
-title: Action Intel (INTC) expliquée simplement : le géant des puces qui a mis 26 ans à battre son record de 2000
+title: Intel (INTC) : le rebond du géant des puces et ses 16,5 Md$ de chiffre d'affaires au T3 2026
 description: Intel expliqué simplement : chiffre d'affaires +21 % à 16,5 Md$ au T3 2026, demande de serveurs IA, l'État américain actionnaire, le rebond et les risques.
 date: 2026-11-23
 kind: analysis
 ---
-**Intel** fabrique les processeurs d'une très grande partie des ordinateurs et serveurs du monde et, contrairement à la plupart des sociétés de puces, il les produit dans ses propres usines. Après la pire année de son histoire en 2024, il est en plein rebond : son chiffre d'affaires a progressé de 21 % à 16,5 milliards de dollars au troisième trimestre 2026, et en avril 2026 l'action a enfin dépassé son record d'août 2000.
+**Intel** fabrique les processeurs d'une très grande partie des ordinateurs et serveurs du monde et, contrairement à la plupart des sociétés de puces, il les produit dans ses propres usines. Après la pire année de son histoire en 2024, il a connu un fort rebond en 2025–2026 : son chiffre d'affaires a progressé de 21 % à 16,5 milliards de dollars au troisième trimestre 2026, et en avril 2026 l'action a enfin dépassé son record d'août 2000.
 
 > **À retenir**
 > - Chiffre d'affaires du T3 2026 : 16,5 milliards $, +21 % sur un an ; les puces pour centres de données et IA ont bondi de 78 % à 7,3 milliards $.
@@ -14,11 +14,16 @@ kind: analysis
 
 ## Comment elle gagne de l'argent
 
-Intel a deux volets. **Intel Products** conçoit et vend les puces : la division grand public (processeurs Core pour portables et PC de bureau) a rapporté 8,1 milliards $ au T3, en baisse de 5 %, tandis que **Data Center and AI** (processeurs serveurs Xeon et puces associées) a bondi de 78 % à 7,3 milliards $. Le PDG Lip-Bu Tan explique que la priorité est désormais de produire assez de Xeon pour suivre la demande.
+Intel a deux volets. **Intel Products** conçoit et vend les puces : la division grand public (processeurs Core pour portables et PC de bureau) a rapporté 8,1 milliards $ au T3, en baisse de 5 %, tandis que **Data Center and AI** (processeurs serveurs Xeon et puces associées) a bondi de 78 % à 7,3 milliards $. En octobre 2026, le PDG Lip-Bu Tan expliquait que la priorité était de produire assez de Xeon pour suivre la demande.
 
 L'autre volet est **Intel Foundry**, l'activité d'usines : 6,7 milliards $ au T3, +58 %. Il s'agit surtout de puces fabriquées pour Intel lui-même, ce qui s'annule en grande partie dans les comptes du groupe ; l'objectif est de gagner des clients extérieurs.
 
 ## Les chiffres actuels
+
+- Cours actuel : {{price:intc}}
+- Valeur de marché : {{mcap:intc}} ({{rank:intc}} parmi les plus grandes entreprises du monde sur WhatIfStack)
+- Record : {{ath:intc}} ({{athd:intc}}), {{fromath:intc}} depuis
+- 10 $ par jour pendant 10 ans : {{dca:intc:10}} pour {{dcainv:10}} investis ({{dcaroi:intc:10}})
 
 Au trimestre clos le 26 septembre 2026, Intel a réalisé 16,5 milliards $ de chiffre d'affaires avec une marge brute de 43,0 %. Le bénéfice net a atteint 3,3 milliards $ (0,60 $ par action), en recul de 18 % sur un an ; en données ajustées, celles que privilégie Intel, le bénéfice par action a plus que doublé, à 0,52 $. Le groupe a bouclé une émission d'actions de 23 milliards $ et finissait le trimestre avec 21,8 milliards $ de trésorerie et 32,2 milliards $ de placements à court terme, face à 50,1 milliards $ de dette. Pour le T4, il prévoit 15 à 16 milliards $ de chiffre d'affaires et un bénéfice GAAP de seulement 0,10 $ par action. Il ne verse pas de dividende.
 
@@ -26,10 +31,7 @@ Au trimestre clos le 26 septembre 2026, Intel a réalisé 16,5 milliards $ de ch
 
 Au sommet de la bulle Internet, Intel était la deuxième entreprise la plus chère du monde, et son action a clôturé au record de 74,88 $ le 31 août 2000. Puis il a fallu attendre plus de 25 ans. En 2024, le titre a chuté d'environ 61 %, sa pire année depuis l'entrée en Bourse en 1971 : Intel a supprimé 15 000 postes et le conseil a écarté le PDG Pat Gelsinger le 1er décembre 2024.
 
-Le virage est venu en 2025 : un nouveau PDG, Lip-Bu Tan, et de l'argent de l'État américain, de Nvidia et de SoftBank. L'action a gagné 84 % cette année-là et a dépassé son record de 2000 en avril 2026, portée par la demande de serveurs liée à l'IA. Sur 52 semaines, elle a évolué entre 32,89 $ et 142,35 $.
-
-- Cours actuel : {{price:intc}}
-- 10 $ par jour pendant 10 ans : {{dca:intc:10}} pour {{dcainv:10}} investis ({{dcaroi:intc:10}})
+Le virage est venu en 2025 : un nouveau PDG, Lip-Bu Tan, et de l'argent de l'État américain, de Nvidia et de SoftBank. L'action a gagné 84 % cette année-là et a dépassé son record de 2000 en avril 2026, portée par la demande de serveurs liée à l'IA. Sur les douze mois jusqu'à la mi-novembre 2026, elle a évolué entre 32,89 $ et 142,35 $.
 
 ## Concurrents
 

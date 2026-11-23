@@ -1,10 +1,10 @@
 ---
-title: Akcje Intel (INTC) prostym językiem: gigant chipów, który 26 lat czekał na pobicie rekordu z 2000 roku
+title: Intel (INTC): powrót giganta chipów i jego 16,5 mld $ przychodu w III kw. 2026
 description: Intel prostym językiem: przychody +21% do 16,5 mld $ w III kw. 2026, popyt na serwery AI, rząd USA wśród głównych akcjonariuszy, powrót i ryzyka.
 date: 2026-11-23
 kind: analysis
 ---
-**Intel** produkuje procesory, które pracują w ogromnej części komputerów i serwerów na świecie, a w odróżnieniu od większości firm półprzewodnikowych wytwarza chipy we własnych fabrykach. Po najgorszym roku w historii (2024) przechodzi wyraźne odbicie: przychody w III kwartale 2026 roku wzrosły o 21% do 16,5 mld dolarów, a w kwietniu 2026 roku kurs w końcu pobił rekord z sierpnia 2000 roku.
+**Intel** produkuje procesory, które pracują w ogromnej części komputerów i serwerów na świecie, a w odróżnieniu od większości firm półprzewodnikowych wytwarza chipy we własnych fabrykach. Po najgorszym roku w historii (2024) w latach 2025–2026 wyraźnie odbił: przychody w III kwartale 2026 roku wzrosły o 21% do 16,5 mld dolarów, a w kwietniu 2026 roku kurs w końcu pobił rekord z sierpnia 2000 roku.
 
 > **Najważniejsze**
 > - Przychody w III kw. 2026: 16,5 mld $, +21% rok do roku; chipy dla centrów danych i AI urosły o 78% do 7,3 mld $.
@@ -14,11 +14,16 @@ kind: analysis
 
 ## Jak zarabia
 
-Intel ma dwie części. **Intel Products** projektuje i sprzedaje chipy: segment klientów (procesory Core do laptopów i komputerów stacjonarnych) przyniósł w III kwartale 8,1 mld $, o 5% mniej, natomiast **Data Center and AI** (procesory serwerowe Xeon i powiązane chipy) wzrósł o 78% do 7,3 mld $. Prezes Lip-Bu Tan mówi, że najważniejsze zadanie to teraz wyprodukować tyle Xeonów, ile chce rynek.
+Intel ma dwie części. **Intel Products** projektuje i sprzedaje chipy: segment klientów (procesory Core do laptopów i komputerów stacjonarnych) przyniósł w III kwartale 8,1 mld $, o 5% mniej, natomiast **Data Center and AI** (procesory serwerowe Xeon i powiązane chipy) wzrósł o 78% do 7,3 mld $. W październiku 2026 roku prezes Lip-Bu Tan powiedział, że najważniejsze zadanie to wyprodukować tyle Xeonów, ile chce rynek.
 
 Druga część to **Intel Foundry**, czyli fabryki: 6,7 mld $ w III kwartale, +58%. Większość tej kwoty to produkcja chipów dla samego Intela, więc w wynikach grupy w dużej mierze się znosi; celem jest zdobycie klientów zewnętrznych.
 
 ## Liczby teraz
+
+- Cena teraz: {{price:intc}}
+- Wartość rynkowa: {{mcap:intc}} ({{rank:intc}} wśród największych firm świata na WhatIfStack)
+- Rekord: {{ath:intc}} ({{athd:intc}}), {{fromath:intc}} od niego
+- 10 $ dziennie przez 10 lat: {{dca:intc:10}} przy wpłaconych {{dcainv:10}} ({{dcaroi:intc:10}})
 
 W kwartale zakończonym 26 września 2026 roku Intel miał 16,5 mld $ przychodów przy marży brutto 43,0%. Zysk netto wyniósł 3,3 mld $ (0,60 $ na akcję), o 18% mniej niż rok wcześniej; w ujęciu skorygowanym, które preferuje firma, zysk na akcję wzrósł ponad dwukrotnie do 0,52 $. Spółka zakończyła sprzedaż akcji za 23 mld $ i miała na koniec kwartału 21,8 mld $ gotówki oraz 32,2 mld $ krótkoterminowych inwestycji wobec 50,1 mld $ długu. Na IV kwartał oczekuje 15–16 mld $ przychodów i zysku GAAP zaledwie 0,10 $ na akcję. Nie wypłaca dywidendy.
 
@@ -26,10 +31,7 @@ W kwartale zakończonym 26 września 2026 roku Intel miał 16,5 mld $ przychodó
 
 Na szczycie bańki internetowej Intel był drugą najcenniejszą firmą świata, a jego akcje zamknęły się na rekordowym poziomie 74,88 $ 31 sierpnia 2000 roku. Potem przyszło ponad 25 lat czekania. W 2024 roku kurs spadł o około 61% — najgorszy rok od debiutu w 1971 roku: Intel zwolnił 15 000 osób, a 1 grudnia 2024 roku rada odsunęła prezesa Pata Gelsingera.
 
-Zwrot nastąpił w 2025 roku: nowy prezes Lip-Bu Tan i pieniądze od rządu USA, Nvidii i SoftBanku. Akcje zyskały w tym roku 84%, a w kwietniu 2026 roku przebiły rekord z 2000 roku, bo popyt na AI napędził sprzedaż serwerów. W ciągu ostatnich 52 tygodni kurs wahał się od 32,89 $ do 142,35 $.
-
-- Cena teraz: {{price:intc}}
-- 10 $ dziennie przez 10 lat: {{dca:intc:10}} przy wpłaconych {{dcainv:10}} ({{dcaroi:intc:10}})
+Zwrot nastąpił w 2025 roku: nowy prezes Lip-Bu Tan i pieniądze od rządu USA, Nvidii i SoftBanku. Akcje zyskały w tym roku 84%, a w kwietniu 2026 roku przebiły rekord z 2000 roku, bo popyt na AI napędził sprzedaż serwerów. W ciągu dwunastu miesięcy do połowy listopada 2026 roku kurs wahał się od 32,89 $ do 142,35 $.
 
 ## Konkurenci
 

@@ -1,10 +1,10 @@
 ---
-title: Cổ phiếu Intel (INTC) giải thích dễ hiểu: gã khổng lồ chip mất 26 năm mới phá kỷ lục năm 2000
+title: Intel (INTC): cú trở lại của gã khổng lồ chip và doanh thu 16,5 tỷ USD quý 3/2026
 description: Intel dễ hiểu: doanh thu quý 3/2026 tăng 21% lên 16,5 tỷ USD, nhu cầu máy chủ AI, Chính phủ Mỹ thành cổ đông lớn, cú hồi phục và rủi ro.
 date: 2026-11-23
 kind: analysis
 ---
-**Intel** sản xuất bộ vi xử lý nằm trong một phần rất lớn máy tính và máy chủ trên thế giới, và khác với phần lớn công ty chip, hãng tự làm chip trong nhà máy của mình. Sau năm tệ nhất lịch sử là 2024, Intel đang hồi phục mạnh: doanh thu quý 3/2026 tăng 21% lên 16,5 tỷ USD, và tháng 4/2026 cổ phiếu cuối cùng đã vượt kỷ lục từ tháng 8/2000.
+**Intel** sản xuất bộ vi xử lý nằm trong một phần rất lớn máy tính và máy chủ trên thế giới, và khác với phần lớn công ty chip, hãng tự làm chip trong nhà máy của mình. Sau năm tệ nhất lịch sử là 2024, Intel đã hồi phục mạnh trong giai đoạn 2025–2026: doanh thu quý 3/2026 tăng 21% lên 16,5 tỷ USD, và tháng 4/2026 cổ phiếu cuối cùng đã vượt kỷ lục từ tháng 8/2000.
 
 > **Điểm chính**
 > - Doanh thu quý 3/2026: 16,5 tỷ USD, tăng 21% so với cùng kỳ; chip trung tâm dữ liệu và AI tăng 78% lên 7,3 tỷ USD.
@@ -14,11 +14,16 @@ kind: analysis
 
 ## Intel kiếm tiền thế nào
 
-Intel có hai mảng. **Intel Products** thiết kế và bán chip: nhóm khách hàng phổ thông (chip Core cho laptop và máy bàn) mang về 8,1 tỷ USD trong quý 3, giảm 5%, còn **Data Center and AI** (chip máy chủ Xeon và các chip liên quan) tăng vọt 78% lên 7,3 tỷ USD. CEO Lip-Bu Tan cho biết nhiệm vụ hàng đầu lúc này là sản xuất đủ chip Xeon để đáp ứng nhu cầu.
+Intel có hai mảng. **Intel Products** thiết kế và bán chip: nhóm khách hàng phổ thông (chip Core cho laptop và máy bàn) mang về 8,1 tỷ USD trong quý 3, giảm 5%, còn **Data Center and AI** (chip máy chủ Xeon và các chip liên quan) tăng vọt 78% lên 7,3 tỷ USD. Tháng 10/2026, CEO Lip-Bu Tan cho biết nhiệm vụ hàng đầu là sản xuất đủ chip Xeon để đáp ứng nhu cầu.
 
 Mảng còn lại là **Intel Foundry**, mảng nhà máy, đạt 6,7 tỷ USD trong quý 3, tăng 58%. Phần lớn là Intel sản xuất chip cho chính mình, nên trong doanh thu tập đoàn phần này gần như bù trừ nhau; mục tiêu là giành được khách hàng bên ngoài.
 
 ## Các con số hiện tại
+
+- Giá hôm nay: {{price:intc}}
+- Vốn hóa thị trường: {{mcap:intc}} ({{rank:intc}} trong số các công ty lớn nhất thế giới trên WhatIfStack)
+- Đỉnh kỷ lục: {{ath:intc}} ({{athd:intc}}), cách đỉnh {{fromath:intc}}
+- 10 USD mỗi ngày trong 10 năm: {{dca:intc:10}} từ {{dcainv:10}} đã đầu tư ({{dcaroi:intc:10}})
 
 Trong quý kết thúc ngày 26/9/2026, Intel đạt doanh thu 16,5 tỷ USD với biên lợi nhuận gộp 43,0%. Lợi nhuận ròng là 3,3 tỷ USD (0,60 USD mỗi cổ phiếu), giảm 18% so với một năm trước; theo cách tính điều chỉnh mà Intel ưa dùng, lợi nhuận mỗi cổ phiếu tăng hơn gấp đôi lên 0,52 USD. Hãng đã hoàn tất đợt bán cổ phiếu 23 tỷ USD và kết thúc quý với 21,8 tỷ USD tiền mặt cùng 32,2 tỷ USD đầu tư ngắn hạn, so với 50,1 tỷ USD nợ. Cho quý 4, hãng dự kiến doanh thu 15–16 tỷ USD và lợi nhuận GAAP chỉ 0,10 USD mỗi cổ phiếu. Intel không trả cổ tức.
 
@@ -26,10 +31,7 @@ Trong quý kết thúc ngày 26/9/2026, Intel đạt doanh thu 16,5 tỷ USD v�
 
 Ở đỉnh bong bóng dot-com, Intel là công ty giá trị thứ hai thế giới, và cổ phiếu đóng cửa ở mức kỷ lục 74,88 USD ngày 31/8/2000. Sau đó là hơn 25 năm chờ đợi. Năm 2024 cổ phiếu giảm khoảng 61%, năm tệ nhất kể từ khi niêm yết năm 1971: Intel cắt 15.000 việc làm và hội đồng quản trị buộc CEO Pat Gelsinger rời đi ngày 1/12/2024.
 
-Bước ngoặt đến năm 2025: CEO mới Lip-Bu Tan, cùng tiền từ Chính phủ Mỹ, Nvidia và SoftBank. Cổ phiếu tăng 84% trong năm đó và vượt kỷ lục năm 2000 vào tháng 4/2026 khi nhu cầu AI đẩy doanh số máy chủ. Trong 52 tuần qua, giá dao động từ 32,89 đến 142,35 USD.
-
-- Giá hôm nay: {{price:intc}}
-- 10 USD mỗi ngày trong 10 năm: {{dca:intc:10}} từ {{dcainv:10}} đã đầu tư ({{dcaroi:intc:10}})
+Bước ngoặt đến năm 2025: CEO mới Lip-Bu Tan, cùng tiền từ Chính phủ Mỹ, Nvidia và SoftBank. Cổ phiếu tăng 84% trong năm đó và vượt kỷ lục năm 2000 vào tháng 4/2026 khi nhu cầu AI đẩy doanh số máy chủ. Trong mười hai tháng tính đến giữa tháng 11/2026, giá dao động từ 32,89 đến 142,35 USD.
 
 ## Đối thủ
 

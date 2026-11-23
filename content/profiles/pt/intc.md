@@ -1,10 +1,10 @@
 ---
-title: Ações da Intel (INTC): a gigante dos chips que levou 26 anos para bater o recorde de 2000
+title: Intel (INTC): a virada da gigante dos chips e seus US$ 16,5 bilhões no 3º tri de 2026
 description: Intel em linguagem simples: receita +21% para US$ 16,5 bi no 3º tri de 2026, demanda por servidores de IA, governo dos EUA como acionista, a virada e os riscos.
 date: 2026-11-18
 kind: analysis
 ---
-A **Intel** faz os processadores presentes em uma enorme parcela dos PCs e servidores do mundo e, ao contrário da maioria das empresas de chips, também os fabrica em suas próprias fábricas. Depois do pior ano de sua história, 2024, ela está no meio de uma forte recuperação: a receita subiu 21%, para US$ 16,5 bilhões, no terceiro trimestre de 2026, e em abril de 2026 a ação finalmente superou o recorde de agosto de 2000.
+A **Intel** faz os processadores presentes em uma enorme parcela dos PCs e servidores do mundo e, ao contrário da maioria das empresas de chips, também os fabrica em suas próprias fábricas. Depois do pior ano de sua história, 2024, ela teve uma forte recuperação em 2025–2026: a receita subiu 21%, para US$ 16,5 bilhões, no terceiro trimestre de 2026, e em abril de 2026 a ação finalmente superou o recorde de agosto de 2000.
 
 > **O essencial**
 > - Receita do 3º trimestre de 2026: US$ 16,5 bilhões, +21% em um ano; chips para data centers e IA cresceram 78%, para US$ 7,3 bilhões.
@@ -14,11 +14,16 @@ A **Intel** faz os processadores presentes em uma enorme parcela dos PCs e servi
 
 ## Como ganha dinheiro
 
-A Intel tem duas metades. A **Intel Products** projeta e vende chips: a área de clientes (processadores para notebooks e desktops, como o Core) trouxe US$ 8,1 bilhões no 3º trimestre, queda de 5%, enquanto **Data Center and AI** (processadores de servidor Xeon e chips relacionados) saltou 78%, para US$ 7,3 bilhões. O CEO Lip-Bu Tan diz que a prioridade agora é produzir Xeon suficientes para atender a demanda.
+A Intel tem duas metades. A **Intel Products** projeta e vende chips: a área de clientes (processadores para notebooks e desktops, como o Core) trouxe US$ 8,1 bilhões no 3º trimestre, queda de 5%, enquanto **Data Center and AI** (processadores de servidor Xeon e chips relacionados) saltou 78%, para US$ 7,3 bilhões. Em outubro de 2026, o CEO Lip-Bu Tan disse que a prioridade era produzir Xeon suficientes para atender a demanda.
 
 A outra metade é a **Intel Foundry**, o negócio de fábricas, que faturou US$ 6,7 bilhões no 3º trimestre, alta de 58%. A maior parte é a própria Intel fabricando seus chips, então isso se anula em grande parte na receita do grupo; o objetivo é conquistar clientes externos.
 
 ## Os números agora
+
+- Preço hoje: {{price:intc}}
+- Valor de mercado: {{mcap:intc}} ({{rank:intc}} entre as maiores empresas do mundo no WhatIfStack)
+- Máxima histórica: {{ath:intc}} ({{athd:intc}}), {{fromath:intc}} desde ela
+- US$ 10 por dia durante 10 anos: {{dca:intc:10}} com {{dcainv:10}} investidos ({{dcaroi:intc:10}})
 
 No trimestre encerrado em 26 de setembro de 2026, a Intel teve receita de US$ 16,5 bilhões, com margem bruta de 43,0%. O lucro líquido foi de US$ 3,3 bilhões (US$ 0,60 por ação), 18% menor que um ano antes; pelo critério ajustado que a Intel prefere, o lucro por ação mais que dobrou, para US$ 0,52. A empresa concluiu uma venda de ações de US$ 23 bilhões e fechou o trimestre com US$ 21,8 bilhões em caixa mais US$ 32,2 bilhões em aplicações de curto prazo, contra US$ 50,1 bilhões de dívida. Para o 4º trimestre, espera receita de US$ 15–16 bilhões e lucro GAAP de apenas US$ 0,10 por ação. Não paga dividendos.
 
@@ -26,10 +31,7 @@ No trimestre encerrado em 26 de setembro de 2026, a Intel teve receita de US$ 16
 
 No auge da bolha pontocom, a Intel era a segunda empresa mais valiosa do mundo, e sua ação fechou no recorde de US$ 74,88 em 31 de agosto de 2000. Depois veio uma espera de mais de 25 anos. Em 2024 a ação caiu cerca de 61%, seu pior ano desde a abertura de capital em 1971: a Intel cortou 15.000 empregos e o conselho afastou o CEO Pat Gelsinger em 1º de dezembro de 2024.
 
-A virada veio em 2025: um novo CEO, Lip-Bu Tan, e dinheiro do governo dos EUA, da Nvidia e do SoftBank. A ação subiu 84% naquele ano e superou o recorde de 2000 em abril de 2026, com a demanda por IA impulsionando as vendas para servidores. Nas últimas 52 semanas, oscilou entre US$ 32,89 e US$ 142,35.
-
-- Preço hoje: {{price:intc}}
-- US$ 10 por dia durante 10 anos: {{dca:intc:10}} com {{dcainv:10}} investidos ({{dcaroi:intc:10}})
+A virada veio em 2025: um novo CEO, Lip-Bu Tan, e dinheiro do governo dos EUA, da Nvidia e do SoftBank. A ação subiu 84% naquele ano e superou o recorde de 2000 em abril de 2026, com a demanda por IA impulsionando as vendas para servidores. Nos doze meses até meados de novembro de 2026, oscilou entre US$ 32,89 e US$ 142,35.
 
 ## Concorrentes
 

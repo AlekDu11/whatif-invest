@@ -1,10 +1,10 @@
 ---
-title: Aandeel Intel (INTC) eenvoudig uitgelegd: de chipreus die 26 jaar nodig had om zijn record uit 2000 te breken
+title: Intel (INTC): de comeback van de chipreus en zijn $16,5 miljard omzet in Q3 2026
 description: Intel eenvoudig uitgelegd: omzet +21% naar $16,5 miljard in Q3 2026, vraag naar AI-servers, de Amerikaanse overheid als grootaandeelhouder, herstel en risico's.
 date: 2026-11-23
 kind: analysis
 ---
-**Intel** maakt de processors in een enorm deel van de pc's en servers ter wereld en bouwt, anders dan de meeste chipbedrijven, zijn chips in eigen fabrieken. Na het slechtste jaar ooit, 2024, zit het midden in een sterk herstel: de omzet steeg in het derde kwartaal van 2026 met 21% naar $16,5 miljard, en in april 2026 brak het aandeel eindelijk zijn record van augustus 2000.
+**Intel** maakt de processors in een enorm deel van de pc's en servers ter wereld en bouwt, anders dan de meeste chipbedrijven, zijn chips in eigen fabrieken. Na het slechtste jaar ooit, 2024, maakte het in 2025–2026 een sterk herstel door: de omzet steeg in het derde kwartaal van 2026 met 21% naar $16,5 miljard, en in april 2026 brak het aandeel eindelijk zijn record van augustus 2000.
 
 > **Belangrijkste punten**
 > - Omzet Q3 2026: $16,5 miljard, +21% op jaarbasis; chips voor datacenters en AI groeiden 78% naar $7,3 miljard.
@@ -14,11 +14,16 @@ kind: analysis
 
 ## Hoe het geld verdient
 
-Intel heeft twee kanten. **Intel Products** ontwerpt en verkoopt chips: de clientgroep (laptop- en desktopprocessors zoals Core) bracht in Q3 $8,1 miljard op, 5% minder, terwijl **Data Center and AI** (Xeon-serverprocessors en verwante chips) 78% groeide naar $7,3 miljard. Topman Lip-Bu Tan zegt dat de belangrijkste taak nu is om genoeg Xeon-chips te maken voor de vraag.
+Intel heeft twee kanten. **Intel Products** ontwerpt en verkoopt chips: de clientgroep (laptop- en desktopprocessors zoals Core) bracht in Q3 $8,1 miljard op, 5% minder, terwijl **Data Center and AI** (Xeon-serverprocessors en verwante chips) 78% groeide naar $7,3 miljard. In oktober 2026 zei topman Lip-Bu Tan dat de belangrijkste taak was om genoeg Xeon-chips te maken voor de vraag.
 
 De andere kant is **Intel Foundry**, het fabrieksbedrijf: $6,7 miljard in Q3, +58%. Het grootste deel daarvan is Intel dat zijn eigen chips bouwt, dus in de groepsomzet valt het grotendeels weg; het doel is externe klanten binnenhalen.
 
 ## De cijfers nu
+
+- Koers nu: {{price:intc}}
+- Marktwaarde: {{mcap:intc}} ({{rank:intc}} onder de grootste bedrijven ter wereld op WhatIfStack)
+- Recordkoers: {{ath:intc}} ({{athd:intc}}), {{fromath:intc}} daarvan af
+- $10 per dag gedurende 10 jaar: {{dca:intc:10}} bij {{dcainv:10}} ingelegd ({{dcaroi:intc:10}})
 
 In het kwartaal tot 26 september 2026 boekte Intel $16,5 miljard omzet met een brutomarge van 43,0%. De nettowinst was $3,3 miljard ($0,60 per aandeel), 18% minder dan een jaar eerder; op de aangepaste basis die Intel zelf hanteert, verdubbelde de winst per aandeel ruim naar $0,52. Het rondde een aandelenverkoop van $23 miljard af en eindigde het kwartaal met $21,8 miljard aan kas en $32,2 miljard aan kortlopende beleggingen, tegenover $50,1 miljard schuld. Voor Q4 verwacht het $15–16 miljard omzet en een GAAP-winst van slechts $0,10 per aandeel. Het keert geen dividend uit.
 
@@ -26,10 +31,7 @@ In het kwartaal tot 26 september 2026 boekte Intel $16,5 miljard omzet met een b
 
 Op het hoogtepunt van de dotcomhype was Intel het op een na waardevolste bedrijf ter wereld en sloot het aandeel op 31 augustus 2000 op een record van $74,88. Daarna volgde meer dan 25 jaar wachten. In 2024 daalde het aandeel zo'n 61%, het slechtste jaar sinds de beursgang in 1971: Intel schrapte 15.000 banen en op 1 december 2024 zette het bestuur topman Pat Gelsinger aan de kant.
 
-De ommekeer kwam in 2025: een nieuwe topman, Lip-Bu Tan, plus geld van de Amerikaanse overheid, Nvidia en SoftBank. Het aandeel won dat jaar 84% en passeerde in april 2026 het record uit 2000, toen de AI-vraag de serververkoop opstuwde. In de afgelopen 52 weken lag de koers tussen $32,89 en $142,35.
-
-- Koers nu: {{price:intc}}
-- $10 per dag gedurende 10 jaar: {{dca:intc:10}} bij {{dcainv:10}} ingelegd ({{dcaroi:intc:10}})
+De ommekeer kwam in 2025: een nieuwe topman, Lip-Bu Tan, plus geld van de Amerikaanse overheid, Nvidia en SoftBank. Het aandeel won dat jaar 84% en passeerde in april 2026 het record uit 2000, toen de AI-vraag de serververkoop opstuwde. In de twaalf maanden tot half november 2026 lag de koers tussen $32,89 en $142,35.
 
 ## Concurrenten
 

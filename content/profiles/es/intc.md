@@ -1,10 +1,10 @@
 ---
-title: Acciones de Intel (INTC): el gigante de los chips que tardó 26 años en batir su récord de 2000
+title: Intel (INTC): la remontada del gigante de los chips y sus 16.500 millones de dólares del 3T 2026
 description: Intel en lenguaje claro: ingresos +21% hasta 16.500 M$ en el 3T 2026, demanda de servidores de IA, EE. UU. como accionista, la remontada y riesgos.
 date: 2026-11-18
 kind: analysis
 ---
-**Intel** fabrica los procesadores que llevan una enorme parte de los PC y servidores del mundo y, a diferencia de la mayoría de las empresas de chips, también los produce en sus propias fábricas. Tras el peor año de su historia, 2024, está en plena remontada: los ingresos subieron un 21% hasta 16.500 millones de dólares en el tercer trimestre de 2026, y en abril de 2026 la acción por fin superó su récord de agosto de 2000.
+**Intel** fabrica los procesadores que llevan una enorme parte de los PC y servidores del mundo y, a diferencia de la mayoría de las empresas de chips, también los produce en sus propias fábricas. Tras el peor año de su historia, 2024, protagonizó una fuerte remontada en 2025–2026: los ingresos subieron un 21% hasta 16.500 millones de dólares en el tercer trimestre de 2026, y en abril de 2026 la acción por fin superó su récord de agosto de 2000.
 
 > **Lo esencial**
 > - Ingresos del 3T 2026: 16.500 millones de dólares, +21% interanual; los chips para centros de datos e IA crecieron un 78% hasta 7.300 millones.
@@ -14,11 +14,16 @@ kind: analysis
 
 ## Cómo gana dinero
 
-Intel tiene dos mitades. **Intel Products** diseña y vende chips: el negocio de clientes (procesadores para portátiles y sobremesa como Core) aportó 8.100 millones de dólares en el 3T, un 5% menos, mientras que **Data Center and AI** (procesadores de servidor Xeon y chips relacionados) se disparó un 78% hasta 7.300 millones. El consejero delegado, Lip-Bu Tan, dice que la prioridad ahora es fabricar suficientes Xeon para atender la demanda.
+Intel tiene dos mitades. **Intel Products** diseña y vende chips: el negocio de clientes (procesadores para portátiles y sobremesa como Core) aportó 8.100 millones de dólares en el 3T, un 5% menos, mientras que **Data Center and AI** (procesadores de servidor Xeon y chips relacionados) se disparó un 78% hasta 7.300 millones. En octubre de 2026 el consejero delegado, Lip-Bu Tan, dijo que la prioridad era fabricar suficientes Xeon para atender la demanda.
 
 La otra mitad es **Intel Foundry**, el negocio de fábricas, que facturó 6.700 millones en el 3T, un 58% más. La mayor parte es Intel fabricando sus propios chips, así que en los ingresos del grupo se compensa en buena medida; el objetivo es ganar clientes externos.
 
 ## Las cifras ahora
+
+- Precio actual: {{price:intc}}
+- Valor de mercado: {{mcap:intc}} ({{rank:intc}} entre las mayores empresas del mundo en WhatIfStack)
+- Máximo histórico: {{ath:intc}} ({{athd:intc}}), {{fromath:intc}} desde él
+- 10 $ al día durante 10 años: {{dca:intc:10}} con {{dcainv:10}} invertidos ({{dcaroi:intc:10}})
 
 En el trimestre cerrado el 26 de septiembre de 2026, Intel ingresó 16.500 millones de dólares con un margen bruto del 43,0%. El beneficio neto fue de 3.300 millones (0,60 $ por acción), un 18% menos que un año antes; con la medida ajustada que prefiere Intel, el beneficio por acción se duplicó con creces hasta 0,52 $. Completó una venta de acciones de 23.000 millones y cerró el trimestre con 21.800 millones en efectivo y 32.200 millones en inversiones a corto plazo, frente a 50.100 millones de deuda. Para el 4T espera ingresos de 15.000–16.000 millones y un beneficio GAAP de solo 0,10 $ por acción. No paga dividendo.
 
@@ -26,10 +31,7 @@ En el trimestre cerrado el 26 de septiembre de 2026, Intel ingresó 16.500 millo
 
 En pleno auge de las puntocom, Intel era la segunda empresa más valiosa del mundo, y su acción cerró en un récord de 74,88 $ el 31 de agosto de 2000. Después llegó una espera de más de 25 años. En 2024 la acción cayó cerca de un 61%, su peor año desde que salió a bolsa en 1971: Intel recortó 15.000 empleos y el consejo forzó la salida del consejero delegado Pat Gelsinger el 1 de diciembre de 2024.
 
-El giro llegó en 2025: un nuevo consejero delegado, Lip-Bu Tan, y dinero del Gobierno de EE. UU., Nvidia y SoftBank. La acción ganó un 84% ese año y superó su récord de 2000 en abril de 2026, impulsada por la demanda de IA en servidores. En las últimas 52 semanas cotizó entre 32,89 $ y 142,35 $.
-
-- Precio actual: {{price:intc}}
-- 10 $ al día durante 10 años: {{dca:intc:10}} con {{dcainv:10}} invertidos ({{dcaroi:intc:10}})
+El giro llegó en 2025: un nuevo consejero delegado, Lip-Bu Tan, y dinero del Gobierno de EE. UU., Nvidia y SoftBank. La acción ganó un 84% ese año y superó su récord de 2000 en abril de 2026, impulsada por la demanda de IA en servidores. En los doce meses hasta mediados de noviembre de 2026 cotizó entre 32,89 $ y 142,35 $.
 
 ## Competidores
 

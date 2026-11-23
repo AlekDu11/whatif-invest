@@ -1,10 +1,10 @@
 ---
-title: Azioni Intel (INTC) spiegate semplice: il gigante dei chip che ha impiegato 26 anni a battere il record del 2000
+title: Intel (INTC): il rilancio del gigante dei chip e i suoi 16,5 miliardi $ di ricavi nel 3° trimestre 2026
 description: Intel spiegata semplice: ricavi +21% a 16,5 miliardi $ nel 3° trimestre 2026, domanda di server IA, il governo USA tra i grandi soci, rilancio e rischi.
 date: 2026-11-23
 kind: analysis
 ---
-**Intel** produce i processori di una grandissima parte dei PC e dei server del mondo e, a differenza della maggior parte delle aziende di chip, li fabbrica nelle proprie fabbriche. Dopo l'anno peggiore della sua storia, il 2024, è nel mezzo di una forte ripresa: nel terzo trimestre 2026 i ricavi sono saliti del 21% a 16,5 miliardi di dollari e ad aprile 2026 il titolo ha finalmente superato il record dell'agosto 2000.
+**Intel** produce i processori di una grandissima parte dei PC e dei server del mondo e, a differenza della maggior parte delle aziende di chip, li fabbrica nelle proprie fabbriche. Dopo l'anno peggiore della sua storia, il 2024, ha messo a segno una forte ripresa nel 2025–2026: nel terzo trimestre 2026 i ricavi sono saliti del 21% a 16,5 miliardi di dollari e ad aprile 2026 il titolo ha finalmente superato il record dell'agosto 2000.
 
 > **In sintesi**
 > - Ricavi del 3° trimestre 2026: 16,5 miliardi $, +21% su base annua; i chip per data center e IA sono cresciuti del 78% a 7,3 miliardi $.
@@ -14,11 +14,16 @@ kind: analysis
 
 ## Come guadagna
 
-Intel ha due anime. **Intel Products** progetta e vende chip: il gruppo client (processori Core per portatili e desktop) ha portato 8,1 miliardi $ nel 3° trimestre, in calo del 5%, mentre **Data Center and AI** (processori per server Xeon e chip collegati) è balzato del 78% a 7,3 miliardi $. Il CEO Lip-Bu Tan dice che ora la priorità è produrre abbastanza Xeon per soddisfare la domanda.
+Intel ha due anime. **Intel Products** progetta e vende chip: il gruppo client (processori Core per portatili e desktop) ha portato 8,1 miliardi $ nel 3° trimestre, in calo del 5%, mentre **Data Center and AI** (processori per server Xeon e chip collegati) è balzato del 78% a 7,3 miliardi $. A ottobre 2026 il CEO Lip-Bu Tan ha detto che la priorità era produrre abbastanza Xeon per soddisfare la domanda.
 
 L'altra anima è **Intel Foundry**, il business delle fabbriche: 6,7 miliardi $ nel 3° trimestre, +58%. In gran parte si tratta di chip prodotti per Intel stessa, quindi nei conti del gruppo si compensa; l'obiettivo è conquistare clienti esterni.
 
 ## I numeri di oggi
+
+- Prezzo oggi: {{price:intc}}
+- Valore di mercato: {{mcap:intc}} ({{rank:intc}} tra le più grandi aziende del mondo su WhatIfStack)
+- Massimo storico: {{ath:intc}} ({{athd:intc}}), {{fromath:intc}} da lì
+- 10 $ al giorno per 10 anni: {{dca:intc:10}} con {{dcainv:10}} investiti ({{dcaroi:intc:10}})
 
 Nel trimestre chiuso il 26 settembre 2026 Intel ha registrato 16,5 miliardi $ di ricavi con un margine lordo del 43,0%. L'utile netto è stato di 3,3 miliardi $ (0,60 $ per azione), in calo del 18% rispetto a un anno prima; sulla base rettificata che Intel preferisce, l'utile per azione è più che raddoppiato a 0,52 $. Ha completato una vendita di azioni da 23 miliardi $ e ha chiuso il trimestre con 21,8 miliardi $ di liquidità e 32,2 miliardi $ di investimenti a breve termine, a fronte di 50,1 miliardi $ di debito. Per il 4° trimestre prevede 15–16 miliardi $ di ricavi e un utile GAAP di appena 0,10 $ per azione. Non paga dividendi.
 
@@ -26,10 +31,7 @@ Nel trimestre chiuso il 26 settembre 2026 Intel ha registrato 16,5 miliardi $ di
 
 Al culmine della bolla delle dot-com Intel era la seconda azienda più preziosa al mondo e il 31 agosto 2000 le sue azioni hanno chiuso al record di 74,88 $. Poi è arrivata un'attesa di oltre 25 anni. Nel 2024 il titolo è sceso di circa il 61%, il peggior anno dalla quotazione nel 1971: Intel ha tagliato 15.000 posti e il 1° dicembre 2024 il consiglio ha allontanato il CEO Pat Gelsinger.
 
-La svolta è arrivata nel 2025: un nuovo CEO, Lip-Bu Tan, e i capitali del governo USA, di Nvidia e di SoftBank. Il titolo ha guadagnato l'84% quell'anno e ad aprile 2026 ha superato il record del 2000, mentre la domanda legata all'IA spingeva le vendite di server. Nelle ultime 52 settimane ha oscillato tra 32,89 $ e 142,35 $.
-
-- Prezzo oggi: {{price:intc}}
-- 10 $ al giorno per 10 anni: {{dca:intc:10}} con {{dcainv:10}} investiti ({{dcaroi:intc:10}})
+La svolta è arrivata nel 2025: un nuovo CEO, Lip-Bu Tan, e i capitali del governo USA, di Nvidia e di SoftBank. Il titolo ha guadagnato l'84% quell'anno e ad aprile 2026 ha superato il record del 2000, mentre la domanda legata all'IA spingeva le vendite di server. Nei dodici mesi fino a metà novembre 2026 ha oscillato tra 32,89 $ e 142,35 $.
 
 ## Concorrenti
 
