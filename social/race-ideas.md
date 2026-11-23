@@ -12,7 +12,7 @@ comparisons that get thousands of views on crypto X. Keep the matchup a real que
   input[data-testid=fileInput]` (only the dialog's input — the home page has its own), set `.files` via DataTransfer and
   dispatch `change` (the dialog input can take ~30 s to appear in a hidden pane — keep the File in window and retry); wait until `[role=dialog] [data-testid=attachments]` says "Ready". Type the text by clicking the
   dialog's "What's happening?" box and typing line by line (Enter for new lines), then click `[role=dialog]
-  [data-testid=tweetButton]`. If the video is not deployed yet (Vercel skips commits without `[deploy]`), do the relay step yourself: on any whatifstack.com page fetch the raw.githubusercontent.com MP4, base64 it and set location.href to `https://x.com/compose/post#wisf=<slug>.mp4:<base64>`. Tested 2026-11-20 and 2026-11-21 (works: fetch on whatifstack.com/en/, then location.href to the hash URL, one JS call decodes+attaches): raw URL by commit SHA (raw.githubusercontent.com/.../<sha>/content/video/...) works right after push while /main/ still 404s for a few minutes (CDN cache); in Telegram the JS .click() on the modal send button did nothing — a real left_click on it sends. Tested again 2026-11-22: in a hidden pane the dialog's fileInput can need ~60 s — store the File in window.__wisFile in a short JS call (≤40 s, the tool times out at 45 s), then attach in a second call; the profile timeline may not render in a hidden pane — read the new status id from the UserOriginalsTimeline response (read_network_requests) and views from each /status/ page's analytics link. Fallback if the hash route fails: `python3 scripts/race_snippet.py ...` prints JS that renders
+  [data-testid=tweetButton]`. If the video is not deployed yet (Vercel skips commits without `[deploy]`), do the relay step yourself: on any whatifstack.com page fetch the raw.githubusercontent.com MP4, base64 it and set location.href to `https://x.com/compose/post#wisf=<slug>.mp4:<base64>`. Tested 2026-11-20 and 2026-11-21 (works: fetch on whatifstack.com/en/, then location.href to the hash URL, one JS call decodes+attaches): raw URL by commit SHA (raw.githubusercontent.com/.../<sha>/content/video/...) works right after push while /main/ still 404s for a few minutes (CDN cache); in Telegram the JS .click() on the modal send button did nothing — a real left_click on it sends. Tested again 2026-11-22: in a hidden pane the dialog's fileInput can need ~60 s — store the File in window.__wisFile in a short JS call (≤40 s, the tool times out at 45 s), then attach in a second call; the profile timeline may not render in a hidden pane — read the new status id from the UserOriginalsTimeline response (read_network_requests) and views from each /status/ page's analytics link. Tested 2026-11-23: on x.com/compose/post in a hidden pane the composer had no [role=dialog] wrapper — the dialog selector never matched; the page's only `input[data-testid=fileInput]` was the composer's and worked (Ready in ~5 s). Fallback if the hash route fails: `python3 scripts/race_snippet.py ...` prints JS that renders
   and encodes the same video inside the page (WebCodecs) into window.__wisRaceFile.
 - **Telegram Web** can fetch it directly: `fetch('https://raw.githubusercontent.com/AlekDu11/whatif-invest/main/content/video/<slug>.mp4')`,
   File -> window.__wisNext + the patched HTMLInputElement.prototype.click from the Telegram task -> Attach -> "Photo or Video",
@@ -28,7 +28,7 @@ comparisons that get thousands of views on crypto X. Keep the matchup a real que
 - ✅ 2026-11-21 gold silver platinum | precious metals
 - ✅ 2026-11-22 doge shib pepe | memecoins
 - ✅ 2026-11-22 eth sol ada --since 2021-01 | "ETH killers" since the 2021 cycle
-- tsla byd toyota | car makers
+- ✅ 2026-11-23 tsla byd toyota | car makers
 - link uni aave | DeFi blue chips
 - btc nvda --since 2019-01 | Bitcoin vs Nvidia
 - schd spy --since 2014-01 | dividends vs S&P 500
@@ -55,5 +55,6 @@ comparisons that get thousands of views on crypto X. Keep the matchup a real que
 | 2026-11-20 18:35 | aapl msft googl (since 2004-08) | https://x.com/WhatIfStack/status/2123801362022707579 | msg 1488 | X 6 · TG 1.4K (2026-11-22) |
 | 2026-11-21 11:30 | spy qqq vt (since 2008-06) | https://x.com/WhatIfStack/status/2124072647394750506 | — | X 16 (2026-11-22) |
 | 2026-11-21 18:30 | gold silver platinum (since 2000-08) | https://x.com/WhatIfStack/status/2124163264862884319 | msg 1493 | X 4 · TG 1.3K (2026-11-22) |
-| 2026-11-22 11:30 | doge shib pepe (since 2023-05) | https://x.com/WhatIfStack/status/2124435401335042107 | — | X 7 (2026-11-22) |
-| 2026-11-22 17:35 | eth sol ada (since 2021-01) | https://x.com/WhatIfStack/status/2124525885826990369 | msg 1496 | |
+| 2026-11-22 11:30 | doge shib pepe (since 2023-05) | https://x.com/WhatIfStack/status/2124435401335042107 | — | X 9 (2026-11-23) |
+| 2026-11-22 17:35 | eth sol ada (since 2021-01) | https://x.com/WhatIfStack/status/2124525885826990369 | msg 1496 | X 6 (2026-11-23) |
+| 2026-11-23 11:32 | tsla byd toyota (since 2010-06) | https://x.com/WhatIfStack/status/2124798172388020641 | — | |
