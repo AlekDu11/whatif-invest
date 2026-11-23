@@ -1021,7 +1021,7 @@ const DEXW={ key:'wi_dexw',
       const seen=new Set(); CS.setData(k.filter(c=>!seen.has(c[0])&&seen.add(c[0])).sort((a,b)=>a[0]-b[0]).map(c=>({time:c[0],open:c[1],high:c[2],low:c[3],close:c[4]})));
       if(fit) CHT.timeScale().fitContent();
       const last=k[k.length-1][4]; if(pe&&last>0){ pe.textContent=fmtPrice(last); document.title=document.title.replace(/— [^|]+\|/,`— ${fmtPrice(last)} |`) }
-      clearTimeout(kt); const tick=()=>{ if(wiAway()) kt=setTimeout(tick,15000); else draw(false) }; kt=setTimeout(tick,15000) }
+      clearTimeout(kt); const tick=()=>{ if(wiAway()) kt=setTimeout(tick,30000); else draw(false) }; kt=setTimeout(tick,30000) }
     draw(true) }
   let row=null; try{ const k=JSON.parse(sessionStorage.getItem('wi_dexrow')||'null'); if(k&&k.n===n&&(k.a===a0||(p&&k.p===p))) row=k }catch(e){}
   if(row) show(row);
@@ -1034,7 +1034,9 @@ const DEXW={ key:'wi_dexw',
 (function(){
   const box=$('#mrows'); if(!box||!PAGE.memes5) return; const U=DEXU, P=PAGE.memes, M6=P.m6||{}, F=P.l5||{}; let view='trend', net='all', rows=[], tok=0, q='';
   const RUSH={done:'done',soon:'soon',new:'new'};
-  const okRush=r=>(r.t10==null||r.t10<=40)&&(r.ins==null||r.ins<=15)&&(r.dev==null||r.dev<=10)&&(r.liq||0)>=3000;   // hide obvious junk silently
+  // owner 2026-11-23: «fewer but better» — only tokens with real money and real holders; obvious junk is hidden silently
+  const okRush=r=>(r.t10==null||r.t10<=35)&&(r.ins==null||r.ins<=15)&&(r.dev==null||r.dev<=10)&&(r.liq||0)>=5000&&(r.h==null||r.h>=50);
+  const okTop=r=>(r.liq||0)>=50000&&(r.mc==null||r.mc>=100000)&&(r.h==null||r.h>=300)&&(r.t10==null||r.t10<=60)&&(r.vol==null||r.vol>=20000);
   const link=r=>`${P.tok}?n=${encodeURIComponent(r.n)}&a=${encodeURIComponent(r.a)}`;
   const H=P.h||{}, num=v=>v==null?'—':Math.round(v).toLocaleString(T.intl||'en');
   let sk=null, sd=-1;   // sort by any column (click the header; click again = reverse); phones: the «Sort by» select
@@ -1051,12 +1053,12 @@ const DEXW={ key:'wi_dexw',
     <span class="mc-h">${num(r.h)}</span><span class="mc-a">${esc(U.age(r.at))}</span></a>`;
   const isAddr=s=>/^(0x[0-9a-fA-F]{40}|[1-9A-HJ-NP-Za-km-z]{32,44})$/.test(s);
   function draw(){ let l=rows.slice(); const seen=new Set(); l=l.filter(r=>r.a&&!seen.has(r.n+r.a)&&seen.add(r.n+r.a));
-    if(view==='fav'){} else if(RUSH[view]) l=l.filter(okRush); else l=l.filter(r=>(r.liq||0)>=10000);
+    if(view==='fav'){} else if(RUSH[view]) l=l.filter(okRush); else l=l.filter(okTop);
     if(view==='gain') l.sort((a,b)=>(b.c24||0)-(a.c24||0)); else if(view==='most') l.sort((a,b)=>(b.h||0)-(a.h||0));
     else if(view==='soon') l.sort((a,b)=>(b.prog||0)-(a.prog||0)); else if(RUSH[view]) l.sort((a,b)=>Date.parse(b.at)-Date.parse(a.at));
     if(q){ const s=q.toLowerCase(); l=l.filter(r=>(r.s||'').toLowerCase().includes(s)||(r.nm||'').toLowerCase().includes(s)||(r.a||'').toLowerCase()===s) }
     if(sk){ const f=SK[sk]; l.sort((a,b)=>{ const x=f(a), y=f(b); if(x==null&&y==null) return 0; if(x==null) return 1; if(y==null) return -1; return sd*(x-y) }) }
-    if(l.length){ box.innerHTML=head()+l.slice(0,50).map(row).join(''); return }
+    if(l.length){ box.innerHTML=head()+l.slice(0,view==='fav'?50:30).map(row).join(''); return }
     if(q&&isAddr(q)){ const nets=q.startsWith('0x')?['bsc','base','eth']:['solana'];
       box.innerHTML=`<div class="empty">${esc(M6.nf||'')}<div class="mnf">${nets.map(n=>`<a class="btn ghost" href="${P.tok}?n=${n}&a=${encodeURIComponent(q)}">${esc(U.NETN[n]||n)}</a>`).join('')}</div></div>`; return }
     box.innerHTML=`<div class="empty">${view==='fav'&&!q?esc(M6.fav0||'—'):'—'}</div>` }
@@ -1074,7 +1076,7 @@ const DEXW={ key:'wi_dexw',
   box.addEventListener('click',e=>{ const h=e.target.closest('.dxs'); if(h){ e.preventDefault(); sortBy(h.dataset.k); return }
     const w=e.target.closest('.dxw'); if(w){ e.preventDefault(); e.stopPropagation(); const [n,a]=w.dataset.w.split('|'); const r=rows.find(x=>x.a===a&&x.n===n)||DEXW.all().find(x=>x.a===a&&x.n===n); if(r){ DEXW.toggle(r); if(view==='fav') rows=DEXW.all(); draw() } return }
     const a=e.target.closest('.dxr'); if(!a) return; const r=rows.find(x=>x.a===a.dataset.a); if(r) U.keep(r) });
-  load(); setInterval(()=>{ if(!wiAway()&&view!=='fav') load() },45000);
+  load(); setInterval(()=>{ if(!wiAway()&&view!=='fav') load() },60000);
 })();
 /* ---------- memes extras (owner 2026-11-23): launch pulse, fresh exchange listings, meme narratives ---------- */
 (function(){

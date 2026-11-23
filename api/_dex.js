@@ -283,7 +283,7 @@ module.exports = async (req, res) => {
       return send(200, await pool(n, ADDR.test(pp) ? pp : '', aa), 'public, s-maxage=60, stale-while-revalidate=600, stale-if-error=3600');
     }
     const view = ['trend', 'vol', 'new', 'soon', 'done'].includes(q.dex) ? q.dex : 'trend';
-    return send(200, { t: Date.now(), d: await list(view, n) }, 'public, s-maxage=45, stale-while-revalidate=900, stale-if-error=3600');
+    return send(200, { t: Date.now(), d: await list(view, n) }, 'public, s-maxage=60, stale-while-revalidate=900, stale-if-error=3600');
   } catch (e) {
     return send(502, { e: 'upstream' }, 'no-store');
   }
