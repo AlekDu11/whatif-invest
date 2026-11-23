@@ -1,16 +1,16 @@
 ---
-title: Avalanche (AVAX) explicado de forma simples: confirmação em 1 segundo, teto de 720 milhões e recorde de US$ 145
+title: Avalanche (AVAX) explicado de forma simples: confirmação em 1 segundo, teto de 720 milhões e redes L1 próprias
 description: Avalanche de forma simples: como funcionam o consenso rápido e as redes L1 próprias, para que serve o AVAX, fundos tokenizados, a queda desde 2021 e riscos.
 date: 2026-11-23
 kind: analysis
 ---
-**Avalanche** é uma blockchain de contratos inteligentes que confirma transações em cerca de um segundo e permite que empresas, jogos e fundos lancem suas próprias redes sobre ela. Entrou no ar em setembro de 2020 e foi criada pela Ava Labs, empresa do cientista da computação Emin Gün Sirer, da Universidade Cornell. Em novembro de 2026, todos os AVAX em circulação valiam cerca de US$ 3 bilhões, por volta da 25ª posição entre as criptomoedas.
+**Avalanche** é uma blockchain de contratos inteligentes que confirma transações em cerca de um segundo e permite que empresas, jogos e fundos lancem suas próprias redes sobre ela. Entrou no ar em setembro de 2020 e foi criada pela Ava Labs, empresa do cientista da computação Emin Gün Sirer, da Universidade Cornell. Todos os AVAX em circulação valem {{mcap:avax}} hoje ({{rank:avax}} entre as criptomoedas).
 
 > **Pontos principais**
 > - As transações ficam definitivas em cerca de um segundo, e a rede principal, a C-Chain, funciona com carteiras do Ethereum, como a MetaMask.
 > - A oferta tem teto de 720 milhões de AVAX; cerca de 447 milhões estavam em circulação em novembro de 2026, e todas as taxas são queimadas.
 > - Fundos tokenizados da Securitize, da WisdomTree e de outros rodam nela, e desde setembro de 2026 os validadores podem fazer staking por apenas 48 horas.
-> - O preço recorde até agora é US$ 144,96 (novembro de 2021); em novembro de 2026, o AVAX era negociado cerca de 95% abaixo disso.
+> - A máxima histórica é {{ath:avax}} ({{athd:avax}}); hoje o preço está {{fromath:avax}} abaixo dela.
 
 ## Como funciona
 
@@ -37,7 +37,7 @@ Entre as blockchains de contratos inteligentes, a Avalanche concorre com o [Ethe
 
 ## Principais riscos
 
-- **Grandes oscilações:** o AVAX caiu cerca de 95% desde o recorde e perdeu 28% em quatro semanas entre outubro e novembro de 2026.
+- **Grandes oscilações:** o AVAX caiu mais de 90% em 2022 e perdeu 28% em quatro semanas entre outubro e novembro de 2026.
 - **Concorrência:** a Solana e as redes de camada 2 do Ethereum disputam os mesmos aplicativos, usuários e fundos.
 - **Captura de valor:** a atividade espalhada por muitas redes L1 separadas pode não gerar muita demanda pelo próprio AVAX.
 - **Oferta de tokens:** novas moedas ainda são criadas como recompensa de staking, e a Ava Labs, a fundação e os primeiros investidores detêm grandes quantidades.

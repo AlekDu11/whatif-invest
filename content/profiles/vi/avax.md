@@ -1,16 +1,16 @@
 ---
-title: Avalanche (AVAX) giải thích dễ hiểu: xác nhận trong 1 giây, giới hạn 720 triệu và kỷ lục 145 USD
+title: Avalanche (AVAX) giải thích dễ hiểu: xác nhận trong 1 giây, giới hạn 720 triệu và chuỗi L1 riêng
 description: Avalanche dễ hiểu: cơ chế đồng thuận nhanh và chuỗi L1 riêng hoạt động ra sao, AVAX dùng làm gì, quỹ token hóa, cú sập từ năm 2021 và các rủi ro chính.
 date: 2026-11-23
 kind: analysis
 ---
-**Avalanche** là blockchain hợp đồng thông minh xác nhận giao dịch trong khoảng một giây và cho phép doanh nghiệp, trò chơi và quỹ đầu tư tự ra mắt chuỗi riêng trên nền tảng của nó. Mạng chạy chính thức từ tháng 9/2020 và do Ava Labs xây dựng — công ty của nhà khoa học máy tính Emin Gün Sirer thuộc Đại học Cornell. Vào tháng 11/2026, toàn bộ AVAX đang lưu hành trị giá khoảng 3 tỷ USD, quanh vị trí thứ 25 trong các đồng tiền mã hóa.
+**Avalanche** là blockchain hợp đồng thông minh xác nhận giao dịch trong khoảng một giây và cho phép doanh nghiệp, trò chơi và quỹ đầu tư tự ra mắt chuỗi riêng trên nền tảng của nó. Mạng chạy chính thức từ tháng 9/2020 và do Ava Labs xây dựng — công ty của nhà khoa học máy tính Emin Gün Sirer thuộc Đại học Cornell. Vốn hóa của toàn bộ AVAX đang lưu hành hiện là {{mcap:avax}} ({{rank:avax}} trong các đồng tiền mã hóa).
 
 > **Điểm chính**
 > - Giao dịch được chốt cuối cùng trong khoảng một giây, và chuỗi chính C-Chain dùng được với các ví Ethereum như MetaMask.
 > - Nguồn cung giới hạn ở 720 triệu AVAX; khoảng 447 triệu đang lưu hành vào tháng 11/2026, và mọi khoản phí đều bị đốt.
 > - Các quỹ token hóa của Securitize, WisdomTree và nhiều bên khác chạy trên mạng này, và từ tháng 9/2026 validator có thể staking chỉ trong 48 giờ.
-> - Giá kỷ lục đến nay là 144,96 USD (tháng 11/2021); vào tháng 11/2026 AVAX giao dịch thấp hơn mức đó khoảng 95%.
+> - Đỉnh kỷ lục là {{ath:avax}} ({{athd:avax}}); giá hiện tại cách đỉnh {{fromath:avax}}.
 
 ## Cách hoạt động
 
@@ -37,7 +37,7 @@ Trong nhóm blockchain hợp đồng thông minh, Avalanche cạnh tranh với [
 
 ## Rủi ro chính
 
-- **Biến động mạnh:** AVAX đã giảm khoảng 95% so với đỉnh và mất 28% chỉ trong bốn tuần vào tháng 10–11/2026.
+- **Biến động mạnh:** AVAX đã giảm hơn 90% trong năm 2022 và mất 28% chỉ trong bốn tuần vào tháng 10–11/2026.
 - **Cạnh tranh:** Solana và các mạng lớp 2 của Ethereum tranh giành cùng một nhóm ứng dụng, người dùng và quỹ.
 - **Giá trị có về tay token không:** hoạt động phân tán trên nhiều chuỗi L1 riêng lẻ có thể không tạo ra nhiều nhu cầu cho chính AVAX.
 - **Nguồn cung token:** coin mới vẫn được tạo ra làm phần thưởng staking, còn Ava Labs, quỹ phát triển và nhà đầu tư sớm nắm giữ lượng lớn.

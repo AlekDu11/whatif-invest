@@ -1,16 +1,16 @@
 ---
-title: Avalanche (AVAX) eenvoudig uitgelegd: bevestiging in 1 seconde, een limiet van 720 miljoen en een record van $145
+title: Avalanche (AVAX) eenvoudig uitgelegd: bevestiging in 1 seconde, een limiet van 720 miljoen en eigen L1-chains
 description: Avalanche eenvoudig uitgelegd: hoe de snelle consensus en eigen L1-chains werken, waarvoor AVAX dient, getokeniseerde fondsen, de val sinds 2021 en de risico's.
 date: 2026-11-23
 kind: analysis
 ---
-**Avalanche** is een smart-contractblockchain die transacties in ongeveer een seconde bevestigt en waarop bedrijven, games en fondsen hun eigen chains kunnen lanceren. Het netwerk ging in september 2020 live en werd gebouwd door Ava Labs, het bedrijf van Cornell-informaticus Emin Gün Sirer. In november 2026 was alle AVAX in omloop samen ongeveer $3 miljard waard, rond plaats 25 onder de cryptomunten.
+**Avalanche** is een smart-contractblockchain die transacties in ongeveer een seconde bevestigt en waarop bedrijven, games en fondsen hun eigen chains kunnen lanceren. Het netwerk ging in september 2020 live en werd gebouwd door Ava Labs, het bedrijf van Cornell-informaticus Emin Gün Sirer. Alle AVAX in omloop is vandaag samen {{mcap:avax}} waard ({{rank:avax}} onder de cryptomunten).
 
 > **Belangrijkste punten**
 > - Transacties zijn na ongeveer een seconde definitief, en de hoofdchain C-Chain werkt met Ethereum-wallets zoals MetaMask.
 > - Het aanbod is begrensd op 720 miljoen AVAX; in november 2026 was er ongeveer 447 miljoen in omloop, en elke transactievergoeding wordt verbrand.
 > - Getokeniseerde fondsen van Securitize, WisdomTree en anderen draaien erop, en sinds september 2026 kunnen validators al voor 48 uur staken.
-> - De recordkoers tot nu toe is $144,96 (november 2021); in november 2026 noteerde AVAX ongeveer 95% lager.
+> - De recordkoers is {{ath:avax}} ({{athd:avax}}); vandaag staat de koers {{fromath:avax}} daarvan af.
 
 ## Hoe het werkt
 
@@ -37,7 +37,7 @@ Onder de smart-contractblockchains concurreert Avalanche met [Ethereum]({lang}/e
 
 ## Belangrijkste risico's
 
-- **Grote schommelingen:** AVAX staat ongeveer 95% onder zijn record en verloor in oktober–november 2026 binnen vier weken 28%.
+- **Grote schommelingen:** AVAX daalde in 2022 meer dan 90% en verloor in oktober–november 2026 binnen vier weken 28%.
 - **Concurrentie:** Solana en de layer-2-netwerken van Ethereum vechten om dezelfde apps, gebruikers en fondsen.
 - **Waarde voor de token:** activiteit verspreid over veel losse L1-chains levert misschien weinig vraag naar AVAX zelf op.
 - **Tokenaanbod:** er komen nog steeds nieuwe munten bij als stakingbeloning, en Ava Labs, de stichting en vroege investeerders bezitten grote hoeveelheden.

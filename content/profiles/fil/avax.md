@@ -1,16 +1,16 @@
 ---
-title: Avalanche (AVAX) sa simpleng paliwanag: finality sa 1 segundo, limit na 720 milyon at record na $145
+title: Avalanche (AVAX) sa simpleng paliwanag: finality sa 1 segundo, limit na 720 milyon at sariling L1 chain
 description: Avalanche sa simpleng paliwanag: mabilis na consensus at sariling L1 chain, para saan ang AVAX, tokenized fund, pagbagsak mula 2021 at mga panganib.
 date: 2026-11-23
 kind: analysis
 ---
-**Avalanche** ang smart-contract blockchain na nagkukumpirma ng transaksyon sa loob ng mga isang segundo at nagbibigay-daan sa mga kompanya, laro at pondo na maglunsad ng sarili nilang chain sa ibabaw nito. Nagsimula itong tumakbo noong Setyembre 2020 at binuo ng Ava Labs, ang kompanya ng computer scientist ng Cornell University na si Emin Gün Sirer. Noong Nobyembre 2026, nasa mga $3 bilyon ang halaga ng lahat ng AVAX na nasa sirkulasyon, mga ika-25 na puwesto sa mga cryptocurrency.
+**Avalanche** ang smart-contract blockchain na nagkukumpirma ng transaksyon sa loob ng mga isang segundo at nagbibigay-daan sa mga kompanya, laro at pondo na maglunsad ng sarili nilang chain sa ibabaw nito. Nagsimula itong tumakbo noong Setyembre 2020 at binuo ng Ava Labs, ang kompanya ng computer scientist ng Cornell University na si Emin Gün Sirer. {{mcap:avax}} ang halaga ngayon ng lahat ng AVAX na nasa sirkulasyon ({{rank:avax}} sa mga cryptocurrency).
 
 > **Mahahalagang punto**
 > - Final na ang transaksyon sa mga isang segundo, at gumagana ang pangunahing C-Chain sa mga Ethereum wallet gaya ng MetaMask.
 > - May limit ang supply na 720 milyong AVAX; mga 447 milyon ang nasa sirkulasyon noong Nobyembre 2026, at sinusunog ang bawat bayarin.
 > - Tumatakbo rito ang mga tokenized fund ng Securitize, WisdomTree at iba pa, at mula Setyembre 2026 puwede nang mag-stake ang mga validator nang 48 oras lang.
-> - Ang pinakamataas na presyo sa ngayon ay $144.96 (Nobyembre 2021); noong Nobyembre 2026, mga 95% na mas mababa rito ang trading ng AVAX.
+> - Ang pinakamataas na presyo nito ay {{ath:avax}} ({{athd:avax}}); ngayon, {{fromath:avax}} ang presyo mula roon.
 
 ## Paano ito gumagana
 
@@ -37,7 +37,7 @@ Sa mga smart-contract blockchain, kakumpitensya ng Avalanche ang [Ethereum]({lan
 
 ## Pangunahing panganib
 
-- **Malalaking galaw:** bumaba ang AVAX nang mga 95% mula sa record nito at nawalan ng 28% sa loob ng apat na linggo noong Oktubre–Nobyembre 2026.
+- **Malalaking galaw:** bumaba ang AVAX nang mahigit 90% noong 2022 at nawalan ng 28% sa loob ng apat na linggo noong Oktubre–Nobyembre 2026.
 - **Kumpetisyon:** nag-aagawan ang Solana at ang mga layer-2 network ng Ethereum sa parehong mga app, user at pondo.
 - **Halaga para sa token:** ang aktibidad na kalat sa maraming magkakahiwalay na L1 chain ay maaaring hindi lumikha ng malaking demand para sa AVAX mismo.
 - **Supply ng token:** may bagong coin pa ring nalilikha bilang staking reward, at malaki ang hawak ng Ava Labs, ng foundation at ng mga naunang investor.

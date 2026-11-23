@@ -1,16 +1,16 @@
 ---
-title: Avalanche (AVAX) explained: 1-second finality, a 720 million cap and a $145 record
+title: Avalanche (AVAX) explained: 1-second finality, a 720 million cap and custom L1 chains
 description: Avalanche in plain language: how its fast consensus and custom L1 chains work, what AVAX is for, tokenized funds, its crash from 2021 and the main risks.
 date: 2026-11-23
 kind: analysis
 ---
-**Avalanche** is a smart-contract blockchain that confirms transactions in about a second and lets companies, games and funds launch their own chains on top of it. It went live in September 2020 and was built by Ava Labs, the company of Cornell computer scientist Emin Gün Sirer. In November 2026 all AVAX in circulation was worth about $3 billion, around number 25 among cryptocurrencies.
+**Avalanche** is a smart-contract blockchain that confirms transactions in about a second and lets companies, games and funds launch their own chains on top of it. It went live in September 2020 and was built by Ava Labs, the company of Cornell computer scientist Emin Gün Sirer. All AVAX in circulation is worth {{mcap:avax}} today ({{rank:avax}} among cryptocurrencies).
 
 > **Key takeaways**
 > - Transactions are final in about one second, and the main C-Chain works with Ethereum wallets such as MetaMask.
 > - Supply is capped at 720 million AVAX; about 447 million were in circulation in November 2026, and every fee is burned.
 > - Tokenized funds from Securitize, WisdomTree and others run on it, and since September 2026 validators can stake for as little as 48 hours.
-> - The record price so far is $144.96 (November 2021); in November 2026 AVAX traded about 95% below it.
+> - Its record high is {{ath:avax}} ({{athd:avax}}); today the price is {{fromath:avax}} from it.
 
 ## How it works
 
@@ -37,7 +37,7 @@ Among smart-contract blockchains Avalanche competes with [Ethereum]({lang}/eth/)
 
 ## Main risks
 
-- **Big swings:** AVAX has fallen about 95% from its record and lost 28% in four weeks in October–November 2026.
+- **Big swings:** AVAX fell more than 90% in 2022 and lost 28% in four weeks in October–November 2026.
 - **Competition:** Solana and Ethereum's layer-2 networks fight for the same apps, users and funds.
 - **Value capture:** activity spread across many separate L1 chains may not create much demand for AVAX itself.
 - **Token supply:** new coins are still created as staking rewards, and Ava Labs, the foundation and early investors hold large amounts.

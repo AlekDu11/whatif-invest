@@ -1,16 +1,16 @@
 ---
-title: Avalanche (AVAX) sade dille: 1 saniyede kesinleşme, 720 milyonluk tavan ve 145 $ rekor
+title: Avalanche (AVAX) sade dille: 1 saniyede kesinleşme, 720 milyonluk tavan ve özel L1 zincirleri
 description: Avalanche sade dille: hızlı mutabakat ve özel L1 zincirleri nasıl çalışır, AVAX ne işe yarar, tokenize fonlar, 2021'den bu yana düşüş ve başlıca riskler.
 date: 2026-11-23
 kind: analysis
 ---
-**Avalanche**, işlemleri yaklaşık bir saniyede onaylayan ve şirketlerin, oyunların ve fonların üzerinde kendi zincirlerini kurmasına izin veren bir akıllı sözleşme blokzinciridir. Eylül 2020'de yayına girdi; Cornell Üniversitesi'nden bilgisayar bilimci Emin Gün Sirer'in şirketi Ava Labs tarafından geliştirildi. Kasım 2026'da dolaşımdaki tüm AVAX'ların değeri yaklaşık 3 milyar $ idi; bu, kripto paralar arasında aşağı yukarı 25. sıraya denk geliyordu.
+**Avalanche**, işlemleri yaklaşık bir saniyede onaylayan ve şirketlerin, oyunların ve fonların üzerinde kendi zincirlerini kurmasına izin veren bir akıllı sözleşme blokzinciridir. Eylül 2020'de yayına girdi; Cornell Üniversitesi'nden bilgisayar bilimci Emin Gün Sirer'in şirketi Ava Labs tarafından geliştirildi. Dolaşımdaki tüm AVAX'ların bugünkü piyasa değeri {{mcap:avax}} (kripto paralar arasında {{rank:avax}}).
 
 > **Öne çıkanlar**
 > - İşlemler yaklaşık bir saniyede kesinleşir ve ana zincir C-Chain, MetaMask gibi Ethereum cüzdanlarıyla çalışır.
 > - Arz 720 milyon AVAX ile sınırlıdır; Kasım 2026'da yaklaşık 447 milyonu dolaşımdaydı ve her işlem ücreti yakılır.
 > - Securitize, WisdomTree ve diğerlerinin tokenize fonları bu ağda çalışır; Eylül 2026'dan beri doğrulayıcılar yalnızca 48 saatliğine stake edebilir.
-> - Şimdiye kadarki rekor fiyat 144,96 $ (Kasım 2021); Kasım 2026'da AVAX bunun yaklaşık %95 altında işlem görüyordu.
+> - Rekor fiyatı {{ath:avax}} ({{athd:avax}}); bugün fiyat ondan {{fromath:avax}} uzakta.
 
 ## Nasıl çalışır
 
@@ -37,7 +37,7 @@ Akıllı sözleşme blokzincirleri arasında Avalanche; [Ethereum]({lang}/eth/) 
 
 ## Başlıca riskler
 
-- **Büyük dalgalanmalar:** AVAX rekorundan yaklaşık %95 düştü ve Ekim–Kasım 2026'da dört haftada %28 kaybetti.
+- **Büyük dalgalanmalar:** AVAX 2022'de %90'dan fazla düştü ve Ekim–Kasım 2026'da dört haftada %28 kaybetti.
 - **Rekabet:** Solana ve Ethereum'un katman 2 ağları aynı uygulamalar, kullanıcılar ve fonlar için yarışıyor.
 - **Değerin tokene yansıması:** Birçok ayrı L1 zincirine dağılmış faaliyet, AVAX'ın kendisine fazla talep yaratmayabilir.
 - **Token arzı:** Stake ödülü olarak hâlâ yeni coin'ler üretiliyor; Ava Labs, vakıf ve ilk yatırımcılar büyük miktarlar tutuyor.

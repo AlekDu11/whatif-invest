@@ -1,16 +1,16 @@
 ---
-title: Avalanche (AVAX) dijelaskan sederhana: finalitas 1 detik, batas 720 juta koin, dan rekor $145
+title: Avalanche (AVAX) dijelaskan sederhana: finalitas 1 detik, batas 720 juta koin, dan jaringan L1 sendiri
 description: Avalanche secara sederhana: cara kerja konsensus cepat dan jaringan L1 sendiri, kegunaan AVAX, dana tokenisasi, kejatuhan sejak 2021, dan risiko utamanya.
 date: 2026-11-23
 kind: analysis
 ---
-**Avalanche** adalah blockchain smart contract yang mengonfirmasi transaksi dalam sekitar satu detik dan memungkinkan perusahaan, game, serta dana investasi meluncurkan jaringan mereka sendiri di atasnya. Jaringan ini mulai beroperasi pada September 2020 dan dibangun oleh Ava Labs, perusahaan milik ilmuwan komputer Universitas Cornell, Emin Gün Sirer. Pada November 2026, seluruh AVAX yang beredar bernilai sekitar $3 miliar, kira-kira peringkat 25 di antara mata uang kripto.
+**Avalanche** adalah blockchain smart contract yang mengonfirmasi transaksi dalam sekitar satu detik dan memungkinkan perusahaan, game, serta dana investasi meluncurkan jaringan mereka sendiri di atasnya. Jaringan ini mulai beroperasi pada September 2020 dan dibangun oleh Ava Labs, perusahaan milik ilmuwan komputer Universitas Cornell, Emin Gün Sirer. Seluruh AVAX yang beredar kini bernilai {{mcap:avax}} ({{rank:avax}} di antara mata uang kripto).
 
 > **Poin penting**
 > - Transaksi bersifat final dalam sekitar satu detik, dan jaringan utamanya, C-Chain, bisa dipakai dengan dompet Ethereum seperti MetaMask.
 > - Pasokan dibatasi 720 juta AVAX; sekitar 447 juta beredar pada November 2026, dan setiap biaya transaksi dibakar.
 > - Dana tokenisasi dari Securitize, WisdomTree, dan lainnya berjalan di sini, dan sejak September 2026 validator bisa melakukan staking hanya selama 48 jam.
-> - Rekor harga sejauh ini $144,96 (November 2021); pada November 2026 AVAX diperdagangkan sekitar 95% di bawahnya.
+> - Rekor tertingginya {{ath:avax}} ({{athd:avax}}); kini harganya {{fromath:avax}} dari rekor itu.
 
 ## Cara kerjanya
 
@@ -37,7 +37,7 @@ Di antara blockchain smart contract, Avalanche bersaing dengan [Ethereum]({lang}
 
 ## Risiko utama
 
-- **Gejolak besar:** AVAX sudah turun sekitar 95% dari rekornya dan kehilangan 28% dalam empat minggu pada Oktober–November 2026.
+- **Gejolak besar:** AVAX turun lebih dari 90% pada 2022 dan kehilangan 28% dalam empat minggu pada Oktober–November 2026.
 - **Persaingan:** Solana dan jaringan layer-2 Ethereum berebut aplikasi, pengguna, dan dana yang sama.
 - **Nilai bagi token:** aktivitas yang tersebar di banyak jaringan L1 terpisah mungkin tidak banyak menciptakan permintaan atas AVAX itu sendiri.
 - **Pasokan token:** koin baru masih tercipta sebagai imbalan staking, dan Ava Labs, yayasan, serta investor awal memegang jumlah besar.
