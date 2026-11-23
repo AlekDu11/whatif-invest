@@ -18,14 +18,16 @@ Amgen sells branded medicines to hospitals, pharmacies and health systems, mostl
 
 ## The numbers right now
 
-In the quarter to 30 September 2026 Amgen's revenue was $10.4 billion, with 17 products growing by double digits. GAAP earnings per share were $7.08 (+19%) and the adjusted figure $6.45 (+14%). Free cash flow was $3.7 billion, and the company bought back no shares that quarter. For full-year 2026 Amgen expects $38.9–39.7 billion of revenue and adjusted earnings of $22.90–23.70 per share. Trailing net profit is about $9.4 billion, a 24% margin.
+- Price today: {{price:amgn}}
+- Market value: {{mcap:amgn}} ({{rank:amgn}} among the world's largest companies on WhatIfStack)
+- Record high: {{ath:amgn}} ({{athd:amgn}}), {{fromath:amgn}} from it
+- $10 a day for 10 years: {{dca:amgn:10}} from {{dcainv:10}} invested ({{dcaroi:amgn:10}})
+
+In the quarter to 30 September 2026 Amgen's revenue was $10.4 billion, with 17 products growing by double digits. GAAP earnings per share were $7.08 (+19%) and the adjusted figure $6.45 (+14%). Free cash flow was $3.7 billion, and the company bought back no shares that quarter. For full-year 2026 Amgen expects $38.9–39.7 billion of revenue and adjusted earnings of $22.90–23.70 per share. Net profit over the twelve months to September 2026 was about $9.4 billion, a 24% margin.
 
 ## The stock's story
 
-Amgen is a mature, slow-moving stock by tech standards, but 2026 was a strong year: shares set an all-time high in March and kept climbing, with a 52-week range of about $312–484 in our data. Investors were rewarding growth from Repatha and Evenity and the hope pinned on MariTide, a once-a-month obesity injection now in large Phase 3 trials, including a head-to-head study against semaglutide (the ingredient in Ozempic and Wegovy). MariTide has no sales yet.
-
-- Price today: {{price:amgn}}
-- $10 a day for 10 years: {{dca:amgn:10}} from {{dcainv:10}} invested ({{dcaroi:amgn:10}})
+Amgen is a mature, slow-moving stock by tech standards, but 2026 was a strong year: the shares set a new high in March 2026 and kept climbing, trading between about $312 and $484 in the 12 months to November 2026. Investors were rewarding growth from Repatha and Evenity and the hope pinned on MariTide, a once-a-month obesity injection that was in large Phase 3 trials in late 2026, including a head-to-head study against semaglutide (the ingredient in Ozempic and Wegovy). MariTide had no sales as of November 2026.
 
 ## Competitors
 
@@ -41,7 +43,7 @@ In cholesterol and bone drugs Amgen faces Novartis, Regeneron and makers of bios
 
 ## What it means if you buy regularly
 
-Amgen is a steady, dividend-paying company: $10.08 a share a year, with regular increases. Reinvesting that dividend adds up over a decade. But a single drugmaker can stall for years when patents expire or a key trial fails, and after a strong 2026 the shares already price in a lot of good news. Regular buying spreads your entry price over time; it does not remove those risks. Past results do not guarantee future returns.
+Amgen is a steady, dividend-paying company: $10.08 a share a year, with regular increases. Reinvesting that dividend adds up over a decade. But a single drugmaker can stall for years when patents expire or a key trial fails, and the strong 2026 run meant the shares priced in a lot of good news. Regular buying spreads your entry price over time; it does not remove those risks. Past results do not guarantee future returns.
 
 *Not investment advice.*
 

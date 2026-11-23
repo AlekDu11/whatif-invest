@@ -1,5 +1,5 @@
 ---
-title: American Express (AXP) explained: the card company that earns $20 billion a quarter
+title: American Express (AXP) stock: the card company with $20.1B of Q3 2026 revenue
 description: American Express in plain language — how it earned $20.1 billion in Q3 2026 from card fees, spending and loans, the risks and what regular buyers should know.
 date: 2026-11-20
 kind: analysis
@@ -9,7 +9,7 @@ kind: analysis
 > **Key takeaways**
 > - Revenue: $20.1 billion in Q3 2026, +9% a year; net income $3.7 billion, +28%.
 > - Card members spent $454 billion on Amex cards in the quarter, +8%.
-> - Full-year 2026 guidance raised to $18.30–18.60 earnings per share; quarterly dividend $0.95, up 16% this year.
+> - Full-year 2026 guidance raised to $18.30–18.60 earnings per share; quarterly dividend $0.95, raised 16% in 2026.
 > - The stock fell 84% in 2007–2009 and about 50% in early 2020, and recovered both times.
 
 ## How it makes money
@@ -20,14 +20,16 @@ Its customers lean affluent, and Millennials and Gen Z were its fastest-growing 
 
 ## The numbers right now
 
-In the quarter to 30 September 2026 Amex reported revenue net of interest expense of $20.1 billion, up 9%, and net income of $3.7 billion, up 28%. Diluted earnings per share were $5.42; without a one-off gain from selling its stake in travel firm GBTG, they were $4.68, up 13%. Credit stayed healthy: the net write-off rate (loans written off as lost) fell to 1.8% from 1.9%. In the quarter it bought back 5 million shares for $1.6 billion and paid $600 million in dividends. Over the last twelve months revenue was about $72.9 billion and the profit margin about 17%.
+- Price today: {{price:axp}}
+- Market value: {{mcap:axp}} ({{rank:axp}} among the world's largest companies on WhatIfStack)
+- Record high: {{ath:axp}} ({{athd:axp}}), {{fromath:axp}} from it
+- $10 a day for 10 years: {{dca:axp:10}} from {{dcainv:10}} invested ({{dcaroi:axp:10}})
+
+In the quarter to 30 September 2026 Amex reported revenue net of interest expense of $20.1 billion, up 9%, and net income of $3.7 billion, up 28%. Diluted earnings per share were $5.42; without a one-off gain from selling its stake in travel firm GBTG, they were $4.68, up 13%. Credit stayed healthy: the net write-off rate (loans written off as lost) fell to 1.8% from 1.9%. In the quarter it bought back 5 million shares for $1.6 billion and paid $600 million in dividends. In the twelve months to September 2026 revenue was about $72.9 billion and the profit margin about 17%.
 
 ## The stock's story
 
-Amex has been through every big crisis. In 2007–2009 the stock lost 84% from peak to trough as unemployment rose and card loans went bad, and it took until 2013 to get back. In 2020 it fell about 50% in 33 days when travel and restaurant spending stopped, then regained the high within a year. The record close so far is about $385 in December 2025; in mid-November 2026 the stock traded roughly 18% below it, inside a 52-week range of $291–387.
-
-- Price today: {{price:axp}}
-- $10 a day for 10 years: {{dca:axp:10}} from {{dcainv:10}} invested ({{dcaroi:axp:10}})
+Amex has been through every big crisis. In 2007–2009 the stock lost 84% from peak to trough as unemployment rose and card loans went bad, and it took until 2013 to get back. In 2020 it fell about 50% in 33 days when travel and restaurant spending stopped, then regained the high within a year. In December 2025 it closed at about $385, a high at the time; by mid-November 2026 it had slipped roughly 18% below that level, after trading between about $291 and $387 over the previous 12 months.
 
 ## Competitors
 
