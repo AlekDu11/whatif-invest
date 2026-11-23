@@ -1,16 +1,16 @@
 ---
-title: Litecoin (LTC) sa simpleng paliwanag: 84 milyong coin, block kada 2.5 minuto at record na $410
+title: Litecoin (LTC) sa simpleng paliwanag: 84 milyong coin, block kada 2.5 minuto at mining mula 2011
 description: Litecoin sa simpleng paliwanag: paano gumagana ang pinsang ito ng bitcoin, bakit 84 milyon lang ang magkakaroon, ang halving, ang ETF ng 2025 at mga panganib.
 date: 2026-11-23
 kind: analysis
 ---
-**Litecoin** ang isa sa pinakamatatandang cryptocurrency na malawak pa ring ginagamit: isang mas magaan at mas mabilis na kopya ng bitcoin na inilunsad noong Oktubre 2011 ng dating Google engineer na si Charlie Lee, at madalas tawaging "pilak sa ginto ng bitcoin". Ginagamit ito ng mga tao para sa mura at mabilis na pagbabayad at bilang matagal nang alternatibo sa bitcoin. Noong Nobyembre 2026, humigit-kumulang $3.1 bilyon ang kabuuang halaga ng lahat ng litecoin, nasa bandang ika-24 na puwesto sa mga cryptocurrency.
+**Litecoin** ang isa sa pinakamatatandang cryptocurrency na malawak pa ring ginagamit: isang mas magaan at mas mabilis na kopya ng bitcoin na inilunsad noong Oktubre 2011 ng dating Google engineer na si Charlie Lee, at madalas tawaging "pilak sa ginto ng bitcoin". Ginagamit ito ng mga tao para sa mura at mabilis na pagbabayad at bilang matagal nang alternatibo sa bitcoin. {{mcap:ltc}} ang kabuuang halaga ng lahat ng litecoin ngayon ({{rank:ltc}} sa mga cryptocurrency).
 
 > **Mahahalagang punto**
 > - Hindi kailanman lalampas sa 84 milyon ang LTC — apat na beses ng limit ng bitcoin; mga 77.9 milyon na ang umiiral.
 > - May bagong block kada 2.5 minuto sa halip na 10, at ang karaniwang bayad ay kadalasang maliit na bahagi lang ng isang sentimo.
 > - Mula Oktubre 2025, puwede na itong bilhin ng mga Amerikano sa pamamagitan ng spot ETF sa Nasdaq (LTCC ng Canary).
-> - Ang record na presyo sa ngayon ay $410 (Mayo 2021); noong Nobyembre 2026, mga 90% na mas mababa rito ang trading ng LTC.
+> - Ang pinakamataas na presyo nito ay {{ath:ltc}} ({{athd:ltc}}); ngayon, {{fromath:ltc}} ang presyo mula roon.
 
 ## Paano ito gumagana
 
@@ -23,7 +23,8 @@ Ginawa ang LTC para gastusin at ipadala: pambayad ito sa mga produkto at serbisy
 ## Ang mga numero ngayon
 
 - Presyo ngayon: {{price:ltc}}
-- Pinakamataas na presyo: {{ath:ltc}} ({{athd:ltc}})
+- Pinakamataas na presyo: {{ath:ltc}} ({{athd:ltc}}), {{fromath:ltc}} mula roon
+- Halaga sa merkado: {{mcap:ltc}} ({{rank:ltc}} sa mga cryptocurrency)
 - Pagbabago ng presyo sa loob ng 12 buwan: {{chg1y:ltc}}
 - $10 kada araw sa loob ng 10 taon: {{dca:ltc:10}} mula sa {{dcainv:10}} na inilagay ({{dcaroi:ltc:10}})
 
@@ -37,7 +38,7 @@ Bilang coin para sa pagbabayad, kalaban ng LTC ang [Bitcoin Cash]({lang}/bch/), 
 
 ## Pangunahing panganib
 
-- **Malalaking galaw:** ilang beses nang nawalan ng mahigit 70% ang LTC at malayo pa rin ito sa record nito noong 2021.
+- **Malalaking galaw:** ilang beses nang nawalan ng mahigit 70% ang LTC, kasama na pagkatapos ng mga rurok nito noong 2017 at 2021.
 - **Malabong papel:** halos lahat ng ginagawa ng Litecoin ay kaya na ng bitcoin, ng mga stablecoin at ng mga bagong mabilis na network, kaya maaaring humina ang demand.
 - **Mining:** muling mahahati ang gantimpala bandang 2027, at bahagyang nakadepende sa Dogecoin ang kita ng mga miner.
 - **Regulasyon:** dahil sa privacy option, dinelist ito ng ilang exchange, at iba-iba ang patakaran sa bawat bansa.

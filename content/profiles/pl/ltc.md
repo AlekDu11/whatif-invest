@@ -1,16 +1,16 @@
 ---
-title: Litecoin (LTC) prostym językiem: 84 miliony monet, bloki co 2,5 minuty i rekord 410 $
+title: Litecoin (LTC) prostym językiem: 84 miliony monet, bloki co 2,5 minuty i kopanie od 2011 r.
 description: Litecoin prostym językiem: jak działa ten kuzyn bitcoina, dlaczego powstanie tylko 84 mln monet, halving, ETF z 2025 r., krachy i główne ryzyka.
 date: 2026-11-23
 kind: analysis
 ---
-**Litecoin** to jedna z najstarszych kryptowalut, które wciąż są powszechnie używane: lżejsza i szybsza kopia bitcoina, uruchomiona w październiku 2011 r. przez byłego inżyniera Google Charliego Lee, często nazywana „srebrem przy złocie bitcoina”. Ludzie używają jej do tanich, szybkich płatności i jako długo działającej alternatywy dla bitcoina. W listopadzie 2026 r. wszystkie litecoiny razem były warte ok. 3,1 mld dolarów, co dawało mniej więcej 24. miejsce wśród kryptowalut.
+**Litecoin** to jedna z najstarszych kryptowalut, które wciąż są powszechnie używane: lżejsza i szybsza kopia bitcoina, uruchomiona w październiku 2011 r. przez byłego inżyniera Google Charliego Lee, często nazywana „srebrem przy złocie bitcoina”. Ludzie używają jej do tanich, szybkich płatności i jako długo działającej alternatywy dla bitcoina. Wszystkie litecoiny razem są dziś warte {{mcap:ltc}} ({{rank:ltc}} wśród kryptowalut).
 
 > **Najważniejsze**
 > - Nigdy nie będzie więcej niż 84 mln LTC — cztery razy więcej niż limit bitcoina; ok. 77,9 mln już istnieje.
 > - Nowy blok pojawia się co 2,5 minuty zamiast co 10, a zwykła płatność kosztuje zwykle ułamek centa.
 > - Od października 2025 r. Amerykanie mogą kupować LTC przez spotowy ETF na Nasdaq (LTCC od Canary).
-> - Dotychczasowy rekord to 410 $ (maj 2021 r.); w listopadzie 2026 r. LTC był notowany ok. 90% niżej.
+> - Rekord ceny to {{ath:ltc}} ({{athd:ltc}}); dziś cena jest {{fromath:ltc}} od niego.
 
 ## Jak działa
 
@@ -23,7 +23,8 @@ LTC ma być wydawany i przesyłany: płaci się nim za towary i usługi, przelew
 ## Liczby teraz
 
 - Cena teraz: {{price:ltc}}
-- Rekord: {{ath:ltc}} ({{athd:ltc}})
+- Rekord: {{ath:ltc}} ({{athd:ltc}}), {{fromath:ltc}} od niego
+- Wartość rynkowa: {{mcap:ltc}} ({{rank:ltc}} wśród kryptowalut)
 - Zmiana ceny w ciągu 12 miesięcy: {{chg1y:ltc}}
 - 10 $ dziennie przez 10 lat: {{dca:ltc:10}} przy wpłaconych {{dcainv:10}} ({{dcaroi:ltc:10}})
 
@@ -37,7 +38,7 @@ Jako moneta płatnicza LTC konkuruje z [Bitcoin Cash]({lang}/bch/), [Dogecoinem]
 
 ## Główne ryzyka
 
-- **Duże wahania:** LTC kilka razy tracił ponad 70% i wciąż jest daleko poniżej rekordu z 2021 r.
+- **Duże wahania:** LTC kilka razy tracił ponad 70%, także po szczytach z 2017 i 2021 r.
 - **Niejasna rola:** bitcoin, stablecoiny i nowe szybkie sieci oferują większość tego, co Litecoin, więc popyt może słabnąć.
 - **Kopanie:** około 2027 r. nagroda znów spadnie o połowę, a dochody górników częściowo zależą od Dogecoina.
 - **Regulacje:** opcja prywatności sprawiła, że część giełd wycofała monetę, a przepisy różnią się w zależności od kraju.

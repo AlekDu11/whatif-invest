@@ -1,16 +1,16 @@
 ---
-title: Litecoin (LTC) giải thích dễ hiểu: 84 triệu coin, khối 2,5 phút và kỷ lục 410 USD
+title: Litecoin (LTC) giải thích dễ hiểu: 84 triệu coin, khối 2,5 phút và được khai thác từ năm 2011
 description: Litecoin giải thích dễ hiểu: "người anh em" của bitcoin hoạt động thế nào, vì sao chỉ có 84 triệu coin, halving, ETF năm 2025, các cú sập và rủi ro chính.
 date: 2026-11-23
 kind: analysis
 ---
-**Litecoin** là một trong những tiền mã hóa lâu đời nhất vẫn được dùng rộng rãi: bản sao nhẹ hơn, nhanh hơn của bitcoin do cựu kỹ sư Google Charlie Lee ra mắt vào tháng 10/2011, thường được gọi là "bạc bên cạnh vàng bitcoin". Người ta dùng nó để thanh toán nhanh, rẻ và như một lựa chọn thay thế bitcoin đã tồn tại lâu năm. Vào tháng 11/2026, tổng giá trị của toàn bộ litecoin vào khoảng 3,1 tỷ USD, quanh vị trí thứ 24 trong số các tiền mã hóa.
+**Litecoin** là một trong những tiền mã hóa lâu đời nhất vẫn được dùng rộng rãi: bản sao nhẹ hơn, nhanh hơn của bitcoin do cựu kỹ sư Google Charlie Lee ra mắt vào tháng 10/2011, thường được gọi là "bạc bên cạnh vàng bitcoin". Người ta dùng nó để thanh toán nhanh, rẻ và như một lựa chọn thay thế bitcoin đã tồn tại lâu năm. Vốn hóa của toàn bộ litecoin hiện là {{mcap:ltc}} ({{rank:ltc}} trong các đồng tiền mã hóa).
 
 > **Điểm chính**
 > - Sẽ không bao giờ có quá 84 triệu LTC — gấp bốn lần giới hạn của bitcoin; khoảng 77,9 triệu đã tồn tại.
 > - Cứ 2,5 phút lại có một khối mới thay vì 10 phút, và một khoản thanh toán thông thường thường chỉ tốn một phần nhỏ của một xu.
 > - Từ tháng 10/2025, nhà đầu tư Mỹ có thể mua LTC qua một ETF giao ngay trên Nasdaq (LTCC của Canary).
-> - Đỉnh giá cao nhất đến nay là 410 USD (tháng 5/2021); vào tháng 11/2026, LTC giao dịch thấp hơn khoảng 90%.
+> - Đỉnh kỷ lục là {{ath:ltc}} ({{athd:ltc}}); giá hiện tại cách đỉnh {{fromath:ltc}}.
 
 ## Cách hoạt động
 
@@ -23,7 +23,8 @@ LTC được tạo ra để chi tiêu và chuyển đi: trả tiền hàng hóa,
 ## Các con số hiện tại
 
 - Giá hôm nay: {{price:ltc}}
-- Đỉnh kỷ lục: {{ath:ltc}} ({{athd:ltc}})
+- Đỉnh kỷ lục: {{ath:ltc}} ({{athd:ltc}}), cách đỉnh {{fromath:ltc}}
+- Vốn hóa thị trường: {{mcap:ltc}} ({{rank:ltc}} trong các đồng tiền mã hóa)
 - Biến động giá trong 12 tháng: {{chg1y:ltc}}
 - 10 USD mỗi ngày trong 10 năm: {{dca:ltc:10}} từ {{dcainv:10}} đã đầu tư ({{dcaroi:ltc:10}})
 
@@ -37,7 +38,7 @@ Là đồng coin thanh toán, LTC cạnh tranh với [Bitcoin Cash]({lang}/bch/)
 
 ## Rủi ro chính
 
-- **Biến động mạnh:** LTC đã nhiều lần mất hơn 70% và vẫn còn cách xa kỷ lục năm 2021.
+- **Biến động mạnh:** LTC đã nhiều lần mất hơn 70%, kể cả sau các đỉnh năm 2017 và 2021.
 - **Vai trò không rõ ràng:** bitcoin, stablecoin và các mạng mới tốc độ cao đáp ứng gần hết những gì Litecoin làm, nên nhu cầu có thể suy giảm.
 - **Khai thác:** phần thưởng sẽ lại giảm một nửa vào khoảng năm 2027, và thu nhập của thợ đào phụ thuộc một phần vào Dogecoin.
 - **Quy định:** tùy chọn riêng tư khiến một số sàn hủy niêm yết, và quy định khác nhau giữa các quốc gia.

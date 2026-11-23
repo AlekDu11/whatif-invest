@@ -1,16 +1,16 @@
 ---
-title: Litecoin (LTC) sade dille: 84 milyon coin, 2,5 dakikalık bloklar ve 410 $ rekor
+title: Litecoin (LTC) sade dille: 84 milyon coin, 2,5 dakikalık bloklar ve 2011'den beri madencilik
 description: Litecoin sade dille: bitcoin'in bu kuzeni nasıl çalışır, neden yalnızca 84 milyon olacak, halving, 2025 ETF'si, sert düşüşler ve başlıca riskler.
 date: 2026-11-23
 kind: analysis
 ---
-**Litecoin**, hâlâ yaygın olarak kullanılan en eski kripto paralardan biridir: eski Google mühendisi Charlie Lee'nin Ekim 2011'de başlattığı, bitcoin'in daha hafif ve daha hızlı bir kopyası. Sık sık "bitcoin altınsa Litecoin gümüştür" diye anılır. İnsanlar onu ucuz ve hızlı ödemeler için ve bitcoin'e uzun soluklu bir alternatif olarak kullanıyor. Kasım 2026'da tüm litecoin'lerin toplam değeri yaklaşık 3,1 milyar dolardı; bu da onu kripto paralar arasında 24. sıra civarına koyuyordu.
+**Litecoin**, hâlâ yaygın olarak kullanılan en eski kripto paralardan biridir: eski Google mühendisi Charlie Lee'nin Ekim 2011'de başlattığı, bitcoin'in daha hafif ve daha hızlı bir kopyası. Sık sık "bitcoin altınsa Litecoin gümüştür" diye anılır. İnsanlar onu ucuz ve hızlı ödemeler için ve bitcoin'e uzun soluklu bir alternatif olarak kullanıyor. Tüm litecoin'lerin bugünkü piyasa değeri {{mcap:ltc}} (kripto paralar arasında {{rank:ltc}}).
 
 > **Öne çıkanlar**
 > - Hiçbir zaman 84 milyondan fazla LTC olmayacak — bu, bitcoin'in sınırının dört katı; yaklaşık 77,9 milyonu zaten mevcut.
 > - Yeni bir blok 10 yerine 2,5 dakikada bir gelir ve normal bir ödeme genellikle bir sentin çok küçük bir kısmına mal olur.
 > - Ekim 2025'ten beri ABD'li yatırımcılar LTC'yi Nasdaq'taki bir spot ETF ile alabiliyor (Canary'nin LTCC'si).
-> - Şimdiye kadarki rekor fiyat 410 $ (Mayıs 2021); Kasım 2026'da LTC bunun yaklaşık %90 altında işlem görüyordu.
+> - Rekor fiyatı {{ath:ltc}} ({{athd:ltc}}); bugün fiyat ondan {{fromath:ltc}} uzakta.
 
 ## Nasıl çalışır
 
@@ -23,7 +23,8 @@ LTC harcanmak ve transfer edilmek için tasarlandı: mal ve hizmetlerin ödemesi
 ## Şu anki rakamlar
 
 - Bugünkü fiyat: {{price:ltc}}
-- Rekor: {{ath:ltc}} ({{athd:ltc}})
+- Rekor: {{ath:ltc}} ({{athd:ltc}}), ondan {{fromath:ltc}}
+- Piyasa değeri: {{mcap:ltc}} (kripto paralar arasında {{rank:ltc}})
 - 12 aylık fiyat değişimi: {{chg1y:ltc}}
 - 10 yıl boyunca günde 10 $: {{dca:ltc:10}}, yatırılan {{dcainv:10}} ({{dcaroi:ltc:10}})
 
@@ -37,7 +38,7 @@ Bir ödeme coin'i olarak LTC; [Bitcoin Cash]({lang}/bch/), [Dogecoin]({lang}/dog
 
 ## Başlıca riskler
 
-- **Sert dalgalanmalar:** LTC birkaç kez %70'ten fazla değer kaybetti ve hâlâ 2021 rekorunun çok altında.
+- **Sert dalgalanmalar:** LTC birkaç kez %70'ten fazla değer kaybetti; 2017 ve 2021 zirvelerinden sonra da böyle oldu.
 - **Belirsiz rol:** bitcoin, stablecoin'ler ve yeni hızlı ağlar Litecoin'in sunduklarının çoğunu sağlıyor; talep zayıflayabilir.
 - **Madencilik:** ödül 2027 civarında yeniden yarıya inecek ve madencilerin geliri kısmen Dogecoin'e bağlı.
 - **Düzenleme:** gizlilik seçeneği bazı borsaların coin'i listeden çıkarmasına yol açtı ve kurallar ülkeden ülkeye değişiyor.

@@ -1,16 +1,16 @@
 ---
-title: Litecoin (LTC) eenvoudig uitgelegd: 84 miljoen munten, blokken van 2,5 minuut en een record van $410
+title: Litecoin (LTC) eenvoudig uitgelegd: 84 miljoen munten, blokken van 2,5 minuut en mining sinds 2011
 description: Litecoin eenvoudig uitgelegd: hoe deze neef van bitcoin werkt, waarom er maar 84 miljoen komen, de halving, de ETF van 2025, de crashes en de risico's.
 date: 2026-11-23
 kind: analysis
 ---
-**Litecoin** is een van de oudste cryptomunten die nog breed worden gebruikt: een lichtere, snellere kopie van bitcoin die in oktober 2011 werd gelanceerd door oud-Google-engineer Charlie Lee, vaak "het zilver naast het goud van bitcoin" genoemd. Mensen gebruiken het voor goedkope, snelle betalingen en als langlopend alternatief voor bitcoin. In november 2026 waren alle litecoins samen ongeveer $3,1 miljard waard, rond plaats 24 onder de cryptomunten.
+**Litecoin** is een van de oudste cryptomunten die nog breed worden gebruikt: een lichtere, snellere kopie van bitcoin die in oktober 2011 werd gelanceerd door oud-Google-engineer Charlie Lee, vaak "het zilver naast het goud van bitcoin" genoemd. Mensen gebruiken het voor goedkope, snelle betalingen en als langlopend alternatief voor bitcoin. Alle litecoins samen zijn vandaag {{mcap:ltc}} waard ({{rank:ltc}} onder de cryptomunten).
 
 > **Belangrijkste punten**
 > - Er komen nooit meer dan 84 miljoen LTC – vier keer de limiet van bitcoin; er bestaan er al zo'n 77,9 miljoen.
 > - Elke 2,5 minuut komt er een nieuw blok in plaats van elke 10, en een gewone betaling kost meestal een fractie van een cent.
 > - Sinds oktober 2025 kunnen Amerikaanse beleggers het kopen via een spot-ETF op Nasdaq (LTCC van Canary).
-> - De recordkoers tot nu toe is $410 (mei 2021); in november 2026 noteerde LTC zo'n 90% lager.
+> - De recordkoers is {{ath:ltc}} ({{athd:ltc}}); vandaag staat de koers {{fromath:ltc}} daarvan af.
 
 ## Hoe het werkt
 
@@ -23,7 +23,8 @@ LTC is bedoeld om uit te geven en te versturen: je betaalt er goederen en dienst
 ## De cijfers nu
 
 - Koers nu: {{price:ltc}}
-- Recordkoers: {{ath:ltc}} ({{athd:ltc}})
+- Recordkoers: {{ath:ltc}} ({{athd:ltc}}), {{fromath:ltc}} daarvan af
+- Marktwaarde: {{mcap:ltc}} ({{rank:ltc}} onder de cryptomunten)
 - Koersverandering over 12 maanden: {{chg1y:ltc}}
 - $10 per dag gedurende 10 jaar: {{dca:ltc:10}} bij {{dcainv:10}} ingelegd ({{dcaroi:ltc:10}})
 
@@ -37,7 +38,7 @@ Als betaalmunt concurreert LTC met [Bitcoin Cash]({lang}/bch/), [Dogecoin]({lang
 
 ## Belangrijkste risico's
 
-- **Grote schommelingen:** LTC verloor meerdere keren meer dan 70% en staat nog ver onder het record van 2021.
+- **Grote schommelingen:** LTC verloor meerdere keren meer dan 70%, ook na de pieken van 2017 en 2021.
 - **Onduidelijke rol:** bitcoin, stablecoins en nieuwe snelle netwerken bieden het meeste van wat Litecoin doet, dus de vraag kan afnemen.
 - **Mining:** rond 2027 halveert de beloning opnieuw, en het inkomen van miners hangt deels af van Dogecoin.
 - **Regelgeving:** door de privacyoptie schrapten sommige beurzen de munt, en de regels verschillen per land.

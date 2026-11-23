@@ -1,16 +1,16 @@
 ---
-title: Litecoin (LTC) dijelaskan sederhana: 84 juta koin, blok setiap 2,5 menit, dan rekor $410
+title: Litecoin (LTC) dijelaskan sederhana: 84 juta koin, blok setiap 2,5 menit, dan ditambang sejak 2011
 description: Litecoin dijelaskan sederhana: cara kerja sepupu bitcoin ini, kenapa hanya akan ada 84 juta koin, halving, ETF 2025, kejatuhan harga, dan risiko utamanya.
 date: 2026-11-23
 kind: analysis
 ---
-**Litecoin** adalah salah satu kripto tertua yang masih banyak dipakai: salinan bitcoin yang lebih ringan dan cepat, diluncurkan pada Oktober 2011 oleh mantan insinyur Google Charlie Lee, dan sering dijuluki "perak bagi emasnya bitcoin". Orang memakainya untuk pembayaran yang murah dan cepat serta sebagai alternatif bitcoin yang sudah lama bertahan. Pada November 2026, seluruh litecoin bernilai sekitar $3,1 miliar, kira-kira peringkat 24 di antara kripto.
+**Litecoin** adalah salah satu kripto tertua yang masih banyak dipakai: salinan bitcoin yang lebih ringan dan cepat, diluncurkan pada Oktober 2011 oleh mantan insinyur Google Charlie Lee, dan sering dijuluki "perak bagi emasnya bitcoin". Orang memakainya untuk pembayaran yang murah dan cepat serta sebagai alternatif bitcoin yang sudah lama bertahan. Nilai seluruh litecoin kini {{mcap:ltc}} ({{rank:ltc}} di antara mata uang kripto).
 
 > **Poin penting**
 > - Jumlah LTC tidak akan pernah lebih dari 84 juta — empat kali batas bitcoin; sekitar 77,9 juta sudah beredar.
 > - Blok baru muncul setiap 2,5 menit, bukan 10 menit, dan pembayaran biasa umumnya hanya berbiaya sepersekian sen.
 > - Sejak Oktober 2025, investor di AS bisa membelinya lewat ETF spot di Nasdaq (LTCC dari Canary).
-> - Rekor harga sejauh ini $410 (Mei 2021); pada November 2026 LTC diperdagangkan sekitar 90% di bawahnya.
+> - Rekor tertingginya {{ath:ltc}} ({{athd:ltc}}); kini harganya {{fromath:ltc}} dari rekor itu.
 
 ## Cara kerjanya
 
@@ -23,7 +23,8 @@ LTC dibuat untuk dibelanjakan dan dipindahkan: untuk membayar barang dan jasa, m
 ## Angka saat ini
 
 - Harga hari ini: {{price:ltc}}
-- Rekor tertinggi: {{ath:ltc}} ({{athd:ltc}})
+- Rekor tertinggi: {{ath:ltc}} ({{athd:ltc}}), {{fromath:ltc}} dari rekor itu
+- Nilai pasar: {{mcap:ltc}} ({{rank:ltc}} di antara mata uang kripto)
 - Perubahan harga dalam 12 bulan: {{chg1y:ltc}}
 - $10 per hari selama 10 tahun: {{dca:ltc:10}} dari {{dcainv:10}} yang diinvestasikan ({{dcaroi:ltc:10}})
 
@@ -37,7 +38,7 @@ Sebagai koin pembayaran, LTC bersaing dengan [Bitcoin Cash]({lang}/bch/), [Dogec
 
 ## Risiko utama
 
-- **Fluktuasi besar:** LTC beberapa kali kehilangan lebih dari 70% dan masih jauh di bawah rekor 2021.
+- **Fluktuasi besar:** LTC beberapa kali kehilangan lebih dari 70%, termasuk setelah puncak 2017 dan 2021.
 - **Peran yang kurang jelas:** bitcoin, stablecoin, dan jaringan baru yang cepat menawarkan hampir semua yang dilakukan Litecoin, jadi permintaan bisa memudar.
 - **Penambangan:** imbalan akan dipotong setengah lagi sekitar 2027, dan pendapatan penambang sebagian bergantung pada Dogecoin.
 - **Regulasi:** opsi privasi membuat beberapa bursa menghapusnya, dan aturan berbeda di tiap negara.
