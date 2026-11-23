@@ -2,10 +2,19 @@
 title: Bitcoin nedir ve nasıl çalışır? En basit anlatımla
 description: Bitcoin nedir, basitçe: nasıl çalıştığı, madencilik ve 21 milyon sınırı, halving'in önemi ve fiyatın neden bu kadar sık çöküp toparlandığı.
 date: 2026-11-15
-category: guides
+category: learn
 assets: btc, gold, spy
+track: crypto
+step: 1
+stat: 21M
+stat_label: var olabilecek en fazla bitcoin sayısı
 ---
 **Bitcoin nedir?** Bitcoin, hiçbir bankanın ya da devletin kontrol etmediği dijital paradır. Dünyanın dört bir yanındaki binlerce bilgisayarda çalışır ve bu bilgisayarlar kimin neye sahip olduğunu gösteren aynı ortak kaydı tutar. Herkese, her yere, günün her saatinde gönderebilirsiniz — ve kimse keyfine göre yenisini basamaz.
+
+> **Öne çıkanlar**
+> - Bitcoin, hiçbir bankanın veya hükümetin kontrol etmediği, **21 milyon** adetlik kesin sınırı olan dijital paradır.
+> - Tam bir coin almak zorunda değilsiniz: 1 BTC, 100 milyon satoshiye bölünür. Bir bitcoin şu anda {{price:btc}}.
+> - Fiyat çok dalgalanır: rekor {{ath:btc}} ({{athd:btc}}) idi, şu an rekorun {{fromath:btc}} uzağında. Yalnızca kaybetmeyi göze alabileceğiniz parayı yatırın.
 
 Şu anda bir bitcoin {{price:btc}} değerinde, ama 100 milyon küçük parçaya (*satoshi*) bölünebilir; yani küçük bir parçasına sahip olabilirsiniz.
 
@@ -111,6 +120,9 @@ Hayır. Bir bitcoin 100 milyon satoshiye bölünebilir; borsanın izin verdiği 
 ### 21 milyonun tamamı çıkarıldığında ne olacak?
 
 Madenciler yalnızca işlem ücretleriyle kazanacak. Bunun 2140 civarında olması bekleniyor.
+
+
+Rakamları mı istiyorsunuz? Canlı grafik ve kâr hesaplayıcılı tam [Bitcoin analizimizi]({lang}/btc/) okuyun.
 
 ## Kaynaklar
 

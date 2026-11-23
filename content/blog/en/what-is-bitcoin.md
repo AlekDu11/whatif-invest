@@ -2,10 +2,19 @@
 title: What is Bitcoin and how does it work — explained simply
 description: Bitcoin explained simply: what it is, how mining and the 21 million cap work, why halvings matter, and why the price crashes and recovers so often.
 date: 2026-11-15
-category: guides
+category: learn
 assets: btc, gold, spy
+track: crypto
+step: 1
+stat: 21 million
+stat_label: the maximum number of bitcoins that will ever exist
 ---
 **Bitcoin** is digital money that no bank or government controls. It runs on thousands of computers around the world that keep the same shared record of who owns what. You can send it to anyone, anywhere, at any hour — and nobody can print more of it on a whim.
+
+> **Key takeaways**
+> - Bitcoin is digital money that no bank or government controls, with a hard limit of **21 million** coins.
+> - You do not have to buy a whole coin: 1 BTC splits into 100 million satoshis. One bitcoin costs {{price:btc}} now.
+> - The price swings a lot: its record was {{ath:btc}} ({{athd:btc}}) and it is {{fromath:btc}} from it now. Only put in money you can afford to lose.
 
 One bitcoin costs {{price:btc}} right now, but it can be split into 100 million tiny parts called *satoshis*, so you can own a small piece.
 
@@ -111,6 +120,9 @@ No. One bitcoin is divisible into 100 million satoshis, so you can buy any small
 ### What happens when all 21 million are mined?
 
 Miners will be paid only by transaction fees. That is expected around 2140.
+
+
+Want the numbers? Read our full [Bitcoin analysis]({lang}/btc/) with a live chart and a profit calculator.
 
 ## Sources
 

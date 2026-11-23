@@ -2,10 +2,19 @@
 title: Apa itu Bitcoin dan bagaimana cara kerjanya — penjelasan sederhana
 description: Apa itu Bitcoin? Penjelasan sederhana: cara kerja mining, batas 21 juta koin, kenapa halving penting, dan kenapa harganya sering anjlok lalu pulih.
 date: 2026-11-15
-category: guides
+category: learn
 assets: btc, gold, spy
+track: crypto
+step: 1
+stat: 21M
+stat_label: jumlah maksimum bitcoin yang akan pernah ada
 ---
 Apa itu Bitcoin? **Bitcoin** adalah uang digital yang tidak dikendalikan oleh bank atau pemerintah mana pun. Ia berjalan di ribuan komputer di seluruh dunia yang menyimpan catatan bersama yang sama tentang siapa memiliki apa. Anda bisa mengirimnya ke siapa saja, di mana saja, kapan saja — dan tidak ada yang bisa mencetaknya sesuka hati.
+
+> **Poin penting**
+> - Bitcoin adalah uang digital yang tidak dikendalikan bank atau pemerintah mana pun, dengan batas tetap **21 juta** koin.
+> - Anda tidak perlu membeli satu koin utuh: 1 BTC bisa dibagi menjadi 100 juta satoshi. Harga satu bitcoin sekarang {{price:btc}}.
+> - Harganya naik-turun tajam: rekornya {{ath:btc}} ({{athd:btc}}) dan sekarang {{fromath:btc}} dari rekor itu. Investasikan hanya uang yang siap Anda relakan.
 
 Satu bitcoin saat ini bernilai {{price:btc}}, tetapi bisa dipecah menjadi 100 juta bagian kecil yang disebut *satoshi*, jadi Anda bisa memiliki sebagian kecil saja.
 
@@ -111,6 +120,9 @@ Tidak. Satu bitcoin bisa dibagi menjadi 100 juta satoshi, jadi Anda bisa membeli
 ### Apa yang terjadi saat 21 juta koin sudah habis ditambang?
 
 Penambang hanya akan dibayar dari biaya transaksi. Itu diperkirakan terjadi sekitar tahun 2140.
+
+
+Ingin angkanya? Baca [analisis Bitcoin]({lang}/btc/) lengkap kami dengan grafik langsung dan kalkulator keuntungan.
 
 ## Sumber
 

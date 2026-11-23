@@ -2,10 +2,19 @@
 title: Ano ang Bitcoin at paano ito gumagana — simpleng paliwanag
 description: Ano ang Bitcoin? Simpleng paliwanag tungkol sa mining, ang 21 milyong limit, bakit mahalaga ang halving, at bakit paulit-ulit itong bumabagsak at bumabawi.
 date: 2026-11-15
-category: guides
+category: learn
 assets: btc, gold, spy
+track: crypto
+step: 1
+stat: 21M
+stat_label: ang pinakamaraming bitcoin na iiral kailanman
 ---
 **Ano ang Bitcoin?** Ang Bitcoin ay digital na pera na hindi kontrolado ng anumang bangko o gobyerno. Tumatakbo ito sa libu-libong computer sa buong mundo na may iisang talaan kung sino ang may-ari ng ano. Puwede mo itong ipadala kahit kanino, kahit saan, kahit anong oras — at walang sinuman ang basta-bastang makakapag-imprenta ng dagdag nito.
+
+> **Mahahalagang punto**
+> - Ang Bitcoin ay digital na pera na walang bangko o gobyernong kumokontrol, na may mahigpit na limitasyong **21 milyon** na coin.
+> - Hindi mo kailangang bumili ng buong coin: ang 1 BTC ay nahahati sa 100 milyong satoshi. Ang isang bitcoin ngayon ay {{price:btc}}.
+> - Malaki ang galaw ng presyo: ang record ay {{ath:btc}} ({{athd:btc}}) at ngayon ay {{fromath:btc}} mula roon. Mag-invest lang ng perang kaya mong mawala.
 
 Ang isang bitcoin ngayon ay {{price:btc}}, pero puwede itong hatiin sa 100 milyong maliliit na bahagi na tinatawag na *satoshi*, kaya puwede kang magkaroon ng maliit na piraso lang.
 
@@ -111,6 +120,9 @@ Hindi. Puwedeng hatiin ang isang bitcoin sa 100 milyong satoshi, kaya puwede kan
 ### Ano ang mangyayari kapag na-mine na ang lahat ng 21 milyon?
 
 Transaction fees na lang ang magiging bayad sa miners. Inaasahang mangyayari ito bandang 2140.
+
+
+Gusto mo ng mga numero? Basahin ang buong [Bitcoin analysis]({lang}/btc/) namin na may live chart at profit calculator.
 
 ## Sources
 

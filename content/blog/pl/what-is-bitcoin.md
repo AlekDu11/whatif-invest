@@ -2,10 +2,19 @@
 title: Co to jest Bitcoin i jak działa — wyjaśnienie w prostych słowach
 description: Co to jest Bitcoin i jak działa, prosto: czym jest kopanie, limit 21 milionów i halving oraz dlaczego cena tak często gwałtownie spada i odbija.
 date: 2026-11-15
-category: guides
+category: learn
 assets: btc, gold, spy
+track: crypto
+step: 1
+stat: 21M
+stat_label: maksymalna liczba bitcoinów, jaka kiedykolwiek powstanie
 ---
 **Bitcoin** to cyfrowe pieniądze, których nie kontroluje żaden bank ani rząd. Działa dzięki tysiącom komputerów na całym świecie, które prowadzą ten sam wspólny rejestr tego, kto co posiada. Możesz wysłać go komukolwiek, gdziekolwiek i o dowolnej porze — i nikt nie może dodrukować go według własnego uznania.
+
+> **Najważniejsze**
+> - Bitcoin to cyfrowe pieniądze, których nie kontroluje żaden bank ani rząd, ze sztywnym limitem **21 milionów** monet.
+> - Nie musisz kupować całej monety: 1 BTC dzieli się na 100 milionów satoshi. Jeden bitcoin kosztuje teraz {{price:btc}}.
+> - Cena mocno się waha: rekord to {{ath:btc}} ({{athd:btc}}), a teraz jest {{fromath:btc}} od niego. Inwestuj tylko pieniądze, których stratę zniesiesz.
 
 Jeśli zastanawiasz się, **co to jest Bitcoin i jak działa**, ten tekst jest dla ciebie. Jeden bitcoin kosztuje teraz {{price:btc}}, ale dzieli się na 100 milionów drobnych części zwanych *satoshi*, więc możesz mieć nawet jego mały kawałek.
 
@@ -111,6 +120,9 @@ Nie. Jeden bitcoin dzieli się na 100 milionów satoshi, więc możesz kupić do
 ### Co się stanie, gdy wydobyte zostaną wszystkie 21 milionów?
 
 Górnicy będą zarabiać wyłącznie na opłatach transakcyjnych. Ma to nastąpić około 2140 roku.
+
+
+Chcesz liczb? Przeczytaj naszą pełną [analizę bitcoina]({lang}/btc/) z wykresem na żywo i kalkulatorem zysku.
 
 ## Źródła
 

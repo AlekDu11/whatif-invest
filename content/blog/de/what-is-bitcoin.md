@@ -2,10 +2,19 @@
 title: Was ist Bitcoin und wie funktioniert es – einfach erklärt
 description: Bitcoin einfach erklärt: was es ist, wie Mining und die Grenze von 21 Millionen funktionieren, warum Halvings wichtig sind und warum der Kurs so oft crasht.
 date: 2026-11-15
-category: guides
+category: learn
 assets: btc, gold, spy
+track: crypto
+step: 1
+stat: 21M
+stat_label: die maximale Anzahl an Bitcoins, die es je geben wird
 ---
 **Was ist Bitcoin?** Bitcoin ist digitales Geld, das keine Bank und keine Regierung kontrolliert. Es läuft auf Tausenden Computern weltweit, die alle dasselbe gemeinsame Verzeichnis darüber führen, wem was gehört. Sie können es jedem, überall und zu jeder Uhrzeit schicken – und niemand kann einfach mehr davon drucken.
+
+> **Das Wichtigste**
+> - Bitcoin ist digitales Geld, das keine Bank und keine Regierung kontrolliert – mit einer festen Obergrenze von **21 Millionen** Coins.
+> - Du musst keinen ganzen Coin kaufen: 1 BTC teilt sich in 100 Millionen Satoshis. Ein Bitcoin kostet gerade {{price:btc}}.
+> - Der Kurs schwankt stark: Das Rekordhoch lag bei {{ath:btc}} ({{athd:btc}}), aktuell liegt er {{fromath:btc}} davon entfernt. Investiere nur Geld, dessen Verlust du verkraften kannst.
 
 Ein Bitcoin kostet gerade {{price:btc}}, lässt sich aber in 100 Millionen winzige Teile namens *Satoshis* aufteilen. Sie können also auch ein kleines Stück besitzen.
 
@@ -111,6 +120,9 @@ Nein. Ein Bitcoin lässt sich in 100 Millionen Satoshis teilen, Sie können also
 ### Was passiert, wenn alle 21 Millionen geschürft sind?
 
 Dann werden Miner nur noch über Transaktionsgebühren bezahlt. Das wird um 2140 erwartet.
+
+
+Du willst Zahlen? Lies unsere vollständige [Bitcoin-Analyse]({lang}/btc/) mit Live-Chart und Gewinnrechner.
 
 ## Quellen
 

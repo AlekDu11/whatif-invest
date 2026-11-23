@@ -2,10 +2,19 @@
 title: Bitcoin là gì và hoạt động như thế nào — giải thích đơn giản
 description: Bitcoin là gì? Giải thích đơn giản về cách hoạt động, đào coin, giới hạn 21 triệu, vì sao halving quan trọng và vì sao giá thường sập rồi phục hồi.
 date: 2026-11-15
-category: guides
+category: learn
 assets: btc, gold, spy
+track: crypto
+step: 1
+stat: 21M
+stat_label: số bitcoin tối đa từng tồn tại
 ---
 Bitcoin là gì? **Bitcoin** là tiền kỹ thuật số không do ngân hàng hay chính phủ nào kiểm soát. Nó chạy trên hàng nghìn máy tính khắp thế giới, cùng lưu giữ một sổ ghi chép chung về việc ai sở hữu bao nhiêu. Bạn có thể gửi nó cho bất kỳ ai, ở bất cứ đâu, vào bất cứ giờ nào — và không ai có thể tùy ý in thêm.
+
+> **Điểm chính**
+> - Bitcoin là tiền kỹ thuật số không ngân hàng hay chính phủ nào kiểm soát, với giới hạn cố định **21 triệu** đồng.
+> - Bạn không cần mua cả một đồng: 1 BTC chia được thành 100 triệu satoshi. Một bitcoin hiện có giá {{price:btc}}.
+> - Giá dao động rất mạnh: kỷ lục là {{ath:btc}} ({{athd:btc}}) và hiện cách đỉnh {{fromath:btc}}. Chỉ đầu tư số tiền bạn chấp nhận mất.
 
 Một bitcoin hiện có giá {{price:btc}}, nhưng nó có thể chia nhỏ thành 100 triệu phần gọi là *satoshi*, nên bạn có thể sở hữu một phần rất nhỏ.
 
@@ -111,6 +120,9 @@ Không. Một bitcoin chia được thành 100 triệu satoshi, nên bạn có t
 ### Điều gì xảy ra khi đào hết 21 triệu đồng?
 
 Thợ đào sẽ chỉ được trả bằng phí giao dịch. Điều đó dự kiến diễn ra vào khoảng năm 2140.
+
+
+Muốn xem số liệu? Đọc [bài phân tích Bitcoin]({lang}/btc/) đầy đủ của chúng tôi với biểu đồ trực tiếp và máy tính lợi nhuận.
 
 ## Nguồn tham khảo
 

@@ -2,10 +2,19 @@
 title: Qué es bitcoin y cómo funciona, explicado de forma sencilla
 description: Qué es bitcoin explicado fácil: cómo funcionan la minería y el límite de 21 millones, qué es el halving y por qué el precio cae y se recupera tanto.
 date: 2026-11-15
-category: guides
+category: learn
 assets: btc, gold, spy
+track: crypto
+step: 1
+stat: 21M
+stat_label: el número máximo de bitcoins que existirán
 ---
 **¿Qué es bitcoin?** Es dinero digital que no controla ningún banco ni gobierno. Funciona en miles de ordenadores de todo el mundo que mantienen el mismo registro compartido de quién tiene qué. Puedes enviarlo a cualquier persona, en cualquier lugar y a cualquier hora, y nadie puede imprimir más a su antojo.
+
+> **Puntos clave**
+> - Bitcoin es dinero digital que no controla ningún banco ni gobierno, con un límite fijo de **21 millones** de monedas.
+> - No hace falta comprar una moneda entera: 1 BTC se divide en 100 millones de satoshis. Un bitcoin cuesta ahora {{price:btc}}.
+> - El precio se mueve mucho: su récord fue {{ath:btc}} ({{athd:btc}}) y ahora está {{fromath:btc}} de él. Invierte solo dinero que puedas permitirte perder.
 
 Un bitcoin cuesta ahora {{price:btc}}, pero se puede dividir en 100 millones de partes diminutas llamadas *satoshis*, así que puedes tener solo un trocito.
 
@@ -111,6 +120,9 @@ No. Un bitcoin se divide en 100 millones de satoshis, así que puedes comprar la
 ### ¿Qué pasará cuando se minen los 21 millones?
 
 Los mineros cobrarán solo por las comisiones de las transacciones. Se espera hacia 2140.
+
+
+¿Quieres las cifras? Lee nuestro [análisis completo de Bitcoin]({lang}/btc/) con gráfico en vivo y calculadora de ganancias.
 
 ## Fuentes
 

@@ -2,10 +2,19 @@
 title: Wat is Bitcoin en hoe werkt het? Simpel uitgelegd
 description: Wat is Bitcoin, simpel uitgelegd: hoe het werkt, mining en het maximum van 21 miljoen, waarom halvings belangrijk zijn en waarom de koers zo vaak crasht.
 date: 2026-11-15
-category: guides
+category: learn
 assets: btc, gold, spy
+track: crypto
+step: 1
+stat: 21M
+stat_label: het maximale aantal bitcoins dat ooit zal bestaan
 ---
 **Wat is Bitcoin?** Bitcoin is digitaal geld waar geen bank of overheid de baas over is. Het draait op duizenden computers over de hele wereld die allemaal dezelfde gedeelde administratie bijhouden van wie wat bezit. Je kunt het naar iedereen sturen, overal, op elk uur — en niemand kan er zomaar extra van bijdrukken.
+
+> **Belangrijkste punten**
+> - Bitcoin is digitaal geld dat geen bank of overheid controleert, met een vaste limiet van **21 miljoen** munten.
+> - Je hoeft geen hele munt te kopen: 1 BTC is te verdelen in 100 miljoen satoshi's. Eén bitcoin kost nu {{price:btc}}.
+> - De koers schommelt sterk: het record was {{ath:btc}} ({{athd:btc}}) en nu staat hij {{fromath:btc}} daarvan af. Leg alleen geld in dat je kunt missen.
 
 Eén bitcoin kost nu {{price:btc}}, maar hij is te verdelen in 100 miljoen kleine stukjes, *satoshi's*, dus je kunt ook een klein deel bezitten.
 
@@ -111,6 +120,9 @@ Nee. Eén bitcoin is deelbaar in 100 miljoen satoshi's, dus je kunt elk klein be
 ### Wat gebeurt er als alle 21 miljoen gemined zijn?
 
 Dan verdienen miners alleen nog aan transactiekosten. Dat wordt rond 2140 verwacht.
+
+
+Wil je de cijfers? Lees onze volledige [Bitcoin-analyse]({lang}/btc/) met live grafiek en winstcalculator.
 
 ## Bronnen
 
