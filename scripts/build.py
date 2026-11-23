@@ -4494,6 +4494,22 @@ DESC = {f[:-5]: json.load(open(os.path.join(ROOT, 'data', 'desc', f), encoding='
 NEWS = load_posts('news')   # own news briefs: content/news/<lang>/<slug>.md
 
 
+def rec_high(aid):
+    """Record high (USD) and its date: crypto from CoinGecko (ath/athd), everything else = highest monthly close in our history
+    (or today's price if higher). Used by the {{ath}}/{{athd}}/{{fromath}} shortcodes so analyses never show a stale record."""
+    a = A[aid]
+    if a.get('ath'):
+        return a['ath'], a.get('athd') or ''
+    P = a.get('p') or []
+    if not P:
+        return None, ''
+    i = max(range(len(P)), key=lambda k: P[k] or 0)
+    cur = METRICS[aid]['price'] if aid in METRICS else None
+    if cur and cur > P[i]:
+        return cur, END + '-01'
+    return P[i], i2ym(ym2i(a['start']) + i) + '-01'
+
+
 def sc_value(kind, args, lang, live=False):
     """Shortcodes give numbers computed from today's data, so articles stay current.
     live=True (article/profile bodies, owner 2026-11-22): price and the «$10 a day» results are live — app.js updates them
@@ -4522,11 +4538,30 @@ def sc_value(kind, args, lang, live=False):
     if kind in ('lump', 'lumproi'):
         k = A[aid]['p'][-1] / A[aid]['p'][min(st - ym2i(A[aid]['start']), len(A[aid]['p']) - 1)]
         return usd(1000 * k) if kind == 'lump' else pct(k - 1)
-    if kind == 'ath':   # record high from data/market.json (CoinGecko for crypto), refreshed every day
-        return price(A[aid].get('ath')) if A[aid].get('ath') else '—'
+    if kind == 'ath':   # record high, refreshed every day (crypto: CoinGecko; others: highest monthly close in USD)
+        v = rec_high(aid)[0]
+        return price(v) if v else '—'
     if kind == 'athd':
-        d = A[aid].get('athd') or ''
+        d = rec_high(aid)[1] or ''
         return mlabel(d[:7], lang, long=True) if len(d) >= 7 else '—'
+    if kind == 'fromath':   # how far today's price is from the record high (owner 2026-11-23: never a plain-text number that goes stale)
+        v = rec_high(aid)[0]
+        cur = METRICS[aid]['price']
+        if not v or not cur:
+            return '—'
+        c = min(0.0, cur / v - 1)
+        return f'<span class="{cls(c)}">{pct(c)}</span>' if live else pct(c)
+    if kind == 'mcap':   # market value today (crypto: CoinGecko; stocks: Yahoo via stockstats, in USD)
+        v = A[aid].get('mcap') if A[aid]['cat'] == 'crypto' else (STOCKINFO.get(A[aid].get('yahoo') or '', {}) or {}).get('mcap')
+        return big_usd(v) if v else '—'
+    if kind == 'rank':   # place by market value among crypto (CoinGecko rank) or among our stocks
+        if A[aid]['cat'] == 'crypto':
+            return f"#{A[aid]['rank']}" if A[aid].get('rank') else '—'
+        u = lc_universe()
+        if aid not in u:
+            return '—'
+        return f"#{1 + sum(1 for x in u.values() if x['mcap'] > u[aid]['mcap'])}"
+
     if kind == 'chg1y':   # price change over 12 months; live: live price vs the close 12 months ago
         P = A[aid]['p']
         if len(P) < 13 or not P[-13]:
