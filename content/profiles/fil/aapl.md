@@ -18,6 +18,11 @@ Karamihan sa pera ng Apple ay galing pa rin sa pagbebenta ng mga device. Sa fisc
 
 ## Ang mga numero ngayon
 
+- Presyo ngayon: {{price:aapl}}
+- Halaga sa merkado: {{mcap:aapl}} ({{rank:aapl}} sa pinakamalalaking kumpanya sa mundo sa WhatIfStack)
+- Pinakamataas na presyo: {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} mula roon
+- $10 kada araw sa loob ng 10 taon: {{dca:aapl:10}} mula sa {{dcainv:10}} na inilagay ({{dcaroi:aapl:10}})
+
 Sa quarter na nagtapos noong Setyembre, $114.5 bilyon ang kita ng Apple, record para sa quarter na iyon at 12% na mas mataas kaysa isang taon bago. Ang iPhone lang ay $57.6 bilyon at ang Services ay $31.6 bilyon. Ang net income ay $30.7 bilyon, o $2.10 bawat share; ang gross margin ay 47.9%, at mga isang punto rito ay galing sa refund ng taripa. Sa buong taon, tumaas ang net income sa $132.2 bilyon mula $112.0 bilyon, at ang operating cash flow ay $145.1 bilyon.
 
 Sa katapusan ng Setyembre, may $36.3 bilyong cash ang Apple at $100.6 bilyon sa marketable securities, laban sa $80.1 bilyong utang. Nagbabayad ito ng quarterly dividend na $0.27 bawat share. Hindi nagbibigay ang Apple ng opisyal na forecast ng kita sa earnings release nito.
@@ -25,11 +30,6 @@ Sa katapusan ng Setyembre, may $36.3 bilyong cash ang Apple at $100.6 bilyon sa 
 ## Ang kuwento ng stock
 
 Inilunsad ang iPhone noong 2007 at ginawa nitong isa sa pinakamalalaking kumpanya sa mundo ang Apple. Nang hawakan ni Tim Cook ang kumpanya noong 2011, mga $348 bilyon ang halaga ng Apple; nang ipasa niya ang posisyon noong 2026 sa hardware chief na si John Ternus (mananatili si Cook bilang executive chairman), mga $4 trilyon na ito at apat na beses nang lumaki ang taunang kita. Noong Enero 2026, inanunsyo ng Apple na gagamit ito ng AI technology ng Google para pagandahin ang Siri. Sunod-sunod na record ang naabot ng shares noong taglagas ng 2026: noong 9 Nobyembre 2026, nagsara ito sa $350.69, isang record noong panahong iyon, at lumampas sa $5 trilyon ang market value sa unang pagkakataon.
-
-- Presyo ngayon: {{price:aapl}}
-- Halaga sa merkado: {{mcap:aapl}}
-- Pinakamataas na presyo: {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} mula roon
-- $10 kada araw sa loob ng 10 taon: {{dca:aapl:10}} mula sa {{dcainv:10}} na inilagay ({{dcaroi:aapl:10}})
 
 ## Mga kakumpitensya
 

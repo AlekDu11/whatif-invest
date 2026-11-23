@@ -18,6 +18,11 @@ L'essentiel des revenus d'Apple vient toujours de la vente d'appareils. Sur l'ex
 
 ## Les chiffres actuels
 
+- Cours actuel : {{price:aapl}}
+- Valeur de marché : {{mcap:aapl}} ({{rank:aapl}} parmi les plus grandes entreprises du monde sur WhatIfStack)
+- Record : {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} depuis
+- 10 $ par jour pendant 10 ans : {{dca:aapl:10}} pour {{dcainv:10}} investis ({{dcaroi:aapl:10}})
+
 Au trimestre de septembre, Apple a réalisé 114,5 Md$ de chiffre d'affaires, un record pour cette période et 12 % de plus qu'un an plus tôt. L'iPhone seul a pesé 57,6 Md$ et les services 31,6 Md$. Le bénéfice net a atteint 30,7 Md$, soit 2,10 $ par action ; la marge brute était de 47,9 %, dont environ un point provenait de remboursements de droits de douane. Sur l'année, le bénéfice net est passé de 112,0 Md$ à 132,2 Md$, et le flux de trésorerie d'exploitation a atteint 145,1 Md$.
 
 Fin septembre, Apple détenait 36,3 Md$ de liquidités et 100,6 Md$ de titres négociables, face à 80,1 Md$ de dette. Le dividende trimestriel est de 0,27 $ par action. Apple ne publie pas de prévision officielle de chiffre d'affaires dans son communiqué de résultats.
@@ -25,11 +30,6 @@ Fin septembre, Apple détenait 36,3 Md$ de liquidités et 100,6 Md$ de titres n�
 ## L'histoire de l'action
 
 L'iPhone est sorti en 2007 et a fait d'Apple l'une des plus grandes entreprises du monde. Quand Tim Cook a pris les commandes en 2011, Apple valait environ 348 Md$ ; quand il a passé le relais en 2026 au patron du matériel John Ternus (Cook reste président exécutif du conseil), elle valait près de 4 000 Md$ et son chiffre d'affaires annuel avait quadruplé. En janvier 2026, Apple a annoncé qu'elle utiliserait l'IA de Google pour améliorer Siri. L'action a ensuite enchaîné les records à l'automne 2026 : le 9 novembre 2026, elle a clôturé à 350,69 $, un record à l'époque, et la capitalisation a dépassé 5 000 Md$ pour la première fois.
-
-- Cours actuel : {{price:aapl}}
-- Valeur de marché : {{mcap:aapl}}
-- Record : {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} depuis
-- 10 $ par jour pendant 10 ans : {{dca:aapl:10}} pour {{dcainv:10}} investis ({{dcaroi:aapl:10}})
 
 ## Concurrents
 

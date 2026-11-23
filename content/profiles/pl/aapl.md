@@ -18,6 +18,11 @@ Większość pieniędzy Apple wciąż pochodzi ze sprzedaży urządzeń. W roku 
 
 ## Liczby teraz
 
+- Cena teraz: {{price:aapl}}
+- Wartość rynkowa: {{mcap:aapl}} ({{rank:aapl}} wśród największych firm świata na WhatIfStack)
+- Rekord: {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} od niego
+- 10 $ dziennie przez 10 lat: {{dca:aapl:10}} przy wpłaconych {{dcainv:10}} ({{dcaroi:aapl:10}})
+
 W kwartale wrześniowym przychody Apple wyniosły 114,5 mld $ — rekord dla tego kwartału i o 12% więcej niż rok wcześniej. Sam iPhone dał 57,6 mld $, a usługi 31,6 mld $. Zysk netto wyniósł 30,7 mld $, czyli 2,10 $ na akcję; marża brutto 47,9%, z czego ok. jeden punkt to zwroty ceł. W całym roku zysk netto wzrósł do 132,2 mld $ ze 112,0 mld $, a przepływy pieniężne z działalności operacyjnej sięgnęły 145,1 mld $.
 
 Na koniec września Apple miała 36,3 mld $ gotówki i 100,6 mld $ w papierach wartościowych wobec 80,1 mld $ długu. Kwartalna dywidenda to 0,27 $ na akcję. W raporcie wynikowym spółka nie podaje oficjalnej prognozy przychodów.
@@ -25,11 +30,6 @@ Na koniec września Apple miała 36,3 mld $ gotówki i 100,6 mld $ w papierach w
 ## Historia akcji
 
 iPhone zadebiutował w 2007 roku i uczynił Apple jedną z największych firm świata. Gdy w 2011 r. stery przejął Tim Cook, Apple była warta ok. 348 mld $; gdy w 2026 r. przekazał stanowisko szefowi działu sprzętu Johnowi Ternusowi (sam Cook zostaje prezesem wykonawczym rady), firma była warta ok. 4 bln $, a roczne przychody wzrosły czterokrotnie. W styczniu 2026 r. Apple ogłosiła, że ulepszy Siri dzięki technologii AI Google. Jesienią 2026 r. kurs bił kolejne rekordy: 9 listopada 2026 r. akcje zamknęły się na poziomie 350,69 $, co było wtedy rekordem, a wartość rynkowa po raz pierwszy przekroczyła 5 bln $.
-
-- Cena teraz: {{price:aapl}}
-- Wartość rynkowa: {{mcap:aapl}}
-- Rekord: {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} od niego
-- 10 $ dziennie przez 10 lat: {{dca:aapl:10}} przy wpłaconych {{dcainv:10}} ({{dcaroi:aapl:10}})
 
 ## Konkurenci
 

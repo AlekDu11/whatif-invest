@@ -18,6 +18,11 @@ A maior parte do dinheiro da Apple ainda vem da venda de aparelhos. No ano fisca
 
 ## Os números agora
 
+- Preço hoje: {{price:aapl}}
+- Valor de mercado: {{mcap:aapl}} ({{rank:aapl}} entre as maiores empresas do mundo no WhatIfStack)
+- Máxima histórica: {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} desde ela
+- US$ 10 por dia durante 10 anos: {{dca:aapl:10}} com {{dcainv:10}} investidos ({{dcaroi:aapl:10}})
+
 No trimestre de setembro a Apple teve receita de US$ 114,5 bilhões, recorde para esse trimestre e 12% acima de um ano antes. Só o iPhone rendeu US$ 57,6 bilhões e Serviços, US$ 31,6 bilhões. O lucro líquido foi de US$ 30,7 bilhões, ou US$ 2,10 por ação; a margem bruta ficou em 47,9%, com cerca de um ponto vindo de reembolsos de tarifas. No ano completo o lucro líquido subiu para US$ 132,2 bilhões, de US$ 112,0 bilhões, e o fluxo de caixa operacional foi de US$ 145,1 bilhões.
 
 No fim de setembro a Apple tinha US$ 36,3 bilhões em caixa e mais US$ 100,6 bilhões em títulos negociáveis, contra US$ 80,1 bilhões de dívida. Paga dividendo trimestral de US$ 0,27 por ação. A Apple não divulga uma projeção formal de receita no comunicado de resultados.
@@ -25,11 +30,6 @@ No fim de setembro a Apple tinha US$ 36,3 bilhões em caixa e mais US$ 100,6 bil
 ## A história da ação
 
 O iPhone foi lançado em 2007 e colocou a Apple entre as maiores empresas do mundo. Quando Tim Cook assumiu em 2011, a Apple valia cerca de US$ 348 bilhões; quando ele passou o cargo ao chefe de hardware John Ternus em 2026 (Cook segue como presidente executivo do conselho), ela valia cerca de US$ 4 trilhões e a receita anual tinha quadruplicado. Em janeiro de 2026 a Apple anunciou que usaria a tecnologia de IA do Google para melhorar a Siri. No outono (do hemisfério norte) de 2026 as ações emendaram recordes: em 9 de novembro de 2026 fecharam a US$ 350,69, um recorde na época, e o valor de mercado passou de US$ 5 trilhões pela primeira vez.
-
-- Preço hoje: {{price:aapl}}
-- Valor de mercado: {{mcap:aapl}}
-- Máxima histórica: {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} desde ela
-- US$ 10 por dia durante 10 anos: {{dca:aapl:10}} com {{dcainv:10}} investidos ({{dcaroi:aapl:10}})
 
 ## Concorrentes
 

@@ -18,6 +18,11 @@ Het meeste geld van Apple komt nog altijd uit de verkoop van apparaten. In boekj
 
 ## De cijfers nu
 
+- Koers nu: {{price:aapl}}
+- Marktwaarde: {{mcap:aapl}} ({{rank:aapl}} onder de grootste bedrijven ter wereld op WhatIfStack)
+- Recordkoers: {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} daarvan af
+- $10 per dag gedurende 10 jaar: {{dca:aapl:10}} bij {{dcainv:10}} ingelegd ({{dcaroi:aapl:10}})
+
 In het septemberkwartaal had Apple $114,5 miljard omzet, een record voor dat kwartaal en 12% meer dan een jaar eerder. De iPhone alleen was goed voor $57,6 miljard en diensten voor $31,6 miljard. De nettowinst was $30,7 miljard, oftewel $2,10 per aandeel; de brutomarge was 47,9%, waarvan ongeveer één punt kwam uit terugbetaalde importheffingen. Over het hele jaar steeg de nettowinst van $112,0 miljard naar $132,2 miljard en was de operationele kasstroom $145,1 miljard.
 
 Eind september had Apple $36,3 miljard aan contanten plus $100,6 miljard aan verhandelbare effecten, tegenover $80,1 miljard schuld. Het keert een kwartaaldividend van $0,27 per aandeel uit. Apple geeft in het kwartaalbericht geen officiële omzetprognose.
@@ -25,11 +30,6 @@ Eind september had Apple $36,3 miljard aan contanten plus $100,6 miljard aan ver
 ## Het verhaal van het aandeel
 
 De iPhone kwam in 2007 uit en maakte Apple tot een van de grootste bedrijven ter wereld. Toen Tim Cook in 2011 het roer overnam, was Apple ongeveer $348 miljard waard; toen hij de functie in 2026 overdroeg aan hardwarebaas John Ternus (Cook blijft uitvoerend voorzitter), was het ongeveer $4 biljoen waard en was de jaaromzet verviervoudigd. In januari 2026 maakte Apple bekend dat het AI-technologie van Google gaat gebruiken om Siri te verbeteren. Het aandeel zette daarna in het najaar van 2026 een reeks records neer: op 9 november 2026 sloot het op $350,69, op dat moment een record, en de beurswaarde ging voor het eerst over de $5 biljoen.
-
-- Koers nu: {{price:aapl}}
-- Marktwaarde: {{mcap:aapl}}
-- Recordkoers: {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} daarvan af
-- $10 per dag gedurende 10 jaar: {{dca:aapl:10}} bij {{dcainv:10}} ingelegd ({{dcaroi:aapl:10}})
 
 ## Concurrenten
 

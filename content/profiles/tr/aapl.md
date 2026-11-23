@@ -18,6 +18,11 @@ Apple'ın parasının çoğu hâlâ cihaz satışından gelir. 2026 mali yılın
 
 ## Şu anki rakamlar
 
+- Bugünkü fiyat: {{price:aapl}}
+- Piyasa değeri: {{mcap:aapl}} (WhatIfStack'te dünyanın en büyük şirketleri arasında {{rank:aapl}})
+- Rekor: {{ath:aapl}} ({{athd:aapl}}), ondan {{fromath:aapl}}
+- 10 yıl boyunca günde 10 $: {{dca:aapl:10}}, yatırılan {{dcainv:10}} ({{dcaroi:aapl:10}})
+
 Eylül çeyreğinde Apple'ın geliri 114,5 milyar $ oldu; bu, o çeyrek için bir rekor ve bir yıl öncesine göre %12 artış. Tek başına iPhone 57,6 milyar $, hizmetler 31,6 milyar $ getirdi. Net kâr 30,7 milyar $, hisse başına 2,10 $; brüt marj %47,9 oldu ve bunun yaklaşık bir puanı gümrük vergisi iadelerinden geldi. Tüm yılda net kâr 112,0 milyar $'dan 132,2 milyar $'a çıktı, faaliyetlerden nakit akışı 145,1 milyar $ oldu.
 
 Eylül sonunda Apple'ın 36,3 milyar $ nakdi ve 100,6 milyar $ menkul kıymeti, buna karşılık 80,1 milyar $ borcu vardı. Çeyreklik temettü hisse başına 0,27 $. Şirket bilanço açıklamasında resmî bir gelir tahmini vermiyor.
@@ -25,11 +30,6 @@ Eylül sonunda Apple'ın 36,3 milyar $ nakdi ve 100,6 milyar $ menkul kıymeti, 
 ## Hissenin hikâyesi
 
 iPhone 2007'de çıktı ve Apple'ı dünyanın en büyük şirketlerinden biri yaptı. Tim Cook 2011'de görevi devraldığında Apple yaklaşık 348 milyar $ değerindeydi; 2026'da görevi donanım şefi John Ternus'a devrettiğinde (Cook yönetim kurulu icra başkanı olarak kalıyor) değer yaklaşık 4 trilyon $'a ulaşmış, yıllık gelir dört katına çıkmıştı. Ocak 2026'da Apple, Siri'yi Google'ın yapay zekâ teknolojisiyle geliştireceğini açıkladı. Hisse 2026 sonbaharında art arda rekor kırdı: 9 Kasım 2026'da 350,69 $'dan kapandı, bu o dönem için bir rekordu; piyasa değeri ise ilk kez 5 trilyon doları geçti.
-
-- Bugünkü fiyat: {{price:aapl}}
-- Piyasa değeri: {{mcap:aapl}}
-- Rekor: {{ath:aapl}} ({{athd:aapl}}), ondan {{fromath:aapl}}
-- 10 yıl boyunca günde 10 $: {{dca:aapl:10}}, yatırılan {{dcainv:10}} ({{dcaroi:aapl:10}})
 
 ## Rakipler
 

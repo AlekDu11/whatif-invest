@@ -18,6 +18,11 @@ La mayor parte del dinero de Apple sigue saliendo de vender dispositivos. En el 
 
 ## Las cifras ahora
 
+- Precio actual: {{price:aapl}}
+- Valor de mercado: {{mcap:aapl}} ({{rank:aapl}} entre las mayores empresas del mundo en WhatIfStack)
+- Máximo histórico: {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} desde él
+- 10 $ al día durante 10 años: {{dca:aapl:10}} con {{dcainv:10}} invertidos ({{dcaroi:aapl:10}})
+
 En el trimestre de septiembre Apple ingresó 114.500 millones de dólares, un récord para ese trimestre y un 12% más que un año antes. Solo el iPhone aportó 57.600 millones y los servicios 31.600 millones. El beneficio neto fue de 30.700 millones, o 2,10 $ por acción; el margen bruto llegó al 47,9%, y alrededor de un punto se debió a devoluciones de aranceles. En el conjunto del año el beneficio neto subió a 132.200 millones desde 112.000 millones, y el flujo de caja operativo fue de 145.100 millones.
 
 A finales de septiembre Apple tenía 36.300 millones en efectivo y otros 100.600 millones en valores negociables, frente a una deuda de 80.100 millones. Paga un dividendo trimestral de 0,27 $ por acción. Apple no publica una previsión formal de ingresos en su comunicado de resultados.
@@ -25,11 +30,6 @@ A finales de septiembre Apple tenía 36.300 millones en efectivo y otros 100.600
 ## La historia de la acción
 
 El iPhone salió en 2007 y convirtió a Apple en una de las mayores empresas del mundo. Cuando Tim Cook tomó el mando en 2011, Apple valía unos 348.000 millones de dólares; cuando en 2026 cedió el puesto al jefe de hardware John Ternus (Cook sigue como presidente ejecutivo), valía alrededor de 4 billones y sus ingresos anuales se habían multiplicado por cuatro. En enero de 2026 Apple anunció que usaría la tecnología de IA de Google para mejorar Siri. En otoño de 2026 las acciones encadenaron récords: el 9 de noviembre de 2026 cerraron en 350,69 $, un récord en ese momento, y el valor en bolsa superó por primera vez los 5 billones.
-
-- Precio actual: {{price:aapl}}
-- Valor de mercado: {{mcap:aapl}}
-- Máximo histórico: {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} desde él
-- 10 $ al día durante 10 años: {{dca:aapl:10}} con {{dcainv:10}} invertidos ({{dcaroi:aapl:10}})
 
 ## Competidores
 

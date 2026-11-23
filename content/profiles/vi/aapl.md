@@ -18,6 +18,11 @@ Phần lớn tiền của Apple vẫn đến từ bán thiết bị. Trong năm 
 
 ## Các con số hiện tại
 
+- Giá hôm nay: {{price:aapl}}
+- Vốn hóa thị trường: {{mcap:aapl}} ({{rank:aapl}} trong số các công ty lớn nhất thế giới trên WhatIfStack)
+- Đỉnh kỷ lục: {{ath:aapl}} ({{athd:aapl}}), cách đỉnh {{fromath:aapl}}
+- 10 USD mỗi ngày trong 10 năm: {{dca:aapl:10}} từ {{dcainv:10}} đã đầu tư ({{dcaroi:aapl:10}})
+
 Trong quý tháng 9, doanh thu của Apple đạt 114,5 tỷ USD, kỷ lục cho quý này và tăng 12% so với cùng kỳ. Riêng iPhone đạt 57,6 tỷ USD, dịch vụ 31,6 tỷ USD. Lợi nhuận ròng 30,7 tỷ USD, tức 2,10 USD mỗi cổ phiếu; biên lợi nhuận gộp 47,9%, trong đó khoảng một điểm phần trăm đến từ khoản hoàn thuế nhập khẩu. Cả năm, lợi nhuận ròng tăng lên 132,2 tỷ USD từ 112,0 tỷ USD, dòng tiền từ hoạt động kinh doanh đạt 145,1 tỷ USD.
 
 Cuối tháng 9, Apple có 36,3 tỷ USD tiền mặt cùng 100,6 tỷ USD chứng khoán khả mại, so với 80,1 tỷ USD nợ. Cổ tức hằng quý là 0,27 USD mỗi cổ phiếu. Apple không đưa ra dự báo doanh thu chính thức trong thông cáo kết quả kinh doanh.
@@ -25,11 +30,6 @@ Cuối tháng 9, Apple có 36,3 tỷ USD tiền mặt cùng 100,6 tỷ USD chứ
 ## Câu chuyện của cổ phiếu
 
 iPhone ra mắt năm 2007 và đưa Apple thành một trong những công ty lớn nhất thế giới. Khi Tim Cook tiếp quản năm 2011, Apple trị giá khoảng 348 tỷ USD; khi ông trao lại vị trí cho giám đốc phần cứng John Ternus năm 2026 (Cook vẫn là chủ tịch điều hành), công ty trị giá khoảng 4 nghìn tỷ USD và doanh thu năm đã tăng gấp bốn. Tháng 1/2026, Apple thông báo sẽ dùng công nghệ AI của Google để nâng cấp Siri. Mùa thu 2026, cổ phiếu liên tục lập kỷ lục: ngày 9/11/2026 cổ phiếu đóng cửa ở 350,69 USD, mức kỷ lục vào thời điểm đó, và vốn hóa lần đầu vượt 5 nghìn tỷ USD.
-
-- Giá hôm nay: {{price:aapl}}
-- Vốn hóa thị trường: {{mcap:aapl}}
-- Đỉnh kỷ lục: {{ath:aapl}} ({{athd:aapl}}), cách đỉnh {{fromath:aapl}}
-- 10 USD mỗi ngày trong 10 năm: {{dca:aapl:10}} từ {{dcainv:10}} đã đầu tư ({{dcaroi:aapl:10}})
 
 ## Đối thủ
 

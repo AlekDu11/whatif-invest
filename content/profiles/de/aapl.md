@@ -18,6 +18,11 @@ Den Großteil seines Geldes verdient Apple weiterhin mit Geräten. Im Geschäfts
 
 ## Die Zahlen aktuell
 
+- Kurs aktuell: {{price:aapl}}
+- Marktwert: {{mcap:aapl}} ({{rank:aapl}} unter den größten Unternehmen der Welt auf WhatIfStack)
+- Rekordhoch: {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} davon entfernt
+- 10 $ pro Tag über 10 Jahre: {{dca:aapl:10}} bei {{dcainv:10}} Einsatz ({{dcaroi:aapl:10}})
+
 Im Septemberquartal setzte Apple 114,5 Mrd. $ um – ein Rekord für dieses Quartal und 12 % mehr als ein Jahr zuvor. Allein das iPhone brachte 57,6 Mrd. $, Services 31,6 Mrd. $. Der Nettogewinn lag bei 30,7 Mrd. $ oder 2,10 $ je Aktie; die Bruttomarge betrug 47,9 %, wovon etwa ein Prozentpunkt auf Zollrückerstattungen entfiel. Im Gesamtjahr stieg der Nettogewinn von 112,0 auf 132,2 Mrd. $, der operative Cashflow lag bei 145,1 Mrd. $.
 
 Ende September hielt Apple 36,3 Mrd. $ an Barmitteln plus 100,6 Mrd. $ in handelbaren Wertpapieren, bei 80,1 Mrd. $ Schulden. Die Quartalsdividende beträgt 0,27 $ je Aktie. Eine formelle Umsatzprognose veröffentlicht Apple in seiner Ergebnismitteilung nicht.
@@ -25,11 +30,6 @@ Ende September hielt Apple 36,3 Mrd. $ an Barmitteln plus 100,6 Mrd. $ in handel
 ## Die Geschichte der Aktie
 
 Das iPhone kam 2007 auf den Markt und machte Apple zu einem der größten Unternehmen der Welt. Als Tim Cook 2011 übernahm, war Apple rund 348 Mrd. $ wert; als er den Posten 2026 an Hardware-Chef John Ternus übergab (Cook bleibt Executive Chairman), waren es etwa 4 Billionen $, und der Jahresumsatz hatte sich vervierfacht. Im Januar 2026 kündigte Apple an, Siri mit KI-Technik von Google zu verbessern. Im Herbst 2026 jagte die Aktie dann einen Rekord nach dem anderen: Am 9. November 2026 schloss sie bei 350,69 $, damals ein Rekord, und der Börsenwert stieg erstmals über 5 Billionen $.
-
-- Kurs aktuell: {{price:aapl}}
-- Marktwert: {{mcap:aapl}}
-- Rekordhoch: {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} davon entfernt
-- 10 $ pro Tag über 10 Jahre: {{dca:aapl:10}} bei {{dcainv:10}} Einsatz ({{dcaroi:aapl:10}})
 
 ## Konkurrenten
 

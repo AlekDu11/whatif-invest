@@ -18,6 +18,11 @@ Sebagian besar uang Apple masih berasal dari penjualan perangkat. Pada tahun fis
 
 ## Angka saat ini
 
+- Harga hari ini: {{price:aapl}}
+- Nilai pasar: {{mcap:aapl}} ({{rank:aapl}} di antara perusahaan terbesar dunia di WhatIfStack)
+- Rekor tertinggi: {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} dari rekor itu
+- $10 per hari selama 10 tahun: {{dca:aapl:10}} dari {{dcainv:10}} yang diinvestasikan ({{dcaroi:aapl:10}})
+
 Pada kuartal September pendapatan Apple $114,5 miliar, rekor untuk kuartal itu dan naik 12% dari setahun sebelumnya. iPhone sendiri menghasilkan $57,6 miliar dan layanan $31,6 miliar. Laba bersih $30,7 miliar, atau $2,10 per saham; margin kotor 47,9%, sekitar satu poinnya berasal dari pengembalian bea impor. Untuk setahun penuh laba bersih naik menjadi $132,2 miliar dari $112,0 miliar, dan arus kas operasi mencapai $145,1 miliar.
 
 Pada akhir September Apple memegang kas $36,3 miliar ditambah surat berharga $100,6 miliar, dengan utang $80,1 miliar. Dividen kuartalannya $0,27 per saham. Dalam rilis laporan keuangannya Apple tidak memberikan proyeksi pendapatan resmi.
@@ -25,11 +30,6 @@ Pada akhir September Apple memegang kas $36,3 miliar ditambah surat berharga $10
 ## Kisah sahamnya
 
 iPhone diluncurkan pada 2007 dan menjadikan Apple salah satu perusahaan terbesar di dunia. Saat Tim Cook mengambil alih pada 2011, Apple bernilai sekitar $348 miliar; ketika ia menyerahkan jabatan kepada kepala perangkat keras John Ternus pada 2026 (Cook tetap menjadi ketua eksekutif), nilainya sekitar $4 triliun dan pendapatan tahunannya naik empat kali lipat. Pada Januari 2026 Apple mengumumkan akan memakai teknologi AI Google untuk meningkatkan Siri. Sahamnya lalu mencetak rekor beruntun pada musim gugur 2026: pada 9 November 2026 saham ditutup di $350,69, rekor pada saat itu, dan nilai pasarnya melampaui $5 triliun untuk pertama kalinya.
-
-- Harga hari ini: {{price:aapl}}
-- Nilai pasar: {{mcap:aapl}}
-- Rekor tertinggi: {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} dari rekor itu
-- $10 per hari selama 10 tahun: {{dca:aapl:10}} dari {{dcainv:10}} yang diinvestasikan ({{dcaroi:aapl:10}})
 
 ## Pesaing
 

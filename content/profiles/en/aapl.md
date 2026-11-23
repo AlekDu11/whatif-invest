@@ -18,18 +18,18 @@ Most of Apple's money still comes from selling devices. In fiscal 2026 the iPhon
 
 ## The numbers right now
 
-In the September quarter Apple had revenue of $114.5 billion, a record for that quarter and up 12% from a year earlier. The iPhone alone made $57.6 billion and Services $31.6 billion. Net income was $30.7 billion, or $2.10 per share; gross margin was 47.9%, about one point of which came from tariff refunds. For the full year net income rose to $132.2 billion from $112.0 billion, and operating cash flow was $145.1 billion.
+- Price today: {{price:aapl}}
+- Market value: {{mcap:aapl}} ({{rank:aapl}} among the world's largest companies on WhatIfStack)
+- Record high: {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} from it
+- $10 a day for 10 years: {{dca:aapl:10}} from {{dcainv:10}} invested ({{dcaroi:aapl:10}})
+
+In the September 2026 quarter Apple had revenue of $114.5 billion, a record for that quarter and up 12% from a year earlier. The iPhone alone made $57.6 billion and Services $31.6 billion. Net income was $30.7 billion, or $2.10 per share; gross margin was 47.9%, about one point of which came from tariff refunds. For the full year net income rose to $132.2 billion from $112.0 billion, and operating cash flow was $145.1 billion.
 
 At the end of September Apple held $36.3 billion in cash plus $100.6 billion in marketable securities against $80.1 billion of debt. It pays a quarterly dividend of $0.27 per share. Apple does not publish a formal revenue forecast in its earnings release.
 
 ## The stock's story
 
 The iPhone launched in 2007 and made Apple one of the world's biggest companies. When Tim Cook took over in 2011, Apple was worth about $348 billion; by the time he handed the job to hardware chief John Ternus in 2026 (Cook stays as executive chairman), it was worth roughly $4 trillion and yearly revenue had quadrupled. In January 2026 Apple said it would use Google's AI technology to improve Siri. The shares then set a run of records in autumn 2026: on 9 November 2026 they closed at $350.69, a record at that time, and the market value topped $5 trillion for the first time.
-
-- Price today: {{price:aapl}}
-- Market value: {{mcap:aapl}}
-- Record high: {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} from it
-- $10 a day for 10 years: {{dca:aapl:10}} from {{dcainv:10}} invested ({{dcaroi:aapl:10}})
 
 ## Competitors
 

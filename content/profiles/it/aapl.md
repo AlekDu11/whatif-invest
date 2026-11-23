@@ -18,6 +18,11 @@ La maggior parte dei soldi di Apple arriva ancora dalla vendita di dispositivi. 
 
 ## I numeri di oggi
 
+- Prezzo oggi: {{price:aapl}}
+- Valore di mercato: {{mcap:aapl}} ({{rank:aapl}} tra le più grandi aziende del mondo su WhatIfStack)
+- Massimo storico: {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} da lì
+- 10 $ al giorno per 10 anni: {{dca:aapl:10}} con {{dcainv:10}} investiti ({{dcaroi:aapl:10}})
+
 Nel trimestre di settembre Apple ha registrato ricavi per 114,5 miliardi $, un record per quel trimestre e il 12% in più di un anno prima. Il solo iPhone ha fatto 57,6 miliardi $ e i servizi 31,6 miliardi $. L'utile netto è stato di 30,7 miliardi $, cioè 2,10 $ per azione; il margine lordo è stato del 47,9%, di cui circa un punto dovuto a rimborsi di dazi. Nell'intero anno l'utile netto è salito a 132,2 miliardi $ da 112,0 miliardi $ e il flusso di cassa operativo è stato di 145,1 miliardi $.
 
 A fine settembre Apple aveva 36,3 miliardi $ di liquidità più 100,6 miliardi $ in titoli negoziabili, a fronte di 80,1 miliardi $ di debito. Paga un dividendo trimestrale di 0,27 $ per azione. Nel comunicato sui risultati Apple non fornisce una previsione ufficiale dei ricavi.
@@ -25,11 +30,6 @@ A fine settembre Apple aveva 36,3 miliardi $ di liquidità più 100,6 miliardi $
 ## La storia del titolo
 
 L'iPhone è uscito nel 2007 e ha reso Apple una delle aziende più grandi del mondo. Quando Tim Cook ha preso il timone nel 2011, Apple valeva circa 348 miliardi $; quando nel 2026 ha passato l'incarico al capo dell'hardware John Ternus (Cook resta presidente esecutivo del consiglio), valeva circa 4.000 miliardi $ e i ricavi annui erano quadruplicati. A gennaio 2026 Apple ha annunciato che avrebbe usato la tecnologia di intelligenza artificiale di Google per migliorare Siri. Nell'autunno 2026 il titolo ha inanellato una serie di record: il 9 novembre 2026 ha chiuso a 350,69 $, un record per quel momento, e la capitalizzazione ha superato per la prima volta i 5.000 miliardi $.
-
-- Prezzo oggi: {{price:aapl}}
-- Valore di mercato: {{mcap:aapl}}
-- Massimo storico: {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} da lì
-- 10 $ al giorno per 10 anni: {{dca:aapl:10}} con {{dcainv:10}} investiti ({{dcaroi:aapl:10}})
 
 ## Concorrenti
 
