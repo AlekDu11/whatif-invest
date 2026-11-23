@@ -1,6 +1,6 @@
 ---
-title: SAP (SAP) explained: the back-office software giant with a €24 billion cloud backlog
-description: SAP in plain language — the software that runs big companies' finance and supply chains, €6.7 billion of cloud revenue a quarter (+26%), why the stock fell in 2026.
+title: SAP (SAP) stock: the German software giant that runs big companies' back offices
+description: SAP in plain language — the software behind big companies' finance and supply chains, €6.67 billion of cloud revenue in Q3 2026 (+26%), why the stock fell in 2026.
 date: 2026-11-18
 kind: analysis
 ---
@@ -9,27 +9,29 @@ kind: analysis
 > **Key takeaways**
 > - Revenue: €10.27 billion in Q3 2026, +13%; cloud revenue €6.67 billion, +26%.
 > - Current cloud backlog — contracted cloud revenue due in the next 12 months — reached €24.1 billion, +28%.
-> - Operating profit rose 18% to €2.93 billion; a share buyback of up to €10 billion runs to the end of 2027.
+> - Operating profit rose 18% to €2.93 billion; a share buyback of up to €10 billion was set to run to the end of 2027.
 > - The shares fell up to 16% on 29 January 2026, SAP's biggest drop since October 2020, as AI fears hit software stocks.
 
 ## How it makes money
 
 SAP sells **enterprise resource planning (ERP)** software — one system that links a company's money, materials, staff and customers. Its flagship is S/4HANA. Around it sit SuccessFactors (HR and payroll), spend management for purchasing and travel, customer-experience software, the Business Technology Platform for building and connecting apps, and the Business Network linking buyers and suppliers.
 
-The business is moving from one-off licences to cloud subscriptions. In Q3 2026 cloud brought in €6.67 billion of €10.27 billion total, while classic software licences shrank 9% to €147 million. The "Cloud ERP Suite" alone grew 29% to €5.92 billion. Subscriptions are paid every year, which makes revenue more predictable, and SAP is adding AI features (its assistant Joule and AI agents) on top.
+Through the 2020s the business has been moving from one-off licences to cloud subscriptions. In Q3 2026 cloud brought in €6.67 billion of €10.27 billion total, while classic software licences shrank 9% to €147 million. The "Cloud ERP Suite" alone grew 29% to €5.92 billion. Subscriptions are paid every year, which makes revenue more predictable, and SAP is adding AI features (its assistant Joule and AI agents) on top.
 
 ## The numbers right now
 
+- Price today: {{price:sap}}
+- Market value: {{mcap:sap}} ({{rank:sap}} among the world's largest companies on WhatIfStack)
+- Record high: {{ath:sap}} ({{athd:sap}}), {{fromath:sap}} from it
+- $10 a day for 10 years: {{dca:sap:10}} from {{dcainv:10}} invested ({{dcaroi:sap:10}})
+
 In the quarter to 30 September 2026 SAP's IFRS operating profit grew 18% to €2.93 billion and basic earnings per share rose 14% to €1.96. Free cash flow was €1.72 billion, +36%. Staff numbered 113,076 full-time equivalents.
 
-For 2026 SAP expects cloud revenue toward the upper end of €25.8–26.2 billion at constant currencies and about €10 billion of free cash flow. By 30 September it had bought back about €4.2 billion of shares. Recent deals include Reltio, Dremio and Prior Labs, and in February 2026 SAP settled a long dispute with Teradata, paying $480 million.
+In October 2026 SAP said it expected 2026 cloud revenue toward the upper end of €25.8–26.2 billion at constant currencies and about €10 billion of free cash flow. By 30 September it had bought back about €4.2 billion of shares. Deals in 2026 included Reltio, Dremio and Prior Labs, and in February 2026 SAP settled a long dispute with Teradata, paying $480 million.
 
 ## The stock's story
 
-SAP shares in the US trade as ADRs in dollars. The company peaked in February 2025, when it was worth €344 billion. Then software stocks sold off on fears that AI makes business software easier to copy and cheaper to buy. By January 2026 SAP had lost about $130 billion of market value, and on 29 January its cloud backlog grew 25% — slightly below the 26% analysts wanted — sending the shares down as much as 16% in one day.
-
-- Price today: {{price:sap}}
-- $10 a day for 10 years: {{dca:sap:10}} from {{dcainv:10}} invested ({{dcaroi:sap:10}})
+SAP shares in the US trade as ADRs in dollars. The company's value peaked in February 2025 at about €344 billion. Then software stocks sold off on fears that AI makes business software easier to copy and cheaper to buy. By January 2026 SAP had lost about $130 billion of market value, and on 29 January its cloud backlog grew 25% — slightly below the 26% analysts wanted — sending the shares down as much as 16% in one day.
 
 ## Competitors
 
