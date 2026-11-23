@@ -1,5 +1,5 @@
 ---
-title: Arista-Networks-Aktie (ANET): der KI-Netzwerkausrüster mit 58 % Wachstum
+title: "Arista-Networks-Aktie (ANET): der Switch-Hersteller hinter KI-Rechenzentren"
 description: Arista Networks einfach erklärt: 3,66 Mrd. $ Umsatz im 3. Quartal 2026 (+58,5 %) mit Rechenzentrums-Switches, Abhängigkeit von Microsoft und Meta, Risiken.
 date: 2026-11-21
 kind: analysis
@@ -20,6 +20,11 @@ Im Mittelpunkt steht heute KI. Wer KI-Modelle trainiert und betreibt, muss enorm
 
 ## Die Zahlen aktuell
 
+- Kurs heute: {{price:anet}}
+- Marktwert: {{mcap:anet}}
+- Rekordhoch: {{ath:anet}} ({{athd:anet}}), {{fromath:anet}} davon entfernt
+- 10 $ am Tag über 10 Jahre: {{dca:anet:10}} bei {{dcainv:10}} Einsatz ({{dcaroi:anet:10}})
+
 Im Quartal bis zum 30. September 2026 erzielte Arista 3,66 Mrd. $ Umsatz – 58,5 % mehr als ein Jahr zuvor und 20,5 % mehr als im Vorquartal. Der Nettogewinn lag bei 1,56 Mrd. $ oder 1,22 $ je Aktie, die operative Marge bei 44,9 % – sehr hoch für einen Hardware-Anbieter.
 
 Zum Quartalsende hatte Arista 14,36 Mrd. $ an liquiden Mitteln und Wertpapieren und kaufte in den ersten neun Monaten 2026 keine eigenen Aktien zurück. Für das vierte Quartal erwartet das Unternehmen 3,9–4,0 Mrd. $ Umsatz. Zum Vergleich: Im gesamten Jahr 2025 waren es 9,01 Mrd. $ (+28,6 %). Im September 2026 wurde Arista in den S&P 100 aufgenommen.
@@ -29,9 +34,6 @@ Zum Quartalsende hatte Arista 14,36 Mrd. $ an liquiden Mitteln und Wertpapieren 
 Beim Börsengang im Juni 2014 kostete die Aktie 43 $. Danach teilte Arista seine Aktien zweimal im Verhältnis 4:1, im November 2021 und im Dezember 2024 – unsere Kurse sind darum split-bereinigt.
 
 Der Weg war holprig. Laut unseren Monatsdaten verlor die Aktie von Januar bis März 2025 rund ein Drittel ihres Werts. Im Oktober 2026 erreichte sie ein 52-Wochen-Hoch von etwa 217 $, fiel Anfang November aber binnen einer Woche um 14 % – mitten in einem breiten Ausverkauf bei KI-Hardware-Aktien.
-
-- Kurs heute: {{price:anet}}
-- 10 $ am Tag über 10 Jahre: {{dca:anet:10}} bei {{dcainv:10}} Einsatz ({{dcaroi:anet:10}})
 
 ## Konkurrenten
 

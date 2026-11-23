@@ -1,5 +1,5 @@
 ---
-title: Ações da Arista Networks (ANET): a empresa de redes para IA que cresce 58% ao ano
+title: "Ações da Arista Networks (ANET): os switches que conectam os data centers de IA"
 description: Arista Networks explicada: US$ 3,66 bilhões de receita no 3º tri de 2026 (+58,5%) com switches para data centers, dependência de Microsoft e Meta e riscos.
 date: 2026-11-21
 kind: analysis
@@ -20,6 +20,11 @@ Hoje tudo gira em torno da IA. Treinar e rodar modelos de IA exige ligar uma qua
 
 ## Os números agora
 
+- Preço hoje: {{price:anet}}
+- Valor de mercado: {{mcap:anet}}
+- Máxima histórica: {{ath:anet}} ({{athd:anet}}), {{fromath:anet}} desde ela
+- US$ 10 por dia durante 10 anos: {{dca:anet:10}} com {{dcainv:10}} investidos ({{dcaroi:anet:10}})
+
 No trimestre encerrado em 30 de setembro de 2026, a Arista faturou US$ 3,66 bilhões, 58,5% a mais que um ano antes e 20,5% a mais que no trimestre anterior. O lucro líquido foi de US$ 1,56 bilhão, ou US$ 1,22 por ação, e a margem operacional chegou a 44,9% — muito alta para quem vende hardware.
 
 No fim do trimestre, a empresa tinha US$ 14,36 bilhões em caixa e investimentos e não recomprou ações nos primeiros nove meses de 2026. Para o quarto trimestre, a projeção é de US$ 3,9–4,0 bilhões de receita. Para comparar: em todo o ano de 2025 foram US$ 9,01 bilhões (+28,6%). Em setembro de 2026 a Arista entrou no índice S&P 100.
@@ -29,9 +34,6 @@ No fim do trimestre, a empresa tinha US$ 14,36 bilhões em caixa e investimentos
 A Arista abriu capital a US$ 43 por ação em junho de 2014. Depois fez dois desdobramentos de 4 para 1, em novembro de 2021 e em dezembro de 2024, por isso nossos preços são ajustados.
 
 O caminho teve solavancos. Pelos nossos dados mensais, a ação perdeu cerca de um terço do valor entre janeiro e março de 2025. Em outubro de 2026 bateu a máxima de 52 semanas, perto de US$ 217, mas no início de novembro caiu 14% em uma semana, em meio a uma venda generalizada de ações de hardware para IA.
-
-- Preço hoje: {{price:anet}}
-- US$ 10 por dia durante 10 anos: {{dca:anet:10}} com {{dcainv:10}} investidos ({{dcaroi:anet:10}})
 
 ## Concorrentes
 

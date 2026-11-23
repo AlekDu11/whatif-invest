@@ -1,5 +1,5 @@
 ---
-title: Acciones de Arista Networks (ANET): la empresa de redes para IA que crece un 58% al año
+title: "Acciones de Arista Networks (ANET): los switches que conectan los centros de datos de IA"
 description: Arista Networks explicada: $3.660 millones de ingresos en el 3T 2026 (+58,5%) con switches para centros de datos, dependencia de Microsoft y Meta y riesgos.
 date: 2026-11-21
 kind: analysis
@@ -20,6 +20,11 @@ Ahora todo gira en torno a la IA. Entrenar y ejecutar modelos de IA exige conect
 
 ## Las cifras ahora
 
+- Precio hoy: {{price:anet}}
+- Valor de mercado: {{mcap:anet}}
+- Máximo histórico: {{ath:anet}} ({{athd:anet}}), {{fromath:anet}} desde él
+- $10 al día durante 10 años: {{dca:anet:10}} con {{dcainv:10}} invertidos ({{dcaroi:anet:10}})
+
 En el trimestre cerrado el 30 de septiembre de 2026, Arista ingresó $3.660 millones, un 58,5% más que un año antes y un 20,5% más que el trimestre anterior. El beneficio neto fue de $1.560 millones, o $1,22 por acción, y el margen operativo, del 44,9%: muy alto para una empresa que vende hardware.
 
 Al cierre del trimestre tenía $14.360 millones en efectivo e inversiones y no recompró acciones en los primeros nueve meses de 2026. Para el cuarto trimestre prevé ingresos de $3.900–4.000 millones. Como referencia, en todo 2025 facturó $9.010 millones (+28,6%). En septiembre de 2026 entró en el índice S&P 100.
@@ -29,9 +34,6 @@ Al cierre del trimestre tenía $14.360 millones en efectivo e inversiones y no r
 Arista salió a bolsa a $43 por acción en junio de 2014. Después hizo dos splits de 4 por 1, en noviembre de 2021 y en diciembre de 2024, así que nuestros precios están ajustados.
 
 El camino no ha sido recto. Según nuestros datos mensuales, la acción perdió cerca de un tercio de su valor entre enero y marzo de 2025. En octubre de 2026 tocó un máximo de 52 semanas de unos $217, pero a principios de noviembre cayó un 14% en una semana en medio de una venta generalizada de acciones de hardware para IA.
-
-- Precio hoy: {{price:anet}}
-- $10 al día durante 10 años: {{dca:anet:10}} con {{dcainv:10}} invertidos ({{dcaroi:anet:10}})
 
 ## Competidores
 

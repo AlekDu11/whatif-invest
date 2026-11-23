@@ -1,5 +1,5 @@
 ---
-title: Arista Networks (ANET) stock: the AI networking company growing 58% a year
+title: "Arista Networks (ANET) stock: the switch maker wiring AI data centers"
 description: Arista Networks in plain language: $3.66 billion of Q3 2026 revenue (+58.5%) from data-center switches, its Microsoft and Meta reliance, and the risks.
 date: 2026-11-21
 kind: analysis
@@ -20,6 +20,11 @@ The AI part is the story now. Training and running AI models means linking huge 
 
 ## The numbers right now
 
+- Price today: {{price:anet}}
+- Market value: {{mcap:anet}}
+- Record high: {{ath:anet}} ({{athd:anet}}), {{fromath:anet}} from it
+- $10 a day for 10 years: {{dca:anet:10}} from {{dcainv:10}} invested ({{dcaroi:anet:10}})
+
 In the quarter to 30 September 2026 Arista earned $3.66 billion in revenue, up 58.5% from a year earlier and 20.5% from the previous quarter. Net profit was $1.56 billion, or $1.22 per share, and the operating margin was 44.9% — very high for a hardware company.
 
 Arista held $14.36 billion in cash and investments and bought back no shares in the first nine months of 2026. For the fourth quarter it guided to $3.9–4.0 billion of revenue. For comparison, all of 2025 brought in $9.01 billion (+28.6%). In September 2026 it joined the S&P 100 index.
@@ -29,9 +34,6 @@ Arista held $14.36 billion in cash and investments and bought back no shares in 
 Arista priced its IPO at $43 a share in June 2014. It split its stock 4-for-1 in November 2021 and again in December 2024, so our prices are split-adjusted.
 
 The ride has been bumpy. In our monthly data the stock lost about a third between January and March 2025. It then hit a 52-week high of about $217 in October 2026, but fell 14% in one week in early November during a wider sell-off in AI hardware stocks.
-
-- Price today: {{price:anet}}
-- $10 a day for 10 years: {{dca:anet:10}} from {{dcainv:10}} invested ({{dcaroi:anet:10}})
 
 ## Competitors
 
