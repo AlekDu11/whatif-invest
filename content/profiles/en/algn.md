@@ -1,5 +1,5 @@
 ---
-title: Align Technology (ALGN) explained: the Invisalign maker that lost 78% from its peak
+title: Align Technology (ALGN) stock: the Invisalign maker and its $1.01 billion Q3 2026
 description: Align Technology in plain language — $1.01 billion a quarter from Invisalign aligners and iTero scanners, why the stock fell from $730, the numbers, the risks.
 date: 2026-11-20
 kind: analysis
@@ -10,15 +10,20 @@ kind: analysis
 > - Revenue: $1.01 billion in Q3 2026, +1.9% a year; 83% of it from clear aligners.
 > - 690,600 aligner cases shipped, +6.6% and a record for a third quarter — but the average price per case is slipping.
 > - GAAP operating margin rose to 16.7% from 9.7% a year earlier after cost cuts and a 2026 restructuring.
-> - The stock closed at a record $729.92 in September 2021; at around $160 it is roughly 78% below that peak.
+> - The shares closed at $729.92 on 8 September 2021 at the pandemic peak, then lost about 68% in 2022 alone.
 
 ## How it makes money
 
-Align has two businesses. Clear Aligners — Invisalign trays for adults, teens and kids, plus retainers — brought in $839.3 million in Q3 2026, up 4.2% a year. Imaging Systems and CAD/CAM Services — iTero scanners and the software around them — brought in $175.5 million, down 7.6%, because clinics are cautious about buying expensive equipment. The two feed each other: a dentist with an iTero scanner can send a digital scan straight to Align and order aligners in a few clicks. More than 157,000 iTero systems are now in use.
+Align has two businesses. Clear Aligners — Invisalign trays for adults, teens and kids, plus retainers — brought in $839.3 million in Q3 2026, up 4.2% a year. Imaging Systems and CAD/CAM Services — iTero scanners and the software around them — brought in $175.5 million, down 7.6%, because clinics are cautious about buying expensive equipment. The two feed each other: a dentist with an iTero scanner can send a digital scan straight to Align and order aligners in a few clicks. More than 157,000 iTero systems were in use by the end of September 2026.
 
 Straightening teeth is mostly a choice, not a medical need, and patients usually pay a large part themselves. That makes Align sensitive to how confident households feel about money.
 
 ## The numbers right now
+
+- Price today: {{price:algn}}
+- Market value: {{mcap:algn}} ({{rank:algn}} among the world's largest companies on WhatIfStack)
+- Record high: {{ath:algn}} ({{athd:algn}}), {{fromath:algn}} from it
+- $10 a day for 10 years: {{dca:algn:10}} from {{dcainv:10}} invested ({{dcaroi:algn:10}})
 
 In the quarter to 30 September 2026 Align earned $1.01 billion in revenue with a GAAP gross margin of 68.7%. Operating income was $169.2 million and net income $135.0 million, or $1.90 per share, up from $0.78 a year earlier. It ended the quarter with $1.14 billion in cash and no draw on its $300 million credit line. In Q3 it bought back about 627,000 of its own shares at an average of $164.73 and plans about $500 million of buybacks for all of 2026.
 
@@ -26,10 +31,7 @@ For Q4 2026 the company guided to $1.00–1.02 billion of revenue and aligner vo
 
 ## The stock's story
 
-Align was one of the big winners of the pandemic: people on video calls looked at their teeth, and orders boomed. The shares hit a record close of $729.92 on 8 September 2021. Then demand cooled, interest rates rose and investors stopped paying high prices for growth — the stock lost about 68% in 2022 alone. It bounced in 2023, fell again in 2024 and 2025, and still trades far below the peak. Joe Hogan has been CEO since 2015.
-
-- Price today: {{price:algn}}
-- $10 a day for 10 years: {{dca:algn:10}} from {{dcainv:10}} invested ({{dcaroi:algn:10}})
+Align was one of the big winners of the pandemic: people on video calls looked at their teeth, and orders boomed. The shares hit a closing high of $729.92 on 8 September 2021. Then demand cooled, interest rates rose and investors stopped paying high prices for growth — the stock lost about 68% in 2022 alone. It bounced in 2023, and fell again in 2024 and 2025, staying far below the 2021 peak. Joe Hogan has been CEO since 2015.
 
 ## Competitors
 
@@ -45,7 +47,7 @@ Align is the largest clear-aligner brand, but it is no longer alone. Straumann (
 
 ## What it means if you buy regularly
 
-Align shows how far a strong brand can fall when growth stalls: about 78% from the 2021 top. Someone who bought every month through that drop paid less and less per share on the way down, which softens the hit, but the stock has not come close to the old high. A single company like this is usually held as a small part of a wider portfolio. Past results do not guarantee future returns.
+Align shows how far a strong brand can fall when growth stalls: by autumn 2026 the shares were roughly three-quarters below the 2021 top. Someone who bought every month through that drop paid less and less per share on the way down, which softens the hit, but it did not bring the old high back. A single company like this is usually held as a small part of a wider portfolio. Past results do not guarantee future returns.
 
 *Not investment advice.*
 

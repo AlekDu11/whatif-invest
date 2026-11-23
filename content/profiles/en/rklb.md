@@ -1,6 +1,6 @@
 ---
-title: Rocket Lab (RKLB) explained: the small-rocket maker with a $3.57 billion order book
-description: Rocket Lab in plain language — $267.8M revenue in Q3 2026 (+73%), a record $3.57B backlog, Neutron delayed to 2027, the $8B Iridium deal and the risks.
+title: Rocket Lab (RKLB) stock: the Electron rocket maker and its $267.8 million Q3 2026
+description: Rocket Lab in plain language — $267.8M revenue in Q3 2026 (+73%), a $3.57B backlog, Neutron delayed to 2027, the $8B Iridium deal and the risks.
 date: 2026-11-19
 kind: analysis
 ---
@@ -9,8 +9,8 @@ kind: analysis
 > **Key takeaways**
 > - Revenue: a record $267.8 million in Q3 2026, up about 73% a year, with a net loss of $79.7 million.
 > - Backlog (signed but not yet delivered work) jumped 52% in one quarter to $3.57 billion.
-> - Neutron, its bigger reusable rocket, is now aimed for no earlier than 2027 after test problems.
-> - The stock hit a record $150.23 in May 2026 and was about 63% lower in mid-November.
+> - Neutron, its bigger reusable rocket, was pushed back in 2026 to no earlier than 2027 after test problems.
+> - In June 2026 it agreed to buy satellite operator Iridium for about $8 billion including debt; closing is expected in mid-2027.
 
 ## How it makes money
 
@@ -18,14 +18,16 @@ Rocket Lab has two businesses. **Launch services**: Electron carries small satel
 
 ## The numbers right now
 
+- Price today: {{price:rklb}}
+- Market value: {{mcap:rklb}} ({{rank:rklb}} among the world's largest companies on WhatIfStack)
+- Record high: {{ath:rklb}} ({{athd:rklb}}), {{fromath:rklb}} from it
+- $10 a day for 5 years: {{dca:rklb:5}} from {{dcainv:5}} invested ({{dcaroi:rklb:5}})
+
 In the quarter to 30 September 2026 revenue reached $267.8 million against $155.1 million a year earlier. Adjusted gross margin was 38.4%, and the adjusted EBITDA loss narrowed to $18.0 million. The company signed about $1 billion of new launch contracts and $470 million of space systems work in the quarter. It held $4.45 billion in cash, largely because it sold $3.91 billion of new shares in the first nine months of the year. For Q4 2026 it guides to $270–290 million of revenue. In June 2026 it agreed to buy satellite operator Iridium for about $8 billion including debt — $27 in cash plus Rocket Lab shares for each Iridium share — with closing expected in mid-2027.
 
 ## The stock's story
 
-Rocket Lab has had two extreme rides. After the 2021 listing it fell about 83% from its September 2021 peak to April 2024. Then strong growth and defence contracts sent it to a record $150.23 on 27 May 2026. It has since dropped sharply: in August 2026 the company warned Neutron's first flight could slip to 2027, investors worried about dilution from share sales, and shares slid further when the delay was confirmed in October.
-
-- Price today: {{price:rklb}}
-- $10 a day for 5 years: {{dca:rklb:5}} from {{dcainv:5}} invested ({{dcaroi:rklb:5}})
+Rocket Lab has had two extreme rides. After the 2021 listing it fell about 83% from its September 2021 peak to April 2024. Then strong growth and defence contracts sent it to $150.23 on 27 May 2026, a record at that time. Then it dropped sharply: in August 2026 the company warned Neutron's first flight could slip to 2027, investors worried about dilution from share sales, and shares slid further when the delay was confirmed in October.
 
 ## Competitors
 
