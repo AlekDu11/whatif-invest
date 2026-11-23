@@ -1,15 +1,15 @@
 ---
-title: Bitcoin Cash (BCH) einfach erklärt: die Bitcoin-Abspaltung von 2017, 21 Millionen Coins und ein Rekord von 3.786 $
+title: Bitcoin Cash (BCH) einfach erklärt: die Bitcoin-Abspaltung von 2017, 21 Millionen Coins und große Blöcke für günstige Zahlungen
 description: Bitcoin Cash einfach erklärt: warum es sich von Bitcoin trennte, wie große Blöcke Gebühren niedrig halten, CashTokens, wofür BCH dient und die größten Risiken.
 date: 2026-11-23
 kind: analysis
 ---
-**Bitcoin Cash** ist die Version von Bitcoin, die Alltagsgeld statt digitales Gold sein wollte. Es spaltete sich am 1. August 2017 nach einem langen Streit über die Blockgröße von Bitcoin ab, und jeder Bitcoin-Besitzer erhielt dieselbe Zahl an BCH. Im November 2026 hatte es einen Marktwert von rund 4 Milliarden Dollar und lag etwa auf Platz 22 der Kryptowährungen.
+**Bitcoin Cash** ist die Version von Bitcoin, die Alltagsgeld statt digitales Gold sein wollte. Es spaltete sich am 1. August 2017 nach einem langen Streit über die Blockgröße von Bitcoin ab, und jeder Bitcoin-Besitzer erhielt dieselbe Zahl an BCH. Alle BCH zusammen sind heute {{mcap:bch}} wert ({{rank:bch}} unter den Kryptowährungen).
 
 > **Das Wichtigste**
 > - Wie Bitcoin ist BCH auf 21 Millionen Coins begrenzt; bis November 2026 waren rund 20,1 Millionen geschürft.
 > - Blöcke fassen mindestens 32 MB und wachsen mit der Nachfrage, deshalb kostet eine normale Zahlung meist deutlich weniger als einen Cent.
-> - Das bisherige Rekordhoch liegt bei 3.786 $ (Dezember 2017); im November 2026 notierte BCH rund 95 % darunter.
+> - Sein Rekordhoch liegt bei {{ath:bch}} ({{athd:bch}}); heute steht der Kurs {{fromath:bch}} darunter.
 > - Die Community spaltete sich noch zweimal: Bitcoin SV ging im November 2018, eCash im November 2020.
 
 ## So funktioniert es

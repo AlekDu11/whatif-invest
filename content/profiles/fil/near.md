@@ -1,16 +1,16 @@
 ---
-title: NEAR Protocol (NEAR) sa simpleng paliwanag: 0.6-segundong block, $22 bilyong cross-chain swap at record na $20.44
+title: NEAR Protocol (NEAR) sa simpleng paliwanag: 0.6-segundong block, madaling basahing account name at cross-chain swap
 description: NEAR Protocol sa simpleng paliwanag: paano gumagana ang sharded blockchain nito, ano ang NEAR Intents, para saan ang NEAR token, kuwento, karibal at panganib.
 date: 2026-11-23
 kind: analysis
 ---
-**NEAR Protocol** ang blockchain na ginawang parang ordinaryong app: mga pangalan ng account na madaling basahin gaya ng alice.near sa halip na mahahabang code, bagong block kada 0.6 segundo, at swap sa pagitan ng dose-dosenang ibang blockchain mula sa iisang account. Itinatag ito noong 2018 nina Illia Polosukhin — isa sa mga sumulat ng research paper ng Google na pinagmulan ng mga modernong AI chatbot — at Alexander Skidanov. Noong Nobyembre 2026, nasa humigit-kumulang $3.9 bilyon ang kabuuang halaga ng lahat ng NEAR token, mga ika-23 sa mga cryptocurrency.
+**NEAR Protocol** ang blockchain na ginawang parang ordinaryong app: mga pangalan ng account na madaling basahin gaya ng alice.near sa halip na mahahabang code, bagong block kada 0.6 segundo, at swap sa pagitan ng dose-dosenang ibang blockchain mula sa iisang account. Itinatag ito noong 2018 nina Illia Polosukhin — isa sa mga sumulat ng research paper ng Google na pinagmulan ng mga modernong AI chatbot — at Alexander Skidanov. {{mcap:near}} ang kabuuang halaga ng lahat ng NEAR ngayon ({{rank:near}} sa mga cryptocurrency).
 
 > **Mahahalagang punto**
 > - May bagong block halos kada 0.6 segundo, at hinati ang network sa mga shard na sabay-sabay tumatakbo kaya puwede itong lumaki nang hindi bumabagal.
 > - Mula huling bahagi ng 2024, nakapagproseso na ang NEAR Intents ng higit $22 bilyong cross-chain swap sa mahigit 35 blockchain (Nansen).
 > - Ibinaba ang paglalabas ng bagong token mula 5% tungo 2.5% kada taon noong Oktubre 2025, at noong Nobyembre 2026 bumoto ang mga may hawak na ibaba pa ito sa 1.6%.
-> - Ang pinakamataas na presyo sa ngayon ay $20.44 (Enero 2022); noong Nobyembre 2026, mahigit 80% na mas mababa rito ang trading ng NEAR.
+> - Ang pinakamataas na presyo nito ay {{ath:near}} ({{athd:near}}); ngayon, {{fromath:near}} ang presyo mula roon.
 
 ## Paano ito gumagana
 

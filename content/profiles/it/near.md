@@ -1,16 +1,16 @@
 ---
-title: NEAR Protocol (NEAR) spiegato semplice: blocchi in 0,6 secondi, 22 miliardi $ di scambi cross-chain e un record di 20,44 $
+title: NEAR Protocol (NEAR) spiegato semplice: blocchi in 0,6 secondi, nomi di account leggibili e scambi cross-chain
 description: NEAR Protocol spiegato semplice: come funziona la blockchain con sharding, cos'è NEAR Intents, a cosa serve il token NEAR, la storia, i rivali e i rischi.
 date: 2026-11-23
 kind: analysis
 ---
-**NEAR Protocol** è una blockchain pensata per sembrare una normale app: nomi di account leggibili come alice.near invece di lunghi codici, un blocco ogni 0,6 secondi e scambi tra decine di altre blockchain da un unico account. È stata fondata nel 2018 da Illia Polosukhin – coautore dello studio di Google da cui sono nati i moderni chatbot di intelligenza artificiale – e Alexander Skidanov. A novembre 2026 tutti i token NEAR insieme valevano circa 3,9 miliardi di dollari, intorno al 23° posto tra le criptovalute.
+**NEAR Protocol** è una blockchain pensata per sembrare una normale app: nomi di account leggibili come alice.near invece di lunghi codici, un blocco ogni 0,6 secondi e scambi tra decine di altre blockchain da un unico account. È stata fondata nel 2018 da Illia Polosukhin – coautore dello studio di Google da cui sono nati i moderni chatbot di intelligenza artificiale – e Alexander Skidanov. Tutti i NEAR insieme oggi valgono {{mcap:near}} ({{rank:near}} tra le criptovalute).
 
 > **In sintesi**
 > - I blocchi arrivano circa ogni 0,6 secondi e la rete è divisa in shard paralleli, così può crescere senza rallentare.
 > - Da fine 2024 NEAR Intents ha gestito oltre 22 miliardi di dollari di scambi cross-chain su più di 35 blockchain (Nansen).
 > - L'emissione di nuovi token è stata ridotta dal 5% al 2,5% annuo a ottobre 2025, e a novembre 2026 i possessori hanno votato per abbassarla ancora, all'1,6%.
-> - Il prezzo record finora è di 20,44 $ (gennaio 2022); a novembre 2026 NEAR quotava oltre l'80% al di sotto.
+> - Il suo massimo storico è {{ath:near}} ({{athd:near}}); oggi il prezzo è a {{fromath:near}} da lì.
 
 ## Come funziona
 

@@ -1,16 +1,16 @@
 ---
-title: NEAR Protocol (NEAR) giải thích dễ hiểu: khối 0,6 giây, 22 tỷ USD giao dịch hoán đổi liên chuỗi và kỷ lục 20,44 USD
+title: NEAR Protocol (NEAR) giải thích dễ hiểu: khối 0,6 giây, tên tài khoản dễ đọc và hoán đổi liên chuỗi
 description: NEAR Protocol giải thích dễ hiểu: blockchain phân mảnh hoạt động ra sao, NEAR Intents là gì, token NEAR dùng làm gì, lịch sử, đối thủ và rủi ro chính.
 date: 2026-11-23
 kind: analysis
 ---
-**NEAR Protocol** là một blockchain được thiết kế để dùng như một ứng dụng bình thường: tên tài khoản dễ đọc như alice.near thay cho chuỗi mã dài, cứ 0,6 giây lại có một khối mới và có thể hoán đổi giữa hàng chục blockchain khác chỉ từ một tài khoản. Dự án được thành lập năm 2018 bởi Illia Polosukhin — đồng tác giả bài nghiên cứu của Google đã khai sinh các chatbot AI hiện đại — và Alexander Skidanov. Vào tháng 11/2026, tổng giá trị toàn bộ token NEAR khoảng 3,9 tỷ USD, quanh vị trí thứ 23 trong số các tiền mã hóa.
+**NEAR Protocol** là một blockchain được thiết kế để dùng như một ứng dụng bình thường: tên tài khoản dễ đọc như alice.near thay cho chuỗi mã dài, cứ 0,6 giây lại có một khối mới và có thể hoán đổi giữa hàng chục blockchain khác chỉ từ một tài khoản. Dự án được thành lập năm 2018 bởi Illia Polosukhin — đồng tác giả bài nghiên cứu của Google đã khai sinh các chatbot AI hiện đại — và Alexander Skidanov. Tổng giá trị toàn bộ NEAR hiện là {{mcap:near}} ({{rank:near}} trong các đồng tiền mã hóa).
 
 > **Điểm chính**
 > - Khối mới xuất hiện khoảng mỗi 0,6 giây, và mạng được chia thành các phân mảnh (shard) song song nên có thể mở rộng mà không chậm đi.
 > - NEAR Intents đã xử lý hơn 22 tỷ USD giao dịch hoán đổi liên chuỗi trên hơn 35 blockchain kể từ cuối năm 2024 (Nansen).
 > - Lượng token phát hành mới được cắt từ 5% xuống 2,5% mỗi năm vào tháng 10/2025, và tháng 11/2026 người nắm giữ đã bỏ phiếu cắt tiếp xuống 1,6%.
-> - Giá kỷ lục đến nay là 20,44 USD (tháng 1/2022); vào tháng 11/2026, NEAR giao dịch thấp hơn mức đó hơn 80%.
+> - Đỉnh kỷ lục là {{ath:near}} ({{athd:near}}); giá hiện tại cách đỉnh {{fromath:near}}.
 
 ## Cách hoạt động
 

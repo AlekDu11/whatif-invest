@@ -1,16 +1,16 @@
 ---
-title: NEAR Protocol (NEAR) explained: 0.6-second blocks, $22 billion of cross-chain swaps and a $20.44 record
+title: NEAR Protocol (NEAR) explained: 0.6-second blocks, readable account names and cross-chain swaps
 description: NEAR Protocol in plain language: how its sharded blockchain works, NEAR Intents, what the NEAR token is for, its story, rivals and the main risks.
 date: 2026-11-23
 kind: analysis
 ---
-**NEAR Protocol** is a blockchain built to feel like an ordinary app: readable account names such as alice.near instead of long codes, blocks every 0.6 seconds and swaps between dozens of other blockchains from one account. It was founded in 2018 by Illia Polosukhin — a co-author of the Google paper that gave birth to modern AI chatbots — and Alexander Skidanov. In November 2026 all NEAR tokens together were worth about $3.9 billion, around number 23 among cryptocurrencies.
+**NEAR Protocol** is a blockchain built to feel like an ordinary app: readable account names such as alice.near instead of long codes, blocks every 0.6 seconds and swaps between dozens of other blockchains from one account. It was founded in 2018 by Illia Polosukhin — a co-author of the Google paper that gave birth to modern AI chatbots — and Alexander Skidanov. All NEAR tokens together are worth {{mcap:near}} today ({{rank:near}} among cryptocurrencies).
 
 > **Key takeaways**
 > - Blocks arrive about every 0.6 seconds, and the network is split into parallel shards so it can grow without slowing down.
 > - NEAR Intents has handled more than $22 billion of cross-chain swaps across 35+ blockchains since late 2024 (Nansen).
 > - New-token issuance was cut from 5% to 2.5% a year in October 2025, and in November 2026 holders voted to cut it further to 1.6%.
-> - The record price so far is $20.44 (January 2022); in November 2026 NEAR traded more than 80% below it.
+> - Its record high is {{ath:near}} ({{athd:near}}); today the price is {{fromath:near}} from it.
 
 ## How it works
 

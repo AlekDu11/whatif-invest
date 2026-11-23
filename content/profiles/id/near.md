@@ -1,16 +1,16 @@
 ---
-title: NEAR Protocol (NEAR) dijelaskan sederhana: blok 0,6 detik, swap lintas chain $22 miliar, dan rekor $20,44
+title: NEAR Protocol (NEAR) dijelaskan sederhana: blok 0,6 detik, nama akun yang mudah dibaca, dan swap lintas chain
 description: NEAR Protocol dijelaskan sederhana: cara kerja blockchain ber-sharding, apa itu NEAR Intents, kegunaan token NEAR, kisahnya, pesaing, dan risiko utamanya.
 date: 2026-11-23
 kind: analysis
 ---
-**NEAR Protocol** adalah blockchain yang dirancang agar terasa seperti aplikasi biasa: nama akun yang mudah dibaca seperti alice.near alih-alih kode panjang, blok baru setiap 0,6 detik, dan swap antara puluhan blockchain lain dari satu akun saja. NEAR didirikan pada 2018 oleh Illia Polosukhin — salah satu penulis makalah Google yang melahirkan chatbot AI modern — dan Alexander Skidanov. Pada November 2026, seluruh token NEAR bernilai sekitar $3,9 miliar, di sekitar peringkat 23 di antara mata uang kripto.
+**NEAR Protocol** adalah blockchain yang dirancang agar terasa seperti aplikasi biasa: nama akun yang mudah dibaca seperti alice.near alih-alih kode panjang, blok baru setiap 0,6 detik, dan swap antara puluhan blockchain lain dari satu akun saja. NEAR didirikan pada 2018 oleh Illia Polosukhin — salah satu penulis makalah Google yang melahirkan chatbot AI modern — dan Alexander Skidanov. Seluruh NEAR kini bernilai {{mcap:near}} ({{rank:near}} di antara mata uang kripto).
 
 > **Poin penting**
 > - Blok muncul kira-kira setiap 0,6 detik, dan jaringannya dibagi menjadi shard paralel sehingga bisa tumbuh tanpa melambat.
 > - NEAR Intents telah memproses lebih dari $22 miliar swap lintas chain di 35+ blockchain sejak akhir 2024 (Nansen).
 > - Penerbitan token baru dipangkas dari 5% menjadi 2,5% per tahun pada Oktober 2025, dan pada November 2026 para pemegang memilih untuk memangkasnya lagi menjadi 1,6%.
-> - Harga rekor sejauh ini adalah $20,44 (Januari 2022); pada November 2026 NEAR diperdagangkan lebih dari 80% di bawahnya.
+> - Rekor tertingginya {{ath:near}} ({{athd:near}}); kini harganya {{fromath:near}} dari rekor itu.
 
 ## Cara kerjanya
 

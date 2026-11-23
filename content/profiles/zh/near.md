@@ -1,16 +1,16 @@
 ---
-title: NEAR协议（NEAR）通俗解读：0.6秒出块、220亿美元跨链兑换、20.44美元历史高点
+title: NEAR协议（NEAR）通俗解读：0.6秒出块、易读的账户名、跨链兑换
 description: NEAR Protocol通俗解读：分片区块链如何运作，NEAR Intents是什么，NEAR代币有什么用，一路走来的历程、竞争对手与主要风险。
 date: 2026-11-23
 kind: analysis
 ---
-**NEAR协议（NEAR Protocol）**是一条力求像普通App一样好用的区块链：用alice.near这样好记的账户名代替一长串代码，每0.6秒出一个块，一个账户就能在几十条其他区块链之间兑换资产。它由Illia Polosukhin和Alexander Skidanov于2018年创立——Polosukhin是那篇催生了当今AI聊天机器人的谷歌论文的合著者之一。2026年11月，全部NEAR代币总价值约39亿美元，在加密货币中排名第23位左右。
+**NEAR协议（NEAR Protocol）**是一条力求像普通App一样好用的区块链：用alice.near这样好记的账户名代替一长串代码，每0.6秒出一个块，一个账户就能在几十条其他区块链之间兑换资产。它由Illia Polosukhin和Alexander Skidanov于2018年创立——Polosukhin是那篇催生了当今AI聊天机器人的谷歌论文的合著者之一。目前，全部NEAR的总市值为{{mcap:near}}（在加密货币中排名{{rank:near}}）。
 
 > **要点**
 > - 大约每0.6秒出一个块，网络被拆分成并行的分片，因此可以扩容而不变慢。
 > - 自2024年底以来，NEAR Intents已在35条以上的区块链上处理了超过220亿美元的跨链兑换（Nansen）。
 > - 2025年10月，新代币年发行率从5%降至2.5%；2026年11月，持有者投票决定进一步降至1.6%。
-> - 迄今最高价为20.44美元（2022年1月）；2026年11月，NEAR的价格比这一高点低80%以上。
+> - 历史最高价为{{ath:near}}（{{athd:near}}）；当前价格距离该高点{{fromath:near}}。
 
 ## 它如何运作
 

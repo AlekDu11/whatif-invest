@@ -1,15 +1,15 @@
 ---
-title: Bitcoin Cash (BCH) dijelaskan sederhana: fork bitcoin 2017, 21 juta koin, dan rekor $3.786
+title: Bitcoin Cash (BCH) dijelaskan sederhana: fork bitcoin 2017, 21 juta koin, dan blok besar untuk pembayaran murah
 description: Bitcoin Cash dengan bahasa sederhana: mengapa berpisah dari bitcoin, cara blok besar menjaga biaya rendah, CashTokens, kegunaan BCH, dan risiko utamanya.
 date: 2026-11-23
 kind: analysis
 ---
-**Bitcoin Cash** adalah versi bitcoin yang memilih menjadi uang sehari-hari, bukan emas digital. Koin ini berpisah dari bitcoin pada 1 Agustus 2017 setelah perselisihan panjang soal ukuran blok, dan setiap pemegang bitcoin menerima BCH dalam jumlah yang sama. Nilai pasarnya sekitar $4 miliar pada November 2026, di sekitar peringkat 22 di antara mata uang kripto.
+**Bitcoin Cash** adalah versi bitcoin yang memilih menjadi uang sehari-hari, bukan emas digital. Koin ini berpisah dari bitcoin pada 1 Agustus 2017 setelah perselisihan panjang soal ukuran blok, dan setiap pemegang bitcoin menerima BCH dalam jumlah yang sama. Seluruh BCH kini bernilai {{mcap:bch}} ({{rank:bch}} di antara mata uang kripto).
 
 > **Poin penting**
 > - Seperti bitcoin, BCH dibatasi 21 juta koin; sekitar 20,1 juta sudah ditambang pada November 2026.
 > - Blok bisa memuat setidaknya 32 MB dan membesar mengikuti permintaan, sehingga pembayaran biasa umumnya berbiaya jauh di bawah satu sen.
-> - Rekor harga sejauh ini $3.786 (Desember 2017); pada November 2026 BCH diperdagangkan sekitar 95% di bawahnya.
+> - Rekor tertingginya {{ath:bch}} ({{athd:bch}}); kini harganya {{fromath:bch}} dari rekor itu.
 > - Komunitasnya terpecah dua kali lagi: Bitcoin SV keluar pada November 2018 dan eCash pada November 2020.
 
 ## Cara kerjanya

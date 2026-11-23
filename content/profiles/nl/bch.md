@@ -1,15 +1,15 @@
 ---
-title: Bitcoin Cash (BCH) eenvoudig uitgelegd: de bitcoin-fork van 2017, 21 miljoen munten en een record van $3.786
+title: Bitcoin Cash (BCH) eenvoudig uitgelegd: de bitcoin-fork van 2017, 21 miljoen munten en grote blokken voor goedkope betalingen
 description: Bitcoin Cash in gewone taal: waarom het zich van bitcoin afsplitste, hoe grote blokken de kosten laag houden, CashTokens, waarvoor BCH dient en de risico's.
 date: 2026-11-23
 kind: analysis
 ---
-**Bitcoin Cash** is de versie van bitcoin die koos voor alledaags geld in plaats van digitaal goud. Het splitste zich op 1 augustus 2017 af van bitcoin na een lange ruzie over de grootte van blokken, en elke bitcoinhouder kreeg evenveel BCH. In november 2026 was het in totaal ongeveer $4 miljard waard, rond plaats 22 onder de cryptomunten.
+**Bitcoin Cash** is de versie van bitcoin die koos voor alledaags geld in plaats van digitaal goud. Het splitste zich op 1 augustus 2017 af van bitcoin na een lange ruzie over de grootte van blokken, en elke bitcoinhouder kreeg evenveel BCH. Alle BCH samen zijn vandaag {{mcap:bch}} waard ({{rank:bch}} onder de cryptomunten).
 
 > **Belangrijkste punten**
 > - Net als bitcoin is BCH gemaximeerd op 21 miljoen munten; in november 2026 waren er ongeveer 20,1 miljoen gemijnd.
 > - Blokken kunnen minstens 32 MB bevatten en groeien mee met de vraag, dus een gewone betaling kost meestal ruim minder dan een cent.
-> - De recordkoers tot nu toe is $3.786 (december 2017); in november 2026 stond BCH ongeveer 95% lager.
+> - De recordkoers is {{ath:bch}} ({{athd:bch}}); vandaag staat de koers {{fromath:bch}} daarvan af.
 > - De gemeenschap splitste nog twee keer: Bitcoin SV vertrok in november 2018 en eCash in november 2020.
 
 ## Hoe het werkt

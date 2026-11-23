@@ -1,15 +1,15 @@
 ---
-title: Bitcoin Cash (BCH) sa simpleng paliwanag: ang bitcoin fork ng 2017, 21 milyong coin at record na $3,786
+title: Bitcoin Cash (BCH) sa simpleng paliwanag: ang bitcoin fork ng 2017, 21 milyong coin at malalaking block para sa murang bayad
 description: Bitcoin Cash sa simpleng paliwanag: bakit humiwalay sa bitcoin, paano pinapababa ng malalaking block ang fees, CashTokens, para saan ang BCH at mga panganib.
 date: 2026-11-23
 kind: analysis
 ---
-**Bitcoin Cash** ang bersyon ng bitcoin na piniling maging pang-araw-araw na pera sa halip na digital gold. Humiwalay ito sa bitcoin noong 1 Agosto 2017 matapos ang mahabang away tungkol sa laki ng mga block, at bawat may hawak ng bitcoin ay nakatanggap ng parehong bilang ng BCH. Nasa humigit-kumulang $4 bilyon ang market value nito noong Nobyembre 2026, mga ika-22 sa mga cryptocurrency.
+**Bitcoin Cash** ang bersyon ng bitcoin na piniling maging pang-araw-araw na pera sa halip na digital gold. Humiwalay ito sa bitcoin noong 1 Agosto 2017 matapos ang mahabang away tungkol sa laki ng mga block, at bawat may hawak ng bitcoin ay nakatanggap ng parehong bilang ng BCH. {{mcap:bch}} ang kabuuang halaga ng lahat ng BCH ngayon ({{rank:bch}} sa mga cryptocurrency).
 
 > **Mahahalagang punto**
 > - Tulad ng bitcoin, limitado sa 21 milyong coin ang BCH; mga 20.1 milyon na ang na-mine noong Nobyembre 2026.
 > - Kaya ng bawat block ang hindi bababa sa 32 MB at lumalaki ito ayon sa demand, kaya ang karaniwang bayad ay kadalasang mas mababa pa sa isang sentimo.
-> - Ang record na presyo sa ngayon ay $3,786 (Disyembre 2017); noong Nobyembre 2026, mga 95% na mas mababa rito ang trading ng BCH.
+> - Ang pinakamataas na presyo nito ay {{ath:bch}} ({{athd:bch}}); ngayon, {{fromath:bch}} ang presyo mula roon.
 > - Dalawang beses pang nahati ang komunidad nito: umalis ang Bitcoin SV noong Nobyembre 2018 at ang eCash noong Nobyembre 2020.
 
 ## Paano ito gumagana

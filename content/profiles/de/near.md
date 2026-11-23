@@ -1,16 +1,16 @@
 ---
-title: NEAR Protocol (NEAR) einfach erklärt: Blöcke in 0,6 Sekunden, 22 Mrd. $ an Cross-Chain-Swaps und ein Rekord von 20,44 $
+title: NEAR Protocol (NEAR) einfach erklärt: Blöcke in 0,6 Sekunden, lesbare Kontonamen und Cross-Chain-Swaps
 description: NEAR Protocol einfach erklärt: wie die Sharding-Blockchain funktioniert, was NEAR Intents ist, wofür der NEAR-Token dient, Geschichte, Konkurrenz, Risiken.
 date: 2026-11-23
 kind: analysis
 ---
-**NEAR Protocol** ist eine Blockchain, die sich wie eine ganz normale App anfühlen soll: lesbare Kontonamen wie alice.near statt langer Zeichenketten, ein neuer Block alle 0,6 Sekunden und Tausch zwischen Dutzenden anderer Blockchains von einem einzigen Konto aus. Gegründet wurde sie 2018 von Illia Polosukhin – Mitautor des Google-Fachartikels, aus dem die heutigen KI-Chatbots hervorgingen – und Alexander Skidanov. Im November 2026 waren alle NEAR-Token zusammen rund 3,9 Milliarden Dollar wert, etwa Platz 23 unter den Kryptowährungen.
+**NEAR Protocol** ist eine Blockchain, die sich wie eine ganz normale App anfühlen soll: lesbare Kontonamen wie alice.near statt langer Zeichenketten, ein neuer Block alle 0,6 Sekunden und Tausch zwischen Dutzenden anderer Blockchains von einem einzigen Konto aus. Gegründet wurde sie 2018 von Illia Polosukhin – Mitautor des Google-Fachartikels, aus dem die heutigen KI-Chatbots hervorgingen – und Alexander Skidanov. Alle NEAR zusammen sind heute {{mcap:near}} wert ({{rank:near}} unter den Kryptowährungen).
 
 > **Das Wichtigste**
 > - Etwa alle 0,6 Sekunden kommt ein Block, und das Netzwerk ist in parallele Shards aufgeteilt, sodass es wachsen kann, ohne langsamer zu werden.
 > - Über NEAR Intents liefen seit Ende 2024 mehr als 22 Milliarden Dollar an Cross-Chain-Swaps über 35+ Blockchains (Nansen).
 > - Die Ausgabe neuer Token wurde im Oktober 2025 von 5 % auf 2,5 % pro Jahr gesenkt, und im November 2026 stimmten die Inhaber für eine weitere Senkung auf 1,6 %.
-> - Der bisherige Rekordkurs liegt bei 20,44 $ (Januar 2022); im November 2026 notierte NEAR mehr als 80 % darunter.
+> - Sein Rekordhoch liegt bei {{ath:near}} ({{athd:near}}); heute steht der Kurs {{fromath:near}} darunter.
 
 ## So funktioniert es
 

@@ -1,16 +1,16 @@
 ---
-title: NEAR Protocol (NEAR) expliqué simplement : des blocs en 0,6 seconde, 22 milliards $ d'échanges multichaînes et un record à 20,44 $
+title: NEAR Protocol (NEAR) expliqué simplement : des blocs en 0,6 seconde, des noms de compte lisibles et des échanges multichaînes
 description: NEAR Protocol expliqué simplement : sa blockchain fragmentée, NEAR Intents, à quoi sert le jeton NEAR, son histoire, ses concurrents et les principaux risques.
 date: 2026-11-23
 kind: analysis
 ---
-**NEAR Protocol** est une blockchain conçue pour s'utiliser comme une application ordinaire : des noms de compte lisibles comme alice.near au lieu de longs codes, un bloc toutes les 0,6 seconde et des échanges entre des dizaines d'autres blockchains depuis un seul compte. Elle a été fondée en 2018 par Illia Polosukhin – coauteur de l'article de Google à l'origine des chatbots d'IA actuels – et Alexander Skidanov. En novembre 2026, l'ensemble des jetons NEAR valait environ 3,9 milliards de dollars, vers la 23e place parmi les cryptomonnaies.
+**NEAR Protocol** est une blockchain conçue pour s'utiliser comme une application ordinaire : des noms de compte lisibles comme alice.near au lieu de longs codes, un bloc toutes les 0,6 seconde et des échanges entre des dizaines d'autres blockchains depuis un seul compte. Elle a été fondée en 2018 par Illia Polosukhin – coauteur de l'article de Google à l'origine des chatbots d'IA actuels – et Alexander Skidanov. L'ensemble des NEAR vaut aujourd'hui {{mcap:near}} ({{rank:near}} parmi les cryptomonnaies).
 
 > **À retenir**
 > - Un bloc arrive environ toutes les 0,6 seconde, et le réseau est découpé en fragments (shards) parallèles pour pouvoir grandir sans ralentir.
 > - NEAR Intents a traité plus de 22 milliards de dollars d'échanges multichaînes sur plus de 35 blockchains depuis fin 2024 (Nansen).
 > - L'émission de nouveaux jetons est passée de 5 % à 2,5 % par an en octobre 2025, et en novembre 2026 les détenteurs ont voté une nouvelle baisse, à 1,6 %.
-> - Le record de cours à ce jour est de 20,44 $ (janvier 2022) ; en novembre 2026, NEAR s'échangeait plus de 80 % en dessous.
+> - Son record est de {{ath:near}} ({{athd:near}}) ; aujourd'hui, le cours est à {{fromath:near}} de ce niveau.
 
 ## Comment il fonctionne
 

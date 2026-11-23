@@ -1,16 +1,16 @@
 ---
-title: NEAR Protocol (NEAR) sade dille: 0,6 saniyelik bloklar, 22 milyar $ zincirler arası takas ve 20,44 $ rekor
+title: NEAR Protocol (NEAR) sade dille: 0,6 saniyelik bloklar, okunabilir hesap adları ve zincirler arası takas
 description: NEAR Protocol sade dille: parçalı (sharded) blokzincir nasıl çalışır, NEAR Intents nedir, NEAR token ne işe yarar, hikâyesi, rakipleri ve başlıca riskler.
 date: 2026-11-23
 kind: analysis
 ---
-**NEAR Protocol**, sıradan bir uygulama gibi kullanılsın diye tasarlanmış bir blokzincirdir: uzun kodlar yerine alice.near gibi okunabilir hesap adları, her 0,6 saniyede bir yeni blok ve tek bir hesaptan onlarca farklı blokzincir arasında takas. 2018'de, bugünkü yapay zekâ sohbet botlarının doğmasını sağlayan Google makalesinin ortak yazarlarından Illia Polosukhin ile Alexander Skidanov tarafından kuruldu. Kasım 2026'da tüm NEAR token'larının toplam değeri yaklaşık 3,9 milyar dolardı; kripto paralar arasında 23. sıra civarındaydı.
+**NEAR Protocol**, sıradan bir uygulama gibi kullanılsın diye tasarlanmış bir blokzincirdir: uzun kodlar yerine alice.near gibi okunabilir hesap adları, her 0,6 saniyede bir yeni blok ve tek bir hesaptan onlarca farklı blokzincir arasında takas. 2018'de, bugünkü yapay zekâ sohbet botlarının doğmasını sağlayan Google makalesinin ortak yazarlarından Illia Polosukhin ile Alexander Skidanov tarafından kuruldu. Tüm NEAR birlikte bugün {{mcap:near}} değerinde (kripto paralar arasında {{rank:near}}).
 
 > **Öne çıkanlar**
 > - Bloklar yaklaşık her 0,6 saniyede bir gelir ve ağ paralel parçalara (shard) bölündüğü için yavaşlamadan büyüyebilir.
 > - NEAR Intents, 2024 sonundan bu yana 35'ten fazla blokzincirde 22 milyar dolardan fazla zincirler arası takas işledi (Nansen).
 > - Yeni token ihracı Ekim 2025'te yıllık %5'ten %2,5'e indirildi; Kasım 2026'da token sahipleri bunu %1,6'ya düşürmek için oy verdi.
-> - Şimdiye kadarki rekor fiyat 20,44 $ (Ocak 2022); Kasım 2026'da NEAR bunun %80'den fazla altında işlem görüyordu.
+> - Rekor fiyatı {{ath:near}} ({{athd:near}}); bugün fiyat ondan {{fromath:near}} uzakta.
 
 ## Nasıl çalışır
 

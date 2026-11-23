@@ -1,16 +1,16 @@
 ---
-title: NEAR Protocol (NEAR) eenvoudig uitgelegd: blokken in 0,6 seconde, $22 miljard aan cross-chain swaps en een record van $20,44
+title: NEAR Protocol (NEAR) eenvoudig uitgelegd: blokken in 0,6 seconde, leesbare accountnamen en cross-chain swaps
 description: NEAR Protocol eenvoudig uitgelegd: hoe de geshardede blockchain werkt, wat NEAR Intents is, waarvoor de NEAR-token dient, het verhaal, rivalen en risico's.
 date: 2026-11-23
 kind: analysis
 ---
-**NEAR Protocol** is een blockchain die moet aanvoelen als een gewone app: leesbare accountnamen zoals alice.near in plaats van lange codes, elke 0,6 seconde een nieuw blok en swaps tussen tientallen andere blockchains vanaf één account. Het werd in 2018 opgericht door Illia Polosukhin – medeauteur van het Google-onderzoeksartikel waaruit de huidige AI-chatbots zijn voortgekomen – en Alexander Skidanov. In november 2026 waren alle NEAR-tokens samen ongeveer $3,9 miljard waard, rond plaats 23 onder de cryptomunten.
+**NEAR Protocol** is een blockchain die moet aanvoelen als een gewone app: leesbare accountnamen zoals alice.near in plaats van lange codes, elke 0,6 seconde een nieuw blok en swaps tussen tientallen andere blockchains vanaf één account. Het werd in 2018 opgericht door Illia Polosukhin – medeauteur van het Google-onderzoeksartikel waaruit de huidige AI-chatbots zijn voortgekomen – en Alexander Skidanov. Alle NEAR samen zijn vandaag {{mcap:near}} waard ({{rank:near}} onder de cryptomunten).
 
 > **Belangrijkste punten**
 > - Ongeveer elke 0,6 seconde komt er een blok bij, en het netwerk is opgedeeld in parallelle shards, zodat het kan groeien zonder trager te worden.
 > - Via NEAR Intents liep sinds eind 2024 meer dan $22 miljard aan cross-chain swaps over 35+ blockchains (Nansen).
 > - De uitgifte van nieuwe tokens werd in oktober 2025 verlaagd van 5% naar 2,5% per jaar, en in november 2026 stemden houders voor een verdere verlaging naar 1,6%.
-> - De recordkoers tot nu toe is $20,44 (januari 2022); in november 2026 noteerde NEAR meer dan 80% lager.
+> - De recordkoers is {{ath:near}} ({{athd:near}}); vandaag staat de koers {{fromath:near}} daarvan af.
 
 ## Hoe het werkt
 

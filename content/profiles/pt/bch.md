@@ -1,15 +1,15 @@
 ---
-title: Bitcoin Cash (BCH) explicado de forma simples: o fork do bitcoin de 2017, 21 milhões de moedas e recorde de US$ 3.786
+title: Bitcoin Cash (BCH) explicado de forma simples: o fork do bitcoin de 2017, 21 milhões de moedas e blocos grandes para pagamentos baratos
 description: Bitcoin Cash em linguagem simples: por que se separou do bitcoin, como blocos grandes mantêm as taxas baixas, CashTokens, para que serve o BCH e os riscos.
 date: 2026-11-23
 kind: analysis
 ---
-**Bitcoin Cash** é a versão do bitcoin que escolheu ser dinheiro do dia a dia em vez de ouro digital. Ele se separou do bitcoin em 1º de agosto de 2017, depois de uma longa briga sobre o tamanho dos blocos, e cada dono de bitcoin recebeu a mesma quantidade de BCH. Em novembro de 2026, tinha valor de mercado de cerca de US$ 4 bilhões, por volta da 22ª posição entre as criptomoedas.
+**Bitcoin Cash** é a versão do bitcoin que escolheu ser dinheiro do dia a dia em vez de ouro digital. Ele se separou do bitcoin em 1º de agosto de 2017, depois de uma longa briga sobre o tamanho dos blocos, e cada dono de bitcoin recebeu a mesma quantidade de BCH. Todos os BCH juntos valem {{mcap:bch}} hoje ({{rank:bch}} entre as criptomoedas).
 
 > **Pontos principais**
 > - Assim como o bitcoin, o BCH tem teto de 21 milhões de moedas; cerca de 20,1 milhões já tinham sido mineradas até novembro de 2026.
 > - Os blocos comportam pelo menos 32 MB e crescem com a demanda, então um pagamento comum costuma custar bem menos de um centavo.
-> - O recorde de preço até agora é de US$ 3.786 (dezembro de 2017); em novembro de 2026, o BCH era negociado cerca de 95% abaixo disso.
+> - A máxima histórica é {{ath:bch}} ({{athd:bch}}); hoje o preço está {{fromath:bch}} abaixo dela.
 > - A comunidade se dividiu mais duas vezes: o Bitcoin SV saiu em novembro de 2018 e o eCash em novembro de 2020.
 
 ## Como funciona

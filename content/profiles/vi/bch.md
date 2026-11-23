@@ -1,15 +1,15 @@
 ---
-title: Bitcoin Cash (BCH) giải thích dễ hiểu: bản fork bitcoin năm 2017, 21 triệu coin và kỷ lục 3.786 USD
+title: Bitcoin Cash (BCH) giải thích dễ hiểu: bản fork bitcoin năm 2017, 21 triệu coin và khối lớn cho thanh toán rẻ
 description: Bitcoin Cash giải thích dễ hiểu: vì sao tách khỏi bitcoin, khối lớn giữ phí thấp ra sao, CashTokens, BCH dùng để làm gì, các cú sập và rủi ro chính.
 date: 2026-11-23
 kind: analysis
 ---
-**Bitcoin Cash** là phiên bản bitcoin chọn làm tiền tiêu dùng hằng ngày thay vì vàng kỹ thuật số. Nó tách khỏi bitcoin ngày 1/8/2017 sau một cuộc tranh cãi dài về kích thước khối, và mỗi người nắm giữ bitcoin nhận được số BCH tương đương. Giá trị thị trường của nó khoảng 4 tỷ USD vào tháng 11/2026, quanh vị trí thứ 22 trong số các tiền mã hóa.
+**Bitcoin Cash** là phiên bản bitcoin chọn làm tiền tiêu dùng hằng ngày thay vì vàng kỹ thuật số. Nó tách khỏi bitcoin ngày 1/8/2017 sau một cuộc tranh cãi dài về kích thước khối, và mỗi người nắm giữ bitcoin nhận được số BCH tương đương. Tổng giá trị toàn bộ BCH hiện là {{mcap:bch}} ({{rank:bch}} trong các đồng tiền mã hóa).
 
 > **Điểm chính**
 > - Giống bitcoin, BCH giới hạn ở 21 triệu coin; khoảng 20,1 triệu đã được đào tính đến tháng 11/2026.
 > - Mỗi khối chứa được ít nhất 32 MB và tự mở rộng theo nhu cầu, nên một khoản thanh toán thông thường thường tốn chưa tới một cent.
-> - Giá kỷ lục cho đến nay là 3.786 USD (tháng 12/2017); tháng 11/2026 BCH giao dịch thấp hơn mức đó khoảng 95%.
+> - Đỉnh kỷ lục là {{ath:bch}} ({{athd:bch}}); giá hiện tại cách đỉnh {{fromath:bch}}.
 > - Cộng đồng của nó còn chia tách thêm hai lần: Bitcoin SV ra đi vào tháng 11/2018 và eCash vào tháng 11/2020.
 
 ## Cách hoạt động

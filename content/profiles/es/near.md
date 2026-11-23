@@ -1,16 +1,16 @@
 ---
-title: NEAR Protocol (NEAR) explicado fácil: bloques de 0,6 segundos, 22.000 millones $ en intercambios entre cadenas y un récord de 20,44 $
+title: NEAR Protocol (NEAR) explicado fácil: bloques de 0,6 segundos, nombres de cuenta legibles e intercambios entre cadenas
 description: NEAR Protocol explicado fácil: cómo funciona su blockchain fragmentada, qué es NEAR Intents, para qué sirve el token NEAR, su historia, rivales y riesgos.
 date: 2026-11-23
 kind: analysis
 ---
-**NEAR Protocol** es una blockchain pensada para usarse como una aplicación normal: nombres de cuenta legibles como alice.near en lugar de códigos larguísimos, un bloque cada 0,6 segundos e intercambios entre decenas de otras blockchains desde una sola cuenta. La fundaron en 2018 Illia Polosukhin —coautor del artículo de Google del que nacieron los chatbots de IA actuales— y Alexander Skidanov. En noviembre de 2026 todos los tokens NEAR juntos valían unos 3.900 millones de dólares, alrededor del puesto 23 entre las criptomonedas.
+**NEAR Protocol** es una blockchain pensada para usarse como una aplicación normal: nombres de cuenta legibles como alice.near en lugar de códigos larguísimos, un bloque cada 0,6 segundos e intercambios entre decenas de otras blockchains desde una sola cuenta. La fundaron en 2018 Illia Polosukhin —coautor del artículo de Google del que nacieron los chatbots de IA actuales— y Alexander Skidanov. Todos los NEAR juntos valen hoy {{mcap:near}} ({{rank:near}} entre las criptomonedas).
 
 > **Claves**
 > - Los bloques llegan aproximadamente cada 0,6 segundos y la red está dividida en fragmentos (shards) paralelos, así que puede crecer sin volverse más lenta.
 > - NEAR Intents ha procesado más de 22.000 millones de dólares en intercambios entre más de 35 blockchains desde finales de 2024 (Nansen).
 > - La emisión de nuevos tokens bajó del 5% al 2,5% anual en octubre de 2025, y en noviembre de 2026 los poseedores votaron recortarla aún más, hasta el 1,6%.
-> - El precio récord hasta ahora es de 20,44 $ (enero de 2022); en noviembre de 2026 NEAR cotizaba más de un 80% por debajo.
+> - Su máximo histórico es {{ath:near}} ({{athd:near}}); hoy el precio está {{fromath:near}} por debajo.
 
 ## Cómo funciona
 

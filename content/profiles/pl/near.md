@@ -1,16 +1,16 @@
 ---
-title: NEAR Protocol (NEAR) prostym językiem: bloki co 0,6 sekundy, 22 mld $ wymian między blockchainami i rekord 20,44 $
+title: NEAR Protocol (NEAR) prostym językiem: bloki co 0,6 sekundy, czytelne nazwy kont i wymiany między blockchainami
 description: NEAR Protocol prostym językiem: jak działa shardowany blockchain, czym jest NEAR Intents, do czego służy token NEAR, jego historia, rywale i główne ryzyka.
 date: 2026-11-23
 kind: analysis
 ---
-**NEAR Protocol** to blockchain zaprojektowany tak, by korzystało się z niego jak ze zwykłej aplikacji: czytelne nazwy kont, np. alice.near, zamiast długich ciągów znaków, nowy blok co 0,6 sekundy i wymiany między dziesiątkami innych blockchainów z jednego konta. Założyli go w 2018 r. Illia Polosukhin – współautor artykułu naukowego Google, z którego wyrosły dzisiejsze chatboty AI – i Alexander Skidanov. W listopadzie 2026 r. wszystkie tokeny NEAR były warte łącznie ok. 3,9 mld dolarów, co dawało mniej więcej 23. miejsce wśród kryptowalut.
+**NEAR Protocol** to blockchain zaprojektowany tak, by korzystało się z niego jak ze zwykłej aplikacji: czytelne nazwy kont, np. alice.near, zamiast długich ciągów znaków, nowy blok co 0,6 sekundy i wymiany między dziesiątkami innych blockchainów z jednego konta. Założyli go w 2018 r. Illia Polosukhin – współautor artykułu naukowego Google, z którego wyrosły dzisiejsze chatboty AI – i Alexander Skidanov. Wszystkie NEAR razem są dziś warte {{mcap:near}} ({{rank:near}} wśród kryptowalut).
 
 > **Najważniejsze**
 > - Bloki pojawiają się mniej więcej co 0,6 sekundy, a sieć jest podzielona na równoległe shardy, więc może rosnąć bez spowalniania.
 > - Przez NEAR Intents od końca 2024 r. przeszło ponad 22 mld dolarów wymian między ponad 35 blockchainami (Nansen).
 > - Emisję nowych tokenów obniżono w październiku 2025 r. z 5% do 2,5% rocznie, a w listopadzie 2026 r. posiadacze zagłosowali za dalszą obniżką do 1,6%.
-> - Rekordowa cena to jak dotąd 20,44 $ (styczeń 2022 r.); w listopadzie 2026 r. NEAR był notowany ponad 80% niżej.
+> - Rekord ceny to {{ath:near}} ({{athd:near}}); dziś cena jest {{fromath:near}} od niego.
 
 ## Jak działa
 

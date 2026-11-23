@@ -1,15 +1,15 @@
 ---
-title: Bitcoin Cash (BCH) sade dille: 2017'deki bitcoin çatallanması, 21 milyon coin ve 3.786 $ rekor
+title: Bitcoin Cash (BCH) sade dille: 2017'deki bitcoin çatallanması, 21 milyon coin ve ucuz ödemeler için büyük bloklar
 description: Bitcoin Cash sade dille: neden bitcoin'den ayrıldı, büyük bloklar ücretleri nasıl düşük tutar, CashTokens, BCH ne işe yarar, çöküşleri ve başlıca riskler.
 date: 2026-11-23
 kind: analysis
 ---
-**Bitcoin Cash**, dijital altın yerine günlük nakit olmayı seçen bitcoin sürümüdür. Blok boyutu üzerine uzun bir tartışmanın ardından 1 Ağustos 2017'de bitcoin'den ayrıldı ve her bitcoin sahibi aynı miktarda BCH aldı. Kasım 2026'da piyasa değeri yaklaşık 4 milyar dolardı; kripto paralar arasında 22. sıra civarındaydı.
+**Bitcoin Cash**, dijital altın yerine günlük nakit olmayı seçen bitcoin sürümüdür. Blok boyutu üzerine uzun bir tartışmanın ardından 1 Ağustos 2017'de bitcoin'den ayrıldı ve her bitcoin sahibi aynı miktarda BCH aldı. Tüm BCH birlikte bugün {{mcap:bch}} değerinde (kripto paralar arasında {{rank:bch}}).
 
 > **Öne çıkanlar**
 > - Bitcoin gibi BCH'nin de arzı 21 milyon coin ile sınırlı; Kasım 2026'ya kadar yaklaşık 20,1 milyonu madencilikle çıkarılmıştı.
 > - Bloklar en az 32 MB alır ve talebe göre büyür; bu yüzden sıradan bir ödeme genellikle bir sentin çok altında tutar.
-> - Şimdiye kadarki rekor fiyat 3.786 $ (Aralık 2017); Kasım 2026'da BCH bunun yaklaşık %95 altında işlem görüyordu.
+> - Rekor fiyatı {{ath:bch}} ({{athd:bch}}); bugün fiyat ondan {{fromath:bch}} uzakta.
 > - Topluluğu iki kez daha bölündü: Bitcoin SV Kasım 2018'de, eCash ise Kasım 2020'de ayrıldı.
 
 ## Nasıl çalışır

@@ -1,16 +1,16 @@
 ---
-title: NEAR Protocol (NEAR) explicado de forma simples: blocos de 0,6 segundo, US$ 22 bilhões em trocas entre blockchains e recorde de US$ 20,44
+title: NEAR Protocol (NEAR) explicado de forma simples: blocos de 0,6 segundo, nomes de conta legíveis e trocas entre blockchains
 description: NEAR Protocol de forma simples: como funciona a blockchain com shards, o que é o NEAR Intents, para que serve o token NEAR, sua história, rivais e riscos.
 date: 2026-11-23
 kind: analysis
 ---
-**NEAR Protocol** é uma blockchain feita para parecer um aplicativo comum: nomes de conta fáceis de ler, como alice.near, em vez de códigos enormes, um bloco a cada 0,6 segundo e trocas entre dezenas de outras blockchains a partir de uma única conta. Foi fundada em 2018 por Illia Polosukhin — coautor do artigo do Google que deu origem aos chatbots de IA atuais — e Alexander Skidanov. Em novembro de 2026, todos os tokens NEAR somados valiam cerca de US$ 3,9 bilhões, por volta da 23ª posição entre as criptomoedas.
+**NEAR Protocol** é uma blockchain feita para parecer um aplicativo comum: nomes de conta fáceis de ler, como alice.near, em vez de códigos enormes, um bloco a cada 0,6 segundo e trocas entre dezenas de outras blockchains a partir de uma única conta. Foi fundada em 2018 por Illia Polosukhin — coautor do artigo do Google que deu origem aos chatbots de IA atuais — e Alexander Skidanov. Todos os NEAR juntos valem {{mcap:near}} hoje ({{rank:near}} entre as criptomoedas).
 
 > **Pontos principais**
 > - Os blocos saem a cada 0,6 segundo, mais ou menos, e a rede é dividida em shards paralelos, então pode crescer sem ficar mais lenta.
 > - O NEAR Intents já processou mais de US$ 22 bilhões em trocas entre mais de 35 blockchains desde o fim de 2024 (Nansen).
 > - A emissão de novos tokens caiu de 5% para 2,5% ao ano em outubro de 2025, e em novembro de 2026 os detentores votaram por um novo corte, para 1,6%.
-> - O preço recorde até agora é US$ 20,44 (janeiro de 2022); em novembro de 2026, o NEAR era negociado mais de 80% abaixo disso.
+> - A máxima histórica é {{ath:near}} ({{athd:near}}); hoje o preço está {{fromath:near}} abaixo dela.
 
 ## Como funciona
 
