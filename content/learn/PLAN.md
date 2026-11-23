@@ -57,6 +57,7 @@ The hub /learn/ lists them by track and step; each lesson links to the next one.
 
 ## memes — recurring (owner 2026-11-23)
 - GLOSSARY: data/glossary/en.json is the memecoin glossary (/memes/glossary/). Every run, translate it into 2 languages that do not have data/glossary/<lang>.json yet (same ids and order; natural native phrasing; keep terms like «rug pull» in Latin script where locals use them, explain them). Done: uk ru es pt (2026-11-23). A language without its own file shows English with noindex, so each translation makes a new indexable page.
+- GUIDE (owner 2026-11-23): content/guide/uk.md, en.md, ru.md were rewritten as the beginner's guide to the whole site (/guide/, the tour's «Open the guide» button). Every run, also rewrite content/guide/<lang>.md for 2 more languages from en.md (same sections, links and {lang}/{n} placeholders; native phrasing; keep each language's own front matter keys; skip the «Ukraine» section except uk/ru; link /<lang>/about/ only if dist has it, else /en/about/). Done: uk en ru. Left: es de pt pl tr fr it nl ja ko zh hi id vi th ar fil.
 - MONTHLY (first run on or after the 2nd of each month): «Memecoin hall of fame and graveyard — <Month YYYY>»: the 5 memecoins that rose most and the 5 loudest collapses/rug pulls of the past month, dated facts with sources, «what beginners can learn», links to {lang}/memes/; category learn, track memes, in all 20 languages.
 
 

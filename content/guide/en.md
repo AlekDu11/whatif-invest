@@ -1,112 +1,92 @@
 ---
-title: How to use WhatIfStack: a guide to every tool
-description: Everything WhatIfStack can do, in plain language: the DCA ranking and calculator, returns by month, country stocks, the world's largest assets, news, your watchlist and portfolio, and more.
+title: How to use WhatIfStack: a beginner's guide
+description: Step by step, in plain language: crypto, stocks from 49 countries, memecoins, your personal space with portfolios and watchlists, Telegram price alerts, calculators and lessons — what is where and how to use it.
 nav: Guide
-short: Every tool explained
+short: The whole site in plain language
 ---
-WhatIfStack answers one question first: **what would I have today if I had invested a fixed amount regularly?** Everything else on the site helps you look at crypto, stocks, ETFs and gold from that angle — with real prices and without hype. Here is what each tool does and how to use it.
+WhatIfStack is markets in plain language: **crypto, stocks, ETFs and gold in one place**, with live prices, charts, news and calculators. You don't need to know anything in advance — this guide walks you through the whole site step by step. For a 30-second overview, press **✨ What this site can do** in the Tools menu.
 
-## Your markets and «Market in 60 seconds» (home page)
+## Getting started: your first 3 steps
 
-If you have starred assets (☆) or added holdings to your portfolio, the home page opens with «Your markets»: portfolio value and today's change, your assets with live prices, and our news about exactly those assets. The data stays in your browser only.
+1. **Find your asset.** Tap the search at the top and type a name or ticker: "bitcoin", "Apple", "gold", "Tesla". Search knows all {n} assets on the site.
+2. **Save it with ★.** On the asset page press ★ — its price will now show on the home page and in your [watchlist]({lang}/watchlist/). No sign-up needed.
+3. **Try the "$10 a day" calculator.** On every asset page it shows what you would have if you had bought a little every day from any date, using real prices.
 
-«Market in 60 seconds» under the headline is a short daily summary: whether crypto and stocks are up or down, Bitcoin, Ethereum, S&P 500, Nasdaq-100 and gold, the biggest move among large assets (with a link to our brief when there is one) and the Fear & Greed index. It updates automatically with prices.
+Below is each section in detail.
 
-## The DCA ranking (home page)
+## Cryptocurrencies
 
-The table on the [home page]({lang}/) ranks {n} assets by what regular buying would have returned. DCA (dollar-cost averaging) means buying for the same amount every day, week or month, whatever the price.
+The [crypto list]({lang}/crypto/) shows coins that really trade on major exchanges (Binance, OKX, Gate, MEXC, Kraken and others). We leave out coins with no exchange and no chart: they are usually dead or doubtful projects. You can sort the list by market cap, 24-hour and 7-day change, and trading volume.
 
-- **Columns:** price, 24-hour change, and what $10 a day would have returned over 1, 3 and 5 years.
-- **Tabs:** All, Crypto, Stocks, ETFs, Metals, DCA leaders and laggards.
-- **Sort** by any column, or type a name or ticker in the filter.
-- **Stocks by country** sits right above the table: open the stocks of your own country.
+**What every coin page has** (for example, [Bitcoin]({lang}/btc/)):
 
-## The DCA calculator
+- **Live price** and a TradingView chart; under the chart, a quick converter into dollars, euros or your currency.
+- **Key numbers:** market cap, 24-hour volume, circulating and maximum supply, the all-time high and how far the price is from it now.
+- **About** — a short plain-language description, and for the big coins a **full analysis**: how it works, risks, competitors, and what it means if you buy regularly.
+- **Where it trades:** exchanges and trading pairs in any currency.
+- **Categories** (for example AI, DeFi, the Solana ecosystem) — tap one to see similar coins.
+- **Returns by month and year**, the "$10 a day" calculator and news about the coin.
 
-On the home page and on every asset page you can change the amount, the frequency (daily, weekly, monthly) and the start date, then compare several assets on one chart. The [compare page]({lang}/compare/) does the same for up to five assets side by side. Results use monthly closing prices; stocks and ETFs include reinvested dividends; fees and taxes are not included.
+**Also useful:** [top gainers and losers]({lang}/crypto/gainers-losers/) over 24 hours and 7 days, the [crypto exchange ranking]({lang}/crypto-exchanges/) with volumes and proof of reserves, [derivatives exchanges]({lang}/crypto-exchanges/derivatives/), and the [Bitcoin halving countdown]({lang}/bitcoin-halving/).
 
-## The asset page
+## Stocks from every country
 
-Every coin, stock, ETF and metal has its own page, for example [Bitcoin]({lang}/btc/). On it:
+The site covers stocks from **49 markets**: the US, Europe, Asia, the Middle East, Latin America and more. Start with the [stocks section]({lang}/stocks/): at the top are this week's company earnings, then the ranking of the largest companies and a button for each country.
 
-- **The headline answer**: what $10 a day since a given date is worth today.
-- **What's happening with it**: our latest short explainer when the price moved sharply, with the rest of our news below the chart.
-- **Live chart** from TradingView.
-- **Key stats**: market cap, fully diluted value, 24h volume, circulating, total and maximum supply, all-time high and low and how far the price is from them.
-- **About**: a short description and official links — website, whitepaper, explorer, social pages, source code.
-- **Returns by month**: a colour table of every month and year since the asset started, with the median per month and cards for month-, quarter- and year-to-date. For coins traded on Binance there is a day-by-day view for the last 12 months.
-- **Returns for 1, 3, 5 and 10 years**, what $1,000 invested once would be worth, and similar assets.
+- **Country pages** list each market's largest companies by market value, for example the [US]({lang}/stocks-usa/), [UK]({lang}/stocks-uk/), [Germany]({lang}/stocks-germany/), [Japan]({lang}/stocks-japan/), [India]({lang}/stocks-india/).
+- **[The world's largest companies]({lang}/largest-companies/)** — ranked by market value, revenue, earnings and other measures, with a country filter.
+- **A stock page** (for example, [Apple]({lang}/aapl/)): the price (for US stocks also before and after the market opens), chart, key numbers (revenue, profit, P/E, dividends, debt), a company description and, for the big ones, a full analysis: how the company makes money, competitors, risks.
+- **[Categories]({lang}/categories/)** — sectors and industries: banks, AI, energy and more.
+- **[Compare]({lang}/compare/)** — two companies or coins side by side, for example [Apple vs Microsoft]({lang}/compare/aapl-vs-msft/).
+- **[Earnings calendar]({lang}/earnings-calendar/)** — when companies report results.
+- **[Famous investors' portfolios]({lang}/investors/)** — what Buffett, Ackman, Cathie Wood and others buy (from official SEC filings), plus which companies hold the most crypto.
 
-## Stocks by country
+There are also [ETFs]({lang}/etfs/), [gold]({lang}/gold/) and [other metals]({lang}/metals/), and [commodities]({lang}/commodities/).
 
-Pages like [Ukraine]({lang}/stocks-ukraine/), [Poland]({lang}/stocks-poland/), [Germany]({lang}/stocks-germany/), [Japan]({lang}/stocks-japan/) or [the UK]({lang}/stocks-uk/) list the biggest companies of each market. Prices are converted to US dollars at the exchange rate of each month, so returns are comparable across countries; the asset page also shows the price on the local exchange.
+## Memecoins
 
-## The world's largest assets
+[Memecoins]({lang}/memes/) are tokens from decentralised exchanges (Solana, BNB Chain, Base and others), in real time. This is **the riskiest corner of the market**, so we switched on a strict filter: we only show tokens older than 24 hours, with enough liquidity and holders and no red flags. It removes most scams, but it does not make anything safe.
 
-[This ranking]({lang}/world-assets/) puts real estate, gold, oil, money supply, the biggest companies and crypto on one scale. Metals and companies use today's prices; the other figures come from sources listed on the page.
+- **The coloured dot** next to a token is a quick safety check: 🟢 fewer risks, 🟡 be careful, 🔴 dangerous.
+- **Search** by name, ticker or contract address, **sort** by any column, and the ★ tab for tokens you saved.
+- **A token page:** chart, change over 5 minutes, an hour and a day, a safety check, a 🔔 button for a price alert, and similar trending tokens.
+- At the bottom of the page: lessons, 5 checks before you buy, and the [memecoin glossary]({lang}/memes/glossary/) — contract, liquidity, rug pull and other words explained.
 
-## News and "What's happening with…"
+## Your personal space: portfolios, watchlists, alerts
 
-- [News]({lang}/news/): our own short briefs, written from several sources with links at the end, plus a live feed of headlines from leading outlets.
-- **"What's happening with…"** explains sharp moves of a coin or stock within hours: what happened, why, and what it means if you buy regularly.
-- [Insights]({lang}/blog/): guides and analysis — start with [what is DCA]({lang}/blog/what-is-dca/).
+All of this is free and works **without signing up**: your data stays in your browser.
 
-## Calculators
+- **[Portfolio]({lang}/me/)** — add what you bought (the "＋ Add to portfolio" button on any asset page) and see its value, profit, 24-hour change, a balance chart and your allocation. You can keep **several portfolios** (say, "Long term" and "Crypto"), record every buy and sell, pick a currency (dollar, euro, USDT or your local one) and import a CSV file.
+- **[Watchlist ★]({lang}/watchlist/)** — several lists with live prices; the ★ is in the header on every page.
+- **Sign in with Google** ("👤 Sign in" in the header) is only needed to keep your portfolios and watchlists the same on your phone and computer.
+- **Price alerts 🔔** — on a coin, stock or memecoin page press 🔔 and choose a price: when it is reached, the bot [@WhatIfStack_bot](https://t.me/WhatIfStack_bot) messages you on Telegram.
+- **The Telegram bot** does more: send it a ticker (for example "btc") to get the price; the "Portfolio" button opens your portfolio right inside Telegram.
 
-- [Habits → money]({lang}/habits/): what your daily coffee, cigarettes or subscriptions would be worth if invested.
-- [Millionaire calculator]({lang}/millionaire/): how much to save each month to reach a goal.
-- [Compound interest]({lang}/compound-interest/): how money grows with reinvested returns.
-- [Inflation]({lang}/inflation/): how much your money lost in your country.
-- [Converter]({lang}/converter/): any coin, stock or currency into another.
-- [From all-time high]({lang}/ath/) and [Bitcoin halving]({lang}/bitcoin-halving/) countdown.
+## Tools and calculators
 
-## Sectors
+All calculators are on [one page]({lang}/calculators/). The most popular:
 
-- [AI sector]({lang}/ai/): AI stocks and AI coins, and what a basket of them would have returned.
-- [Memecoins]({lang}/memes/): trending tokens on decentralised exchanges, live. These are extremely risky.
+- **The "$10 a day" (DCA) calculator** — on the home page and every asset page: amount, frequency, start date, and several assets compared.
+- [Converter]({lang}/converter/) — any coin, stock or currency into another.
+- [Average price]({lang}/average-price/) — your average buy price and how much to buy to lower it.
+- [Dividends]({lang}/dividends/), [compound interest]({lang}/compound-interest/), the [millionaire calculator]({lang}/millionaire/), [inflation]({lang}/inflation/), and [habits → money]({lang}/habits/) (what a daily coffee would be worth if you invested the money instead).
+- [From the high]({lang}/ath/) — how far assets are below their record.
+- [The world's largest assets]({lang}/world-assets/) — real estate, gold, companies and crypto in one ranking.
+- **Ask AI** — the button in the bottom-right corner: any question about markets, in your language. It also has **💡 Suggest an improvement** — tell us what is missing.
+- [Widgets]({lang}/widgets/) — put a live price or calculator on your own site for free.
+- [Activities]({lang}/activities/) — honest guides to airdrops and exchange campaigns, with a risk level for each.
+- [Where to buy]({lang}/exchanges/) — the exchanges and wallets we work with. Some links are affiliate links: they cost you nothing and never affect our data or rankings.
 
-## My portfolio, watchlist and DCA plans
+## News and lessons
 
-Every asset page has an **＋ Add to portfolio** button: enter an amount (or quantity) and the month you bought — the asset appears in [my portfolio]({lang}/me/). There you see the total value, profit, 24h change and each asset's share. Buttons on every row: **＋** buy more, **−** sell part or all (realized profit is shown separately), **▾** history of buys and sells — any entry can be removed. Tap ☆ to add an asset to your watchlist, and save DCA plans (amount, frequency, start date) below. Everything stays in your browser with no sign-up — "Save a backup" downloads a file and "Restore backup" moves your portfolio to another device.
-
-## Activities: airdrops and campaigns
-
-[Activities]({lang}/activities/) collects honest guides to airdrops, points programs and exchange campaigns. Each guide shows the risk level, status (live, expected or ended), cost and time, says what is officially confirmed and what is only expected, and links to the official site. Start with the [9 airdrop safety rules]({lang}/blog/airdrop-safety-rules/).
-
-## Where to buy
-
-[Exchanges]({lang}/exchanges/) lists exchanges and wallets we work with. Some links are partner links: we may earn a commission if you sign up, at no extra cost to you. It never changes our data or rankings.
-
-## AI assistant
-
-The **Ask AI** button in the bottom-right corner opens a chat. Ask anything about the asset you are looking at, DCA, exchanges or how the site works — the assistant sees the numbers on the current page and answers in your language. It explains and calculates but never tells you what to buy. Answers are AI-generated and can contain mistakes; up to 20 questions per day.
-
-## Widgets
-
-Add a live "$10 a day" calculator for any crypto, stock or gold to your blog, forum or website. Numbers update daily — free, no sign-up. [Free DCA widgets for your website]({lang}/widgets/)
-
-## Dividends · Average price · Ukraine bonds
-
-See how much dividend income per year and per month a portfolio pays if you add money monthly and reinvest the payouts. [Dividend calculator]({lang}/dividends/)
-
-Enter your buys and get your average price, profit at the current price, and how much to buy to bring the average down. [Average price calculator]({lang}/average-price/)
-
-See how much Ukrainian military government bonds (OVDP) pay in hryvnia, dollars or euros — and what a bank deposit would give after the 23% tax. [Ukraine bonds (OVDP) calculator]({lang}/ovdp/)
-
-## Largest companies
-
-Ranking of public companies with prices and daily and yearly change. Tap a company to see its key numbers and a plain-language analysis. [Largest companies in the world by market cap]({lang}/largest-companies/)
-
-## A converter page for every pair
-
-Pages like [BTC → USD]({lang}/converter/btc-usd/): the rate now, conversion tables both ways and links to other currencies. Every coin page also shows where it trades: exchanges and pairs in any quote currency (USDT, USD, EUR, BTC and more), with a filter.
-
-## Exchange ranking
-
-Where crypto trades most: 24h volume, market share and trust score. Tap an exchange to see what trades there. [Largest crypto exchanges by trading volume]({lang}/crypto-exchanges/) · [Largest futures and perpetuals exchanges]({lang}/crypto-exchanges/derivatives/)
+- **[News]({lang}/news/)** — our short briefs three times a day: what happened and what it means, in plain words.
+- **[Articles]({lang}/blog/)** — analysis, market reviews and answers to popular questions.
+- **[Learn]({lang}/learn/)** — lessons for complete beginners in 5 sections: investing basics, stocks, crypto, trading and memecoins. Lessons go in order, with a "Next lesson" button after each one.
 
 ## Where the numbers come from
 
-Binance, CoinGecko, Yahoo Finance, the Moscow Exchange, the World Bank and other public sources; details in [About & methodology]({lang}/about/). Prices update daily, crypto prices live. Nothing on WhatIfStack is investment advice: past results do not guarantee future returns.
+Prices come from Binance, OKX, Gate, MEXC, Kraken, Yahoo Finance, CoinGecko and the Moscow Exchange; company figures from company reports and the SEC; other market data from the open sources named on each page. Crypto and US stocks update live, the rest daily. Details are in [About and methodology]({lang}/about/) and our [editorial policy]({lang}/editorial-policy/).
 
-How we write, check facts and correct mistakes is described in our [editorial policy]({lang}/editorial-policy/).
+**Important:** nothing on WhatIfStack is investment advice. Past results don't guarantee future ones, and only invest what you can afford to lose.
+
+To keep up with the markets, bookmark the site and follow our [Telegram channel](https://t.me/WhatIfStack).
