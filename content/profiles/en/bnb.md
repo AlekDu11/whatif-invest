@@ -1,6 +1,6 @@
 ---
 title: BNB explained: Binance's coin since 2017, quarterly burns toward 100 million and what moves the price
-description: BNB in plain language: how Binance's coin and BNB Chain work, why tokens are burned every quarter, its record and crashes, the main risks and what regular buyers should know.
+description: BNB in plain language: how Binance's coin and BNB Chain work, why tokens are burned every quarter, its booms and crashes, the main risks and what regular buyers should know.
 date: 2026-11-22
 kind: analysis
 ---
@@ -30,7 +30,7 @@ BNB is useful in three ways. On Binance it cuts trading fees and gives access to
 
 ## Its story so far
 
-Binance sold BNB in a July 2017 coin offering for about $0.15. It first ran on Ethereum, moved to Binance's own chain in 2019, and BNB Smart Chain launched in September 2020. During the 2021 boom BNB rose to about $690 as BNB Chain filled with cheap DeFi apps. In October 2022 a hacker exploited a bridge and created about 2 million BNB, and the chain was paused for hours. In November 2023 Binance agreed to pay $4.3 billion to settle US charges and CZ pleaded guilty to anti-money-laundering violations and stepped down; he served four months in prison in 2024 and was pardoned by the US president in October 2025. That same month BNB set its record above $1,369 before falling back in 2026.
+Binance sold BNB in a July 2017 coin offering for about $0.15. It first ran on Ethereum, moved to Binance's own chain in 2019, and BNB Smart Chain launched in September 2020. During the 2021 boom BNB rose to about $690 as BNB Chain filled with cheap DeFi apps. In October 2022 a hacker exploited a bridge and created about 2 million BNB, and the chain was paused for hours. In November 2023 Binance agreed to pay $4.3 billion to settle US charges and CZ pleaded guilty to anti-money-laundering violations and stepped down; he served four months in prison in 2024 and was pardoned by the US president in October 2025. That same month BNB rose above $1,369, its highest price up to then, before falling back in 2026.
 
 ## Alternatives
 
@@ -42,7 +42,7 @@ Exchanges have their own coins too — [OKB]({lang}/okb/) of OKX, [Cronos]({lang
 - **Regulation:** Binance has paid billions in fines and is restricted in several countries; new actions are possible.
 - **Centralisation:** a small number of validators run BNB Chain, which makes it easier to pause or control.
 - **Hacks:** bridges and apps on BNB Chain have been hacked, including the 2022 exploit.
-- **Big swings:** BNB fell about 70% between 2021 and 2022 and lost more than half its value again from the 2025 record.
+- **Big swings:** BNB fell about 70% between 2021 and 2022 and lost more than half its value again from its October 2025 peak.
 
 ## What it means if you buy regularly
 
