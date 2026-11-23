@@ -1104,7 +1104,7 @@ a.badge.tagc{text-decoration:none;color:inherit;border:1px solid var(--line)}a.b
 .trsp{position:fixed;border-radius:12px;box-shadow:0 0 0 9999px rgba(0,0,0,.72);outline:2px solid var(--accent);transition:all .25s ease;pointer-events:none}
 .trbox{position:fixed;padding:16px 18px;box-shadow:0 18px 50px rgba(0,0,0,.35);z-index:81;transition:top .25s ease,left .25s ease}.trbox p{margin:0 0 12px;font-size:15px;line-height:1.5}
 .trmid{position:relative;max-width:420px;width:100%;text-align:center}.trmid h3{font-size:21px;margin:2px 0 8px}.trmid p a{color:var(--accent);white-space:nowrap}
-.trb{display:flex;align-items:center;gap:8px;justify-content:flex-end;flex-wrap:wrap}.trb .btn{padding:8px 16px}.trs{margin-right:auto;background:none;border:0;color:var(--muted);font:inherit;font-size:13.5px;cursor:pointer;padding:6px 2px}
+.trb{display:flex;align-items:center;gap:8px;justify-content:flex-end;flex-wrap:nowrap}.trb .btn{padding:8px 16px}.trs{margin-right:auto;background:none;border:0;color:var(--muted);font:inherit;font-size:13.5px;cursor:pointer;padding:6px 2px}
 .trd{display:flex;gap:4px;margin-right:auto}.trd i{width:6px;height:6px;border-radius:50%;background:var(--line)}.trd i.on{background:var(--accent);width:16px;border-radius:3px}
 .trmid .trb{justify-content:center}.trmid .trs{margin-right:0}
 /* quick converter under the asset chart (2026-11-23) */

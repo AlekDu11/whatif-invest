@@ -1881,7 +1881,7 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
   const get=k=>{ try{ return localStorage.getItem(k) }catch(e){ return '1' } }, put=(k,v)=>{ try{ localStorage.setItem(k,v) }catch(e){} };
   const ev=(a,s)=>{ try{ window.gtag&&window.gtag('event','tour',{tour_action:a,tour_step:s||''}) }catch(e){} };
   const E=x=>String(x==null?'':x).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-  const STEPS=[['search','.gsearch'],['calc','.herox .qcalc'],['calc','.herox'],['acalc','#calc'],['watch','.top a.me[href$="/watchlist/"]'],['pf','.top a.me[href$="/me/"]'],['tools','.nav .ddt>summary'],['tools','#mmore'],['ai','.aibtn']];
+  const STEPS=[['stk','.herox .cchips'],['stk','.nav a[href$="/stocks/"]'],['stk','.mnav a[href$="/stocks/"]'],['cry','.nav a[href$="/crypto/"]'],['cry','.strip'],['search','.gsearch'],['calc','.herox .qcalc'],['calc','.herox'],['acalc','#calc'],['watch','.top a.me[href$="/watchlist/"]'],['pf','.top a.me[href$="/me/"]'],['tools','.nav .ddt>summary'],['tools','#mmore'],['ai','.aibtn']];
   const vis=el=>{ if(!el) return false; const r=el.getBoundingClientRect(); return r.width>0&&r.height>0&&getComputedStyle(el).visibility!=='hidden' };
   let S=null, steps=[], i=-1, ov=null, onMove=null;
   const load=()=>S?Promise.resolve(S):fetch(`${P.base||''}/assets/tour/${P.lang}.json`).then(r=>r.json()).then(j=>S=j);
@@ -1890,7 +1890,7 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
     (first?'':`<button type="button" class="btn ghost" data-a="back">${E(S.back)}</button>`)+`<button type="button" class="btn" data-a="${last?'end':'next'}">${E(last?S.done:S.next)}</button></div>` }
   function place(){ if(!ov||i<0) return; const el=steps[i][2], r=el.getBoundingClientRect(), sp=ov.querySelector('.trsp'), bx=ov.querySelector('.trbox'), pad=6;
     sp.style.cssText=`top:${r.top-pad}px;left:${r.left-pad}px;width:${r.width+pad*2}px;height:${r.height+pad*2}px`;
-    const W=innerWidth, H=innerHeight, bw=Math.min(360,W-24); bx.style.width=bw+'px'; const bh=bx.offsetHeight;
+    const W=innerWidth, H=innerHeight, bw=Math.min(400,W-24); bx.style.width=bw+'px'; const bh=bx.offsetHeight;
     let top=r.bottom+14; if(top+bh>H-10) top=Math.max(10,r.top-bh-14); if(top+bh>H-10) top=Math.max(10,H-bh-10);
     let left=Math.min(Math.max(12,r.left+r.width/2-bw/2),W-bw-12); bx.style.top=top+'px'; bx.style.left=left+'px' }
   function show(n){ i=n; const [k,,el]=steps[i]; ov.className='tour'; ov.innerHTML=`<div class="trsp"></div><div class="trbox card" role="dialog" aria-live="polite"><p>${E(S[k])}</p>${btns(i===0,i===steps.length-1)}</div>`;
