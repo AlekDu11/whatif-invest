@@ -1,15 +1,15 @@
 ---
-title: Accenture (ACN) explained: the $74 billion consultancy that AI fears hit hard
-description: Accenture in plain language — $74.2 billion of revenue from consulting and IT outsourcing, why the stock fell about 70% from its peak, the numbers and risks.
-date: 2026-11-19
+title: Accenture (ACN) stock: the $74.2 billion consultancy that AI fears hit hard
+description: Accenture in plain language: $74.2 billion of revenue in fiscal 2026 from consulting and IT outsourcing, the AI fears, the risks and what regular buyers should know.
+date: 2026-11-23
 kind: analysis
 ---
-**Accenture** is the company big organisations hire when they need to change how they work: move to the cloud, install new software, set up AI tools, or hand over whole back-office and IT jobs. It earns money from people's time and know-how — about 814,000 employees working for banks, governments, retailers and factories. It is registered in Ireland and its shares trade on the New York Stock Exchange.
+**Accenture** is the company big organisations hire when they need to change how they work: move to the cloud, install new software, set up AI tools, or hand over whole back-office and IT jobs. It earns money from people's time and know-how — about 814,000 employees at the end of fiscal 2026, working for banks, governments, retailers and factories. It is registered in Ireland and its shares trade on the New York Stock Exchange.
 
 > **Key takeaways**
 > - Revenue: $74.2 billion in fiscal 2026 (to 31 August), +6% in dollars; new bookings $84.5 billion.
 > - Profitable and cash-rich: $11.6 billion of free cash flow, $11.5 billion returned to shareholders in a year.
-> - The stock fell about 70% from its December 2021 record of $415 to its low in June 2026, then rebounded.
+> - On 18 June 2026 the shares fell about 20% in one day, their worst day on record, after weak bookings and a soft forecast.
 > - Outlook for fiscal 2027 is modest: 3–6% revenue growth in local currencies.
 
 ## How it makes money
@@ -18,14 +18,16 @@ Accenture sells two things. **Consulting** ($36.9 billion in fiscal 2026) means 
 
 ## The numbers right now
 
-In the quarter to 31 August 2026 revenue was $18.7 billion, up 6% in dollars and above the company's own forecast. Operating margin was 15.3% and earnings per share $3.29. Over the full year Accenture earned $13.56 per share, generated $11.6 billion in free cash flow and spent $7.5 billion on buybacks plus $4.0 billion on dividends. The quarterly dividend rises to $1.71 (about $6.84 a year). It ended the year with $12.8 billion in cash and about $10 billion in long-term debt, after borrowing $5 billion and spending $4.9 billion on acquisitions. For fiscal 2027 it expects 3–6% growth and earnings of $14.39–14.81 per share.
+- Price today: {{price:acn}}
+- Market value: {{mcap:acn}} ({{rank:acn}} among the world's largest companies on WhatIfStack)
+- Record high: {{ath:acn}} ({{athd:acn}}), {{fromath:acn}} from it
+- $10 a day for 10 years: {{dca:acn:10}} from {{dcainv:10}} invested ({{dcaroi:acn:10}})
+
+In the quarter to 31 August 2026 revenue was $18.7 billion, up 6% in dollars and above the company's own forecast. Operating margin was 15.3% and earnings per share $3.29. Over the full year Accenture earned $13.56 per share, generated $11.6 billion in free cash flow and spent $7.5 billion on buybacks plus $4.0 billion on dividends. In September 2026 it raised the quarterly dividend to $1.71 (about $6.84 a year). It ended the year with $12.8 billion in cash and about $10 billion in long-term debt, after borrowing $5 billion and spending $4.9 billion on acquisitions. For fiscal 2027 it said it expected 3–6% growth and earnings of $14.39–14.81 per share.
 
 ## The stock's story
 
-For two decades Accenture was a steady compounder. It hit a record close of about $415 in December 2021, then drifted lower as clients cut spending on big projects. In 2026 the fear grew that AI tools could do much of the work consultants bill by the hour. On 18 June 2026 the shares fell about 20% in a day — their worst day on record — after new bookings dropped 2% and the revenue forecast missed expectations. At the June low the stock was roughly 70% below its peak. The shares have since recovered a good part of the fall, helped by results that beat the company's own forecast, but the price is still far from the record.
-
-- Price today: {{price:acn}}
-- $10 a day for 10 years: {{dca:acn:10}} from {{dcainv:10}} invested ({{dcaroi:acn:10}})
+For two decades Accenture was a steady compounder. Its shares closed at about $415 in December 2021, the peak of that cycle, then drifted lower as clients cut spending on big projects. In 2026 the fear grew that AI tools could do much of the work consultants bill by the hour. On 18 June 2026 the shares fell about 20% in a day — their worst day on record — after new bookings dropped 2% and the revenue forecast missed expectations. At the June 2026 low the stock was roughly 70% below that 2021 peak. In the following months the shares won back part of the fall, helped by September results that beat the company's own forecast.
 
 ## Competitors
 
@@ -34,8 +36,8 @@ Accenture competes with the consulting arms of Deloitte, PwC, EY and KPMG, with 
 ## Main risks
 
 - **AI could shrink the billable hour:** if clients need fewer people for the same project, revenue per contract can fall even as demand for AI help grows.
-- **Slow growth:** the 2027 outlook of 3–6% is well below the double-digit years of the past; management called discretionary client spending "stable but anemic".
-- **Government and geopolitics:** US federal spending cuts and clients pausing work during the Middle East conflict have already weighed on orders.
+- **Slow growth:** the fiscal 2027 outlook of 3–6% given in September 2026 is well below the double-digit years of the past; in September 2026 management called discretionary client spending "stable but anemic".
+- **Government and geopolitics:** US federal spending cuts and clients pausing work during the Middle East conflict weighed on orders in 2026.
 - **Acquisitions and debt:** Accenture buys many smaller firms each year; long-term debt doubled to about $10 billion in fiscal 2026.
 
 ## What it means if you buy regularly
