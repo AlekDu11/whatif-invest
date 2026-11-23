@@ -1,16 +1,16 @@
 ---
-title: Uniswap (UNI) einfach erklärt: die größte DEX, 100 Millionen verbrannte UNI und ein Rekord von 44,92 $
+title: Uniswap (UNI) einfach erklärt: die größte DEX, Tauschen ohne Orderbuch und 100 Millionen verbrannte UNI
 description: Uniswap einfach erklärt: Tauschen ohne Orderbuch, die Rolle des UNI-Tokens nach dem Fee Switch 2025, Geschichte, Konkurrenz und die größten Risiken.
 date: 2026-11-23
 kind: analysis
 ---
-**Uniswap** ist die größte dezentrale Börse: eine App, mit der jeder einen Token direkt aus der eigenen Wallet gegen einen anderen tauschen kann, ohne dass ein Unternehmen das Geld verwahrt. Hayden Adams startete sie im November 2018 auf Ethereum; heute läuft sie auf vielen Netzwerken, darunter auf dem eigenen Unichain. Im November 2026 waren alle umlaufenden UNI rund 2,8 Milliarden Dollar wert, etwa Platz 30 unter den Kryptowährungen.
+**Uniswap** ist die größte dezentrale Börse: eine App, mit der jeder einen Token direkt aus der eigenen Wallet gegen einen anderen tauschen kann, ohne dass ein Unternehmen das Geld verwahrt. Hayden Adams startete sie im November 2018 auf Ethereum; heute läuft sie auf vielen Netzwerken, darunter auf dem eigenen Unichain. Alle umlaufenden UNI sind heute {{mcap:uni}} wert ({{rank:uni}} unter den Kryptowährungen).
 
 > **Das Wichtigste**
 > - Tauschgeschäfte auf Uniswap brachten Liquiditätsanbietern 2025 mehr als 1 Milliarde Dollar an Handelsgebühren.
 > - Im Dezember 2025 stimmten die Inhaber mit 99,9 % für „UNIfication“: Ein Teil der Gebühren kauft und verbrennt nun UNI, und 100 Millionen UNI wurden auf einen Schlag vernichtet.
-> - Es wurden nur 1 Milliarde UNI geschaffen; nach der Verbrennung sind es weniger als 900 Millionen, davon rund 607 Millionen im Umlauf.
-> - Das bisherige Rekordhoch liegt bei 44,92 $ (Mai 2021); im November 2026 notierte UNI rund 90 % darunter.
+> - Es wurden nur 1 Milliarde UNI geschaffen; nach der Verbrennung sind es weniger als 900 Millionen, davon waren im November 2026 rund 607 Millionen im Umlauf.
+> - Sein Rekordhoch liegt bei {{ath:uni}} ({{athd:uni}}); heute steht der Kurs {{fromath:uni}} darunter.
 
 ## So funktioniert es
 
@@ -37,7 +37,7 @@ Unter den dezentralen Börsen konkurriert Uniswap mit [PancakeSwap]({lang}/cake/
 
 ## Die größten Risiken
 
-- **Starke Schwankungen:** UNI ist seit dem Hoch im Mai 2021 um rund 90 % gefallen.
+- **Starke Schwankungen:** bis November 2026 war UNI seit dem Hoch im Mai 2021 um rund 90 % gefallen.
 - **Wettbewerb:** Konkurrierende Börsen und Aggregatoren kämpfen um dasselbe Handelsvolumen, und die Verbrennung zählt nur, solange der Handel hoch bleibt.
 - **Konzentration:** Uniswap Labs, frühe Investoren und das Team halten einen großen Teil der Token und Stimmrechte.
 - **Regulierung:** Regeln für DeFi und für Token, die Gebühren teilen, können sich ändern und unterscheiden sich von Land zu Land.

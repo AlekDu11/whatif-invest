@@ -1,16 +1,16 @@
 ---
-title: Uniswap (UNI) sa simpleng paliwanag: ang pinakamalaking DEX, 100 milyong UNI na sinunog at record na $44.92
+title: Uniswap (UNI) sa simpleng paliwanag: ang pinakamalaking DEX, palitan nang walang order book at 100 milyong UNI na sinunog
 description: Uniswap sa simpleng paliwanag: palitan nang walang order book, gamit ng UNI matapos ang fee switch ng 2025, kuwento, mga karibal at panganib.
 date: 2026-11-23
 kind: analysis
 ---
-Ang **Uniswap** ang pinakamalaking decentralized exchange: isang app kung saan kahit sino ay puwedeng magpalit ng isang token sa iba nang direkta mula sa sariling wallet, at walang kompanyang may hawak ng pera. Inilunsad ito ni Hayden Adams sa Ethereum noong Nobyembre 2018; ngayon ay tumatakbo ito sa maraming network, kasama ang sarili nitong Unichain. Noong Nobyembre 2026, nasa humigit-kumulang $2.8 bilyon ang halaga ng lahat ng UNI na umiikot, mga ika-30 puwesto sa mga cryptocurrency.
+Ang **Uniswap** ang pinakamalaking decentralized exchange: isang app kung saan kahit sino ay puwedeng magpalit ng isang token sa iba nang direkta mula sa sariling wallet, at walang kompanyang may hawak ng pera. Inilunsad ito ni Hayden Adams sa Ethereum noong Nobyembre 2018; ngayon ay tumatakbo ito sa maraming network, kasama ang sarili nitong Unichain. {{mcap:uni}} ang halaga ngayon ng lahat ng UNI na umiikot ({{rank:uni}} sa mga cryptocurrency).
 
 > **Mahahalagang punto**
 > - Noong 2025, nagbayad ang mga palitan sa Uniswap ng higit $1 bilyon na trading fee sa mga liquidity provider.
 > - Noong Disyembre 2025, inaprubahan ng mga may hawak ang "UNIfication" na may 99.9% na suporta: bahagi ng fees ang bumibili at sumusunog na ngayon ng UNI, at 100 milyong UNI ang winasak nang sabay-sabay.
-> - 1 bilyong UNI lang ang nagawa kailanman; pagkatapos ng pagsunog, mas mababa na sa 900 milyon ang kabuuan, at mga 607 milyon ang umiikot.
-> - Ang pinakamataas na presyo sa ngayon ay $44.92 (Mayo 2021); noong Nobyembre 2026, mga 90% na mas mababa rito ang trading ng UNI.
+> - 1 bilyong UNI lang ang nagawa kailanman; pagkatapos ng pagsunog, mas mababa na sa 900 milyon ang kabuuan, at mga 607 milyon ang umiikot noong Nobyembre 2026.
+> - Ang pinakamataas na presyo nito ay {{ath:uni}} ({{athd:uni}}); ngayon, {{fromath:uni}} ang presyo mula roon.
 
 ## Paano ito gumagana
 
@@ -37,7 +37,7 @@ Sa mga decentralized exchange, kalaban ng Uniswap ang [PancakeSwap]({lang}/cake/
 
 ## Pangunahing panganib
 
-- **Malalaking galaw ng presyo:** bumagsak ang UNI nang mga 90% mula sa rurok nito noong Mayo 2021.
+- **Malalaking galaw ng presyo:** pagsapit ng Nobyembre 2026, bumagsak na ang UNI nang mga 90% mula sa rurok nito noong Mayo 2021.
 - **Kumpetisyon:** nag-aagawan ang mga karibal na exchange at aggregator sa parehong trading volume, at may saysay lang ang pagsunog kung mananatiling mataas ang trading.
 - **Konsentrasyon:** malaking bahagi ng token at ng kapangyarihang bumoto ang hawak ng Uniswap Labs, mga naunang investor at ng team.
 - **Regulasyon:** puwedeng magbago ang mga patakaran para sa DeFi at sa mga token na naghahati ng fees, at magkakaiba ang mga ito sa bawat bansa.

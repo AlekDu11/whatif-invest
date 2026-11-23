@@ -1,16 +1,16 @@
 ---
-title: Uniswap (UNI) eenvoudig uitgelegd: de grootste DEX, 100 miljoen verbrande UNI en een record van $44,92
+title: Uniswap (UNI) eenvoudig uitgelegd: de grootste DEX, ruilen zonder orderboek en 100 miljoen verbrande UNI
 description: Uniswap eenvoudig uitgelegd: ruilen zonder orderboek, de rol van UNI na de fee switch van 2025, de geschiedenis, concurrenten en de grootste risico's.
 date: 2026-11-23
 kind: analysis
 ---
-**Uniswap** is de grootste gedecentraliseerde beurs: een app waarin iedereen de ene token rechtstreeks vanuit de eigen wallet tegen een andere kan ruilen, zonder dat een bedrijf het geld beheert. Hayden Adams lanceerde haar in november 2018 op Ethereum; nu draait ze op veel netwerken, waaronder het eigen Unichain. In november 2026 waren alle UNI in omloop samen ongeveer $2,8 miljard waard, rond plaats 30 onder de cryptomunten.
+**Uniswap** is de grootste gedecentraliseerde beurs: een app waarin iedereen de ene token rechtstreeks vanuit de eigen wallet tegen een andere kan ruilen, zonder dat een bedrijf het geld beheert. Hayden Adams lanceerde haar in november 2018 op Ethereum; nu draait ze op veel netwerken, waaronder het eigen Unichain. Alle UNI in omloop hebben vandaag samen een waarde van {{mcap:uni}} ({{rank:uni}} onder de cryptomunten).
 
 > **Belangrijkste punten**
 > - Ruilen op Uniswap leverde liquiditeitsverschaffers in 2025 meer dan $1 miljard aan handelskosten op.
 > - In december 2025 keurden houders "UNIfication" goed met 99,9% steun: een deel van de kosten koopt en verbrandt nu UNI, en 100 miljoen UNI werden in één keer vernietigd.
-> - Er zijn maar 1 miljard UNI gemaakt; na de verbranding is het totaal onder de 900 miljoen, en er zijn er zo'n 607 miljoen in omloop.
-> - De recordkoers tot nu toe is $44,92 (mei 2021); in november 2026 noteerde UNI ongeveer 90% lager.
+> - Er zijn maar 1 miljard UNI gemaakt; na de verbranding is het totaal onder de 900 miljoen, en in november 2026 waren er zo'n 607 miljoen in omloop.
+> - De recordkoers is {{ath:uni}} ({{athd:uni}}); vandaag staat de koers {{fromath:uni}} daarvan af.
 
 ## Hoe het werkt
 
@@ -37,7 +37,7 @@ Onder de gedecentraliseerde beurzen concurreert Uniswap met [PancakeSwap]({lang}
 
 ## Belangrijkste risico's
 
-- **Grote schommelingen:** UNI is ongeveer 90% gedaald sinds de piek van mei 2021.
+- **Grote schommelingen:** in november 2026 was UNI ongeveer 90% gedaald sinds de piek van mei 2021.
 - **Concurrentie:** rivaliserende beurzen en aggregators vechten om hetzelfde handelsvolume, en de verbranding telt alleen als er veel gehandeld blijft worden.
 - **Concentratie:** Uniswap Labs, vroege investeerders en het team hebben een groot deel van de tokens en het stemrecht.
 - **Regelgeving:** regels voor DeFi en voor tokens die kosten delen kunnen veranderen en verschillen per land.

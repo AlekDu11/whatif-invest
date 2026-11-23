@@ -1,16 +1,16 @@
 ---
-title: Uniswap (UNI) prostym językiem: największy DEX, spalenie 100 mln UNI i rekord 44,92 $
+title: Uniswap (UNI) prostym językiem: największy DEX, wymiana bez arkusza zleceń i spalenie 100 mln UNI
 description: Uniswap prostym językiem: jak działa wymiana bez arkusza zleceń, co robi token UNI po włączeniu opłat w 2025 r., jego historia, konkurenci i główne ryzyka.
 date: 2026-11-23
 kind: analysis
 ---
-**Uniswap** to największa zdecentralizowana giełda: aplikacja, w której każdy może wymienić jeden token na inny prosto z własnego portfela, a żadna firma nie przechowuje pieniędzy. Hayden Adams uruchomił ją na Ethereum w listopadzie 2018 r.; dziś działa w wielu sieciach, w tym we własnej sieci Unichain. W listopadzie 2026 r. wszystkie UNI w obiegu były warte ok. 2,8 mld dolarów, co dawało mniej więcej 30. miejsce wśród kryptowalut.
+**Uniswap** to największa zdecentralizowana giełda: aplikacja, w której każdy może wymienić jeden token na inny prosto z własnego portfela, a żadna firma nie przechowuje pieniędzy. Hayden Adams uruchomił ją na Ethereum w listopadzie 2018 r.; dziś działa w wielu sieciach, w tym we własnej sieci Unichain. Wszystkie UNI w obiegu są dziś warte {{mcap:uni}} ({{rank:uni}} wśród kryptowalut).
 
 > **Najważniejsze**
 > - W 2025 r. wymiany na Uniswap przyniosły dostawcom płynności ponad 1 mld dolarów opłat transakcyjnych.
 > - W grudniu 2025 r. posiadacze poparli „UNIfication” 99,9% głosów: część opłat kupuje teraz i spala UNI, a 100 mln UNI zniszczono za jednym razem.
-> - Powstał tylko 1 mld UNI; po spaleniu jest ich mniej niż 900 mln, a w obiegu ok. 607 mln.
-> - Dotychczasowy rekord ceny to 44,92 $ (maj 2021 r.); w listopadzie 2026 r. UNI był notowany ok. 90% niżej.
+> - Powstał tylko 1 mld UNI; po spaleniu jest ich mniej niż 900 mln, a w listopadzie 2026 r. w obiegu było ok. 607 mln.
+> - Rekord ceny to {{ath:uni}} ({{athd:uni}}); dziś cena jest {{fromath:uni}} od niego.
 
 ## Jak działa
 
@@ -37,7 +37,7 @@ Wśród zdecentralizowanych giełd Uniswap konkuruje z [PancakeSwap]({lang}/cake
 
 ## Główne ryzyka
 
-- **Duże wahania:** UNI spadł o ok. 90% od szczytu z maja 2021 r.
+- **Duże wahania:** do listopada 2026 r. UNI spadł o ok. 90% od szczytu z maja 2021 r.
 - **Konkurencja:** inne giełdy i agregatory walczą o ten sam wolumen, a spalanie ma znaczenie tylko wtedy, gdy handel pozostaje wysoki.
 - **Koncentracja:** Uniswap Labs, wcześni inwestorzy i zespół mają dużą część tokenów i głosów.
 - **Regulacje:** przepisy dotyczące DeFi i tokenów dzielących się opłatami mogą się zmienić i różnią się między krajami.

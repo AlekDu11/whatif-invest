@@ -1,16 +1,16 @@
 ---
-title: Uniswap (UNI) giải thích dễ hiểu: sàn DEX lớn nhất, đốt 100 triệu UNI và kỷ lục 44,92 USD
+title: Uniswap (UNI) giải thích dễ hiểu: sàn DEX lớn nhất, hoán đổi không cần sổ lệnh và đốt 100 triệu UNI
 description: Uniswap dễ hiểu: hoán đổi token không cần sổ lệnh hoạt động thế nào, token UNI làm gì sau khi bật phí năm 2025, lịch sử, đối thủ và rủi ro chính.
 date: 2026-11-23
 kind: analysis
 ---
-**Uniswap** là sàn giao dịch phi tập trung lớn nhất: một ứng dụng nơi bất kỳ ai cũng có thể đổi token này lấy token khác ngay từ ví của mình, không có công ty nào giữ tiền. Hayden Adams ra mắt nó trên Ethereum vào tháng 11/2018; giờ đây nó chạy trên nhiều mạng lưới, trong đó có Unichain của riêng mình. Vào tháng 11/2026, toàn bộ UNI đang lưu hành trị giá khoảng 2,8 tỷ USD, quanh vị trí thứ 30 trong số các tiền mã hóa.
+**Uniswap** là sàn giao dịch phi tập trung lớn nhất: một ứng dụng nơi bất kỳ ai cũng có thể đổi token này lấy token khác ngay từ ví của mình, không có công ty nào giữ tiền. Hayden Adams ra mắt nó trên Ethereum vào tháng 11/2018; giờ đây nó chạy trên nhiều mạng lưới, trong đó có Unichain của riêng mình. Vốn hóa của toàn bộ UNI đang lưu hành hiện là {{mcap:uni}} ({{rank:uni}} trong các đồng tiền mã hóa).
 
 > **Điểm chính**
 > - Năm 2025, các giao dịch hoán đổi trên Uniswap đã trả hơn 1 tỷ USD phí giao dịch cho các nhà cung cấp thanh khoản.
 > - Tháng 12/2025, người nắm giữ thông qua "UNIfication" với 99,9% ủng hộ: một phần phí giờ được dùng để mua và đốt UNI, và 100 triệu UNI bị tiêu hủy ngay một lần.
-> - Chỉ có 1 tỷ UNI từng được tạo ra; sau đợt đốt, tổng số còn dưới 900 triệu, và khoảng 607 triệu đang lưu hành.
-> - Đỉnh giá cao nhất đến nay là 44,92 USD (tháng 5/2021); vào tháng 11/2026, UNI giao dịch thấp hơn mức đó khoảng 90%.
+> - Chỉ có 1 tỷ UNI từng được tạo ra; sau đợt đốt, tổng số còn dưới 900 triệu, và vào tháng 11/2026 có khoảng 607 triệu đang lưu hành.
+> - Đỉnh kỷ lục là {{ath:uni}} ({{athd:uni}}); giá hiện tại cách đỉnh {{fromath:uni}}.
 
 ## Cách hoạt động
 
@@ -37,7 +37,7 @@ Trong số các sàn phi tập trung, Uniswap cạnh tranh với [PancakeSwap]({
 
 ## Rủi ro chính
 
-- **Biến động mạnh:** UNI đã giảm khoảng 90% so với đỉnh tháng 5/2021.
+- **Biến động mạnh:** tính đến tháng 11/2026, UNI đã giảm khoảng 90% so với đỉnh tháng 5/2021.
 - **Cạnh tranh:** các sàn và công cụ tổng hợp đối thủ tranh giành cùng một khối lượng giao dịch, và việc đốt token chỉ có ý nghĩa nếu giao dịch vẫn sôi động.
 - **Tập trung:** Uniswap Labs, nhà đầu tư sớm và đội ngũ nắm phần lớn token và quyền biểu quyết.
 - **Pháp lý:** quy định cho DeFi và cho các token chia sẻ phí có thể thay đổi và khác nhau giữa các quốc gia.

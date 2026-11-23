@@ -1,16 +1,16 @@
 ---
-title: Uniswap (UNI) expliqué simplement : le plus grand DEX, 100 millions d'UNI brûlés et un record à 44,92 $
+title: Uniswap (UNI) expliqué simplement : le plus grand DEX, des échanges sans carnet d'ordres et 100 millions d'UNI brûlés
 description: Uniswap expliqué simplement : les échanges sans carnet d'ordres, le rôle de l'UNI depuis l'activation des frais en 2025, son histoire, ses rivaux, ses risques.
 date: 2026-11-23
 kind: analysis
 ---
-**Uniswap** est la plus grande plateforme d'échange décentralisée : une application où chacun peut échanger un jeton contre un autre directement depuis son propre portefeuille, sans qu'aucune entreprise ne garde l'argent. Hayden Adams l'a lancée sur Ethereum en novembre 2018 ; elle fonctionne aujourd'hui sur de nombreux réseaux, dont son propre Unichain. En novembre 2026, l'ensemble des UNI en circulation valait environ 2,8 milliards de dollars, vers la 30e place parmi les cryptomonnaies.
+**Uniswap** est la plus grande plateforme d'échange décentralisée : une application où chacun peut échanger un jeton contre un autre directement depuis son propre portefeuille, sans qu'aucune entreprise ne garde l'argent. Hayden Adams l'a lancée sur Ethereum en novembre 2018 ; elle fonctionne aujourd'hui sur de nombreux réseaux, dont son propre Unichain. L'ensemble des UNI en circulation a une valeur de {{mcap:uni}} aujourd'hui ({{rank:uni}} parmi les cryptomonnaies).
 
 > **À retenir**
 > - Les échanges sur Uniswap ont versé plus de 1 milliard de dollars de frais aux fournisseurs de liquidité en 2025.
 > - En décembre 2025, les détenteurs ont approuvé « UNIfication » à 99,9 % : une partie des frais rachète et brûle désormais des UNI, et 100 millions d'UNI ont été détruits d'un coup.
-> - Seul 1 milliard d'UNI a été créé ; après la destruction, le total est passé sous les 900 millions, dont environ 607 millions en circulation.
-> - Le record de cours à ce jour est de 44,92 $ (mai 2021) ; en novembre 2026, l'UNI s'échangeait environ 90 % en dessous.
+> - Seul 1 milliard d'UNI a été créé ; après la destruction, le total est passé sous les 900 millions, dont environ 607 millions étaient en circulation en novembre 2026.
+> - Son record est de {{ath:uni}} ({{athd:uni}}) ; aujourd'hui, le cours est à {{fromath:uni}} de ce niveau.
 
 ## Comment il fonctionne
 
@@ -37,7 +37,7 @@ Parmi les plateformes décentralisées, Uniswap affronte [PancakeSwap]({lang}/ca
 
 ## Principaux risques
 
-- **Fortes variations :** l'UNI a perdu environ 90 % depuis son sommet de mai 2021.
+- **Fortes variations :** en novembre 2026, l'UNI avait perdu environ 90 % depuis son sommet de mai 2021.
 - **Concurrence :** plateformes et agrégateurs rivaux se disputent le même volume, et la destruction de jetons ne compte que si les échanges restent élevés.
 - **Concentration :** Uniswap Labs, les premiers investisseurs et l'équipe détiennent une grande part des jetons et des droits de vote.
 - **Réglementation :** les règles pour la DeFi et pour les jetons qui partagent des frais peuvent changer et varient selon les pays.

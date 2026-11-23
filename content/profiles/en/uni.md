@@ -1,16 +1,16 @@
 ---
-title: Uniswap (UNI) explained: the biggest DEX, a 100 million UNI burn and a $44.92 record
+title: Uniswap (UNI) explained: the biggest DEX, swaps without an order book and a 100 million UNI burn
 description: Uniswap in plain language: how swaps without an order book work, what the UNI token does after the 2025 fee switch, its story, rivals and the main risks.
 date: 2026-11-23
 kind: analysis
 ---
-**Uniswap** is the largest decentralized exchange: an app where anyone can swap one token for another straight from their own wallet, with no company holding the money. Hayden Adams launched it on Ethereum in November 2018; it now runs on many networks, including its own Unichain. In November 2026 all UNI in circulation was worth about $2.8 billion, around number 30 among cryptocurrencies.
+**Uniswap** is the largest decentralized exchange: an app where anyone can swap one token for another straight from their own wallet, with no company holding the money. Hayden Adams launched it on Ethereum in November 2018; it now runs on many networks, including its own Unichain. All UNI in circulation is worth {{mcap:uni}} today ({{rank:uni}} among cryptocurrencies).
 
 > **Key takeaways**
 > - Swaps on Uniswap paid liquidity providers more than $1 billion in trading fees in 2025.
 > - In December 2025 holders approved "UNIfication" with 99.9% support: part of the fees now buys and burns UNI, and 100 million UNI were destroyed at once.
-> - Only 1 billion UNI were ever created; after the burn the total is below 900 million, and about 607 million circulate.
-> - The record price so far is $44.92 (May 2021); in November 2026 UNI traded about 90% below it.
+> - Only 1 billion UNI were ever created; after the burn the total is below 900 million, and about 607 million were in circulation in November 2026.
+> - Its record high is {{ath:uni}} ({{athd:uni}}); today the price is {{fromath:uni}} from it.
 
 ## How it works
 
@@ -37,7 +37,7 @@ Among decentralized exchanges Uniswap competes with [PancakeSwap]({lang}/cake/) 
 
 ## Main risks
 
-- **Big swings:** UNI has fallen about 90% from its May 2021 peak.
+- **Big swings:** by November 2026 UNI had fallen about 90% from its May 2021 peak.
 - **Competition:** rival exchanges and aggregators fight for the same trading volume, and the burn only matters if trading stays high.
 - **Concentration:** Uniswap Labs, early investors and the team hold a large share of tokens and voting power.
 - **Regulation:** rules for DeFi and for tokens that share fees can change and differ by country.

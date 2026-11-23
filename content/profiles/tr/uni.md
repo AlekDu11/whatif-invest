@@ -1,16 +1,16 @@
 ---
-title: Uniswap (UNI) sade dille: en büyük DEX, 100 milyon UNI yakımı ve 44,92 $ rekor
+title: Uniswap (UNI) sade dille: en büyük DEX, emir defteri olmadan takas ve 100 milyon UNI yakımı
 description: Uniswap sade dille: emir defteri olmadan takas nasıl çalışır, 2025 ücret anahtarından sonra UNI ne işe yarar, hikâyesi, rakipleri ve başlıca riskleri.
 date: 2026-11-23
 kind: analysis
 ---
-**Uniswap**, en büyük merkeziyetsiz borsadır: herkesin bir token'ı doğrudan kendi cüzdanından başka bir token'la takas edebildiği, parayı hiçbir şirketin tutmadığı bir uygulama. Hayden Adams onu Kasım 2018'de Ethereum üzerinde başlattı; bugün kendi ağı Unichain dahil pek çok ağda çalışıyor. Kasım 2026'da dolaşımdaki tüm UNI'lerin değeri yaklaşık 2,8 milyar dolardı; kripto paralar arasında 30. sıra civarındaydı.
+**Uniswap**, en büyük merkeziyetsiz borsadır: herkesin bir token'ı doğrudan kendi cüzdanından başka bir token'la takas edebildiği, parayı hiçbir şirketin tutmadığı bir uygulama. Hayden Adams onu Kasım 2018'de Ethereum üzerinde başlattı; bugün kendi ağı Unichain dahil pek çok ağda çalışıyor. Dolaşımdaki tüm UNI'lerin bugünkü piyasa değeri {{mcap:uni}} (kripto paralar arasında {{rank:uni}}).
 
 > **Öne çıkanlar**
 > - Uniswap'taki takaslar 2025'te likidite sağlayıcılarına 1 milyar dolardan fazla işlem ücreti ödedi.
 > - Aralık 2025'te sahipler "UNIfication"ı %99,9 destekle onayladı: ücretlerin bir kısmı artık UNI satın alıp yakıyor ve 100 milyon UNI tek seferde imha edildi.
-> - Toplamda yalnızca 1 milyar UNI üretildi; yakımdan sonra toplam 900 milyonun altında, dolaşımda ise yaklaşık 607 milyon var.
-> - Şimdiye kadarki rekor fiyat 44,92 $ (Mayıs 2021); Kasım 2026'da UNI bunun yaklaşık %90 altında işlem görüyordu.
+> - Toplamda yalnızca 1 milyar UNI üretildi; yakımdan sonra toplam 900 milyonun altında, Kasım 2026'da dolaşımda yaklaşık 607 milyon vardı.
+> - Rekor fiyatı {{ath:uni}} ({{athd:uni}}); bugün fiyat ondan {{fromath:uni}} uzakta.
 
 ## Nasıl çalışır
 
@@ -37,7 +37,7 @@ Merkeziyetsiz borsalar arasında Uniswap; BNB Chain'deki [PancakeSwap]({lang}/ca
 
 ## Başlıca riskler
 
-- **Büyük dalgalanmalar:** UNI, Mayıs 2021'deki zirvesinden yaklaşık %90 düştü.
+- **Büyük dalgalanmalar:** UNI, Kasım 2026'ya kadar Mayıs 2021'deki zirvesinden yaklaşık %90 düşmüştü.
 - **Rekabet:** rakip borsalar ve toplayıcılar aynı işlem hacmi için yarışıyor; yakım ancak işlem hacmi yüksek kalırsa anlam taşıyor.
 - **Yoğunlaşma:** Uniswap Labs, erken yatırımcılar ve ekip token'ların ve oy gücünün büyük bir kısmını elinde tutuyor.
 - **Düzenleme:** DeFi'ye ve ücret paylaşan token'lara yönelik kurallar değişebilir ve ülkeden ülkeye farklılık gösterir.

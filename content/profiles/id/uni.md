@@ -1,16 +1,16 @@
 ---
-title: Uniswap (UNI) dijelaskan sederhana: DEX terbesar, pembakaran 100 juta UNI, dan rekor $44,92
+title: Uniswap (UNI) dijelaskan sederhana: DEX terbesar, tukar token tanpa order book, dan pembakaran 100 juta UNI
 description: Uniswap dijelaskan sederhana: cara kerja tukar token tanpa order book, fungsi token UNI setelah fee switch 2025, kisahnya, pesaing, dan risiko utamanya.
 date: 2026-11-23
 kind: analysis
 ---
-**Uniswap** adalah bursa terdesentralisasi terbesar: aplikasi tempat siapa pun bisa menukar satu token dengan token lain langsung dari dompetnya sendiri, tanpa ada perusahaan yang memegang uangnya. Hayden Adams meluncurkannya di Ethereum pada November 2018; kini Uniswap berjalan di banyak jaringan, termasuk jaringannya sendiri, Unichain. Pada November 2026, seluruh UNI yang beredar bernilai sekitar $2,8 miliar, kira-kira peringkat 30 di antara mata uang kripto.
+**Uniswap** adalah bursa terdesentralisasi terbesar: aplikasi tempat siapa pun bisa menukar satu token dengan token lain langsung dari dompetnya sendiri, tanpa ada perusahaan yang memegang uangnya. Hayden Adams meluncurkannya di Ethereum pada November 2018; kini Uniswap berjalan di banyak jaringan, termasuk jaringannya sendiri, Unichain. Nilai seluruh UNI yang beredar kini {{mcap:uni}} ({{rank:uni}} di antara mata uang kripto).
 
 > **Poin penting**
 > - Transaksi tukar di Uniswap membayar lebih dari $1 miliar biaya perdagangan kepada penyedia likuiditas pada 2025.
 > - Pada Desember 2025, pemegang menyetujui "UNIfication" dengan dukungan 99,9%: sebagian biaya kini dipakai untuk membeli dan membakar UNI, dan 100 juta UNI dimusnahkan sekaligus.
-> - Hanya 1 miliar UNI yang pernah dibuat; setelah pembakaran totalnya di bawah 900 juta, dan sekitar 607 juta yang beredar.
-> - Rekor harga sejauh ini adalah $44,92 (Mei 2021); pada November 2026 UNI diperdagangkan sekitar 90% di bawahnya.
+> - Hanya 1 miliar UNI yang pernah dibuat; setelah pembakaran totalnya di bawah 900 juta, dan sekitar 607 juta yang beredar pada November 2026.
+> - Rekor tertingginya {{ath:uni}} ({{athd:uni}}); kini harganya {{fromath:uni}} dari rekor itu.
 
 ## Cara kerjanya
 
@@ -37,7 +37,7 @@ Di antara bursa terdesentralisasi, Uniswap bersaing dengan [PancakeSwap]({lang}/
 
 ## Risiko utama
 
-- **Gejolak besar:** UNI sudah turun sekitar 90% dari puncaknya pada Mei 2021.
+- **Gejolak besar:** hingga November 2026 UNI telah turun sekitar 90% dari puncaknya pada Mei 2021.
 - **Persaingan:** bursa dan agregator pesaing memperebutkan volume perdagangan yang sama, dan pembakaran hanya berarti jika perdagangan tetap tinggi.
 - **Konsentrasi:** Uniswap Labs, investor awal, dan tim memegang porsi besar token dan hak suara.
 - **Regulasi:** aturan untuk DeFi dan untuk token yang berbagi biaya bisa berubah dan berbeda di tiap negara.

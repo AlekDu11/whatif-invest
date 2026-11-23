@@ -1,16 +1,16 @@
 ---
-title: Uniswap (UNI) spiegato semplice: il più grande DEX, 100 milioni di UNI bruciati e un record di 44,92 $
+title: Uniswap (UNI) spiegato semplice: il più grande DEX, scambi senza order book e 100 milioni di UNI bruciati
 description: Uniswap spiegato semplice: scambi senza order book, il ruolo del token UNI dopo l'attivazione delle commissioni nel 2025, storia, rivali e rischi.
 date: 2026-11-23
 kind: analysis
 ---
-**Uniswap** è il più grande exchange decentralizzato: un'app in cui chiunque può scambiare un token con un altro direttamente dal proprio wallet, senza che alcuna società custodisca il denaro. Hayden Adams l'ha lanciato su Ethereum nel novembre 2018; oggi funziona su molte reti, tra cui la sua Unichain. A novembre 2026 tutti gli UNI in circolazione valevano circa 2,8 miliardi di dollari, intorno al 30° posto tra le criptovalute.
+**Uniswap** è il più grande exchange decentralizzato: un'app in cui chiunque può scambiare un token con un altro direttamente dal proprio wallet, senza che alcuna società custodisca il denaro. Hayden Adams l'ha lanciato su Ethereum nel novembre 2018; oggi funziona su molte reti, tra cui la sua Unichain. Tutti gli UNI in circolazione oggi valgono {{mcap:uni}} ({{rank:uni}} tra le criptovalute).
 
 > **In sintesi**
 > - Nel 2025 gli scambi su Uniswap hanno pagato ai fornitori di liquidità oltre 1 miliardo di dollari di commissioni.
 > - A dicembre 2025 i possessori hanno approvato "UNIfication" con il 99,9% dei voti: parte delle commissioni ora compra e brucia UNI, e 100 milioni di UNI sono stati distrutti in un colpo solo.
-> - Sono stati creati solo 1 miliardo di UNI; dopo il burn il totale è sotto i 900 milioni, e ne circolano circa 607 milioni.
-> - Il record di prezzo finora è di 44,92 $ (maggio 2021); a novembre 2026 UNI quotava circa il 90% sotto.
+> - Sono stati creati solo 1 miliardo di UNI; dopo il burn il totale è sotto i 900 milioni, e a novembre 2026 ne circolavano circa 607 milioni.
+> - Il suo massimo storico è {{ath:uni}} ({{athd:uni}}); oggi il prezzo è a {{fromath:uni}} da lì.
 
 ## Come funziona
 
@@ -37,7 +37,7 @@ Tra gli exchange decentralizzati Uniswap compete con [PancakeSwap]({lang}/cake/)
 
 ## Rischi principali
 
-- **Forti oscillazioni:** UNI ha perso circa il 90% dal picco di maggio 2021.
+- **Forti oscillazioni:** a novembre 2026 UNI aveva perso circa il 90% dal picco di maggio 2021.
 - **Concorrenza:** exchange e aggregatori rivali si contendono lo stesso volume, e il burn conta solo se gli scambi restano alti.
 - **Concentrazione:** Uniswap Labs, i primi investitori e il team detengono una grande quota dei token e del potere di voto.
 - **Regolamentazione:** le regole per la DeFi e per i token che condividono le commissioni possono cambiare e variano da paese a paese.
