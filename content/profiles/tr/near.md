@@ -1,27 +1,57 @@
 ---
-title: NEAR Protocol (NEAR) nedir?
-description: NEAR Protocol sade bir dille: kolay uygulamalar ve zincirler arası takas için hızlı, parçalı bir blokzincir; NEAR token ne işe yarar ve başlıca riskler.
-date: 2026-11-20
+title: NEAR Protocol (NEAR) sade dille: 0,6 saniyelik bloklar, 22 milyar $ zincirler arası takas ve 20,44 $ rekor
+description: NEAR Protocol sade dille: parçalı (sharded) blokzincir nasıl çalışır, NEAR Intents nedir, NEAR token ne işe yarar, hikâyesi, rakipleri ve başlıca riskler.
+date: 2026-11-23
+kind: analysis
 ---
-**NEAR Protocol**, sıradan bir uygulama gibi hissettirmek için tasarlanmış bir blokzincir: uzun kodlar yerine okunabilir hesap adları, her 0,6 saniyede bir yeni blok ve tek hesaptan onlarca farklı zincir arasında takas. 2018'de, bugünkü yapay zekâ sohbet robotlarının temelini atan Google makalesinin ortak yazarı Illia Polosukhin ile Alexander Skidanov tarafından kuruldu.
+**NEAR Protocol**, sıradan bir uygulama gibi kullanılsın diye tasarlanmış bir blokzincirdir: uzun kodlar yerine alice.near gibi okunabilir hesap adları, her 0,6 saniyede bir yeni blok ve tek bir hesaptan onlarca farklı blokzincir arasında takas. 2018'de, bugünkü yapay zekâ sohbet botlarının doğmasını sağlayan Google makalesinin ortak yazarlarından Illia Polosukhin ile Alexander Skidanov tarafından kuruldu. Kasım 2026'da tüm NEAR token'larının toplam değeri yaklaşık 3,9 milyar dolardı; kripto paralar arasında 23. sıra civarındaydı.
 
-## Nasıl çalışır?
+> **Öne çıkanlar**
+> - Bloklar yaklaşık her 0,6 saniyede bir gelir ve ağ paralel parçalara (shard) bölündüğü için yavaşlamadan büyüyebilir.
+> - NEAR Intents, 2024 sonundan bu yana 35'ten fazla blokzincirde 22 milyar dolardan fazla zincirler arası takas işledi (Nansen).
+> - Yeni token ihracı Ekim 2025'te yıllık %5'ten %2,5'e indirildi; Kasım 2026'da token sahipleri bunu %1,6'ya düşürmek için oy verdi.
+> - Şimdiye kadarki rekor fiyat 20,44 $ (Ocak 2022); Kasım 2026'da NEAR bunun %80'den fazla altında işlem görüyordu.
 
-NEAR ağı "shard" denen paralel parçalara böler (Nightshade tasarımı); böylece yavaşlamak yerine yeni shard ekleyerek büyür. 2025 sonunda shard sayısı 6'dan 9'a çıktı, 2026'da ağ yoğun shard'ları otomatik olarak bölmeye ve boş kalanları birleştirmeye başladı. NEAR token ile işlem ücretleri ve veri depolama ödenir; sahipleri NEAR'ı ağı koruyan doğrulayıcılara stake eder (kilitler) ve yeni token kazanır. Her ücretin büyük kısmı yakılır.
+## Nasıl çalışır
 
-## Neden önemli?
+NEAR, ağını shard adı verilen paralel parçalara böler ("Nightshade" tasarımı). Her shard işlemlerin bir kısmını üstlenir, bu yüzden kapasite yeni shard'lar eklenerek artar: ağ 2025'te 6 shard'dan 9'a çıktı, 2026'da ise yoğun shard'ları otomatik olarak bölmeye ve sakin olanları birleştirmeye başladı. Madenciler yerine doğrulayıcılar (validator) NEAR kilitleyerek (stake ederek) blok üretir ve yeni basılan token'ları kazanır. Bir hesabın farklı yetkilere sahip birden çok anahtarı olabilir; bu da cüzdanları yeni başlayanlar için daha kolay ve güvenli hâle getirir.
 
-Bugünkü ana ürün **NEAR Intents**: ne istediğinizi söylersiniz ("bitcoinimi USDC'ye çevir"), "solver" ağı rotayı bulur. Nansen'e göre 2024 sonundan bu yana 35'ten fazla blokzincir arasında 22 milyar dolardan fazla takas bu sistemden geçti. Şaşırtıcı bir bilgi: 2026'nın ikinci çeyreğinde NEAR işlemlerinin yaklaşık %65'i tek bir uygulamadan, HOT Wallet'tan geldi. Ekim 2025'te ağ, yıllık azami enflasyonu %5'ten yaklaşık %2,5'e indirdi; değişiklik doğrulayıcı oylamasında üçte iki çoğunluğa ulaşamamıştı.
+## Token ne işe yarar
 
-## Temel rakamlar
+NEAR, işlem ücretlerini ve uygulamaların ve hesapların blokzincirde kullandığı depolama alanını ödemeye yarar; her ücretin büyük kısmı yakılır, yani kalıcı olarak yok edilir. Token sahipleri ağı korumak ve ödül kazanmak için NEAR'ı doğrulayıcılara stake eder; stake edilmiş NEAR, "House of Stake" yönetişiminde oy hakkı verir. NEAR'ın bugünkü ana ürünü **NEAR Intents**: ne istediğinizi söylersiniz ("bitcoin'imi USDC'ye çevir"), bir çözücü (solver) ağı da zincirler arasındaki en iyi rotayı bulur. Ekip ayrıca kripto kullanan yapay zekâ ajanları için araçlar geliştiriyor.
+
+## Şu anki rakamlar
 
 - Bugünkü fiyat: {{price:near}}
+- Rekor: {{ath:near}} ({{athd:near}})
+- 12 aylık fiyat değişimi: {{chg1y:near}}
 - 5 yıl boyunca günde 10 $: {{dca:near:5}}, yatırılan {{dcainv:5}} ({{dcaroi:near:5}})
 
-Diğer coinlerle [karşılaştırma aracımızda]({lang}/compare/) kıyaslayın.
+## Hikâyesi
+
+Polosukhin ve Skidanov, NEAR'ı 2018'de bir yapay zekâ şirketi olarak kurdu; dünyanın dört bir yanındaki insanlara kriptoyla ödeme yapmanın ne kadar zor olduğunu görünce blokzincire yöneldiler. Ana ağ 2020'de açıldı; 2021 yükselişinde NEAR, ekosistemi için yüz milyonlarca dolar topladı. Fiyat Ocak 2022'de 20,44 $ ile zirve yaptı, ardından 2022 kripto çöküşünde sert düştü. NEAR Intents 2024 sonunda başlatıldı ve en hızlı büyüyen ürünü oldu. Ekim 2025'te ağ, azami yıllık enflasyonunu yarıya, yaklaşık %2,5'e indirdi; ancak bu değişiklik doğrulayıcı oylamasında üçte iki çoğunluğa ulaşamamıştı. 2 Kasım 2026'da token sahipleri, ihracı 24 ay içinde %1,6'ya düşüren HSP-029 önerisini kullanılan oyların %99,9'uyla onayladı.
+
+## Alternatifler
+
+Hızlı akıllı sözleşme blokzincirleri arasında NEAR; [Ethereum]({lang}/eth/) ve onun katman 2 ağları, [Solana]({lang}/sol/), [Avalanche]({lang}/avax/), [Sui]({lang}/sui/) ve [Aptos]({lang}/apt/) ile rekabet eder. Zincirler arası takaslarda ise intent'leri köprüler ve borsa toplayıcılarıyla yarışır.
 
 ## Başlıca riskler
 
-NEAR; Ethereum, Solana ve pek çok yeni hızlı zincirle rekabet ediyor ve faaliyetin önemli bölümü birkaç uygulamaya bağlı. Her yıl yeni token basılıyor, bu yüzden stake ödülleri stake etmeyenlerin payını sulandırıyor. Token 2022 zirvesinin çok altında ve yalnızca 20 Kasım 2026'da yaklaşık %11 düştü. Kripto kuralları ülkeden ülkeye değişiyor. Düzenli alım dalgalanmaları yumuşatır ama riski ortadan kaldırmaz.
+- **Büyük dalgalanmalar:** NEAR rekorundan %80'den fazla düştü ve Kasım 2026'da tek bir günde yaklaşık %11 değer kaybetti.
+- **Rekabet:** pek çok hızlı blokzincir aynı geliştiricilerin ve kullanıcıların peşinde.
+- **Etkinliğin yoğunlaşması:** 2026'nın ikinci çeyreğinde tek bir uygulama, HOT Wallet, tüm NEAR işlemlerinin yaklaşık %65'ini oluşturdu.
+- **Sulanma:** her yıl hâlâ yeni token basılıyor; stake etmeyen sahipler indirimlerden sonra bile pay kaybediyor.
+- **Düzenleme ve teknoloji:** kripto kuralları ülkeden ülkeye değişir; köprüler ve akıllı sözleşmeler hacklenebilir.
+
+## Düzenli alım yapıyorsanız bu ne anlama geliyor
+
+NEAR'ın geçmişi, 2021'deki hızlı yükselişi ve ardından gelen uzun düşüşü gösteriyor. Düzenli olarak sabit bir tutarda alım yapmak, dibi tahmin etmeye çalışmadan fiyat düşükken daha çok, yüksekken daha az almanız demektir; ancak kayıp riskini ortadan kaldırmaz. Birçok kişi NEAR gibi daha küçük coin'leri, sert düşmesini göze alabileceği küçük bir birikim payıyla sınırlar. Geçmiş sonuçlar gelecekteki getirileri garanti etmez.
 
 *Yatırım tavsiyesi değildir.*
+
+## Kaynaklar
+
+- [NEAR Protocol — resmî site (near.org)](https://near.org/)
+- [NEAR Protocol 2026 ikinci çeyrek raporu (Nansen)](https://nansen.ai/post/nansen-near-quarterly-report-q2-2026)
+- [Yıllık token ihracını düşürme önerisi kabul edilince NEAR %7 geriledi (Cointelegraph, Kasım 2026)](https://cointelegraph.com/news/near-sinks-7-proposal-cut-annual-token-issuance-passes)
+- [NEAR Protocol fiyatı, piyasa değeri ve tüm zamanların zirvesi (CoinGecko)](https://www.coingecko.com/en/coins/near)
