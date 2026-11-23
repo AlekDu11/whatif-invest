@@ -19,7 +19,7 @@ Appleの収入の大半は、今も機器の販売から生まれています。
 ## 最新の数字
 
 - 現在の株価：{{price:aapl}}
-- 時価総額：{{mcap:aapl}}（WhatIfStackの世界大企業ランキングで{{rank:aapl}}）
+- 時価総額：{{mcap:aapl}}
 - 最高値：{{ath:aapl}}（{{athd:aapl}}）、そこから{{fromath:aapl}}
 - 毎日10ドルを10年間：投資額{{dcainv:10}}が{{dca:aapl:10}}に（{{dcaroi:aapl:10}}）
 

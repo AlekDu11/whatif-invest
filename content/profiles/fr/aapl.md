@@ -19,7 +19,7 @@ L'essentiel des revenus d'Apple vient toujours de la vente d'appareils. Sur l'ex
 ## Les chiffres actuels
 
 - Cours actuel : {{price:aapl}}
-- Valeur de marché : {{mcap:aapl}} ({{rank:aapl}} parmi les plus grandes entreprises du monde sur WhatIfStack)
+- Valeur de marché : {{mcap:aapl}}
 - Record : {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} depuis
 - 10 $ par jour pendant 10 ans : {{dca:aapl:10}} pour {{dcainv:10}} investis ({{dcaroi:aapl:10}})
 

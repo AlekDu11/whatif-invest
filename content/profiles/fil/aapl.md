@@ -19,7 +19,7 @@ Karamihan sa pera ng Apple ay galing pa rin sa pagbebenta ng mga device. Sa fisc
 ## Ang mga numero ngayon
 
 - Presyo ngayon: {{price:aapl}}
-- Halaga sa merkado: {{mcap:aapl}} ({{rank:aapl}} sa pinakamalalaking kumpanya sa mundo sa WhatIfStack)
+- Halaga sa merkado: {{mcap:aapl}}
 - Pinakamataas na presyo: {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} mula roon
 - $10 kada araw sa loob ng 10 taon: {{dca:aapl:10}} mula sa {{dcainv:10}} na inilagay ({{dcaroi:aapl:10}})
 
