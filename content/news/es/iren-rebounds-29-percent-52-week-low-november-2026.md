@@ -1,6 +1,6 @@
 ---
 title: ¿Qué pasa con IREN (IREN)? La acción rebota un 29% desde su mínimo anual
-description: IREN subió cerca de un 29% el lunes tras marcar un mínimo de 52 semanas, mientras las acciones de nube de IA celebraban la vuelta de Huang a Nvidia. Bitcoin solo subió un 2%.
+description: IREN subió cerca de un 29% el lunes tras marcar un mínimo de 52 semanas, con la nube de IA impulsada por la vuelta de Huang a Nvidia. Bitcoin solo subió un 2%.
 date: 2026-11-23 18:50
 tags: movers, ai
 assets: iren, crwv, btc

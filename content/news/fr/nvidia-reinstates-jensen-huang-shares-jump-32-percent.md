@@ -1,6 +1,6 @@
 ---
 title: Nvidia rappelle Jensen Huang au poste de PDG : l'action bondit de 32 %, le Nasdaq de 7 %
-description: Le conseil de Nvidia a rappelé Jensen Huang au poste de PDG à l'unanimité. L'action a pris environ 32 % et le Nasdaq 7 %, l'une de ses meilleures séances depuis des années.
+description: Le conseil de Nvidia a rappelé Jensen Huang au poste de PDG à l'unanimité. L'action a pris 32 % et le Nasdaq 7 %, une des meilleures séances depuis des années.
 date: 2026-11-23 18:30
 tags: ai, markets
 assets: nvda, qqq, spy

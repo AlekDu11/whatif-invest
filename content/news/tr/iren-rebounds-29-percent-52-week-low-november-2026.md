@@ -1,6 +1,6 @@
 ---
 title: IREN'de (IREN) neler oluyor? Hisse 52 haftanın dibinden %29 sıçradı
-description: IREN, 52 haftanın en düşüğünü gördükten bir seans sonra Pazartesi yaklaşık %29 yükseldi; yapay zekâ bulut hisseleri Huang'ın Nvidia'ya dönüşüyle uçtu. Bitcoin yalnızca %2 arttı.
+description: IREN, 52 haftanın en düşüğünü gördükten bir seans sonra Pazartesi yaklaşık %29 yükseldi; YZ bulut hisseleri Huang'ın dönüşüyle uçtu. Bitcoin yalnızca %2 arttı.
 date: 2026-11-23 18:50
 tags: movers, ai
 assets: iren, crwv, btc

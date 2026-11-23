@@ -1,6 +1,6 @@
 ---
 title: O que está acontecendo com a IREN (IREN)? Ação sobe 29% a partir da mínima de 52 semanas
-description: A IREN subiu cerca de 29% na segunda, um pregão após a mínima de 52 semanas, com as ações de nuvem de IA animadas pela volta de Huang à Nvidia. O bitcoin subiu só 2%.
+description: A IREN subiu cerca de 29% na segunda, um pregão após a mínima de 52 semanas, com a nuvem de IA animada pela volta de Huang à Nvidia. O bitcoin subiu só 2%.
 date: 2026-11-23 18:50
 tags: movers, ai
 assets: iren, crwv, btc

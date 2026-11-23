@@ -1,6 +1,6 @@
 ---
 title: Ibinalik ng Nvidia si Jensen Huang bilang CEO: shares +32%, Nasdaq +7%
-description: Nagkaisang ibinalik ng board ng Nvidia si Jensen Huang bilang CEO. Tumaas ng mga 32% ang stock at 7% ang Nasdaq, isa sa pinakamagandang araw nito sa loob ng ilang taon.
+description: Nagkaisang ibinalik ng board ng Nvidia si Jensen Huang bilang CEO. Tumaas ng mga 32% ang stock at 7% ang Nasdaq, isa sa pinakamagandang araw sa ilang taon.
 date: 2026-11-23 18:30
 tags: ai, markets
 assets: nvda, qqq, spy

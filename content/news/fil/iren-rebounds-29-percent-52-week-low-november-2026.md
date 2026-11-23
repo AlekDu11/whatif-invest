@@ -1,6 +1,6 @@
 ---
 title: Ano ang nangyayari sa IREN (IREN)? Bumawi ng 29% ang shares mula sa 52-week low
-description: Tumaas ng mga 29% ang IREN noong Lunes, isang session matapos tumama sa 52-week low, habang umangat ang AI cloud stocks sa pagbabalik ni Huang sa Nvidia. Bitcoin, +2% lang.
+description: Tumaas ng mga 29% ang IREN noong Lunes, isang session matapos tumama sa 52-week low, habang umangat ang AI cloud stocks sa balik ni Huang. Bitcoin, +2% lang.
 date: 2026-11-23 18:50
 tags: movers, ai
 assets: iren, crwv, btc

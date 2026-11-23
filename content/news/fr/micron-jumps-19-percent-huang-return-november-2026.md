@@ -1,5 +1,5 @@
 ---
-title: Que se passe-t-il avec Micron (MU) ? L'action bondit de 19 % avec le retour de Huang chez Nvidia
+title: Que se passe-t-il avec Micron (MU) ? L'action bondit de 19 %, Huang revient chez Nvidia
 description: Micron a pris 19 à 20 % lundi après le retour de Jensen Huang chez Nvidia, effaçant l'essentiel de sa chute de 23,6 % de la semaine passée. Ce qui s'est passé.
 date: 2026-11-23 18:40
 tags: movers, ai

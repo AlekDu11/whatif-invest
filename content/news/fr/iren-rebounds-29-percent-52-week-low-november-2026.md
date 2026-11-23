@@ -1,6 +1,6 @@
 ---
 title: Que se passe-t-il avec IREN (IREN) ? L'action rebondit de 29 % depuis son plus bas annuel
-description: IREN a bondi d'environ 29 % lundi, une séance après un plus bas sur 52 semaines, porté par les valeurs du cloud IA après le retour de Huang chez Nvidia. Le bitcoin n'a pris que 2 %.
+description: IREN a bondi d'environ 29 % lundi, au lendemain d'un plus bas sur 52 semaines, avec le cloud IA porté par le retour de Huang. Le bitcoin n'a pris que 2 %.
 date: 2026-11-23 18:50
 tags: movers, ai
 assets: iren, crwv, btc

@@ -1,5 +1,5 @@
 ---
-title: Ano ang nangyayari sa Micron (MU)? Tumaas ng 19% ang shares sa pagbabalik ni Huang sa Nvidia
+title: Ano ang nangyayari sa Micron (MU)? Shares +19% sa pagbabalik ni Huang sa Nvidia
 description: Tumaas ng 19–20% ang Micron noong Lunes matapos ibalik ng Nvidia si Jensen Huang, at nabawi ang karamihan sa 23.6% na bagsak noong nakaraang linggo.
 date: 2026-11-23 18:40
 tags: movers, ai

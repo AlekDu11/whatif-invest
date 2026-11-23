@@ -1,6 +1,6 @@
 ---
 title: Apa yang terjadi dengan IREN (IREN)? Saham memantul 29% dari level terendah 52 minggu
-description: IREN naik sekitar 29% pada Senin, satu sesi setelah menyentuh level terendah 52 minggu, saat saham cloud AI menguat berkat kembalinya Huang ke Nvidia. Bitcoin hanya naik 2%.
+description: IREN naik sekitar 29% pada Senin, satu sesi setelah menyentuh level terendah 52 minggu, saat saham cloud AI menguat karena Huang kembali. Bitcoin hanya naik 2%.
 date: 2026-11-23 18:50
 tags: movers, ai
 assets: iren, crwv, btc
