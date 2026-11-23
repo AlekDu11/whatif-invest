@@ -4622,9 +4622,10 @@ def sc_value(kind, args, lang, live=False):
         if A[aid]['cat'] == 'crypto':
             return f"#{A[aid]['rank']}" if A[aid].get('rank') else '—'
         u = lc_universe()
-        if aid not in u:
+        if aid not in u or not isinstance(u[aid], dict) or not u[aid].get('mcap'):
             return '—'
-        return f"#{1 + sum(1 for x in u.values() if x['mcap'] > u[aid]['mcap'])}"
+        m = u[aid]['mcap']
+        return f"#{1 + sum(1 for k, x in u.items() if k != '__meta__' and isinstance(x, dict) and (x.get('mcap') or 0) > m)}"
 
     if kind == 'chg1y':   # price change over 12 months; live: live price vs the close 12 months ago
         P = A[aid]['p']
