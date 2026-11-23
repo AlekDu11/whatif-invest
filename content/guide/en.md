@@ -14,6 +14,20 @@ WhatIfStack is markets in plain language: **crypto, stocks, ETFs and gold in one
 
 Below is each section in detail.
 
+## Stocks from every country
+
+The site covers stocks from **49 markets**: the US, Europe, Asia, the Middle East, Latin America and more. Start with the [stocks section]({lang}/stocks/): at the top are this week's company earnings, then the ranking of the largest companies and a button for each country.
+
+- **Country pages** list each market's largest companies by market value, for example the [US]({lang}/stocks-usa/), [UK]({lang}/stocks-uk/), [Germany]({lang}/stocks-germany/), [Japan]({lang}/stocks-japan/), [India]({lang}/stocks-india/).
+- **[The world's largest companies]({lang}/largest-companies/)** — ranked by market value, revenue, earnings and other measures, with a country filter.
+- **A stock page** (for example, [Apple]({lang}/aapl/)): the price (for US stocks also before and after the market opens), chart, key numbers (revenue, profit, P/E, dividends, debt), a company description and, for the big ones, a full analysis: how the company makes money, competitors, risks.
+- **[Categories]({lang}/categories/)** — sectors and industries: banks, AI, energy and more.
+- **[Compare]({lang}/compare/)** — two companies or coins side by side, for example [Apple vs Microsoft]({lang}/compare/aapl-vs-msft/).
+- **[Earnings calendar]({lang}/earnings-calendar/)** — when companies report results.
+- **[Famous investors' portfolios]({lang}/investors/)** — what Buffett, Ackman, Cathie Wood and others buy (from official SEC filings), plus which companies hold the most crypto.
+
+There are also [ETFs]({lang}/etfs/), [gold]({lang}/gold/) and [other metals]({lang}/metals/), and [commodities]({lang}/commodities/).
+
 ## Cryptocurrencies
 
 The [crypto list]({lang}/crypto/) shows coins that really trade on major exchanges (Binance, OKX, Gate, MEXC, Kraken and others). We leave out coins with no exchange and no chart: they are usually dead or doubtful projects. You can sort the list by market cap, 24-hour and 7-day change, and trading volume.
@@ -28,20 +42,6 @@ The [crypto list]({lang}/crypto/) shows coins that really trade on major exchang
 - **Returns by month and year**, the "$10 a day" calculator and news about the coin.
 
 **Also useful:** [top gainers and losers]({lang}/crypto/gainers-losers/) over 24 hours and 7 days, the [crypto exchange ranking]({lang}/crypto-exchanges/) with volumes and proof of reserves, [derivatives exchanges]({lang}/crypto-exchanges/derivatives/), and the [Bitcoin halving countdown]({lang}/bitcoin-halving/).
-
-## Stocks from every country
-
-The site covers stocks from **49 markets**: the US, Europe, Asia, the Middle East, Latin America and more. Start with the [stocks section]({lang}/stocks/): at the top are this week's company earnings, then the ranking of the largest companies and a button for each country.
-
-- **Country pages** list each market's largest companies by market value, for example the [US]({lang}/stocks-usa/), [UK]({lang}/stocks-uk/), [Germany]({lang}/stocks-germany/), [Japan]({lang}/stocks-japan/), [India]({lang}/stocks-india/).
-- **[The world's largest companies]({lang}/largest-companies/)** — ranked by market value, revenue, earnings and other measures, with a country filter.
-- **A stock page** (for example, [Apple]({lang}/aapl/)): the price (for US stocks also before and after the market opens), chart, key numbers (revenue, profit, P/E, dividends, debt), a company description and, for the big ones, a full analysis: how the company makes money, competitors, risks.
-- **[Categories]({lang}/categories/)** — sectors and industries: banks, AI, energy and more.
-- **[Compare]({lang}/compare/)** — two companies or coins side by side, for example [Apple vs Microsoft]({lang}/compare/aapl-vs-msft/).
-- **[Earnings calendar]({lang}/earnings-calendar/)** — when companies report results.
-- **[Famous investors' portfolios]({lang}/investors/)** — what Buffett, Ackman, Cathie Wood and others buy (from official SEC filings), plus which companies hold the most crypto.
-
-There are also [ETFs]({lang}/etfs/), [gold]({lang}/gold/) and [other metals]({lang}/metals/), and [commodities]({lang}/commodities/).
 
 ## Memecoins
 
