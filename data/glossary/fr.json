@@ -1,0 +1,102 @@
+[
+{
+"id": "memecoin",
+"t": "Memecoin",
+"d": "Un jeton crypto construit autour d'une blague, d'un animal, d'une personne ou d'une tendance d'internet. En général, il n'y a ni produit ni revenus derrière : son prix ne bouge qu'avec l'attention, les achats et les ventes."
+},
+{
+"id": "contract-address",
+"t": "Adresse du contrat (CA)",
+"d": "L'adresse unique d'un jeton sur sa blockchain. N'importe qui peut copier un nom ou un ticker, mais pas l'adresse du contrat : vérifiez-la toujours avant d'acheter."
+},
+{
+"id": "dex",
+"t": "DEX ou CEX",
+"d": "Un DEX (plateforme d'échange décentralisée, comme Raydium ou PancakeSwap) permet d'échanger des jetons directement depuis votre propre portefeuille. Un CEX (plateforme centralisée, comme Binance) garde votre argent pour vous et ne liste que les jetons qu'il a vérifiés."
+},
+{
+"id": "liquidity",
+"t": "Liquidité",
+"d": "L'argent présent dans le pool d'échange d'un jeton. Avec peu de liquidité, même une petite vente fait beaucoup bouger le prix, et vous risquez de ne pas pouvoir vendre à un prix correct."
+},
+{
+"id": "liquidity-lock",
+"t": "Liquidité verrouillée / brûlée (lock / burn)",
+"d": "Verrouiller ou brûler la liquidité du pool empêche le créateur de la retirer. Une liquidité non verrouillée, c'est la façon classique de faire un rug pull."
+},
+{
+"id": "rug-pull",
+"t": "Rug pull",
+"d": "Les créateurs ou des initiés retirent soudain l'argent du pool ou vendent tous leurs jetons d'un coup : le prix tombe presque à zéro et les acheteurs ne peuvent plus sortir."
+},
+{
+"id": "honeypot",
+"t": "Honeypot",
+"d": "Un jeton arnaque que l'on peut acheter mais pas revendre, parce que le contrat bloque les ventes ou les taxe lourdement. Vérifiez toujours que d'autres détenteurs ont réellement vendu."
+},
+{
+"id": "bonding-curve",
+"t": "Bonding curve (courbe de prix)",
+"d": "Sur les launchpads comme pump.fun, un nouveau jeton est d'abord vendu sur une courbe de prix : chaque achat fait monter le prix. Quand assez d'argent est entré, le jeton « est diplômé »."
+},
+{
+"id": "graduation",
+"t": "Graduation (passage sur un DEX)",
+"d": "Le moment où un jeton de launchpad remplit sa bonding curve et passe dans un vrai pool de DEX. Seuls quelques pour cent des nouveaux jetons y arrivent."
+},
+{
+"id": "sniper",
+"t": "Sniper",
+"d": "Un bot ou un trader qui achète un jeton dans les toutes premières secondes après son lancement, souvent pour le revendre plus cher aux acheteurs suivants."
+},
+{
+"id": "bundler",
+"t": "Bundler",
+"d": "Un créateur qui achète une grosse part de son propre jeton depuis de nombreux portefeuilles au lancement, pour faire croire à beaucoup de détenteurs différents. Un signal d'alerte d'une vente massive préparée."
+},
+{
+"id": "dev-wallet",
+"t": "Portefeuille du dev (dev wallet)",
+"d": "Le portefeuille du créateur du jeton. S'il détient une grande part de l'offre, le créateur peut faire chuter le prix à tout moment en vendant."
+},
+{
+"id": "top-10-holders",
+"t": "Top 10 des détenteurs",
+"d": "La part de tous les jetons détenue par les 10 plus gros portefeuilles. Plus elle est élevée (par exemple plus de 30 %), plus il est facile pour quelques personnes de faire s'effondrer le prix."
+},
+{
+"id": "kol",
+"t": "KOL",
+"d": "« Key opinion leader » : un influenceur avec une grosse audience. Les KOL sont souvent payés pour promouvoir des jetons, parfois après les avoir eux-mêmes achetés à bas prix."
+},
+{
+"id": "pump-and-dump",
+"t": "Pump and dump",
+"d": "Un groupe fait monter le prix avec du battage et des achats, puis revend au sommet aux nouveaux venus. Les retardataires gardent les pertes."
+},
+{
+"id": "slippage",
+"t": "Slippage (glissement)",
+"d": "L'écart entre le prix affiché et le prix que vous obtenez réellement. Dans les petits pools de memecoins, il peut atteindre 5 à 20 % ou plus sur une seule transaction."
+},
+{
+"id": "market-cap-fdv",
+"t": "Capitalisation ou FDV",
+"d": "La capitalisation = prix × jetons en circulation. La FDV (fully diluted value, valeur totalement diluée) = prix × tous les jetons qui existeront un jour. Un gros écart signifie que beaucoup de jetons peuvent encore être débloqués et vendus."
+},
+{
+"id": "dyor",
+"t": "DYOR",
+"d": "« Do your own research » : faites vos propres recherches. Un rappel que personne d'autre que vous – ni un influenceur, ni un site – n'est responsable de votre argent."
+},
+{
+"id": "ape",
+"t": "Ape / aper",
+"d": "Acheter un jeton à toute vitesse sur un coup de hype, sans le vérifier. Le moyen le plus rapide de perdre de l'argent avec les memecoins."
+},
+{
+"id": "paper-diamond-hands",
+"t": "Paper hands / diamond hands",
+"d": "Argot pour ceux qui vendent à la première baisse (paper hands, « mains de papier ») ou qui gardent malgré tous les krachs (diamond hands, « mains de diamant »). Aucune des deux n'est une stratégie en soi."
+}
+]
