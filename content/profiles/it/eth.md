@@ -1,15 +1,15 @@
 ---
-title: Ethereum (ETH) spiegato semplice: la cripto n. 2, un record di 4.946 $ e cosa muove il prezzo
+title: Ethereum (ETH) spiegato semplice: smart contract, proof of stake dal 2022 e cosa muove il prezzo
 description: Ethereum in parole semplici: smart contract, staking, perché ETH viene bruciato, aggiornamenti, crolli, ETF, rischi e cosa sapere se compri con regolarità.
 date: 2026-11-22
 kind: analysis
 ---
-**Ethereum** è una blockchain programmabile. Bitcoin serve soprattutto a spostare monete; Ethereum esegue anche piccoli programmi chiamati smart contract, su cui funzionano stablecoin, exchange cripto senza un'azienda nel mezzo, app di prestito e NFT. La sua moneta, l'ether (ETH), è il secondo cripto-asset per dimensioni: valeva circa 200 miliardi di dollari a novembre 2026.
+**Ethereum** è una blockchain programmabile. Bitcoin serve soprattutto a spostare monete; Ethereum esegue anche piccoli programmi chiamati smart contract, su cui funzionano stablecoin, exchange cripto senza un'azienda nel mezzo, app di prestito e NFT. La sua moneta è l'ether (ETH). Oggi ETH vale {{mcap:eth}} ({{rank:eth}} tra le criptovalute).
 
 > **In sintesi**
 > - Ethereum è partito il 30 luglio 2015; da settembre 2022 funziona con il proof of stake invece del mining.
 > - Non c'è un'offerta massima fissa: esistono circa 122 milioni di ETH e una parte di ogni commissione viene bruciata.
-> - Il prezzo record finora è 4.946 $ (24 agosto 2025); a novembre 2026 ETH quotava oltre il 60% sotto quel livello.
+> - Il massimo storico è {{ath:eth}} ({{athd:eth}}); oggi il prezzo è a {{fromath:eth}} da lì.
 > - Gli ETF su ether spot sono quotati negli USA da luglio 2024, quindi ETH si può comprare da un normale conto titoli.
 
 ## Come funziona
@@ -23,7 +23,8 @@ ETH è il carburante del più grande ecosistema di smart contract: serve per pag
 ## I numeri di oggi
 
 - Prezzo oggi: {{price:eth}}
-- Record: {{ath:eth}} ({{athd:eth}})
+- Massimo storico: {{ath:eth}} ({{athd:eth}}), {{fromath:eth}} da lì
+- Valore di mercato: {{mcap:eth}} ({{rank:eth}} tra le criptovalute)
 - Variazione del prezzo in 12 mesi: {{chg1y:eth}}
 - 10 $ al giorno per 5 anni: {{dca:eth:5}} con {{dcainv:5}} investiti ({{dcaroi:eth:5}})
 

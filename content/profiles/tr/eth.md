@@ -1,15 +1,15 @@
 ---
-title: Ethereum (ETH) sade dille: 2 numaralı kripto, 4.946 $ rekor ve fiyatı ne hareket ettiriyor
+title: Ethereum (ETH) sade dille: akıllı sözleşmeler, 2022'den beri hisse ispatı ve fiyatı ne hareket ettiriyor
 description: Ethereum sade dille: akıllı sözleşmeler, staking, ETH neden yakılıyor, güncellemeler, çöküşler, ETF'ler, riskler ve düzenli alım yapanların bilmesi gerekenler.
 date: 2026-11-22
 kind: analysis
 ---
-**Ethereum** programlanabilen bir blokzincirdir. Bitcoin esas olarak coin transfer eder; Ethereum ise ayrıca akıllı sözleşme denen küçük programlar çalıştırır. Stablecoin'ler, arada bir şirket olmayan kripto borsaları, borç verme uygulamaları ve NFT'ler bu programlarla çalışır. Coin'i ether (ETH), ikinci büyük kripto varlıktır — Kasım 2026'da değeri yaklaşık 200 milyar dolardı.
+**Ethereum** programlanabilen bir blokzincirdir. Bitcoin esas olarak coin transfer eder; Ethereum ise ayrıca akıllı sözleşme denen küçük programlar çalıştırır. Stablecoin'ler, arada bir şirket olmayan kripto borsaları, borç verme uygulamaları ve NFT'ler bu programlarla çalışır. Coin'i ether'dir (ETH). ETH bugün {{mcap:eth}} piyasa değerine sahip (kripto paralar arasında {{rank:eth}}).
 
 > **Öne çıkanlar**
 > - Ethereum 30 Temmuz 2015'te yayına girdi; Eylül 2022'den beri madencilik yerine hisse kanıtı (proof of stake) ile çalışıyor.
 > - Sabit bir azami arz yok: yaklaşık 122 milyon ETH var ve her işlem ücretinin bir kısmı yakılıyor.
-> - Şimdiye kadarki rekor fiyat 4.946 $ (24 Ağustos 2025); Kasım 2026'da ETH bunun %60'tan fazla altında işlem görüyordu.
+> - Rekor fiyatı {{ath:eth}} ({{athd:eth}}); bugün fiyat ondan {{fromath:eth}} uzakta.
 > - ABD'de spot ether ETF'leri Temmuz 2024'ten beri işlem görüyor; yani ETH normal bir aracı kurum hesabından alınabiliyor.
 
 ## Nasıl çalışır
@@ -23,7 +23,8 @@ ETH, en büyük akıllı sözleşme ekosisteminin yakıtıdır: ağda herhangi b
 ## Şu anki rakamlar
 
 - Bugünkü fiyat: {{price:eth}}
-- Rekor: {{ath:eth}} ({{athd:eth}})
+- Rekor: {{ath:eth}} ({{athd:eth}}), ondan {{fromath:eth}}
+- Piyasa değeri: {{mcap:eth}} (kripto paralar arasında {{rank:eth}})
 - 12 aylık fiyat değişimi: {{chg1y:eth}}
 - 5 yıl boyunca günde 10 $: {{dca:eth:5}}, yatırılan {{dcainv:5}} ({{dcaroi:eth:5}})
 

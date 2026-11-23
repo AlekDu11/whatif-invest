@@ -1,15 +1,15 @@
 ---
-title: Ethereum (ETH) dijelaskan sederhana: kripto No. 2, rekor $4.946 dan apa yang menggerakkan harganya
+title: Ethereum (ETH) dijelaskan sederhana: kontrak pintar, proof of stake sejak 2022 dan apa yang menggerakkan harganya
 description: Ethereum dengan bahasa sederhana: kontrak pintar dan staking, kenapa ETH dibakar, upgrade dan kejatuhan, ETF, risiko utama dan hal penting bagi pembeli rutin.
 date: 2026-11-22
 kind: analysis
 ---
-**Ethereum** adalah blockchain yang bisa diprogram. Bitcoin terutama memindahkan koin; Ethereum juga menjalankan program kecil yang disebut kontrak pintar (smart contract), yang menggerakkan stablecoin, bursa kripto tanpa perusahaan sebagai perantara, aplikasi pinjaman, dan NFT. Koinnya, ether (ETH), adalah aset kripto terbesar kedua, bernilai sekitar $200 miliar pada November 2026.
+**Ethereum** adalah blockchain yang bisa diprogram. Bitcoin terutama memindahkan koin; Ethereum juga menjalankan program kecil yang disebut kontrak pintar (smart contract), yang menggerakkan stablecoin, bursa kripto tanpa perusahaan sebagai perantara, aplikasi pinjaman, dan NFT. Koinnya bernama ether (ETH). Saat ini nilai pasar ETH {{mcap:eth}} ({{rank:eth}} di antara mata uang kripto).
 
 > **Poin penting**
 > - Ethereum mulai beroperasi pada 30 Juli 2015; sejak September 2022 jaringannya memakai proof of stake, bukan lagi penambangan.
 > - Tidak ada batas pasokan maksimum yang tetap: saat ini ada sekitar 122 juta ETH, dan sebagian dari setiap biaya transaksi dibakar.
-> - Harga rekor sejauh ini $4.946 (24 Agustus 2025); pada November 2026 ETH diperdagangkan lebih dari 60% di bawahnya.
+> - Rekor tertingginya {{ath:eth}} ({{athd:eth}}); kini harganya {{fromath:eth}} dari rekor itu.
 > - ETF ether spot di AS sudah diperdagangkan sejak Juli 2024, jadi ETH bisa dibeli lewat rekening pialang biasa.
 
 ## Cara kerjanya
@@ -23,7 +23,8 @@ ETH adalah bahan bakar ekosistem kontrak pintar terbesar: Anda membutuhkannya un
 ## Angka saat ini
 
 - Harga hari ini: {{price:eth}}
-- Rekor tertinggi: {{ath:eth}} ({{athd:eth}})
+- Rekor tertinggi: {{ath:eth}} ({{athd:eth}}), {{fromath:eth}} dari rekor itu
+- Nilai pasar: {{mcap:eth}} ({{rank:eth}} di antara mata uang kripto)
 - Perubahan harga dalam 12 bulan: {{chg1y:eth}}
 - $10 per hari selama 5 tahun: {{dca:eth:5}} dari {{dcainv:5}} yang diinvestasikan ({{dcaroi:eth:5}})
 

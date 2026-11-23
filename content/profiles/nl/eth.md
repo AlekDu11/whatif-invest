@@ -1,15 +1,15 @@
 ---
-title: Ethereum (ETH) eenvoudig uitgelegd: de nummer 2 in crypto, een record van $4.946 en wat de koers beweegt
+title: Ethereum (ETH) eenvoudig uitgelegd: smart contracts, proof of stake sinds 2022 en wat de koers beweegt
 description: Ethereum in gewone taal: smart contracts, staking, waarom ETH wordt verbrand, upgrades, crashes, ETF's, risico's en wat je moet weten als je regelmatig koopt.
 date: 2026-11-22
 kind: analysis
 ---
-**Ethereum** is een blockchain die je kunt programmeren. Bitcoin verplaatst vooral munten; Ethereum draait daarnaast kleine programma's, smart contracts genoemd. Daarop draaien stablecoins, cryptobeurzen zonder bedrijf ertussen, leen-apps en NFT's. De munt, ether (ETH), is het op één na grootste crypto-actief, met een waarde van ongeveer $200 miljard in november 2026.
+**Ethereum** is een blockchain die je kunt programmeren. Bitcoin verplaatst vooral munten; Ethereum draait daarnaast kleine programma's, smart contracts genoemd. Daarop draaien stablecoins, cryptobeurzen zonder bedrijf ertussen, leen-apps en NFT's. De munt heet ether (ETH). Vandaag is ETH {{mcap:eth}} waard ({{rank:eth}} onder de cryptomunten).
 
 > **Belangrijkste punten**
 > - Ethereum ging live op 30 juli 2015; sinds september 2022 draait het op proof of stake in plaats van mining.
 > - Er is geen vast maximumaanbod: er bestaan ongeveer 122 miljoen ETH, en een deel van elke transactiekost wordt verbrand.
-> - De recordkoers tot nu toe is $4.946 (24 augustus 2025); in november 2026 noteerde ETH meer dan 60% lager.
+> - De recordkoers is {{ath:eth}} ({{athd:eth}}); vandaag staat de koers {{fromath:eth}} daarvan af.
 > - In de VS worden sinds juli 2024 spot-ether-ETF's verhandeld, dus je kunt ETH gewoon met een beleggingsrekening kopen.
 
 ## Hoe het werkt
@@ -23,7 +23,8 @@ ETH is de brandstof van het grootste ecosysteem voor smart contracts: je hebt he
 ## De cijfers nu
 
 - Koers nu: {{price:eth}}
-- Recordkoers: {{ath:eth}} ({{athd:eth}})
+- Recordkoers: {{ath:eth}} ({{athd:eth}}), {{fromath:eth}} daarvan af
+- Marktwaarde: {{mcap:eth}} ({{rank:eth}} onder de cryptomunten)
 - Koersverandering over 12 maanden: {{chg1y:eth}}
 - $10 per dag gedurende 5 jaar: {{dca:eth:5}} bij {{dcainv:5}} ingelegd ({{dcaroi:eth:5}})
 

@@ -1,15 +1,15 @@
 ---
-title: Ethereum (ETH) einfach erklärt: die Krypto-Nr. 2, ein Rekord von 4.946 $ und was den Kurs bewegt
+title: Ethereum (ETH) einfach erklärt: Smart Contracts, Proof of Stake seit 2022 und was den Kurs bewegt
 description: Ethereum verständlich erklärt: Smart Contracts, Staking, warum ETH verbrannt wird, Upgrades, Crashs, ETFs, Risiken und was Sparplan-Anleger wissen sollten.
 date: 2026-11-22
 kind: analysis
 ---
-**Ethereum** ist eine Blockchain, die man programmieren kann. Bitcoin dient vor allem dazu, Coins zu bewegen; Ethereum führt zusätzlich kleine Programme aus, sogenannte Smart Contracts. Auf ihnen laufen Stablecoins, Kryptobörsen ohne Unternehmen in der Mitte, Kredit-Apps und NFTs. Seine Währung Ether (ETH) ist das zweitgrößte Krypto-Asset – im November 2026 rund 200 Milliarden Dollar wert.
+**Ethereum** ist eine Blockchain, die man programmieren kann. Bitcoin dient vor allem dazu, Coins zu bewegen; Ethereum führt zusätzlich kleine Programme aus, sogenannte Smart Contracts. Auf ihnen laufen Stablecoins, Kryptobörsen ohne Unternehmen in der Mitte, Kredit-Apps und NFTs. Seine Währung heißt Ether (ETH). Heute ist ETH {{mcap:eth}} wert ({{rank:eth}} unter den Kryptowährungen).
 
 > **Das Wichtigste**
 > - Ethereum ging am 30. Juli 2015 an den Start; seit September 2022 läuft es mit Proof of Stake statt Mining.
 > - Eine feste Obergrenze gibt es nicht: Rund 122 Millionen ETH existieren, und ein Teil jeder Gebühr wird verbrannt.
-> - Der bisherige Rekordkurs liegt bei 4.946 $ (24. August 2025); im November 2026 notierte ETH mehr als 60 % darunter.
+> - Das Rekordhoch liegt bei {{ath:eth}} ({{athd:eth}}); heute steht der Kurs {{fromath:eth}} darunter.
 > - In den USA werden seit Juli 2024 Spot-Ether-ETFs gehandelt, ETH lässt sich also mit einem normalen Depot kaufen.
 
 ## So funktioniert es
@@ -23,7 +23,8 @@ ETH ist der Treibstoff des größten Smart-Contract-Ökosystems: Man braucht es,
 ## Die Zahlen jetzt
 
 - Kurs heute: {{price:eth}}
-- Rekordhoch: {{ath:eth}} ({{athd:eth}})
+- Rekordhoch: {{ath:eth}} ({{athd:eth}}), {{fromath:eth}} davon entfernt
+- Marktwert: {{mcap:eth}} ({{rank:eth}} unter den Kryptowährungen)
 - Kursveränderung in 12 Monaten: {{chg1y:eth}}
 - 10 $ am Tag über 5 Jahre: {{dca:eth:5}} bei {{dcainv:5}} Einsatz ({{dcaroi:eth:5}})
 

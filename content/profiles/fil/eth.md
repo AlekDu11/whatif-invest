@@ -1,15 +1,15 @@
 ---
-title: Ethereum (ETH) sa simpleng paliwanag: ang No. 2 na crypto, record na $4,946 at ano ang nagpapagalaw sa presyo
+title: Ethereum (ETH) sa simpleng paliwanag: smart contract, proof of stake mula 2022 at ano ang nagpapagalaw sa presyo
 description: Ethereum sa simpleng salita: smart contract at staking, bakit sinusunog ang ETH, mga upgrade at pagbagsak, ETF, mga panganib at payo sa regular na bumibili.
 date: 2026-11-22
 kind: analysis
 ---
-Ang **Ethereum** ay isang blockchain na puwedeng i-program. Ang Bitcoin ay pangunahing naglilipat ng coin; ang Ethereum ay nagpapatakbo rin ng maliliit na programang tinatawag na smart contract, na nagpapagana sa mga stablecoin, crypto exchange na walang kumpanyang namamagitan, mga lending app at NFT. Ang coin nito, ang ether (ETH), ang ikalawang pinakamalaking crypto asset — mga $200 bilyon ang halaga nito noong Nobyembre 2026.
+Ang **Ethereum** ay isang blockchain na puwedeng i-program. Ang Bitcoin ay pangunahing naglilipat ng coin; ang Ethereum ay nagpapatakbo rin ng maliliit na programang tinatawag na smart contract, na nagpapagana sa mga stablecoin, crypto exchange na walang kumpanyang namamagitan, mga lending app at NFT. Ang coin nito ay ang ether (ETH). Ngayon, {{mcap:eth}} ang halaga ng ETH sa merkado ({{rank:eth}} sa mga cryptocurrency).
 
 > **Mahahalagang punto**
 > - Naging live ang Ethereum noong 30 Hulyo 2015; mula Setyembre 2022, proof of stake na ang gamit nito sa halip na mining.
 > - Walang nakapirming pinakamataas na supply: mga 122 milyong ETH ang umiiral, at bahagi ng bawat fee ay sinusunog.
-> - Ang pinakamataas na presyo sa ngayon ay $4,946 (24 Agosto 2025); noong Nobyembre 2026, mahigit 60% na mas mababa rito ang ETH.
+> - Ang pinakamataas na presyo nito ay {{ath:eth}} ({{athd:eth}}); ngayon, {{fromath:eth}} ang presyo mula roon.
 > - Mula Hulyo 2024 ay nagte-trade na ang mga spot ether ETF sa US, kaya puwedeng bilhin ang ETH sa ordinaryong brokerage account.
 
 ## Paano ito gumagana
@@ -23,7 +23,8 @@ Ang ETH ang gasolina ng pinakamalaking ecosystem ng smart contract: kailangan mo
 ## Ang mga numero ngayon
 
 - Presyo ngayon: {{price:eth}}
-- Pinakamataas na presyo: {{ath:eth}} ({{athd:eth}})
+- Pinakamataas na presyo: {{ath:eth}} ({{athd:eth}}), {{fromath:eth}} mula roon
+- Halaga sa merkado: {{mcap:eth}} ({{rank:eth}} sa mga cryptocurrency)
 - Pagbabago ng presyo sa loob ng 12 buwan: {{chg1y:eth}}
 - $10 kada araw sa loob ng 5 taon: {{dca:eth:5}} mula sa {{dcainv:5}} na inilagay ({{dcaroi:eth:5}})
 

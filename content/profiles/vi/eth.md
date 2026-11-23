@@ -1,15 +1,15 @@
 ---
-title: Ethereum (ETH) giải thích dễ hiểu: tiền mã hóa số 2, kỷ lục 4.946 USD và điều gì làm giá biến động
+title: Ethereum (ETH) giải thích dễ hiểu: hợp đồng thông minh, bằng chứng cổ phần từ 2022 và điều gì làm giá biến động
 description: Ethereum dễ hiểu: hợp đồng thông minh và staking, vì sao ETH bị đốt, các đợt nâng cấp và cú sập, ETF, rủi ro chính và điều người mua định kỳ cần biết.
 date: 2026-11-22
 kind: analysis
 ---
-**Ethereum** là một blockchain có thể lập trình. Bitcoin chủ yếu dùng để chuyển coin; Ethereum còn chạy các chương trình nhỏ gọi là hợp đồng thông minh (smart contract), nền tảng cho stablecoin, sàn giao dịch tiền mã hóa không cần công ty trung gian, ứng dụng cho vay và NFT. Đồng coin của nó, ether (ETH), là tài sản tiền mã hóa lớn thứ hai, trị giá khoảng 200 tỷ USD vào tháng 11/2026.
+**Ethereum** là một blockchain có thể lập trình. Bitcoin chủ yếu dùng để chuyển coin; Ethereum còn chạy các chương trình nhỏ gọi là hợp đồng thông minh (smart contract), nền tảng cho stablecoin, sàn giao dịch tiền mã hóa không cần công ty trung gian, ứng dụng cho vay và NFT. Đồng coin của nó là ether (ETH). Hiện ETH có vốn hóa {{mcap:eth}} ({{rank:eth}} trong các đồng tiền mã hóa).
 
 > **Điểm chính**
 > - Ethereum chính thức hoạt động ngày 30/7/2015; từ tháng 9/2022 mạng lưới chạy bằng proof of stake thay cho đào coin.
 > - Không có giới hạn nguồn cung tối đa cố định: hiện có khoảng 122 triệu ETH, và một phần của mỗi khoản phí bị đốt.
-> - Giá kỷ lục cho đến nay là 4.946 USD (24/8/2025); tháng 11/2026 ETH giao dịch thấp hơn mức đó hơn 60%.
+> - Đỉnh kỷ lục là {{ath:eth}} ({{athd:eth}}); giá hiện tại cách đỉnh {{fromath:eth}}.
 > - Các quỹ ETF ether giao ngay tại Mỹ đã giao dịch từ tháng 7/2024, nên có thể mua ETH qua tài khoản chứng khoán thông thường.
 
 ## Cách hoạt động
@@ -23,7 +23,8 @@ ETH là nhiên liệu của hệ sinh thái hợp đồng thông minh lớn nh�
 ## Các con số hiện tại
 
 - Giá hôm nay: {{price:eth}}
-- Đỉnh kỷ lục: {{ath:eth}} ({{athd:eth}})
+- Đỉnh kỷ lục: {{ath:eth}} ({{athd:eth}}), cách đỉnh {{fromath:eth}}
+- Vốn hóa thị trường: {{mcap:eth}} ({{rank:eth}} trong các đồng tiền mã hóa)
 - Biến động giá trong 12 tháng: {{chg1y:eth}}
 - 10 USD mỗi ngày trong 5 năm: {{dca:eth:5}} từ {{dcainv:5}} đã đầu tư ({{dcaroi:eth:5}})
 

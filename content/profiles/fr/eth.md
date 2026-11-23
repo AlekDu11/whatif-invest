@@ -1,15 +1,15 @@
 ---
-title: Ethereum (ETH) expliqué simplement : la crypto n° 2, un record à 4 946 $ et ce qui fait bouger le cours
+title: Ethereum (ETH) expliqué simplement : contrats intelligents, preuve d'enjeu depuis 2022 et ce qui fait bouger le cours
 description: Ethereum en clair : smart contracts, staking, pourquoi l'ETH est brûlé, mises à jour, krachs, ETF, risques et ce qu'il faut savoir en achetant régulièrement.
 date: 2026-11-22
 kind: analysis
 ---
-**Ethereum** est une blockchain programmable. Le bitcoin sert surtout à transférer des pièces ; Ethereum exécute en plus de petits programmes appelés contrats intelligents (smart contracts), qui font tourner les stablecoins, des plateformes d'échange crypto sans entreprise intermédiaire, des applications de prêt et les NFT. Sa cryptomonnaie, l'ether (ETH), est le deuxième actif crypto du marché, avec une valeur d'environ 200 milliards de dollars en novembre 2026.
+**Ethereum** est une blockchain programmable. Le bitcoin sert surtout à transférer des pièces ; Ethereum exécute en plus de petits programmes appelés contrats intelligents (smart contracts), qui font tourner les stablecoins, des plateformes d'échange crypto sans entreprise intermédiaire, des applications de prêt et les NFT. Sa cryptomonnaie est l'ether (ETH). Aujourd'hui, ETH vaut {{mcap:eth}} ({{rank:eth}} parmi les cryptomonnaies).
 
 > **À retenir**
 > - Ethereum a été lancé le 30 juillet 2015 ; depuis septembre 2022, il fonctionne en preuve d'enjeu (proof of stake) au lieu du minage.
 > - Il n'y a pas d'offre maximale fixe : environ 122 millions d'ETH existent, et une partie de chaque frais est brûlée.
-> - Le record à ce jour est de 4 946 $ (24 août 2025) ; en novembre 2026, l'ETH s'échangeait plus de 60 % en dessous.
+> - Son record est de {{ath:eth}} ({{athd:eth}}) ; aujourd'hui, le cours est à {{fromath:eth}} de ce niveau.
 > - Des ETF ether au comptant se négocient aux États-Unis depuis juillet 2024 : on peut donc acheter de l'ETH depuis un compte-titres classique.
 
 ## Comment il fonctionne
@@ -23,7 +23,8 @@ L'ETH est le carburant du plus grand écosystème de contrats intelligents : il 
 ## Les chiffres actuels
 
 - Cours actuel : {{price:eth}}
-- Record : {{ath:eth}} ({{athd:eth}})
+- Record : {{ath:eth}} ({{athd:eth}}), {{fromath:eth}} depuis
+- Valeur de marché : {{mcap:eth}} ({{rank:eth}} parmi les cryptomonnaies)
 - Variation du cours sur 12 mois : {{chg1y:eth}}
 - 10 $ par jour pendant 5 ans : {{dca:eth:5}} pour {{dcainv:5}} investis ({{dcaroi:eth:5}})
 

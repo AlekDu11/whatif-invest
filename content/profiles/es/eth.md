@@ -1,15 +1,15 @@
 ---
-title: Ethereum (ETH) explicado fácil: la cripto n.º 2, un récord de 4.946 $ y qué mueve el precio
+title: Ethereum (ETH) explicado fácil: contratos inteligentes, prueba de participación desde 2022 y qué mueve el precio
 description: Ethereum en lenguaje sencillo: contratos inteligentes, staking, por qué se quema ETH, mejoras, caídas, ETF, riesgos y qué saber si compras con regularidad.
 date: 2026-11-22
 kind: analysis
 ---
-**Ethereum** es una blockchain que se puede programar. Bitcoin sirve sobre todo para mover monedas; Ethereum además ejecuta pequeños programas llamados contratos inteligentes, que hacen funcionar las stablecoins, los exchanges cripto sin una empresa en medio, las aplicaciones de préstamos y los NFT. Su moneda, el ether (ETH), es el segundo mayor criptoactivo, con un valor de unos 200.000 millones de dólares en noviembre de 2026.
+**Ethereum** es una blockchain que se puede programar. Bitcoin sirve sobre todo para mover monedas; Ethereum además ejecuta pequeños programas llamados contratos inteligentes, que hacen funcionar las stablecoins, los exchanges cripto sin una empresa en medio, las aplicaciones de préstamos y los NFT. Su moneda es el ether (ETH). Hoy ETH vale {{mcap:eth}} ({{rank:eth}} entre las criptomonedas).
 
 > **Claves**
 > - Ethereum arrancó el 30 de julio de 2015; desde septiembre de 2022 funciona con prueba de participación (proof of stake) en lugar de minería.
 > - No hay un suministro máximo fijo: existen unos 122 millones de ETH y una parte de cada comisión se quema.
-> - El precio récord hasta ahora es 4.946 $ (24 de agosto de 2025); en noviembre de 2026 ETH cotizaba más de un 60% por debajo.
+> - Su máximo histórico es {{ath:eth}} ({{athd:eth}}); hoy el precio está {{fromath:eth}} por debajo.
 > - Los ETF de ether al contado cotizan en EE. UU. desde julio de 2024, así que ETH se puede comprar desde una cuenta de bróker normal.
 
 ## Cómo funciona
@@ -23,7 +23,8 @@ ETH es el combustible del mayor ecosistema de contratos inteligentes: lo necesit
 ## Las cifras actuales
 
 - Precio hoy: {{price:eth}}
-- Récord: {{ath:eth}} ({{athd:eth}})
+- Máximo histórico: {{ath:eth}} ({{athd:eth}}), {{fromath:eth}} desde él
+- Valor de mercado: {{mcap:eth}} ({{rank:eth}} entre las criptomonedas)
 - Variación del precio en 12 meses: {{chg1y:eth}}
 - 10 $ al día durante 5 años: {{dca:eth:5}} con {{dcainv:5}} invertidos ({{dcaroi:eth:5}})
 

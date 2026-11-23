@@ -1,15 +1,15 @@
 ---
-title: Ethereum (ETH) prostym językiem: krypto nr 2, rekord 4 946 $ i co porusza ceną
+title: Ethereum (ETH) prostym językiem: smart kontrakty, proof of stake od 2022 r. i co porusza ceną
 description: Ethereum w prostych słowach: smart kontrakty, staking, dlaczego ETH jest spalany, aktualizacje, krachy, ETF-y, ryzyka i co wiedzieć, kupując regularnie.
 date: 2026-11-22
 kind: analysis
 ---
-**Ethereum** to blockchain, który można programować. Bitcoin służy głównie do przesyłania monet; Ethereum uruchamia też małe programy zwane smart kontraktami. Na nich działają stablecoiny, kryptogiełdy bez firmy pośrodku, aplikacje pożyczkowe i NFT. Jego moneta, ether (ETH), to drugie co do wielkości kryptoaktywo — w listopadzie 2026 r. warte ok. 200 mld dolarów.
+**Ethereum** to blockchain, który można programować. Bitcoin służy głównie do przesyłania monet; Ethereum uruchamia też małe programy zwane smart kontraktami. Na nich działają stablecoiny, kryptogiełdy bez firmy pośrodku, aplikacje pożyczkowe i NFT. Jego moneta to ether (ETH). Wartość rynkowa ETH to dziś {{mcap:eth}} ({{rank:eth}} wśród kryptowalut).
 
 > **Najważniejsze**
 > - Ethereum wystartowało 30 lipca 2015 r.; od września 2022 r. działa w oparciu o proof of stake zamiast kopania.
 > - Nie ma stałej maksymalnej podaży: istnieje ok. 122 mln ETH, a część każdej opłaty jest spalana.
-> - Dotychczasowa rekordowa cena to 4 946 $ (24 sierpnia 2025 r.); w listopadzie 2026 r. ETH był notowany ponad 60% niżej.
+> - Rekord ceny to {{ath:eth}} ({{athd:eth}}); dziś cena jest {{fromath:eth}} od niego.
 > - Spotowe ETF-y na ether są notowane w USA od lipca 2024 r., więc ETH można kupić przez zwykły rachunek maklerski.
 
 ## Jak działa
@@ -23,7 +23,8 @@ ETH to paliwo największego ekosystemu smart kontraktów: jest potrzebny, by zap
 ## Liczby teraz
 
 - Cena teraz: {{price:eth}}
-- Rekord: {{ath:eth}} ({{athd:eth}})
+- Rekord: {{ath:eth}} ({{athd:eth}}), {{fromath:eth}} od niego
+- Wartość rynkowa: {{mcap:eth}} ({{rank:eth}} wśród kryptowalut)
 - Zmiana ceny w ciągu 12 miesięcy: {{chg1y:eth}}
 - 10 $ dziennie przez 5 lat: {{dca:eth:5}} przy wpłaconych {{dcainv:5}} ({{dcaroi:eth:5}})
 

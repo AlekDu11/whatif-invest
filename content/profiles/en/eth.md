@@ -1,15 +1,15 @@
 ---
-title: Ethereum (ETH) explained: the No. 2 crypto, a $4,946 record and what moves the price
+title: Ethereum (ETH) explained: smart contracts, proof of stake since 2022 and what moves the price
 description: Ethereum in plain language: how smart contracts and staking work, why ETH is burned, its upgrades and crashes, ETFs, main risks and what regular buyers should know.
 date: 2026-11-22
 kind: analysis
 ---
-**Ethereum** is a blockchain you can program. Bitcoin mainly moves coins; Ethereum also runs small programs called smart contracts, which power stablecoins, crypto exchanges without a company in the middle, lending apps and NFTs. Its coin, ether (ETH), is the second-largest crypto asset, worth about $200 billion in November 2026.
+**Ethereum** is a blockchain you can program. Bitcoin mainly moves coins; Ethereum also runs small programs called smart contracts, which power stablecoins, crypto exchanges without a company in the middle, lending apps and NFTs. Its coin is ether (ETH). ETH is worth {{mcap:eth}} today ({{rank:eth}} among cryptocurrencies).
 
 > **Key takeaways**
 > - Ethereum went live on 30 July 2015; since September 2022 it runs on proof of stake instead of mining.
 > - There is no fixed maximum supply: about 122 million ETH exist, and part of every fee is burned.
-> - The record price so far is $4,946 (24 August 2025); in November 2026 ETH traded more than 60% below it.
+> - Its record high is {{ath:eth}} ({{athd:eth}}); today the price is {{fromath:eth}} from it.
 > - US spot ether ETFs have traded since July 2024, so ETH can be bought through an ordinary brokerage account.
 
 ## How it works
@@ -23,7 +23,8 @@ ETH is the fuel of the largest smart-contract ecosystem: you need it to pay for 
 ## The numbers right now
 
 - Price today: {{price:eth}}
-- Record high: {{ath:eth}} ({{athd:eth}})
+- Record high: {{ath:eth}} ({{athd:eth}}), {{fromath:eth}} from it
+- Market value: {{mcap:eth}} ({{rank:eth}} among cryptocurrencies)
 - Price change over 12 months: {{chg1y:eth}}
 - $10 a day for 5 years: {{dca:eth:5}} from {{dcainv:5}} invested ({{dcaroi:eth:5}})
 
