@@ -1,15 +1,15 @@
 ---
 title: WhiteBIT Coin (WBT) eenvoudig uitgelegd: een maximum van 400 miljoen, wekelijkse terugkopen en een overstap naar Ethereum
-description: WhiteBIT Coin in gewone taal: de beurstoken achter WhiteBIT en Whitechain, kortingen op kosten, terugkopen en burns, de records en de risico's voor kopers.
+description: WhiteBIT Coin in gewone taal: de beurstoken achter WhiteBIT en Whitechain, kortingen op kosten, terugkopen en burns, de geschiedenis en de risico's voor kopers.
 date: 2026-11-22
 kind: analysis
 ---
-**WhiteBIT Coin** is de token van WhiteBIT, een Europese cryptobeurs die in 2018 werd opgericht door de Oekraïense ondernemer Volodymyr Nosov. Hij startte in augustus 2022 op ongeveer $1,90 en werd sindsdien een van de best presterende beurstokens. In november 2026 was WBT in totaal ongeveer $6,9 miljard waard, rond plaats 15 onder de cryptomunten.
+**WhiteBIT Coin** is de token van WhiteBIT, een Europese cryptobeurs die in 2018 werd opgericht door de Oekraïense ondernemer Volodymyr Nosov. Hij startte in augustus 2022 op ongeveer $1,90 en werd sindsdien een van de best presterende beurstokens. Vandaag is WBT {{mcap:wbt}} waard ({{rank:wbt}} onder de cryptomunten).
 
 > **Belangrijkste punten**
 > - Er komen nooit meer dan 400 miljoen WBT; in oktober 2026 waren er ongeveer 119 miljoen in omloop.
 > - De beurs koopt WBT terug en verbrandt ze met 33% van de inkomsten uit handelskosten plus 5% van andere inkomsten — alleen al in oktober 2026 131.188 WBT.
-> - WBT zette op 21 september 2026 een record neer van $87,91, na een eerdere top van $64,11 in december 2025.
+> - De recordkoers is {{ath:wbt}} ({{athd:wbt}}); vandaag staat de koers {{fromath:wbt}} daarvan af.
 > - De Europese tak van WhiteBIT kreeg op 19 juni 2026 een EU-vergunning onder MiCA van de Oostenrijkse toezichthouder.
 
 ## Hoe het werkt
@@ -23,7 +23,8 @@ WBT werkt als een lidmaatschapskaart van de beurs. Wie hem aanhoudt of vastzet, 
 ## De cijfers nu
 
 - Koers nu: {{price:wbt}}
-- Recordkoers: {{ath:wbt}} ({{athd:wbt}})
+- Recordkoers: {{ath:wbt}} ({{athd:wbt}}), {{fromath:wbt}} daarvan af
+- Marktwaarde: {{mcap:wbt}} ({{rank:wbt}} onder de cryptomunten)
 - Koersverandering over 12 maanden: {{chg1y:wbt}}
 - $10 per dag gedurende 3 jaar: {{dca:wbt:3}} bij {{dcainv:3}} ingelegd ({{dcaroi:wbt:3}})
 

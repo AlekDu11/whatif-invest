@@ -1,15 +1,15 @@
 ---
 title: WhiteBIT Coin (WBT) expliqué simplement : un plafond de 400 millions, des rachats hebdomadaires et le passage à Ethereum
-description: WhiteBIT Coin en clair : le jeton de WhiteBIT et de Whitechain, réductions de frais, rachats et burns, ses records et les principaux risques pour les acheteurs.
+description: WhiteBIT Coin en clair : le jeton de WhiteBIT et de Whitechain, réductions de frais, rachats et burns, son histoire et les principaux risques pour les acheteurs.
 date: 2026-11-22
 kind: analysis
 ---
-**WhiteBIT Coin** est le jeton de WhiteBIT, une plateforme d'échange de cryptomonnaies européenne fondée en 2018 par l'entrepreneur ukrainien Volodymyr Nosov. Lancé en août 2022 à environ 1,90 $, il est depuis devenu l'un des jetons de plateforme les plus performants. En novembre 2026, la valeur de marché du WBT atteignait environ 6,9 milliards de dollars, autour de la 15e place des cryptomonnaies.
+**WhiteBIT Coin** est le jeton de WhiteBIT, une plateforme d'échange de cryptomonnaies européenne fondée en 2018 par l'entrepreneur ukrainien Volodymyr Nosov. Lancé en août 2022 à environ 1,90 $, il est depuis devenu l'un des jetons de plateforme les plus performants. Aujourd'hui, le WBT vaut {{mcap:wbt}} ({{rank:wbt}} parmi les cryptomonnaies).
 
 > **À retenir**
 > - Il n'y aura jamais plus de 400 millions de WBT ; environ 119 millions circulaient en octobre 2026.
 > - La plateforme rachète et brûle des WBT avec 33 % de ses revenus de frais de trading plus 5 % de ses autres revenus — 131 188 WBT rien qu'en octobre 2026.
-> - Le WBT a établi un record à 87,91 $ le 21 septembre 2026, après un précédent sommet à 64,11 $ en décembre 2025.
+> - Son record est de {{ath:wbt}} ({{athd:wbt}}) ; aujourd'hui, le cours est à {{fromath:wbt}} de ce niveau.
 > - La branche européenne de WhiteBIT a obtenu une licence MiCA de l'UE auprès du régulateur autrichien le 19 juin 2026.
 
 ## Comment il fonctionne
@@ -23,7 +23,8 @@ Le WBT fonctionne comme une carte de membre de la plateforme. Le détenir ou le 
 ## Les chiffres actuels
 
 - Cours actuel : {{price:wbt}}
-- Record : {{ath:wbt}} ({{athd:wbt}})
+- Record : {{ath:wbt}} ({{athd:wbt}}), {{fromath:wbt}} depuis
+- Valeur de marché : {{mcap:wbt}} ({{rank:wbt}} parmi les cryptomonnaies)
 - Variation du cours sur 12 mois : {{chg1y:wbt}}
 - 10 $ par jour pendant 3 ans : {{dca:wbt:3}} pour {{dcainv:3}} investis ({{dcaroi:wbt:3}})
 

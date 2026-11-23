@@ -1,15 +1,15 @@
 ---
 title: WhiteBIT Coin (WBT) sade dille: 400 milyon arz sınırı, haftalık geri alımlar ve Ethereum'a geçiş
-description: WhiteBIT Coin sade dille: WhiteBIT ve Whitechain'in borsa token'ı, ücret indirimleri, geri alım ve yakım, rekorları ve alıcılar için başlıca riskler.
+description: WhiteBIT Coin sade dille: WhiteBIT ve Whitechain'in borsa token'ı, ücret indirimleri, geri alım ve yakım, geçmişi ve alıcılar için başlıca riskler.
 date: 2026-11-22
 kind: analysis
 ---
-**WhiteBIT Coin**, 2018'de Ukraynalı girişimci Volodymyr Nosov'un kurduğu Avrupa kripto borsası WhiteBIT'in token'ıdır. Ağustos 2022'de yaklaşık 1,90 $'dan piyasaya çıktı ve o zamandan beri en iyi performans gösteren borsa token'larından biri oldu. Kasım 2026'da WBT'nin piyasa değeri yaklaşık 6,9 milyar dolardı; kripto paralar arasında 15. sıra civarında.
+**WhiteBIT Coin**, 2018'de Ukraynalı girişimci Volodymyr Nosov'un kurduğu Avrupa kripto borsası WhiteBIT'in token'ıdır. Ağustos 2022'de yaklaşık 1,90 $'dan piyasaya çıktı ve o zamandan beri en iyi performans gösteren borsa token'larından biri oldu. Bugün WBT'nin piyasa değeri {{mcap:wbt}} (kripto paralar arasında {{rank:wbt}}).
 
 > **Öne çıkanlar**
 > - Hiçbir zaman 400 milyondan fazla WBT olmayacak; Ekim 2026'da yaklaşık 119 milyonu dolaşımdaydı.
 > - Borsa, işlem ücreti gelirinin %33'ü ve diğer gelirlerinin %5'iyle WBT'yi geri alıp yakıyor — yalnızca Ekim 2026'da 131.188 WBT.
-> - WBT, Aralık 2025'teki 64,11 $'lık önceki zirvenin ardından 21 Eylül 2026'da 87,91 $ rekorunu kırdı.
+> - Rekor fiyatı {{ath:wbt}} ({{athd:wbt}}); bugün fiyat ondan {{fromath:wbt}} uzakta.
 > - WhiteBIT'in Avrupa kolu 19 Haziran 2026'da Avusturya düzenleyicisinden AB MiCA lisansı aldı.
 
 ## Nasıl çalışır
@@ -23,7 +23,8 @@ WBT, borsa için bir üyelik kartı gibi çalışır. Onu tutmak ya da kilitleme
 ## Şu anki rakamlar
 
 - Bugünkü fiyat: {{price:wbt}}
-- Rekor: {{ath:wbt}} ({{athd:wbt}})
+- Rekor: {{ath:wbt}} ({{athd:wbt}}), ondan {{fromath:wbt}}
+- Piyasa değeri: {{mcap:wbt}} (kripto paralar arasında {{rank:wbt}})
 - 12 aylık fiyat değişimi: {{chg1y:wbt}}
 - 3 yıl boyunca günde 10 $: {{dca:wbt:3}}, yatırılan {{dcainv:3}} ({{dcaroi:wbt:3}})
 

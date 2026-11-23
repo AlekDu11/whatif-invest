@@ -1,15 +1,15 @@
 ---
 title: WhiteBIT Coin (WBT) explained: a 400 million cap, weekly buybacks and a move to Ethereum
-description: WhiteBIT Coin in plain language: the exchange token behind WhiteBIT and Whitechain, fee discounts, buyback burns, its records and the main risks for buyers.
+description: WhiteBIT Coin in plain language: the exchange token behind WhiteBIT and Whitechain, fee discounts, buyback burns, its history and the main risks for buyers.
 date: 2026-11-22
 kind: analysis
 ---
-**WhiteBIT Coin** is the token of WhiteBIT, a European crypto exchange founded in 2018 by Ukrainian entrepreneur Volodymyr Nosov. It launched in August 2022 at about $1.90 and became one of the best-performing exchange tokens since. WBT's market value was about $6.9 billion in November 2026, ranking around 15th among cryptocurrencies.
+**WhiteBIT Coin** is the token of WhiteBIT, a European crypto exchange founded in 2018 by Ukrainian entrepreneur Volodymyr Nosov. It launched in August 2022 at about $1.90 and became one of the best-performing exchange tokens since. Today WBT is worth {{mcap:wbt}} ({{rank:wbt}} among cryptocurrencies).
 
 > **Key takeaways**
 > - There will never be more than 400 million WBT; about 119 million were in circulation in October 2026.
 > - The exchange buys back and burns WBT with 33% of its trading-fee income plus 5% of other revenue — 131,188 WBT in October 2026 alone.
-> - WBT set a record of $87.91 on 21 September 2026, after an earlier peak of $64.11 in December 2025.
+> - Its record high is {{ath:wbt}} ({{athd:wbt}}); today the price is {{fromath:wbt}} from it.
 > - WhiteBIT's European arm received an EU MiCA licence from Austria's regulator on 19 June 2026.
 
 ## How it works
@@ -23,7 +23,8 @@ WBT works like a membership card for the exchange. Holding or locking it gives l
 ## The numbers right now
 
 - Price today: {{price:wbt}}
-- Record high: {{ath:wbt}} ({{athd:wbt}})
+- Record high: {{ath:wbt}} ({{athd:wbt}}), {{fromath:wbt}} from it
+- Market value: {{mcap:wbt}} ({{rank:wbt}} among cryptocurrencies)
 - Price change over 12 months: {{chg1y:wbt}}
 - $10 a day for 3 years: {{dca:wbt:3}} from {{dcainv:3}} invested ({{dcaroi:wbt:3}})
 

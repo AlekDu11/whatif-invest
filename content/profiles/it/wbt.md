@@ -1,15 +1,15 @@
 ---
 title: WhiteBIT Coin (WBT) spiegato semplice: un tetto di 400 milioni, riacquisti settimanali e il passaggio a Ethereum
-description: WhiteBIT Coin in parole semplici: il token di WhiteBIT e Whitechain, sconti sulle commissioni, riacquisti e burn, i suoi record e i rischi per chi compra.
+description: WhiteBIT Coin in parole semplici: il token di WhiteBIT e Whitechain, sconti sulle commissioni, riacquisti e burn, la sua storia e i rischi per chi compra.
 date: 2026-11-22
 kind: analysis
 ---
-**WhiteBIT Coin** è il token di WhiteBIT, exchange di criptovalute europeo fondato nel 2018 dall'imprenditore ucraino Volodymyr Nosov. È stato lanciato ad agosto 2022 a circa 1,90 $ e da allora è diventato uno dei token di exchange con il rendimento migliore. A novembre 2026 il valore di mercato di WBT era di circa 6,9 miliardi di dollari, intorno al 15° posto tra le criptovalute.
+**WhiteBIT Coin** è il token di WhiteBIT, exchange di criptovalute europeo fondato nel 2018 dall'imprenditore ucraino Volodymyr Nosov. È stato lanciato ad agosto 2022 a circa 1,90 $ e da allora è diventato uno dei token di exchange con il rendimento migliore. Oggi WBT vale {{mcap:wbt}} ({{rank:wbt}} tra le criptovalute).
 
 > **In sintesi**
 > - Non ci saranno mai più di 400 milioni di WBT; a ottobre 2026 ne circolavano circa 119 milioni.
 > - L'exchange riacquista e brucia WBT con il 33% dei ricavi da commissioni di trading più il 5% degli altri ricavi: 131.188 WBT solo a ottobre 2026.
-> - WBT ha segnato il record di 87,91 $ il 21 settembre 2026, dopo un precedente picco di 64,11 $ a dicembre 2025.
+> - Il suo massimo storico è {{ath:wbt}} ({{athd:wbt}}); oggi il prezzo è a {{fromath:wbt}} da lì.
 > - Il ramo europeo di WhiteBIT ha ottenuto la licenza MiCA dell'UE dal regolatore austriaco il 19 giugno 2026.
 
 ## Come funziona
@@ -23,7 +23,8 @@ WBT funziona come una tessera associativa dell'exchange. Detenerlo o bloccarlo d
 ## I numeri di oggi
 
 - Prezzo oggi: {{price:wbt}}
-- Record: {{ath:wbt}} ({{athd:wbt}})
+- Massimo storico: {{ath:wbt}} ({{athd:wbt}}), {{fromath:wbt}} da lì
+- Valore di mercato: {{mcap:wbt}} ({{rank:wbt}} tra le criptovalute)
 - Variazione del prezzo in 12 mesi: {{chg1y:wbt}}
 - 10 $ al giorno per 3 anni: {{dca:wbt:3}} con {{dcainv:3}} investiti ({{dcaroi:wbt:3}})
 

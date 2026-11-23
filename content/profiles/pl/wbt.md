@@ -1,15 +1,15 @@
 ---
 title: WhiteBIT Coin (WBT) prostym językiem: limit 400 milionów, cotygodniowy odkup i przejście na Ethereum
-description: WhiteBIT Coin w prostych słowach: token giełdy WhiteBIT i sieci Whitechain, zniżki na prowizje, spalanie z odkupu, rekordy i główne ryzyka dla kupujących.
+description: WhiteBIT Coin w prostych słowach: token giełdy WhiteBIT i sieci Whitechain, zniżki na prowizje, spalanie z odkupu, historia i główne ryzyka dla kupujących.
 date: 2026-11-22
 kind: analysis
 ---
-**WhiteBIT Coin** to token WhiteBIT, europejskiej giełdy kryptowalut założonej w 2018 r. przez ukraińskiego przedsiębiorcę Wołodymyra Nosowa. Zadebiutował w sierpniu 2022 r. po ok. 1,90 $ i od tego czasu należy do najlepiej radzących sobie tokenów giełdowych. W listopadzie 2026 r. wartość rynkowa WBT wynosiła ok. 6,9 mld dolarów, co dawało mu mniej więcej 15. miejsce wśród kryptowalut.
+**WhiteBIT Coin** to token WhiteBIT, europejskiej giełdy kryptowalut założonej w 2018 r. przez ukraińskiego przedsiębiorcę Wołodymyra Nosowa. Zadebiutował w sierpniu 2022 r. po ok. 1,90 $ i od tego czasu należy do najlepiej radzących sobie tokenów giełdowych. Dziś WBT jest wart {{mcap:wbt}} ({{rank:wbt}} wśród kryptowalut).
 
 > **Najważniejsze**
 > - Nigdy nie powstanie więcej niż 400 mln WBT; w październiku 2026 r. w obiegu było ok. 119 mln.
 > - Giełda odkupuje i spala WBT za 33% przychodów z prowizji handlowych plus 5% pozostałych przychodów — w samym październiku 2026 r. było to 131 188 WBT.
-> - WBT ustanowił rekord 87,91 $ 21 września 2026 r., po wcześniejszym szczycie 64,11 $ w grudniu 2025 r.
+> - Rekord ceny to {{ath:wbt}} ({{athd:wbt}}); dziś cena jest {{fromath:wbt}} od niego.
 > - Europejska spółka WhiteBIT 19 czerwca 2026 r. otrzymała od austriackiego regulatora unijną licencję MiCA.
 
 ## Jak działa
@@ -23,7 +23,8 @@ WBT działa jak karta członkowska giełdy. Trzymanie lub zablokowanie go daje n
 ## Liczby teraz
 
 - Cena teraz: {{price:wbt}}
-- Rekord: {{ath:wbt}} ({{athd:wbt}})
+- Rekord: {{ath:wbt}} ({{athd:wbt}}), {{fromath:wbt}} od niego
+- Wartość rynkowa: {{mcap:wbt}} ({{rank:wbt}} wśród kryptowalut)
 - Zmiana ceny w ciągu 12 miesięcy: {{chg1y:wbt}}
 - 10 $ dziennie przez 3 lata: {{dca:wbt:3}} przy wpłaconych {{dcainv:3}} ({{dcaroi:wbt:3}})
 

@@ -1,15 +1,15 @@
 ---
 title: WhiteBIT Coin (WBT) einfach erklärt: 400 Millionen Höchstmenge, wöchentliche Rückkäufe und der Wechsel zu Ethereum
-description: WhiteBIT Coin einfach erklärt: der Börsen-Token hinter WhiteBIT und Whitechain, Gebührenrabatte, Rückkauf-Burns, seine Rekorde und die Risiken für Käufer.
+description: WhiteBIT Coin einfach erklärt: der Börsen-Token hinter WhiteBIT und Whitechain, Gebührenrabatte, Rückkauf-Burns, seine Geschichte und die Risiken für Käufer.
 date: 2026-11-22
 kind: analysis
 ---
-**WhiteBIT Coin** ist der Token von WhiteBIT, einer europäischen Kryptobörse, die 2018 vom ukrainischen Unternehmer Wolodymyr Nossow gegründet wurde. Er startete im August 2022 bei rund 1,90 $ und gehört seitdem zu den stärksten Börsen-Token. Im November 2026 lag der Marktwert von WBT bei rund 6,9 Milliarden Dollar, etwa Platz 15 unter den Kryptowährungen.
+**WhiteBIT Coin** ist der Token von WhiteBIT, einer europäischen Kryptobörse, die 2018 vom ukrainischen Unternehmer Wolodymyr Nossow gegründet wurde. Er startete im August 2022 bei rund 1,90 $ und gehört seitdem zu den stärksten Börsen-Token. Heute ist WBT {{mcap:wbt}} wert ({{rank:wbt}} unter den Kryptowährungen).
 
 > **Das Wichtigste**
 > - Es wird nie mehr als 400 Millionen WBT geben; im Oktober 2026 waren rund 119 Millionen im Umlauf.
 > - Die Börse kauft und verbrennt WBT mit 33 % ihrer Handelsgebühren plus 5 % der übrigen Einnahmen – allein im Oktober 2026 waren es 131.188 WBT.
-> - WBT erreichte am 21. September 2026 ein Rekordhoch von 87,91 $, nach einem früheren Hoch von 64,11 $ im Dezember 2025.
+> - Sein Rekordhoch liegt bei {{ath:wbt}} ({{athd:wbt}}); heute steht der Kurs {{fromath:wbt}} darunter.
 > - Die europäische Gesellschaft von WhiteBIT erhielt am 19. Juni 2026 von der österreichischen Aufsicht eine EU-Lizenz nach MiCA.
 
 ## So funktioniert er
@@ -23,7 +23,8 @@ WBT funktioniert wie eine Mitgliedskarte der Börse. Wer ihn hält oder sperrt, 
 ## Die Zahlen jetzt
 
 - Kurs heute: {{price:wbt}}
-- Rekordhoch: {{ath:wbt}} ({{athd:wbt}})
+- Rekordhoch: {{ath:wbt}} ({{athd:wbt}}), {{fromath:wbt}} davon entfernt
+- Marktwert: {{mcap:wbt}} ({{rank:wbt}} unter den Kryptowährungen)
 - Kursveränderung in 12 Monaten: {{chg1y:wbt}}
 - 10 $ am Tag über 3 Jahre: {{dca:wbt:3}} bei {{dcainv:3}} Einsatz ({{dcaroi:wbt:3}})
 

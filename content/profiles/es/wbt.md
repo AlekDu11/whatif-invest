@@ -1,15 +1,15 @@
 ---
 title: WhiteBIT Coin (WBT) explicado fácil: un tope de 400 millones, recompras semanales y el salto a Ethereum
-description: WhiteBIT Coin en lenguaje sencillo: el token del exchange WhiteBIT y de Whitechain, descuentos en comisiones, quemas por recompra, sus récords y los riesgos.
+description: WhiteBIT Coin en lenguaje sencillo: el token del exchange WhiteBIT y de Whitechain, descuentos en comisiones, quemas por recompra, su historia y los riesgos.
 date: 2026-11-22
 kind: analysis
 ---
-**WhiteBIT Coin** es el token de WhiteBIT, un exchange cripto europeo fundado en 2018 por el empresario ucraniano Volodímir Nósov. Se lanzó en agosto de 2022 a unos 1,90 $ y desde entonces es uno de los tokens de exchange con mejor rendimiento. En noviembre de 2026 el valor de mercado de WBT rondaba los 6.900 millones de dólares, en torno al puesto 15 entre las criptomonedas.
+**WhiteBIT Coin** es el token de WhiteBIT, un exchange cripto europeo fundado en 2018 por el empresario ucraniano Volodímir Nósov. Se lanzó en agosto de 2022 a unos 1,90 $ y desde entonces es uno de los tokens de exchange con mejor rendimiento. Hoy WBT vale {{mcap:wbt}} ({{rank:wbt}} entre las criptomonedas).
 
 > **Claves**
 > - Nunca habrá más de 400 millones de WBT; en octubre de 2026 circulaban unos 119 millones.
 > - El exchange recompra y quema WBT con el 33% de sus ingresos por comisiones de trading más el 5% de otros ingresos: 131.188 WBT solo en octubre de 2026.
-> - WBT marcó un récord de 87,91 $ el 21 de septiembre de 2026, tras un máximo anterior de 64,11 $ en diciembre de 2025.
+> - Su máximo histórico es {{ath:wbt}} ({{athd:wbt}}); hoy el precio está {{fromath:wbt}} por debajo.
 > - La filial europea de WhiteBIT obtuvo la licencia MiCA de la UE del regulador de Austria el 19 de junio de 2026.
 
 ## Cómo funciona
@@ -23,7 +23,8 @@ WBT funciona como una tarjeta de socio del exchange. Tenerlo o bloquearlo da com
 ## Las cifras actuales
 
 - Precio hoy: {{price:wbt}}
-- Récord: {{ath:wbt}} ({{athd:wbt}})
+- Máximo histórico: {{ath:wbt}} ({{athd:wbt}}), {{fromath:wbt}} desde él
+- Valor de mercado: {{mcap:wbt}} ({{rank:wbt}} entre las criptomonedas)
 - Variación del precio en 12 meses: {{chg1y:wbt}}
 - 10 $ al día durante 3 años: {{dca:wbt:3}} con {{dcainv:3}} invertidos ({{dcaroi:wbt:3}})
 

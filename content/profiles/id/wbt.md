@@ -1,15 +1,15 @@
 ---
 title: WhiteBIT Coin (WBT) dijelaskan sederhana: batas 400 juta, buyback mingguan, dan pindah ke Ethereum
-description: WhiteBIT Coin dengan bahasa sederhana: token bursa di balik WhiteBIT dan Whitechain, diskon biaya, buyback dan burn, rekornya, serta risiko utama bagi pembeli.
+description: WhiteBIT Coin dengan bahasa sederhana: token bursa di balik WhiteBIT dan Whitechain, diskon biaya, buyback dan burn, sejarahnya, serta risiko utama bagi pembeli.
 date: 2026-11-22
 kind: analysis
 ---
-**WhiteBIT Coin** adalah token WhiteBIT, bursa kripto Eropa yang didirikan pada 2018 oleh pengusaha Ukraina Volodymyr Nosov. Token ini diluncurkan pada Agustus 2022 di sekitar $1,90 dan sejak itu menjadi salah satu token bursa dengan kinerja terbaik. Nilai pasar WBT sekitar $6,9 miliar pada November 2026, sekitar peringkat ke-15 di antara mata uang kripto.
+**WhiteBIT Coin** adalah token WhiteBIT, bursa kripto Eropa yang didirikan pada 2018 oleh pengusaha Ukraina Volodymyr Nosov. Token ini diluncurkan pada Agustus 2022 di sekitar $1,90 dan sejak itu menjadi salah satu token bursa dengan kinerja terbaik. Kini WBT bernilai {{mcap:wbt}} ({{rank:wbt}} di antara mata uang kripto).
 
 > **Poin penting**
 > - Jumlah WBT tidak akan pernah lebih dari 400 juta; sekitar 119 juta beredar pada Oktober 2026.
 > - Bursa membeli kembali dan membakar WBT dengan 33% pendapatan biaya trading ditambah 5% pendapatan lain — 131.188 WBT pada Oktober 2026 saja.
-> - WBT mencetak rekor $87,91 pada 21 September 2026, setelah puncak sebelumnya $64,11 pada Desember 2025.
+> - Rekor tertingginya {{ath:wbt}} ({{athd:wbt}}); kini harganya {{fromath:wbt}} dari rekor itu.
 > - Unit Eropa WhiteBIT memperoleh lisensi MiCA UE dari regulator Austria pada 19 Juni 2026.
 
 ## Cara kerjanya
@@ -23,7 +23,8 @@ WBT bekerja seperti kartu anggota bursa. Memegang atau mengunci WBT memberi biay
 ## Angka saat ini
 
 - Harga hari ini: {{price:wbt}}
-- Rekor tertinggi: {{ath:wbt}} ({{athd:wbt}})
+- Rekor tertinggi: {{ath:wbt}} ({{athd:wbt}}), {{fromath:wbt}} dari rekor itu
+- Nilai pasar: {{mcap:wbt}} ({{rank:wbt}} di antara mata uang kripto)
 - Perubahan harga dalam 12 bulan: {{chg1y:wbt}}
 - $10 per hari selama 3 tahun: {{dca:wbt:3}} dari {{dcainv:3}} yang diinvestasikan ({{dcaroi:wbt:3}})
 

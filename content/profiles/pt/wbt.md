@@ -1,15 +1,15 @@
 ---
 title: WhiteBIT Coin (WBT) explicado de forma simples: teto de 400 milhões, recompras semanais e a mudança para o Ethereum
-description: WhiteBIT Coin em linguagem simples: o token da corretora WhiteBIT e da Whitechain, descontos nas taxas, queimas por recompra, seus recordes e os riscos.
+description: WhiteBIT Coin em linguagem simples: o token da corretora WhiteBIT e da Whitechain, descontos nas taxas, queimas por recompra, sua história e os riscos.
 date: 2026-11-22
 kind: analysis
 ---
-**WhiteBIT Coin** é o token da WhiteBIT, uma corretora cripto europeia fundada em 2018 pelo empresário ucraniano Volodymyr Nosov. Ele foi lançado em agosto de 2022 a cerca de US$ 1,90 e desde então é um dos tokens de corretora com melhor desempenho. Em novembro de 2026 o valor de mercado do WBT era de cerca de US$ 6,9 bilhões, por volta da 15ª posição entre as criptomoedas.
+**WhiteBIT Coin** é o token da WhiteBIT, uma corretora cripto europeia fundada em 2018 pelo empresário ucraniano Volodymyr Nosov. Ele foi lançado em agosto de 2022 a cerca de US$ 1,90 e desde então é um dos tokens de corretora com melhor desempenho. Hoje o WBT vale {{mcap:wbt}} ({{rank:wbt}} entre as criptomoedas).
 
 > **Pontos principais**
 > - Nunca existirão mais de 400 milhões de WBT; cerca de 119 milhões estavam em circulação em outubro de 2026.
 > - A corretora recompra e queima WBT com 33% da receita de taxas de negociação mais 5% das demais receitas — 131.188 WBT só em outubro de 2026.
-> - O WBT bateu o recorde de US$ 87,91 em 21 de setembro de 2026, depois de um pico anterior de US$ 64,11 em dezembro de 2025.
+> - A máxima histórica é {{ath:wbt}} ({{athd:wbt}}); hoje o preço está {{fromath:wbt}} abaixo dela.
 > - O braço europeu da WhiteBIT recebeu a licença MiCA da UE do regulador da Áustria em 19 de junho de 2026.
 
 ## Como funciona
@@ -23,7 +23,8 @@ O WBT funciona como um cartão de sócio da corretora. Manter ou bloquear o toke
 ## Os números agora
 
 - Preço hoje: {{price:wbt}}
-- Recorde: {{ath:wbt}} ({{athd:wbt}})
+- Máxima histórica: {{ath:wbt}} ({{athd:wbt}}), {{fromath:wbt}} desde ela
+- Valor de mercado: {{mcap:wbt}} ({{rank:wbt}} entre as criptomoedas)
 - Variação do preço em 12 meses: {{chg1y:wbt}}
 - US$ 10 por dia durante 3 anos: {{dca:wbt:3}} com {{dcainv:3}} investidos ({{dcaroi:wbt:3}})
 

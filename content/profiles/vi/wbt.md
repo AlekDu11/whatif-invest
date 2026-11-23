@@ -1,15 +1,15 @@
 ---
 title: WhiteBIT Coin (WBT) giải thích dễ hiểu: giới hạn 400 triệu, mua lại hằng tuần và chuyển sang Ethereum
-description: WhiteBIT Coin giải thích dễ hiểu: token sàn của WhiteBIT và Whitechain, giảm phí, mua lại và đốt, các kỷ lục và rủi ro chính cho người mua.
+description: WhiteBIT Coin giải thích dễ hiểu: token sàn của WhiteBIT và Whitechain, giảm phí, mua lại và đốt, lịch sử và rủi ro chính cho người mua.
 date: 2026-11-22
 kind: analysis
 ---
-**WhiteBIT Coin** là token của WhiteBIT, sàn giao dịch tiền mã hóa châu Âu do doanh nhân Ukraina Volodymyr Nosov thành lập năm 2018. Token ra mắt tháng 8/2022 ở mức khoảng 1,90 USD và từ đó trở thành một trong những token sàn có hiệu suất tốt nhất. Tháng 11/2026, giá trị thị trường của WBT vào khoảng 6,9 tỷ USD, đứng quanh vị trí thứ 15 trong các đồng tiền mã hóa.
+**WhiteBIT Coin** là token của WhiteBIT, sàn giao dịch tiền mã hóa châu Âu do doanh nhân Ukraina Volodymyr Nosov thành lập năm 2018. Token ra mắt tháng 8/2022 ở mức khoảng 1,90 USD và từ đó trở thành một trong những token sàn có hiệu suất tốt nhất. Hiện WBT có vốn hóa {{mcap:wbt}} ({{rank:wbt}} trong các đồng tiền mã hóa).
 
 > **Điểm chính**
 > - Sẽ không bao giờ có quá 400 triệu WBT; khoảng 119 triệu đang lưu hành vào tháng 10/2026.
 > - Sàn mua lại và đốt WBT bằng 33% thu nhập từ phí giao dịch cộng 5% doanh thu khác — riêng tháng 10/2026 là 131.188 WBT.
-> - WBT lập kỷ lục 87,91 USD ngày 21/9/2026, sau đỉnh trước đó 64,11 USD vào tháng 12/2025.
+> - Đỉnh kỷ lục là {{ath:wbt}} ({{athd:wbt}}); giá hiện tại cách đỉnh {{fromath:wbt}}.
 > - Chi nhánh châu Âu của WhiteBIT nhận giấy phép MiCA của EU từ cơ quan quản lý Áo ngày 19/6/2026.
 
 ## Cách hoạt động
@@ -23,7 +23,8 @@ WBT hoạt động như thẻ thành viên của sàn. Nắm giữ hoặc khóa 
 ## Các con số hiện tại
 
 - Giá hôm nay: {{price:wbt}}
-- Đỉnh kỷ lục: {{ath:wbt}} ({{athd:wbt}})
+- Đỉnh kỷ lục: {{ath:wbt}} ({{athd:wbt}}), cách đỉnh {{fromath:wbt}}
+- Vốn hóa thị trường: {{mcap:wbt}} ({{rank:wbt}} trong các đồng tiền mã hóa)
 - Biến động giá trong 12 tháng: {{chg1y:wbt}}
 - 10 USD mỗi ngày trong 3 năm: {{dca:wbt:3}} từ {{dcainv:3}} đã đầu tư ({{dcaroi:wbt:3}})
 

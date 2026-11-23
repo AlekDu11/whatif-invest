@@ -1,15 +1,15 @@
 ---
 title: WhiteBIT Coin（WBT）通俗解读：4亿枚上限、每周回购，以及迁往以太坊
-description: WhiteBIT Coin通俗解读：WhiteBIT与Whitechain背后的平台币、手续费折扣、回购销毁、历史高点，以及买家面临的主要风险。
+description: WhiteBIT Coin通俗解读：WhiteBIT与Whitechain背后的平台币、手续费折扣、回购销毁、发展历程，以及买家面临的主要风险。
 date: 2026-11-22
 kind: analysis
 ---
-**WhiteBIT Coin**是WhiteBIT的代币，WhiteBIT是乌克兰企业家沃洛季米尔·诺索夫（Volodymyr Nosov）于2018年创办的欧洲加密货币交易所。WBT于2022年8月上线，价格约1.90美元，此后成为表现最好的平台币之一。2026年11月，WBT的市值约69亿美元，在加密货币中排名第15位左右。
+**WhiteBIT Coin**是WhiteBIT的代币，WhiteBIT是乌克兰企业家沃洛季米尔·诺索夫（Volodymyr Nosov）于2018年创办的欧洲加密货币交易所。WBT于2022年8月上线，价格约1.90美元，此后成为表现最好的平台币之一。目前WBT的市值为{{mcap:wbt}}（在加密货币中排名{{rank:wbt}}）。
 
 > **要点**
 > - WBT永远不会超过4亿枚；2026年10月流通量约1.19亿枚。
 > - 交易所用33%的交易手续费收入加上5%的其他收入回购并销毁WBT——仅2026年10月就销毁了131,188枚。
-> - WBT在2025年12月创下64.11美元的前高之后，于2026年9月21日创下87.91美元的历史高点。
+> - 历史最高价为{{ath:wbt}}（{{athd:wbt}}）；当前价格距离该高点{{fromath:wbt}}。
 > - WhiteBIT的欧洲分支于2026年6月19日获得奥地利监管机构颁发的欧盟MiCA牌照。
 
 ## 它如何运作
@@ -23,7 +23,8 @@ WBT就像交易所的会员卡。持有或锁定WBT可降低交易手续费（�
 ## 最新数据
 
 - 当前价格：{{price:wbt}}
-- 历史最高价：{{ath:wbt}}（{{athd:wbt}}）
+- 历史最高价：{{ath:wbt}}（{{athd:wbt}}），距高点{{fromath:wbt}}
+- 市值：{{mcap:wbt}}（在加密货币中排名{{rank:wbt}}）
 - 12个月价格变化：{{chg1y:wbt}}
 - 每天10美元、坚持3年：投入{{dcainv:3}}，变成{{dca:wbt:3}}（{{dcaroi:wbt:3}}）
 
