@@ -7,7 +7,7 @@ The hub /learn/ lists them by track and step; each lesson links to the next one.
 ## start — First steps
 1. ✅ 2026-11-22 What investing is, in plain words (what-is-investing, all 20 languages; saving vs investing, inflation eats cash; link {lang}/inflation/)
 2. ✅ 2026-11-23 Buying a little every month (DCA) (dca-buying-a-little-every-month, all 20 languages): why it works for beginners ({{dca}} shortcodes, link {lang}/compare/)
-3. Risk in plain words: why prices fall, how much you can lose, «only money you can afford to lose»
+3. ✅ 2026-11-23 (investment-risk-in-plain-words, all 20 languages) Risk in plain words: why prices fall, how much you can lose, «only money you can afford to lose»
 4. Diversification: don't put everything in one coin or one stock
 5. How to read a price chart in 2 minutes (our asset page as the example)
 
@@ -41,7 +41,7 @@ The hub /learn/ lists them by track and step; each lesson links to the next one.
 3. ✅ How to trade memecoins on a DEX (exists: how-to-trade-memecoins — translate to all 20)
 4. ✅ Memecoin scams and rug pulls (exists: memecoin-scams-rug-pull — translate to all 20)
 5. ✅ 2026-11-23 (how-to-create-binance-wallet, all 20 languages) (owner 2026-11-22: «everything from Binance for now») How to create a Binance Wallet (Web3 wallet in the Binance app) step by step: install/open, create wallet, back up, fund it, find a token by contract, buy with the Meme Rush / swap screen, check Binance's security audit first; link /go/binance-web3 as the sign-up link
-5b. How to connect Binance Wallet to a DEX site and move coins between Binance and the wallet (networks, test transfer)
+5b. ✅ 2026-11-23 (connect-binance-wallet-to-dex, all 20 languages; front matter step: 6 because step must be an integer — later memes lessons sort after it by date) How to connect Binance Wallet to a DEX site and move coins between Binance and the wallet (networks, test transfer)
 6. How to check a memecoin before buying: liquidity, holders, top-10 share, age, Binance security audit (and WhatIfStack's traffic light on /memes/)
 7. Story: Dogecoin — the joke that became a top-10 coin
 8. Story: Shiba Inu — from «Dogecoin killer» to one of the largest memecoins
