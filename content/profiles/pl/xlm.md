@@ -1,15 +1,15 @@
 ---
-title: Stellar (XLM) prostym językiem: płatności w 5 sekund, 50 miliardów monet i rekord 0,88 $
+title: Stellar (XLM) prostym językiem: płatności w 5 sekund, 50 miliardów monet i niskie opłaty
 description: Stellar w prostych słowach: jak działa sieć płatności i głosowanie, do czego służy XLM, USDC, MoneyGram i tokenizowane fundusze, krachy i główne ryzyka.
 date: 2026-11-23
 kind: analysis
 ---
-**Stellar** to sieć płatnicza stworzona do przesyłania pieniędzy między krajami w około pięć sekund za ułamek centa. Banki, fintechy i zarządzający funduszami emitują na niej cyfrowe dolary, euro i tokenizowane fundusze, a jej moneta XLM („lumeny”) opłaca prowizje. W listopadzie 2026 r. XLM miał wartość rynkową ok. 4,5 mld dolarów, co dawało mu mniej więcej 20. miejsce wśród kryptowalut.
+**Stellar** to sieć płatnicza stworzona do przesyłania pieniędzy między krajami w około pięć sekund za ułamek centa. Banki, fintechy i zarządzający funduszami emitują na niej cyfrowe dolary, euro i tokenizowane fundusze, a jej moneta XLM („lumeny”) opłaca prowizje. XLM jest dziś wart {{mcap:xlm}} ({{rank:xlm}} wśród kryptowalut).
 
 > **Najważniejsze**
 > - Po spaleniu w 2019 r. ok. 55 mld monet istnieje ok. 50 mld XLM; nowe nie powstają, a w listopadzie 2026 r. w obiegu było ok. 35 mld.
 > - Płatność rozlicza się w ok. 5 sekund, a prowizja wynosi 0,00001 XLM za operację.
-> - Dotychczasowy rekord ceny to 0,88 $ (styczeń 2018 r.); w listopadzie 2026 r. XLM był notowany ponad 80% niżej.
+> - Rekord ceny to {{ath:xlm}} ({{athd:xlm}}); dziś cena jest {{fromath:xlm}} od niego.
 > - Według branżowych trackerów wartość realnych aktywów na Stellar, takich jak tokenizowane fundusze, przekroczyła w 2026 r. 4 mld dolarów.
 
 ## Jak działa
@@ -23,7 +23,8 @@ XLM opłaca niewielką prowizję za każdą transakcję, a każde konto musi utr
 ## Liczby teraz
 
 - Cena teraz: {{price:xlm}}
-- Rekord: {{ath:xlm}} ({{athd:xlm}})
+- Rekord: {{ath:xlm}} ({{athd:xlm}}), {{fromath:xlm}} od niego
+- Wartość rynkowa: {{mcap:xlm}} ({{rank:xlm}} wśród kryptowalut)
 - Zmiana ceny w ciągu 12 miesięcy: {{chg1y:xlm}}
 - 10 $ dziennie przez 5 lat: {{dca:xlm:5}} przy wpłaconych {{dcainv:5}} ({{dcaroi:xlm:5}})
 

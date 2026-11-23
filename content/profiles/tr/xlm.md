@@ -1,15 +1,15 @@
 ---
-title: Stellar (XLM) sade dille: 5 saniyede ödeme, 50 milyar coin ve 0,88 $ rekor
+title: Stellar (XLM) sade dille: 5 saniyede ödeme, 50 milyar coin ve düşük ücretler
 description: Stellar sade dille: ödeme ağı ve oylama nasıl işler, XLM ne işe yarar, USDC, MoneyGram ve token'laştırılmış fonlar, çöküşleri ve başlıca riskler.
 date: 2026-11-23
 kind: analysis
 ---
-**Stellar**, parayı ülkeler arasında yaklaşık beş saniyede ve bir sentin çok küçük bir kesrine göndermek için kurulmuş bir ödeme ağıdır. Bankalar, fintech'ler ve fon yöneticileri bu ağda dijital dolar, euro ve token'laştırılmış fonlar çıkarıyor; coin'i XLM ("lumen") ise ücretleri ödüyor. XLM'in Kasım 2026'da piyasa değeri yaklaşık 4,5 milyar dolardı ve kripto paralar arasında 20. sıra civarındaydı.
+**Stellar**, parayı ülkeler arasında yaklaşık beş saniyede ve bir sentin çok küçük bir kesrine göndermek için kurulmuş bir ödeme ağıdır. Bankalar, fintech'ler ve fon yöneticileri bu ağda dijital dolar, euro ve token'laştırılmış fonlar çıkarıyor; coin'i XLM ("lumen") ise ücretleri ödüyor. XLM'in bugünkü piyasa değeri {{mcap:xlm}} (kripto paralar arasında {{rank:xlm}}).
 
 > **Öne çıkanlar**
 > - 2019'da yaklaşık 55 milyar coin yakıldıktan sonra yaklaşık 50 milyar XLM var; yenisi üretilmiyor ve Kasım 2026'da yaklaşık 35 milyarı dolaşımdaydı.
 > - Bir ödeme yaklaşık 5 saniyede tamamlanıyor, ücret işlem başına 0,00001 XLM.
-> - Şimdiye kadarki rekor fiyat 0,88 $ (Ocak 2018); Kasım 2026'da XLM bunun %80'den fazla altında işlem görüyordu.
+> - Rekor fiyatı {{ath:xlm}} ({{athd:xlm}}); bugün fiyat ondan {{fromath:xlm}} uzakta.
 > - Sektör takipçilerine göre Stellar'daki token'laştırılmış fonlar gibi gerçek dünya varlıklarının değeri 2026'da 4 milyar doları aştı.
 
 ## Nasıl çalışır
@@ -23,7 +23,8 @@ XLM her işlemin küçük ücretini öder ve her hesap asgari bir bakiye tutmak 
 ## Şu anki rakamlar
 
 - Bugünkü fiyat: {{price:xlm}}
-- Rekor: {{ath:xlm}} ({{athd:xlm}})
+- Rekor: {{ath:xlm}} ({{athd:xlm}}), ondan {{fromath:xlm}}
+- Piyasa değeri: {{mcap:xlm}} (kripto paralar arasında {{rank:xlm}})
 - 12 aylık fiyat değişimi: {{chg1y:xlm}}
 - 5 yıl boyunca günde 10 $: {{dca:xlm:5}}, yatırılan {{dcainv:5}} ({{dcaroi:xlm:5}})
 

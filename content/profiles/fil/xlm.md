@@ -1,15 +1,15 @@
 ---
-title: Stellar (XLM) sa simpleng paliwanag: bayad sa loob ng 5 segundo, supply na 50 bilyon at record na $0.88
+title: Stellar (XLM) sa simpleng paliwanag: bayad sa loob ng 5 segundo, supply na 50 bilyon at mababang fees
 description: Stellar sa simpleng paliwanag: paano gumagana ang network at botohan nito, para saan ang XLM, USDC, MoneyGram, tokenised funds, mga pagbagsak at panganib.
 date: 2026-11-23
 kind: analysis
 ---
-**Stellar** ay isang payment network na ginawa para magpadala ng pera sa ibang bansa sa loob ng mga limang segundo, sa napakaliit na bahagi lang ng isang sentimo. Ginagamit ito ng mga bangko, fintech at fund manager para mag-isyu ng digital na dolyar, euro at tokenised funds, at ang coin nitong XLM ("lumens") ang pambayad sa fees. Nasa humigit-kumulang $4.5 bilyon ang market value ng XLM noong Nobyembre 2026, mga ika-20 sa mga cryptocurrency.
+**Stellar** ay isang payment network na ginawa para magpadala ng pera sa ibang bansa sa loob ng mga limang segundo, sa napakaliit na bahagi lang ng isang sentimo. Ginagamit ito ng mga bangko, fintech at fund manager para mag-isyu ng digital na dolyar, euro at tokenised funds, at ang coin nitong XLM ("lumens") ang pambayad sa fees. Ang XLM ay may halagang {{mcap:xlm}} ngayon ({{rank:xlm}} sa mga cryptocurrency).
 
 > **Mahahalagang punto**
 > - Mga 50 bilyong XLM ang umiiral matapos sunugin ang mga 55 bilyong coin noong 2019; wala nang bagong nagagawa, at mga 35 bilyon ang nasa sirkulasyon noong Nobyembre 2026.
 > - Natatapos ang isang bayad sa mga 5 segundo, at 0.00001 XLM ang fee bawat operasyon.
-> - Ang record na presyo sa ngayon ay $0.88 (Enero 2018); noong Nobyembre 2026, mahigit 80% na mas mababa rito ang XLM.
+> - Ang pinakamataas na presyo nito ay {{ath:xlm}} ({{athd:xlm}}); ngayon, {{fromath:xlm}} ang presyo mula roon.
 > - Lumampas sa $4 bilyon noong 2026 ang halaga ng real-world assets sa Stellar, gaya ng tokenised funds, ayon sa mga industry tracker.
 
 ## Paano ito gumagana
@@ -23,7 +23,8 @@ Ipinambabayad ang XLM sa maliit na fee ng bawat transaksyon, at kailangang may m
 ## Ang mga numero ngayon
 
 - Presyo ngayon: {{price:xlm}}
-- Pinakamataas na presyo: {{ath:xlm}} ({{athd:xlm}})
+- Pinakamataas na presyo: {{ath:xlm}} ({{athd:xlm}}), {{fromath:xlm}} mula roon
+- Halaga sa merkado: {{mcap:xlm}} ({{rank:xlm}} sa mga cryptocurrency)
 - Pagbabago ng presyo sa loob ng 12 buwan: {{chg1y:xlm}}
 - $10 kada araw sa loob ng 5 taon: {{dca:xlm:5}} mula sa {{dcainv:5}} na inilagay ({{dcaroi:xlm:5}})
 

@@ -1,15 +1,15 @@
 ---
-title: Stellar (XLM) explicado fácil: pagos en 5 segundos, 50.000 millones de monedas y un récord de 0,88 $
+title: Stellar (XLM) explicado fácil: pagos en 5 segundos, 50.000 millones de monedas y comisiones mínimas
 description: Stellar en lenguaje sencillo: cómo funcionan su red de pagos y su votación, para qué sirve XLM, USDC, MoneyGram y fondos tokenizados, sus caídas y riesgos.
 date: 2026-11-23
 kind: analysis
 ---
-**Stellar** es una red de pagos creada para enviar dinero entre países en unos cinco segundos por una fracción mínima de céntimo. Bancos, fintech y gestoras de fondos la usan para emitir dólares y euros digitales y fondos tokenizados, y su moneda, XLM («lúmenes»), paga las comisiones. XLM tenía un valor de mercado de unos 4.500 millones de dólares en noviembre de 2026, en torno al puesto 20 entre las criptomonedas.
+**Stellar** es una red de pagos creada para enviar dinero entre países en unos cinco segundos por una fracción mínima de céntimo. Bancos, fintech y gestoras de fondos la usan para emitir dólares y euros digitales y fondos tokenizados, y su moneda, XLM («lúmenes»), paga las comisiones. XLM tiene un valor de {{mcap:xlm}} hoy ({{rank:xlm}} entre las criptomonedas).
 
 > **Claves**
 > - Existen unos 50.000 millones de XLM tras una quema de unos 55.000 millones en 2019; no se crean monedas nuevas, y en noviembre de 2026 circulaban unos 35.000 millones.
 > - Un pago se liquida en unos 5 segundos y la comisión es de 0,00001 XLM por operación.
-> - El récord de precio hasta ahora es 0,88 $ (enero de 2018); en noviembre de 2026 XLM cotizaba más de un 80 % por debajo.
+> - Su máximo histórico es {{ath:xlm}} ({{athd:xlm}}); hoy el precio está {{fromath:xlm}} por debajo.
 > - Según rastreadores del sector, el valor de los activos reales en Stellar, como fondos tokenizados, superó los 4.000 millones de dólares en 2026.
 
 ## Cómo funciona
@@ -23,7 +23,8 @@ XLM paga la pequeña comisión de cada transacción y cada cuenta debe mantener 
 ## Las cifras actuales
 
 - Precio hoy: {{price:xlm}}
-- Récord: {{ath:xlm}} ({{athd:xlm}})
+- Máximo histórico: {{ath:xlm}} ({{athd:xlm}}), {{fromath:xlm}} desde él
+- Valor de mercado: {{mcap:xlm}} ({{rank:xlm}} entre las criptomonedas)
 - Variación del precio en 12 meses: {{chg1y:xlm}}
 - 10 $ al día durante 5 años: {{dca:xlm:5}} con {{dcainv:5}} invertidos ({{dcaroi:xlm:5}})
 

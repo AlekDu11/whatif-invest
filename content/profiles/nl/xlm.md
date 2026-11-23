@@ -1,15 +1,15 @@
 ---
-title: Stellar (XLM) eenvoudig uitgelegd: betalingen in 5 seconden, een voorraad van 50 miljard en een record van $0,88
+title: Stellar (XLM) eenvoudig uitgelegd: betalingen in 5 seconden, een voorraad van 50 miljard en lage kosten
 description: Stellar in gewone taal: hoe het betaalnetwerk en de stemming werken, waarvoor XLM dient, USDC, MoneyGram en getokeniseerde fondsen, de crashes en de risico's.
 date: 2026-11-23
 kind: analysis
 ---
-**Stellar** is een betaalnetwerk dat geld in ongeveer vijf seconden over de grens verstuurt, voor een fractie van een cent. Banken, fintechs en fondsbeheerders gebruiken het om digitale dollars, euro's en getokeniseerde fondsen uit te geven, en de munt XLM ("lumens") betaalt de kosten. XLM was in november 2026 in totaal ongeveer $4,5 miljard waard, rond plaats 20 onder de cryptomunten.
+**Stellar** is een betaalnetwerk dat geld in ongeveer vijf seconden over de grens verstuurt, voor een fractie van een cent. Banken, fintechs en fondsbeheerders gebruiken het om digitale dollars, euro's en getokeniseerde fondsen uit te geven, en de munt XLM ("lumens") betaalt de kosten. XLM heeft vandaag een waarde van {{mcap:xlm}} ({{rank:xlm}} onder de cryptomunten).
 
 > **Belangrijkste punten**
 > - Er bestaan ongeveer 50 miljard XLM na het vernietigen van zo'n 55 miljard munten in 2019; er komen geen nieuwe bij, en in november 2026 waren er ongeveer 35 miljard in omloop.
 > - Een betaling is in ongeveer 5 seconden afgerond, en de kosten zijn 0,00001 XLM per handeling.
-> - De recordkoers tot nu toe is $0,88 (januari 2018); in november 2026 stond XLM meer dan 80% lager.
+> - De recordkoers is {{ath:xlm}} ({{athd:xlm}}); vandaag staat de koers {{fromath:xlm}} daarvan af.
 > - De waarde van echte bezittingen op Stellar, zoals getokeniseerde fondsen, ging in 2026 volgens branchetrackers over de $4 miljard.
 
 ## Hoe het werkt
@@ -23,7 +23,8 @@ XLM betaalt de kleine vergoeding bij elke transactie, en elk account moet een mi
 ## De cijfers nu
 
 - Koers nu: {{price:xlm}}
-- Recordkoers: {{ath:xlm}} ({{athd:xlm}})
+- Recordkoers: {{ath:xlm}} ({{athd:xlm}}), {{fromath:xlm}} daarvan af
+- Marktwaarde: {{mcap:xlm}} ({{rank:xlm}} onder de cryptomunten)
 - Koersverandering over 12 maanden: {{chg1y:xlm}}
 - $10 per dag gedurende 5 jaar: {{dca:xlm:5}} bij {{dcainv:5}} ingelegd ({{dcaroi:xlm:5}})
 

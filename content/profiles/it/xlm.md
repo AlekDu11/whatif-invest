@@ -1,15 +1,15 @@
 ---
-title: Stellar (XLM) spiegato semplice: pagamenti in 5 secondi, un'offerta di 50 miliardi e un record di 0,88 $
+title: Stellar (XLM) spiegato semplice: pagamenti in 5 secondi, un'offerta di 50 miliardi e commissioni minime
 description: Stellar in parole semplici: come funzionano la rete di pagamento e il voto, a cosa serve XLM, USDC, MoneyGram e fondi tokenizzati, i crolli e i rischi.
 date: 2026-11-23
 kind: analysis
 ---
-**Stellar** è una rete di pagamento creata per spostare denaro da un paese all'altro in circa cinque secondi, per una minuscola frazione di centesimo. Banche, fintech e gestori di fondi la usano per emettere dollari, euro e fondi tokenizzati in forma digitale, e la sua criptovaluta, XLM (i «lumen»), paga le commissioni. A novembre 2026 XLM aveva un valore di mercato di circa 4,5 miliardi di dollari, intorno al 20° posto tra le criptovalute.
+**Stellar** è una rete di pagamento creata per spostare denaro da un paese all'altro in circa cinque secondi, per una minuscola frazione di centesimo. Banche, fintech e gestori di fondi la usano per emettere dollari, euro e fondi tokenizzati in forma digitale, e la sua criptovaluta, XLM (i «lumen»), paga le commissioni. Oggi XLM vale {{mcap:xlm}} ({{rank:xlm}} tra le criptovalute).
 
 > **In sintesi**
 > - Esistono circa 50 miliardi di XLM dopo la distruzione di circa 55 miliardi di monete nel 2019; non se ne creano di nuove, e a novembre 2026 ne circolavano circa 35 miliardi.
 > - Un pagamento si chiude in circa 5 secondi e la commissione è di 0,00001 XLM per operazione.
-> - Il record di prezzo finora è 0,88 $ (gennaio 2018); a novembre 2026 XLM scambiava oltre l'80% più in basso.
+> - Il suo massimo storico è {{ath:xlm}} ({{athd:xlm}}); oggi il prezzo è a {{fromath:xlm}} da lì.
 > - Il valore degli asset reali su Stellar, come i fondi tokenizzati, ha superato i 4 miliardi di dollari nel 2026, secondo i tracker del settore.
 
 ## Come funziona
@@ -23,7 +23,8 @@ XLM paga la piccola commissione di ogni transazione e ogni account deve mantener
 ## I numeri di oggi
 
 - Prezzo oggi: {{price:xlm}}
-- Record: {{ath:xlm}} ({{athd:xlm}})
+- Massimo storico: {{ath:xlm}} ({{athd:xlm}}), {{fromath:xlm}} da lì
+- Valore di mercato: {{mcap:xlm}} ({{rank:xlm}} tra le criptovalute)
 - Variazione del prezzo in 12 mesi: {{chg1y:xlm}}
 - 10 $ al giorno per 5 anni: {{dca:xlm:5}} con {{dcainv:5}} investiti ({{dcaroi:xlm:5}})
 

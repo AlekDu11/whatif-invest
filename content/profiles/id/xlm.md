@@ -1,15 +1,15 @@
 ---
-title: Stellar (XLM) dijelaskan sederhana: pembayaran 5 detik, pasokan 50 miliar, dan rekor $0,88
+title: Stellar (XLM) dijelaskan sederhana: pembayaran 5 detik, pasokan 50 miliar, dan biaya rendah
 description: Stellar dengan bahasa sederhana: cara kerja jaringan pembayaran dan votingnya, kegunaan XLM, USDC, MoneyGram, dana tertokenisasi, kejatuhan, dan risiko utama.
 date: 2026-11-23
 kind: analysis
 ---
-**Stellar** adalah jaringan pembayaran yang dibuat untuk mengirim uang antarnegara dalam sekitar lima detik dengan biaya hanya sepersekian sen. Bank, fintech, dan manajer investasi memakainya untuk menerbitkan dolar, euro, dan dana tertokenisasi dalam bentuk digital, sementara koinnya, XLM ("lumens"), membayar biayanya. XLM memiliki nilai pasar sekitar $4,5 miliar pada November 2026, sekitar peringkat 20 di antara mata uang kripto.
+**Stellar** adalah jaringan pembayaran yang dibuat untuk mengirim uang antarnegara dalam sekitar lima detik dengan biaya hanya sepersekian sen. Bank, fintech, dan manajer investasi memakainya untuk menerbitkan dolar, euro, dan dana tertokenisasi dalam bentuk digital, sementara koinnya, XLM ("lumens"), membayar biayanya. Nilai pasar XLM kini {{mcap:xlm}} ({{rank:xlm}} di antara mata uang kripto).
 
 > **Poin penting**
 > - Ada sekitar 50 miliar XLM setelah sekitar 55 miliar koin dibakar pada 2019; tidak ada koin baru yang dibuat, dan sekitar 35 miliar beredar pada November 2026.
 > - Pembayaran selesai dalam sekitar 5 detik, dengan biaya 0,00001 XLM per operasi.
-> - Rekor harga sejauh ini adalah $0,88 (Januari 2018); pada November 2026 XLM diperdagangkan lebih dari 80% di bawahnya.
+> - Rekor tertingginya {{ath:xlm}} ({{athd:xlm}}); kini harganya {{fromath:xlm}} dari rekor itu.
 > - Nilai aset dunia nyata seperti dana tertokenisasi di Stellar melampaui $4 miliar pada 2026, menurut pelacak industri.
 
 ## Cara kerjanya
@@ -23,7 +23,8 @@ XLM membayar biaya kecil untuk setiap transaksi, dan setiap akun wajib menyimpan
 ## Angka saat ini
 
 - Harga hari ini: {{price:xlm}}
-- Rekor tertinggi: {{ath:xlm}} ({{athd:xlm}})
+- Rekor tertinggi: {{ath:xlm}} ({{athd:xlm}}), {{fromath:xlm}} dari rekor itu
+- Nilai pasar: {{mcap:xlm}} ({{rank:xlm}} di antara mata uang kripto)
 - Perubahan harga dalam 12 bulan: {{chg1y:xlm}}
 - $10 per hari selama 5 tahun: {{dca:xlm:5}} dari {{dcainv:5}} yang diinvestasikan ({{dcaroi:xlm:5}})
 

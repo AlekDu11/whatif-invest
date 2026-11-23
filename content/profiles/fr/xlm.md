@@ -1,15 +1,15 @@
 ---
-title: Stellar (XLM) expliqué simplement : paiements en 5 secondes, une offre de 50 milliards et un record à 0,88 $
+title: Stellar (XLM) expliqué simplement : paiements en 5 secondes, une offre de 50 milliards et des frais minimes
 description: Stellar en clair : comment fonctionnent son réseau de paiement et son vote, l'utilité du XLM, USDC, MoneyGram et fonds tokenisés, ses krachs et ses risques.
 date: 2026-11-23
 kind: analysis
 ---
-**Stellar** est un réseau de paiement conçu pour envoyer de l'argent d'un pays à l'autre en environ cinq secondes, pour une infime fraction de centime. Banques, fintechs et gestionnaires de fonds l'utilisent pour émettre des dollars, des euros et des fonds tokenisés numériques, et sa cryptomonnaie, le XLM (les « lumens »), paie les frais. Le XLM avait une valeur de marché d'environ 4,5 milliards de dollars en novembre 2026, vers la 20e place des cryptomonnaies.
+**Stellar** est un réseau de paiement conçu pour envoyer de l'argent d'un pays à l'autre en environ cinq secondes, pour une infime fraction de centime. Banques, fintechs et gestionnaires de fonds l'utilisent pour émettre des dollars, des euros et des fonds tokenisés numériques, et sa cryptomonnaie, le XLM (les « lumens »), paie les frais. Le XLM a une valeur de {{mcap:xlm}} aujourd'hui ({{rank:xlm}} parmi les cryptomonnaies).
 
 > **À retenir**
 > - Environ 50 milliards de XLM existent après la destruction d'environ 55 milliards de jetons en 2019 ; aucun nouveau n'est créé, et environ 35 milliards circulaient en novembre 2026.
 > - Un paiement est réglé en environ 5 secondes, et les frais sont de 0,00001 XLM par opération.
-> - Le record de cours à ce jour est de 0,88 $ (janvier 2018) ; en novembre 2026, le XLM s'échangeait plus de 80 % en dessous.
+> - Son record est de {{ath:xlm}} ({{athd:xlm}}) ; aujourd'hui, le cours est à {{fromath:xlm}} de ce niveau.
 > - La valeur des actifs réels, comme les fonds tokenisés, présents sur Stellar a dépassé 4 milliards de dollars en 2026, selon des trackers du secteur.
 
 ## Comment il fonctionne
@@ -23,7 +23,8 @@ Le XLM paie les petits frais de chaque transaction, et chaque compte doit déten
 ## Les chiffres actuels
 
 - Cours actuel : {{price:xlm}}
-- Record : {{ath:xlm}} ({{athd:xlm}})
+- Record : {{ath:xlm}} ({{athd:xlm}}), {{fromath:xlm}} depuis
+- Valeur de marché : {{mcap:xlm}} ({{rank:xlm}} parmi les cryptomonnaies)
 - Variation du cours sur 12 mois : {{chg1y:xlm}}
 - 10 $ par jour pendant 5 ans : {{dca:xlm:5}} pour {{dcainv:5}} investis ({{dcaroi:xlm:5}})
 

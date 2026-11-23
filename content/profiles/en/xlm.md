@@ -1,15 +1,15 @@
 ---
-title: Stellar (XLM) explained: 5-second payments, a 50 billion supply and a $0.88 record
+title: Stellar (XLM) explained: 5-second payments, a 50 billion supply and low fees
 description: Stellar in plain language: how its payment network and voting work, what XLM is for, USDC, MoneyGram and tokenised funds, its crashes and the main risks.
 date: 2026-11-23
 kind: analysis
 ---
-**Stellar** is a payment network built to move money across borders in about five seconds for a tiny fraction of a cent. Banks, fintechs and fund managers use it to issue digital dollars, euros and tokenised funds, and its coin, XLM ("lumens"), pays the fees. XLM had a market value of about $4.5 billion in November 2026, around number 20 among cryptocurrencies.
+**Stellar** is a payment network built to move money across borders in about five seconds for a tiny fraction of a cent. Banks, fintechs and fund managers use it to issue digital dollars, euros and tokenised funds, and its coin, XLM ("lumens"), pays the fees. XLM is worth {{mcap:xlm}} today ({{rank:xlm}} among cryptocurrencies).
 
 > **Key takeaways**
 > - About 50 billion XLM exist after a 2019 burn of roughly 55 billion coins; no new ones are created, and about 35 billion were in circulation in November 2026.
 > - A payment settles in about 5 seconds, and the fee is 0.00001 XLM per operation.
-> - The record price so far is $0.88 (January 2018); in November 2026 XLM traded more than 80% below it.
+> - Its record high is {{ath:xlm}} ({{athd:xlm}}); today the price is {{fromath:xlm}} from it.
 > - The value of real-world assets such as tokenised funds on Stellar passed $4 billion in 2026, according to industry trackers.
 
 ## How it works
@@ -23,7 +23,8 @@ XLM pays the small fee on every transaction and every account must hold a minimu
 ## The numbers right now
 
 - Price today: {{price:xlm}}
-- Record high: {{ath:xlm}} ({{athd:xlm}})
+- Record high: {{ath:xlm}} ({{athd:xlm}}), {{fromath:xlm}} from it
+- Market value: {{mcap:xlm}} ({{rank:xlm}} among cryptocurrencies)
 - Price change over 12 months: {{chg1y:xlm}}
 - $10 a day for 5 years: {{dca:xlm:5}} from {{dcainv:5}} invested ({{dcaroi:xlm:5}})
 

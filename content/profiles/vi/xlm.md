@@ -1,15 +1,15 @@
 ---
-title: Stellar (XLM) giải thích dễ hiểu: thanh toán trong 5 giây, nguồn cung 50 tỷ và kỷ lục 0,88 USD
+title: Stellar (XLM) giải thích dễ hiểu: thanh toán trong 5 giây, nguồn cung 50 tỷ và phí thấp
 description: Stellar giải thích dễ hiểu: mạng thanh toán và cơ chế bỏ phiếu, XLM dùng để làm gì, USDC, MoneyGram và quỹ token hóa, các cú sập và rủi ro chính.
 date: 2026-11-23
 kind: analysis
 ---
-**Stellar** là mạng thanh toán được tạo ra để chuyển tiền xuyên biên giới trong khoảng năm giây với chi phí chỉ bằng một phần rất nhỏ của một xu. Ngân hàng, công ty fintech và quỹ đầu tư dùng nó để phát hành đô la, euro và quỹ token hóa dạng số, còn đồng coin của mạng, XLM ("lumens"), dùng để trả phí. XLM có giá trị thị trường khoảng 4,5 tỷ USD vào tháng 11/2026, quanh vị trí thứ 20 trong các loại tiền mã hóa.
+**Stellar** là mạng thanh toán được tạo ra để chuyển tiền xuyên biên giới trong khoảng năm giây với chi phí chỉ bằng một phần rất nhỏ của một xu. Ngân hàng, công ty fintech và quỹ đầu tư dùng nó để phát hành đô la, euro và quỹ token hóa dạng số, còn đồng coin của mạng, XLM ("lumens"), dùng để trả phí. Vốn hóa của XLM hiện là {{mcap:xlm}} ({{rank:xlm}} trong các đồng tiền mã hóa).
 
 > **Điểm chính**
 > - Có khoảng 50 tỷ XLM sau khi khoảng 55 tỷ coin bị đốt vào năm 2019; không có coin mới được tạo ra, và khoảng 35 tỷ đang lưu hành vào tháng 11/2026.
 > - Một khoản thanh toán hoàn tất trong khoảng 5 giây, với phí 0,00001 XLM mỗi thao tác.
-> - Mức giá kỷ lục đến nay là 0,88 USD (tháng 1/2018); vào tháng 11/2026 XLM giao dịch thấp hơn mức đó hơn 80%.
+> - Đỉnh kỷ lục là {{ath:xlm}} ({{athd:xlm}}); giá hiện tại cách đỉnh {{fromath:xlm}}.
 > - Giá trị tài sản thực trên Stellar, như các quỹ token hóa, đã vượt 4 tỷ USD trong năm 2026, theo các trang theo dõi của ngành.
 
 ## Cách hoạt động
@@ -23,7 +23,8 @@ XLM trả khoản phí nhỏ cho mỗi giao dịch, và mỗi tài khoản phả
 ## Các con số hiện tại
 
 - Giá hôm nay: {{price:xlm}}
-- Đỉnh kỷ lục: {{ath:xlm}} ({{athd:xlm}})
+- Đỉnh kỷ lục: {{ath:xlm}} ({{athd:xlm}}), cách đỉnh {{fromath:xlm}}
+- Vốn hóa thị trường: {{mcap:xlm}} ({{rank:xlm}} trong các đồng tiền mã hóa)
 - Biến động giá trong 12 tháng: {{chg1y:xlm}}
 - 10 USD mỗi ngày trong 5 năm: {{dca:xlm:5}} từ {{dcainv:5}} đã đầu tư ({{dcaroi:xlm:5}})
 

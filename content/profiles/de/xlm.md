@@ -1,15 +1,15 @@
 ---
-title: Stellar (XLM) einfach erklärt: Zahlungen in 5 Sekunden, 50 Milliarden Coins und ein Rekord von 0,88 $
+title: Stellar (XLM) einfach erklärt: Zahlungen in 5 Sekunden, 50 Milliarden Coins und winzige Gebühren
 description: Stellar einfach erklärt: wie Zahlungsnetz und Abstimmung funktionieren, wofür XLM dient, USDC, MoneyGram und tokenisierte Fonds, Crashs und die größten Risiken.
 date: 2026-11-23
 kind: analysis
 ---
-**Stellar** ist ein Zahlungsnetz, das Geld in rund fünf Sekunden für einen winzigen Bruchteil eines Cents über Grenzen schickt. Banken, Fintechs und Fondsanbieter geben darauf digitale Dollar, Euro und tokenisierte Fonds aus, und sein Coin XLM („Lumens“) bezahlt die Gebühren. XLM hatte im November 2026 einen Marktwert von rund 4,5 Milliarden Dollar und lag etwa auf Platz 20 unter den Kryptowährungen.
+**Stellar** ist ein Zahlungsnetz, das Geld in rund fünf Sekunden für einen winzigen Bruchteil eines Cents über Grenzen schickt. Banken, Fintechs und Fondsanbieter geben darauf digitale Dollar, Euro und tokenisierte Fonds aus, und sein Coin XLM („Lumens“) bezahlt die Gebühren. XLM ist heute {{mcap:xlm}} wert ({{rank:xlm}} unter den Kryptowährungen).
 
 > **Das Wichtigste**
 > - Nach der Verbrennung von rund 55 Milliarden Coins im Jahr 2019 gibt es etwa 50 Milliarden XLM; neue entstehen nicht, im November 2026 waren rund 35 Milliarden im Umlauf.
 > - Eine Zahlung ist in etwa 5 Sekunden abgewickelt, die Gebühr beträgt 0,00001 XLM pro Vorgang.
-> - Der bisherige Rekordkurs liegt bei 0,88 $ (Januar 2018); im November 2026 notierte XLM mehr als 80 % darunter.
+> - Sein Rekordhoch liegt bei {{ath:xlm}} ({{athd:xlm}}); heute steht der Kurs {{fromath:xlm}} darunter.
 > - Laut Branchen-Trackern überstieg der Wert realer Vermögenswerte wie tokenisierter Fonds auf Stellar 2026 die Marke von 4 Milliarden Dollar.
 
 ## So funktioniert es
@@ -23,7 +23,8 @@ XLM bezahlt die kleine Gebühr jeder Transaktion, und jedes Konto muss ein Minde
 ## Die Zahlen jetzt
 
 - Kurs heute: {{price:xlm}}
-- Rekordhoch: {{ath:xlm}} ({{athd:xlm}})
+- Rekordhoch: {{ath:xlm}} ({{athd:xlm}}), {{fromath:xlm}} davon entfernt
+- Marktwert: {{mcap:xlm}} ({{rank:xlm}} unter den Kryptowährungen)
 - Kursveränderung in 12 Monaten: {{chg1y:xlm}}
 - 10 $ am Tag über 5 Jahre: {{dca:xlm:5}} bei {{dcainv:5}} Einsatz ({{dcaroi:xlm:5}})
 
