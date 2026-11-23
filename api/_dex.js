@@ -152,6 +152,68 @@ async function picks() {
   return ok.slice(0, 9);
 }
 
+
+// ---- memes section extras (owner 2026-11-23) ----
+const UA = { 'User-Agent': 'Mozilla/5.0 (WhatIfStack)', Accept: 'application/json' };
+const jget = async (u, opt = {}) => { const r = await fetch(u, { ...opt, headers: { ...UA, ...(opt.headers || {}) }, signal: AbortSignal.timeout(12000) }); if (!r.ok) throw new Error('http ' + r.status); return r.json() };
+// Fresh spot listings on Binance (incl. Alpha) and OKX: [{ex, t, at, url, tk}] — Bybit blocks US datacenters
+async function listings() {
+  const out = [];
+  try {
+    const j = await jget('https://www.binance.com/bapi/composite/v1/public/cms/article/list/query?type=1&pageNo=1&pageSize=30&catalogId=48');
+    (((j.data || {}).catalogs || [])[0] || { articles: [] }).articles.forEach(a => {
+      const t = a.title || '';
+      if (!/(will list|adds .* on binance alpha|will be the first|launchpool|hodler airdrops|on binance spot)/i.test(t) || /stock|bstocks|options|futures|margin|perpetual|delist/i.test(t)) return;
+      out.push({ ex: 'Binance', t, at: a.releaseDate, url: 'https://www.binance.com/en/support/announcement/' + a.code, tk: [...t.matchAll(/\(([A-Z0-9]{2,12})\)/g)].map(m => m[1]) });
+    });
+  } catch (e) { /* OKX still counts */ }
+  try {
+    const j = await jget('https://www.okx.com/api/v5/support/announcements?annType=announcements-new-listings');
+    (((j.data || [])[0] || {}).details || []).forEach(a => {
+      const t = a.title || ''; if (!/(launch .*\/(usd|usdt)|will list|listing)/i.test(t) || /migration|delist|futures|perpetual|margin/i.test(t)) return;
+      const m = t.match(/launch ([A-Z0-9]{2,12})\//i) || t.match(/\(([A-Z0-9]{2,12})\)/);
+      out.push({ ex: 'OKX', t, at: +a.pTime, url: a.url, tk: m ? [m[1].toUpperCase()] : [] });
+    });
+  } catch (e) { /* Binance still counts */ }
+  if (!out.length) throw new Error('no listings');
+  const since = Date.now() - 21 * 864e5;
+  return out.filter(x => x.at >= since).sort((a, b) => b.at - a.at).slice(0, 12);
+}
+// Meme narratives from CoinGecko categories: market cap + 24h change of each meme theme
+const NARR = /meme|dog-themed|cat-themed|frog|pump-fun|four-meme|political|celebrity/i;
+async function narr() {
+  const j = await jget('https://api.coingecko.com/api/v3/coins/categories');
+  return (j || []).filter(c => NARR.test(c.id) && c.id !== 'meme-token' && c.market_cap > 2e7)
+    .map(c => ({ id: c.id, n: String(c.name || '').replace(/\s*\(.*\)$/, ''), mc: c.market_cap, c24: c.market_cap_change_24h, v: c.volume_24h, img: (c.top_3_coins || []).slice(0, 3) }))
+    .sort((a, b) => b.mc - a.mc).slice(0, 12);
+}
+// Launch pulse: of the latest launches on Solana + BNB Chain launchpads, how many already look dead, how many are climbing the curve,
+// and how many reached a DEX in the last 24 h (Binance Meme Rush lists)
+async function pulse() {
+  const now = Date.now(), res = { n: 0, dead: 0, climb: 0, done24: 0, min: null };
+  await Promise.all(['CT_501', '56'].map(async c => {
+    try {
+      const nw = await bnPost('/v1/public/wallet-direct/buw/wallet/market/token/pulse/rank/list/ai', { chainId: c, rankType: 10, limit: 100 });
+      (nw || []).forEach(t => { res.n++; const ag = (now - (+t.createTime || now)) / 6e4; res.min = Math.max(res.min || 0, ag);
+        if ((+t.holders || 0) < 10 && ag > 15) res.dead++; if ((+t.progress || 0) >= 50) res.climb++ });
+      const dn = await bnPost('/v1/public/wallet-direct/buw/wallet/market/token/pulse/rank/list/ai', { chainId: c, rankType: 30, limit: 100 });
+      (dn || []).forEach(t => { if (now - (+t.migrateTime || +t.createTime || 0) < 864e5) res.done24++ });
+    } catch (e) { /* the other chain still counts */ }
+  }));
+  if (!res.n) throw new Error('no pulse');
+  res.min = Math.round(res.min || 0);
+  return res;
+}
+// Why people talk about a token (Binance social hype board, English only): {address: {b, s}}
+async function hypeMap(n) {
+  const c = BNC[n]; if (!c) return {};
+  const j = await jget(`${BN}/v1/public/wallet-direct/buw/wallet/market/token/pulse/social/hype/rank/leaderboard/ai?chainId=${c}&targetLanguage=en&timeRange=1`);
+  const out = {};
+  (((j.data || {}).leaderBoardList) || []).forEach(x => { const m = x.metaInfo || {}, h = x.socialHypeInfo || {};
+    if (m.contractAddress && h.socialSummaryBrief) out[String(m.contractAddress).toLowerCase()] = { b: String(h.socialSummaryBrief).slice(0, 220), s: h.sentiment || '' } });
+  return out;
+}
+
 async function list(view, n) {
   if ((n === 'all' || BNC[n]) && ['trend', 'vol', 'new', 'soon', 'done', 'gain'].includes(view)) {
     try { return await bnList(view === 'gain' ? 'trend' : view, n) } catch (e) { /* fall back to GeckoTerminal */ }
@@ -196,6 +258,10 @@ module.exports = async (req, res) => {
   const n = String(q.n || 'all');
   if (n !== 'all' && !NETS.includes(n) && !/^[a-z0-9_-]{2,30}$/.test(n)) return send(400, { e: 'network' }, 'no-store');
   try {
+    if (q.dex === 'listings') return send(200, { t: Date.now(), d: await listings() }, 'public, s-maxage=900, stale-while-revalidate=3600, stale-if-error=86400');
+    if (q.dex === 'narr') return send(200, { t: Date.now(), d: await narr() }, 'public, s-maxage=1800, stale-while-revalidate=7200, stale-if-error=86400');
+    if (q.dex === 'pulse') return send(200, { t: Date.now(), d: await pulse() }, 'public, s-maxage=300, stale-while-revalidate=1800, stale-if-error=86400');
+    if (q.dex === 'hype') return send(200, { t: Date.now(), d: await hypeMap(n) }, 'public, s-maxage=600, stale-while-revalidate=3600, stale-if-error=86400');
     if (q.dex === 'picks') return send(200, { t: Date.now(), d: await picks() }, 'public, s-maxage=300, stale-while-revalidate=1800, stale-if-error=86400');
     if (q.dex === 'kline') {
       const aa = String(q.a || ''), ii = KI[q.i] ? q.i : '15m';
