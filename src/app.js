@@ -1,6 +1,9 @@
 /* WhatIfStack — front-end. Data: window.WI (index of all assets, from index.js),
    page config: window.PAGE, referral links: window.REF / window.REF_DEFAULT (ref.js).
    Price series are loaded on demand from /assets/p/<id>.json. */
+/* owner 2026-11-23 (save Vercel requests): background polling pauses when the tab is hidden or nobody touched the page for 20 min */
+(function(){ let t=Date.now(); const up=()=>{ t=Date.now() }; ['pointerdown','keydown','scroll','touchstart','mousemove'].forEach(e=>addEventListener(e,up,{passive:true}));
+  document.addEventListener('visibilitychange',()=>{ if(!document.hidden) up() }); window.wiAway=()=>document.hidden||Date.now()-t>1200000 })();
 (function(){
 const WI = window.WI, PAGE = window.PAGE || {}, BASE = PAGE.base || '';
 const lang = PAGE.lang || 'uk';
@@ -346,7 +349,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
 (function(){
   const ids=()=>[...new Set($$('[data-p],[data-c]').map(el=>el.dataset.p||el.dataset.c))].filter(i=>BYID[i]&&BYID[i].y).slice(0,25);
   let busy=false;
-  async function run(){ if(busy||document.hidden) return; const L=ids(); if(!L.length) return; busy=true;
+  async function run(){ if(busy||wiAway()) return; const L=ids(); if(!L.length) return; busy=true;
     try{ const r=await fetch('/api/quote?s='+encodeURIComponent(L.map(i=>BYID[i].y).join(','))); if(!r.ok) return; const Q=await r.json();
       L.forEach(i=>{ const a=BYID[i], q=Q[a.y]; if(!q||!(q.p>0)) return; const old=a.pr; a.pr=q.p; if(q.c!=null) a.ch=q.c;
         $$(`[data-p="${i}"]`).forEach(el=>{ el.textContent=fmtPrice(q.p); if(old&&Math.abs(q.p/old-1)>1e-6){ el.classList.remove('flash-up','flash-dn'); void el.offsetWidth; el.classList.add(q.p>old?'flash-up':'flash-dn') } });
@@ -519,7 +522,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
     $$('.nlist.own .nrow').forEach(r=>r.hidden=!!tag&&!(r.dataset.g||'').split(' ').includes(tag)); draw() });
   $('#nmore').onclick=()=>{ shown+=40; draw() };
   const load=()=>fetch('/api/news/').then(r=>r.json()).then(d=>{ items=d.items||[]; draw() }).catch(()=>{ box.innerHTML='<p class="muted">—</p>' });
-  load(); setInterval(()=>{ if(!document.hidden) load() },300000);
+  load(); setInterval(()=>{ if(!wiAway()) load() },300000);
 })();
 
 /* ---------- local time for news timestamps ---------- */
@@ -943,7 +946,7 @@ const DEXU=(()=>{
     box.innerHTML=l.slice(0,30).map(row).join('')||'<tr><td colspan="9" class="empty">—</td></tr>' }
   let seq=0;
   function load(){ const my=++seq; clearTimeout(tmr); const v=view==='gain'?'trend':view;
-    U.api(`dex=${v}&n=${net}`).then(j=>{ if(my!==seq) return; $('#dexerr').hidden=true; last=j.d||[]; if(v==='trend'&&net==='all') movers(last); draw(); tmr=setTimeout(load,90000) })
+    U.api(`dex=${v}&n=${net}`).then(j=>{ if(my!==seq) return; $('#dexerr').hidden=true; last=j.d||[]; if(v==='trend'&&net==='all') movers(last); draw(); const again=()=>{ if(wiAway()) tmr=setTimeout(again,30000); else load() }; tmr=setTimeout(again,90000) })
       .catch(()=>{ if(my!==seq) return; if(!last.length) $('#dexerr').hidden=false; tmr=setTimeout(load,15000) }) }
   if(view!=='trend'||net!=='all') U.api('dex=trend&n=all').then(j=>movers(j.d||[])).catch(()=>{});
   $$('#dexn button').forEach(b=>b.onclick=()=>{ net=b.dataset.n; $$('#dexn button').forEach(x=>x.classList.toggle('on',x===b)); last=[]; box.innerHTML='<tr><td colspan="9" class="empty">…</td></tr>'; load() });
@@ -992,7 +995,7 @@ const DEXU=(()=>{
       const seen=new Set(); CS.setData(k.filter(c=>!seen.has(c[0])&&seen.add(c[0])).sort((a,b)=>a[0]-b[0]).map(c=>({time:c[0],open:c[1],high:c[2],low:c[3],close:c[4]})));
       if(fit) CHT.timeScale().fitContent();
       const last=k[k.length-1][4]; if(pe&&last>0){ pe.textContent=fmtPrice(last); document.title=document.title.replace(/— [^|]+\|/,`— ${fmtPrice(last)} |`) }
-      clearTimeout(kt); kt=setTimeout(()=>{ if(!document.hidden) draw(false); else kt=setTimeout(()=>draw(false),15000) },15000) }
+      clearTimeout(kt); const tick=()=>{ if(wiAway()) kt=setTimeout(tick,15000); else draw(false) }; kt=setTimeout(tick,15000) }
     draw(true) }
   let row=null; try{ const k=JSON.parse(sessionStorage.getItem('wi_dexrow')||'null'); if(k&&k.n===n&&(k.a===a0||(p&&k.p===p))) row=k }catch(e){}
   if(row) show(row);
@@ -1024,7 +1027,7 @@ const DEXU=(()=>{
   $$('#mtab button').forEach(b=>b.onclick=()=>{ $$('#mtab button').forEach(x=>x.classList.toggle('on',x===b)); const was=RUSH[view]||'trend'; view=b.dataset.v; if((RUSH[view]||'trend')===was) draw(); else { box.innerHTML='<div class="empty">…</div>'; load() } });
   $$('#mnet button').forEach(b=>b.onclick=()=>{ $$('#mnet button').forEach(x=>x.classList.toggle('on',x===b)); net=b.dataset.n; box.innerHTML='<div class="empty">…</div>'; load() });
   box.addEventListener('click',e=>{ const a=e.target.closest('.mrow'); if(!a) return; const r=rows.find(x=>x.a===a.dataset.a); if(r) U.keep(r) });
-  load(); setInterval(()=>{ if(!document.hidden) load() },45000);
+  load(); setInterval(()=>{ if(!wiAway()) load() },45000);
 })();
 /* ---------- memes «Pick of the day»: strict filter + Binance social buzz, traffic light in plain words ---------- */
 (function(){
@@ -1037,7 +1040,7 @@ const DEXU=(()=>{
   let rows=[];
   box.addEventListener('click',e=>{ const a=e.target.closest('.mpc'); if(!a) return; const r=rows.find(x=>x.a===a.dataset.a); if(r) U.keep(r) });
   const load=()=>U.api('dex=picks').then(j=>{ rows=j.d||[]; box.innerHTML=rows.length?rows.map(card).join(''):`<p class="muted">${esc(F.none)}</p>` }).catch(()=>{ box.innerHTML=`<p class="muted">${esc(F.none)}</p>` });
-  load(); setInterval(()=>{ if(!document.hidden) load() },300000);
+  load(); setInterval(()=>{ if(!wiAway()) load() },300000);
 })();
 /* ---------- share: one button -> phone share sheet, or a menu (networks + copy link) ---------- */
 (function(){
@@ -1648,11 +1651,11 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
         ws.onclose=()=>{ clearInterval(o.pi); if(!o.dead&&!document.hidden&&n<5) setTimeout(()=>go(n+1),3000*(n+1)) } };
       go(0) });
     const xt=L.filter(a=>'kbhn'.includes(a.x)&&a.xs), dx=L.filter(a=>a.x==='d'&&a.xs);
-    if(xt.length||dx.length){ const poll2=()=>{ if(document.hidden) return;
+    if(xt.length||dx.length){ const poll2=()=>{ if(wiAway()) return;
       if(xt.length) fetch(`${(window.PAGE||{}).base||''}/api/quote?xt=${xt.map(a=>a.x+':'+a.xs).join(',')}`).then(r=>r.ok?r.json():null).then(Q=>{ if(Q) xt.forEach(a=>{ const q=Q[a.xs]; if(q) put(a,q[0],q[1]) }) }).catch(()=>{});
       dx.forEach(a=>{ const [n,p]=a.xs.split('/'); fetch(`${(window.PAGE||{}).base||''}/api/chart?dex=pool&n=${n}&p=${p}`).then(r=>r.ok?r.json():null).then(q=>{ if(q&&q.pr) put(a,+q.pr,q.c24!=null?q.c24/100:null) }).catch(()=>{}) }) };
       poll2(); clearInterval(window.__xtT); window.__xtT=setInterval(poll2,30000) }
-    const mx=L.filter(a=>a.x==='m'); if(mx.length){ const poll=()=>{ if(document.hidden) return;
+    const mx=L.filter(a=>a.x==='m'); if(mx.length){ const poll=()=>{ if(wiAway()) return;
       fetch(`${(window.PAGE||{}).base||''}/api/quote?mx=${mx.map(a=>a.t.toUpperCase()).join(',')}`).then(r=>r.ok?r.json():null).then(Q=>{ if(Q) mx.forEach(a=>{ const q=Q[a.t.toUpperCase()]; if(q) put(a,q[0],q[1]) }) }).catch(()=>{}) };
       poll(); mxT=setInterval(poll,15000) } }
   document.addEventListener('visibilitychange',()=>{ if(document.hidden) stop(); else start() });
@@ -1735,7 +1738,7 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
   bar.addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; const s=b.parentNode; s.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
     if(s.id==='glper') per=b.dataset.k; else min=+b.dataset.m; if(D) draw(); else load() });
   function load(){ fetch(`${(window.PAGE||{}).base||''}/api/quote?gl=1`).then(r=>r.ok?r.json():null).then(j=>{ if(j&&j.c){ D=j; draw() } }).catch(()=>{}) }
-  load(); setInterval(()=>{ if(!document.hidden) load() },300000);
+  load(); setInterval(()=>{ if(!wiAway()) load() },300000);
 })();
 
 /* ---------- /investors/<id>/: «Follow this portfolio» → its stocks become a watchlist named after the investor ---------- */

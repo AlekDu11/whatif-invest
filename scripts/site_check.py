@@ -49,9 +49,15 @@ def main():
     ids = sorted(build.A)
     random.seed(time.strftime('%Y-%m-%d'))
     urls = [url(l, h) for l in ['uk'] + LANGS for h in HUBS]
-    urls += [url('uk', f'{i}/') for i in ids] + [url('en', f'{i}/') for i in ids]
+    # owner 2026-11-23 (save Vercel requests): every asset in uk + en only on Sundays (or FULL=1);
+    # other days a sample — 150 in uk, 150 in en, 15 per other language
+    full = time.gmtime().tm_wday == 6 or os.environ.get('FULL') == '1'
+    if full:
+        urls += [url('uk', f'{i}/') for i in ids] + [url('en', f'{i}/') for i in ids]
+    else:
+        urls += [url(l, f'{i}/') for l in ('uk', 'en') for i in random.sample(ids, min(150, len(ids)))]
     for l in LANGS[1:]:
-        urls += [url(l, f'{i}/') for i in random.sample(ids, min(150, len(ids)))]
+        urls += [url(l, f'{i}/') for i in random.sample(ids, min(150 if full else 15, len(ids)))]
     t0, bad = time.time(), []
     with cf.ThreadPoolExecutor(16) as ex:
         for u, err in ex.map(check, urls):
@@ -60,7 +66,7 @@ def main():
     secs = int(time.time() - t0)
     os.makedirs('reports', exist_ok=True)
     lines = [f'# Site check {time.strftime("%Y-%m-%d %H:%M UTC", time.gmtime())}', '',
-             f'Checked **{len(urls)}** pages in {secs} s (all {len(ids)} assets in uk + en, 150 random per other language, {len(HUBS)} hubs × 20 languages).',
+             f'Checked **{len(urls)}** pages in {secs} s (' + (f'all {len(ids)} assets in uk + en, 150 random per other language' if full else 'daily sample: 150 uk + 150 en + 15 per other language; full check on Sundays') + f', {len(HUBS)} hubs × 20 languages).',
              f'Broken: **{len(bad)}**' + (' ✅' if not bad else ''), '']
     if bad:
         lines += ['| URL | problem |', '|---|---|'] + [f'| {u} | {e} |' for u, e in sorted(bad)[:500]]
