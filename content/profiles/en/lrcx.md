@@ -1,6 +1,6 @@
 ---
-title: Lam Research (LRCX) explained: the toolmaker behind AI memory chips
-description: Lam Research in plain language: $8.22 billion of revenue in one quarter, +54% a year, from machines that etch and coat chips. The numbers, the China risk and what regular buyers should know.
+title: Lam Research (LRCX) stock: the toolmaker behind AI memory chips
+description: Lam Research in plain language: $8.22 billion of revenue in the September 2026 quarter (+54%), the chip machines it sells, the China risk and the cycle.
 date: 2026-11-18
 kind: analysis
 ---
@@ -10,7 +10,7 @@ kind: analysis
 > - Record revenue: $8.22 billion in the quarter to 27 September 2026, up 54% from $5.32 billion a year earlier.
 > - Very profitable: 52.3% gross margin, 40.0% operating margin, $2.75 billion of net income in the quarter.
 > - China was 35% of revenue, down from 43% a year earlier. Export rules are the biggest outside risk.
-> - Over the past 52 weeks the stock traded between $135.50 and $438.50. That is roughly a threefold swing.
+> - The shares split 10-for-1 in October 2024; AI demand then lifted them to new highs during 2026.
 
 ## How it makes money
 
@@ -20,16 +20,18 @@ Memory chips (NAND flash and the high-bandwidth memory used next to AI processor
 
 ## The numbers right now
 
+- Price today: {{price:lrcx}}
+- Market value: {{mcap:lrcx}} ({{rank:lrcx}} among the world's largest companies on WhatIfStack)
+- Record high: {{ath:lrcx}} ({{athd:lrcx}}), {{fromath:lrcx}} from it
+- $10 a day for 10 years: {{dca:lrcx:10}} from {{dcainv:10}} invested ({{dcaroi:lrcx:10}})
+
 In the September 2026 quarter Lam made $8.22 billion of revenue, 22% more than in the June quarter. Net income was $2.75 billion, or $2.19 per share. The company ended the quarter with $7.44 billion in cash against about $3.74 billion of debt. In one quarter it spent $1.02 billion on buybacks and $325 million on dividends, and it raised the quarterly dividend from $0.26 to $0.33 per share. Over the last 12 months revenue was about $26.1 billion.
 
 For the December 2026 quarter, management guided to $8.6 billion of revenue (give or take $400 million) and earnings of about $2.33 per share. CEO Tim Archer says the company expects to grow faster than the overall chip-equipment market.
 
 ## The stock's story
 
-Lam is a cyclical stock. Chipmakers spend heavily in good years and cut orders sharply in bad ones, and the share price swings with them. In October 2024 the company split its stock 10-for-1, so older prices look ten times higher than today's. AI demand then sent the shares to record highs during 2026. In 52 weeks the price went from $135.50 to $438.50.
-
-- Price today: {{price:lrcx}}
-- $10 a day for 10 years: {{dca:lrcx:10}} from {{dcainv:10}} invested ({{dcaroi:lrcx:10}})
+Lam is a cyclical stock. Chipmakers spend heavily in good years and cut orders sharply in bad ones, and the share price swings with them. In October 2024 the company split its stock 10-for-1, so prices from before the split look ten times higher than later ones. AI demand then sent the shares to record highs during 2026: in the twelve months to mid-November 2026 the price ranged between $135.50 and $438.50.
 
 ## Competitors
 
@@ -40,7 +42,7 @@ Lam's direct rivals are Applied Materials and Tokyo Electron, which also sell et
 - **The chip cycle:** when memory prices fall, chipmakers freeze new spending, and equipment orders can drop fast.
 - **China and export controls:** China is still about a third of sales. US trade rules have hurt Lam's revenue and margins before, and the company says they could do so again.
 - **Few, very large customers:** a handful of chipmakers in Korea, Taiwan and China buy most of the tools, so one delayed factory shows up in the results.
-- **High expectations:** after a run like the last year's, even a small slowdown in AI spending can hit the share price hard.
+- **High expectations:** after a run like the one in 2025–2026, even a small slowdown in AI spending can hit the share price hard.
 
 ## What it means if you buy regularly
 
