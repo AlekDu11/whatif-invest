@@ -1011,8 +1011,11 @@ const DEXU=(()=>{
   const okRush=r=>(r.t10==null||r.t10<=40)&&(r.ins==null||r.ins<=15)&&(r.dev==null||r.dev<=10)&&(r.liq||0)>=3000;   // hide obvious junk silently
   const link=r=>`${P.tok}?n=${encodeURIComponent(r.n)}&a=${encodeURIComponent(r.a)}`;
   const H=P.h||{}, num=v=>v==null?'—':Math.round(v).toLocaleString(T.intl||'en');
-  const head=`<div class="mrow mhead"><span class="mrk">#</span><span class="mrn">${esc(H.name||'')}</span><span class="mc-p">${esc(H.price||'')}</span><span class="mc-c">24h</span><span class="mc-m">${esc(H.mc||'')}</span><span class="mc-v">${esc(H.vol||'')}</span><span class="mc-l">${esc(H.liq||'')}</span><span class="mc-h">${esc(H.hold||'')}</span><span class="mc-a">${esc(H.age||'')}</span></div>`;
-  const row=(r,i)=>`<a class="mrow" href="${link(r)}" data-a="${esc(r.a)}"><span class="mrk">${i+1}</span>
+  let sk=null, sd=-1;   // owner 2026-11-23: sort by any column (click the header; click again = reverse)
+  const SK={p:r=>r.pr,c:r=>U.pc(r.c24),m:r=>r.mc,v:r=>r.vol,l:r=>r.liq,h:r=>r.h,a:r=>r.at?-Date.parse(r.at):null};
+  const hc=(k,cl,t)=>`<span class="${cl} dxs${sk===k?' on':''}" data-k="${k}" role="button" tabindex="0">${esc(t)}${sk===k?(sd<0?' ↓':' ↑'):''}</span>`;
+  const head=()=>`<div class="dxr dxh"><span class="mrk">#</span><span class="mrn">${esc(H.name||'')}</span>${hc('p','mc-p',H.price||'')}${hc('c','mc-c','24h')}${hc('m','mc-m',H.mc||'')}${hc('v','mc-v',H.vol||'')}${hc('l','mc-l',H.liq||'')}${hc('h','mc-h',H.hold||'')}${hc('a','mc-a',H.age||'')}</div>`;
+  const row=(r,i)=>`<a class="dxr" href="${link(r)}" data-a="${esc(r.a)}"><span class="mrk">${i+1}</span>
     <span class="mrn">${U.ic(r,36)}<span class="mrt"><b>${esc(r.s)}</b><small class="muted">${esc((r.nm&&r.nm!==r.s?r.nm+' · ':'')+(U.NETN[r.n]||r.n))}</small></span></span>
     <span class="mc-p"><b>${fmtPrice(r.pr)}</b><small class="mob muted">${U.big(r.mc)} MC</small></span>
     <span class="mc-c ${cls(U.pc(r.c24))}">${fmtPct(U.pc(r.c24))}</span>
@@ -1022,11 +1025,14 @@ const DEXU=(()=>{
     if(RUSH[view]) l=l.filter(okRush); else l=l.filter(r=>(r.liq||0)>=10000);
     if(view==='gain') l.sort((a,b)=>(b.c24||0)-(a.c24||0)); else if(view==='most') l.sort((a,b)=>(b.h||0)-(a.h||0));
     else if(view==='soon') l.sort((a,b)=>(b.prog||0)-(a.prog||0)); else if(RUSH[view]) l.sort((a,b)=>Date.parse(b.at)-Date.parse(a.at));
-    box.innerHTML=l.length?head+l.slice(0,50).map(row).join(''):`<div class="empty">—</div>` }
+    if(sk){ const f=SK[sk]; l.sort((a,b)=>{ const x=f(a), y=f(b); if(x==null&&y==null) return 0; if(x==null) return 1; if(y==null) return -1; return sd*(x-y) }) }
+    box.innerHTML=l.length?head()+l.slice(0,50).map(row).join(''):`<div class="empty">—</div>` }
   async function load(){ const t=++tok; try{ const j=await U.api(`dex=${RUSH[view]||'trend'}&n=${net}`); if(t!==tok) return; rows=j.d||[]; draw() }catch(e){ if(t===tok&&!rows.length) box.innerHTML='<div class="empty">—</div>' } }
   $$('#mtab button').forEach(b=>b.onclick=()=>{ $$('#mtab button').forEach(x=>x.classList.toggle('on',x===b)); const was=RUSH[view]||'trend'; view=b.dataset.v; if((RUSH[view]||'trend')===was) draw(); else { box.innerHTML='<div class="empty">…</div>'; load() } });
   $$('#mnet button').forEach(b=>b.onclick=()=>{ $$('#mnet button').forEach(x=>x.classList.toggle('on',x===b)); net=b.dataset.n; box.innerHTML='<div class="empty">…</div>'; load() });
-  box.addEventListener('click',e=>{ const a=e.target.closest('.mrow'); if(!a) return; const r=rows.find(x=>x.a===a.dataset.a); if(r) U.keep(r) });
+  const sortBy=k=>{ if(sk===k) sd=-sd; else { sk=k; sd=-1 } draw() };
+  box.addEventListener('keydown',e=>{ const h=e.target.closest('.dxs'); if(h&&(e.key==='Enter'||e.key===' ')){ e.preventDefault(); sortBy(h.dataset.k) } });
+  box.addEventListener('click',e=>{ const h=e.target.closest('.dxs'); if(h){ e.preventDefault(); sortBy(h.dataset.k); return } const a=e.target.closest('.dxr'); if(!a) return; const r=rows.find(x=>x.a===a.dataset.a); if(r) U.keep(r) });
   load(); setInterval(()=>{ if(!wiAway()) load() },45000);
 })();
 /* ---------- memes «Pick of the day»: strict filter + Binance social buzz, traffic light in plain words ---------- */
