@@ -1,16 +1,16 @@
 ---
-title: Sky (SKY) dijelaskan: eks-MakerDAO, 24.000 SKY per MKR, dan rekor $0,10
+title: Sky (SKY) dijelaskan: eks-MakerDAO, 24.000 SKY per MKR, dan penerbit DAI serta USDS
 description: Sky dengan bahasa sederhana: protokol di balik stablecoin DAI dan USDS, kegunaan token SKY, pembelian kembali, kisahnya, pesaing, dan risiko utamanya.
-date: 2026-11-23
+date: 2026-11-24
 kind: analysis
 ---
-**Sky** adalah nama baru MakerDAO, salah satu proyek tertua di keuangan terdesentralisasi sekaligus penerbit stablecoin DAI dan USDS — dolar digital yang menjadi sandaran aktivitas kripto bernilai miliaran dolar. SKY adalah token yang mengatur protokol dan ikut menikmati labanya. Pada November 2026, seluruh SKY yang beredar bernilai sekitar $970 juta, kira-kira peringkat 70 di antara mata uang kripto.
+**Sky** adalah nama baru MakerDAO, salah satu proyek tertua di keuangan terdesentralisasi sekaligus penerbit stablecoin DAI dan USDS — dolar digital yang menjadi sandaran aktivitas kripto bernilai miliaran dolar. SKY adalah token yang mengatur protokol dan ikut menikmati labanya. Kini seluruh SKY yang beredar bernilai {{mcap:sky}} ({{rank:sky}} di antara mata uang kripto).
 
 > **Poin penting**
 > - MakerDAO meluncurkan DAI pada Desember 2017; pada 2024 proyek ini menjadi Sky, dan setiap token MKR lama bisa ditukar dengan 24.000 SKY.
 > - Sekitar 23,4 miliar SKY beredar, mendekati batas maksimum sekitar 23,5 miliar.
 > - Sebagian surplus protokol dipakai membeli SKY di pasar; lebih dari 100 juta USDS sudah dibelanjakan untuk pembelian kembali.
-> - Rekor harga sejauh ini $0,101 (5 Oktober 2026); pada November 2026 SKY diperdagangkan sekitar 60% di bawahnya.
+> - Rekor tertingginya {{ath:sky}} ({{athd:sky}}); kini harganya {{fromath:sky}} dari rekor itu.
 
 ## Cara kerjanya
 
@@ -23,7 +23,8 @@ Pemegang SKY memberikan suara soal suku bunga, agunan yang diterima, dan pengatu
 ## Angka saat ini
 
 - Harga hari ini: {{price:sky}}
-- Rekor tertinggi: {{ath:sky}} ({{athd:sky}})
+- Rekor tertinggi: {{ath:sky}} ({{athd:sky}}), {{fromath:sky}} dari rekor itu
+- Nilai pasar: {{mcap:sky}} ({{rank:sky}} di antara mata uang kripto)
 - Perubahan harga dalam 12 bulan: {{chg1y:sky}}
 - $10 per hari selama 1 tahun: {{dca:sky:1}} dari {{dcainv:1}} yang diinvestasikan ({{dcaroi:sky:1}})
 

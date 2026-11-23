@@ -1,16 +1,16 @@
 ---
-title: Sky（SKY）详解：前身MakerDAO、1枚MKR换24,000枚SKY、历史最高价0.10美元
+title: Sky（SKY）详解：前身MakerDAO、1枚MKR换24,000枚SKY、DAI和USDS的发行方
 description: 用通俗语言讲Sky：稳定币DAI和USDS背后的协议、SKY代币的作用、回购、发展历程、竞争对手和主要风险。
-date: 2026-11-23
+date: 2026-11-24
 kind: analysis
 ---
-**Sky**是MakerDAO的新名字。MakerDAO是去中心化金融（DeFi）中历史最悠久的项目之一，发行稳定币DAI和USDS——数十亿美元的加密活动都依赖这些数字美元。SKY是治理该协议并分享其利润的代币。2026年11月，流通中的全部SKY价值约9.7亿美元，在加密货币中排名第70位左右。
+**Sky**是MakerDAO的新名字。MakerDAO是去中心化金融（DeFi）中历史最悠久的项目之一，发行稳定币DAI和USDS——数十亿美元的加密活动都依赖这些数字美元。SKY是治理该协议并分享其利润的代币。目前，流通中的全部SKY市值为{{mcap:sky}}（在加密货币中排名{{rank:sky}}）。
 
 > **要点**
 > - MakerDAO于2017年12月推出DAI；2024年更名为Sky，每枚旧MKR代币可兑换24,000枚SKY。
 > - 约234亿枚SKY在流通，接近约235亿枚的上限。
 > - 协议把部分盈余用于在市场上买入SKY；迄今已在回购上花费超过1亿USDS。
-> - 迄今最高价为0.101美元（2026年10月5日）；2026年11月SKY的价格比它低约60%。
+> - 历史最高价为{{ath:sky}}（{{athd:sky}}）；当前价格距离该高点{{fromath:sky}}。
 
 ## 它如何运作
 
@@ -23,7 +23,8 @@ SKY持有者对利率、可接受的抵押品和风险参数进行投票——�
 ## 最新数据
 
 - 当前价格：{{price:sky}}
-- 历史最高价：{{ath:sky}}（{{athd:sky}}）
+- 历史最高价：{{ath:sky}}（{{athd:sky}}），距高点{{fromath:sky}}
+- 市值：{{mcap:sky}}（在加密货币中排名{{rank:sky}}）
 - 12个月价格变化：{{chg1y:sky}}
 - 每天10美元、坚持1年：投入{{dcainv:1}}，变成{{dca:sky:1}}（{{dcaroi:sky:1}}）
 

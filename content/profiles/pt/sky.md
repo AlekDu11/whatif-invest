@@ -1,16 +1,16 @@
 ---
-title: Sky (SKY) explicado: o antigo MakerDAO, 24.000 SKY por MKR e recorde de US$ 0,10
+title: Sky (SKY) explicado: o antigo MakerDAO, 24.000 SKY por MKR e emissor de DAI e USDS
 description: Sky em linguagem simples: o protocolo das stablecoins DAI e USDS, para que serve o token SKY, recompras, sua história, rivais e os principais riscos.
-date: 2026-11-23
+date: 2026-11-24
 kind: analysis
 ---
-**Sky** é o novo nome do MakerDAO, um dos projetos mais antigos das finanças descentralizadas e emissor das stablecoins DAI e USDS — dólares digitais dos quais dependem bilhões de dólares em atividade cripto. SKY é o token que governa o protocolo e participa dos seus lucros. Em novembro de 2026, todos os SKY em circulação valiam cerca de US$ 970 milhões, por volta da 70ª posição entre as criptomoedas.
+**Sky** é o novo nome do MakerDAO, um dos projetos mais antigos das finanças descentralizadas e emissor das stablecoins DAI e USDS — dólares digitais dos quais dependem bilhões de dólares em atividade cripto. SKY é o token que governa o protocolo e participa dos seus lucros. Hoje, todos os SKY em circulação valem {{mcap:sky}} ({{rank:sky}} entre as criptomoedas).
 
 > **Pontos principais**
 > - O MakerDAO lançou o DAI em dezembro de 2017; em 2024 virou Sky, e cada antigo token MKR pode ser trocado por 24.000 SKY.
 > - Circulam cerca de 23,4 bilhões de SKY, perto do máximo de aproximadamente 23,5 bilhões.
 > - Parte do excedente do protocolo compra SKY no mercado; mais de 100 milhões de USDS já foram gastos em recompras.
-> - O recorde até agora é US$ 0,101 (5 de outubro de 2026); em novembro de 2026 o SKY era negociado cerca de 60% abaixo.
+> - A máxima histórica é {{ath:sky}} ({{athd:sky}}); hoje o preço está {{fromath:sky}} abaixo dela.
 
 ## Como funciona
 
@@ -23,7 +23,8 @@ Os detentores de SKY votam taxas de juros, garantias aceitas e parâmetros de ri
 ## Os números agora
 
 - Preço hoje: {{price:sky}}
-- Recorde: {{ath:sky}} ({{athd:sky}})
+- Máxima histórica: {{ath:sky}} ({{athd:sky}}), {{fromath:sky}} desde ela
+- Valor de mercado: {{mcap:sky}} ({{rank:sky}} entre as criptomoedas)
 - Variação do preço em 12 meses: {{chg1y:sky}}
 - US$ 10 por dia durante 1 ano: {{dca:sky:1}} com {{dcainv:1}} investidos ({{dcaroi:sky:1}})
 

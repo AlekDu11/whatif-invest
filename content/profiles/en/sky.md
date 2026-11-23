@@ -1,16 +1,16 @@
 ---
-title: Sky (SKY) explained: the former MakerDAO, 24,000 SKY per MKR and a $0.10 record
+title: Sky (SKY) explained: the former MakerDAO, 24,000 SKY per MKR and the issuer of DAI and USDS
 description: Sky in plain language: the protocol behind the DAI and USDS stablecoins, what the SKY token does, buybacks, its story, rivals and the main risks.
-date: 2026-11-23
+date: 2026-11-24
 kind: analysis
 ---
-**Sky** is the new name of MakerDAO, one of the oldest projects in decentralized finance and the issuer of the DAI and USDS stablecoins — digital dollars that billions of dollars of crypto activity rely on. SKY is the token that governs the protocol and shares in its profits. In November 2026 all SKY in circulation was worth about $970 million, around number 70 among cryptocurrencies.
+**Sky** is the new name of MakerDAO, one of the oldest projects in decentralized finance and the issuer of the DAI and USDS stablecoins — digital dollars that billions of dollars of crypto activity rely on. SKY is the token that governs the protocol and shares in its profits. Today all SKY in circulation is worth {{mcap:sky}} ({{rank:sky}} among cryptocurrencies).
 
 > **Key takeaways**
 > - MakerDAO launched DAI in December 2017; in 2024 it became Sky, and every old MKR token can be swapped for 24,000 SKY.
 > - About 23.4 billion SKY circulate, close to the maximum of roughly 23.5 billion.
 > - Part of the protocol's surplus buys SKY on the market; more than 100 million USDS has been spent on buybacks so far.
-> - The record price so far is $0.101 (5 October 2026); in November 2026 SKY traded about 60% below it.
+> - Its record high is {{ath:sky}} ({{athd:sky}}); today the price is {{fromath:sky}} from it.
 
 ## How it works
 
@@ -23,7 +23,8 @@ SKY holders vote on interest rates, accepted collateral and risk settings — in
 ## The numbers right now
 
 - Price today: {{price:sky}}
-- Record high: {{ath:sky}} ({{athd:sky}})
+- Record high: {{ath:sky}} ({{athd:sky}}), {{fromath:sky}} from it
+- Market value: {{mcap:sky}} ({{rank:sky}} among cryptocurrencies)
 - Price change over 12 months: {{chg1y:sky}}
 - $10 a day for 1 year: {{dca:sky:1}} from {{dcainv:1}} invested ({{dcaroi:sky:1}})
 

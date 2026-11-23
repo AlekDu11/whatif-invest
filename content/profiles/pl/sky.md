@@ -1,16 +1,16 @@
 ---
-title: Sky (SKY) wyjaśniony: dawny MakerDAO, 24 000 SKY za MKR i rekord 0,10 $
+title: Sky (SKY) wyjaśniony: dawny MakerDAO, 24 000 SKY za MKR i emitent DAI oraz USDS
 description: Sky prostym językiem: protokół stablecoinów DAI i USDS, do czego służy token SKY, odkupy, jego historia, rywale i główne ryzyka.
-date: 2026-11-23
+date: 2026-11-24
 kind: analysis
 ---
-**Sky** to nowa nazwa MakerDAO, jednego z najstarszych projektów zdecentralizowanych finansów i emitenta stablecoinów DAI i USDS – cyfrowych dolarów, na których opiera się kryptowalutowa aktywność warta miliardy. SKY to token, który zarządza protokołem i ma udział w jego zyskach. W listopadzie 2026 r. wszystkie SKY w obiegu były warte ok. 970 mln dolarów, co dawało mniej więcej 70. miejsce wśród kryptowalut.
+**Sky** to nowa nazwa MakerDAO, jednego z najstarszych projektów zdecentralizowanych finansów i emitenta stablecoinów DAI i USDS – cyfrowych dolarów, na których opiera się kryptowalutowa aktywność warta miliardy. SKY to token, który zarządza protokołem i ma udział w jego zyskach. Dziś wszystkie SKY w obiegu są warte {{mcap:sky}} ({{rank:sky}} wśród kryptowalut).
 
 > **Najważniejsze**
 > - MakerDAO uruchomił DAI w grudniu 2017 r.; w 2024 r. projekt stał się Sky, a każdy stary token MKR można wymienić na 24 000 SKY.
 > - W obiegu jest ok. 23,4 mld SKY, blisko maksimum wynoszącego ok. 23,5 mld.
 > - Część nadwyżki protokołu kupuje SKY na rynku; na odkupy wydano już ponad 100 mln USDS.
-> - Dotychczasowy rekord to 0,101 $ (5 października 2026 r.); w listopadzie 2026 r. SKY kosztował ok. 60% mniej.
+> - Rekord ceny to {{ath:sky}} ({{athd:sky}}); dziś cena jest {{fromath:sky}} od niego.
 
 ## Jak działa
 
@@ -23,7 +23,8 @@ Posiadacze SKY głosują nad stopami procentowymi, akceptowanymi zabezpieczeniam
 ## Liczby teraz
 
 - Cena teraz: {{price:sky}}
-- Rekord: {{ath:sky}} ({{athd:sky}})
+- Rekord: {{ath:sky}} ({{athd:sky}}), {{fromath:sky}} od niego
+- Wartość rynkowa: {{mcap:sky}} ({{rank:sky}} wśród kryptowalut)
 - Zmiana ceny w ciągu 12 miesięcy: {{chg1y:sky}}
 - 10 $ dziennie przez 1 rok: {{dca:sky:1}} przy wpłaconych {{dcainv:1}} ({{dcaroi:sky:1}})
 

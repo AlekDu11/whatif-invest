@@ -1,16 +1,16 @@
 ---
-title: Sky (SKY) expliqué : l'ancien MakerDAO, 24 000 SKY par MKR et un record à 0,10 $
+title: Sky (SKY) expliqué : l'ancien MakerDAO, 24 000 SKY par MKR et émetteur de DAI et USDS
 description: Sky en termes simples : le protocole des stablecoins DAI et USDS, à quoi sert le jeton SKY, les rachats, son histoire, ses rivaux et les principaux risques.
-date: 2026-11-23
+date: 2026-11-24
 kind: analysis
 ---
-**Sky** est le nouveau nom de MakerDAO, l'un des plus anciens projets de la finance décentralisée et l'émetteur des stablecoins DAI et USDS, des dollars numériques sur lesquels reposent des milliards de dollars d'activité crypto. SKY est le jeton qui gouverne le protocole et participe à ses bénéfices. En novembre 2026, l'ensemble des SKY en circulation valait environ 970 millions de dollars, vers la 70e place parmi les cryptomonnaies.
+**Sky** est le nouveau nom de MakerDAO, l'un des plus anciens projets de la finance décentralisée et l'émetteur des stablecoins DAI et USDS, des dollars numériques sur lesquels reposent des milliards de dollars d'activité crypto. SKY est le jeton qui gouverne le protocole et participe à ses bénéfices. Aujourd'hui, l'ensemble des SKY en circulation vaut {{mcap:sky}} ({{rank:sky}} parmi les cryptomonnaies).
 
 > **À retenir**
 > - MakerDAO a lancé le DAI en décembre 2017 ; en 2024, le projet est devenu Sky, et chaque ancien jeton MKR peut être échangé contre 24 000 SKY.
 > - Environ 23,4 milliards de SKY circulent, près du maximum d'environ 23,5 milliards.
 > - Une partie de l'excédent du protocole rachète des SKY sur le marché ; plus de 100 millions d'USDS ont déjà été consacrés aux rachats.
-> - Le record à ce jour est de 0,101 $ (5 octobre 2026) ; en novembre 2026, le SKY s'échangeait environ 60 % plus bas.
+> - Son record est de {{ath:sky}} ({{athd:sky}}) ; aujourd'hui, le cours est à {{fromath:sky}} de ce niveau.
 
 ## Comment il fonctionne
 
@@ -23,7 +23,8 @@ Les détenteurs de SKY votent les taux d'intérêt, les garanties acceptées et 
 ## Les chiffres actuels
 
 - Cours actuel : {{price:sky}}
-- Record : {{ath:sky}} ({{athd:sky}})
+- Record : {{ath:sky}} ({{athd:sky}}), {{fromath:sky}} depuis
+- Valeur de marché : {{mcap:sky}} ({{rank:sky}} parmi les cryptomonnaies)
 - Variation du cours sur 12 mois : {{chg1y:sky}}
 - 10 $ par jour pendant 1 an : {{dca:sky:1}} pour {{dcainv:1}} investis ({{dcaroi:sky:1}})
 

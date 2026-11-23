@@ -1,16 +1,16 @@
 ---
-title: Sky (SKY) là gì: MakerDAO cũ, 24.000 SKY cho mỗi MKR và đỉnh 0,10 USD
+title: Sky (SKY) là gì: MakerDAO cũ, 24.000 SKY cho mỗi MKR và đơn vị phát hành DAI, USDS
 description: Sky bằng ngôn ngữ dễ hiểu: giao thức đứng sau stablecoin DAI và USDS, token SKY dùng để làm gì, mua lại, lịch sử, đối thủ và các rủi ro chính.
-date: 2026-11-23
+date: 2026-11-24
 kind: analysis
 ---
-**Sky** là tên mới của MakerDAO, một trong những dự án lâu đời nhất của tài chính phi tập trung và là đơn vị phát hành stablecoin DAI và USDS — những đồng đô la số mà hoạt động tiền mã hóa trị giá hàng tỷ USD dựa vào. SKY là token quản trị giao thức và được chia phần lợi nhuận. Vào tháng 11/2026, toàn bộ SKY đang lưu hành trị giá khoảng 970 triệu USD, quanh vị trí thứ 70 trong số các tiền mã hóa.
+**Sky** là tên mới của MakerDAO, một trong những dự án lâu đời nhất của tài chính phi tập trung và là đơn vị phát hành stablecoin DAI và USDS — những đồng đô la số mà hoạt động tiền mã hóa trị giá hàng tỷ USD dựa vào. SKY là token quản trị giao thức và được chia phần lợi nhuận. Hiện toàn bộ SKY đang lưu hành trị giá {{mcap:sky}} ({{rank:sky}} trong các đồng tiền mã hóa).
 
 > **Điểm chính**
 > - MakerDAO ra mắt DAI vào tháng 12/2017; năm 2024 dự án đổi thành Sky, và mỗi token MKR cũ có thể đổi lấy 24.000 SKY.
 > - Khoảng 23,4 tỷ SKY đang lưu hành, sát mức tối đa khoảng 23,5 tỷ.
 > - Một phần thặng dư của giao thức được dùng mua SKY trên thị trường; đến nay đã chi hơn 100 triệu USDS cho việc mua lại.
-> - Đỉnh giá cho đến nay là 0,101 USD (5/10/2026); tháng 11/2026, SKY giao dịch thấp hơn khoảng 60%.
+> - Đỉnh kỷ lục là {{ath:sky}} ({{athd:sky}}); giá hiện tại cách đỉnh {{fromath:sky}}.
 
 ## Cách hoạt động
 
@@ -23,7 +23,8 @@ Người nắm SKY bỏ phiếu về lãi suất, loại tài sản thế chấp
 ## Các con số hiện tại
 
 - Giá hôm nay: {{price:sky}}
-- Đỉnh kỷ lục: {{ath:sky}} ({{athd:sky}})
+- Đỉnh kỷ lục: {{ath:sky}} ({{athd:sky}}), cách đỉnh {{fromath:sky}}
+- Vốn hóa thị trường: {{mcap:sky}} ({{rank:sky}} trong các đồng tiền mã hóa)
 - Biến động giá trong 12 tháng: {{chg1y:sky}}
 - 10 USD mỗi ngày trong 1 năm: {{dca:sky:1}} từ {{dcainv:1}} đã đầu tư ({{dcaroi:sky:1}})
 

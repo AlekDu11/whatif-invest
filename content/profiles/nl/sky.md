@@ -1,16 +1,16 @@
 ---
-title: Sky (SKY) uitgelegd: het vroegere MakerDAO, 24.000 SKY per MKR en een record van $0,10
+title: Sky (SKY) uitgelegd: het vroegere MakerDAO, 24.000 SKY per MKR en uitgever van DAI en USDS
 description: Sky in gewone taal: het protocol achter de stablecoins DAI en USDS, waarvoor de SKY-token dient, terugkopen, het verhaal, concurrenten en de grootste risico's.
-date: 2026-11-23
+date: 2026-11-24
 kind: analysis
 ---
-**Sky** is de nieuwe naam van MakerDAO, een van de oudste projecten in gedecentraliseerde financiën en de uitgever van de stablecoins DAI en USDS — digitale dollars waarop cryptoactiviteit van miljarden dollars leunt. SKY is de token die het protocol bestuurt en meedeelt in de winst. In november 2026 waren alle SKY in omloop samen ongeveer $970 miljoen waard, rond plaats 70 onder de cryptomunten.
+**Sky** is de nieuwe naam van MakerDAO, een van de oudste projecten in gedecentraliseerde financiën en de uitgever van de stablecoins DAI en USDS — digitale dollars waarop cryptoactiviteit van miljarden dollars leunt. SKY is de token die het protocol bestuurt en meedeelt in de winst. Vandaag zijn alle SKY in omloop samen {{mcap:sky}} waard ({{rank:sky}} onder de cryptomunten).
 
 > **Belangrijkste punten**
 > - MakerDAO lanceerde DAI in december 2017; in 2024 werd het Sky, en elke oude MKR-token kan worden omgeruild voor 24.000 SKY.
 > - Er circuleren ongeveer 23,4 miljard SKY, dicht bij het maximum van zo'n 23,5 miljard.
 > - Een deel van het overschot koopt SKY op de markt; er is al meer dan 100 miljoen USDS aan terugkopen besteed.
-> - Het record tot nu toe is $0,101 (5 oktober 2026); in november 2026 noteerde SKY zo'n 60% lager.
+> - De recordkoers is {{ath:sky}} ({{athd:sky}}); vandaag staat de koers {{fromath:sky}} daarvan af.
 
 ## Hoe het werkt
 
@@ -23,7 +23,8 @@ SKY-houders stemmen over rentetarieven, toegestaan onderpand en risico-instellin
 ## De cijfers nu
 
 - Koers nu: {{price:sky}}
-- Recordkoers: {{ath:sky}} ({{athd:sky}})
+- Recordkoers: {{ath:sky}} ({{athd:sky}}), {{fromath:sky}} daarvan af
+- Marktwaarde: {{mcap:sky}} ({{rank:sky}} onder de cryptomunten)
 - Koersverandering over 12 maanden: {{chg1y:sky}}
 - $10 per dag gedurende 1 jaar: {{dca:sky:1}} bij {{dcainv:1}} ingelegd ({{dcaroi:sky:1}})
 

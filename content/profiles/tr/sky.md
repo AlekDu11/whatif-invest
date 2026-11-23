@@ -1,16 +1,16 @@
 ---
-title: Sky (SKY) nedir: eski MakerDAO, MKR başına 24.000 SKY ve 0,10 $ rekor
+title: Sky (SKY) nedir: eski MakerDAO, MKR başına 24.000 SKY ve DAI ile USDS'nin ihraççısı
 description: Sky sade bir dille: DAI ve USDS stablecoin'lerinin arkasındaki protokol, SKY token ne işe yarar, geri alımlar, hikâyesi, rakipleri ve başlıca riskleri.
-date: 2026-11-23
+date: 2026-11-24
 kind: analysis
 ---
-**Sky**, merkeziyetsiz finansın en eski projelerinden MakerDAO'nun yeni adıdır; milyarlarca dolarlık kripto faaliyetinin dayandığı dijital dolarlar olan DAI ve USDS stablecoin'lerini çıkarır. SKY, protokolü yöneten ve kârından pay alan token'dır. Kasım 2026'da dolaşımdaki tüm SKY'ların değeri yaklaşık 970 milyon dolardı; kripto paralar arasında 70. sıra civarındaydı.
+**Sky**, merkeziyetsiz finansın en eski projelerinden MakerDAO'nun yeni adıdır; milyarlarca dolarlık kripto faaliyetinin dayandığı dijital dolarlar olan DAI ve USDS stablecoin'lerini çıkarır. SKY, protokolü yöneten ve kârından pay alan token'dır. Bugün dolaşımdaki tüm SKY'ların değeri {{mcap:sky}} (kripto paralar arasında {{rank:sky}}).
 
 > **Öne çıkanlar**
 > - MakerDAO, DAI'yi Aralık 2017'de başlattı; 2024'te Sky oldu ve her eski MKR token'ı 24.000 SKY ile takas edilebiliyor.
 > - Yaklaşık 23,4 milyar SKY dolaşımda; bu, yaklaşık 23,5 milyarlık azami arza çok yakın.
 > - Protokol fazlasının bir kısmı piyasadan SKY alıyor; şimdiye kadar geri alımlara 100 milyon USDS'den fazla harcandı.
-> - Şimdiye kadarki rekor 0,101 $ (5 Ekim 2026); Kasım 2026'da SKY bunun yaklaşık %60 altında işlem görüyordu.
+> - Rekor fiyatı {{ath:sky}} ({{athd:sky}}); bugün fiyat ondan {{fromath:sky}} uzakta.
 
 ## Nasıl çalışır
 
@@ -23,7 +23,8 @@ SKY sahipleri faiz oranları, kabul edilen teminatlar ve risk ayarları için oy
 ## Şu anki rakamlar
 
 - Bugünkü fiyat: {{price:sky}}
-- Rekor: {{ath:sky}} ({{athd:sky}})
+- Rekor: {{ath:sky}} ({{athd:sky}}), ondan {{fromath:sky}}
+- Piyasa değeri: {{mcap:sky}} (kripto paralar arasında {{rank:sky}})
 - 12 aylık fiyat değişimi: {{chg1y:sky}}
 - 1 yıl boyunca günde 10 $: {{dca:sky:1}}, yatırılan {{dcainv:1}} ({{dcaroi:sky:1}})
 

@@ -1,16 +1,16 @@
 ---
-title: Sky (SKY), ipinaliwanag: ang dating MakerDAO, 24,000 SKY kada MKR at $0.10 na rekord
+title: Sky (SKY), ipinaliwanag: ang dating MakerDAO, 24,000 SKY kada MKR at tagapaglabas ng DAI at USDS
 description: Sky sa simpleng salita: ang protocol sa likod ng stablecoin na DAI at USDS, para saan ang SKY token, buyback, kuwento, kakumpitensya at pangunahing panganib.
-date: 2026-11-23
+date: 2026-11-24
 kind: analysis
 ---
-Ang **Sky** ang bagong pangalan ng MakerDAO, isa sa pinakamatatandang proyekto sa decentralized finance at ang naglalabas ng mga stablecoin na DAI at USDS — mga digital na dolyar na sinasandalan ng bilyun-bilyong dolyar na aktibidad sa crypto. Ang SKY ang token na namamahala sa protocol at may bahagi sa kita nito. Noong Nobyembre 2026, nasa humigit-kumulang $970 milyon ang halaga ng lahat ng SKY na umiikot, mga ika-70 puwesto sa mga cryptocurrency.
+Ang **Sky** ang bagong pangalan ng MakerDAO, isa sa pinakamatatandang proyekto sa decentralized finance at ang naglalabas ng mga stablecoin na DAI at USDS — mga digital na dolyar na sinasandalan ng bilyun-bilyong dolyar na aktibidad sa crypto. Ang SKY ang token na namamahala sa protocol at may bahagi sa kita nito. Ngayon, {{mcap:sky}} ang halaga ng lahat ng SKY na umiikot ({{rank:sky}} sa mga cryptocurrency).
 
 > **Mahahalagang punto**
 > - Inilunsad ng MakerDAO ang DAI noong Disyembre 2017; noong 2024 naging Sky ito, at puwedeng ipalit ang bawat lumang MKR token sa 24,000 SKY.
 > - Mga 23.4 bilyong SKY ang umiikot, malapit sa maximum na mga 23.5 bilyon.
 > - Bahagi ng sobrang kita ng protocol ang ipinambibili ng SKY sa merkado; mahigit 100 milyong USDS na ang nagastos sa buyback.
-> - Ang pinakamataas na presyo sa ngayon ay $0.101 (5 Oktubre 2026); noong Nobyembre 2026, mga 60% na mas mababa ang presyo ng SKY.
+> - Ang pinakamataas na presyo nito ay {{ath:sky}} ({{athd:sky}}); ngayon, {{fromath:sky}} ang presyo mula roon.
 
 ## Paano ito gumagana
 
@@ -23,7 +23,8 @@ Bumoboto ang mga may hawak ng SKY sa interest rate, tinatanggap na kolateral at 
 ## Ang mga numero ngayon
 
 - Presyo ngayon: {{price:sky}}
-- Pinakamataas na presyo: {{ath:sky}} ({{athd:sky}})
+- Pinakamataas na presyo: {{ath:sky}} ({{athd:sky}}), {{fromath:sky}} mula roon
+- Halaga sa merkado: {{mcap:sky}} ({{rank:sky}} sa mga cryptocurrency)
 - Pagbabago ng presyo sa loob ng 12 buwan: {{chg1y:sky}}
 - $10 kada araw sa loob ng 1 taon: {{dca:sky:1}} mula sa {{dcainv:1}} na inilagay ({{dcaroi:sky:1}})
 
