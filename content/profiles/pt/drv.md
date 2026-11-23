@@ -1,31 +1,57 @@
 ---
-title: O que é Derive (DRV)?
-description: Derive explicado de forma simples: uma corretora on-chain de opções e futuros perpétuos de cripto, antiga Lyra, para que serve o DRV e os riscos.
-date: 2026-11-21
+title: Derive (DRV) explicado: opções on-chain, oferta fixa de 1,5 bilhão e recorde de US$ 0,57
+description: Derive em linguagem simples: a corretora on-chain de opções e perpétuos de cripto, antiga Lyra, para que serve o DRV, sua história, rivais e os principais riscos.
+date: 2026-11-23
+kind: analysis
 ---
-**Derive** é uma corretora on-chain de opções e futuros perpétuos de criptomoedas — o tipo de negociação que costuma acontecer em grandes plataformas centralizadas —, mas em que cada usuário mantém o controle do próprio dinheiro. Nasceu em 2021 como Lyra Finance e mudou o nome para Derive em agosto de 2024.
+**Derive** é uma corretora on-chain de opções e contratos futuros perpétuos de criptomoedas — o tipo de negociação que costuma acontecer em grandes plataformas centralizadas —, mas aqui os usuários mantêm o controle do próprio dinheiro. Ela começou em 2021 como Lyra Finance e passou a se chamar Derive em agosto de 2024. Em novembro de 2026, todos os DRV em circulação valiam cerca de US$ 390 milhões, por volta da 110ª posição entre as criptomoedas.
+
+> **Pontos principais**
+> - O DRV foi lançado em janeiro de 2025, trocado 1:1 pelo antigo token LYRA; a oferta total é fixa em 1,5 bilhão, dos quais cerca de 1,06 bilhão circulam.
+> - Segundo a documentação da Derive, 35% da receita do protocolo é usada para comprar DRV no mercado aberto.
+> - Da mínima de cerca de US$ 0,012 em abril de 2025, o preço subiu cerca de 30 vezes até novembro de 2026.
+> - O recorde até agora é US$ 0,569 (9 de outubro de 2026); em novembro de 2026 o DRV era negociado cerca de 35% abaixo.
 
 ## Como funciona
 
-As ordens são casadas fora da blockchain por um livro de ofertas rápido, enquanto contas, margem e liquidação final ficam registradas numa infraestrutura baseada na Ethereum. O trader usa uma única conta com vários tipos de garantia e «margem de carteira», que avalia o risco de todas as posições juntas. Além de opções e perpétuos, há mercado à vista, cofres (vaults) e produtos estruturados. O projeto é comandado pelo cofundador e CEO Nick Forster, ex-operador de opções da Susquehanna.
+Um livro de ofertas rápido casa as ordens fora da blockchain, como numa corretora comum, enquanto contas, margem e liquidação final ficam registradas na rede própria da Derive, construída sobre o Ethereum. Os traders podem depositar vários tipos de garantia numa só conta e usar a "margem de carteira", que avalia o risco de todas as posições juntas, e não uma a uma. Além de opções e perpétuos, a Derive oferece negociação à vista, cofres (vaults) e produtos estruturados. A equipe é liderada pelo cofundador e CEO Nick Forster, ex-trader de opções da Susquehanna.
 
-## Para que serve o DRV
+## Para que serve o token
 
-O DRV foi lançado em janeiro de 2025, trocado 1:1 pelo antigo token LYRA. Quem faz staking recebe stDRV, que dá voto nas atualizações e rende recompensas semanais; sair do staking leva 7 dias ou é imediato com multa de 20%. Segundo a documentação da Derive, 35% da receita do protocolo é usada para comprar DRV no mercado. A oferta total é fixa, de 1,5 bilhão, e nenhum token novo será criado.
+Os detentores podem fazer staking de DRV e receber stDRV, que dá voto sobre atualizações e rende recompensas semanais. Sair do staking leva 7 dias, ou é imediato com multa de 20%. Parte da receita da corretora vai para a compra de DRV no mercado, então mais negociação significa mais compras. Nenhum token além de 1,5 bilhão será criado, mas os que ainda não circulam podem chegar ao mercado.
 
-## Por que importa
-
-Opções on-chain ainda são um nicho pequeno perto de plataformas centralizadas como a Deribit, e a Derive é um dos nomes mais conhecidos desse nicho. Curiosidade: em 21 de novembro de 2026, o DRV subiu cerca de 26% em um dia enquanto o bitcoin caía à mínima em dois anos — sem nenhuma notícia confirmada por trás.
-
-## Números-chave
+## Os números agora
 
 - Preço hoje: {{price:drv}}
-- US$ 10 por dia durante 1 ano: {{dca:drv:1}} a partir de {{dcainv:1}} investidos ({{dcaroi:drv:1}})
+- Recorde: {{ath:drv}} ({{athd:drv}})
+- Variação do preço em 12 meses: {{chg1y:drv}}
+- US$ 10 por dia durante 1 ano: {{dca:drv:1}} com {{dcainv:1}} investidos ({{dcaroi:drv:1}})
 
-Compare com outras moedas na [página de criptomoedas]({lang}/crypto/).
+## Sua história
+
+A Lyra foi lançada em 2021 como um dos primeiros mercados de opções nas redes de camada 2 do Ethereum, em que os usuários compravam e vendiam opções contra pools comuns de dinheiro. Com o tempo, migrou para um livro de ofertas e uma blockchain própria e, em agosto de 2024, virou Derive. O token DRV substituiu o LYRA em janeiro de 2025. Depois de uma mínima em abril de 2025, o preço subiu forte ao longo de 2025 e 2026 e bateu o recorde em outubro de 2026. Em 21 de novembro de 2026, o DRV saltou cerca de 26% em um dia enquanto o bitcoin caía à mínima de dois anos, sem notícia confirmada por trás do movimento.
+
+## Alternativas
+
+Em perpétuos on-chain, o maior rival é o [Hyperliquid]({lang}/hype/), e [dYdX]({lang}/dydx/) e [GMX]({lang}/gmx/) também são populares. Em opções de cripto, a maior parte do volume ainda passa por plataformas centralizadas como a Deribit, hoje da Coinbase, então as opções on-chain continuam sendo um nicho pequeno.
 
 ## Principais riscos
 
-O DRV é um token pequeno (valor de mercado de cerca de US$ 330 milhões) e pode oscilar 20–30% em um dia para qualquer lado. Cerca de 1,06 bilhão dos 1,5 bilhão de DRV circulam; não há um cronograma público detalhado de desbloqueio do restante, e a nova oferta pode pesar no preço. Negociar derivativos já é arriscado, e falhas ou bugs na infraestrutura da corretora podem causar perdas. Muitos países têm regras duras para derivativos de cripto. Comprar um valor fixo com regularidade suaviza as oscilações, mas não elimina o risco.
+- **Grandes oscilações:** o DRV é um token pequeno e pode variar 20–30% em um dia, para cima ou para baixo.
+- **Desbloqueios:** cerca de 440 milhões de DRV ainda não circulam, e não há um cronograma público detalhado de quando chegarão.
+- **Concorrência:** corretoras maiores, on-chain e centralizadas, disputam os mesmos traders.
+- **Tecnologia:** falhas nos contratos inteligentes ou uma pane do livro de ofertas ou da rede podem causar perdas.
+- **Regulação:** muitos países restringem derivativos de cripto para pessoas físicas, o que limita quem pode usar a plataforma.
+
+## O que isso significa se você compra regularmente
+
+O DRV tem menos de dois anos de história, com uma alta enorme a partir de uma base muito baixa e quedas bruscas no caminho. Comprar um valor fixo regularmente significa comprar mais quando o preço está baixo e menos quando está alto, sem tentar adivinhar o fundo, mas isso não elimina o risco de perdas. Muitas pessoas limitam tokens pequenos como o DRV a uma parcela mínima das economias que podem ver cair muito. Resultados passados não garantem retornos futuros.
 
 *Não é recomendação de investimento.*
+
+## Fontes
+
+- [Derive — site oficial (derive.xyz)](https://www.derive.xyz/)
+- [Token DRV (documentação da Derive)](https://docs.derive.xyz/docs/drv)
+- [Dados do protocolo Derive (DefiLlama)](https://defillama.com/protocol/derive)
+- [Derive: preço, capitalização e máxima histórica (CoinGecko)](https://www.coingecko.com/en/coins/derive)
