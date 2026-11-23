@@ -1,6 +1,6 @@
 ---
 title: Aandeel W. W. Grainger (GWW) eenvoudig uitgelegd: de leverancier van alles wat fabrieken draaiende houdt, $5,2 miljard per kwartaal
-description: W. W. Grainger eenvoudig uitgelegd: $5,18 miljard omzet per kwartaal, 55 jaar dividendverhogingen, een record in november 2026 en de belangrijkste risico's.
+description: W. W. Grainger eenvoudig uitgelegd: $5,18 miljard omzet in het 3e kwartaal van 2026, 55 jaar dividendverhogingen, opgericht in 1927, en de risico's.
 date: 2026-11-23
 kind: analysis
 ---

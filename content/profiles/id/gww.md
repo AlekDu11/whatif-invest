@@ -1,6 +1,6 @@
 ---
 title: Saham W. W. Grainger (GWW) dijelaskan sederhana: pemasok segala kebutuhan pabrik senilai $5,2 miliar per kuartal
-description: W. W. Grainger dijelaskan sederhana: penjualan $5,18 miliar per kuartal, 55 tahun kenaikan dividen, rekor harga pada November 2026, dan risiko utamanya.
+description: W. W. Grainger dijelaskan sederhana: penjualan $5,18 miliar pada kuartal III 2026, 55 tahun kenaikan dividen, berdiri sejak 1927, dan risiko utamanya.
 date: 2026-11-23
 kind: analysis
 ---

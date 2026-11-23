@@ -1,6 +1,6 @@
 ---
 title: Cổ phiếu Equinix (EQIX) giải thích dễ hiểu: "chủ nhà" của những điểm gặp nhau trên internet
-description: Equinix dễ hiểu: 280 trung tâm dữ liệu kiếm 2,57 tỷ USD mỗi quý ra sao, đơn hàng kỷ lục, nợ 25 tỷ USD, rủi ro và điều cần biết khi mua định kỳ.
+description: Equinix dễ hiểu: 280 trung tâm dữ liệu kiếm 2,57 tỷ USD trong quý III/2026 ra sao, nợ 25 tỷ USD, rủi ro và điều cần biết khi mua định kỳ.
 date: 2026-11-23
 kind: analysis
 ---

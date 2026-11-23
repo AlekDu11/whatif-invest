@@ -1,6 +1,6 @@
 ---
 title: Acciones de Equinix (EQIX): el casero de los puntos donde se cruza internet
-description: Equinix explicada fácil: cómo 280 centros de datos ingresan 2.570 M$ al trimestre, reservas récord, 25.000 M$ de deuda, riesgos y qué saber si compras cada mes.
+description: Equinix explicada fácil: cómo 280 centros de datos ingresaron 2.570 M$ en el 3T de 2026, 25.000 M$ de deuda, riesgos y qué saber si compras cada mes.
 date: 2026-11-21
 kind: analysis
 ---

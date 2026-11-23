@@ -1,6 +1,6 @@
 ---
 title: Equinix (EQIX) stock: the landlord of the internet's meeting points, explained
-description: Equinix in plain words — how 280 data centers earn $2.57 billion a quarter, record bookings, $25 billion of debt, risks and what regular buyers should know.
+description: Equinix in plain words — how 280 data centers earned $2.57 billion in Q3 2026, $25 billion of debt, the risks and what regular buyers should know.
 date: 2026-11-21
 kind: analysis
 ---

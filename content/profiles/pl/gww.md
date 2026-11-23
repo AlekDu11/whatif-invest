@@ -1,6 +1,6 @@
 ---
 title: Akcje W. W. Grainger (GWW) prostym językiem: dostawca wszystkiego, co utrzymuje fabryki w ruchu, za 5,2 mld $ na kwartał
-description: W. W. Grainger prostym językiem: 5,18 mld $ sprzedaży kwartalnie, 55 lat podwyżek dywidendy, rekord kursu w listopadzie 2026 i główne ryzyka.
+description: W. W. Grainger prostym językiem: 5,18 mld $ sprzedaży w III kw. 2026, 55 lat podwyżek dywidendy, firma założona w 1927 roku i główne ryzyka.
 date: 2026-11-23
 kind: analysis
 ---

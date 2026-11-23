@@ -1,6 +1,6 @@
 ---
 title: Equinix (EQIX) stock sa simpleng paliwanag: ang may-ari ng mga tagpuan ng internet
-description: Equinix sa simpleng paliwanag: paano kumikita ang 280 data center ng $2.57 bilyon kada quarter, record na orders, $25 bilyong utang, mga panganib at regular na pagbili.
+description: Equinix sa simpleng paliwanag: paano kumita ang 280 data center ng $2.57 bilyon noong Q3 2026, $25 bilyong utang, mga panganib at regular na pagbili.
 date: 2026-11-23
 kind: analysis
 ---

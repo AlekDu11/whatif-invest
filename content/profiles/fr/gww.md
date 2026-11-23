@@ -1,6 +1,6 @@
 ---
 title: Action W. W. Grainger (GWW) expliquée simplement : le fournisseur de tout ce qui fait tourner les usines, 5,2 Md$ par trimestre
-description: W. W. Grainger expliqué simplement : 5,18 Md$ de ventes trimestrielles, 55 ans de hausses du dividende, un record en novembre 2026 et les principaux risques.
+description: W. W. Grainger expliqué simplement : 5,18 Md$ de ventes au 3e trimestre 2026, 55 ans de hausses du dividende, une entreprise fondée en 1927 et ses risques.
 date: 2026-11-23
 kind: analysis
 ---

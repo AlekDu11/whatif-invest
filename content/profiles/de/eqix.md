@@ -1,6 +1,6 @@
 ---
 title: Equinix-Aktie (EQIX): der Vermieter der Knotenpunkte des Internets
-description: Equinix einfach erklärt: wie 280 Rechenzentren 2,57 Mrd. $ im Quartal bringen, Rekordaufträge, 25 Mrd. $ Schulden, Risiken und was Sparplan-Anleger wissen.
+description: Equinix einfach erklärt: wie 280 Rechenzentren im 3. Quartal 2026 2,57 Mrd. $ einbrachten, 25 Mrd. $ Schulden, Risiken und was Sparplan-Anleger wissen.
 date: 2026-11-21
 kind: analysis
 ---

@@ -1,6 +1,6 @@
 ---
 title: Akcje Equinix (EQIX) prostym językiem: właściciel miejsc, w których spotyka się internet
-description: Equinix prostym językiem: jak 280 centrów danych zarabia 2,57 mld $ na kwartał, rekordowe zamówienia, 25 mld $ długu, ryzyka i co warto wiedzieć przy regularnych zakupach.
+description: Equinix prostym językiem: jak 280 centrów danych zarobiło 2,57 mld $ w III kw. 2026, 25 mld $ długu, ryzyka i co warto wiedzieć przy regularnych zakupach.
 date: 2026-11-23
 kind: analysis
 ---

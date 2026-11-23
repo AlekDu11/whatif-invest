@@ -1,6 +1,6 @@
 ---
 title: W. W. Grainger (GWW) stock sa simpleng paliwanag: ang supplier ng lahat ng nagpapatakbo sa mga pabrika, $5.2 bilyon kada quarter
-description: W. W. Grainger sa simpleng paliwanag: $5.18 bilyong benta kada quarter, 55 taon ng pagtaas ng dividend, record na presyo noong Nobyembre 2026 at mga panganib.
+description: W. W. Grainger sa simpleng paliwanag: $5.18 bilyong benta noong Q3 2026, 55 taon ng pagtaas ng dividend, itinatag noong 1927 at mga panganib.
 date: 2026-11-23
 kind: analysis
 ---

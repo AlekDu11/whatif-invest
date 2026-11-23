@@ -1,6 +1,6 @@
 ---
 title: Saham Equinix (EQIX) dijelaskan sederhana: pemilik titik-titik pertemuan internet
-description: Equinix dijelaskan sederhana: cara 280 pusat data menghasilkan $2,57 miliar per kuartal, pesanan rekor, utang $25 miliar, risiko, dan arti membeli rutin.
+description: Equinix dijelaskan sederhana: cara 280 pusat data menghasilkan $2,57 miliar pada kuartal III 2026, utang $25 miliar, risiko, dan arti membeli rutin.
 date: 2026-11-23
 kind: analysis
 ---

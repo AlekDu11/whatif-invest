@@ -1,6 +1,6 @@
 ---
 title: Cổ phiếu W. W. Grainger (GWW) giải thích dễ hiểu: nhà cung cấp mọi thứ giữ cho nhà máy chạy, 5,2 tỷ USD mỗi quý
-description: W. W. Grainger dễ hiểu: doanh số 5,18 tỷ USD mỗi quý, 55 năm liên tiếp tăng cổ tức, đỉnh giá kỷ lục tháng 11/2026 và các rủi ro chính.
+description: W. W. Grainger dễ hiểu: doanh số 5,18 tỷ USD trong quý III/2026, 55 năm liên tiếp tăng cổ tức, thành lập năm 1927 và các rủi ro chính.
 date: 2026-11-23
 kind: analysis
 ---

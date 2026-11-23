@@ -1,6 +1,6 @@
 ---
 title: Aandeel Equinix (EQIX) eenvoudig uitgelegd: de verhuurder van de ontmoetingsplekken van het internet
-description: Equinix eenvoudig uitgelegd: hoe 280 datacenters $2,57 miljard per kwartaal verdienen, recordorders, $25 miljard schuld, risico's en regelmatig kopen.
+description: Equinix eenvoudig uitgelegd: hoe 280 datacenters in het 3e kwartaal van 2026 $2,57 miljard verdienden, $25 miljard schuld, risico's en regelmatig kopen.
 date: 2026-11-23
 kind: analysis
 ---

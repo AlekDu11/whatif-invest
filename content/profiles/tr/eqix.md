@@ -1,6 +1,6 @@
 ---
 title: Equinix (EQIX) hissesi sade dille: internetin buluşma noktalarının ev sahibi
-description: Equinix sade dille: 280 veri merkezi çeyrekte nasıl 2,57 milyar $ kazanıyor, rekor siparişler, 25 milyar $ borç, riskler ve düzenli alıcıların bilmesi gerekenler.
+description: Equinix sade dille: 280 veri merkezi 2026'nın 3. çeyreğinde nasıl 2,57 milyar $ kazandı, 25 milyar $ borç, riskler ve düzenli alıcıların bilmesi gerekenler.
 date: 2026-11-23
 kind: analysis
 ---

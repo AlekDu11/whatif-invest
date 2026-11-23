@@ -1,6 +1,6 @@
 ---
 title: Grainger-Aktie (GWW): der Lieferant für alles, was Fabriken am Laufen hält – 5,2 Mrd. $ pro Quartal
-description: W. W. Grainger einfach erklärt: 5,18 Mrd. $ Umsatz im 3. Quartal 2026, 55 Jahre steigende Dividende, Rekordhoch im November 2026 und die Risiken.
+description: W. W. Grainger einfach erklärt: 5,18 Mrd. $ Umsatz im 3. Quartal 2026, 55 Jahre steigende Dividende, gegründet 1927, und die Risiken.
 date: 2026-11-21
 kind: analysis
 ---

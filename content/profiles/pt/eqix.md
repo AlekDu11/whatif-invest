@@ -1,6 +1,6 @@
 ---
 title: Ações da Equinix (EQIX): a "senhoria" dos pontos onde a internet se encontra
-description: Equinix sem rodeios: como 280 data centers faturam US$ 2,57 bi por trimestre, reservas recorde, US$ 25 bi de dívida, riscos e o que saber se compra todo mês.
+description: Equinix sem rodeios: como 280 data centers faturaram US$ 2,57 bi no 3º tri de 2026, US$ 25 bi de dívida, riscos e o que saber se compra todo mês.
 date: 2026-11-21
 kind: analysis
 ---

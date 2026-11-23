@@ -1,6 +1,6 @@
 ---
 title: Action Equinix (EQIX) expliquée simplement : le propriétaire des points de rencontre d'Internet
-description: Equinix expliqué simplement : comment 280 centres de données rapportent 2,57 Md$ par trimestre, commandes record, 25 Md$ de dette, risques et achats réguliers.
+description: Equinix expliqué simplement : comment 280 centres de données ont rapporté 2,57 Md$ au 3e trimestre 2026, 25 Md$ de dette, risques et achats réguliers.
 date: 2026-11-23
 kind: analysis
 ---

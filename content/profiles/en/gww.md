@@ -1,6 +1,6 @@
 ---
 title: W. W. Grainger (GWW) stock: the $5.2 billion-a-quarter supplier of everything that keeps factories running
-description: W. W. Grainger in plain language: $5.18 billion of quarterly sales, 55 years of dividend raises, a record high in November 2026 and the main risks.
+description: W. W. Grainger in plain language: $5.18 billion of sales in Q3 2026, 55 years of dividend raises, a business founded in 1927 and the main risks.
 date: 2026-11-21
 kind: analysis
 ---

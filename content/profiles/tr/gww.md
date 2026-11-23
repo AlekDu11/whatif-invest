@@ -1,6 +1,6 @@
 ---
 title: W. W. Grainger (GWW) hissesi sade dille: fabrikaları ayakta tutan her şeyin çeyrekte 5,2 milyar $'lık tedarikçisi
-description: W. W. Grainger sade dille: çeyreklik 5,18 milyar $ satış, 55 yıl üst üste temettü artışı, Kasım 2026'da rekor fiyat ve başlıca riskler.
+description: W. W. Grainger sade dille: 2026'nın 3. çeyreğinde 5,18 milyar $ satış, 55 yıl üst üste temettü artışı, 1927'de kurulan şirket ve başlıca riskler.
 date: 2026-11-23
 kind: analysis
 ---

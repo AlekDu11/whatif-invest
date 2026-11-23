@@ -1,6 +1,6 @@
 ---
 title: Azioni Equinix (EQIX) spiegate semplice: il padrone di casa dei punti d'incontro di internet
-description: Equinix spiegata semplice: come 280 data center incassano 2,57 miliardi $ a trimestre, ordini record, 25 miliardi $ di debito, rischi e acquisti regolari.
+description: Equinix spiegata semplice: come 280 data center hanno incassato 2,57 miliardi $ nel 3° trimestre 2026, 25 miliardi $ di debito, rischi e acquisti regolari.
 date: 2026-11-23
 kind: analysis
 ---

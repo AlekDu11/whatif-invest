@@ -1,6 +1,6 @@
 ---
 title: Ações da W. W. Grainger (GWW): a fornecedora de tudo que mantém as fábricas funcionando
-description: W. W. Grainger sem complicação: US$ 5,18 bilhões de vendas no 3º tri de 2026, 55 anos de dividendo em alta, recorde em novembro de 2026 e os riscos.
+description: W. W. Grainger sem complicação: US$ 5,18 bilhões de vendas no 3º tri de 2026, 55 anos de dividendo em alta, fundada em 1927, e os riscos.
 date: 2026-11-21
 kind: analysis
 ---
