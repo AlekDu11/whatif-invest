@@ -1,5 +1,5 @@
 ---
-title: Hyperliquid (HYPE) sa simpleng paliwanag: on-chain exchange na may $2.6 trilyong volume, buyback mula sa fees, record na $97.96
+title: Hyperliquid (HYPE) sa simpleng paliwanag: on-chain futures exchange, buyback mula sa fees at ang 2024 airdrop
 description: Hyperliquid sa simpleng paliwanag: paano gumagana ang on-chain futures exchange, bakit binibili muli ang HYPE gamit ang fees, ang 2024 airdrop, team unlocks at mga panganib.
 date: 2026-11-22
 kind: analysis
@@ -10,7 +10,7 @@ Ang **Hyperliquid** ay isang crypto exchange na buong tumatakbo sa sarili nitong
 > - Inilunsad ang HYPE noong 29 Nobyembre 2024 nang walang venture-capital investor: 31% ng 1 bilyong token ay direktang napunta sa mga user sa pamamagitan ng airdrop.
 > - Ayon sa datos ng Artemis, humawak ang Hyperliquid ng humigit-kumulang $2.6 trilyong trade noong 2025 — halos doble ng Coinbase.
 > - Noong Disyembre 2025, pumayag ang mga validator na ituring na burned ang mga 37 milyong HYPE na binili muli ng Assistance Fund — higit 13% ng circulating supply noon.
-> - Ang pinakamataas na presyo sa ngayon ay $97.96 (Setyembre 2026); ang 23.8% na bahagi ng team ay buwan-buwang nag-a-unlock mula Nobyembre 2025.
+> - Ang pinakamataas na presyo nito ay {{ath:hype}} ({{athd:hype}}); ngayon, {{fromath:hype}} ang presyo mula roon. Ang 23.8% na bahagi ng team ay buwan-buwang nag-a-unlock mula Nobyembre 2025.
 
 ## Paano ito gumagana
 
@@ -23,8 +23,8 @@ Ini-stake ang HYPE sa mga validator para protektahan ang network, ginagamit sa p
 ## Ang mga numero ngayon
 
 - Presyo ngayon: {{price:hype}}
-- Pinakamataas na presyo: {{ath:hype}} ({{athd:hype}})
-- Pagbabago ng presyo sa loob ng 12 buwan: {{chg1y:hype}}
+- Pinakamataas na presyo: {{ath:hype}} ({{athd:hype}}), {{fromath:hype}} mula roon
+- Halaga sa merkado: {{mcap:hype}} ({{rank:hype}} sa mga cryptocurrency)
 - $10 kada araw mula Setyembre 2026: {{dca:hype:1}} ({{dcaroi:hype:1}})
 
 ## Ang kuwento nito hanggang ngayon

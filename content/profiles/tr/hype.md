@@ -1,5 +1,5 @@
 ---
-title: Hyperliquid (HYPE) sade dille: 2,6 trilyon $ hacimli zincir üstü borsa, komisyonlarla geri alım, 97,96 $ rekor
+title: Hyperliquid (HYPE) sade dille: zincir üstü vadeli işlem borsası, komisyonlarla geri alım ve 2024 airdrop'u
 description: Hyperliquid sade dille: zincir üstü vadeli işlem borsası nasıl çalışır, komisyonlar neden HYPE geri alır, 2024 airdrop'u, ekip kilit açılımları, olaylar ve riskler.
 date: 2026-11-22
 kind: analysis
@@ -10,7 +10,7 @@ kind: analysis
 > - HYPE, 29 Kasım 2024'te hiçbir girişim sermayesi yatırımcısı olmadan piyasaya çıktı: 1 milyar token'ın %31'i airdrop ile doğrudan kullanıcılara dağıtıldı.
 > - Artemis verilerine göre Hyperliquid'de 2025'te yaklaşık 2,6 trilyon dolarlık işlem yapıldı; bu, Coinbase'in neredeyse iki katı.
 > - Aralık 2025'te doğrulayıcılar, Assistance Fund'ın geri aldığı yaklaşık 37 milyon HYPE'ı yakılmış saymayı kabul etti; bu, o dönemki dolaşımdaki arzın %13'ünden fazlasıydı.
-> - Şimdiye kadarki rekor 97,96 $ (Eylül 2026); ekibin %23,8'lik payı Kasım 2025'ten beri her ay kademeli olarak açılıyor.
+> - Rekor fiyatı {{ath:hype}} ({{athd:hype}}); bugün fiyat ondan {{fromath:hype}} uzakta. Ekibin %23,8'lik payı Kasım 2025'ten beri her ay kademeli olarak açılıyor.
 
 ## Nasıl çalışır
 
@@ -23,8 +23,8 @@ HYPE, ağı güvence altına almak için doğrulayıcılarda stake edilir, günc
 ## Şu anki rakamlar
 
 - Bugünkü fiyat: {{price:hype}}
-- Rekor: {{ath:hype}} ({{athd:hype}})
-- 12 aylık fiyat değişimi: {{chg1y:hype}}
+- Rekor: {{ath:hype}} ({{athd:hype}}), ondan {{fromath:hype}}
+- Piyasa değeri: {{mcap:hype}} (kripto paralar arasında {{rank:hype}})
 - Eylül 2026'dan beri günde 10 $: {{dca:hype:1}} ({{dcaroi:hype:1}})
 
 ## Hikâyesi

@@ -1,5 +1,5 @@
 ---
-title: Hyperliquid (HYPE) expliqué simplement : une bourse on-chain à 2 600 milliards $, des rachats financés par les frais, un record à 97,96 $
+title: Hyperliquid (HYPE) expliqué simplement : une bourse de contrats on-chain, des rachats financés par les frais et l'airdrop de 2024
 description: Hyperliquid expliqué simplement : sa bourse de contrats on-chain, pourquoi les frais rachètent du HYPE, l'airdrop de 2024, les déblocages de l'équipe, incidents et risques.
 date: 2026-11-22
 kind: analysis
@@ -10,7 +10,7 @@ kind: analysis
 > - Le HYPE a été lancé le 29 novembre 2024 sans investisseurs en capital-risque : 31 % du milliard de jetons est allé directement aux utilisateurs par un airdrop.
 > - Hyperliquid a traité environ 2 600 milliards de dollars d'échanges en 2025, presque le double de Coinbase, selon les données d'Artemis.
 > - En décembre 2025, les validateurs ont accepté de considérer comme brûlés environ 37 millions de HYPE rachetés par l'Assistance Fund, soit plus de 13 % de l'offre alors en circulation.
-> - Le record à ce jour est de 97,96 $ (septembre 2026) ; les 23,8 % de l'équipe se débloquent mois après mois depuis novembre 2025.
+> - Son record est de {{ath:hype}} ({{athd:hype}}) ; aujourd'hui, le cours est à {{fromath:hype}} de ce niveau. Les 23,8 % de l'équipe se débloquent mois après mois depuis novembre 2025.
 
 ## Comment il fonctionne
 
@@ -23,8 +23,8 @@ Le HYPE est mis en staking auprès des validateurs pour sécuriser le réseau, s
 ## Les chiffres actuels
 
 - Cours actuel : {{price:hype}}
-- Record : {{ath:hype}} ({{athd:hype}})
-- Variation du cours sur 12 mois : {{chg1y:hype}}
+- Record : {{ath:hype}} ({{athd:hype}}), {{fromath:hype}} depuis
+- Valeur de marché : {{mcap:hype}} ({{rank:hype}} parmi les cryptomonnaies)
 - 10 $ par jour depuis septembre 2026 : {{dca:hype:1}} ({{dcaroi:hype:1}})
 
 ## Son histoire

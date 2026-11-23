@@ -1,5 +1,5 @@
 ---
-title: Hyperliquid (HYPE) eenvoudig uitgelegd: een on-chain beurs met $2.600 miljard volume, terugkopen uit fees, een record van $97,96
+title: Hyperliquid (HYPE) eenvoudig uitgelegd: een on-chain futuresbeurs, terugkopen uit fees en de airdrop van 2024
 description: Hyperliquid eenvoudig uitgelegd: hoe de on-chain futuresbeurs werkt, waarom fees HYPE terugkopen, de airdrop van 2024, team-unlocks, incidenten en risico's.
 date: 2026-11-22
 kind: analysis
@@ -10,7 +10,7 @@ kind: analysis
 > - HYPE werd op 29 november 2024 gelanceerd zonder durfkapitaalinvesteerders: 31% van de 1 miljard tokens ging via een airdrop direct naar gebruikers.
 > - Via Hyperliquid werd in 2025 zo'n $2.600 miljard verhandeld, bijna twee keer zoveel als via Coinbase, volgens cijfers van Artemis.
 > - In december 2025 besloten de validators om ongeveer 37 miljoen door het Assistance Fund teruggekochte HYPE als verbrand te beschouwen — meer dan 13% van het toen circulerende aanbod.
-> - Het record tot nu toe is $97,96 (september 2026); het teamaandeel van 23,8% komt sinds november 2025 maand na maand vrij.
+> - De recordkoers is {{ath:hype}} ({{athd:hype}}); vandaag staat de koers {{fromath:hype}} daarvan af. Het teamaandeel van 23,8% komt sinds november 2025 maand na maand vrij.
 
 ## Hoe het werkt
 
@@ -23,8 +23,8 @@ HYPE wordt bij validators gestaked om het netwerk te beveiligen, dient om over u
 ## De cijfers nu
 
 - Koers nu: {{price:hype}}
-- Recordkoers: {{ath:hype}} ({{athd:hype}})
-- Koersverandering over 12 maanden: {{chg1y:hype}}
+- Recordkoers: {{ath:hype}} ({{athd:hype}}), {{fromath:hype}} daarvan af
+- Marktwaarde: {{mcap:hype}} ({{rank:hype}} onder de cryptomunten)
 - $10 per dag sinds september 2026: {{dca:hype:1}} ({{dcaroi:hype:1}})
 
 ## Het verhaal tot nu toe

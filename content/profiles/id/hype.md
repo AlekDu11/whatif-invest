@@ -1,5 +1,5 @@
 ---
-title: Hyperliquid (HYPE) dijelaskan sederhana: bursa on-chain bervolume $2,6 triliun, buyback dari biaya, rekor $97,96
+title: Hyperliquid (HYPE) dijelaskan sederhana: bursa futures on-chain, buyback dari biaya, dan airdrop 2024
 description: Hyperliquid dijelaskan sederhana: cara kerja bursa futures on-chain, mengapa biaya dipakai membeli kembali HYPE, airdrop 2024, unlock tim, insiden, dan risiko.
 date: 2026-11-22
 kind: analysis
@@ -10,7 +10,7 @@ kind: analysis
 > - HYPE diluncurkan pada 29 November 2024 tanpa investor modal ventura: 31% dari 1 miliar token langsung dibagikan ke pengguna lewat airdrop.
 > - Menurut data Artemis, Hyperliquid memproses sekitar $2,6 triliun transaksi pada 2025, hampir dua kali lipat Coinbase.
 > - Pada Desember 2025 para validator sepakat menganggap sekitar 37 juta HYPE yang dibeli kembali oleh Assistance Fund sebagai token yang dibakar — lebih dari 13% pasokan beredar saat itu.
-> - Rekor tertinggi sejauh ini $97,96 (September 2026); jatah tim sebesar 23,8% dibuka bertahap setiap bulan sejak November 2025.
+> - Rekor tertingginya {{ath:hype}} ({{athd:hype}}); kini harganya {{fromath:hype}} dari rekor itu. Jatah tim sebesar 23,8% dibuka bertahap setiap bulan sejak November 2025.
 
 ## Cara kerjanya
 
@@ -23,8 +23,8 @@ HYPE di-stake ke validator untuk mengamankan jaringan, dipakai untuk memilih pem
 ## Angka saat ini
 
 - Harga hari ini: {{price:hype}}
-- Rekor tertinggi: {{ath:hype}} ({{athd:hype}})
-- Perubahan harga dalam 12 bulan: {{chg1y:hype}}
+- Rekor tertinggi: {{ath:hype}} ({{athd:hype}}), {{fromath:hype}} dari rekor itu
+- Nilai pasar: {{mcap:hype}} ({{rank:hype}} di antara mata uang kripto)
 - $10 per hari sejak September 2026: {{dca:hype:1}} ({{dcaroi:hype:1}})
 
 ## Kisahnya sejauh ini

@@ -1,5 +1,5 @@
 ---
-title: Hyperliquid (HYPE) einfach erklärt: eine On-Chain-Börse mit 2,6 Billionen $ Umsatz, Rückkäufe aus Gebühren, ein Rekord von 97,96 $
+title: Hyperliquid (HYPE) einfach erklärt: eine On-Chain-Terminbörse, Rückkäufe aus Gebühren und der Airdrop 2024
 description: Hyperliquid einfach erklärt: wie die On-Chain-Terminbörse funktioniert, warum Gebühren HYPE zurückkaufen, der Airdrop 2024, Team-Unlocks, Vorfälle und Risiken.
 date: 2026-11-22
 kind: analysis
@@ -10,7 +10,7 @@ kind: analysis
 > - HYPE startete am 29. November 2024 ohne Risikokapitalgeber: 31 % der 1 Milliarde Token gingen per Airdrop direkt an Nutzer.
 > - Über Hyperliquid liefen 2025 laut Artemis-Daten rund 2,6 Billionen Dollar an Handelsvolumen – fast doppelt so viel wie bei Coinbase.
 > - Im Dezember 2025 beschlossen die Validatoren, rund 37 Millionen vom Assistance Fund zurückgekaufte HYPE als verbrannt zu behandeln – mehr als 13 % des damals umlaufenden Angebots.
-> - Das bisherige Rekordhoch liegt bei 97,96 $ (September 2026); der Team-Anteil von 23,8 % wird seit November 2025 Monat für Monat freigegeben.
+> - Sein Rekordhoch liegt bei {{ath:hype}} ({{athd:hype}}); heute steht der Kurs {{fromath:hype}} darunter. Der Team-Anteil von 23,8 % wird seit November 2025 Monat für Monat freigegeben.
 
 ## So funktioniert er
 
@@ -23,8 +23,8 @@ HYPE wird bei Validatoren gestakt, um das Netzwerk zu sichern, dient zur Abstimm
 ## Die Zahlen jetzt
 
 - Kurs heute: {{price:hype}}
-- Rekordhoch: {{ath:hype}} ({{athd:hype}})
-- Kursveränderung in 12 Monaten: {{chg1y:hype}}
+- Rekordhoch: {{ath:hype}} ({{athd:hype}}), {{fromath:hype}} davon entfernt
+- Marktwert: {{mcap:hype}} ({{rank:hype}} unter den Kryptowährungen)
 - 10 $ am Tag seit September 2026: {{dca:hype:1}} ({{dcaroi:hype:1}})
 
 ## Seine Geschichte

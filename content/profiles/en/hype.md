@@ -1,5 +1,5 @@
 ---
-title: Hyperliquid (HYPE) explained: a $2.6 trillion on-chain exchange, fee buybacks, a $97.96 record
+title: Hyperliquid (HYPE) explained: an on-chain futures exchange, fee buybacks and the 2024 airdrop
 description: Hyperliquid in plain language: how its on-chain futures exchange works, why fees buy back HYPE, the 2024 airdrop, team unlocks, past incidents and main risks.
 date: 2026-11-22
 kind: analysis
@@ -10,7 +10,7 @@ kind: analysis
 > - HYPE launched on 29 November 2024 with no venture-capital investors: 31% of the 1 billion tokens went straight to users in an airdrop.
 > - Hyperliquid handled about $2.6 trillion of trades in 2025, almost twice Coinbase's volume, according to Artemis data.
 > - In December 2025 validators agreed to treat about 37 million HYPE bought back by the Assistance Fund as burned — over 13% of the supply then circulating.
-> - The record price so far is $97.96 (September 2026); the team's 23.8% share has been unlocking month by month since November 2025.
+> - Its record high is {{ath:hype}} ({{athd:hype}}); today the price is {{fromath:hype}} from it. The team's 23.8% share has been unlocking month by month since November 2025.
 
 ## How it works
 
@@ -23,8 +23,8 @@ HYPE is staked with validators to secure the network, used to vote on upgrades a
 ## The numbers right now
 
 - Price today: {{price:hype}}
-- Record high: {{ath:hype}} ({{athd:hype}})
-- Price change over 12 months: {{chg1y:hype}}
+- Record high: {{ath:hype}} ({{athd:hype}}), {{fromath:hype}} from it
+- Market value: {{mcap:hype}} ({{rank:hype}} among cryptocurrencies)
 - $10 a day since September 2026: {{dca:hype:1}} ({{dcaroi:hype:1}})
 
 ## Its story so far

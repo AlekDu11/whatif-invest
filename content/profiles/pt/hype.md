@@ -1,5 +1,5 @@
 ---
-title: Hyperliquid (HYPE) explicado de forma simples: corretora on-chain de US$ 2,6 trilhões, recompras com taxas, recorde de US$ 97,96
+title: Hyperliquid (HYPE) explicado de forma simples: corretora de futuros on-chain, recompras com taxas e o airdrop de 2024
 description: Hyperliquid de forma simples: como funciona a corretora de futuros on-chain, por que as taxas recompram HYPE, o airdrop de 2024, desbloqueios da equipe e riscos.
 date: 2026-11-22
 kind: analysis
@@ -10,7 +10,7 @@ kind: analysis
 > - O HYPE foi lançado em 29 de novembro de 2024 sem investidores de venture capital: 31% do 1 bilhão de tokens foi direto para os usuários em um airdrop.
 > - A Hyperliquid movimentou cerca de US$ 2,6 trilhões em negociações em 2025, quase o dobro da Coinbase, segundo dados da Artemis.
 > - Em dezembro de 2025, os validadores concordaram em tratar como queimados cerca de 37 milhões de HYPE recomprados pelo Assistance Fund — mais de 13% da oferta circulante na época.
-> - O recorde até agora é US$ 97,96 (setembro de 2026); os 23,8% da equipe são desbloqueados mês a mês desde novembro de 2025.
+> - A máxima histórica é {{ath:hype}} ({{athd:hype}}); hoje o preço está {{fromath:hype}} abaixo dela. Os 23,8% da equipe são desbloqueados mês a mês desde novembro de 2025.
 
 ## Como funciona
 
@@ -23,8 +23,8 @@ O HYPE é colocado em staking com validadores para proteger a rede, serve para v
 ## Os números agora
 
 - Preço hoje: {{price:hype}}
-- Recorde: {{ath:hype}} ({{athd:hype}})
-- Variação do preço em 12 meses: {{chg1y:hype}}
+- Máxima histórica: {{ath:hype}} ({{athd:hype}}), {{fromath:hype}} desde ela
+- Valor de mercado: {{mcap:hype}} ({{rank:hype}} entre as criptomoedas)
 - US$ 10 por dia desde setembro de 2026: {{dca:hype:1}} ({{dcaroi:hype:1}})
 
 ## Sua história

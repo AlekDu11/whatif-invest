@@ -1,5 +1,5 @@
 ---
-title: Hyperliquid (HYPE) prostym językiem: giełda w blockchainie z obrotem 2,6 bln $, odkup z opłat, rekord 97,96 $
+title: Hyperliquid (HYPE) prostym językiem: giełda kontraktów w blockchainie, odkup z opłat i airdrop z 2024 roku
 description: Hyperliquid prostym językiem: jak działa giełda kontraktów on-chain, dlaczego opłaty odkupują HYPE, airdrop z 2024 roku, odblokowania zespołu, incydenty i ryzyka.
 date: 2026-11-22
 kind: analysis
@@ -10,7 +10,7 @@ kind: analysis
 > - HYPE wystartował 29 listopada 2024 roku bez inwestorów venture capital: 31% z 1 mld tokenów trafiło prosto do użytkowników w airdropie.
 > - W 2025 roku przez Hyperliquid przeszło około 2,6 bln dolarów obrotu — prawie dwa razy więcej niż przez Coinbase, według danych Artemis.
 > - W grudniu 2025 roku walidatorzy zgodzili się uznać za spalone około 37 mln HYPE odkupionych przez Assistance Fund — ponad 13% ówczesnej podaży w obiegu.
-> - Dotychczasowy rekord to 97,96 $ (wrzesień 2026 roku); 23,8% należące do zespołu jest odblokowywane co miesiąc od listopada 2025 roku.
+> - Rekord ceny to {{ath:hype}} ({{athd:hype}}); dziś cena jest {{fromath:hype}} od niego. 23,8% należące do zespołu jest odblokowywane co miesiąc od listopada 2025 roku.
 
 ## Jak działa
 
@@ -23,8 +23,8 @@ HYPE stakuje się u walidatorów, by zabezpieczać sieć, głosuje się nim nad 
 ## Liczby teraz
 
 - Cena teraz: {{price:hype}}
-- Rekord: {{ath:hype}} ({{athd:hype}})
-- Zmiana ceny w ciągu 12 miesięcy: {{chg1y:hype}}
+- Rekord: {{ath:hype}} ({{athd:hype}}), {{fromath:hype}} od niego
+- Wartość rynkowa: {{mcap:hype}} ({{rank:hype}} wśród kryptowalut)
 - 10 $ dziennie od września 2026: {{dca:hype:1}} ({{dcaroi:hype:1}})
 
 ## Jego historia

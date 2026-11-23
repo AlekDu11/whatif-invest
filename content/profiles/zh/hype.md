@@ -1,5 +1,5 @@
 ---
-title: Hyperliquid（HYPE）通俗解读：年成交2.6万亿美元的链上交易所、用手续费回购代币、97.96美元历史高点
+title: Hyperliquid（HYPE）通俗解读：链上合约交易所、用手续费回购代币与2024年空投
 description: 通俗解读Hyperliquid：链上合约交易所如何运作、为何用手续费回购HYPE、2024年空投、团队代币解锁、过往事件与主要风险。
 date: 2026-11-22
 kind: analysis
@@ -10,7 +10,7 @@ kind: analysis
 > - HYPE于2024年11月29日上线，没有风险投资机构参与：10亿枚代币中的31%通过空投直接发给了用户。
 > - 据Artemis数据，Hyperliquid在2025年的成交额约为2.6万亿美元，接近Coinbase的两倍。
 > - 2025年12月，验证者同意将Assistance Fund回购的约3700万枚HYPE视为已销毁，超过当时流通量的13%。
-> - 迄今最高价为97.96美元（2026年9月）；团队持有的23.8%自2025年11月起按月逐步解锁。
+> - 历史最高价为{{ath:hype}}（{{athd:hype}}）；当前价格距离该高点{{fromath:hype}}。团队持有的23.8%自2025年11月起按月逐步解锁。
 
 ## 它如何运作
 
@@ -23,8 +23,8 @@ HYPE可质押给验证者以保障网络安全，可用于对升级投票，也�
 ## 最新数据
 
 - 当前价格：{{price:hype}}
-- 历史最高价：{{ath:hype}}（{{athd:hype}}）
-- 12个月价格变化：{{chg1y:hype}}
+- 历史最高价：{{ath:hype}}（{{athd:hype}}），距高点{{fromath:hype}}
+- 市值：{{mcap:hype}}（在加密货币中排名{{rank:hype}}）
 - 自2026年9月起每天10美元：{{dca:hype:1}}（{{dcaroi:hype:1}}）
 
 ## 一路走来

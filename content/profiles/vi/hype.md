@@ -1,5 +1,5 @@
 ---
-title: Hyperliquid (HYPE) giải thích dễ hiểu: sàn on-chain khối lượng 2.600 tỷ USD, mua lại token bằng phí, kỷ lục 97,96 USD
+title: Hyperliquid (HYPE) giải thích dễ hiểu: sàn hợp đồng tương lai on-chain, mua lại token bằng phí và đợt airdrop 2024
 description: Hyperliquid dễ hiểu: sàn hợp đồng tương lai on-chain hoạt động ra sao, vì sao phí được dùng mua lại HYPE, airdrop 2024, lịch mở khóa của đội ngũ, sự cố và rủi ro.
 date: 2026-11-22
 kind: analysis
@@ -10,7 +10,7 @@ kind: analysis
 > - HYPE ra mắt ngày 29/11/2024 mà không có nhà đầu tư mạo hiểm nào: 31% trong 1 tỷ token được airdrop thẳng cho người dùng.
 > - Theo dữ liệu của Artemis, Hyperliquid xử lý khoảng 2.600 tỷ USD giao dịch trong năm 2025, gần gấp đôi Coinbase.
 > - Tháng 12/2025, các validator đồng ý coi khoảng 37 triệu HYPE do Assistance Fund mua lại là đã bị đốt — hơn 13% lượng cung lưu hành khi đó.
-> - Đỉnh kỷ lục đến nay là 97,96 USD (tháng 9/2026); phần 23,8% của đội ngũ được mở khóa hằng tháng từ tháng 11/2025.
+> - Đỉnh kỷ lục là {{ath:hype}} ({{athd:hype}}); giá hiện tại cách đỉnh {{fromath:hype}}. Phần 23,8% của đội ngũ được mở khóa hằng tháng từ tháng 11/2025.
 
 ## Cách hoạt động
 
@@ -23,8 +23,8 @@ HYPE được stake cho validator để bảo vệ mạng lưới, dùng để b
 ## Các con số hiện tại
 
 - Giá hôm nay: {{price:hype}}
-- Đỉnh kỷ lục: {{ath:hype}} ({{athd:hype}})
-- Biến động giá trong 12 tháng: {{chg1y:hype}}
+- Đỉnh kỷ lục: {{ath:hype}} ({{athd:hype}}), cách đỉnh {{fromath:hype}}
+- Vốn hóa thị trường: {{mcap:hype}} ({{rank:hype}} trong các đồng tiền mã hóa)
 - 10 USD mỗi ngày từ tháng 9/2026: {{dca:hype:1}} ({{dcaroi:hype:1}})
 
 ## Câu chuyện của Hyperliquid
