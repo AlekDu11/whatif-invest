@@ -1,16 +1,16 @@
 ---
-title: Bittensor (TAO) uitgelegd: een plafond van 21 miljoen, de eerste halving en een record van $757
+title: Bittensor (TAO) uitgelegd: een plafond van 21 miljoen, de eerste halving en geen pre-mine
 description: Bittensor in gewone taal: het gedecentraliseerde AI-netwerk van subnetten, hoe miners en validators TAO verdienen, de halving van 2025, concurrenten en risico's.
 date: 2026-11-23
 kind: analysis
 ---
-**Bittensor** is een gedecentraliseerd netwerk waarin deelnemers wedijveren om diensten op het gebied van kunstmatige intelligentie te leveren — van tekst schrijven tot koersvoorspellingen — en daarvoor worden betaald in de token TAO. In plaats van dat één bedrijf de AI bezit, voeren veel onafhankelijke "subnetten" hun eigen taken uit en beloont het netwerk het beste werk. In november 2026 waren alle TAO in omloop samen ongeveer $2,2 miljard waard, rond plaats 38 onder de cryptomunten.
+**Bittensor** is een gedecentraliseerd netwerk waarin deelnemers wedijveren om diensten op het gebied van kunstmatige intelligentie te leveren — van tekst schrijven tot koersvoorspellingen — en daarvoor worden betaald in de token TAO. In plaats van dat één bedrijf de AI bezit, voeren veel onafhankelijke "subnetten" hun eigen taken uit en beloont het netwerk het beste werk. De marktwaarde is vandaag {{mcap:tao}} ({{rank:tao}} onder de cryptomunten).
 
 > **Belangrijkste punten**
 > - Net als bitcoin heeft TAO een hard plafond van 21 miljoen munten; ongeveer 11,7 miljoen circuleren.
 > - De eerste halving in december 2025 verlaagde de nieuwe uitgifte van 7.200 naar 3.600 TAO per dag.
 > - Bittensor begon in 2021 zonder pre-mine en zonder tokenverkoop aan investeerders.
-> - Het record tot nu toe is $757,60 (7 maart 2024); in november 2026 noteerde TAO zo'n 75% lager.
+> - De recordkoers is {{ath:tao}} ({{athd:tao}}); vandaag staat de koers {{fromath:tao}} daarvan af.
 
 ## Hoe het werkt
 
@@ -23,7 +23,8 @@ TAO is de beloning voor miners, validators en eigenaars van subnetten, en de mun
 ## De cijfers nu
 
 - Koers nu: {{price:tao}}
-- Recordkoers: {{ath:tao}} ({{athd:tao}})
+- Recordkoers: {{ath:tao}} ({{athd:tao}}), {{fromath:tao}} daarvan af
+- Marktwaarde: {{mcap:tao}} ({{rank:tao}} onder de cryptomunten)
 - Koersverandering over 12 maanden: {{chg1y:tao}}
 - $10 per dag gedurende 1 jaar: {{dca:tao:1}} bij {{dcainv:1}} ingelegd ({{dcaroi:tao:1}})
 
@@ -37,7 +38,7 @@ Onder crypto-AI-projecten concurreert Bittensor met de [Artificial Superintellig
 
 ## Belangrijkste risico's
 
-- **Grote schommelingen:** TAO staat zo'n 75% onder zijn record van maart 2024.
+- **Grote schommelingen:** TAO is hard gestegen en gedaald; vandaag staat de koers {{fromath:tao}} van het record af.
 - **Onbewezen nut:** het is moeilijk te meten hoeveel echte vraag er is naar de AI die subnetten maken.
 - **Concentratie:** grote validators hebben een groot deel van de gestakete TAO en dus veel invloed op de beloningen.
 - **Veiligheid:** de diefstal uit wallets in 2024 liet zien dat fouten in software en sleutelbeheer gebruikers geld kunnen kosten.

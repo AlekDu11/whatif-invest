@@ -1,16 +1,16 @@
 ---
-title: Bittensor (TAO) nedir: 21 milyon tavan, ilk halving ve 757 $ rekor
+title: Bittensor (TAO) nedir: 21 milyon tavan, ilk halving ve ön madencilik olmadan başlangıç
 description: Bittensor sade bir dille: alt ağlardan oluşan merkeziyetsiz yapay zekâ ağı, madenciler ve doğrulayıcılar TAO'yu nasıl kazanır, 2025 halving'i, rakipler ve riskler.
 date: 2026-11-23
 kind: analysis
 ---
-**Bittensor**, katılımcıların metin üretiminden fiyat tahminine kadar yapay zekâ hizmetleri sunarak yarıştığı ve ödemeyi ağın token'ı TAO ile aldığı merkeziyetsiz bir ağdır. Yapay zekânın tek bir şirkete ait olması yerine birçok bağımsız "alt ağ" kendi görevlerini yürütür ve ağ en iyi işi ödüllendirir. Kasım 2026'da dolaşımdaki tüm TAO'ların değeri yaklaşık 2,2 milyar dolardı; kripto paralar arasında 38. sıra civarındaydı.
+**Bittensor**, katılımcıların metin üretiminden fiyat tahminine kadar yapay zekâ hizmetleri sunarak yarıştığı ve ödemeyi ağın token'ı TAO ile aldığı merkeziyetsiz bir ağdır. Yapay zekânın tek bir şirkete ait olması yerine birçok bağımsız "alt ağ" kendi görevlerini yürütür ve ağ en iyi işi ödüllendirir. Bugünkü piyasa değeri {{mcap:tao}} (kripto paralar arasında {{rank:tao}}).
 
 > **Öne çıkanlar**
 > - Bitcoin gibi TAO'nun da 21 milyon coin'lik kesin bir tavanı var; yaklaşık 11,7 milyonu dolaşımda.
 > - Aralık 2025'teki ilk halving, yeni arzı günde 7.200 TAO'dan 3.600 TAO'ya indirdi.
 > - Bittensor 2021'de ön madencilik olmadan ve yatırımcılara token satmadan başladı.
-> - Şimdiye kadarki rekor 757,60 $ (7 Mart 2024); Kasım 2026'da TAO bunun yaklaşık %75 altında işlem görüyordu.
+> - Rekor fiyatı {{ath:tao}} ({{athd:tao}}); bugün fiyat ondan {{fromath:tao}} uzakta.
 
 ## Nasıl çalışır
 
@@ -23,7 +23,8 @@ TAO; madencilere, doğrulayıcılara ve alt ağ sahiplerine ödenen ödüldür, 
 ## Şu anki rakamlar
 
 - Bugünkü fiyat: {{price:tao}}
-- Rekor: {{ath:tao}} ({{athd:tao}})
+- Rekor: {{ath:tao}} ({{athd:tao}}), ondan {{fromath:tao}}
+- Piyasa değeri: {{mcap:tao}} (kripto paralar arasında {{rank:tao}})
 - 12 aylık fiyat değişimi: {{chg1y:tao}}
 - 1 yıl boyunca günde 10 $: {{dca:tao:1}}, yatırılan {{dcainv:1}} ({{dcaroi:tao:1}})
 
@@ -37,7 +38,7 @@ Kripto yapay zekâ projeleri arasında Bittensor; [Artificial Superintelligence 
 
 ## Başlıca riskler
 
-- **Sert dalgalanmalar:** TAO, Mart 2024 rekorundan yaklaşık %75 düştü.
+- **Sert dalgalanmalar:** TAO sert yükselişler ve düşüşler yaşadı; bugün fiyat rekorundan {{fromath:tao}} uzakta.
 - **Kanıtlanmamış fayda:** alt ağların ürettiği yapay zekâya gerçekte ne kadar talep olduğunu ölçmek zor.
 - **Yoğunlaşma:** büyük doğrulayıcılar stake edilen TAO'nun önemli bir kısmını, dolayısıyla ödüller üzerinde güçlü bir etkiyi elinde tutuyor.
 - **Güvenlik:** 2024'teki cüzdan hırsızlığı, yazılım ve anahtar yönetimi hatalarının kullanıcılara para kaybettirebileceğini gösterdi.

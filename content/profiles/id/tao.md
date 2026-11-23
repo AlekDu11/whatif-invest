@@ -1,16 +1,16 @@
 ---
-title: Bittensor (TAO) dijelaskan: batas 21 juta, halving pertama, dan rekor $757
+title: Bittensor (TAO) dijelaskan: batas 21 juta, halving pertama, dan tanpa pre-mine
 description: Bittensor dengan bahasa sederhana: jaringan AI terdesentralisasi dari subnet, cara miner dan validator mendapat TAO, halving 2025, pesaing, dan risiko utama.
 date: 2026-11-23
 kind: analysis
 ---
-**Bittensor** adalah jaringan terdesentralisasi tempat para peserta bersaing menyediakan layanan kecerdasan buatan — mulai dari membuat teks hingga memprediksi harga — dan dibayar dengan tokennya, TAO. Alih-alih satu perusahaan memiliki AI-nya, banyak "subnet" independen menjalankan tugas masing-masing dan jaringan memberi imbalan pada hasil kerja terbaik. Pada November 2026, seluruh TAO yang beredar bernilai sekitar $2,2 miliar, kira-kira peringkat 38 di antara mata uang kripto.
+**Bittensor** adalah jaringan terdesentralisasi tempat para peserta bersaing menyediakan layanan kecerdasan buatan — mulai dari membuat teks hingga memprediksi harga — dan dibayar dengan tokennya, TAO. Alih-alih satu perusahaan memiliki AI-nya, banyak "subnet" independen menjalankan tugas masing-masing dan jaringan memberi imbalan pada hasil kerja terbaik. Nilai pasarnya kini {{mcap:tao}} ({{rank:tao}} di antara mata uang kripto).
 
 > **Poin penting**
 > - Seperti bitcoin, TAO punya batas pasti 21 juta koin; sekitar 11,7 juta beredar.
 > - Halving pertama pada Desember 2025 memangkas penerbitan baru dari 7.200 menjadi 3.600 TAO per hari.
 > - Bittensor dimulai pada 2021 tanpa pre-mine dan tanpa penjualan token ke investor.
-> - Rekor harga sejauh ini $757,60 (7 Maret 2024); pada November 2026 TAO diperdagangkan sekitar 75% di bawahnya.
+> - Rekor tertingginya {{ath:tao}} ({{athd:tao}}); kini harganya {{fromath:tao}} dari rekor itu.
 
 ## Cara kerjanya
 
@@ -23,7 +23,8 @@ TAO adalah imbalan bagi miner, validator, dan pemilik subnet, sekaligus mata uan
 ## Angka saat ini
 
 - Harga hari ini: {{price:tao}}
-- Rekor tertinggi: {{ath:tao}} ({{athd:tao}})
+- Rekor tertinggi: {{ath:tao}} ({{athd:tao}}), {{fromath:tao}} dari rekor itu
+- Nilai pasar: {{mcap:tao}} ({{rank:tao}} di antara mata uang kripto)
 - Perubahan harga dalam 12 bulan: {{chg1y:tao}}
 - $10 per hari selama 1 tahun: {{dca:tao:1}} dari {{dcainv:1}} yang diinvestasikan ({{dcaroi:tao:1}})
 
@@ -37,7 +38,7 @@ Di antara proyek kripto-AI, Bittensor bersaing dengan [Artificial Superintellige
 
 ## Risiko utama
 
-- **Gejolak besar:** TAO turun sekitar 75% dari rekor Maret 2024.
+- **Gejolak besar:** TAO pernah naik dan turun tajam; kini harganya {{fromath:tao}} dari rekor tertinggi.
 - **Manfaat belum terbukti:** sulit mengukur seberapa besar permintaan nyata atas AI yang dihasilkan subnet.
 - **Konsentrasi:** validator besar memegang sebagian besar TAO yang di-stake sehingga punya pengaruh besar atas imbalan.
 - **Keamanan:** pencurian dompet pada 2024 menunjukkan bahwa bug perangkat lunak dan pengelolaan kunci bisa merugikan pengguna.

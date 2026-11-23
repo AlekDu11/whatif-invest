@@ -1,16 +1,16 @@
 ---
-title: Bittensor (TAO) erklärt: Obergrenze von 21 Millionen, das erste Halving und ein Rekord von 757 $
+title: Bittensor (TAO) erklärt: Obergrenze von 21 Millionen, das erste Halving und kein Pre-Mining
 description: Bittensor einfach erklärt: das dezentrale KI-Netz aus Subnetzen, wie Miner und Validatoren TAO verdienen, das Halving 2025, Konkurrenten und die größten Risiken.
 date: 2026-11-23
 kind: analysis
 ---
-**Bittensor** ist ein dezentrales Netzwerk, in dem Teilnehmer im Wettbewerb Dienste der künstlichen Intelligenz anbieten – von Textgenerierung bis zu Kursprognosen – und dafür in seinem Token TAO bezahlt werden. Statt dass ein einzelnes Unternehmen die KI besitzt, erledigen viele unabhängige „Subnetze“ eigene Aufgaben, und das Netz belohnt die beste Arbeit. Im November 2026 waren alle umlaufenden TAO rund 2,2 Milliarden Dollar wert, etwa Platz 38 unter den Kryptowährungen.
+**Bittensor** ist ein dezentrales Netzwerk, in dem Teilnehmer im Wettbewerb Dienste der künstlichen Intelligenz anbieten – von Textgenerierung bis zu Kursprognosen – und dafür in seinem Token TAO bezahlt werden. Statt dass ein einzelnes Unternehmen die KI besitzt, erledigen viele unabhängige „Subnetze“ eigene Aufgaben, und das Netz belohnt die beste Arbeit. Heute liegt sein Marktwert bei {{mcap:tao}} ({{rank:tao}} unter den Kryptowährungen).
 
 > **Das Wichtigste**
 > - Wie Bitcoin hat TAO eine feste Obergrenze von 21 Millionen Coins; rund 11,7 Millionen sind im Umlauf.
 > - Das erste Halving im Dezember 2025 senkte die Neuausgabe von 7.200 auf 3.600 TAO pro Tag.
 > - Bittensor startete 2021 ohne Pre-Mining und ohne Token-Verkauf an Investoren.
-> - Der bisherige Rekord liegt bei 757,60 $ (7. März 2024); im November 2026 notierte TAO rund 75% darunter.
+> - Sein Rekordhoch liegt bei {{ath:tao}} ({{athd:tao}}); heute steht der Kurs {{fromath:tao}} darunter.
 
 ## So funktioniert es
 
@@ -23,7 +23,8 @@ TAO ist die Belohnung für Miner, Validatoren und Subnetz-Betreiber sowie die W�
 ## Die Zahlen jetzt
 
 - Kurs heute: {{price:tao}}
-- Rekordhoch: {{ath:tao}} ({{athd:tao}})
+- Rekordhoch: {{ath:tao}} ({{athd:tao}}), {{fromath:tao}} davon entfernt
+- Marktwert: {{mcap:tao}} ({{rank:tao}} unter den Kryptowährungen)
 - Kursveränderung in 12 Monaten: {{chg1y:tao}}
 - 10 $ am Tag über 1 Jahr: {{dca:tao:1}} bei {{dcainv:1}} Einsatz ({{dcaroi:tao:1}})
 
@@ -37,7 +38,7 @@ Unter den Krypto-KI-Projekten konkurriert Bittensor mit der [Artificial Superint
 
 ## Die größten Risiken
 
-- **Starke Schwankungen:** TAO liegt rund 75% unter seinem Rekord vom März 2024.
+- **Starke Schwankungen:** TAO ist stark gestiegen und gefallen; heute liegt der Kurs {{fromath:tao}} unter seinem Rekordhoch.
 - **Unbewiesener Nutzen:** Wie groß die echte Nachfrage nach der KI aus den Subnetzen ist, lässt sich schwer messen.
 - **Konzentration:** Große Validatoren halten einen erheblichen Teil der gestakten TAO und damit viel Einfluss auf die Belohnungen.
 - **Sicherheit:** Der Wallet-Diebstahl 2024 zeigte, dass Fehler in Software und Schlüsselverwaltung Nutzer Geld kosten können.

@@ -1,16 +1,16 @@
 ---
-title: Bittensor (TAO) explicado: teto de 21 milhões, o primeiro halving e recorde de US$ 757
+title: Bittensor (TAO) explicado: teto de 21 milhões, o primeiro halving e nenhuma pré-mineração
 description: Bittensor em linguagem simples: a rede descentralizada de IA formada por sub-redes, como mineradores e validadores ganham TAO, o halving de 2025, rivais e riscos.
 date: 2026-11-23
 kind: analysis
 ---
-**Bittensor** é uma rede descentralizada em que participantes competem oferecendo serviços de inteligência artificial — de geração de texto a previsões de preço — e recebem no seu token, o TAO. Em vez de uma única empresa ser dona da IA, muitas "sub-redes" independentes executam tarefas próprias, e a rede recompensa o melhor trabalho. Em novembro de 2026, todos os TAO em circulação valiam cerca de US$ 2,2 bilhões, por volta da 38ª posição entre as criptomoedas.
+**Bittensor** é uma rede descentralizada em que participantes competem oferecendo serviços de inteligência artificial — de geração de texto a previsões de preço — e recebem no seu token, o TAO. Em vez de uma única empresa ser dona da IA, muitas "sub-redes" independentes executam tarefas próprias, e a rede recompensa o melhor trabalho. Hoje seu valor de mercado é de {{mcap:tao}} ({{rank:tao}} entre as criptomoedas).
 
 > **Pontos principais**
 > - Assim como o bitcoin, o TAO tem um teto fixo de 21 milhões de moedas; cerca de 11,7 milhões circulam.
 > - O primeiro halving, em dezembro de 2025, reduziu a emissão de 7.200 para 3.600 TAO por dia.
 > - O Bittensor começou em 2021 sem pré-mineração e sem venda de tokens a investidores.
-> - O recorde até agora é US$ 757,60 (7 de março de 2024); em novembro de 2026 o TAO era negociado cerca de 75% abaixo.
+> - A máxima histórica é {{ath:tao}} ({{athd:tao}}); hoje o preço está {{fromath:tao}} abaixo dela.
 
 ## Como funciona
 
@@ -23,7 +23,8 @@ O TAO é a recompensa paga a mineradores, validadores e donos de sub-redes, e a 
 ## Os números agora
 
 - Preço hoje: {{price:tao}}
-- Recorde: {{ath:tao}} ({{athd:tao}})
+- Máxima histórica: {{ath:tao}} ({{athd:tao}}), {{fromath:tao}} desde ela
+- Valor de mercado: {{mcap:tao}} ({{rank:tao}} entre as criptomoedas)
 - Variação do preço em 12 meses: {{chg1y:tao}}
 - US$ 10 por dia durante 1 ano: {{dca:tao:1}} com {{dcainv:1}} investidos ({{dcaroi:tao:1}})
 
@@ -37,7 +38,7 @@ Entre os projetos cripto de IA, o Bittensor concorre com a [Artificial Superinte
 
 ## Principais riscos
 
-- **Grandes oscilações:** o TAO caiu cerca de 75% desde o recorde de março de 2024.
+- **Grandes oscilações:** o TAO já subiu e caiu com força; hoje está {{fromath:tao}} abaixo da máxima histórica.
 - **Utilidade não comprovada:** é difícil medir quanta demanda real existe pela IA produzida nas sub-redes.
 - **Concentração:** grandes validadores detêm boa parte do TAO em staking e, por isso, muita influência sobre as recompensas.
 - **Segurança:** o roubo de carteiras de 2024 mostrou que falhas de software e de guarda de chaves podem custar dinheiro aos usuários.

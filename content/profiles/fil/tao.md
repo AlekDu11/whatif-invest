@@ -1,16 +1,16 @@
 ---
-title: Bittensor (TAO), ipinaliwanag: limitasyong 21 milyon, unang halving at $757 na rekord
+title: Bittensor (TAO), ipinaliwanag: limitasyong 21 milyon, unang halving at walang pre-mine
 description: Bittensor sa simpleng salita: ang decentralized na AI network ng mga subnet, paano kumikita ng TAO ang mga miner at validator, ang 2025 halving, kakumpitensya at panganib.
 date: 2026-11-23
 kind: analysis
 ---
-Ang **Bittensor** ay isang decentralized na network kung saan nagpapaligsahan ang mga kalahok sa pagbibigay ng serbisyo ng artificial intelligence — mula sa paggawa ng teksto hanggang sa paghula ng presyo — at binabayaran sila sa token nito, ang TAO. Sa halip na iisang kompanya ang may-ari ng AI, maraming independiyenteng "subnet" ang gumagawa ng sarili nilang gawain at ginagantimpalaan ng network ang pinakamahusay na trabaho. Noong Nobyembre 2026, nasa humigit-kumulang $2.2 bilyon ang halaga ng lahat ng TAO na umiikot, mga ika-38 puwesto sa mga cryptocurrency.
+Ang **Bittensor** ay isang decentralized na network kung saan nagpapaligsahan ang mga kalahok sa pagbibigay ng serbisyo ng artificial intelligence — mula sa paggawa ng teksto hanggang sa paghula ng presyo — at binabayaran sila sa token nito, ang TAO. Sa halip na iisang kompanya ang may-ari ng AI, maraming independiyenteng "subnet" ang gumagawa ng sarili nilang gawain at ginagantimpalaan ng network ang pinakamahusay na trabaho. {{mcap:tao}} ang halaga nito sa merkado ngayon ({{rank:tao}} sa mga cryptocurrency).
 
 > **Mahahalagang punto**
 > - Gaya ng bitcoin, may matigas na limitasyon ang TAO na 21 milyong coin; mga 11.7 milyon ang umiikot.
 > - Ibinaba ng unang halving noong Disyembre 2025 ang bagong labas mula 7,200 tungo sa 3,600 TAO kada araw.
 > - Nagsimula ang Bittensor noong 2021 nang walang pre-mine at walang pagbebenta ng token sa mga investor.
-> - Ang pinakamataas na presyo sa ngayon ay $757.60 (7 Marso 2024); noong Nobyembre 2026, mga 75% na mas mababa ang presyo ng TAO.
+> - Ang pinakamataas na presyo nito ay {{ath:tao}} ({{athd:tao}}); ngayon, {{fromath:tao}} ang presyo mula roon.
 
 ## Paano ito gumagana
 
@@ -23,7 +23,8 @@ Ang TAO ang gantimpalang ibinabayad sa mga miner, validator at may-ari ng subnet
 ## Ang mga numero ngayon
 
 - Presyo ngayon: {{price:tao}}
-- Pinakamataas na presyo: {{ath:tao}} ({{athd:tao}})
+- Pinakamataas na presyo: {{ath:tao}} ({{athd:tao}}), {{fromath:tao}} mula roon
+- Halaga sa merkado: {{mcap:tao}} ({{rank:tao}} sa mga cryptocurrency)
 - Pagbabago ng presyo sa loob ng 12 buwan: {{chg1y:tao}}
 - $10 kada araw sa loob ng 1 taon: {{dca:tao:1}} mula sa {{dcainv:1}} na inilagay ({{dcaroi:tao:1}})
 
@@ -37,7 +38,7 @@ Sa mga crypto-AI na proyekto, kakumpitensya ng Bittensor ang [Artificial Superin
 
 ## Pangunahing panganib
 
-- **Malalaking galaw:** bumagsak ang TAO nang mga 75% mula sa rekord nito noong Marso 2024.
+- **Malalaking galaw:** matindi ang pagtaas at pagbagsak ng TAO; ngayon, {{fromath:tao}} ang presyo mula sa pinakamataas nito.
 - **Hindi pa napapatunayang silbi:** mahirap sukatin kung gaano kalaki ang tunay na demand sa AI na ginagawa ng mga subnet.
 - **Konsentrasyon:** hawak ng malalaking validator ang malaking bahagi ng naka-stake na TAO, kaya malaki ang impluwensya nila sa gantimpala.
 - **Seguridad:** ipinakita ng pagnanakaw sa wallet noong 2024 na puwedeng mawalan ng pera ang mga user dahil sa bug sa software at paghawak ng key.

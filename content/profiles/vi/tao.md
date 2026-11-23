@@ -1,16 +1,16 @@
 ---
-title: Bittensor (TAO) là gì: giới hạn 21 triệu, đợt halving đầu tiên và đỉnh 757 USD
+title: Bittensor (TAO) là gì: giới hạn 21 triệu, đợt halving đầu tiên và không đào trước
 description: Bittensor bằng ngôn ngữ dễ hiểu: mạng AI phi tập trung gồm các subnet, thợ đào và trình xác thực kiếm TAO thế nào, halving 2025, đối thủ và rủi ro chính.
 date: 2026-11-23
 kind: analysis
 ---
-**Bittensor** là mạng phi tập trung nơi những người tham gia cạnh tranh cung cấp dịch vụ trí tuệ nhân tạo — từ tạo văn bản đến dự báo giá — và được trả bằng token của mạng, TAO. Thay vì một công ty sở hữu AI, nhiều "subnet" độc lập thực hiện nhiệm vụ riêng và mạng thưởng cho kết quả tốt nhất. Vào tháng 11/2026, toàn bộ TAO đang lưu hành trị giá khoảng 2,2 tỷ USD, quanh vị trí thứ 38 trong số các tiền mã hóa.
+**Bittensor** là mạng phi tập trung nơi những người tham gia cạnh tranh cung cấp dịch vụ trí tuệ nhân tạo — từ tạo văn bản đến dự báo giá — và được trả bằng token của mạng, TAO. Thay vì một công ty sở hữu AI, nhiều "subnet" độc lập thực hiện nhiệm vụ riêng và mạng thưởng cho kết quả tốt nhất. Vốn hóa hiện là {{mcap:tao}} ({{rank:tao}} trong các đồng tiền mã hóa).
 
 > **Điểm chính**
 > - Giống bitcoin, TAO có giới hạn cứng 21 triệu coin; khoảng 11,7 triệu đang lưu hành.
 > - Đợt halving đầu tiên vào tháng 12/2025 cắt lượng phát hành mới từ 7.200 xuống 3.600 TAO mỗi ngày.
 > - Bittensor khởi động năm 2021, không đào trước và không bán token cho nhà đầu tư.
-> - Đỉnh giá cho đến nay là 757,60 USD (7/3/2024); tháng 11/2026, TAO giao dịch thấp hơn khoảng 75%.
+> - Đỉnh kỷ lục là {{ath:tao}} ({{athd:tao}}); giá hiện tại cách đỉnh {{fromath:tao}}.
 
 ## Cách hoạt động
 
@@ -23,7 +23,8 @@ TAO là phần thưởng trả cho thợ đào, trình xác thực và chủ sub
 ## Các con số hiện tại
 
 - Giá hôm nay: {{price:tao}}
-- Đỉnh kỷ lục: {{ath:tao}} ({{athd:tao}})
+- Đỉnh kỷ lục: {{ath:tao}} ({{athd:tao}}), cách đỉnh {{fromath:tao}}
+- Vốn hóa thị trường: {{mcap:tao}} ({{rank:tao}} trong các đồng tiền mã hóa)
 - Biến động giá trong 12 tháng: {{chg1y:tao}}
 - 10 USD mỗi ngày trong 1 năm: {{dca:tao:1}} từ {{dcainv:1}} đã đầu tư ({{dcaroi:tao:1}})
 
@@ -37,7 +38,7 @@ Trong nhóm dự án tiền mã hóa về AI, Bittensor cạnh tranh với [Arti
 
 ## Rủi ro chính
 
-- **Biến động mạnh:** TAO đã giảm khoảng 75% so với đỉnh tháng 3/2024.
+- **Biến động mạnh:** TAO từng tăng và giảm rất mạnh; giá hiện cách đỉnh kỷ lục {{fromath:tao}}.
 - **Giá trị sử dụng chưa được chứng minh:** khó đo lường nhu cầu thật đối với AI do các subnet tạo ra.
 - **Tập trung:** các trình xác thực lớn nắm phần lớn TAO được stake, nên có ảnh hưởng lớn tới phần thưởng.
 - **Bảo mật:** vụ trộm ví năm 2024 cho thấy lỗi phần mềm và quản lý khóa có thể khiến người dùng mất tiền.
