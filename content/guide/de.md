@@ -1,96 +1,92 @@
 ---
-title: So nutzt du WhatIfStack: Anleitung zu allen Tools
-description: Alles, was WhatIfStack kann, einfach erklärt: Sparplan-Ranking und DCA-Rechner, Renditen nach Monaten, Aktien nach Ländern, die größten Vermögenswerte der Welt, News, deine Merkliste und dein Portfolio.
+title: So nutzt du WhatIfStack: Anleitung für Einsteiger
+description: Schritt für Schritt und einfach erklärt: Aktien aus 49 Ländern, Krypto, Memecoins, dein persönlicher Bereich mit Portfolios und Merklisten, Kursalarme per Telegram, Rechner und Lektionen – was wo ist und wie du es nutzt.
 nav: Anleitung
-short: Alle Tools einfach erklärt
+short: Die ganze Seite einfach erklärt
 ---
-WhatIfStack beantwortet vor allem eine Frage: **Wie viel hätte ich heute, wenn ich regelmäßig einen festen Betrag angelegt hätte – also wie bei einem Sparplan?** Alles andere auf der Seite hilft dir, Krypto, Aktien, ETFs und Gold genau so zu betrachten – mit echten Kursen und ohne Hype. Hier erfährst du, was jedes Tool macht und wie du es nutzt.
+WhatIfStack erklärt die Märkte in einfacher Sprache: **Aktien, Krypto, ETFs und Gold an einem Ort**, mit Live-Kursen, Charts, News und Rechnern. Vorwissen brauchst du nicht – diese Anleitung führt dich Schritt für Schritt durch die ganze Seite. Einen Überblick in 30 Sekunden gibt dir **✨ Was diese Seite kann** im Tools-Menü.
 
-## Das DCA-Ranking (Startseite)
+## Der Einstieg: deine ersten 3 Schritte
 
-Die Tabelle auf der [Startseite]({lang}/) sortiert {n} Werte danach, was regelmäßiges Kaufen gebracht hätte. DCA (Cost-Average-Effekt) heißt: Du kaufst jeden Tag, jede Woche oder jeden Monat für denselben Betrag – egal, wie der Kurs gerade steht.
+1. **Finde deinen Wert.** Tippe oben auf die Suche und gib einen Namen oder Ticker ein: „Bitcoin“, „Apple“, „Gold“, „Siemens“. Die Suche kennt alle {n} Werte der Seite.
+2. **Speichere ihn mit ★.** Auf der Seite des Werts drückst du ★ – sein Kurs erscheint dann auf der Startseite und in deiner [Merkliste]({lang}/watchlist/). Ohne Anmeldung.
+3. **Probier den „10 $ am Tag“-Rechner.** Auf jeder Seite zeigt er, was du hättest, wenn du ab einem beliebigen Datum jeden Tag ein wenig gekauft hättest – mit echten Kursen.
 
-- **Spalten:** Kurs, Veränderung in 24 Stunden und was 10 $ pro Tag über 1, 3 und 5 Jahre gebracht hätten.
-- **Tabs:** Alle, Krypto, Aktien, ETFs, Metalle, DCA-Gewinner und -Verlierer.
-- **Sortiere** nach jeder Spalte oder gib einen Namen oder Ticker in den Filter ein.
-- **Aktien nach Ländern** findest du direkt über der Tabelle: Öffne die Aktien deines Landes.
+Unten findest du jeden Bereich im Detail.
 
-## Der DCA-Rechner
+## Aktien aus allen Ländern
 
-Auf der Startseite und auf jeder Wertseite kannst du Betrag, Rhythmus (täglich, wöchentlich, monatlich) und Startdatum ändern und mehrere Werte in einem Chart vergleichen. Die [Vergleichsseite]({lang}/compare/) macht dasselbe für bis zu fünf Werte nebeneinander. Gerechnet wird mit monatlichen Schlusskursen; bei Aktien und ETFs sind reinvestierte Dividenden enthalten; Gebühren und Steuern sind nicht berücksichtigt.
+Die Seite deckt Aktien aus **49 Märkten** ab: USA, Europa, Asien, Nahost, Lateinamerika und mehr. Starte im [Aktienbereich]({lang}/stocks/): oben die Quartalszahlen dieser Woche, dann das Ranking der größten Unternehmen und ein Knopf für jedes Land.
 
-## Die Seite eines Werts
+- **Länderseiten** zeigen die größten Unternehmen jedes Markts nach Börsenwert, z. B. [USA]({lang}/stocks-usa/), [Deutschland]({lang}/stocks-germany/), [Österreich]({lang}/stocks-austria/), [Schweiz]({lang}/stocks-switzerland/), [Niederlande]({lang}/stocks-netherlands/).
+- **[Die größten Unternehmen der Welt]({lang}/largest-companies/)** – nach Börsenwert, Umsatz, Gewinn und weiteren Kennzahlen, mit Länderfilter.
+- **Eine Aktienseite** (z. B. [Apple]({lang}/aapl/)): Kurs (bei US-Aktien auch vor- und nachbörslich), Chart, Kennzahlen (Umsatz, Gewinn, KGV, Dividende, Schulden), eine Firmenbeschreibung und bei den großen eine vollständige Analyse: wie das Unternehmen Geld verdient, Konkurrenten, Risiken.
+- **[Kategorien]({lang}/categories/)** – Sektoren und Branchen: Banken, KI, Energie und mehr.
+- **[Vergleich]({lang}/compare/)** – zwei Unternehmen oder Coins nebeneinander, z. B. [Apple vs. Microsoft]({lang}/compare/aapl-vs-msft/).
+- **[Termine der Quartalszahlen]({lang}/earnings-calendar/)** – wann Unternehmen berichten.
+- **[Depots bekannter Investoren]({lang}/investors/)** – was Buffett, Ackman, Cathie Wood und andere kaufen (laut offiziellen SEC-Meldungen) und welche Firmen am meisten Krypto halten.
 
-Jede Kryptowährung, Aktie, jeder ETF und jedes Metall hat eine eigene Seite, zum Beispiel [Bitcoin]({lang}/btc/). Dort findest du:
+Außerdem gibt es [ETFs]({lang}/etfs/), [Gold]({lang}/gold/), [andere Metalle]({lang}/metals/) und [Rohstoffe]({lang}/commodities/).
 
-- **Die Antwort auf einen Blick**: was 10 $ pro Tag seit einem bestimmten Datum heute wert sind.
-- **Was ist los mit …**: unsere aktuelle Kurzerklärung, wenn sich der Kurs stark bewegt hat; unsere übrigen News stehen unter dem Chart.
-- **Live-Chart** von TradingView.
-- **Kennzahlen**: Marktkapitalisierung, vollständig verwässerter Wert, 24h-Volumen, umlaufende, gesamte und maximale Menge, Allzeithoch und -tief und wie weit der Kurs davon entfernt ist.
-- **Über**: eine kurze Beschreibung und offizielle Links – Website, Whitepaper, Explorer, Social Media, Quellcode.
-- **Renditen nach Monaten**: eine farbige Tabelle mit jedem Monat und Jahr seit dem Start des Werts, dem Median je Monat und Karten für Monat, Quartal und Jahr bis heute. Für Coins, die auf Binance gehandelt werden, gibt es zusätzlich eine Tagesansicht der letzten 12 Monate.
-- **Renditen über 1, 3, 5 und 10 Jahre**, was 1.000 $ als Einmalanlage heute wert wären, und ähnliche Werte.
+## Kryptowährungen
 
-## Aktien nach Ländern
+Die [Krypto-Liste]({lang}/crypto/) zeigt Coins, die wirklich an großen Börsen gehandelt werden (Binance, OKX, Gate, MEXC, Kraken und andere). Coins ohne Börse und ohne Chart lassen wir weg: Meist sind das tote oder zweifelhafte Projekte. Sortieren kannst du nach Marktkapitalisierung, Änderung in 24 Stunden und 7 Tagen sowie Volumen.
 
-Seiten wie [Deutschland]({lang}/stocks-germany/), [Schweiz]({lang}/stocks-switzerland/), [Frankreich]({lang}/stocks-france/), [Polen]({lang}/stocks-poland/) oder [Großbritannien]({lang}/stocks-uk/) zeigen die größten Unternehmen jedes Markts. Die Kurse werden zum Wechselkurs des jeweiligen Monats in US-Dollar umgerechnet, damit sich die Renditen zwischen Ländern vergleichen lassen; auf der Seite der Aktie siehst du auch den Kurs an der heimischen Börse.
+**Das bietet jede Coin-Seite** (z. B. [Bitcoin]({lang}/btc/)):
 
-## Die größten Vermögenswerte der Welt
+- **Live-Kurs** und TradingView-Chart; darunter ein schneller Umrechner in Dollar, Euro oder deine Währung.
+- **Kennzahlen:** Marktkapitalisierung, 24-Stunden-Volumen, umlaufendes und maximales Angebot, das Allzeithoch und wie weit der Kurs jetzt davon entfernt ist.
+- **Über das Projekt** – eine kurze, einfache Beschreibung und bei großen Coins eine **vollständige Analyse**: wie es funktioniert, Risiken, Konkurrenten und was es bedeutet, wenn du regelmäßig kaufst.
+- **Wo gehandelt wird:** Börsen und Handelspaare in jeder Währung.
+- **Kategorien** (z. B. KI, DeFi, Solana-Ökosystem) – tippe darauf, um ähnliche Coins zu sehen.
+- **Renditen nach Monaten und Jahren**, der „10 $ am Tag“-Rechner und News zum Coin.
 
-[Dieses Ranking]({lang}/world-assets/) stellt Immobilien, Gold, Öl, Geldmenge, die größten Unternehmen und Krypto auf eine Skala. Metalle und Unternehmen werden mit heutigen Kursen gerechnet; die übrigen Zahlen stammen aus den auf der Seite genannten Quellen.
+**Auch nützlich:** [Gewinner und Verlierer]({lang}/crypto/gainers-losers/) über 24 Stunden und 7 Tage, das [Ranking der Kryptobörsen]({lang}/crypto-exchanges/) mit Volumen und Reservennachweis, [Derivatebörsen]({lang}/crypto-exchanges/derivatives/) und der [Countdown zum Bitcoin-Halving]({lang}/bitcoin-halving/).
 
-## News und „Was ist los mit …“
+## Memecoins
 
-- [News]({lang}/news/): unsere eigenen Kurzmeldungen, aus mehreren Quellen geschrieben und mit Links am Ende, dazu ein Live-Feed mit Schlagzeilen führender Medien.
-- **„Was ist los mit …“** erklärt starke Kursbewegungen einer Kryptowährung oder Aktie innerhalb weniger Stunden: was passiert ist, warum und was das bedeutet, wenn du regelmäßig kaufst.
-- [Insights]({lang}/blog/): Ratgeber und Analysen – starte am besten mit den [Einsteiger-Ratgebern]({lang}/blog/).
+[Memecoins]({lang}/memes/) sind Token von dezentralen Börsen (Solana, BNB Chain, Base und andere), in Echtzeit. Das ist **die riskanteste Ecke des Markts**, deshalb haben wir einen strengen Filter eingeschaltet: Wir zeigen nur Token, die älter als 24 Stunden sind, genug Liquidität und Halter haben und keine Warnsignale zeigen. Das entfernt die meisten Betrügereien, macht aber nichts sicher.
 
-## Rechner
+- **Der farbige Punkt** neben einem Token ist ein schneller Sicherheitscheck: 🟢 weniger Risiken, 🟡 Vorsicht, 🔴 gefährlich.
+- **Suche** nach Name, Ticker oder Vertragsadresse, **sortiere** nach jeder Spalte, und im Tab ★ findest du deine gespeicherten Token.
+- **Eine Token-Seite:** Chart, Änderung über 5 Minuten, eine Stunde und einen Tag, Sicherheitscheck, 🔔-Knopf für einen Kursalarm und ähnliche Trend-Token.
+- Unten auf der Seite: Lektionen, 5 Checks vor dem Kauf und das [Memecoin-Glossar]({lang}/memes/glossary/) – Vertrag, Liquidität, Rug Pull und andere Begriffe erklärt.
 
-- [Gewohnheiten → Geld]({lang}/habits/): was dein täglicher Kaffee, Zigaretten oder Abos wert wären, wenn du das Geld anlegen würdest.
-- [Millionärsrechner]({lang}/millionaire/): wie viel du monatlich sparen musst, um ein Ziel zu erreichen.
-- [Zinseszins]({lang}/compound-interest/): wie Geld wächst, wenn Erträge reinvestiert werden.
-- [Inflation]({lang}/inflation/): wie viel dein Geld in deinem Land an Wert verloren hat.
-- [Umrechner]({lang}/converter/): jede Kryptowährung, Aktie oder Währung in eine andere.
-- [Abstand zum Allzeithoch]({lang}/ath/) und Countdown zum [Bitcoin-Halving]({lang}/bitcoin-halving/).
+## Dein persönlicher Bereich: Portfolios, Merklisten, Alarme
 
-Der Gewohnheiten- und der Inflationsrechner nutzen deine Landeswährung, sofern die Seite sie unterstützt.
+Alles ist kostenlos und funktioniert **ohne Anmeldung**: Deine Daten bleiben in deinem Browser.
 
-## Sektoren
+- **[Portfolio]({lang}/me/)** – trage ein, was du gekauft hast (Knopf „Zum Portfolio hinzufügen“ auf jeder Seite), und sieh Wert, Gewinn, 24-Stunden-Änderung, Saldo-Chart und Aufteilung. Du kannst **mehrere Portfolios** führen (etwa „Langfristig“ und „Krypto“), jeden Kauf und Verkauf erfassen, eine Währung wählen (Dollar, Euro, USDT oder deine eigene) und eine CSV-Datei importieren.
+- **[Merkliste ★]({lang}/watchlist/)** – mehrere Listen mit Live-Kursen; der ★ steht auf jeder Seite oben.
+- **Mit Google anmelden** („👤 Anmelden“ oben) brauchst du nur, damit Portfolios und Merklisten auf Handy und Computer gleich sind.
+- **Kursalarme 🔔** – auf der Seite eines Coins, einer Aktie oder eines Memecoins 🔔 drücken und einen Kurs wählen: Wird er erreicht, schreibt dir der Bot [@WhatIfStack_bot](https://t.me/WhatIfStack_bot) auf Telegram.
+- **Der Telegram-Bot** kann mehr: Schick ihm einen Ticker (z. B. „btc“) und du bekommst den Kurs; der Knopf „Portfolio“ öffnet dein Portfolio direkt in Telegram.
 
-- [KI-Sektor]({lang}/ai/): KI-Aktien und KI-Coins und was ein Korb daraus gebracht hätte.
-- [Memecoins]({lang}/memes/): angesagte Token auf dezentralen Börsen, live. Die sind extrem riskant.
+## Tools und Rechner
 
-## Deine Merkliste, DCA-Pläne und dein Portfolio
+Alle Rechner findest du auf [einer Seite]({lang}/calculators/). Die beliebtesten:
 
-Tippe auf den ☆ neben einem Wert, um ihn auf [deine Merkliste]({lang}/me/) zu setzen. Auf derselben Seite kannst du DCA-Pläne speichern (Betrag, Rhythmus, Startdatum) und ein einfaches Portfolio führen: Trag ein, wie viel du in jeden Wert gesteckt hast, und sieh dir die Summe und die Aufteilung an. Alles wird in deinem Browser gespeichert – kein Konto nötig.
+- **Der „10 $ am Tag“-Rechner (Sparplan/DCA)** – auf der Startseite und jeder Seite eines Werts: Betrag, Rhythmus, Startdatum und Vergleich mehrerer Werte.
+- [Umrechner]({lang}/converter/) – jeden Coin, jede Aktie oder Währung in eine andere.
+- [Durchschnittspreis]({lang}/average-price/) – dein Durchschnittskaufkurs und wie viel du nachkaufen müsstest, um ihn zu senken.
+- [Dividenden]({lang}/dividends/), [Zinseszins]({lang}/compound-interest/), der [Millionärsrechner]({lang}/millionaire/), [Inflation]({lang}/inflation/) und [Gewohnheiten → Geld]({lang}/habits/) (was dein täglicher Kaffee wert wäre, wenn du das Geld anlegst).
+- [Abstand zum Hoch]({lang}/ath/) – wie weit Werte unter ihrem Rekord liegen.
+- [Die größten Vermögenswerte der Welt]({lang}/world-assets/) – Immobilien, Gold, Unternehmen und Krypto in einem Ranking.
+- **KI fragen** – der Knopf unten rechts: jede Frage zu den Märkten, in deiner Sprache. Dort gibt es auch **💡 Verbesserung vorschlagen** – sag uns, was fehlt.
+- [Widgets]({lang}/widgets/) – bau kostenlos einen Live-Kurs oder Rechner in deine eigene Seite ein.
+- [Aktionen]({lang}/activities/) – ehrliche Anleitungen zu Airdrops und Börsenkampagnen mit Risikostufe.
+- [Wo kaufen]({lang}/exchanges/) – die Börsen und Wallets, mit denen wir arbeiten. Manche Links sind Partnerlinks: Dich kosten sie nichts, und sie beeinflussen nie unsere Daten oder Rankings.
 
-## Wo kaufen
+## News und Lektionen
 
-Unter [Börsen]({lang}/exchanges/) findest du die Börsen und Wallets, mit denen wir zusammenarbeiten. Manche Links sind Partnerlinks: Wir bekommen eventuell eine Provision, wenn du dich anmeldest – dich kostet das nichts extra. An unseren Daten und Rankings ändert das nie etwas.
-
-## KI-Assistent
-
-Der Button **KI fragen** unten rechts öffnet einen Chat. Frag zum Asset auf der Seite, zum Sparplan, zu Börsen oder dazu, wie die Seite funktioniert – der Assistent sieht die Zahlen der aktuellen Seite und antwortet in deiner Sprache. Er erklärt und rechnet, sagt dir aber nie, was du kaufen sollst. Antworten stammen von einer KI und können Fehler enthalten; bis zu 20 Fragen pro Tag.
-
-## Widgets
-
-Bau einen Live-Rechner „10 $ pro Tag“ für jede Kryptowährung, Aktie oder Gold in deinen Blog, dein Forum oder deine Website ein. Täglich aktualisiert, kostenlos, ohne Anmeldung. [Kostenlose Sparplan-Widgets für deine Website]({lang}/widgets/)
-
-## Dividenden · Durchschnittspreis
-
-Berechne, wie viel Dividende pro Jahr und Monat ein Depot bringt, wenn du monatlich einzahlst und die Ausschüttungen wieder anlegst. [Dividendenrechner]({lang}/dividends/)
-
-Gib deine Käufe ein und erhalte Einstandskurs, Gewinn zum aktuellen Kurs und wie viel du nachkaufen musst, um den Schnitt zu senken. [Durchschnittspreis-Rechner]({lang}/average-price/)
-
-## Größte Unternehmen
-
-Rangliste börsennotierter Unternehmen mit Kurs und Veränderung zum Vortag und zum Vorjahr. Tippe auf ein Unternehmen für Kennzahlen und eine verständliche Analyse. [Größte Unternehmen der Welt nach Börsenwert]({lang}/largest-companies/)
-
-## Börsen-Ranking
-
-Wo am meisten gehandelt wird: 24h-Volumen, Marktanteil und Vertrauenswert. Tippe auf eine Börse, um zu sehen, was dort gehandelt wird. [Größte Kryptobörsen nach Handelsvolumen]({lang}/crypto-exchanges/) · [Größte Börsen für Futures und Perpetuals]({lang}/crypto-exchanges/derivatives/)
+- **[News]({lang}/news/)** – unsere Kurzmeldungen dreimal am Tag: was passiert ist und was es bedeutet, in einfachen Worten.
+- **[Artikel]({lang}/blog/)** – Analysen, Marktberichte und Antworten auf häufige Fragen.
+- **[Lernen]({lang}/learn/)** – Lektionen für komplette Einsteiger in 5 Bereichen: Grundlagen des Investierens, Aktien, Krypto, Trading und Memecoins. Sie bauen aufeinander auf, mit einem Knopf „Nächste Lektion“ am Ende.
 
 ## Woher die Zahlen kommen
 
-Binance, CoinGecko, Yahoo Finance, die Moskauer Börse, die Weltbank und andere öffentliche Quellen; die Quellen jeder Meldung findest du unter [News]({lang}/news/). Die Kurse werden täglich aktualisiert, Kryptokurse live. Nichts auf WhatIfStack ist eine Anlageberatung: Vergangene Ergebnisse sind keine Garantie für die Zukunft.
+Kurse stammen von Binance, OKX, Gate, MEXC, Kraken, Yahoo Finance, CoinGecko und der Moskauer Börse; Unternehmenszahlen aus Geschäftsberichten und von der SEC; weitere Marktdaten aus den offenen Quellen, die auf jeder Seite genannt sind. Krypto und US-Aktien aktualisieren sich live, der Rest täglich. Details unter [About and methodology](/en/about/) (auf Englisch) und in unseren [redaktionellen Grundsätzen]({lang}/editorial-policy/).
+
+**Wichtig:** Nichts auf WhatIfStack ist eine Anlageberatung. Vergangene Ergebnisse garantieren keine künftigen – investiere nur, was du verlieren kannst.
+
+Um bei den Märkten auf dem Laufenden zu bleiben, setz ein Lesezeichen und folge unserem [Telegram-Kanal](https://t.me/WhatIfStack).

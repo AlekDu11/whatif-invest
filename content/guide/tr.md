@@ -1,96 +1,92 @@
 ---
-title: WhatIfStack nasıl kullanılır: tüm araçların rehberi
-description: WhatIfStack'in yapabildiği her şey, sade bir dille: DCA sıralaması ve hesaplayıcısı, aylık getiriler, ülkelere göre hisseler, dünyanın en büyük varlıkları, haberler, izleme listen ve portföyün.
+title: WhatIfStack nasıl kullanılır: yeni başlayanlar için rehber
+description: Adım adım ve sade bir dille: 49 ülkenin hisseleri, kripto, memecoinler, portföy ve izleme listeleriyle kişisel alanın, Telegram fiyat alarmları, hesaplayıcılar ve dersler — ne nerede ve nasıl kullanılır.
 nav: Rehber
-short: Tüm araçlar sade dille
+short: Sitenin tamamı sade dille
 ---
-WhatIfStack önce tek bir soruya cevap verir: **düzenli olarak sabit bir tutar yatırsaydım bugün ne kadar param olurdu?** Sitedeki diğer her şey kripto, hisse, ETF ve altına bu gözle bakmana yardım eder — gerçek fiyatlarla ve abartı olmadan. İşte her aracın ne yaptığı ve nasıl kullanılacağı.
+WhatIfStack piyasaları sade bir dille anlatır: **hisseler, kripto, ETF'ler ve altın tek bir yerde**; canlı fiyatlar, grafikler, haberler ve hesaplayıcılarla. Önceden hiçbir şey bilmen gerekmiyor — bu rehber seni sitenin tamamında adım adım gezdirir. 30 saniyelik bir özet için araçlar menüsündeki **✨ Bu site neler yapar** düğmesine bas.
 
-## DCA sıralaması (ana sayfa)
+## Başlarken: ilk 3 adımın
 
-[Ana sayfadaki]({lang}/) tablo {n} varlığı düzenli alımın ne kazandıracağına göre sıralar. DCA (maliyet ortalaması), fiyat ne olursa olsun her gün, her hafta ya da her ay aynı tutarda alım yapmak demektir.
+1. **Varlığını bul.** Üstteki aramaya dokun ve bir ad ya da sembol yaz: "bitcoin", "Apple", "altın", "THY". Arama sitedeki {n} varlığın hepsini bilir.
+2. **★ ile kaydet.** Varlığın sayfasında ★'a bas — fiyatı artık ana sayfada ve [izleme listende]({lang}/watchlist/) görünür. Kayıt gerekmez.
+3. **"Günde 10 $" hesaplayıcısını dene.** Her varlık sayfasında, herhangi bir tarihten beri her gün biraz alsaydın bugün ne kadarın olacağını gerçek fiyatlarla gösterir.
 
-- **Sütunlar:** fiyat, 24 saatlik değişim ve günde 10 $'ın 1, 3 ve 5 yılda ne getireceği.
-- **Sekmeler:** Tümü, Kripto, Hisseler, ETF'ler, Metaller, DCA liderleri ve en kötüleri.
-- Herhangi bir sütuna göre **sırala** ya da filtreye bir isim veya kod yaz.
-- **Ülkelere göre hisseler** tablonun hemen üstünde: kendi ülkenin hisselerini aç.
+Aşağıda her bölüm ayrıntılı olarak var.
 
-## DCA hesaplayıcısı
+## Tüm ülkelerin hisseleri
 
-Ana sayfada ve her varlık sayfasında tutarı, sıklığı (günlük, haftalık, aylık) ve başlangıç tarihini değiştirip birden fazla varlığı tek grafikte karşılaştırabilirsin. [Karşılaştırma sayfası]({lang}/compare/) aynısını beş varlığa kadar yan yana yapar. Sonuçlar aylık kapanış fiyatlarıyla hesaplanır; hisse ve ETF'lerde temettüler yeniden yatırılmış sayılır; komisyon ve vergiler dahil değildir.
+Site **49 piyasanın** hisselerini kapsar: ABD, Avrupa, Asya, Orta Doğu, Latin Amerika ve daha fazlası. [Hisse bölümüyle]({lang}/stocks/) başla: en üstte bu haftanın şirket bilançoları, ardından en büyük şirketler sıralaması ve her ülke için bir düğme.
 
-## Varlık sayfası
+- **Ülke sayfaları** her piyasanın piyasa değerine göre en büyük şirketlerini gösterir; örneğin [ABD]({lang}/stocks-usa/), [Türkiye]({lang}/stocks-turkey/), [Almanya]({lang}/stocks-germany/), [Birleşik Krallık]({lang}/stocks-uk/), [Suudi Arabistan]({lang}/stocks-saudi-arabia/).
+- **[Dünyanın en büyük şirketleri]({lang}/largest-companies/)** — piyasa değeri, gelir, kâr ve diğer ölçütlere göre sıralama, ülke filtresiyle.
+- **Bir hisse sayfası** (örneğin [Apple]({lang}/aapl/)): fiyat (ABD hisselerinde seans öncesi ve sonrası da), grafik, temel rakamlar (gelir, kâr, F/K, temettü, borç), şirket açıklaması ve büyük şirketler için tam analiz: şirket nasıl para kazanır, rakipler, riskler.
+- **[Kategoriler]({lang}/categories/)** — sektörler ve endüstriler: bankalar, yapay zekâ, enerji ve diğerleri.
+- **[Karşılaştır]({lang}/compare/)** — iki şirket ya da coin yan yana; örneğin [Apple ve Microsoft]({lang}/compare/aapl-vs-msft/).
+- **[Bilanço takvimi]({lang}/earnings-calendar/)** — şirketlerin sonuçlarını ne zaman açıkladığı.
+- **[Ünlü yatırımcıların portföyleri]({lang}/investors/)** — Buffett, Ackman, Cathie Wood ve diğerlerinin ne aldığı (SEC'e verilen resmî bildirimlere göre) ve en çok kriptoyu hangi şirketlerin tuttuğu.
 
-Her coin, hisse, ETF ve metalin kendi sayfası var, örneğin [Bitcoin]({lang}/btc/). Orada:
+Ayrıca [ETF'ler]({lang}/etfs/), [altın]({lang}/gold/), [diğer metaller]({lang}/metals/) ve [emtialar]({lang}/commodities/) da var.
 
-- **Ana cevap**: belirli bir tarihten beri günde 10 $'ın bugün ne ettiği.
-- **Neler oluyor**: fiyat sert hareket ettiğinde yazdığımız son kısa açıklama; diğer haberlerimiz grafiğin altında.
-- TradingView'dan **canlı grafik**.
-- **Temel veriler**: piyasa değeri, tamamen seyreltilmiş değer, 24 saatlik hacim, dolaşımdaki, toplam ve maksimum arz, tüm zamanların en yükseği ve en düşüğü ve fiyatın bunlara uzaklığı.
-- **Hakkında**: kısa bir açıklama ve resmi bağlantılar — web sitesi, whitepaper, blok gezgini, sosyal medya, kaynak kod.
-- **Aylık getiriler**: varlığın başlangıcından beri her ay ve yılın renkli tablosu, her ayın medyanı ve ay, çeyrek ve yıl başından beri kartları. Binance'te işlem gören coinler için son 12 ayın gün gün görünümü de var.
-- **1, 3, 5 ve 10 yıllık getiriler**, tek seferde yatırılan 1.000 $'ın bugünkü değeri ve benzer varlıklar.
+## Kripto paralar
 
-## Ülkelere göre hisseler
+[Kripto listesi]({lang}/crypto/) büyük borsalarda (Binance, OKX, Gate, MEXC, Kraken ve diğerleri) gerçekten işlem gören coinleri gösterir. Borsası ve grafiği olmayan coinleri göstermiyoruz: bunlar çoğunlukla ölü ya da şüpheli projelerdir. Listeyi piyasa değeri, 24 saatlik ve 7 günlük değişim ve hacme göre sıralayabilirsin.
 
-[Türkiye]({lang}/stocks-turkey/), [Almanya]({lang}/stocks-germany/), [Birleşik Krallık]({lang}/stocks-uk/) veya [Suudi Arabistan]({lang}/stocks-saudi-arabia/) gibi sayfalar her piyasanın en büyük şirketlerini listeler. Fiyatlar her ayın kuruyla ABD dolarına çevrilir, böylece getiriler ülkeler arasında karşılaştırılabilir; varlık sayfasında yerel borsadaki fiyat da görünür.
+**Her coin sayfasında neler var** (örneğin [Bitcoin]({lang}/btc/)):
 
-## Dünyanın en büyük varlıkları
+- **Canlı fiyat** ve TradingView grafiği; altında dolar, lira veya başka bir para birimine hızlı çevirici.
+- **Temel rakamlar:** piyasa değeri, 24 saatlik hacim, dolaşımdaki ve azami arz, tüm zamanların zirvesi ve fiyatın şu an ona ne kadar uzak olduğu.
+- **Hakkında** — kısa ve sade bir açıklama; büyük coinlerde ayrıca **tam analiz**: nasıl çalışır, riskler, rakipler ve düzenli alırsan ne anlama gelir.
+- **Nerede işlem görür:** borsalar ve her para birimindeki pariteler.
+- **Kategoriler** (örneğin yapay zekâ, DeFi, Solana ekosistemi) — benzer coinleri görmek için dokun.
+- **Aylara ve yıllara göre getiriler**, "Günde 10 $" hesaplayıcısı ve coinle ilgili haberler.
 
-[Bu sıralama]({lang}/world-assets/) gayrimenkulü, altını, petrolü, para arzını, en büyük şirketleri ve kriptoyu aynı ölçekte gösterir. Metaller ve şirketler bugünkü fiyatlarla; diğer rakamlar sayfada belirtilen kaynaklardan gelir.
+**Ayrıca işe yarar:** 24 saat ve 7 günde [en çok yükselen ve düşenler]({lang}/crypto/gainers-losers/), hacim ve rezerv kanıtıyla [kripto borsaları sıralaması]({lang}/crypto-exchanges/), [türev borsaları]({lang}/crypto-exchanges/derivatives/) ve [Bitcoin halving geri sayımı]({lang}/bitcoin-halving/).
 
-## Haberler ve "Neler oluyor…"
+## Memecoinler
 
-- [Haberler]({lang}/news/): birkaç kaynaktan derlenmiş, sonunda bağlantıları olan kendi kısa özetlerimiz ve önde gelen yayınlardan canlı başlık akışı.
-- **"Neler oluyor…"** bir coin ya da hissenin sert hareketlerini saatler içinde açıklar: ne oldu, neden oldu ve düzenli alım yapıyorsan ne anlama geliyor.
-- [Analizler]({lang}/blog/): rehberler ve analizler — [yeni başlayanlar için yazılarla]({lang}/blog/) başla.
+[Memecoinler]({lang}/memes/) merkeziyetsiz borsalardaki (Solana, BNB Chain, Base ve diğerleri) tokenlardır, gerçek zamanlı. Burası **piyasanın en riskli köşesi**, bu yüzden sıkı bir filtre açtık: yalnızca 24 saatten eski, yeterli likiditesi ve sahibi olan, kırmızı bayrak taşımayan tokenları gösteriyoruz. Bu dolandırıcılıkların çoğunu eler, ama hiçbir şeyi güvenli yapmaz.
 
-## Hesaplayıcılar
+- **Renkli nokta** tokenın yanında hızlı bir güvenlik kontrolüdür: 🟢 daha az risk, 🟡 dikkat, 🔴 tehlikeli.
+- Ad, sembol ya da kontrat adresiyle **ara**, herhangi bir sütuna göre **sırala**; ★ sekmesinde kaydettiğin tokenlar var.
+- **Token sayfası:** grafik, 5 dakika, bir saat ve bir günlük değişim, güvenlik kontrolü, fiyat alarmı için 🔔 düğmesi ve trenddeki benzer tokenlar.
+- Sayfanın en altında: dersler, almadan önce 5 kontrol ve [memecoin sözlüğü]({lang}/memes/glossary/) — kontrat, likidite, rug pull ve diğer kelimelerin açıklaması.
 
-- [Alışkanlıklar → para]({lang}/habits/): günlük kahven, sigaran ya da aboneliklerin yatırıma dönüşseydi ne ederdi.
-- [Milyoner hesaplayıcısı]({lang}/millionaire/): bir hedefe ulaşmak için her ay ne kadar biriktirmen gerektiği.
-- [Bileşik faiz]({lang}/compound-interest/): getiriler yeniden yatırıldığında paranın nasıl büyüdüğü.
-- [Enflasyon]({lang}/inflation/): paranın senin ülkende ne kadar değer kaybettiği.
-- [Çevirici]({lang}/converter/): herhangi bir coin, hisse ya da para birimini bir başkasına çevir.
-- [Zirveden uzaklık]({lang}/ath/) ve [Bitcoin halving]({lang}/bitcoin-halving/) geri sayımı.
+## Kişisel alanın: portföyler, izleme listeleri, alarmlar
 
-Alışkanlıklar ve enflasyon hesaplayıcıları, sitenin desteklediği yerlerde yerel para birimini kullanır.
+Hepsi ücretsiz ve **kayıt olmadan** çalışır: verilerin tarayıcında kalır.
 
-## Sektörler
+- **[Portföy]({lang}/me/)** — aldıklarını ekle (her varlık sayfasındaki "Portföye ekle" düğmesi) ve değeri, kârı, 24 saatlik değişimi, bakiye grafiğini ve dağılımı gör. **Birden fazla portföy** tutabilir ("Uzun vade" ve "Kripto" gibi), her alım ve satımı kaydedebilir, para birimini seçebilir (dolar, euro, USDT veya lira) ve CSV dosyası içe aktarabilirsin.
+- **[İzleme listesi ★]({lang}/watchlist/)** — canlı fiyatlı birden fazla liste; ★ her sayfanın üst kısmında.
+- **Google ile giriş** (üstteki "👤 Giriş yap") yalnızca portföy ve listelerinin telefonda ve bilgisayarda aynı olması için gerekir.
+- **Fiyat alarmları 🔔** — bir coin, hisse ya da memecoin sayfasında 🔔'a bas ve bir fiyat seç: fiyat gelince bot [@WhatIfStack_bot](https://t.me/WhatIfStack_bot) sana Telegram'dan yazar.
+- **Telegram botu** daha fazlasını yapar: ona bir sembol gönder (örneğin "btc") ve fiyatı al; "Portföy" düğmesi portföyünü doğrudan Telegram'da açar.
 
-- [Yapay zekâ sektörü]({lang}/ai/): yapay zekâ hisseleri ve coinleri, ve bunlardan oluşan bir sepetin ne getireceği.
-- [Memecoinler]({lang}/memes/): merkeziyetsiz borsalarda trend olan tokenlar, canlı. Bunlar son derece risklidir.
+## Araçlar ve hesaplayıcılar
 
-## İzleme listen, DCA planların ve portföyün
+Tüm hesaplayıcılar [tek bir sayfada]({lang}/calculators/). En popülerleri:
 
-Herhangi bir varlığın yanındaki ☆'a dokunarak onu [izleme listene]({lang}/me/) ekle. Aynı sayfada DCA planları (tutar, sıklık, başlangıç tarihi) kaydedebilir ve basit bir portföy tutabilirsin: her varlığa ne kadar yatırdığını ekle, toplamı ve dağılımı gör. Her şey tarayıcında saklanır — hesap gerekmez.
+- **"Günde 10 $" (DCA) hesaplayıcısı** — ana sayfada ve her varlıkta: tutar, sıklık, başlangıç tarihi ve birkaç varlığın karşılaştırması.
+- [Çevirici]({lang}/converter/) — herhangi bir coin, hisse ya da para birimini diğerine.
+- [Ortalama maliyet]({lang}/average-price/) — ortalama alış fiyatın ve onu düşürmek için ne kadar alman gerektiği.
+- [Temettü]({lang}/dividends/), [bileşik faiz]({lang}/compound-interest/), [milyoner hesaplayıcısı]({lang}/millionaire/), [enflasyon]({lang}/inflation/) ve [alışkanlıklar → para]({lang}/habits/) (günlük kahve parasını yatırsaydın ne ederdi).
+- [Zirveden uzaklık]({lang}/ath/) — varlıkların rekorlarının ne kadar altında olduğu.
+- [Dünyanın en büyük varlıkları]({lang}/world-assets/) — gayrimenkul, altın, şirketler ve kripto tek sıralamada.
+- **AI'ya sor** — sağ alt köşedeki düğme: piyasalarla ilgili her soru, kendi dilinde. Orada **💡 İyileştirme öner** de var — neyin eksik olduğunu yaz.
+- [Widget'lar]({lang}/widgets/) — canlı fiyatı ya da hesaplayıcıyı ücretsiz olarak kendi sitene ekle.
+- [Etkinlikler]({lang}/activities/) — airdrop'lar ve borsa kampanyaları hakkında risk seviyesiyle dürüst rehberler.
+- [Nereden alınır]({lang}/exchanges/) — birlikte çalıştığımız borsalar ve cüzdanlar. Bazı bağlantılar ortaklık bağlantısıdır: sana bir maliyeti yoktur ve verileri ya da sıralamaları asla etkilemez.
 
-## Nereden alınır
+## Haberler ve dersler
 
-[Borsalar]({lang}/exchanges/) birlikte çalıştığımız borsaları ve cüzdanları listeler. Bazı bağlantılar ortaklık bağlantısıdır: kaydolursan komisyon kazanabiliriz, sana ek bir maliyeti yoktur. Bu, verilerimizi veya sıralamalarımızı asla değiştirmez.
-
-## AI asistanı
-
-Sağ alttaki **AI'ya sor** düğmesi bir sohbet açar. Baktığın varlık, DCA, borsalar ya da sitenin nasıl çalıştığı hakkında sor — asistan sayfadaki rakamları görür ve senin dilinde yanıt verir. Açıklar ve hesaplar ama asla ne alman gerektiğini söylemez. Yanıtları yapay zekâ üretir, hata içerebilir; günde en fazla 20 soru.
-
-## Widget’lar
-
-Blogana, forumuna veya sitene herhangi bir kripto, hisse ya da altın için canlı "günde 10 $" hesaplayıcı ekle. Rakamlar her gün güncellenir; ücretsiz, kayıt gerekmez. [Siten için ücretsiz DCA widget’ları]({lang}/widgets/)
-
-## Temettü · Ortalama maliyet
-
-Her ay ekleme yapıp temettüleri yeniden yatırırsan portföyün yılda ve ayda ne kadar temettü vereceğini hesapla. [Temettü hesaplayıcı]({lang}/dividends/)
-
-Alımlarını gir; ortalama maliyeti, güncel fiyattaki kârı ve ortalamayı düşürmek için ne kadar alman gerektiğini gör. [Ortalama maliyet hesaplayıcı]({lang}/average-price/)
-
-## En büyük şirketler
-
-Fiyat, günlük ve yıllık değişimle halka açık şirketler sıralaması. Temel rakamlar ve sade bir analiz için bir şirkete dokun. [Piyasa değerine göre dünyanın en büyük şirketleri]({lang}/largest-companies/)
-
-## Borsa sıralaması
-
-En çok nerede işlem yapılıyor: 24 saatlik hacim, pazar payı ve güven puanı. Ne işlem gördüğünü görmek için bir borsaya dokun. [İşlem hacmine göre en büyük kripto borsaları]({lang}/crypto-exchanges/) · [En büyük vadeli ve sürekli vadeli borsaları]({lang}/crypto-exchanges/derivatives/)
+- **[Haberler]({lang}/news/)** — günde üç kez kısa özetlerimiz: ne oldu ve ne anlama geliyor, sade kelimelerle.
+- **[Makaleler]({lang}/blog/)** — analizler, piyasa değerlendirmeleri ve sık sorulan sorulara yanıtlar.
+- **[Öğren]({lang}/learn/)** — sıfırdan başlayanlar için 5 bölümde dersler: yatırımın temelleri, hisseler, kripto, trading ve memecoinler. Sırayla ilerler; her dersin sonunda "Sonraki ders" düğmesi var.
 
 ## Rakamlar nereden geliyor
 
-Binance, CoinGecko, Yahoo Finance, Moskova Borsası, Dünya Bankası ve diğer açık kaynaklar; kaynakları gösterilen güncel özetler için [Haberler]({lang}/news/) sayfasına bak. Fiyatlar her gün, kripto fiyatları canlı güncellenir. WhatIfStack'teki hiçbir şey yatırım tavsiyesi değildir: geçmiş sonuçlar gelecekteki getirileri garanti etmez.
+Fiyatlar Binance, OKX, Gate, MEXC, Kraken, Yahoo Finance, CoinGecko ve Moskova Borsası'ndan; şirket rakamları şirket raporlarından ve SEC'ten; diğer piyasa verileri her sayfada belirtilen açık kaynaklardan gelir. Kripto ve ABD hisseleri canlı, geri kalanı günlük güncellenir. Ayrıntılar [About and methodology](/en/about/) (İngilizce) sayfasında ve [yayın ilkelerimizde]({lang}/editorial-policy/).
+
+**Önemli:** WhatIfStack'teki hiçbir şey yatırım tavsiyesi değildir. Geçmiş sonuçlar geleceği garanti etmez — yalnızca kaybetmeyi göze alabileceğin parayı yatır.
+
+Piyasaları takip etmek için siteyi yer imlerine ekle ve [Telegram kanalımızı](https://t.me/WhatIfStack) takip et.

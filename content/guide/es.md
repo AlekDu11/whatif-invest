@@ -1,96 +1,92 @@
 ---
-title: Cómo usar WhatIfStack: guía de todas las herramientas
-description: Todo lo que puedes hacer en WhatIfStack, explicado fácil: el ranking y la calculadora DCA, rentabilidad por meses, acciones por país, los mayores activos del mundo, noticias, tu lista de seguimiento y tu cartera.
+title: Cómo usar WhatIfStack: guía para principiantes
+description: Paso a paso y en lenguaje sencillo: acciones de 49 países, cripto, memecoins, tu espacio personal con carteras y listas de seguimiento, alertas de precio en Telegram, calculadoras y lecciones: qué hay y cómo usarlo.
 nav: Guía
-short: Todas las herramientas, fácil
+short: Todo el sitio, explicado fácil
 ---
-WhatIfStack responde ante todo a una pregunta: **¿cuánto tendría hoy si hubiera invertido una cantidad fija de forma regular?** Todo lo demás en la web te ayuda a mirar las criptomonedas, las acciones, los ETF y el oro desde ese ángulo, con precios reales y sin humo. Esto es lo que hace cada herramienta y cómo sacarle partido.
+WhatIfStack son los mercados en lenguaje sencillo: **acciones, cripto, ETF y oro en un solo lugar**, con precios en vivo, gráficos, noticias y calculadoras. No necesitas saber nada de antemano: esta guía te lleva por todo el sitio paso a paso. Para un resumen de 30 segundos, pulsa **✨ Qué puedes hacer aquí** en el menú de herramientas.
 
-## El ranking DCA (página principal)
+## Para empezar: tus 3 primeros pasos
 
-La tabla de la [página principal]({lang}/) ordena {n} activos según lo que habría dado comprar de forma periódica. DCA (promediar el coste) significa comprar por el mismo importe cada día, cada semana o cada mes, esté el precio como esté.
+1. **Busca tu activo.** Toca el buscador de arriba y escribe un nombre o ticker: «bitcoin», «Apple», «oro», «Santander». El buscador conoce los {n} activos del sitio.
+2. **Guárdalo con ★.** En la página del activo pulsa ★: su precio aparecerá en la portada y en tu [lista de seguimiento]({lang}/watchlist/). Sin registro.
+3. **Prueba la calculadora «$10 al día».** En cada página de activo muestra cuánto tendrías si hubieras comprado un poco cada día desde cualquier fecha, con precios reales.
 
-- **Columnas:** precio, variación en 24 horas y lo que habrían dado $10 al día en 1, 3 y 5 años.
-- **Pestañas:** Todos, Cripto, Acciones, ETF, Metales, líderes y rezagados del DCA.
-- **Ordena** por cualquier columna o escribe un nombre o un ticker en el filtro.
-- **Acciones por país** está justo encima de la tabla: abre las acciones de tu país.
+Abajo tienes cada sección en detalle.
 
-## La calculadora DCA
+## Acciones de todos los países
 
-En la página principal y en la de cada activo puedes cambiar el importe, la frecuencia (diaria, semanal o mensual) y la fecha de inicio, y comparar varios activos en un mismo gráfico. La [página de comparación]({lang}/compare/) hace lo mismo con hasta cinco activos a la vez. Los cálculos usan precios de cierre mensuales; en acciones y ETF se incluyen los dividendos reinvertidos; no se incluyen comisiones ni impuestos.
+El sitio cubre acciones de **49 mercados**: Estados Unidos, Europa, Asia, Oriente Medio, Latinoamérica y más. Empieza por la [sección de acciones]({lang}/stocks/): arriba están los resultados empresariales de esta semana, luego el ranking de las mayores empresas y un botón por país.
 
-## La página de cada activo
+- **Páginas por país**: las mayores empresas de cada mercado por capitalización, por ejemplo [EE. UU.]({lang}/stocks-usa/), [España]({lang}/stocks-spain/), [México]({lang}/stocks-mexico/), [Argentina]({lang}/stocks-argentina/), [Chile]({lang}/stocks-chile/).
+- **[Las mayores empresas del mundo]({lang}/largest-companies/)**: ranking por capitalización, ingresos, beneficios y otras métricas, con filtro por país.
+- **Página de una acción** (por ejemplo, [Apple]({lang}/aapl/)): el precio (en acciones de EE. UU., también antes y después de la apertura), gráfico, cifras clave (ingresos, beneficio, PER, dividendos, deuda), descripción de la empresa y, en las grandes, un análisis completo: cómo gana dinero, competidores y riesgos.
+- **[Categorías]({lang}/categories/)**: sectores e industrias como bancos, IA o energía.
+- **[Comparar]({lang}/compare/)**: dos empresas o monedas lado a lado, por ejemplo [Apple vs Microsoft]({lang}/compare/aapl-vs-msft/).
+- **[Calendario de resultados]({lang}/earnings-calendar/)**: cuándo publican las empresas.
+- **[Carteras de inversores famosos]({lang}/investors/)**: qué compran Buffett, Ackman, Cathie Wood y otros (según los informes oficiales a la SEC), y qué empresas tienen más cripto.
 
-Cada moneda, acción, ETF y metal tiene su propia página, por ejemplo [Bitcoin]({lang}/btc/). En ella verás:
+También hay [ETF]({lang}/etfs/), [oro]({lang}/gold/), [otros metales]({lang}/metals/) y [materias primas]({lang}/commodities/).
 
-- **La respuesta principal**: cuánto valen hoy $10 al día desde una fecha concreta.
-- **Qué está pasando con él**: nuestra explicación breve más reciente cuando el precio se ha movido con fuerza; el resto de nuestras noticias, debajo del gráfico.
-- **Gráfico en directo** de TradingView.
-- **Datos clave**: capitalización, valor totalmente diluido, volumen en 24 h, oferta en circulación, total y máxima, máximo y mínimo históricos y a qué distancia está el precio de ellos.
-- **Acerca de**: una descripción breve y los enlaces oficiales: web, whitepaper, explorador, redes sociales y código fuente.
-- **Rentabilidad por meses**: una tabla de colores con cada mes y cada año desde que existe el activo, la mediana de cada mes y tarjetas con lo que va de mes, de trimestre y de año. Para las monedas que cotizan en Binance hay además una vista día a día de los últimos 12 meses.
-- **Rentabilidad a 1, 3, 5 y 10 años**, lo que valdrían $1.000 invertidos de una vez y activos parecidos.
+## Criptomonedas
 
-## Acciones por país
+La [lista de cripto]({lang}/crypto/) muestra monedas que de verdad cotizan en grandes exchanges (Binance, OKX, Gate, MEXC, Kraken y otros). Dejamos fuera las monedas sin exchange ni gráfico: suelen ser proyectos muertos o dudosos. Puedes ordenar la lista por capitalización, cambio en 24 horas y 7 días, y volumen.
 
-Páginas como [España]({lang}/stocks-spain/), [México]({lang}/stocks-mexico/), [Brasil]({lang}/stocks-brazil/), [Alemania]({lang}/stocks-germany/) o [Reino Unido]({lang}/stocks-uk/) recogen las mayores empresas de cada mercado. Los precios se pasan a dólares al tipo de cambio de cada mes, así que la rentabilidad se puede comparar entre países; en la página de la acción también ves su precio en la bolsa local.
+**Qué tiene cada página de moneda** (por ejemplo, [Bitcoin]({lang}/btc/)):
 
-## Los mayores activos del mundo
+- **Precio en vivo** y gráfico de TradingView; debajo, un conversor rápido a dólares, euros o tu moneda.
+- **Cifras clave:** capitalización, volumen en 24 horas, oferta circulante y máxima, el máximo histórico y a qué distancia está el precio ahora.
+- **Acerca de**: una descripción breve y sencilla y, en las grandes monedas, un **análisis completo**: cómo funciona, riesgos, competidores y qué significa si compras de forma regular.
+- **Dónde cotiza:** exchanges y pares en cualquier moneda.
+- **Categorías** (por ejemplo IA, DeFi, ecosistema Solana): toca una para ver monedas parecidas.
+- **Rentabilidad por meses y años**, la calculadora «$10 al día» y noticias de la moneda.
 
-[Este ranking]({lang}/world-assets/) pone en la misma escala el sector inmobiliario, el oro, el petróleo, la masa monetaria, las mayores empresas y las criptomonedas. Los metales y las empresas usan los precios de hoy; las demás cifras vienen de las fuentes que se indican en la página.
+**También útil:** [las que más suben y bajan]({lang}/crypto/gainers-losers/) en 24 horas y 7 días, el [ranking de exchanges]({lang}/crypto-exchanges/) con volumen y prueba de reservas, [exchanges de derivados]({lang}/crypto-exchanges/derivatives/) y la [cuenta atrás del halving de Bitcoin]({lang}/bitcoin-halving/).
 
-## Noticias y «Qué está pasando con…»
+## Memecoins
 
-- [Noticias]({lang}/news/): nuestras propias notas breves, escritas a partir de varias fuentes con los enlaces al final, y un feed en directo con los titulares de los principales medios.
-- **«Qué está pasando con…»** explica en pocas horas los movimientos bruscos de una moneda o una acción: qué ha pasado, por qué y qué significa si compras de forma periódica.
-- [Análisis]({lang}/blog/): guías y análisis; si empiezas, echa un vistazo a [las guías para principiantes]({lang}/blog/).
+Las [memecoins]({lang}/memes/) son tokens de exchanges descentralizados (Solana, BNB Chain, Base y otros) en tiempo real. Es **la parte más arriesgada del mercado**, así que activamos un filtro estricto: solo mostramos tokens con más de 24 horas, suficiente liquidez y holders, y sin señales rojas. Elimina la mayoría de estafas, pero no hace nada seguro.
 
-## Calculadoras
+- **El punto de color** junto a cada token es una revisión rápida de seguridad: 🟢 menos riesgos, 🟡 cuidado, 🔴 peligroso.
+- **Busca** por nombre, ticker o dirección del contrato, **ordena** por cualquier columna y usa la pestaña ★ para tus tokens guardados.
+- **Página del token:** gráfico, cambio en 5 minutos, una hora y un día, revisión de seguridad, botón 🔔 para alertas de precio y tokens parecidos en tendencia.
+- Al final de la página: lecciones, 5 comprobaciones antes de comprar y el [glosario de memecoins]({lang}/memes/glossary/): contrato, liquidez, rug pull y otras palabras explicadas.
 
-- [Hábitos → dinero]({lang}/habits/): cuánto valdrían tu café diario, el tabaco o las suscripciones si invirtieras ese dinero.
-- [Calculadora del millonario]({lang}/millionaire/): cuánto ahorrar cada mes para llegar a tu objetivo.
-- [Interés compuesto]({lang}/compound-interest/): cómo crece el dinero cuando reinviertes las ganancias.
-- [Inflación]({lang}/inflation/): cuánto valor ha perdido tu dinero en tu país.
+## Tu espacio personal: carteras, listas, alertas
+
+Todo es gratis y funciona **sin registro**: tus datos se quedan en tu navegador.
+
+- **[Cartera]({lang}/me/)**: añade lo que compraste (botón «Añadir a la cartera» en cada página de activo) y ve su valor, ganancia, cambio en 24 horas, gráfico de saldo y distribución. Puedes tener **varias carteras** (por ejemplo «Largo plazo» y «Cripto»), apuntar cada compra y venta, elegir moneda (dólar, euro, USDT o la tuya) e importar un archivo CSV.
+- **[Lista de seguimiento ★]({lang}/watchlist/)**: varias listas con precios en vivo; la ★ está en la cabecera de todas las páginas.
+- **Entrar con Google** («👤 Entrar» en la cabecera) solo sirve para tener las mismas carteras y listas en el móvil y el ordenador.
+- **Alertas de precio 🔔**: en la página de una moneda, acción o memecoin pulsa 🔔 y elige un precio; cuando se alcance, el bot [@WhatIfStack_bot](https://t.me/WhatIfStack_bot) te escribe en Telegram.
+- **El bot de Telegram** hace más: envíale un ticker (por ejemplo «btc») y te da el precio; el botón «Cartera» abre tu cartera dentro de Telegram.
+
+## Herramientas y calculadoras
+
+Todas las calculadoras están en [una sola página]({lang}/calculators/). Las más usadas:
+
+- **La calculadora «$10 al día» (DCA)**: en la portada y en cada activo: importe, frecuencia, fecha de inicio y comparación de varios activos.
 - [Conversor]({lang}/converter/): cualquier moneda, acción o divisa a otra.
-- [Desde el máximo histórico]({lang}/ath/) y la cuenta atrás del [halving de Bitcoin]({lang}/bitcoin-halving/).
+- [Precio medio]({lang}/average-price/): tu precio medio de compra y cuánto comprar para bajarlo.
+- [Dividendos]({lang}/dividends/), [interés compuesto]({lang}/compound-interest/), [calculadora del millonario]({lang}/millionaire/), [inflación]({lang}/inflation/) y [hábitos → dinero]({lang}/habits/) (cuánto valdría tu café diario si invirtieras ese dinero).
+- [Desde el máximo]({lang}/ath/): cuánto están los activos por debajo de su récord.
+- [Los mayores activos del mundo]({lang}/world-assets/): inmuebles, oro, empresas y cripto en un ranking.
+- **Preguntar a la IA**: el botón de la esquina inferior derecha, cualquier pregunta sobre mercados en tu idioma. Ahí también está **💡 Sugerir una mejora**: cuéntanos qué falta.
+- [Widgets]({lang}/widgets/): pon gratis un precio en vivo o una calculadora en tu web.
+- [Actividades]({lang}/activities/): guías honestas de airdrops y campañas de exchanges, con nivel de riesgo.
+- [Dónde comprar]({lang}/exchanges/): los exchanges y monederos con los que trabajamos. Algunos enlaces son de afiliado: no te cuestan nada y nunca influyen en los datos ni en los rankings.
 
-Las calculadoras de hábitos y de inflación usan tu moneda local cuando la web la admite.
+## Noticias y lecciones
 
-## Sectores
-
-- [Sector IA]({lang}/ai/): acciones y criptomonedas de inteligencia artificial, y lo que habría dado una cesta de ellas.
-- [Memecoins]({lang}/memes/): tokens de moda en exchanges descentralizados, en directo. Son extremadamente arriesgados.
-
-## Tu lista de seguimiento, planes DCA y cartera
-
-Pulsa la ☆ junto a cualquier activo para añadirlo a [tu lista]({lang}/me/). En esa misma página puedes guardar planes DCA (importe, frecuencia, fecha de inicio) y llevar una cartera sencilla: apunta cuánto has metido en cada activo y verás el total y cómo se reparte. Todo se guarda en tu navegador: no necesitas cuenta.
-
-## Dónde comprar
-
-En [Exchanges]({lang}/exchanges/) tienes los exchanges y monederos con los que trabajamos. Algunos enlaces son de afiliado: podemos cobrar una comisión si te registras, sin que a ti te cueste nada más. Eso nunca cambia nuestros datos ni nuestros rankings.
-
-## Asistente IA
-
-El botón **Preguntar a la IA** abajo a la derecha abre un chat. Pregunta por el activo que estás viendo, el DCA, los exchanges o cómo funciona el sitio: el asistente ve las cifras de la página y responde en tu idioma. Explica y calcula, pero nunca te dice qué comprar. Las respuestas las genera una IA y pueden tener errores; hasta 20 preguntas al día.
-
-## Widgets
-
-Añade a tu blog, foro o web una calculadora en vivo de "$10 al día" para cualquier cripto, acción u oro. Las cifras se actualizan a diario, gratis y sin registro. [Widgets DCA gratis para tu web]({lang}/widgets/)
-
-## Dividendos · Precio medio
-
-Calcula cuántos dividendos al año y al mes te daría una cartera si aportas cada mes y reinviertes los pagos. [Calculadora de dividendos]({lang}/dividends/)
-
-Introduce tus compras y obtén el precio medio, la ganancia al precio actual y cuánto comprar para bajar la media. [Calculadora de precio medio]({lang}/average-price/)
-
-## Mayores empresas
-
-Ranking de empresas cotizadas con precio y variación diaria y anual. Toca una empresa para ver sus cifras clave y un análisis claro. [Mayores empresas del mundo por capitalización]({lang}/largest-companies/)
-
-## Ranking de exchanges
-
-Dónde se opera más: volumen 24 h, cuota de mercado y confianza. Toca un exchange para ver qué se negocia. [Mayores exchanges de cripto por volumen]({lang}/crypto-exchanges/) · [Mayores exchanges de futuros y perpetuos]({lang}/crypto-exchanges/derivatives/)
+- **[Noticias]({lang}/news/)**: nuestros resúmenes tres veces al día: qué pasó y qué significa, en palabras sencillas.
+- **[Artículos]({lang}/blog/)**: análisis, repasos del mercado y respuestas a preguntas populares.
+- **[Aprender]({lang}/learn/)**: lecciones para quien empieza de cero en 5 secciones: fundamentos de inversión, acciones, cripto, trading y memecoins. Van en orden, con un botón «Siguiente lección» al final de cada una.
 
 ## De dónde salen los números
 
-Binance, CoinGecko, Yahoo Finance, la Bolsa de Moscú, el Banco Mundial y otras fuentes públicas; las fuentes de cada nota están en [Noticias]({lang}/news/). Los precios se actualizan a diario y los de las criptomonedas, en directo. Nada en WhatIfStack es asesoramiento financiero: las rentabilidades pasadas no garantizan las futuras.
+Los precios vienen de Binance, OKX, Gate, MEXC, Kraken, Yahoo Finance, CoinGecko y la Bolsa de Moscú; las cifras de empresas, de sus informes y de la SEC; el resto, de las fuentes abiertas indicadas en cada página. Cripto y acciones de EE. UU. se actualizan en vivo; lo demás, a diario. Más detalles en [About and methodology](/en/about/) (en inglés) y en nuestra [política editorial]({lang}/editorial-policy/).
+
+**Importante:** nada en WhatIfStack es asesoramiento de inversión. Los resultados pasados no garantizan los futuros: invierte solo lo que puedas permitirte perder.
+
+Para seguir los mercados, guarda el sitio en favoritos y síguenos en [Telegram](https://t.me/WhatIfStack).
