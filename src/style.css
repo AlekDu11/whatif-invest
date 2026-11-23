@@ -1092,3 +1092,4 @@ a.badge.tagc{text-decoration:none;color:inherit;border:1px solid var(--line)}a.b
 .gtoc{margin:10px 0 16px}.gterm{padding:16px 18px;margin:10px 0;scroll-margin-top:90px}.gterm h2{font-size:19px;margin:0 0 6px}.gterm p{margin:0;line-height:1.6;max-width:760px}
 .dphype{padding:14px 16px;margin:0 0 14px}.dphype p{margin:6px 0 4px;line-height:1.5}
 .dpact{display:flex;gap:8px;flex-wrap:wrap}
+.mfilt{font-size:13px;color:var(--muted);background:rgba(34,197,94,.07);border:1px solid rgba(34,197,94,.25);border-radius:12px;padding:10px 14px;margin:0 0 10px;line-height:1.5}

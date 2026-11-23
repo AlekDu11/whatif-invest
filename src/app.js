@@ -1036,7 +1036,9 @@ const DEXW={ key:'wi_dexw',
   const RUSH={done:'done',soon:'soon',new:'new'};
   // owner 2026-11-23: «fewer but better» — only tokens with real money and real holders; obvious junk is hidden silently
   const okRush=r=>(r.t10==null||r.t10<=35)&&(r.ins==null||r.ins<=15)&&(r.dev==null||r.dev<=10)&&(r.liq||0)>=5000&&(r.h==null||r.h>=50);
-  const okTop=r=>(r.liq||0)>=50000&&(r.mc==null||r.mc>=100000)&&(r.h==null||r.h>=300)&&(r.t10==null||r.t10<=60)&&(r.vol==null||r.vol>=20000);
+  const riskHi=r=>{ const v=r.risk; return v&&(v.lvl==='HIGH'||v==='HIGH'||+v>=4) };
+  const old24=r=>!r.at||Date.now()-Date.parse(r.at)>=864e5;   // owner 2026-11-23: only tokens older than 24 h
+  const okTop=r=>old24(r)&&!riskHi(r)&&(r.liq||0)>=50000&&(r.mc==null||r.mc>=100000)&&(r.h==null||r.h>=300)&&(r.t10==null||r.t10<=60)&&(r.vol==null||r.vol>=20000)&&(!F.g||U.light(r,F).c!=='r');
   const link=r=>`${P.tok}?n=${encodeURIComponent(r.n)}&a=${encodeURIComponent(r.a)}`;
   const H=P.h||{}, num=v=>v==null?'—':Math.round(v).toLocaleString(T.intl||'en');
   let sk=null, sd=-1;   // sort by any column (click the header; click again = reverse); phones: the «Sort by» select

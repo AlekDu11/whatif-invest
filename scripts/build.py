@@ -4063,7 +4063,8 @@ def memes_page(lang, ver):
     check_blk = f'<section class="section card mcheck"><h2>✅ {esc(M3["chk_h"])}</h2><ol>{checks}</ol></section>'
     # v5 (owner 2026-11-22: «chaos, nothing is clear, too many warnings») — one simple Fomo-style list: tabs + rows, one line of fine print
     M6 = MEM6[lang]
-    tl5 = dict(trend=('🔥', t['t_trend']), gain=('🚀', t['t_gain']), most=('👥', MOST[lang]), done=('✅', M4['t_done']), soon=('⏳', M4['t_soon']), new=('🌱', M4['t_new']), fav=('★', M6['fav']))
+    # owner 2026-11-23: no fresh-launch tabs — only tokens older than 24 h that pass the quality filter (most scams die on day one)
+    tl5 = dict(trend=('🔥', t['t_trend']), gain=('🚀', t['t_gain']), most=('👥', MOST[lang]), fav=('★', M6['fav']))
     tabs5 = ''.join(f'<button data-v="{k}"{" class=on" if k == "trend" else ""}>{ic} {esc(lb)}</button>' for k, (ic, lb) in tl5.items())
     nets5 = ''.join(f'<button data-n="{k}"{" class=on" if k == "all" else ""}>{esc(v)}</button>' for k, v in (('all', t['all']), ('solana', 'Solana'), ('bsc', 'BNB Chain'), ('base', 'Base')))
     M7 = MEM7[lang]
@@ -4077,6 +4078,7 @@ def memes_page(lang, ver):
             f'<label class="msort"><span>{esc(M6["sort"])}</span><select id="msort"><option value="">—</option>'
             + ''.join(f'<option value="{k}">{esc(v)}</option>' for k, v in (('v', t['vol']), ('c', '24h'), ('m', t['mc']), ('l', t['liq']), ('h', M4['hold']), ('a', t['age'])))
             + f'</select></label></div>'
+            f'<p class="mfilt">{esc(MEM7[lang]["filt"])}</p>'
             f'<div class="mrows card" id="mrows"><div class="empty">…</div></div>'
             f'<p class="muted mfine">{esc(t["disc"])} · Binance Web3</p></section>'
             f'<section class="section"><div class="mx2"><div class="card mlst"><h2>🆕 {esc(M7["list_h"])}</h2><p class="muted">{esc(M7["list_d"])}</p><div id="mlistings"><div class="empty">…</div></div></div>'
