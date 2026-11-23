@@ -1,14 +1,14 @@
 ---
-title: Bitcoin (BTC) eenvoudig uitgelegd: 21 miljoen munten, een record van $126.080 en wat de koers beweegt
+title: Bitcoin (BTC) eenvoudig uitgelegd: 21 miljoen munten, proof of work sinds 2009 en wat de koers beweegt
 description: Bitcoin in gewone taal: hoe het werkt, waarom er maar 21 miljoen komen, de halving, ETF's, records en crashes, de risico's en wat je moet weten als je regelmatig koopt.
 date: 2026-11-22
 kind: analysis
 ---
-**Bitcoin** is de eerste cryptomunt: digitaal geld dat geen bank of overheid controleert. Het werd in januari 2009 gelanceerd door een anonieme maker die zich Satoshi Nakamoto noemde, en is nog steeds veruit het grootste crypto-actief, met een waarde van ongeveer $1,2 biljoen in november 2026. Mensen kopen het vooral als "digitaal goud": iets schaars dat niemand kan bijdrukken.
+**Bitcoin** is de eerste cryptomunt: digitaal geld dat geen bank of overheid controleert. Het werd in januari 2009 gelanceerd door een anonieme maker die zich Satoshi Nakamoto noemde, en is nog steeds veruit het grootste crypto-actief, met een waarde van {{mcap:btc}} vandaag ({{rank:btc}} onder de cryptomunten). Mensen kopen het vooral als "digitaal goud": iets schaars dat niemand kan bijdrukken.
 
 > **Belangrijkste punten**
 > - Er komen nooit meer dan 21 miljoen bitcoins; ongeveer 95% daarvan bestaat al.
-> - De recordkoers tot nu toe is $126.080 (6 oktober 2025); in november 2026 noteerde bitcoin meer dan 50% lager.
+> - De recordkoers is {{ath:btc}} ({{athd:btc}}); vandaag staat de koers {{fromath:btc}} daarvan af.
 > - Sinds januari 2024 kun je via spot-bitcoin-ETF's in de VS gewoon met een beleggingsrekening kopen.
 > - De koers is meerdere keren meer dan 70% gedaald — grote dalingen horen bij de geschiedenis, ze zijn geen uitzondering.
 
@@ -23,7 +23,8 @@ Het aanbod ligt vast en is vooraf bekend, dus niemand kan het met inflatie verwa
 ## De cijfers nu
 
 - Koers nu: {{price:btc}}
-- Recordkoers: $126.080 op 6 oktober 2025
+- Recordkoers: {{ath:btc}} ({{athd:btc}}), {{fromath:btc}} daarvan af
+- Marktwaarde: {{mcap:btc}} ({{rank:btc}} onder de cryptomunten)
 - Koersverandering over 12 maanden: {{chg1y:btc}}
 - $10 per dag gedurende 10 jaar: {{dca:btc:10}} bij {{dcainv:10}} ingelegd ({{dcaroi:btc:10}})
 

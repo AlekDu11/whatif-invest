@@ -1,14 +1,14 @@
 ---
-title: Bitcoin (BTC) giải thích dễ hiểu: 21 triệu đồng, kỷ lục 126.080 USD và điều gì làm giá biến động
+title: Bitcoin (BTC) giải thích dễ hiểu: 21 triệu đồng, bằng chứng công việc từ 2009 và điều gì làm giá biến động
 description: Bitcoin bằng ngôn ngữ đơn giản: cách hoạt động, vì sao chỉ có 21 triệu đồng, halving, ETF, kỷ lục và những cú sập, rủi ro chính và điều người mua định kỳ cần biết.
 date: 2026-11-22
 kind: analysis
 ---
-**Bitcoin** là đồng tiền mã hóa đầu tiên: tiền kỹ thuật số không do ngân hàng hay chính phủ nào kiểm soát. Bitcoin ra đời tháng 1/2009 do một người ẩn danh lấy tên Satoshi Nakamoto tạo ra, và đến nay vẫn là tài sản tiền mã hóa lớn nhất với khoảng cách rất xa — trị giá khoảng 1,2 nghìn tỷ USD vào tháng 11/2026. Mọi người mua bitcoin chủ yếu như "vàng kỹ thuật số": thứ khan hiếm mà không ai có thể in thêm.
+**Bitcoin** là đồng tiền mã hóa đầu tiên: tiền kỹ thuật số không do ngân hàng hay chính phủ nào kiểm soát. Bitcoin ra đời tháng 1/2009 do một người ẩn danh lấy tên Satoshi Nakamoto tạo ra, và đến nay vẫn là tài sản tiền mã hóa lớn nhất với khoảng cách rất xa — vốn hóa hiện là {{mcap:btc}} ({{rank:btc}} trong các đồng tiền mã hóa). Mọi người mua bitcoin chủ yếu như "vàng kỹ thuật số": thứ khan hiếm mà không ai có thể in thêm.
 
 > **Điểm chính**
 > - Sẽ không bao giờ có quá 21 triệu bitcoin; khoảng 95% trong số đó đã được tạo ra.
-> - Giá kỷ lục cho đến nay là 126.080 USD (6/10/2025); tháng 11/2026 bitcoin giao dịch thấp hơn mức đó hơn 50%.
+> - Đỉnh kỷ lục là {{ath:btc}} ({{athd:btc}}); giá hiện tại cách đỉnh {{fromath:btc}}.
 > - Từ tháng 1/2024, các quỹ ETF bitcoin giao ngay tại Mỹ cho phép mua bitcoin qua tài khoản chứng khoán thông thường.
 > - Giá đã nhiều lần giảm hơn 70% — những cú sập lớn là một phần lịch sử của nó, không phải ngoại lệ.
 
@@ -23,7 +23,8 @@ Nguồn cung cố định và được biết trước, nên không ai có thể
 ## Các con số hiện tại
 
 - Giá hôm nay: {{price:btc}}
-- Đỉnh kỷ lục: 126.080 USD ngày 6/10/2025
+- Đỉnh kỷ lục: {{ath:btc}} ({{athd:btc}}), cách đỉnh {{fromath:btc}}
+- Vốn hóa thị trường: {{mcap:btc}} ({{rank:btc}} trong các đồng tiền mã hóa)
 - Biến động giá trong 12 tháng: {{chg1y:btc}}
 - 10 USD mỗi ngày trong 10 năm: {{dca:btc:10}} từ {{dcainv:10}} đã đầu tư ({{dcaroi:btc:10}})
 

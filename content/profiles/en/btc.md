@@ -1,14 +1,14 @@
 ---
-title: Bitcoin (BTC) explained: 21 million coins, a $126,080 record and what moves the price
+title: Bitcoin (BTC) explained: 21 million coins, proof of work since 2009 and what moves the price
 description: Bitcoin in plain language: how it works, why only 21 million will exist, the halving, ETFs, its record and crashes, the main risks and what regular buyers should know.
 date: 2026-11-22
 kind: analysis
 ---
-**Bitcoin** is the first cryptocurrency: digital money that no bank or government controls. It was launched in January 2009 by an anonymous creator calling themselves Satoshi Nakamoto, and it is still the biggest crypto asset by far, worth about $1.2 trillion in November 2026. People buy it mainly as "digital gold" — something scarce that nobody can print more of.
+**Bitcoin** is the first cryptocurrency: digital money that no bank or government controls. It was launched in January 2009 by an anonymous creator calling themselves Satoshi Nakamoto, and it is still the biggest crypto asset by far, worth {{mcap:btc}} today ({{rank:btc}} among cryptocurrencies). People buy it mainly as "digital gold" — something scarce that nobody can print more of.
 
 > **Key takeaways**
 > - There will never be more than 21 million bitcoins; about 95% of them have already been created.
-> - The record price so far is $126,080 (6 October 2025); in November 2026 bitcoin traded more than 50% below it.
+> - Its record high is {{ath:btc}} ({{athd:btc}}); today the price is {{fromath:btc}} from it.
 > - Since January 2024 US spot bitcoin ETFs let people buy it through an ordinary brokerage account.
 > - It has fallen by more than 70% several times — big drops are part of its history, not an exception.
 
@@ -23,7 +23,8 @@ The supply is fixed and known in advance, so nobody can inflate it away. You can
 ## The numbers right now
 
 - Price today: {{price:btc}}
-- Record high: $126,080 on 6 October 2025
+- Record high: {{ath:btc}} ({{athd:btc}}), {{fromath:btc}} from it
+- Market value: {{mcap:btc}} ({{rank:btc}} among cryptocurrencies)
 - Price change over 12 months: {{chg1y:btc}}
 - $10 a day for 10 years: {{dca:btc:10}} from {{dcainv:10}} invested ({{dcaroi:btc:10}})
 

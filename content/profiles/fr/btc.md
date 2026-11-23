@@ -1,14 +1,14 @@
 ---
-title: Bitcoin (BTC) expliqué simplement : 21 millions de pièces, un record à 126 080 $ et ce qui fait bouger le cours
+title: Bitcoin (BTC) expliqué simplement : 21 millions de pièces, preuve de travail depuis 2009 et ce qui fait bouger le cours
 description: Le bitcoin en clair : comment il fonctionne, pourquoi il n'y en aura que 21 millions, le halving, les ETF, records et krachs, les risques et ce qu'il faut savoir si vous achetez régulièrement.
 date: 2026-11-22
 kind: analysis
 ---
-Le **bitcoin** est la première cryptomonnaie : de l'argent numérique qu'aucune banque ni aucun État ne contrôle. Il a été lancé en janvier 2009 par un créateur anonyme se faisant appeler Satoshi Nakamoto, et reste de loin le plus gros actif crypto, avec une valeur d'environ 1 200 milliards de dollars en novembre 2026. On l'achète surtout comme « or numérique » : quelque chose de rare que personne ne peut imprimer.
+Le **bitcoin** est la première cryptomonnaie : de l'argent numérique qu'aucune banque ni aucun État ne contrôle. Il a été lancé en janvier 2009 par un créateur anonyme se faisant appeler Satoshi Nakamoto, et reste de loin le plus gros actif crypto, avec une valeur de {{mcap:btc}} aujourd'hui ({{rank:btc}} parmi les cryptomonnaies). On l'achète surtout comme « or numérique » : quelque chose de rare que personne ne peut imprimer.
 
 > **À retenir**
 > - Il n'y aura jamais plus de 21 millions de bitcoins ; environ 95 % ont déjà été créés.
-> - Le record à ce jour est de 126 080 $ (6 octobre 2025) ; en novembre 2026, le bitcoin s'échangeait plus de 50 % en dessous.
+> - Son record est de {{ath:btc}} ({{athd:btc}}) ; aujourd'hui, le cours est à {{fromath:btc}} de ce niveau.
 > - Depuis janvier 2024, les ETF bitcoin au comptant aux États-Unis permettent d'en acheter depuis un compte-titres classique.
 > - Il a chuté de plus de 70 % à plusieurs reprises : les fortes baisses font partie de son histoire, ce ne sont pas des exceptions.
 
@@ -23,7 +23,8 @@ L'offre est fixe et connue à l'avance : personne ne peut la diluer par l'inflat
 ## Les chiffres actuels
 
 - Cours actuel : {{price:btc}}
-- Record : 126 080 $ le 6 octobre 2025
+- Record : {{ath:btc}} ({{athd:btc}}), {{fromath:btc}} depuis
+- Valeur de marché : {{mcap:btc}} ({{rank:btc}} parmi les cryptomonnaies)
 - Variation du cours sur 12 mois: {{chg1y:btc}}
 - 10 $ par jour pendant 10 ans : {{dca:btc:10}} pour {{dcainv:10}} investis ({{dcaroi:btc:10}})
 

@@ -1,14 +1,14 @@
 ---
-title: Bitcoin (BTC) prostym językiem: 21 milionów monet, rekord 126 080 $ i co porusza ceną
+title: Bitcoin (BTC) prostym językiem: 21 milionów monet, proof of work od 2009 r. i co porusza ceną
 description: Bitcoin w prostych słowach: jak działa, dlaczego powstanie tylko 21 milionów, halving, ETF-y, rekordy i krachy, główne ryzyka i co powinni wiedzieć regularnie kupujący.
 date: 2026-11-22
 kind: analysis
 ---
-**Bitcoin** to pierwsza kryptowaluta: cyfrowe pieniądze, których nie kontroluje żaden bank ani rząd. Uruchomił go w styczniu 2009 r. anonimowy twórca podpisujący się jako Satoshi Nakamoto i do dziś jest to zdecydowanie największe kryptoaktywo — w listopadzie 2026 r. wart ok. 1,2 bln dolarów. Ludzie kupują go głównie jako „cyfrowe złoto”: coś rzadkiego, czego nikt nie może dodrukować.
+**Bitcoin** to pierwsza kryptowaluta: cyfrowe pieniądze, których nie kontroluje żaden bank ani rząd. Uruchomił go w styczniu 2009 r. anonimowy twórca podpisujący się jako Satoshi Nakamoto i do dziś jest to zdecydowanie największe kryptoaktywo — dziś wart {{mcap:btc}} ({{rank:btc}} wśród kryptowalut). Ludzie kupują go głównie jako „cyfrowe złoto”: coś rzadkiego, czego nikt nie może dodrukować.
 
 > **Najważniejsze**
 > - Nigdy nie powstanie więcej niż 21 milionów bitcoinów; ok. 95% z nich już istnieje.
-> - Dotychczasowa rekordowa cena to 126 080 $ (6 października 2025 r.); w listopadzie 2026 r. bitcoin był notowany ponad 50% niżej.
+> - Rekord ceny to {{ath:btc}} ({{athd:btc}}); dziś cena jest {{fromath:btc}} od niego.
 > - Od stycznia 2024 r. spotowe ETF-y na bitcoina w USA pozwalają kupić go przez zwykły rachunek maklerski.
 > - Kilka razy spadał o ponad 70% — duże spadki są częścią jego historii, a nie wyjątkiem.
 
@@ -23,7 +23,8 @@ Podaż jest stała i znana z góry, więc nikt nie może jej rozwodnić inflacj�
 ## Liczby teraz
 
 - Cena teraz: {{price:btc}}
-- Rekord: 126 080 $ 6 października 2025 r.
+- Rekord: {{ath:btc}} ({{athd:btc}}), {{fromath:btc}} od niego
+- Wartość rynkowa: {{mcap:btc}} ({{rank:btc}} wśród kryptowalut)
 - Zmiana ceny w ciągu 12 miesięcy: {{chg1y:btc}}
 - 10 $ dziennie przez 10 lat: {{dca:btc:10}} przy wpłaconych {{dcainv:10}} ({{dcaroi:btc:10}})
 

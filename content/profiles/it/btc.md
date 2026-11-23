@@ -1,14 +1,14 @@
 ---
-title: Bitcoin (BTC) spiegato semplice: 21 milioni di monete, un record di 126.080 $ e cosa muove il prezzo
+title: Bitcoin (BTC) spiegato semplice: 21 milioni di monete, proof of work dal 2009 e cosa muove il prezzo
 description: Bitcoin in parole semplici: come funziona, perché ne esisteranno solo 21 milioni, l'halving, gli ETF, record e crolli, i rischi e cosa sapere se compri con regolarità.
 date: 2026-11-22
 kind: analysis
 ---
-**Bitcoin** è la prima criptovaluta: denaro digitale che nessuna banca o governo controlla. È stato lanciato nel gennaio 2009 da un creatore anonimo che si faceva chiamare Satoshi Nakamoto ed è ancora, di gran lunga, il più grande cripto-asset: valeva circa 1.200 miliardi di dollari a novembre 2026. Lo si compra soprattutto come "oro digitale": qualcosa di scarso che nessuno può stampare.
+**Bitcoin** è la prima criptovaluta: denaro digitale che nessuna banca o governo controlla. È stato lanciato nel gennaio 2009 da un creatore anonimo che si faceva chiamare Satoshi Nakamoto ed è ancora, di gran lunga, il più grande cripto-asset: oggi vale {{mcap:btc}} ({{rank:btc}} tra le criptovalute). Lo si compra soprattutto come "oro digitale": qualcosa di scarso che nessuno può stampare.
 
 > **In sintesi**
 > - Non esisteranno mai più di 21 milioni di bitcoin; circa il 95% è già stato creato.
-> - Il prezzo record finora è 126.080 $ (6 ottobre 2025); a novembre 2026 bitcoin quotava oltre il 50% sotto quel livello.
+> - Il suo massimo storico è {{ath:btc}} ({{athd:btc}}); oggi il prezzo è a {{fromath:btc}} da lì.
 > - Da gennaio 2024 gli ETF su bitcoin spot negli USA permettono di comprarlo da un normale conto titoli.
 > - È crollato più del 70% diverse volte: i grandi cali fanno parte della sua storia, non sono un'eccezione.
 
@@ -23,7 +23,8 @@ L'offerta è fissa e nota in anticipo, quindi nessuno può diluirla con l'inflaz
 ## I numeri di oggi
 
 - Prezzo oggi: {{price:btc}}
-- Record: 126.080 $ il 6 ottobre 2025
+- Massimo storico: {{ath:btc}} ({{athd:btc}}), {{fromath:btc}} da lì
+- Valore di mercato: {{mcap:btc}} ({{rank:btc}} tra le criptovalute)
 - Variazione del prezzo in 12 mesi: {{chg1y:btc}}
 - 10 $ al giorno per 10 anni: {{dca:btc:10}} con {{dcainv:10}} investiti ({{dcaroi:btc:10}})
 

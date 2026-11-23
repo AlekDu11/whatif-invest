@@ -1,14 +1,14 @@
 ---
-title: Bitcoin (BTC) sade dille: 21 milyon coin, 126.080 $ rekor ve fiyatı ne hareket ettiriyor
+title: Bitcoin (BTC) sade dille: 21 milyon coin, 2009'dan beri iş ispatı ve fiyatı ne hareket ettiriyor
 description: Bitcoin sade dille: nasıl çalışır, neden yalnızca 21 milyon olacak, halving, ETF'ler, rekorlar ve çöküşler, başlıca riskler ve düzenli alım yapanların bilmesi gerekenler.
 date: 2026-11-22
 kind: analysis
 ---
-**Bitcoin** ilk kripto paradır: hiçbir bankanın ya da hükümetin kontrol etmediği dijital para. Ocak 2009'da kendine Satoshi Nakamoto diyen anonim bir yaratıcı tarafından başlatıldı ve hâlâ açık ara en büyük kripto varlık — Kasım 2026'da değeri yaklaşık 1,2 trilyon dolardı. İnsanlar onu çoğunlukla "dijital altın" olarak alır: kimsenin daha fazla basamayacağı kıt bir şey.
+**Bitcoin** ilk kripto paradır: hiçbir bankanın ya da hükümetin kontrol etmediği dijital para. Ocak 2009'da kendine Satoshi Nakamoto diyen anonim bir yaratıcı tarafından başlatıldı ve hâlâ açık ara en büyük kripto varlık — bugünkü piyasa değeri {{mcap:btc}} (kripto paralar arasında {{rank:btc}}). İnsanlar onu çoğunlukla "dijital altın" olarak alır: kimsenin daha fazla basamayacağı kıt bir şey.
 
 > **Öne çıkanlar**
 > - Hiçbir zaman 21 milyondan fazla bitcoin olmayacak; bunların yaklaşık %95'i zaten üretildi.
-> - Şimdiye kadarki rekor fiyat 126.080 $ (6 Ekim 2025); Kasım 2026'da bitcoin bunun %50'den fazla altında işlem görüyordu.
+> - Rekor fiyatı {{ath:btc}} ({{athd:btc}}); bugün fiyat ondan {{fromath:btc}} uzakta.
 > - Ocak 2024'ten beri ABD'deki spot bitcoin ETF'leri sayesinde normal bir aracı kurum hesabından alınabiliyor.
 > - Birkaç kez %70'ten fazla düştü — büyük düşüşler istisna değil, tarihinin bir parçası.
 
@@ -23,7 +23,8 @@ Arz sabit ve önceden biliniyor, bu yüzden kimse onu enflasyonla eritemez. Bitc
 ## Şu anki rakamlar
 
 - Bugünkü fiyat: {{price:btc}}
-- Rekor: 6 Ekim 2025'te 126.080 $
+- Rekor: {{ath:btc}} ({{athd:btc}}), ondan {{fromath:btc}}
+- Piyasa değeri: {{mcap:btc}} (kripto paralar arasında {{rank:btc}})
 - 12 aylık fiyat değişimi: {{chg1y:btc}}
 - 10 yıl boyunca günde 10 $: {{dca:btc:10}}, yatırılan {{dcainv:10}} ({{dcaroi:btc:10}})
 

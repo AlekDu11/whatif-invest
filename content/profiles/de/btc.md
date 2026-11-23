@@ -1,14 +1,14 @@
 ---
-title: Bitcoin (BTC) einfach erklärt: 21 Millionen Coins, ein Rekord von 126.080 $ und was den Kurs bewegt
+title: Bitcoin (BTC) einfach erklärt: 21 Millionen Coins, Proof of Work seit 2009 und was den Kurs bewegt
 description: Bitcoin verständlich erklärt: wie er funktioniert, warum es nur 21 Millionen geben wird, Halving, ETFs, Rekorde und Crashs, die Risiken und was Sparplan-Anleger wissen sollten.
 date: 2026-11-22
 kind: analysis
 ---
-**Bitcoin** ist die erste Kryptowährung: digitales Geld, das keine Bank und keine Regierung kontrolliert. Er wurde im Januar 2009 von einem anonymen Entwickler unter dem Namen Satoshi Nakamoto gestartet und ist bis heute mit großem Abstand das größte Krypto-Asset – im November 2026 rund 1,2 Billionen Dollar wert. Die meisten kaufen ihn als „digitales Gold“: etwas Knappes, von dem niemand mehr drucken kann.
+**Bitcoin** ist die erste Kryptowährung: digitales Geld, das keine Bank und keine Regierung kontrolliert. Er wurde im Januar 2009 von einem anonymen Entwickler unter dem Namen Satoshi Nakamoto gestartet und ist bis heute mit großem Abstand das größte Krypto-Asset – heute {{mcap:btc}} wert ({{rank:btc}} unter den Kryptowährungen). Die meisten kaufen ihn als „digitales Gold“: etwas Knappes, von dem niemand mehr drucken kann.
 
 > **Das Wichtigste**
 > - Es wird nie mehr als 21 Millionen Bitcoin geben; rund 95 % davon sind bereits geschaffen.
-> - Der bisherige Rekordkurs liegt bei 126.080 $ (6. Oktober 2025); im November 2026 notierte Bitcoin mehr als 50 % darunter.
+> - Sein Rekordhoch liegt bei {{ath:btc}} ({{athd:btc}}); heute steht der Kurs {{fromath:btc}} darunter.
 > - Seit Januar 2024 kann man ihn über Spot-Bitcoin-ETFs in den USA mit einem normalen Depot kaufen.
 > - Er ist mehrmals um mehr als 70 % gefallen – große Einbrüche gehören zu seiner Geschichte, sie sind keine Ausnahme.
 
@@ -23,7 +23,8 @@ Das Angebot ist fest und im Voraus bekannt, niemand kann es durch Inflation verw
 ## Die Zahlen jetzt
 
 - Kurs heute: {{price:btc}}
-- Rekordhoch: 126.080 $ am 6. Oktober 2025
+- Rekordhoch: {{ath:btc}} ({{athd:btc}}), {{fromath:btc}} davon entfernt
+- Marktwert: {{mcap:btc}} ({{rank:btc}} unter den Kryptowährungen)
 - Kursveränderung in 12 Monaten: {{chg1y:btc}}
 - 10 $ am Tag über 10 Jahre: {{dca:btc:10}} bei {{dcainv:10}} Einsatz ({{dcaroi:btc:10}})
 

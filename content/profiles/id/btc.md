@@ -1,14 +1,14 @@
 ---
-title: Bitcoin (BTC) dijelaskan sederhana: 21 juta koin, rekor $126.080 dan apa yang menggerakkan harganya
+title: Bitcoin (BTC) dijelaskan sederhana: 21 juta koin, proof of work sejak 2009 dan apa yang menggerakkan harganya
 description: Bitcoin dengan bahasa sederhana: cara kerjanya, kenapa hanya akan ada 21 juta, halving, ETF, rekor dan kejatuhan, risiko utama serta hal yang perlu diketahui pembeli rutin.
 date: 2026-11-22
 kind: analysis
 ---
-**Bitcoin** adalah mata uang kripto pertama: uang digital yang tidak dikendalikan bank atau pemerintah mana pun. Bitcoin diluncurkan pada Januari 2009 oleh pembuat anonim yang menyebut dirinya Satoshi Nakamoto, dan sampai sekarang masih menjadi aset kripto terbesar dengan selisih jauh — nilainya sekitar $1,2 triliun pada November 2026. Orang membelinya terutama sebagai "emas digital": sesuatu yang langka dan tidak bisa dicetak lebih banyak oleh siapa pun.
+**Bitcoin** adalah mata uang kripto pertama: uang digital yang tidak dikendalikan bank atau pemerintah mana pun. Bitcoin diluncurkan pada Januari 2009 oleh pembuat anonim yang menyebut dirinya Satoshi Nakamoto, dan sampai sekarang masih menjadi aset kripto terbesar dengan selisih jauh — nilainya kini {{mcap:btc}} ({{rank:btc}} di antara mata uang kripto). Orang membelinya terutama sebagai "emas digital": sesuatu yang langka dan tidak bisa dicetak lebih banyak oleh siapa pun.
 
 > **Poin penting**
 > - Tidak akan pernah ada lebih dari 21 juta bitcoin; sekitar 95% di antaranya sudah tercipta.
-> - Harga rekor sejauh ini $126.080 (6 Oktober 2025); pada November 2026 bitcoin diperdagangkan lebih dari 50% di bawahnya.
+> - Rekor tertingginya {{ath:btc}} ({{athd:btc}}); kini harganya {{fromath:btc}} dari rekor itu.
 > - Sejak Januari 2024, ETF bitcoin spot di AS memungkinkan orang membelinya lewat rekening pialang biasa.
 > - Harganya beberapa kali jatuh lebih dari 70% — penurunan besar adalah bagian dari sejarahnya, bukan pengecualian.
 
@@ -23,7 +23,8 @@ Pasokannya tetap dan sudah diketahui sejak awal, jadi tidak ada yang bisa mengge
 ## Angka saat ini
 
 - Harga hari ini: {{price:btc}}
-- Rekor tertinggi: $126.080 pada 6 Oktober 2025
+- Rekor tertinggi: {{ath:btc}} ({{athd:btc}}), {{fromath:btc}} dari rekor itu
+- Nilai pasar: {{mcap:btc}} ({{rank:btc}} di antara mata uang kripto)
 - Perubahan harga dalam 12 bulan: {{chg1y:btc}}
 - $10 per hari selama 10 tahun: {{dca:btc:10}} dari {{dcainv:10}} yang diinvestasikan ({{dcaroi:btc:10}})
 

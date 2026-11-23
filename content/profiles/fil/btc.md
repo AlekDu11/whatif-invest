@@ -1,14 +1,14 @@
 ---
-title: Bitcoin (BTC) sa simpleng paliwanag: 21 milyong coin, record na $126,080 at ano ang nagpapagalaw sa presyo
+title: Bitcoin (BTC) sa simpleng paliwanag: 21 milyong coin, proof of work mula 2009 at ano ang nagpapagalaw sa presyo
 description: Bitcoin sa simpleng salita: paano ito gumagana, bakit 21 milyon lang ang magkakaroon, halving, ETF, mga record at pagbagsak, pangunahing panganib at ang dapat malaman ng regular na bumibili.
 date: 2026-11-22
 kind: analysis
 ---
-Ang **Bitcoin** ang kauna-unahang cryptocurrency: digital na pera na walang bangko o gobyerno na kumokontrol. Inilunsad ito noong Enero 2009 ng isang hindi kilalang lumikha na gumamit ng pangalang Satoshi Nakamoto, at hanggang ngayon ito pa rin ang pinakamalaking crypto asset nang malayo — mga $1.2 trilyon ang halaga nito noong Nobyembre 2026. Karaniwang binibili ito bilang "digital gold": isang bagay na limitado at walang sinumang makakapag-imprenta pa.
+Ang **Bitcoin** ang kauna-unahang cryptocurrency: digital na pera na walang bangko o gobyerno na kumokontrol. Inilunsad ito noong Enero 2009 ng isang hindi kilalang lumikha na gumamit ng pangalang Satoshi Nakamoto, at hanggang ngayon ito pa rin ang pinakamalaking crypto asset nang malayo — {{mcap:btc}} ang halaga nito ngayon ({{rank:btc}} sa mga cryptocurrency). Karaniwang binibili ito bilang "digital gold": isang bagay na limitado at walang sinumang makakapag-imprenta pa.
 
 > **Mahahalagang punto**
 > - Hindi kailanman lalampas sa 21 milyon ang bitcoin; mga 95% nito ay nalikha na.
-> - Ang pinakamataas na presyo sa ngayon ay $126,080 (6 Oktubre 2025); noong Nobyembre 2026, mahigit 50% na mas mababa rito ang bitcoin.
+> - Ang pinakamataas na presyo nito ay {{ath:btc}} ({{athd:btc}}); ngayon, {{fromath:btc}} ang presyo mula roon.
 > - Mula Enero 2024, puwede na itong bilhin sa ordinaryong brokerage account sa pamamagitan ng mga spot bitcoin ETF sa US.
 > - Ilang beses na itong bumagsak nang mahigit 70% — bahagi ng kasaysayan nito ang malalaking pagbagsak, hindi eksepsiyon.
 
@@ -23,7 +23,8 @@ Nakapirmi at alam na nang maaga ang supply, kaya walang makakapagpahina nito sa 
 ## Ang mga numero ngayon
 
 - Presyo ngayon: {{price:btc}}
-- Pinakamataas na presyo: $126,080 noong 6 Oktubre 2025
+- Pinakamataas na presyo: {{ath:btc}} ({{athd:btc}}), {{fromath:btc}} mula roon
+- Halaga sa merkado: {{mcap:btc}} ({{rank:btc}} sa mga cryptocurrency)
 - Pagbabago ng presyo sa loob ng 12 buwan: {{chg1y:btc}}
 - $10 kada araw sa loob ng 10 taon: {{dca:btc:10}} mula sa {{dcainv:10}} na inilagay ({{dcaroi:btc:10}})
 
