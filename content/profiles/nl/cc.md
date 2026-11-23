@@ -1,16 +1,16 @@
 ---
-title: Canton (CC) uitgelegd: de Wall Street-blockchain, 40 miljard munten en een record van $0,19
+title: Canton (CC) uitgelegd: de Wall Street-blockchain, zonder pre-mine en met verbrande kosten
 description: Canton in gewone taal: de privé-blockchain van banken, hoe Canton Coin wordt aangemaakt en verbrand, het verhaal, de concurrenten en de grootste risico's.
 date: 2026-11-23
 kind: analysis
 ---
-**Canton** is een blockchain gebouwd voor Wall Street: banken en bedrijven uit de financiële infrastructuur verplaatsen er getokeniseerde obligaties, fondsen en geld mee, en elke transactie is alleen zichtbaar voor de betrokken partijen. Canton Coin (CC) is de token waarmee je voor het netwerk betaalt. In november 2026 waren alle CC in omloop samen ongeveer $2,9 miljard waard, rond plaats 26 onder de cryptomunten.
+**Canton** is een blockchain gebouwd voor Wall Street: banken en bedrijven uit de financiële infrastructuur verplaatsen er getokeniseerde obligaties, fondsen en geld mee, en elke transactie is alleen zichtbaar voor de betrokken partijen. Canton Coin (CC) is de token waarmee je voor het netwerk betaalt. Alle CC in omloop zijn vandaag samen {{mcap:cc}} waard ({{rank:cc}} onder de cryptomunten).
 
 > **Belangrijkste punten**
 > - Het netwerk en CC gingen in juli 2024 live zonder pre-mine en zonder tokens voor durfkapitalisten.
-> - Er circuleren ongeveer 40 miljard CC en er is geen maximum; in november 2026 dekte het verbranden maar zo'n 80% van de nieuwe uitgifte.
+> - Er is geen maximum; in november 2026 circuleerden ongeveer 40 miljard CC en dekte het verbranden maar zo'n 80% van de nieuwe uitgifte.
 > - Het repoplatform van Broadridge, het digitale-activaplatform van Goldman Sachs en tokenisatieprojecten van DTCC draaien op Canton.
-> - Het record tot nu toe is $0,194 (3 februari 2026); in november 2026 noteerde CC zo'n 60% lager.
+> - De recordkoers is {{ath:cc}} ({{athd:cc}}); vandaag staat de koers {{fromath:cc}} daarvan af.
 
 ## Hoe het werkt
 
@@ -23,7 +23,8 @@ CC werkt met een "burn-mint"-model. Elke transactie betaalt haar kosten door CC 
 ## De cijfers nu
 
 - Koers nu: {{price:cc}}
-- Recordkoers: {{ath:cc}} ({{athd:cc}})
+- Recordkoers: {{ath:cc}} ({{athd:cc}}), {{fromath:cc}} daarvan af
+- Marktwaarde: {{mcap:cc}} ({{rank:cc}} onder de cryptomunten)
 - Koersverandering over 12 maanden: {{chg1y:cc}}
 - $10 per dag gedurende 1 jaar: {{dca:cc:1}} bij {{dcainv:1}} ingelegd ({{dcaroi:cc:1}})
 

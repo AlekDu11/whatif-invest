@@ -1,16 +1,16 @@
 ---
-title: Canton (CC) nedir: Wall Street blockchain'i, 40 milyar coin ve 0,19 $ rekor
+title: Canton (CC) nedir: ön madencilik olmadan çalışan, ücretleri yakan Wall Street blockchain'i
 description: Canton sade bir dille: bankaların kullandığı gizlilik odaklı blockchain, Canton Coin nasıl basılıp yakılıyor, hikâyesi, rakipleri ve başlıca riskleri.
 date: 2026-11-23
 kind: analysis
 ---
-**Canton**, Wall Street için kurulmuş bir blockchain'dir: bankalar ve finansal altyapı şirketleri tokenize tahvilleri, fonları ve nakdi bu ağda taşır; her işlemi yalnızca taraflar görür. Canton Coin (CC), ağın kullanım bedelini ödeyen token'dır. Kasım 2026'da dolaşımdaki tüm CC'lerin değeri yaklaşık 2,9 milyar dolardı; kripto paralar arasında 26. sıra civarındaydı.
+**Canton**, Wall Street için kurulmuş bir blockchain'dir: bankalar ve finansal altyapı şirketleri tokenize tahvilleri, fonları ve nakdi bu ağda taşır; her işlemi yalnızca taraflar görür. Canton Coin (CC), ağın kullanım bedelini ödeyen token'dır. Dolaşımdaki tüm CC'lerin bugünkü piyasa değeri {{mcap:cc}} (kripto paralar arasında {{rank:cc}}).
 
 > **Öne çıkanlar**
 > - Ağ ve CC, Temmuz 2024'te ön madencilik (pre-mine) olmadan ve girişim sermayesi yatırımcılarına token ayrılmadan başladı.
-> - Yaklaşık 40 milyar CC dolaşımda ve azami arz yok; Kasım 2026'da yakımlar yeni basımın yalnızca yaklaşık %80'ini karşılıyordu.
+> - Azami arz yok; Kasım 2026'da yaklaşık 40 milyar CC dolaşımdaydı ve yakımlar yeni basımın yalnızca yaklaşık %80'ini karşılıyordu.
 > - Broadridge'in repo platformu, Goldman Sachs'ın dijital varlık platformu ve DTCC'nin tokenizasyon çalışmaları Canton üzerinde çalışıyor.
-> - Şimdiye kadarki rekor 0,194 $ (3 Şubat 2026); Kasım 2026'da CC bunun yaklaşık %60 altında işlem görüyordu.
+> - Rekor fiyatı {{ath:cc}} ({{athd:cc}}); bugün fiyat ondan {{fromath:cc}} uzakta.
 
 ## Nasıl çalışır
 
@@ -23,7 +23,8 @@ CC bir "yakma-basma" modeliyle çalışır. Her işlem ücretini CC yakarak öde
 ## Şu anki rakamlar
 
 - Bugünkü fiyat: {{price:cc}}
-- Rekor: {{ath:cc}} ({{athd:cc}})
+- Rekor: {{ath:cc}} ({{athd:cc}}), ondan {{fromath:cc}}
+- Piyasa değeri: {{mcap:cc}} (kripto paralar arasında {{rank:cc}})
 - 12 aylık fiyat değişimi: {{chg1y:cc}}
 - 1 yıl boyunca günde 10 $: {{dca:cc:1}}, yatırılan {{dcainv:1}} ({{dcaroi:cc:1}})
 

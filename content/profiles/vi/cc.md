@@ -1,16 +1,16 @@
 ---
-title: Canton (CC) là gì: blockchain của Phố Wall, 40 tỷ coin và đỉnh 0,19 USD
+title: Canton (CC) là gì: blockchain của Phố Wall, không đào trước và phí bị đốt
 description: Canton bằng ngôn ngữ dễ hiểu: blockchain riêng tư mà ngân hàng sử dụng, cách Canton Coin được phát hành và đốt, lịch sử, đối thủ và các rủi ro chính.
 date: 2026-11-23
 kind: analysis
 ---
-**Canton** là blockchain được xây dựng cho Phố Wall: các ngân hàng và công ty hạ tầng tài chính dùng nó để chuyển trái phiếu, quỹ và tiền mặt đã được token hóa, trong khi mỗi giao dịch chỉ các bên liên quan mới thấy. Canton Coin (CC) là token dùng để trả phí sử dụng mạng lưới. Vào tháng 11/2026, toàn bộ CC đang lưu hành trị giá khoảng 2,9 tỷ USD, quanh vị trí thứ 26 trong số các tiền mã hóa.
+**Canton** là blockchain được xây dựng cho Phố Wall: các ngân hàng và công ty hạ tầng tài chính dùng nó để chuyển trái phiếu, quỹ và tiền mặt đã được token hóa, trong khi mỗi giao dịch chỉ các bên liên quan mới thấy. Canton Coin (CC) là token dùng để trả phí sử dụng mạng lưới. Vốn hóa của toàn bộ CC đang lưu hành hiện là {{mcap:cc}} ({{rank:cc}} trong các đồng tiền mã hóa).
 
 > **Điểm chính**
 > - Mạng lưới và CC ra mắt vào tháng 7/2024, không đào trước (pre-mine) và không dành token cho quỹ đầu tư mạo hiểm.
-> - Khoảng 40 tỷ CC đang lưu hành và không có nguồn cung tối đa; tháng 11/2026, lượng đốt chỉ bù khoảng 80% lượng phát hành mới.
+> - Không có nguồn cung tối đa; tháng 11/2026 có khoảng 40 tỷ CC lưu hành và lượng đốt chỉ bù khoảng 80% lượng phát hành mới.
 > - Nền tảng repo của Broadridge, nền tảng tài sản số của Goldman Sachs và các dự án token hóa của DTCC chạy trên Canton.
-> - Đỉnh giá cho đến nay là 0,194 USD (3/2/2026); tháng 11/2026, CC giao dịch thấp hơn khoảng 60%.
+> - Đỉnh kỷ lục là {{ath:cc}} ({{athd:cc}}); giá hiện tại cách đỉnh {{fromath:cc}}.
 
 ## Cách hoạt động
 
@@ -23,7 +23,8 @@ CC vận hành theo mô hình "đốt – phát hành". Mỗi giao dịch trả 
 ## Các con số hiện tại
 
 - Giá hôm nay: {{price:cc}}
-- Đỉnh kỷ lục: {{ath:cc}} ({{athd:cc}})
+- Đỉnh kỷ lục: {{ath:cc}} ({{athd:cc}}), cách đỉnh {{fromath:cc}}
+- Vốn hóa thị trường: {{mcap:cc}} ({{rank:cc}} trong các đồng tiền mã hóa)
 - Biến động giá trong 12 tháng: {{chg1y:cc}}
 - 10 USD mỗi ngày trong 1 năm: {{dca:cc:1}} từ {{dcainv:1}} đã đầu tư ({{dcaroi:cc:1}})
 

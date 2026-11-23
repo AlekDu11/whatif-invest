@@ -1,16 +1,16 @@
 ---
-title: Canton (CC), ipinaliwanag: ang blockchain ng Wall Street, 40 bilyong coin at $0.19 na rekord
+title: Canton (CC), ipinaliwanag: ang blockchain ng Wall Street, walang pre-mine at sinusunog ang fees
 description: Canton sa simpleng salita: ang pribadong blockchain na gamit ng mga bangko, paano nililikha at sinusunog ang Canton Coin, kuwento, kakumpitensya at panganib.
 date: 2026-11-23
 kind: analysis
 ---
-Ang **Canton** ay blockchain na ginawa para sa Wall Street: ginagamit ito ng mga bangko at kompanya ng imprastrakturang pampinansyal para maglipat ng tokenized na bond, pondo at cash, at ang bawat transaksyon ay nakikita lang ng mga kasali rito. Ang Canton Coin (CC) ang token na ipinambabayad sa paggamit ng network. Noong Nobyembre 2026, nasa humigit-kumulang $2.9 bilyon ang halaga ng lahat ng CC na umiikot, mga ika-26 na puwesto sa mga cryptocurrency.
+Ang **Canton** ay blockchain na ginawa para sa Wall Street: ginagamit ito ng mga bangko at kompanya ng imprastrakturang pampinansyal para maglipat ng tokenized na bond, pondo at cash, at ang bawat transaksyon ay nakikita lang ng mga kasali rito. Ang Canton Coin (CC) ang token na ipinambabayad sa paggamit ng network. {{mcap:cc}} ang halaga ngayon ng lahat ng CC na umiikot ({{rank:cc}} sa mga cryptocurrency).
 
 > **Mahahalagang punto**
 > - Inilunsad ang network at ang CC noong Hulyo 2024 nang walang pre-mine at walang token na nakalaan sa mga venture investor.
-> - Mga 40 bilyong CC ang umiikot at walang maximum supply; noong Nobyembre 2026, mga 80% lang ng bagong mint ang natatakpan ng pagsunog.
+> - Walang maximum supply; noong Nobyembre 2026, mga 40 bilyong CC ang umiikot at mga 80% lang ng bagong mint ang natatakpan ng pagsunog.
 > - Tumatakbo sa Canton ang repo platform ng Broadridge, ang digital asset platform ng Goldman Sachs at ang tokenization work ng DTCC.
-> - Ang pinakamataas na presyo sa ngayon ay $0.194 (3 Pebrero 2026); noong Nobyembre 2026, mga 60% na mas mababa ang presyo ng CC.
+> - Ang pinakamataas na presyo nito ay {{ath:cc}} ({{athd:cc}}); ngayon, {{fromath:cc}} ang presyo mula roon.
 
 ## Paano ito gumagana
 
@@ -23,7 +23,8 @@ Gumagamit ang CC ng modelong "burn-mint". Binabayaran ng bawat transaksyon ang b
 ## Ang mga numero ngayon
 
 - Presyo ngayon: {{price:cc}}
-- Pinakamataas na presyo: {{ath:cc}} ({{athd:cc}})
+- Pinakamataas na presyo: {{ath:cc}} ({{athd:cc}}), {{fromath:cc}} mula roon
+- Halaga sa merkado: {{mcap:cc}} ({{rank:cc}} sa mga cryptocurrency)
 - Pagbabago ng presyo sa loob ng 12 buwan: {{chg1y:cc}}
 - $10 kada araw sa loob ng 1 taon: {{dca:cc:1}} mula sa {{dcainv:1}} na inilagay ({{dcaroi:cc:1}})
 

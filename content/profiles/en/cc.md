@@ -1,16 +1,16 @@
 ---
-title: Canton (CC) explained: the Wall Street blockchain, 40 billion coins and a $0.19 record
+title: Canton (CC) explained: the Wall Street blockchain, no pre-mine and burn-and-mint fees
 description: Canton in plain language: the privacy blockchain banks use, how Canton Coin is minted and burned, its story, rivals and the main risks for buyers.
 date: 2026-11-23
 kind: analysis
 ---
-**Canton** is a blockchain built for Wall Street: banks and market infrastructure firms use it to move tokenized bonds, funds and cash while each deal stays visible only to the parties in it. Canton Coin (CC) is the token that pays for using the network. In November 2026 all CC in circulation was worth about $2.9 billion, around number 26 among cryptocurrencies.
+**Canton** is a blockchain built for Wall Street: banks and market infrastructure firms use it to move tokenized bonds, funds and cash while each deal stays visible only to the parties in it. Canton Coin (CC) is the token that pays for using the network. All CC in circulation is worth {{mcap:cc}} today ({{rank:cc}} among cryptocurrencies).
 
 > **Key takeaways**
 > - The network and CC went live in July 2024 with no pre-mine and no tokens set aside for venture investors.
-> - About 40 billion CC circulate and there is no maximum supply; in November 2026 burns covered only about 80% of new minting.
+> - There is no maximum supply; in November 2026 about 40 billion CC circulated and burns covered only about 80% of new minting.
 > - Broadridge's repo platform, Goldman Sachs' digital asset platform and DTCC's tokenization work run on Canton.
-> - The record price so far is $0.194 (3 February 2026); in November 2026 CC traded about 60% below it.
+> - Its record high is {{ath:cc}} ({{athd:cc}}); today the price is {{fromath:cc}} from it.
 
 ## How it works
 
@@ -23,7 +23,8 @@ CC works on a "burn-mint" model. Every transaction pays a fee by burning CC, so 
 ## The numbers right now
 
 - Price today: {{price:cc}}
-- Record high: {{ath:cc}} ({{athd:cc}})
+- Record high: {{ath:cc}} ({{athd:cc}}), {{fromath:cc}} from it
+- Market value: {{mcap:cc}} ({{rank:cc}} among cryptocurrencies)
 - Price change over 12 months: {{chg1y:cc}}
 - $10 a day for 1 year: {{dca:cc:1}} from {{dcainv:1}} invested ({{dcaroi:cc:1}})
 

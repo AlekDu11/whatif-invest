@@ -1,16 +1,16 @@
 ---
-title: Canton (CC) wyjaśniony: blockchain dla Wall Street, 40 mld monet i rekord 0,19 $
+title: Canton (CC) wyjaśniony: blockchain dla Wall Street bez pre-mine i ze spalaniem opłat
 description: Canton prostym językiem: prywatny blockchain banków, jak Canton Coin jest emitowany i spalany, jego historia, rywale i główne ryzyka dla kupujących.
 date: 2026-11-23
 kind: analysis
 ---
-**Canton** to blockchain zbudowany dla Wall Street: banki i firmy infrastruktury finansowej przesyłają w nim tokenizowane obligacje, fundusze i gotówkę, a każdą transakcję widzą tylko jej strony. Canton Coin (CC) to token, którym płaci się za korzystanie z sieci. W listopadzie 2026 r. wszystkie CC w obiegu były warte ok. 2,9 mld dolarów, co dawało mniej więcej 26. miejsce wśród kryptowalut.
+**Canton** to blockchain zbudowany dla Wall Street: banki i firmy infrastruktury finansowej przesyłają w nim tokenizowane obligacje, fundusze i gotówkę, a każdą transakcję widzą tylko jej strony. Canton Coin (CC) to token, którym płaci się za korzystanie z sieci. Wszystkie CC w obiegu są dziś warte {{mcap:cc}} ({{rank:cc}} wśród kryptowalut).
 
 > **Najważniejsze**
 > - Sieć i CC wystartowały w lipcu 2024 r. bez pre-mine i bez puli tokenów dla funduszy venture capital.
-> - W obiegu jest ok. 40 mld CC i nie ma limitu podaży; w listopadzie 2026 r. spalanie pokrywało tylko ok. 80% nowej emisji.
+> - Nie ma limitu podaży; w listopadzie 2026 r. w obiegu było ok. 40 mld CC, a spalanie pokrywało tylko ok. 80% nowej emisji.
 > - Na Canton działają platforma repo Broadridge, platforma aktywów cyfrowych Goldman Sachs i projekty tokenizacji DTCC.
-> - Dotychczasowy rekord to 0,194 $ (3 lutego 2026 r.); w listopadzie 2026 r. CC kosztował ok. 60% mniej.
+> - Rekord ceny to {{ath:cc}} ({{athd:cc}}); dziś cena jest {{fromath:cc}} od niego.
 
 ## Jak działa
 
@@ -23,7 +23,8 @@ CC działa w modelu „spalanie – emisja”. Każda transakcja płaci opłatę
 ## Liczby teraz
 
 - Cena teraz: {{price:cc}}
-- Rekord: {{ath:cc}} ({{athd:cc}})
+- Rekord: {{ath:cc}} ({{athd:cc}}), {{fromath:cc}} od niego
+- Wartość rynkowa: {{mcap:cc}} ({{rank:cc}} wśród kryptowalut)
 - Zmiana ceny w ciągu 12 miesięcy: {{chg1y:cc}}
 - 10 $ dziennie przez 1 rok: {{dca:cc:1}} przy wpłaconych {{dcainv:1}} ({{dcaroi:cc:1}})
 

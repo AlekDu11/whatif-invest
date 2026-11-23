@@ -1,16 +1,16 @@
 ---
-title: Canton (CC) explicado: la blockchain de Wall Street, 40.000 millones de monedas y un récord de 0,19 $
+title: Canton (CC) explicado: la blockchain de Wall Street, sin preminado y con comisiones que se queman
 description: Canton en lenguaje sencillo: la blockchain privada que usan los bancos, cómo se emite y se quema Canton Coin, su historia, rivales y principales riesgos.
 date: 2026-11-23
 kind: analysis
 ---
-**Canton** es una blockchain pensada para Wall Street: bancos y empresas de infraestructura financiera la usan para mover bonos, fondos y efectivo tokenizados, y cada operación solo la ven las partes implicadas. Canton Coin (CC) es el token con el que se paga el uso de la red. En noviembre de 2026 todos los CC en circulación valían unos 2.900 millones de dólares, alrededor del puesto 26 entre las criptomonedas.
+**Canton** es una blockchain pensada para Wall Street: bancos y empresas de infraestructura financiera la usan para mover bonos, fondos y efectivo tokenizados, y cada operación solo la ven las partes implicadas. Canton Coin (CC) es el token con el que se paga el uso de la red. Todos los CC en circulación valen {{mcap:cc}} hoy ({{rank:cc}} entre las criptomonedas).
 
 > **Claves**
 > - La red y CC se pusieron en marcha en julio de 2024 sin preminado y sin tokens reservados para fondos de capital riesgo.
-> - Circulan unos 40.000 millones de CC y no hay oferta máxima; en noviembre de 2026 la quema cubría solo cerca del 80% de la nueva emisión.
+> - No hay oferta máxima; en noviembre de 2026 circulaban unos 40.000 millones de CC y la quema cubría solo cerca del 80% de la nueva emisión.
 > - En Canton funcionan la plataforma de repos de Broadridge, la plataforma de activos digitales de Goldman Sachs y proyectos de tokenización de DTCC.
-> - El récord por ahora es de 0,194 $ (3 de febrero de 2026); en noviembre de 2026 CC cotizaba cerca de un 60% por debajo.
+> - Su máximo histórico es {{ath:cc}} ({{athd:cc}}); hoy el precio está {{fromath:cc}} por debajo.
 
 ## Cómo funciona
 
@@ -23,7 +23,8 @@ CC funciona con un modelo de «quema y emisión». Cada transacción paga una co
 ## Las cifras actuales
 
 - Precio hoy: {{price:cc}}
-- Récord: {{ath:cc}} ({{athd:cc}})
+- Máximo histórico: {{ath:cc}} ({{athd:cc}}), {{fromath:cc}} desde él
+- Valor de mercado: {{mcap:cc}} ({{rank:cc}} entre las criptomonedas)
 - Variación del precio en 12 meses: {{chg1y:cc}}
 - 10 $ al día durante 1 año: {{dca:cc:1}} con {{dcainv:1}} invertidos ({{dcaroi:cc:1}})
 

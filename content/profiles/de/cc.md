@@ -1,16 +1,16 @@
 ---
-title: Canton (CC) erklärt: die Wall-Street-Blockchain, 40 Milliarden Coins und ein Rekord von 0,19 $
+title: Canton (CC) erklärt: die Wall-Street-Blockchain ohne Pre-Mining und mit verbrannten Gebühren
 description: Canton einfach erklärt: die private Blockchain der Banken, wie Canton Coin geschaffen und verbrannt wird, Geschichte, Konkurrenten und die größten Risiken.
 date: 2026-11-23
 kind: analysis
 ---
-**Canton** ist eine Blockchain für die Wall Street: Banken und Finanzinfrastruktur-Firmen bewegen darauf tokenisierte Anleihen, Fonds und Geld, und jedes Geschäft sehen nur die Beteiligten. Canton Coin (CC) ist der Token, mit dem die Nutzung des Netzwerks bezahlt wird. Im November 2026 waren alle umlaufenden CC rund 2,9 Milliarden Dollar wert, etwa Platz 26 unter den Kryptowährungen.
+**Canton** ist eine Blockchain für die Wall Street: Banken und Finanzinfrastruktur-Firmen bewegen darauf tokenisierte Anleihen, Fonds und Geld, und jedes Geschäft sehen nur die Beteiligten. Canton Coin (CC) ist der Token, mit dem die Nutzung des Netzwerks bezahlt wird. Alle umlaufenden CC sind heute {{mcap:cc}} wert ({{rank:cc}} unter den Kryptowährungen).
 
 > **Das Wichtigste**
 > - Netzwerk und CC starteten im Juli 2024 ohne Pre-Mining und ohne Token-Anteil für Risikokapitalgeber.
-> - Rund 40 Milliarden CC sind im Umlauf, eine Obergrenze gibt es nicht; im November 2026 glichen Verbrennungen nur etwa 80% der Neuausgabe aus.
+> - Eine Obergrenze gibt es nicht; im November 2026 waren rund 40 Milliarden CC im Umlauf, und Verbrennungen glichen nur etwa 80% der Neuausgabe aus.
 > - Die Repo-Plattform von Broadridge, die Digital-Asset-Plattform von Goldman Sachs und Tokenisierungsprojekte der DTCC laufen auf Canton.
-> - Der bisherige Rekord liegt bei 0,194 $ (3. Februar 2026); im November 2026 notierte CC rund 60% darunter.
+> - Sein Rekordhoch liegt bei {{ath:cc}} ({{athd:cc}}); heute steht der Kurs {{fromath:cc}} darunter.
 
 ## So funktioniert es
 
@@ -23,7 +23,8 @@ CC folgt einem „Burn-Mint“-Modell. Jede Transaktion zahlt ihre Gebühr, inde
 ## Die Zahlen jetzt
 
 - Kurs heute: {{price:cc}}
-- Rekordhoch: {{ath:cc}} ({{athd:cc}})
+- Rekordhoch: {{ath:cc}} ({{athd:cc}}), {{fromath:cc}} davon entfernt
+- Marktwert: {{mcap:cc}} ({{rank:cc}} unter den Kryptowährungen)
 - Kursveränderung in 12 Monaten: {{chg1y:cc}}
 - 10 $ am Tag über 1 Jahr: {{dca:cc:1}} bei {{dcainv:1}} Einsatz ({{dcaroi:cc:1}})
 

@@ -1,16 +1,16 @@
 ---
-title: Canton (CC) expliqué : la blockchain de Wall Street, 40 milliards de jetons et un record à 0,19 $
+title: Canton (CC) expliqué : la blockchain de Wall Street, sans pré-minage et aux frais brûlés
 description: Canton en termes simples : la blockchain privée des banques, comment le Canton Coin est émis et brûlé, son histoire, ses rivaux et les principaux risques.
 date: 2026-11-23
 kind: analysis
 ---
-**Canton** est une blockchain conçue pour Wall Street : banques et sociétés d'infrastructure financière y font circuler obligations, fonds et liquidités tokenisés, et chaque opération n'est visible que par ses participants. Le Canton Coin (CC) est le jeton qui paie l'utilisation du réseau. En novembre 2026, l'ensemble des CC en circulation valait environ 2,9 milliards de dollars, vers la 26e place parmi les cryptomonnaies.
+**Canton** est une blockchain conçue pour Wall Street : banques et sociétés d'infrastructure financière y font circuler obligations, fonds et liquidités tokenisés, et chaque opération n'est visible que par ses participants. Le Canton Coin (CC) est le jeton qui paie l'utilisation du réseau. L'ensemble des CC en circulation vaut {{mcap:cc}} aujourd'hui ({{rank:cc}} parmi les cryptomonnaies).
 
 > **À retenir**
 > - Le réseau et le CC ont été lancés en juillet 2024, sans pré-minage et sans jetons réservés aux fonds de capital-risque.
-> - Environ 40 milliards de CC circulent et il n'y a pas d'offre maximale ; en novembre 2026, les destructions ne compensaient qu'environ 80 % des nouvelles émissions.
+> - Il n'y a pas d'offre maximale ; en novembre 2026, environ 40 milliards de CC circulaient et les destructions ne compensaient qu'environ 80 % des nouvelles émissions.
 > - La plateforme de pensions livrées (repo) de Broadridge, la plateforme d'actifs numériques de Goldman Sachs et des projets de tokenisation de la DTCC fonctionnent sur Canton.
-> - Le record à ce jour est de 0,194 $ (3 février 2026) ; en novembre 2026, le CC s'échangeait environ 60 % plus bas.
+> - Son record est de {{ath:cc}} ({{athd:cc}}) ; aujourd'hui, le cours est à {{fromath:cc}} de ce niveau.
 
 ## Comment il fonctionne
 
@@ -23,7 +23,8 @@ Le CC repose sur un modèle « brûler-émettre ». Chaque transaction paie ses 
 ## Les chiffres actuels
 
 - Cours actuel : {{price:cc}}
-- Record : {{ath:cc}} ({{athd:cc}})
+- Record : {{ath:cc}} ({{athd:cc}}), {{fromath:cc}} depuis
+- Valeur de marché : {{mcap:cc}} ({{rank:cc}} parmi les cryptomonnaies)
 - Variation du cours sur 12 mois : {{chg1y:cc}}
 - 10 $ par jour pendant 1 an : {{dca:cc:1}} pour {{dcainv:1}} investis ({{dcaroi:cc:1}})
 

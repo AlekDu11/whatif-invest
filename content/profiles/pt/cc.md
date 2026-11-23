@@ -1,16 +1,16 @@
 ---
-title: Canton (CC) explicado: a blockchain de Wall Street, 40 bilhões de moedas e recorde de US$ 0,19
+title: Canton (CC) explicado: a blockchain de Wall Street, sem pré-mineração e com taxas queimadas
 description: Canton em linguagem simples: a blockchain privada usada por bancos, como o Canton Coin é emitido e queimado, sua história, rivais e os principais riscos.
 date: 2026-11-23
 kind: analysis
 ---
-**Canton** é uma blockchain feita para Wall Street: bancos e empresas de infraestrutura financeira a usam para movimentar títulos, fundos e dinheiro tokenizados, e cada operação só é visível para as partes envolvidas. Canton Coin (CC) é o token que paga pelo uso da rede. Em novembro de 2026, todos os CC em circulação valiam cerca de US$ 2,9 bilhões, por volta da 26ª posição entre as criptomoedas.
+**Canton** é uma blockchain feita para Wall Street: bancos e empresas de infraestrutura financeira a usam para movimentar títulos, fundos e dinheiro tokenizados, e cada operação só é visível para as partes envolvidas. Canton Coin (CC) é o token que paga pelo uso da rede. Todos os CC em circulação valem {{mcap:cc}} hoje ({{rank:cc}} entre as criptomoedas).
 
 > **Pontos principais**
 > - A rede e o CC entraram no ar em julho de 2024, sem pré-mineração e sem tokens reservados para fundos de venture capital.
-> - Circulam cerca de 40 bilhões de CC e não há oferta máxima; em novembro de 2026 as queimas cobriam só cerca de 80% da nova emissão.
+> - Não há oferta máxima; em novembro de 2026 circulavam cerca de 40 bilhões de CC e as queimas cobriam só cerca de 80% da nova emissão.
 > - A plataforma de compromissadas (repo) da Broadridge, a plataforma de ativos digitais do Goldman Sachs e projetos de tokenização da DTCC rodam na Canton.
-> - O recorde até agora é US$ 0,194 (3 de fevereiro de 2026); em novembro de 2026 o CC era negociado cerca de 60% abaixo.
+> - A máxima histórica é {{ath:cc}} ({{athd:cc}}); hoje o preço está {{fromath:cc}} abaixo dela.
 
 ## Como funciona
 
@@ -23,7 +23,8 @@ O CC segue um modelo de "queima e emissão". Cada transação paga uma taxa quei
 ## Os números agora
 
 - Preço hoje: {{price:cc}}
-- Recorde: {{ath:cc}} ({{athd:cc}})
+- Máxima histórica: {{ath:cc}} ({{athd:cc}}), {{fromath:cc}} desde ela
+- Valor de mercado: {{mcap:cc}} ({{rank:cc}} entre as criptomoedas)
 - Variação do preço em 12 meses: {{chg1y:cc}}
 - US$ 10 por dia durante 1 ano: {{dca:cc:1}} com {{dcainv:1}} investidos ({{dcaroi:cc:1}})
 

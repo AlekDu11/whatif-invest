@@ -1,16 +1,16 @@
 ---
-title: Canton (CC) dijelaskan: blockchain Wall Street, 40 miliar koin, dan rekor $0,19
+title: Canton (CC) dijelaskan: blockchain Wall Street tanpa pra-penambangan dan biaya yang dibakar
 description: Canton dengan bahasa sederhana: blockchain privat yang dipakai bank, cara Canton Coin dicetak dan dibakar, kisahnya, pesaingnya, dan risiko utamanya.
 date: 2026-11-23
 kind: analysis
 ---
-**Canton** adalah blockchain yang dibuat untuk Wall Street: bank dan perusahaan infrastruktur keuangan memakainya untuk memindahkan obligasi, reksa dana, dan uang tunai yang ditokenisasi, sementara setiap transaksi hanya terlihat oleh pihak yang terlibat. Canton Coin (CC) adalah token untuk membayar penggunaan jaringan. Pada November 2026, seluruh CC yang beredar bernilai sekitar $2,9 miliar, kira-kira peringkat 26 di antara mata uang kripto.
+**Canton** adalah blockchain yang dibuat untuk Wall Street: bank dan perusahaan infrastruktur keuangan memakainya untuk memindahkan obligasi, reksa dana, dan uang tunai yang ditokenisasi, sementara setiap transaksi hanya terlihat oleh pihak yang terlibat. Canton Coin (CC) adalah token untuk membayar penggunaan jaringan. Seluruh CC yang beredar kini bernilai {{mcap:cc}} ({{rank:cc}} di antara mata uang kripto).
 
 > **Poin penting**
 > - Jaringan dan CC mulai berjalan pada Juli 2024 tanpa pre-mine dan tanpa jatah token untuk investor modal ventura.
-> - Sekitar 40 miliar CC beredar dan tidak ada pasokan maksimum; pada November 2026 pembakaran hanya menutup sekitar 80% pencetakan baru.
+> - Tidak ada pasokan maksimum; pada November 2026 sekitar 40 miliar CC beredar dan pembakaran hanya menutup sekitar 80% pencetakan baru.
 > - Platform repo Broadridge, platform aset digital Goldman Sachs, dan proyek tokenisasi DTCC berjalan di Canton.
-> - Rekor harga sejauh ini $0,194 (3 Februari 2026); pada November 2026 CC diperdagangkan sekitar 60% di bawahnya.
+> - Rekor tertingginya {{ath:cc}} ({{athd:cc}}); kini harganya {{fromath:cc}} dari rekor itu.
 
 ## Cara kerjanya
 
@@ -23,7 +23,8 @@ CC memakai model "bakar-cetak". Setiap transaksi membayar biaya dengan membakar 
 ## Angka saat ini
 
 - Harga hari ini: {{price:cc}}
-- Rekor tertinggi: {{ath:cc}} ({{athd:cc}})
+- Rekor tertinggi: {{ath:cc}} ({{athd:cc}}), {{fromath:cc}} dari rekor itu
+- Nilai pasar: {{mcap:cc}} ({{rank:cc}} di antara mata uang kripto)
 - Perubahan harga dalam 12 bulan: {{chg1y:cc}}
 - $10 per hari selama 1 tahun: {{dca:cc:1}} dari {{dcainv:1}} yang diinvestasikan ({{dcaroi:cc:1}})
 

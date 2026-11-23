@@ -1,16 +1,16 @@
 ---
-title: Canton (CC) spiegato: la blockchain di Wall Street, 40 miliardi di monete e un record di 0,19 $
+title: Canton (CC) spiegato: la blockchain di Wall Street, senza pre-mining e con commissioni bruciate
 description: Canton in parole semplici: la blockchain privata usata dalle banche, come Canton Coin viene emesso e bruciato, la sua storia, i rivali e i rischi principali.
 date: 2026-11-23
 kind: analysis
 ---
-**Canton** è una blockchain pensata per Wall Street: banche e società di infrastruttura finanziaria la usano per spostare obbligazioni, fondi e liquidità tokenizzati, e ogni operazione è visibile solo alle parti coinvolte. Canton Coin (CC) è il token con cui si paga l'uso della rete. A novembre 2026 tutti i CC in circolazione valevano circa 2,9 miliardi di dollari, intorno al 26° posto tra le criptovalute.
+**Canton** è una blockchain pensata per Wall Street: banche e società di infrastruttura finanziaria la usano per spostare obbligazioni, fondi e liquidità tokenizzati, e ogni operazione è visibile solo alle parti coinvolte. Canton Coin (CC) è il token con cui si paga l'uso della rete. Tutti i CC in circolazione oggi valgono {{mcap:cc}} ({{rank:cc}} tra le criptovalute).
 
 > **In sintesi**
 > - La rete e CC sono partiti a luglio 2024 senza pre-mining e senza token riservati ai fondi di venture capital.
-> - Circolano circa 40 miliardi di CC e non esiste un'offerta massima; a novembre 2026 le bruciature coprivano solo l'80% circa delle nuove emissioni.
+> - Non esiste un'offerta massima; a novembre 2026 circolavano circa 40 miliardi di CC e le bruciature coprivano solo l'80% circa delle nuove emissioni.
 > - Su Canton funzionano la piattaforma di pronti contro termine (repo) di Broadridge, la piattaforma di asset digitali di Goldman Sachs e progetti di tokenizzazione di DTCC.
-> - Il record finora è 0,194 $ (3 febbraio 2026); a novembre 2026 CC quotava circa il 60% sotto.
+> - Il suo massimo storico è {{ath:cc}} ({{athd:cc}}); oggi il prezzo è a {{fromath:cc}} da lì.
 
 ## Come funziona
 
@@ -23,7 +23,8 @@ CC segue un modello «brucia ed emetti». Ogni transazione paga la commissione b
 ## I numeri di oggi
 
 - Prezzo oggi: {{price:cc}}
-- Record: {{ath:cc}} ({{athd:cc}})
+- Massimo storico: {{ath:cc}} ({{athd:cc}}), {{fromath:cc}} da lì
+- Valore di mercato: {{mcap:cc}} ({{rank:cc}} tra le criptovalute)
 - Variazione del prezzo in 12 mesi: {{chg1y:cc}}
 - 10 $ al giorno per 1 anno: {{dca:cc:1}} con {{dcainv:1}} investiti ({{dcaroi:cc:1}})
 
