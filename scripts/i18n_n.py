@@ -54,3 +54,30 @@ HOT = {
  'ar': ('لماذا يتحرك', 'ماذا يحدث مع {name}'), 'fil': ('Bakit gumagalaw', 'Ano ang nangyayari sa {name}'),
 }
 assert len(HOT) == 20
+
+# owner 2026-11-23: other outlets' headlines removed from /news/ — the lead describes our own news only
+_ND = dict(
+ en='What is moving crypto, stocks and gold today: short news in plain language with real numbers, sources and charts, several times a day.',
+ uk='Що рухає крипту, акції й золото сьогодні: короткі новини простою мовою з реальними цифрами, джерелами й графіками — кілька разів на день.',
+ ru='Что двигает крипту, акции и золото сегодня: короткие новости простым языком с реальными цифрами, источниками и графиками — несколько раз в день.',
+ es='Qué mueve hoy las cripto, las acciones y el oro: noticias breves y claras con cifras reales, fuentes y gráficos, varias veces al día.',
+ de='Was Krypto, Aktien und Gold heute bewegt: kurze News in einfacher Sprache mit echten Zahlen, Quellen und Charts, mehrmals täglich.',
+ pt='O que move cripto, ações e ouro hoje: notícias curtas em linguagem simples, com números reais, fontes e gráficos, várias vezes ao dia.',
+ pl='Co dziś porusza krypto, akcjami i złotem: krótkie wiadomości prostym językiem z prawdziwymi liczbami, źródłami i wykresami, kilka razy dziennie.',
+ tr='Bugün kripto, hisse ve altını ne hareket ettiriyor: gerçek rakamlar, kaynaklar ve grafiklerle sade dilde kısa haberler, günde birkaç kez.',
+ fr='Ce qui fait bouger la crypto, les actions et l’or aujourd’hui : des actus courtes et claires, avec chiffres réels, sources et graphiques, plusieurs fois par jour.',
+ it='Cosa muove oggi cripto, azioni e oro: notizie brevi e chiare con numeri reali, fonti e grafici, più volte al giorno.',
+ nl='Wat crypto, aandelen en goud vandaag beweegt: kort nieuws in gewone taal met echte cijfers, bronnen en grafieken, meerdere keren per dag.',
+ id='Apa yang menggerakkan kripto, saham, dan emas hari ini: berita singkat berbahasa sederhana dengan angka nyata, sumber, dan grafik, beberapa kali sehari.',
+ vi='Điều gì đang tác động đến tiền mã hóa, cổ phiếu và vàng hôm nay: tin ngắn dễ hiểu với số liệu thật, nguồn và biểu đồ, nhiều lần mỗi ngày.',
+ th='อะไรขับเคลื่อนคริปโท หุ้น และทองคำวันนี้ ข่าวสั้นเข้าใจง่าย พร้อมตัวเลขจริง แหล่งที่มา และกราฟ หลายครั้งต่อวัน',
+ hi='आज क्रिप्टो, शेयर और सोने को क्या हिला रहा है: असली आंकड़ों, स्रोतों और चार्ट के साथ आसान भाषा में छोटी ख़बरें, दिन में कई बार।',
+ ja='暗号資産・株・金を今日動かしているもの。実際の数字、出典、チャート付きのわかりやすい短いニュースを1日に何度もお届けします。',
+ ko='오늘 암호화폐, 주식, 금을 움직이는 것: 실제 수치와 출처, 차트를 담은 쉬운 짧은 뉴스를 하루에도 여러 번 전합니다.',
+ zh='今天是什么在推动加密货币、股票和黄金：用通俗语言写的简短新闻，附真实数据、来源和图表，每天更新多次。',
+ ar='ما الذي يحرّك العملات المشفرة والأسهم والذهب اليوم: أخبار قصيرة بلغة بسيطة مع أرقام حقيقية ومصادر ورسوم بيانية، عدة مرات يوميًا.',
+ fil='Ano ang gumagalaw sa crypto, stocks at ginto ngayon: maiikling balita sa simpleng wika na may totoong numero, source at chart, ilang beses sa isang araw.',
+)
+for _l, _v in _ND.items():
+    if _l in N:
+        N[_l]['n_d'] = _v

@@ -1,0 +1,16 @@
+{
+ "note": "Big crypto holders for /investors/ (owner 2026-11-23). amt = coins held, d = date of the figure (or 'est' for an estimate). Refresh the figures when companies report new purchases.",
+ "h": {
+  "strategy": {"name": "Strategy", "who": "Michael Saylor", "k": "co", "coin": "btc", "amt": 850849, "d": "2026-11-15", "aid": "mstr", "dom": "strategy.com", "src": "https://www.strategy.com/purchases"},
+  "satoshi": {"name": "Satoshi Nakamoto", "who": "", "k": "pe", "coin": "btc", "amt": 1100000, "d": "est", "aid": "", "dom": "", "src": "https://bitslog.com/2013/04/17/the-well-deserved-fortune-of-satoshi-nakamoto/"},
+  "bitmine": {"name": "BitMine", "who": "Tom Lee", "k": "co", "coin": "eth", "amt": 6077745, "d": "2026-11-15", "aid": "bmnr", "dom": "bitminetech.io", "src": "https://finviz.com/news/423162/bitmine-immersion-technologies-bmnr-announces-eth-holdings-reach-608-million-tokens-and-total-crypto-and-total-cash-marketable-securities-holdings-of-118-billion"},
+  "metaplanet": {"name": "Metaplanet", "who": "Simon Gerovich", "k": "co", "coin": "btc", "amt": 44000, "d": "2026-11-23", "aid": "", "dom": "metaplanet.jp", "src": "https://www.theblock.co/treasuries"},
+  "twenty-one": {"name": "Twenty One Capital", "who": "Jack Mallers", "k": "co", "coin": "btc", "amt": 43510, "d": "2026-11-23", "aid": "", "dom": "xxi.money", "src": "https://www.theblock.co/treasuries"},
+  "strive": {"name": "Strive", "who": "Vivek Ramaswamy", "k": "co", "coin": "btc", "amt": 43400, "d": "2026-11-23", "aid": "", "dom": "strive.com", "src": "https://www.theblock.co/treasuries"},
+  "mara": {"name": "MARA Holdings", "who": "Fred Thiel", "k": "co", "coin": "btc", "amt": 20410, "d": "2026-11-23", "aid": "mara", "dom": "mara.com", "src": "https://www.theblock.co/treasuries"},
+  "coinbase": {"name": "Coinbase", "who": "Brian Armstrong", "k": "co", "coin": "btc", "amt": 15390, "d": "2026-11-23", "aid": "coin", "dom": "coinbase.com", "src": "https://www.theblock.co/treasuries"},
+  "tesla": {"name": "Tesla", "who": "Elon Musk", "k": "co", "coin": "btc", "amt": 11510, "d": "2026-11-23", "aid": "tsla", "dom": "tesla.com", "src": "https://www.theblock.co/treasuries"},
+  "trump-media": {"name": "Trump Media", "who": "", "k": "co", "coin": "btc", "amt": 9540, "d": "2026-11-23", "aid": "djt", "dom": "tmtgcorp.com", "src": "https://www.theblock.co/treasuries"},
+  "sharplink": {"name": "SharpLink", "who": "Joseph Lubin", "k": "co", "coin": "eth", "amt": 868700, "d": "2026-11-23", "aid": "sbet", "dom": "sharplink.com", "src": "https://www.theblock.co/treasuries"}
+ }
+}

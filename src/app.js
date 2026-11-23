@@ -525,6 +525,24 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
   load(); setInterval(()=>{ if(!wiAway()) load() },300000);
 })();
 
+/* ---------- own news list (owner 2026-11-23): tag chips + numbered pager «‹ 1 2 3 ›», 10 a page ---------- */
+(function(){ const box=$('.nlist.own[data-per]'); if(!box) return;
+  const PER=+box.dataset.per||10; let all=$$('.nrow',box), tag='', pg=0;
+  const nav=document.createElement('div'); nav.className='pager'; box.after(nav);
+  function draw(scroll){ const L=all.filter(r=>!tag||(r.dataset.g||'').split(' ').includes(tag)), np=Math.max(1,Math.ceil(L.length/PER)); if(pg>=np) pg=np-1;
+    all.forEach(r=>r.hidden=true); L.slice(pg*PER,pg*PER+PER).forEach(r=>r.hidden=false);
+    const pb=(n,l,dis,on)=>`<button type="button" class="pgb${on?' on':''}" data-pg="${n}"${dis?' disabled':''}>${l}</button>`;
+    let h=''; if(np>1){ h+=pb(pg-1,'‹',pg===0); const seen=new Set(); [0,1,2,pg-1,pg,pg+1,np-1].filter(n=>n>=0&&n<np).sort((a,b)=>a-b).forEach(n=>{ if(seen.has(n)) return; if(seen.size&&!seen.has(n-1)) h+='<span class="pgd">…</span>'; seen.add(n); h+=pb(n,n+1,false,n===pg) }); h+=pb(pg+1,'›',pg===np-1)
+      h+=`<span class="muted pgi">${pg*PER+1}–${Math.min(pg*PER+PER,L.length)} / ${L.length}</span>` }
+    nav.innerHTML=h; nav.hidden=np<2;
+    $$('.pgb',nav).forEach(b=>b.onclick=()=>{ pg=+b.dataset.pg; try{ history.replaceState(null,'',pg?'#p'+(pg+1):location.pathname+location.search) }catch(e){} draw(true) });
+    if(scroll) ($('#ntags')||box).scrollIntoView({block:'start',behavior:'smooth'}) }
+  $$('#ntags button').forEach(b=>b.onclick=()=>{ $$('#ntags button').forEach(x=>x.classList.toggle('on',x===b)); tag=b.dataset.t; pg=0; draw() });
+  const m=/^#p(\d+)$/.exec(location.hash); if(m) pg=+m[1]-1;
+  document.addEventListener('wi:news',()=>{ all=$$('.nrow',box); draw() });
+  draw();
+})();
+
 /* ---------- local time for news timestamps ---------- */
 (function(){ let F; try{ F=new Intl.DateTimeFormat(T.intl||'en',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'}) }catch(e){ return }
   $$('time[data-t]').forEach(t=>{ const d=Date.parse(t.dataset.t.replace(' ','T')+(/Z|[+-]\d\d:?\d\d$/.test(t.dataset.t)?'':'Z')); if(d) t.textContent=F.format(new Date(d)) }) })();
@@ -1040,13 +1058,13 @@ const DEXW={ key:'wi_dexw',
 })();
 /* ---------- memes v6 (owner 2026-11-22/23): one simple list like Fomo — tabs, networks, search, ★ watchlist, sortable columns, safety dot ---------- */
 (function(){
-  const box=$('#mrows'); if(!box||!PAGE.memes5) return; const U=DEXU, P=PAGE.memes, M6=P.m6||{}, F=P.l5||{}; let view='trend', net='all', rows=[], tok=0, q='';
+  const box=$('#mrows'); if(!box||!PAGE.memes5) return; const U=DEXU, P=PAGE.memes, M6=P.m6||{}, F=P.l5||{}, NM=new Set(P.nm||[]); let view='trend', net='all', rows=[], tok=0, q='';
   const RUSH={done:'done',soon:'soon',new:'new'};
   // owner 2026-11-23: «fewer but better» — only tokens with real money and real holders; obvious junk is hidden silently
   const okRush=r=>(r.t10==null||r.t10<=35)&&(r.ins==null||r.ins<=15)&&(r.dev==null||r.dev<=10)&&(r.liq||0)>=5000&&(r.h==null||r.h>=50);
   const riskHi=r=>{ const v=r.risk; return v&&(v.lvl==='HIGH'||v==='HIGH'||+v>=4) };
   const old24=r=>!r.at||Date.now()-Date.parse(r.at)>=864e5;   // owner 2026-11-23: only tokens older than 24 h
-  const okTop=r=>old24(r)&&!riskHi(r)&&(r.liq||0)>=50000&&(r.mc==null||r.mc>=100000)&&(r.h==null||r.h>=300)&&(r.t10==null||r.t10<=60)&&(r.vol==null||r.vol>=20000)&&(!F.g||U.light(r,F).c!=='r');
+  const okTop=r=>!NM.has(String(r.s||'').toUpperCase())&&old24(r)&&!riskHi(r)&&(r.liq||0)>=50000&&(r.mc==null||r.mc>=100000)&&(r.h==null||r.h>=300)&&(r.t10==null||r.t10<=60)&&(r.vol==null||r.vol>=20000)&&(!F.g||U.light(r,F).c!=='r');
   const link=r=>`${P.tok}?n=${encodeURIComponent(r.n)}&a=${encodeURIComponent(r.a)}`;
   const H=P.h||{}, num=v=>v==null?'—':Math.round(v).toLocaleString(T.intl||'en');
   let sk=null, sd=-1;   // sort by any column (click the header; click again = reverse); phones: the «Sort by» select
@@ -1574,7 +1592,7 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
     if(nl){ const have=new Set([...nl.querySelectorAll('a.nrow')].map(a=>a.getAttribute('href')));
       const tags=(PAGE.news&&PAGE.news.tags)||{};
       const add=items.filter(r=>r.k==='news'&&!have.has(`${P}/news/${r.s}/`)).map(r=>`<a class="nrow fresh${r.cv?' nth':''}" data-g="${esc2((r.g||[]).join(' '))}" href="${rurl(r)}">${r.cv?`<img class="nthumb" src="${esc2(r.cv)}" alt="" width="160" height="84" loading="lazy">`:''}<span class="ntx"><b>${esc2(r.t)}</b><span class="muted">WhatIfStack · <time data-t="${esc2(r.d)}">${esc2(r.d)}</time> ${(r.g||[]).filter(g=>tags[g]).map(g=>`<i class="badge">${esc2(tags[g])}</i>`).join(' ')}</span></span></a>`).join('');
-      if(add) nl.insertAdjacentHTML('afterbegin',add) }
+      if(add){ nl.insertAdjacentHTML('afterbegin',add); document.dispatchEvent(new Event('wi:news')) } }
     if(posts){ const have=new Set([...posts.querySelectorAll('a.post')].map(a=>a.getAttribute('href')));
       const cats={}; document.querySelectorAll('#bcats button[data-c]').forEach(b=>cats[b.dataset.c]=b.textContent.trim());
       const add=items.filter(r=>r.k==='blog'&&!have.has(`${P}/blog/${r.s}/`)).map(r=>`<a class="card post fresh" data-c="${esc2(r.c)}" href="${rurl(r)}">${r.cv?`<img class="thumb" src="${esc2(r.cv)}" alt="" width="600" height="315" loading="lazy">`:''}<div class="muted">${cats[r.c]?`<span class="badge">${esc2(cats[r.c])}</span> `:''}${esc2(r.d)}</div><h2>${esc2(r.t)}</h2><p>${esc2(r.x)}</p></a>`).join('');
@@ -1854,3 +1872,64 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
 /* ---------- earnings calendar: hide days that are already over (pages are rebuilt once a day) ---------- */
 (function(){ const els=document.querySelectorAll('[data-ed]'); if(!els.length) return; const today=new Date().toISOString().slice(0,10);
   els.forEach(el=>{ if(el.dataset.ed<today) el.remove() }) })();
+
+/* ---------- onboarding tour (owner 2026-11-23): first visit → short walk-through of what the site can do; skip any time; replay from Tools («✨») ---------- */
+(function(){
+  const P=window.PAGE||{}; if(!P.lang) return;
+  const ua=navigator.userAgent||''; if(navigator.webdriver||/bot|crawl|spider|slurp|lighthouse|headless|preview/i.test(ua)) return;
+  if(window.top!==window||/[?&]tgapp=1/.test(location.search)||/\/(embed|read)\//.test(location.pathname)) return;
+  const get=k=>{ try{ return localStorage.getItem(k) }catch(e){ return '1' } }, put=(k,v)=>{ try{ localStorage.setItem(k,v) }catch(e){} };
+  const ev=(a,s)=>{ try{ window.gtag&&window.gtag('event','tour',{tour_action:a,tour_step:s||''}) }catch(e){} };
+  const E=x=>String(x==null?'':x).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+  const STEPS=[['search','.gsearch'],['calc','.herox .qcalc'],['calc','.herox'],['acalc','#calc'],['watch','.top a.me[href$="/watchlist/"]'],['pf','.top a.me[href$="/me/"]'],['tools','.nav .ddt>summary'],['tools','#mmore'],['ai','.aibtn']];
+  const vis=el=>{ if(!el) return false; const r=el.getBoundingClientRect(); return r.width>0&&r.height>0&&getComputedStyle(el).visibility!=='hidden' };
+  let S=null, steps=[], i=-1, ov=null, onMove=null;
+  const load=()=>S?Promise.resolve(S):fetch(`${P.base||''}/assets/tour/${P.lang}.json`).then(r=>r.json()).then(j=>S=j);
+  function close(how){ if(!ov) return; ov.remove(); ov=null; window.removeEventListener('resize',onMove); window.removeEventListener('scroll',onMove,true); put('wi_tour',how||'done'); ev(how||'done',steps[i]&&steps[i][0]) }
+  function btns(first,last){ return `<div class="trb"><button type="button" class="trs" data-a="skip">${E(S.skip)}</button><span class="trd">${steps.map((_,k)=>`<i${k===i?' class=on':''}></i>`).join('')}</span>`+
+    (first?'':`<button type="button" class="btn ghost" data-a="back">${E(S.back)}</button>`)+`<button type="button" class="btn" data-a="${last?'end':'next'}">${E(last?S.done:S.next)}</button></div>` }
+  function place(){ if(!ov||i<0) return; const el=steps[i][2], r=el.getBoundingClientRect(), sp=ov.querySelector('.trsp'), bx=ov.querySelector('.trbox'), pad=6;
+    sp.style.cssText=`top:${r.top-pad}px;left:${r.left-pad}px;width:${r.width+pad*2}px;height:${r.height+pad*2}px`;
+    const W=innerWidth, H=innerHeight, bw=Math.min(360,W-24); bx.style.width=bw+'px'; const bh=bx.offsetHeight;
+    let top=r.bottom+14; if(top+bh>H-10) top=Math.max(10,r.top-bh-14); if(top+bh>H-10) top=Math.max(10,H-bh-10);
+    let left=Math.min(Math.max(12,r.left+r.width/2-bw/2),W-bw-12); bx.style.top=top+'px'; bx.style.left=left+'px' }
+  function show(n){ i=n; const [k,,el]=steps[i]; ov.className='tour'; ov.innerHTML=`<div class="trsp"></div><div class="trbox card" role="dialog" aria-live="polite"><p>${E(S[k])}</p>${btns(i===0,i===steps.length-1)}</div>`;
+    const r=el.getBoundingClientRect(); if(r.top<70||r.bottom>innerHeight-40){ el.scrollIntoView({block:'center',behavior:'smooth'}); setTimeout(place,420) } place() }
+  function center(h,p,b){ ov.className='tour trc'; ov.innerHTML=`<div class="trbox card trmid" role="dialog"><h3>${E(h)}</h3><p>${p}</p>${b}</div>` }
+  function welcome(){ center(S.wh,E(S.wp),`<div class="trb"><button type="button" class="trs" data-a="skip">${E(S.skip)}</button><button type="button" class="btn" data-a="go">${E(S.go)}</button></div>`) }
+  function end(){ i=-1; center(S.eh,`${E(S.ep)} <a href="${E(S.gu)}">${E(S.guide)} →</a>`,`<div class="trb"><span></span><button type="button" class="btn" data-a="close">${E(S.done)}</button></div>`) }
+  function start(auto){ load().then(()=>{ if(ov) return; const seen=new Set();
+    steps=STEPS.map(([k,s])=>[k,s,document.querySelector(s)]).filter(([k,,el])=>vis(el)&&!seen.has(k)&&seen.add(k));
+    ov=document.createElement('div'); document.body.appendChild(ov);
+    ov.addEventListener('click',e=>{ const b=e.target.closest('[data-a]'); if(!b){ if(e.target===ov&&ov.classList.contains('trc')) close('skip'); return } const a=b.dataset.a;
+      if(a==='skip') close('skip'); else if(a==='close') close('done'); else if(a==='go'){ ev('start'); steps.length?show(0):end() } else if(a==='next') show(i+1); else if(a==='back') show(i-1); else if(a==='end') end() });
+    onMove=()=>place(); window.addEventListener('resize',onMove); window.addEventListener('scroll',onMove,true);
+    document.addEventListener('keydown',function kd(e){ if(!ov){ document.removeEventListener('keydown',kd); return } if(e.key==='Escape') close('skip') });
+    welcome(); ev(auto?'shown':'replay') }).catch(()=>{}) }
+  document.addEventListener('click',e=>{ const a=e.target.closest('[data-tour]'); if(!a) return; e.preventDefault(); const d=a.closest('details'); if(d) d.open=false; const sh=document.getElementById('msheet'); if(sh) sh.hidden=true; start(false) });
+  if(location.hash==='#tour') setTimeout(()=>start(false),800);
+  else if(!get('wi_tour')) setTimeout(()=>{ (window.requestIdleCallback||setTimeout)(()=>{ if(!get('wi_tour')&&!document.querySelector('.aip:not([hidden]),.nudge')) start(true) }) },2500);
+})();
+
+/* ---------- quick converter under every asset chart (owner 2026-11-23): amount ⇄ value, live price, reader's currencies ---------- */
+(function(){ const box=document.querySelector('.qconv[data-a]'); if(!box) return; const W=window.WI||{}, FX=W.fx||{};
+  const ia=box.querySelector('[data-q=a]'), ic=box.querySelector('[data-q=c]'), sel=box.querySelector('select'), h2=box.querySelector('h2'), aid=box.dataset.a;
+  const BY=(window.WIX&&window.WIX.BYID)||{};
+  const px=()=>{ const a=BY[aid]; return (a&&a.pr)||+box.dataset.p };
+  const rate=()=>sel.value==='USD'?1:(FX[sel.value]||0);
+  const fmt=v=>{ if(!isFinite(v)) return ''; const d=v>=1000?2:v>=1?4:Math.min(10,3-Math.floor(Math.log10(Math.max(v,1e-12)))+2); return String(+v.toFixed(d)) };
+  let last='a';
+  const fromA=()=>{ last='a'; const r=rate(); if(!r) return; ic.value=fmt((+ia.value||0)*px()*r) };
+  const fromC=()=>{ last='c'; const r=rate(); if(!r) return; ia.value=fmt((+ic.value||0)/(px()*r)) };
+  ia.addEventListener('input',fromA); ic.addEventListener('input',fromC);
+  sel.addEventListener('change',()=>{ h2.textContent=(box.dataset.h||'').replace('{c}',sel.value); fromA(); ic.setAttribute('aria-label',sel.value) });
+  document.addEventListener('wi:tick',()=>{ if(document.activeElement!==ic&&document.activeElement!==ia) (last==='a'?fromA:fromC)() });
+  fromA();
+})();
+
+/* ---------- big crypto holders (/investors/): value = coins held × live price ---------- */
+(function(){ const els=[...document.querySelectorAll('[data-hq]')]; if(!els.length) return; const BY=(window.WIX&&window.WIX.BYID)||{};
+  const big=v=>v>=1e12?'$'+(v/1e12).toFixed(2)+'T':v>=1e9?'$'+(v/1e9).toFixed(2)+'B':v>=1e6?'$'+(v/1e6).toFixed(1)+'M':'$'+Math.round(v).toLocaleString('en-US');
+  const run=()=>els.forEach(el=>{ const a=BY[el.dataset.hc]; if(a&&a.pr) el.textContent=big(+el.dataset.hq*a.pr) });
+  run(); document.addEventListener('wi:tick',run);
+})();

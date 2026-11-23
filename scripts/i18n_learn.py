@@ -24,3 +24,32 @@ LRN = {
  'fil': dict(nav='Matuto', h1='Matutong mag-invest mula sa simula, hakbang-hakbang', lead='Maiikling aralin sa simpleng salita: ano ang gagawin, sa anong pagkakasunod at ano ang dapat iwasan. Walang mahirap na termino at walang pangako — mga simpleng hakbang lang na kayang sundan ng baguhan.', step='Hakbang', soon='May bagong aralin araw-araw.', start='Mga unang hakbang', crypto='Crypto: bumili, magtago, magbenta', safety='Kaligtasan', stocks='Stocks at ETF', memes='Memecoins: mga aralin at kuwento', next='Susunod na aralin', back='Lahat ng aralin'),
 }
 TRACK_ICON = {'start': '🌱', 'crypto': '₿', 'safety': '🛡️', 'stocks': '📈', 'memes': '🐸'}
+
+# owner 2026-11-23: Learn is split into folders — investing basics, stocks, crypto, trading, memecoins («safety» lessons sit in the crypto folder)
+TRACKS = ('start', 'stocks', 'crypto', 'trading', 'memes')
+TRACK_ICON.update({'trading': '📊', 'start': '🌱'})
+_L2 = {  # (start label, trading label, lessons word, coming soon)
+ 'en': ('Investing basics', 'Trading', 'lessons', 'Lessons are coming soon'),
+ 'uk': ('Основи інвестицій', 'Трейдинг', 'уроків', 'Уроки скоро з’являться'),
+ 'ru': ('Основы инвестиций', 'Трейдинг', 'уроков', 'Уроки скоро появятся'),
+ 'es': ('Bases de la inversión', 'Trading', 'lecciones', 'Lecciones muy pronto'),
+ 'de': ('Grundlagen des Investierens', 'Trading', 'Lektionen', 'Lektionen folgen in Kürze'),
+ 'pt': ('Básico de investimentos', 'Trading', 'aulas', 'Aulas em breve'),
+ 'pl': ('Podstawy inwestowania', 'Trading', 'lekcji', 'Lekcje już wkrótce'),
+ 'tr': ('Yatırımın temelleri', 'Trading', 'ders', 'Dersler yakında'),
+ 'fr': ('Les bases de l’investissement', 'Trading', 'leçons', 'Leçons bientôt disponibles'),
+ 'it': ('Le basi dell’investimento', 'Trading', 'lezioni', 'Lezioni in arrivo'),
+ 'nl': ('Basis van beleggen', 'Trading', 'lessen', 'Lessen volgen binnenkort'),
+ 'id': ('Dasar investasi', 'Trading', 'pelajaran', 'Pelajaran segera hadir'),
+ 'vi': ('Kiến thức đầu tư cơ bản', 'Giao dịch', 'bài học', 'Bài học sắp ra mắt'),
+ 'th': ('พื้นฐานการลงทุน', 'การเทรด', 'บทเรียน', 'บทเรียนกำลังจะมา'),
+ 'hi': ('निवेश की बुनियादी बातें', 'ट्रेडिंग', 'पाठ', 'पाठ जल्द आ रहे हैं'),
+ 'ja': ('投資の基本', 'トレード', 'レッスン', 'レッスンは近日公開'),
+ 'ko': ('투자 기초', '트레이딩', '강의', '강의가 곧 추가됩니다'),
+ 'zh': ('投资基础', '交易', '节课', '课程即将上线'),
+ 'ar': ('أساسيات الاستثمار', 'التداول', 'دروس', 'الدروس قادمة قريبًا'),
+ 'fil': ('Mga batayan ng pag-iinvest', 'Trading', 'aralin', 'Paparating na ang mga aralin'),
+}
+for _l, (_s, _t, _w, _c) in _L2.items():
+    if _l in LRN:
+        LRN[_l].update(start=_s, trading=_t, nles=_w, csoon=_c)

@@ -82,3 +82,13 @@ MEM7 = {
                 narr_h='Mga meme narrative ngayon', narr_d='Saang meme theme pumupunta ang pera: kabuuang market value at pagbabago sa 24 oras.', hype_h='Bakit ito pinag-uusapan', hype_en='Buod ng mga post sa X mula sa Binance (Ingles).',
                 gloss_h='Glosaryo ng memecoin', gloss_d='Rug pull, sniper, bonding curve, KOL — bawat salita ay ipinaliwanag nang simple.'),
 }
+
+# owner 2026-11-23: the safety filter notice is a visible card with its own heading
+_FILT_H = dict(en='Scam filter is on', uk='Фільтр від скаму увімкнено', ru='Фильтр от скама включён', es='Filtro antiestafas activado',
+               de='Scam-Filter ist aktiv', pt='Filtro antigolpe ativado', pl='Filtr przeciw scamom włączony', tr='Dolandırıcılık filtresi açık',
+               fr='Filtre anti-arnaque activé', it='Filtro anti-truffa attivo', nl='Scamfilter staat aan', id='Filter anti-penipuan aktif',
+               vi='Bộ lọc lừa đảo đang bật', th='เปิดตัวกรองสแกมอยู่', hi='स्कैम फ़िल्टर चालू है', ja='詐欺フィルターがオンです', ko='스캠 필터 켜짐',
+               zh='防骗过滤已开启', ar='فلتر الاحتيال مفعّل', fil='Naka-on ang scam filter')
+for _l, _v in _FILT_H.items():
+    if _l in MEM7:
+        MEM7[_l]['filt_h'] = _v

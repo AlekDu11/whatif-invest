@@ -1,7 +1,7 @@
 # «Learn» curriculum (owner 2026-11-22)
 
 Plain step-by-step lessons for complete beginners: «what to press, in what order, what to watch out for». Every lesson is a blog post
-`content/blog/<lang>/<slug>.md` with front matter `category: learn`, `track: <start|crypto|safety|stocks|memes>`, `step: <n>` — in ALL 20 languages.
+`content/blog/<lang>/<slug>.md` with front matter `category: learn`, `track: <start|stocks|crypto|trading|memes>` (owner 2026-11-23: /learn/ shows 5 folders — start = «Investing basics», stocks, crypto, trading, memes; old `safety` lessons show in the crypto folder), `step: <n>` — in ALL 20 languages.
 The hub /learn/ lists them by track and step; each lesson links to the next one. Mark a line `✅ <date>` when it is published in all 20 languages.
 
 ## start — First steps
@@ -59,3 +59,11 @@ The hub /learn/ lists them by track and step; each lesson links to the next one.
 - GLOSSARY: data/glossary/en.json is the memecoin glossary (/memes/glossary/). Every run, translate it into 2 languages that do not have data/glossary/<lang>.json yet (same ids and order; natural native phrasing; keep terms like «rug pull» in Latin script where locals use them, explain them). A language without its own file shows English with noindex, so each translation makes a new indexable page.
 - MONTHLY (first run on or after the 2nd of each month): «Memecoin hall of fame and graveyard — <Month YYYY>»: the 5 memecoins that rose most and the 5 loudest collapses/rug pulls of the past month, dated facts with sources, «what beginners can learn», links to {lang}/memes/; category learn, track memes, in all 20 languages.
 
+
+## Trading folder (owner 2026-11-23: new folder, track: trading — fill it after the current queue, plain language, risks first)
+- step 1: What trading is and how it differs from investing (fees, time, why most day traders lose)
+- step 2: Order types: market, limit, stop-loss — with a worked example
+- step 3: How to read a price chart: candles, volume, timeframes
+- step 4: Support, resistance and trends in plain words
+- step 5: Leverage and futures: how liquidation works and why beginners lose money fast
+- step 6: Risk management: position size, the 1% rule, a trading journal

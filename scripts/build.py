@@ -51,6 +51,7 @@ from i18n_offer import OFFER_TGW  # noqa: E402
 from i18n_lc import LC, LC_CT  # noqa: E402
 from i18n_mem6 import MEM6  # noqa: E402
 from i18n_mem7 import MEM7  # noqa: E402
+from i18n_tour import TOUR  # noqa: E402  (first-visit onboarding tour, owner 2026-11-23)
 from i18n_lcw import LCW  # noqa: E402
 from i18n_xc import XC  # noqa: E402
 from i18n_cv import CV, CV_CCY  # noqa: E402
@@ -62,6 +63,7 @@ from i18n_tgj import TGJ  # noqa: E402
 from i18n_my import MY, BR  # noqa: E402
 from i18n_ch import CH  # noqa: E402
 from i18n_inv import INV, INV2, INV_BIO  # noqa: E402
+from i18n_holders import HOLD  # noqa: E402  (big crypto holders on /investors/, owner 2026-11-23)
 from i18n_mkt import MKT, LEAD as MLEAD, FG as MFG, CALC as MCALC  # noqa: E402
 from i18n_st import ST as STX  # noqa: E402
 from i18n_xc2 import XC2  # noqa: E402
@@ -255,7 +257,7 @@ def has_page(lang, aid):
     if aid == 'investors':
         return bool(INVD)
     if (aid or '').startswith('investors/'):
-        return aid.split('/', 1)[1] in INVD
+        return aid.split('/', 1)[1] in INVD or aid.split('/', 1)[1] in HOLDERS
     if (aid or '').startswith('converter/'):
         return aid in _CVS.setdefault(lang, {cv_slug(i, c) for i, c in cv_pairs(lang)})
     if (aid or '').startswith('ovdp/brokers/'):
@@ -750,13 +752,14 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
            + f'<a href="{url(lang, "news")}">{NW[lang]["n_nav"]}</a><a href="{url(blog_l, "blog")}">{NW[lang]["i_nav"]}</a>'
            + f'<a href="{url(lang, "ai")}">{AIS[lang]["nav"]}</a><a href="{url(lang, "activities")}">{ACT[lang]["nav"]}</a></div></details>'
            + f'<details class="dd ddt"><summary class="{"on" if tools_on else ""}">{X["nav_tools"]}</summary><div>'
+           + f'<a href="#tour" data-tour>{esc(TOUR[lang]["nav"])}</a>'
            + ''.join(f'<a href="{url(lang, k)}">{v}</a>' for k, v in [('portfolios', BP[lang]['nav']), ('compound-interest', IC[lang]['nav'])] + [x for x in tools_menu(lang) if x]) + '</div></details>')
     i18n = dict(S['ui'], months=S['months'], intl=S['intl'], **{'mk_' + k: v for k, v in MKT[lang].items() if k in ('d7', 'mcap', 'vol', 'k7', 'stable')})
     mnav = ''.join(f'<a href="{h}" class="{"on" if on else ""}"><span>{ic}</span>{esc(lb)}</a>' for h, ic, lb, on in (
         (url(lang), '◎', HM[lang]['nav'], p is None), (url(lang, 'news'), '▤', NW[lang]['n_nav'], p == 'news'),
         (url(lang, 'stocks'), '📈', S['ui']['stock'], (p or '').startswith('stocks')), (url(blog_l, 'blog'), '✎', NW[lang]['i_nav'], (p or '').startswith('blog'))))
     mnav += f'<button type="button" id="mmore"><span>☰</span>{esc(X["nav_tools"])}</button>'
-    msheet = ('<div class="msheet" id="msheet" hidden>' + ''.join(f'<a href="{url(lang, k)}">{esc(v)}</a>' for k, v in
+    msheet = ('<div class="msheet" id="msheet" hidden>' + f'<a href="#tour" data-tour>{esc(TOUR[lang]["nav"])}</a>' + ''.join(f'<a href="{url(lang, k)}">{esc(v)}</a>' for k, v in
               [('me', PF[lang]['h1']), ('portfolios', BP[lang]['nav']), ('compound-interest', IC[lang]['nav']), ('activities', ACT[lang]['nav']), ('ai', AIS[lang]['h1'].split(':')[0])] + xc_menu(lang)[1:2] + [x for x in tools_menu(lang) if x]) + '</div>')
     cfg = dict(cfg, lang=lang, base=BASE, prefix=url(lang).rstrip('/'), full=lang in FULL, topn=10**6, nudge=acct_nudge_cfg(lang),
                names={'gold': S['gold'], 'silver': S['silver'], **{k: v[lang] for k, v in CMD_NAMES.items()}})
@@ -1561,6 +1564,9 @@ def _jload(name):
 
 
 COININFO, STOCKINFO = _jload('coininfo.json'), _jload('stockinfo.json')
+# owner 2026-11-23: /memes/ shows memecoins only — tickers of real projects we list (CoinGecko categories without «Meme»: ZRO, ICP, AAVE…) are hidden
+NOMEME = sorted({a['tk'].upper() for a in A.values() if a.get('cat') == 'crypto' and (COININFO.get(a.get('cgid')) or {}).get('cat')
+                 and not any('meme' in c.lower() for c in COININFO[a['cgid']]['cat'])})
 VENUES = _jload('coin_venues.json')   # scripts/fetch_coin_venues.py: KuCoin/Bitget/HTX/BingX pair or DEX pool for coins outside our main exchanges
 TV_EX = {'kucoin': 'KUCOIN', 'bitget': 'BITGET', 'htx': 'HTX', 'bingx': 'BINGX'}
 STOCKSTATS = _jload('stockstats.json')   # key stats from scripts/stock_stats.py (rotating daily refresh)
@@ -1948,22 +1954,25 @@ def lessons(lang):
     """Lessons of the «Learn» section by track: blog posts with category: learn, ordered by step (then date)."""
     by = {t: [] for t in TRACKS}
     for slug, m in POSTS.get(lang, {}).items():
-        if m.get('category') == 'learn' and m.get('track') in by:
-            by[m['track']].append((int(m.get('step') or 99), m.get('date', ''), slug, m))
+        tr = 'crypto' if m.get('track') == 'safety' else m.get('track')   # safety lessons live in the crypto folder
+        if m.get('category') == 'learn' and tr in by:
+            by[tr].append((int(m.get('step') or 99), m.get('date', ''), slug, m))
     return {t: [x[2:] for x in sorted(v)] for t, v in by.items()}
 
 
 def learn_page(lang, ver):
-    """/learn/ (owner 2026-11-22): plain step-by-step lessons for complete beginners, grouped by track, 20 languages."""
+    """/learn/ (owner 2026-11-22/23): plain step-by-step lessons for complete beginners, in folders — investing basics, stocks, crypto,
+    trading, memecoins (folder cards on top, then each folder's lessons in order), 20 languages."""
     L = LRN[lang]
+    ls = lessons(lang)
+    folders = ''.join(f'<a class="card lfold" href="#{t}"><span class="lfi">{TRACK_ICON[t]}</span><b>{esc(L[t])}</b>'
+                      f'<small class="muted">{(str(len(ls[t])) + " " + esc(L.get("nles", ""))) if ls[t] else esc(L.get("csoon", ""))}</small></a>' for t in TRACKS)
     secs = ''
-    for t, rows in lessons(lang).items():
-        if not rows:
-            continue
-        secs += (f'<section class="section card lrn"><h2>{TRACK_ICON[t]} {esc(L[t])}</h2><ol class="lsteps">'
-                 + ''.join(f'<li><a href="{url(lang, "blog/" + slug)}"><b>{esc(post_meta_title(m, lang))}</b><span class="muted">{esc(post_meta_title(dict(title=m.get("description", "")), lang))}</span></a></li>' for slug, m in rows)
-                 + '</ol></section>')
-    body = (f'<h1>{esc(L["h1"])}</h1><p class="lead">{esc(L["lead"])}</p>{secs or ""}<p class="muted">🎓 {esc(L["soon"])}</p>')
+    for t, rows in ls.items():
+        inner = ('<ol class="lsteps">' + ''.join(f'<li><a href="{url(lang, "blog/" + slug)}"><b>{esc(post_meta_title(m, lang))}</b><span class="muted">{esc(post_meta_title(dict(title=m.get("description", "")), lang))}</span></a></li>' for slug, m in rows)
+                 + '</ol>') if rows else f'<p class="muted">🎓 {esc(L.get("csoon", ""))}</p>'
+        secs += f'<section class="section card lrn" id="{t}"><h2>{TRACK_ICON[t]} {esc(L[t])}</h2>{inner}</section>'
+    body = (f'<h1>{esc(L["h1"])}</h1><p class="lead">{esc(L["lead"])}</p><div class="lfolds">{folders}</div>{secs}<p class="muted">🎓 {esc(L["soon"])}</p>')
     return shell(lang, 'learn', f'{L["h1"]} | {BRAND}', L['lead'][:160], body, {}, ver)
 
 
@@ -2737,6 +2746,34 @@ def coin_markets_block(lang, aid):
 INVD = {k: v for k, v in ((_jload('investors.json') or {}).get('inv', {})).items()
         if v.get('period') and v['period'] >= (datetime.strptime(UPDATED[:10], '%Y-%m-%d') - timedelta(days=300)).strftime('%Y-%m-%d') and v.get('top')}   # only funds that still file
 _TK2AID = {}
+# owner 2026-11-23: big crypto holders (companies + people) next to the 13F funds; logos = the company's own stock logo or the fund's site icon
+HOLDERS = {k: v for k, v in ((_jload('crypto_holders.json') or {}).get('h', {})).items() if v.get('coin') in A}
+INV_DOM = {'buffett': 'brk-b', 'ackman': 'pershingsquareholdings.com', 'dalio': 'bridgewater.com', 'wood': 'arkk', 'klarman': 'baupost.com',
+           'li-lu': 'himcap.com', 'gates': 'gatesfoundation.org', 'smith': 'fundsmith.co.uk', 'loeb': 'thirdpoint.com', 'icahn': 'ielp.com',
+           'coleman': 'tigerglobal.com', 'einhorn': 'greenlightcapital.com', 'marks': 'oaktreecapital.com'}
+INV_MD = {}   # content/investors/<lang>/<id>.md — «who is it and how they invest» analyses (same tone as the asset analyses)
+for _l in os.listdir(os.path.join(ROOT, 'content', 'investors')) if os.path.isdir(os.path.join(ROOT, 'content', 'investors')) else []:
+    for _f in os.listdir(os.path.join(ROOT, 'content', 'investors', _l)):
+        if _f.endswith('.md'):
+            INV_MD[(_l, _f[:-3])] = open(os.path.join(ROOT, 'content', 'investors', _l, _f), encoding='utf-8').read().split('---', 2)[-1].strip()
+
+
+def inv_icon(fid, name, big=False):
+    """Fund / company logo: our stock logo when the company is listed, else the fund website's icon (Google favicon service), else initials."""
+    key = (HOLDERS.get(fid) or {}).get('aid') or INV_DOM.get(fid) or (HOLDERS.get(fid) or {}).get('dom') or ''
+    ini = ''.join(w[0] for w in name.split()[:2]).upper()
+    if key in A:
+        return icon(A[key], big)
+    if fid == 'satoshi':
+        return icon(A['btc'], big)
+    if '.' in key:
+        return icon({'tk': ini, 'logo': f'https://www.google.com/s2/favicons?domain={key}&sz=64'}, big)
+    return f'<span class="ic{" lg" if big else ""}" style="background:hsl({hue(fid)} 50% 42%)">{esc(ini)}</span>'
+
+
+def inv_analysis(lang, fid):
+    body = INV_MD.get((lang, fid))
+    return f'<section class="section card anl"><h2>👤 {esc(INV2[lang]["about"])}</h2><div class="artbody">{md(body, lang)}</div></section>' if body else ''
 
 
 def tk2aid(tk):
@@ -2786,14 +2823,14 @@ def investors_page(lang, ver):
         top = d['top'][0] if d.get('top') else None
         logos = ''.join(icon(A[a]) for a in [x for x in (tk2aid(r[0]) for r in d['top'][:6]) if x][:3])
         y1 = inv_y1(d)
-        rows += (f'<tr><td class="l n">{k + 1}</td><td class="l"><a class="asset" href="{url(lang, "investors/" + fid)}"><span class="ic" style="background:hsl({hue(fid)} 50% 42%)">{esc("".join(w[0] for w in d["name"].split()[:2]))}</span>'
+        rows += (f'<tr><td class="l n">{k + 1}</td><td class="l"><a class="asset" href="{url(lang, "investors/" + fid)}">{inv_icon(fid, d["fund"])}'
                  f'<span><span class="nm">{esc(d["name"])}</span><span class="tk">{esc(d["fund"])}</span></span></a><span class="invlogos hide-sm">{logos}</span></td><td class="num"><b>{usd_h(d["value"])}</b></td>'
                  f'<td class="num hide-sm {cls(y1 or 0)}">{pct(y1) if y1 is not None else "—"}</td>'
                  f'<td class="num hide-sm">{d["n"]}</td><td class="l hide-sm">{esc(top[0] or top[1].title()) if top else "—"} <span class="muted">{pctu(top[3]) if top else ""}</span></td>'
                  f'<td class="hide-sm">{esc(_qlabel(d.get("period"), lang))}</td></tr>')
     body = (f'<h1>{esc(t["h1"])}</h1><p class="lead">{esc(t["lead"])}</p><section class="section"><div class="tw"><table class="mt"><thead><tr><th class="l n">#</th>'
             f'<th class="l">{esc(t["c_inv"])}</th><th>{esc(t["c_val"])}</th><th class="hide-sm" title="{esc(INV2[lang]["y1n"])}">{esc(INV2[lang]["y1"])}</th><th class="hide-sm">{esc(t["c_n"])}</th><th class="l hide-sm">{esc(t["c_top"])}</th><th class="hide-sm">{esc(t["c_per"])}</th></tr></thead>'
-            f'<tbody>{rows}</tbody></table></div><p class="note">{esc(t["note"])}</p></section>')
+            f'<tbody>{rows}</tbody></table></div><p class="note">{esc(t["note"])}</p></section>' + holders_block(lang))
     ld = {"@context": "https://schema.org", "@type": "ItemList", "name": t['h1'],
           "itemListElement": [{"@type": "ListItem", "position": k + 1, "name": INVD[f]['name'], "url": SITE + url(lang, 'investors/' + f)} for k, f in enumerate(inv_order())]}
     return shell(lang, 'investors', t['h1'] + ' | ' + BRAND, t['lead'], body, {}, ver, [ld])
@@ -2816,12 +2853,12 @@ def investor_page(lang, fid, ver):
     bio = (INV_BIO.get(fid) or (None, None, None))[{'en': 0, 'uk': 1, 'ru': 2}[lang]] if lang in ('en', 'uk', 'ru') else None
     fids = [a for a in dict.fromkeys(tk2aid(r[0]) for r in d['top'][:20]) if a]
     others = ''.join(f'<a class="chip" href="{url(lang, "investors/" + o)}">{esc(INVD[o]["name"])}</a>' for o in inv_order() if o != fid)
-    body = (f'<nav class="crumbs"><a href="{url(lang, "investors")}">{esc(t["nav"])}</a> / {esc(d["name"])}</nav><h1>{esc(t["p_h1"].format(**f))}</h1>'
+    body = (f'<nav class="crumbs"><a href="{url(lang, "investors")}">{esc(t["nav"])}</a> / {esc(d["name"])}</nav><div class="ahead">{inv_icon(fid, d["fund"], True)}<div><h1>{esc(t["p_h1"].format(**f))}</h1></div></div>'
             f'<p class="lead">{esc(t["p_lead"].format(**f))}</p>'
             f'<div class="ktiles obtiles smtiles"><div class="ks"><span>{esc(t["c_val"])}</span><b>{usd_h(d["value"])}</b></div><div class="ks"><span>{esc(t["c_n"])}</span><b>{d["n"]}</b></div>'
             f'<div class="ks"><span>{esc(t["c_per"])}</span><b>{esc(q)}</b></div><div class="ks"><span>Top 10</span><b>{pctu(w10)}</b></div>'
             + (f'<div class="ks" title="{esc(INV2[lang]["y1n"])}"><span>{esc(INV2[lang]["y1"])}</span><b class="{cls(y1)}">{pct(y1)}</b></div>' if y1 is not None else '') + '</div>'
-            + (f'<section class="card invbio"><h2>👤 {esc(INV2[lang]["about"])}</h2><p>{esc(bio)}</p></section>' if bio else '')
+            + (inv_analysis(lang, fid) or (f'<section class="card invbio"><h2>👤 {esc(INV2[lang]["about"])}</h2><p>{esc(bio)}</p></section>' if bio else ''))
             + f'<p><button type="button" class="btn" id="invfollow" data-n="{esc(d["name"])}" data-ids="{esc(",".join(fids))}" data-cfg="{esc(json.dumps(dict(done=INV2[lang]["done"], open=INV2[lang]["open"], u=url(lang, "watchlist")), ensure_ascii=False))}">{esc(INV2[lang]["follow"])}</button></p>'
             f'<section class="section"><h2>{esc(t["top10"].format(w=pctu(w10)))}</h2><div class="tw"><table class="mt"><thead><tr><th class="l n">#</th><th class="l">{esc(t["c_stock"])}</th>'
             f'<th>{esc(t["c_w"])}</th><th>{esc(t["c_val"])}</th><th class="hide-sm">{esc(t["c_sh"])}</th><th>{esc(t["c_chg"])}</th></tr></thead><tbody>{rows}</tbody></table></div>'
@@ -2831,6 +2868,59 @@ def investor_page(lang, fid, ver):
             f'<section class="section"><h2>{esc(t["nav"])}</h2><div class="chips">{others}</div></section>')
     ld = {"@context": "https://schema.org", "@type": "Person", "name": d['name'], "worksFor": {"@type": "Organization", "name": d['fund']}}
     return shell(lang, 'investors/' + fid, t['p_title'].format(**f) + ' | ' + BRAND, t['p_lead'].format(**f), body, {}, ver, [ld])
+
+
+def _hdate(h, lang):
+    return HOLD[lang]['est'] if h['d'] == 'est' else f'{HOLD[lang]["asof"]} {h["d"]}'
+
+
+def _hsup(h):
+    a = A[h['coin']]
+    tot = a.get('supply') or a.get('circ')
+    return pctu(h['amt'] / tot) if tot else '—'
+
+
+def holders_block(lang):
+    """/investors/: who holds the most bitcoin / ether — live value (amount × live price in app.js via data-hq)."""
+    if not HOLDERS:
+        return ''
+    t = HOLD[lang]
+    order = sorted(HOLDERS, key=lambda k: -HOLDERS[k]['amt'] * (METRICS[HOLDERS[k]['coin']]['price'] or 0))
+    rows = ''
+    for k, fid in enumerate(order):
+        h = HOLDERS[fid]
+        c = A[h['coin']]
+        v = h['amt'] * (METRICS[h['coin']]['price'] or 0)
+        rows += (f'<tr><td class="l n">{k + 1}</td><td class="l"><a class="asset" href="{url(lang, "investors/" + fid)}">{inv_icon(fid, h["name"])}'
+                 f'<span><span class="nm">{esc(h["name"])}</span><span class="tk">{esc(h["who"] or t[h["k"]])}</span></span></a></td>'
+                 f'<td class="num"><b>{_num(h["amt"], 0)}</b> {icon(c)}<span class="muted"> {esc(c["tk"])}</span></td>'
+                 f'<td class="num"><b data-hq="{h["amt"]}" data-hc="{h["coin"]}">{usd_h(v)}</b></td><td class="num hide-sm">{_hsup(h)}</td>'
+                 f'<td class="hide-sm muted">{esc(_hdate(h, lang))}</td></tr>')
+    return (f'<section class="section"><h2>🏦 {esc(t["h"])}</h2><p class="muted">{esc(t["lead"])}</p><div class="tw"><table class="mt"><thead><tr><th class="l n">#</th>'
+            f'<th class="l">{esc(INV[lang]["c_inv"])}</th><th>{esc(t["c_amt"])}</th><th>{esc(t["c_val"])}</th><th class="hide-sm">{esc(t["c_sup"])}</th><th class="hide-sm"></th></tr></thead>'
+            f'<tbody>{rows}</tbody></table></div></section>')
+
+
+def holder_page(lang, fid, ver):
+    t, h = HOLD[lang], HOLDERS[fid]
+    c = A[h['coin']]
+    v = h['amt'] * (METRICS[h['coin']]['price'] or 0)
+    f = dict(name=h['name'], coin=nm(c, lang), amt=_num(h['amt'], 0), v=_re.sub(r'<[^>]+>', '', usd_h(v)), sup=_hsup(h), d=_hdate(h, lang))
+    st = h.get('aid') if h.get('aid') in A else None
+    others = ''.join(f'<a class="chip" href="{url(lang, "investors/" + o)}">{inv_icon(o, HOLDERS[o]["name"])} {esc(HOLDERS[o]["name"])}</a>' for o in HOLDERS if o != fid)
+    body = (f'<nav class="crumbs"><a href="{url(lang, "investors")}">{esc(INV[lang]["nav"])}</a> / {esc(h["name"])}</nav>'
+            f'<div class="ahead">{inv_icon(fid, h["name"], True)}<div><h1>{esc(t["h1"].format(**f))}</h1>' + (f'<div class="muted">{esc(h["who"])}</div>' if h['who'] else '') + '</div></div>'
+            f'<p class="lead">{esc(t["p_lead"].format(**f))}</p>'
+            f'<div class="ktiles obtiles smtiles"><div class="ks"><span>{esc(t["c_amt"])}</span><b>{_num(h["amt"], 0)} {esc(c["tk"])}</b></div>'
+            f'<div class="ks"><span>{esc(t["c_val"])}</span><b data-hq="{h["amt"]}" data-hc="{h["coin"]}">{usd_h(v)}</b></div>'
+            f'<div class="ks"><span>{esc(t["c_sup"])}</span><b>{_hsup(h)}</b></div><div class="ks"><span>{esc(c["tk"])}</span><b data-p="{h["coin"]}">{price(METRICS[h["coin"]]["price"])}</b></div></div>'
+            f'<p class="chips"><a class="chip" href="{aurl(lang, h["coin"])}">{icon(c)} {esc(t["coin"].format(**f))} →</a>'
+            + (f'<a class="chip" href="{aurl(lang, st)}">{icon(A[st])} {esc(t["stock"].format(name=h["name"]))} →</a>' if st else '') + '</p>'
+            + inv_analysis(lang, fid)
+            + f'<p class="note">{esc(t["src"])}: <a href="{esc(h["src"])}" target="_blank" rel="nofollow noopener">{esc(_up.urlparse(h["src"]).netloc)} ↗</a>. {esc(INV[lang]["note"].split(". ")[-1])}</p>'
+            f'<section class="section"><h2>🏦 {esc(t["h"])}</h2><div class="chips">{others}</div></section>')
+    ld = {"@context": "https://schema.org", "@type": "Person" if h['k'] == 'pe' else "Organization", "name": h['name']}
+    return shell(lang, 'investors/' + fid, t['title'].format(**f) + ' | ' + BRAND, t['p_lead'].format(**f), body, {}, ver, [ld])
 
 
 # ---------------- Telegram price alerts ----------------
@@ -3296,7 +3386,7 @@ def asset(aid, lang, ver):
         lead_top = f'<p class="lead" style="margin-top:10px">{ml}{"" if lang in ("ja", "zh") else "."}</p>'
     else:
         lead_top = dca_lead
-    body = (f'{head}{lead_top}{hot_block(lang, aid)}<div class="chartside section">{tv}{side_block(lang, aid)}</div>{coin_markets_block(lang, aid) if cr else ""}{'' if 'timeline' in tech_news else hot_more(lang, aid)}{stock_block(lang, aid)}{analysis_block(lang, aid)}{offer_card(lang, 'asset-' + aid) if cr else ''}{tg_card(lang, 'asset-' + a['cat'])}{dca_lead if cr else ""}<div class="stats sfit">{stat_cards}{lump_cards}</div>{long_block(lang, aid)}{seas_block(lang, aid)}{calc_block(lang)}{tech_news}{"" if cr else coin_markets_block(lang, aid)}'
+    body = (f'{head}{lead_top}{hot_block(lang, aid)}<div class="chartside section">{tv}{side_block(lang, aid)}</div>{qconv(lang, aid)}{coin_markets_block(lang, aid) if cr else ""}{'' if 'timeline' in tech_news else hot_more(lang, aid)}{stock_block(lang, aid)}{analysis_block(lang, aid)}{offer_card(lang, 'asset-' + aid) if cr else ''}{tg_card(lang, 'asset-' + a['cat'])}{dca_lead if cr else ""}<div class="stats sfit">{stat_cards}{lump_cards}</div>{long_block(lang, aid)}{seas_block(lang, aid)}{calc_block(lang)}{tech_news}{"" if cr else coin_markets_block(lang, aid)}'
             f'<div class="cols2 section"><section class="card"><h2>{S["a_periods"].format(**fe)}</h2>{ptable}</section>'
             f'<section class="card faq"><h2>{S["faq"]}</h2>' + ''.join(f'<details><summary>{esc(q)}</summary><p>{esc(x)}</p></details>' for q, x in faq) + '</section></div>'
             + (f'<section class="section">{table_block(lang, peers, esc(KS[lang]["peers"]), interactive=False)}</section>' if (peers := stock_peers(aid)) else '') +
@@ -3782,12 +3872,11 @@ def news_page(lang, ver):
     n = NW[lang]
     tl = news_tl(lang)
     chips = f'<button class="on" data-t="">{esc(n["n_all"])}</button>' + ''.join(f'<button data-t="{k}">{esc(v)}</button>' for k, v in tl.items())
-    own = news_items(lang)[:60]
-    own_html = (f'<section class="section"><h2>{esc(n["own"])}</h2><div class="card nlist own">' + ''.join(news_row(lang, k, m, tl, True) for k, m in own) + '</div></section>') if own else ''
+    # owner 2026-11-23: 10 news a page with a numbered pager (like the stock tables); other outlets' headlines removed
+    own = news_items(lang)[:150]
+    own_html = (f'<section class="section"><h2>{esc(n["own"])}</h2><div class="card nlist own" data-per="10">' + ''.join(news_row(lang, k, m, tl, True) for k, m in own) + '</div></section>') if own else ''
     body = (f'<h1>{esc(n["n_h1"])}</h1><p class="lead">{esc(n["n_d"])}</p><div class="seg nchips" id="ntags">{chips}</div>{own_html}{track_block(lang, [])}'
-            f'<section class="section"><h2>{esc(n["live"])}</h2>'
-            f'<div class="card nlist" id="nlist"><div class="bload"><i></i></div></div><button class="toggle" id="nmore" hidden>{esc(n["more"])}</button>'
-            f'<p class="muted" style="font-size:13px">{esc(n["n_note"])}</p></section>{poly_block(lang)}')
+            f'{poly_block(lang)}')
     cfg = dict(news=dict(tags=tl))
     return shell(lang, 'news', f'{n["n_h1"]} | {BRAND}', n['n_d'], body, cfg, ver)
 
@@ -4077,8 +4166,6 @@ def memes_page(lang, ver):
     nets5 = ''.join(f'<button data-n="{k}"{" class=on" if k == "all" else ""}>{esc(v)}</button>' for k, v in (('all', t['all']), ('solana', 'Solana'), ('bsc', 'BNB Chain'), ('base', 'Base')))
     M7 = MEM7[lang]
     body = (f'<div class="dexhero"><h1>{esc(t["h1"])}</h1><span class="livebadge"><i></i>{esc(t["upd"])}</span></div>'
-            f'<div class="mpulse" id="mpulse" hidden><b class="mph">{esc(M7["pulse_h"])}</b><span><b data-k="rate">—</b> {esc(M7["p_rate"])}</span>'
-            f'<span><b data-k="done24">—</b> {esc(M7["p_done"])}</span><span><b data-k="climb">—</b> {esc(M7["p_climb"])}</span></div>'
             f'<section class="section mlist"><div class="seg mtabs" id="mtab">{tabs5}</div>'
             f'<div class="mbar"><div class="seg mnets" id="mnet">{nets5}</div>'
             f'<label class="msearch"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2"/></svg>'
@@ -4086,16 +4173,13 @@ def memes_page(lang, ver):
             f'<label class="msort"><span>{esc(M6["sort"])}</span><select id="msort"><option value="">—</option>'
             + ''.join(f'<option value="{k}">{esc(v)}</option>' for k, v in (('v', t['vol']), ('c', '24h'), ('m', t['mc']), ('l', t['liq']), ('h', M4['hold']), ('a', t['age'])))
             + f'</select></label></div>'
-            f'<p class="mfilt">{esc(MEM7[lang]["filt"])}</p>'
+            f'<div class="mfilt"><span class="mfi">🛡</span><div><b>{esc(M7.get("filt_h", ""))}</b><p>{esc(M7["filt"].lstrip("🛡 ").strip())}</p></div></div>'
             f'<div class="mrows card" id="mrows"><div class="empty">…</div></div>'
             f'<p class="muted mfine">{esc(t["disc"])} · Binance Web3</p></section>'
-            f'<section class="section"><div class="mx2"><div class="card mlst"><h2>🆕 {esc(M7["list_h"])}</h2><p class="muted">{esc(M7["list_d"])}</p><div id="mlistings"><div class="empty">…</div></div></div>'
-            f'<div class="card mnarr"><h2>🧭 {esc(M7["narr_h"])}</h2><p class="muted">{esc(M7["narr_d"])}</p><div id="mnarr"><div class="empty">…</div></div>'
-            f'<small class="muted">CoinGecko</small></div></div></section>'
             f'{learn_blk}'
             f'<a class="card mgl" href="{url(lang if lang in GLOSS else "en", "memes/glossary")}"><span>📚</span><div><b>{esc(M7["gloss_h"])}</b><small class="muted">{esc(M7["gloss_d"])}</small></div><span class="calc">→</span></a>'
             f'{check_blk}')
-    cfg = dict(memes5=1, memes=dict(m6=M6, m7=M7, tok=url(lang, 'memes/token'), h=dict(name=u['name'], price=u['price'], mc=t['mc'], vol=t['vol'], liq=t['liq'], hold=M4['hold'], age=t['age']), t=dict(trade=t['trade'], new=t['new'], lowliq=t['lowliq'], hot=t['hot'], net=t['net'], hold=M4['hold'], top10=M4['top10'], curve=M4['curve'], mcs=t['mc'], vols=t['vol']), l5=MEM5[lang]))
+    cfg = dict(memes5=1, memes=dict(m6=M6, m7=M7, nm=NOMEME, tok=url(lang, 'memes/token'), h=dict(name=u['name'], price=u['price'], mc=t['mc'], vol=t['vol'], liq=t['liq'], hold=M4['hold'], age=t['age']), t=dict(trade=t['trade'], new=t['new'], lowliq=t['lowliq'], hot=t['hot'], net=t['net'], hold=M4['hold'], top10=M4['top10'], curve=M4['curve'], mcs=t['mc'], vols=t['vol']), l5=MEM5[lang]))
     return shell(lang, 'memes', f'{t["h1"]} | {BRAND}', t['d'], body, cfg, ver)
 
 
@@ -4469,6 +4553,28 @@ def conv_box(lang, fid='btc', tid=None, light=False):
             f'<button class="toggle" id="cvsw" aria-label="swap">⇄</button>'
             f'<label class="f">{X["conv_to"]}<div class="inp"><select id="cvt" data-def="{tid or LOCAL_CCY.get(lang, "usd")}">{opts}</select></div></label></div>'
             f'<div class="cvres" id="cvres"></div><div class="muted" id="cvrate"></div></div>')
+
+
+def qconv(lang, aid):
+    """Compact converter under every asset chart (owner 2026-11-23, CoinMarketCap-style «BTC to USD converter»): amount ⇄ value in
+    the reader's currencies, live price from the index (app.js «quick converter»). ~1 KB per page."""
+    a = A[aid]
+    p0 = a.get('price')
+    if not p0:
+        return ''
+    ccs = cv_ccys(lang)
+    ccs = ccs + ([] if 'USD' in ccs else ['USD'])
+    c0, tk, t = ccs[0], a['tk'], CV[lang]
+    r = 1.0 if c0 == 'USD' else FX['rates'][c0]
+    h = t['h1'].format(tk=esc(tk), c='{c}', name=esc(nm(a, lang)), v='')
+    opts = ''.join(f'<option value="{c}">{c}</option>' for c in ccs)
+    pair = cv_slug(aid, c0)
+    more = url(lang, pair) if (aid, c0) in set(cv_pairs(lang)) else url(lang, 'converter')
+    return (f'<section class="card qconv section" data-a="{aid}" data-p="{p0:.8g}" data-h="{h}"><div class="charthead"><h2>{h.replace("{c}", c0)}</h2>'
+            f'<a class="calc" href="{more}">{esc(t["all"])} →</a></div><div class="qcv">'
+            f'<label class="inp"><input type="number" inputmode="decimal" value="1" min="0" step="any" data-q="a" aria-label="{esc(tk)}"><span class="qtk">{icon(a)}{esc(tk)}</span></label>'
+            f'<span class="qeq" aria-hidden="true">⇄</span>'
+            f'<label class="inp"><input type="number" inputmode="decimal" min="0" step="any" data-q="c" value="{p0 * r:.6g}" aria-label="{c0}"><select aria-label="currency">{opts}</select></label></div></section>')
 
 
 def cv_popular(lang):
@@ -5017,8 +5123,9 @@ def blog_post(lang, slug, ver):
     crumb = ((url(lang, 'activities'), ACT[lang]['nav']) if m.get('category') == 'activities' else
              (url(lang, 'learn'), '🎓 ' + LRN[lang]['nav']) if m.get('category') == 'learn' else (url(lang, 'blog'), NW[lang]['i_nav']))
     nxt = ''
-    if m.get('category') == 'learn' and m.get('track') in TRACKS:   # «Next lesson» inside the same track
-        seq = [x[0] for x in lessons(lang)[m['track']]]
+    _tr = 'crypto' if m.get('track') == 'safety' else m.get('track')
+    if m.get('category') == 'learn' and _tr in TRACKS:   # «Next lesson» inside the same track (folder)
+        seq = [x[0] for x in lessons(lang)[_tr]]
         k = seq.index(slug) if slug in seq else -1
         if 0 <= k < len(seq) - 1:
             nm_ = post_meta_title(POSTS[lang][seq[k + 1]], lang)
@@ -5194,6 +5301,9 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
     ver = dict(css=h8(css), js=h8(js), ref=h8(ref), index=h8(index_js))
     write('assets/ver.json', json.dumps(ver))   # api/page.py renders on-demand pages with the same asset versions
     json.dump({i: alert_src(i) for i in A if alert_src(i)}, open(os.path.join(DIST, 'assets/alerts-map.json'), 'w'), separators=(',', ':'))
+    os.makedirs(os.path.join(DIST, 'assets/tour'), exist_ok=True)   # onboarding tour strings, loaded only when the tour runs
+    for _lg in ORDER:
+        json.dump(dict(TOUR.get(_lg) or TOUR['en'], gu=url(_lg if _lg in GUIDE else 'en', 'guide')), open(os.path.join(DIST, f'assets/tour/{_lg}.json'), 'w', encoding='utf-8'), ensure_ascii=False, separators=(',', ':'))
     # Pages of assets that dropped out (stale / delisted / renamed) must not turn into 404s that Google already knows:
     # write a redirect stub (instant meta refresh + canonical) to the renamed asset or to the category list.
     RENAMED = {'ton': 'gram'}
@@ -5275,6 +5385,9 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
             extra_pages.append('investors')
             for _f in INVD:
                 write(f'{pre}investors/{_f}/index.html', investor_page(lang, _f, ver))
+                extra_pages.append('investors/' + _f)
+            for _f in HOLDERS:
+                write(f'{pre}investors/{_f}/index.html', holder_page(lang, _f, ver))
                 extra_pages.append('investors/' + _f)
         if lang in UA_LANGS:
             write(pre + 'ovdp/brokers/index.html', ovdp_brokers_page(lang, ver))
