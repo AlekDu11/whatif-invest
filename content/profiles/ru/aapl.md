@@ -19,7 +19,7 @@ kind: analysis
 ## Цифры сейчас
 
 - Цена сейчас: {{price:aapl}}
-- Рыночная стоимость: {{mcap:aapl}}
+- Рыночная стоимость: {{mcap:aapl}} ({{rank:aapl}} среди крупнейших компаний мира на WhatIfStack)
 - Рекорд: {{ath:aapl}} ({{athd:aapl}}), от него {{fromath:aapl}}
 - $10 в день в течение 10 лет: {{dca:aapl:10}} при вложенных {{dcainv:10}} ({{dcaroi:aapl:10}})
 

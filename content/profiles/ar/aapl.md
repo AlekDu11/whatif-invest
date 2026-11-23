@@ -19,7 +19,7 @@ kind: analysis
 ## الأرقام الآن
 
 - السعر اليوم: {{price:aapl}}
-- القيمة السوقية: {{mcap:aapl}}
+- القيمة السوقية: {{mcap:aapl}} ({{rank:aapl}} بين أكبر شركات العالم على WhatIfStack)
 - أعلى سعر تاريخي: {{ath:aapl}} ({{athd:aapl}})، ويبعد عنه السعر {{fromath:aapl}}
 - 10 دولارات يوميًا لمدة 10 سنوات: {{dca:aapl:10}} من استثمار {{dcainv:10}} ‏({{dcaroi:aapl:10}})
 

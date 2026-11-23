@@ -19,7 +19,7 @@ kind: analysis
 ## Цифри зараз
 
 - Ціна зараз: {{price:aapl}}
-- Ринкова вартість: {{mcap:aapl}}
+- Ринкова вартість: {{mcap:aapl}} ({{rank:aapl}} серед найбільших компаній світу на WhatIfStack)
 - Рекорд: {{ath:aapl}} ({{athd:aapl}}), від нього {{fromath:aapl}}
 - $10 щодня протягом 10 років: {{dca:aapl:10}} при вкладених {{dcainv:10}} ({{dcaroi:aapl:10}})
 

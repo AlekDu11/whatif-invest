@@ -19,7 +19,7 @@ Apple की ज़्यादातर कमाई अब भी डिवा
 ## अभी के आँकड़े
 
 - आज का भाव: {{price:aapl}}
-- बाज़ार मूल्य: {{mcap:aapl}}
+- बाज़ार मूल्य: {{mcap:aapl}} (WhatIfStack पर दुनिया की सबसे बड़ी कंपनियों में {{rank:aapl}})
 - रिकॉर्ड भाव: {{ath:aapl}} ({{athd:aapl}}), उससे {{fromath:aapl}}
 - 10 साल तक रोज़ $10: {{dca:aapl:10}}, कुल निवेश {{dcainv:10}} ({{dcaroi:aapl:10}})
 

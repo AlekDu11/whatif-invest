@@ -19,7 +19,7 @@ Het meeste geld van Apple komt nog altijd uit de verkoop van apparaten. In boekj
 ## De cijfers nu
 
 - Koers nu: {{price:aapl}}
-- Marktwaarde: {{mcap:aapl}}
+- Marktwaarde: {{mcap:aapl}} ({{rank:aapl}} onder de grootste bedrijven ter wereld op WhatIfStack)
 - Recordkoers: {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} daarvan af
 - $10 per dag gedurende 10 jaar: {{dca:aapl:10}} bij {{dcainv:10}} ingelegd ({{dcaroi:aapl:10}})
 

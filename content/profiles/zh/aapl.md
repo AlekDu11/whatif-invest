@@ -19,7 +19,7 @@ kind: analysis
 ## 最新数据
 
 - 当前股价：{{price:aapl}}
-- 市值：{{mcap:aapl}}
+- 市值：{{mcap:aapl}}（WhatIfStack 全球最大公司排名 {{rank:aapl}}）
 - 历史最高价：{{ath:aapl}}（{{athd:aapl}}），距高点{{fromath:aapl}}
 - 每天10美元、坚持10年：投入{{dcainv:10}}，变成{{dca:aapl:10}}（{{dcaroi:aapl:10}}）
 

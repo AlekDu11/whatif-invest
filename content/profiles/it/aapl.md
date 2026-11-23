@@ -19,7 +19,7 @@ La maggior parte dei soldi di Apple arriva ancora dalla vendita di dispositivi. 
 ## I numeri di oggi
 
 - Prezzo oggi: {{price:aapl}}
-- Valore di mercato: {{mcap:aapl}}
+- Valore di mercato: {{mcap:aapl}} ({{rank:aapl}} tra le più grandi aziende del mondo su WhatIfStack)
 - Massimo storico: {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} da lì
 - 10 $ al giorno per 10 anni: {{dca:aapl:10}} con {{dcainv:10}} investiti ({{dcaroi:aapl:10}})
 

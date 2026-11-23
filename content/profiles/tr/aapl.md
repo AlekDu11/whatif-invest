@@ -19,7 +19,7 @@ Apple'ın parasının çoğu hâlâ cihaz satışından gelir. 2026 mali yılın
 ## Şu anki rakamlar
 
 - Bugünkü fiyat: {{price:aapl}}
-- Piyasa değeri: {{mcap:aapl}}
+- Piyasa değeri: {{mcap:aapl}} (WhatIfStack'teki dünyanın en büyük şirketleri arasında {{rank:aapl}})
 - Rekor: {{ath:aapl}} ({{athd:aapl}}), ondan {{fromath:aapl}}
 - 10 yıl boyunca günde 10 $: {{dca:aapl:10}}, yatırılan {{dcainv:10}} ({{dcaroi:aapl:10}})
 
