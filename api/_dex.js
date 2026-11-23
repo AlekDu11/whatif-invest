@@ -160,11 +160,11 @@ const jget = async (u, opt = {}) => { const r = await fetch(u, { ...opt, headers
 async function listings() {
   const out = [];
   try {
-    const j = await jget('https://www.binance.com/bapi/composite/v1/public/cms/article/list/query?type=1&pageNo=1&pageSize=30&catalogId=48');
+    const j = await jget('https://www.binance.com/bapi/composite/v1/public/cms/article/list/query?type=1&pageNo=1&pageSize=50&catalogId=48');
     (((j.data || {}).catalogs || [])[0] || { articles: [] }).articles.forEach(a => {
-      const t = a.title || '';
-      if (!/(will list|adds .* on binance alpha|will be the first|launchpool|hodler airdrops|on binance spot)/i.test(t) || /stock|bstocks|options|futures|margin|perpetual|delist/i.test(t)) return;
-      out.push({ ex: 'Binance', t, at: a.releaseDate, url: 'https://www.binance.com/en/support/announcement/' + a.code, tk: [...t.matchAll(/\(([A-Z0-9]{2,12})\)/g)].map(m => m[1]) });
+      const t = a.title || '', tk = [...t.matchAll(/\(([A-Z0-9]{2,12})\)/g)].map(m => m[1]);
+      if (!tk.length || /stock|bstocks|options|futures|perpetual|margin|delist|collateral|tradfi|loan|earn|convert only/i.test(t)) return;
+      out.push({ ex: 'Binance', t, at: a.releaseDate, url: 'https://www.binance.com/en/support/announcement/' + a.code, tk });
     });
   } catch (e) { /* OKX still counts */ }
   try {
@@ -176,7 +176,7 @@ async function listings() {
     });
   } catch (e) { /* Binance still counts */ }
   if (!out.length) throw new Error('no listings');
-  const since = Date.now() - 21 * 864e5;
+  const since = Date.now() - 30 * 864e5;
   return out.filter(x => x.at >= since).sort((a, b) => b.at - a.at).slice(0, 12);
 }
 // Meme narratives from CoinGecko categories: market cap + 24h change of each meme theme
@@ -190,19 +190,20 @@ async function narr() {
 // Launch pulse: of the latest launches on Solana + BNB Chain launchpads, how many already look dead, how many are climbing the curve,
 // and how many reached a DEX in the last 24 h (Binance Meme Rush lists)
 async function pulse() {
-  const now = Date.now(), res = { n: 0, dead: 0, climb: 0, done24: 0, min: null };
+  const now = Date.now(), res = { rate: 0, climb: 0, n: 0, done24: 0 };
   await Promise.all(['CT_501', '56'].map(async c => {
     try {
       const nw = await bnPost('/v1/public/wallet-direct/buw/wallet/market/token/pulse/rank/list/ai', { chainId: c, rankType: 10, limit: 100 });
-      (nw || []).forEach(t => { res.n++; const ag = (now - (+t.createTime || now)) / 6e4; res.min = Math.max(res.min || 0, ag);
-        if ((+t.holders || 0) < 10 && ag > 15) res.dead++; if ((+t.progress || 0) >= 50) res.climb++ });
+      const ts = (nw || []).map(t => +t.createTime).filter(Boolean);
+      if (ts.length > 5) { const span = Math.max(1, (now - Math.min(...ts)) / 6e4); res.rate += ts.length / span * 60 }   // launches per hour on this chain
+      (nw || []).forEach(t => { res.n++; if ((+t.progress || 0) >= 50) res.climb++ });
       const dn = await bnPost('/v1/public/wallet-direct/buw/wallet/market/token/pulse/rank/list/ai', { chainId: c, rankType: 30, limit: 100 });
       (dn || []).forEach(t => { if (now - (+t.migrateTime || +t.createTime || 0) < 864e5) res.done24++ });
     } catch (e) { /* the other chain still counts */ }
   }));
   if (!res.n) throw new Error('no pulse');
-  res.min = Math.round(res.min || 0);
-  return res;
+  res.rate = Math.round(res.rate);
+  return res;   // rate = new tokens per hour; climb = of the latest launches, how many are past half of their bonding curve; done24 = reached a DEX in 24 h
 }
 // Why people talk about a token (Binance social hype board, English only): {address: {b, s}}
 async function hypeMap(n) {
