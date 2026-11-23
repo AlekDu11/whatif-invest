@@ -1,10 +1,10 @@
 ---
-title: Acciones de Apple (AAPL): el fabricante del iPhone que superó los 5 billones de dólares
+title: Apple (AAPL): el fabricante del iPhone y sus 478.800 millones de dólares de ingresos en el año fiscal 2026
 description: Apple explicada fácil: 478.800 millones de ingresos en el año fiscal 2026, la mitad del iPhone, nuevo CEO, riesgos y qué saber si compras con regularidad.
 date: 2026-11-18
 kind: analysis
 ---
-**Apple** fabrica el iPhone, el Mac, el iPad, el Apple Watch y los AirPods, y después gana dinero cada mes con quienes los usan, a través de la App Store, iCloud, Apple Music, AppleCare y Apple Pay. Su gran ventaja es el «ecosistema»: cuando todos tus dispositivos funcionan juntos, cambiarte a otra marca da pereza. En noviembre de 2026 su valor en bolsa superó los 5 billones de dólares, lo que la convirtió en la empresa más valiosa del mundo.
+**Apple** fabrica el iPhone, el Mac, el iPad, el Apple Watch y los AirPods, y después gana dinero cada mes con quienes los usan, a través de la App Store, iCloud, Apple Music, AppleCare y Apple Pay. Su gran ventaja es el «ecosistema»: cuando todos tus dispositivos funcionan juntos, cambiarte a otra marca da pereza. En noviembre de 2026 su valor en bolsa superó por primera vez los 5 billones de dólares.
 
 > **Lo esencial**
 > - Ingresos: 478.800 millones de dólares en el año fiscal 2026 (cerrado el 26 de septiembre), un 15% más; beneficio neto de 132.200 millones.
@@ -24,9 +24,11 @@ A finales de septiembre Apple tenía 36.300 millones en efectivo y otros 100.600
 
 ## La historia de la acción
 
-El iPhone salió en 2007 y convirtió a Apple en una de las mayores empresas del mundo. Cuando Tim Cook tomó el mando en 2011, Apple valía unos 348.000 millones de dólares; cuando en 2026 cedió el puesto al jefe de hardware John Ternus (Cook sigue como presidente ejecutivo), valía alrededor de 4 billones y sus ingresos anuales se habían multiplicado por cuatro. En enero de 2026 Apple anunció que usaría la tecnología de IA de Google para mejorar Siri. En otoño de 2026 las acciones encadenaron récords: el cierre récord fue de 350,69 $ el 9 de noviembre de 2026 (ajustado por splits) y el valor en bolsa superó los 5 billones.
+El iPhone salió en 2007 y convirtió a Apple en una de las mayores empresas del mundo. Cuando Tim Cook tomó el mando en 2011, Apple valía unos 348.000 millones de dólares; cuando en 2026 cedió el puesto al jefe de hardware John Ternus (Cook sigue como presidente ejecutivo), valía alrededor de 4 billones y sus ingresos anuales se habían multiplicado por cuatro. En enero de 2026 Apple anunció que usaría la tecnología de IA de Google para mejorar Siri. En otoño de 2026 las acciones encadenaron récords: el 9 de noviembre de 2026 cerraron en 350,69 $, un récord en ese momento, y el valor en bolsa superó por primera vez los 5 billones.
 
 - Precio actual: {{price:aapl}}
+- Valor de mercado: {{mcap:aapl}}
+- Máximo histórico: {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} desde él
 - 10 $ al día durante 10 años: {{dca:aapl:10}} con {{dcainv:10}} invertidos ({{dcaroi:aapl:10}})
 
 ## Competidores

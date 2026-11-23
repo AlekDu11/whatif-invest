@@ -1,10 +1,10 @@
 ---
-title: Apple (AAPL) explained: the iPhone maker that just crossed $5 trillion
+title: Apple (AAPL) stock: the iPhone maker and its $478.8 billion fiscal 2026
 description: Apple in plain language: $478.8 billion of revenue in fiscal 2026, half from the iPhone, a new CEO, the risks and what regular buyers should know.
 date: 2026-11-18
 kind: analysis
 ---
-**Apple** makes the iPhone, Mac, iPad, Apple Watch and AirPods — and then earns money every month from the people who own them, through the App Store, iCloud, Apple Music, AppleCare and Apple Pay. Its edge is the "ecosystem": once your devices all work together, switching away is a hassle. In November 2026 its stock market value passed $5 trillion, making it the world's most valuable company.
+**Apple** makes the iPhone, Mac, iPad, Apple Watch and AirPods — and then earns money every month from the people who own them, through the App Store, iCloud, Apple Music, AppleCare and Apple Pay. Its edge is the "ecosystem": once your devices all work together, switching away is a hassle. In November 2026 its stock market value passed $5 trillion for the first time.
 
 > **Key takeaways**
 > - Revenue: $478.8 billion in fiscal 2026 (to 26 September), +15% on the year; net income $132.2 billion.
@@ -24,9 +24,11 @@ At the end of September Apple held $36.3 billion in cash plus $100.6 billion in 
 
 ## The stock's story
 
-The iPhone launched in 2007 and made Apple one of the world's biggest companies. When Tim Cook took over in 2011, Apple was worth about $348 billion; by the time he handed the job to hardware chief John Ternus in 2026 (Cook stays as executive chairman), it was worth roughly $4 trillion and yearly revenue had quadrupled. In January 2026 Apple said it would use Google's AI technology to improve Siri. The shares then set a run of records in autumn 2026: the record close was $350.69 on 9 November 2026 (split-adjusted), and the market value topped $5 trillion.
+The iPhone launched in 2007 and made Apple one of the world's biggest companies. When Tim Cook took over in 2011, Apple was worth about $348 billion; by the time he handed the job to hardware chief John Ternus in 2026 (Cook stays as executive chairman), it was worth roughly $4 trillion and yearly revenue had quadrupled. In January 2026 Apple said it would use Google's AI technology to improve Siri. The shares then set a run of records in autumn 2026: on 9 November 2026 they closed at $350.69, a record at that time, and the market value topped $5 trillion for the first time.
 
 - Price today: {{price:aapl}}
+- Market value: {{mcap:aapl}}
+- Record high: {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} from it
 - $10 a day for 10 years: {{dca:aapl:10}} from {{dcainv:10}} invested ({{dcaroi:aapl:10}})
 
 ## Competitors

@@ -1,10 +1,10 @@
 ---
-title: Apple (AAPL) hissesi sade dille: değeri 5 trilyon doları aşan iPhone üreticisi
+title: Apple (AAPL) hissesi: iPhone üreticisi ve 2026 mali yılındaki 478,8 milyar $ geliri
 description: Apple sade dille: 2026 mali yılında 478,8 milyar $ gelir, yarısı iPhone'dan, yeni CEO, riskler ve düzenli alım yapanların bilmesi gerekenler.
 date: 2026-11-22
 kind: analysis
 ---
-**Apple**; iPhone, Mac, iPad, Apple Watch ve AirPods üretir — ardından bu cihazların sahiplerinden App Store, iCloud, Apple Music, AppleCare ve Apple Pay üzerinden her ay para kazanır. Gücü "ekosistem"dir: tüm cihazlarınız birlikte çalıştığında başka bir markaya geçmek zahmetlidir. Kasım 2026'da şirketin piyasa değeri 5 trilyon doları aştı ve Apple dünyanın en değerli şirketi oldu.
+**Apple**; iPhone, Mac, iPad, Apple Watch ve AirPods üretir — ardından bu cihazların sahiplerinden App Store, iCloud, Apple Music, AppleCare ve Apple Pay üzerinden her ay para kazanır. Gücü "ekosistem"dir: tüm cihazlarınız birlikte çalıştığında başka bir markaya geçmek zahmetlidir. Kasım 2026'da şirketin piyasa değeri ilk kez 5 trilyon doları aştı.
 
 > **Öne çıkanlar**
 > - Gelir: 2026 mali yılında (26 Eylül'e kadar) 478,8 milyar $, yıllık +%15; net kâr 132,2 milyar $.
@@ -24,9 +24,11 @@ Eylül sonunda Apple'ın 36,3 milyar $ nakdi ve 100,6 milyar $ menkul kıymeti, 
 
 ## Hissenin hikâyesi
 
-iPhone 2007'de çıktı ve Apple'ı dünyanın en büyük şirketlerinden biri yaptı. Tim Cook 2011'de görevi devraldığında Apple yaklaşık 348 milyar $ değerindeydi; 2026'da görevi donanım şefi John Ternus'a devrettiğinde (Cook yönetim kurulu icra başkanı olarak kalıyor) değer yaklaşık 4 trilyon $'a ulaşmış, yıllık gelir dört katına çıkmıştı. Ocak 2026'da Apple, Siri'yi Google'ın yapay zekâ teknolojisiyle geliştireceğini açıkladı. Hisse 2026 sonbaharında art arda rekor kırdı: en yüksek kapanış 9 Kasım 2026'da 350,69 $ (bölünmeye göre düzeltilmiş), piyasa değeri ise 5 trilyon doları geçti.
+iPhone 2007'de çıktı ve Apple'ı dünyanın en büyük şirketlerinden biri yaptı. Tim Cook 2011'de görevi devraldığında Apple yaklaşık 348 milyar $ değerindeydi; 2026'da görevi donanım şefi John Ternus'a devrettiğinde (Cook yönetim kurulu icra başkanı olarak kalıyor) değer yaklaşık 4 trilyon $'a ulaşmış, yıllık gelir dört katına çıkmıştı. Ocak 2026'da Apple, Siri'yi Google'ın yapay zekâ teknolojisiyle geliştireceğini açıkladı. Hisse 2026 sonbaharında art arda rekor kırdı: 9 Kasım 2026'da 350,69 $'dan kapandı, bu o dönem için bir rekordu; piyasa değeri ise ilk kez 5 trilyon doları geçti.
 
 - Bugünkü fiyat: {{price:aapl}}
+- Piyasa değeri: {{mcap:aapl}}
+- Rekor: {{ath:aapl}} ({{athd:aapl}}), ondan {{fromath:aapl}}
 - 10 yıl boyunca günde 10 $: {{dca:aapl:10}}, yatırılan {{dcainv:10}} ({{dcaroi:aapl:10}})
 
 ## Rakipler

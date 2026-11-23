@@ -1,10 +1,10 @@
 ---
-title: Azioni Apple (AAPL) spiegate semplice: il produttore dell'iPhone che vale oltre 5.000 miliardi di dollari
+title: Apple (AAPL): il produttore dell'iPhone e i suoi 478,8 miliardi $ di ricavi nell'esercizio 2026
 description: Apple in parole semplici: 478,8 miliardi $ di ricavi nell'esercizio 2026, metà dall'iPhone, un nuovo CEO, i rischi e cosa sapere se compri con regolarità.
 date: 2026-11-22
 kind: analysis
 ---
-**Apple** produce iPhone, Mac, iPad, Apple Watch e AirPods — e poi guadagna ogni mese da chi li possiede, grazie ad App Store, iCloud, Apple Music, AppleCare e Apple Pay. Il suo punto di forza è l'"ecosistema": quando tutti i tuoi dispositivi lavorano insieme, cambiare marca è una seccatura. A novembre 2026 il suo valore in Borsa ha superato i 5.000 miliardi di dollari, facendone l'azienda più preziosa al mondo.
+**Apple** produce iPhone, Mac, iPad, Apple Watch e AirPods — e poi guadagna ogni mese da chi li possiede, grazie ad App Store, iCloud, Apple Music, AppleCare e Apple Pay. Il suo punto di forza è l'"ecosistema": quando tutti i tuoi dispositivi lavorano insieme, cambiare marca è una seccatura. A novembre 2026 il suo valore in Borsa ha superato per la prima volta i 5.000 miliardi di dollari.
 
 > **In sintesi**
 > - Ricavi: 478,8 miliardi $ nell'esercizio 2026 (chiuso il 26 settembre), +15% sull'anno; utile netto 132,2 miliardi $.
@@ -24,9 +24,11 @@ A fine settembre Apple aveva 36,3 miliardi $ di liquidità più 100,6 miliardi $
 
 ## La storia del titolo
 
-L'iPhone è uscito nel 2007 e ha reso Apple una delle aziende più grandi del mondo. Quando Tim Cook ha preso il timone nel 2011, Apple valeva circa 348 miliardi $; quando nel 2026 ha passato l'incarico al capo dell'hardware John Ternus (Cook resta presidente esecutivo del consiglio), valeva circa 4.000 miliardi $ e i ricavi annui erano quadruplicati. A gennaio 2026 Apple ha annunciato che avrebbe usato la tecnologia di intelligenza artificiale di Google per migliorare Siri. Nell'autunno 2026 il titolo ha inanellato una serie di record: la chiusura più alta è stata di 350,69 $ il 9 novembre 2026 (rettificata per gli split) e la capitalizzazione ha superato i 5.000 miliardi $.
+L'iPhone è uscito nel 2007 e ha reso Apple una delle aziende più grandi del mondo. Quando Tim Cook ha preso il timone nel 2011, Apple valeva circa 348 miliardi $; quando nel 2026 ha passato l'incarico al capo dell'hardware John Ternus (Cook resta presidente esecutivo del consiglio), valeva circa 4.000 miliardi $ e i ricavi annui erano quadruplicati. A gennaio 2026 Apple ha annunciato che avrebbe usato la tecnologia di intelligenza artificiale di Google per migliorare Siri. Nell'autunno 2026 il titolo ha inanellato una serie di record: il 9 novembre 2026 ha chiuso a 350,69 $, un record per quel momento, e la capitalizzazione ha superato per la prima volta i 5.000 miliardi $.
 
 - Prezzo oggi: {{price:aapl}}
+- Valore di mercato: {{mcap:aapl}}
+- Massimo storico: {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} da lì
 - 10 $ al giorno per 10 anni: {{dca:aapl:10}} con {{dcainv:10}} investiti ({{dcaroi:aapl:10}})
 
 ## Concorrenti

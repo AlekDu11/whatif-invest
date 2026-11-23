@@ -1,10 +1,10 @@
 ---
-title: Akcje Apple (AAPL) prostym językiem: producent iPhone'a wart ponad 5 bln dolarów
+title: Apple (AAPL): producent iPhone'a i jego 478,8 mld $ przychodu w roku obrotowym 2026
 description: Apple w prostych słowach: 478,8 mld $ przychodu w roku obrotowym 2026, połowa z iPhone'a, nowy prezes, ryzyka i co powinni wiedzieć regularnie kupujący.
 date: 2026-11-22
 kind: analysis
 ---
-**Apple** produkuje iPhone'a, Maca, iPada, Apple Watch i AirPods — a potem co miesiąc zarabia na ich właścicielach dzięki App Store, iCloud, Apple Music, AppleCare i Apple Pay. Jej przewagą jest „ekosystem”: gdy wszystkie urządzenia działają razem, przesiadka na coś innego jest kłopotliwa. W listopadzie 2026 roku wartość rynkowa spółki przekroczyła 5 bln dolarów — to najcenniejsza firma świata.
+**Apple** produkuje iPhone'a, Maca, iPada, Apple Watch i AirPods — a potem co miesiąc zarabia na ich właścicielach dzięki App Store, iCloud, Apple Music, AppleCare i Apple Pay. Jej przewagą jest „ekosystem”: gdy wszystkie urządzenia działają razem, przesiadka na coś innego jest kłopotliwa. W listopadzie 2026 roku wartość rynkowa spółki po raz pierwszy przekroczyła 5 bln dolarów.
 
 > **Najważniejsze**
 > - Przychody: 478,8 mld $ w roku obrotowym 2026 (do 26 września), +15% rok do roku; zysk netto 132,2 mld $.
@@ -24,9 +24,11 @@ Na koniec września Apple miała 36,3 mld $ gotówki i 100,6 mld $ w papierach w
 
 ## Historia akcji
 
-iPhone zadebiutował w 2007 roku i uczynił Apple jedną z największych firm świata. Gdy w 2011 r. stery przejął Tim Cook, Apple była warta ok. 348 mld $; gdy w 2026 r. przekazał stanowisko szefowi działu sprzętu Johnowi Ternusowi (sam Cook zostaje prezesem wykonawczym rady), firma była warta ok. 4 bln $, a roczne przychody wzrosły czterokrotnie. W styczniu 2026 r. Apple ogłosiła, że ulepszy Siri dzięki technologii AI Google. Jesienią 2026 r. kurs bił kolejne rekordy: najwyższe zamknięcie to 350,69 $ 9 listopada 2026 r. (po uwzględnieniu splitu), a wartość rynkowa przekroczyła 5 bln $.
+iPhone zadebiutował w 2007 roku i uczynił Apple jedną z największych firm świata. Gdy w 2011 r. stery przejął Tim Cook, Apple była warta ok. 348 mld $; gdy w 2026 r. przekazał stanowisko szefowi działu sprzętu Johnowi Ternusowi (sam Cook zostaje prezesem wykonawczym rady), firma była warta ok. 4 bln $, a roczne przychody wzrosły czterokrotnie. W styczniu 2026 r. Apple ogłosiła, że ulepszy Siri dzięki technologii AI Google. Jesienią 2026 r. kurs bił kolejne rekordy: 9 listopada 2026 r. akcje zamknęły się na poziomie 350,69 $, co było wtedy rekordem, a wartość rynkowa po raz pierwszy przekroczyła 5 bln $.
 
 - Cena teraz: {{price:aapl}}
+- Wartość rynkowa: {{mcap:aapl}}
+- Rekord: {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} od niego
 - 10 $ dziennie przez 10 lat: {{dca:aapl:10}} przy wpłaconych {{dcainv:10}} ({{dcaroi:aapl:10}})
 
 ## Konkurenci

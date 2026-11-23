@@ -1,10 +1,10 @@
 ---
-title: Apple (AAPL) stock sa simpleng paliwanag: ang gumagawa ng iPhone na lampas $5 trilyon na ang halaga
+title: Apple (AAPL) stock: ang gumagawa ng iPhone at ang $478.8 bilyong kita nito sa fiscal 2026
 description: Apple sa simpleng salita: $478.8 bilyong kita sa fiscal 2026, kalahati mula sa iPhone, bagong CEO, mga panganib at ang dapat malaman ng regular na bumibili.
 date: 2026-11-22
 kind: analysis
 ---
-Gumagawa ang **Apple** ng iPhone, Mac, iPad, Apple Watch at AirPods — at kumikita pa buwan-buwan sa mga gumagamit nito sa pamamagitan ng App Store, iCloud, Apple Music, AppleCare at Apple Pay. Ang lakas nito ay ang "ecosystem": kapag magkakakonekta ang lahat ng device mo, abala ang lumipat sa ibang brand. Noong Nobyembre 2026, lumampas sa $5 trilyon ang market value nito, kaya ito na ang pinakamahalagang kumpanya sa mundo.
+Gumagawa ang **Apple** ng iPhone, Mac, iPad, Apple Watch at AirPods — at kumikita pa buwan-buwan sa mga gumagamit nito sa pamamagitan ng App Store, iCloud, Apple Music, AppleCare at Apple Pay. Ang lakas nito ay ang "ecosystem": kapag magkakakonekta ang lahat ng device mo, abala ang lumipat sa ibang brand. Noong Nobyembre 2026, lumampas sa $5 trilyon ang market value nito sa unang pagkakataon.
 
 > **Mahahalagang punto**
 > - Kita: $478.8 bilyon sa fiscal 2026 (hanggang 26 Setyembre), +15% kumpara noong nakaraang taon; net income $132.2 bilyon.
@@ -24,9 +24,11 @@ Sa katapusan ng Setyembre, may $36.3 bilyong cash ang Apple at $100.6 bilyon sa 
 
 ## Ang kuwento ng stock
 
-Inilunsad ang iPhone noong 2007 at ginawa nitong isa sa pinakamalalaking kumpanya sa mundo ang Apple. Nang hawakan ni Tim Cook ang kumpanya noong 2011, mga $348 bilyon ang halaga ng Apple; nang ipasa niya ang posisyon noong 2026 sa hardware chief na si John Ternus (mananatili si Cook bilang executive chairman), mga $4 trilyon na ito at apat na beses nang lumaki ang taunang kita. Noong Enero 2026, inanunsyo ng Apple na gagamit ito ng AI technology ng Google para pagandahin ang Siri. Sunod-sunod na record ang naabot ng shares noong taglagas ng 2026: ang pinakamataas na pagsasara ay $350.69 noong 9 Nobyembre 2026 (split-adjusted), at lumampas sa $5 trilyon ang market value.
+Inilunsad ang iPhone noong 2007 at ginawa nitong isa sa pinakamalalaking kumpanya sa mundo ang Apple. Nang hawakan ni Tim Cook ang kumpanya noong 2011, mga $348 bilyon ang halaga ng Apple; nang ipasa niya ang posisyon noong 2026 sa hardware chief na si John Ternus (mananatili si Cook bilang executive chairman), mga $4 trilyon na ito at apat na beses nang lumaki ang taunang kita. Noong Enero 2026, inanunsyo ng Apple na gagamit ito ng AI technology ng Google para pagandahin ang Siri. Sunod-sunod na record ang naabot ng shares noong taglagas ng 2026: noong 9 Nobyembre 2026, nagsara ito sa $350.69, isang record noong panahong iyon, at lumampas sa $5 trilyon ang market value sa unang pagkakataon.
 
 - Presyo ngayon: {{price:aapl}}
+- Halaga sa merkado: {{mcap:aapl}}
+- Pinakamataas na presyo: {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} mula roon
 - $10 kada araw sa loob ng 10 taon: {{dca:aapl:10}} mula sa {{dcainv:10}} na inilagay ({{dcaroi:aapl:10}})
 
 ## Mga kakumpitensya

@@ -1,10 +1,10 @@
 ---
-title: Apple-Aktie (AAPL): der iPhone-Hersteller, der die Marke von 5 Billionen $ geknackt hat
+title: Apple (AAPL) Aktie: der iPhone-Hersteller und sein Geschäftsjahr 2026 mit 478,8 Mrd. $ Umsatz
 description: Apple einfach erklärt: 478,8 Mrd. $ Umsatz im Geschäftsjahr 2026, die Hälfte vom iPhone, neuer CEO, Risiken und was regelmäßige Käufer wissen sollten.
 date: 2026-11-18
 kind: analysis
 ---
-**Apple** baut iPhone, Mac, iPad, Apple Watch und AirPods – und verdient danach jeden Monat an den Menschen, die sie besitzen: über App Store, iCloud, Apple Music, AppleCare und Apple Pay. Die große Stärke ist das „Ökosystem“: Wenn alle Geräte zusammenspielen, ist ein Wechsel lästig. Im November 2026 stieg der Börsenwert über 5 Billionen $ – damit ist Apple das wertvollste Unternehmen der Welt.
+**Apple** baut iPhone, Mac, iPad, Apple Watch und AirPods – und verdient danach jeden Monat an den Menschen, die sie besitzen: über App Store, iCloud, Apple Music, AppleCare und Apple Pay. Die große Stärke ist das „Ökosystem“: Wenn alle Geräte zusammenspielen, ist ein Wechsel lästig. Im November 2026 stieg der Börsenwert erstmals über 5 Billionen $.
 
 > **Das Wichtigste**
 > - Umsatz: 478,8 Mrd. $ im Geschäftsjahr 2026 (bis 26. September), +15 % zum Vorjahr; Nettogewinn 132,2 Mrd. $.
@@ -24,9 +24,11 @@ Ende September hielt Apple 36,3 Mrd. $ an Barmitteln plus 100,6 Mrd. $ in handel
 
 ## Die Geschichte der Aktie
 
-Das iPhone kam 2007 auf den Markt und machte Apple zu einem der größten Unternehmen der Welt. Als Tim Cook 2011 übernahm, war Apple rund 348 Mrd. $ wert; als er den Posten 2026 an Hardware-Chef John Ternus übergab (Cook bleibt Executive Chairman), waren es etwa 4 Billionen $, und der Jahresumsatz hatte sich vervierfacht. Im Januar 2026 kündigte Apple an, Siri mit KI-Technik von Google zu verbessern. Im Herbst 2026 jagte die Aktie dann einen Rekord nach dem anderen: Der höchste Schlusskurs lag am 9. November 2026 bei 350,69 $ (splitbereinigt), der Börsenwert stieg über 5 Billionen $.
+Das iPhone kam 2007 auf den Markt und machte Apple zu einem der größten Unternehmen der Welt. Als Tim Cook 2011 übernahm, war Apple rund 348 Mrd. $ wert; als er den Posten 2026 an Hardware-Chef John Ternus übergab (Cook bleibt Executive Chairman), waren es etwa 4 Billionen $, und der Jahresumsatz hatte sich vervierfacht. Im Januar 2026 kündigte Apple an, Siri mit KI-Technik von Google zu verbessern. Im Herbst 2026 jagte die Aktie dann einen Rekord nach dem anderen: Am 9. November 2026 schloss sie bei 350,69 $, damals ein Rekord, und der Börsenwert stieg erstmals über 5 Billionen $.
 
 - Kurs aktuell: {{price:aapl}}
+- Marktwert: {{mcap:aapl}}
+- Rekordhoch: {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} davon entfernt
 - 10 $ pro Tag über 10 Jahre: {{dca:aapl:10}} bei {{dcainv:10}} Einsatz ({{dcaroi:aapl:10}})
 
 ## Konkurrenten

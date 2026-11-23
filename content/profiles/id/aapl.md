@@ -1,10 +1,10 @@
 ---
-title: Saham Apple (AAPL) dijelaskan sederhana: pembuat iPhone yang nilainya lebih dari $5 triliun
+title: Apple (AAPL): pembuat iPhone dan pendapatan $478,8 miliar pada tahun fiskal 2026
 description: Apple dengan bahasa sederhana: pendapatan $478,8 miliar pada tahun fiskal 2026, separuhnya dari iPhone, CEO baru, risiko dan hal yang perlu diketahui pembeli rutin.
 date: 2026-11-22
 kind: analysis
 ---
-**Apple** membuat iPhone, Mac, iPad, Apple Watch, dan AirPods — lalu mendapat uang setiap bulan dari para pemiliknya lewat App Store, iCloud, Apple Music, AppleCare, dan Apple Pay. Keunggulannya adalah "ekosistem": kalau semua perangkat Anda saling terhubung, pindah ke merek lain jadi merepotkan. Pada November 2026 nilai pasarnya menembus $5 triliun, menjadikannya perusahaan paling berharga di dunia.
+**Apple** membuat iPhone, Mac, iPad, Apple Watch, dan AirPods — lalu mendapat uang setiap bulan dari para pemiliknya lewat App Store, iCloud, Apple Music, AppleCare, dan Apple Pay. Keunggulannya adalah "ekosistem": kalau semua perangkat Anda saling terhubung, pindah ke merek lain jadi merepotkan. Pada November 2026 nilai pasarnya menembus $5 triliun untuk pertama kalinya.
 
 > **Poin penting**
 > - Pendapatan: $478,8 miliar pada tahun fiskal 2026 (hingga 26 September), naik 15% dalam setahun; laba bersih $132,2 miliar.
@@ -24,9 +24,11 @@ Pada akhir September Apple memegang kas $36,3 miliar ditambah surat berharga $10
 
 ## Kisah sahamnya
 
-iPhone diluncurkan pada 2007 dan menjadikan Apple salah satu perusahaan terbesar di dunia. Saat Tim Cook mengambil alih pada 2011, Apple bernilai sekitar $348 miliar; ketika ia menyerahkan jabatan kepada kepala perangkat keras John Ternus pada 2026 (Cook tetap menjadi ketua eksekutif), nilainya sekitar $4 triliun dan pendapatan tahunannya naik empat kali lipat. Pada Januari 2026 Apple mengumumkan akan memakai teknologi AI Google untuk meningkatkan Siri. Sahamnya lalu mencetak rekor beruntun pada musim gugur 2026: penutupan tertinggi $350,69 pada 9 November 2026 (disesuaikan dengan pemecahan saham), dan nilai pasarnya melampaui $5 triliun.
+iPhone diluncurkan pada 2007 dan menjadikan Apple salah satu perusahaan terbesar di dunia. Saat Tim Cook mengambil alih pada 2011, Apple bernilai sekitar $348 miliar; ketika ia menyerahkan jabatan kepada kepala perangkat keras John Ternus pada 2026 (Cook tetap menjadi ketua eksekutif), nilainya sekitar $4 triliun dan pendapatan tahunannya naik empat kali lipat. Pada Januari 2026 Apple mengumumkan akan memakai teknologi AI Google untuk meningkatkan Siri. Sahamnya lalu mencetak rekor beruntun pada musim gugur 2026: pada 9 November 2026 saham ditutup di $350,69, rekor pada saat itu, dan nilai pasarnya melampaui $5 triliun untuk pertama kalinya.
 
 - Harga hari ini: {{price:aapl}}
+- Nilai pasar: {{mcap:aapl}}
+- Rekor tertinggi: {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} dari rekor itu
 - $10 per hari selama 10 tahun: {{dca:aapl:10}} dari {{dcainv:10}} yang diinvestasikan ({{dcaroi:aapl:10}})
 
 ## Pesaing

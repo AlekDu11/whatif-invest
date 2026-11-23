@@ -1,10 +1,10 @@
 ---
-title: Action Apple (AAPL) expliquée simplement : le fabricant de l'iPhone qui vaut plus de 5 000 milliards de dollars
+title: Apple (AAPL) : le fabricant de l'iPhone et ses 478,8 Md$ de chiffre d'affaires sur l'exercice 2026
 description: Apple en clair : 478,8 Md$ de chiffre d'affaires sur l'exercice 2026, la moitié grâce à l'iPhone, un nouveau PDG, les risques et ce que doivent savoir ceux qui achètent régulièrement.
 date: 2026-11-22
 kind: analysis
 ---
-**Apple** fabrique l'iPhone, le Mac, l'iPad, l'Apple Watch et les AirPods — puis gagne de l'argent chaque mois grâce à leurs propriétaires, via l'App Store, iCloud, Apple Music, AppleCare et Apple Pay. Sa force, c'est « l'écosystème » : quand tous vos appareils fonctionnent ensemble, changer de marque devient pénible. En novembre 2026, sa valeur boursière a dépassé 5 000 milliards de dollars, ce qui en fait l'entreprise la plus chère du monde.
+**Apple** fabrique l'iPhone, le Mac, l'iPad, l'Apple Watch et les AirPods — puis gagne de l'argent chaque mois grâce à leurs propriétaires, via l'App Store, iCloud, Apple Music, AppleCare et Apple Pay. Sa force, c'est « l'écosystème » : quand tous vos appareils fonctionnent ensemble, changer de marque devient pénible. En novembre 2026, sa valeur boursière a dépassé 5 000 milliards de dollars pour la première fois.
 
 > **À retenir**
 > - Chiffre d'affaires : 478,8 Md$ sur l'exercice 2026 (clos le 26 septembre), +15 % sur un an ; bénéfice net de 132,2 Md$.
@@ -24,9 +24,11 @@ Fin septembre, Apple détenait 36,3 Md$ de liquidités et 100,6 Md$ de titres n�
 
 ## L'histoire de l'action
 
-L'iPhone est sorti en 2007 et a fait d'Apple l'une des plus grandes entreprises du monde. Quand Tim Cook a pris les commandes en 2011, Apple valait environ 348 Md$ ; quand il a passé le relais en 2026 au patron du matériel John Ternus (Cook reste président exécutif du conseil), elle valait près de 4 000 Md$ et son chiffre d'affaires annuel avait quadruplé. En janvier 2026, Apple a annoncé qu'elle utiliserait l'IA de Google pour améliorer Siri. L'action a ensuite enchaîné les records à l'automne 2026 : clôture record de 350,69 $ le 9 novembre 2026 (ajustée des divisions), et une capitalisation au-delà de 5 000 Md$.
+L'iPhone est sorti en 2007 et a fait d'Apple l'une des plus grandes entreprises du monde. Quand Tim Cook a pris les commandes en 2011, Apple valait environ 348 Md$ ; quand il a passé le relais en 2026 au patron du matériel John Ternus (Cook reste président exécutif du conseil), elle valait près de 4 000 Md$ et son chiffre d'affaires annuel avait quadruplé. En janvier 2026, Apple a annoncé qu'elle utiliserait l'IA de Google pour améliorer Siri. L'action a ensuite enchaîné les records à l'automne 2026 : le 9 novembre 2026, elle a clôturé à 350,69 $, un record à l'époque, et la capitalisation a dépassé 5 000 Md$ pour la première fois.
 
 - Cours actuel : {{price:aapl}}
+- Valeur de marché : {{mcap:aapl}}
+- Record : {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} depuis
 - 10 $ par jour pendant 10 ans : {{dca:aapl:10}} pour {{dcainv:10}} investis ({{dcaroi:aapl:10}})
 
 ## Concurrents

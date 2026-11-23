@@ -1,10 +1,10 @@
 ---
-title: Aandeel Apple (AAPL) eenvoudig uitgelegd: de iPhone-maker die meer dan $5 biljoen waard is
+title: Apple (AAPL): de iPhone-maker en zijn $478,8 miljard omzet in boekjaar 2026
 description: Apple in gewone taal: $478,8 miljard omzet in boekjaar 2026, de helft uit de iPhone, een nieuwe CEO, de risico's en wat je moet weten als je regelmatig koopt.
 date: 2026-11-22
 kind: analysis
 ---
-**Apple** maakt de iPhone, Mac, iPad, Apple Watch en AirPods — en verdient daarna elke maand aan de mensen die ze bezitten, via de App Store, iCloud, Apple Music, AppleCare en Apple Pay. De kracht zit in het "ecosysteem": als al je apparaten samenwerken, is overstappen een gedoe. In november 2026 steeg de beurswaarde boven $5 biljoen, waarmee Apple het meest waardevolle bedrijf ter wereld is.
+**Apple** maakt de iPhone, Mac, iPad, Apple Watch en AirPods — en verdient daarna elke maand aan de mensen die ze bezitten, via de App Store, iCloud, Apple Music, AppleCare en Apple Pay. De kracht zit in het "ecosysteem": als al je apparaten samenwerken, is overstappen een gedoe. In november 2026 steeg de beurswaarde voor het eerst boven $5 biljoen.
 
 > **Belangrijkste punten**
 > - Omzet: $478,8 miljard in boekjaar 2026 (tot 26 september), +15% op jaarbasis; nettowinst $132,2 miljard.
@@ -24,9 +24,11 @@ Eind september had Apple $36,3 miljard aan contanten plus $100,6 miljard aan ver
 
 ## Het verhaal van het aandeel
 
-De iPhone kwam in 2007 uit en maakte Apple tot een van de grootste bedrijven ter wereld. Toen Tim Cook in 2011 het roer overnam, was Apple ongeveer $348 miljard waard; toen hij de functie in 2026 overdroeg aan hardwarebaas John Ternus (Cook blijft uitvoerend voorzitter), was het ongeveer $4 biljoen waard en was de jaaromzet verviervoudigd. In januari 2026 maakte Apple bekend dat het AI-technologie van Google gaat gebruiken om Siri te verbeteren. Het aandeel zette daarna in het najaar van 2026 een reeks records neer: het hoogste slot was $350,69 op 9 november 2026 (gecorrigeerd voor splitsingen) en de beurswaarde ging over de $5 biljoen.
+De iPhone kwam in 2007 uit en maakte Apple tot een van de grootste bedrijven ter wereld. Toen Tim Cook in 2011 het roer overnam, was Apple ongeveer $348 miljard waard; toen hij de functie in 2026 overdroeg aan hardwarebaas John Ternus (Cook blijft uitvoerend voorzitter), was het ongeveer $4 biljoen waard en was de jaaromzet verviervoudigd. In januari 2026 maakte Apple bekend dat het AI-technologie van Google gaat gebruiken om Siri te verbeteren. Het aandeel zette daarna in het najaar van 2026 een reeks records neer: op 9 november 2026 sloot het op $350,69, op dat moment een record, en de beurswaarde ging voor het eerst over de $5 biljoen.
 
 - Koers nu: {{price:aapl}}
+- Marktwaarde: {{mcap:aapl}}
+- Recordkoers: {{ath:aapl}} ({{athd:aapl}}), {{fromath:aapl}} daarvan af
 - $10 per dag gedurende 10 jaar: {{dca:aapl:10}} bij {{dcainv:10}} ingelegd ({{dcaroi:aapl:10}})
 
 ## Concurrenten

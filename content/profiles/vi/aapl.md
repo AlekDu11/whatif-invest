@@ -1,10 +1,10 @@
 ---
-title: Cổ phiếu Apple (AAPL) giải thích dễ hiểu: nhà sản xuất iPhone trị giá hơn 5 nghìn tỷ USD
+title: Apple (AAPL): nhà sản xuất iPhone và doanh thu 478,8 tỷ USD năm tài chính 2026
 description: Apple bằng ngôn ngữ đơn giản: doanh thu 478,8 tỷ USD năm tài chính 2026, một nửa từ iPhone, CEO mới, rủi ro và điều người mua định kỳ cần biết.
 date: 2026-11-22
 kind: analysis
 ---
-**Apple** sản xuất iPhone, Mac, iPad, Apple Watch và AirPods — rồi kiếm tiền hằng tháng từ chính những người dùng chúng qua App Store, iCloud, Apple Music, AppleCare và Apple Pay. Lợi thế của hãng là "hệ sinh thái": khi mọi thiết bị của bạn hoạt động cùng nhau, chuyển sang hãng khác sẽ rất phiền. Tháng 11/2026, giá trị vốn hóa của Apple vượt 5 nghìn tỷ USD, trở thành công ty giá trị nhất thế giới.
+**Apple** sản xuất iPhone, Mac, iPad, Apple Watch và AirPods — rồi kiếm tiền hằng tháng từ chính những người dùng chúng qua App Store, iCloud, Apple Music, AppleCare và Apple Pay. Lợi thế của hãng là "hệ sinh thái": khi mọi thiết bị của bạn hoạt động cùng nhau, chuyển sang hãng khác sẽ rất phiền. Tháng 11/2026, giá trị vốn hóa của Apple lần đầu vượt 5 nghìn tỷ USD.
 
 > **Điểm chính**
 > - Doanh thu: 478,8 tỷ USD trong năm tài chính 2026 (đến 26/9), tăng 15% so với năm trước; lợi nhuận ròng 132,2 tỷ USD.
@@ -24,9 +24,11 @@ Cuối tháng 9, Apple có 36,3 tỷ USD tiền mặt cùng 100,6 tỷ USD chứ
 
 ## Câu chuyện của cổ phiếu
 
-iPhone ra mắt năm 2007 và đưa Apple thành một trong những công ty lớn nhất thế giới. Khi Tim Cook tiếp quản năm 2011, Apple trị giá khoảng 348 tỷ USD; khi ông trao lại vị trí cho giám đốc phần cứng John Ternus năm 2026 (Cook vẫn là chủ tịch điều hành), công ty trị giá khoảng 4 nghìn tỷ USD và doanh thu năm đã tăng gấp bốn. Tháng 1/2026, Apple thông báo sẽ dùng công nghệ AI của Google để nâng cấp Siri. Mùa thu 2026, cổ phiếu liên tục lập kỷ lục: giá đóng cửa cao nhất là 350,69 USD ngày 9/11/2026 (đã điều chỉnh chia tách), và vốn hóa vượt 5 nghìn tỷ USD.
+iPhone ra mắt năm 2007 và đưa Apple thành một trong những công ty lớn nhất thế giới. Khi Tim Cook tiếp quản năm 2011, Apple trị giá khoảng 348 tỷ USD; khi ông trao lại vị trí cho giám đốc phần cứng John Ternus năm 2026 (Cook vẫn là chủ tịch điều hành), công ty trị giá khoảng 4 nghìn tỷ USD và doanh thu năm đã tăng gấp bốn. Tháng 1/2026, Apple thông báo sẽ dùng công nghệ AI của Google để nâng cấp Siri. Mùa thu 2026, cổ phiếu liên tục lập kỷ lục: ngày 9/11/2026 cổ phiếu đóng cửa ở 350,69 USD, mức kỷ lục vào thời điểm đó, và vốn hóa lần đầu vượt 5 nghìn tỷ USD.
 
 - Giá hôm nay: {{price:aapl}}
+- Vốn hóa thị trường: {{mcap:aapl}}
+- Đỉnh kỷ lục: {{ath:aapl}} ({{athd:aapl}}), cách đỉnh {{fromath:aapl}}
 - 10 USD mỗi ngày trong 10 năm: {{dca:aapl:10}} từ {{dcainv:10}} đã đầu tư ({{dcaroi:aapl:10}})
 
 ## Đối thủ
