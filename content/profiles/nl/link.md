@@ -1,15 +1,15 @@
 ---
-title: Chainlink (LINK) eenvoudig uitgelegd: het datanetwerk achter DeFi, een maximum van 1 miljard en een record van $52,70
+title: Chainlink (LINK) eenvoudig uitgelegd: het datanetwerk achter DeFi sinds 2017 en een maximum van 1 miljard
 description: Chainlink in gewone taal: hoe oracles koersen naar blockchains brengen, CCIP, instellingen als Swift en DTCC, waarvoor LINK dient, de crashes en de risico's.
 date: 2026-11-22
 kind: analysis
 ---
-**Chainlink** is het netwerk dat blockchains vertelt wat er in de buitenwereld gebeurt — koersen, rentes, reserves — en dat tokens en berichten tussen chains verplaatst. Leenapps, stablecoins en banken die experimenteren met getokeniseerde bezittingen vertrouwen erop. De token LINK was in november 2026 in totaal ongeveer $6,7 miljard waard.
+**Chainlink** is het netwerk dat blockchains vertelt wat er in de buitenwereld gebeurt — koersen, rentes, reserves — en dat tokens en berichten tussen chains verplaatst. Leenapps, stablecoins en banken die experimenteren met getokeniseerde bezittingen vertrouwen erop. De token LINK is vandaag {{mcap:link}} waard ({{rank:link}} onder de cryptomunten).
 
 > **Belangrijkste punten**
 > - De voorraad LINK is gemaximeerd op 1 miljard tokens; in november 2026 waren er ongeveer 767 miljoen in omloop.
 > - Chainlink zegt tot en met het derde kwartaal van 2026 meer dan $36 biljoen aan transactiewaarde mogelijk te hebben gemaakt, en zijn CCIP-bridge beveiligde ruim $85 miljard.
-> - De recordkoers tot nu toe is $52,70 (mei 2021); in november 2026 stond LINK meer dan 80% lager.
+> - De recordkoers is {{ath:link}} ({{athd:link}}); vandaag staat de koers {{fromath:link}} daarvan af.
 > - De Chainlink Reserve, gevuld met netwerkkosten, had eind het derde kwartaal van 2026 meer dan 6 miljoen LINK.
 
 ## Hoe het werkt
@@ -23,7 +23,8 @@ LINK betaalt node-operators voor hun werk, en houders kunnen LINK staken (vastze
 ## De cijfers nu
 
 - Koers nu: {{price:link}}
-- Recordkoers: {{ath:link}} ({{athd:link}})
+- Recordkoers: {{ath:link}} ({{athd:link}}), {{fromath:link}} daarvan af
+- Marktwaarde: {{mcap:link}} ({{rank:link}} onder de cryptomunten)
 - Koersverandering over 12 maanden: {{chg1y:link}}
 - $10 per dag gedurende 5 jaar: {{dca:link:5}} bij {{dcainv:5}} ingelegd ({{dcaroi:link:5}})
 

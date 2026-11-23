@@ -1,15 +1,15 @@
 ---
-title: Chainlink (LINK) expliqué simplement : le réseau de données derrière la DeFi, un plafond d'1 milliard et un record à 52,70 $
+title: Chainlink (LINK) expliqué simplement : le réseau de données derrière la DeFi depuis 2017 et un plafond d'1 milliard
 description: Chainlink en clair : comment ses oracles fournissent les prix aux blockchains, CCIP, Swift et DTCC, l'utilité du LINK, ses krachs et ses principaux risques.
 date: 2026-11-22
 kind: analysis
 ---
-**Chainlink** est le réseau qui indique aux blockchains ce qui se passe dans le monde extérieur — prix, taux d'intérêt, réserves — et qui déplace jetons et messages d'une chaîne à l'autre. Les applis de prêt, les stablecoins et les banques qui testent des actifs tokenisés s'appuient sur lui. Son jeton, le LINK, avait une valeur de marché d'environ 6,7 milliards de dollars en novembre 2026.
+**Chainlink** est le réseau qui indique aux blockchains ce qui se passe dans le monde extérieur — prix, taux d'intérêt, réserves — et qui déplace jetons et messages d'une chaîne à l'autre. Les applis de prêt, les stablecoins et les banques qui testent des actifs tokenisés s'appuient sur lui. Son jeton, le LINK, vaut aujourd'hui {{mcap:link}} ({{rank:link}} parmi les cryptomonnaies).
 
 > **À retenir**
 > - L'offre de LINK est plafonnée à 1 milliard de jetons ; environ 767 millions circulaient en novembre 2026.
 > - Chainlink affirme avoir permis plus de 36 000 milliards de dollars de transactions jusqu'au 3e trimestre 2026, et son pont CCIP sécurisait plus de 85 milliards de dollars.
-> - Le record de cours à ce jour est de 52,70 $ (mai 2021) ; en novembre 2026, le LINK s'échangeait plus de 80 % en dessous.
+> - Son record est de {{ath:link}} ({{athd:link}}) ; aujourd'hui, le cours est à {{fromath:link}} de ce niveau.
 > - La Chainlink Reserve, financée par les frais du réseau, détenait plus de 6 millions de LINK fin du 3e trimestre 2026.
 
 ## Comment il fonctionne
@@ -23,7 +23,8 @@ Le LINK rémunère les opérateurs de nœuds pour leur travail, et les détenteu
 ## Les chiffres actuels
 
 - Cours actuel : {{price:link}}
-- Record : {{ath:link}} ({{athd:link}})
+- Record : {{ath:link}} ({{athd:link}}), {{fromath:link}} depuis
+- Valeur de marché : {{mcap:link}} ({{rank:link}} parmi les cryptomonnaies)
 - Variation du cours sur 12 mois : {{chg1y:link}}
 - 10 $ par jour pendant 5 ans : {{dca:link:5}} pour {{dcainv:5}} investis ({{dcaroi:link:5}})
 

@@ -1,15 +1,15 @@
 ---
-title: Chainlink (LINK) dijelaskan sederhana: jaringan data di balik DeFi, batas 1 miliar, dan rekor $52,70
+title: Chainlink (LINK) dijelaskan sederhana: jaringan data di balik DeFi sejak 2017 dan batas 1 miliar
 description: Chainlink dengan bahasa sederhana: cara oracle mengirim harga ke blockchain, CCIP, lembaga seperti Swift dan DTCC, kegunaan LINK, kejatuhan, dan risiko utama.
 date: 2026-11-22
 kind: analysis
 ---
-**Chainlink** adalah jaringan yang memberi tahu blockchain apa yang terjadi di dunia luar — harga, suku bunga, cadangan — serta memindahkan token dan pesan antar-rantai. Aplikasi pinjaman, stablecoin, dan bank yang menguji aset tertokenisasi mengandalkannya. Tokennya, LINK, memiliki nilai pasar sekitar $6,7 miliar pada November 2026.
+**Chainlink** adalah jaringan yang memberi tahu blockchain apa yang terjadi di dunia luar — harga, suku bunga, cadangan — serta memindahkan token dan pesan antar-rantai. Aplikasi pinjaman, stablecoin, dan bank yang menguji aset tertokenisasi mengandalkannya. Tokennya, LINK, kini bernilai {{mcap:link}} ({{rank:link}} di antara mata uang kripto).
 
 > **Poin penting**
 > - Pasokan LINK dibatasi 1 miliar token; sekitar 767 juta beredar pada November 2026.
 > - Chainlink menyatakan telah memungkinkan nilai transaksi lebih dari $36 triliun hingga kuartal III 2026, dan jembatan CCIP-nya mengamankan lebih dari $85 miliar.
-> - Rekor harga sejauh ini $52,70 (Mei 2021); pada November 2026 LINK diperdagangkan lebih dari 80% di bawahnya.
+> - Rekor tertingginya {{ath:link}} ({{athd:link}}); kini harganya {{fromath:link}} dari rekor itu.
 > - Chainlink Reserve, yang didanai dari biaya jaringan, memegang lebih dari 6 juta LINK pada akhir kuartal III 2026.
 
 ## Cara kerjanya
@@ -23,7 +23,8 @@ LINK dipakai membayar operator node atas kerja mereka, dan pemegang bisa melakuk
 ## Angka saat ini
 
 - Harga hari ini: {{price:link}}
-- Rekor tertinggi: {{ath:link}} ({{athd:link}})
+- Rekor tertinggi: {{ath:link}} ({{athd:link}}), {{fromath:link}} dari rekor itu
+- Nilai pasar: {{mcap:link}} ({{rank:link}} di antara mata uang kripto)
 - Perubahan harga dalam 12 bulan: {{chg1y:link}}
 - $10 per hari selama 5 tahun: {{dca:link:5}} dari {{dcainv:5}} yang diinvestasikan ({{dcaroi:link:5}})
 

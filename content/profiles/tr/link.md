@@ -1,15 +1,15 @@
 ---
-title: Chainlink (LINK) sade dille: DeFi'nin arkasındaki veri ağı, 1 milyar arz sınırı ve 52,70 $ rekor
+title: Chainlink (LINK) sade dille: 2017'den beri DeFi'nin arkasındaki veri ağı ve 1 milyar arz sınırı
 description: Chainlink sade dille: oracle'lar blokzincirlere fiyatları nasıl taşır, CCIP, Swift ve DTCC gibi kurumlar, LINK ne işe yarar, çöküşleri ve başlıca riskler.
 date: 2026-11-22
 kind: analysis
 ---
-**Chainlink**, blokzincirlere dış dünyada neler olduğunu — fiyatları, faiz oranlarını, rezervleri — bildiren ve token'ları ve mesajları zincirler arasında taşıyan ağdır. Borç verme uygulamaları, stablecoin'ler ve token'laştırılmış varlıkları test eden bankalar ona güveniyor. Token'ı LINK'in Kasım 2026'da piyasa değeri yaklaşık 6,7 milyar dolardı.
+**Chainlink**, blokzincirlere dış dünyada neler olduğunu — fiyatları, faiz oranlarını, rezervleri — bildiren ve token'ları ve mesajları zincirler arasında taşıyan ağdır. Borç verme uygulamaları, stablecoin'ler ve token'laştırılmış varlıkları test eden bankalar ona güveniyor. Token'ı LINK'in bugünkü piyasa değeri {{mcap:link}} (kripto paralar arasında {{rank:link}}).
 
 > **Öne çıkanlar**
 > - LINK arzı 1 milyar token ile sınırlı; Kasım 2026'da yaklaşık 767 milyonu dolaşımdaydı.
 > - Chainlink, 2026'nın 3. çeyreğine kadar 36 trilyon doları aşan işlem değerini mümkün kıldığını ve CCIP köprüsünün 85 milyar doları aşan varlığı güvence altına aldığını söylüyor.
-> - Şimdiye kadarki rekor fiyat 52,70 $ (Mayıs 2021); Kasım 2026'da LINK bunun %80'den fazla altında işlem görüyordu.
+> - Rekor fiyatı {{ath:link}} ({{athd:link}}); bugün fiyat ondan {{fromath:link}} uzakta.
 > - Ağ ücretleriyle beslenen Chainlink Reserve, 2026'nın 3. çeyreği sonunda 6 milyondan fazla LINK tutuyordu.
 
 ## Nasıl çalışır
@@ -23,7 +23,8 @@ LINK, node operatörlerine yaptıkları iş için ödeme yapar; sahipleri ağı 
 ## Şu anki rakamlar
 
 - Bugünkü fiyat: {{price:link}}
-- Rekor: {{ath:link}} ({{athd:link}})
+- Rekor: {{ath:link}} ({{athd:link}}), ondan {{fromath:link}}
+- Piyasa değeri: {{mcap:link}} (kripto paralar arasında {{rank:link}})
 - 12 aylık fiyat değişimi: {{chg1y:link}}
 - 5 yıl boyunca günde 10 $: {{dca:link:5}}, yatırılan {{dcainv:5}} ({{dcaroi:link:5}})
 

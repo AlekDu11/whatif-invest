@@ -1,15 +1,15 @@
 ---
-title: Chainlink (LINK) prostym językiem: sieć danych za DeFi, limit 1 miliarda i rekord 52,70 $
+title: Chainlink (LINK) prostym językiem: sieć danych za DeFi od 2017 r. i limit 1 miliarda
 description: Chainlink w prostych słowach: jak wyrocznie dostarczają ceny do blockchainów, CCIP, banki jak Swift i DTCC, do czego służy LINK, jego krachy i główne ryzyka.
 date: 2026-11-22
 kind: analysis
 ---
-**Chainlink** to sieć, która przekazuje blockchainom, co dzieje się w świecie zewnętrznym — ceny, stopy procentowe, rezerwy — i przenosi tokeny oraz wiadomości między sieciami. Polegają na niej aplikacje pożyczkowe, stablecoiny i banki testujące tokenizowane aktywa. Jej token, LINK, miał w listopadzie 2026 r. wartość rynkową ok. 6,7 mld dolarów.
+**Chainlink** to sieć, która przekazuje blockchainom, co dzieje się w świecie zewnętrznym — ceny, stopy procentowe, rezerwy — i przenosi tokeny oraz wiadomości między sieciami. Polegają na niej aplikacje pożyczkowe, stablecoiny i banki testujące tokenizowane aktywa. Jej token, LINK, jest dziś wart {{mcap:link}} ({{rank:link}} wśród kryptowalut).
 
 > **Najważniejsze**
 > - Podaż LINK jest ograniczona do 1 mld tokenów; w listopadzie 2026 r. w obiegu było ok. 767 mln.
 > - Według Chainlink do III kwartału 2026 r. sieć umożliwiła transakcje o wartości ponad 36 bln dolarów, a jej most CCIP zabezpieczał ponad 85 mld dolarów.
-> - Dotychczasowa rekordowa cena to 52,70 $ (maj 2021 r.); w listopadzie 2026 r. LINK był notowany ponad 80% niżej.
+> - Rekord ceny to {{ath:link}} ({{athd:link}}); dziś cena jest {{fromath:link}} od niego.
 > - Chainlink Reserve, zasilana z opłat sieci, miała na koniec III kwartału 2026 r. ponad 6 mln LINK.
 
 ## Jak działa
@@ -23,7 +23,8 @@ LINK służy do opłacania pracy operatorów węzłów, a posiadacze mogą stako
 ## Liczby teraz
 
 - Cena teraz: {{price:link}}
-- Rekord: {{ath:link}} ({{athd:link}})
+- Rekord: {{ath:link}} ({{athd:link}}), {{fromath:link}} od niego
+- Wartość rynkowa: {{mcap:link}} ({{rank:link}} wśród kryptowalut)
 - Zmiana ceny w ciągu 12 miesięcy: {{chg1y:link}}
 - 10 $ dziennie przez 5 lat: {{dca:link:5}} przy wpłaconych {{dcainv:5}} ({{dcaroi:link:5}})
 

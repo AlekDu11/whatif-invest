@@ -1,15 +1,15 @@
 ---
-title: Chainlink (LINK) einfach erklärt: das Datennetz hinter DeFi, 1 Milliarde Höchstmenge und ein Rekord von 52,70 $
+title: Chainlink (LINK) einfach erklärt: das Datennetz hinter DeFi seit 2017 und 1 Milliarde Höchstmenge
 description: Chainlink einfach erklärt: wie Oracles Preise an Blockchains liefern, CCIP, Banken wie Swift und DTCC, wofür LINK dient, seine Crashs und die größten Risiken.
 date: 2026-11-22
 kind: analysis
 ---
-**Chainlink** ist das Netzwerk, das Blockchains mitteilt, was in der Außenwelt passiert – Preise, Zinsen, Reserven – und Token und Nachrichten zwischen Chains bewegt. Kredit-Apps, Stablecoins und Banken, die tokenisierte Vermögenswerte testen, verlassen sich darauf. Sein Token LINK hatte im November 2026 einen Marktwert von rund 6,7 Milliarden Dollar.
+**Chainlink** ist das Netzwerk, das Blockchains mitteilt, was in der Außenwelt passiert – Preise, Zinsen, Reserven – und Token und Nachrichten zwischen Chains bewegt. Kredit-Apps, Stablecoins und Banken, die tokenisierte Vermögenswerte testen, verlassen sich darauf. Sein Token LINK ist heute {{mcap:link}} wert ({{rank:link}} unter den Kryptowährungen).
 
 > **Das Wichtigste**
 > - Das Angebot an LINK ist auf 1 Milliarde Token begrenzt; im November 2026 waren rund 767 Millionen im Umlauf.
 > - Nach eigenen Angaben hat Chainlink bis zum dritten Quartal 2026 Transaktionen im Wert von über 36 Billionen Dollar ermöglicht, und seine Bridge CCIP sicherte über 85 Milliarden Dollar ab.
-> - Der bisherige Rekordkurs liegt bei 52,70 $ (Mai 2021); im November 2026 notierte LINK mehr als 80 % darunter.
+> - Sein Rekordhoch liegt bei {{ath:link}} ({{athd:link}}); heute steht der Kurs {{fromath:link}} darunter.
 > - Die Chainlink Reserve, gespeist aus Netzwerkgebühren, hielt Ende des dritten Quartals 2026 über 6 Millionen LINK.
 
 ## So funktioniert er
@@ -23,7 +23,8 @@ Mit LINK werden die Node-Betreiber für ihre Arbeit bezahlt, und Halter können 
 ## Die Zahlen jetzt
 
 - Kurs heute: {{price:link}}
-- Rekordhoch: {{ath:link}} ({{athd:link}})
+- Rekordhoch: {{ath:link}} ({{athd:link}}), {{fromath:link}} davon entfernt
+- Marktwert: {{mcap:link}} ({{rank:link}} unter den Kryptowährungen)
 - Kursveränderung in 12 Monaten: {{chg1y:link}}
 - 10 $ am Tag über 5 Jahre: {{dca:link:5}} bei {{dcainv:5}} Einsatz ({{dcaroi:link:5}})
 

@@ -1,15 +1,15 @@
 ---
-title: Chainlink (LINK) spiegato semplice: la rete di dati dietro la DeFi, un tetto di 1 miliardo e un record di 52,70 $
+title: Chainlink (LINK) spiegato semplice: la rete di dati dietro la DeFi dal 2017 e un tetto di 1 miliardo
 description: Chainlink in parole semplici: come gli oracoli portano i prezzi alle blockchain, CCIP, istituzioni come Swift e DTCC, a cosa serve LINK, i crolli e i rischi.
 date: 2026-11-22
 kind: analysis
 ---
-**Chainlink** è la rete che dice alle blockchain cosa succede nel mondo esterno — prezzi, tassi d'interesse, riserve — e sposta token e messaggi da una catena all'altra. Ci si affidano app di prestito, stablecoin e banche che sperimentano asset tokenizzati. Il suo token, LINK, aveva un valore di mercato di circa 6,7 miliardi di dollari a novembre 2026.
+**Chainlink** è la rete che dice alle blockchain cosa succede nel mondo esterno — prezzi, tassi d'interesse, riserve — e sposta token e messaggi da una catena all'altra. Ci si affidano app di prestito, stablecoin e banche che sperimentano asset tokenizzati. Il suo token, LINK, vale oggi {{mcap:link}} ({{rank:link}} tra le criptovalute).
 
 > **In sintesi**
 > - L'offerta di LINK ha un tetto di 1 miliardo di token; a novembre 2026 ne circolavano circa 767 milioni.
 > - Chainlink dice di aver reso possibili transazioni per oltre 36.000 miliardi di dollari entro il terzo trimestre 2026, e il suo bridge CCIP proteggeva oltre 85 miliardi di dollari.
-> - Il record di prezzo finora è 52,70 $ (maggio 2021); a novembre 2026 LINK quotava oltre l'80% sotto.
+> - Il suo massimo storico è {{ath:link}} ({{athd:link}}); oggi il prezzo è a {{fromath:link}} da lì.
 > - La Chainlink Reserve, finanziata dalle commissioni della rete, deteneva oltre 6 milioni di LINK alla fine del terzo trimestre 2026.
 
 ## Come funziona
@@ -23,7 +23,8 @@ LINK paga gli operatori dei nodi per il loro lavoro, e chi lo detiene può mette
 ## I numeri di oggi
 
 - Prezzo oggi: {{price:link}}
-- Record: {{ath:link}} ({{athd:link}})
+- Massimo storico: {{ath:link}} ({{athd:link}}), {{fromath:link}} da lì
+- Valore di mercato: {{mcap:link}} ({{rank:link}} tra le criptovalute)
 - Variazione del prezzo in 12 mesi: {{chg1y:link}}
 - 10 $ al giorno per 5 anni: {{dca:link:5}} con {{dcainv:5}} investiti ({{dcaroi:link:5}})
 

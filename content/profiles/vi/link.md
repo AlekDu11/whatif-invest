@@ -1,15 +1,15 @@
 ---
-title: Chainlink (LINK) giải thích dễ hiểu: mạng dữ liệu đứng sau DeFi, giới hạn 1 tỷ và kỷ lục 52,70 USD
+title: Chainlink (LINK) giải thích dễ hiểu: mạng dữ liệu đứng sau DeFi từ 2017 và giới hạn 1 tỷ
 description: Chainlink giải thích dễ hiểu: oracle đưa giá lên blockchain thế nào, CCIP, các tổ chức như Swift và DTCC, LINK dùng để làm gì, các cú sập và rủi ro chính.
 date: 2026-11-22
 kind: analysis
 ---
-**Chainlink** là mạng lưới cho blockchain biết điều gì đang diễn ra ở thế giới bên ngoài — giá cả, lãi suất, dự trữ — và chuyển token cùng thông điệp giữa các chuỗi. Các ứng dụng cho vay, stablecoin và ngân hàng đang thử nghiệm tài sản token hóa đều dựa vào nó. Token của mạng, LINK, có giá trị thị trường khoảng 6,7 tỷ USD vào tháng 11/2026.
+**Chainlink** là mạng lưới cho blockchain biết điều gì đang diễn ra ở thế giới bên ngoài — giá cả, lãi suất, dự trữ — và chuyển token cùng thông điệp giữa các chuỗi. Các ứng dụng cho vay, stablecoin và ngân hàng đang thử nghiệm tài sản token hóa đều dựa vào nó. Token của mạng, LINK, hiện có vốn hóa {{mcap:link}} ({{rank:link}} trong các đồng tiền mã hóa).
 
 > **Điểm chính**
 > - Nguồn cung LINK giới hạn ở 1 tỷ token; khoảng 767 triệu đang lưu hành vào tháng 11/2026.
 > - Chainlink cho biết đã hỗ trợ hơn 36 nghìn tỷ USD giá trị giao dịch tính đến quý 3/2026, và cầu nối CCIP bảo vệ hơn 85 tỷ USD.
-> - Giá kỷ lục cho đến nay là 52,70 USD (tháng 5/2021); tháng 11/2026 LINK giao dịch thấp hơn mức đó hơn 80%.
+> - Đỉnh kỷ lục là {{ath:link}} ({{athd:link}}); giá hiện tại cách đỉnh {{fromath:link}}.
 > - Chainlink Reserve, được cấp vốn từ phí mạng lưới, nắm giữ hơn 6 triệu LINK vào cuối quý 3/2026.
 
 ## Cách hoạt động
@@ -23,7 +23,8 @@ LINK dùng để trả công cho các nhà vận hành node, và người nắm 
 ## Các con số hiện tại
 
 - Giá hôm nay: {{price:link}}
-- Đỉnh kỷ lục: {{ath:link}} ({{athd:link}})
+- Đỉnh kỷ lục: {{ath:link}} ({{athd:link}}), cách đỉnh {{fromath:link}}
+- Vốn hóa thị trường: {{mcap:link}} ({{rank:link}} trong các đồng tiền mã hóa)
 - Biến động giá trong 12 tháng: {{chg1y:link}}
 - 10 USD mỗi ngày trong 5 năm: {{dca:link:5}} từ {{dcainv:5}} đã đầu tư ({{dcaroi:link:5}})
 

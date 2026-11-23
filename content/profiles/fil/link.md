@@ -1,15 +1,15 @@
 ---
-title: Chainlink (LINK) sa simpleng paliwanag: ang data network sa likod ng DeFi, limit na 1 bilyon at record na $52.70
+title: Chainlink (LINK) sa simpleng paliwanag: ang data network sa likod ng DeFi mula 2017 at limit na 1 bilyon
 description: Chainlink sa simpleng paliwanag: paano dinadala ng oracles ang presyo sa blockchain, CCIP, Swift at DTCC, para saan ang LINK, mga pagbagsak at panganib.
 date: 2026-11-22
 kind: analysis
 ---
-**Chainlink** ang network na nagsasabi sa mga blockchain kung ano ang nangyayari sa labas na mundo — mga presyo, interest rate, reserba — at naglilipat ng mga token at mensahe sa pagitan ng mga chain. Umaasa rito ang mga lending app, stablecoin at mga bangkong sumusubok ng tokenised assets. Nasa humigit-kumulang $6.7 bilyon ang market value ng token nitong LINK noong Nobyembre 2026.
+**Chainlink** ang network na nagsasabi sa mga blockchain kung ano ang nangyayari sa labas na mundo — mga presyo, interest rate, reserba — at naglilipat ng mga token at mensahe sa pagitan ng mga chain. Umaasa rito ang mga lending app, stablecoin at mga bangkong sumusubok ng tokenised assets. {{mcap:link}} ang market value ng token nitong LINK ngayon ({{rank:link}} sa mga cryptocurrency).
 
 > **Mahahalagang punto**
 > - Limitado sa 1 bilyong token ang supply ng LINK; mga 767 milyon ang umiikot noong Nobyembre 2026.
 > - Sinasabi ng Chainlink na nakapagpagana ito ng mahigit $36 trilyong halaga ng transaksyon hanggang Q3 2026, at mahigit $85 bilyon ang sinisigurado ng CCIP bridge nito.
-> - Ang record na presyo sa ngayon ay $52.70 (Mayo 2021); noong Nobyembre 2026, mahigit 80% na mas mababa rito ang trading ng LINK.
+> - Ang pinakamataas na presyo nito ay {{ath:link}} ({{athd:link}}); ngayon, {{fromath:link}} ang presyo mula roon.
 > - May hawak na mahigit 6 milyong LINK ang Chainlink Reserve, na pinopondohan ng network fees, sa pagtatapos ng Q3 2026.
 
 ## Paano ito gumagana
@@ -23,7 +23,8 @@ Pambayad ang LINK sa mga node operator para sa trabaho nila, at puwedeng i-stake
 ## Ang mga numero ngayon
 
 - Presyo ngayon: {{price:link}}
-- Pinakamataas na presyo: {{ath:link}} ({{athd:link}})
+- Pinakamataas na presyo: {{ath:link}} ({{athd:link}}), {{fromath:link}} mula roon
+- Halaga sa merkado: {{mcap:link}} ({{rank:link}} sa mga cryptocurrency)
 - Pagbabago ng presyo sa loob ng 12 buwan: {{chg1y:link}}
 - $10 kada araw sa loob ng 5 taon: {{dca:link:5}} mula sa {{dcainv:5}} na inilagay ({{dcaroi:link:5}})
 

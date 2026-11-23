@@ -1,15 +1,15 @@
 ---
-title: Chainlink (LINK) explained: the data network behind DeFi, a 1 billion cap and a $52.70 record
+title: Chainlink (LINK) explained: the data network behind DeFi since 2017 and a 1 billion cap
 description: Chainlink in plain language: how its oracles feed prices to blockchains, CCIP, banks like Swift and DTCC, what LINK is for, its crashes and the main risks.
 date: 2026-11-22
 kind: analysis
 ---
-**Chainlink** is the network that tells blockchains what is happening in the outside world — prices, interest rates, reserves — and moves tokens and messages between chains. Lending apps, stablecoins and banks testing tokenised assets rely on it. Its token, LINK, had a market value of about $6.7 billion in November 2026.
+**Chainlink** is the network that tells blockchains what is happening in the outside world — prices, interest rates, reserves — and moves tokens and messages between chains. Lending apps, stablecoins and banks testing tokenised assets rely on it. Its token, LINK, is worth {{mcap:link}} today ({{rank:link}} among cryptocurrencies).
 
 > **Key takeaways**
 > - LINK supply is capped at 1 billion tokens; about 767 million were in circulation in November 2026.
 > - Chainlink says it had enabled more than $36 trillion of transaction value by Q3 2026, and its CCIP bridge secured over $85 billion.
-> - The record price so far is $52.70 (May 2021); in November 2026 LINK traded more than 80% below it.
+> - Its record high is {{ath:link}} ({{athd:link}}); today the price is {{fromath:link}} from it.
 > - The Chainlink Reserve, funded by network fees, held over 6 million LINK at the end of Q3 2026.
 
 ## How it works
@@ -23,7 +23,8 @@ LINK pays node operators for their work, and holders can stake (lock) LINK to he
 ## The numbers right now
 
 - Price today: {{price:link}}
-- Record high: {{ath:link}} ({{athd:link}})
+- Record high: {{ath:link}} ({{athd:link}}), {{fromath:link}} from it
+- Market value: {{mcap:link}} ({{rank:link}} among cryptocurrencies)
 - Price change over 12 months: {{chg1y:link}}
 - $10 a day for 5 years: {{dca:link:5}} from {{dcainv:5}} invested ({{dcaroi:link:5}})
 
