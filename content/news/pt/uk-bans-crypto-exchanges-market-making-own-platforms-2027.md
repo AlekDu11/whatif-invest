@@ -10,8 +10,8 @@ As corretoras de criptomoedas no Reino Unido não poderão mais atuar como forma
 ## O que aconteceu
 
 - **A proibição.** A regra da FCA (CRYPTO 6.6.1R) impede que os operadores cotem preços de compra e venda com dinheiro próprio na sua plataforma. O motivo é o conflito de interesses: a corretora vê primeiro cada ordem do cliente.
-- **Terceiros, pode.** Um ato do Tesouro assinado em 18 de novembro (SI 2026/1219) permite que empresas independentes façam market making nessas plataformas, inclusive em bitcoin à vista, sem licença extra de intermediação.
-- **Exceções estreitas.** O operador pode atuar como «matched principal» com permissão adicional e sem poder de decisão sobre o casamento de ordens, e uma afiliada separada pode negociar com as mesmas regras de acesso dos demais. As corretoras também terão de identificar e monitorar seus formadores de mercado e divulgar os incentivos pagos a eles.
+- **Terceiros podem.** Um ato do Tesouro assinado em 18 de novembro (SI 2026/1219) permite que empresas independentes façam market making nessas plataformas, inclusive em bitcoin à vista, sem licença extra de intermediação.
+- **Exceções estreitas.** O operador pode atuar como "matched principal" com permissão adicional e sem poder de decisão sobre o casamento de ordens, e uma afiliada separada pode negociar com as mesmas regras de acesso dos demais. As corretoras também terão de identificar e monitorar seus formadores de mercado e divulgar os incentivos pagos a eles.
 - **Prazos.** As empresas já existentes precisam pedir autorização até 28 de fevereiro de 2027 para continuar operando na transição.
 
 ## O que isso significa para você
