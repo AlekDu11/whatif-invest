@@ -1,15 +1,15 @@
 ---
-title: BNB prostym językiem: moneta Binance, kwartalne spalanie do 100 milionów i rekord 1370 $
+title: BNB prostym językiem: moneta Binance od 2017 r., kwartalne spalania do 100 milionów i co porusza ceną
 description: BNB w prostych słowach: jak działają moneta Binance i BNB Chain, po co co kwartał spala się tokeny, rekord i krachy, główne ryzyka i co wiedzieć przed zakupem.
 date: 2026-11-22
 kind: analysis
 ---
-**BNB** to moneta Binance, największej giełdy kryptowalut na świecie, oraz BNB Chain — blockchainu zbudowanego wokół niej. Używa się jej, by płacić niższe prowizje za handel na Binance i opłacać transakcje w BNB Chain. W listopadzie 2026 r. była warta ok. 71 mld dolarów i należała do pięciu największych kryptoaktywów.
+**BNB** to moneta Binance, największej giełdy kryptowalut na świecie, oraz BNB Chain — blockchainu zbudowanego wokół niej. Używa się jej, by płacić niższe prowizje za handel na Binance i opłacać transakcje w BNB Chain. Wartość rynkowa BNB to dziś {{mcap:bnb}} ({{rank:bnb}} wśród kryptowalut).
 
 > **Najważniejsze**
 > - BNB wystartował w lipcu 2017 r. z 200 milionami monet; regularne spalanie ma zmniejszyć podaż do 100 milionów.
 > - 37. kwartalne spalanie w październiku 2026 r. usunęło ok. 1,65 mln BNB o wartości ponad 1 mld dolarów.
-> - Dotychczasowa rekordowa cena to 1369,99 $ (13 października 2025 r.); w listopadzie 2026 r. BNB był notowany ponad 55% niżej.
+> - Rekord ceny to {{ath:bnb}} ({{athd:bnb}}); dziś cena jest {{fromath:bnb}} od niego.
 > - Jego los jest ściśle związany z jedną firmą: Binance i jej założycielem Changpengiem Zhao (CZ).
 
 ## Jak działa
@@ -23,7 +23,8 @@ BNB przydaje się na trzy sposoby. Na Binance obniża prowizje za handel i daje 
 ## Liczby teraz
 
 - Cena teraz: {{price:bnb}}
-- Rekord: {{ath:bnb}} ({{athd:bnb}})
+- Rekord: {{ath:bnb}} ({{athd:bnb}}), {{fromath:bnb}} od niego
+- Wartość rynkowa: {{mcap:bnb}} ({{rank:bnb}} wśród kryptowalut)
 - Zmiana ceny w ciągu 12 miesięcy: {{chg1y:bnb}}
 - 10 $ dziennie przez 5 lat: {{dca:bnb:5}} przy wpłaconych {{dcainv:5}} ({{dcaroi:bnb:5}})
 

@@ -1,15 +1,15 @@
 ---
-title: BNB dijelaskan sederhana: koin Binance, pembakaran tiap kuartal menuju 100 juta dan rekor $1.370
+title: BNB dijelaskan sederhana: koin Binance sejak 2017, pembakaran tiap kuartal menuju 100 juta dan apa yang menggerakkan harganya
 description: BNB dengan bahasa sederhana: cara kerja koin Binance dan BNB Chain, kenapa dibakar tiap kuartal, rekor dan kejatuhan, risiko utama, tips untuk pembeli rutin.
 date: 2026-11-22
 kind: analysis
 ---
-**BNB** adalah koin milik Binance, bursa kripto terbesar di dunia, sekaligus koin BNB Chain, blockchain yang dibangun di sekelilingnya. Orang memakainya untuk membayar biaya trading yang lebih murah di Binance dan untuk membayar transaksi di BNB Chain. Nilainya sekitar $71 miliar pada November 2026, termasuk lima aset kripto terbesar.
+**BNB** adalah koin milik Binance, bursa kripto terbesar di dunia, sekaligus koin BNB Chain, blockchain yang dibangun di sekelilingnya. Orang memakainya untuk membayar biaya trading yang lebih murah di Binance dan untuk membayar transaksi di BNB Chain. Saat ini nilai pasar BNB {{mcap:bnb}} ({{rank:bnb}} di antara mata uang kripto).
 
 > **Poin penting**
 > - BNB dimulai pada Juli 2017 dengan 200 juta koin; pembakaran rutin bertujuan memangkas pasokannya menjadi 100 juta.
 > - Pembakaran kuartalan ke-37 pada Oktober 2026 menghapus sekitar 1,65 juta BNB senilai lebih dari $1 miliar.
-> - Harga rekor sejauh ini $1.369,99 (13 Oktober 2025); pada November 2026 BNB diperdagangkan lebih dari 55% di bawahnya.
+> - Rekor tertingginya {{ath:bnb}} ({{athd:bnb}}); kini harganya {{fromath:bnb}} dari rekor itu.
 > - Nasibnya sangat terikat pada satu perusahaan: Binance dan pendirinya, Changpeng Zhao (CZ).
 
 ## Cara kerjanya
@@ -23,7 +23,8 @@ BNB berguna dalam tiga hal. Di Binance, BNB memangkas biaya trading dan membuka 
 ## Angka saat ini
 
 - Harga hari ini: {{price:bnb}}
-- Rekor tertinggi: {{ath:bnb}} ({{athd:bnb}})
+- Rekor tertinggi: {{ath:bnb}} ({{athd:bnb}}), {{fromath:bnb}} dari rekor itu
+- Nilai pasar: {{mcap:bnb}} ({{rank:bnb}} di antara mata uang kripto)
 - Perubahan harga dalam 12 bulan: {{chg1y:bnb}}
 - $10 per hari selama 5 tahun: {{dca:bnb:5}} dari {{dcainv:5}} yang diinvestasikan ({{dcaroi:bnb:5}})
 

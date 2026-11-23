@@ -1,15 +1,15 @@
 ---
-title: BNB spiegato semplice: la moneta di Binance, burn trimestrali verso 100 milioni e un record di 1.370 $
+title: BNB spiegato semplice: la moneta di Binance dal 2017, burn trimestrali verso 100 milioni e cosa muove il prezzo
 description: BNB in parole semplici: come funzionano la moneta di Binance e BNB Chain, perché ogni trimestre si bruciano token, record, crolli, rischi e cosa sapere.
 date: 2026-11-22
 kind: analysis
 ---
-**BNB** è la moneta di Binance, il più grande exchange di criptovalute al mondo, e di BNB Chain, la blockchain costruita intorno a essa. Si usa per pagare commissioni di trading più basse su Binance e per pagare le transazioni su BNB Chain. A novembre 2026 valeva circa 71 miliardi di dollari, uno dei cinque maggiori cripto-asset.
+**BNB** è la moneta di Binance, il più grande exchange di criptovalute al mondo, e di BNB Chain, la blockchain costruita intorno a essa. Si usa per pagare commissioni di trading più basse su Binance e per pagare le transazioni su BNB Chain. Oggi BNB vale {{mcap:bnb}} ({{rank:bnb}} tra le criptovalute).
 
 > **In sintesi**
 > - BNB è nato a luglio 2017 con 200 milioni di monete; i burn periodici puntano a ridurre l'offerta a 100 milioni.
 > - Il 37° burn trimestrale, a ottobre 2026, ha eliminato circa 1,65 milioni di BNB, per un valore di oltre 1 miliardo di dollari.
-> - Il prezzo record finora è 1.369,99 $ (13 ottobre 2025); a novembre 2026 BNB quotava oltre il 55% sotto quel livello.
+> - Il massimo storico è {{ath:bnb}} ({{athd:bnb}}); oggi il prezzo è a {{fromath:bnb}} da lì.
 > - Il suo destino è strettamente legato a una sola azienda: Binance e il suo fondatore Changpeng Zhao (CZ).
 
 ## Come funziona
@@ -23,7 +23,8 @@ BNB è utile in tre modi. Su Binance riduce le commissioni di trading e dà acce
 ## I numeri di oggi
 
 - Prezzo oggi: {{price:bnb}}
-- Record: {{ath:bnb}} ({{athd:bnb}})
+- Massimo storico: {{ath:bnb}} ({{athd:bnb}}), {{fromath:bnb}} da lì
+- Valore di mercato: {{mcap:bnb}} ({{rank:bnb}} tra le criptovalute)
 - Variazione del prezzo in 12 mesi: {{chg1y:bnb}}
 - 10 $ al giorno per 5 anni: {{dca:bnb:5}} con {{dcainv:5}} investiti ({{dcaroi:bnb:5}})
 

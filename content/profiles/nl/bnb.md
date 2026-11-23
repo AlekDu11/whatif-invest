@@ -1,15 +1,15 @@
 ---
-title: BNB eenvoudig uitgelegd: de munt van Binance, kwartaalburns richting 100 miljoen en een record van $1.370
+title: BNB eenvoudig uitgelegd: de munt van Binance sinds 2017, kwartaalverbrandingen richting 100 miljoen en wat de koers beweegt
 description: BNB in gewone taal: hoe de munt van Binance en BNB Chain werken, waarom elk kwartaal tokens worden verbrand, record, crashes, risico's en tips voor kopers.
 date: 2026-11-22
 kind: analysis
 ---
-**BNB** is de munt van Binance, 's werelds grootste cryptobeurs, en van BNB Chain, de blockchain die eromheen is gebouwd. Je gebruikt hem om lagere handelskosten op Binance te betalen en om transacties op BNB Chain te betalen. In november 2026 was BNB ongeveer $71 miljard waard, een van de vijf grootste crypto-activa.
+**BNB** is de munt van Binance, 's werelds grootste cryptobeurs, en van BNB Chain, de blockchain die eromheen is gebouwd. Je gebruikt hem om lagere handelskosten op Binance te betalen en om transacties op BNB Chain te betalen. Vandaag is BNB {{mcap:bnb}} waard ({{rank:bnb}} onder de cryptomunten).
 
 > **Belangrijkste punten**
 > - BNB begon in juli 2017 met 200 miljoen munten; regelmatige burns moeten het aanbod terugbrengen naar 100 miljoen.
 > - De 37e kwartaalburn in oktober 2026 haalde ongeveer 1,65 miljoen BNB uit omloop, ter waarde van meer dan $1 miljard.
-> - De recordkoers tot nu toe is $1.369,99 (13 oktober 2025); in november 2026 noteerde BNB meer dan 55% lager.
+> - De recordkoers is {{ath:bnb}} ({{athd:bnb}}); vandaag staat de koers {{fromath:bnb}} daarvan af.
 > - Het lot van de munt hangt nauw samen met één bedrijf: Binance en oprichter Changpeng Zhao (CZ).
 
 ## Hoe het werkt
@@ -23,7 +23,8 @@ BNB is op drie manieren nuttig. Op Binance verlaagt hij de handelskosten en geef
 ## De cijfers nu
 
 - Koers nu: {{price:bnb}}
-- Recordkoers: {{ath:bnb}} ({{athd:bnb}})
+- Recordkoers: {{ath:bnb}} ({{athd:bnb}}), {{fromath:bnb}} daarvan af
+- Marktwaarde: {{mcap:bnb}} ({{rank:bnb}} onder de cryptomunten)
 - Koersverandering over 12 maanden: {{chg1y:bnb}}
 - $10 per dag gedurende 5 jaar: {{dca:bnb:5}} bij {{dcainv:5}} ingelegd ({{dcaroi:bnb:5}})
 

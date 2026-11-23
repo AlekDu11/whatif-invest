@@ -1,15 +1,15 @@
 ---
-title: BNB einfach erklärt: der Coin von Binance, vierteljährliche Burns Richtung 100 Millionen und ein Rekord von 1.370 $
+title: BNB einfach erklärt: die Binance-Coin seit 2017, Quartals-Burns bis 100 Millionen und was den Kurs bewegt
 description: BNB verständlich erklärt: wie Binance-Coin und BNB Chain funktionieren, warum jedes Quartal Token verbrannt werden, Rekord, Crashs, Risiken, Sparplan-Tipps.
 date: 2026-11-22
 kind: analysis
 ---
-**BNB** ist der Coin von Binance, der größten Kryptobörse der Welt, und der BNB Chain, der Blockchain, die um ihn herum entstanden ist. Mit BNB zahlt man niedrigere Handelsgebühren bei Binance und Transaktionen auf der BNB Chain. Im November 2026 war er rund 71 Milliarden Dollar wert und damit eines der fünf größten Krypto-Assets.
+**BNB** ist der Coin von Binance, der größten Kryptobörse der Welt, und der BNB Chain, der Blockchain, die um ihn herum entstanden ist. Mit BNB zahlt man niedrigere Handelsgebühren bei Binance und Transaktionen auf der BNB Chain. Heute ist BNB {{mcap:bnb}} wert ({{rank:bnb}} unter den Kryptowährungen).
 
 > **Das Wichtigste**
 > - BNB startete im Juli 2017 mit 200 Millionen Coins; regelmäßige Burns sollen das Angebot auf 100 Millionen senken.
 > - Der 37. vierteljährliche Burn im Oktober 2026 vernichtete rund 1,65 Millionen BNB im Wert von über 1 Milliarde Dollar.
-> - Der bisherige Rekordkurs liegt bei 1.369,99 $ (13. Oktober 2025); im November 2026 notierte BNB mehr als 55 % darunter.
+> - Das Rekordhoch liegt bei {{ath:bnb}} ({{athd:bnb}}); heute steht der Kurs {{fromath:bnb}} darunter.
 > - Sein Schicksal hängt eng an einem einzigen Unternehmen: Binance und seinem Gründer Changpeng Zhao (CZ).
 
 ## So funktioniert er
@@ -23,7 +23,8 @@ BNB ist auf drei Arten nützlich. Bei Binance senkt er die Handelsgebühren und 
 ## Die Zahlen jetzt
 
 - Kurs heute: {{price:bnb}}
-- Rekordhoch: {{ath:bnb}} ({{athd:bnb}})
+- Rekordhoch: {{ath:bnb}} ({{athd:bnb}}), {{fromath:bnb}} davon entfernt
+- Marktwert: {{mcap:bnb}} ({{rank:bnb}} unter den Kryptowährungen)
 - Kursveränderung in 12 Monaten: {{chg1y:bnb}}
 - 10 $ am Tag über 5 Jahre: {{dca:bnb:5}} bei {{dcainv:5}} Einsatz ({{dcaroi:bnb:5}})
 

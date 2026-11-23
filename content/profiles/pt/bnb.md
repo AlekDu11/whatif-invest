@@ -1,15 +1,15 @@
 ---
-title: BNB explicado de forma simples: a moeda da Binance, queimas trimestrais rumo a 100 milhões e recorde de US$ 1.370
+title: BNB explicado de forma simples: a moeda da Binance desde 2017, queimas trimestrais rumo a 100 milhões e o que move o preço
 description: BNB em linguagem simples: como funcionam a moeda da Binance e a BNB Chain, por que há queimas a cada trimestre, recorde, quedas, riscos e o que saber.
 date: 2026-11-22
 kind: analysis
 ---
-**BNB** é a moeda da Binance, a maior corretora de criptomoedas do mundo, e da BNB Chain, a blockchain construída em torno dela. As pessoas a usam para pagar taxas de negociação menores na Binance e para pagar transações na BNB Chain. Em novembro de 2026 valia cerca de US$ 71 bilhões, um dos cinco maiores criptoativos.
+**BNB** é a moeda da Binance, a maior corretora de criptomoedas do mundo, e da BNB Chain, a blockchain construída em torno dela. As pessoas a usam para pagar taxas de negociação menores na Binance e para pagar transações na BNB Chain. Hoje, BNB vale {{mcap:bnb}} ({{rank:bnb}} entre as criptomoedas).
 
 > **Pontos principais**
 > - O BNB surgiu em julho de 2017 com 200 milhões de moedas; queimas regulares buscam reduzir a oferta para 100 milhões.
 > - A 37ª queima trimestral, em outubro de 2026, retirou cerca de 1,65 milhão de BNB, no valor de mais de US$ 1 bilhão.
-> - O preço recorde até agora é US$ 1.369,99 (13 de outubro de 2025); em novembro de 2026 o BNB era negociado mais de 55% abaixo disso.
+> - A máxima histórica é {{ath:bnb}} ({{athd:bnb}}); hoje o preço está {{fromath:bnb}} abaixo dela.
 > - O seu destino está muito ligado a uma única empresa: a Binance e seu fundador, Changpeng Zhao (CZ).
 
 ## Como funciona
@@ -23,7 +23,8 @@ O BNB é útil de três formas. Na Binance, reduz as taxas de negociação e dá
 ## Os números agora
 
 - Preço hoje: {{price:bnb}}
-- Recorde: {{ath:bnb}} ({{athd:bnb}})
+- Máxima histórica: {{ath:bnb}} ({{athd:bnb}}), {{fromath:bnb}} desde ela
+- Valor de mercado: {{mcap:bnb}} ({{rank:bnb}} entre as criptomoedas)
 - Variação do preço em 12 meses: {{chg1y:bnb}}
 - US$ 10 por dia durante 5 anos: {{dca:bnb:5}} com {{dcainv:5}} investidos ({{dcaroi:bnb:5}})
 

@@ -1,15 +1,15 @@
 ---
-title: BNB sade dille: Binance'in coini, 100 milyona doğru üç aylık yakımlar ve 1.370 $ rekor
+title: BNB sade dille: 2017'den beri Binance'in coini, 100 milyona doğru üç aylık yakımlar ve fiyatı ne hareket ettiriyor
 description: BNB sade dille: Binance'in coini ve BNB Chain nasıl çalışır, tokenler neden her çeyrek yakılır, rekor ve çöküşler, riskler ve düzenli alıcılar için bilgiler.
 date: 2026-11-22
 kind: analysis
 ---
-**BNB**, dünyanın en büyük kripto borsası Binance'in ve onun etrafında kurulan blokzincir BNB Chain'in coinidir. İnsanlar onu Binance'te daha düşük işlem ücreti ödemek ve BNB Chain'deki işlemlerin bedelini karşılamak için kullanır. Kasım 2026'da değeri yaklaşık 71 milyar dolardı; en büyük beş kripto varlıktan biri.
+**BNB**, dünyanın en büyük kripto borsası Binance'in ve onun etrafında kurulan blokzincir BNB Chain'in coinidir. İnsanlar onu Binance'te daha düşük işlem ücreti ödemek ve BNB Chain'deki işlemlerin bedelini karşılamak için kullanır. BNB bugün {{mcap:bnb}} piyasa değerine sahip (kripto paralar arasında {{rank:bnb}}).
 
 > **Öne çıkanlar**
 > - BNB Temmuz 2017'de 200 milyon coinle başladı; düzenli yakımlarla arzın 100 milyona indirilmesi hedefleniyor.
 > - Ekim 2026'daki 37. üç aylık yakım, değeri 1 milyar doları aşan yaklaşık 1,65 milyon BNB'yi dolaşımdan çıkardı.
-> - Şimdiye kadarki rekor fiyat 1.369,99 $ (13 Ekim 2025); Kasım 2026'da BNB bunun %55'ten fazla altında işlem görüyordu.
+> - Rekor fiyatı {{ath:bnb}} ({{athd:bnb}}); bugün fiyat ondan {{fromath:bnb}} uzakta.
 > - Kaderi tek bir şirkete sıkı sıkıya bağlı: Binance ve kurucusu Changpeng Zhao (CZ).
 
 ## Nasıl çalışır
@@ -23,7 +23,8 @@ BNB üç açıdan işe yarar. Binance'te işlem ücretlerini düşürür, token 
 ## Şu anki rakamlar
 
 - Bugünkü fiyat: {{price:bnb}}
-- Rekor: {{ath:bnb}} ({{athd:bnb}})
+- Rekor: {{ath:bnb}} ({{athd:bnb}}), ondan {{fromath:bnb}}
+- Piyasa değeri: {{mcap:bnb}} (kripto paralar arasında {{rank:bnb}})
 - 12 aylık fiyat değişimi: {{chg1y:bnb}}
 - 5 yıl boyunca günde 10 $: {{dca:bnb:5}}, yatırılan {{dcainv:5}} ({{dcaroi:bnb:5}})
 

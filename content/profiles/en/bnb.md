@@ -1,15 +1,15 @@
 ---
-title: BNB explained: Binance's coin, quarterly burns toward 100 million and a $1,370 record
+title: BNB explained: Binance's coin since 2017, quarterly burns toward 100 million and what moves the price
 description: BNB in plain language: how Binance's coin and BNB Chain work, why tokens are burned every quarter, its record and crashes, the main risks and what regular buyers should know.
 date: 2026-11-22
 kind: analysis
 ---
-**BNB** is the coin of Binance, the world's largest crypto exchange, and of BNB Chain, the blockchain built around it. People use it to pay lower trading fees on Binance and to pay for transactions on BNB Chain. It was worth about $71 billion in November 2026, one of the five largest crypto assets.
+**BNB** is the coin of Binance, the world's largest crypto exchange, and of BNB Chain, the blockchain built around it. People use it to pay lower trading fees on Binance and to pay for transactions on BNB Chain. BNB is worth {{mcap:bnb}} today ({{rank:bnb}} among cryptocurrencies).
 
 > **Key takeaways**
 > - BNB started in July 2017 with 200 million coins; regular burns aim to cut the supply to 100 million.
 > - The 37th quarterly burn in October 2026 removed about 1.65 million BNB, worth over $1 billion.
-> - The record price so far is $1,369.99 (13 October 2025); in November 2026 BNB traded more than 55% below it.
+> - Its record high is {{ath:bnb}} ({{athd:bnb}}); today the price is {{fromath:bnb}} from it.
 > - Its fate is closely tied to one company: Binance and its founder Changpeng Zhao (CZ).
 
 ## How it works
@@ -23,7 +23,8 @@ BNB is useful in three ways. On Binance it cuts trading fees and gives access to
 ## The numbers right now
 
 - Price today: {{price:bnb}}
-- Record high: {{ath:bnb}} ({{athd:bnb}})
+- Record high: {{ath:bnb}} ({{athd:bnb}}), {{fromath:bnb}} from it
+- Market value: {{mcap:bnb}} ({{rank:bnb}} among cryptocurrencies)
 - Price change over 12 months: {{chg1y:bnb}}
 - $10 a day for 5 years: {{dca:bnb:5}} from {{dcainv:5}} invested ({{dcaroi:bnb:5}})
 

@@ -1,15 +1,15 @@
 ---
-title: BNB giải thích dễ hiểu: đồng coin của Binance, đốt coin mỗi quý hướng tới 100 triệu và kỷ lục 1.370 USD
+title: BNB giải thích dễ hiểu: đồng coin của Binance từ 2017, đốt coin hằng quý về mốc 100 triệu và điều gì làm giá biến động
 description: BNB dễ hiểu: coin của Binance và BNB Chain hoạt động ra sao, vì sao đốt coin mỗi quý, kỷ lục và những cú sập, rủi ro chính, điều người mua định kỳ cần biết.
 date: 2026-11-22
 kind: analysis
 ---
-**BNB** là đồng coin của Binance, sàn giao dịch tiền mã hóa lớn nhất thế giới, đồng thời là coin của BNB Chain, blockchain được xây dựng xoay quanh nó. Mọi người dùng BNB để được giảm phí giao dịch trên Binance và để trả phí giao dịch trên BNB Chain. Vào tháng 11/2026, BNB trị giá khoảng 71 tỷ USD, nằm trong nhóm năm tài sản tiền mã hóa lớn nhất.
+**BNB** là đồng coin của Binance, sàn giao dịch tiền mã hóa lớn nhất thế giới, đồng thời là coin của BNB Chain, blockchain được xây dựng xoay quanh nó. Mọi người dùng BNB để được giảm phí giao dịch trên Binance và để trả phí giao dịch trên BNB Chain. Hiện BNB có vốn hóa {{mcap:bnb}} ({{rank:bnb}} trong các đồng tiền mã hóa).
 
 > **Điểm chính**
 > - BNB ra đời tháng 7/2017 với 200 triệu coin; các đợt đốt định kỳ nhằm giảm nguồn cung xuống còn 100 triệu.
 > - Đợt đốt quý lần thứ 37 vào tháng 10/2026 đã loại bỏ khoảng 1,65 triệu BNB, trị giá hơn 1 tỷ USD.
-> - Đỉnh kỷ lục đến nay là 1.369,99 USD (13/10/2025); vào tháng 11/2026 BNB giao dịch thấp hơn mức đó hơn 55%.
+> - Đỉnh kỷ lục là {{ath:bnb}} ({{athd:bnb}}); giá hiện tại cách đỉnh {{fromath:bnb}}.
 > - Số phận của BNB gắn chặt với một công ty: Binance và nhà sáng lập Changpeng Zhao (CZ).
 
 ## Cách hoạt động
@@ -23,7 +23,8 @@ BNB hữu ích theo ba cách. Trên Binance, BNB giúp giảm phí giao dịch v
 ## Các con số hiện tại
 
 - Giá hôm nay: {{price:bnb}}
-- Đỉnh kỷ lục: {{ath:bnb}} ({{athd:bnb}})
+- Đỉnh kỷ lục: {{ath:bnb}} ({{athd:bnb}}), cách đỉnh {{fromath:bnb}}
+- Vốn hóa thị trường: {{mcap:bnb}} ({{rank:bnb}} trong các đồng tiền mã hóa)
 - Biến động giá trong 12 tháng: {{chg1y:bnb}}
 - 10 USD mỗi ngày trong 5 năm: {{dca:bnb:5}} từ {{dcainv:5}} đã đầu tư ({{dcaroi:bnb:5}})
 

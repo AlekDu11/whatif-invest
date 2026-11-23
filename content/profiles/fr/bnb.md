@@ -1,15 +1,15 @@
 ---
-title: BNB expliqué simplement : la crypto de Binance, des burns trimestriels vers 100 millions et un record à 1 370 $
+title: BNB expliqué simplement : la crypto de Binance depuis 2017, des destructions trimestrielles vers 100 millions et ce qui fait bouger le cours
 description: Le BNB en clair : la crypto de Binance et la BNB Chain, pourquoi des jetons sont brûlés chaque trimestre, record, krachs, risques et conseils aux acheteurs.
 date: 2026-11-22
 kind: analysis
 ---
-Le **BNB** est la cryptomonnaie de Binance, la plus grande plateforme d'échange crypto au monde, et de la BNB Chain, la blockchain construite autour d'elle. On s'en sert pour payer des frais de trading réduits sur Binance et pour régler les transactions sur la BNB Chain. En novembre 2026, il valait environ 71 milliards de dollars, ce qui en faisait l'un des cinq plus gros actifs crypto.
+Le **BNB** est la cryptomonnaie de Binance, la plus grande plateforme d'échange crypto au monde, et de la BNB Chain, la blockchain construite autour d'elle. On s'en sert pour payer des frais de trading réduits sur Binance et pour régler les transactions sur la BNB Chain. Aujourd'hui, BNB vaut {{mcap:bnb}} ({{rank:bnb}} parmi les cryptomonnaies).
 
 > **À retenir**
 > - Le BNB a été lancé en juillet 2017 avec 200 millions de jetons ; des burns réguliers visent à ramener l'offre à 100 millions.
 > - Le 37e burn trimestriel, en octobre 2026, a détruit environ 1,65 million de BNB, d'une valeur de plus d'un milliard de dollars.
-> - Le record à ce jour est de 1 369,99 $ (13 octobre 2025) ; en novembre 2026, le BNB s'échangeait plus de 55 % en dessous.
+> - Son record est de {{ath:bnb}} ({{athd:bnb}}) ; aujourd'hui, le cours est à {{fromath:bnb}} de ce niveau.
 > - Son sort est étroitement lié à une seule entreprise : Binance et son fondateur Changpeng Zhao (CZ).
 
 ## Comment il fonctionne
@@ -23,7 +23,8 @@ Le BNB sert à trois choses. Sur Binance, il réduit les frais de trading et don
 ## Les chiffres actuels
 
 - Cours actuel : {{price:bnb}}
-- Record : {{ath:bnb}} ({{athd:bnb}})
+- Record : {{ath:bnb}} ({{athd:bnb}}), {{fromath:bnb}} depuis
+- Valeur de marché : {{mcap:bnb}} ({{rank:bnb}} parmi les cryptomonnaies)
 - Variation du cours sur 12 mois: {{chg1y:bnb}}
 - 10 $ par jour pendant 5 ans : {{dca:bnb:5}} pour {{dcainv:5}} investis ({{dcaroi:bnb:5}})
 

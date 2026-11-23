@@ -1,15 +1,15 @@
 ---
-title: BNB sa simpleng paliwanag: coin ng Binance, quarterly burn patungong 100 milyon at record na $1,370
+title: BNB sa simpleng paliwanag: ang coin ng Binance mula 2017, quarterly burn patungong 100 milyon at ano ang nagpapagalaw sa presyo
 description: BNB sa simpleng salita: ang coin ng Binance at BNB Chain, bakit may burn kada quarter, mga record at pagbagsak, panganib at tips sa regular na bumibili.
 date: 2026-11-22
 kind: analysis
 ---
-Ang **BNB** ang coin ng Binance, ang pinakamalaking crypto exchange sa mundo, at ng BNB Chain, ang blockchain na binuo sa paligid nito. Ginagamit ito para makakuha ng mas mababang trading fee sa Binance at pambayad sa mga transaksyon sa BNB Chain. Mga $71 bilyon ang halaga nito noong Nobyembre 2026, kabilang sa limang pinakamalaking crypto asset.
+Ang **BNB** ang coin ng Binance, ang pinakamalaking crypto exchange sa mundo, at ng BNB Chain, ang blockchain na binuo sa paligid nito. Ginagamit ito para makakuha ng mas mababang trading fee sa Binance at pambayad sa mga transaksyon sa BNB Chain. Ngayon, {{mcap:bnb}} ang halaga ng BNB sa merkado ({{rank:bnb}} sa mga cryptocurrency).
 
 > **Mahahalagang punto**
 > - Nagsimula ang BNB noong Hulyo 2017 na may 200 milyong coin; layunin ng regular na burn na ibaba ang supply sa 100 milyon.
 > - Inalis ng ika-37 quarterly burn noong Oktubre 2026 ang mga 1.65 milyong BNB, na nagkakahalaga ng mahigit $1 bilyon.
-> - Ang pinakamataas na presyo sa ngayon ay $1,369.99 (13 Oktubre 2025); noong Nobyembre 2026, mahigit 55% ang ibinaba ng BNB mula roon.
+> - Ang pinakamataas na presyo nito ay {{ath:bnb}} ({{athd:bnb}}); ngayon, {{fromath:bnb}} ang presyo mula roon.
 > - Malapit na nakatali ang kapalaran nito sa iisang kumpanya: ang Binance at ang founder nitong si Changpeng Zhao (CZ).
 
 ## Paano ito gumagana
@@ -23,7 +23,8 @@ May tatlong gamit ang BNB. Sa Binance, binababa nito ang trading fee at nagbibig
 ## Ang mga numero ngayon
 
 - Presyo ngayon: {{price:bnb}}
-- Pinakamataas na presyo: {{ath:bnb}} ({{athd:bnb}})
+- Pinakamataas na presyo: {{ath:bnb}} ({{athd:bnb}}), {{fromath:bnb}} mula roon
+- Halaga sa merkado: {{mcap:bnb}} ({{rank:bnb}} sa mga cryptocurrency)
 - Pagbabago ng presyo sa loob ng 12 buwan: {{chg1y:bnb}}
 - $10 kada araw sa loob ng 5 taon: {{dca:bnb:5}} mula sa {{dcainv:5}} na inilagay ({{dcaroi:bnb:5}})
 
