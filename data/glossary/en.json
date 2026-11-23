@@ -1,0 +1,102 @@
+[
+{
+"id": "memecoin",
+"t": "Memecoin",
+"d": "A crypto token built around a joke, an animal, a person or an internet trend. It usually has no product or income behind it, so its price moves only on attention and buying and selling."
+},
+{
+"id": "contract-address",
+"t": "Contract address (CA)",
+"d": "The unique address of a token on its blockchain. Names and tickers can be copied by anyone — the contract address cannot, so always check it before buying."
+},
+{
+"id": "dex",
+"t": "DEX vs CEX",
+"d": "A DEX (decentralized exchange, like Raydium or PancakeSwap) lets you swap tokens straight from your own wallet. A CEX (centralized exchange, like Binance) holds your money for you and lists only tokens it has checked."
+},
+{
+"id": "liquidity",
+"t": "Liquidity",
+"d": "The money sitting in a token's trading pool. With little liquidity, even a small sale moves the price a lot and you may not be able to sell at a fair price."
+},
+{
+"id": "liquidity-lock",
+"t": "Liquidity lock / burn",
+"d": "Locking or burning the pool's liquidity means the creator cannot pull it out. Unlocked liquidity is the classic way rug pulls happen."
+},
+{
+"id": "rug-pull",
+"t": "Rug pull",
+"d": "When the creators or insiders suddenly pull out the pool's money or dump their coins, so the price falls to almost zero and buyers cannot get out."
+},
+{
+"id": "honeypot",
+"t": "Honeypot",
+"d": "A scam token you can buy but cannot sell, because the contract blocks or heavily taxes sales. Always check that other holders have actually sold."
+},
+{
+"id": "bonding-curve",
+"t": "Bonding curve",
+"d": "On launchpads such as pump.fun, a new token is first sold on a price curve: every purchase pushes the price up. When enough money comes in, the token «graduates»."
+},
+{
+"id": "graduation",
+"t": "Graduation (migration to a DEX)",
+"d": "The moment a launchpad token fills its bonding curve and moves to a real DEX pool. Only a few percent of new tokens ever get there."
+},
+{
+"id": "sniper",
+"t": "Sniper",
+"d": "A bot or trader that buys a token in the very first seconds after launch, often to sell to later buyers at a higher price."
+},
+{
+"id": "bundler",
+"t": "Bundler",
+"d": "A creator who buys a large share of their own token from many wallets at launch to look like many different holders. A warning sign of a planned dump."
+},
+{
+"id": "dev-wallet",
+"t": "Dev wallet",
+"d": "The wallet of the token's creator. If it holds a big share of the supply, the creator can crash the price at any time by selling."
+},
+{
+"id": "top-10-holders",
+"t": "Top-10 holders",
+"d": "The share of all coins held by the 10 biggest wallets. The higher it is (for example over 30%), the easier it is for a few people to crash the price."
+},
+{
+"id": "kol",
+"t": "KOL",
+"d": "«Key opinion leader» — an influencer with a big audience. KOLs are often paid to promote tokens, sometimes after buying them cheap themselves."
+},
+{
+"id": "pump-and-dump",
+"t": "Pump and dump",
+"d": "A group pushes the price up with hype and buying, then sells to the newcomers at the top. Latecomers are left holding the losses."
+},
+{
+"id": "slippage",
+"t": "Slippage",
+"d": "The difference between the price you see and the price you actually get. In thin memecoin pools it can be 5–20% or more on a single trade."
+},
+{
+"id": "market-cap-fdv",
+"t": "Market cap vs FDV",
+"d": "Market cap is price × coins in circulation. FDV (fully diluted value) is price × all coins that will ever exist. A big gap means many coins can still be unlocked and sold."
+},
+{
+"id": "dyor",
+"t": "DYOR",
+"d": "«Do your own research». A reminder that nobody — not an influencer, not a website — is responsible for your money but you."
+},
+{
+"id": "ape",
+"t": "Ape / aping in",
+"d": "Buying a token quickly on hype without checking it. The fastest way to lose money on memecoins."
+},
+{
+"id": "paper-diamond-hands",
+"t": "Paper hands / diamond hands",
+"d": "Slang for people who sell at the first drop (paper hands) or hold through any crash (diamond hands). Neither is a strategy by itself."
+}
+]

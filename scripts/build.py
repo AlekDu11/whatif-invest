@@ -50,6 +50,7 @@ from i18n_ks import KS, SECT  # noqa: E402
 from i18n_offer import OFFER_TGW  # noqa: E402
 from i18n_lc import LC, LC_CT  # noqa: E402
 from i18n_mem6 import MEM6  # noqa: E402
+from i18n_mem7 import MEM7  # noqa: E402
 from i18n_lcw import LCW  # noqa: E402
 from i18n_xc import XC  # noqa: E402
 from i18n_cv import CV, CV_CCY  # noqa: E402
@@ -243,6 +244,8 @@ def has_page(lang, aid):
         return True
     if aid in ('ai', 'me', 'memes', 'world-assets', 'activities', 'portfolios', 'largest-companies', 'calculators', 'memes/token') or (aid or '').startswith(('portfolios/', 'largest-companies/')):
         return True
+    if aid == 'memes/glossary':
+        return lang in GLOSS
     if aid == 'partners':
         return lang in PARTNER_TXT
     if aid == 'buy-stocks-ukraine' or aid == 'ovdp/brokers':
@@ -4063,7 +4066,10 @@ def memes_page(lang, ver):
     tl5 = dict(trend=('🔥', t['t_trend']), gain=('🚀', t['t_gain']), most=('👥', MOST[lang]), done=('✅', M4['t_done']), soon=('⏳', M4['t_soon']), new=('🌱', M4['t_new']), fav=('★', M6['fav']))
     tabs5 = ''.join(f'<button data-v="{k}"{" class=on" if k == "trend" else ""}>{ic} {esc(lb)}</button>' for k, (ic, lb) in tl5.items())
     nets5 = ''.join(f'<button data-n="{k}"{" class=on" if k == "all" else ""}>{esc(v)}</button>' for k, v in (('all', t['all']), ('solana', 'Solana'), ('bsc', 'BNB Chain'), ('base', 'Base')))
+    M7 = MEM7[lang]
     body = (f'<div class="dexhero"><h1>{esc(t["h1"])}</h1><span class="livebadge"><i></i>{esc(t["upd"])}</span></div>'
+            f'<div class="mpulse" id="mpulse" hidden><b class="mph">{esc(M7["pulse_h"])}</b><span><b data-k="rate">—</b> {esc(M7["p_rate"])}</span>'
+            f'<span><b data-k="done24">—</b> {esc(M7["p_done"])}</span><span><b data-k="climb">—</b> {esc(M7["p_climb"])}</span></div>'
             f'<section class="section mlist"><div class="seg mtabs" id="mtab">{tabs5}</div>'
             f'<div class="mbar"><div class="seg mnets" id="mnet">{nets5}</div>'
             f'<label class="msearch"><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2"/></svg>'
@@ -4073,9 +4079,31 @@ def memes_page(lang, ver):
             + f'</select></label></div>'
             f'<div class="mrows card" id="mrows"><div class="empty">…</div></div>'
             f'<p class="muted mfine">{esc(t["disc"])} · Binance Web3</p></section>'
-            f'{learn_blk}{check_blk}')
-    cfg = dict(memes5=1, memes=dict(m6=M6, tok=url(lang, 'memes/token'), h=dict(name=u['name'], price=u['price'], mc=t['mc'], vol=t['vol'], liq=t['liq'], hold=M4['hold'], age=t['age']), t=dict(trade=t['trade'], new=t['new'], lowliq=t['lowliq'], hot=t['hot'], net=t['net'], hold=M4['hold'], top10=M4['top10'], curve=M4['curve'], mcs=t['mc'], vols=t['vol']), l5=MEM5[lang]))
+            f'<section class="section"><div class="mx2"><div class="card mlst"><h2>🆕 {esc(M7["list_h"])}</h2><p class="muted">{esc(M7["list_d"])}</p><div id="mlistings"><div class="empty">…</div></div></div>'
+            f'<div class="card mnarr"><h2>🧭 {esc(M7["narr_h"])}</h2><p class="muted">{esc(M7["narr_d"])}</p><div id="mnarr"><div class="empty">…</div></div>'
+            f'<small class="muted">CoinGecko</small></div></div></section>'
+            f'{learn_blk}'
+            f'<a class="card mgl" href="{url(lang if lang in GLOSS else "en", "memes/glossary")}"><span>📚</span><div><b>{esc(M7["gloss_h"])}</b><small class="muted">{esc(M7["gloss_d"])}</small></div><span class="calc">→</span></a>'
+            f'{check_blk}')
+    cfg = dict(memes5=1, memes=dict(m6=M6, m7=M7, tok=url(lang, 'memes/token'), h=dict(name=u['name'], price=u['price'], mc=t['mc'], vol=t['vol'], liq=t['liq'], hold=M4['hold'], age=t['age']), t=dict(trade=t['trade'], new=t['new'], lowliq=t['lowliq'], hot=t['hot'], net=t['net'], hold=M4['hold'], top10=M4['top10'], curve=M4['curve'], mcs=t['mc'], vols=t['vol']), l5=MEM5[lang]))
     return shell(lang, 'memes', f'{t["h1"]} | {BRAND}', t['d'], body, cfg, ver)
+
+
+def glossary_page(lang, ver):
+    """/memes/glossary/: memecoin words in plain language (data/glossary/<lang>.json). Languages without their own file show the English
+    text with noindex until the Learn task translates it."""
+    M7, t = MEM7[lang], MEM[lang]
+    own = lang in GLOSS
+    items = GLOSS.get(lang) or GLOSS.get('en') or []
+    toc = ''.join(f'<a class="chip" href="#{esc(x["id"])}">{esc(x["t"])}</a>' for x in items)
+    terms = ''.join(f'<section class="card gterm" id="{esc(x["id"])}"><h2>{esc(x["t"])}</h2><p>{esc(x["d"])}</p></section>' for x in items)
+    body = (f'<nav class="crumbs"><a href="{url(lang, "memes")}">← {esc(t["back"])}</a></nav>'
+            f'<h1>📚 {esc(M7["gloss_h"])}</h1><p class="lead">{esc(M7["gloss_d"])}</p><div class="cchips gtoc">{toc}</div>{terms}'
+            f'<a class="card mgl" href="{url(lang, "memes")}"><span>🐸</span><div><b>{esc(t["h1"])}</b></div><span class="calc">→</span></a>')
+    ld = {"@context": "https://schema.org", "@type": "DefinedTermSet", "name": M7['gloss_h'],
+          "hasDefinedTerm": [{"@type": "DefinedTerm", "name": x['t'], "description": x['d'], "url": SITE + url(lang, 'memes/glossary') + '#' + x['id']} for x in items]}
+    page = shell(lang, 'memes/glossary', f'{M7["gloss_h"]}: {", ".join(x["t"] for x in items[:4])}… | {BRAND}', M7['gloss_d'], body, {}, ver, [ld])
+    return page if own else page.replace('<link rel="canonical"', '<meta name="robots" content="noindex, follow"><link rel="canonical"', 1)
 
 
 def meme_token_page(lang, ver):
@@ -4091,6 +4119,7 @@ def meme_token_page(lang, ver):
     M3 = MEM3[lang]
     L['learn'] = dict(h=M3['start_h'], d=M3['start_d'], all=M3['all'], url=url(lang, 'learn'), ls=meme_lessons(lang)[:6])
     L['m6'] = MEM6[lang]
+    L['m7'] = MEM7[lang]
     return shell(lang, 'memes/token', f'{t["h1"]} | {BRAND}', t['d'], body, dict(dexpool=dict(t=L, list=url(lang, 'memes'))), ver).replace(
         '<link rel="canonical"', '<meta name="robots" content="noindex, follow"><link rel="canonical"', 1)
 
@@ -4512,6 +4541,8 @@ POSTS = load_posts()
 PROFILES = load_posts('profiles')   # own asset profiles: content/profiles/<lang>/<asset id>.md
 DESC = {f[:-5]: json.load(open(os.path.join(ROOT, 'data', 'desc', f), encoding='utf-8'))   # short localized descriptions: data/desc/<lang>.json {id: text}
         for f in (os.listdir(os.path.join(ROOT, 'data', 'desc')) if os.path.isdir(os.path.join(ROOT, 'data', 'desc')) else []) if f.endswith('.json')}
+GLOSS = {f[:-5]: json.load(open(os.path.join(ROOT, 'data', 'glossary', f), encoding='utf-8'))   # memecoin glossary: data/glossary/<lang>.json [{id, t, d}]
+         for f in (os.listdir(os.path.join(ROOT, 'data', 'glossary')) if os.path.isdir(os.path.join(ROOT, 'data', 'glossary')) else []) if f.endswith('.json')}
 NEWS = load_posts('news')   # own news briefs: content/news/<lang>/<slug>.md
 
 
@@ -5253,6 +5284,9 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
         write(pre + 'watchlist/index.html', watch_page(lang, ver))
         write(pre + 'memes/index.html', memes_page(lang, ver))
         write(pre + 'memes/token/index.html', meme_token_page(lang, ver))
+        write(pre + 'memes/glossary/index.html', glossary_page(lang, ver))
+        if lang in GLOSS:
+            extra_pages.append('memes/glossary')
         write(pre + 'world-assets/index.html', world_page(lang, ver))
         write(pre + 'activities/index.html', activities_page(lang, ver))
         extra_pages.append('activities')

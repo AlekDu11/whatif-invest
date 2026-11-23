@@ -1080,3 +1080,14 @@ a.badge.tagc{text-decoration:none;color:inherit;border:1px solid var(--line)}a.b
 .dptrend{margin-top:16px;padding:14px 16px}.dptrend h2{font-size:17px;margin:0 0 6px}
 @media(max-width:860px){.dpgrid{grid-template-columns:1fr}}
 .dptrend{display:block}@media(min-width:861px){.dptrend{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}.dptrend h2{grid-column:1/-1}}
+.mpulse{display:flex;flex-wrap:wrap;gap:6px 18px;align-items:baseline;margin:4px 0 14px;font-size:13px;color:var(--muted)}.mpulse b{color:var(--text)}.mpulse .mph{color:var(--text);font-weight:700;width:100%}
+.mpulse span b{font-size:16px}
+.mx2{display:grid;grid-template-columns:1fr 1fr;gap:14px}.mx2>.card{padding:16px;min-width:0}.mx2 h2{font-size:18px;margin:0 0 4px}.mx2 p.muted{font-size:13px;margin:0 0 8px}
+@media(max-width:860px){.mx2{grid-template-columns:1fr}}
+.nrw{display:grid;grid-template-columns:64px minmax(0,1fr) auto 66px;gap:10px;align-items:center;padding:7px 0;border-top:1px solid var(--line2)}.nrw:first-child{border-top:0}
+.nimg{display:flex}.nimg img{border-radius:50%;margin-right:-6px;border:2px solid var(--card);background:#fff}
+.nn{display:flex;flex-direction:column;gap:4px;min-width:0}.nn b{font-size:13.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.nn i{display:block;height:4px;border-radius:3px;background:var(--accent,#2dd4a0);opacity:.6}
+.nrw .mp{font:500 13px var(--fn)}.nrw .mc{font:700 12.5px var(--fn);text-align:right;border-radius:7px;padding:2px 6px}.nrw .mc.good{background:var(--good-soft)}.nrw .mc.bad{background:var(--bad-soft)}
+.mgl{display:flex;align-items:center;gap:14px;padding:16px;margin:14px 0;text-decoration:none;color:inherit}.mgl>span:first-child{font-size:28px}.mgl div{flex:1;display:flex;flex-direction:column;gap:2px}
+.gtoc{margin:10px 0 16px}.gterm{padding:16px 18px;margin:10px 0;scroll-margin-top:90px}.gterm h2{font-size:19px;margin:0 0 6px}.gterm p{margin:0;line-height:1.6;max-width:760px}
+.dphype{padding:14px 16px;margin:0 0 14px}.dphype p{margin:6px 0 4px;line-height:1.5}

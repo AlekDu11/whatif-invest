@@ -1067,6 +1067,35 @@ const DEXW={ key:'wi_dexw',
     const a=e.target.closest('.dxr'); if(!a) return; const r=rows.find(x=>x.a===a.dataset.a); if(r) U.keep(r) });
   load(); setInterval(()=>{ if(!wiAway()&&view!=='fav') load() },45000);
 })();
+/* ---------- memes extras (owner 2026-11-23): launch pulse, fresh exchange listings, meme narratives ---------- */
+(function(){
+  if(!PAGE.memes5||!PAGE.memes) return; const U=DEXU, M7=PAGE.memes.m7||{}, P=PAGE.memes;
+  const nf=v=>Math.round(v).toLocaleString(T.intl||'en');
+  const pu=$('#mpulse'); if(pu) U.api('dex=pulse').then(j=>{ const d=j.d||{}; if(!d.n) return;
+    $$('b[data-k]',pu).forEach(b=>{ const k=b.dataset.k; b.textContent=k==='rate'?'~'+nf(d.rate):k==='climb'?nf(d.climb):nf(d[k]||0) });
+    const c=$('b[data-k=climb]',pu); if(c&&c.nextSibling) c.nextSibling.textContent=' '+(M7.p_climb||'').replace('{n}',nf(d.n));
+    pu.hidden=false }).catch(()=>{});
+  const ago=ms=>{ const m=(Date.now()-ms)/6e4; const s=m<60?Math.round(m)+'m':m<1440?Math.round(m/60)+'h':Math.round(m/1440)+'d'; return M7.ago?`${s} ${M7.ago}`.trim():s };
+  const X=window.WIX||{}, IDXT={}; try{ (X.IDX||[]).forEach(a=>{ if(a&&a.t&&a.c==='crypto'&&!IDXT[a.t.toUpperCase()]) IDXT[a.t.toUpperCase()]=a }) }catch(e){}
+  const li=$('#mlistings'); if(li) U.api('dex=listings').then(j=>{ const l=j.d||[]; if(!l.length){ li.innerHTML=`<p class="muted">${esc(M7.none||'—')}</p>`; return }
+    li.innerHTML=l.slice(0,10).map(x=>{ const tk=(x.tk||[])[0]||'', our=IDXT[tk.toUpperCase()];
+      const href=x.n&&x.a?`${P.tok}?n=${encodeURIComponent(x.n)}&a=${encodeURIComponent(x.a)}`:our&&X.url?X.url(our.i):x.url;
+      const ext=!(x.n&&x.a)&&!our;
+      return `<a class="mrow" href="${esc(href)}"${ext?' target="_blank" rel="nofollow noopener"':''}>${x.img?U.ic({s:tk,img:x.img},28):`<span class="ic">${esc(tk.slice(0,3))}</span>`}<span class="mn"><b>${esc(tk||x.t)}</b><span>${esc(x.ex)} · ${esc(ago(x.at))}</span></span>${x.pr?`<span class="mp">${fmtPrice(x.pr)}</span><span class="mc ${cls(U.pc(x.c24))}">${fmtPct(U.pc(x.c24))}</span>`:''}</a>` }).join('') }).catch(()=>{ li.innerHTML=`<p class="muted">${esc(M7.none||'—')}</p>` });
+  const na=$('#mnarr'); if(na) U.api('dex=narr').then(j=>{ const l=j.d||[]; if(!l.length){ na.innerHTML='<p class="muted">—</p>'; return }
+    const mx=Math.max(...l.map(x=>x.mc||0));
+    na.innerHTML=l.slice(0,10).map(x=>`<div class="nrw"><span class="nimg">${(x.img||[]).map(u=>`<img src="${esc(u)}" alt="" width="20" height="20" loading="lazy" referrerpolicy="no-referrer">`).join('')}</span><span class="nn"><b>${esc(x.n)}</b><i style="width:${Math.max(3,(x.mc/mx)*100).toFixed(1)}%"></i></span><span class="mp">${U.big(x.mc)}</span><span class="mc ${cls(U.pc(x.c24))}">${fmtPct(U.pc(x.c24))}</span></div>`).join('') }).catch(()=>{ na.innerHTML='<p class="muted">—</p>' });
+})();
+/* token page: «why people are talking about it» from Binance's social hype board (English) */
+(function(){
+  if(!PAGE.dexpool) return; const L=PAGE.dexpool.t, M7=L.m7||{}, U=DEXU; if(!M7.hype_h) return;
+  const q=new URLSearchParams(location.search), n=q.get('n')||'', a=(q.get('a')||'').toLowerCase(); if(!U.BW.has(n)||!a) return;
+  U.api(`dex=hype&n=${encodeURIComponent(n)}`).then(j=>{ const h=(j.d||{})[a]; if(!h||!h.b) return;
+    const put=()=>{ const ref=$('.dpgrid'); if(!ref){ setTimeout(put,400); return } if($('.dphype')) return;
+      const el=document.createElement('div'); el.className='card dphype';
+      el.innerHTML=`<b>🗣 ${esc(M7.hype_h)}</b>${h.s?` <span class="badge">${esc(h.s)}</span>`:''}<p>${esc(h.b)}</p><small class="muted">${esc(M7.hype_en||'')}</small>`;
+      ref.parentNode.insertBefore(el,ref) }; put() }).catch(()=>{});
+})();
 /* ---------- memes «Pick of the day»: strict filter + Binance social buzz, traffic light in plain words ---------- */
 (function(){
   const box=$('#mpick'); if(!box||!PAGE.memes) return; const U=DEXU, F=PAGE.memes.l5;

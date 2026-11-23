@@ -175,9 +175,17 @@ async function listings() {
       out.push({ ex: 'OKX', t, at: +a.pTime, url: a.url, tk: m ? [m[1].toUpperCase()] : [] });
     });
   } catch (e) { /* Binance still counts */ }
+  try {   // Binance Alpha: new tokens Binance picked for its Alpha market — the biggest driver of fresh memecoin attention
+    const j = await jget('https://www.binance.com/bapi/defi/v1/public/wallet-direct/buw/wallet/cex/alpha/all/token/list');
+    const CH = { BSC: 'bsc', Base: 'base', Solana: 'solana', Ethereum: 'eth' };
+    (j.data || []).filter(x => !x.offline && !x.fullyDelisted && !x.stockState && +x.listingTime).sort((a, b) => +b.listingTime - +a.listingTime).slice(0, 10).forEach(x => {
+      out.push({ ex: 'Binance Alpha', t: `${x.name} (${x.symbol})`, at: +x.listingTime, tk: [x.symbol], n: CH[x.chainName] || '', a: x.contractAddress || '',
+        img: icon(x.iconUrl), pr: num(x.price), c24: num(x.percentChange24h), mc: num(x.marketCap), cex: !!x.listingCex });
+    });
+  } catch (e) { /* the announcements still count */ }
   if (!out.length) throw new Error('no listings');
   const since = Date.now() - 30 * 864e5;
-  return out.filter(x => x.at >= since).sort((a, b) => b.at - a.at).slice(0, 12);
+  return out.filter(x => x.at >= since).sort((a, b) => b.at - a.at).slice(0, 14);
 }
 // Meme narratives from CoinGecko categories: market cap + 24h change of each meme theme
 const NARR = /meme|dog-themed|cat-themed|frog|pump-fun|four-meme|political|celebrity/i;
