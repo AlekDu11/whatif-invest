@@ -1,6 +1,6 @@
 ---
-title: "Cổ phiếu Netflix (NFLX) giải thích dễ hiểu: lợi nhuận kỷ lục nhưng giá cổ phiếu mất một nửa"
-description: "Netflix dễ hiểu: doanh thu 12,9 tỷ USD quý 3/2026 với biên lợi nhuận 34,6%, nhưng cổ phiếu thấp hơn khoảng 55% so với đỉnh năm 2025. Vì sao, và các rủi ro."
+title: Cổ phiếu Netflix (NFLX): gã khổng lồ streaming khởi đầu bằng cho thuê DVD năm 1997
+description: Netflix dễ hiểu: doanh thu 12,9 tỷ USD quý 3/2026 với biên lợi nhuận hoạt động 34,6%, cách kiếm tiền, thăng trầm của cổ phiếu và các rủi ro.
 date: 2026-11-23
 kind: analysis
 ---
@@ -10,7 +10,7 @@ kind: analysis
 > - Doanh thu: 12,9 tỷ USD trong quý 3/2026, tăng 12% so với năm trước; biên lợi nhuận hoạt động 34,6%, từ mức 28,2%.
 > - Netflix dự kiến doanh thu năm 2026 đạt 51,1 tỷ USD (+13%) và dòng tiền tự do khoảng 12,0 tỷ USD.
 > - Tháng 2/2026, công ty rút khỏi thương vụ mua Warner Bros. và nhận 2,8 tỷ USD phí hủy hợp đồng.
-> - Theo dữ liệu giá của chúng tôi, cổ phiếu thấp hơn khoảng 55% so với đỉnh cuối tháng khoảng 134 USD (đã điều chỉnh chia tách) vào tháng 6/2025.
+> - Năm 2022 cổ phiếu giảm khoảng 75% so với đỉnh cuối 2021; sau đó tăng lên đỉnh cuối tháng mới vào tháng 6/2025 rồi đi xuống trong năm 2026, theo dữ liệu giá của chúng tôi.
 
 ## Netflix kiếm tiền thế nào
 
@@ -18,14 +18,16 @@ Gần như toàn bộ doanh thu đến từ thuê bao. Netflix thỉnh thoảng 
 
 ## Các con số hiện tại
 
+- Giá hôm nay: {{price:nflx}}
+- Vốn hóa thị trường: {{mcap:nflx}} ({{rank:nflx}} trong số các công ty lớn nhất thế giới trên WhatIfStack)
+- Đỉnh kỷ lục: {{ath:nflx}} ({{athd:nflx}}), cách đỉnh {{fromath:nflx}}
+- 10 USD mỗi ngày trong 10 năm: {{dca:nflx:10}} từ {{dcainv:10}} đã đầu tư ({{dcaroi:nflx:10}})
+
 Trong quý kết thúc ngày 30/9/2026, Netflix đạt lợi nhuận hoạt động 4,46 tỷ USD (+37%) và lợi nhuận ròng 3,66 tỷ USD; lợi nhuận trên mỗi cổ phiếu tăng 49% lên 0,87 USD. Dòng tiền tự do đạt 2,88 tỷ USD. Công ty chi kỷ lục 4,8 tỷ USD để mua lại 63,9 triệu cổ phiếu của chính mình và còn hạn mức mua lại 22,3 tỷ USD. Tiền mặt là 8,2 tỷ USD so với 15,3 tỷ USD nợ gộp. Cho quý 4/2026, Netflix dự báo doanh thu 13,4 tỷ USD (+12%) và biên lợi nhuận hoạt động 26%, đã gồm chi phí cắt giảm nhân sự. Lưu ý: tháng 11/2025 công ty chia tách cổ phiếu tỷ lệ 10:1, nên mọi mức giá của chúng tôi đều đã điều chỉnh.
 
 ## Câu chuyện của cổ phiếu
 
 Netflix từng lao dốc mạnh. Năm 2022, công ty lần đầu tiên sau một thập kỷ báo mất thuê bao và theo dữ liệu của chúng tôi, cổ phiếu giảm khoảng 75% từ đỉnh cuối năm 2021 đến giữa năm 2022. Sau đó, việc siết chia sẻ mật khẩu, gói có quảng cáo và thể thao trực tiếp đã tạo ra đợt tăng dài tới đỉnh tháng 6/2025. Tháng 12/2025, Netflix đồng ý mua hãng phim Warner Bros. cùng các tài sản giải trí khác với giá trị doanh nghiệp 82,7 tỷ USD; Paramount Skydance trả giá cao hơn và tháng 2/2026 Netflix từ chối nâng giá. Cổ phiếu hồi phục nhưng trượt dần suốt năm 2026 vì nhà đầu tư lo ngại số giờ xem tăng chậm lại, dự báo quảng cáo bị cắt giảm và cạnh tranh gay gắt — dù lợi nhuận lập kỷ lục.
-
-- Giá hôm nay: {{price:nflx}}
-- 10 USD mỗi ngày trong 10 năm: {{dca:nflx:10}} từ {{dcainv:10}} đã đầu tư ({{dcaroi:nflx:10}})
 
 ## Đối thủ
 

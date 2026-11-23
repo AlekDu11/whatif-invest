@@ -1,6 +1,6 @@
 ---
-title: "Azioni Netflix (NFLX) spiegate semplice: utili record, ma il titolo si è dimezzato"
-description: "Netflix in parole semplici: 12,9 miliardi $ di ricavi nel 3° trimestre 2026 con margine del 34,6%, ma il titolo è 55% sotto il picco 2025. Perché, e i rischi."
+title: Azioni Netflix (NFLX): il gigante dello streaming nato noleggiando DVD nel 1997
+description: Netflix in parole semplici: 12,9 miliardi $ di ricavi nel 3° trimestre 2026 con margine operativo del 34,6%, come guadagna, la storia del titolo e i rischi.
 date: 2026-11-23
 kind: analysis
 ---
@@ -10,7 +10,7 @@ kind: analysis
 > - Ricavi: 12,9 miliardi $ nel terzo trimestre 2026, +12% in un anno; margine operativo del 34,6%, dal 28,2%.
 > - Netflix prevede 51,1 miliardi $ di ricavi nel 2026 (+13%) e circa 12,0 miliardi $ di flusso di cassa libero.
 > - A febbraio 2026 ha rinunciato all'acquisto di Warner Bros. e ha incassato 2,8 miliardi $ di penale per la rottura dell'accordo.
-> - Secondo i nostri dati di prezzo, il titolo è circa il 55% sotto il picco di fine mese di circa 134 $ (rettificato per lo split) di giugno 2025.
+> - Nel 2022 il titolo è sceso di circa il 75% dal massimo di fine 2021; poi è salito a un nuovo massimo di fine mese a giugno 2025 ed è calato nel corso del 2026, secondo i nostri dati.
 
 ## Come guadagna
 
@@ -18,14 +18,16 @@ Quasi tutti i ricavi arrivano dagli abbonamenti. Netflix alza i prezzi di tanto 
 
 ## I numeri di oggi
 
+- Prezzo oggi: {{price:nflx}}
+- Valore di mercato: {{mcap:nflx}} ({{rank:nflx}} tra le più grandi aziende del mondo su WhatIfStack)
+- Massimo storico: {{ath:nflx}} ({{athd:nflx}}), {{fromath:nflx}} da lì
+- 10 $ al giorno per 10 anni: {{dca:nflx:10}} con {{dcainv:10}} investiti ({{dcaroi:nflx:10}})
+
 Nel trimestre chiuso il 30 settembre 2026 Netflix ha registrato 4,46 miliardi $ di utile operativo (+37%) e 3,66 miliardi $ di utile netto; l'utile per azione è salito del 49% a 0,87 $. Il flusso di cassa libero è stato di 2,88 miliardi $. Ha speso la cifra record di 4,8 miliardi $ per riacquistare 63,9 milioni di azioni proprie e ha ancora 22,3 miliardi $ di autorizzazione al buyback. La liquidità era di 8,2 miliardi $ contro 15,3 miliardi $ di debito lordo. Per il quarto trimestre 2026 prevede 13,4 miliardi $ di ricavi (+12%) e un margine operativo del 26%, compresi i costi dei tagli al personale. Nota: a novembre 2025 c'è stato uno split 10 a 1, quindi tutti i nostri prezzi sono rettificati.
 
 ## La storia del titolo
 
 Netflix è già crollata in passato. Nel 2022 ha comunicato la prima perdita di abbonati in dieci anni e, secondo i nostri dati, il titolo è sceso di circa il 75% dal massimo di fine 2021 a metà 2022. Poi la stretta sulla condivisione delle password, il piano con pubblicità e lo sport in diretta hanno alimentato un lungo rialzo fino al picco di giugno 2025. A dicembre 2025 Netflix ha concordato l'acquisto dello studio Warner Bros. e di altre attività di intrattenimento per un enterprise value di 82,7 miliardi $; Paramount Skydance ha rilanciato e a febbraio 2026 Netflix ha rinunciato ad alzare l'offerta. Il titolo è rimbalzato, ma è sceso per tutto il 2026: gli investitori temevano una crescita più lenta delle ore di visione, il taglio delle stime pubblicitarie e una concorrenza feroce, anche mentre gli utili toccavano record.
-
-- Prezzo oggi: {{price:nflx}}
-- 10 $ al giorno per 10 anni: {{dca:nflx:10}} con {{dcainv:10}} investiti ({{dcaroi:nflx:10}})
 
 ## Concorrenti
 

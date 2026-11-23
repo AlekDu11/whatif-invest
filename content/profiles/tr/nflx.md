@@ -1,6 +1,6 @@
 ---
-title: "Netflix (NFLX) hissesi sade dille: rekor kâr, ama hisse yarı yarıya düştü"
-description: "Netflix sade dille: 2026 3. çeyrekte %34,6 marjla 12,9 milyar $ gelir, ama hisse 2025 zirvesinin yaklaşık %55 altında. Neden ve riskler neler."
+title: Netflix (NFLX) hissesi: 1997'de DVD kiralayarak başlayan yayın devi
+description: Netflix sade dille: 2026 3. çeyrekte %34,6 faaliyet marjıyla 12,9 milyar $ gelir, nasıl para kazandığı, hissenin iniş çıkışları ve riskler.
 date: 2026-11-23
 kind: analysis
 ---
@@ -10,7 +10,7 @@ kind: analysis
 > - Gelir: 2026'nın 3. çeyreğinde 12,9 milyar $, yıllık +%12; faaliyet marjı %28,2'den %34,6'ya çıktı.
 > - Netflix 2026'da 51,1 milyar $ gelir (+%13) ve yaklaşık 12,0 milyar $ serbest nakit akışı bekliyor.
 > - Şubat 2026'da Warner Bros.'u satın alma anlaşmasından çekildi ve 2,8 milyar $ fesih ücreti aldı.
-> - Fiyat verilerimize göre hisse, Haziran 2025'teki yaklaşık 134 $'lık (bölünmeye göre düzeltilmiş) ay sonu zirvesinin yaklaşık %55 altında.
+> - Hisse 2022'de 2021 sonundaki zirvesinden yaklaşık %75 düştü; ardından Haziran 2025'te yeni bir ay sonu zirvesine çıktı ve 2026 boyunca geriledi (fiyat verilerimize göre).
 
 ## Nasıl para kazanıyor
 
@@ -18,14 +18,16 @@ Gelirin neredeyse tamamı aboneliklerden geliyor. Netflix zaman zaman fiyat art�
 
 ## Şu anki rakamlar
 
+- Bugünkü fiyat: {{price:nflx}}
+- Piyasa değeri: {{mcap:nflx}} (WhatIfStack'teki dünyanın en büyük şirketleri arasında {{rank:nflx}})
+- Rekor: {{ath:nflx}} ({{athd:nflx}}), ondan {{fromath:nflx}}
+- 10 yıl boyunca günde 10 $: {{dca:nflx:10}}, yatırılan {{dcainv:10}} ({{dcaroi:nflx:10}})
+
 30 Eylül 2026'da biten çeyrekte Netflix 4,46 milyar $ faaliyet kârı (+%37) ve 3,66 milyar $ net kâr elde etti; hisse başına kâr %49 artışla 0,87 $'a çıktı. Serbest nakit akışı 2,88 milyar $ oldu. Şirket 63,9 milyon kendi hissesini geri almak için rekor 4,8 milyar $ harcadı ve elinde hâlâ 22,3 milyar $'lık geri alım yetkisi var. Nakit 8,2 milyar $, brüt borç 15,3 milyar $. 2026'nın 4. çeyreği için 13,4 milyar $ gelir (+%12) ve işten çıkarma maliyetleri dâhil %26 faaliyet marjı öngörüyor. Not: Kasım 2025'te 10'a 1 hisse bölünmesi yapıldı; tüm fiyatlarımız buna göre düzeltilmiştir.
 
 ## Hissenin hikâyesi
 
 Netflix daha önce de sert düştü. 2022'de on yılda ilk kez abone kaybettiğini açıkladı ve verilerimize göre hisse 2021 sonundaki zirveden 2022 ortasına kadar yaklaşık %75 değer kaybetti. Ardından şifre paylaşımına karşı önlemler, reklamlı paket ve canlı spor, Haziran 2025 zirvesine uzanan uzun bir yükselişi tetikledi. Aralık 2025'te Netflix, Warner Bros. stüdyosunu ve diğer eğlence varlıklarını 82,7 milyar $ işletme değeriyle almak için anlaştı; Paramount Skydance daha yüksek teklif verdi ve Netflix Şubat 2026'da teklifini artırmadı. Hisse toparlandı ama 2026 boyunca geriledi: yatırımcılar izleme saatlerindeki yavaşlamadan, düşürülen reklam geliri tahmininden ve sert rekabetten endişelendi — kârlar rekor kırsa bile.
-
-- Bugünkü fiyat: {{price:nflx}}
-- 10 yıl boyunca günde 10 $: {{dca:nflx:10}}, yatırılan {{dcainv:10}} ({{dcaroi:nflx:10}})
 
 ## Rakipler
 

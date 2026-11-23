@@ -1,6 +1,6 @@
 ---
-title: Netflix (NFLX) explained: record profits, yet the stock is down by half
-description: Netflix in plain language: $12.9 billion of revenue in Q3 2026 at a 34.6% margin, yet the stock is about 55% below its 2025 peak. Why, and the risks.
+title: Netflix (NFLX) stock: the streaming giant that began renting DVDs in 1997
+description: Netflix in plain language: $12.9 billion of revenue in Q3 2026 at a 34.6% operating margin, how it makes money, the stock's ups and downs and the risks.
 date: 2026-11-18
 kind: analysis
 ---
@@ -10,7 +10,7 @@ kind: analysis
 > - Revenue: $12.9 billion in Q3 2026, +12% a year; operating margin 34.6%, up from 28.2%.
 > - Netflix expects $51.1 billion of revenue in 2026 (+13%) and about $12.0 billion of free cash flow.
 > - It walked away from a deal to buy Warner Bros. in February 2026 and collected a $2.8 billion break-up fee.
-> - The stock is about 55% below its split-adjusted month-end peak of roughly $134 in June 2025, by our price data.
+> - In 2022 the stock fell about 75% from its late-2021 high; it then rallied to a new month-end high in June 2025 and slid through 2026, by our price data.
 
 ## How it makes money
 
@@ -18,14 +18,16 @@ Almost all revenue comes from subscriptions. Netflix raises prices every so ofte
 
 ## The numbers right now
 
+- Price today: {{price:nflx}}
+- Market value: {{mcap:nflx}} ({{rank:nflx}} among the world's largest companies on WhatIfStack)
+- Record high: {{ath:nflx}} ({{athd:nflx}}), {{fromath:nflx}} from it
+- $10 a day for 10 years: {{dca:nflx:10}} from {{dcainv:10}} invested ({{dcaroi:nflx:10}})
+
 In the quarter to 30 September 2026 Netflix made $4.46 billion of operating income (+37%) and $3.66 billion of net income; earnings per share rose 49% to $0.87. Free cash flow was $2.88 billion. It spent a record $4.8 billion buying back 63.9 million of its own shares and has $22.3 billion of buyback authorisation left. Cash was $8.2 billion against $15.3 billion of gross debt. For Q4 2026 it guides to $13.4 billion of revenue (+12%) and a 26% operating margin, including the cost of job cuts. Note: a 10-for-1 stock split took effect in November 2025, so all our prices are split-adjusted.
 
 ## The stock's story
 
 Netflix has crashed hard before. In 2022 it reported losing subscribers for the first time in a decade, and by our data the stock fell about 75% from its late-2021 high to mid-2022. Password-sharing crackdowns, the ad plan and live sport then drove a long rally to the June 2025 peak. In December 2025 Netflix agreed to buy the Warner Bros. studio and other entertainment assets for an enterprise value of $82.7 billion; Paramount Skydance outbid it, and in February 2026 Netflix declined to raise its offer. The shares bounced, but slid through 2026 as investors worried about slower growth in viewing hours, a cut ad-revenue forecast and fierce competition — even as profits hit records.
-
-- Price today: {{price:nflx}}
-- $10 a day for 10 years: {{dca:nflx:10}} from {{dcainv:10}} invested ({{dcaroi:nflx:10}})
 
 ## Competitors
 

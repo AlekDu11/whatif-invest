@@ -1,6 +1,6 @@
 ---
-title: "Netflix (NFLX) stock sa simpleng paliwanag: record na kita, pero nangalahati ang stock"
-description: "Netflix sa simpleng paliwanag: $12.9 bilyong kita sa Q3 2026 na may 34.6% margin, pero ang stock ay mga 55% mas mababa sa peak ng 2025. Bakit, at mga panganib."
+title: Netflix (NFLX) stock: ang higante ng streaming na nagsimula sa pagpaparenta ng DVD noong 1997
+description: Netflix sa simpleng paliwanag: $12.9 bilyong kita sa Q3 2026 na may 34.6% operating margin, paano kumikita, pagtaas at pagbaba ng stock, at mga panganib.
 date: 2026-11-23
 kind: analysis
 ---
@@ -10,7 +10,7 @@ Ang **Netflix** ang pinakamalaking bayad na streaming service sa mundo: nagbabay
 > - Kita: $12.9 bilyon sa Q3 2026, +12% kumpara noong nakaraang taon; operating margin na 34.6%, mula 28.2%.
 > - Inaasahan ng Netflix ang $51.1 bilyong kita sa 2026 (+13%) at mga $12.0 bilyong free cash flow.
 > - Noong Pebrero 2026, umatras ito sa deal na bilhin ang Warner Bros. at nakatanggap ng $2.8 bilyong break-up fee.
-> - Ayon sa aming price data, ang stock ay mga 55% mas mababa sa month-end peak nito na humigit-kumulang $134 (split-adjusted) noong Hunyo 2025.
+> - Ayon sa aming price data, bumagsak ang stock nang mga 75% mula sa high nito sa huling bahagi ng 2021 noong 2022; tumaas ito sa bagong month-end high noong Hunyo 2025 at bumaba sa buong 2026.
 
 ## Paano ito kumikita
 
@@ -18,14 +18,16 @@ Halos lahat ng kita ay galing sa subscriptions. Paminsan-minsang nagtataas ng pr
 
 ## Ang mga numero ngayon
 
+- Presyo ngayon: {{price:nflx}}
+- Halaga sa merkado: {{mcap:nflx}} ({{rank:nflx}} sa pinakamalalaking kumpanya sa mundo sa WhatIfStack)
+- Pinakamataas na presyo: {{ath:nflx}} ({{athd:nflx}}), {{fromath:nflx}} mula roon
+- $10 kada araw sa loob ng 10 taon: {{dca:nflx:10}} mula sa {{dcainv:10}} na inilagay ({{dcaroi:nflx:10}})
+
 Sa quarter hanggang 30 Setyembre 2026, kumita ang Netflix ng $4.46 bilyong operating income (+37%) at $3.66 bilyong net income; tumaas nang 49% ang earnings per share sa $0.87. Ang free cash flow ay $2.88 bilyon. Gumastos ito ng record na $4.8 bilyon para bilhin pabalik ang 63.9 milyon sa sarili nitong shares at may natitira pang $22.3 bilyong buyback authorization. Ang cash ay $8.2 bilyon laban sa $15.3 bilyong gross debt. Para sa Q4 2026, inaasahan nito ang $13.4 bilyong kita (+12%) at 26% operating margin, kasama ang gastos sa pagbawas ng trabaho. Paalala: nagkaroon ng 10-for-1 stock split noong Nobyembre 2025, kaya split-adjusted ang lahat ng aming presyo.
 
 ## Ang kuwento ng stock
 
 Bumagsak na nang matindi ang Netflix dati. Noong 2022, iniulat nito ang unang pagkawala ng subscribers sa loob ng isang dekada, at ayon sa aming data, bumaba ang stock nang mga 75% mula sa peak nito sa huling bahagi ng 2021 hanggang kalagitnaan ng 2022. Pagkatapos, ang paghihigpit sa password sharing, ang ad plan at live sports ang nagtulak ng mahabang rally hanggang sa peak noong Hunyo 2025. Noong Disyembre 2025, pumayag ang Netflix na bilhin ang Warner Bros. studio at iba pang entertainment assets sa enterprise value na $82.7 bilyon; mas mataas ang alok ng Paramount Skydance, at noong Pebrero 2026 tumanggi ang Netflix na itaas ang alok nito. Tumalbog ang shares, pero dumausdos sa buong 2026 dahil nag-alala ang mga investor sa mas mabagal na paglago ng oras ng panonood, ibinabang forecast ng ad revenue at matinding kompetisyon — kahit nasa record ang kita.
-
-- Presyo ngayon: {{price:nflx}}
-- $10 kada araw sa loob ng 10 taon: {{dca:nflx:10}} mula sa {{dcainv:10}} na inilagay ({{dcaroi:nflx:10}})
 
 ## Mga kakumpitensya
 

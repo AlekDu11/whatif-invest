@@ -1,6 +1,6 @@
 ---
-title: "Action Netflix (NFLX) expliquée simplement : des bénéfices record, mais un cours divisé par deux"
-description: "Netflix simplement : 12,9 Md$ de chiffre d'affaires au T3 2026 avec 34,6 % de marge, mais l'action est 55 % sous son pic de 2025. Pourquoi, et les risques."
+title: Action Netflix (NFLX) : le géant du streaming qui louait des DVD en 1997
+description: Netflix simplement : 12,9 Md$ de chiffre d'affaires au T3 2026 avec 34,6 % de marge opérationnelle, son modèle, les hauts et bas de l'action et les risques.
 date: 2026-11-23
 kind: analysis
 ---
@@ -10,7 +10,7 @@ kind: analysis
 > - Chiffre d'affaires : 12,9 Md$ au troisième trimestre 2026, +12 % sur un an ; marge opérationnelle de 34,6 %, contre 28,2 %.
 > - Netflix prévoit 51,1 Md$ de chiffre d'affaires en 2026 (+13 %) et environ 12,0 Md$ de flux de trésorerie disponible.
 > - En février 2026, elle a renoncé à racheter Warner Bros. et a encaissé 2,8 Md$ d'indemnité de rupture.
-> - D'après nos données de cours, l'action est environ 55 % sous son pic de fin de mois d'environ 134 $ (ajusté de la division) en juin 2025.
+> - En 2022, l'action a chuté d'environ 75 % depuis son sommet de fin 2021 ; elle est ensuite remontée à un nouveau sommet de fin de mois en juin 2025, puis a reculé en 2026, selon nos données.
 
 ## Comment elle gagne de l'argent
 
@@ -18,14 +18,16 @@ Presque tout le chiffre d'affaires vient des abonnements. Netflix augmente ses p
 
 ## Les chiffres actuels
 
+- Cours actuel : {{price:nflx}}
+- Valeur de marché : {{mcap:nflx}} ({{rank:nflx}} parmi les plus grandes entreprises du monde sur WhatIfStack)
+- Record : {{ath:nflx}} ({{athd:nflx}}), {{fromath:nflx}} depuis
+- 10 $ par jour pendant 10 ans : {{dca:nflx:10}} pour {{dcainv:10}} investis ({{dcaroi:nflx:10}})
+
 Sur le trimestre clos le 30 septembre 2026, Netflix a dégagé 4,46 Md$ de résultat opérationnel (+37 %) et 3,66 Md$ de bénéfice net ; le bénéfice par action a bondi de 49 %, à 0,87 $. Le flux de trésorerie disponible a atteint 2,88 Md$. Elle a dépensé un record de 4,8 Md$ pour racheter 63,9 millions de ses actions et dispose encore de 22,3 Md$ d'autorisation de rachat. La trésorerie s'élevait à 8,2 Md$ pour 15,3 Md$ de dette brute. Pour le quatrième trimestre 2026, elle vise 13,4 Md$ de chiffre d'affaires (+12 %) et une marge opérationnelle de 26 %, coûts de suppressions de postes compris. À noter : une division d'actions 10 pour 1 a eu lieu en novembre 2025, tous nos cours sont donc ajustés.
 
 ## L'histoire de l'action
 
 Netflix a déjà lourdement chuté. En 2022, elle a annoncé sa première perte d'abonnés en dix ans et, selon nos données, l'action a reculé d'environ 75 % entre son sommet de fin 2021 et la mi-2022. La lutte contre le partage de mots de passe, l'offre avec pub et le sport en direct ont ensuite alimenté une longue hausse jusqu'au pic de juin 2025. En décembre 2025, Netflix a accepté de racheter le studio Warner Bros. et d'autres actifs de divertissement pour une valeur d'entreprise de 82,7 Md$ ; Paramount Skydance a surenchéri et, en février 2026, Netflix a refusé de relever son offre. L'action a rebondi, puis a glissé tout au long de 2026, les investisseurs s'inquiétant d'une croissance plus lente du temps de visionnage, d'une prévision publicitaire revue à la baisse et d'une concurrence féroce — alors même que les bénéfices battaient des records.
-
-- Cours actuel : {{price:nflx}}
-- 10 $ par jour pendant 10 ans : {{dca:nflx:10}} pour {{dcainv:10}} investis ({{dcaroi:nflx:10}})
 
 ## Concurrents
 

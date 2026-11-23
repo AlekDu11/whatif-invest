@@ -1,6 +1,6 @@
 ---
-title: "Ações da Netflix (NFLX): lucro recorde, mas a ação caiu pela metade"
-description: "Netflix explicada de forma simples: US$ 12,9 bilhões de receita no 3º tri de 2026, margem de 34,6%, mas a ação está 55% abaixo do pico de 2025. Por quê, riscos."
+title: Ações da Netflix (NFLX): a gigante do streaming que começou alugando DVDs em 1997
+description: Netflix explicada de forma simples: US$ 12,9 bilhões de receita no 3º tri de 2026, margem operacional de 34,6%, como ganha dinheiro, a ação e os riscos.
 date: 2026-11-23
 kind: analysis
 ---
@@ -10,7 +10,7 @@ A **Netflix** é o maior serviço de streaming pago do mundo: você paga uma men
 > - Receita: US$ 12,9 bilhões no 3º trimestre de 2026, alta de 12% em um ano; margem operacional de 34,6%, ante 28,2%.
 > - A Netflix espera US$ 51,1 bilhões de receita em 2026 (+13%) e cerca de US$ 12,0 bilhões de fluxo de caixa livre.
 > - Em fevereiro de 2026 desistiu de comprar a Warner Bros. e recebeu US$ 2,8 bilhões de multa pela quebra do acordo.
-> - Pelos nossos dados, a ação está cerca de 55% abaixo do pico de fim de mês de aproximadamente US$ 134 (ajustado pelo desdobramento) em junho de 2025.
+> - Em 2022 a ação caiu cerca de 75% desde a máxima do fim de 2021; depois subiu até uma nova máxima de fim de mês em junho de 2025 e caiu ao longo de 2026, pelos nossos dados.
 
 ## Como ganha dinheiro
 
@@ -18,14 +18,16 @@ Quase toda a receita vem de assinaturas. A Netflix sobe os preços de tempos em 
 
 ## Os números agora
 
+- Preço hoje: {{price:nflx}}
+- Valor de mercado: {{mcap:nflx}} ({{rank:nflx}} entre as maiores empresas do mundo no WhatIfStack)
+- Máxima histórica: {{ath:nflx}} ({{athd:nflx}}), {{fromath:nflx}} desde ela
+- US$ 10 por dia durante 10 anos: {{dca:nflx:10}} com {{dcainv:10}} investidos ({{dcaroi:nflx:10}})
+
 No trimestre encerrado em 30 de setembro de 2026, a Netflix teve lucro operacional de US$ 4,46 bilhões (+37%) e lucro líquido de US$ 3,66 bilhões; o lucro por ação subiu 49%, para US$ 0,87. O fluxo de caixa livre foi de US$ 2,88 bilhões. Gastou o recorde de US$ 4,8 bilhões para recomprar 63,9 milhões de ações próprias e ainda tem US$ 22,3 bilhões autorizados para recompras. O caixa era de US$ 8,2 bilhões contra US$ 15,3 bilhões de dívida bruta. Para o 4º trimestre de 2026, projeta US$ 13,4 bilhões de receita (+12%) e margem operacional de 26%, incluindo o custo de demissões. Atenção: em novembro de 2025 houve um desdobramento de 10 para 1, então todos os nossos preços estão ajustados.
 
 ## A história da ação
 
 A Netflix já despencou antes. Em 2022 informou a primeira perda de assinantes em uma década e, pelos nossos dados, a ação caiu cerca de 75% entre o pico do fim de 2021 e meados de 2022. Depois, o combate ao compartilhamento de senhas, o plano com anúncios e os esportes ao vivo puxaram uma longa alta até o pico de junho de 2025. Em dezembro de 2025 a Netflix fechou acordo para comprar o estúdio Warner Bros. e outros ativos de entretenimento por um valor de empresa de US$ 82,7 bilhões; a Paramount Skydance cobriu a oferta e, em fevereiro de 2026, a Netflix se recusou a aumentar a sua. A ação reagiu, mas foi caindo ao longo de 2026, com investidores preocupados com o crescimento mais lento das horas assistidas, o corte na previsão de publicidade e a concorrência acirrada — mesmo com lucros recordes.
-
-- Preço hoje: {{price:nflx}}
-- US$ 10 por dia durante 10 anos: {{dca:nflx:10}} com {{dcainv:10}} investidos ({{dcaroi:nflx:10}})
 
 ## Concorrentes
 

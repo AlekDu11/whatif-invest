@@ -1,6 +1,6 @@
 ---
-title: "Saham Netflix (NFLX) dijelaskan sederhana: laba rekor, tapi sahamnya turun separuh"
-description: "Netflix dijelaskan sederhana: pendapatan $12,9 miliar di Q3 2026 dengan margin 34,6%, tetapi sahamnya sekitar 55% di bawah puncak 2025. Mengapa, dan risikonya."
+title: Saham Netflix (NFLX): raksasa streaming yang memulai dari sewa DVD pada 1997
+description: Netflix dijelaskan sederhana: pendapatan $12,9 miliar di Q3 2026 dengan margin operasi 34,6%, cara menghasilkan uang, naik-turun saham, dan risikonya.
 date: 2026-11-23
 kind: analysis
 ---
@@ -10,7 +10,7 @@ kind: analysis
 > - Pendapatan: $12,9 miliar pada kuartal III 2026, naik 12% dalam setahun; margin operasi 34,6%, naik dari 28,2%.
 > - Netflix memperkirakan pendapatan $51,1 miliar pada 2026 (+13%) dan arus kas bebas sekitar $12,0 miliar.
 > - Pada Februari 2026 Netflix mundur dari rencana membeli Warner Bros. dan menerima biaya pembatalan $2,8 miliar.
-> - Menurut data harga kami, saham sekitar 55% di bawah puncak akhir bulannya, sekitar $134 (disesuaikan dengan stock split) pada Juni 2025.
+> - Pada 2022 saham turun sekitar 75% dari puncak akhir 2021; lalu naik ke puncak akhir bulan yang baru pada Juni 2025 dan melemah sepanjang 2026, menurut data harga kami.
 
 ## Cara menghasilkan uang
 
@@ -18,14 +18,16 @@ Hampir semua pendapatan berasal dari langganan. Netflix sesekali menaikkan harga
 
 ## Angka saat ini
 
+- Harga hari ini: {{price:nflx}}
+- Nilai pasar: {{mcap:nflx}} ({{rank:nflx}} di antara perusahaan terbesar dunia di WhatIfStack)
+- Rekor tertinggi: {{ath:nflx}} ({{athd:nflx}}), {{fromath:nflx}} dari rekor itu
+- $10 per hari selama 10 tahun: {{dca:nflx:10}} dari {{dcainv:10}} yang diinvestasikan ({{dcaroi:nflx:10}})
+
 Pada kuartal hingga 30 September 2026, Netflix membukukan laba operasi $4,46 miliar (+37%) dan laba bersih $3,66 miliar; laba per saham naik 49% menjadi $0,87. Arus kas bebas $2,88 miliar. Perusahaan menghabiskan rekor $4,8 miliar untuk membeli kembali 63,9 juta sahamnya sendiri dan masih memiliki izin buyback $22,3 miliar. Kasnya $8,2 miliar dibanding utang kotor $15,3 miliar. Untuk kuartal IV 2026, Netflix memproyeksikan pendapatan $13,4 miliar (+12%) dan margin operasi 26%, termasuk biaya pemutusan kerja. Catatan: pada November 2025 ada stock split 10 banding 1, jadi semua harga kami sudah disesuaikan.
 
 ## Kisah sahamnya
 
 Netflix pernah jatuh dalam sebelumnya. Pada 2022 perusahaan melaporkan kehilangan pelanggan untuk pertama kalinya dalam satu dekade, dan menurut data kami saham turun sekitar 75% dari puncak akhir 2021 hingga pertengahan 2022. Setelah itu, tindakan tegas terhadap berbagi kata sandi, paket iklan, dan olahraga langsung mendorong reli panjang hingga puncak Juni 2025. Pada Desember 2025 Netflix sepakat membeli studio Warner Bros. dan aset hiburan lainnya dengan nilai perusahaan $82,7 miliar; Paramount Skydance mengajukan tawaran lebih tinggi, dan pada Februari 2026 Netflix menolak menaikkan tawarannya. Saham sempat memantul, tetapi terus melorot sepanjang 2026 karena investor khawatir pertumbuhan jam tonton melambat, proyeksi iklan dipangkas, dan persaingan sengit — padahal laba mencetak rekor.
-
-- Harga hari ini: {{price:nflx}}
-- $10 per hari selama 10 tahun: {{dca:nflx:10}} dari {{dcainv:10}} yang diinvestasikan ({{dcaroi:nflx:10}})
 
 ## Pesaing
 

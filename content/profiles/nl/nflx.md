@@ -1,6 +1,6 @@
 ---
-title: "Aandeel Netflix (NFLX) eenvoudig uitgelegd: recordwinst, maar het aandeel is gehalveerd"
-description: "Netflix eenvoudig uitgelegd: $12,9 miljard omzet in Q3 2026 bij 34,6% marge, toch staat het aandeel zo'n 55% onder de piek van 2025. Waarom, en de risico's."
+title: Aandeel Netflix (NFLX): de streamingreus die in 1997 begon met dvd-verhuur
+description: Netflix eenvoudig uitgelegd: $12,9 miljard omzet in Q3 2026 bij 34,6% operationele marge, het verdienmodel, de koersgeschiedenis en de risico's.
 date: 2026-11-23
 kind: analysis
 ---
@@ -10,7 +10,7 @@ kind: analysis
 > - Omzet: $12,9 miljard in het derde kwartaal van 2026, +12% op jaarbasis; operationele marge 34,6%, tegen 28,2%.
 > - Netflix verwacht $51,1 miljard omzet in 2026 (+13%) en ongeveer $12,0 miljard vrije kasstroom.
 > - In februari 2026 zag het af van de overname van Warner Bros. en ontving het $2,8 miljard aan opzegvergoeding.
-> - Volgens onze koersdata staat het aandeel zo'n 55% onder de maandslotpiek van circa $134 (gecorrigeerd voor de split) in juni 2025.
+> - In 2022 zakte het aandeel zo'n 75% vanaf de top van eind 2021; daarna steeg het tot een nieuwe maandslottop in juni 2025 en daalde het in de loop van 2026, volgens onze koersdata.
 
 ## Hoe het geld verdient
 
@@ -18,14 +18,16 @@ Bijna alle omzet komt uit abonnementen. Netflix verhoogt af en toe de prijzen en
 
 ## De cijfers nu
 
+- Koers nu: {{price:nflx}}
+- Marktwaarde: {{mcap:nflx}} ({{rank:nflx}} onder de grootste bedrijven ter wereld op WhatIfStack)
+- Recordkoers: {{ath:nflx}} ({{athd:nflx}}), {{fromath:nflx}} daarvan af
+- $10 per dag gedurende 10 jaar: {{dca:nflx:10}} bij {{dcainv:10}} ingelegd ({{dcaroi:nflx:10}})
+
 In het kwartaal tot 30 september 2026 boekte Netflix $4,46 miljard bedrijfswinst (+37%) en $3,66 miljard nettowinst; de winst per aandeel steeg 49% naar $0,87. De vrije kasstroom was $2,88 miljard. Het besteedde een record van $4,8 miljard aan de inkoop van 63,9 miljoen eigen aandelen en heeft nog $22,3 miljard aan inkoopruimte. De kaspositie was $8,2 miljard tegenover $15,3 miljard brutoschuld. Voor het vierde kwartaal van 2026 verwacht Netflix $13,4 miljard omzet (+12%) en een operationele marge van 26%, inclusief de kosten van banenschrappen. Let op: in november 2025 was er een aandelensplitsing van 10 op 1, dus al onze koersen zijn daarvoor gecorrigeerd.
 
 ## Het verhaal van het aandeel
 
 Netflix is al eerder hard gevallen. In 2022 meldde het voor het eerst in tien jaar een verlies aan abonnees, en volgens onze data daalde het aandeel van de top eind 2021 tot medio 2022 met zo'n 75%. Daarna zorgden de aanpak van het delen van wachtwoorden, het reclameabonnement en livesport voor een lange rally tot de piek in juni 2025. In december 2025 sprak Netflix af de Warner Bros.-studio en andere entertainmentonderdelen te kopen voor een ondernemingswaarde van $82,7 miljard; Paramount Skydance bood meer, en in februari 2026 weigerde Netflix zijn bod te verhogen. Het aandeel veerde op, maar zakte in 2026 steeds verder weg omdat beleggers zich zorgen maakten over tragere groei van de kijkuren, een verlaagde reclameprognose en felle concurrentie — terwijl de winst records brak.
-
-- Koers nu: {{price:nflx}}
-- $10 per dag gedurende 10 jaar: {{dca:nflx:10}} bij {{dcainv:10}} ingelegd ({{dcaroi:nflx:10}})
 
 ## Concurrenten
 

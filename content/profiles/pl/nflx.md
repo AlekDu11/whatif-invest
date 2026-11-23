@@ -1,6 +1,6 @@
 ---
-title: "Akcje Netflix (NFLX) prostym językiem: rekordowe zyski, a kurs spadł o połowę"
-description: "Netflix prosto: 12,9 mld $ przychodów w III kw. 2026 przy marży 34,6%, a akcja jest ok. 55% poniżej szczytu z 2025 roku. Dlaczego tak jest i jakie są ryzyka."
+title: Akcje Netflix (NFLX): gigant streamingu, który w 1997 roku zaczynał od wypożyczania DVD
+description: Netflix prosto: 12,9 mld $ przychodów w III kw. 2026 przy marży operacyjnej 34,6%, jak zarabia, wzloty i spadki kursu oraz główne ryzyka.
 date: 2026-11-23
 kind: analysis
 ---
@@ -10,7 +10,7 @@ kind: analysis
 > - Przychody: 12,9 mld $ w III kwartale 2026 roku, +12% rok do roku; marża operacyjna 34,6% wobec 28,2%.
 > - Netflix oczekuje 51,1 mld $ przychodów w 2026 roku (+13%) i około 12,0 mld $ wolnych przepływów pieniężnych.
 > - W lutym 2026 roku zrezygnował z przejęcia Warner Bros. i otrzymał 2,8 mld $ odszkodowania za zerwanie umowy.
-> - Według naszych danych akcja jest ok. 55% poniżej szczytu z końca miesiąca — około 134 $ (po uwzględnieniu splitu) w czerwcu 2025 roku.
+> - W 2022 roku kurs spadł o ok. 75% od szczytu z końca 2021; potem wzrósł do nowego szczytu z końca czerwca 2025 i taniał przez 2026 rok (według naszych danych).
 
 ## Jak zarabia
 
@@ -18,14 +18,16 @@ Prawie cały przychód pochodzi z subskrypcji. Netflix co jakiś czas podnosi ce
 
 ## Liczby teraz
 
+- Cena teraz: {{price:nflx}}
+- Wartość rynkowa: {{mcap:nflx}} ({{rank:nflx}} wśród największych firm świata na WhatIfStack)
+- Rekord: {{ath:nflx}} ({{athd:nflx}}), {{fromath:nflx}} od niego
+- 10 $ dziennie przez 10 lat: {{dca:nflx:10}} przy wpłaconych {{dcainv:10}} ({{dcaroi:nflx:10}})
+
 W kwartale do 30 września 2026 roku zysk operacyjny Netflixa wyniósł 4,46 mld $ (+37%), a zysk netto 3,66 mld $; zysk na akcję wzrósł o 49% do 0,87 $. Wolne przepływy pieniężne wyniosły 2,88 mld $. Firma wydała rekordowe 4,8 mld $ na skup 63,9 mln własnych akcji i ma jeszcze 22,3 mld $ zgody na dalszy skup. Gotówka to 8,2 mld $ wobec 15,3 mld $ długu brutto. Na IV kwartał 2026 roku prognozuje 13,4 mld $ przychodów (+12%) i marżę operacyjną 26%, z kosztami zwolnień. Uwaga: w listopadzie 2025 roku przeprowadzono split 10 do 1, więc wszystkie nasze ceny są po uwzględnieniu splitu.
 
 ## Historia akcji
 
 Netflix już wcześniej mocno tracił. W 2022 roku po raz pierwszy od dekady zgłosił spadek liczby abonentów i według naszych danych akcja straciła ok. 75% od szczytu z końca 2021 roku do połowy 2022 roku. Potem walka ze współdzieleniem haseł, plan z reklamami i sport na żywo napędziły długi wzrost do szczytu w czerwcu 2025 roku. W grudniu 2025 roku Netflix zgodził się kupić studio Warner Bros. i inne aktywa rozrywkowe przy wartości przedsiębiorstwa 82,7 mld $; Paramount Skydance przelicytował ofertę, a w lutym 2026 roku Netflix odmówił jej podniesienia. Akcje odbiły, ale przez cały 2026 rok zjeżdżały w dół, bo inwestorów martwił wolniejszy wzrost czasu oglądania, obniżona prognoza reklamowa i ostra konkurencja — mimo rekordowych zysków.
-
-- Cena teraz: {{price:nflx}}
-- 10 $ dziennie przez 10 lat: {{dca:nflx:10}} przy wpłaconych {{dcainv:10}} ({{dcaroi:nflx:10}})
 
 ## Konkurenci
 

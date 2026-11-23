@@ -1,6 +1,6 @@
 ---
-title: "Netflix-Aktie (NFLX): Rekordgewinne – und trotzdem hat sich der Kurs halbiert"
-description: "Netflix einfach erklärt: 12,9 Mrd. $ Umsatz im 3. Quartal 2026 bei 34,6 % Marge, doch die Aktie liegt rund 55 % unter dem Hoch von 2025. Warum – und Risiken."
+title: Netflix-Aktie (NFLX): der Streaming-Riese, der 1997 mit DVD-Verleih begann
+description: Netflix einfach erklärt: 12,9 Mrd. $ Umsatz im 3. Quartal 2026 bei 34,6 % operativer Marge, das Geschäftsmodell, Hochs und Tiefs der Aktie und die Risiken.
 date: 2026-11-23
 kind: analysis
 ---
@@ -10,7 +10,7 @@ kind: analysis
 > - Umsatz: 12,9 Mrd. $ im 3. Quartal 2026, +12 % zum Vorjahr; operative Marge 34,6 % nach 28,2 %.
 > - Netflix erwartet für 2026 einen Umsatz von 51,1 Mrd. $ (+13 %) und rund 12,0 Mrd. $ freien Cashflow.
 > - Im Februar 2026 verzichtete Netflix auf die Übernahme von Warner Bros. und kassierte 2,8 Mrd. $ Auflösungsgebühr.
-> - Nach unseren Kursdaten liegt die Aktie etwa 55 % unter ihrem Monatsend-Hoch von rund 134 $ (splitbereinigt) im Juni 2025.
+> - 2022 fiel die Aktie rund 75 % unter ihr Hoch von Ende 2021; danach stieg sie bis Juni 2025 auf ein neues Monatsend-Hoch und gab 2026 nach, laut unseren Kursdaten.
 
 ## Womit das Unternehmen Geld verdient
 
@@ -18,14 +18,16 @@ Fast der gesamte Umsatz stammt aus Abos. Netflix erhöht die Preise von Zeit zu 
 
 ## Die Zahlen aktuell
 
+- Kurs aktuell: {{price:nflx}}
+- Marktwert: {{mcap:nflx}} ({{rank:nflx}} unter den größten Unternehmen der Welt auf WhatIfStack)
+- Rekordhoch: {{ath:nflx}} ({{athd:nflx}}), {{fromath:nflx}} davon entfernt
+- 10 $ pro Tag über 10 Jahre: {{dca:nflx:10}} bei {{dcainv:10}} Einsatz ({{dcaroi:nflx:10}})
+
 Im Quartal bis 30. September 2026 erzielte Netflix ein operatives Ergebnis von 4,46 Mrd. $ (+37 %) und einen Nettogewinn von 3,66 Mrd. $; der Gewinn je Aktie stieg um 49 % auf 0,87 $. Der freie Cashflow lag bei 2,88 Mrd. $. Für den Rückkauf von 63,9 Mio. eigenen Aktien gab Netflix rekordhohe 4,8 Mrd. $ aus; 22,3 Mrd. $ an Rückkaufgenehmigung sind noch übrig. Den 8,2 Mrd. $ an Barmitteln standen 15,3 Mrd. $ Bruttoschulden gegenüber. Für das 4. Quartal 2026 stellt Netflix 13,4 Mrd. $ Umsatz (+12 %) und eine operative Marge von 26 % in Aussicht, inklusive der Kosten für Stellenabbau. Hinweis: Im November 2025 gab es einen Aktiensplit 10:1, alle unsere Kurse sind splitbereinigt.
 
 ## Die Geschichte der Aktie
 
 Netflix ist schon einmal heftig abgestürzt. 2022 meldete das Unternehmen erstmals seit zehn Jahren einen Abonnentenverlust, und nach unseren Daten fiel die Aktie vom Hoch Ende 2021 bis Mitte 2022 um rund 75 %. Danach trieben das Vorgehen gegen geteilte Passwörter, das Werbe-Abo und Live-Sport eine lange Rally bis zum Hoch im Juni 2025. Im Dezember 2025 vereinbarte Netflix den Kauf des Warner-Bros.-Studios und weiterer Unterhaltungssparten zu einem Unternehmenswert von 82,7 Mrd. $; Paramount Skydance bot mehr, und im Februar 2026 lehnte Netflix ab, nachzulegen. Die Aktie erholte sich kurz, rutschte 2026 aber immer weiter ab, weil Anleger sich um langsamer wachsende Sehstunden, eine gesenkte Werbeprognose und harten Wettbewerb sorgten – obwohl die Gewinne Rekorde erreichten.
-
-- Kurs aktuell: {{price:nflx}}
-- 10 $ pro Tag über 10 Jahre: {{dca:nflx:10}} bei {{dcainv:10}} Einsatz ({{dcaroi:nflx:10}})
 
 ## Konkurrenten
 
