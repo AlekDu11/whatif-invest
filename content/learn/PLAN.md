@@ -14,7 +14,7 @@ The hub /learn/ lists them by track and step; each lesson links to the next one.
 ## crypto — Crypto: buy, store, sell
 1. ✅ 2026-11-24 (what-is-bitcoin, all 20 languages; existing guide turned into the lesson: key takeaways + link to {lang}/btc/ analysis) What Bitcoin is (short; link to {lang}/btc/ analysis)
 2. ✅ 2026-11-24 (how-to-register-on-a-crypto-exchange, all 20 languages) How to register on a crypto exchange: email, password, 2FA, ID check (KYC) — generic steps, which exchanges work in your country ({lang}/exchanges/)
-3. How to buy your first Bitcoin with a bank card (step by step, fees)
+3. ✅ 2026-11-24 (how-to-buy-bitcoin-with-a-bank-card, all 20 languages) How to buy your first Bitcoin with a bank card (step by step, fees)
 4. Stablecoins and USDT: what they are and what they are for
 5. How to set up a recurring buy (auto-DCA) on an exchange
 6. How to withdraw crypto to your own wallet (networks, addresses, test transfer)
@@ -46,7 +46,7 @@ The hub /learn/ lists them by track and step; each lesson links to the next one.
 7. ✅ 2026-11-23 (dogecoin-story, all 20 languages) Story: Dogecoin — the joke that became a top-10 coin
 8. ✅ 2026-11-24 (shiba-inu-story, all 20 languages) Story: Shiba Inu — from «Dogecoin killer» to one of the largest memecoins
 9. ✅ 2026-11-24 (pepe-bonk-wif-memecoin-wave, all 20 languages) Story: PEPE, BONK, WIF — the 2023–2024 memecoin wave
-10. Story: pump.fun — the token factory and its survival numbers
+10. ✅ 2026-11-24 (pump-fun-story, all 20 languages) Story: pump.fun — the token factory and its survival numbers
 11. Story: celebrity and political memecoins (what happened to holders)
 12. Story: PEPE — the frog meme that became a multi-billion coin (separate deep story)
 13. Story: BONK and WIF — how Solana memecoins took off in 2023–2024
@@ -56,7 +56,7 @@ The hub /learn/ lists them by track and step; each lesson links to the next one.
 17. Why most memecoin buyers lose money: the maths of launches, slippage and fees (use the launch pulse on {lang}/memes/)
 
 ## memes — recurring (owner 2026-11-23)
-- GLOSSARY: data/glossary/en.json is the memecoin glossary (/memes/glossary/). Every run, translate it into 2 languages that do not have data/glossary/<lang>.json yet (same ids and order; natural native phrasing; keep terms like «rug pull» in Latin script where locals use them, explain them). Done: uk ru es pt (2026-11-23), de fr (2026-11-24), it pl (2026-11-24). A language without its own file shows English with noindex, so each translation makes a new indexable page.
+- GLOSSARY: data/glossary/en.json is the memecoin glossary (/memes/glossary/). Every run, translate it into 2 languages that do not have data/glossary/<lang>.json yet (same ids and order; natural native phrasing; keep terms like «rug pull» in Latin script where locals use them, explain them). Done: uk ru es pt (2026-11-23), de fr (2026-11-24), it pl (2026-11-24), tr nl (2026-11-24). A language without its own file shows English with noindex, so each translation makes a new indexable page.
 - GUIDE (owner 2026-11-24): content/guide/<lang>.md is the beginner's guide in all 20 languages (done). When a feature is added or removed, update en.md and the other 19 in the same run.
 - MONTHLY (first run on or after the 2nd of each month): «Memecoin hall of fame and graveyard — <Month YYYY>»: the 5 memecoins that rose most and the 5 loudest collapses/rug pulls of the past month, dated facts with sources, «what beginners can learn», links to {lang}/memes/; category learn, track memes, in all 20 languages.
 

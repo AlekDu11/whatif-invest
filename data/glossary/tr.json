@@ -1,0 +1,102 @@
+[
+{
+"id": "memecoin",
+"t": "Memecoin (meme coin)",
+"d": "Bir şaka, bir hayvan, bir kişi ya da bir internet akımı etrafında çıkarılan kripto token. Genellikle arkasında bir ürün ya da gelir yoktur; bu yüzden fiyatı yalnızca ilgiye, alım ve satımlara göre hareket eder."
+},
+{
+"id": "contract-address",
+"t": "Kontrat adresi (CA)",
+"d": "Bir tokenın kendi blokzincirindeki benzersiz adresi. İsmi ve sembolü herkes kopyalayabilir ama kontrat adresini kopyalayamaz; bu yüzden almadan önce mutlaka kontrol edin."
+},
+{
+"id": "dex",
+"t": "DEX ve CEX",
+"d": "DEX (merkeziyetsiz borsa, örneğin Raydium veya PancakeSwap) tokenları doğrudan kendi cüzdanınızdan takas etmenizi sağlar. CEX (merkezi borsa, örneğin Binance) paranızı sizin adınıza tutar ve yalnızca kontrol ettiği tokenları listeler."
+},
+{
+"id": "liquidity",
+"t": "Likidite",
+"d": "Bir tokenın işlem havuzunda duran para. Likidite azsa küçük bir satış bile fiyatı çok oynatır ve token’ı makul bir fiyattan satamayabilirsiniz."
+},
+{
+"id": "liquidity-lock",
+"t": "Likidite kilitleme / yakma",
+"d": "Havuzdaki likiditenin kilitlenmesi veya yakılması, yaratıcının onu geri çekemeyeceği anlamına gelir. Kilitsiz likidite, rug pull’ların en klasik yoludur."
+},
+{
+"id": "rug-pull",
+"t": "Rug pull (halı çekme)",
+"d": "Yaratıcıların veya içeridekilerin havuzdaki parayı aniden çekmesi ya da ellerindeki coinleri boşaltması. Fiyat neredeyse sıfıra düşer ve alıcılar çıkamaz."
+},
+{
+"id": "honeypot",
+"t": "Honeypot (bal küpü)",
+"d": "Alabildiğiniz ama satamadığınız dolandırıcılık tokenı: kontrat satışları engeller ya da çok yüksek vergi keser. Her zaman başka sahiplerin gerçekten satış yapabildiğini kontrol edin."
+},
+{
+"id": "bonding-curve",
+"t": "Bonding curve (fiyat eğrisi)",
+"d": "pump.fun gibi lansman platformlarında yeni bir token önce bir fiyat eğrisi üzerinden satılır: her alım fiyatı biraz daha yukarı iter. Yeterli para girince token «mezun olur»."
+},
+{
+"id": "graduation",
+"t": "Mezuniyet (DEX’e geçiş)",
+"d": "Lansman platformundaki bir tokenın bonding curve’ünü doldurup gerçek bir DEX havuzuna taşındığı an. Yeni tokenların yalnızca yüzde birkaçı bu aşamaya ulaşır."
+},
+{
+"id": "sniper",
+"t": "Sniper (keskin nişancı)",
+"d": "Bir tokenı lansmandan sonraki ilk saniyelerde satın alan bot veya trader. Amaç çoğu zaman tokenı sonradan gelen alıcılara daha yüksek fiyattan satmaktır."
+},
+{
+"id": "bundler",
+"t": "Bundler",
+"d": "Lansmanda kendi tokenının büyük bir kısmını çok sayıda cüzdandan satın alan ve böylece çok farklı sahip varmış gibi gösteren yaratıcı. Planlı bir boşaltmanın uyarı işaretidir."
+},
+{
+"id": "dev-wallet",
+"t": "Dev cüzdanı",
+"d": "Tokenı yaratan kişinin cüzdanı. Arzın büyük bir kısmı bu cüzdandaysa, yaratıcı satış yaparak fiyatı her an çökertebilir."
+},
+{
+"id": "top-10-holders",
+"t": "İlk 10 sahip",
+"d": "En büyük 10 cüzdanın elinde tuttuğu coinlerin toplam içindeki payı. Bu pay ne kadar yüksekse (örneğin %30’un üzerinde), birkaç kişinin fiyatı çökertmesi o kadar kolaydır."
+},
+{
+"id": "kol",
+"t": "KOL",
+"d": "«Key opinion leader», yani geniş kitlesi olan fenomen. KOL’lara token tanıtmaları için sık sık para ödenir; bazen tokenı önce kendileri ucuza almış olurlar."
+},
+{
+"id": "pump-and-dump",
+"t": "Pump and dump (pompala ve boşalt)",
+"d": "Bir grup, abartılı tanıtım ve alımlarla fiyatı yukarı çeker, sonra zirvede yeni gelenlere satar. Geç kalanlar zararla baş başa kalır."
+},
+{
+"id": "slippage",
+"t": "Slippage (kayma)",
+"d": "Ekranda gördüğünüz fiyat ile gerçekte aldığınız fiyat arasındaki fark. Sığ memecoin havuzlarında tek bir işlemde %5–20 veya daha fazla olabilir."
+},
+{
+"id": "market-cap-fdv",
+"t": "Piyasa değeri ve FDV",
+"d": "Piyasa değeri = fiyat × dolaşımdaki coin sayısı. FDV (tam seyreltilmiş değer) = fiyat × var olacak tüm coinler. Aradaki fark büyükse, ileride daha çok coin kilitten çıkıp satılabilir."
+},
+{
+"id": "dyor",
+"t": "DYOR",
+"d": "«Do your own research», yani «kendi araştırmanı yap». Paranızdan sizden başka kimsenin — ne bir fenomenin ne de bir sitenin — sorumlu olmadığını hatırlatır."
+},
+{
+"id": "ape",
+"t": "Ape / ape’lemek",
+"d": "Bir tokenı kontrol etmeden, sırf hype yüzünden aceleyle satın almak. Memecoinlerde para kaybetmenin en hızlı yolu."
+},
+{
+"id": "paper-diamond-hands",
+"t": "Kâğıt eller / elmas eller",
+"d": "İlk düşüşte satanlar (kâğıt eller) ve her çöküşte elinde tutanlar (elmas eller) için kullanılan argo. İkisi de tek başına bir strateji değildir."
+}
+]

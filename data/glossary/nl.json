@@ -1,0 +1,102 @@
+[
+{
+"id": "memecoin",
+"t": "Memecoin",
+"d": "Een cryptotoken rond een grap, een dier, een persoon of een internettrend. Er zit meestal geen product of inkomen achter, dus de koers beweegt alleen door aandacht en door kopen en verkopen."
+},
+{
+"id": "contract-address",
+"t": "Contractadres (CA)",
+"d": "Het unieke adres van een token op zijn blockchain. Namen en tickers kan iedereen kopiëren, het contractadres niet. Controleer het dus altijd voordat je koopt."
+},
+{
+"id": "dex",
+"t": "DEX vs CEX",
+"d": "Met een DEX (gedecentraliseerde exchange, zoals Raydium of PancakeSwap) wissel je tokens rechtstreeks vanuit je eigen wallet. Een CEX (gecentraliseerde exchange, zoals Binance) beheert je geld voor je en noteert alleen tokens die hij heeft gecontroleerd."
+},
+{
+"id": "liquidity",
+"t": "Liquiditeit",
+"d": "Het geld dat in de handelspool van een token zit. Bij weinig liquiditeit beweegt zelfs een kleine verkoop de koers flink en kun je misschien niet tegen een eerlijke prijs verkopen."
+},
+{
+"id": "liquidity-lock",
+"t": "Liquiditeit vastzetten / verbranden",
+"d": "Als de liquiditeit van de pool is vastgezet (locked) of verbrand (burned), kan de maker haar er niet uithalen. Niet-vastgezette liquiditeit is de klassieke route voor een rug pull."
+},
+{
+"id": "rug-pull",
+"t": "Rug pull",
+"d": "Wanneer de makers of insiders plotseling het geld uit de pool halen of hun coins dumpen. De koers valt naar bijna nul en kopers kunnen er niet meer uit."
+},
+{
+"id": "honeypot",
+"t": "Honeypot",
+"d": "Een oplichterstoken die je wel kunt kopen maar niet kunt verkopen, omdat het contract verkopen blokkeert of zwaar belast. Controleer altijd of andere houders echt hebben kunnen verkopen."
+},
+{
+"id": "bonding-curve",
+"t": "Bonding curve",
+"d": "Op launchpads zoals pump.fun wordt een nieuwe token eerst verkocht via een prijscurve: elke aankoop duwt de prijs omhoog. Komt er genoeg geld binnen, dan «studeert» de token «af»."
+},
+{
+"id": "graduation",
+"t": "Afstuderen (overstap naar een DEX)",
+"d": "Het moment waarop een launchpadtoken zijn bonding curve vol heeft en naar een echte DEX-pool verhuist. Slechts een paar procent van de nieuwe tokens komt zo ver."
+},
+{
+"id": "sniper",
+"t": "Sniper",
+"d": "Een bot of trader die een token in de allereerste seconden na de lancering koopt, vaak om hem daarna duurder aan latere kopers te verkopen."
+},
+{
+"id": "bundler",
+"t": "Bundler",
+"d": "Een maker die bij de lancering een groot deel van zijn eigen token koopt vanuit veel wallets, zodat het lijkt alsof er veel verschillende houders zijn. Een waarschuwingssignaal voor een geplande dump."
+},
+{
+"id": "dev-wallet",
+"t": "Dev-wallet",
+"d": "De wallet van de maker van de token. Zit daar een groot deel van het aanbod in, dan kan de maker de koers op elk moment laten crashen door te verkopen."
+},
+{
+"id": "top-10-holders",
+"t": "Top-10 houders",
+"d": "Het deel van alle coins dat in handen is van de 10 grootste wallets. Hoe hoger dat is (bijvoorbeeld boven 30%), hoe makkelijker een paar mensen de koers kunnen laten crashen."
+},
+{
+"id": "kol",
+"t": "KOL",
+"d": "«Key opinion leader»: een influencer met een groot publiek. KOL’s worden vaak betaald om tokens te promoten, soms nadat ze die zelf goedkoop hebben gekocht."
+},
+{
+"id": "pump-and-dump",
+"t": "Pump-and-dump",
+"d": "Een groep jaagt de koers op met hype en aankopen en verkoopt aan de top aan nieuwkomers. Wie te laat instapt, blijft met de verliezen zitten."
+},
+{
+"id": "slippage",
+"t": "Slippage",
+"d": "Het verschil tussen de prijs die je ziet en de prijs die je echt krijgt. In dunne memecoinpools kan dat bij één transactie 5–20% of meer zijn."
+},
+{
+"id": "market-cap-fdv",
+"t": "Marktwaarde vs FDV",
+"d": "Marktwaarde is prijs × coins in omloop. FDV (fully diluted value, volledig verwaterde waarde) is prijs × alle coins die ooit zullen bestaan. Een groot verschil betekent dat er nog veel coins vrij kunnen komen en verkocht kunnen worden."
+},
+{
+"id": "dyor",
+"t": "DYOR",
+"d": "«Do your own research», oftewel: doe je eigen onderzoek. Een herinnering dat niemand anders dan jij verantwoordelijk is voor je geld — geen influencer en geen website."
+},
+{
+"id": "ape",
+"t": "Ape / inapen",
+"d": "Snel een token kopen op basis van hype, zonder hem te controleren. De snelste manier om geld te verliezen met memecoins."
+},
+{
+"id": "paper-diamond-hands",
+"t": "Paper hands / diamond hands",
+"d": "Slang voor mensen die bij de eerste daling verkopen (paper hands) of door elke crash heen blijven vasthouden (diamond hands). Geen van beide is op zichzelf een strategie."
+}
+]
