@@ -1,7 +1,7 @@
 ---
-title: Amphenol (APH) explained: the connector maker riding the AI data centre boom
+title: Amphenol (APH) stock: the connector maker behind AI data centres, $10.2 billion Q3 2026 sales
 description: Amphenol in plain language: sales up 65% to $10.2 billion in Q3 2026 on AI data centre demand, the $10.5 billion CommScope deal and the main risks.
-date: 2026-11-20
+date: 2026-11-24
 kind: analysis
 ---
 **Amphenol** makes the plugs, cables and sensors that let electronics talk to each other: the connectors inside AI servers, fibre links in data centres, wiring in cars, jets and factory robots, and parts in phones and laptops. You never see its name, but almost every device and network has some Amphenol inside. It trades on the New York Stock Exchange and employs about 170,000 people.
@@ -14,18 +14,20 @@ kind: analysis
 
 ## How it makes money
 
-Amphenol sells components to other manufacturers in three segments. Communications Solutions — data centres, networks, phones and PCs — brought in $6.58 billion in Q3 2026, almost two-thirds of the total, and grew 51% organically. Harsh Environment Solutions makes rugged parts for defence, aircraft, industry and cars: $2.04 billion, +29%. Interconnect and Sensor Systems, mainly cars and medical devices, added $1.60 billion (+11%). A big part of the story is buying smaller firms: in January 2026 Amphenol paid $10.5 billion for CommScope's fibre and cable business, which it now expects to add about $5.1 billion of sales this year.
+Amphenol sells components to other manufacturers in three segments. Communications Solutions — data centres, networks, phones and PCs — brought in $6.58 billion in Q3 2026, almost two-thirds of the total, and grew 51% organically. Harsh Environment Solutions makes rugged parts for defence, aircraft, industry and cars: $2.04 billion, +29%. Interconnect and Sensor Systems, mainly cars and medical devices, added $1.60 billion (+11%). A big part of the story is buying smaller firms: in January 2026 Amphenol paid $10.5 billion for CommScope's fibre and cable business, which it expected to add about $5.1 billion of sales in 2026.
 
 ## The numbers right now
 
-In the quarter to 30 September 2026 Amphenol earned $0.80 a share on an adjusted basis (+74%) with an operating margin near 30%. Free cash flow was $1.62 billion. It held $5.3 billion in cash and short-term investments against about $17.9 billion of debt, much of it taken on for CommScope. For Q4 2026 the company guides to $10.3–10.5 billion of sales and $0.81–0.83 of adjusted earnings per share; for the full year, $36.9–37.1 billion of sales, up from $23.1 billion in 2025.
+- Price today: {{price:aph}}
+- Market value: {{mcap:aph}} ({{rank:aph}} among the world's largest companies on WhatIfStack)
+- Record high: {{ath:aph}} ({{athd:aph}}), {{fromath:aph}} from it
+- $10 a day for 10 years: {{dca:aph:10}} from {{dcainv:10}} invested ({{dcaroi:aph:10}})
+
+In the quarter to 30 September 2026 Amphenol earned $0.80 a share on an adjusted basis (+74%) with an operating margin near 30%. Free cash flow was $1.62 billion. At the end of September it held $5.3 billion in cash and short-term investments against about $17.9 billion of debt, much of it taken on for CommScope. For Q4 2026 the company guides to $10.3–10.5 billion of sales and $0.81–0.83 of adjusted earnings per share; for the full year, $36.9–37.1 billion of sales, up from $23.1 billion in 2025.
 
 ## The stock's story
 
-For decades Amphenol was a quiet, steady compounder. AI changed the pace: as cloud giants raced to build data centres, demand for its high-speed and power connectors exploded, and the stock hit record highs in early 2026. In September 2026 it split two-for-one, so each old share became two; in split-adjusted terms the 52-week range in our data is about $59–90. Shares jumped about 7% on the day of the record Q3 report. The market value is now about $188 billion, and the shares trade at roughly 33 times trailing earnings.
-
-- Price today: {{price:aph}}
-- $10 a day for 10 years: {{dca:aph:10}} from {{dcainv:10}} invested ({{dcaroi:aph:10}})
+For decades Amphenol was a quiet, steady compounder. AI changed the pace: as cloud giants raced to build data centres, demand for its high-speed and power connectors exploded, and the stock set a string of record highs in 2025 and 2026. In September 2026 it split two-for-one, so each old share became two; all prices in our data are split-adjusted. Shares jumped about 7% on the day of the record Q3 2026 report, when they traded at roughly 33 times the past year's earnings.
 
 ## Competitors
 
@@ -34,7 +36,7 @@ Amphenol's biggest direct rival is TE Connectivity; others include Molex (owned 
 ## Main risks
 
 - **AI spending cycle:** much of the growth depends on a few cloud companies' data centre budgets; if they slow down, orders could fall fast.
-- **High expectations:** at about 33 times earnings, the stock prices in strong growth; a weaker quarter can hit it hard.
+- **High expectations:** after the Q3 2026 report the stock traded at about 33 times earnings, pricing in strong growth; a weaker quarter can hit it hard.
 - **Debt and deals:** $17.9 billion of debt and a steady stream of acquisitions mean integration has to keep working.
 - **Cyclical end markets:** cars, industry and phones can weaken in a recession, and trade tariffs affect a global factory network.
 
