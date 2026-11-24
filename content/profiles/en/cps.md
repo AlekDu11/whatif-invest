@@ -1,6 +1,6 @@
 ---
-title: Cyfrowy Polsat (CPS) stock: Poland's TV-and-mobile giant after a 28% two-day drop
-description: Cyfrowy Polsat in plain language: PLN 3.63 billion of Q3 2026 revenue, Plus mobile and Polsat TV, PLN 12 billion of debt, no dividend since 2022, and the risks.
+title: Cyfrowy Polsat (CPS) stock: Poland's Plus mobile and Polsat TV group
+description: Cyfrowy Polsat in plain language: PLN 3.63 billion of Q3 2026 revenue, Plus mobile and Polsat TV, PLN 12 billion of debt in 2026 and the risks.
 date: 2026-11-21
 kind: analysis
 ---
@@ -10,7 +10,7 @@ kind: analysis
 > - Revenue: PLN 3.63 billion in Q3 2026, +5.9% a year; adjusted EBITDA PLN 838.9 million, +9.5%.
 > - Net debt was above PLN 12 billion in mid-2026, about 3.6 times yearly EBITDA; the target is below 2.5 times by 2030.
 > - No dividend has been paid since 2022, and the new strategy brings it back only "before 2030".
-> - The stock lost more than 28% in two days after the new strategy was unveiled on 30 October 2026, closing near PLN 12.90.
+> - The stock lost more than 28% in the two days after the new strategy was unveiled on 30 October 2026.
 
 ## How it makes money
 
@@ -18,14 +18,16 @@ Most money comes from monthly subscriptions. Households and firms pay for Plus m
 
 ## The numbers right now
 
+- Price today: {{price:cps}}
+- Market value: {{mcap:cps}} ({{rank:cps}} among the world's largest companies on WhatIfStack)
+- Record high: {{ath:cps}} ({{athd:cps}}), {{fromath:cps}} from it
+- $10 a day for 10 years: {{dca:cps:10}} from {{dcainv:10}} invested ({{dcaroi:cps:10}})
+
 In the quarter to 30 September 2026 the group earned PLN 3.63 billion of revenue (+5.9%), reported EBITDA of PLN 843.7 million and net profit of PLN 116.7 million, double a year earlier. All three beat the analyst consensus. Free cash flow over the last 12 months, excluding green-energy investment, rose more than 37% to over PLN 1 billion. Management warned that Q4 will be weaker: the TV ad market is shrinking slightly, network costs are rising and pre-Christmas marketing is expensive.
 
 ## The stock's story
 
-Cyfrowy Polsat started as a satellite-TV operator and grew by buying the Plus mobile network and the Polsat TV broadcaster. In late 2021 the company bought back its own shares at PLN 35 each. Since then the price has fallen by well over half. Debt, the end of dividends and costly energy projects weighed on it. In 2024 a public feud broke out between founder Zygmunt Solorz and three of his children over who controls the empire. Courts in Liechtenstein ruled for the children, and in July 2026 the company said the dispute was finally over: Tobias Solorz, Aleksandra Żak and Piotr Żak now control the TiVi Foundation, the majority shareholder. Then came the "GPP Refocused" strategy: telecom EBITDA falling 2–3% a year until 2029, energy and real-estate assets put up for sale without a price or timeline, and dividends only "before 2030". Investors sold hard.
-
-- Price today: {{price:cps}}
-- $10 a day for 10 years: {{dca:cps:10}} from {{dcainv:10}} invested ({{dcaroi:cps:10}})
+Cyfrowy Polsat started as a satellite-TV operator and grew by buying the Plus mobile network and the Polsat TV broadcaster. In late 2021 the company bought back its own shares at PLN 35 each. By November 2026 the price had fallen by well over half from that level, to about PLN 12.90 after the strategy sell-off. Debt, the end of dividends and costly energy projects weighed on it. In 2024 a public feud broke out between founder Zygmunt Solorz and three of his children over who controls the empire. Courts in Liechtenstein ruled for the children, and in July 2026 the company said the dispute was finally over: Tobias Solorz, Aleksandra Żak and Piotr Żak took control of the TiVi Foundation, the majority shareholder. Then came the "GPP Refocused" strategy: telecom EBITDA falling 2–3% a year until 2029, energy and real-estate assets put up for sale without a price or timeline, and dividends only "before 2030". Investors sold hard.
 
 ## Competitors
 
@@ -41,7 +43,7 @@ In mobile and internet it fights Orange Polska, T-Mobile Polska and Play (owned 
 
 ## What it means if you buy regularly
 
-CPS is a slow, heavily indebted company whose price has more than halved from its 2021 levels, and the dividend that once attracted investors is gone for now. Regular buying spreads purchases across good and bad months, but it cannot fix a business that shrinks; a single Polish stock is usually a small part of a broader portfolio. Past results do not guarantee future returns.
+CPS was a slow, heavily indebted company in 2026: by then its price had more than halved from the 2021 buyback level, and the dividend that once attracted investors was suspended. Regular buying spreads purchases across good and bad months, but it cannot fix a business that shrinks; a single Polish stock is usually a small part of a broader portfolio. Past results do not guarantee future returns.
 
 *Not investment advice.*
 

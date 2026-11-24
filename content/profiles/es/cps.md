@@ -1,6 +1,6 @@
 ---
-title: Acciones de Cyfrowy Polsat (CPS): el gigante polaco de TV y móvil tras caer un 28% en dos días
-description: Cyfrowy Polsat en lenguaje claro: 3.630 millones de zlotys de ingresos en el 3T 2026, red Plus y Polsat TV, 12.000 millones de deuda, sin dividendo desde 2022.
+title: Acciones de Cyfrowy Polsat (CPS): el grupo polaco de la red móvil Plus y Polsat TV
+description: Cyfrowy Polsat en lenguaje claro: 3.630 millones de zlotys de ingresos en el 3T 2026, red Plus y Polsat TV, 12.000 millones de deuda en 2026 y los riesgos.
 date: 2026-11-21
 kind: analysis
 ---
@@ -10,26 +10,28 @@ kind: analysis
 > - Ingresos: 3.630 millones de zlotys en el 3T 2026, +5,9% interanual; EBITDA ajustado de 838,9 millones, +9,5%.
 > - La deuda neta superaba los 12.000 millones de zlotys a mediados de 2026, unas 3,6 veces el EBITDA anual; el objetivo es bajar de 2,5 veces en 2030.
 > - No reparte dividendo desde 2022, y la nueva estrategia solo lo devuelve «antes de 2030».
-> - La acción perdió más de un 28% en dos días tras presentar la estrategia el 30 de octubre de 2026 y cerró cerca de 12,90 zlotys.
+> - La acción perdió más de un 28% en los dos días posteriores a la presentación de la nueva estrategia, el 30 de octubre de 2026.
 
 ## Cómo gana dinero
 
-La mayor parte llega de cuotas mensuales. El grupo empuja los paquetes de móvil, internet y TV: unos 3,1 millones de clientes, el 55% de la base, usan más de un servicio. Un cliente particular medio aportó 85 zlotys al mes en el 3T 2026 (+5,9%). El segundo motor es la publicidad: los canales de Polsat tuvieron un 22% de audiencia y facturaron 289 millones de zlotys en anuncios y patrocinio, cerca del 28% del mercado polaco de publicidad en TV. La tercera pata es la energía verde: sus parques eólicos y otras centrales limpias produjeron 322 GWh en el trimestre, un 35% más que un año antes.
+La mayor parte llega de cuotas mensuales. Hogares y empresas pagan tarifas móviles de Plus, internet fijo y móvil y paquetes de TV, y el grupo empuja los paquetes combinados: unos 3,1 millones de clientes, el 55% de la base, usan más de un servicio. Un cliente particular medio aportó 85 zlotys al mes en el 3T 2026 (+5,9%). El segundo motor es la publicidad: los canales de Polsat tuvieron un 22% de audiencia y facturaron 289 millones de zlotys en anuncios y patrocinio, cerca del 28% del mercado polaco de publicidad en TV. La tercera pata es la energía verde: sus parques eólicos y otras centrales limpias produjeron 322 GWh en el trimestre, un 35% más que un año antes.
 
 ## Las cifras ahora
+
+- Precio actual: {{price:cps}}
+- Valor de mercado: {{mcap:cps}} ({{rank:cps}} entre las mayores empresas del mundo en WhatIfStack)
+- Máximo histórico: {{ath:cps}} ({{athd:cps}}), {{fromath:cps}} desde él
+- 10 $ al día durante 10 años: {{dca:cps:10}} con {{dcainv:10}} invertidos ({{dcaroi:cps:10}})
 
 En el trimestre cerrado el 30 de septiembre de 2026 el grupo ingresó 3.630 millones de zlotys (+5,9%), con un EBITDA de 843,7 millones y un beneficio neto de 116,7 millones, el doble que un año antes. Las tres cifras superaron el consenso de analistas. El flujo de caja libre de los últimos 12 meses, sin la inversión en energía verde, subió más de un 37%, hasta superar los 1.000 millones. La dirección avisó de que el 4T será más flojo: el mercado de publicidad en TV se encoge un poco, los costes de red suben y el marketing navideño es caro.
 
 ## La historia de la acción
 
-Cyfrowy Polsat empezó como operador de TV por satélite y creció comprando la red móvil Plus y la cadena Polsat TV. A finales de 2021 la empresa recompró acciones propias a 35 zlotys. Desde entonces el precio ha caído a menos de la mitad: pesaron la deuda, el fin de los dividendos y los costosos proyectos energéticos. En 2024 estalló una disputa pública entre el fundador, Zygmunt Solorz, y tres de sus hijos por el control del imperio. Los tribunales de Liechtenstein dieron la razón a los hijos y en julio de 2026 la empresa dio el conflicto por cerrado: Tobias Solorz, Aleksandra Żak y Piotr Żak controlan ahora la Fundación TiVi, el accionista mayoritario. Después llegó la estrategia «GPP Refocused»: EBITDA de telecomunicaciones bajando un 2–3% al año hasta 2029, energía e inmuebles a la venta sin precio ni plazos y dividendos solo «antes de 2030».
-
-- Precio actual: {{price:cps}}
-- 10 $ al día durante 10 años: {{dca:cps:10}} con {{dcainv:10}} invertidos ({{dcaroi:cps:10}})
+Cyfrowy Polsat empezó como operador de TV por satélite y creció comprando la red móvil Plus y la cadena Polsat TV. A finales de 2021 la empresa recompró acciones propias a 35 zlotys. En noviembre de 2026 el precio ya había caído a menos de la mitad de ese nivel, a unos 12,90 zlotys tras las ventas provocadas por la estrategia. Pesaron la deuda, el fin de los dividendos y los costosos proyectos energéticos. En 2024 estalló una disputa pública entre el fundador, Zygmunt Solorz, y tres de sus hijos por el control del imperio. Los tribunales de Liechtenstein dieron la razón a los hijos y en julio de 2026 la empresa dio el conflicto por cerrado: Tobias Solorz, Aleksandra Żak y Piotr Żak tomaron el control de la Fundación TiVi, el accionista mayoritario. Después llegó la estrategia «GPP Refocused»: EBITDA de telecomunicaciones bajando un 2–3% al año hasta 2029, energía e inmuebles a la venta sin precio ni plazos y dividendos solo «antes de 2030». Los inversores vendieron con fuerza.
 
 ## Competidores
 
-En móvil e internet compite con Orange Polska, T-Mobile Polska y Play (de la francesa Iliad). En televisión, con TVN, Canal+ y las plataformas globales de streaming. Plus está levantando más de 5.000 nuevas estaciones base con Cellnex y su 5G llega a 28 millones de personas. También firmó alianzas con Vodafone y YouTube.
+En móvil e internet compite con Orange Polska, T-Mobile Polska y Play (de la francesa Iliad). En televisión, con TVN, Canal+ y las plataformas globales de streaming. Plus está levantando más de 5.000 nuevas estaciones base con Cellnex y su 5G llega a 28 millones de personas. Las nuevas alianzas con Vodafone (clientes empresariales) y YouTube (programas de Polsat) deberían ayudar.
 
 ## Principales riesgos
 
@@ -41,7 +43,7 @@ En móvil e internet compite con Orange Polska, T-Mobile Polska y Play (de la fr
 
 ## Qué significa si compras con regularidad
 
-CPS es una empresa lenta y muy endeudada, con un precio que vale menos de la mitad que en 2021, y el dividendo que antes atraía inversores ha desaparecido por ahora. Comprar con regularidad reparte las compras entre meses buenos y malos, pero no arregla un negocio que se encoge; una sola acción polaca suele ser solo una parte pequeña de una cartera más amplia. Los resultados pasados no garantizan los futuros.
+En 2026 CPS era una empresa lenta y muy endeudada: para entonces su precio había caído a menos de la mitad del nivel de la recompra de 2021, y el dividendo que antes atraía inversores estaba suspendido. Comprar con regularidad reparte las compras entre meses buenos y malos, pero no arregla un negocio que se encoge; una sola acción polaca suele ser solo una parte pequeña de una cartera más amplia. Los resultados pasados no garantizan los futuros.
 
 *No es asesoramiento de inversión.*
 

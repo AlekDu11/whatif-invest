@@ -1,6 +1,6 @@
 ---
-title: Cyfrowy-Polsat-Aktie (CPS): Polens TV- und Mobilfunkriese nach 28 % Minus in zwei Tagen
-description: Cyfrowy Polsat einfach erklärt: 3,63 Mrd. Zloty Umsatz im 3. Quartal 2026, Plus-Netz und Polsat TV, über 12 Mrd. Zloty Schulden, keine Dividende seit 2022.
+title: Cyfrowy-Polsat-Aktie (CPS): Polens Gruppe hinter dem Mobilfunknetz Plus und Polsat TV
+description: Cyfrowy Polsat einfach erklärt: 3,63 Mrd. Zloty Umsatz im 3. Quartal 2026, Plus-Netz und Polsat TV, über 12 Mrd. Zloty Schulden im Jahr 2026 und die Risiken.
 date: 2026-11-21
 kind: analysis
 ---
@@ -10,7 +10,7 @@ kind: analysis
 > - Umsatz: 3,63 Mrd. Zloty im 3. Quartal 2026, +5,9 % zum Vorjahr; bereinigtes EBITDA 838,9 Mio. Zloty, +9,5 %.
 > - Die Nettoverschuldung lag Mitte 2026 über 12 Mrd. Zloty, etwa das 3,6-Fache des Jahres-EBITDA; Ziel bis 2030: unter dem 2,5-Fachen.
 > - Seit 2022 gibt es keine Dividende, die neue Strategie stellt sie erst „vor 2030“ in Aussicht.
-> - Nach der Strategievorstellung am 30. Oktober 2026 verlor die Aktie in zwei Tagen mehr als 28 % und schloss bei rund 12,90 Zloty.
+> - In den zwei Tagen nach der Vorstellung der neuen Strategie am 30. Oktober 2026 verlor die Aktie mehr als 28 %.
 
 ## Womit das Unternehmen Geld verdient
 
@@ -18,14 +18,16 @@ Das meiste Geld kommt aus monatlichen Abos. Haushalte und Firmen zahlen für Plu
 
 ## Die Zahlen aktuell
 
+- Kurs aktuell: {{price:cps}}
+- Marktwert: {{mcap:cps}} ({{rank:cps}} unter den größten Unternehmen der Welt auf WhatIfStack)
+- Rekordhoch: {{ath:cps}} ({{athd:cps}}), {{fromath:cps}} davon entfernt
+- 10 $ pro Tag über 10 Jahre: {{dca:cps:10}} bei {{dcainv:10}} Einsatz ({{dcaroi:cps:10}})
+
 Im Quartal bis zum 30. September 2026 erzielte die Gruppe 3,63 Mrd. Zloty Umsatz (+5,9 %), ein EBITDA von 843,7 Mio. Zloty und einen Nettogewinn von 116,7 Mio. Zloty – doppelt so viel wie ein Jahr zuvor. Alle drei Werte lagen über dem Analystenkonsens. Der freie Cashflow der letzten zwölf Monate ohne Investitionen in grüne Energie stieg um mehr als 37 % auf über 1 Mrd. Zloty. Das Management warnte, dass das 4. Quartal schwächer ausfällt: Der TV-Werbemarkt schrumpft leicht, die Netzkosten steigen und das Weihnachtsmarketing ist teuer.
 
 ## Die Geschichte der Aktie
 
-Cyfrowy Polsat begann als Satelliten-TV-Anbieter und wuchs durch den Kauf des Mobilfunknetzes Plus und des Senders Polsat TV. Ende 2021 kaufte das Unternehmen eigene Aktien zu 35 Zloty zurück. Seitdem hat sich der Kurs mehr als halbiert: Schulden, das Ende der Dividende und teure Energieprojekte belasteten. 2024 brach ein öffentlicher Streit zwischen Gründer Zygmunt Solorz und drei seiner Kinder um die Kontrolle über das Imperium aus. Gerichte in Liechtenstein gaben den Kindern recht, und im Juli 2026 erklärte das Unternehmen den Streit für endgültig beendet: Tobias Solorz, Aleksandra Żak und Piotr Żak kontrollieren nun die TiVi-Stiftung, den Mehrheitsaktionär. Dann kam die Strategie „GPP Refocused“: ein Telekom-EBITDA, das bis 2029 jährlich um 2–3 % sinkt, Energie- und Immobiliengeschäft zum Verkauf ohne Preis und Zeitplan, Dividenden erst „vor 2030“. Anleger verkauften kräftig.
-
-- Kurs aktuell: {{price:cps}}
-- 10 $ pro Tag über 10 Jahre: {{dca:cps:10}} bei {{dcainv:10}} Einsatz ({{dcaroi:cps:10}})
+Cyfrowy Polsat begann als Satelliten-TV-Anbieter und wuchs durch den Kauf des Mobilfunknetzes Plus und des Senders Polsat TV. Ende 2021 kaufte das Unternehmen eigene Aktien zu 35 Zloty zurück. Bis November 2026 hatte sich der Kurs gegenüber diesem Niveau mehr als halbiert, auf rund 12,90 Zloty nach dem Ausverkauf wegen der Strategie. Schulden, das Ende der Dividende und teure Energieprojekte belasteten. 2024 brach ein öffentlicher Streit zwischen Gründer Zygmunt Solorz und drei seiner Kinder um die Kontrolle über das Imperium aus. Gerichte in Liechtenstein gaben den Kindern recht, und im Juli 2026 erklärte das Unternehmen den Streit für endgültig beendet: Tobias Solorz, Aleksandra Żak und Piotr Żak übernahmen die Kontrolle über die TiVi-Stiftung, den Mehrheitsaktionär. Dann kam die Strategie „GPP Refocused“: ein Telekom-EBITDA, das bis 2029 jährlich um 2–3 % sinkt, Energie- und Immobiliengeschäft zum Verkauf ohne Preis und Zeitplan, Dividenden erst „vor 2030“. Anleger verkauften kräftig.
 
 ## Konkurrenten
 
@@ -41,7 +43,7 @@ Im Mobilfunk und Internet tritt das Unternehmen gegen Orange Polska, T-Mobile Po
 
 ## Was das bedeutet, wenn du regelmäßig kaufst
 
-CPS ist ein langsames, hoch verschuldetes Unternehmen, dessen Kurs sich seit 2021 mehr als halbiert hat, und die Dividende, die früher Anleger anzog, ist vorerst weg. Regelmäßiges Kaufen verteilt die Einstiege auf gute und schlechte Monate, repariert aber kein schrumpfendes Geschäft; eine einzelne polnische Aktie ist meist nur ein kleiner Teil eines breiteren Depots. Vergangene Ergebnisse sind keine Garantie für die Zukunft.
+CPS war 2026 ein langsames, hoch verschuldetes Unternehmen: Bis dahin hatte sich der Kurs gegenüber dem Rückkaufniveau von 2021 mehr als halbiert, und die Dividende, die früher Anleger anzog, war ausgesetzt. Regelmäßiges Kaufen verteilt die Einstiege auf gute und schlechte Monate, repariert aber kein schrumpfendes Geschäft; eine einzelne polnische Aktie ist meist nur ein kleiner Teil eines breiteren Depots. Vergangene Ergebnisse sind keine Garantie für die Zukunft.
 
 *Keine Anlageberatung.*
 
