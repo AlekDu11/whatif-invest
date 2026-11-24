@@ -12772,5 +12772,23 @@
 "name": "Anthropic",
 "cat": "stock",
 "sector": "Technology"
+},
+{
+"tk": "SNY",
+"yahoo": "SNY",
+"name": "Sanofi",
+"cat": "stock"
+},
+{
+"tk": "AMTM",
+"yahoo": "AMTM",
+"name": "Amentum Holdings",
+"cat": "stock"
+},
+{
+"tk": "COGT",
+"yahoo": "COGT",
+"name": "Cogent Biosciences",
+"cat": "stock"
 }
 ]
