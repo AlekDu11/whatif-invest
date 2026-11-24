@@ -2,12 +2,21 @@
 title: What is a stablecoin (USDT, USDC) and why it matters
 description: Stablecoins like USDT and USDC explained simply: how they try to stay at $1, what backs them, where people use them and what risks to understand.
 date: 2026-11-15
-category: guides
+category: learn
+track: crypto
+step: 4
 assets: btc, eth
+stat: $1
+stat_label: the price a stablecoin like USDT or USDC is designed to hold
 ---
 A **stablecoin** is a crypto token designed to keep a steady price — usually exactly **$1**. It moves like crypto (fast, 24/7, across borders) but is meant to hold its value like ordinary money.
 
 The two best-known examples are **USDT** (Tether) and **USDC** (Circle). Together they make up most of the stablecoin market, and on many exchanges they are the main currency for trading Bitcoin and other coins.
+
+> **Key takeaways**
+> - A stablecoin is a crypto token that tries to stay worth exactly $1 — USDT and USDC are the biggest.
+> - On an exchange it works as a "waiting room" for your money: you can step out of Bitcoin without sending money back to the bank.
+> - It is not a bank deposit: it can briefly lose its $1 price, the issuer can freeze it, and sending it on the wrong network can lose it.
 
 ## Why stablecoins exist
 
@@ -80,6 +89,13 @@ Both run on several blockchains (Ethereum, Tron, Solana and others). Always send
 3. Do not keep more on any single platform than you can afford to have frozen.
 4. Read the issuer's latest reserve report.
 5. Remember: holding a stablecoin is holding dollars-in-crypto, not an investment with expected growth.
+
+> **⚠️ Watch out**
+> - **Wrong network.** Sending USDT on a network the receiver does not support (for example TRC-20 to an ERC-20 address) can lose the money for good. Send a small test first.
+> - **"Guaranteed" interest.** Offers of 10–30% a year on stablecoins are a classic scam or a hidden risk.
+> - **Look-alike tokens.** Anyone can create a token called "USDT". Only the official contract on the exchange or in your wallet counts.
+
+Next step: find an exchange that works in your country on our [exchanges page]({lang}/exchanges/), and see all lessons in [Learn]({lang}/learn/).
 
 If your goal is long-term regular investing, compare how assets actually performed with our [DCA calculator]({lang}/compare/) and read [what DCA is]({lang}/blog/what-is-dca/).
 
