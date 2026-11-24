@@ -1,5 +1,5 @@
 ---
-title: KGHM Polska Miedź (KGH) explained: Poland's copper and silver giant
+title: KGHM Polska Miedź (KGH) stock: Poland's copper and silver giant
 description: KGHM in plain language: how it made 7.5 billion zł in nine months of 2026 from copper and silver, why the mining tax matters and what buyers should know.
 date: 2026-11-19
 kind: analysis
@@ -10,7 +10,7 @@ kind: analysis
 > - Revenue: 36.7 billion zł in January–September 2026, +42% a year, almost all thanks to higher metal prices.
 > - Net profit for the nine months: 7.5 billion zł, 7.4 times more than a year earlier.
 > - Output barely moved: 533 thousand tonnes of payable copper (+1%) and 1,073 tonnes of silver (+8%).
-> - The share price ranged from 187.30 zł to 396.40 zł over the past 52 weeks.
+> - From its 2025 profit KGHM paid a dividend of 1.50 zł per share; net debt was only 0.3 times a year's EBITDA in Q3 2026.
 
 ## How it makes money
 
@@ -20,16 +20,18 @@ The rest comes from abroad. KGHM owns 55% of the Sierra Gorda open-pit mine in C
 
 ## The numbers right now
 
-In the third quarter of 2026 (July–September) revenue rose to 12.04 billion zł from 8.32 billion a year earlier, and net profit jumped to 1.94 billion zł from 433 million. For January–September, adjusted EBITDA (profit before interest, tax and depreciation) was about 13.2 billion zł, up 83%. The cash cost of producing copper (C1) was $2.54 per pound, and debt is low: net debt equals only 0.3 times a year's EBITDA. Investment spending reached almost 2.5 billion zł. From its 2025 profit KGHM paid a dividend of 1.50 zł per share.
+- Price today: {{price:kgh}}
+- Market value: {{mcap:kgh}} ({{rank:kgh}} among the world's largest companies on WhatIfStack)
+- Record high: {{ath:kgh}} ({{athd:kgh}}), {{fromath:kgh}} from it
+- $10 a day for 10 years: {{dca:kgh:10}} from {{dcainv:10}} invested ({{dcaroi:kgh:10}})
+
+In the third quarter of 2026 (July–September) revenue rose to 12.04 billion zł from 8.32 billion a year earlier, and net profit jumped to 1.94 billion zł from 433 million. For January–September, adjusted EBITDA (profit before interest, tax and depreciation) was about 13.2 billion zł, up 83%. The cash cost of producing copper (C1) was $2.54 per pound, and debt was low: net debt equalled only 0.3 times a year's EBITDA. Investment spending reached almost 2.5 billion zł. From its 2025 profit KGHM paid a dividend of 1.50 zł per share.
 
 The downside of high prices: Poland's special tax on extracting copper and silver rose 110% year on year, because it grows with metal prices.
 
 ## The stock's story
 
-KGHM's share price moves with copper and silver. The special mining tax, in force since 18 April 2012, has weighed on it ever since. In late 2015, when metal prices were falling and the government said the tax would stay, the stock dropped below 70 zł. The 2025–2026 metals boom changed the picture: over the past year the shares traded as high as 396.40 zł. Then they cooled: on 18 November 2026 they closed at 264.30 zł, 13.8% lower than five days earlier, as copper fell to its lowest level in more than six months.
-
-- Price today: {{price:kgh}}
-- $10 a day for 10 years: {{dca:kgh:10}} from {{dcainv:10}} invested ({{dcaroi:kgh:10}})
+KGHM's share price moves with copper and silver. The special mining tax, in force since 18 April 2012, has weighed on it ever since. In late 2015, when metal prices were falling and the government said the tax would stay, the stock dropped below 70 zł. The 2025–2026 metals boom changed the picture: in the 52 weeks to mid-November 2026 the shares traded as high as 396.40 zł. Then they cooled: on 18 November 2026 they closed at 264.30 zł, 13.8% lower than five days earlier, as copper fell to its lowest level in more than six months.
 
 ## Competitors
 

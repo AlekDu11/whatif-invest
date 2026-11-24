@@ -1,5 +1,5 @@
 ---
-title: Dino Polska (DNP) explained: the supermarket chain that opens a store almost every day
+title: Dino Polska (DNP) stock: the supermarket chain that opens a store almost every day
 description: Dino Polska in plain language: 3,283 small-town supermarkets, PLN 9.71 billion of sales a quarter, why profit stalled in 2026 and the main risks.
 date: 2026-11-19
 kind: analysis
@@ -10,7 +10,7 @@ kind: analysis
 > - Revenue: PLN 9.71 billion in Q3 2026, +10.8% a year, almost all of it from new stores.
 > - Same-store sales grew just 0.1% that quarter as food prices fell, and net profit was flat at PLN 483 million.
 > - The network reached 3,283 stores at the end of September 2026, up from 3,033 at the end of 2025.
-> - The shares fell to PLN 26.90 in July 2026, about 44% below their September 2025 high of PLN 47.90, before recovering part of the drop.
+> - Full year 2025: revenue PLN 33.63 billion (+14.9%) and net profit PLN 1.56 billion; no dividend, profit goes into new stores.
 
 ## How it makes money
 
@@ -18,16 +18,18 @@ Dino earns a small margin on a very large volume of groceries. Fresh products �
 
 ## The numbers right now
 
-In the quarter to 30 September 2026 Dino's revenue rose 10.8% to PLN 9.71 billion. LFL sales grew only 0.1%, because food prices in Poland were falling. EBITDA (profit before interest, tax and depreciation) rose 4.7% to PLN 785.5 million, but net profit stayed almost unchanged at PLN 483.2 million. For the first nine months revenue was PLN 27.68 billion (+11.9%) and net profit PLN 1.20 billion (+0.7%). The company added 108 stores in the quarter and expects capital spending of about PLN 2.5 billion this year.
+- Price today: {{price:dnp}}
+- Market value: {{mcap:dnp}} ({{rank:dnp}} among the world's largest companies on WhatIfStack)
+- Record high: {{ath:dnp}} ({{athd:dnp}}), {{fromath:dnp}} from it
+- $10 a day for 5 years: {{dca:dnp:5}} from {{dcainv:5}} invested ({{dcaroi:dnp:5}})
+
+In the quarter to 30 September 2026 Dino's revenue rose 10.8% to PLN 9.71 billion. LFL sales grew only 0.1%, because food prices in Poland were falling. EBITDA (profit before interest, tax and depreciation) rose 4.7% to PLN 785.5 million, but net profit stayed almost unchanged at PLN 483.2 million. For the first nine months revenue was PLN 27.68 billion (+11.9%) and net profit PLN 1.20 billion (+0.7%). The company added 108 stores in the quarter and expected capital spending of about PLN 2.5 billion for 2026.
 
 For all of 2025 Dino had PLN 33.63 billion of revenue (+14.9%), LFL growth of 4.4% and net profit of PLN 1.56 billion. It does not pay a dividend and puts profit back into new stores.
 
 ## The stock's story
 
-Dino was one of Warsaw's best stocks after its 2017 debut, when shares were sold to institutions at PLN 34.50 — equal to PLN 3.45 after the 1-for-10 share split carried out in 2025. The price climbed for years as the store count multiplied, reaching a two-year closing high of PLN 47.90 in September 2025. The mood then turned: food deflation, rising costs and price cuts squeezed margins, and store openings in the first half of 2026 came in slightly below expectations. In July 2026 they hit PLN 26.90, the lowest since May 2022. By late October they were back near PLN 40 — still roughly ten times the IPO price.
-
-- Price today: {{price:dnp}}
-- $10 a day for 5 years: {{dca:dnp:5}} from {{dcainv:5}} invested ({{dcaroi:dnp:5}})
+Dino was one of Warsaw's best stocks after its 2017 debut, when shares were sold to institutions at PLN 34.50 — equal to PLN 3.45 after the 1-for-10 share split carried out in 2025. The price climbed for years as the store count multiplied, reaching a two-year closing high of PLN 47.90 in September 2025. The mood then turned: food deflation, rising costs and price cuts squeezed margins, and store openings in the first half of 2026 came in slightly below expectations. In July 2026 they hit PLN 26.90, the lowest since May 2022. By late October 2026 they were back near PLN 40 — still roughly ten times the IPO price.
 
 ## Competitors
 
@@ -42,7 +44,7 @@ Dino competes with Biedronka (owned by Portugal's Jeronimo Martins), Lidl, the c
 
 ## What it means if you buy regularly
 
-Dino is a grocery business, so its sales are steadier than most — but the share price is not: it lost more than 40% in under a year. Buying a fixed amount regularly gets you more shares when the price is low, which smooths the entry price. It does not protect you from a long period of slow growth, and a single stock from a single country is a concentrated bet. Past results do not guarantee future returns.
+Dino is a grocery business, so its sales are steadier than most — but the share price is not: between September 2025 and July 2026 it lost more than 40%. Buying a fixed amount regularly gets you more shares when the price is low, which smooths the entry price. It does not protect you from a long period of slow growth, and a single stock from a single country is a concentrated bet. Past results do not guarantee future returns.
 
 *Not investment advice.*
 
