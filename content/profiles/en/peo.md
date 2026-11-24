@@ -1,6 +1,6 @@
 ---
 title: Bank Pekao (PEO) explained: Poland's No. 2 bank and its 19.77-zloty dividend
-description: Bank Pekao in plain language: PLN 4.26 billion profit in 9M 2026 despite a 30% bank tax, a record dividend, the stalled PZU merger and the main risks.
+description: Bank Pekao in plain language: PLN 4.26 billion profit in 9M 2026 despite a 30% bank tax, a PLN 19.77 dividend from 2025 profit, the stalled PZU merger and the main risks.
 date: 2026-11-19
 kind: analysis
 ---
@@ -9,7 +9,7 @@ kind: analysis
 > **Key takeaways**
 > - Net profit: PLN 4.26 billion in the first nine months of 2026, down 18%, mostly because Poland raised the tax rate on bank profits to 30%.
 > - Fee income grew 11% to PLN 2.51 billion, while net interest income slipped 1.5% to PLN 10.14 billion.
-> - Record dividend: PLN 19.77 per share from 2025 profit, about PLN 5.2 billion in total.
+> - Largest dividend in its history: PLN 19.77 per share from 2025 profit, about PLN 5.2 billion in total.
 > - The planned merger with PZU, first aimed for mid-2026, is delayed with no new date.
 
 ## How it makes money
@@ -18,16 +18,18 @@ Like most Polish banks, Pekao earns mainly on the gap between the interest it ch
 
 ## The numbers right now
 
+- Price today: {{price:peo}}
+- Market value: {{mcap:peo}} ({{rank:peo}} among the world's largest companies on WhatIfStack)
+- Record high: {{ath:peo}} ({{athd:peo}}), {{fromath:peo}} from it
+- $10 a day for 10 years: {{dca:peo:10}} from {{dcainv:10}} invested ({{dcaroi:peo:10}})
+
 In the third quarter of 2026 Pekao earned PLN 1.52 billion, about 20% less than a year earlier but above analysts' expectations. For the nine months, the higher bank tax alone cut profit by over PLN 0.7 billion. Without that change the bank says the result would be roughly flat. Return on equity was 16.8%, or 19.4% adjusted for the tax change. Lending grew about 10% year on year, led by corporate loans (+13%) and cash loans (+16%). The total capital ratio stood at 17.8%, well above the regulatory minimum.
 
-2025 was a record year, with PLN 7.02 billion of net profit and an ROE of 21.4%. That paid for the PLN 19.77-per-share dividend, about 75% of profit, the maximum the Polish regulator KNF allowed.
+2025 was the best year in its history, with PLN 7.02 billion of net profit and an ROE of 21.4%. That paid for the PLN 19.77-per-share dividend, about 75% of profit, the maximum the Polish regulator KNF allowed.
 
 ## The stock's story
 
-In 2017 PZU and PFR bought 32.8% of Pekao from UniCredit at PLN 123 a share, about PLN 10.6 billion in total. Like other Polish banks, the shares crashed in the spring 2020 Covid panic, when interest rates fell to near zero. They then rallied strongly as rates rose from 2022 and profits jumped. Over the past year the stock has traded between roughly PLN 187 and PLN 286. Our price data is in US dollars, so it also moves with the zloty.
-
-- Price today: {{price:peo}}
-- $10 a day for 10 years: {{dca:peo:10}} from {{dcainv:10}} invested ({{dcaroi:peo:10}})
+In 2017 PZU and PFR bought 32.8% of Pekao from UniCredit at PLN 123 a share, about PLN 10.6 billion in total. Like other Polish banks, the shares crashed in the spring 2020 Covid panic, when interest rates fell to near zero. They then rallied strongly as rates rose from 2022 and profits jumped. In the twelve months to November 2026 the stock traded between roughly PLN 187 and PLN 286. Our price data is in US dollars, so it also moves with the zloty.
 
 ## Competitors
 

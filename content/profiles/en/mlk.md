@@ -1,15 +1,15 @@
 ---
 title: Milkiland (MLK) explained: the Dobryana cheese maker whose sales fell 57%
-description: Milkiland (MLK Foods) in plain language — a Warsaw-listed dairy with Ukrainian roots, revenue down 57% to about €73 million, years of losses and a market value near PLN 40 million.
+description: Milkiland (MLK Foods) in plain language — a Warsaw-listed dairy with Ukrainian roots, revenue down 57% to about €73 million, years of losses and a 2021–2022 share-manipulation case.
 date: 2026-11-18
 kind: analysis
 ---
-**Milkiland**, now officially MLK Foods Public Company, is a small dairy group with Ukrainian roots that makes cheese, milk, kefir, butter and milk powder under the Dobryana brand. Its shares trade on the Warsaw Stock Exchange in Polish złoty, and the whole company is valued at only about PLN 40 million. Over the last twelve reported months its revenue fell by more than half and it lost money.
+**Milkiland**, now officially MLK Foods Public Company, is a small dairy group with Ukrainian roots that makes cheese, milk, kefir, butter and milk powder under the Dobryana brand. Its shares trade on the Warsaw Stock Exchange in Polish złoty, and it is one of the smallest companies on the exchange. Over the last twelve reported months its revenue fell by more than half and it lost money.
 
 > **Key takeaways**
 > - Revenue over the last 12 months: about €73 million, down roughly 57% on a year earlier; net loss about €29 million.
 > - A decade ago the group was far bigger: €191 million of revenue in 2015, with a loss every year from 2015 to 2019.
-> - The share price moved between PLN 1.20 and PLN 2.27 over the past 52 weeks; 31.25 million shares are in issue.
+> - In the 52 weeks to November 2026 the share price moved between PLN 1.20 and PLN 2.27; 31.25 million shares are in issue.
 > - In October 2026 Poland's financial regulator KNF said it had reported suspected manipulation of MLK shares over 32 sessions in 2021–2022 to prosecutors.
 
 ## How it makes money
@@ -20,6 +20,10 @@ The group was founded in 1994 by Anatoliy Yurkevych, who is still its chief exec
 
 ## The numbers right now
 
+- Price today: {{price:mlk}}
+- Record high: {{ath:mlk}} ({{athd:mlk}}), {{fromath:mlk}} from it
+- $10 a day for 10 years: {{dca:mlk:10}} from {{dcainv:10}} invested ({{dcaroi:mlk:10}})
+
 Investing.com data, based on the company's reports, show trailing-twelve-month revenue of about €73 million, down roughly 57%, and a net loss of about €29 million — a net margin of about −40%. The latest half-year report was published in September 2026. The company has not paid a dividend since 2014, when it paid PLN 0.30 per share.
 
 For comparison, revenue was €191 million in 2015, €147 million in 2016 and €126 million in 2019, with net losses each year. Low margins are normal in dairy, but years of losses leave little room for error.
@@ -27,9 +31,6 @@ For comparison, revenue was €191 million in 2015, €147 million in 2016 and �
 ## The stock's story
 
 Milkiland was once one of the five largest dairy producers in Ukraine and Russia, with plants in Ukraine, Russia and Poland. Trouble started in 2014: the group fell into breach of a $100 million syndicated bank loan, and in 2017 a Moscow court declared its Russian Ostankino dairy plant bankrupt. Since then the company has been a penny stock with thin trading. In October 2026 the KNF said an individual investor is suspected of distorting the share price in 2021–2022 with orders meant to create a false picture of demand.
-
-- Price today: {{price:mlk}}
-- $10 a day for 10 years: {{dca:mlk:10}} from {{dcainv:10}} invested ({{dcaroi:mlk:10}})
 
 ## Competitors
 
@@ -40,7 +41,7 @@ In Ukraine MLK Foods competes with large dairy groups and with imported cheese, 
 - **Shrinking business:** revenue more than halved in a year and the company keeps losing money.
 - **Debt history:** the group breached a $100 million bank loan in 2014 and its Russian plant went bankrupt; creditors' claims can outrank shareholders.
 - **War and raw milk:** a business with Ukrainian roots faces attacks, power cuts and a falling national milk supply.
-- **Thin, unusual trading:** a market value near PLN 40 million and the KNF case mean prices can swing on small orders.
+- **Thin, unusual trading:** a tiny market value and the KNF case mean prices can swing on small orders.
 
 ## What it means if you buy regularly
 
