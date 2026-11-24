@@ -1,10 +1,10 @@
 ---
-title: American International Group (AIG) explained: the insurer for big business that survived a $182 billion bailout
+title: American International Group (AIG) stock: the business insurer that survived a $182 billion bailout
 description: AIG in plain language — $6.7 billion of premiums in Q3 2026, the $182 billion bailout of 2008, the numbers, risks and what regular buyers should know.
 date: 2026-11-20
 kind: analysis
 ---
-**American International Group (AIG)** is one of the world's big insurers for companies: it covers factories against fire and storms, ships and planes, directors against lawsuits, and large firms against cyber attacks and political risk. It also sells travel, accident and health cover and insurance for wealthy households. Today's AIG is much smaller and simpler than the giant that needed a government rescue in 2008.
+**American International Group (AIG)** is one of the world's big insurers for companies: it covers factories against fire and storms, ships and planes, directors against lawsuits, and large firms against cyber attacks and political risk. It also sells travel, accident and health cover and insurance for wealthy households. The AIG of 2026 is much smaller and simpler than the giant that needed a government rescue in 2008.
 
 > **Key takeaways**
 > - Net premiums written: $6.7 billion in Q3 2026, +7% a year; net income $844 million, +63%.
@@ -20,16 +20,18 @@ Over the past years AIG separated its life insurance and retirement business, Co
 
 ## The numbers right now
 
+- Price today: {{price:aig}}
+- Market value: {{mcap:aig}} ({{rank:aig}} among the world's largest companies on WhatIfStack)
+- Record high: {{ath:aig}} ({{athd:aig}}), {{fromath:aig}} from it
+- $10 a day for 10 years: {{dca:aig:10}} from {{dcainv:10}} invested ({{dcaroi:aig:10}})
+
 In the quarter to 30 September 2026 AIG reported net income of $844 million, up 63%, and adjusted after-tax income of $2.06 per share. Net premiums written in general insurance rose 7% to $6.7 billion. Storms in North America cost $283 million in catastrophe losses (versus $100 million a year earlier), pushing the combined ratio up 4.5 points to 91.3% and underwriting income down 29% to $564 million. Net investment income was $1.1 billion, up 42%. AIG bought back about 7 million shares for $527 million and paid $260 million in dividends; shares outstanding fell to 518.7 million from 544.5 million a year earlier. Debt was 20.8% of total capital.
 
 Eric Andersen, formerly president of broker Aon, became CEO on 1 June 2026; Peter Zaffino, who led the turnaround, moved to executive chair.
 
 ## The stock's story
 
-AIG's history has a deep scar. In September 2008, after huge losses on credit derivatives, the shares fell 61% in a single day, and the U.S. government took an 80% stake. The total rescue reached $182.3 billion. In 2009 AIG did a 1-for-20 reverse split. Shareholders from before the crisis never got their money back. Since then the stock has recovered slowly: on a split-adjusted basis it went from $64 in November 2016 to about $79.50 in November 2026 — +46% in ten years before dividends. Over the last 52 weeks it moved between $71 and $87.
-
-- Price today: {{price:aig}}
-- $10 a day for 10 years: {{dca:aig:10}} from {{dcainv:10}} invested ({{dcaroi:aig:10}})
+AIG's history has a deep scar. In September 2008, after huge losses on credit derivatives, the shares fell 61% in a single day, and the U.S. government took an 80% stake. The total rescue reached $182.3 billion. In 2009 AIG did a 1-for-20 reverse split. Shareholders from before the crisis never got their money back. Since then the stock has recovered slowly: on a split-adjusted basis it went from $64 in November 2016 to about $79.50 in November 2026 — +46% in ten years before dividends. In the 52 weeks to November 2026 it traded between about $71 and $87.
 
 ## Competitors
 
