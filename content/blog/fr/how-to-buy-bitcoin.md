@@ -1,6 +1,6 @@
 ---
 title: Comment acheter du Bitcoin en 2026 : 6 étapes sûres, dès 10 € (débutant)
-description: Comment acheter du Bitcoin en 2026 : plateforme agréée MiCA, vérification, dépôt, achat dès 10 €, achats programmés et sécurité. Guide débutant.
+description: "Comment acheter du Bitcoin en 6 étapes : plateforme agréée MiCA, vérification, dépôt en euros, premier achat dès 10 €, achats programmés et sécurité."
 date: 2026-11-15
 category: guides
 assets: btc, eth

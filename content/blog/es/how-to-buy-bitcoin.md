@@ -1,6 +1,6 @@
 ---
 title: Cómo comprar bitcoin en 2026: 6 pasos seguros, desde 10 €, sin errores
-description: Cómo comprar bitcoin paso a paso en 2026: exchange regulado, verificación, depósito, compra desde 10 €, compras periódicas y seguridad.
+description: "Cómo comprar bitcoin (o bitcoins) en 6 pasos: exchange regulado, verificación, depósito, primera compra desde 10 €, compra periódica y cómo guardarlos."
 date: 2026-11-15
 category: guides
 assets: btc, eth

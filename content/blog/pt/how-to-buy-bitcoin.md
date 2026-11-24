@@ -1,6 +1,6 @@
 ---
 title: Como comprar bitcoin em 2026: 6 passos seguros, a partir de R$ 50
-description: Como comprar bitcoin passo a passo em 2026: corretora autorizada, verificação, Pix, compra a partir de R$ 50, compras recorrentes e segurança.
+description: "Como comprar bitcoin e outras criptomoedas em 6 passos: corretora autorizada, Pix, primeira compra a partir de R$ 50, compra recorrente e como guardar seguro."
 date: 2026-11-15
 category: guides
 assets: btc, eth

@@ -1,11 +1,11 @@
 ---
-title: "Como investir no S&P 500 do Brasil: ETF S&P 500 (IVVB11, VOO, SPY) explicado"
-description: Como investir no S&P 500 a partir do Brasil: o que é o índice, qual ETF S&P 500 comprar (IVVB11 na B3, VOO ou SPY nos EUA), quanto custa e quanto rendeu comprar todo mês.
+title: "ETF S&P 500: como investir no S&P 500 do Brasil (IVVB11, VOO, SPY)"
+description: "ETF S&P 500 para quem está no Brasil: IVVB11 na B3 (taxa 0,23%) ou VOO e SPY nos EUA, 5 passos para comprar, custos e quanto rendeu investir todo mês."
 date: 2026-11-16
 category: guides
 assets: spy, qqq, gold
 ---
-**Como investir no S&P 500?** Primeiro, o que ele é: o S&P 500 é uma lista com cerca de 500 das maiores empresas listadas nos Estados Unidos — Apple, Microsoft, Nvidia, Amazon e centenas de outras. Quando alguém diz que "a bolsa americana subiu hoje", normalmente está falando desse índice.
+**Como investir no S&P 500?** O jeito mais simples é comprar um **ETF S&P 500**, um fundo que copia o índice: no Brasil, o **IVVB11** na B3, em reais; ou **VOO**, **IVV** e **SPY** por uma corretora internacional. O S&P 500 é uma lista com cerca de 500 das maiores empresas dos Estados Unidos — Apple, Microsoft, Nvidia, Amazon e centenas de outras; quando alguém diz que "a bolsa americana subiu hoje", normalmente está falando desse índice.
 
 Não dá para comprar um índice diretamente. Mas dá para comprar um fundo que copia o índice, e essa é uma das formas mais simples de ter um pedacinho de centenas de grandes empresas de uma vez.
 
