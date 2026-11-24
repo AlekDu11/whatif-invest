@@ -2,12 +2,21 @@
 title: Stablecoin là gì (USDT, USDC) và vì sao quan trọng
 description: Stablecoin là gì? Giải thích đơn giản về USDT và USDC: cách giữ giá 1 USD, tài sản bảo đảm, công dụng thực tế và những rủi ro bạn cần hiểu rõ.
 date: 2026-11-15
-category: guides
+category: learn
+track: crypto
+step: 4
 assets: btc, eth
+stat: $1
+stat_label: mức giá mà stablecoin như USDT hoặc USDC được thiết kế để giữ
 ---
 Stablecoin là gì? **Stablecoin** (đồng tiền ổn định) là token tiền mã hóa được thiết kế để giữ giá ổn định — thường đúng **1 USD**. Nó di chuyển như tiền mã hóa (nhanh, 24/7, xuyên biên giới) nhưng được kỳ vọng giữ giá trị như tiền thông thường.
 
 Hai ví dụ nổi tiếng nhất là **USDT** (Tether) và **USDC** (Circle). Hai đồng này chiếm phần lớn thị trường stablecoin, và trên nhiều sàn chúng là "đồng tiền" chính để giao dịch Bitcoin cùng các coin khác.
+
+> **Điểm chính**
+> - Stablecoin là token tiền mã hóa cố gắng giữ giá trị đúng 1 USD — USDT và USDC là hai đồng lớn nhất.
+> - Trên sàn, nó giống một "phòng chờ" cho tiền của bạn: bạn có thể thoát khỏi Bitcoin mà không cần chuyển tiền về ngân hàng.
+> - Nó không phải tiền gửi ngân hàng: giá có thể tạm thời lệch khỏi 1 USD, đơn vị phát hành có thể đóng băng nó, và gửi nhầm mạng có thể làm mất tiền.
 
 ## Vì sao stablecoin ra đời
 
@@ -80,6 +89,13 @@ Cả hai đều chạy trên nhiều blockchain (Ethereum, Tron, Solana và các
 3. Đừng để trên một nền tảng nhiều hơn số tiền bạn chấp nhận bị đóng băng.
 4. Đọc báo cáo dự trữ mới nhất của đơn vị phát hành.
 5. Hãy nhớ: giữ stablecoin là giữ đô la dưới dạng tiền mã hóa, không phải khoản đầu tư kỳ vọng tăng giá.
+
+> **⚠️ Cẩn thận**
+> - **Nhầm mạng.** Gửi USDT qua mạng mà bên nhận không hỗ trợ (ví dụ TRC-20 tới địa chỉ ERC-20) có thể làm mất tiền vĩnh viễn. Hãy gửi thử một khoản nhỏ trước.
+> - **Lãi suất "đảm bảo".** Lời mời lãi 10–30% một năm cho stablecoin là chiêu lừa đảo kinh điển hoặc một rủi ro bị che giấu.
+> - **Token nhái.** Ai cũng có thể tạo token tên "USDT". Chỉ hợp đồng chính thức trên sàn hoặc trong ví của bạn mới đáng tin.
+
+Bước tiếp theo: tìm sàn hoạt động ở quốc gia của bạn trên [trang sàn giao dịch]({lang}/exchanges/) của chúng tôi, và xem tất cả bài học ở [Học]({lang}/learn/).
 
 Nếu mục tiêu của bạn là đầu tư đều đặn dài hạn, hãy so sánh hiệu quả thực tế của các tài sản bằng [công cụ tính DCA]({lang}/compare/) và đọc [DCA là gì](/en/blog/what-is-dca/).
 

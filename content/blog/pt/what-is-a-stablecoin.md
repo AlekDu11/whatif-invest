@@ -2,12 +2,21 @@
 title: O que é stablecoin (USDT, USDC) e por que ela importa
 description: O que é stablecoin, como USDT e USDC, explicado de forma simples: como tentam valer US$ 1, o que as lastreia, para que servem e quais são os riscos.
 date: 2026-11-15
-category: guides
+category: learn
+track: crypto
+step: 4
 assets: btc, eth
+stat: $1
+stat_label: o preço que uma stablecoin como USDT ou USDC foi feita para manter
 ---
 Uma **stablecoin** (moeda estável) é um token cripto feito para manter o preço estável, geralmente em **US$ 1**. Ela se move como cripto (rápida, 24 horas, entre países), mas pretende guardar o valor como o dinheiro comum.
 
 Os dois exemplos mais conhecidos são o **USDT** (Tether) e o **USDC** (Circle). Juntos, eles formam a maior parte do mercado de stablecoins, e em muitas corretoras são a principal moeda para negociar bitcoin e outras criptos. No Brasil, as stablecoins respondem por boa parte do volume de cripto movimentado.
+
+> **Pontos principais**
+> - Stablecoin é um token cripto que tenta valer exatamente US$ 1 — USDT e USDC são as maiores.
+> - Na corretora, ela funciona como uma "sala de espera" para o seu dinheiro: você sai do bitcoin sem mandar o dinheiro de volta para o banco.
+> - Não é depósito bancário: ela pode perder o preço de US$ 1 por um tempo, o emissor pode congelá-la e, se você enviar pela rede errada, pode perdê-la.
 
 ## Por que as stablecoins existem
 
@@ -80,6 +89,13 @@ As duas funcionam em várias blockchains (Ethereum, Tron, Solana e outras). Envi
 3. Não deixe em uma única plataforma mais do que você aguentaria ver congelado.
 4. Leia o relatório de reservas mais recente do emissor.
 5. Lembre: ter stablecoin é ter dólar em formato cripto, não um investimento com expectativa de crescer.
+
+> **⚠️ Atenção**
+> - **Rede errada.** Enviar USDT por uma rede que o destinatário não aceita (por exemplo, TRC-20 para um endereço ERC-20) pode fazer você perder o dinheiro de vez. Mande primeiro um valor pequeno de teste.
+> - **Rendimento "garantido".** Ofertas de 10–30% ao ano em stablecoins são golpe clássico ou um risco escondido.
+> - **Tokens falsificados.** Qualquer um pode criar um token chamado "USDT". Só vale o contrato oficial da corretora ou da sua carteira.
+
+Próximo passo: encontre uma corretora que funcione no seu país na nossa [página de corretoras]({lang}/exchanges/) e veja todas as lições na [página Aprender]({lang}/learn/).
 
 Se o seu objetivo é investir regularmente no longo prazo, compare como os ativos realmente se saíram na nossa [calculadora de DCA]({lang}/compare/) e leia [o que é DCA](/en/blog/what-is-dca/).
 

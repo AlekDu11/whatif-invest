@@ -2,12 +2,21 @@
 title: Apa itu stablecoin (USDT, USDC) dan kenapa penting
 description: Apa itu stablecoin seperti USDT dan USDC? Penjelasan sederhana: cara menjaga harga $1, apa jaminannya, kegunaannya, dan risiko yang perlu dipahami.
 date: 2026-11-15
-category: guides
+category: learn
+track: crypto
+step: 4
 assets: btc, eth
+stat: $1
+stat_label: harga yang dirancang untuk dipertahankan oleh stablecoin seperti USDT atau USDC
 ---
 Apa itu stablecoin? **Stablecoin** adalah token kripto yang dirancang agar harganya stabil — biasanya tepat **$1**. Ia bergerak seperti kripto (cepat, 24/7, lintas negara), tetapi dimaksudkan untuk menjaga nilainya seperti uang biasa.
 
 Dua contoh paling terkenal adalah **USDT** (Tether) dan **USDC** (Circle). Keduanya menguasai sebagian besar pasar stablecoin, dan di banyak exchange keduanya menjadi "mata uang" utama untuk memperdagangkan Bitcoin dan koin lain.
+
+> **Poin penting**
+> - Stablecoin adalah token kripto yang berusaha tetap bernilai tepat $1 — USDT dan USDC adalah yang terbesar.
+> - Di exchange, stablecoin berfungsi sebagai "ruang tunggu" untuk uang Anda: Anda bisa keluar dari Bitcoin tanpa mengirim uang kembali ke bank.
+> - Ini bukan deposito bank: harganya bisa sesaat lepas dari $1, penerbit bisa membekukannya, dan mengirimnya lewat jaringan yang salah bisa membuatnya hilang.
 
 ## Kenapa stablecoin ada
 
@@ -80,6 +89,13 @@ Keduanya berjalan di beberapa blockchain (Ethereum, Tron, Solana dan lainnya). S
 3. Jangan simpan lebih banyak di satu platform daripada yang sanggup Anda tanggung jika dibekukan.
 4. Baca laporan cadangan terbaru dari penerbit.
 5. Ingat: memegang stablecoin berarti memegang dolar dalam bentuk kripto, bukan investasi yang diharapkan tumbuh.
+
+> **⚠️ Hati-hati**
+> - **Jaringan yang salah.** Mengirim USDT lewat jaringan yang tidak didukung penerima (misalnya TRC-20 ke alamat ERC-20) bisa membuat uang hilang selamanya. Kirim jumlah kecil dulu sebagai uji coba.
+> - **Bunga "dijamin".** Tawaran bunga 10–30% setahun untuk stablecoin adalah penipuan klasik atau risiko tersembunyi.
+> - **Token tiruan.** Siapa pun bisa membuat token bernama "USDT". Hanya kontrak resmi di exchange atau di dompet Anda yang berlaku.
+
+Langkah berikutnya: cari exchange yang tersedia di negara Anda di [halaman exchange]({lang}/exchanges/) kami, dan lihat semua pelajaran di [Belajar]({lang}/learn/).
 
 Jika tujuan Anda investasi rutin jangka panjang, bandingkan kinerja aset yang sebenarnya dengan [kalkulator DCA]({lang}/compare/) kami dan baca [apa itu DCA](/en/blog/what-is-dca/).
 

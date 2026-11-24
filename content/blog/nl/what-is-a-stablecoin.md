@@ -2,12 +2,21 @@
 title: Wat is een stablecoin (USDT, USDC) en waarom is het belangrijk?
 description: Stablecoins zoals USDT en USDC simpel uitgelegd: hoe ze op $1 proberen te blijven, wat erachter zit, waarvoor mensen ze gebruiken en welke risico's er zijn.
 date: 2026-11-15
-category: guides
+category: learn
+track: crypto
+step: 4
 assets: btc, eth
+stat: $1
+stat_label: de koers die een stablecoin zoals USDT of USDC moet vasthouden
 ---
 **Wat is een stablecoin?** Een stablecoin is een cryptotoken dat is ontworpen om een stabiele koers te houden — meestal precies **$1**. Hij beweegt als crypto (snel, 24/7, over grenzen heen), maar moet zijn waarde vasthouden als gewoon geld.
 
 De twee bekendste voorbeelden zijn **USDT** (Tether) en **USDC** (Circle). Samen vormen ze het grootste deel van de stablecoinmarkt, en op veel exchanges zijn ze de belangrijkste munt om Bitcoin en andere coins te verhandelen. Er bestaan ook euro-stablecoins, zoals EURC.
+
+> **Belangrijkste punten**
+> - Een stablecoin is een cryptotoken dat precies $1 waard probeert te blijven — USDT en USDC zijn de grootste.
+> - Op een exchange werkt hij als een "wachtkamer" voor je geld: je kunt uit Bitcoin stappen zonder het geld terug naar de bank te sturen.
+> - Het is geen bankrekening: hij kan even zijn koers van $1 verliezen, de uitgever kan hem bevriezen, en via het verkeerde netwerk versturen kan hem kosten.
 
 ## Waarom stablecoins bestaan
 
@@ -80,6 +89,13 @@ Beide draaien op meerdere blockchains (Ethereum, Tron, Solana en andere). Stuur 
 3. Houd op één platform niet meer aan dan je je kunt veroorloven bevroren te zien.
 4. Lees het meest recente reserverapport van de uitgever.
 5. Onthoud: een stablecoin aanhouden is dollars-in-crypto aanhouden, geen belegging waar groei van verwacht wordt.
+
+> **⚠️ Let op**
+> - **Verkeerd netwerk.** USDT versturen via een netwerk dat de ontvanger niet ondersteunt (bijvoorbeeld TRC-20 naar een ERC-20-adres) kan je geld voorgoed kosten. Stuur eerst een klein testbedrag.
+> - **"Gegarandeerde" rente.** Aanbiedingen van 10–30% per jaar op stablecoins zijn klassieke oplichting of een verborgen risico.
+> - **Nagemaakte tokens.** Iedereen kan een token maken dat "USDT" heet. Alleen het officiële contract op de exchange of in je wallet telt.
+
+Volgende stap: vind op onze [exchanges-pagina]({lang}/exchanges/) een exchange die in jouw land werkt, en bekijk alle lessen op de [Leren-pagina]({lang}/learn/).
 
 Is je doel langdurig periodiek beleggen? Vergelijk dan hoe bezittingen echt presteerden met onze [DCA-calculator]({lang}/compare/) en lees [wat DCA is](/en/blog/what-is-dca/).
 

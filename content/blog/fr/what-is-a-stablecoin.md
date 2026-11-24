@@ -2,12 +2,21 @@
 title: Qu'est-ce qu'un stablecoin (USDT, USDC) et pourquoi c'est important
 description: Les stablecoins comme USDT et USDC expliqués simplement : comment ils restent à 1 $, ce qui les garantit, à quoi ils servent et quels risques connaître.
 date: 2026-11-15
-category: guides
+category: learn
+track: crypto
+step: 4
 assets: btc, eth
+stat: $1
+stat_label: le prix qu'un stablecoin comme USDT ou USDC est conçu pour garder
 ---
 **Qu'est-ce qu'un stablecoin ?** C'est un jeton crypto conçu pour garder un prix stable — généralement exactement **1 dollar**. Il circule comme une crypto (vite, 24 h/24, sans frontières) mais il est censé garder sa valeur comme de l'argent ordinaire.
 
 Les deux exemples les plus connus sont **USDT** (Tether) et **USDC** (Circle). Ensemble, ils représentent l'essentiel du marché des stablecoins, et sur de nombreuses plateformes ce sont les principales monnaies pour échanger du Bitcoin et d'autres cryptos.
+
+> **À retenir**
+> - Un stablecoin est un jeton crypto qui cherche à valoir exactement 1 $ — USDT et USDC sont les plus gros.
+> - Sur une plateforme, il sert de « salle d'attente » pour votre argent : vous pouvez sortir du Bitcoin sans renvoyer l'argent à la banque.
+> - Ce n'est pas un dépôt bancaire : il peut perdre brièvement son prix de 1 $, l'émetteur peut le geler, et l'envoyer sur le mauvais réseau peut le faire perdre.
 
 ## Pourquoi les stablecoins existent
 
@@ -80,6 +89,13 @@ Les deux existent sur plusieurs blockchains (Ethereum, Tron, Solana et d'autres)
 3. Ne gardez pas sur une seule plateforme plus que ce que vous pourriez supporter de voir gelé.
 4. Lisez le dernier rapport de réserves de l'émetteur.
 5. Souvenez-vous : détenir un stablecoin, c'est détenir des dollars sous forme crypto, pas un placement censé croître.
+
+> **⚠️ Attention**
+> - **Mauvais réseau.** Envoyer de l'USDT sur un réseau que le destinataire ne prend pas en charge (par exemple du TRC-20 vers une adresse ERC-20) peut faire perdre l'argent pour de bon. Faites d'abord un petit envoi test.
+> - **Intérêts « garantis ».** Les offres de 10 à 30 % par an sur des stablecoins sont une arnaque classique ou cachent un risque.
+> - **Faux jetons.** N'importe qui peut créer un jeton appelé « USDT ». Seul le contrat officiel sur la plateforme ou dans votre portefeuille compte.
+
+Étape suivante : trouvez une plateforme qui fonctionne dans votre pays sur notre [page des plateformes]({lang}/exchanges/), et retrouvez toutes les leçons sur la [page Apprendre]({lang}/learn/).
 
 Si votre objectif est d'investir régulièrement sur le long terme, comparez les performances réelles des actifs avec notre [calculateur DCA]({lang}/compare/) et lisez [ce qu'est le DCA](/en/blog/what-is-dca/).
 

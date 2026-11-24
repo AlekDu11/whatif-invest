@@ -1,0 +1,102 @@
+[
+{
+"id": "memecoin",
+"t": "Memecoin",
+"d": "Token tiền mã hóa được tạo ra quanh một câu đùa, một con vật, một người nổi tiếng hoặc một trào lưu trên mạng. Thường không có sản phẩm hay doanh thu nào phía sau, nên giá chỉ biến động theo sự chú ý và lượng mua bán."
+},
+{
+"id": "contract-address",
+"t": "Địa chỉ hợp đồng (CA)",
+"d": "Địa chỉ duy nhất của một token trên blockchain của nó. Ai cũng có thể sao chép tên và mã ticker, nhưng không thể sao chép địa chỉ hợp đồng — vì vậy hãy luôn kiểm tra nó trước khi mua."
+},
+{
+"id": "dex",
+"t": "DEX và CEX",
+"d": "DEX (sàn phi tập trung, như Raydium hay PancakeSwap) cho phép bạn hoán đổi token trực tiếp từ ví của chính mình. CEX (sàn tập trung, như Binance) giữ tiền giúp bạn và chỉ niêm yết những token họ đã kiểm tra."
+},
+{
+"id": "liquidity",
+"t": "Thanh khoản",
+"d": "Số tiền nằm trong pool giao dịch của một token. Khi thanh khoản thấp, chỉ một lệnh bán nhỏ cũng làm giá biến động mạnh và bạn có thể không bán được ở mức giá hợp lý."
+},
+{
+"id": "liquidity-lock",
+"t": "Khóa / đốt thanh khoản (lock / burn)",
+"d": "Khóa hoặc đốt thanh khoản của pool nghĩa là người tạo token không thể rút nó ra. Thanh khoản không bị khóa là cách kinh điển dẫn đến rug pull."
+},
+{
+"id": "rug-pull",
+"t": "Rug pull (rút thảm)",
+"d": "Khi người tạo token hoặc người nội bộ bất ngờ rút tiền khỏi pool hoặc bán tháo coin của họ, khiến giá rơi gần về 0 và người mua không thể thoát ra."
+},
+{
+"id": "honeypot",
+"t": "Honeypot (token bẫy)",
+"d": "Token lừa đảo mà bạn mua được nhưng không bán được, vì hợp đồng chặn hoặc đánh thuế rất nặng khi bán. Hãy luôn kiểm tra xem những người nắm giữ khác đã thực sự bán được chưa."
+},
+{
+"id": "bonding-curve",
+"t": "Bonding curve (đường cong giá)",
+"d": "Trên các launchpad như pump.fun, token mới được bán trước theo một đường cong giá: mỗi lần mua lại đẩy giá lên. Khi đủ tiền đổ vào, token sẽ «tốt nghiệp» (graduate)."
+},
+{
+"id": "graduation",
+"t": "Graduation (chuyển lên DEX)",
+"d": "Thời điểm một token trên launchpad lấp đầy bonding curve và chuyển sang một pool DEX thật. Chỉ vài phần trăm token mới đi được đến bước này."
+},
+{
+"id": "sniper",
+"t": "Sniper",
+"d": "Bot hoặc trader mua token ngay trong những giây đầu tiên sau khi ra mắt, thường để bán lại cho người mua sau với giá cao hơn."
+},
+{
+"id": "bundler",
+"t": "Bundler",
+"d": "Người tạo token mua một phần lớn token của chính mình từ nhiều ví ngay lúc ra mắt để trông như có nhiều người nắm giữ khác nhau. Đây là dấu hiệu cảnh báo của một vụ xả hàng đã được lên kế hoạch."
+},
+{
+"id": "dev-wallet",
+"t": "Dev wallet (ví của nhà phát triển)",
+"d": "Ví của người tạo ra token. Nếu ví này nắm một phần lớn tổng cung, người tạo có thể đánh sập giá bất cứ lúc nào bằng cách bán ra."
+},
+{
+"id": "top-10-holders",
+"t": "Top 10 ví nắm giữ",
+"d": "Tỷ lệ tổng số coin do 10 ví lớn nhất nắm giữ. Con số càng cao (ví dụ trên 30%), càng dễ để một vài người đánh sập giá."
+},
+{
+"id": "kol",
+"t": "KOL",
+"d": "«Key opinion leader» — người có ảnh hưởng với lượng người theo dõi lớn. KOL thường được trả tiền để quảng bá token, đôi khi sau khi chính họ đã mua rẻ từ trước."
+},
+{
+"id": "pump-and-dump",
+"t": "Pump and dump (bơm rồi xả)",
+"d": "Một nhóm người đẩy giá lên bằng cách thổi phồng và mua vào, rồi bán cho người mới ở đỉnh. Những người đến sau phải gánh khoản lỗ."
+},
+{
+"id": "slippage",
+"t": "Slippage (trượt giá)",
+"d": "Chênh lệch giữa giá bạn nhìn thấy và giá bạn thực sự nhận được. Trong các pool memecoin mỏng, mức trượt giá có thể từ 5–20% hoặc hơn chỉ trong một giao dịch."
+},
+{
+"id": "market-cap-fdv",
+"t": "Vốn hóa thị trường và FDV",
+"d": "Vốn hóa thị trường (market cap) là giá × số coin đang lưu hành. FDV (fully diluted value — định giá pha loãng hoàn toàn) là giá × toàn bộ số coin sẽ từng tồn tại. Chênh lệch lớn nghĩa là còn nhiều coin có thể được mở khóa và bán ra."
+},
+{
+"id": "dyor",
+"t": "DYOR",
+"d": "«Do your own research» — hãy tự tìm hiểu. Lời nhắc rằng không ai — không phải người có ảnh hưởng, không phải một trang web — chịu trách nhiệm cho tiền của bạn ngoài chính bạn."
+},
+{
+"id": "ape",
+"t": "Ape / aping in (lao vào mua)",
+"d": "Mua token vội vàng theo đám đông mà không kiểm tra gì. Cách nhanh nhất để mất tiền với memecoin."
+},
+{
+"id": "paper-diamond-hands",
+"t": "Paper hands / diamond hands",
+"d": "Tiếng lóng chỉ người bán ngay khi giá giảm lần đầu (paper hands, «tay giấy») hoặc giữ chặt dù giá sập thế nào (diamond hands, «tay kim cương»). Bản thân cả hai đều không phải là chiến lược."
+}
+]

@@ -1,0 +1,102 @@
+[
+{
+"id": "memecoin",
+"t": "Memecoin",
+"d": "Token kripto yang dibuat dari lelucon, hewan, tokoh, atau tren internet. Biasanya tidak ada produk atau pendapatan di baliknya, jadi harganya hanya bergerak karena perhatian orang serta aksi beli dan jual."
+},
+{
+"id": "contract-address",
+"t": "Alamat kontrak (CA)",
+"d": "Alamat unik sebuah token di blockchain-nya. Nama dan ticker bisa ditiru siapa saja, tetapi alamat kontrak tidak bisa — jadi selalu cek alamat ini sebelum membeli."
+},
+{
+"id": "dex",
+"t": "DEX vs CEX",
+"d": "DEX (decentralized exchange atau bursa terdesentralisasi, seperti Raydium atau PancakeSwap) memungkinkan kamu menukar token langsung dari wallet milikmu sendiri. CEX (bursa terpusat, seperti Binance) menyimpan uangmu dan hanya mencantumkan token yang sudah mereka periksa."
+},
+{
+"id": "liquidity",
+"t": "Likuiditas",
+"d": "Uang yang ada di pool perdagangan sebuah token. Kalau likuiditasnya kecil, penjualan kecil pun bisa menggerakkan harga dengan tajam, dan kamu mungkin tidak bisa menjual di harga yang wajar."
+},
+{
+"id": "liquidity-lock",
+"t": "Kunci / bakar likuiditas (lock / burn)",
+"d": "Mengunci atau membakar likuiditas pool berarti pembuat token tidak bisa menariknya keluar. Likuiditas yang tidak dikunci adalah cara klasik terjadinya rug pull."
+},
+{
+"id": "rug-pull",
+"t": "Rug pull (penipuan tarik karpet)",
+"d": "Saat pembuat token atau orang dalam tiba-tiba menarik uang dari pool atau menjual koin mereka besar-besaran, sehingga harga jatuh hampir ke nol dan pembeli tidak bisa keluar."
+},
+{
+"id": "honeypot",
+"t": "Honeypot (token jebakan)",
+"d": "Token penipuan yang bisa dibeli tetapi tidak bisa dijual, karena kontraknya memblokir penjualan atau memasang pajak jual yang sangat tinggi. Selalu pastikan holder lain memang pernah berhasil menjual."
+},
+{
+"id": "bonding-curve",
+"t": "Bonding curve (kurva harga awal)",
+"d": "Di launchpad seperti pump.fun, token baru pertama kali dijual mengikuti kurva harga: setiap pembelian menaikkan harga. Setelah cukup banyak uang masuk, token itu «lulus» (graduate)."
+},
+{
+"id": "graduation",
+"t": "Graduation (pindah ke DEX)",
+"d": "Momen ketika token di launchpad sudah memenuhi bonding curve-nya dan pindah ke pool DEX sungguhan. Hanya sedikit persen token baru yang pernah sampai ke tahap ini."
+},
+{
+"id": "sniper",
+"t": "Sniper",
+"d": "Bot atau trader yang membeli token di detik-detik pertama setelah peluncuran, sering kali untuk dijual lagi ke pembeli berikutnya dengan harga lebih tinggi."
+},
+{
+"id": "bundler",
+"t": "Bundler",
+"d": "Pembuat token yang memborong sebagian besar tokennya sendiri dari banyak wallet saat peluncuran, supaya terlihat seperti dipegang banyak orang berbeda. Ini tanda bahaya rencana dump (jual besar-besaran)."
+},
+{
+"id": "dev-wallet",
+"t": "Dev wallet (wallet pembuat)",
+"d": "Wallet milik pembuat token. Kalau wallet ini memegang porsi besar dari total suplai, pembuatnya bisa menjatuhkan harga kapan saja dengan menjual."
+},
+{
+"id": "top-10-holders",
+"t": "10 holder teratas",
+"d": "Porsi semua koin yang dipegang oleh 10 wallet terbesar. Makin tinggi angkanya (misalnya di atas 30%), makin mudah segelintir orang menjatuhkan harga."
+},
+{
+"id": "kol",
+"t": "KOL",
+"d": "«Key opinion leader» — influencer dengan banyak pengikut. KOL sering dibayar untuk mempromosikan token, kadang setelah mereka sendiri membelinya dengan harga murah."
+},
+{
+"id": "pump-and-dump",
+"t": "Pump and dump (goreng lalu buang)",
+"d": "Sekelompok orang menaikkan harga lewat hype dan pembelian, lalu menjual ke pendatang baru di puncak. Yang datang terlambat menanggung kerugiannya."
+},
+{
+"id": "slippage",
+"t": "Slippage (selisih harga)",
+"d": "Selisih antara harga yang kamu lihat dan harga yang benar-benar kamu dapat. Di pool memecoin yang tipis, selisihnya bisa 5–20% atau lebih dalam satu transaksi."
+},
+{
+"id": "market-cap-fdv",
+"t": "Market cap vs FDV",
+"d": "Market cap (kapitalisasi pasar) adalah harga × jumlah koin yang beredar. FDV (fully diluted value) adalah harga × semua koin yang akan pernah ada. Selisih besar berarti masih banyak koin yang bisa dibuka dan dijual."
+},
+{
+"id": "dyor",
+"t": "DYOR",
+"d": "«Do your own research» — riset sendiri. Pengingat bahwa tidak ada yang bertanggung jawab atas uangmu — bukan influencer, bukan situs web — selain kamu sendiri."
+},
+{
+"id": "ape",
+"t": "Ape / aping in (asal beli)",
+"d": "Membeli token buru-buru karena hype tanpa memeriksanya dulu. Cara tercepat kehilangan uang di memecoin."
+},
+{
+"id": "paper-diamond-hands",
+"t": "Paper hands / diamond hands",
+"d": "Istilah gaul untuk orang yang menjual di penurunan pertama (paper hands, «tangan kertas») atau tetap menahan meski harga anjlok separah apa pun (diamond hands, «tangan berlian»). Keduanya bukan strategi."
+}
+]

@@ -2,12 +2,21 @@
 title: Ano ang stablecoin (USDT, USDC) at bakit ito mahalaga
 description: Ano ang stablecoin tulad ng USDT at USDC? Simpleng paliwanag kung paano ito nananatili sa $1, ano ang sumusuporta rito, saan ginagamit at ano ang mga panganib.
 date: 2026-11-15
-category: guides
+category: learn
+track: crypto
+step: 4
 assets: btc, eth
+stat: $1
+stat_label: ang presyong idinisenyong panatilihin ng stablecoin tulad ng USDT o USDC
 ---
 **Ano ang stablecoin?** Ang stablecoin ay crypto token na dinisenyo para magkaroon ng matatag na presyo — kadalasan eksaktong **$1**. Gumagalaw ito tulad ng crypto (mabilis, 24/7, kahit saang bansa) pero layunin nitong panatilihin ang halaga tulad ng ordinaryong pera.
 
 Ang dalawang pinakakilalang halimbawa ay ang **USDT** (Tether) at **USDC** (Circle). Magkasama, sila ang bumubuo sa karamihan ng stablecoin market, at sa maraming exchange, sila ang pangunahing currency sa pag-trade ng Bitcoin at iba pang coins.
+
+> **Mahahalagang punto**
+> - Ang stablecoin ay crypto token na sinusubukang manatiling eksaktong $1 ang halaga — ang USDT at USDC ang pinakamalaki.
+> - Sa exchange, para itong "waiting room" ng pera mo: puwede kang lumabas sa Bitcoin nang hindi ibinabalik ang pera sa bangko.
+> - Hindi ito bank deposit: puwede itong pansamantalang mawala sa $1, puwede itong i-freeze ng issuer, at puwede itong mawala kung maling network ang pinagpadalhan.
 
 ## Bakit may stablecoins
 
@@ -80,6 +89,13 @@ Pareho silang tumatakbo sa ilang blockchain (Ethereum, Tron, Solana at iba pa). 
 3. Huwag magtabi sa iisang platform ng higit sa kaya mong ma-freeze.
 4. Basahin ang pinakabagong reserve report ng issuer.
 5. Tandaan: ang paghawak ng stablecoin ay paghawak ng dolyar-sa-crypto, hindi investment na inaasahang lalago.
+
+> **⚠️ Mag-ingat**
+> - **Maling network.** Ang pagpapadala ng USDT sa network na hindi suportado ng tatanggap (halimbawa TRC-20 papunta sa ERC-20 address) ay puwedeng mawala nang tuluyan. Magpadala muna ng maliit na test.
+> - **"Garantisadong" interes.** Ang mga alok na 10–30% kada taon sa stablecoins ay klasikong scam o nakatagong panganib.
+> - **Kamukhang token.** Kahit sino ay puwedeng gumawa ng token na tinatawag na "USDT". Ang opisyal na contract lang sa exchange o sa iyong wallet ang totoo.
+
+Susunod na hakbang: maghanap ng exchange na gumagana sa bansa mo sa aming [exchanges page]({lang}/exchanges/), at tingnan ang lahat ng aralin sa [Learn]({lang}/learn/).
 
 Kung pangmatagalang regular na pag-invest ang layunin mo, ikumpara kung paano talaga nag-perform ang mga asset gamit ang aming [DCA calculator]({lang}/compare/) at basahin [kung ano ang DCA](/en/blog/what-is-dca/).
 

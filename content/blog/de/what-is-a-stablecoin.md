@@ -2,12 +2,21 @@
 title: Was ist ein Stablecoin (USDT, USDC) und warum ist er wichtig?
 description: Stablecoins wie USDT und USDC einfach erklärt: wie sie bei 1 $ bleiben sollen, was sie deckt, wofür man sie nutzt und welche Risiken man kennen sollte.
 date: 2026-11-15
-category: guides
+category: learn
+track: crypto
+step: 4
 assets: btc, eth
+stat: $1
+stat_label: der Preis, den ein Stablecoin wie USDT oder USDC halten soll
 ---
 **Was ist ein Stablecoin?** Ein Stablecoin ist ein Krypto-Token, der einen stabilen Preis halten soll – meist genau **1 US-Dollar**. Er bewegt sich wie Krypto (schnell, rund um die Uhr, über Grenzen hinweg), soll aber seinen Wert wie normales Geld behalten.
 
 Die bekanntesten Beispiele sind **USDT** (Tether) und **USDC** (Circle). Zusammen machen sie den Großteil des Stablecoin-Marktes aus, und auf vielen Börsen sind sie die wichtigste Währung, um Bitcoin und andere Coins zu handeln.
+
+> **Das Wichtigste**
+> - Ein Stablecoin ist ein Krypto-Token, der genau 1 $ wert bleiben soll – USDT und USDC sind die größten.
+> - Auf einer Börse ist er ein „Warteraum“ für Ihr Geld: Sie können aus Bitcoin aussteigen, ohne das Geld zurück zur Bank zu schicken.
+> - Er ist keine Bankeinlage: Er kann kurzzeitig seinen 1-$-Preis verlieren, der Herausgeber kann ihn einfrieren, und wer ihn über das falsche Netzwerk sendet, kann ihn verlieren.
 
 ## Warum es Stablecoins gibt
 
@@ -80,6 +89,13 @@ Beide laufen auf mehreren Blockchains (Ethereum, Tron, Solana und andere). Sende
 3. Lassen Sie auf keiner einzelnen Plattform mehr liegen, als Sie sich leisten können, eingefroren zu sehen.
 4. Lesen Sie den aktuellen Reservebericht des Emittenten.
 5. Denken Sie daran: Ein Stablecoin ist Dollar in Krypto-Form, keine Anlage mit erwartetem Wachstum.
+
+> **⚠️ Vorsicht**
+> - **Falsches Netzwerk.** Wer USDT über ein Netzwerk sendet, das der Empfänger nicht unterstützt (zum Beispiel TRC-20 an eine ERC-20-Adresse), kann das Geld für immer verlieren. Schicken Sie zuerst einen kleinen Testbetrag.
+> - **„Garantierte“ Zinsen.** Angebote von 10–30 % im Jahr auf Stablecoins sind ein klassischer Betrug oder ein verstecktes Risiko.
+> - **Nachgemachte Tokens.** Jeder kann einen Token namens „USDT“ erstellen. Es zählt nur der offizielle Vertrag auf der Börse oder in Ihrer Wallet.
+
+Nächster Schritt: Finden Sie auf unserer [Börsen-Seite]({lang}/exchanges/) eine Börse, die in Ihrem Land funktioniert, und sehen Sie alle Lektionen auf der [Lernen-Seite]({lang}/learn/).
 
 Wenn Ihr Ziel langfristiges, regelmäßiges Investieren ist, vergleichen Sie die tatsächliche Entwicklung verschiedener Anlagen mit unserem [DCA-Rechner]({lang}/compare/) und lesen Sie, [was DCA ist](/en/blog/what-is-dca/).
 

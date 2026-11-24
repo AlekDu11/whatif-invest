@@ -2,12 +2,21 @@
 title: Stablecoin nedir (USDT, USDC) ve neden önemlidir?
 description: Stablecoin nedir, basitçe: USDT ve USDC 1 dolarda kalmayı nasıl başarır, arkalarında ne var, nerede kullanılır ve hangi risklere dikkat etmeli.
 date: 2026-11-15
-category: guides
+category: learn
+track: crypto
+step: 4
 assets: btc, eth
+stat: $1
+stat_label: USDT veya USDC gibi bir stablecoin'in korumak üzere tasarlandığı fiyat
 ---
 **Stablecoin nedir?** Stablecoin, fiyatı sabit kalacak şekilde tasarlanmış bir kripto tokendir — genellikle tam olarak **1 dolar**. Kripto gibi hareket eder (hızlı, 7/24, sınır tanımadan), ama değerini sıradan para gibi korumayı amaçlar.
 
 En bilinen iki örnek **USDT** (Tether) ve **USDC** (Circle). İkisi birlikte stablecoin piyasasının büyük kısmını oluşturur ve birçok borsada Bitcoin ve diğer coinlerin alınıp satıldığı ana para birimidir.
+
+> **Öne çıkanlar**
+> - Stablecoin, değerini tam 1 $'da tutmaya çalışan bir kripto token'dır — en büyükleri USDT ve USDC.
+> - Borsada paranız için bir "bekleme odası" gibidir: parayı bankaya geri göndermeden Bitcoin'den çıkabilirsiniz.
+> - Banka mevduatı değildir: kısa süreliğine 1 $ fiyatını kaybedebilir, çıkaran şirket onu dondurabilir, yanlış ağdan gönderirseniz kaybolabilir.
 
 ## Stablecoinler neden var?
 
@@ -80,6 +89,13 @@ Herhangi birini önermeden:
 3. Tek bir platformda, dondurulmasını göze alamayacağınızdan fazlasını tutmayın.
 4. İhraççının en son rezerv raporunu okuyun.
 5. Unutmayın: stablecoin tutmak kripto içinde dolar tutmaktır, büyüme beklenen bir yatırım değildir.
+
+> **⚠️ Dikkat**
+> - **Yanlış ağ.** USDT'yi alıcının desteklemediği bir ağdan göndermek (örneğin TRC-20 ile bir ERC-20 adresine) paranın tamamen kaybolmasına yol açabilir. Önce küçük bir deneme tutarı gönderin.
+> - **"Garantili" faiz.** Stablecoin'e yılda %10–30 faiz vaat eden teklifler klasik bir dolandırıcılık ya da gizli bir risktir.
+> - **Taklit token'lar.** Herkes "USDT" adında bir token oluşturabilir. Yalnızca borsadaki veya cüzdanınızdaki resmi sözleşme geçerlidir.
+
+Sonraki adım: [borsalar sayfamızda]({lang}/exchanges/) ülkenizde çalışan bir borsa bulun ve tüm dersleri [Öğren sayfasında]({lang}/learn/) görün.
 
 Amacınız uzun vadeli düzenli yatırımsa, varlıkların gerçekte nasıl performans gösterdiğini [DCA hesaplayıcımızla]({lang}/compare/) karşılaştırın ve [DCA'nın ne olduğunu](/en/blog/what-is-dca/) okuyun.
 

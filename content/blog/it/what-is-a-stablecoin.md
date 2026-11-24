@@ -2,12 +2,21 @@
 title: Cos'è una stablecoin (USDT, USDC) e perché è importante
 description: Cosa sono le stablecoin come USDT e USDC, spiegato semplice: come restano a 1 $, cosa le garantisce, a cosa servono e quali rischi bisogna conoscere.
 date: 2026-11-15
-category: guides
+category: learn
+track: crypto
+step: 4
 assets: btc, eth
+stat: $1
+stat_label: il prezzo che una stablecoin come USDT o USDC è pensata per mantenere
 ---
 Una **stablecoin** è un token cripto progettato per mantenere un prezzo stabile, di solito esattamente **1 dollaro**. Si muove come una cripto (veloce, 24 ore su 24, oltre i confini) ma dovrebbe conservare il proprio valore come il denaro tradizionale.
 
 Gli esempi più noti di **stablecoin** sono **USDT** (Tether) e **USDC** (Circle). Insieme rappresentano la maggior parte del mercato e su molti exchange sono la valuta principale con cui si scambiano Bitcoin e le altre monete.
+
+> **In sintesi**
+> - Una stablecoin è un token cripto che cerca di valere esattamente 1 $: USDT e USDC sono le più grandi.
+> - Su un exchange fa da «sala d'attesa» per i tuoi soldi: puoi uscire da Bitcoin senza rimandare il denaro in banca.
+> - Non è un deposito bancario: può perdere per poco il suo prezzo di 1 $, l'emittente può congelarla e, se la invii sulla rete sbagliata, puoi perderla.
 
 ## Perché esistono le stablecoin
 
@@ -80,6 +89,13 @@ Entrambe funzionano su diverse blockchain (Ethereum, Tron, Solana e altre). Invi
 3. Non tenere su una singola piattaforma più di quanto potresti permetterti di vedere bloccato.
 4. Leggi l'ultimo report sulle riserve dell'emittente.
 5. Ricorda: tenere una stablecoin significa tenere dollari in forma cripto, non un investimento con una crescita attesa.
+
+> **⚠️ Attenzione**
+> - **Rete sbagliata.** Inviare USDT su una rete che il destinatario non supporta (per esempio TRC-20 verso un indirizzo ERC-20) può far perdere i soldi per sempre. Fai prima un piccolo invio di prova.
+> - **Interessi «garantiti».** Le offerte del 10–30% l'anno sulle stablecoin sono una truffa classica o nascondono un rischio.
+> - **Token fasulli.** Chiunque può creare un token chiamato «USDT». Conta solo il contratto ufficiale sull'exchange o nel tuo wallet.
+
+Prossimo passo: trova un exchange che funziona nel tuo Paese nella nostra [pagina degli exchange]({lang}/exchanges/) e guarda tutte le lezioni nella [pagina Impara]({lang}/learn/).
 
 Se il tuo obiettivo è investire con regolarità nel lungo periodo, confronta come si sono comportati davvero i vari asset con il nostro [calcolatore DCA]({lang}/compare/) e leggi [cos'è il DCA](/en/blog/what-is-dca/).
 

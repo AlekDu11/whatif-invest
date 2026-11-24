@@ -2,12 +2,21 @@
 title: Co to jest stablecoin (USDT, USDC) i dlaczego ma znaczenie
 description: Co to jest stablecoin, np. USDT i USDC, w prostych słowach: jak utrzymuje kurs 1 $, co go zabezpiecza, do czego służy i jakie ryzyka warto znać.
 date: 2026-11-15
-category: guides
+category: learn
+track: crypto
+step: 4
 assets: btc, eth
+stat: $1
+stat_label: cena, którą ma utrzymywać stablecoin taki jak USDT czy USDC
 ---
 **Stablecoin** to token kryptowalutowy zaprojektowany tak, by utrzymywać stałą cenę — zwykle dokładnie **1 dolara**. Porusza się jak kryptowaluta (szybko, 24/7, ponad granicami), ale ma zachowywać wartość jak zwykłe pieniądze.
 
 Najbardziej znane przykłady to **USDT** (Tether) i **USDC** (Circle). Razem stanowią większość rynku stablecoinów, a na wielu giełdach są główną walutą, w której handluje się Bitcoinem i innymi monetami.
+
+> **Najważniejsze**
+> - Stablecoin to token kryptowalutowy, który stara się być wart dokładnie 1 $ — największe to USDT i USDC.
+> - Na giełdzie działa jak „poczekalnia” dla twoich pieniędzy: możesz wyjść z Bitcoina bez przelewania pieniędzy z powrotem do banku.
+> - To nie jest lokata bankowa: może na chwilę stracić cenę 1 $, emitent może go zamrozić, a wysłany w złej sieci może przepaść.
 
 ## Po co istnieją stablecoiny
 
@@ -80,6 +89,13 @@ Oba działają na kilku blockchainach (Ethereum, Tron, Solana i innych). Zawsze 
 3. Nie trzymaj na jednej platformie więcej, niż możesz sobie pozwolić mieć zamrożone.
 4. Przeczytaj najnowszy raport rezerw emitenta.
 5. Pamiętaj: trzymanie stablecoina to trzymanie dolarów w formie kryptowaluty, a nie inwestycja z oczekiwanym wzrostem.
+
+> **⚠️ Uwaga**
+> - **Zła sieć.** Wysłanie USDT w sieci, której odbiorca nie obsługuje (na przykład TRC-20 na adres ERC-20), może oznaczać utratę pieniędzy na zawsze. Najpierw wyślij małą kwotę testową.
+> - **„Gwarantowane” odsetki.** Oferty 10–30% rocznie na stablecoinach to klasyczne oszustwo albo ukryte ryzyko.
+> - **Podróbki tokenów.** Każdy może stworzyć token o nazwie „USDT”. Liczy się tylko oficjalny kontrakt na giełdzie lub w twoim portfelu.
+
+Następny krok: znajdź giełdę działającą w twoim kraju na naszej [stronie giełd]({lang}/exchanges/), a wszystkie lekcje — na [stronie Nauka]({lang}/learn/).
 
 Jeśli twoim celem jest długoterminowe regularne inwestowanie, porównaj, jak naprawdę radziły sobie różne aktywa, w naszym [kalkulatorze DCA]({lang}/compare/) i przeczytaj, [czym jest DCA](/en/blog/what-is-dca/).
 

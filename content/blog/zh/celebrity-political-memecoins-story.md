@@ -1,0 +1,66 @@
+---
+title: "名人和政客的模因币：买入的人后来怎么样了"
+description: 从凯特琳·詹纳、Hawk Tuah到TRUMP、LIBRA和YZY——用日期和数字讲述名人模因币的故事，以及为什么大多数买家都亏了钱。
+date: 2026-11-24T12:00:00Z
+category: learn
+track: memes
+step: 11
+assets: trump, melania, doge
+stat: 86%
+stat_label: 投入超过1,000美元的LIBRA交易者中亏损卖出的比例（Nansen，2025年2月）
+---
+**名人和政客发行的模因币能让买家发财吗？** 对大多数买家来说，答案是否定的。从2024年的名人代币热潮，到2025年的TRUMP、LIBRA和坎耶·韦斯特的YZY，同样的模式一再重演：一个响亮的名字，开盘头几个小时价格暴涨——然后崩盘，大部分利润被一小撮早期钱包拿走。
+
+> **要点**
+> - 2024年6月，30多个名人代币在Solana上线；大约一个月后，其中一半跌了99%以上（分析师统计，Cointelegraph，2024年7月）。
+> - 2025年2月，阿根廷总统推广的LIBRA代币市值一度超过45亿美元，随后几小时内暴跌约95%；与团队有关的8个钱包卖出了约1.07亿美元。
+> - 名气保护不了你。2025年8月YZY上线时，约74%的交易者亏损，而11个钱包拿走了全部利润的近30%（Bubblemaps）。
+
+## 什么是名人模因币？
+
+就是由名人发行或在社交媒体上推广的模因币（一种玩笑式的代币，背后没有任何业务——见[什么是模因币]({lang}/blog/what-are-memecoins/)）。粉丝因为认识这个名字而买入。但这个代币并不会让你分到这个人的钱、音乐或公司的任何一部分。它的价格只取决于你之后还有没有人愿意买。
+
+## 用日期和数字看这段故事
+
+**2024年5–6月——名人代币热潮。** 2024年5月凯特琳·詹纳发行代币后，说唱歌手伊吉·阿塞莉娅推出了MOTHER，歌手杰森·德鲁罗、50 Cent等人的名字也出现在新的Solana代币上。仅2024年6月就有30多个名人代币上线。到2024年7月底，它们全部至少跌了73%，一半跌幅超过99%，只有寥寥几个保住了四分之一以上的价值（Cointelegraph）。德鲁罗说自己没有卖出代币；分析公司Bubblemaps则表示，数据显示他卖了。
+
+**2024年12月4日——HAWK。** 网上被称为“Hawk Tuah女孩”的海莉·韦尔奇推出了HAWK代币。上线几小时内，价格下跌超过90%。买家指责内部人员提前抛售，后来一批投资者对代币的推广方提起了诉讼。她本人则表示，她的团队没有卖出。
+
+**2025年1月17–19日——TRUMP和MELANIA。** 就职典礼前三天，唐纳德·特朗普宣布推出TRUMP模因币；两天后MELANIA紧随其后。TRUMP的市值在2025年1月的高点接近150亿美元。分析公司Nansen统计，截至2026年6月底，约98.9万个买家钱包处于亏损，合计亏损约38.1亿美元，而盈利的钱包约有49.2万个（The Block，2026年7月）。目前TRUMP的价格是{{price:trump}}（12个月{{chg1y:trump}}），MELANIA是{{price:melania}}。另一节课会详细讲这个故事。
+
+**2025年2月14–15日——LIBRA。** 阿根廷总统哈维尔·米莱发布了LIBRA的链接，这个代币据称是用来资助小企业的。它的市值迅速冲上45亿美元以上，随后几小时内下跌约95%。链上追踪者（在公开的区块链数据里追踪钱包交易的人）发现，与团队有关的8个钱包卖出了约1.07亿美元。米莱删除了帖子并撤回支持。Nansen后来统计的合计亏损约为2.51亿美元：投入超过1,000美元后卖出的钱包中，86%以上亏了钱。调查人员还发现，LIBRA的发行团队与MELANIA背后的人有关联（Decrypt）。
+
+**2025年8月——YZY。** 坎耶·韦斯特推出了YZY代币。上线几小时内下跌近70%。Bubblemaps统计了70,201名交易者：其中51,862人（73.8%）亏损，合计约7,480万美元。在18,333个盈利钱包中，86%赚得不到1,000美元——而仅仅11个钱包就拿走了全部利润的近30%。Bubblemaps还表示，LIBRA发行背后的商人海登·戴维斯通过“狙击”YZY赚了约1,200万美元。
+
+## 为什么同样的事一再发生
+
+1. **内部人先拿到便宜的代币。** 团队和“狙击手”（在上线后几秒内买入的机器人）在粉丝还没来得及点“购买”之前，就已经握有一大份。这类词汇都收在我们的[模因币词汇表]({lang}/memes/glossary/)里。
+2. **名人发帖的那一刻就是顶点。** 数百万粉丝看到公告的时候，买家来得最多——内部人也正好可以卖给他们。
+3. **没有业务，就没有底。** 热度一退，价格就没有任何支撑：没有利润，没有产品，没有分红。
+4. **名气保护的是发行者，不是你。** 好几次上线后都有人起诉，但官司要打好几年，买家很少能拿回钱。
+
+## 新手能从中学到什么
+
+- **看看是谁持有这些币。** 买任何模因币之前，先看前10大持有者的占比和代币的“年龄”——[买模因币前如何检查]({lang}/blog/how-to-check-a-memecoin-before-buying/)这一课教你怎么做，我们[模因币页面]({lang}/memes/)上的安全指示灯也能帮上忙。
+- **名人代币上线的头几个小时，绝对不要买。** 那正是机器人和内部人抛售的时候。
+- **只用亏光也没关系的钱。** 如果你还是想试试，提前定一个小额上限，并在你的[投资组合]({lang}/me/)里记录。
+
+> **⚠️ 注意**
+> - **假冒名人代币。** 骗子几分钟就能用明星的名字和照片造出一个代币。只相信本人认证账号上公布的合约地址——即便如此，上面说的风险依然存在。
+> - **被盗的账号。** 好几位名人的X账号曾被盗，用来推广假代币。突然出现的新币帖子是一个危险信号。
+> - **“有总统/明星背书。”** 名人的名字是营销，不是保证。没有人有义务回购你的代币。
+
+更多课程：[学习页面]({lang}/learn/)。
+
+## 来源
+
+- [Cointelegraph：名人代币的兴衰（2024年7月）](https://cointelegraph.com/news/celeb-tokens-solana-crash)
+- [Cointelegraph：Hawk Tuah模因币暴跌90%（2024年12月）](https://cointelegraph.com/news/hawk-tuah-memecoin-dumps-90-percent-outrage-token-launch-insider)
+- [The Block：Hawk Tuah女孩称“团队没有卖出”（2024年12月）](https://www.theblock.co/news/markets/2024-12-05-hawk-tuah-memecoin-329558)
+- [The Block：内部人套现1.07亿美元后，米莱撤回对LIBRA的支持（2025年2月）](https://www.theblock.co/post/341206/argentinian-president-javier-milei-retracts-libra-endorsement-after-insiders-cash-out-107-million)
+- [Cointelegraph：Nansen称86%的LIBRA交易者实现亏损（2025年2月）](https://cointelegraph.com/news/libra-investors-lost-251-million-memecoin-javier-milei)
+- [Decrypt：链上证据将LIBRA与MELANIA的发行方联系起来](https://decrypt.co/306226/on-chain-evidence-links-libra-token-to-melania-meme-coin-issuers)
+- [The Block：Bubblemaps称YZY暴跌令5万多个钱包亏损（2025年8月）](https://www.theblock.co/post/368557/kanye-west-yzy-11-netted-millions)
+- [The Block：近100万个钱包在TRUMP上亏损38.1亿美元（2026年7月）](https://www.theblock.co/news/business/2026-07-04-nearly-1-million-wallets-are-down-3-81-billion-on-trumps-memecoin-report-407170)
+
+*不构成投资建议。本课讲述的是过去发生的事情，不推荐买入或卖出任何币。*
