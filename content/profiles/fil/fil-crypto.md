@@ -1,24 +1,24 @@
 ---
-title: Filecoin (FIL) sa simpleng paliwanag: storage network na may limitang 2 bilyong FIL, tumatakbo mula 2020
-description: Filecoin sa simpleng paliwanag: paano binabayaran ang storage sa FIL, ang limitang 2 bilyon, pag-akyat at pagbagsak, mga panganib at aral sa regular na pagbili.
+title: Filecoin (FIL) sa simpleng paliwanag: storage network na nakabatay sa IPFS, limitasyong 2 bilyong token, live mula 2020
+description: Filecoin sa simpleng paliwanag: paano gumagana ang storage market nito, para saan ang FIL, Onchain Cloud, ang kuwento, mga karibal, pangunahing panganib at payo sa regular na bumibili.
 date: 2026-11-24
 kind: analysis
 ---
-Ang **Filecoin** ay isang network kung saan puwedeng paupahan ng kahit sino ang bakanteng espasyo sa kanyang mga disk, at puwedeng magbayad ang kahit sino para mag-imbak ng mga file; FIL token ang gamit sa bayad at gantimpala. Ginawa ito ng Protocol Labs, ang kumpanyang itinatag ni Juan Benet na lumikha rin ng IPFS, at nagsimulang tumakbo ang pangunahing network noong 15 Oktubre 2020. Sa ngayon, {{mcap:fil-crypto}} ang kabuuang halaga ng FIL ({{rank:fil-crypto}} sa mga cryptocurrency).
+Ang **Filecoin** ay isang blockchain kung saan puwedeng paupahan ng kahit sino ang bakanteng espasyo sa kanilang hard disk, at puwedeng magbayad ang kahit sino para mag-imbak ng mga file dito — parang bukas at desentralisadong cloud storage. Ginawa ito ng Protocol Labs, ang team sa likod ng file-sharing protocol na IPFS, at naging live noong Oktubre 2020. Ang kabuuang halaga ng FIL token ay {{mcap:fil-crypto}} ({{rank:fil-crypto}} sa mga cryptocurrency).
 
 > **Mahahalagang punto**
-> - Hindi lalampas sa 2 bilyon ang FIL na malilikha kailanman; 70% nito ay nakalaan bilang gantimpala sa mga storage provider.
-> - Nakalikom ng humigit-kumulang $257 milyon ang token sale noong 2017, isa sa pinakamalaki noong panahong iyon.
-> - Ang pinakamataas na presyo nito ay {{ath:fil-crypto}} ({{athd:fil-crypto}}); ngayon, {{fromath:fil-crypto}} ang presyo mula roon.
-> - Mula Marso 2023, puwede nang magpatakbo ng smart contract sa network dahil sa Filecoin Virtual Machine.
+> - Kumikita ng FIL ang mga storage provider sa pag-iingat ng data at kailangan nilang patunayan nang paulit-ulit na hawak pa rin nila ito.
+> - Hindi kailanman lalampas sa 2 bilyon ang FIL; karamihan ay unti-unting inilalabas bilang gantimpala sa mga provider.
+> - Noong 2026, inilipat ng network ang pokus mula sa pagdagdag ng kapasidad tungo sa mga nagbabayad na customer; tumatakbo ang Filecoin Onchain Cloud mula Marso 2026.
+> - Ang pinakamataas nitong presyo ay {{ath:fil-crypto}} ({{athd:fil-crypto}}); ngayon ang presyo ay {{fromath:fil-crypto}} mula roon.
 
 ## Paano ito gumagana
 
-Nag-aalok ng disk space ang mga storage provider — mula maliliit na operator hanggang mga kumpanyang may data center. Nakikipagkasundo ang kliyente na itago ang data sa takdang panahon at nagbabayad sa FIL. Bago kumita, kailangang i-lock ng provider ang FIL bilang collateral. Sinusuri ng network ang trabaho nila gamit ang dalawang cryptographic proof: ipinapakita ng Proof-of-Replication (PoRep) na nag-imbak ang provider ng sarili at natatanging kopya ng data, at paulit-ulit namang pinatutunayan ng Proof-of-Spacetime (PoSt) na naroon pa rin ang data. Ang hindi pumasa sa pagsusuri ay nawawalan ng bahagi ng collateral. May bagong block humigit-kumulang bawat 30 segundo, at mas malaki ang tsansa ng provider na may mas maraming napatunayang storage na makuha ang block at ang bagong FIL na kasama nito.
+Nag-aalok ng disk space ang mga storage provider — mula sa maliliit na operator hanggang sa malalaking data center. Ang customer na gustong mag-imbak ng data ay gumagawa ng "deal" sa isa o higit pang provider. Pagkatapos ay naglalabas ang mga provider ng cryptographic proof: ipinapakita ng Proof-of-Replication na gumawa sila ng natatanging kopya, at ng Proof-of-Spacetime na patuloy nilang iniingatan ito. Kapag pumalya ang provider sa proof, binabawasan ang bahagi ng FIL na ini-lock niya bilang collateral ("slashing"). Mula Marso 2023, pinapayagan ng Filecoin Virtual Machine ang mga developer na sumulat ng smart contract na nag-a-automate ng storage deal at bayad.
 
-## Bakit naniniwala ang mga tao na may halaga ito
+## Para saan ang token
 
-Kailangan ang FIL para magbayad ng storage at maglagay ng collateral, kaya ang mas maraming gamit ng network ay puwedeng mangahulugan ng mas mataas na demand sa token. Hindi nakasalalay ang data sa iisang cloud company: nakakalat ito sa maraming independiyenteng provider sa buong mundo, at kahit sino ay puwedeng mag-check ng mga proof sa pampublikong blockchain. Sinusunog ang bahagi ng fees at multa, kaya tuluyang nawawala sa sirkulasyon ang mga FIL na iyon. Para sa mga sumusuporta, pundasyon ang Filecoin para sa pampublikong dataset, mga archive at ang napakaraming data na kailangan ng mga AI model.
+Ginagamit ang FIL pambayad sa storage at mga transaksiyon sa network. Kailangang mag-lock ng FIL bilang collateral ang mga provider bago mag-alok ng espasyo, at kumikita sila ng bagong FIL bilang block reward kasama ang bayad ng mga customer. Sinusunog ang bahagi ng mga fee. Sa praktika, nakadepende ang demand sa token sa dami ng tunay na customer na nagbabayad para sa storage — kaya inuuna ng estratehiya para sa 2026 ang mga bayad na deal.
 
 ## Ang mga numero ngayon
 
@@ -30,30 +30,29 @@ Kailangan ang FIL para magbayad ng storage at maglagay ng collateral, kaya ang m
 
 ## Ang kuwento nito hanggang ngayon
 
-Inilathala ni Juan Benet ang unang white paper ng Filecoin noong Hulyo 2014, ang taong itinatag niya ang Protocol Labs. Noong 2017, nagdaos ang proyekto ng token sale para lang sa mga accredited investor; kasama ang $52 milyong presale, nakalikom ito ng humigit-kumulang $257 milyon. Tatlong taon pa ang inabot ng pagbuo ng network: inilunsad ang mainnet noong 15 Oktubre 2020 sa block 148,888. Sa crypto boom noong tagsibol ng 2021, naabot ng FIL ang rekord nito at pagkatapos ay bumagsak nang husto — sa pagtatapos ng 2022, nasa mga $3 na lang ito. Noong 14 Marso 2023, inilunsad ang Filecoin Virtual Machine na nagdala ng mga smart contract na tugma sa mga tool ng Ethereum. Patuloy na bumaba ang presyo pagkatapos nito at bumaba sa ilalim ng $1 noong 2026.
+Inilathala ng Protocol Labs, na itinatag ni Juan Benet, ang whitepaper ng Filecoin noong 2014 at nakalikom ng humigit-kumulang $200 milyon sa token sale noong 2017 — isa sa pinakamalaki noong panahong iyon. Inilunsad ang mainnet noong Oktubre 2020. Noong Abril 2021, ilang sandali matapos itong mailista sa malalaking exchange, panandaliang na-trade ang FIL nang lampas $200; sa mga sumunod na taon, nawala ang higit 95% ng halagang iyon. Nadagdagan ng smart contract ang network noong Marso 2023. Noong Pebrero 2026, inanunsiyo ng Filecoin Foundation ang estratehiyang nakatuon sa bayad na demand, at noong Marso 2026 naging live sa mainnet ang Filecoin Onchain Cloud — storage na may built-in na bayad, mula $2.50 bawat TiB kada buwan bawat kopya.
 
 ## Mga alternatibo
 
-Sa mga crypto storage project, ang [Arweave]({lang}/ar-crypto/) ay naniningil nang isang beses para permanenteng maitago ang data, habang ang [Storj]({lang}/storj/) at [Siacoin]({lang}/sc/) ay nagpapahintulot ding magpaupa ng bakanteng disk space. Ang pinakamalaking kakumpitensya ay ang karaniwang cloud ng Amazon, Google at Microsoft: madali, mura at matatag na. Para sa pera ng mga investor, kakumpitensya rin ng FIL ang malalawak na platform gaya ng [Ethereum]({lang}/eth/).
+Sa desentralisadong storage, ang pangunahing karibal ay ang [Arweave]({lang}/ar/), na minsanang singil para sa permanenteng storage, pati ang [Storj]({lang}/storj/) at [Siacoin]({lang}/sc/), na nagpapaupa ng espasyo gaya ng Filecoin. Pero ang pinakamalalaking kakumpitensiya ay ang karaniwang cloud gaya ng Amazon S3 at Google Cloud: mura, mabilis at kilala na ng mga negosyo.
 
 ## Pangunahing panganib
 
-- **Malalaking galaw:** pagsapit ng katapusan ng 2022, nawalan na ang FIL ng higit 95% mula sa rekord nito noong 2021, at puwedeng maulit ang malalalim na pagbagsak.
-- **Bagong supply:** araw-araw may bagong FIL na nalilikha bilang gantimpala sa mga provider, na puwedeng magdulot ng tuloy-tuloy na selling pressure.
-- **Totoong demand:** nakasalalay ang halaga ng token sa mga nagbabayad na customer; kung mananatiling mas mura at mas madali ang karaniwang cloud, puwedeng manatiling mahina ang demand sa FIL.
-- **Kumpetisyon:** nag-aagawan sa parehong mga customer ang ibang storage network at ang malalaking cloud company.
-- **Pag-iingat at regulasyon:** kapag nalugi ang isang exchange o nawala mo ang private key, puwedeng mawala ang mga coin; iba-iba ang patakaran sa crypto sa bawat bansa at puwedeng mabilis magbago.
+- **Malalaking galaw ng presyo:** bumagsak ang FIL nang higit 95% mula sa tuktok nito noong 2021; puwedeng maulit ang ganitong pagbagsak.
+- **Tuloy-tuloy na paglabas ng token:** araw-araw may bagong token para sa mga provider, at tumagal nang ilang taon ang unlock ng mga naunang investor, kaya may presyur sa pagbebenta.
+- **Tunay na demand:** malaking bahagi ng naka-imbak na data ay sinubsidyuhan; kung hindi dadami ang nagbabayad na customer, mananatiling limitado ang gamit ng token.
+- **Kompetisyon:** mas madaling gamitin ang cloud storage ng malalaking tech company at patuloy itong mumura.
+- **Regulasyon:** magkakaiba sa bawat bansa ang mga patakaran sa crypto token at sa token sale noong 2017, at puwedeng magbago.
 
 ## Ano ang ibig sabihin nito kung regular kang bumibili
 
-Mula nang ilunsad, ang kuwento ng Filecoin ay isang maagang rurok na sinundan ng mahabang pagbagsak. Kapag regular kang bumibili ng parehong halaga, mas marami ang nabibili mo kapag mababa ang presyo at mas kaunti kapag mataas, pero hindi nito maililigtas ang asset na patuloy na bumabagsak ang presyo — ipinapakita iyan ng 5-taong resulta sa itaas. Maraming tao ang naglalagay lang ng maliliit na coin gaya ng FIL sa maliit na bahagi ng ipon na kaya nilang makitang bumagsak nang malaki. Hindi garantiya ng kita sa hinaharap ang nakaraang resulta.
+Ang Filecoin ay taya na makakakuha ng tunay na customer ang desentralisadong storage, at napakagalaw ng presyo nito. Ang regular na pagbili ng nakapirming halaga ay nagkakalat ng iyong pagbili sa pagtaas at pagbaba nang hindi hinuhulaan ang pinakamababa — pero hindi nito inaalis ang panganib ng pagkalugi. Maraming tao ang naglalagay ng mas maliliit na token gaya ng FIL sa maliit na bahagi lang ng kanilang crypto. Hindi garantiya ng nakaraang resulta ang kita sa hinaharap.
 
 *Hindi ito payo sa pamumuhunan.*
 
 ## Mga pinagmulan
 
-- [Filecoin mainnet liftoff (Filecoin blog, October 2020)](https://filecoin.io/blog/mainnet-liftoff/)
-- [Token allocation — Filecoin specification](https://spec.filecoin.io/systems/filecoin_token/token_allocation/)
-- [$257 Million: Filecoin Breaks All-Time Record for ICO Funding (CoinDesk, September 2017)](https://coindesk.com/markets/2017/09/07/257-million-filecoin-breaks-all-time-record-for-ico-funding/)
-- [The FVM is live on mainnet (Filecoin blog, March 2023)](https://filecoin.io/blog/fvm-is-live-on-mainnet)
-- [Filecoin price, market cap and all-time high (CoinGecko)](https://www.coingecko.com/en/coins/filecoin)
+- [Filecoin — opisyal na site at docs (filecoin.io)](https://filecoin.io/)
+- [Filecoin Onchain Cloud is live on mainnet (Filecoin blog, Marso 2026)](https://filecoin.io/blog/filecoin-onchain-cloud-is-live-on-mainnet)
+- [The 2026 Filecoin Network Strategy (Filecoin blog, Pebrero 2026)](https://filecoin.io/blog/the-2026-filecoin-network-strategy)
+- [Presyo, market cap at pinakamataas na presyo ng Filecoin (CoinGecko)](https://www.coingecko.com/en/coins/filecoin)

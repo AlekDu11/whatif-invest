@@ -1,24 +1,24 @@
 ---
-title: Filecoin (FIL) explained: a storage network with a 2 billion FIL cap, live since 2020
-description: Filecoin in plain language: how the storage network pays providers in FIL, the 2 billion cap, its boom and fall, main risks and what regular buyers should know.
+title: Filecoin (FIL) explained: a storage network built on IPFS, a 2 billion token cap, live since 2020
+description: Filecoin in plain language: how its storage market works, what FIL is used for, Onchain Cloud, its story, rivals, the main risks and tips for regular buyers.
 date: 2026-11-24
 kind: analysis
 ---
-**Filecoin** is a network where anyone with spare disk space can rent it out and anyone can pay to store files, with the FIL token used for payments and rewards. It was built by Protocol Labs, the company founded by Juan Benet that also created IPFS, and its main network went live on 15 October 2020. Today FIL is worth {{mcap:fil-crypto}} in total ({{rank:fil-crypto}} among cryptocurrencies).
+**Filecoin** is a blockchain where anyone can rent out spare hard-disk space and anyone can pay to store files on it — a kind of open, decentralised cloud storage. It was created by Protocol Labs, the team behind the IPFS file-sharing protocol, and went live in October 2020. Its FIL token is worth {{mcap:fil-crypto}} in total ({{rank:fil-crypto}} among cryptocurrencies).
 
 > **Key takeaways**
-> - No more than 2 billion FIL can ever be created; 70% of that is set aside as rewards for storage providers.
-> - The 2017 token sale raised about $257 million, one of the largest of its time.
+> - Storage providers earn FIL for keeping data and must prove, again and again, that they still hold it.
+> - There will never be more than 2 billion FIL; most of it is released slowly as rewards to storage providers.
+> - In 2026 the network shifted its focus from adding capacity to winning paying customers, with Filecoin Onchain Cloud live since March 2026.
 > - Its record high is {{ath:fil-crypto}} ({{athd:fil-crypto}}); today the price is {{fromath:fil-crypto}} from it.
-> - Since March 2023 the Filecoin Virtual Machine has let developers run smart contracts on the network.
 
 ## How it works
 
-Storage providers — from small operators to data-centre companies — offer disk space. A client agrees a deal to store data for a set period and pays in FIL. Before they can earn, providers must lock up FIL as collateral. The network checks their work with two cryptographic proofs: Proof-of-Replication (PoRep) shows that a provider has stored its own unique copy of the data, and Proof-of-Spacetime (PoSt) shows, again and again, that the data is still there. A provider that fails these checks loses part of its collateral. A new block is added about every 30 seconds, and providers with more proven storage have a better chance of winning it and the newly created FIL that comes with it.
+Storage providers — from small operators to large data centres — offer disk space on the network. A client who wants to store data makes a "deal" with one or more providers. The providers then publish cryptographic proofs: Proof-of-Replication shows they made a unique copy, and Proof-of-Spacetime shows they keep holding it over time. If a provider fails its proofs, part of the FIL it locked as collateral is cut ("slashed"). Since March 2023 the Filecoin Virtual Machine lets developers write smart contracts that automate storage deals and payments.
 
-## Why people think it has value
+## What the token is used for
 
-FIL is needed to pay for storage and to post collateral, so more use of the network can mean more demand for the token. Instead of trusting one cloud company, data is spread across many independent providers around the world, and anyone can verify the proofs on the public blockchain. Part of the fees and penalties is burned, which removes FIL from circulation for good. Supporters see Filecoin as a base layer for public datasets, archives and the large amounts of data that AI models need.
+FIL pays for storage and for transactions on the network. Providers must lock FIL as collateral before they can offer space, and they earn newly issued FIL as block rewards plus fees from clients. A share of transaction fees is burned. In practice demand for the token depends on how many real customers pay for storage — which is why the 2026 strategy puts paid deals first.
 
 ## The numbers right now
 
@@ -30,30 +30,29 @@ FIL is needed to pay for storage and to post collateral, so more use of the netw
 
 ## Its story so far
 
-Juan Benet published the first Filecoin white paper in July 2014, the year he founded Protocol Labs. In 2017 the project held a token sale open only to accredited investors; together with a $52 million presale it raised about $257 million. Building the network took three more years: the mainnet launched on 15 October 2020 at block 148,888. In the crypto boom of spring 2021 FIL set its record, then fell hard — by the end of 2022 it traded around $3. On 14 March 2023 the Filecoin Virtual Machine went live, bringing smart contracts with Ethereum-compatible tools. The price kept sliding afterwards and dropped below $1 in 2026.
+Protocol Labs, founded by Juan Benet, published the Filecoin whitepaper in 2014 and raised about $200 million in a token sale in 2017 — one of the largest of that era. The mainnet launched in October 2020. In April 2021, shortly after it was listed on big exchanges, FIL briefly traded above $200; it then lost more than 95% of that value over the following years. The network added smart contracts in March 2023. In February 2026 the Filecoin Foundation announced a strategy focused on paid demand, and in March 2026 Filecoin Onchain Cloud — storage with built-in payments, priced from $2.50 per TiB a month per copy — went live on mainnet.
 
 ## Alternatives
 
-Among crypto storage projects, [Arweave]({lang}/ar-crypto/) charges once to keep data stored permanently, while [Storj]({lang}/storj/) and [Siacoin]({lang}/sc/) also let people rent out spare disk space. The biggest competitor is ordinary cloud storage from Amazon, Google and Microsoft, which is simple, cheap and well established. For investors' money, FIL also competes with broad platforms such as [Ethereum]({lang}/eth/).
+In decentralised storage the main rivals are [Arweave]({lang}/ar/), which charges once for permanent storage, plus [Storj]({lang}/storj/) and [Siacoin]({lang}/sc/), which rent out space like Filecoin. The biggest competitors, though, are ordinary cloud providers such as Amazon S3 and Google Cloud, which are cheap, fast and familiar to businesses.
 
 ## Main risks
 
-- **Big swings:** by the end of 2022 FIL had lost more than 95% from its 2021 record, and deep falls can happen again.
-- **New supply:** fresh FIL is created every day as rewards for storage providers, which can add steady selling pressure.
-- **Real demand:** the token's value depends on paying customers; if the regular cloud stays cheaper and easier, demand for FIL can stay weak.
-- **Competition:** other storage networks and big cloud providers fight for the same customers.
-- **Storage and regulation:** if an exchange fails or you lose your private key, the coins can be gone; crypto rules differ by country and can change quickly.
+- **Big swings:** FIL fell more than 95% from its 2021 peak; drops like that can happen again.
+- **Steady issuance:** new tokens are released to providers every day and vesting for early backers ran for years, adding selling pressure.
+- **Real demand:** much of the stored data has been subsidised; if paying customers do not grow, the token's use stays limited.
+- **Competition:** big-tech cloud storage is easier to use and keeps getting cheaper.
+- **Regulation:** the 2017 token sale and rules for crypto tokens differ by country and can change.
 
 ## What it means if you buy regularly
 
-Since launch, Filecoin's history has been one early peak followed by a long fall. Buying a fixed amount regularly means you buy more when the price is low and less when it is high, but it cannot rescue an asset whose price keeps falling — the five-year result above shows this. Many people keep smaller coins like FIL to a small part of their savings that they can afford to see fall sharply. Past results do not guarantee future returns.
+Filecoin is a bet on decentralised storage winning real customers, and its price has been very volatile. Buying a fixed amount regularly spreads your purchases over highs and lows without guessing the bottom — but it does not remove the risk of losses. Many people keep smaller tokens like FIL to a small part of their crypto. Past results do not guarantee future returns.
 
 *Not investment advice.*
 
 ## Sources
 
-- [Filecoin mainnet liftoff (Filecoin blog, October 2020)](https://filecoin.io/blog/mainnet-liftoff/)
-- [Token allocation — Filecoin specification](https://spec.filecoin.io/systems/filecoin_token/token_allocation/)
-- [$257 Million: Filecoin Breaks All-Time Record for ICO Funding (CoinDesk, September 2017)](https://coindesk.com/markets/2017/09/07/257-million-filecoin-breaks-all-time-record-for-ico-funding/)
-- [The FVM is live on mainnet (Filecoin blog, March 2023)](https://filecoin.io/blog/fvm-is-live-on-mainnet)
+- [Filecoin — official site and docs (filecoin.io)](https://filecoin.io/)
+- [Filecoin Onchain Cloud is live on mainnet (Filecoin blog, March 2026)](https://filecoin.io/blog/filecoin-onchain-cloud-is-live-on-mainnet)
+- [The 2026 Filecoin Network Strategy (Filecoin blog, February 2026)](https://filecoin.io/blog/the-2026-filecoin-network-strategy)
 - [Filecoin price, market cap and all-time high (CoinGecko)](https://www.coingecko.com/en/coins/filecoin)

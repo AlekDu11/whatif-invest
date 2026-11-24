@@ -1,24 +1,24 @@
 ---
-title: Filecoin (FIL) dijelaskan sederhana: jaringan penyimpanan dengan batas 2 miliar FIL, aktif sejak 2020
-description: Filecoin dijelaskan sederhana: cara jaringan membayar penyimpanan dengan FIL, batas 2 miliar koin, naik-turunnya, risiko utama, dan tips bagi pembeli rutin.
+title: Filecoin (FIL) dijelaskan sederhana: jaringan penyimpanan berbasis IPFS, batas 2 miliar token, aktif sejak 2020
+description: Filecoin dijelaskan sederhana: cara kerja pasar penyimpanannya, kegunaan FIL, Onchain Cloud, kisahnya, pesaing, risiko utama, dan tips bagi pembeli rutin.
 date: 2026-11-24
 kind: analysis
 ---
-**Filecoin** adalah jaringan tempat siapa pun bisa menyewakan ruang kosong di hard disk-nya dan siapa pun bisa membayar untuk menyimpan file; pembayaran dan imbalan memakai token FIL. Jaringan ini dibangun oleh Protocol Labs, perusahaan yang didirikan Juan Benet dan juga membuat IPFS, dan jaringan utamanya mulai berjalan pada 15 Oktober 2020. Kini nilai total FIL {{mcap:fil-crypto}} ({{rank:fil-crypto}} di antara mata uang kripto).
+**Filecoin** adalah blockchain tempat siapa pun bisa menyewakan ruang kosong di hard disk-nya dan siapa pun bisa membayar untuk menyimpan file di sana — semacam penyimpanan cloud yang terbuka dan terdesentralisasi. Filecoin dibuat oleh Protocol Labs, tim di balik protokol berbagi file IPFS, dan mulai berjalan pada Oktober 2020. Nilai total token FIL saat ini {{mcap:fil-crypto}} ({{rank:fil-crypto}} di antara mata uang kripto).
 
 > **Poin penting**
-> - Tidak akan pernah ada lebih dari 2 miliar FIL; 70% di antaranya disisihkan sebagai imbalan bagi penyedia penyimpanan.
-> - Penjualan token tahun 2017 mengumpulkan sekitar $257 juta, salah satu yang terbesar pada masanya.
-> - Rekor tertingginya {{ath:fil-crypto}} ({{athd:fil-crypto}}); kini harganya {{fromath:fil-crypto}} dari rekor itu.
-> - Sejak Maret 2023, Filecoin Virtual Machine memungkinkan smart contract berjalan di jaringan ini.
+> - Penyedia penyimpanan mendapat FIL karena menyimpan data dan harus berulang kali membuktikan bahwa data itu masih mereka simpan.
+> - Jumlah FIL tidak akan pernah lebih dari 2 miliar; sebagian besar dilepas perlahan sebagai imbalan bagi penyedia.
+> - Pada 2026 jaringan mengalihkan fokus dari menambah kapasitas ke mendapatkan pelanggan berbayar; Filecoin Onchain Cloud berjalan sejak Maret 2026.
+> - Rekor harganya {{ath:fil-crypto}} ({{athd:fil-crypto}}); hari ini harganya {{fromath:fil-crypto}} dari rekor itu.
 
 ## Cara kerjanya
 
-Penyedia penyimpanan — dari operator kecil sampai perusahaan pusat data — menawarkan ruang disk. Klien membuat kesepakatan untuk menyimpan data selama jangka waktu tertentu dan membayar dengan FIL. Sebelum bisa mendapat penghasilan, penyedia harus mengunci FIL sebagai jaminan. Jaringan memeriksa pekerjaan mereka dengan dua bukti kriptografi: Proof-of-Replication (PoRep) menunjukkan bahwa penyedia menyimpan salinan unik datanya sendiri, dan Proof-of-Spacetime (PoSt) membuktikan berulang kali bahwa data itu masih ada. Penyedia yang gagal dalam pemeriksaan kehilangan sebagian jaminannya. Blok baru ditambahkan kira-kira setiap 30 detik, dan makin banyak penyimpanan yang terbukti dimiliki penyedia, makin besar peluangnya memenangkan blok beserta FIL baru yang menyertainya.
+Penyedia penyimpanan — dari operator kecil hingga pusat data besar — menawarkan ruang disk. Klien yang ingin menyimpan data membuat "kesepakatan" dengan satu atau beberapa penyedia. Penyedia lalu menerbitkan bukti kriptografis: Proof-of-Replication menunjukkan bahwa mereka membuat salinan unik, dan Proof-of-Spacetime menunjukkan bahwa salinan itu tetap disimpan dari waktu ke waktu. Jika penyedia gagal memberikan bukti, sebagian FIL yang dikuncinya sebagai jaminan dipotong ("slashing"). Sejak Maret 2023, Filecoin Virtual Machine memungkinkan pengembang membuat smart contract yang mengotomatiskan kesepakatan penyimpanan dan pembayaran.
 
-## Kenapa orang menganggapnya bernilai
+## Untuk apa tokennya
 
-FIL dibutuhkan untuk membayar penyimpanan dan menyetor jaminan, jadi makin banyak jaringan dipakai, makin besar pula kemungkinan permintaan atas tokennya. Data tidak bergantung pada satu perusahaan cloud: data tersebar di banyak penyedia independen di seluruh dunia, dan siapa pun bisa memeriksa buktinya di blockchain publik. Sebagian biaya dan denda dibakar, sehingga FIL itu hilang dari peredaran selamanya. Pendukungnya melihat Filecoin sebagai fondasi untuk data publik, arsip, dan data dalam jumlah besar yang dibutuhkan model AI.
+FIL dipakai untuk membayar penyimpanan dan transaksi di jaringan. Penyedia harus mengunci FIL sebagai jaminan sebelum menawarkan ruang, dan mereka mendapat FIL baru sebagai imbalan blok ditambah biaya dari klien. Sebagian biaya dibakar. Dalam praktiknya, permintaan atas token bergantung pada berapa banyak pelanggan nyata yang membayar penyimpanan — karena itu strategi 2026 menempatkan kesepakatan berbayar di urutan pertama.
 
 ## Angka saat ini
 
@@ -30,30 +30,29 @@ FIL dibutuhkan untuk membayar penyimpanan dan menyetor jaminan, jadi makin banya
 
 ## Kisahnya sejauh ini
 
-Juan Benet menerbitkan white paper Filecoin pertama pada Juli 2014, tahun yang sama ketika ia mendirikan Protocol Labs. Pada 2017 proyek ini menggelar penjualan token yang hanya terbuka bagi investor terakreditasi; bersama prapenjualan senilai $52 juta, terkumpul sekitar $257 juta. Membangun jaringannya butuh tiga tahun lagi: mainnet diluncurkan pada 15 Oktober 2020 di blok 148.888. Saat booming kripto pada musim semi 2021, FIL mencetak rekornya lalu anjlok — pada akhir 2022 harganya sekitar $3. Pada 14 Maret 2023 Filecoin Virtual Machine aktif, membawa smart contract yang kompatibel dengan perangkat Ethereum. Harganya terus merosot dan pada 2026 turun di bawah $1.
+Protocol Labs, yang didirikan Juan Benet, menerbitkan whitepaper Filecoin pada 2014 dan mengumpulkan sekitar $200 juta lewat penjualan token pada 2017 — salah satu yang terbesar di masa itu. Jaringan utama diluncurkan pada Oktober 2020. Pada April 2021, tak lama setelah tercatat di bursa-bursa besar, FIL sempat diperdagangkan di atas $200; pada tahun-tahun berikutnya nilainya turun lebih dari 95% dari level itu. Smart contract hadir pada Maret 2023. Pada Februari 2026 Filecoin Foundation mengumumkan strategi yang berfokus pada permintaan berbayar, dan pada Maret 2026 Filecoin Onchain Cloud meluncur di jaringan utama — penyimpanan dengan pembayaran bawaan mulai $2,50 per TiB per bulan per salinan.
 
 ## Alternatif
 
-Di antara proyek penyimpanan kripto, [Arweave]({lang}/ar-crypto/) menarik bayaran sekali untuk menyimpan data secara permanen, sementara [Storj]({lang}/storj/) dan [Siacoin]({lang}/sc/) juga memungkinkan orang menyewakan ruang disk kosong. Pesaing terbesarnya adalah layanan cloud biasa dari Amazon, Google, dan Microsoft: mudah, murah, dan sudah mapan. Untuk uang investor, FIL juga bersaing dengan platform umum seperti [Ethereum]({lang}/eth/).
+Di penyimpanan terdesentralisasi, pesaing utamanya adalah [Arweave]({lang}/ar/), yang memungut biaya sekali untuk penyimpanan permanen, serta [Storj]({lang}/storj/) dan [Siacoin]({lang}/sc/), yang menyewakan ruang seperti Filecoin. Namun pesaing terbesarnya adalah cloud biasa seperti Amazon S3 dan Google Cloud: murah, cepat, dan sudah dikenal oleh perusahaan.
 
 ## Risiko utama
 
-- **Naik-turun tajam:** hingga akhir 2022 FIL sudah turun lebih dari 95% dari rekor 2021, dan kejatuhan dalam bisa terulang.
-- **Pasokan baru:** setiap hari FIL baru tercipta sebagai imbalan bagi penyedia, yang bisa terus menekan harga.
-- **Permintaan nyata:** nilai token bergantung pada pelanggan yang membayar; jika cloud biasa tetap lebih murah dan praktis, permintaan FIL bisa tetap lemah.
-- **Persaingan:** jaringan penyimpanan lain dan raksasa cloud memperebutkan pelanggan yang sama.
-- **Penyimpanan dan regulasi:** jika bursa bangkrut atau Anda kehilangan private key, koin bisa hilang; aturan kripto berbeda tiap negara dan bisa cepat berubah.
+- **Gejolak besar:** FIL turun lebih dari 95% dari puncaknya pada 2021; penurunan seperti itu bisa terulang.
+- **Penerbitan terus-menerus:** setiap hari token baru diberikan kepada penyedia, dan pembukaan kunci untuk investor awal berlangsung bertahun-tahun, sehingga menambah tekanan jual.
+- **Permintaan nyata:** sebagian besar data yang disimpan disubsidi; jika pelanggan berbayar tidak bertambah, kegunaan token tetap terbatas.
+- **Persaingan:** penyimpanan cloud milik raksasa teknologi lebih mudah dipakai dan terus makin murah.
+- **Regulasi:** aturan tentang token kripto dan penjualan token 2017 berbeda di tiap negara dan bisa berubah.
 
 ## Artinya jika Anda membeli secara rutin
 
-Sejak diluncurkan, kisah Filecoin adalah satu puncak awal yang diikuti kejatuhan panjang. Membeli jumlah tetap secara rutin membuat Anda membeli lebih banyak saat harga rendah dan lebih sedikit saat harga tinggi, tetapi itu tidak bisa menyelamatkan aset yang harganya terus turun — hasil lima tahun di atas menunjukkannya. Banyak orang hanya menaruh koin kecil seperti FIL di sebagian kecil tabungan yang sanggup mereka lihat turun tajam. Hasil masa lalu tidak menjamin hasil di masa depan.
+Filecoin adalah taruhan bahwa penyimpanan terdesentralisasi akan mendapatkan pelanggan nyata, dan harganya sangat fluktuatif. Membeli jumlah tetap secara rutin menyebarkan pembelian Anda di saat naik dan turun tanpa menebak titik terendah — tetapi tidak menghilangkan risiko rugi. Banyak orang hanya menyimpan token yang lebih kecil seperti FIL sebagai bagian kecil dari portofolio kripto mereka. Hasil masa lalu tidak menjamin hasil di masa depan.
 
 *Bukan nasihat investasi.*
 
 ## Sumber
 
-- [Filecoin mainnet liftoff (Filecoin blog, October 2020)](https://filecoin.io/blog/mainnet-liftoff/)
-- [Token allocation — Filecoin specification](https://spec.filecoin.io/systems/filecoin_token/token_allocation/)
-- [$257 Million: Filecoin Breaks All-Time Record for ICO Funding (CoinDesk, September 2017)](https://coindesk.com/markets/2017/09/07/257-million-filecoin-breaks-all-time-record-for-ico-funding/)
-- [The FVM is live on mainnet (Filecoin blog, March 2023)](https://filecoin.io/blog/fvm-is-live-on-mainnet)
-- [Filecoin price, market cap and all-time high (CoinGecko)](https://www.coingecko.com/en/coins/filecoin)
+- [Filecoin — situs resmi dan dokumentasi (filecoin.io)](https://filecoin.io/)
+- [Filecoin Onchain Cloud is live on mainnet (blog Filecoin, Maret 2026)](https://filecoin.io/blog/filecoin-onchain-cloud-is-live-on-mainnet)
+- [The 2026 Filecoin Network Strategy (blog Filecoin, Februari 2026)](https://filecoin.io/blog/the-2026-filecoin-network-strategy)
+- [Harga, kapitalisasi pasar, dan rekor Filecoin (CoinGecko)](https://www.coingecko.com/en/coins/filecoin)
