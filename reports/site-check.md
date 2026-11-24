@@ -1,5 +1,5 @@
-# Site check 2026-11-23 14:52 UTC
+# Site check 2026-11-24 05:58 UTC
 
-Checked **950** pages in 10 s (daily sample: 150 uk + 150 en + 15 per other language; full check on Sundays, 19 hubs × 20 languages).
+Checked **950** pages in 13 s (daily sample: 150 uk + 150 en + 15 per other language; full check on Sundays, 19 hubs × 20 languages).
 Broken: **0** ✅
 
