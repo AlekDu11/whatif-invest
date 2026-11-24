@@ -1,15 +1,15 @@
 ---
-title: PZU explained: Poland's biggest insurer that paid out a record 4.14 billion zloty dividend
-description: PZU in plain language — 6.7 bn zł profit in 2025, a 4.80 zł dividend, stakes in Pekao and Alior, the stalled bank merger, the numbers and the risks.
+title: PZU (PZU) stock: Poland's biggest insurer, a 4.80 zł dividend for 2025 and 4.45 bn zł profit in 9 months
+description: PZU in plain language: 6.7 bn zł profit in 2025, 4.45 bn zł in the first nine months of 2026, a 4.80 zł dividend, stakes in Pekao and Alior, the risks.
 date: 2026-11-19
 kind: analysis
 ---
 **PZU** (Powszechny Zakład Ubezpieczeń) is Poland's largest and oldest insurer: it insures cars, homes, farms and companies, sells life and health cover, and runs pension and investment funds. Through big stakes in Bank Pekao and Alior Bank it is also part of Polish banking. Its roots go back to 1803, it has been listed on the Warsaw Stock Exchange since May 2010, and the Polish state owns about 34% of it.
 
 > **Key takeaways**
-> - Net profit: a record 6.7 billion zł in 2025 (+25.4%); 3.0 billion zł in the first half of 2026 (−6.8%).
+> - Net profit: 6.7 billion zł in 2025 (+25.4%), the highest in its history at the time; 4.45 billion zł in the first nine months of 2026 (−14.8%).
 > - Dividend: 4.80 zł a share, 4.14 billion zł in total, paid on 8 October 2026.
-> - The stock rose more than 57% in 2025 and set new records in 2026, trading near 77 zł at its 52-week high.
+> - The stock rose more than 57% in 2025 and reached about 77 zł in 2026; record high in our data: {{ath:pzu}} ({{athd:pzu}}).
 > - The planned merger with Bank Pekao, first aimed for mid-2026, is stuck waiting for law changes.
 
 ## How it makes money
@@ -18,13 +18,15 @@ The core is **insurance**: customers pay premiums, PZU pays claims and keeps the
 
 ## The numbers right now
 
-In 2025 the group earned 6.7 billion zł for shareholders, with gross insurance revenue up 5% to 30.9 billion zł and an adjusted return on equity of 20.7%. The first half of 2026 was weaker: profit of 3.0 billion zł versus 3.23 billion a year earlier, because of lower interest rates, higher taxes, court rulings hitting its banks, rising claim costs and tough price competition in motor insurance. Still, Q2 2026 alone grew 12% to 1.647 billion zł. Insurance revenue in the half was 15.65 billion zł, and the Solvency II capital ratio was a comfortable 230% at the end of March. PZU's Q3 2026 report is scheduled for 19 November 2026.
+In 2025 the group earned 6.7 billion zł for shareholders, with gross insurance revenue up 5% to 30.9 billion zł and an adjusted return on equity of 20.7%. The first half of 2026 was weaker: profit of 3.0 billion zł versus 3.23 billion a year earlier, because of lower interest rates, higher taxes, court rulings hitting its banks, rising claim costs and tough price competition in motor insurance. Q2 2026 alone grew 12% to 1.647 billion zł. In the September 2026 quarter profit fell 28% to 1.443 billion zł, as weather-related property claims, a tougher motor market, lower investment income and a smaller contribution from the banks weighed on results; gross insurance revenue still rose 4% to 8.25 billion zł. For the first nine months of 2026 profit was 4.452 billion zł against 5.225 billion a year earlier, and the Solvency II capital ratio was 241% at the end of June.
 
 ## The stock's story
 
 PZU is a classic dividend stock: much of the return has come from regular payouts rather than price jumps. In 2025 the share price climbed from just above 42 zł to about 67 zł, a record at the time, and it went higher in 2026, reaching about 77 zł. The year was also turbulent at the top: after the change of government three different people led the company in 2025, and Bogdan Benczak became CEO at the end of that year. Our prices for Warsaw stocks are in US dollars, so the zloty rate also moves the numbers below.
 
 - Price today: {{price:pzu}}
+- Market value: {{mcap:pzu}} ({{rank:pzu}} among the world's largest companies on WhatIfStack)
+- Record high: {{ath:pzu}} ({{athd:pzu}}), {{fromath:pzu}} from it
 - $10 a day for 10 years: {{dca:pzu:10}} from {{dcainv:10}} invested ({{dcaroi:pzu:10}})
 
 ## Competitors
@@ -47,6 +49,7 @@ PZU is a large, profitable company that pays out much of its profit, so regular 
 
 ## Sources
 
+- [PZU Q3 2026 net profit lower (bank.pl)](https://bank.pl/pzu-z-nizszym-zyskiem-netto-w-iii-kw-26/)
 - [PZU investor relations and calendar (PZU)](https://www.pzu.pl/relacje-inwestorskie/akcje-i-obligacje/kalendarz-inwestora)
 - [PZU Group Q2 2026 net profit of 1.65 bn zł (Strefa Inwestorów)](https://strefainwestorow.pl/wiadomosci/20260820/zysk-netto-grupy-pzu-w-ii-kw-26-wyniosl-165-mld-zl-powyzej-oczekiwan-opis)
 - [PZU record 2025 results, 6.7 bn zł profit (TVN24)](https://tvn24.pl/biznes/rynki/rekordowe-wyniki-pzu-za-2025-rok-zysk-na-poziomie-6-7-mld-zl-st8919877)
