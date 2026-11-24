@@ -51,7 +51,7 @@ Look at the two sides. The **platform** earned a fee on almost every trade, whet
 
 1. **Easy to create means easy to copy.** Anyone can make a token in a minute — including scammers. A new token is not "early", it is usually just new.
 2. **The first seconds belong to bots.** Insiders and fast programs buy first and sell into the crowd. You are almost never first.
-3. **Check before you buy.** Use the 5 checks from the lesson [How to check a memecoin before buying]({lang}/blog/how-to-check-a-memecoin-before-buying/) and the safety light on our [memecoins page]({lang}/memes/), which also shows the launch pulse (how many tokens appear per hour).
+3. **Check before you buy.** Use the 6 checks from the lesson [How to check a memecoin before buying]({lang}/blog/how-to-check-a-memecoin-before-buying/) and the safety light on our [memecoins page]({lang}/memes/), which also shows the launch pulse (how many tokens appear per hour).
 4. **The shovel seller wins.** In a gold rush, the people selling shovels often earn most. Here, the shovel is the platform fee.
 
 > **⚠️ Watch out**
