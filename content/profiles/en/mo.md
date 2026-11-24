@@ -1,6 +1,6 @@
 ---
-title: Altria (MO) explained: Marlboro's US owner pays $4.44 a share a year
-description: Altria in plain language — $5.44 billion of quarterly revenue from Marlboro and nicotine pouches, a $4.44 dividend, falling cigarette volumes and the risks.
+title: Altria (MO) stock: Marlboro's US owner and its $4.44 annual dividend in 2026
+description: Altria in plain language: $5.44 billion of revenue in Q3 2026 from Marlboro and nicotine pouches, a $4.44 dividend, falling cigarette volumes and the risks.
 date: 2026-11-20
 kind: analysis
 ---
@@ -20,14 +20,16 @@ The oral segment — Copenhagen, Skoal and on! pouches — earned $688 million. 
 
 ## The numbers right now
 
+- Price today: {{price:mo}}
+- Market value: {{mcap:mo}} ({{rank:mo}} among the world's largest companies on WhatIfStack)
+- Record high: {{ath:mo}} ({{athd:mo}}), {{fromath:mo}} from it
+- $10 a day for 10 years: {{dca:mo:10}} from {{dcainv:10}} invested ({{dcaroi:mo:10}})
+
 In the quarter to 30 September 2026 Altria reported $6.13 billion in revenue (+1.0%) and $5.44 billion net of excise taxes (+3.6%). Diluted earnings were $1.51 per share (+7.1%), or $1.52 adjusted (+4.8%). It bought back 5.9 million of its own shares for $400 million and expanded the buyback programme by $1 billion. The company had $2.7 billion in cash against $24.1 billion of debt. For 2026 it now expects adjusted earnings of $5.66–5.74 per share, assuming NJOY ACE stays off the market all year.
 
 ## The stock's story
 
-Altria was a market favourite for decades, but after a peak in June 2017 the shares slid for years. Two bad bets hurt: in 2018 it paid for a stake in vape maker JUUL valued at $12.8 billion, which was later worth only about $250 million when Altria walked away in 2023 and bought rival NJOY for $2.75 billion instead. NJOY then lost a patent fight with JUUL: a US trade commission order banned imports and sales of the NJOY ACE device, and Altria wrote off $873 million of e-vapor goodwill in 2025. Even so, steady dividends and buybacks lifted the stock: in July 2026 it reached its highest level since June 2017, and on 13 November it closed at a 52-week high of $78.64.
-
-- Price today: {{price:mo}}
-- $10 a day for 10 years: {{dca:mo:10}} from {{dcainv:10}} invested ({{dcaroi:mo:10}})
+Altria was a market favourite for decades, but after a peak in June 2017 the shares slid for years. Two bad bets hurt: in 2018 it paid for a stake in vape maker JUUL valued at $12.8 billion, which was later worth only about $250 million when Altria walked away in 2023 and bought rival NJOY for $2.75 billion instead. NJOY then lost a patent fight with JUUL: a US trade commission order banned imports and sales of the NJOY ACE device, and Altria wrote off $873 million of e-vapor goodwill in 2025. Even so, steady dividends and buybacks lifted the stock: in July 2026 it reached its highest level since June 2017, and on 13 November 2026 it closed at a 52-week high of $78.64.
 
 ## Competitors
 
