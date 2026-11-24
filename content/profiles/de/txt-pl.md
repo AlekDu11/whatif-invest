@@ -1,10 +1,10 @@
 ---
-title: Text-Aktie (LiveChat) (TXT): polnische Chat-Software mit 35 % Nettomarge
-description: Text, früher LiveChat, einfach erklärt: 329 Mio. Zloty Umsatz, 35 % Nettomarge, KI-Produkte, warum die Aktie fiel und was regelmäßige Käufer wissen sollten.
+title: Text-Aktie (LiveChat) (TXT): polnische Chat-Software mit 35 % Nettomarge im Geschäftsjahr 2025/26
+description: Text, früher LiveChat Software, einfach erklärt: 329 Mio. Zloty Umsatz 2025/26, 35 % Nettomarge, KI-Produkte, der Kursrückgang und die Risiken.
 date: 2026-11-21
 kind: analysis
 ---
-**Text S.A.**, bis 2023 LiveChat Software, baut das Chatfenster, das du unten in der Ecke vieler Onlineshops und Websites siehst. Das 2002 im polnischen Breslau (Wrocław) gegründete Unternehmen verkauft Abos an mehr als 35.000 Firmen weltweit, verdient überwiegend in US-Dollar und behält über ein Drittel des Umsatzes als Nettogewinn. Nur: Der Umsatz wächst nicht mehr. Die Aktie wird an der Warschauer Börse (GPW) unter dem Kürzel TXT gehandelt.
+**Text S.A.**, bis 2023 LiveChat Software, baut das Chatfenster, das du unten in der Ecke vieler Onlineshops und Websites siehst. Das 2002 im polnischen Breslau (Wrocław) gegründete Unternehmen verkauft Abos an mehr als 35.000 Firmen weltweit, verdient überwiegend in US-Dollar und behielt im Geschäftsjahr 2025/26 über ein Drittel des Umsatzes als Nettogewinn. Nur: In diesem Jahr hörte der Umsatz auf zu wachsen. Die Aktie wird an der Warschauer Börse (GPW) unter dem Kürzel TXT gehandelt.
 
 > **Das Wichtigste**
 > - Umsatz im Geschäftsjahr bis 31. März 2026: 329,1 Mio. Zloty, −7,1 %; Nettogewinn 116,6 Mio. Zloty, −29,1 %.
@@ -18,14 +18,16 @@ Kunden zahlen für jedes Produkt ein Monats- oder Jahresabo. **LiveChat** ist da
 
 ## Die Zahlen aktuell
 
-Im ersten Quartal des Geschäftsjahres 2026/27 (April–Juni 2026) lag der Umsatz bei 83,2 Mio. Zloty, 1,9 % unter dem Vorjahr. In Dollar stieg er dagegen um 2,1 % auf 22,61 Mio. $ – den Unterschied macht der stärkere Zloty. Das EBITDA sank um 7,4 % auf 38,6 Mio. Zloty, der Nettogewinn um 6,2 % auf 29,1 Mio. Zloty – immer noch eine Nettomarge von 35 %. Der operative Cashflow wuchs um 22,2 % auf 41,5 Mio. Zloty, die abgegrenzten Umsätze erreichten mit 77,2 Mio. Zloty einen Rekord. Vorläufige Daten für Juli–September zeigen einen monatlich wiederkehrenden Umsatz (MRR) von 7,29 Mio. $: +3,3 % zum Vorjahr, aber −2,3 % gegenüber Juni. Die API-Nutzungsgebühren haben sich auf rund 450.000 $ etwa verdoppelt. Die vollständigen Zahlen zum zweiten Quartal stehen noch aus.
+- Kurs aktuell: {{price:txt-pl}}
+- Marktwert: {{mcap:txt-pl}} ({{rank:txt-pl}} unter den größten Unternehmen der Welt auf WhatIfStack)
+- Rekordhoch: {{ath:txt-pl}} ({{athd:txt-pl}}), {{fromath:txt-pl}} davon entfernt
+- 10 $ pro Tag über 10 Jahre: {{dca:txt-pl:10}} bei {{dcainv:10}} Einsatz ({{dcaroi:txt-pl:10}})
+
+Im ersten Quartal des Geschäftsjahres 2026/27 (April–Juni 2026) lag der Umsatz bei 83,2 Mio. Zloty, 1,9 % unter dem Vorjahr. In Dollar stieg er dagegen um 2,1 % auf 22,61 Mio. $ – den Unterschied macht der stärkere Zloty. Das EBITDA sank um 7,4 % auf 38,6 Mio. Zloty, der Nettogewinn um 6,2 % auf 29,1 Mio. Zloty – immer noch eine Nettomarge von 35 %. Der operative Cashflow wuchs um 22,2 % auf 41,5 Mio. Zloty, die abgegrenzten Umsätze erreichten mit 77,2 Mio. Zloty einen Rekord. Vorläufige Daten für Juli–September zeigen einen monatlich wiederkehrenden Umsatz (MRR) von 7,29 Mio. $: +3,3 % zum Vorjahr, aber −2,3 % gegenüber Juni. Die API-Nutzungsgebühren haben sich auf rund 450.000 $ etwa verdoppelt.
 
 ## Die Geschichte der Aktie
 
 2021, im Boom des Onlinehandels, bewerteten Anleger LiveChat wie ein schnell wachsendes Tech-Unternehmen – mit etwa dem 33,5-Fachen des Gewinns. Dann stockte das Kundenwachstum, der Dollar wurde schwächer, und die Sorge wuchs, KI-Chatbots könnten den klassischen Chat ersetzen. Im Juni 2024 stand die Aktie so tief wie seit März 2022 nicht mehr und kostete nur noch rund das 11-Fache des Gewinns, obwohl sich der Gewinn je Aktie in vier Jahren fast verdreifacht hatte. Im August 2026 fiel die Aktie an einem Vormittag um fast 8 %, nachdem die Zahlen zum ersten Quartal unter den Prognosen der Analysten lagen.
-
-- Kurs aktuell: {{price:txt-pl}}
-- 10 $ pro Tag über 10 Jahre: {{dca:txt-pl:10}} bei {{dcainv:10}} Einsatz ({{dcaroi:txt-pl:10}})
 
 ## Konkurrenten
 

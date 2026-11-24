@@ -1,10 +1,10 @@
 ---
-title: Ações da Text (LiveChat) (TXT): o software de chat polonês com 35% de margem líquida
-description: A Text, ex-LiveChat, explicada: 329 milhões de zlótis de receita, 35% de margem líquida, IA, por que a ação caiu e o que saber se você compra todo mês.
+title: Ações da Text (LiveChat) (TXT): software de chat polonês com 35% de margem líquida em 2025/26
+description: A Text, ex-LiveChat Software, explicada: 329 milhões de zlótis de receita em 2025/26, margem líquida de 35%, IA, a queda da ação e os riscos.
 date: 2026-11-21
 kind: analysis
 ---
-A **Text S.A.**, que até 2023 se chamava LiveChat Software, faz aquela janelinha de chat que aparece no canto de muitas lojas virtuais e sites. Fundada em 2002 em Breslávia (Wrocław), na Polônia, ela vende assinaturas para mais de 35 mil empresas no mundo todo, fatura principalmente em dólar e transforma mais de um terço da receita em lucro líquido. O problema: as vendas pararam de crescer. A ação é negociada na Bolsa de Varsóvia (GPW) com o ticker TXT.
+A **Text S.A.**, que até 2023 se chamava LiveChat Software, faz aquela janelinha de chat que aparece no canto de muitas lojas virtuais e sites. Fundada em 2002 em Breslávia (Wrocław), na Polônia, ela vende assinaturas para mais de 35 mil empresas no mundo todo, fatura principalmente em dólar e no ano fiscal 2025/26 transformou mais de um terço da receita em lucro líquido. O problema: naquele ano as vendas pararam de crescer. A ação é negociada na Bolsa de Varsóvia (GPW) com o ticker TXT.
 
 > **O essencial**
 > - Receita no ano encerrado em 31 de março de 2026: 329,1 milhões de zlótis, queda de 7,1%; lucro líquido de 116,6 milhões, queda de 29,1%.
@@ -18,14 +18,16 @@ Os clientes pagam uma assinatura mensal ou anual por produto. O **LiveChat** é 
 
 ## Os números agora
 
+- Preço hoje: {{price:txt-pl}}
+- Valor de mercado: {{mcap:txt-pl}} ({{rank:txt-pl}} entre as maiores empresas do mundo no WhatIfStack)
+- Máxima histórica: {{ath:txt-pl}} ({{athd:txt-pl}}), {{fromath:txt-pl}} desde ela
+- US$ 10 por dia durante 10 anos: {{dca:txt-pl:10}} com {{dcainv:10}} investidos ({{dcaroi:txt-pl:10}})
+
 No primeiro trimestre do ano fiscal 2026/27 (abril–junho de 2026) a receita foi de 83,2 milhões de zlótis, 1,9% menor que um ano antes. Em dólar, subiu 2,1%, para US$ 22,61 milhões, por causa do zlóti mais forte. O EBITDA caiu 7,4%, para 38,6 milhões de zlótis, e o lucro líquido 6,2%, para 29,1 milhões: ainda assim, uma margem líquida de 35%. O fluxo de caixa operacional cresceu 22,2%, para 41,5 milhões, e a receita diferida bateu o recorde de 77,2 milhões. Dados preliminares de julho a setembro mostram receita recorrente mensal (MRR) de US$ 7,29 milhões: +3,3% em um ano, mas −2,3% frente a junho. As cobranças pelo uso da API praticamente dobraram, para cerca de US$ 450 mil.
 
 ## A história da ação
 
 Em 2021, no auge das compras online, o mercado precificava a LiveChat como uma empresa de tecnologia de alto crescimento, a cerca de 33,5 vezes o lucro. Depois a entrada de clientes travou, o dólar enfraqueceu e cresceu o medo de que chatbots de IA substituíssem o chat tradicional. Em junho de 2024 a ação chegou ao menor nível desde março de 2022 e valia cerca de 11 vezes o lucro, embora o lucro por ação tivesse quase triplicado em quatro anos. Em agosto de 2026 a ação caiu quase 8% em uma única manhã, depois de um primeiro trimestre abaixo do que os analistas esperavam.
-
-- Preço hoje: {{price:txt-pl}}
-- US$ 10 por dia durante 10 anos: {{dca:txt-pl:10}} com {{dcainv:10}} investidos ({{dcaroi:txt-pl:10}})
 
 ## Concorrentes
 

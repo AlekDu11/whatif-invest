@@ -1,10 +1,10 @@
 ---
-title: Acciones de Text (LiveChat) (TXT): el software de chat polaco con un 35% de margen neto
-description: Text, antes LiveChat, explicada fácil: 329 millones de eslotis de ingresos, 35% de margen neto, IA y por qué cayó la acción. Qué saber si compras a menudo.
+title: Acciones de Text (LiveChat) (TXT): software de chat polaco con un 35% de margen neto en 2025/26
+description: Text, antes LiveChat Software, explicada fácil: 329 millones de eslotis de ingresos en 2025/26, 35% de margen neto, IA, la caída de la acción y los riesgos.
 date: 2026-11-21
 kind: analysis
 ---
-**Text S.A.**, que hasta 2023 se llamaba LiveChat Software, fabrica la ventanita de chat que ves en la esquina de muchas tiendas online y páginas web. Fundada en 2002 en Breslavia (Polonia), vende suscripciones a más de 35.000 empresas de todo el mundo, cobra sobre todo en dólares y se queda más de un tercio de sus ingresos como beneficio neto. El problema: sus ventas han dejado de crecer. Cotiza en la Bolsa de Varsovia (GPW) con el ticker TXT.
+**Text S.A.**, que hasta 2023 se llamaba LiveChat Software, fabrica la ventanita de chat que ves en la esquina de muchas tiendas online y páginas web. Fundada en 2002 en Breslavia (Polonia), vende suscripciones a más de 35.000 empresas de todo el mundo, cobra sobre todo en dólares y en el ejercicio 2025/26 se quedó más de un tercio de sus ingresos como beneficio neto. El problema: ese año sus ventas dejaron de crecer. Cotiza en la Bolsa de Varsovia (GPW) con el ticker TXT.
 
 > **Lo esencial**
 > - Ingresos del año cerrado el 31 de marzo de 2026: 329,1 millones de eslotis, un 7,1% menos; beneficio neto de 116,6 millones, un 29,1% menos.
@@ -18,14 +18,16 @@ Los clientes pagan una suscripción mensual o anual por cada producto. **LiveCha
 
 ## Las cifras ahora
 
+- Precio actual: {{price:txt-pl}}
+- Valor de mercado: {{mcap:txt-pl}} ({{rank:txt-pl}} entre las mayores empresas del mundo en WhatIfStack)
+- Máximo histórico: {{ath:txt-pl}} ({{athd:txt-pl}}), {{fromath:txt-pl}} desde él
+- 10 $ al día durante 10 años: {{dca:txt-pl:10}} con {{dcainv:10}} invertidos ({{dcaroi:txt-pl:10}})
+
 En el primer trimestre del ejercicio 2026/27 (abril–junio de 2026) facturó 83,2 millones de eslotis, un 1,9% menos que un año antes; en dólares subió un 2,1%, hasta 22,61 millones, por la fortaleza del esloti. El EBITDA cayó un 7,4%, a 38,6 millones de eslotis, y el beneficio neto un 6,2%, a 29,1 millones: aun así, un margen neto del 35%. El flujo de caja operativo creció un 22,2%, hasta 41,5 millones, y los ingresos diferidos marcaron un récord de 77,2 millones. Según datos preliminares de julio–septiembre, los ingresos recurrentes mensuales (MRR) fueron de 7,29 millones de dólares: +3,3% en un año, pero −2,3% frente a junio. Los pagos por uso de la API se duplicaron aproximadamente, hasta unos 450.000 dólares.
 
 ## La historia de la acción
 
 En 2021, en pleno auge del comercio online, se valoraba LiveChat como una tecnológica de rápido crecimiento, a unas 33,5 veces beneficios. Después se frenó la captación de clientes, el dólar se debilitó y creció el miedo a que los chatbots de IA sustituyeran al chat clásico. En junio de 2024 la acción tocó su nivel más bajo desde marzo de 2022 y cotizaba a unas 11 veces beneficios, aunque el beneficio por acción casi se había triplicado en cuatro años. En agosto de 2026 la acción cayó casi un 8% en una sola mañana tras unos resultados del primer trimestre peores de lo que esperaban los analistas.
-
-- Precio actual: {{price:txt-pl}}
-- 10 $ al día durante 10 años: {{dca:txt-pl:10}} con {{dcainv:10}} invertidos ({{dcaroi:txt-pl:10}})
 
 ## Competidores
 
