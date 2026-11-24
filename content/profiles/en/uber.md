@@ -1,5 +1,5 @@
 ---
-title: Uber (UBER) explained: $59.8 billion of rides and meals in one quarter
+title: Uber (UBER) stock: $59.8 billion of rides and meals in Q3 2026
 description: Uber in plain language: how it earns from $59.8 billion of rides and deliveries a quarter, the Delivery Hero bid, the robotaxi threat and the risks.
 date: 2026-11-19
 kind: analysis
@@ -20,14 +20,16 @@ Revenue grew more slowly than bookings (10% against 20%) mainly because of busin
 
 ## The numbers right now
 
+- Price today: {{price:uber}}
+- Market value: {{mcap:uber}} ({{rank:uber}} among the world's largest companies on WhatIfStack)
+- Record high: {{ath:uber}} ({{athd:uber}}), {{fromath:uber}} from it
+- $10 a day for 5 years: {{dca:uber:5}} from {{dcainv:5}} invested ({{dcaroi:uber:5}})
+
 In the quarter to 30 September 2026 Uber made $1.4 billion of operating income (+30%) and $3.0 billion of adjusted EBITDA (+31%), about 5% of bookings. Net income was only $512 million, down 92%, because a year earlier it had booked a one-off $4.9 billion tax gain and this time it lost $476 million on the value of stakes it holds in other companies. It ended the quarter with $10.1 billion in cash and short-term investments. For Q4 2026 it expects bookings of $63.25–65.25 billion, up 18–22%.
 
 ## The stock's story
 
 Uber listed on the New York Stock Exchange in May 2019 at $45 a share. In the 2020 crash it fell under $15. Cost cuts brought its first full year of GAAP profit in 2023, it joined the S&P 500, and in 2025 the shares passed $100 for the first time. Then the mood turned: as Tesla, Waymo and others pushed self-driving taxis, Uber fell to $69.42 by 23 September 2026, about 28% lower in a year. That month CEO Dara Khosrowshahi bought about $10 million of shares himself, his first open-market purchase since 2022.
-
-- Price today: {{price:uber}}
-- $10 a day for 5 years: {{dca:uber:5}} from {{dcainv:5}} invested ({{dcaroi:uber:5}})
 
 ## Competitors
 
