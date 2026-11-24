@@ -34,6 +34,8 @@ jobs:
         run: python scripts/build.py
       - name: Pack top logos into one sprite (build.py wrote data/sprite_ids.json)
         run: python -c "import sys; sys.path.insert(0, 'scripts'); import fetch_data; fetch_data.make_sprite()"
+      - name: Real «last changed» dates for the sitemaps (data/lastmod.json)
+        run: python scripts/lastmod.py
       - name: Commit data
         run: |
           git config user.name "whatif-bot"

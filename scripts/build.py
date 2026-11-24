@@ -5471,18 +5471,41 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
             extra_pages += ['blog'] + ['blog/' + s for s in POSTS[lang]]
         write(f'{pre}read/index.html', reader_page(lang, ver))   # fresh posts before the next deploy (not in the sitemap)
         per_lang[lang] = [None, 'compare'] + list(HUBS) + extra_pages_c + TOOLS + extra_pages + assets_
-    # sitemaps: one per language + index
+    # sitemaps: one per language + index. Owner 2026-11-24: real <lastmod> per page (Google ignores it when every URL says
+    # «today»): asset pages from data/lastmod.json (scripts/lastmod.py, the day their own text last changed), posts from
+    # their date; plus sitemap-top.xml = the pages we most want crawled first (full analyses, articles, main hubs).
+    LM = json.load(open(os.path.join(ROOT, 'data', 'lastmod.json'), encoding='utf-8')) if os.path.exists(os.path.join(ROOT, 'data', 'lastmod.json')) else {}
+
+    def lastmod(lang, p):
+        if p in A:
+            return LM.get(f'{lang}|{p}', [0, UPDATED])[1]
+        for kind, src in (('blog/', POSTS), ('news/', NEWS)):
+            if isinstance(p, str) and p.startswith(kind) and p[len(kind):] in src.get(lang, {}):
+                m = src[lang][p[len(kind):]]
+                d = (m.get('updated') or m.get('date') or '')[:10]
+                return d if len(d) == 10 else UPDATED
+        return UPDATED
+    top, sm_max = [], {}
+    for lang, pages in per_lang.items():
+        for p in pages:
+            full = p in A and (PROFILES.get(lang, {}).get(p) or {}).get('kind') == 'analysis' and page_ok(p, lang)
+            if full or (isinstance(p, str) and p.startswith('blog/')) or p in (None, 'crypto', 'stocks', 'largest-companies', 'learn', 'guide', 'memes'):
+                top.append(f'<url><loc>{SITE + url(lang, p)}</loc><lastmod>{lastmod(lang, p)}</lastmod></url>')
+    write('sitemap-top.xml', '\n'.join(['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'] + top[:45000] + ['</urlset>']))
     for lang, pages in per_lang.items():
         sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
         for p in pages:
             if p in A and not page_ok(p, lang):   # incomplete asset pages: not in the sitemap until filled
                 continue
             alts = ''.join(f'<xhtml:link rel="alternate" hreflang="{TR[lg]["loc"]}" href="{SITE + url(lg, p)}"/>' for lg in ORDER if has_page(lg, p) and (p not in A or page_ok(p, lg)))
-            sm.append(f'<url><loc>{SITE + url(lang, p)}</loc><lastmod>{UPDATED}</lastmod>{alts}</url>')
+            lm = lastmod(lang, p)
+            sm_max[lang] = max(sm_max.get(lang, ''), lm)
+            sm.append(f'<url><loc>{SITE + url(lang, p)}</loc><lastmod>{lm}</lastmod>{alts}</url>')
         sm.append('</urlset>')
         write(f'sitemap-{lang}.xml', '\n'.join(sm))
     si = ['<?xml version="1.0" encoding="UTF-8"?>', '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
-    si += [f'<sitemap><loc>{SITE}{BASE}/sitemap-{lg}.xml</loc><lastmod>{UPDATED}</lastmod></sitemap>' for lg in ORDER]
+    si.append(f'<sitemap><loc>{SITE}{BASE}/sitemap-top.xml</loc><lastmod>{UPDATED}</lastmod></sitemap>')
+    si += [f'<sitemap><loc>{SITE}{BASE}/sitemap-{lg}.xml</loc><lastmod>{sm_max.get(lg, UPDATED)}</lastmod></sitemap>' for lg in ORDER]
     si.append('</sitemapindex>')
     write('sitemap.xml', '\n'.join(si))
     write('sitemap-news.xml', news_sitemap())
