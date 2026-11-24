@@ -1,6 +1,6 @@
 ---
 title: Ameriprise Financial (AMP) stock: the US advice firm spun off from Amex in 2005
-description: Ameriprise in plain language: 10,000+ advisers, $5.1 billion Q3 2026 revenue, $1.03 billion returned to shareholders, the risks and what regular buyers should know.
+description: Ameriprise in plain language: 10,000+ advisers, $5.1 billion Q3 2026 revenue, $1.03 billion returned to shareholders, risks and what regular buyers should know.
 date: 2026-11-20
 kind: analysis
 ---
