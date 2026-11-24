@@ -1,5 +1,5 @@
 ---
-title: Pump.fun (PUMP) explained: the Solana memecoin launchpad since 2024, a 1 trillion max supply and buybacks
+title: Pump.fun (PUMP) explained: the Solana memecoin launchpad since 2024, with a capped supply and buybacks
 description: Pump.fun in plain language: how the memecoin launchpad works, what the PUMP token is for, its $600 million ICO, buybacks, rivals and the main risks.
 date: 2026-11-24
 kind: analysis

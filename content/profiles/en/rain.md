@@ -1,5 +1,5 @@
 ---
-title: Rain (RAIN) explained: a prediction-market token on Arbitrum, 1.15 trillion max supply, a 5% trading fee
+title: Rain (RAIN) explained: a prediction-market token on Arbitrum with a capped supply, buybacks and a 5% trading fee
 description: Rain in plain language: how its prediction markets work, what RAIN is for, the Enlivex treasury, token unlocks, valuation doubts and main risks.
 date: 2026-11-22
 kind: analysis
