@@ -3274,7 +3274,10 @@ def page_ok(aid, lang):
     if not d and lang == 'en':
         src = ((COININFO.get(a.get('cgid') or '', {}) if a['cat'] == 'crypto' else STOCKINFO.get(a.get('yahoo') or '', {})).get('ds') or {}).get('en')
         d = src and len(src) > 120
-    if not d or a.get('src') == 'cg-spot' or len(a.get('p') or []) < (2 if a['cat'] == 'crypto' else 6):
+    # owner 2026-11-24: a fresh listing (SpaceX, Anthropic…) is what people search right now — a stock whose history simply
+    # starts within the last 12 months is a new IPO, not missing data, so 1 month of prices is enough for it
+    new_ipo = a['cat'] == 'stock' and a.get('start') and ym2i(a['start']) >= END_I - 12
+    if not d or a.get('src') == 'cg-spot' or len(a.get('p') or []) < (2 if a['cat'] == 'crypto' else 1 if new_ipo else 6):
         return False
     return a['cat'] != 'stock' or bool(STOCKSTATS.get(a.get('yahoo') or ''))
 

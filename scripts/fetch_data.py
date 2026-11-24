@@ -725,6 +725,41 @@ def stock_info(assets, budget=450):
 
 
 # ---------------- main ----------------
+def hot_stocks(mk, have, n=5):
+    """Owner 2026-11-24: stocks everyone is talking about (new IPOs like SpaceX/Anthropic, trending tickers) join the site
+    automatically. Yahoo's US trending list -> ordinary US shares worth >= $5B that we do not have yet -> appended to
+    data/markets.json (at most n per run). Any failure just skips this step."""
+    try:
+        import yfinance as yf
+        js = get_json('https://query1.finance.yahoo.com/v1/finance/trending/US?count=30')
+        syms = [q['symbol'] for q in js['finance']['result'][0]['quotes']]
+    except Exception as e:
+        log(f"  hot stocks: trending list failed: {e}")
+        return []
+    added = []
+    for s in syms:
+        if len(added) >= n:
+            break
+        if s in have or not s.replace('-', '').isalpha() or '.' in s or '=' in s or '^' in s:
+            continue
+        try:
+            inf = yf.Ticker(s).info or {}
+        except Exception:
+            continue
+        if inf.get('quoteType') != 'EQUITY' or (inf.get('marketCap') or 0) < 5e9 or inf.get('exchange') not in ('NMS', 'NYQ', 'NGM', 'NCM', 'ASE', 'PCX', 'BTS'):
+            continue
+        name = (inf.get('shortName') or inf.get('longName') or s).replace(', Inc.', '').replace(' Inc.', '').replace(' Corporation', '').replace(' Corp.', '').strip()
+        r = dict(tk=s, yahoo=s, name=name, cat='stock')
+        mk.append(r)
+        have.add(s)
+        added.append(s)
+    if added:
+        log(f"  hot stocks added: {added}")
+        with open(MARKETS, 'w', encoding='utf-8') as f:
+            f.write('[\n' + ',\n'.join(json.dumps(x, ensure_ascii=False, indent=0) for x in mk) + '\n]\n')
+    return added
+
+
 def main():
     quick = '--quick' in sys.argv
     now = datetime.now(timezone.utc)
@@ -763,6 +798,7 @@ def main():
     fxm = {}
     if not quick and os.path.exists(MARKETS):
         mk = json.load(open(MARKETS, encoding='utf-8'))
+        hot_stocks(mk, {r['yahoo'] for r in mk} | {a.get('yahoo') for a in old.values() if isinstance(a, dict)} | {a.get('yahoo') for a in assets.values()})
         fxm = yahoo_monthly(list(FX_TICKER.values()))
         log(f"markets.json: {len(mk)} assets; fx series: {sorted(fxm)}")
         mm = yahoo_monthly([r['yahoo'] for r in mk if not r['yahoo'].startswith('MOEX:')])
@@ -777,8 +813,8 @@ def main():
         for r in mk:
             ccy = next((c for suf, c in SUFFIX_CCY.items() if r['yahoo'].endswith(suf) or r['yahoo'].startswith(suf)), 'USD')
             base = slug(r['name'].split(' (')[0]) if r['tk'][:1].isdigit() else r['tk'].lower().replace('.', '-').replace('&', '')
-            aid = base
-            if aid in assets or (aid in old and old[aid].get('yahoo') != r['yahoo']):
+            aid = r.get('id') or base   # explicit id in markets.json wins (e.g. spacex, anthropic: their tickers clash with crypto ids)
+            if aid in assets or (aid in old and old[aid].get('yahoo') != r['yahoo'] and not r.get('id')):
                 aid = f"{base}-{r.get('mkt') or 'etf'}"
             if aid in assets:
                 continue

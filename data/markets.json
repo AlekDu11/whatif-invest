@@ -12756,5 +12756,21 @@
 "yahoo": "ZWS",
 "name": "Zurn Elkay",
 "cat": "stock"
+},
+{
+"id": "spacex",
+"tk": "SPCX",
+"yahoo": "SPCX",
+"name": "SpaceX",
+"cat": "stock",
+"sector": "Industrials"
+},
+{
+"id": "anthropic",
+"tk": "ANT",
+"yahoo": "ANT",
+"name": "Anthropic",
+"cat": "stock",
+"sector": "Technology"
 }
 ]
