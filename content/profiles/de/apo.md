@@ -10,7 +10,7 @@ kind: analysis
 > - Verwaltetes Vermögen: 1,07 Bio. $ zum 30. September 2026; Rekord von 114 Mrd. $ neu vergebener Kredite (Origination) im Quartal.
 > - Der Gebührengewinn (FRE) erreichte im 3. Quartal 2026 den Rekord von 802 Mio. $, +23 % zum Vorjahr; der bereinigte Nettogewinn lag bei 2,07 $ je Aktie.
 > - Nach GAAP verlor Apollo im Quartal 1,06 Mrd. $ – vor allem durch nicht realisierte Bewertungsverluste bei Investments.
-> - Kurs heute: {{price:apo}}; Hoch {{ath:apo}} ({{athd:apo}}), {{fromath:apo}} davon entfernt. Am 20. November 2026 schloss sie bei 111,16 $, rund 41 % unter ihrem Hoch vom Dezember 2024.
+> - Am 9. Dezember 2024, kurz nach der angekündigten Aufnahme in den S&P 500, schloss die Aktie bei 189,49 $; am 20. November 2026 bei 111,16 $, rund 41 % tiefer.
 
 ## Womit das Unternehmen Geld verdient
 
@@ -20,18 +20,20 @@ Apollo hat drei Ertragsquellen. **Vermögensverwaltung:** Pensionsfonds, Versich
 
 ## Die Zahlen aktuell
 
+- Kurs aktuell: {{price:apo}}
+- Marktwert: {{mcap:apo}} ({{rank:apo}} unter den größten Unternehmen der Welt auf WhatIfStack)
+- Rekordhoch: {{ath:apo}} ({{athd:apo}}), {{fromath:apo}} davon entfernt
+- 10 $ pro Tag über 10 Jahre: {{dca:apo:10}} bei {{dcainv:10}} Einsatz ({{dcaroi:apo:10}})
+
 Im Quartal bis 30. September 2026 betrug der Gebührengewinn (der stabile Teil) 802 Mio. $, der Spread-Gewinn von Athene (SRE) 844 Mio. $. Die Eigeninvestments steuerten nur 52 Mio. $ bei. Der bereinigte Nettogewinn lag bei 1,29 Mrd. $ oder 2,07 $ je Aktie.
 
 Das Geld fließt weiter: 53 Mrd. $ Zuflüsse im Quartal und 270 Mrd. $ in zwölf Monaten. Athene sammelte 18,7 Mrd. $ neue Altersvorsorge-Gelder ein, verwaltet 322,5 Mrd. $ netto angelegtes Vermögen und erzielte einen Netto-Spread von 1,06 %. Nach GAAP ergab sich ein Verlust von 1,06 Mrd. $ oder 1,78 $ je Aktie, weil einige Investments niedriger bewertet wurden. Apollo kaufte im Quartal eigene Aktien für 143 Mio. $ zurück (rund 1,4 Mrd. $ in zwölf Monaten) und schüttete im selben Zeitraum über 1,3 Mrd. $ Dividende aus.
 
 ## Die Geschichte der Aktie
 
-Lange war Apollo eine Übernahmefirma in Form einer Partnerschaft. 2019 wurde sie zu einer normalen Kapitalgesellschaft, im Januar 2022 folgte die Fusion mit Athene – seitdem ist Apollo eine Mischung aus Vermögensverwalter und Versicherer. Dann kamen die Indexfonds: S&P kündigte die Aufnahme am 6. Dezember 2024 an, am 23. Dezember ersetzte Apollo Qorvo im S&P 500, und am 9. Dezember 2024 schloss die Aktie auf einem Hoch von 189,49 $.
+Lange war Apollo eine Übernahmefirma in Form einer Partnerschaft. 2019 wurde sie zu einer normalen Kapitalgesellschaft, im Januar 2022 folgte die Fusion mit Athene – seitdem ist Apollo eine Mischung aus Vermögensverwalter und Versicherer. Dann kamen die Indexfonds: S&P kündigte die Aufnahme am 6. Dezember 2024 an, am 23. Dezember ersetzte Apollo Qorvo im S&P 500, und am 9. Dezember 2024 schloss die Aktie bei 189,49 $, ihrem damaligen Hoch.
 
 2025 verlor die Aktie rund 13 %, Anfang März 2026 fiel sie auf etwa 99,56 $ – Anleger sorgten sich um die Qualität der Kredite und um Privatanlegerfonds mit Darlehen, die sich nicht schnell verkaufen lassen. Im Juni 2026 erhielt Apollo Debt Solutions, ein rund 26 Mrd. $ schwerer Fonds für vermögende Privatanleger, Rückgabeanträge für etwa 16,8 % der Anteile, zahlte aber nur die Obergrenze von 5 % aus – die Aktie fiel an einem Tag um 6 %.
-
-- Kurs aktuell: {{price:apo}}
-- 10 $ pro Tag über 10 Jahre: {{dca:apo:10}} bei {{dcainv:10}} Einsatz ({{dcaroi:apo:10}})
 
 ## Konkurrenten
 

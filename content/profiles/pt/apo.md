@@ -10,7 +10,7 @@ A **Apollo Global Management** administra dinheiro de terceiros — cerca de US$
 > - Ativos sob gestão: US$ 1,07 trilhão em 30 de setembro de 2026; recorde de US$ 114 bilhões em novos empréstimos (originação) no trimestre.
 > - O lucro com taxas (FRE) bateu recorde de US$ 802 milhões no 3º trimestre de 2026, alta de 23% em um ano; o lucro líquido ajustado foi de US$ 2,07 por ação.
 > - Pelo padrão GAAP, a Apollo teve prejuízo de US$ 1,06 bilhão no trimestre, principalmente por perdas não realizadas na marcação a mercado de investimentos.
-> - Preço hoje: {{price:apo}}; máxima {{ath:apo}} ({{athd:apo}}), {{fromath:apo}} dela. Em 20 de novembro de 2026 fechou a US$ 111,16, cerca de 41% abaixo da máxima de dezembro de 2024.
+> - A ação fechou a US$ 189,49 em 9 de dezembro de 2024, logo após o anúncio da entrada no S&P 500; em 20 de novembro de 2026 fechou a US$ 111,16, cerca de 41% abaixo.
 
 ## Como ganha dinheiro
 
@@ -20,18 +20,20 @@ A Apollo tem três motores. **Gestão de ativos:** fundos de pensão, seguradora
 
 ## Os números agora
 
+- Preço hoje: {{price:apo}}
+- Valor de mercado: {{mcap:apo}} ({{rank:apo}} entre as maiores empresas do mundo no WhatIfStack)
+- Máxima histórica: {{ath:apo}} ({{athd:apo}}), {{fromath:apo}} desde ela
+- US$ 10 por dia durante 10 anos: {{dca:apo:10}} com {{dcainv:10}} investidos ({{dcaroi:apo:10}})
+
 No 3º trimestre de 2026, o lucro com taxas (a parte estável) foi de US$ 802 milhões, o lucro de spread da Athene (SRE) de US$ 844 milhões e os investimentos próprios somaram só US$ 52 milhões. O lucro líquido ajustado chegou a US$ 1,29 bilhão, ou US$ 2,07 por ação.
 
 Entraram US$ 53 bilhões no trimestre e US$ 270 bilhões em doze meses. A Athene captou US$ 18,7 bilhões em nova poupança, administra US$ 322,5 bilhões em ativos líquidos investidos e teve spread líquido de 1,06%. O resultado GAAP foi prejuízo de US$ 1,06 bilhão, ou US$ 1,78 por ação. A Apollo recomprou US$ 143 milhões em ações no trimestre (cerca de US$ 1,4 bilhão em doze meses) e distribuiu mais de US$ 1,3 bilhão em dividendos em doze meses.
 
 ## A história da ação
 
-A Apollo deixou de ser uma sociedade de sócios em 2019 e se fundiu com a Athene em janeiro de 2022. A S&P anunciou sua entrada no S&P 500 em 6 de dezembro de 2024 (no lugar da Qorvo, a partir do dia 23), e em 9 de dezembro a ação fechou na máxima de US$ 189,49.
+A Apollo deixou de ser uma sociedade de sócios em 2019 e se fundiu com a Athene em janeiro de 2022. A S&P anunciou sua entrada no S&P 500 em 6 de dezembro de 2024 (no lugar da Qorvo, a partir do dia 23), e em 9 de dezembro a ação fechou a US$ 189,49, seu pico na época.
 
 Aí veio o susto do crédito privado. A ação perdeu cerca de 13% em 2025 e, no início de março de 2026, caiu para uns US$ 99,56, com dúvidas sobre a qualidade dos empréstimos e sobre fundos de varejo cheios de créditos difíceis de vender. Em junho de 2026, o Apollo Debt Solutions, fundo de cerca de US$ 26 bilhões para investidores de alta renda, recebeu pedidos de resgate de aproximadamente 16,8% das cotas, mas só pagou o limite de 5%, e a ação caiu 6% em um dia.
-
-- Preço hoje: {{price:apo}}
-- US$ 10 por dia durante 10 anos: {{dca:apo:10}} com {{dcainv:10}} investidos ({{dcaroi:apo:10}})
 
 ## Concorrentes
 

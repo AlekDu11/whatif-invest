@@ -4,13 +4,13 @@ description: Apollo in plain language: private credit, the Athene insurer, $802M
 date: 2026-11-21
 kind: analysis
 ---
-**Apollo Global Management** manages other people's money, about $1.07 trillion of it, and lends most of it to companies outside the banking system. It also owns **Athene**, a retirement insurer that sells annuities and invests the premiums through Apollo. Founded in 1990 and listed in New York since 2011, it joined the S&P 500 in December 2024.
+**Apollo Global Management** manages other people's money — about $1.07 trillion at the end of September 2026 — and lends most of it to companies outside the banking system. It also owns **Athene**, a retirement insurer that sells annuities and invests the premiums through Apollo. Founded in 1990 and listed in New York since 2011, it joined the S&P 500 in December 2024.
 
 > **Key takeaways**
 > - Assets under management: $1.07 trillion on 30 September 2026; record origination of $114 billion in the quarter.
 > - Fee related earnings hit a record $802 million in Q3 2026, up 23% a year; adjusted net income was $2.07 per share.
 > - On a GAAP basis Apollo lost $1.06 billion in the quarter, mainly from unrealised mark-to-market losses on investments.
-> - Price today: {{price:apo}}; high {{ath:apo}} ({{athd:apo}}), {{fromath:apo}} from it. On 20 November 2026 it closed at $111.16, about 41% below its December 2024 high.
+> - The stock closed at $189.49 on 9 December 2024, right after its S&P 500 inclusion was announced; on 20 November 2026 it closed at $111.16, about 41% lower.
 
 ## How it makes money
 
@@ -20,18 +20,20 @@ Apollo has three earnings engines. **Asset management** charges pension funds, i
 
 ## The numbers right now
 
+- Price today: {{price:apo}}
+- Market value: {{mcap:apo}} ({{rank:apo}} among the world's largest companies on WhatIfStack)
+- Record high: {{ath:apo}} ({{athd:apo}}), {{fromath:apo}} from it
+- $10 a day for 10 years: {{dca:apo:10}} from {{dcainv:10}} invested ({{dcaroi:apo:10}})
+
 In the quarter to 30 September 2026 fee related earnings (the steady fee profit) were $802 million and spread related earnings from Athene were $844 million. Principal investing added just $52 million. Adjusted net income came to $1.29 billion, or $2.07 per share.
 
 Money keeps arriving: $53 billion of inflows in the quarter and $270 billion over the last twelve months. Athene brought in $18.7 billion of new retirement money, manages $322.5 billion of net invested assets and earned a net spread of 1.06%. The GAAP result was a loss of $1.06 billion, or $1.78 per share, because some investments were marked down. Apollo bought back $143 million of stock in the quarter (about $1.4 billion over twelve months) and paid out more than $1.3 billion in dividends over twelve months.
 
 ## The stock's story
 
-Apollo was long a buyout firm run as a partnership. In 2019 it became a regular corporation, and in January 2022 it merged with Athene, which turned it into a mix of asset manager and insurer. Index funds followed: S&P announced its inclusion on 6 December 2024, it replaced Qorvo in the S&P 500 on 23 December, and on 9 December 2024 the stock closed at a high of $189.49.
+Apollo was long a buyout firm run as a partnership. In 2019 it became a regular corporation, and in January 2022 it merged with Athene, which turned it into a mix of asset manager and insurer. Index funds followed: S&P announced its inclusion on 6 December 2024, it replaced Qorvo in the S&P 500 on 23 December, and on 9 December 2024 the stock closed at $189.49, its peak at the time.
 
 The stock lost about 13% in 2025, and in early March 2026 it fell to about $99.56 as investors worried about loan quality and about retail funds holding loans that cannot be sold quickly. In June 2026 Apollo Debt Solutions, its roughly $26 billion fund for wealthy individuals, received redemption requests for about 16.8% of its shares but paid out only the 5% cap, and the stock dropped 6% in a day.
-
-- Price today: {{price:apo}}
-- $10 a day for 10 years: {{dca:apo:10}} from {{dcainv:10}} invested ({{dcaroi:apo:10}})
 
 ## Competitors
 
