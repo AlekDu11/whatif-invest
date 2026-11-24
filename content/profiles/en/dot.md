@@ -1,6 +1,6 @@
 ---
 title: Polkadot (DOT) explained: Gavin Wood's network of blockchains since 2020 and a 2.1 billion cap
-description: Polkadot in plain language: how its relay chain and rollups work, what DOT is for, the 2026 supply cap, its long fall from the 2021 peak and the main risks.
+description: Polkadot in plain language: how its relay chain and rollups work, what DOT is for, the 2026 supply cap, its long slide since 2021 and the main risks.
 date: 2026-11-23
 kind: analysis
 ---

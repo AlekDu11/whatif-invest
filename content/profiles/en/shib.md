@@ -1,6 +1,6 @@
 ---
 title: Shiba Inu (SHIB) explained: a quadrillion tokens, 41% burned and its own Shibarium network
-description: Shiba Inu in plain language: the dog-themed meme token, why a quadrillion coins exist, the Vitalik burn, Shibarium, its record and crashes, and the main risks.
+description: Shiba Inu in plain language: the dog-themed meme token, why a quadrillion coins exist, the Vitalik burn, Shibarium, its booms and crashes, and the main risks.
 date: 2026-11-23
 kind: analysis
 ---
