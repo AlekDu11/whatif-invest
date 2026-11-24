@@ -1,5 +1,5 @@
 ---
-title: Aon-Aktie (AON): die 17-Mrd.-$-Wette auf USI und ein Minus von 30 %
+title: Aon-Aktie (AON): der Versicherungsmakler und sein 17-Mrd.-$-Kauf von USI
 description: Aon einfach erklärt: 4,1 Mrd. $ Umsatz im 3. Quartal 2026, 6 % organisches Wachstum, die USI-Übernahme für 17 Mrd. $, fast 28 Mrd. $ Schulden und die Risiken.
 date: 2026-11-21
 kind: analysis
@@ -10,7 +10,7 @@ kind: analysis
 > - Umsatz: 4,10 Mrd. $ im 3. Quartal 2026, +3 % ausgewiesen und +6 % organisch (gleiche Geschäfte, ohne Währungseffekte).
 > - Der bereinigte Gewinn je Aktie stieg um 10 % auf 3,36 $; die bereinigte operative Marge erreichte 27,0 %.
 > - Am 31. August 2026 vereinbarte Aon den Kauf von USI für 17 Mrd. $ in bar; die Gesamtschulden sprangen von 15,2 auf rund 28,0 Mrd. $.
-> - Die Aktie fiel von 382 $ im Juli 2026 auf 266 $ im Oktober (−30 %) und liegt weiter unter dem Rekord vom März 2025 (412,97 $).
+> - Nach dem USI-Deal fiel die Aktie von 382,34 $ am 28. Juli 2026 auf 266,33 $ am 5. Oktober 2026 (−30 %); der frühere Höchstschlusskurs lag im März 2025 bei 412,97 $.
 
 ## Womit das Unternehmen Geld verdient
 
@@ -18,14 +18,16 @@ Aon berichtet zwei Segmente. **Risk Capital** umfasst Commercial Risk Solutions 
 
 ## Die Zahlen aktuell
 
+- Kurs aktuell: {{price:aon}}
+- Marktwert: {{mcap:aon}} ({{rank:aon}} unter den größten Unternehmen der Welt auf WhatIfStack)
+- Rekordhoch: {{ath:aon}} ({{athd:aon}}), {{fromath:aon}} davon entfernt
+- 10 $ pro Tag über 10 Jahre: {{dca:aon:10}} bei {{dcainv:10}} Einsatz ({{dcaroi:aon:10}})
+
 Im Quartal bis 30. September 2026 setzte Commercial Risk 2,11 Mrd. $ um (+7 % organisch), Reinsurance 572 Mio. $ (+7 %), Health 992 Mio. $ (+6 %) und Wealth 429 Mio. $ (+4 % organisch). Wealth wirkt nur deshalb 21 % kleiner, weil Aon im Oktober 2025 den Großteil des Vermögensgeschäfts von NFP für 2,3 Mrd. $ verkauft hat. Der Gewinn je Aktie nach GAAP lag bei 2,23 $. In neun Monaten erzielte Aon 1,94 Mrd. $ freien Cashflow, kaufte für 1,1 Mrd. $ eigene Aktien zurück und schüttete 511 Mio. $ Dividenden aus; die Quartalsdividende beträgt 0,82 $ je Aktie.
 
 ## Die Geschichte der Aktie
 
-Aon wächst durch Zukäufe. 2021 scheiterte die geplante Fusion mit Willis Towers Watson, nachdem das US-Justizministerium dagegen geklagt hatte – Aon musste dem Partner eine Abbruchgebühr zahlen. 2024 kaufte Aon NFP, einen Makler für mittelgroße US-Firmen. Das Rekordhoch lag bei 412,97 $ am 3. März 2025; 2025 endete fast unverändert bei 352,88 $. 2026 stieg die Aktie bis zum 28. Juli wieder auf 382,34 $ – bis USI kam. USI ist der zehntgrößte Makler der USA mit rund 3 Mrd. $ Umsatz und über 10.500 Beschäftigten, und Aon bezahlt ihn mit Schulden. Nach der Ankündigung rutschte die Aktie bis zum 5. Oktober auf 266,33 $. Am 20. November schloss sie bei 333,16 $.
-
-- Kurs aktuell: {{price:aon}}
-- 10 $ pro Tag über 10 Jahre: {{dca:aon:10}} bei {{dcainv:10}} Einsatz ({{dcaroi:aon:10}})
+Aon wächst durch Zukäufe. 2021 scheiterte die geplante Fusion mit Willis Towers Watson, nachdem das US-Justizministerium dagegen geklagt hatte – Aon musste dem Partner eine Abbruchgebühr zahlen. 2024 kaufte Aon NFP, einen Makler für mittelgroße US-Firmen. Am 3. März 2025 schloss die Aktie auf einem Hoch von 412,97 $; 2025 endete fast unverändert bei 352,88 $. 2026 stieg die Aktie bis zum 28. Juli wieder auf 382,34 $ – bis USI kam. USI ist der zehntgrößte Makler der USA mit rund 3 Mrd. $ Umsatz und über 10.500 Beschäftigten, und Aon bezahlt ihn mit Schulden. Nach der Ankündigung rutschte die Aktie bis zum 5. Oktober auf 266,33 $. Am 20. November 2026 schloss sie bei 333,16 $.
 
 ## Konkurrenten
 

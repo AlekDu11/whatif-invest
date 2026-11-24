@@ -1,5 +1,5 @@
 ---
-title: Ações da Aon (AON): a aposta de US$ 17 bilhões na USI e uma queda de 30%
+title: Ações da Aon (AON): a corretora de seguros e a compra da USI por US$ 17 bilhões
 description: Aon sem complicação: US$ 4,1 bilhões de receita no 3º tri de 2026, alta orgânica de 6%, a compra da USI por US$ 17 bilhões e dívida de quase US$ 28 bi.
 date: 2026-11-21
 kind: analysis
@@ -10,7 +10,7 @@ kind: analysis
 > - Receita: US$ 4,10 bilhões no 3º trimestre de 2026, +3% no reportado e +6% orgânico (mesmos negócios, sem efeito do câmbio).
 > - O lucro ajustado por ação subiu 10%, para US$ 3,36; a margem operacional ajustada chegou a 27,0%.
 > - Em 31 de agosto de 2026 a Aon fechou acordo para comprar a USI por US$ 17 bilhões em dinheiro; a dívida total saltou de US$ 15,2 bilhões para cerca de US$ 28,0 bilhões.
-> - A ação caiu de US$ 382 em julho de 2026 para US$ 266 em outubro (−30%) e segue abaixo do recorde de março de 2025, US$ 412,97.
+> - Depois do acordo com a USI, a ação caiu de US$ 382,34 em 28 de julho de 2026 para US$ 266,33 em 5 de outubro de 2026 (−30%); o pico de fechamento anterior foi de US$ 412,97 em março de 2025.
 
 ## Como ganha dinheiro
 
@@ -18,14 +18,16 @@ kind: analysis
 
 ## Os números agora
 
+- Preço hoje: {{price:aon}}
+- Valor de mercado: {{mcap:aon}} ({{rank:aon}} entre as maiores empresas do mundo no WhatIfStack)
+- Máxima histórica: {{ath:aon}} ({{athd:aon}}), {{fromath:aon}} desde ela
+- US$ 10 por dia durante 10 anos: {{dca:aon:10}} com {{dcainv:10}} investidos ({{dcaroi:aon:10}})
+
 No trimestre encerrado em 30 de setembro de 2026, Commercial Risk faturou US$ 2,11 bilhões (+7% orgânico), Reinsurance US$ 572 milhões (+7%), Health US$ 992 milhões (+6%) e Wealth US$ 429 milhões (+4% orgânico). Wealth parece 21% menor só porque, em outubro de 2025, a Aon vendeu a maior parte dos negócios de gestão de patrimônio da NFP por US$ 2,3 bilhões. Em nove meses a empresa gerou US$ 1,94 bilhão de fluxo de caixa livre, recomprou US$ 1,1 bilhão em ações e pagou US$ 511 milhões em dividendos; o dividendo trimestral é de US$ 0,82 por ação.
 
 ## A história da ação
 
-A Aon cresce comprando concorrentes. Em 2021 a fusão planejada com a Willis Towers Watson naufragou depois que o Departamento de Justiça dos EUA abriu processo para barrá-la, e a Aon pagou uma multa pelo rompimento. Em 2024 comprou a NFP, corretora voltada a empresas médias dos EUA. O recorde foi de US$ 412,97 em 3 de março de 2025; 2025 terminou praticamente estável, em US$ 352,88. Em 2026 a ação voltou a US$ 382,34 em 28 de julho, até o anúncio da USI, décima maior corretora dos EUA, com cerca de US$ 3 bilhões de receita e mais de 10.500 funcionários, que a Aon paga com dívida. Depois a ação escorregou até US$ 266,33 em 5 de outubro. Em 20 de novembro fechou a US$ 333,16.
-
-- Preço hoje: {{price:aon}}
-- US$ 10 por dia durante 10 anos: {{dca:aon:10}} com {{dcainv:10}} investidos ({{dcaroi:aon:10}})
+A Aon cresce comprando concorrentes. Em 2021 a fusão planejada com a Willis Towers Watson naufragou depois que o Departamento de Justiça dos EUA abriu processo para barrá-la, e a Aon pagou uma multa pelo rompimento. Em 2024 comprou a NFP, corretora voltada a empresas médias dos EUA. Em 3 de março de 2025 a ação fechou no pico de US$ 412,97; 2025 terminou praticamente estável, em US$ 352,88. Em 2026 a ação voltou a US$ 382,34 em 28 de julho, até o anúncio da USI, décima maior corretora dos EUA, com cerca de US$ 3 bilhões de receita e mais de 10.500 funcionários, que a Aon paga com dívida. Depois a ação escorregou até US$ 266,33 em 5 de outubro. Em 20 de novembro de 2026 fechou a US$ 333,16.
 
 ## Concorrentes
 

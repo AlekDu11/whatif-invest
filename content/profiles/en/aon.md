@@ -1,5 +1,5 @@
 ---
-title: Aon (AON) stock: the $17 billion USI bet behind a 30% drop
+title: Aon (AON) stock: the insurance broker and its $17 billion USI deal
 description: Aon in plain language: $4.1 billion of Q3 2026 revenue, 6% organic growth, the $17 billion USI deal, debt near $28 billion and what regular buyers should know.
 date: 2026-11-21
 kind: analysis
@@ -10,7 +10,7 @@ kind: analysis
 > - Revenue: $4.10 billion in Q3 2026, +3% reported and +6% organic (same businesses, no currency effects).
 > - Adjusted earnings per share rose 10% to $3.36; the adjusted operating margin reached 27.0%.
 > - Aon agreed on 31 August 2026 to buy USI for $17 billion in cash; total debt jumped from $15.2 billion to about $28.0 billion.
-> - The stock fell from $382 in July 2026 to $266 in October (−30%) and is still below its March 2025 record of $412.97.
+> - After the USI deal the stock fell from $382.34 on 28 July 2026 to $266.33 on 5 October 2026 (−30%); its earlier peak close was $412.97 in March 2025.
 
 ## How it makes money
 
@@ -18,14 +18,16 @@ Aon reports two segments. **Risk Capital** covers Commercial Risk Solutions — 
 
 ## The numbers right now
 
-In the quarter to 30 September 2026 Commercial Risk earned $2.11 billion (+7% organic), Reinsurance $572 million (+7%), Health $992 million (+6%) and Wealth $429 million (+4% organic). Wealth looks 21% smaller only because Aon sold most of NFP's wealth businesses for $2.3 billion in October 2025. GAAP earnings per share were $2.23. Over nine months Aon generated $1.94 billion of free cash flow, bought back $1.1 billion of its shares and paid $511 million in dividends; the quarterly dividend is $0.82 per share.
+- Price today: {{price:aon}}
+- Market value: {{mcap:aon}} ({{rank:aon}} among the world's largest companies on WhatIfStack)
+- Record high: {{ath:aon}} ({{athd:aon}}), {{fromath:aon}} from it
+- $10 a day for 10 years: {{dca:aon:10}} from {{dcainv:10}} invested ({{dcaroi:aon:10}})
+
+In the quarter to 30 September 2026 Commercial Risk earned $2.11 billion (+7% organic), Reinsurance $572 million (+7%), Health $992 million (+6%) and Wealth $429 million (+4% organic). Wealth looks 21% smaller only because Aon sold most of NFP's wealth businesses for $2.3 billion in October 2025. GAAP earnings per share were $2.23. Over nine months Aon generated $1.94 billion of free cash flow, bought back $1.1 billion of its shares and paid $511 million in dividends; the quarterly dividend was $0.82 per share in Q3 2026.
 
 ## The stock's story
 
-Aon has grown by buying rivals. In 2021 a planned merger with Willis Towers Watson collapsed after the US Department of Justice sued to block it, and Aon had to pay its partner a break fee. In 2024 it bought NFP, a broker for mid-sized US companies. The share price set a record of $412.97 on 3 March 2025, then ended 2025 roughly flat at $352.88. In 2026 it climbed back to $382.34 on 28 July — until the USI deal. USI is the tenth-largest US broker, with about $3 billion of revenue and more than 10,500 staff, and Aon is paying for it with debt. After the announcement the shares slid to $266.33 by 5 October. On 20 November the stock closed at $333.16.
-
-- Price today: {{price:aon}}
-- $10 a day for 10 years: {{dca:aon:10}} from {{dcainv:10}} invested ({{dcaroi:aon:10}})
+Aon has grown by buying rivals. In 2021 a planned merger with Willis Towers Watson collapsed after the US Department of Justice sued to block it, and Aon had to pay its partner a break fee. In 2024 it bought NFP, a broker for mid-sized US companies. The share price closed at a peak of $412.97 on 3 March 2025, then ended 2025 roughly flat at $352.88. In 2026 it climbed back to $382.34 on 28 July — until the USI deal. USI is the tenth-largest US broker, with about $3 billion of revenue and more than 10,500 staff, and Aon is paying for it with debt. After the announcement the shares slid to $266.33 by 5 October. On 20 November 2026 the stock closed at $333.16.
 
 ## Competitors
 

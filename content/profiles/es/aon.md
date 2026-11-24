@@ -1,5 +1,5 @@
 ---
-title: Acciones de Aon (AON): la apuesta de 17.000 millones por USI y una caída del 30%
+title: Acciones de Aon (AON): el corredor de seguros y su compra de USI por 17.000 millones de dólares
 description: Aon en lenguaje claro: 4.101 millones de dólares de ingresos en el 3T 2026, un 6% orgánico más, la compra de USI por 17.000 millones y sus riesgos.
 date: 2026-11-21
 kind: analysis
@@ -10,7 +10,7 @@ kind: analysis
 > - Ingresos: 4.101 millones de dólares en el 3T 2026, +3% reportado y +6% orgánico (mismos negocios, sin efecto divisa).
 > - El beneficio ajustado por acción subió un 10%, hasta 3,36 $; el margen operativo ajustado llegó al 27,0%.
 > - El 31 de agosto de 2026 Aon acordó comprar USI por 17.000 millones de dólares en efectivo; la deuda total pasó de 15.200 millones a unos 28.000 millones.
-> - La acción cayó de 382 $ en julio de 2026 a 266 $ en octubre (−30%) y sigue por debajo de su récord de marzo de 2025, 412,97 $.
+> - Tras el acuerdo con USI, la acción cayó de 382,34 $ el 28 de julio de 2026 a 266,33 $ el 5 de octubre de 2026 (−30%); su pico de cierre anterior fue de 412,97 $ en marzo de 2025.
 
 ## Cómo gana dinero
 
@@ -18,14 +18,16 @@ kind: analysis
 
 ## Las cifras ahora
 
+- Precio actual: {{price:aon}}
+- Valor de mercado: {{mcap:aon}} ({{rank:aon}} entre las mayores empresas del mundo en WhatIfStack)
+- Máximo histórico: {{ath:aon}} ({{athd:aon}}), {{fromath:aon}} desde él
+- 10 $ al día durante 10 años: {{dca:aon:10}} con {{dcainv:10}} invertidos ({{dcaroi:aon:10}})
+
 En el trimestre hasta el 30 de septiembre de 2026 Commercial Risk ingresó 2.110 millones (+7% orgánico), Reinsurance 572 millones (+7%), Health 992 millones (+6%) y Wealth 429 millones (+4% orgánico). Wealth parece un 21% más pequeño solo porque en octubre de 2025 Aon vendió la mayor parte del negocio de patrimonio de NFP por 2.300 millones. En nueve meses generó 1.943 millones de flujo de caja libre, recompró acciones por 1.100 millones y pagó 511 millones en dividendos; el dividendo trimestral es de 0,82 $ por acción.
 
 ## La historia de la acción
 
-Aon crece comprando rivales. En 2021 su fusión prevista con Willis Towers Watson fracasó después de que el Departamento de Justicia de EE. UU. la demandara para bloquearla, y Aon pagó una indemnización por la ruptura. En 2024 compró NFP, un corredor para empresas medianas de EE. UU. La acción marcó un récord de 412,97 $ el 3 de marzo de 2025 y cerró 2025 casi plana, en 352,88 $. En 2026 volvió a subir hasta 382,34 $ el 28 de julio, hasta el anuncio de USI, décimo corredor de EE. UU., con unos 3.000 millones de ingresos y más de 10.500 empleados, que Aon paga con deuda. Después la acción bajó hasta 266,33 $ el 5 de octubre. El 20 de noviembre cerró en 333,16 $.
-
-- Precio actual: {{price:aon}}
-- 10 $ al día durante 10 años: {{dca:aon:10}} con {{dcainv:10}} invertidos ({{dcaroi:aon:10}})
+Aon crece comprando rivales. En 2021 su fusión prevista con Willis Towers Watson fracasó después de que el Departamento de Justicia de EE. UU. la demandara para bloquearla, y Aon pagó una indemnización por la ruptura. En 2024 compró NFP, un corredor para empresas medianas de EE. UU. La acción cerró en un pico de 412,97 $ el 3 de marzo de 2025 y cerró 2025 casi plana, en 352,88 $. En 2026 volvió a subir hasta 382,34 $ el 28 de julio, hasta el anuncio de USI, décimo corredor de EE. UU., con unos 3.000 millones de ingresos y más de 10.500 empleados, que Aon paga con deuda. Después la acción bajó hasta 266,33 $ el 5 de octubre. El 20 de noviembre de 2026 cerró en 333,16 $.
 
 ## Competidores
 
