@@ -1,0 +1,102 @@
+[
+{
+"id": "memecoin",
+"t": "Memecoin",
+"d": "Un token crypto nato da uno scherzo, un animale, una persona o una moda di internet. Di solito dietro non c'è alcun prodotto né alcun guadagno, quindi il prezzo si muove solo in base all'attenzione e a chi compra e vende."
+},
+{
+"id": "contract-address",
+"t": "Indirizzo del contratto (CA)",
+"d": "L'indirizzo unico di un token sulla sua blockchain. Nome e ticker possono essere copiati da chiunque, l'indirizzo del contratto no: controllalo sempre prima di comprare."
+},
+{
+"id": "dex",
+"t": "DEX vs CEX",
+"d": "Un DEX (exchange decentralizzato, come Raydium o PancakeSwap) ti permette di scambiare token direttamente dal tuo wallet. Un CEX (exchange centralizzato, come Binance) custodisce i tuoi soldi al posto tuo e quota solo i token che ha verificato."
+},
+{
+"id": "liquidity",
+"t": "Liquidità",
+"d": "I soldi presenti nel pool di scambio di un token. Con poca liquidità anche una piccola vendita sposta molto il prezzo e potresti non riuscire a vendere a un prezzo equo."
+},
+{
+"id": "liquidity-lock",
+"t": "Liquidità bloccata o bruciata (lock / burn)",
+"d": "Bloccare (lock) o bruciare (burn) la liquidità del pool significa che il creatore non può più ritirarla. La liquidità non bloccata è il modo classico in cui avviene un rug pull."
+},
+{
+"id": "rug-pull",
+"t": "Rug pull",
+"d": "Quando i creatori o gli insider ritirano all'improvviso i soldi del pool o svendono le loro monete: il prezzo crolla quasi a zero e chi ha comprato non riesce più a uscire."
+},
+{
+"id": "honeypot",
+"t": "Honeypot",
+"d": "Un token truffa che puoi comprare ma non vendere, perché il contratto blocca le vendite o le tassa pesantemente. Controlla sempre che altri holder abbiano davvero venduto."
+},
+{
+"id": "bonding-curve",
+"t": "Bonding curve",
+"d": "Sui launchpad come pump.fun un nuovo token viene venduto all'inizio lungo una curva di prezzo: ogni acquisto fa salire il prezzo. Quando arrivano abbastanza soldi, il token «si diploma»."
+},
+{
+"id": "graduation",
+"t": "Graduation (passaggio a un DEX)",
+"d": "Il momento in cui un token del launchpad completa la sua bonding curve e passa a un vero pool su un DEX. Ci arriva solo una piccola percentuale dei nuovi token."
+},
+{
+"id": "sniper",
+"t": "Sniper",
+"d": "Un bot o un trader che compra un token nei primissimi secondi dopo il lancio, spesso per rivenderlo a prezzo più alto a chi arriva dopo."
+},
+{
+"id": "bundler",
+"t": "Bundler",
+"d": "Un creatore che al lancio compra una grossa fetta del proprio token da molti wallet diversi, per sembrare tanti holder distinti. È un segnale d'allarme di una svendita pianificata."
+},
+{
+"id": "dev-wallet",
+"t": "Dev wallet",
+"d": "Il wallet di chi ha creato il token. Se contiene una grossa parte dell'offerta, il creatore può far crollare il prezzo in qualsiasi momento vendendo."
+},
+{
+"id": "top-10-holders",
+"t": "Top 10 holder",
+"d": "La quota di tutte le monete detenuta dai 10 wallet più grandi. Più è alta (per esempio oltre il 30%), più è facile che poche persone facciano crollare il prezzo."
+},
+{
+"id": "kol",
+"t": "KOL",
+"d": "«Key opinion leader», cioè un influencer con un grande seguito. I KOL vengono spesso pagati per promuovere token, a volte dopo averli comprati a poco loro stessi."
+},
+{
+"id": "pump-and-dump",
+"t": "Pump and dump",
+"d": "Un gruppo fa salire il prezzo con hype e acquisti, poi vende ai nuovi arrivati sui massimi. Chi arriva tardi resta con le perdite."
+},
+{
+"id": "slippage",
+"t": "Slippage",
+"d": "La differenza tra il prezzo che vedi e quello che ottieni davvero. Nei pool di memecoin con poca liquidità può arrivare al 5–20% o più su un solo scambio."
+},
+{
+"id": "market-cap-fdv",
+"t": "Capitalizzazione vs FDV",
+"d": "La capitalizzazione di mercato è prezzo × monete in circolazione. L'FDV (fully diluted value, valore completamente diluito) è prezzo × tutte le monete che esisteranno mai. Una grande differenza significa che molte monete possono ancora essere sbloccate e vendute."
+},
+{
+"id": "dyor",
+"t": "DYOR",
+"d": "«Do your own research», cioè «fai le tue ricerche». Un promemoria: nessuno, né un influencer né un sito, è responsabile dei tuoi soldi tranne te."
+},
+{
+"id": "ape",
+"t": "Ape / fare ape in",
+"d": "Comprare un token di corsa sull'onda dell'hype senza controllarlo. Il modo più veloce per perdere soldi con le memecoin."
+},
+{
+"id": "paper-diamond-hands",
+"t": "Paper hands / diamond hands",
+"d": "Gergo per chi vende al primo calo (paper hands, «mani di carta») o tiene duro durante qualsiasi crollo (diamond hands, «mani di diamante»). Nessuna delle due è una strategia di per sé."
+}
+]

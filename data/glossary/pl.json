@@ -1,0 +1,102 @@
+[
+{
+"id": "memecoin",
+"t": "Memecoin",
+"d": "Token kryptowalutowy oparty na żarcie, zwierzęciu, osobie albo internetowym trendzie. Zwykle nie stoi za nim żaden produkt ani przychód, więc jego cena zmienia się tylko pod wpływem uwagi oraz kupna i sprzedaży."
+},
+{
+"id": "contract-address",
+"t": "Adres kontraktu (CA)",
+"d": "Unikalny adres tokena w jego blockchainie. Nazwę i ticker może skopiować każdy, adresu kontraktu już nie, dlatego zawsze sprawdzaj go przed zakupem."
+},
+{
+"id": "dex",
+"t": "DEX a CEX",
+"d": "DEX (giełda zdecentralizowana, np. Raydium albo PancakeSwap) pozwala wymieniać tokeny prosto z własnego portfela. CEX (giełda scentralizowana, np. Binance) przechowuje Twoje pieniądze za Ciebie i notuje tylko tokeny, które sprawdziła."
+},
+{
+"id": "liquidity",
+"t": "Płynność",
+"d": "Pieniądze leżące w puli handlowej tokena. Przy małej płynności nawet niewielka sprzedaż mocno porusza ceną i możesz nie zdołać sprzedać po uczciwej cenie."
+},
+{
+"id": "liquidity-lock",
+"t": "Zablokowanie / spalenie płynności (lock / burn)",
+"d": "Zablokowanie (lock) albo spalenie (burn) płynności puli oznacza, że twórca nie może jej wypłacić. Niezablokowana płynność to klasyczna droga do rug pulla."
+},
+{
+"id": "rug-pull",
+"t": "Rug pull",
+"d": "Sytuacja, w której twórcy albo insiderzy nagle wyciągają pieniądze z puli lub wyprzedają swoje monety. Cena spada prawie do zera, a kupujący nie mają jak wyjść."
+},
+{
+"id": "honeypot",
+"t": "Honeypot",
+"d": "Oszukańczy token, który da się kupić, ale nie da się sprzedać, bo kontrakt blokuje sprzedaż albo nakłada na nią ogromną opłatę. Zawsze sprawdzaj, czy inni posiadacze faktycznie coś sprzedali."
+},
+{
+"id": "bonding-curve",
+"t": "Bonding curve (krzywa wiązania)",
+"d": "Na launchpadach takich jak pump.fun nowy token najpierw sprzedawany jest według krzywej cenowej: każdy zakup podnosi cenę. Gdy wpłynie wystarczająco dużo pieniędzy, token «kończy szkołę» (graduation)."
+},
+{
+"id": "graduation",
+"t": "Graduation (przejście na DEX)",
+"d": "Moment, w którym token z launchpada zapełnia swoją bonding curve i trafia do prawdziwej puli na DEX-ie. Udaje się to tylko kilku procentom nowych tokenów."
+},
+{
+"id": "sniper",
+"t": "Sniper",
+"d": "Bot albo trader, który kupuje token w pierwszych sekundach po starcie, często po to, by odsprzedać go drożej tym, którzy przyjdą później."
+},
+{
+"id": "bundler",
+"t": "Bundler",
+"d": "Twórca, który przy starcie kupuje dużą część własnego tokena z wielu portfeli, żeby wyglądało to na wielu różnych posiadaczy. To sygnał ostrzegawczy zaplanowanej wyprzedaży."
+},
+{
+"id": "dev-wallet",
+"t": "Dev wallet (portfel twórcy)",
+"d": "Portfel osoby, która stworzyła token. Jeśli trzyma dużą część podaży, twórca może w każdej chwili zbić cenę, sprzedając swoje monety."
+},
+{
+"id": "top-10-holders",
+"t": "Top 10 posiadaczy",
+"d": "Udział wszystkich monet trzymany przez 10 największych portfeli. Im jest wyższy (np. ponad 30%), tym łatwiej kilku osobom doprowadzić do krachu ceny."
+},
+{
+"id": "kol",
+"t": "KOL",
+"d": "«Key opinion leader», czyli influencer z dużą widownią. KOL-om często płaci się za promowanie tokenów, czasem po tym, jak sami kupili je tanio."
+},
+{
+"id": "pump-and-dump",
+"t": "Pump and dump",
+"d": "Grupa pompuje cenę szumem i zakupami, a potem sprzedaje nowym kupującym na szczycie. Spóźnieni zostają ze stratami."
+},
+{
+"id": "slippage",
+"t": "Poślizg cenowy (slippage)",
+"d": "Różnica między ceną, którą widzisz, a ceną, którą faktycznie dostajesz. W płytkich pulach memecoinów może wynieść 5–20% lub więcej przy jednej transakcji."
+},
+{
+"id": "market-cap-fdv",
+"t": "Kapitalizacja a FDV",
+"d": "Kapitalizacja rynkowa to cena × monety w obiegu. FDV (fully diluted value, w pełni rozwodniona wartość) to cena × wszystkie monety, jakie kiedykolwiek powstaną. Duża różnica oznacza, że wiele monet może jeszcze zostać odblokowanych i sprzedanych."
+},
+{
+"id": "dyor",
+"t": "DYOR",
+"d": "«Do your own research», czyli «zrób własny research». Przypomnienie, że nikt poza Tobą, ani influencer, ani strona internetowa, nie odpowiada za Twoje pieniądze."
+},
+{
+"id": "ape",
+"t": "Ape / apowanie",
+"d": "Szybkie kupowanie tokena pod wpływem szumu, bez sprawdzenia go. Najszybszy sposób, by stracić pieniądze na memecoinach."
+},
+{
+"id": "paper-diamond-hands",
+"t": "Paper hands / diamond hands",
+"d": "Slang na osoby, które sprzedają przy pierwszym spadku (paper hands, «papierowe ręce»), albo trzymają mimo każdego krachu (diamond hands, «diamentowe ręce»). Żadne z tych podejść samo w sobie nie jest strategią."
+}
+]
