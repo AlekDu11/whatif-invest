@@ -1,5 +1,5 @@
 ---
-title: APA Corporation (APA) stock: oil from Texas and Egypt, $699M free cash in a quarter
+title: APA Corporation (APA) stock: the Apache parent pumping oil in Texas and Egypt
 description: APA Corporation in plain language: $2.77 billion revenue and $699 million free cash flow in Q3 2026, the Callon deal, a 97% crash in 2020 and the main risks.
 date: 2026-11-21
 kind: analysis
@@ -10,7 +10,7 @@ kind: analysis
 > - Q3 2026: revenue $2.77 billion (vs $2.12 billion a year earlier), adjusted profit $1.94 per share (vs $0.93).
 > - Free cash flow of $699 million in the quarter; $537 million went back to shareholders, $450 million of it as buybacks.
 > - Net debt fell to $3.22 billion from $3.98 billion at the end of 2025; the new target is $2 billion.
-> - On 20 November 2026 the stock closed at $45.03, about 69% below its May 2008 peak.
+> - Market value: {{mcap:apa}}; record high {{ath:apa}} ({{athd:apa}}), {{fromath:apa}} from it.
 
 ## How it makes money
 
@@ -20,16 +20,18 @@ The next growth step is **Suriname**: the offshore GranMorgu project, where firs
 
 ## The numbers right now
 
+- Price today: {{price:apa}}
+- Market value: {{mcap:apa}} ({{rank:apa}} among the world's largest companies on WhatIfStack)
+- Record high: {{ath:apa}} ({{athd:apa}}), {{fromath:apa}} from it
+- $10 a day for 10 years: {{dca:apa:10}} from {{dcainv:10}} invested ({{dcaroi:apa:10}})
+
 In the quarter to 30 September 2026 APA earned $698 million, or $2.00 a share (adjusted: $1.94). Its average realised oil price was $92.02 a barrel, while US gas fetched only $1.22 per thousand cubic feet, a sign of how weak gas prices are in West Texas.
 
-APA pays a dividend of $0.25 a share each quarter and bought back 17.8 million shares this year through October. Management now expects about $2.9 billion of free cash flow in 2026, $600 million more than it said in August, and plans about $2.5 billion of capital spending in 2027, mostly more money for Suriname and exploration.
+APA pays a dividend of $0.25 a share each quarter and bought back 17.8 million shares in 2026 through October. In November 2026 management raised its 2026 free cash flow forecast to about $2.9 billion, $600 million more than it said in August, and plans about $2.5 billion of capital spending in 2027, mostly more money for Suriname and exploration.
 
 ## The stock's story
 
-Apache was a star of the 2000s oil boom: the shares peaked on 20 May 2008. After that it fell hard whenever oil did. The worst blow hit in 2020: the pandemic and a Saudi–Russian price war pushed oil to about $30 a barrel in March, Apache cut its dividend by 90% and halted drilling in the Permian, and by 1 April 2020 the stock had lost about 97% from its 2008 high. The oil rebound of 2021–2022 lifted the shares sharply, 2023–2024 were down years again, and in 2026 higher oil prices, debt cuts and buybacks pushed the shares back up to $45.03.
-
-- Price today: {{price:apa}}
-- $10 a day for 10 years: {{dca:apa:10}} from {{dcainv:10}} invested ({{dcaroi:apa:10}})
+Apache was a star of the 2000s oil boom: the shares peaked on 20 May 2008. After that it fell hard whenever oil did. The worst blow hit in 2020: the pandemic and a Saudi–Russian price war pushed oil to about $30 a barrel in March, Apache cut its dividend by 90% and halted drilling in the Permian, and by 1 April 2020 the stock had lost about 97% from its 2008 high. The oil rebound of 2021–2022 lifted the shares sharply, 2023–2024 were down years again, and in 2026 higher oil prices, debt cuts and buybacks pushed the shares back up: on 20 November 2026 they closed at $45.03, still about 69% below the 2008 peak.
 
 ## Competitors
 
@@ -45,7 +47,7 @@ In the Permian APA competes with larger shale producers such as ExxonMobil, Chev
 
 ## What it means if you buy regularly
 
-APA is a cyclical stock: it can double in a good oil year and lose most of its value in a bad one. Buying a fixed amount regularly spreads purchases across high and low oil prices, and the dividend can be reinvested, but a single oil producer can stay far below its peak for many years, as APA has since 2008. Past results do not guarantee future returns.
+APA is a cyclical stock: it can double in a good oil year and lose most of its value in a bad one. Buying a fixed amount regularly spreads purchases across high and low oil prices, and the dividend can be reinvested, but a single oil producer can stay far below its peak for many years, as APA did after 2008. Past results do not guarantee future returns.
 
 *Not investment advice.*
 
