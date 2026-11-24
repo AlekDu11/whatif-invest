@@ -1,5 +1,5 @@
 ---
-title: ResMed (RMD) explained: the sleep apnea machine maker that sells the masks too
+title: ResMed (RMD) stock: the sleep apnea machine maker that also sells the masks
 description: ResMed in plain language: $1.41 billion a quarter from CPAP machines, masks and software, the GLP-1 scare, key risks and what regular buyers should know.
 date: 2026-11-19
 kind: analysis
@@ -18,14 +18,16 @@ ResMed earns in two ways. First, it sells the CPAP devices themselves: $716 mill
 
 ## The numbers right now
 
+- Price today: {{price:rmd}}
+- Market value: {{mcap:rmd}} ({{rank:rmd}} among the world's largest companies on WhatIfStack)
+- Record high: {{ath:rmd}} ({{athd:rmd}}), {{fromath:rmd}} from it
+- $10 a day for 10 years: {{dca:rmd:10}} from {{dcainv:10}} invested ({{dcaroi:rmd:10}})
+
 In the first quarter of fiscal year 2027 (July–September 2026) ResMed had $1,414.8 million of revenue, a gross margin of 61.5% and net income of $418.4 million, up 20%. Earnings per share were $2.92, up 23%, helped by a share count that fell to 143.4 million. Free cash flow was $374 million. At the end of September it held $1.01 billion in cash against about $410 million of debt, after repaying $250 million during the quarter. The company kept its full-year outlook: revenue of $5.75–5.85 billion. The quarterly dividend is $0.66 per share.
 
 ## The stock's story
 
-ResMed shares rose for most of the last decade and got an extra push in 2021, when rival Philips recalled millions of sleep apnea machines. Then came the scare: in 2023 investors feared that GLP-1 weight-loss drugs such as Ozempic would cure many patients of sleep apnea. On adjusted prices the stock fell from about $289 in September 2021 to about $133 in 2023. Sales kept growing anyway — fiscal 2026 revenue rose 10% to about $5.65 billion — and the shares hit a new closing record of $293.73 in August 2025. In August 2026 they dropped about 7% in a day after a weaker-than-expected outlook that included a halt to sales of some Astral ventilators following an FDA recall.
-
-- Price today: {{price:rmd}}
-- $10 a day for 10 years: {{dca:rmd:10}} from {{dcainv:10}} invested ({{dcaroi:rmd:10}})
+ResMed shares rose for most of the last decade and got an extra push in 2021, when rival Philips recalled millions of sleep apnea machines. Then came the scare: in 2023 investors feared that GLP-1 weight-loss drugs such as Ozempic would cure many patients of sleep apnea. On adjusted prices the stock fell from about $289 in September 2021 to about $133 in 2023. Sales kept growing anyway — fiscal 2026 revenue rose 10% to about $5.65 billion — and the shares reached a then-record close of $293.73 in August 2025. In August 2026 they dropped about 7% in a day after a weaker-than-expected outlook that included a halt to sales of some Astral ventilators following an FDA recall.
 
 ## Competitors
 
