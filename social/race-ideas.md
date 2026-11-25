@@ -32,8 +32,8 @@ comparisons that get thousands of views on crypto X. Keep the matchup a real que
 - ✅ 2026-11-23 link uni aave | DeFi blue chips
 - ✅ 2026-11-24 btc nvda --since 2019-01 | Bitcoin vs Nvidia
 - ✅ 2026-11-24 schd spy --since 2014-01 | dividends vs S&P 500
-- bnb okb | exchange token duel
-- xrp xlm hbar | payment coins
+- ⏭ 2026-11-25 skipped (repeats okb bnb cro of 2026-11-17) bnb okb | exchange token duel
+- ✅ 2026-11-25 xrp xlm hbar | payment coins
 - meta nflx amzn | consumer tech
 - btc spy wti --since 2010-01 | Bitcoin vs stocks vs oil
 - jpm bac gs | US banks
@@ -48,16 +48,17 @@ comparisons that get thousands of views on crypto X. Keep the matchup a real que
 ## Log
 | date | ids | X URL | Telegram | views |
 |---|---|---|---|---|
-| 2026-11-17 | btc gold spy (since 2016-01) | https://x.com/WhatIfStack/status/2122690567314292871 | msg 1474 | X 15 · TG 99 (2026-11-24) |
-| 2026-11-17 | okb bnb cro (since 2020-02) | https://x.com/WhatIfStack/status/2122729649189044275 | msg 1475 | X 16 · TG 151 (2026-11-24) |
-| 2026-11-18 | btc eth sol (since 2020-04) | https://x.com/WhatIfStack/status/2123077127801298975 | msg 1479 | X 13 · TG 1.2K (2026-11-24) |
-| 2026-11-19 | nvda amd intc (since 2000-01) | https://x.com/WhatIfStack/status/2123439207024910576 | msg 1483 | X 9 · TG 1.4K (2026-11-24) |
-| 2026-11-20 18:35 | aapl msft googl (since 2004-08) | https://x.com/WhatIfStack/status/2123801362022707579 | msg 1488 | X 8 · TG 1.5K (2026-11-24) |
-| 2026-11-21 11:30 | spy qqq vt (since 2008-06) | https://x.com/WhatIfStack/status/2124072647394750506 | — | X 20 (2026-11-24) |
-| 2026-11-21 18:30 | gold silver platinum (since 2000-08) | https://x.com/WhatIfStack/status/2124163264862884319 | msg 1493 | X 7 · TG 1.3K (2026-11-24) |
-| 2026-11-22 11:30 | doge shib pepe (since 2023-05) | https://x.com/WhatIfStack/status/2124435401335042107 | — | X 12 (2026-11-24) |
-| 2026-11-22 17:35 | eth sol ada (since 2021-01) | https://x.com/WhatIfStack/status/2124525885826990369 | msg 1496 | X 8 · TG 967 (2026-11-24) |
-| 2026-11-23 11:32 | tsla byd toyota (since 2010-06) | https://x.com/WhatIfStack/status/2124798172388020641 | — | X 11 (2026-11-24) |
-| 2026-11-23 18:30 | link uni aave (since 2020-10) | https://x.com/WhatIfStack/status/2124888140607320551 | msg 1500 | X 13 · TG 672 (2026-11-24) |
-| 2026-11-24 11:29 | btc nvda (since 2019-01) | https://x.com/WhatIfStack/status/2125159914225992139 | — | X 5 (2026-11-24) |
-| 2026-11-24 18:30 | schd spy (since 2014-01) | https://x.com/WhatIfStack/status/2125250410118361290 | msg 1504 | |
+| 2026-11-17 | btc gold spy (since 2016-01) | https://x.com/WhatIfStack/status/2122690567314292871 | msg 1474 | X 16 · TG 99 (TG 2026-11-24) (2026-11-25) |
+| 2026-11-17 | okb bnb cro (since 2020-02) | https://x.com/WhatIfStack/status/2122729649189044275 | msg 1475 | X 17 · TG 151 (TG 2026-11-24) (2026-11-25) |
+| 2026-11-18 | btc eth sol (since 2020-04) | https://x.com/WhatIfStack/status/2123077127801298975 | msg 1479 | X 13 · TG 1.2K (TG 2026-11-24) (2026-11-25) |
+| 2026-11-19 | nvda amd intc (since 2000-01) | https://x.com/WhatIfStack/status/2123439207024910576 | msg 1483 | X 10 · TG 1.4K (TG 2026-11-24) (2026-11-25) |
+| 2026-11-20 18:35 | aapl msft googl (since 2004-08) | https://x.com/WhatIfStack/status/2123801362022707579 | msg 1488 | X 9 · TG 1.5K (TG 2026-11-24) (2026-11-25) |
+| 2026-11-21 11:30 | spy qqq vt (since 2008-06) | https://x.com/WhatIfStack/status/2124072647394750506 | — | X 22 (2026-11-25) |
+| 2026-11-21 18:30 | gold silver platinum (since 2000-08) | https://x.com/WhatIfStack/status/2124163264862884319 | msg 1493 | X 9 · TG 1.3K (TG 2026-11-24) (2026-11-25) |
+| 2026-11-22 11:30 | doge shib pepe (since 2023-05) | https://x.com/WhatIfStack/status/2124435401335042107 | — | X 14 (2026-11-25) |
+| 2026-11-22 17:35 | eth sol ada (since 2021-01) | https://x.com/WhatIfStack/status/2124525885826990369 | msg 1496 | X 10 · TG 967 (TG 2026-11-24) (2026-11-25) |
+| 2026-11-23 11:32 | tsla byd toyota (since 2010-06) | https://x.com/WhatIfStack/status/2124798172388020641 | — | X 13 (2026-11-25) |
+| 2026-11-23 18:30 | link uni aave (since 2020-10) | https://x.com/WhatIfStack/status/2124888140607320551 | msg 1500 | X 16 · TG 672 (TG 2026-11-24) (2026-11-25) |
+| 2026-11-24 11:29 | btc nvda (since 2019-01) | https://x.com/WhatIfStack/status/2125159914225992139 | — | X 6 (2026-11-25) |
+| 2026-11-24 18:30 | schd spy (since 2014-01) | https://x.com/WhatIfStack/status/2125250410118361290 | msg 1504 | X 17 (2026-11-25) |
+| 2026-11-25 11:36 | xrp xlm hbar (since 2019-09) | https://x.com/WhatIfStack/status/2125522302678815122 | — | |
