@@ -28,7 +28,7 @@ The most common approach in Ukraine is to buy the stablecoin USDT first over P2P
 
 ## Step by step: your first Bitcoin through P2P
 
-1. **Sign up on a large exchange with hryvnia P2P**, such as [Binance](/go/binance?from=buy-ua&l=en) or [Bybit](/go/bybit?from=buy-ua&l=en). Fees are compared on our [exchanges page]({lang}/exchanges/). These are partner links, and they never change the price you pay.
+1. **Sign up on a large exchange with hryvnia P2P**, such as [Binance](/go/binance?from=buy-ua&l=en), [OKX](/go/okx?from=buy-ua&l=en) or [Bybit](/go/bybit?from=buy-ua&l=en). Fees are compared on our [exchanges page]({lang}/exchanges/). These are partner links, and they never change the price you pay.
 2. **Turn on 2FA and complete identity verification (KYC).** You'll need a passport or ID card and a selfie. P2P won't unlock without it. That's normal, because it protects both sides of the trade.
 3. **Open P2P → Buy → USDT → UAH** and choose your bank, such as monobank or PrivatBank.
 4. **Sort the sellers** by number of trades and completion rate. Pick sellers with hundreds of trades and a completion rate above 98%, and check their "from–to" limits.
