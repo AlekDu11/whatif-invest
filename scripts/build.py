@@ -1100,9 +1100,11 @@ def _ob_rank():
 
 
 def inzhur_card(lang, src):
-    h, d, b = INZ[lang]
+    h, d, b = INZ[lang][:3]
+    how = INZ[lang][3] if len(INZ[lang]) > 3 else ''   # owner 2026-11-25: link to the step-by-step article about the gift certificates
     return (f'<section class="section card inz"><h2>{esc(h)}</h2><p>{esc(d)}</p>'
-            f'<a class="btn ghost" href="/go/inzhur?from={src}&l={lang}" target="_blank" rel="sponsored noopener">{esc(b)} ↗</a></section>')
+            f'<a class="btn ghost" href="/go/inzhur?from={src}&l={lang}" target="_blank" rel="sponsored noopener">{esc(b)} ↗</a>'
+            + (f' <a class="btn ghost" href="{url(lang, "blog")}inzhur-gift-certificates/">{esc(how)} →</a>' if how else '') + '</section>')
 
 
 DEPO = {}
@@ -1151,7 +1153,7 @@ def deposits_page(lang, ver):
     src = (f'<section class="section"><h2>{esc(t["src"])}</h2><ul class="srcl">' + ''.join(f'<li><a href="{esc(u_)}" target="_blank" rel="nofollow noopener">{esc(n_)}</a></li>' for n_, u_ in D['src'])
            + f'</ul><p class="muted" style="font-size:13px">{esc(tf(t["asof"]))}</p></section>')
     body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / {esc(t["nav"])}</nav><h1>{esc(tf(t["h1"]))}</h1><p class="lead">{esc(tf(t["lead"]))}</p>{kt}'
-            f'<div class="icgrid2 depcalc">{left}{right}</div>' + table('uah', t['t_uah']) + table('usd', t['t_usd']) + vs + g + links + _ua_faq_html(faq) + src)
+            f'<div class="icgrid2 depcalc">{left}{right}</div>' + table('uah', t['t_uah']) + table('usd', t['t_usd']) + vs + g + inzhur_card(lang, 'deposits') + links + _ua_faq_html(faq) + src)
     cfg = dict(dep=dict(banks={b['n']: [b['uah'], b['usd']] for b in D['banks']}, tax=D['tax'], ovdp=D['ovdp'], code='UAH'))
     ti = tf(t['title']).replace(F['m'], f'{DEP_MT[lang][mo - 1]} {y}')
     return shell(lang, 'deposits-ukraine', ti + ' | ' + BRAND, tf(t['d']), body, cfg, ver, [_ua_faq(lang, faq)])
