@@ -70,3 +70,8 @@ Note (2026-11-23 11:4x run): video from GitHub raw by commit SHA (9e66027) via t
 | 2026-11-24 11:49 | Threads | NOT POSTED — account checkpoint | — | |
 
 Note (2026-11-24 11:4x run): Threads redirects to https://www.threads.com/accounts/suspended/ ("Введіть номер мобільного телефону" — SMS/WhatsApp code). Skipped per rules (no checkpoints solved); owner must verify the phone himself. Bluesky: video from GitHub raw by commit SHA (f7930ad) via the x-relay hash hand-off; the pencil click by coordinate did nothing this time — the "Новий пост" find ref (right column) opened the composer; one paste attached the video once → language «англійська». Bluesky likes, posts of the last 7 days: all 0 (11-18 Solana video 1, Big Tech card 2).
+
+| 2026-11-25 11:5x | Bluesky | Race video: $100/mo since Sep 2019 XRP vs Stellar vs Hedera (XRP $15.3K +76%, Stellar $8.4K −3%, Hedera $6.8K −22%, $8,700 in each; same as X 11:36) + link /en/xrp/ (langs en) | https://bsky.app/profile/whatifstack.bsky.social/post/3n34uzndi3k2v | |
+| 2026-11-25 11:5x | Threads | NOT POSTED — account checkpoint (2nd day) | — | |
+
+Note (2026-11-25 run): Threads still redirects to /accounts/suspended/ (phone number + SMS/WhatsApp code) — owner must verify the phone himself; skipped. Bluesky: video from GitHub raw by commit SHA (8071271) via the x-relay hash hand-off; "Новий пост" ref went stale once, re-find + click opened the composer; no input[type=file] in the composer — a synthetic ClipboardEvent('paste') with the File on the [contenteditable] attached the video; language set to «англійська» in the picker. Bluesky likes, posts of the last 7 days: all 0.
