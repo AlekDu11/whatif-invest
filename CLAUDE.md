@@ -20,7 +20,7 @@ UX batch (owner 2026-11-23): onboarding tour on first visit (app.js «onboarding
 
 Rankings + menu (owner 2026-11-24): /largest-companies/ (all 6 tabs) lists EVERY company with numbers (2,327), not the top 300 — pages 1–6 static (LC_STATIC), the rest rendered on demand by api/page.py ?lc=<tab>&p=<n> (vercel.json rewrites), out of the sitemap; top-menu «Stocks» is a dropdown: All stocks · Largest companies · 📅 Company earnings (ENAV/ALLST in i18n_earn.py). Guide /guide/ rewritten as the beginner's guide in all 20 languages (stocks first).
 
-TODO (owner 2026-11-24, fix later — limits): the home «Markets» table (tab All, sorted by 24h) shows tiny DEX-only coins (Fiona the Hippo, Boner Coin, BugsCoin, Aura Final Boss…) with no DCA history — they should not be there (DEX tokens belong on /memes/); filter them out of the home/list tables.
+Home «Markets» table small caps (owner 2026-11-25): Fiona the Hippo, Boner Coin, BugsCoin… are NOT DEX-only — they trade on Gate/MEXC (mcap $3–10M, 1–28 days of history) and rise to the top of «All» sorted by 24h. Owner: fine since they are on exchanges — keep them; optional later filter (mcap ≥ $50M + ≥ 2 months history for home/list tables) only if the owner asks.
 
 ## Principles (check every decision against them)
 1. Usefulness first — every page answers a real question ("what would I have…", "what to buy…", "what's the market doing").
