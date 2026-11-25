@@ -1,28 +1,56 @@
 ---
-title: Was ist Sony Group (6758)?
-description: Sony einfach erklärt: PlayStation, Musik, Filme und Kamerasensoren, wie der Konzern 1,45 Billionen Yen operativen Gewinn in einem Jahr erzielte und die Risiken.
-date: 2026-11-19
+title: Sony-Group-Aktie (6758): PlayStation, Musik, Filme und Kamerasensoren in einem Konzern
+description: Sony einfach erklärt: PlayStation, Musik, Filme, Sensoren, ¥3.429 Mrd. Umsatz von Juli bis September 2026, Risiken und was regelmäßige Käufer wissen sollten.
+date: 2026-11-26
+kind: analysis
 ---
-**Sony** ist längst nicht mehr vor allem der Hersteller von Fernsehern und dem Walkman: Heute ist es ein Unterhaltungsriese, der auf PlayStation, Sony Music, Sony Pictures und den Bildsensoren in vielen Smartphones der Welt steht. Im Geschäftsjahr bis März 2026 verdiente Sony operativ 1,45 Billionen Yen bei 12,5 Billionen Yen Umsatz.
+**Sony** ist längst nicht mehr vor allem ein Hersteller von Fernsehern und Walkmans: Den größten Teil des Gewinns verdient der Konzern heute mit Unterhaltung – mit Spielen und Abos von PlayStation, mit Songs und Künstlern von Sony Music und mit Filmen und Anime von Sony Pictures (Crunchyroll). Außerdem baut Sony die Bildsensoren, die in den Kameras vieler Smartphones weltweit stecken. Die Aktie wird in Tokio unter dem Code 6758 und in New York als SONY gehandelt.
 
-## So verdient Sony sein Geld
+> **Das Wichtigste**
+> - Umsatz: ¥3.429,4 Milliarden von Juli bis September 2026, +10 % zum Vorjahr; operativer Gewinn ¥622,3 Milliarden (+45 %), Nettogewinn ¥449,6 Milliarden (+44 %).
+> - Das Spielegeschäft (PlayStation) kam in diesem Quartal auf ¥1.208,5 Milliarden Umsatz und ¥220,1 Milliarden operativen Gewinn – der größte Teil von Sony.
+> - Am 5. November 2026 hob Sony die Prognose für das Geschäftsjahr bis März 2027 an: Umsatz ¥13 Billionen, operativer Gewinn ¥1.870 Milliarden, Nettogewinn ¥1.330 Milliarden.
+> - Geplante Dividende für dieses Jahr: ¥35 je Aktie, ¥10 mehr als ein Jahr zuvor.
 
-Das größte Geschäft sind Spiele: PlayStation-Konsolen, Games und das Abo PlayStation Plus brachten 4,69 Billionen Yen Umsatz. Die Musik (Sony Music und ein riesiger Katalog an Songrechten) erzielte 447 Milliarden Yen operativen Gewinn, 25 % mehr. Bildsensoren – Kameras für Handys und Autos – steigerten den Umsatz um 20 % und den Gewinn um 37 %. Dazu kommen Film (Kino, Serien und der Anime-Dienst Crunchyroll) sowie Elektronik (Fernseher, Kameras, Kopfhörer). Im Oktober 2025 spaltete Sony den Großteil seiner Bank- und Versicherungssparte, die Sony Financial Group, ab.
+## Womit das Unternehmen Geld verdient
 
-## Warum Sony wichtig ist
+Sony hat fünf Hauptgeschäfte. **Games & Network Services** verkauft PlayStation-5-Konsolen und eigene Spiele (Spider-Man, God of War, Wolverine), kassiert einen Anteil an Spielen anderer Publisher und Abos für PlayStation Plus; im September 2026 hatte PlayStation 127 Millionen monatlich aktive Konten. **Music** verdient an Streaming und Verlagsrechten für einen riesigen Songkatalog. **Pictures** produziert Filme und Serien und besitzt Crunchyroll, den größten Anime-Streamingdienst außerhalb Japans. **Imaging & Sensing Solutions** fertigt Bildsensoren für Handys wie das iPhone sowie Sensoren für Autos und Fabriken. **Entertainment, Technology & Services** ist die alte Elektroniksparte: Fernseher, Kopfhörer, Kameras und professionelle Videotechnik. Im Oktober 2025 hat Sony das Finanzgeschäft (Sony Financial Group) abgespalten, Bank und Versicherung gehören also nicht mehr zum Konzern.
 
-Gegründet wurde Sony 1946 von Masaru Ibuka und Akio Morita in einem ausgebombten Kaufhaus in Tokio. Heute gehört Sony zu den wenigen Firmen, denen sowohl die „Kanäle“ (Konsolen, Sensoren) als auch die Inhalte (Spiele, Songs, Filme) gehören, für die Menschen bezahlen. Überraschend: Im letzten Jahr verdiente die Musik operativ fast so viel wie das gesamte PlayStation-Geschäft.
+## Die Zahlen aktuell
 
-## Wichtige Zahlen
+- Kurs aktuell: {{price:sony-group}}
+- Marktwert: {{mcap:sony-group}} ({{rank:sony-group}} unter den größten Unternehmen der Welt auf WhatIfStack)
+- Rekordhoch: {{ath:sony-group}} ({{athd:sony-group}}), {{fromath:sony-group}} davon entfernt
+- 10 $ pro Tag über 10 Jahre: {{dca:sony-group:10}} bei {{dcainv:10}} Einsatz ({{dcaroi:sony-group:10}})
 
-- Kurs heute: {{price:sony-group}}
-- 10 $ täglich über 5 Jahre: {{dca:sony-group:5}} aus {{dcainv:5}} Einsatz ({{dcaroi:sony-group:5}})
-- 10 $ täglich über 10 Jahre: {{dca:sony-group:10}} aus {{dcainv:10}} Einsatz ({{dcaroi:sony-group:10}})
+Im Quartal Juli bis September 2026 wuchsen alle Hauptgeschäfte außer der Elektronik. Der operative Gewinn mit Spielen stieg um 83 % auf ¥220,1 Milliarden (ein Jahr zuvor hatten ihn einmalige Verluste von rund ¥50 Milliarden gedrückt, vor allem bei Bungie). Der Umsatz von Pictures sprang um 48 % auf ¥513,7 Milliarden, der operative Gewinn stieg von ¥13,9 auf ¥92,6 Milliarden – dank des Films Spider-Man: Brand New Day, der weltweit mehr als 2,5 Mrd. $ an den Kinokassen einspielte. Music erzielte ¥122,8 Milliarden operativen Gewinn, die Bildsensoren ¥154,6 Milliarden, obwohl der Sensorumsatz um 6 % sank. Laut Sony lag der operative Gewinn von April bis September erstmals in einem Halbjahr über ¥1 Billion.
 
-Mehr auf der [Seite für japanische Aktien]({lang}/stocks-japan/).
+Für das gesamte Geschäftsjahr bis März 2027 erwartet Sony jetzt ¥13.000 Milliarden Umsatz (nach ¥12.479,6 Milliarden im Vorjahr), ¥1.870 Milliarden operativen Gewinn und ¥1.330 Milliarden Nettogewinn. Die Prognose ging für den Rest des Jahres von etwa ¥153 je Dollar aus.
 
-## Die größten Risiken
+## Die Geschichte der Aktie
 
-Spielegewinne schwanken mit dem Konsolenzyklus und großen Releases; auf Bungie, das Studio hinter Destiny, schrieb Sony 120 Milliarden Yen ab. Das Sensorgeschäft hängt an wenigen großen Smartphone-Kunden. Für dieses Jahr erwartet Sony 1 % weniger Umsatz, und ein stärkerer Yen würde die Auslandsgewinne schmälern. Filme und Serien sind ein Hit-Geschäft. Regelmäßige Käufe glätten Kursschwankungen, beseitigen das Risiko aber nicht.
+Sony wurde 1946 in Tokio von Masaru Ibuka und Akio Morita gegründet und wurde mit dem Transistorradio, den Trinitron-Fernsehern und 1979 mit dem Walkman berühmt. Die erste PlayStation kam 1994 auf den Markt und machte Spiele zum wichtigsten Geschäft von Sony. In der Tech-Blase 1999–2000 schoss die Aktie nach oben und stürzte danach ab; im April 2003 löste eine schwache Prognose den „Sony-Schock“ aus, der den ganzen Tokioter Markt mit nach unten zog. In den Jahren 2008–2012 verlor Sony Geld mit Fernsehern und Handys, und die Aktie fiel auf den tiefsten Stand seit Jahrzehnten. Ein Umbau, der schwache Elektronik zurückfuhr und auf Spiele, Musik, Filme und Sensoren setzte, trieb die Aktie durch die 2010er- und 2020er-Jahre. Im Oktober 2024 teilte Sony jede Aktie in fünf, und im April 2025 wurde Hiroki Totoki CEO.
+
+## Konkurrenten
+
+Bei Spielen kämpft Sony gegen Microsoft (Xbox) und Nintendo, zunehmend auch gegen Tencent und Mobile Games. Sony Music konkurriert mit Universal Music und Warner Music, Sony Pictures mit Disney, Warner Bros. Discovery, Netflix und anderen Studios. Bei Bildsensoren sind die wichtigsten Rivalen Samsung und der chinesische Hersteller OmniVision; bei Fernsehern und Kopfhörern Samsung, LG, TCL, Apple und Bose.
+
+## Die wichtigsten Risiken
+
+- **Der Konsolenzyklus:** Die PS5 kam 2020 heraus, ihre Stückzahlen sinken langsam; die Gewinne hängen an der nächsten Konsole und an großen Spiele-Hits.
+- **Preise für Speicherchips:** Das Unternehmen sagte, steigende Speicherkosten würden die Konsolengewinne im folgenden Jahr belasten.
+- **Hits sind nicht planbar:** Ein Jahr wie 2026 mit einem Milliarden-Film über Spider-Man wiederholt sich vielleicht nicht; Filme und Spiele können floppen.
+- **Smartphone-Nachfrage:** Die Bildsensoren hängen an wenigen Handyherstellern, vor allem an Apple.
+- **Der Yen:** Sony verdient viel Geld in Dollar und Euro, ein stärkerer Yen senkt also die Gewinne in Yen.
+
+## Was das bedeutet, wenn du regelmäßig kaufst
+
+Sony ist ein großes, profitables Unternehmen mit mehreren unabhängigen Standbeinen, trotzdem hat die Aktie in schlechten Phasen die Hälfte ihres Werts oder mehr verloren. Wer regelmäßig einen festen Betrag investiert, kauft bei niedrigen Kursen mehr Anteile und bei hohen weniger, ohne den richtigen Zeitpunkt erraten zu müssen. Viele halten eine einzelne Aktie nur als Teil eines breiter gestreuten Depots. Vergangene Ergebnisse sind keine Garantie für künftige Renditen.
 
 *Keine Anlageberatung.*
+
+## Quellen
+
+- [Sony Group, Präsentation zum 2. Quartal des Geschäftsjahres 2026, Form 6-K (SEC)](https://www.sec.gov/Archives/edgar/data/0000313838/000110465926122964/tm2628525d5_6k.htm)
+- [Sony Group Investor Relations](https://www.sony.com/en/SonyInfo/IR/)
+- [Sony Group, Transkript der Telefonkonferenz zum 2. Quartal 2026 (The Motley Fool)](https://www.fool.com/earnings/call-transcripts/2026/11/05/sony-group-sony-q2-2026-earnings-call-transcript/)
