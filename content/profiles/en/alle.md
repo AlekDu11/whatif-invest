@@ -10,7 +10,7 @@ kind: analysis
 > - Revenue: $1.17 billion in Q3 2026, +9.6% a year (+7.2% organic, without acquisitions and currency).
 > - Very profitable for a hardware maker: operating margin of 24.3% in the quarter.
 > - Full-year 2026 outlook raised to $9.05–9.10 of adjusted earnings per share, after $8.14 in 2025.
-> - The share price set a record of $195.42 on 5 November 2026; its worst year since the spin-off was 2022 (−18.6%).
+> - Its record close is {{ath:alle}} ({{athd:alle}}); its worst year since the spin-off was 2022 (−18.6%).
 
 ## How it makes money
 
@@ -26,7 +26,7 @@ So far in 2026 the company generated $539.4 million of available cash flow, spen
 
 ## The stock's story
 
-Allegion has been a steady climber rather than a rocket. Since the 2013 spin-off it has had more up years than down years: its best was 2019 (+53.7%), its worst 2022 (−18.6%), when rising interest rates hit housing and construction stocks. In 2025 it gained 23.8%, and in November 2026 it reached a record of $195.42.
+Allegion has been a steady climber rather than a rocket. Since the 2013 spin-off it has had more up years than down years: its best was 2019 (+53.7%), its worst 2022 (−18.6%), when rising interest rates hit housing and construction stocks. In 2025 it gained 23.8%. Its record close is {{ath:alle}} ({{athd:alle}}).
 
 - Price today: {{price:alle}}
 - $10 a day for 10 years: {{dca:alle:10}} from {{dcainv:10}} invested ({{dcaroi:alle:10}})
