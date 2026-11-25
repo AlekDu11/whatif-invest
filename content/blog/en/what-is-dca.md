@@ -1,11 +1,11 @@
 ---
-title: What is DCA (dollar-cost averaging) and why it works
-description: Dollar-cost averaging in plain words: how it works, pros and cons, and examples with Bitcoin, Nvidia and the S&P 500 using up-to-date numbers.
+title: What is DCA? Dollar-cost averaging explained with 5-year results
+description: What is DCA? Buying a fixed amount on a schedule, whatever the price. See what $10 a day did in 5 years in Bitcoin, Nvidia, the S&P 500 and gold.
 date: 2026-11-15
 category: guides
 assets: btc, nvda, spy
 ---
-**DCA (dollar-cost averaging)** means buying an asset for the same amount at regular intervals — daily, weekly or monthly — whatever the price.
+**DCA (dollar-cost averaging)** means buying an asset for the same amount at regular intervals — daily, weekly or monthly — whatever the price. It takes the guesswork out of timing the market: your fixed amount buys more units when prices fall and fewer when they rise.
 
 ## How it works
 
