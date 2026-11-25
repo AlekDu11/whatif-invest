@@ -1,6 +1,6 @@
 ---
-title: Orange Polska (OPL) explained: Poland's old phone monopoly that became a fibre growth story
-description: Orange Polska in plain language — how it earns 3.59 billion zł a quarter from mobile, fibre and IT, why profit jumped 44%, the dividend floor, risks and competitors.
+title: Orange Polska (OPL) stock: Poland's former phone monopoly turned fibre operator
+description: Orange Polska in plain language: 3.59 billion zł of Q3 2026 revenue from mobile, fibre and IT, a 44% profit jump, the dividend floor, risks and rivals.
 date: 2026-11-20
 kind: analysis
 ---
@@ -10,7 +10,7 @@ kind: analysis
 > - Revenue: 3.59 billion zł in Q3 2026, +7.9% a year; net profit 328 million zł, +44%.
 > - Fibre: more than 1.84 million customers (+10% a year) and 12.4 million homes in reach.
 > - Dividend: 0.61 zł a share from 2025 profit (+15%), set as the minimum until 2028.
-> - The shares hit their highest levels since 2012 this year; the past year's range was 8.79–17.24 zł.
+> - In February 2026 the price was back at levels last seen in October 2012, after rising about 120% in three years.
 
 ## How it makes money
 
@@ -18,25 +18,27 @@ Most revenue comes from monthly subscriptions. Mobile is the biggest base: nearl
 
 ## The numbers right now
 
+- Price today: {{price:opl}}
+- Market value: {{mcap:opl}} ({{rank:opl}} among the world's largest companies on WhatIfStack)
+- Record high: {{ath:opl}} ({{athd:opl}}), {{fromath:opl}} from it
+- $10 a day for 10 years: {{dca:opl:10}} from {{dcainv:10}} invested ({{dcaroi:opl:10}})
+
 In July–September 2026 Orange Polska earned 3.59 billion zł of revenue, up 7.9%. EBITDAaL (operating profit before depreciation, after leases — the main measure telecoms use) rose 15.6% to 1.04 billion zł, a 28.9% margin, helped by indirect costs falling almost 4%. Net profit grew 44% to 328 million zł. Over nine months revenue reached 10.28 billion zł and net profit 904 million zł (+30%). For 2026 the company targets EBITDAaL growth above 6% (raised from 3–5% in February), at least 1.2 billion zł of organic cash flow and about 1.8 billion zł of investment.
 
 ## The stock's story
 
-For more than a decade Orange Polska was a weak stock: in February 2026 analysts at DM BOŚ noted that the price had only just returned to levels last seen in October 2012, and that even with all dividends counted, long-term holders were merely back to the highs of the early 2000s. The turnaround came as fibre and 5G spending began to pay off under CEO Liudmila Climoc (since September 2023): over the three years to February 2026 the stock rose about 120%, against about 83% for the WIG20 index. The market value is now about 22 billion zł.
-
-- Price today: {{price:opl}}
-- $10 a day for 10 years: {{dca:opl:10}} from {{dcainv:10}} invested ({{dcaroi:opl:10}})
+For more than a decade Orange Polska was a weak stock: in February 2026 analysts at DM BOŚ noted that the price had only just returned to levels last seen in October 2012, and that even with all dividends counted, long-term holders were merely back to the highs of the early 2000s. The turnaround came as fibre and 5G spending began to pay off under CEO Liudmila Climoc (since September 2023): over the three years to February 2026 the stock rose about 120%, against about 83% for the WIG20 index.
 
 ## Competitors
 
-Poland has four big operators: Orange competes with Play (owned by France's Iliad), Plus (Polsat Plus Group) and T-Mobile Polska, plus cable and local fibre companies in broadband. Its advantages are the nationwide fixed network inherited from the former monopoly, fibre in reach of 10.7 million homes and strong positions with business clients.
+Poland has four big operators: Orange competes with Play (owned by France's Iliad), Plus (Polsat Plus Group) and T-Mobile Polska, plus cable and local fibre companies in broadband. Its advantages are the nationwide fixed network inherited from the former monopoly, a fibre network reaching more than 12 million homes in 2026 and strong positions with business clients.
 
 ## Main risks
 
 - **Price competition:** four operators fight for the same customers, and price wars can quickly eat margins.
 - **Heavy investment:** about 1.8 billion zł a year goes into 5G and fibre; if growth slows, cash for dividends shrinks.
 - **A controlling owner:** Orange SA controls the company, so minority shareholders have little say over strategy and payouts.
-- **After a big rally:** the price roughly doubled from its 52-week low; at about 23 times earnings, good news is already in it.
+- **After a big rally:** in the year to November 2026 the price roughly doubled from its low and traded at about 23 times earnings, so a lot of good news was already in the price.
 
 ## What it means if you buy regularly
 
