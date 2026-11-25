@@ -5,6 +5,7 @@ module.exports = {
   gate: 'https://www.gate.io/ref/4271013',
   bingx: 'https://bingx.com/partner/AlekcDu/',
   mexc: 'https://promote.mexc.com/a/fKqr6ehO',
+  okx: 'https://www.okx.com/join/2066720',   // owner 2026-11-25: OKX exchange referral
   'okx-wallet': 'https://web3.okx.com/join/ALEKSDU',
   hyperliquid: 'https://app.hyperliquid.xyz/join/ALEKSDU',
   gmgn: 'https://gmgn.ai/r/YEIKWyEq?chain=eth',
