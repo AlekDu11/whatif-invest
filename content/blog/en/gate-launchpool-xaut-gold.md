@@ -15,6 +15,8 @@ stat_label: APR in tokenized gold for staking USDT
 ---
 Gate's Launchpool lets you lock coins on the exchange and receive a new token every hour in return — and in its 384th round, from October 26 to November 16, 2026, the reward was **tokenized gold: 36 XAUT, with the USDT pool paying about 7.69% a year** on November 16. New rounds open every week with different reward tokens. The headline APRs move every hour, though, and the biggest ones are paid in tokens that can lose value fast.
 
+*Updated November 25, 2026: round 384 with the XAUT gold reward ended on November 16 as scheduled. Launchpool itself keeps running with new rounds, so check today's reward tokens and APRs before staking — the gold pool is not open now.*
+
 > **Key takeaways**
 > - Round 384 split 36 XAUT (Tether Gold, one token per troy ounce) into three pools: 20 for USDT stakers, 8 for GT and 8 for XAUT.
 > - On November 16, 2026 the APRs were 7.69% for USDT, 5.13% for XAUT and 2.10% for GT; parallel rounds paid 133.79% and 112.67% — in their own new tokens.
