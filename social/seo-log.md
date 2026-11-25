@@ -28,3 +28,19 @@ date | url | query | impressions | position | CTR | what changed | result after 
 - 2026-11-23: /en/crypto-exchanges/ 89 impr / pos 25 («biggest / largest crypto exchanges») is noindex by the owner's choice (hidden since 2026-11-20).
 - 2026-11-23: /ru/largest-companies/ 87 / 8.8 («крупнейшие компании мира по капитализации») and /tr/largest-companies/ 52 / 16.8 («dünyanın en büyük şirketleri 2026» 14 / 7.2) — title already matches; the meta description is the shared generic `lead` in scripts/i18n_lc.py, → done 2026-11-23 (owner «так», LCW).
 - 2026-11-23: /en/largest-companies/uk/ 92 / 24.6 — ranking wrong (GBp market caps ÷100), already reported.
+
+## Indexing requests
+Rule (owner 2026-11-25): each URL is requested ONCE — never request a URL that is already in this table.
+
+| date | url | status before | result |
+|---|---|---|---|
+| 2026-11-24 | https://whatifstack.com/en/learn/ | not indexed | requested → indexed next day |
+| 2026-11-24 | https://whatifstack.com/en/guide/ | not indexed | requested → indexed next day |
+| 2026-11-25 | https://whatifstack.com/ | on Google | requested (re-crawl for favicon/brand) |
+| 2026-11-25 | https://whatifstack.com/en/ | on Google | requested |
+| 2026-11-25 | https://whatifstack.com/en/nvda/ | — | requested |
+| 2026-11-25 | https://whatifstack.com/en/eth/ | — | requested |
+| 2026-11-25 | https://whatifstack.com/en/stocks/ | — | requested |
+| 2026-11-25 | https://whatifstack.com/crypto/ | not indexed | requested |
+| 2026-11-25 | https://whatifstack.com/learn/ | on Google | requested |
+| 2026-11-25 | https://whatifstack.com/guide/ | on Google | quota exceeded — not sent (already indexed, no need) |
