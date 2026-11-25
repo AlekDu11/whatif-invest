@@ -5223,7 +5223,7 @@ def main():
     js = open(os.path.join(ROOT, 'src/app.js'), encoding='utf-8').read()
     ref = open(os.path.join(ROOT, 'src/ref.js'), encoding='utf-8').read()
     dv = h8(json.dumps(market['assets'], sort_keys=True))
-    idx = []
+    idx, SPK = [], {}
     for aid in ORDERED:
         a, m = A[aid], METRICS[aid]
         e = dict(i=aid, n=nm(a, 'uk'), t=a['tk'], c=a['cat'], o=ORD[aid], pr=m['price'], ch=m['chg'],
@@ -5252,6 +5252,9 @@ def main():
                 e['x'], e['xs'] = 'd', '/'.join(v['dex'])   # DEX pool price via /api/chart?dex=pool
         if a['cat'] in ('stock', 'etf', 'metal', 'cmd') and a.get('yahoo') and not any(ch in a['yahoo'] for ch in '.:'):
             e['y'] = a['yahoo']   # USD-listed: live quote via /api/quote
+        SPK[aid] = [e.pop('sp')] + [round(e[k], 4) if isinstance(e.get(k), float) else e.get(k) for k in ('r1', 'r3', 'r5')]
+        for k in ('r1', 'r3', 'r5'):
+            e.pop(k, None)   # 1-year sparkline moved to mkt.json (owner 2026-11-25: index.js was 857 KB on every page; tables load mkt.json anyway)
         idx.append({k: (round(v, 4) if isinstance(v, float) and k in ('ch', 'r1', 'r3', 'r5') else v) for k, v in e.items() if v is not None})
         write(f'assets/p/{aid}.json', json.dumps({'start': a['start'], 'end': a['end'], 'p': a['p'], 'n': nm(a, 'en'), 't': a['tk']}, separators=(',', ':')))
     sym = {}
@@ -5264,8 +5267,8 @@ def main():
     mk = {}
     for aid in ORDERED:
         mc, vol, c7, s7 = mkt_of(aid)
-        if mc or vol or c7 is not None or s7:
-            mk[aid] = [round(mc) if mc else None, round(vol) if vol else None, round(c7, 4) if c7 is not None else None, s7, A[aid].get('rank') if A[aid]['cat'] == 'crypto' else None]
+        if mc or vol or c7 is not None or s7 or any(v is not None for v in SPK.get(aid, [])):
+            mk[aid] = [round(mc) if mc else None, round(vol) if vol else None, round(c7, 4) if c7 is not None else None, s7, A[aid].get('rank') if A[aid]['cat'] == 'crypto' else None] + (SPK.get(aid) or [None] * 4)
     st = [dict(t=k, n=v['name'], pr=v['price'], ch=round(v['chg'], 4) if v.get('chg') is not None else None, l=v.get('logo'), mc=round(v['mcap']) if v.get('mcap') else None,
                vo=round(v['vol']) if v.get('vol') else None, w7=v.get('c7'), k7=v.get('s7'), r=v.get('rank'), g=v.get('gold')) for k, v in SB.items()]
     write('assets/mkt.json', json.dumps({'a': mk, 'st': [{x: y for x, y in r.items() if y is not None} for r in st]}, ensure_ascii=False, separators=(',', ':')))

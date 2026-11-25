@@ -90,7 +90,7 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
   const COLS_MKT=[['n','#','l n hide-sm'],['name',T.name,'l'],['buy','','hide-sm'],['pr',T.price,''],['ch',T.chg,''],['w7',T.mk_d7||'7d','hide-sm'],['mc',T.mk_mcap||'Market cap','hide-sm'],['vo',T.mk_vol||'Volume','hide-md'],['k7',T.mk_k7||'7d','hide-sm'],['go','','hide-sm']];
   let COLS=COLS_MKT, ST=[];
   fetch(`${BASE}/assets/mkt.json?v=${WI.v}`).then(r=>r.json()).then(M=>{
-    Object.entries(M.a||{}).forEach(([i,v])=>{ const a=BYID[i]; if(a){ a.mc=v[0]; a.vo=v[1]; a.w7=v[2]; a.k7=v[3]; a.rk=v[4] } });
+    Object.entries(M.a||{}).forEach(([i,v])=>{ const a=BYID[i]; if(a){ a.mc=v[0]; a.vo=v[1]; a.w7=v[2]; a.k7=v[3]; a.rk=v[4]; if(v[5]) a.sp=v[5]; if(v.length>6){ a.r1=v[6]; a.r3=v[7]; a.r5=v[8] } } });
     const cr=IDX.filter(a=>a.c==='crypto'&&a.rk).sort((x,y)=>x.rk-y.rk);
     ST=(M.st||[]).filter(x=>x.r&&x.pr).map(x=>{ const prev=cr.filter(a=>a.rk<x.r).pop(); return {i:'st-'+x.t.toLowerCase(), st:1, c:'crypto', n:x.n, t:x.t, pr:x.pr, ch:x.ch, l:x.l, mc:x.mc, vo:x.vo, w7:x.w7, k7:x.k7, rk:x.r, o:(prev?prev.o:-1)+0.5-1/(x.r+2)} });
     draw() }).catch(()=>{});
@@ -810,7 +810,7 @@ new MutationObserver(()=>{ clearTimeout(window._wiStar); window._wiStar=setTimeo
     box.innerHTML=`<div class="tw"><table class="mt"><thead><tr><th class="l">${esc(T.name||'')}</th><th>${esc(T.price||'')}</th><th>${esc(T.chg||'')}</th><th class="hide-sm">${esc(T.mk_d7||'7d')}</th><th class="hide-md">${esc(T.mk_mcap||'')}</th><th class="hide-md">${esc(T.mk_vol||'')}</th><th class="hide-sm">${esc(T.mk_k7||'')}</th><th></th></tr></thead><tbody>`+
       w.map(i=>{ const a=BYID[i], k=m(i); return `<tr><td class="l"><button class="star" data-s="${a.i}">★</button><a class="asset" href="${url(a.i)}">${icon(a)}<span><span class="nm">${esc(nm(a))}</span><span class="tk">${esc(a.t)}</span></span></a></td>
         <td class="num" data-p="${a.i}">${fmtPrice(a.pr)}</td><td class="num ${cls(a.ch)}" data-c="${a.i}">${fmtPct(a.ch)}</td><td class="num hide-sm ${cls(k[2])}">${k[2]!=null?fmtPct(k[2]):'—'}</td>
-        <td class="num hide-md">${k[0]?'$'+fb(k[0]):'—'}</td><td class="num hide-md">${k[1]?'$'+fb(k[1]):'—'}</td><td class="hide-sm">${spark(k[3]||a.sp)}</td><td class="pfact"><button class="pb" type="button" data-pfa="${a.i}" title="${esc(q.addtx)}">＋</button></td></tr>` }).join('')+'</tbody></table></div>';
+        <td class="num hide-md">${k[0]?'$'+fb(k[0]):'—'}</td><td class="num hide-md">${k[1]?'$'+fb(k[1]):'—'}</td><td class="hide-sm">${spark(k[3]||k[5]||a.sp)}</td><td class="pfact"><button class="pb" type="button" data-pfa="${a.i}" title="${esc(q.addtx)}">＋</button></td></tr>` }).join('')+'</tbody></table></div>';
     $$('#watch [data-pfa]').forEach(b=>b.onclick=()=>{ location.href=`${W.me}?add=${encodeURIComponent(b.dataset.pfa)}` }) }
   document.addEventListener('wi:watch',drawWatch); drawWatch();
 })();
