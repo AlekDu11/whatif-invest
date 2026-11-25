@@ -1,8 +1,5 @@
-# Site check 2026-11-24 14:58 UTC
+# Site check 2026-11-25 05:46 UTC
 
-Checked **950** pages in 9 s (daily sample: 150 uk + 150 en + 15 per other language; full check on Sundays, 19 hubs × 20 languages).
-Broken: **1**
+Checked **950** pages in 14 s (daily sample: 150 uk + 150 en + 15 per other language; full check on Sundays, 19 hubs × 20 languages).
+Broken: **0** ✅
 
-| URL | problem |
-|---|---|
-| https://whatifstack.com/id/xel-token/ | HTTP 404 |
