@@ -20,6 +20,11 @@ The second business is storage. IMC's elevators and warehouses hold 554,000 tonn
 
 ## The numbers right now
 
+- Price today: {{price:imc}}
+- Market value: {{mcap:imc}} ({{rank:imc}} among the world's largest companies on WhatIfStack)
+- Record high: {{ath:imc}} ({{athd:imc}}), {{fromath:imc}} from it
+- $10 a day for 10 years: {{dca:imc:10}} from {{dcainv:10}} invested ({{dcaroi:imc:10}})
+
 In 2025 IMC sold 768,000 tonnes of crops (−30%, as 2024 included old stocks) and revenue fell 10% to $190.5 million. But prices rose — corn +31%, wheat +16%, sunflower +45% — so EBITDA grew 11% to $95.8 million and net profit rose 24% to $67.5 million. Debt is low: $17.9 million at the end of 2025, down from $23.3 million a year earlier.
 
 The first half of 2026 was weaker: revenue $88.9 million (+6%), normalised EBITDA $50.2 million (−22%) and net profit $34.3 million (−33%). Fuel and energy costs more than doubled, and the company blamed lower corn and sunflower prices, higher logistics costs and the weaker hryvnia.
@@ -30,8 +35,6 @@ IMC listed in Warsaw on 4 May 2011 at PLN 10.8 a share, raising $24.4 million wh
 
 The stock is also a dividend story: IMC paid €0.63 a share in June 2025, €0.35 in November 2025 and an interim €0.52 in May 2026 (subject to 15% Luxembourg withholding tax). In 2025 Kernel, another big Ukrainian agroholding, sought control of IMC with Petrov's Agrovalley, and filed for approval with Ukraine's competition authority, but the talks were suspended in May 2025 and IMC said it would not sell a stake. We found no tender offer or delisting plans announced since.
 
-- Price today: {{price:imc}}
-- $10 a day for 10 years: {{dca:imc:10}} from {{dcainv:10}} invested ({{dcaroi:imc:10}})
 
 ## Competitors
 
