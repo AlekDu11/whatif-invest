@@ -10,7 +10,7 @@ kind: analysis
 > - Q3 2026 (preliminary): EBITDA 4.61 billion zł, of which about 2.89 billion zł recurring; net profit 3.0 billion zł versus 1.3 billion zł expected by analysts.
 > - Strategy to 2035: about 210 billion zł of investment, with EBITDA targeted at about 15 billion zł in 2030 and over 30 billion zł in 2035.
 > - Dividends return from 2026 profit — the first since 0.25 zł per share was paid in 2016.
-> - The share price, 16.29 zł on 19 November 2026, is still below the 23 zł IPO price of November 2009.
+> - PGE listed at 23 zł in November 2009; on 19 November 2026 the shares were at 16.29 zł, still below the IPO price.
 
 ## How it makes money
 
@@ -45,7 +45,7 @@ In Poland PGE competes with Tauron, Enea and Energa (owned by Orlen), which have
 
 ## What it means if you buy regularly
 
-PGE shows that a big, important company can still leave shareholders below the IPO price 17 years later. Regular buying spreads entries across cheap and expensive years, and the dividend restart is a change worth watching, but the stock depends heavily on Polish politics and on one country's energy transition. Past results do not guarantee future returns.
+PGE shows that a big, important company can leave shareholders below the IPO price for a very long time: in November 2026, 17 years after listing, the shares were still under 23 zł. Regular buying spreads entries across cheap and expensive years, and the dividend restart is a change worth watching, but the stock depends heavily on Polish politics and on one country's energy transition. Past results do not guarantee future returns.
 
 *Not investment advice.*
 
