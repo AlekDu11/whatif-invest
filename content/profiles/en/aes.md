@@ -4,13 +4,13 @@ description: AES in plain language — a $33.4 billion buyout at $15 cash per sh
 date: 2026-11-19
 kind: analysis
 ---
-**AES** builds and runs power plants and electricity networks: solar and wind farms, giant batteries, gas plants and two regulated utilities in Indiana and Ohio that keep the lights on for about 1.1 million customers. Much of its newest power goes to tech companies feeding data centres. In March 2026 AES agreed to be bought by a group of infrastructure investors, so its days as a listed stock are almost over.
+**AES** builds and runs power plants and electricity networks: solar and wind farms, giant batteries, gas plants and two regulated utilities in Indiana and Ohio that keep the lights on for about 1.1 million customers. Much of its newest power goes to tech companies feeding data centres. In March 2026 AES agreed to be bought by a group of infrastructure investors, so its stock market listing was set to end when the deal closes (expected around 2 December 2026).
 
 > **Key takeaways**
 > - Buyout price: $15.00 in cash per share; the deal values AES at about $33.4 billion including debt.
 > - Final regulatory approval (FERC) came on 17 November 2026; closing is expected on or about 2 December 2026.
 > - Q3 2026 revenue: about $3.87 billion, up roughly 16% a year.
-> - The stock never got back to its October 2000 peak of $70.63 — it fell 98.7% by October 2002.
+> - The stock peaked at $70.63 on 2 October 2000 and had lost 98.7% by October 2002.
 
 ## How it makes money
 
@@ -24,9 +24,10 @@ The buyers are a consortium led by Global Infrastructure Partners (part of Black
 
 ## The stock's story
 
-AES was a star of the late-1990s power boom and set a record of $70.63 on 2 October 2000. In the 2001–2002 energy-sector bust it lost 98.7% and bottomed in October 2002. It recovered only partly over the following two decades. After a peak in 2022, the price more than halved by the end of 2025 as higher interest rates made its debt-funded build-out costlier — which is what made AES cheap enough to attract a takeover.
+AES was a star of the late-1990s power boom and peaked at $70.63 on 2 October 2000. In the 2001–2002 energy-sector bust it lost 98.7% and bottomed in October 2002. It recovered only partly over the following two decades. After a peak in 2022, the price more than halved by the end of 2025 as higher interest rates made its debt-funded build-out costlier — which is what made AES cheap enough to attract a takeover.
 
 - Price today: {{price:aes}}
+- Record high (monthly close): {{ath:aes}} ({{athd:aes}})
 - $10 a day for 10 years: {{dca:aes:10}} from {{dcainv:10}} invested ({{dcaroi:aes:10}})
 
 ## Competitors
@@ -42,7 +43,7 @@ In renewables AES competes with NextEra Energy, Brookfield Renewable and other l
 
 ## What it means if you buy regularly
 
-AES is about to stop trading: after closing, shares turn into $15 in cash and leave the New York Stock Exchange, so regular buying in it ends. Anyone who bought monthly over the past decade paid a mix of prices — some above $15, some below — which the line above shows. The broader lesson: a single stock can drop 98% and never fully come back, and a buyout fixes the final price for everyone. Past results do not guarantee future returns.
+AES was set to stop trading at the closing (expected around 2 December 2026): shares then turn into $15 in cash and leave the New York Stock Exchange, so regular buying in it ends. Anyone who bought monthly over the past decade paid a mix of prices — some above $15, some below — which the line above shows. The broader lesson: a single stock can drop 98% and never fully come back, and a buyout fixes the final price for everyone. Past results do not guarantee future returns.
 
 *Not investment advice.*
 
