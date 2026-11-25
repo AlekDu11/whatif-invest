@@ -1,10 +1,10 @@
 ---
-title: Ferrexpo (FXPO) explained: Ukraine's iron ore miner at a quarter of capacity
-description: Ferrexpo in plain language — output down 54% in 2026, a $100 million rescue share sale, war, VAT and founder risks, the numbers and what regular buyers should know.
+title: Ferrexpo (FXPO) stock: the Ukrainian iron ore pellet maker listed in London
+description: Ferrexpo in plain language — output down 54% in nine months of 2026, a $100 million rescue share sale, war, VAT and founder risks, the numbers and what regular buyers should know.
 date: 2026-11-18
 kind: analysis
 ---
-**Ferrexpo** digs iron ore near Kremenchuk in Ukraine's Poltava region and turns it into pellets — small hard balls of iron ore that steel mills melt down. It is listed in London, but its mines and staff are in Ukraine, so the war decides its fate: in 2026 it is producing at roughly a quarter of pre-war capacity and had to sell $100 million of new shares to keep going.
+**Ferrexpo** digs iron ore near Kremenchuk in Ukraine's Poltava region and turns it into pellets — small hard balls of iron ore that steel mills melt down. It is listed in London, but its mines and staff are in Ukraine, so the war decides its fate: in the first nine months of 2026 it produced less than half as much as a year earlier and had to sell $100 million of new shares to keep going.
 
 > **Key takeaways**
 > - Output in the first nine months of 2026: 2.33 million tonnes, down 54% a year; production stopped completely in August.
@@ -20,16 +20,18 @@ DR pellets are the bright spot: in the first nine months of 2026 the company mad
 
 ## The numbers right now
 
-For 2025, revenue was $787 million, down 16%, and underlying EBITDA (profit before interest, tax and depreciation) was only $28 million. The net loss of $224 million included a $154 million write-down of its assets. In the first half of 2026 revenue was $196 million, the pre-tax loss narrowed to $11 million, and net cash at the end of June was just $21 million.
+- Price today: {{price:fxpo}}
+- Market value: {{mcap:fxpo}} ({{rank:fxpo}} among the world's largest companies on WhatIfStack)
+- Record high: {{ath:fxpo}} ({{athd:fxpo}}), {{fromath:fxpo}} from it
+- $10 a day for 10 years: {{dca:fxpo:10}} from {{dcainv:10}} invested ({{dcaroi:fxpo:10}})
+
+For 2025, revenue was $787 million, down 16%, and underlying EBITDA (profit before interest, tax and depreciation) was only $28 million. The net loss of $224 million included a $154 million write-down of its assets. In the first half of 2026 revenue was $196 million, the pre-tax loss narrowed to $11 million, and net cash at the end of June 2026 was $21 million.
 
 The third quarter brought 780,000 tonnes of iron ore, down 19% a year. Russian attacks on Black Sea ports blocked sea exports in late July, the company suspended production in August and restarted one pellet line in September after the new money arrived.
 
 ## The stock's story
 
-Ferrexpo has lived with war risk since 2022, but 2026 was its hardest year. On 22 April it warned that cash could run out by the end of August, and the shares fell 13%. On 1 May the London Stock Exchange suspended trading because audited 2025 results were not ready. In September the company raised $100 million: Andrii Verevskyi, owner of agribusiness Kernel, put in $50 million, and Fevamotinico, the company linked to Zhevago and the largest shareholder, committed almost $30 million. Trading resumed on 7 September, and on the half-year results the shares rose 12% to 32.02p. The 52-week high is 87.23p.
-
-- Price today: {{price:fxpo}}
-- $10 a day for 10 years: {{dca:fxpo:10}} from {{dcainv:10}} invested ({{dcaroi:fxpo:10}})
+Ferrexpo has lived with war risk since 2022, but 2026 was its hardest year. On 22 April it warned that cash could run out by the end of August, and the shares fell 13%. On 1 May the London Stock Exchange suspended trading because audited 2025 results were not ready. In September the company raised $100 million: Andrii Verevskyi, owner of agribusiness Kernel, put in $50 million, and Fevamotinico, the company linked to Zhevago and the largest shareholder, committed almost $30 million. Trading resumed on 7 September, and on the half-year results the shares rose 12% to 32.02p.
 
 ## Competitors
 
