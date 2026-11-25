@@ -1933,3 +1933,10 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
   const run=()=>els.forEach(el=>{ const a=BY[el.dataset.hc]; if(a&&a.pr) el.textContent=big(+el.dataset.hq*a.pr) });
   run(); document.addEventListener('wi:tick',run);
 })();
+
+// country offer: swap the Telegram Wallet card for the visitor's country bonus (time zone → country, no request; owner 2026-11-26)
+(function(){ let tz=''; try{ tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'' }catch(e){}
+  if(!tz) return; const today=new Date().toISOString().slice(0,10);
+  document.querySelectorAll('a.offer[data-alt]').forEach(a=>{ let m; try{ m=Object.values(JSON.parse(a.dataset.alt)).find(x=>x.z.includes(tz)) }catch(e){ return }
+    if(!m||(m.u&&today>m.u)) return; a.href=m.h; const b=a.querySelector('.oft b'), d=a.querySelector('.oft span'), n=a.querySelector('.oft small'), c=a.querySelector('.btn');
+    if(b) b.textContent=m.t; if(d) d.textContent=m.d; if(n) n.textContent=m.note; if(c) c.textContent=m.cta; a.dataset.cc='1' }) })();

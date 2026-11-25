@@ -3303,7 +3303,14 @@ def tg_card(lang, src):
 def offer_card(lang, src):
     """One native partner offer (Telegram Wallet bonus); clicks counted by /go/ with the placement in `from`."""
     o = OFFER_TGW[lang]
-    return (f'<a class="offer section" href="/go/tgwallet?from={src}&l={lang}" target="_blank" rel="sponsored noopener">'
+    alt = {}   # owner 2026-11-26: visitors from a country with a featured bonus (data/bonuses.json feat + tz) see that offer instead (swapped in app.js)
+    for cc, C in (BONUS.get('countries') or {}).items():
+        it = next((i for i in C.get('items', []) if i['id'] == C.get('feat')), None)
+        bn = it and (it.get('banner', {}).get(lang) or it.get('banner', {}).get('en'))
+        if bn and C.get('tz'):
+            alt[cc] = dict(z=C['tz'], h=f'/go/{it["go"]}?from={src}-{cc}&l={lang}', u=it.get('until') or '', **bn)
+    da = f' data-alt="{esc(json.dumps(alt, ensure_ascii=False, separators=(",", ":")))}"' if alt else ''
+    return (f'<a class="offer section" href="/go/tgwallet?from={src}&l={lang}" target="_blank" rel="sponsored noopener"{da}>'
             f'<span class="ofi" aria-hidden="true">🎁</span><span class="oft"><b>{esc(o["t"])}</b><span>{esc(o["d"])}</span><small>{esc(o["note"])}</small></span>'
             f'<span class="btn">{esc(o["cta"])}</span></a>')
 

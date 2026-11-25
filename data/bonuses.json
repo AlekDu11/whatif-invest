@@ -1,57 +1,237 @@
 {
- "_doc": "Sign-up / invite-a-friend bonuses by country (owner 2026-11-25: «honest, sorted by country; the list will grow»). Each item: id, go (/go/<id> partner id or null), url (official page when go is null), kind (bank|invest|crypto), v (value for sorting, in the country currency; 0 = unknown), cur, until (YYYY-MM-DD or null), you/friend/need/cash = text per language, src = [title, url] official first, checked = date the terms were last checked. Never invent terms; when a term is unknown say so in the text.",
+ "_doc": "Sign-up / invite-a-friend bonuses by country (owner 2026-11-25: «honest, sorted by country; the list will grow»). Each item: id, go (/go/<id> partner id or null), url (official page when go is null), kind (bank|invest|crypto), v (value for sorting, in the country currency; 0 = unknown), cur, until (YYYY-MM-DD or null), you/friend/need/cash = text per language, src = [title, url] official first, checked = date the terms were last checked. Never invent terms; when a term is unknown say so in the text. Country banner (owner 2026-11-26): «tz» = browser time zones of that country, «feat» = id of the item shown instead of the Telegram Wallet offer card on home + crypto pages for visitors from that country; the item needs «banner» texts per language (t, d, cta, note); it hides itself after «until».",
  "asof": "2026-11-26",
  "countries": {
   "ua": {
    "flag": "🇺🇦",
-   "name": {"uk": "Україна", "ru": "Украина", "en": "Ukraine"},
+   "name": {
+    "uk": "Україна",
+    "ru": "Украина",
+    "en": "Ukraine"
+   },
    "items": [
     {
-     "id": "inzhur", "go": "inzhur", "kind": "invest", "v": 400, "cur": "₴", "until": "2026-12-09", "checked": "2026-11-26", "name": "Inzhur REIT",
-     "you": {"uk": "35 сертифікатів фонду Inzhur REIT (~400 грн) до 9.12.2026, потім зазвичай 20", "ru": "35 сертификатов фонда Inzhur REIT (~400 грн) до 9.12.2026, потом обычно 20", "en": "35 Inzhur REIT certificates (~₴400) until 9 Dec 2026, usually 20 after that"},
-     "friend": {"uk": "Стільки ж тому, хто запросив. Друзів — без обмежень", "ru": "Столько же тому, кто пригласил. Друзей — без ограничений", "en": "The same for the person who invited you. Unlimited friends"},
-     "need": {"uk": "Реєстрація за посиланням і верифікація в застосунку. Власні гроші не потрібні", "ru": "Регистрация по ссылке и верификация в приложении. Свои деньги не нужны", "en": "Sign up via the invite link and verify in the app. No own money needed"},
-     "cash": {"uk": "Сертифікати, не гроші: щомісяця платять дивіденди, продати одразу не можна (строк — у правилах програми)", "ru": "Сертификаты, не деньги: ежемесячно платят дивиденды, продать сразу нельзя (срок — в правилах программы)", "en": "Certificates, not cash: they pay monthly dividends and can't be sold right away (lock period in the programme rules)"},
+     "id": "inzhur",
+     "go": "inzhur",
+     "kind": "invest",
+     "v": 400,
+     "cur": "₴",
+     "until": "2026-12-09",
+     "checked": "2026-11-26",
+     "name": "Inzhur REIT",
+     "you": {
+      "uk": "35 сертифікатів фонду Inzhur REIT (~400 грн) до 9.12.2026, потім зазвичай 20",
+      "ru": "35 сертификатов фонда Inzhur REIT (~400 грн) до 9.12.2026, потом обычно 20",
+      "en": "35 Inzhur REIT certificates (~₴400) until 9 Dec 2026, usually 20 after that"
+     },
+     "friend": {
+      "uk": "Стільки ж тому, хто запросив. Друзів — без обмежень",
+      "ru": "Столько же тому, кто пригласил. Друзей — без ограничений",
+      "en": "The same for the person who invited you. Unlimited friends"
+     },
+     "need": {
+      "uk": "Реєстрація за посиланням і верифікація в застосунку. Власні гроші не потрібні",
+      "ru": "Регистрация по ссылке и верификация в приложении. Свои деньги не нужны",
+      "en": "Sign up via the invite link and verify in the app. No own money needed"
+     },
+     "cash": {
+      "uk": "Сертифікати, не гроші: щомісяця платять дивіденди, продати одразу не можна (строк — у правилах програми)",
+      "ru": "Сертификаты, не деньги: ежемесячно платят дивиденды, продать сразу нельзя (срок — в правилах программы)",
+      "en": "Certificates, not cash: they pay monthly dividends and can't be sold right away (lock period in the programme rules)"
+     },
      "more": "inzhur-gift-certificates",
-     "src": [["Inzhur — реферальна програма", "https://www.inzhur.reit/referral-program"]]
+     "src": [
+      [
+       "Inzhur — реферальна програма",
+       "https://www.inzhur.reit/referral-program"
+      ]
+     ],
+     "banner": {
+      "uk": {
+       "t": "35 сертифікатів Inzhur (~400 грн) за реєстрацію",
+       "d": "Частка в комерційній нерухомості з щомісячними дивідендами — подарунок новим інвесторам до 9.12.2026. Власні гроші не потрібні.",
+       "cta": "Отримати",
+       "note": "Партнерське посилання. Подарункові сертифікати не можна продати одразу."
+      },
+      "ru": {
+       "t": "35 сертификатов Inzhur (~400 грн) за регистрацию",
+       "d": "Доля в коммерческой недвижимости с ежемесячными дивидендами — подарок новым инвесторам до 9.12.2026. Свои деньги не нужны.",
+       "cta": "Получить",
+       "note": "Партнёрская ссылка. Подарочные сертификаты нельзя продать сразу."
+      },
+      "en": {
+       "t": "35 Inzhur certificates (~₴400) for signing up",
+       "d": "A share of Ukrainian commercial real estate with monthly dividends — a gift for new investors until 9 Dec 2026. No own money needed.",
+       "cta": "Get it",
+       "note": "Partner link. Gift certificates can’t be sold right away."
+      }
+     }
     },
     {
-     "id": "privat24", "go": "privat24", "kind": "bank", "v": 150, "cur": "₴", "until": "2027-04-08", "checked": "2026-11-26", "name": "ПриватБанк",
-     "you": {"uk": "150 грн за картку «Універсальна» або «Універсальна Gold», оформлену за порадою", "ru": "150 грн за карту «Универсальная» или «Универсальная Gold», оформленную по рекомендации", "en": "₴150 for a «Universal» or «Universal Gold» card opened via a referral"},
-     "friend": {"uk": "150 грн тому, хто порадив. Кількість порад не обмежена", "ru": "150 грн тому, кто порекомендовал. Количество рекомендаций не ограничено", "en": "₴150 for the person who referred you. Unlimited referrals"},
-     "need": {"uk": "Перейти за посиланням з «Порадь друзям» і оформити картку. Працює, якщо такої картки не було або нею не користувались понад 6 місяців", "ru": "Перейти по ссылке из «Порадь друзям» и оформить карту. Работает, если такой карты не было или ею не пользовались более 6 месяцев", "en": "Open the card via a «Порадь друзям» link. Only if you had no such card or didn't use it for 6+ months"},
-     "cash": {"uk": "Так: бонус приходить у «Привіт», звідти його можна переказати на свою картку", "ru": "Да: бонус приходит в «Привіт», оттуда его можно перевести на свою карту", "en": "Yes: the bonus lands in «Привіт» and can be moved to your card"},
-     "src": [["ПриватБанк — «Порадь друзям»", "https://privatbank.ua/porad-druzyam"], ["КОШТ — ПриватБанк дає 150 грн за друга (до 8.04.2027)", "https://kosht.media/vzhe-15-bankiv-maiut-referalni-prohramy-z-bonusamy-za-rekomendatsiiu-druziam/"]]
+     "id": "privat24",
+     "go": "privat24",
+     "kind": "bank",
+     "v": 150,
+     "cur": "₴",
+     "until": "2027-04-08",
+     "checked": "2026-11-26",
+     "name": "ПриватБанк",
+     "you": {
+      "uk": "150 грн за картку «Універсальна» або «Універсальна Gold», оформлену за порадою",
+      "ru": "150 грн за карту «Универсальная» или «Универсальная Gold», оформленную по рекомендации",
+      "en": "₴150 for a «Universal» or «Universal Gold» card opened via a referral"
+     },
+     "friend": {
+      "uk": "150 грн тому, хто порадив. Кількість порад не обмежена",
+      "ru": "150 грн тому, кто порекомендовал. Количество рекомендаций не ограничено",
+      "en": "₴150 for the person who referred you. Unlimited referrals"
+     },
+     "need": {
+      "uk": "Перейти за посиланням з «Порадь друзям» і оформити картку. Працює, якщо такої картки не було або нею не користувались понад 6 місяців",
+      "ru": "Перейти по ссылке из «Порадь друзям» и оформить карту. Работает, если такой карты не было или ею не пользовались более 6 месяцев",
+      "en": "Open the card via a «Порадь друзям» link. Only if you had no such card or didn't use it for 6+ months"
+     },
+     "cash": {
+      "uk": "Так: бонус приходить у «Привіт», звідти його можна переказати на свою картку",
+      "ru": "Да: бонус приходит в «Привіт», оттуда его можно перевести на свою карту",
+      "en": "Yes: the bonus lands in «Привіт» and can be moved to your card"
+     },
+     "src": [
+      [
+       "ПриватБанк — «Порадь друзям»",
+       "https://privatbank.ua/porad-druzyam"
+      ],
+      [
+       "КОШТ — ПриватБанк дає 150 грн за друга (до 8.04.2027)",
+       "https://kosht.media/vzhe-15-bankiv-maiut-referalni-prohramy-z-bonusamy-za-rekomendatsiiu-druziam/"
+      ]
+     ]
     },
     {
-     "id": "monobank", "go": "monobank", "kind": "bank", "v": 100, "cur": "₴", "until": null, "checked": "2026-11-26", "name": "monobank",
-     "you": {"uk": "100 грн після відкриття картки за запрошенням", "ru": "100 грн после открытия карты по приглашению", "en": "₴100 after opening a card via an invite"},
-     "friend": {"uk": "100 грн тому, хто запросив (посилання в застосунку → «Ще»)", "ru": "100 грн тому, кто пригласил (ссылка в приложении → «Ще»)", "en": "₴100 for the person who invited you (link in the app → «Ще»)"},
-     "need": {"uk": "Відкрити картку monobank за посиланням і виконати умови програми", "ru": "Открыть карту monobank по ссылке и выполнить условия программы", "en": "Open a monobank card via the link and meet the programme terms"},
-     "cash": {"uk": "Так: приходить як кешбек, вивести можна, коли накопичиться 100 грн", "ru": "Да: приходит как кешбэк, вывести можно, когда накопится 100 грн", "en": "Yes: paid as cashback, withdrawable once ₴100 has built up"},
-     "src": [["КОШТ — monobank збільшив бонус за друзів до 100 грн", "https://kosht.media/monobank-zbilshyv-vynahorodu-za-zaproshennia-druziv/"]]
+     "id": "monobank",
+     "go": "monobank",
+     "kind": "bank",
+     "v": 100,
+     "cur": "₴",
+     "until": null,
+     "checked": "2026-11-26",
+     "name": "monobank",
+     "you": {
+      "uk": "100 грн після відкриття картки за запрошенням",
+      "ru": "100 грн после открытия карты по приглашению",
+      "en": "₴100 after opening a card via an invite"
+     },
+     "friend": {
+      "uk": "100 грн тому, хто запросив (посилання в застосунку → «Ще»)",
+      "ru": "100 грн тому, кто пригласил (ссылка в приложении → «Ще»)",
+      "en": "₴100 for the person who invited you (link in the app → «Ще»)"
+     },
+     "need": {
+      "uk": "Відкрити картку monobank за посиланням і виконати умови програми",
+      "ru": "Открыть карту monobank по ссылке и выполнить условия программы",
+      "en": "Open a monobank card via the link and meet the programme terms"
+     },
+     "cash": {
+      "uk": "Так: приходить як кешбек, вивести можна, коли накопичиться 100 грн",
+      "ru": "Да: приходит как кешбэк, вывести можно, когда накопится 100 грн",
+      "en": "Yes: paid as cashback, withdrawable once ₴100 has built up"
+     },
+     "src": [
+      [
+       "КОШТ — monobank збільшив бонус за друзів до 100 грн",
+       "https://kosht.media/monobank-zbilshyv-vynahorodu-za-zaproshennia-druziv/"
+      ]
+     ]
     },
     {
-     "id": "freedom24", "go": "freedom24", "kind": "invest", "v": 0, "cur": "₴", "until": null, "checked": "2026-11-26", "name": "Freedom24",
-     "you": {"uk": "Подарункова акція однієї з публічних компаній", "ru": "Подарочная акция одной из публичных компаний", "en": "A gift share of a listed company"},
-     "friend": {"uk": "Умови для запрошувача — на сайті Freedom24", "ru": "Условия для пригласившего — на сайте Freedom24", "en": "Terms for the inviter are on Freedom24's site"},
-     "need": {"uk": "Відкрити рахунок за посиланням і поповнити його. За даними на березень 2026 — від 450 € (перевір актуальні умови)", "ru": "Открыть счёт по ссылке и пополнить его. По данным на март 2026 — от 450 € (проверь актуальные условия)", "en": "Open an account via the link and fund it. As of March 2026 — from €450 (check current terms)"},
-     "cash": {"uk": "Акція лежить на брокерському рахунку; потрібні власні гроші для поповнення", "ru": "Акция лежит на брокерском счёте; нужны свои деньги для пополнения", "en": "The share sits in your brokerage account; you need your own money to fund it"},
-     "src": [["Capitalizator — постійна акція Freedom24 (березень 2026)", "https://capitalizator.ua/news/postijna-aktsiia-vid-freedom24.html"]]
+     "id": "freedom24",
+     "go": "freedom24",
+     "kind": "invest",
+     "v": 0,
+     "cur": "₴",
+     "until": null,
+     "checked": "2026-11-26",
+     "name": "Freedom24",
+     "you": {
+      "uk": "Подарункова акція однієї з публічних компаній",
+      "ru": "Подарочная акция одной из публичных компаний",
+      "en": "A gift share of a listed company"
+     },
+     "friend": {
+      "uk": "Умови для запрошувача — на сайті Freedom24",
+      "ru": "Условия для пригласившего — на сайте Freedom24",
+      "en": "Terms for the inviter are on Freedom24's site"
+     },
+     "need": {
+      "uk": "Відкрити рахунок за посиланням і поповнити його. За даними на березень 2026 — від 450 € (перевір актуальні умови)",
+      "ru": "Открыть счёт по ссылке и пополнить его. По данным на март 2026 — от 450 € (проверь актуальные условия)",
+      "en": "Open an account via the link and fund it. As of March 2026 — from €450 (check current terms)"
+     },
+     "cash": {
+      "uk": "Акція лежить на брокерському рахунку; потрібні власні гроші для поповнення",
+      "ru": "Акция лежит на брокерском счёте; нужны свои деньги для пополнения",
+      "en": "The share sits in your brokerage account; you need your own money to fund it"
+     },
+     "src": [
+      [
+       "Capitalizator — постійна акція Freedom24 (березень 2026)",
+       "https://capitalizator.ua/news/postijna-aktsiia-vid-freedom24.html"
+      ]
+     ]
     }
-   ]
+   ],
+   "tz": [
+    "Europe/Kyiv",
+    "Europe/Kiev",
+    "Europe/Uzhgorod",
+    "Europe/Zaporozhye",
+    "Europe/Simferopol"
+   ],
+   "feat": "inzhur"
   },
   "world": {
    "flag": "🌍",
-   "name": {"uk": "Для всіх країн", "ru": "Для всех стран", "en": "Worldwide"},
+   "name": {
+    "uk": "Для всіх країн",
+    "ru": "Для всех стран",
+    "en": "Worldwide"
+   },
    "items": [
     {
-     "id": "tgwallet", "go": "tgwallet", "kind": "crypto", "v": 0, "cur": "$", "until": null, "checked": "2026-11-26", "name": "Telegram Wallet",
-     "you": {"uk": "Бонус до $50 у золоті", "ru": "Бонус до $50 в золоте", "en": "A bonus of up to $50 in gold"},
-     "friend": {"uk": "Бонус отримує і той, хто запросив", "ru": "Бонус получает и тот, кто пригласил", "en": "The inviter gets a bonus too"},
-     "need": {"uk": "Купити крипти на $50 у гаманці Telegram і потримати 7 днів", "ru": "Купить крипты на $50 в кошельке Telegram и подержать 7 дней", "en": "Trade $50 of crypto in the Telegram wallet and hold it for 7 days"},
-     "cash": {"uk": "Потрібні власні $50 (вони залишаються твоїми). Доступність залежить від країни", "ru": "Нужны свои $50 (они остаются твоими). Доступность зависит от страны", "en": "Needs your own $50 (it stays yours). Availability depends on the country"},
-     "src": [["Telegram Wallet — умови в застосунку", "https://telegram.me/wallet"]]
+     "id": "tgwallet",
+     "go": "tgwallet",
+     "kind": "crypto",
+     "v": 0,
+     "cur": "$",
+     "until": null,
+     "checked": "2026-11-26",
+     "name": "Telegram Wallet",
+     "you": {
+      "uk": "Бонус до $50 у золоті",
+      "ru": "Бонус до $50 в золоте",
+      "en": "A bonus of up to $50 in gold"
+     },
+     "friend": {
+      "uk": "Бонус отримує і той, хто запросив",
+      "ru": "Бонус получает и тот, кто пригласил",
+      "en": "The inviter gets a bonus too"
+     },
+     "need": {
+      "uk": "Купити крипти на $50 у гаманці Telegram і потримати 7 днів",
+      "ru": "Купить крипты на $50 в кошельке Telegram и подержать 7 дней",
+      "en": "Trade $50 of crypto in the Telegram wallet and hold it for 7 days"
+     },
+     "cash": {
+      "uk": "Потрібні власні $50 (вони залишаються твоїми). Доступність залежить від країни",
+      "ru": "Нужны свои $50 (они остаются твоими). Доступность зависит от страны",
+      "en": "Needs your own $50 (it stays yours). Availability depends on the country"
+     },
+     "src": [
+      [
+       "Telegram Wallet — умови в застосунку",
+       "https://telegram.me/wallet"
+      ]
+     ]
     }
    ]
   }
