@@ -28,7 +28,7 @@ Tez dùng để trả phí giao dịch và hợp đồng thông minh, đồng th
 - Biến động giá trong 12 tháng: {{chg1y:xtz}}
 - 10 USD mỗi ngày trong 5 năm: {{dca:xtz:5}} từ {{dcainv:5}} đã đầu tư ({{dcaroi:xtz:5}})
 
-## Câu chuyện của Zilliqa
+## Câu chuyện của Tezos
 
 Arthur và Kathleen Breitman mô tả Tezos trong sách trắng năm 2014, và tháng 7/2017 đợt gọi vốn thu về khoảng 232 triệu USD bằng bitcoin và ether. Sau đó, tranh chấp công khai giữa hai nhà sáng lập và người đứng đầu Tezos Foundation ở Thụy Sĩ làm chậm việc ra mắt và dẫn tới các vụ kiện của nhà đầu tư, được dàn xếp năm 2020 với 25 triệu USD. Mạng chính thức hoạt động năm 2018. Trong cơn sốt NFT, XTZ đạt khoảng 9,12 USD vào tháng 10/2021, rồi giảm suốt nhiều năm khi sự chú ý chuyển sang các chuỗi khác. Giao thức vẫn tiếp tục nâng cấp: Seoul (bản thứ 19) bổ sung tài khoản đa chữ ký gốc vào tháng 9/2025, và Tallinn (bản thứ 20) rút thời gian khối xuống 6 giây vào tháng 1/2026. Tháng 11/2026, XTZ rơi xuống mức thấp mới.
 

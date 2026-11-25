@@ -1,6 +1,6 @@
 ---
 title: Tezos (XTZ) explained: the self-upgrading blockchain, liquid proof of stake, live since 2018
-description: Tezos in plain language: how on-chain upgrades and baking work, what tez is used for, its record 2017 fundraiser, rivals, the main risks and what regular buyers should know.
+description: Tezos in plain language: how on-chain upgrades and baking work, what tez is used for, its huge 2017 fundraiser, rivals, the main risks and what regular buyers should know.
 date: 2026-11-25
 kind: analysis
 ---
