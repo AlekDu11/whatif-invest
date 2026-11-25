@@ -4,6 +4,8 @@ Made with `python3 scripts/race_video.py <ids...> --amt 100 [--since YYYY-MM] --
 (ids from data/market.json; 2–4 assets; default start = the youngest asset's first month). Inspired by animated "since launch"
 comparisons that get thousands of views on crypto X. Keep the matchup a real question people argue about.
 
+TEMPLATE v2 (owner 2026-11-25: «top — keep this template»): real logos in coloured rings (big in the header, at each line end and on the final ranking), crown + pulsing glow on the current leader, subtle $ / coin symbols drifting up in the background, labels stacked so they never overlap. Do not change the look without the owner. Check the extracted frame: every asset must show its real logo (not a 3-letter badge) — if one is missing, pick another matchup or note it.
+
 ## How to post (tested 2026-11-17)
 - **X** blocks downloads from other sites (CSP), and the built-in browser opens popups in the same tab. Hand-off via URL
   fragment: navigate the tab to `https://whatifstack.com/x-relay.html?vid=/assets/video/<slug>.mp4&to=x&hash=1` (the video
