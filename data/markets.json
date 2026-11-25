@@ -12790,5 +12790,11 @@
 "yahoo": "COGT",
 "name": "Cogent Biosciences",
 "cat": "stock"
+},
+{
+"tk": "TGTX",
+"yahoo": "TGTX",
+"name": "TG Therapeutics",
+"cat": "stock"
 }
 ]
