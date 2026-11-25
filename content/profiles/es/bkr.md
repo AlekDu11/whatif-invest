@@ -1,6 +1,6 @@
 ---
-title: Acciones de Baker Hughes (BKR): la tecnológica energética con una cartera récord de 46.400 millones de dólares
-description: Baker Hughes explicada fácil: servicios petroleros, turbinas de gas y equipos de GNL, una cartera récord de pedidos de 46.400 millones, la compra de Chart y riesgos.
+title: Acciones de Baker Hughes (BKR): servicios petroleros, turbinas de gas y equipos de GNL
+description: Baker Hughes explicada fácil: servicios petroleros, turbinas de gas y GNL, cartera de 46.400 millones $ en septiembre de 2026, la compra de Chart y riesgos.
 date: 2026-11-25
 kind: analysis
 ---

@@ -1,6 +1,6 @@
 ---
-title: Akcje Baker Hughes (BKR): firma technologii energetycznych z rekordowym portfelem zamówień 46,4 mld $
-description: Baker Hughes w prostych słowach: usługi naftowe, turbiny gazowe i sprzęt do LNG, rekordowy portfel zamówień 46,4 mld $, przejęcie Chart i ryzyka.
+title: Akcje Baker Hughes (BKR): usługi naftowe, turbiny gazowe i sprzęt do LNG
+description: Baker Hughes w prostych słowach: usługi naftowe, turbiny gazowe i sprzęt do LNG, portfel zamówień 46,4 mld $ we wrześniu 2026 r., przejęcie Chart i ryzyka.
 date: 2026-11-25
 kind: analysis
 ---

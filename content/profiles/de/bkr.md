@@ -1,6 +1,6 @@
 ---
-title: Baker Hughes (BKR) Aktie: der Energietechnik-Konzern mit einem Rekord-Auftragsbestand von 46,4 Mrd. $
-description: Baker Hughes einfach erklärt: Ölfeld-Services, Gasturbinen und LNG-Anlagen, ein Rekord-Auftragsbestand von 46,4 Mrd. $, die Chart-Übernahme und die Risiken.
+title: Baker Hughes (BKR) Aktie: Ölfeld-Services, Gasturbinen und LNG-Anlagen
+description: Baker Hughes einfach erklärt: Ölfeld-Services, Gasturbinen und LNG-Anlagen, 46,4 Mrd. $ Auftragsbestand im September 2026, die Chart-Übernahme und die Risiken.
 date: 2026-11-25
 kind: analysis
 ---

@@ -1,6 +1,6 @@
 ---
-title: Baker Hughes (BKR)株：受注残が過去最高の464億ドルに達したエネルギー技術企業
-description: Baker Hughesをやさしく解説：油田サービス、ガスタービン、LNG設備、過去最高464億ドルの受注残、Chart買収、そしてリスク。
+title: Baker Hughes (BKR)株：油田サービス、ガスタービン、LNG設備のエネルギー技術企業
+description: Baker Hughesをやさしく解説：油田サービス、ガスタービン、LNG設備、2026年9月末で464億ドルの受注残、Chart買収、そしてリスク。
 date: 2026-11-25
 kind: analysis
 ---

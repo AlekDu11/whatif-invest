@@ -1,6 +1,6 @@
 ---
-title: Ações da Baker Hughes (BKR): a empresa de tecnologia de energia com carteira recorde de US$ 46,4 bilhões
-description: Baker Hughes sem complicação: serviços de petróleo, turbinas a gás e equipamentos de GNL, carteira recorde de pedidos de US$ 46,4 bilhões, a compra da Chart e riscos.
+title: Ações da Baker Hughes (BKR): serviços de petróleo, turbinas a gás e equipamentos de GNL
+description: Baker Hughes sem complicação: petróleo, turbinas a gás e GNL, carteira de pedidos de US$ 46,4 bilhões em setembro de 2026, a compra da Chart e riscos.
 date: 2026-11-25
 kind: analysis
 ---

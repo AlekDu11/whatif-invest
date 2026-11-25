@@ -1,6 +1,6 @@
 ---
-title: Aandeel Baker Hughes (BKR): het energietechnologiebedrijf met een recordorderboek van $46,4 miljard
-description: Baker Hughes in gewone taal: olieveldservices, gasturbines en LNG-installaties, een recordorderboek van $46,4 miljard, de overname van Chart en de risico's.
+title: Aandeel Baker Hughes (BKR): olieveldservices, gasturbines en LNG-installaties
+description: Baker Hughes in gewone taal: olieveldservices, gasturbines en LNG, een orderboek van $46,4 miljard in september 2026, de overname van Chart en de risico's.
 date: 2026-11-25
 kind: analysis
 ---

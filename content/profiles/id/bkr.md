@@ -1,6 +1,6 @@
 ---
-title: Saham Baker Hughes (BKR): perusahaan teknologi energi dengan backlog rekor $46,4 miliar
-description: Baker Hughes dengan bahasa sederhana: jasa ladang minyak, turbin gas dan peralatan LNG, backlog pesanan rekor $46,4 miliar, akuisisi Chart, dan risikonya.
+title: Saham Baker Hughes (BKR): jasa ladang minyak, turbin gas, dan peralatan LNG
+description: Baker Hughes dengan bahasa sederhana: jasa ladang minyak, turbin gas dan LNG, backlog pesanan $46,4 miliar pada September 2026, akuisisi Chart, dan risikonya.
 date: 2026-11-25
 kind: analysis
 ---

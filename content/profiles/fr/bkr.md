@@ -1,6 +1,6 @@
 ---
-title: Action Baker Hughes (BKR) : le groupe de technologies énergétiques au carnet record de 46,4 Md$
-description: Baker Hughes en clair : services pétroliers, turbines à gaz et équipements GNL, un carnet de commandes record de 46,4 Md$, le rachat de Chart et les risques.
+title: Action Baker Hughes (BKR) : services pétroliers, turbines à gaz et équipements GNL
+description: Baker Hughes en clair : services pétroliers, turbines à gaz et GNL, un carnet de commandes de 46,4 Md$ en septembre 2026, le rachat de Chart et les risques.
 date: 2026-11-25
 kind: analysis
 ---

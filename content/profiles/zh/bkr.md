@@ -1,6 +1,6 @@
 ---
-title: Baker Hughes (BKR)股票：未完成订单创纪录达464亿美元的能源科技公司
-description: 用大白话看Baker Hughes：油田服务、燃气轮机和LNG设备，创纪录的464亿美元未完成订单，收购Chart，以及风险。
+title: Baker Hughes (BKR)股票：油田服务、燃气轮机和LNG设备的能源科技公司
+description: 用大白话看Baker Hughes：油田服务、燃气轮机和LNG设备，2026年9月底464亿美元未完成订单，收购Chart，以及风险。
 date: 2026-11-25
 kind: analysis
 ---

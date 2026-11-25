@@ -1,6 +1,6 @@
 ---
-title: Baker Hughes (BKR) hissesi: 46,4 milyar $ rekor sipariş birikimine sahip enerji teknolojisi şirketi
-description: Baker Hughes sade dille: petrol sahası hizmetleri, gaz türbinleri ve LNG ekipmanı, 46,4 milyar $ rekor sipariş birikimi, Chart satın alımı ve riskler.
+title: Baker Hughes (BKR) hissesi: petrol sahası hizmetleri, gaz türbinleri ve LNG ekipmanı
+description: Baker Hughes sade dille: petrol sahası hizmetleri, gaz türbinleri ve LNG ekipmanı, Eylül 2026'da 46,4 milyar $ sipariş birikimi, Chart satın alımı ve riskler.
 date: 2026-11-25
 kind: analysis
 ---

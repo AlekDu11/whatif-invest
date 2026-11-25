@@ -1,6 +1,6 @@
 ---
-title: Baker Hughes (BKR) stock: the energy-technology firm with a record $46.4 billion backlog
-description: Baker Hughes in plain language: oilfield services plus gas turbines and LNG equipment, a record $46.4 billion order backlog, the Chart deal and the risks.
+title: Baker Hughes (BKR) stock: oilfield services, gas turbines and LNG equipment
+description: Baker Hughes in plain language: oilfield services plus gas turbines and LNG equipment, a $46.4 billion backlog in September 2026, the Chart deal and the risks.
 date: 2026-11-25
 kind: analysis
 ---

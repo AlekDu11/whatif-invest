@@ -1,6 +1,6 @@
 ---
-title: Baker Hughes (BKR) 주식: 수주 잔고가 사상 최대 464억 달러에 이른 에너지 기술 기업
-description: Baker Hughes를 쉽게 설명합니다: 유전 서비스, 가스터빈과 LNG 설비, 사상 최대 464억 달러 수주 잔고, Chart 인수, 그리고 위험.
+title: Baker Hughes (BKR) 주식: 유전 서비스, 가스터빈, LNG 설비의 에너지 기술 기업
+description: Baker Hughes를 쉽게 설명합니다: 유전 서비스, 가스터빈과 LNG 설비, 2026년 9월 말 464억 달러 수주 잔고, Chart 인수, 그리고 위험.
 date: 2026-11-25
 kind: analysis
 ---

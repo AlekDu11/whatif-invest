@@ -1,6 +1,6 @@
 ---
-title: Baker Hughes (BKR) stock: ang energy-technology firm na may rekord na $46.4 bilyong backlog
-description: Baker Hughes sa simpleng salita: oilfield services, gas turbine at kagamitan sa LNG, rekord na $46.4 bilyong backlog ng order, ang Chart deal at mga panganib.
+title: Baker Hughes (BKR) stock: oilfield services, gas turbine at kagamitan sa LNG
+description: Baker Hughes sa simpleng salita: oilfield services, gas turbine at LNG, $46.4 bilyong backlog ng order noong Setyembre 2026, ang Chart deal at mga panganib.
 date: 2026-11-25
 kind: analysis
 ---

@@ -1,6 +1,6 @@
 ---
-title: Azioni Baker Hughes (BKR): il gruppo di tecnologie energetiche con un portafoglio ordini record di 46,4 miliardi $
-description: Baker Hughes in parole semplici: servizi petroliferi, turbine a gas e impianti GNL, un portafoglio ordini record di 46,4 miliardi $, l'acquisto di Chart e i rischi.
+title: Azioni Baker Hughes (BKR): servizi petroliferi, turbine a gas e impianti GNL
+description: Baker Hughes in parole semplici: servizi petroliferi, turbine a gas e GNL, ordini per 46,4 miliardi $ a settembre 2026, l'acquisto di Chart e i rischi.
 date: 2026-11-25
 kind: analysis
 ---

@@ -1,6 +1,6 @@
 ---
-title: Cổ phiếu Baker Hughes (BKR): công ty công nghệ năng lượng với lượng đơn hàng tồn kỷ lục 46,4 tỷ USD
-description: Baker Hughes bằng ngôn ngữ đơn giản: dịch vụ mỏ dầu, tua-bin khí và thiết bị LNG, đơn hàng tồn kỷ lục 46,4 tỷ USD, thương vụ Chart và các rủi ro.
+title: Cổ phiếu Baker Hughes (BKR): dịch vụ mỏ dầu, tua-bin khí và thiết bị LNG
+description: Baker Hughes bằng ngôn ngữ đơn giản: dịch vụ mỏ dầu, tua-bin khí và thiết bị LNG, đơn hàng tồn 46,4 tỷ USD vào tháng 9/2026, thương vụ Chart và các rủi ro.
 date: 2026-11-25
 kind: analysis
 ---

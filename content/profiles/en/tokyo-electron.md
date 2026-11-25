@@ -1,6 +1,6 @@
 ---
 title: Tokyo Electron (8035) stock: Japan's maker of the machines that build chips
-description: Tokyo Electron in plain language: chip-making machines, ¥1.67 trillion of sales in April–September 2026, China, the risks and what regular buyers should know.
+description: Tokyo Electron in plain language: the chip-making machines it sells, its April–September 2026 results, China, the risks and what regular buyers should know.
 date: 2026-11-25
 kind: analysis
 ---
