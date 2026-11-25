@@ -1,6 +1,6 @@
 ---
 title: A. O. Smith (AOS) explained: the water heater company that is leaving China
-description: A. O. Smith in plain language: $940 million of quarterly sales from water heaters, the sale of 81% of its China arm, risks and what regular buyers should know.
+description: A. O. Smith in plain language: $940 million of Q3 2026 sales from water heaters, the sale of 81% of its China arm, risks; what regular buyers should know.
 date: 2026-11-19
 kind: analysis
 ---
@@ -10,7 +10,7 @@ kind: analysis
 > - Sales: $940.5 million in Q3 2026, flat on a year earlier; earnings per share $0.93.
 > - North America is about 78% of sales, with a segment margin of 23.6% in the quarter.
 > - It agreed on 27 October 2026 to sell 81% of its China business at a value of about $400 million.
-> - The stock trades well below its July 2024 record of about $91 and has raised its dividend for more than 30 years in a row.
+> - On adjusted prices the stock peaked at about $91 in July 2024 (record close: {{ath:aos}}, {{athd:aos}}); the company has raised its dividend for more than 30 years in a row.
 
 ## How it makes money
 

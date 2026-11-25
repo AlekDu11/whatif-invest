@@ -22,7 +22,7 @@ In the first nine months of 2026 revenue rose 14.3% to 23.12 billion zł, and ad
 
 ## The stock's story
 
-The IPO priced shares at 21.50 zł and valued the company at about 21.5 billion zł. The debut fell flat: shares closed day one exactly at the offer price and within a week slid below 19 zł on worries about the valuation and the high share of alcohol and tobacco in sales. Growth then won investors back. In July 2026 Couche-Tard agreed to buy Żabka, backed by the main owners CVC Capital Partners and Partners Group (together with executives, about 57% of the shares). The 32 zł offer values Żabka at about 32.6 billion zł; all approvals are in, acceptance ends on 2 December 2026, and the 52-week range in our data is about 19.92–33.88 zł.
+The IPO priced shares at 21.50 zł and valued the company at about 21.5 billion zł. The debut fell flat: shares closed day one exactly at the offer price and within a week slid below 19 zł on worries about the valuation and the high share of alcohol and tobacco in sales. Growth then won investors back. In July 2026 Couche-Tard agreed to buy Żabka, backed by the main owners CVC Capital Partners and Partners Group (together with executives, about 57% of the shares). The 32 zł offer values Żabka at about 32.6 billion zł; all approvals are in, acceptance ends on 2 December 2026, and in November 2026 the 52-week range was about 19.92–33.88 zł.
 
 - Price today: {{price:zab}}
 - $10 a day for 2 years: {{dca:zab:2}} from {{dcainv:2}} invested ({{dcaroi:zab:2}})

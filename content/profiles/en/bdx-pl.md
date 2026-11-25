@@ -1,6 +1,6 @@
 ---
-title: Budimex (BDX) explained: Poland's biggest builder with a PLN 17.3 billion order book
-description: Budimex in plain language — PLN 9.44 billion of yearly revenue from roads, rail and buildings, a PLN 17.3 billion order book, a 32.42 zł dividend and the risks.
+title: Budimex (BDX) explained: Poland's biggest builder and its 2026 order book of PLN 17.3 billion
+description: Budimex in plain language — PLN 9.44 billion of 2025 revenue from roads and rail, a PLN 17.3 billion order book (Sept 2026), dividends and risks.
 date: 2026-11-20
 kind: analysis
 ---
