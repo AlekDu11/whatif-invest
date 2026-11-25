@@ -22,6 +22,8 @@ Rankings + menu (owner 2026-11-24): /largest-companies/ (all 6 tabs) lists EVERY
 
 Home «Markets» table small caps (owner 2026-11-25): Fiona the Hippo, Boner Coin, BugsCoin… are NOT DEX-only — they trade on Gate/MEXC (mcap $3–10M, 1–28 days of history) and rise to the top of «All» sorted by 24h. Owner: fine since they are on exchanges — keep them; optional later filter (mcap ≥ $50M + ≥ 2 months history for home/list tables) only if the owner asks.
 
+Bonuses page (owner 2026-11-25/26): /bonuses/ (uk, ru, en) = honest sign-up / invite-a-friend bonuses grouped by country from data/bonuses.json (country → items with you/friend/need/cash texts, until, checked, src; sorted by value), strings scripts/i18n_bonus.py; linked from the Ukrainian link grids, the Inzhur card/article. Add countries/offers only with checked terms and a source. Inzhur article content/blog/uk|ru/inzhur-gift-certificates.md (promo 35 certificates until 9.12.2026 → reminder set for 10.12 to switch to 20). OKX exchange partner /go/okx added 2026-11-25.
+
 ## Principles (check every decision against them)
 1. Usefulness first — every page answers a real question ("what would I have…", "what to buy…", "what's the market doing").
 2. Speed — <1 s load, no jank, works on every device (mobile first).

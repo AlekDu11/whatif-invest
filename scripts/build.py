@@ -67,6 +67,7 @@ from i18n_holders import HOLD  # noqa: E402  (big crypto holders on /investors/,
 from i18n_mkt import MKT, LEAD as MLEAD, FG as MFG, CALC as MCALC  # noqa: E402
 from i18n_st import ST as STX  # noqa: E402
 from i18n_xc2 import XC2  # noqa: E402
+from i18n_bonus import BON, BON_LANGS  # noqa: E402
 from i18n_ua import UA_LANGS, UA_ASOF, OB, OBI, OBT, UA_SRC, BUYG, BUYG_SRC, OVP, OB_GO, INZ  # noqa: E402
 from i18n_bpd import BPD, IDEA as BP_IDEA  # noqa: E402
 from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB, CH as OWN_CH, CH2 as OWN_CH2  # noqa: E402
@@ -92,7 +93,7 @@ OG_LANGS = {f[:-4] for f in os.listdir(os.path.join(ROOT, 'src', 'og')) if f.end
 END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
-RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide', 'commodities', 'widgets', 'embed', 'dividends', 'average-price', 'ovdp', 'largest-companies', 'crypto-exchanges', 'partners', 'buy-stocks-ukraine', 'calculators', 'investors', 'watchlist', 'read', 'deposits-ukraine'}
+RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide', 'commodities', 'widgets', 'embed', 'dividends', 'average-price', 'ovdp', 'largest-companies', 'crypto-exchanges', 'partners', 'buy-stocks-ukraine', 'calculators', 'investors', 'watchlist', 'read', 'deposits-ukraine', 'bonuses'}
 RESERVED |= {v[0] for v in MKTS.values()} | {'learn', 'earnings-calendar', 'world-assets', 'activities', 'editorial-policy', 'about', 'portfolios', 'privacy', 'terms', 'categories'}
 # asset ids that clash with a language folder or a section get a suffix (ko -> ko-stock, fil -> fil-crypto)
 _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
@@ -252,6 +253,8 @@ def has_page(lang, aid):
         return lang in PARTNER_TXT
     if aid == 'buy-stocks-ukraine' or aid == 'ovdp/brokers':
         return lang in UA_LANGS
+    if aid == 'bonuses':
+        return lang in BON_LANGS and bool(BONUS.get('countries'))
     if '/' in (aid or '') and aid.rsplit('/', 1)[1] in SM_KINDS:
         return lang in SM_LANGS and sm_ok(aid.rsplit('/', 1)[0], aid.rsplit('/', 1)[1])
     if aid == 'investors':
@@ -1067,6 +1070,7 @@ def ovdp_page(lang, ver):
     lk = _calc_links(lang, ['compound-interest', 'dividends', 'average-price'])
     if lang in UA_LANGS:
         lk = (f'<a class="card hcard" href="{url(lang, "deposits-ukraine")}"><span>💰</span><b>{esc(DEP[lang]["nav"])}</b></a>'
+              f'<a class="card hcard" href="{url(lang, "bonuses")}"><span>🎁</span><b>{esc(BON[lang]["nav"])}</b></a>'
               f'<a class="card hcard" href="{url(lang, "ovdp/brokers")}"><span>🏦</span><b>{esc(OBT[lang]["nav"])}</b></a>'
               f'<a class="card hcard" href="{url(lang, "me")}#bonds"><span>🏛️</span><b>{esc(OBT[lang]["port"])}</b></a>' + lk)
     elif lang in OVP:
@@ -1108,6 +1112,42 @@ def inzhur_card(lang, src):
 
 
 DEPO = {}
+try:
+    BONUS = json.load(open(os.path.join(ROOT, 'data', 'bonuses.json'), encoding='utf-8'))
+except (OSError, ValueError):
+    BONUS = {}
+
+
+def bonuses_page(lang, ver):
+    """/bonuses/ — honest sign-up / invite-a-friend bonuses grouped by country (owner 2026-11-25). Data: data/bonuses.json."""
+    t, C = BON[lang], BONUS['countries']
+    order = sorted(C, key=lambda c: (c == 'world', -(len(C[c]['items']))))   # countries first, «worldwide» last
+    n = sum(len(C[c]['items']) for c in order)
+    asof = BONUS.get('asof', UPDATED)
+    dmy = '.'.join(reversed(asof.split('-')))
+    def L(d):
+        return d.get(lang) or d.get('en') or next(iter(d.values()))
+    def item(c, it):
+        go = (f'<a class="btn" href="/go/{it["go"]}?from=bonuses-{c}&l={lang}" target="_blank" rel="sponsored noopener">{esc(t["go"])} ↗</a>' if it.get('go')
+              else f'<a class="btn ghost" href="{esc(it["url"])}" target="_blank" rel="noopener">{esc(t["go"])} ↗</a>')
+        more = f' <a class="btn ghost" href="{url(lang, "blog")}{it["more"]}/">{esc(t["more"])} →</a>' if it.get('more') and lang in UA_LANGS else ''
+        till = '.'.join(reversed(it['until'].split('-'))) if it.get('until') else t['nolimit']
+        src = ' · '.join(f'<a href="{esc(u)}" target="_blank" rel="noopener">{esc(ti)}</a>' for ti, u in it.get('src', []))
+        rows = ''.join(f'<tr><th>{esc(t[k])}</th><td>{esc(L(it[k]))}</td></tr>' for k in ('you', 'friend', 'need', 'cash'))
+        return (f'<article class="card bon" id="{c}-{it["id"]}"><h3>{esc(it["name"])}</h3><table class="bont">{rows}'
+                f'<tr><th>{esc(t["until"])}</th><td>{esc(till)}</td></tr></table>'
+                f'<p class="bonb">{go}{more}</p><p class="muted" style="font-size:13px">{esc(t["checked"])}: {".".join(reversed(it["checked"].split("-")))} · {esc(t["src"])}: {src}</p></article>')
+    chips = ''.join(f'<a class="chip" href="#bc-{c}">{C[c]["flag"]} {esc(L(C[c]["name"]))} <small>{len(C[c]["items"])}</small></a>' for c in order)
+    secs = ''.join(f'<section class="section" id="bc-{c}"><h2>{C[c]["flag"]} {esc(L(C[c]["name"]))}</h2>'
+                   + ''.join(item(c, it) for it in sorted(C[c]['items'], key=lambda it: -(it.get('v') or 0))) + '</section>' for c in order)
+    how = '<section class="section card"><h2>' + esc(t['how_h']) + '</h2><ol>' + ''.join(f'<li>{esc(x)}</li>' for x in t['how']) + '</ol></section>'
+    warn = '<section class="section card"><h2>⚠️ ' + esc(t['warn_h']) + '</h2><ul>' + ''.join(f'<li>{esc(x)}</li>' for x in t['warn']) + '</ul>' + f'<p><a href="https://t.me/WhatIfStack" target="_blank" rel="noopener">{esc(t["suggest"])}</a></p></section>'
+    body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / {esc(t["nav"])}</nav><h1>🎁 {esc(t["h1"].format(n=n))}</h1>'
+            f'<p class="lead">{esc(t["lead"])}</p><p class="muted">{esc(t["upd"])}: {dmy}</p><div class="chips">{chips}</div>{secs}{how}{warn}')
+    css = ('<style>.bon{margin:12px 0;padding:16px}.bon h3{margin:0 0 8px}.bont{width:100%;border-collapse:collapse;font-size:15px}.bont th{text-align:left;vertical-align:top;'
+           'width:34%;padding:6px 10px 6px 0;color:var(--muted);font-weight:500}.bont td{padding:6px 0}.bont tr+tr{border-top:1px solid var(--line)}.bonb{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 6px}'
+           '@media(max-width:600px){.bont th{width:40%}}</style>')
+    return shell(lang, 'bonuses', t['title'].format(y=asof[:4], n=n) + ' | ' + BRAND, t['d'].format(d=dmy), css + body, {}, ver)
 for _c in ('ua',):
     _f = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'data', 'deposits', _c + '.json')
     if os.path.exists(_f):
@@ -1173,7 +1213,8 @@ def ovdp_brokers_page(lang, ver):
     port = (f'<section class="section"><div class="hgrid"><a class="card hcard" href="{url(lang, "ovdp")}"><span>🧮</span><b>{esc(t["calc"])}</b></a>'
             f'<a class="card hcard" href="{url(lang, "deposits-ukraine")}"><span>💰</span><b>{esc(DEP[lang]["nav"])}</b></a>'
             f'<a class="card hcard" href="{url(lang, "me")}#bonds"><span>🏛️</span><b>{esc(t["port"])}</b><small>{esc(t["port_d"])}</small></a>'
-            f'<a class="card hcard" href="{url(lang, "buy-stocks-ukraine")}"><span>🇺🇦</span><b>{esc(BUYG[lang]["nav"])}</b></a></div></section>')
+            f'<a class="card hcard" href="{url(lang, "buy-stocks-ukraine")}"><span>🇺🇦</span><b>{esc(BUYG[lang]["nav"])}</b></a>'
+            f'<a class="card hcard" href="{url(lang, "bonuses")}"><span>🎁</span><b>{esc(BON[lang]["nav"])}</b></a></div></section>')
     body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / <a href="{url(lang, "ovdp")}">{esc(OV[lang]["nav"])}</a> / {esc(t["nav"])}</nav>'
             f'<h1>{esc(t["h1"].format(n=n))}</h1><p class="lead">{esc(t["lead"])}</p>{kt}'
             f'<section class="section"><div class="tw"><table class="mt obt"><thead><tr>{th}</tr></thead><tbody>{rows}</tbody></table></div></section>'
@@ -5412,6 +5453,9 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
             if 'ua' in DEPO:
                 write(pre + 'deposits-ukraine/index.html', deposits_page(lang, ver))
                 extra_pages.append('deposits-ukraine')
+        if has_page(lang, 'bonuses'):
+            write(pre + 'bonuses/index.html', bonuses_page(lang, ver))
+            extra_pages.append('bonuses')
             for _b in OB:
                 write(f'{pre}ovdp/brokers/{_b["id"]}/index.html', ovdp_broker_page(lang, _b, ver))
                 extra_pages.append('ovdp/brokers/' + _b['id'])
