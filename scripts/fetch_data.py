@@ -518,6 +518,27 @@ LOGO_DOMAIN = {
     'moex': 'moex.com', 'phor': 'phosagro.ru', 'rual': 'rusal.ru', 'ozon': 'ozon.ru', 't-ru': 'tbank.ru', 'irao': 'interrao.ru',
     'aflt': 'aeroflot.ru', 'pikk': 'pik.ru', 'magn': 'mmk.ru', 'x5': 'x5.ru', 'head': 'hh.ru', 'smlt': 'samolet.ru',
     'trnfp': 'transneft.ru', 'afks': 'sistema.ru',
+    # owner 2026-11-25: stocks still without a logo (no Yahoo profile / website)
+    'sibn': 'gazprom-neft.ru', 'domrf': 'domrf.ru', 'unac': 'uacrussia.ru', 'cbom': 'mkb.ru', 'vsmo': 'vsmpo.ru', 'hydr': 'rushydro.ru',
+    'svcb': 'sovcombank.ru', 'irkt': 'yakovlev.ru', 'lent': 'lenta.com', 'fesh': 'fesco.ru', 'evrz': 'evraz.com', 'enpg': 'enplusgroup.com',
+    'flot': 'scf-group.ru', 'bane': 'bashneft.ru', 'gche': 'cherkizovo.com', 'ugld': 'uzhuralzoloto.ru', 'rtkm': 'rostelecom.ru',
+    'fees': 'rosseti.ru', 'nmtp': 'nmtp.info', 'vkco': 'vk.company', 'mgts': 'mgts.ru', 'bspb': 'bspb.ru', 'mdmg': 'mamadeti.ru',
+    'posi': 'ptsecurity.com', 'lsrg': 'lsrgroup.ru', 'leas': 'europlan.ru', 'rasp': 'raspadskaya.ru', 'nknc': 'nknh.ru', 'cnru': 'cian.ru',
+    'utar': 'utair.ru', 'upro': 'unipro.energy', 'trmk': 'tmk-group.com', 'ragr': 'rusagrogroup.ru', 'fixr': 'fix-price.com',
+    'sgzh': 'segezha-group.com', 'akrn': 'acron.ru', 'kmaz': 'kamaz.ru', 'mbnk': 'mtsbank.ru', 'belu': 'novabev.com', 'selg': 'seligdar.ru',
+    'mtlr': 'mechel.ru', 'sofl': 'softline.ru', 'etln': 'etalongroup.com', 'spbe': 'spbexchange.ru', 'mvid': 'mvideo.ru',
+    'abrd': 'abraudurso.ru', 'deli': 'delimobil.ru', 'rgss': 'rgs.ru', 'kzos': 'kazanorgsintez.ru', 'aptk': 'apteka.ru', 'elmt': 'element-group.ru',
+    'avan': 'avangard.ru', 'reni': 'renins.ru', 'ozph': 'ozonpharm.ru', 'uwgn': 'uwc.ru', 'dias': 'diasoft.ru', 'zaym': 'zaymer.ru',
+    'hnfg': 'henderson.ru', 'mstt': 'mostotrest.ru', 'rkke': 'energia.ru', 'ivat': 'iva-tech.ru', 'glrx': 'glorax.com', 'svav': 'sollers-auto.com',
+    'hpg': 'hoaphat.com.vn', 'mbb': 'mbbank.com.vn', 'mwg': 'mwg.vn', 'sbra': 'sabrahealth.com', 'strl': 'strlco.com', 'uthr': 'unither.com',
+    'lcid': 'lucidmotors.com', 'wpc': 'wpcarey.com', 'edp': 'edp.com', 'edpr': 'edpr.com', 'richter': 'gedeonrichter.com', 'comi': 'cibeg.com',
+    'tmgh': 'talaatmoustafa.com', 'etel': 'te.eg', 'c5h': 'cairnhomes.com', 'tabak': 'pmi.com', 'mtelekom': 'telekom.hu', 'hrho': 'efghermes.com',
+    'swdy': 'elsewedyelectric.com', 'abuk': 'abuqir.com', 'ift': 'infratil.com', 'peoles': 'penoles.com.mx', 'sof': 'sofinagroup.com',
+    'die': 'dieteren.com', 'titc': 'titan-cement.com', 'any': 'any.hu', 'efih': 'e-finance.com.eg', 'embj3': 'embraer.com',
+    'livepolc-1': 'liverpool.com.mx', 'sands-china': 'sandschina.com', 'prox': 'proximus.com', 'cener': 'cenergyholdings.com',
+    'phdc': 'palmhillsdevelopments.com', 'amoc': 'amoc.com.eg', 'mfpc': 'mopco-eg.com', 'irsa': 'irsa.com.ar', 'andina-b': 'koandina.com',
+    'ra': 'banregio.com', 'tabgd': 'tabgida.com.tr', 'alteo': 'alteo.hu', 'cigpannonia': 'cigpannonia.hu', 'oras': 'orascom.com',
+    'emfd': 'emaarmisr.com', 'jufo': 'juhayna.com', 'clho': 'cleopatrahospitals.com', 'mtln': 'metlengroup.com', 'genting': 'genting.com',
 }
 
 
@@ -553,6 +574,14 @@ def fetch_logos(assets):
         sinfo = json.load(open(os.path.join(ROOT, 'data/stockinfo.json'), encoding='utf-8'))
     except Exception:
         pass
+    # Moscow Exchange listings: the brand logo from the T-Bank investment app CDN, keyed by ISIN (ISIN list from MOEX ISS)
+    isin = {}
+    if any(a.get('mkt') == 'ru' and (aid not in have or aid in redo) for aid, a in assets.items()):
+        try:
+            d = get_json(MOEX + '.json?iss.meta=off&iss.only=securities&securities.columns=SECID,ISIN', tries=2) or {}
+            isin = {r[0].lower(): r[1] for r in (d.get('securities') or {}).get('data') or [] if r[1]}
+        except Exception as e:
+            log(f'logos: MOEX ISIN list failed: {e}')
     n = fixed = 0
     for aid, a in assets.items():
         if aid in have and aid not in redo:
@@ -563,6 +592,8 @@ def fetch_logos(assets):
             urls.append(LOGO_URL[aid])
         if a.get('logo'):
             urls.append(a['logo'].replace('/large/', '/small/'))
+        if a.get('mkt') == 'ru' and isin.get(aid):
+            urls.append(f'https://invest-brands.cdn-tinkoff.ru/{isin[aid]}x160.png')
         if a.get('cat') == 'crypto':
             urls.append(f'https://bin.bnbstatic.com/static/assets/logos/{tk}.png')
         elif a.get('cat') in ('stock', 'etf'):
