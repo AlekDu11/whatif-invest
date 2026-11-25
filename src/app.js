@@ -1275,7 +1275,7 @@ document.addEventListener('click',async e=>{
     return h.split(/\n{2,}/).map(p=>{ const ls=p.split('\n');
       if(ls.every(l=>/^\s*([-*•]|\d+[.)])\s+/.test(l))) return '<ul>'+ls.map(l=>'<li>'+l.replace(/^\s*([-*•]|\d+[.)])\s+/,'')+'</li>').join('')+'</ul>';
       return '<p>'+ls.join('<br>')+'</p>' }).join('') };
-  const btn=document.createElement('button'); btn.type='button'; btn.className='aibtn'; btn.setAttribute('aria-haspopup','dialog');
+  const btn=document.createElement('button'); btn.type='button'; btn.className='aibtn'; btn.setAttribute('aria-haspopup','dialog'); btn.setAttribute('aria-label',C.btn);
   btn.innerHTML='<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="currentColor" d="M12 2l1.9 5.6L19.5 9.5l-5.6 1.9L12 17l-1.9-5.6L4.5 9.5l5.6-1.9zM19 14l.9 2.6 2.6.9-2.6.9L19 21l-.9-2.6-2.6-.9 2.6-.9z"/></svg><span>'+esc(C.btn)+'</span>';
   const P=document.createElement('section'); P.className='aip'; P.hidden=true; P.setAttribute('role','dialog'); P.setAttribute('aria-label',C.title);
   P.innerHTML=`<header><b>${esc(C.title)}</b><button type="button" class="ainew">${esc(C.new)}</button><button type="button" class="aix" aria-label="×">×</button></header>
@@ -1893,9 +1893,9 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
     const W=innerWidth, H=innerHeight, bw=Math.min(400,W-24); bx.style.width=bw+'px'; const bh=bx.offsetHeight;
     let top=r.bottom+14; if(top+bh>H-10) top=Math.max(10,r.top-bh-14); if(top+bh>H-10) top=Math.max(10,H-bh-10);
     let left=Math.min(Math.max(12,r.left+r.width/2-bw/2),W-bw-12); bx.style.top=top+'px'; bx.style.left=left+'px' }
-  function show(n){ i=n; const [k,,el]=steps[i]; ov.className='tour'; ov.innerHTML=`<div class="trsp"></div><div class="trbox card" role="dialog" aria-live="polite"><p>${E(S[k])}</p>${btns(i===0,i===steps.length-1)}</div>`;
+  function show(n){ i=n; const [k,,el]=steps[i]; ov.className='tour'; ov.innerHTML=`<div class="trsp"></div><div class="trbox card" role="dialog" aria-label="WhatIfStack" aria-live="polite"><p>${E(S[k])}</p>${btns(i===0,i===steps.length-1)}</div>`;
     const r=el.getBoundingClientRect(); if(r.top<70||r.bottom>innerHeight-40){ el.scrollIntoView({block:'center',behavior:'smooth'}); setTimeout(place,420) } place() }
-  function center(h,p,b){ ov.className='tour trc'; ov.innerHTML=`<div class="trbox card trmid" role="dialog"><h3>${E(h)}</h3><p>${p}</p>${b}</div>` }
+  function center(h,p,b){ ov.className='tour trc'; ov.innerHTML=`<div class="trbox card trmid" role="dialog" aria-label="${E(h)}"><h3>${E(h)}</h3><p>${p}</p>${b}</div>` }
   function welcome(){ center(S.wh,E(S.wp),`<div class="trb"><button type="button" class="trs" data-a="skip">${E(S.skip)}</button><button type="button" class="btn" data-a="go">${E(S.go)}</button></div>`) }
   function end(){ i=-1; center(S.eh,`${E(S.ep)} <a href="${E(S.gu)}">${E(S.guide)} →</a>`,`<div class="trb"><span></span><button type="button" class="btn" data-a="close">${E(S.done)}</button></div>`) }
   function start(auto){ load().then(()=>{ if(ov) return; const seen=new Set();

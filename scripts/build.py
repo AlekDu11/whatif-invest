@@ -460,7 +460,7 @@ def icon(a, big=False):
     c = ' lg' if big else ''
     if a.get('cat') in ('metal', 'cmd') and not a.get('logo'):
         bg, t = METAL_IC.get(a.get('yahoo'), ('#b8a06a', a['tk'][:2]))
-        return f'<span class="ic{c}" style="background:{bg}">{t}</span>'
+        return f'<span class="ic{c} mi" style="background:{bg}">{t}</span>'
     k = SPRITE['ids'].get(a.get('_id'))
     if k is not None:
         cols, rows = SPRITE['cols'], SPRITE['rows']
@@ -793,7 +793,7 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
 <body>
 {strip(lang, home=p is None)}
 <div class="top"><div class="in">
-  <a class="logo" href="{url(lang)}"><svg class="mk" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="15" width="18" height="5" rx="2.5" fill="var(--gold)"/><rect x="5" y="9.5" width="14" height="4.5" rx="2.25" fill="var(--accent)"/><rect x="7.5" y="4" width="9" height="4.5" rx="2.25" fill="var(--text)"/></svg><span>whatif<b>stack</b></span></a>
+  <a class="logo" href="{url(lang)}" aria-label="WhatIfStack"><svg class="mk" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="15" width="18" height="5" rx="2.5" fill="var(--gold)"/><rect x="5" y="9.5" width="14" height="4.5" rx="2.25" fill="var(--accent)"/><rect x="7.5" y="4" width="9" height="4.5" rx="2.25" fill="var(--text)"/></svg><span>whatif<b>stack</b></span></a>
   <div class="gsearch">{SEARCH_ICON}<input id="gs" type="search" autocomplete="off" aria-label="search"><div class="gres" id="gres"></div></div>
   <nav class="nav">{nav}</nav>
   <a class="thm me" href="{url(lang, 'watchlist')}" title="{esc(PF2[lang]['wl'])}" aria-label="{esc(PF2[lang]['wl'])}">★</a>
@@ -5453,12 +5453,12 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
             if 'ua' in DEPO:
                 write(pre + 'deposits-ukraine/index.html', deposits_page(lang, ver))
                 extra_pages.append('deposits-ukraine')
-        if has_page(lang, 'bonuses'):
-            write(pre + 'bonuses/index.html', bonuses_page(lang, ver))
-            extra_pages.append('bonuses')
             for _b in OB:
                 write(f'{pre}ovdp/brokers/{_b["id"]}/index.html', ovdp_broker_page(lang, _b, ver))
                 extra_pages.append('ovdp/brokers/' + _b['id'])
+        if has_page(lang, 'bonuses'):
+            write(pre + 'bonuses/index.html', bonuses_page(lang, ver))
+            extra_pages.append('bonuses')
         write(pre + 'widgets/index.html', widgets_page(lang, ver))
         if CPI['c']:
             write(pre + 'inflation/index.html', inflation_page(lang, ver))
