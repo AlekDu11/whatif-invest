@@ -1,6 +1,6 @@
 ---
-title: Pepco Group (PCO) explained: Europe's cheap-clothes chain after selling Poundland
-description: Pepco Group in plain language — 4,260 stores, revenue above €4.5 billion, a €400 million buyback after selling Poundland and Dealz, the risks and what regular buyers should know.
+title: Pepco Group (PCO) stock: Europe's cheap-clothes chain after selling Poundland
+description: Pepco Group in plain language: about 4,260 stores, FY2026 revenue above €4.5 billion, a €400 million buyback after selling Poundland, and the risks.
 date: 2026-11-20
 kind: analysis
 ---
@@ -10,7 +10,7 @@ kind: analysis
 > - Revenue for the year to September 2026 is expected above €4.5 billion, about +8% at constant currency, from about 4,260 stores.
 > - Underlying net earnings are expected to grow more than 60% in FY26; first-half underlying EBITDA rose 17.5% to €516 million.
 > - Pepco returned €400 million through a tender buyback in August 2026 and plans up to €400 million more over FY27–FY29.
-> - The share price fell below 13 zł in spring 2025 after listing at 40 zł; in the past 52 weeks it ranged from about 23.6 zł to 51.9 zł.
+> - Listed at 40 zł in May 2021, the share fell below 13 zł in spring 2025, then rose about 64% between April and late July 2026.
 
 ## How it makes money
 
@@ -18,14 +18,16 @@ Pepco sells cheap general merchandise and clothing in small-town and city stores
 
 ## The numbers right now
 
-In the half-year to 31 March 2026 revenue was €2.47 billion (+5%), underlying profit after tax €198 million (+52%) and net debt only €139 million, about 0.2 times yearly EBITDA. In the last quarter of FY26 like-for-like sales — in stores open more than a year — rose 9.4%, partly thanks to planned stock clearance; Western Europe grew 14.9% and Poland 5.9%. Full FY26 results are due on 9 December 2026. The market values the company at about 27.8 billion zł, roughly 14 times yearly profit. The plan is to pay 25% of underlying profit as dividends and move towards 40% over time.
+- Price today: {{price:pco}}
+- Market value: {{mcap:pco}} ({{rank:pco}} among the world's largest companies on WhatIfStack)
+- Record high: {{ath:pco}} ({{athd:pco}}), {{fromath:pco}} from it
+- $10 a day for 5 years: {{dca:pco:5}} from {{dcainv:5}} invested ({{dcaroi:pco:5}})
+
+In the half-year to 31 March 2026 revenue was €2.47 billion (+5%), underlying profit after tax €198 million (+52%) and net debt only €139 million, about 0.2 times yearly EBITDA. In the last quarter of FY26 like-for-like sales — in stores open more than a year — rose 9.4%, partly thanks to planned stock clearance; Western Europe grew 14.9% and Poland 5.9%. Full FY26 results are due on 9 December 2026. The plan is to pay 25% of underlying profit as dividends and move towards 40% over time.
 
 ## The stock's story
 
-Pepco listed on the Warsaw Stock Exchange in May 2021 at 40 zł a share, valuing it at about €5 billion. Then came two profit warnings in September 2023 and the debt crisis at its then majority owner Steinhoff, and the shares slid for years, bottoming below 13 zł in spring 2025. Selling Poundland, focusing on the profitable Pepco chain and returning cash turned sentiment: the stock rose about 64% between April and late July 2026, and the August tender buyback was priced at 47.52 zł. Investment group Ibex is now the main shareholder; Stephan Borchert is CEO.
-
-- Price today: {{price:pco}}
-- $10 a day for 5 years: {{dca:pco:5}} from {{dcainv:5}} invested ({{dcaroi:pco:5}})
+Pepco listed on the Warsaw Stock Exchange in May 2021 at 40 zł a share, valuing it at about €5 billion. Then came two profit warnings in September 2023 and the debt crisis at its then majority owner Steinhoff, and the shares slid for years, bottoming below 13 zł in spring 2025. Selling Poundland, focusing on the profitable Pepco chain and returning cash turned sentiment: the stock rose about 64% between April and late July 2026, and the August tender buyback was priced at 47.52 zł. In 2026 investment group Ibex was the main shareholder and Stephan Borchert was CEO.
 
 ## Competitors
 
