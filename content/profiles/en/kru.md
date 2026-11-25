@@ -1,5 +1,5 @@
 ---
-title: Kruk (KRU) explained: the Polish company that buys unpaid debts and collects them
+title: Kruk (KRU) stock: the Polish debt buyer that earned 1.09 billion zł in 2025
 description: Kruk in plain language — 2.97 billion zł recovered from bought debts in 9 months of 2026, why Q3 profit fell 32%, the risks and what regular buyers should know.
 date: 2026-11-20
 kind: analysis
@@ -10,7 +10,7 @@ kind: analysis
 > - Recoveries from bought debts: 2.97 billion zł in January–September 2026, +2% a year.
 > - Net profit 198 million zł in Q3 2026, −32%; 753 million zł over nine months, −14%.
 > - Record dividend for 2025: 20 zł per share, about 391 million zł in total, after 1.09 billion zł of net profit in 2025.
-> - Over the last 52 weeks the stock ranged from 510 zł down to 316 zł.
+> - New portfolios bought in January–September 2026: 1.21 billion zł paid for debts with a face value of 4.2 billion zł.
 
 ## How it makes money
 
@@ -18,16 +18,18 @@ Kruk's core business is simple to explain: buy debts below their face value, the
 
 ## The numbers right now
 
+- Price today: {{price:kru}}
+- Market value: {{mcap:kru}} ({{rank:kru}} among the world's largest companies on WhatIfStack)
+- Record high: {{ath:kru}} ({{athd:kru}}), {{fromath:kru}} from it
+- $10 a day for 10 years: {{dca:kru:10}} from {{dcainv:10}} invested ({{dcaroi:kru:10}})
+
 In Q3 2026 Kruk collected 960 million zł from its portfolios, 5% less than a year earlier, and spent only 347 million zł on new ones, down 44%. Revenue fell 10% to 727 million zł and net profit fell 32% to 198 million zł. Over nine months cash EBITDA (cash coming in after operating costs) was 2.05 billion zł, +2%, and net debt was 2.7 times cash EBITDA. In October it enlarged its revolving credit line by 265 million euros to 1.02 billion euros, available until July 2031.
 
 CEO Piotr Krupa said the main reason for the weaker profit was repayments below the company's own assumptions, mainly in Spain and Romania, where the economy is worsening and the leu is weakening. He also warned that competition for new portfolios is strong, especially in Poland and Romania, and that Kruk will not overpay to grow. If good deals stay scarce for long, it may return more capital to shareholders.
 
 ## The stock's story
 
-Kruk has been one of the Warsaw market's long-term dividend names, with 12 years of annual payouts; the 20 zł for 2025 was its highest ever. In 2026 the mood turned: on 9 October the shares fell about 6.8% in an afternoon to 351.2 zł when the company said Q3 repayments missed its expectations. Over the last 52 weeks the price went from a high of 510 zł to a low of 316.1 zł. Market value is about 6.2 billion zł, roughly 7 times profit of the last twelve months.
-
-- Price today: {{price:kru}}
-- $10 a day for 10 years: {{dca:kru:10}} from {{dcainv:10}} invested ({{dcaroi:kru:10}})
+Kruk has been one of the Warsaw market's long-term dividend names, with 12 years of annual payouts; the 20 zł for 2025 was its highest ever. In 2026 the mood turned: on 9 October the shares fell about 6.8% in an afternoon to 351.2 zł when the company said Q3 repayments missed its expectations. In the 52 weeks to mid-October 2026 the shares traded between 316.1 zł and 510 zł.
 
 ## Competitors
 
@@ -42,7 +44,7 @@ Kruk competes for debt portfolios with Intrum (Sweden), PRA Group (USA), Hoist F
 
 ## What it means if you buy regularly
 
-Kruk is a cash-generating company that pays a large dividend (20 zł per share for 2025), so for regular buyers much of the return can come as cash that can be reinvested. But it is a cyclical financial stock: profit dropped by a third in one quarter and the shares fell sharply within a year. The złoty exchange rate adds another layer of swings for foreign buyers. Past results do not guarantee future returns.
+Kruk is a cash-generating company that pays a large dividend (20 zł per share for 2025), so for regular buyers much of the return can come as cash that can be reinvested. But it is a cyclical financial stock: profit dropped by a third in one quarter and the shares fell sharply in 2026. The złoty exchange rate adds another layer of swings for foreign buyers. Past results do not guarantee future returns.
 
 *Not investment advice.*
 
