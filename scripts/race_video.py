@@ -3,7 +3,8 @@
 
   python3 scripts/race_video.py btc eth sol --amt 100 --since 2020-04 --lang en --out social/video/btc-eth-sol.mp4
 
-Uses our monthly prices from data/market.json; logos from data/logo (or dist/assets/logo); brand fonts from scripts/fonts.
+Uses our monthly prices from data/market.json; logos from data/logos (self-hosted, committed), else the sprite or dist/assets/logo; brand fonts from scripts/fonts.
+Owner 2026-11-25: big real logos, floating money/coin symbols, a glowing leader with a crown — a livelier video.
 Needs: pillow, ffmpeg.
 """
 import argparse, json, math, os, subprocess, sys
@@ -40,17 +41,52 @@ def money(v):
     return f'${v:,.0f}'
 
 
+def _circle(im, size):
+    im = im.convert('RGBA').resize((size, size), Image.LANCZOS)
+    mask = Image.new('L', (size, size), 0)
+    ImageDraw.Draw(mask).ellipse((0, 0, size - 1, size - 1), fill=255)
+    out = Image.new('RGBA', (size, size), (0, 0, 0, 0))
+    out.paste(im, (0, 0), mask)
+    return out
+
+
 def logo(aid, size):
-    for d in (os.path.join(ROOT, 'data', 'logo'), os.path.join(ROOT, 'dist', 'assets', 'logo')):
-        p = os.path.join(d, aid + '.webp')
-        if os.path.exists(p):
-            im = Image.open(p).convert('RGBA').resize((size, size), Image.LANCZOS)
-            mask = Image.new('L', (size, size), 0)
-            ImageDraw.Draw(mask).ellipse((0, 0, size - 1, size - 1), fill=255)
-            out = Image.new('RGBA', (size, size), (0, 0, 0, 0))
-            out.paste(im, (0, 0), mask)
-            return out
+    cands = [aid, aid.rsplit('-', 1)[0]]
+    for d in (os.path.join(ROOT, 'data', 'logos'), os.path.join(ROOT, 'data', 'logo'), os.path.join(ROOT, 'dist', 'assets', 'logo')):
+        for c in cands:
+            p = os.path.join(d, c + '.webp')
+            if os.path.exists(p):
+                return _circle(Image.open(p), size)
+    sj, sw = os.path.join(ROOT, 'data', 'logo-sprite.json'), os.path.join(ROOT, 'data', 'logo-sprite.webp')
+    if os.path.exists(sj) and os.path.exists(sw):
+        sp = json.load(open(sj))
+        k = sp['ids'].get(aid)
+        if k is not None:
+            z = sp['size']
+            x, y = (k % sp['cols']) * z, (k // sp['cols']) * z
+            return _circle(Image.open(sw).crop((x, y, x + z, y + z)), size)
     return None
+
+
+def ringed(im, color, size, ring=6):
+    """Logo inside a coloured ring (so each line's colour is obvious)."""
+    out = Image.new('RGBA', (size, size), (0, 0, 0, 0))
+    d = ImageDraw.Draw(out)
+    d.ellipse((0, 0, size - 1, size - 1), fill=color + (255,))
+    inner = size - 2 * ring
+    d.ellipse((ring - 1, ring - 1, size - ring, size - ring), fill=(255, 255, 255, 255))
+    lg = im.resize((inner - 4, inner - 4), Image.LANCZOS)
+    out.paste(lg, (ring + 2, ring + 2), lg)
+    return out
+
+
+def crown(d, cx, top, w, color=(255, 205, 60)):
+    h = w * .62
+    pts = [(cx - w / 2, top + h), (cx - w / 2, top + h * .25), (cx - w / 4, top + h * .6), (cx, top), (cx + w / 4, top + h * .6),
+           (cx + w / 2, top + h * .25), (cx + w / 2, top + h)]
+    d.polygon(pts, fill=color)
+    for px, py in ((cx - w / 2, top + h * .25), (cx, top), (cx + w / 2, top + h * .25)):
+        d.ellipse((px - 4, py - 4, px + 4, py + 4), fill=color)
 
 
 def badge(tk, color, size):
@@ -97,8 +133,16 @@ def main():
     # numeric exchange codes (1211, 7203) read badly — use the English name instead
     name = lambda i: (A[i].get('tk') if A[i].get('tk') and not str(A[i]['tk']).split('.')[0].isdigit() else (A[i].get('name') or {}).get('en') or i.upper())
     col = {i: PALETTE[k % len(PALETTE)] for k, i in enumerate(ids)}
-    lg = {i: logo(i, 64) or badge(name(i), col[i], 64) for i in ids}
-    lg_big = {i: logo(i, 120) or badge(name(i), col[i], 120) for i in ids}
+    raw = {i: logo(i, 160) or badge(name(i), col[i], 160) for i in ids}
+    lg = {i: ringed(raw[i], col[i], 84) for i in ids}          # header row
+    lg_head = {i: ringed(raw[i], col[i], 76) for i in ids}     # line heads
+    lg_big = {i: ringed(raw[i], col[i], 110) for i in ids}     # final ranking
+    # floating money / coin symbols (deterministic, subtle so the MP4 stays small)
+    import random
+    rnd = random.Random(7)
+    f_sym = {z: ImageFont.truetype(F_BOLD, z) for z in (34, 46, 60)}
+    SYMS = [dict(x=rnd.uniform(40, W - 80), y0=rnd.uniform(0, H), sp=rnd.uniform(1.2, 2.6), z=rnd.choice((34, 46, 60)),
+                 ch='$', coin=rnd.random() < .5, a=rnd.randint(14, 26), wob=rnd.uniform(0, 6.28)) for _ in range(11)]
     f_title, f_big, f_mid, f_sm, f_xs = (ImageFont.truetype(F_BOLD, 52), ImageFont.truetype(F_BOLD, 40), ImageFont.truetype(F_SEMI, 32),
                                          ImageFont.truetype(F_SEMI, 26), ImageFont.truetype(F_TEXT, 22))
     d0 = f'{L[start % 12]} {start // 12}'
@@ -121,16 +165,25 @@ def main():
         fj = pos - j
         im = Image.new('RGB', (W, H), BG)
         d = ImageDraw.Draw(im, 'RGBA')
+        mix = lambda c, al: tuple(int(BG[q] + (c[q] - BG[q]) * al / 255) for q in range(3))   # pre-blended (text alpha is not blended on RGB)
+        for sy in SYMS:   # money and coins drifting up
+            yy_ = (sy['y0'] - fr * sy['sp']) % (H + 80) - 40
+            xx_ = sy['x'] + 10 * math.sin(fr / 18 + sy['wob'])
+            if sy['coin']:
+                r_ = sy['z'] * .55
+                d.ellipse((xx_ - r_, yy_ - r_, xx_ + r_, yy_ + r_), outline=mix((247, 183, 51), sy['a'] + 30), width=3)
+                d.text((xx_ - d.textlength('$', font=f_sym[34]) / 2, yy_ - 21), '$', font=f_sym[34], fill=mix((247, 183, 51), sy['a'] + 30))
+            else:
+                d.text((xx_, yy_), sy['ch'], font=f_sym[sy['z']], fill=mix(ACC, sy['a'] + 30))
         # header
         d.text((60, 46), 'whatifstack', font=f_mid, fill=ACC)
         d.text((60, 92), title, font=f_title, fill=TEXT)
         # contenders row
         x = 60
         for k, i in enumerate(ids):
-            if lg[i]:
-                im.paste(lg[i], (int(x), 180), lg[i])
-            d.text((x + 76, 192), name(i), font=f_big, fill=col[i])
-            x += 76 + d.textlength(name(i), font=f_big) + 26
+            im.paste(lg[i], (int(x), 172), lg[i])
+            d.text((x + 96, 190), name(i), font=f_big, fill=col[i])
+            x += 96 + d.textlength(name(i), font=f_big) + 26
             if k < len(ids) - 1:
                 d.text((x, 200), 'vs', font=f_sm, fill=MUTED)
                 x += d.textlength('vs', font=f_sm) + 26
@@ -169,20 +222,23 @@ def main():
         for yy, i in heads:
             ly = yy
             for py in placed:
-                if abs(ly - py) < 70:
-                    ly = py + 70
+                if abs(ly - py) < 92:
+                    ly = py + 92
             placed.append(ly)
             hx = X(pos)
-            sm = lg[i].resize((46, 46)) if lg[i] else None
-            if sm:
-                d.ellipse((hx - 27, yy - 27, hx + 27, yy + 27), fill=col[i])
-                im.paste(sm, (int(hx) - 23, int(yy) - 23), sm)
-            else:
-                d.ellipse((hx - 12, yy - 12, hx + 12, yy + 12), fill=col[i])
+            lead = i == heads[0][1] and fr > 0
+            d.ellipse((hx - 11, yy - 11, hx + 11, yy + 11), fill=col[i], outline=TEXT, width=3)
+            lx = min(int(hx) + 30, W - 290)            # logo column right of the line end
+            if abs(ly - yy) > 4 or lx > hx + 32:
+                d.line((hx + 11, yy, lx, ly), fill=col[i] + (170,), width=3)
+            if lead:   # pulsing glow + crown for the leader
+                gr = 50 + 7 * math.sin(fr / 4)
+                d.ellipse((lx + 38 - gr, ly - gr, lx + 38 + gr, ly + gr), fill=col[i] + (60,))
+                crown(d, lx + 38, ly - 38 - 30, 40)
+            hl = lg_head[i]
+            im.paste(hl, (lx, int(ly) - 38), hl)
             roi = cur_vals[i] / invd - 1 if invd else 0
-            tx = min(int(hx) + 38, W - 200)
-            if abs(ly - yy) > 4:
-                d.line((hx + 27, yy, tx - 4, ly - 6), fill=col[i] + (160,), width=2)
+            tx = lx + 86
             d.text((tx, ly - 36), money(cur_vals[i]), font=f_mid, fill=col[i])
             d.text((tx, ly + 2), f'{roi * 100:+.0f}%', font=f_xs, fill=(ACC if roi >= 0 else (255, 122, 110)))
         # footer
@@ -200,8 +256,9 @@ def main():
                 d.text((80, y - 110), f'{T["inv"]}: {money(inv[-1])}', font=f_mid, fill=MUTED)
                 for r, i in enumerate(rank):
                     d.rounded_rectangle((70, y, W - 70, y + 150), radius=28, fill=CARD + (255,), outline=col[i] if r == 0 else None, width=4)
-                    if lg_big[i]:
-                        im.paste(lg_big[i].resize((96, 96)), (100, y + 27), lg_big[i].resize((96, 96)))
+                    im.paste(lg_big[i], (92, y + 20), lg_big[i])
+                    if r == 0:
+                        crown(d, 147, y - 18, 48)
                     d.text((220, y + 28), f'{r + 1}. {name(i)}', font=f_big, fill=TEXT)
                     roi = S[i][-1] / inv[-1] - 1
                     d.text((220, y + 82), f'{roi * 100:+.0f}%', font=f_mid, fill=(ACC if roi >= 0 else (255, 122, 110)))
