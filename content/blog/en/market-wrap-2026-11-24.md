@@ -57,7 +57,7 @@ Large stocks (closing moves) and the coins that held up best:
 
 ## What it means if you buy regularly
 
-Monday and Tuesday together show why guessing single days rarely works: the chip rally that looked unstoppable on Monday lost a big part of its gains a day later. Someone who put $10 a day into Bitcoin over the last year ({{dcainv:1}} in total) now has **{{dca:btc:1}}** ({{dcaroi:btc:1}}). The same habit in Ethereum stands at {{dcaroi:eth:1}}, in the S&P 500 at {{dcaroi:spy:1}}, in gold at {{dcaroi:gold:1}} and in Nvidia at {{dcaroi:nvda:1}}.
+Monday and Tuesday together show why guessing single days rarely works: the chip rally that looked unstoppable on Monday gave back part of its gains a day later. Someone who put $10 a day into Bitcoin over the last year ({{dcainv:1}} in total) now has **{{dca:btc:1}}** ({{dcaroi:btc:1}}). The same habit in Ethereum stands at {{dcaroi:eth:1}}, in the S&P 500 at {{dcaroi:spy:1}}, in gold at {{dcaroi:gold:1}} and in Nvidia at {{dcaroi:nvda:1}}.
 
 {{table:btc,eth,spy,gold,nvda:1}}
 
