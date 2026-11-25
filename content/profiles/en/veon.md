@@ -1,16 +1,16 @@
 ---
-title: VEON (VEON) explained: Kyivstar's parent and mobile operator for 150 million people
-description: VEON in plain language — $1.31 billion of Q3 2026 revenue (+17.2%) from Pakistan, Ukraine and three more markets, life after Russia, the risks and what regular buyers should know.
+title: VEON (VEON) stock: Kyivstar's parent and its $1.31 billion Q3 2026 revenue
+description: VEON in plain language: $1.31 billion of Q3 2026 revenue (+17.2%) from Pakistan, Ukraine and three more markets, life after Russia and the risks.
 date: 2026-11-18
 kind: analysis
 ---
-**VEON** is a mobile operator for emerging markets, headquartered in Dubai: it runs Jazz in Pakistan, Kyivstar in Ukraine, Beeline in Kazakhstan and Uzbekistan, and Banglalink in Bangladesh. Together these networks have about 152 million telecom subscribers. Until 2023 VEON's biggest business was Beeline in Russia; it sold it and now owns 83.6% of Kyivstar, which is listed separately on Nasdaq.
+**VEON** is a mobile operator for emerging markets, headquartered in Dubai: it runs Jazz in Pakistan, Kyivstar in Ukraine, Beeline in Kazakhstan and Uzbekistan, and Banglalink in Bangladesh. Together these networks had about 152 million telecom subscribers in Q3 2026. Until 2023 VEON's biggest business was Beeline in Russia; it sold it, and in 2026 it owned 83.6% of Kyivstar, which is listed separately on Nasdaq.
 
 > **Key takeaways**
 > - Q3 2026 revenue: $1.31 billion, +17.2%; EBITDA (profit before interest, tax and depreciation) $577 million, +10.1%.
 > - Digital services — mobile money, video, apps — brought in $355 million, +45.9%, or 27.2% of revenue.
 > - Pakistan is the largest market ($522 million, +28.9%); Ukraine is second ($352 million, +17.4%).
-> - The share fell about 64% in February 2022 and has since risen roughly tenfold from its 2022 low in our adjusted data.
+> - The share fell about 64% in February 2022; VEON completed the sale of its Russian business in October 2023.
 
 ## How it makes money
 
@@ -20,14 +20,17 @@ The second engine is digital: 221.1 million people use VEON's apps and services,
 
 ## The numbers right now
 
+- Price today: {{price:veon}}
+- Market value: {{mcap:veon}} ({{rank:veon}} among the world's largest companies on WhatIfStack)
+- Record high: {{ath:veon}} ({{athd:veon}}), {{fromath:veon}} from it
+- $10 a day for 10 years: {{dca:veon:10}} from {{dcainv:10}} invested ({{dcaroi:veon:10}})
+
 In the quarter to 30 September 2026 VEON had $1.307 billion of revenue and $577 million of EBITDA. Net profit was $225 million, of which $187 million belonged to VEON shareholders ($2.67 per ADS). Revenue by market: Pakistan $522 million, Ukraine $352 million, Kazakhstan $230 million (+8.5%), Bangladesh $117 million (+0.7%) and Uzbekistan $86 million (+11.0%). VEON held $2.03 billion of cash, with leverage of 1.05 times EBITDA, and spent $112.5 million on buying back ADSs under its current programme. It raised the floor of its 2026 forecast to revenue growth of 16–18% and EBITDA growth of 10–12%.
 
 ## The stock's story
 
 VEON began as VimpelCom, the Russian Beeline operator, and in our price history (adjusted for ADS ratio changes) it traded above $500 in 2007. The real turning point was Russia's full-scale invasion of Ukraine: in February 2022 the share lost about 64% in one month, and by October 2022 it was near $8 in adjusted terms. In March 2023 VEON combined every 25 old ADSs into one new ADS — our history is adjusted for this. It completed the sale of Beeline Russia to local managers on 9 October 2023, moved its headquarters from Amsterdam to Dubai, and since 25 November 2024 has traded only on Nasdaq. After years of growth and buybacks, the price climbed back above $70 in autumn 2026.
 
-- Price today: {{price:veon}}
-- $10 a day for 10 years: {{dca:veon:10}} from {{dcainv:10}} invested ({{dcaroi:veon:10}})
 
 ## Competitors
 
