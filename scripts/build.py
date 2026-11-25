@@ -71,7 +71,7 @@ from i18n_ua import UA_LANGS, UA_ASOF, OB, OBI, OBT, UA_SRC, BUYG, BUYG_SRC, OVP
 from i18n_bpd import BPD, IDEA as BP_IDEA  # noqa: E402
 from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB, CH as OWN_CH, CH2 as OWN_CH2  # noqa: E402
 SOCIAL = [('Telegram', 'https://t.me/WhatIfStack'), ('X (Twitter)', 'https://x.com/WhatIfStack'), ('Bluesky', 'https://bsky.app/profile/whatifstack.bsky.social'),
-          ('Medium', 'https://medium.com/@whatifstack'), ('Pinterest', 'https://www.pinterest.com/whatifstack/')]   # owner 2026-11-20: Instagram + Teletype blocked, only the main networks; # no GitHub link on the site (owner, 2026-11-19)
+          ('YouTube', 'https://www.youtube.com/@whatifstack'), ('Medium', 'https://medium.com/@whatifstack'), ('Pinterest', 'https://www.pinterest.com/whatifstack/')]   # owner 2026-11-20: Instagram + Teletype blocked, only the main networks; # no GitHub link on the site (owner, 2026-11-19)
 CONTACT_EMAIL = 'support@whatifstack.com'   # public contact address shown under 'Follow us' (set when the owner confirms which mailbox)   # [(label, url)], e.g. ('Telegram', 'https://t.me/WhatIfStack'); the 'Follow us' column appears when filled
 from i18n_h import H as HB, PRICES as HPRICE, SCEN as HSCEN, UNITS as HUNITS, CONV as HCONV  # noqa: E402
 
@@ -541,6 +541,7 @@ _G = {
     'Threads': ('#111', '<text x="12" y="16.6" text-anchor="middle" font-size="13" font-weight="700" fill="#fff" font-family="Arial">@</text>'),
     'Bluesky': ('#1185FE', '<path d="M12 11.2C10.6 8.5 7.6 6.3 6.2 6.9c-1.4.6-.4 4.4 1.6 5.1-2.2.6-2.4 2.6-.6 3.5 1.9.9 3.8-.9 4.8-3.3 1 2.4 2.9 4.2 4.8 3.3 1.8-.9 1.6-2.9-.6-3.5 2-.7 3-4.5 1.6-5.1-1.4-.6-4.4 1.6-5.8 4.3z" fill="#fff"/>'),
     'Facebook': ('#1877F2', '<path d="M13.2 19v-6h2l.3-2.4h-2.3V9.1c0-.7.2-1.2 1.2-1.2h1.2V5.8c-.2 0-1-.1-1.8-.1-1.8 0-3 1.1-3 3.1v1.8h-2V13h2v6z" fill="#fff"/>'),
+    'YouTube': ('#FF0000', '<path d="M10 8.6v6.8l5.8-3.4z" fill="#fff"/>'),
     'Pinterest': ('#E60023', '<text x="12" y="17" text-anchor="middle" font-size="14" font-weight="800" fill="#fff" font-family="Georgia">P</text>'),
     'Medium': ('#000', '<ellipse cx="9" cy="12" rx="3.6" ry="3.8" fill="#fff"/><ellipse cx="15" cy="12" rx="1.7" ry="3.6" fill="#fff"/><ellipse cx="18" cy="12" rx=".7" ry="3.2" fill="#fff"/>'),
     'Flipboard': ('#E12828', '<path d="M7 7h10v3.3h-6.7v3.4H7z" fill="#fff"/><path d="M7 13.7h3.3V17H7z" fill="#fff" opacity=".8"/>'),
