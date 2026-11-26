@@ -1,0 +1,102 @@
+[
+{
+"id": "memecoin",
+"t": "Memecoin",
+"d": "Crypto token na ginawa mula sa isang biro, hayop, tao o trend sa internet. Kadalasan walang produkto o kita sa likod nito, kaya gumagalaw lang ang presyo dahil sa atensyon at sa pagbili at pagbenta ng mga tao."
+},
+{
+"id": "contract-address",
+"t": "Contract address (CA)",
+"d": "Ang natatanging address ng isang token sa blockchain nito. Kayang gayahin ng kahit sino ang pangalan at ticker, pero hindi ang contract address — kaya laging i-check ito bago bumili."
+},
+{
+"id": "dex",
+"t": "DEX vs CEX",
+"d": "Sa DEX (decentralized exchange, gaya ng Raydium o PancakeSwap) puwede kang mag-swap ng token direkta mula sa sarili mong wallet. Ang CEX (centralized exchange, gaya ng Binance) ang humahawak ng pera mo at naglilista lang ng mga token na sinuri nito."
+},
+{
+"id": "liquidity",
+"t": "Liquidity",
+"d": "Ang perang nakalagay sa trading pool ng isang token. Kapag maliit ang liquidity, kahit maliit na benta ay malaki ang galaw ng presyo, at baka hindi ka makapagbenta sa patas na presyo."
+},
+{
+"id": "liquidity-lock",
+"t": "Liquidity lock / burn",
+"d": "Kapag naka-lock o na-burn (sinira) ang liquidity ng pool, hindi na ito mailalabas ng gumawa ng token. Ang liquidity na hindi naka-lock ang klasikong daan ng rug pull."
+},
+{
+"id": "rug-pull",
+"t": "Rug pull",
+"d": "Kapag biglang hinugot ng mga gumawa o ng mga insider ang pera sa pool o ibinenta nang sabay-sabay ang kanilang coins, kaya bumabagsak ang presyo halos sa zero at hindi na makalabas ang mga bumili."
+},
+{
+"id": "honeypot",
+"t": "Honeypot",
+"d": "Scam na token na kaya mong bilhin pero hindi mo maibenta, dahil hinaharangan o pinapatawan ng napakalaking tax ng contract ang pagbenta. Laging i-check kung may ibang holder na talagang nakapagbenta."
+},
+{
+"id": "bonding-curve",
+"t": "Bonding curve",
+"d": "Sa mga launchpad gaya ng pump.fun, ibinebenta muna ang bagong token sa isang price curve: bawat pagbili ay nagpapataas ng presyo. Kapag sapat na ang pumasok na pera, «nag-graduate» ang token."
+},
+{
+"id": "graduation",
+"t": "Graduation (paglipat sa DEX)",
+"d": "Ang sandaling napuno ng launchpad token ang bonding curve nito at lumipat sa totoong DEX pool. Iilang porsiyento lang ng mga bagong token ang nakakarating dito."
+},
+{
+"id": "sniper",
+"t": "Sniper",
+"d": "Bot o trader na bumibili ng token sa pinakaunang mga segundo pagkatapos ng launch, kadalasan para ibenta sa mas mataas na presyo sa mga susunod na bibili."
+},
+{
+"id": "bundler",
+"t": "Bundler",
+"d": "Gumawa ng token na bumibili ng malaking bahagi ng sarili niyang token mula sa maraming wallet sa launch para magmukhang maraming iba't ibang holder. Babala ito ng planadong dump."
+},
+{
+"id": "dev-wallet",
+"t": "Dev wallet",
+"d": "Ang wallet ng gumawa ng token. Kung malaking bahagi ng supply ang hawak nito, kaya ng gumawa na ibagsak ang presyo kahit kailan sa pamamagitan ng pagbenta."
+},
+{
+"id": "top-10-holders",
+"t": "Top-10 holders",
+"d": "Ang bahagi ng lahat ng coins na hawak ng 10 pinakamalaking wallet. Habang mas mataas ito (halimbawa lampas 30%), mas madali para sa iilang tao na ibagsak ang presyo."
+},
+{
+"id": "kol",
+"t": "KOL",
+"d": "«Key opinion leader» — influencer na may malaking audience. Madalas binabayaran ang mga KOL para i-promote ang mga token, minsan pagkatapos nilang bilhin ito nang mura."
+},
+{
+"id": "pump-and-dump",
+"t": "Pump and dump",
+"d": "Pinapataas ng isang grupo ang presyo gamit ang hype at pagbili, tapos ibinebenta nila sa mga bagong pasok sa tuktok. Ang mga nahuli ang naiiwan sa lugi."
+},
+{
+"id": "slippage",
+"t": "Slippage",
+"d": "Ang pagkakaiba ng presyong nakikita mo at ng presyong talagang nakukuha mo. Sa maliliit na memecoin pool, puwede itong umabot ng 5–20% o higit pa sa isang trade."
+},
+{
+"id": "market-cap-fdv",
+"t": "Market cap vs FDV",
+"d": "Ang market cap ay presyo × coins na umiikot sa merkado. Ang FDV (fully diluted value) ay presyo × lahat ng coins na iiral kailanman. Kapag malaki ang agwat, maraming coins pa ang puwedeng ma-unlock at maibenta."
+},
+{
+"id": "dyor",
+"t": "DYOR",
+"d": "«Do your own research» (mag-research ka mismo). Paalala na walang ibang mananagot sa pera mo — hindi influencer, hindi website — kundi ikaw."
+},
+{
+"id": "ape",
+"t": "Ape / aping in",
+"d": "Mabilis na pagbili ng token dahil sa hype nang hindi muna ito sinusuri. Ang pinakamabilis na paraan para malugi sa memecoins."
+},
+{
+"id": "paper-diamond-hands",
+"t": "Paper hands / diamond hands",
+"d": "Slang para sa mga nagbebenta sa unang pagbaba (paper hands) o humahawak kahit anong bagsak (diamond hands). Wala sa dalawa ang estratehiya sa sarili nito."
+}
+]
