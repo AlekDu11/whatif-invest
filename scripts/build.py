@@ -67,7 +67,7 @@ from i18n_holders import HOLD  # noqa: E402  (big crypto holders on /investors/,
 from i18n_mkt import MKT, LEAD as MLEAD, FG as MFG, CALC as MCALC  # noqa: E402
 from i18n_st import ST as STX  # noqa: E402
 from i18n_xc2 import XC2  # noqa: E402
-from i18n_bonus import BON, BON_LANGS  # noqa: E402
+from i18n_bonus import BON, BON_LANGS, BONX  # noqa: E402
 from i18n_ua import UA_LANGS, UA_ASOF, OB, OBI, OBT, UA_SRC, BUYG, BUYG_SRC, OVP, OB_GO, INZ  # noqa: E402
 from i18n_bpd import BPD, IDEA as BP_IDEA  # noqa: E402
 from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB, CH as OWN_CH, CH2 as OWN_CH2  # noqa: E402
@@ -796,11 +796,11 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
   <a class="logo" href="{url(lang)}" aria-label="WhatIfStack"><svg class="mk" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="15" width="18" height="5" rx="2.5" fill="var(--gold)"/><rect x="5" y="9.5" width="14" height="4.5" rx="2.25" fill="var(--accent)"/><rect x="7.5" y="4" width="9" height="4.5" rx="2.25" fill="var(--text)"/></svg><span>whatif<b>stack</b></span></a>
   <div class="gsearch">{SEARCH_ICON}<input id="gs" type="search" autocomplete="off" aria-label="search"><div class="gres" id="gres"></div></div>
   <nav class="nav">{nav}</nav>
-  <a class="thm me" href="{url(lang, 'watchlist')}" title="{esc(PF2[lang]['wl'])}" aria-label="{esc(PF2[lang]['wl'])}">★</a>
+  {bon_btn(lang)}<a class="thm me" href="{url(lang, 'watchlist')}" title="{esc(PF2[lang]['wl'])}" aria-label="{esc(PF2[lang]['wl'])}">★</a>
   <a class="thm me" href="{url(lang, 'me')}" title="{esc(PF[lang]['h1'])}" aria-label="{esc(PF[lang]['h1'])}">💼</a>
   {acct_btn(lang)}<button class="thm" id="thm" type="button" aria-label="theme"><span class="m">☾</span><span class="s">☀</span></button>
   {lang_menu(lang, p)}
-</div></div>
+</div></div>{bon_strip(lang)}
 <nav class="mnav">{mnav}</nav>{msheet}
 <main class="wrap">
 {body}
@@ -1140,6 +1140,20 @@ def bonuses_page(lang, ver):
     chips = ''.join(f'<a class="chip" href="#bc-{c}">{C[c]["flag"]} {esc(L(C[c]["name"]))} <small>{len(C[c]["items"])}</small></a>' for c in order)
     secs = ''.join(f'<section class="section" id="bc-{c}"><h2>{C[c]["flag"]} {esc(L(C[c]["name"]))}</h2>'
                    + ''.join(item(c, it) for it in sorted(C[c]['items'], key=lambda it: -(it.get('v') or 0))) + '</section>' for c in order)
+    tx = BONX.get(lang, BONX['en'])
+    def xcard(x):
+        big = (f'<div class="bxbig">{esc(tx["upto"])} {x["max"]:,} USDT</div>'.replace(',', '\u202f') if x.get('max') else '')
+        src = ' · '.join(f'<a href="{esc(u)}" target="_blank" rel="noopener">{esc(ti)}</a>' for ti, u in x.get('src', []))
+        return (f'<article class="card bon bx{" hot" if x.get("hot") else ""}"><div class="bxh"><h3>{esc(x["name"])}</h3>'
+                + (f'<span class="bxrec">{esc(tx["rec"])}</span>' if x.get('hot') else '') + f'</div>{big}<p>{esc(L(x["line"]))}</p>'
+                f'<p class="bonb"><a class="btn" href="/go/{x["go"]}?from=bonuses-x&l={lang}" target="_blank" rel="sponsored noopener">{esc(t["go"])} ↗</a></p>'
+                + (f'<p class="muted" style="font-size:13px">{esc(t["src"])}: {src}</p>' if src else '') + '</article>')
+    xs = BONUS.get('exchanges', [])
+    secs += ((f'<section class="section" id="bc-x"><h2>🪙 {esc(tx["ex"])}</h2><p class="muted">{esc(tx["note"])}</p>'
+              f'<div class="bsteps">' + ''.join(f'<span>{i_ + 1}. {esc(s_)}</span>' for i_, s_ in enumerate(tx['steps'])) + '</div>'
+              + ''.join(xcard(x) for x in sorted(xs, key=lambda x: (not x.get('hot'), -(x.get('max') or 0)))) + '</section>') if xs else '')
+    chips += f'<a class="chip" href="#bc-x">🪙 {esc(tx["ex"])} <small>{len(xs)}</small></a>' if xs else ''
+    n += len(xs)
     how = '<section class="section card"><h2>' + esc(t['how_h']) + '</h2><ol>' + ''.join(f'<li>{esc(x)}</li>' for x in t['how']) + '</ol></section>'
     warn = '<section class="section card"><h2>⚠️ ' + esc(t['warn_h']) + '</h2><ul>' + ''.join(f'<li>{esc(x)}</li>' for x in t['warn']) + '</ul>' + f'<p><a href="https://t.me/WhatIfStack" target="_blank" rel="noopener">{esc(t["suggest"])}</a></p></section>'
     body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / {esc(t["nav"])}</nav><h1>🎁 {esc(t["h1"].format(n=n))}</h1>'
@@ -4055,6 +4069,32 @@ def watch_page(lang, ver):
 TG_LOGIN = False   # owner 2026-11-21: Telegram login asks for a phone number — Google only on the site for now (the bot keeps working)
 
 
+def bon_btn(lang):
+    """🎁 «Exclusive offers» button in the header (owner 2026-11-26, Crypto-Bubbles style); the popup is built in app.js from assets/bonus-<lang>.json."""
+    if lang not in BONX or not BONUS.get('exchanges'):
+        return ''
+    t = BONX[lang]
+    return f'<button class="bonbtn" id="bonbtn" type="button" data-l="{lang}" aria-label="{esc(t["title"])}"><span aria-hidden="true">🎁</span><b>{esc(t["title"])}</b></button>'
+
+
+def bon_strip(lang):
+    """Thin rotating «Partner» line under the header, filled by app.js (hidden until the data loads)."""
+    return f'<div class="pstrip" id="pstrip" hidden data-l="{lang}"></div>' if lang in BONX and BONUS.get('exchanges') else ''
+
+
+def bonus_json(lang):
+    t, C = BONX[lang], BONUS.get('countries', {})
+    L = lambda d: d.get(lang) or d.get('en') or ''
+    cs = []
+    for cc, c in C.items():
+        if cc == 'world' or not c.get('tz'):
+            continue
+        items = [dict(n=i['name'], h=f'/go/{i["go"]}?from=pop-{cc}&l={lang}', t=L(i['you'])) for i in sorted(c['items'], key=lambda i: -(i.get('v') or 0)) if i.get('go')]
+        cs.append(dict(cc=cc, f=c['flag'], n=L(c['name']), z=c['tz'], i=items))
+    xs = [dict(n=x['name'], h=f'/go/{x["go"]}?from=pop&l={lang}', l=L(x['line']), m=x.get('max'), hot=bool(x.get('hot'))) for x in BONUS.get('exchanges', [])]
+    return json.dumps(dict(s=t, c=cs, x=xs, u=url(lang, 'bonuses')), ensure_ascii=False, separators=(',', ':'))
+
+
 def acct_btn(lang):
     """Header account button: «Sign in» → /me/#acct; app.js turns it into the user's initial once signed in."""
     if not (AUTH_EMAIL or GOOGLE_CLIENT_ID or (TG_BOT and TG_LOGIN)):
@@ -5328,6 +5368,9 @@ def main():
         shutil.copy(os.path.join(ROOT, 'data/logo-sprite.webp'), os.path.join(OUT, 'assets', 'logo-sprite.webp'))
     index_js = 'window.WI=' + json.dumps({'sp': SPRITE['ids'], 'spc': [SPRITE.get('cols'), SPRITE.get('rows')], 'u': UPDATED, 'v': dv, 'a': idx, 'fx': FX.get('rates', {}), 'fxu': FX.get('updated')}, ensure_ascii=False, separators=(',', ':')) + ';'
     write('assets/index.js', index_js); write('assets/style.css', css); write('assets/app.js', js); write('assets/ref.js', ref)
+    for _l in BONX:
+        if BONUS.get('exchanges'):
+            write(f'assets/bonus-{_l}.json', bonus_json(_l))
     if _LOGOS:
         shutil.copytree(LOGO_DIR, os.path.join(OUT, 'assets/logo'))
     if _XLOGOS:

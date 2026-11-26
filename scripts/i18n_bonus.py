@@ -20,3 +20,19 @@ BON = {
             warn_h='The honest part', warn=['A bonus is a nice extra, not an income to live on.', "Don't open credit limits or take loans for a bonus.", 'Terms change: check them in the app or on the provider’s site before you sign up.', 'Links on this page are partner links: we get a bonus too, and your terms stay the same.'],
             suggest='Know an honest bonus that is missing here? Message us on Telegram — we add it after checking.', upd='Updated'),
 }
+
+# header 🎁 button, «Exclusive offers» popup and the partner strip (owner 2026-11-26)
+BONX = {
+ 'uk': dict(btn='Бонуси', title='Ексклюзивні пропозиції', sub='Перевірені бонуси для новачків', steps=['Реєстрація', 'Депозит', 'Отримай бонус'], open='Відкрити', upto='до', partner='Партнер',
+            all='Усі бонуси з умовами', ex='Біржі: бонуси новачкам', rec='Рекомендуємо', local='Для твоєї країни',
+            note='Бонуси виплачує біржа чи сервіс після реєстрації й виконання умов. «До» — максимум за правилами біржі; новачку зазвичай дістаються купони на десятки доларів за перші кроки.',
+            strip='Новачок на {n}? {l}'),
+ 'ru': dict(btn='Бонусы', title='Эксклюзивные предложения', sub='Проверенные бонусы для новичков', steps=['Регистрация', 'Депозит', 'Получи бонус'], open='Открыть', upto='до', partner='Партнёр',
+            all='Все бонусы с условиями', ex='Биржи: бонусы новичкам', rec='Рекомендуем', local='Для твоей страны',
+            note='Бонусы выплачивает биржа или сервис после регистрации и выполнения условий. «До» — максимум по правилам биржи; новичку обычно достаются купоны на десятки долларов за первые шаги.',
+            strip='Новичок на {n}? {l}'),
+ 'en': dict(btn='Bonuses', title='Exclusive offers', sub='Checked bonuses for new users', steps=['Sign up', 'Deposit', 'Get the bonus'], open='Open', upto='up to', partner='Partner',
+            all='All bonuses with terms', ex='Exchanges: new user bonuses', rec='Recommended', local='For your country',
+            note='The exchange or service pays the bonus after sign-up and meeting its terms. «Up to» is the maximum under the exchange’s rules; new users usually get vouchers worth tens of dollars for the first steps.',
+            strip='New to {n}? {l}'),
+}

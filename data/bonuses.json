@@ -1,5 +1,5 @@
 {
- "_doc": "Sign-up / invite-a-friend bonuses by country (owner 2026-11-25: «honest, sorted by country; the list will grow»). Each item: id, go (/go/<id> partner id or null), url (official page when go is null), kind (bank|invest|crypto), v (value for sorting, in the country currency; 0 = unknown), cur, until (YYYY-MM-DD or null), you/friend/need/cash = text per language, src = [title, url] official first, checked = date the terms were last checked. Never invent terms; when a term is unknown say so in the text. Country banner (owner 2026-11-26): «tz» = browser time zones of that country, «feat» = id of the item shown instead of the Telegram Wallet offer card on home + crypto pages for visitors from that country; the item needs «banner» texts per language (t, d, cta, note); it hides itself after «until».",
+ "_doc": "Sign-up / invite-a-friend bonuses by country (owner 2026-11-25: «honest, sorted by country; the list will grow»). Each item: id, go (/go/<id> partner id or null), url (official page when go is null), kind (bank|invest|crypto), v (value for sorting, in the country currency; 0 = unknown), cur, until (YYYY-MM-DD or null), you/friend/need/cash = text per language, src = [title, url] official first, checked = date the terms were last checked. Never invent terms; when a term is unknown say so in the text. Country banner (owner 2026-11-26): «tz» = browser time zones of that country, «feat» = id of the item shown instead of the Telegram Wallet offer card on home + crypto pages for visitors from that country; the item needs «banner» texts per language (t, d, cta, note); it hides itself after «until». «exchanges» (owner 2026-11-26, Crypto-Bubbles-style «Exclusive offers»): crypto exchange welcome rewards shown in the header 🎁 popup, the partner strip under the header and on /bonuses/; «max» only when the exchange's own site states the «up to» figure (else null), «hot» = featured.",
  "asof": "2026-11-26",
  "countries": {
   "ua": {
@@ -235,5 +235,101 @@
     }
    ]
   }
- }
+ },
+ "exchanges": [
+  {
+   "id": "gate",
+   "go": "gate",
+   "name": "Gate",
+   "max": 10000,
+   "hot": true,
+   "checked": "2026-11-26",
+   "line": {
+    "uk": "Вітальні нагороди новачкам до 10 000 USDT",
+    "ru": "Приветственные награды новичкам до 10 000 USDT",
+    "en": "Welcome rewards for new users up to 10,000 USDT"
+   },
+   "src": [
+    [
+     "Gate — official announcements («Sign up and claim up to $10,000 in welcome rewards»)",
+     "https://www.gate.com/announcements/article/50947"
+    ]
+   ]
+  },
+  {
+   "id": "mexc",
+   "go": "mexc",
+   "name": "MEXC",
+   "max": 10000,
+   "checked": "2026-11-26",
+   "line": {
+    "uk": "Нагороди новачкам до 10 000 USDT",
+    "ru": "Награды новичкам до 10 000 USDT",
+    "en": "New user rewards up to 10,000 USDT"
+   },
+   "src": [
+    [
+     "MEXC — sign-up bonuses 2026",
+     "https://www.mexc.com/crypto-pulse/article/best-crypto-exchange-sign-up-bonuses-2026-121379"
+    ]
+   ]
+  },
+  {
+   "id": "bybit",
+   "go": "bybit",
+   "name": "Bybit",
+   "max": 100,
+   "checked": "2026-11-26",
+   "line": {
+    "uk": "Вітальний подарунок до 100 USDT у перші 7 днів + завдання в Rewards Hub",
+    "ru": "Приветственный подарок до 100 USDT в первые 7 дней + задания в Rewards Hub",
+    "en": "Welcome gift up to 100 USDT in the first 7 days + Rewards Hub tasks"
+   },
+   "src": [
+    [
+     "Bybit — new Rewards Hub (Mar 2026)",
+     "https://www.bybit.com/en/press/post/bybit-launches-all-new-rewards-hub-reimagining-the-trading-rewards-experience-blt403968151eaab4d0"
+    ]
+   ]
+  },
+  {
+   "id": "okx",
+   "go": "okx",
+   "name": "OKX",
+   "max": null,
+   "checked": "2026-11-26",
+   "line": {
+    "uk": "Бокс-сюрприз і купони новачкам після верифікації",
+    "ru": "Бокс-сюрприз и купоны новичкам после верификации",
+    "en": "Mystery box and coupons for new users after verification"
+   },
+   "src": []
+  },
+  {
+   "id": "binance",
+   "go": "binance",
+   "name": "Binance",
+   "max": null,
+   "checked": "2026-11-26",
+   "line": {
+    "uk": "Купони новачкам і знижка на комісію",
+    "ru": "Купоны новичкам и скидка на комиссию",
+    "en": "New user vouchers and a trading-fee discount"
+   },
+   "src": []
+  },
+  {
+   "id": "bingx",
+   "go": "bingx",
+   "name": "BingX",
+   "max": null,
+   "checked": "2026-11-26",
+   "line": {
+    "uk": "Нагороди новачкам за завдання в Rewards Hub",
+    "ru": "Награды новичкам за задания в Rewards Hub",
+    "en": "New user rewards for Rewards Hub tasks"
+   },
+   "src": []
+  }
+ ]
 }
