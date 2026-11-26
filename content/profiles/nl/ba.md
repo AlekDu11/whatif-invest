@@ -1,6 +1,6 @@
 ---
-title: "Boeing (BA): de 737-bouwer en zijn recordorderboek van $745 miljard"
-description: "Boeing in gewone taal: recordorders van $745 miljard, het herstel van de 737 MAX onder Kelly Ortberg, $45,9 miljard schuld en de risico's."
+title: "Boeing (BA): de 737-bouwer en zijn orderboek van $745 miljard in 2026"
+description: "Boeing in gewone taal: orders van $745 miljard in september 2026, het herstel van de 737 MAX onder Kelly Ortberg, de schuld en de risico's."
 date: 2026-11-26
 kind: analysis
 ---
@@ -8,7 +8,7 @@ kind: analysis
 
 > **Belangrijkste punten**
 > - Omzet: $24,2 miljard in het kwartaal tot september 2026, +4%; nettoverlies $116 miljoen, tegen $5,3 miljard verlies een jaar eerder.
-> - Recordorderboek van $745 miljard, waaronder meer dan 6.300 verkeersvliegtuigen ter waarde van $612 miljard.
+> - Orderboek van $745 miljard eind september 2026, waaronder meer dan 6.300 verkeersvliegtuigen ter waarde van $612 miljard.
 > - 475 verkeersvliegtuigen geleverd in de eerste negen maanden van 2026, tegen 440 een jaar eerder.
 > - De 737-10 kreeg in oktober 2026 zijn certificering; de grotere 777X wordt in 2027 voor het eerst geleverd.
 

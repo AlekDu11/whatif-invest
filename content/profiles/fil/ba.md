@@ -1,6 +1,6 @@
 ---
-title: "Boeing (BA) stock: ang gumagawa ng 737 at ang record na $745 bilyong backlog"
-description: "Boeing sa simpleng salita: record na $745 bilyong order, ang pagbangon ng 737 MAX sa ilalim ni Kelly Ortberg, $45.9 bilyong utang at mga panganib."
+title: "Boeing (BA) stock: ang gumagawa ng 737 at ang $745 bilyong backlog nito noong 2026"
+description: "Boeing sa simpleng salita: $745 bilyong order noong Setyembre 2026, ang pagbangon ng 737 MAX sa ilalim ni Kelly Ortberg, ang utang at mga panganib."
 date: 2026-11-26
 kind: analysis
 ---
@@ -8,7 +8,7 @@ Gumagawa ang **Boeing** ng mga eroplanong pampasahero — ang 737, 767, 777 at 7
 
 > **Mahahalagang punto**
 > - Kita: $24.2 bilyon sa quarter hanggang Setyembre 2026, +4%; net loss na $116 milyon, kumpara sa $5.3 bilyong lugi isang taon bago nito.
-> - Record na order backlog na $745 bilyon, kasama ang mahigit 6,300 eroplanong pampasahero na nagkakahalaga ng $612 bilyon.
+> - Order backlog na $745 bilyon sa katapusan ng Setyembre 2026, kasama ang mahigit 6,300 eroplanong pampasahero na nagkakahalaga ng $612 bilyon.
 > - 475 eroplanong pampasahero ang naihatid sa unang siyam na buwan ng 2026, mula 440 isang taon bago nito.
 > - Na-certify ang 737-10 noong Oktubre 2026; ang mas malaking 777X ay nakatakdang unang maihatid sa 2027.
 

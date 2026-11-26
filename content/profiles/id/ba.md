@@ -1,6 +1,6 @@
 ---
-title: "Boeing (BA): pembuat 737 dan pesanan rekor senilai $745 miliar"
-description: "Boeing dengan bahasa sederhana: pesanan rekor $745 miliar, pemulihan 737 MAX di bawah Kelly Ortberg, utang $45,9 miliar, dan risikonya bagi pembeli rutin."
+title: "Boeing (BA): pembuat 737 dan pesanan senilai $745 miliar pada 2026"
+description: "Boeing dengan bahasa sederhana: pesanan $745 miliar pada September 2026, pemulihan 737 MAX di bawah Kelly Ortberg, utang, dan risikonya bagi pembeli rutin."
 date: 2026-11-26
 kind: analysis
 ---
@@ -8,7 +8,7 @@ kind: analysis
 
 > **Poin penting**
 > - Pendapatan: $24,2 miliar pada kuartal yang berakhir September 2026, +4%; rugi bersih $116 juta, dibanding rugi $5,3 miliar setahun sebelumnya.
-> - Pesanan rekor senilai $745 miliar, termasuk lebih dari 6.300 pesawat penumpang senilai $612 miliar.
+> - Pesanan tertunda senilai $745 miliar pada akhir September 2026, termasuk lebih dari 6.300 pesawat penumpang senilai $612 miliar.
 > - 475 pesawat penumpang dikirim dalam sembilan bulan pertama 2026, naik dari 440 setahun sebelumnya.
 > - 737-10 mendapat sertifikasi pada Oktober 2026; pengiriman pertama 777X yang lebih besar dijadwalkan pada 2027.
 

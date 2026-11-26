@@ -1,6 +1,6 @@
 ---
-title: "Boeing (BA): nhà sản xuất 737 và lượng đơn hàng kỷ lục 745 tỷ USD"
-description: "Boeing dễ hiểu: đơn hàng kỷ lục 745 tỷ USD, 737 MAX phục hồi dưới thời Kelly Ortberg, nợ 45,9 tỷ USD và các rủi ro với người mua định kỳ."
+title: "Boeing (BA): nhà sản xuất 737 và lượng đơn hàng 745 tỷ USD năm 2026"
+description: "Boeing dễ hiểu: đơn hàng 745 tỷ USD vào tháng 9/2026, 737 MAX phục hồi dưới thời Kelly Ortberg, khoản nợ và các rủi ro với người mua định kỳ."
 date: 2026-11-26
 kind: analysis
 ---
@@ -8,7 +8,7 @@ kind: analysis
 
 > **Điểm chính**
 > - Doanh thu: 24,2 tỷ USD trong quý kết thúc tháng 9/2026, +4%; lỗ ròng 116 triệu USD, so với khoản lỗ 5,3 tỷ USD một năm trước.
-> - Lượng đơn hàng tồn đọng kỷ lục 745 tỷ USD, gồm hơn 6.300 máy bay chở khách trị giá 612 tỷ USD.
+> - Lượng đơn hàng tồn đọng 745 tỷ USD vào cuối tháng 9/2026, gồm hơn 6.300 máy bay chở khách trị giá 612 tỷ USD.
 > - 475 máy bay chở khách được bàn giao trong chín tháng đầu năm 2026, tăng từ 440 một năm trước.
 > - 737-10 được cấp chứng nhận vào tháng 10/2026; chiếc 777X lớn hơn dự kiến bàn giao đầu tiên vào năm 2027.
 

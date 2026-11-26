@@ -1,6 +1,6 @@
 ---
-title: "Boeing (BA): el fabricante del 737 y su cartera récord de 745.000 millones de dólares"
-description: Boeing en palabras sencillas: pedidos récord por 745.000 millones de dólares, la recuperación del 737 MAX con Kelly Ortberg, 45.900 millones de deuda y riesgos.
+title: "Boeing (BA): el fabricante del 737 y su cartera de 745.000 millones de dólares en 2026"
+description: "Boeing fácil: pedidos por 745.000 millones de dólares en septiembre de 2026, la recuperación del 737 MAX con Kelly Ortberg, la deuda y los riesgos."
 date: 2026-11-26
 kind: analysis
 ---
@@ -8,7 +8,7 @@ kind: analysis
 
 > **Lo esencial**
 > - Ingresos: 24.200 millones de dólares en el trimestre a septiembre de 2026, +4 %; pérdida neta de 116 millones, frente a una pérdida de 5.300 millones un año antes.
-> - Cartera de pedidos récord de 745.000 millones, con más de 6.300 aviones comerciales por valor de 612.000 millones.
+> - Cartera de pedidos de 745.000 millones a finales de septiembre de 2026, con más de 6.300 aviones comerciales por valor de 612.000 millones.
 > - 475 aviones entregados en los nueve primeros meses de 2026, frente a 440 un año antes.
 > - El 737-10 se certificó en octubre de 2026; la primera entrega del 777X, más grande, está prevista para 2027.
 

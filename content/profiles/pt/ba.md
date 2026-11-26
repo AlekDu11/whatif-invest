@@ -1,6 +1,6 @@
 ---
-title: "Boeing (BA): a fabricante do 737 e sua carteira recorde de US$ 745 bilhões"
-description: "Boeing em linguagem simples: pedidos recordes de US$ 745 bilhões, a recuperação do 737 MAX com Kelly Ortberg, US$ 45,9 bilhões de dívida e os riscos."
+title: "Boeing (BA): a fabricante do 737 e sua carteira de US$ 745 bilhões em 2026"
+description: "Boeing em linguagem simples: pedidos de US$ 745 bilhões em setembro de 2026, a recuperação do 737 MAX com Kelly Ortberg, a dívida e os riscos."
 date: 2026-11-26
 kind: analysis
 ---
@@ -8,7 +8,7 @@ A **Boeing** fabrica jatos de passageiros — o 737, o 767, o 777 e o 787 —, a
 
 > **O essencial**
 > - Receita: US$ 24,2 bilhões no trimestre até setembro de 2026, +4%; prejuízo líquido de US$ 116 milhões, contra prejuízo de US$ 5,3 bilhões um ano antes.
-> - Carteira de pedidos recorde de US$ 745 bilhões, com mais de 6.300 aviões comerciais no valor de US$ 612 bilhões.
+> - Carteira de pedidos de US$ 745 bilhões no fim de setembro de 2026, com mais de 6.300 aviões comerciais no valor de US$ 612 bilhões.
 > - 475 aviões entregues nos nove primeiros meses de 2026, ante 440 um ano antes.
 > - O 737-10 foi certificado em outubro de 2026; a primeira entrega do 777X, maior, está prevista para 2027.
 

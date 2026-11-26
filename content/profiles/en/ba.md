@@ -1,6 +1,6 @@
 ---
-title: Boeing (BA) stock: the 737 maker and its record $745 billion backlog
-description: Boeing in plain language: a record $745 billion order backlog, the 737 MAX recovery under Kelly Ortberg, $45.9 billion of debt, the risks for regular buyers.
+title: "Boeing (BA) stock: the 737 maker and its $745 billion order backlog of 2026"
+description: "Boeing in plain language: a $745 billion order backlog in September 2026, the 737 MAX recovery under Kelly Ortberg, the debt and the risks for regular buyers."
 date: 2026-11-26
 kind: analysis
 ---
@@ -8,7 +8,7 @@ kind: analysis
 
 > **Key takeaways**
 > - Revenue: $24.2 billion in the September 2026 quarter, +4%; net loss $116 million, against a $5.3 billion loss a year earlier.
-> - Record order backlog of $745 billion, including more than 6,300 airliners worth $612 billion.
+> - Order backlog of $745 billion at the end of September 2026, including more than 6,300 airliners worth $612 billion.
 > - 475 airliners delivered in the first nine months of 2026, up from 440 a year earlier.
 > - The 737-10 was certified in October 2026; the bigger 777X is due for first delivery in 2027.
 

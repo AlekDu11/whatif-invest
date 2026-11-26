@@ -1,6 +1,6 @@
 ---
-title: "Boeing (BA): producent 737 i rekordowy portfel zamówień o wartości 745 mld $"
-description: "Boeing prostym językiem: rekordowe zamówienia za 745 mld $, odbudowa 737 MAX pod wodzą Kelly'ego Ortberga, 45,9 mld $ długu i ryzyka dla regularnie kupujących."
+title: "Boeing (BA): producent 737 i portfel zamówień o wartości 745 mld $ w 2026 roku"
+description: "Boeing prostym językiem: zamówienia za 745 mld $ we wrześniu 2026 r., odbudowa 737 MAX pod wodzą Kelly'ego Ortberga, dług i ryzyka dla regularnie kupujących."
 date: 2026-11-26
 kind: analysis
 ---
@@ -8,7 +8,7 @@ kind: analysis
 
 > **Najważniejsze**
 > - Przychody: 24,2 mld $ w kwartale do września 2026 roku, +4%; strata netto 116 mln $ wobec 5,3 mld $ straty rok wcześniej.
-> - Rekordowy portfel zamówień: 745 mld $, w tym ponad 6300 samolotów pasażerskich wartych 612 mld $.
+> - Portfel zamówień na koniec września 2026 r.: 745 mld $, w tym ponad 6300 samolotów pasażerskich wartych 612 mld $.
 > - 475 samolotów dostarczonych w pierwszych dziewięciu miesiącach 2026 roku wobec 440 rok wcześniej.
 > - 737-10 otrzymał certyfikat w październiku 2026 roku; pierwsza dostawa większego 777X ma nastąpić w 2027 roku.
 

@@ -1,6 +1,6 @@
 ---
-title: "Boeing (BA): il produttore del 737 e il portafoglio ordini record da 745 miliardi $"
-description: "Boeing in parole semplici: ordini record per 745 miliardi $, la ripresa del 737 MAX con Kelly Ortberg, 45,9 miliardi $ di debito e i rischi."
+title: "Boeing (BA): il produttore del 737 e il portafoglio ordini da 745 miliardi $ del 2026"
+description: "Boeing in parole semplici: ordini per 745 miliardi $ a settembre 2026, la ripresa del 737 MAX con Kelly Ortberg, il debito e i rischi."
 date: 2026-11-26
 kind: analysis
 ---
@@ -8,7 +8,7 @@ kind: analysis
 
 > **In sintesi**
 > - Ricavi: 24,2 miliardi $ nel trimestre chiuso a settembre 2026, +4%; perdita netta di 116 milioni $, contro una perdita di 5,3 miliardi $ un anno prima.
-> - Portafoglio ordini record di 745 miliardi $, con oltre 6.300 aerei di linea per un valore di 612 miliardi $.
+> - Portafoglio ordini di 745 miliardi $ a fine settembre 2026, con oltre 6.300 aerei di linea per un valore di 612 miliardi $.
 > - 475 aerei di linea consegnati nei primi nove mesi del 2026, contro 440 un anno prima.
 > - Il 737-10 è stato certificato a ottobre 2026; la prima consegna del più grande 777X è prevista nel 2027.
 

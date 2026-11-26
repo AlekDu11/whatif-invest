@@ -1,6 +1,6 @@
 ---
-title: "Boeing (BA) hissesi: 737 üreticisi ve 745 milyar $'lık rekor sipariş defteri"
-description: "Boeing sade bir dille: 745 milyar $'lık rekor sipariş, Kelly Ortberg yönetiminde 737 MAX'in toparlanması, 45,9 milyar $ borç ve düzenli alıcılar için riskler."
+title: "Boeing (BA) hissesi: 737 üreticisi ve 2026'daki 745 milyar $'lık sipariş defteri"
+description: "Boeing sade bir dille: Eylül 2026'da 745 milyar $'lık sipariş, Kelly Ortberg yönetiminde 737 MAX'in toparlanması, borç ve düzenli alıcılar için riskler."
 date: 2026-11-26
 kind: analysis
 ---
@@ -8,7 +8,7 @@ kind: analysis
 
 > **Öne çıkanlar**
 > - Gelir: Eylül 2026'da biten çeyrekte 24,2 milyar $, +%4; net zarar 116 milyon $, bir yıl önce 5,3 milyar $ zarar.
-> - 745 milyar $'lık rekor sipariş defteri; bunun 612 milyar $'ı 6.300'ü aşkın yolcu uçağı.
+> - Eylül 2026 sonunda 745 milyar $'lık sipariş defteri; bunun 612 milyar $'ı 6.300'ü aşkın yolcu uçağı.
 > - 2026'nın ilk dokuz ayında 475 yolcu uçağı teslim edildi; bir yıl önce 440'tı.
 > - 737-10 Ekim 2026'da sertifika aldı; daha büyük 777X'in ilk teslimatı 2027'de bekleniyor.
 

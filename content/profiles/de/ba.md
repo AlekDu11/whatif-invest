@@ -1,6 +1,6 @@
 ---
-title: "Boeing (BA) Aktie: der 737-Hersteller und sein Rekord-Auftragsbestand von 745 Mrd. $"
-description: "Boeing einfach erklärt: Rekordaufträge über 745 Mrd. $, die 737-MAX-Erholung unter Kelly Ortberg, 45,9 Mrd. $ Schulden und die Risiken für regelmäßige Käufer."
+title: "Boeing (BA) Aktie: der 737-Hersteller und sein Auftragsbestand von 745 Mrd. $ im Jahr 2026"
+description: "Boeing einfach erklärt: Aufträge über 745 Mrd. $ im September 2026, die 737-MAX-Erholung unter Kelly Ortberg, Schulden und Risiken für regelmäßige Käufer."
 date: 2026-11-26
 kind: analysis
 ---
@@ -8,7 +8,7 @@ kind: analysis
 
 > **Das Wichtigste**
 > - Umsatz: 24,2 Mrd. $ im Quartal bis September 2026, +4 %; Nettoverlust 116 Mio. $ nach 5,3 Mrd. $ Verlust ein Jahr zuvor.
-> - Rekord-Auftragsbestand von 745 Mrd. $, darunter mehr als 6.300 Verkehrsflugzeuge im Wert von 612 Mrd. $.
+> - Auftragsbestand von 745 Mrd. $ Ende September 2026, darunter mehr als 6.300 Verkehrsflugzeuge im Wert von 612 Mrd. $.
 > - 475 ausgelieferte Verkehrsflugzeuge in den ersten neun Monaten 2026, nach 440 im Vorjahr.
 > - Die 737-10 wurde im Oktober 2026 zugelassen; die größere 777X soll 2027 erstmals ausgeliefert werden.
 

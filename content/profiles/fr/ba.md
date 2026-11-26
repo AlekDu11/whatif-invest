@@ -1,6 +1,6 @@
 ---
-title: "Boeing (BA) : le fabricant du 737 et son carnet de commandes record de 745 Md$"
-description: "Boeing en termes simples : 745 Md$ de commandes record, le redressement du 737 MAX sous Kelly Ortberg, 45,9 Md$ de dette et les risques."
+title: "Boeing (BA) : le fabricant du 737 et son carnet de commandes de 745 Md$ en 2026"
+description: "Boeing en termes simples : 745 Md$ de commandes en septembre 2026, le redressement du 737 MAX sous Kelly Ortberg, la dette et les risques."
 date: 2026-11-26
 kind: analysis
 ---
@@ -8,7 +8,7 @@ kind: analysis
 
 > **À retenir**
 > - Chiffre d'affaires : 24,2 Md$ au trimestre clos fin septembre 2026, +4 % ; perte nette de 116 M$, contre 5,3 Md$ de perte un an plus tôt.
-> - Carnet de commandes record de 745 Md$, dont plus de 6 300 avions de ligne pour 612 Md$.
+> - Carnet de commandes de 745 Md$ fin septembre 2026, dont plus de 6 300 avions de ligne pour 612 Md$.
 > - 475 avions de ligne livrés sur les neuf premiers mois de 2026, contre 440 un an plus tôt.
 > - Le 737-10 a été certifié en octobre 2026 ; la première livraison du 777X, plus grand, est prévue en 2027.
 
