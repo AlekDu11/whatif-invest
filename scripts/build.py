@@ -2326,6 +2326,34 @@ def lc_universe():
     return _LCU
 
 
+_RANKED = {}
+
+
+def ranked(cat, sector=None):
+    """Assets of one class (and sector) by size: crypto by market-cap rank, stocks by world market-cap rank."""
+    k = (cat, sector)
+    if k not in _RANKED:
+        ids = [i for i in ORDERED if A[i]['cat'] == cat and (sector is None or A[i].get('sector') == sector)]
+        if cat == 'stock':
+            ids.sort(key=lambda i: world_rank(i) or 10 ** 6)
+        _RANKED[k] = ids
+    return _RANKED[k]
+
+
+def similar_ids(lang, aid, n=10):
+    """«Similar» table (owner 2026-11-26, crawl): 3 leaders + neighbours by size, so every page gets links from the pages
+    around it instead of all 3,600 pages linking the same top 10. Only pages that are complete in this language."""
+    a = A[aid]
+    base = ranked(a['cat'], a.get('sector')) if a.get('sector') and len(ranked(a['cat'], a.get('sector'))) >= 8 else ranked(a['cat'])
+    ok = [i for i in base if i == aid or page_ok(i, lang)]
+    j = ok.index(aid) if aid in ok else 0
+    out = []
+    for i in ok[:3] + ok[max(0, j - 4):j] + ok[j + 1:j + 1 + n]:
+        if i != aid and i not in out:
+            out.append(i)
+    return out[:n]
+
+
 def world_rank(aid):
     u = lc_universe()
     if aid not in u:
@@ -3407,11 +3435,7 @@ def asset(aid, lang, ver):
     if lumps:
         lab, v, r5_ = lumps[min(2, len(lumps) - 1)]
         faq.insert(1, (X['q5'].format(name=n, p=lab), X['a5'].format(name=n, p=lab, v=usd(v), roi=pct(r5_))))
-    sim = [i for i in ORDERED if A[i]['cat'] == a['cat'] and i != aid]
-    if a.get('sector'):
-        same = [i for i in sim if A[i].get('sector') == a['sector']]
-        sim = same + [i for i in sim if i not in same]
-    sim = sim[:10]
+    sim = similar_ids(lang, aid)
     cat = S['cat_' + a['cat']]
     crumbs = f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / {esc(cat)} / {esc(n)}</nav>'
     badges = f'<span class="badge">{esc(tk)}</span> <span class="badge">{esc(cat)}</span>' + (cat_chips(lang, aid) or (f' <span class="badge">{esc(a["sector"])}</span>' if a.get('sector') else ''))
@@ -5596,17 +5620,32 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
                 d = (m.get('updated') or m.get('date') or '')[:10]
                 return d if len(d) == 10 else UPDATED
         return UPDATED
+    # crawl priority (owner 2026-11-26: 56K «discovered, not indexed»): the 300 biggest crypto + 300 biggest stocks + all ETFs/metals/commodities
+    TOPSET = set(ranked('crypto')[:300] + ranked('stock')[:300] + [i for i in A if A[i]['cat'] in ('etf', 'metal', 'cmd')])
+    XTOP = {x.get('id') for x in (XCH.get('spot') or [])[:30]}
+
+    def noise(lang, p):
+        """Kept live and indexable, just not pushed in the sitemap: assets with a non-Latin id outside zh/ja/ko,
+        small exchanges in the 18 extra languages."""
+        if p in A:
+            return not p.isascii() and lang not in ('zh', 'ja', 'ko')
+        if isinstance(p, str) and p.startswith('crypto-exchanges/') and lang not in ('uk', 'en') and XTOP:
+            return p.split('/')[1] not in XTOP
+        return False
     top, sm_max = [], {}
     for lang, pages in per_lang.items():
         for p in pages:
             full = p in A and (PROFILES.get(lang, {}).get(p) or {}).get('kind') == 'analysis' and page_ok(p, lang)
-            if full or (isinstance(p, str) and p.startswith('blog/')) or p in (None, 'crypto', 'stocks', 'largest-companies', 'learn', 'guide', 'memes'):
+            big = p in A and p in TOPSET and page_ok(p, lang)
+            if full or big or (isinstance(p, str) and p.startswith(('blog/', 'news/'))) or p in (None, 'crypto', 'stocks', 'largest-companies', 'learn', 'guide', 'memes', 'bonuses', 'categories', 'investors'):
                 top.append(f'<url><loc>{SITE + url(lang, p)}</loc><lastmod>{lastmod(lang, p)}</lastmod></url>')
     write('sitemap-top.xml', '\n'.join(['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'] + top[:45000] + ['</urlset>']))
     for lang, pages in per_lang.items():
         sm = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">']
         for p in pages:
             if p in A and not page_ok(p, lang):   # incomplete asset pages: not in the sitemap until filled
+                continue
+            if noise(lang, p):
                 continue
             alts = ''.join(f'<xhtml:link rel="alternate" hreflang="{TR[lg]["loc"]}" href="{SITE + url(lg, p)}"/>' for lg in ORDER if has_page(lg, p) and (p not in A or page_ok(p, lg)))
             lm = lastmod(lang, p)
