@@ -1,6 +1,6 @@
 ---
-title: "BNY (BNY): la banca più antica degli USA e i 63.400 miliardi $ che custodisce"
-description: "BNY in parole semplici: 63.400 miliardi $ in custodia, 5,68 miliardi $ di ricavi nel 3° trimestre 2026 (+12%), come guadagna una banca depositaria, i rischi e cosa sapere se compri con regolarità."
+title: "BNY (BNY): la banca più antica degli USA, fondata nel 1784, e come guadagna con la custodia"
+description: "BNY in parole semplici: la banca più antica degli USA (1784), 5,68 mld $ di ricavi nel 3° trim. 2026 (+12%), come rende la custodia, rischi e acquisti regolari."
 date: 2026-11-26
 kind: analysis
 ---

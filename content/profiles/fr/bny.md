@@ -1,6 +1,6 @@
 ---
-title: "BNY (BNY) : la plus vieille banque des États-Unis et les 63 400 Md$ qu'elle conserve"
-description: "BNY en clair : 63 400 Md$ d'actifs en conservation, 5,68 Md$ de revenus au T3 2026 (+12 %), comment gagne une banque dépositaire, les risques et ce que doivent savoir ceux qui achètent régulièrement."
+title: "BNY (BNY) : la plus vieille banque des États-Unis, fondée en 1784, et ce que rapporte la conservation"
+description: "BNY en clair : la plus vieille banque des États-Unis (1784), 5,68 Md$ de revenus au T3 2026 (+12 %), ce que rapporte la conservation et les risques."
 date: 2026-11-26
 kind: analysis
 ---

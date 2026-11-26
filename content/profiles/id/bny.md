@@ -1,6 +1,6 @@
 ---
-title: "BNY (BNY): bank tertua di AS dan aset $63,4 triliun yang dijaganya"
-description: "BNY dengan bahasa sederhana: aset kustodian $63,4 triliun, pendapatan $5,68 miliar di kuartal III 2026 (+12%), cara bank kustodian menghasilkan uang, risiko dan hal yang perlu diketahui pembeli rutin."
+title: "BNY (BNY): bank tertua di AS, berdiri tahun 1784, dan cara ia untung dari kustodian"
+description: "BNY dengan bahasa sederhana: bank tertua di AS (1784), pendapatan $5,68 miliar di kuartal III 2026 (+12%), cara kustodian untung, risiko dan tips beli rutin."
 date: 2026-11-26
 kind: analysis
 ---

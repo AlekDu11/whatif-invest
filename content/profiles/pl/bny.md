@@ -1,6 +1,6 @@
 ---
-title: "BNY (BNY): najstarszy bank w USA i 63,4 bln $ aktywów, które przechowuje"
-description: "BNY w prostych słowach: 63,4 bln $ aktywów w przechowaniu, 5,68 mld $ przychodów w III kwartale 2026 (+12%), jak zarabia bank powierniczy, ryzyka i co powinni wiedzieć regularnie kupujący."
+title: "BNY (BNY): najstarszy bank w USA, założony w 1784 roku, i jak zarabia na przechowywaniu aktywów"
+description: "BNY w prostych słowach: najstarszy bank w USA (1784), 5,68 mld $ przychodów w III kw. 2026 (+12%), jak zarabia powiernik, ryzyka i rady dla kupujących."
 date: 2026-11-26
 kind: analysis
 ---

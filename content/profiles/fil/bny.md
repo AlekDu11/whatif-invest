@@ -1,6 +1,6 @@
 ---
-title: "BNY (BNY) stock: ang pinakamatandang bangko sa US at ang $63.4 trilyong iniingatan nito"
-description: "BNY sa simpleng salita: $63.4 trilyong asset sa custody, $5.68 bilyong kita sa Q3 2026 (+12%), paano kumikita ang custody bank, mga panganib at ang dapat malaman ng regular na bumibili."
+title: "BNY (BNY) stock: ang pinakalumang bangko sa US, itinatag noong 1784, at paano kumikita sa custody"
+description: "BNY sa simpleng salita: pinakalumang bangko sa US (1784), $5.68 bilyong kita sa Q3 2026 (+12%), paano kumikita ang custody, panganib at tips sa regular na bili."
 date: 2026-11-26
 kind: analysis
 ---

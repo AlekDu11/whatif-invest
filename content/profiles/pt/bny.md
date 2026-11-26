@@ -1,6 +1,6 @@
 ---
-title: "BNY (BNY): o banco mais antigo dos EUA e os US$ 63,4 trilhões que ele guarda"
-description: "BNY sem complicação: US$ 63,4 trilhões sob custódia, US$ 5,68 bilhões de receita no 3º tri de 2026 (+12%), como ganha um banco custodiante, riscos e o que saber se você compra regularmente."
+title: "BNY (BNY): o banco mais antigo dos EUA, fundado em 1784, e como ganha com custódia"
+description: "BNY sem complicação: o banco mais antigo dos EUA (1784), US$ 5,68 bi de receita no 3º tri de 2026 (+12%), como a custódia ganha, riscos e compras regulares."
 date: 2026-11-26
 kind: analysis
 ---

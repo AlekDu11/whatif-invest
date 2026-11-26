@@ -1,6 +1,6 @@
 ---
-title: "BNY (BNY): el banco más antiguo de EE. UU. y los 63,4 billones de dólares que custodia"
-description: "BNY explicado fácil: 63,4 billones de dólares en custodia, 5.680 millones de ingresos en el 3T de 2026 (+12%), cómo gana un banco custodio, riesgos y qué saber si compras con regularidad."
+title: "BNY (BNY): el banco más antiguo de EE. UU., fundado en 1784, y cómo gana con la custodia"
+description: "BNY explicado fácil: el banco más antiguo de EE. UU. (1784), 5.680 M$ ingresos en el 3T 2026 (+12%), cómo gana la custodia, riesgos y compras regulares."
 date: 2026-11-26
 kind: analysis
 ---

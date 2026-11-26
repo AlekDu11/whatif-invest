@@ -1,6 +1,6 @@
 ---
-title: "BNY (BNY): de oudste bank van de VS en de $63,4 biljoen die hij bewaart"
-description: "BNY in gewone taal: $63,4 biljoen aan bewaarde activa, $5,68 miljard omzet in Q3 2026 (+12%), hoe een bewaarbank verdient, de risico's en wat je moet weten als je regelmatig koopt."
+title: "BNY (BNY): de oudste bank van de VS, opgericht in 1784, en hoe bewaring geld oplevert"
+description: "BNY in gewone taal: de oudste bank van de VS (1784), $5,68 miljard omzet in Q3 2026 (+12%), hoe bewaring verdient, de risico's en tips voor vaste kopers."
 date: 2026-11-26
 kind: analysis
 ---

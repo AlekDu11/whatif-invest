@@ -1,6 +1,6 @@
 ---
-title: "BNY (BNY) Aktie: Amerikas älteste Bank und die 63,4 Billionen $, die sie verwahrt"
-description: "BNY einfach erklärt: 63,4 Bio. $ verwahrte Vermögen, 5,68 Mrd. $ Umsatz im 3. Quartal 2026 (+12 %), wie eine Depotbank verdient, Risiken und was regelmäßige Käufer wissen sollten."
+title: "BNY (BNY) Aktie: Amerikas älteste Bank, gegründet 1784, und wie sie mit Verwahrung verdient"
+description: "BNY einfach erklärt: Amerikas älteste Bank (1784), 5,68 Mrd. $ Umsatz im 3. Quartal 2026 (+12 %), wie Verwahrung verdient, Risiken und Tipps für Sparpläne."
 date: 2026-11-26
 kind: analysis
 ---

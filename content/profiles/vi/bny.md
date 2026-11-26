@@ -1,6 +1,6 @@
 ---
-title: "BNY (BNY): ngân hàng lâu đời nhất nước Mỹ và 63,4 nghìn tỷ USD tài sản đang lưu ký"
-description: "BNY bằng ngôn ngữ đơn giản: 63,4 nghìn tỷ USD tài sản lưu ký, doanh thu 5,68 tỷ USD quý 3/2026 (+12%), ngân hàng lưu ký kiếm tiền ra sao, rủi ro và điều người mua định kỳ cần biết."
+title: "BNY (BNY): ngân hàng lâu đời nhất nước Mỹ, thành lập năm 1784, và cách kiếm tiền từ lưu ký"
+description: "BNY dễ hiểu: ngân hàng lâu đời nhất nước Mỹ (1784), doanh thu 5,68 tỷ USD quý 3/2026 (+12%), lưu ký kiếm tiền ra sao, rủi ro và điều người mua định kỳ cần biết."
 date: 2026-11-26
 kind: analysis
 ---

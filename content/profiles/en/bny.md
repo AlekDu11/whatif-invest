@@ -1,6 +1,6 @@
 ---
-title: "BNY (BNY) stock: America's oldest bank and the $63.4 trillion it looks after"
-description: "BNY in plain language: $63.4 trillion of assets under custody, $5.68 billion of revenue in Q3 2026 (+12%), how a custody bank earns, risks and what regular buyers should know."
+title: "BNY (BNY) stock: America's oldest bank, founded in 1784, and how custody pays"
+description: "BNY in plain language: America's oldest bank (1784), $5.68 billion of revenue in Q3 2026 (+12%), how custody earns, the risks and tips for regular buyers."
 date: 2026-11-26
 kind: analysis
 ---

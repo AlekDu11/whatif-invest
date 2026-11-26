@@ -1,6 +1,6 @@
 ---
-title: "BNY (BNY) hissesi: ABD'nin en eski bankası ve sakladığı 63,4 trilyon $"
-description: "BNY sade dille: saklamada 63,4 trilyon $ varlık, 2026 3. çeyrekte 5,68 milyar $ gelir (+%12), saklama bankası nasıl kazanır, riskler ve düzenli alım yapanların bilmesi gerekenler."
+title: "BNY (BNY) hissesi: 1784'te kurulan ABD'nin en eski bankası ve saklamadan nasıl kazandığı"
+description: "BNY sade dille: ABD'nin en eski bankası (1784), 2026 3. çeyrekte 5,68 milyar $ gelir (+%12), saklama işi nasıl kazanır, riskler ve düzenli alım notları."
 date: 2026-11-26
 kind: analysis
 ---
