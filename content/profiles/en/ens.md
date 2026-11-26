@@ -1,6 +1,6 @@
 ---
 title: Ethereum Name Service (ENS) explained: readable .eth names since 2017 and a 100 million token cap
-description: ENS in plain language: how .eth names replace long wallet addresses, what the ENS token is for, the 2021 airdrop, ENSv2, the main risks and what regular buyers should know.
+description: ENS in plain language: how .eth names replace long wallet addresses, what the ENS token is for, the 2021 airdrop, ENSv2 and the main risks.
 date: 2026-11-26
 kind: analysis
 ---
