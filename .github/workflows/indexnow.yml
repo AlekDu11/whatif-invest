@@ -4,7 +4,12 @@ on:
   push:
     branches: [main]
     paths: ['content/**', 'data/market.json', 'scripts/**']
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      all:
+        description: 'Submit every sitemap URL (one-off)'
+        type: boolean
+        default: false
 
 concurrency:
   group: indexnow
@@ -19,6 +24,7 @@ jobs:
         with:
           fetch-depth: 2
       - name: Wait for the Vercel deploy
+        if: ${{ !inputs.all }}
         run: sleep 240
       - name: Submit changed and key pages
-        run: python3 scripts/indexnow.py
+        run: python3 scripts/indexnow.py ${{ inputs.all && '--all' || '' }}
