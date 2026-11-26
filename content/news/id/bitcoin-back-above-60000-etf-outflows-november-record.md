@@ -1,0 +1,27 @@
+---
+title: Bitcoin kembali di atas $60.000 saat arus keluar ETF November menuju rekor
+description: Bitcoin naik sekitar 3% ke dekat $60.850 pada 26 November setelah sempat di bawah $58.000, sementara ETF bitcoin spot AS terus mencatat arus keluar rekor.
+date: 2026-11-26 06:50
+tags: bitcoin, etf
+assets: btc, eth
+---
+Bitcoin kembali naik di atas $60.000 pada Kamis pagi, 26 November, menguat sekitar 3% dalam 24 jam ke dekat $60.850 pada pukul 05.40 UTC, sehari setelah sempat turun di bawah $58.000. Pemulihan ini terjadi saat Wall Street menutup sebagian besar penurunan saham teknologi pada Rabu pagi, tetapi dana terus keluar dari ETF bitcoin spot AS.
+
+## Apa yang terjadi
+
+- **Pantulan.** Rentang harga bitcoin dalam 24 jam berkisar dari sekitar $57.240 hingga $61.530 (crypto.news); ether diperdagangkan antara $1.600 dan $1.700.
+- **Likuidasi.** Sekitar $692 juta posisi berleverage terhapus dalam 24 jam, $264 juta di antaranya pada bitcoin, terbagi hampir rata antara posisi short dan long (CoinGlass).
+- **Arus keluar ETF.** ETF bitcoin spot AS kehilangan sekitar $232 juta pada 24 November dan $453 juta pada 25 November (SoSoValue). Laporan harian KuCoin memperkirakan arus keluar November mendekati $4,9 miliar, bulan terbesar sejak dana-dana ini diluncurkan pada 2024.
+- **Sentimen.** Crypto Fear & Greed Index berada di 11, jauh di zona "ketakutan ekstrem", karena inflasi AS yang tinggi membuat kenaikan suku bunga Fed pada Desember hampir sepenuhnya diperhitungkan pasar.
+
+## Artinya jika Anda membeli secara rutin
+
+Analis yang dikutip crypto.news melihat resistance di sekitar $61.500–62.000 dan support di dekat titik terendah terbaru $57.200; tidak ada yang tahu apakah dasarnya sudah terbentuk. Bitcoin berada di {{price:btc}} ({{chg1y:btc}} dalam 12 bulan), dibandingkan rekor {{ath:btc}} ({{athd:btc}}) — pantau selisihnya di [halaman dari ATH]({lang}/ath/) kami. $10 sehari di bitcoin selama 5 tahun berarti {{dcainv:5}} diinvestasikan, kini bernilai {{dca:btc:5}} ({{dcaroi:btc:5}}) — ini data historis, bukan prakiraan. Bandingkan rencana di [kalkulator DCA]({lang}/compare/) dan lihat posisi bitcoin dalam siklusnya di [halaman halving]({lang}/bitcoin-halving/).
+
+## Sumber
+
+- [crypto.news — Harga bitcoin kembali ke $60K, tetapi apakah dasarnya benar-benar sudah terbentuk?](https://crypto.news/bitcoin-price-prediction-btc-recovery-etf-outflows/)
+- [KuCoin — Laporan harian pasar kripto, 26 November 2026](https://www.kucoin.com/news/articles/crypto-daily-market-report-november-26-2026)
+- [Business Standard (Reuters) — Saham Asia memantul di tengah kekhawatiran AI dan ancaman tarif baru AS](https://www.business-standard.com/markets/news/asian-shares-bounce-as-ai-concerns-fresh-us-tariffs-lurk-in-background-126112600046_1.html)
+
+*Bukan saran investasi.*
