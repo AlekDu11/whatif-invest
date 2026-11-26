@@ -60,3 +60,4 @@ Rule (owner 2026-11-25): each URL is requested ONCE — never request a URL that
 | 2026-11-26 | https://whatifstack.com/zh/blog/a-gu-longtou-10-meiyuan-5-nian/ | not indexed | requested («Indexing requested») |
 | 2026-11-26 | https://whatifstack.com/en/blog/how-to-buy-bitcoin-with-a-bank-card/ | not indexed | requested («Indexing requested») |
 | 2026-11-26 | https://whatifstack.com/en/news/bitcoin-losses-highest-since-ftx-glassnode/ | not indexed | requested («Indexing requested») |
+| 2026-11-26 | https://whatifstack.com/blog/inzhur-my-story-1500-certificates/ | not indexed (new) | requested («Отправлен запрос на индексирование») |
