@@ -4899,6 +4899,24 @@ def sc_block(kind, args, lang):
         return (f'<a class="card postcard" href="{aurl(lang, aid)}">{icon(a, True)}<div><b>{esc(nm(a, lang))}</b> <span class="badge">{esc(a["tk"])}</span>'
                 f'<div class="muted">{S["stat"].format(p=pl)}: <b class="{cls(rv)}">{pct(rv)}</b> · {S["ui"]["price"]} <b data-p="{aid}">{price(m["price"])}</b></div></div>'
                 f'<span class="calc">{S["ui"]["calc"]} →</span></a>')
+    if kind == 'offer' and args:   # big honest offer box for ad landing pages (owner 2026-11-26): {{offer:<bonus item id>}}
+        it = next((i for c in BONUS.get('countries', {}).values() for i in c.get('items', []) if i.get('id') == args[0]), None)
+        if not it or not it.get('go'):
+            return ''
+        L = lambda d: (d or {}).get(lang) or (d or {}).get('en') or ''
+        bn = L(it.get('banner')) or {}
+        if isinstance(bn, str):
+            bn = {}
+        bn = (it.get('banner') or {}).get(lang) or (it.get('banner') or {}).get('en') or {}
+        u = it.get('until') or ''
+        OFT = {'uk': ('До кінця акції', 'дн.', 'Що потрібно'), 'ru': ('До конца акции', 'дн.', 'Что нужно'), 'en': ('Offer ends in', 'days', 'What you need')}.get(lang, ('Offer ends in', 'days', 'What you need'))
+        cnt = (f'<div class="obcnt" data-until="{u}" data-w="{esc(OFT[1])}"><small>{esc(OFT[0])}</small><b>{esc(".".join(reversed(u.split("-"))))}</b></div>' if u else '')
+        av = f'<span class="bav" style="background:{esc(it.get("c") or "#3a4150")}">{esc(it.get("a") or it["name"][0])}</span>'
+        return (f'<div class="offerbig">{cnt}<div class="obh">{av}<b>{esc(it["name"])}</b></div>'
+                f'<div class="obt">{esc(bn.get("t", ""))}</div><p>{esc(bn.get("d", ""))}</p>'
+                + (f'<p class="obn"><b>{esc(OFT[2])}:</b> {esc(L(it.get("need")))}</p>' if it.get('need') else '')
+                + f'<a class="btn obgo" href="/go/{it["go"]}?from=offer-{args[1] if len(args) > 1 else "post"}&l={lang}" target="_blank" rel="sponsored noopener">{esc(bn.get("cta", "→"))} ↗</a>'
+                f'<small class="muted obnote">{esc(bn.get("note", ""))}</small></div>')
     if kind == 'table' and args:
         ids = [i for i in args[0].split(',') if i in A]
         yrs = int(args[1]) if len(args) > 1 else 5
@@ -5191,7 +5209,7 @@ def md(text, lang):
             out.append(f'<{ltag}>' + ''.join(f'<li>{inline_md(x, lang)}</li>' for x in lst) + f'</{ltag}>'); lst = []
     for line in text.splitlines():
         s = line.strip()
-        bm = _re.fullmatch(r'\{\{(card|table):([^}]*)\}\}', s)
+        bm = _re.fullmatch(r'\{\{(card|table|offer):([^}]*)\}\}', s)
         if quote and not s.startswith('>'):
             out.append(f'<blockquote>{md(chr(10).join(quote), lang)}</blockquote>' if len(quote) > 1 else f'<blockquote>{inline_md(quote[0], lang)}</blockquote>'); quote.clear()
         if not s:

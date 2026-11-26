@@ -1972,3 +1972,7 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
       setInterval(()=>{ if(document.hidden) return; a.classList.add('fade'); setTimeout(()=>{ show(); a.classList.remove('fade') },400) },6000) }).catch(()=>{});
     ('requestIdleCallback' in window)?requestIdleCallback(go,{timeout:2500}):setTimeout(go,1200) }
 })();
+
+// «{{offer}}» box: honest countdown to the promo's end date (owner 2026-11-26)
+document.querySelectorAll('.obcnt[data-until]').forEach(el=>{ const t=new Date(el.dataset.until+'T23:59:59+02:00')-Date.now(); if(t<0){ el.closest('.offerbig').hidden=true; return }
+  const d=Math.ceil(t/864e5); el.querySelector('b').textContent=d+' '+el.dataset.w });
