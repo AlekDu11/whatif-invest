@@ -1,11 +1,11 @@
 ---
-title: Beleggen in AI-aandelen: ETF's of losse aandelen (Nvidia, Microsoft, AMD, Palantir)
-description: Beleggen in AI-aandelen: losse aandelen als Nvidia, Microsoft, AMD en Palantir of ETF's als SMH, SOXX en QQQ, met echte cijfers voor periodiek beleggen.
+title: Beleggen in AI: AI-aandelen of een AI-ETF? Nvidia, Microsoft, AMD en Palantir vergeleken
+description: Beleggen in AI kan op 2 manieren: losse AI-aandelen (Nvidia, Microsoft, AMD, Palantir) of een AI-ETF zoals SMH. Met 5 jaar echte cijfers van $10 per dag.
 date: 2026-11-16
 category: ai
 assets: nvda, msft, amd, pltr, smh, spy
 ---
-Kunstmatige intelligentie is hét beursthema van dit decennium. Chips, cloudcomputing en AI-software zorgden sinds 2023 voor een groot deel van de koerswinst op de Amerikaanse markt. Veel mensen stellen daarom dezelfde vraag: **hoe beleg je in AI-aandelen zonder alles op één bedrijf in te zetten?**
+Beleggen in AI doe je op twee manieren: je koopt losse AI-aandelen zoals Nvidia, Microsoft, AMD of Palantir, of je koopt één AI-ETF die een hele mand chip- en techbedrijven bezit. Met een ETF spreid je het risico van één bedrijf; met losse aandelen kies je zelf, maar schommelt je resultaat veel harder. Kunstmatige intelligentie zorgde sinds 2023 voor een groot deel van de koerswinst op de Amerikaanse beurs, dus de vraag is vooral: **hoe beleg je in AI-aandelen zonder alles op één bedrijf in te zetten?**
 
 Er zijn twee hoofdroutes: **losse aandelen** kopen (Nvidia, Microsoft, AMD, Palantir en andere) of een **ETF** kopen die een hele mand bezit. Deze gids vergelijkt beide met echte historische cijfers, legt concentratierisico uit en laat zien waar periodiek beleggen (DCA) past.
 
