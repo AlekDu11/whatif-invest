@@ -1,6 +1,6 @@
 ---
 title: IOTA explained: from a feeless network for machines to a staking blockchain for trade data
-description: IOTA in plain language: the Tangle, the 2025 Rebased upgrade with staking, its trade-data projects, the 2017 peak and fall, main risks and what regular buyers should know.
+description: IOTA in plain language: the Tangle, the 2025 Rebased upgrade with staking, trade-data projects, the 2017 boom and later fall, and the main risks.
 date: 2026-11-26
 kind: analysis
 ---
