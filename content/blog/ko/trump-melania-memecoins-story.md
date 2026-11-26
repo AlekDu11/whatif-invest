@@ -1,0 +1,67 @@
+---
+title: "TRUMP와 MELANIA 밈코인: 산 사람들은 어떻게 됐을까"
+description: TRUMP와 MELANIA 밈코인 이야기를 날짜와 숫자로. 출시 직후 급등, 내부자 몫 80%, 언록, 만찬, 그리고 손실까지.
+date: 2026-11-26T03:45:00Z
+category: learn
+track: memes
+step: 14
+assets: trump, melania
+stat: 98만 9,000개
+stat_label: 2026년 6월 말 손실 상태였던 TRUMP 매수자 지갑 수(Nansen, The Block 보도)
+---
+**TRUMP와 MELANIA 밈코인을 산 사람들은 어떻게 됐을까요?** 대부분 돈을 잃었습니다. 두 토큰 모두 2025년 1월 출시 직후 몇 시간 동안 치솟았다가, 몇 달 안에 90% 안팎 또는 그 이상 떨어졌습니다. 그동안 공급량 대부분은 만든 사람들과 연결된 회사와 지갑에 남아 있었습니다.
+
+> **핵심 정리**
+> - TRUMP는 2025년 1월 처음 이틀 동안 약 1.21달러에서 75.35달러까지 올랐습니다. 2025년 4월에는 그 가치의 약 90%를 잃었습니다(Fortune).
+> - TRUMP 10억 개 중 80%는 트럼프와 연결된 두 회사 몫으로 정해졌고, 3년에 걸쳐 단계적으로 풀립니다. 일반 매수자들은 나머지 20%를 나눠 가졌습니다.
+> - MELANIA는 2025년 1월 약 13.73달러로 정점을 찍었고, 몇 달 뒤 약 98% 떨어졌습니다. 이후 소송에서 출시 팀이 펌프 앤 덤프를 했다는 혐의를 받았습니다(당사자들은 부인합니다).
+
+## TRUMP와 MELANIA는 무엇일까?
+
+솔라나 블록체인 위의 밈코인입니다(뒤에 사업이 없는 토큰. [밈코인이란?]({lang}/blog/what-are-memecoins/) 참고). "Official Trump"(TRUMP)는 도널드 트럼프가 취임 사흘 전에 발표했고, MELANIA는 이틀 뒤 멜라니아 트럼프가 출시했습니다. 이 토큰을 가져도 어떤 회사의 지분도, 이익도, 의결권도 없습니다. 가격이 다음 매수자에게 달린 토큰일 뿐입니다.
+
+## 날짜와 숫자로 보는 이야기
+
+**2025년 1월 17~19일 — 출시.** TRUMP는 2025년 1월 17일 판매를 시작했습니다. 전체 10억 개 중 약 2억 개(20%)가 출시 때 시장에 나왔습니다. 나머지 80%는 CIC Digital(트럼프 오거니제이션 계열사)과 Fight Fight Fight LLC 몫으로, 2028년까지 단계적으로 언록(판매할 수 있게 풀림)됩니다. 이틀 만에 가격은 약 1.21달러에서 75.35달러가 됐고, 시가총액은 약 140억 달러에 이르렀습니다. 한 초기 트레이더는 처음 2분 동안 TRUMP를 약 110만 달러어치 사서, 9,000만 달러가 넘는 수익을 올렸다고 보도됐습니다(The Block).
+
+**2025년 1월 19일 — MELANIA.** UTC 기준 21시 직후 MELANIA가 출시됐습니다. 두 시간 만에 시가총액이 60억 달러를 넘었습니다(Cointelegraph가 보도한 DEXScreener 데이터). 같은 시각 TRUMP는 40분 동안 74.6달러에서 45.9달러로 약 38% 떨어졌습니다. 매수자들이 한 토큰에서 다른 토큰으로 돈을 옮긴 것입니다.
+
+**2025년 2~4월 — 하락.** 2025년 4월 21일 TRUMP는 약 8.28달러로, 1월 고점보다 약 90% 낮았습니다. 2025년 4월 18일 첫 대규모 언록으로 토큰 4,000만 개(당시 약 3억 3,000만 달러어치)가 더 풀려 만든 회사들에 돌아갔습니다(Fortune). MELANIA는 더 나빴습니다. 2025년 4월 분석 업체 Bubblemaps는 MELANIA 토큰 5,000만 개(약 3,000만 달러)가 "커뮤니티" 지갑에서 빠져나가 일부 팔렸는데, 팀의 설명은 없었다고 밝혔습니다. 당시 가격은 약 0.51달러로 96% 넘게 떨어진 상태였습니다(Cointelegraph).
+
+**2025년 4월 23일 ~ 5월 22일 — 만찬.** TRUMP 웹사이트는 2025년 4월 23일부터 5월 12일까지의 평균 보유량으로 상위 220명을 뽑아 대통령과 만찬을 하게 해 주겠다고 발표했습니다. 발표 뒤 가격은 50% 넘게 뛰었습니다. 업체 Inca Digital에 따르면 상위 220명은 합쳐서 이 토큰에 1억 4,000만 달러 넘게 썼습니다. 만찬은 2025년 5월 22일 버지니아에 있는 트럼프의 골프 클럽에서 열렸습니다(Axios). 이 경쟁은 가격을 끌어올렸습니다. 하지만 그 때문에 산 사람들은 자기 뒤에 또 사 줄 사람이 필요했습니다.
+
+**2025년 10월 — 소송.** 뉴욕에서 수정된 집단 소송 소장은 Meteora 공동 창업자 벤저민 차우와 Kelsier Ventures의 헤이든 데이비스가 MELANIA, LIBRA 등 여러 토큰을 "펌프 앤 덤프" 방식으로 운영했다고 주장했습니다. 두 사람은 잘못을 부인합니다. 차우는 앞서 토큰을 전혀 받지 않았다고 말했습니다. 이 주장은 법정에서 입증되지 않았습니다(The Block).
+
+**2026년 6월 말 — 집계.** Nansen은 손실 상태인 TRUMP 매수자 지갑을 약 98만 9,000개, 손실 합계 약 38억 1,000만 달러로 집계했습니다. 이익을 본 지갑은 약 49만 2,000개였습니다(The Block, 2026년 7월). 지금 TRUMP는 {{price:trump}}(12개월 동안 {{chg1y:trump}}), MELANIA는 {{price:melania}}에 거래됩니다.
+
+## 왜 이렇게 됐을까
+
+1. **토큰 대부분이 내부자 몫이었다.** 공급량의 80%가 언록을 기다리고 있으면, 언록될 때마다 파는 사람이 늘어날 수 있습니다.
+2. **출시가 곧 꼭대기였다.** 전 세계가 소식을 들은 처음 몇 시간에 매수자가 가장 많았고 가격도 가장 높았습니다. 초기 지갑과 봇([밈코인 용어집]({lang}/memes/glossary/)의 "스나이퍼" 참고)은 그 몰림 속에서 팔았습니다.
+3. **이벤트는 잠깐의 급등을 줄 뿐, 가치를 주지 않는다.** 만찬 경쟁은 몇 주 동안 가격을 올렸지만, 그 뒤 가격을 받쳐 줄 사업이 없었습니다.
+
+## 초보자가 배울 점
+
+- 어떤 밈코인이든 사기 전에 **누가 공급량을 들고 있는지 확인하세요.** 상위 10개 보유자의 비중과 언록 일정입니다. 방법은 [밈코인 사기 전 확인하는 법]({lang}/blog/how-to-check-a-memecoin-before-buying/) 레슨에 있고, [밈코인 페이지]({lang}/memes/)에는 안전 신호등이 있습니다.
+- **유명한 이름은 마케팅이지 보호가 아닙니다.** 다른 [유명인·정치인 밈코인]({lang}/blog/celebrity-political-memecoins-story/)에서도 같은 패턴이 나타났습니다.
+- **그래도 해 보겠다면 전부 잃어도 되는 돈만 쓰세요.** 금액을 미리 정하고 [내 포트폴리오]({lang}/me/)에서 추적하세요.
+
+> **⚠️ 주의**
+> - **가짜 복제 토큰.** 같은 이름과 그림을 쓰는 토큰이 수십 개입니다. 공식 사이트나 인증된 계정에 올라온 컨트랙트 주소만 진짜입니다.
+> - **"보유하면 상품을 준다"는 경쟁.** 가장 과열된 순간에 사게 하고, 언록 기간에도 계속 들고 있게 만듭니다.
+> - **처음 몇 시간 안에 사기.** 바로 그때 내부자와 봇이 가장 싼 코인을, 가장 많이 팔 준비를 하고 있습니다.
+
+더 많은 레슨: [배우기 페이지]({lang}/learn/).
+
+## 출처
+
+- [The Block — Trump launched his own memecoin. What is going on? (2025년 1월)](https://www.theblock.co/post/335541/trump-launched-his-own-memecoin-what-is-going-on)
+- [Cointelegraph — Melania Trump memecoin launches (2025년 1월)](https://cointelegraph.com/news/melania-trump-memecoin-launches-notches-4-b-market-cap)
+- [Fortune — Trump's memecoin rises after the lock-up is lifted (2025년 4월)](https://fortune.com/crypto/2025/04/21/trump-memecoin-unlock/)
+- [Cointelegraph — Melania memecoin team "quietly sold" $30 million: Bubblemaps (2025년 4월)](https://cointelegraph.com/news/melania-trump-memecoin-team-sold-30-million-bubblemaps)
+- [CoinMarketCap Academy — MELANIA down 98% from its all-time high (2025년)](https://coinmarketcap.com/academy/article/melania-token-down-98percent-amid-dollar30m-team-wallet-questions)
+- [Axios — Trump's meme coin dinner (2025년 5월)](https://www.axios.com/2025/05/22/trump-meme-coin-dinner)
+- [The Block — Class action lawsuit names Ben Chow over MELANIA and LIBRA (2025년 10월)](https://www.theblock.co/post/375832/ben-chow-melania-libra-memecoin/)
+- [The Block — Nearly 1 million wallets are down $3.81 billion on TRUMP (2026년 7월)](https://www.theblock.co/news/business/2026-07-04-nearly-1-million-wallets-are-down-3-81-billion-on-trumps-memecoin-report-407170)
+
+*투자 조언이 아닙니다. 이 레슨은 과거에 일어난 일을 전할 뿐이며, 어떤 코인의 매수나 매도도 추천하지 않습니다.*
