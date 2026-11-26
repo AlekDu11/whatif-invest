@@ -36,3 +36,9 @@ BONX = {
             note='The exchange or service pays the bonus after sign-up and meeting its terms. «Up to» is the maximum under the exchange’s rules; new users usually get vouchers worth tens of dollars for the first steps.',
             strip='New to {n}? {l}'),
 }
+
+# the other 17 languages (owner 2026-11-26: whole world)
+from i18n_bonus2 import BON2, BONX2  # noqa: E402
+BON.update(BON2)
+BONX.update(BONX2)
+BON_LANGS = tuple(BON)

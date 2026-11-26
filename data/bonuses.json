@@ -194,7 +194,24 @@
    "name": {
     "uk": "Для всіх країн",
     "ru": "Для всех стран",
-    "en": "Worldwide"
+    "en": "Worldwide",
+    "es": "Para todos los países",
+    "pt": "Para todos os países",
+    "de": "Für alle Länder",
+    "fr": "Pour tous les pays",
+    "it": "Per tutti i Paesi",
+    "pl": "Dla wszystkich krajów",
+    "tr": "Tüm ülkeler için",
+    "nl": "Voor alle landen",
+    "id": "Untuk semua negara",
+    "vi": "Cho mọi quốc gia",
+    "th": "สำหรับทุกประเทศ",
+    "hi": "सभी देशों के लिए",
+    "ja": "すべての国向け",
+    "ko": "모든 국가",
+    "zh": "适用于所有国家",
+    "ar": "لكل الدول",
+    "fil": "Para sa lahat ng bansa"
    },
    "items": [
     {
@@ -247,7 +264,24 @@
    "line": {
     "uk": "Вітальні нагороди новачкам до 10 000 USDT",
     "ru": "Приветственные награды новичкам до 10 000 USDT",
-    "en": "Welcome rewards for new users up to 10,000 USDT"
+    "en": "Welcome rewards for new users up to 10,000 USDT",
+    "es": "Recompensas de bienvenida hasta 10 000 USDT",
+    "pt": "Recompensas de boas-vindas de até 10.000 USDT",
+    "de": "Willkommensprämien bis zu 10.000 USDT",
+    "fr": "Récompenses de bienvenue jusqu'à 10 000 USDT",
+    "it": "Premi di benvenuto fino a 10.000 USDT",
+    "pl": "Nagrody powitalne do 10 000 USDT",
+    "tr": "10.000 USDT'ye kadar hoş geldin ödülleri",
+    "nl": "Welkomstbeloningen tot 10.000 USDT",
+    "id": "Hadiah sambutan hingga 10.000 USDT",
+    "vi": "Thưởng chào mừng đến 10.000 USDT",
+    "th": "รางวัลต้อนรับสูงสุด 10,000 USDT",
+    "hi": "10,000 USDT तक वेलकम रिवॉर्ड",
+    "ja": "最大10,000 USDTのウェルカム特典",
+    "ko": "최대 10,000 USDT 웰컴 보상",
+    "zh": "最高 10,000 USDT 新人奖励",
+    "ar": "مكافآت ترحيبية حتى 10,000 USDT",
+    "fil": "Welcome reward hanggang 10,000 USDT"
    },
    "src": [
     [
@@ -265,7 +299,24 @@
    "line": {
     "uk": "Нагороди новачкам до 10 000 USDT",
     "ru": "Награды новичкам до 10 000 USDT",
-    "en": "New user rewards up to 10,000 USDT"
+    "en": "New user rewards up to 10,000 USDT",
+    "es": "Recompensas para nuevos usuarios hasta 10 000 USDT",
+    "pt": "Recompensas para novatos de até 10.000 USDT",
+    "de": "Neukundenprämien bis zu 10.000 USDT",
+    "fr": "Récompenses nouveaux utilisateurs jusqu'à 10 000 USDT",
+    "it": "Premi per nuovi utenti fino a 10.000 USDT",
+    "pl": "Nagrody dla nowych do 10 000 USDT",
+    "tr": "10.000 USDT'ye kadar yeni kullanıcı ödülleri",
+    "nl": "Beloningen voor nieuwe gebruikers tot 10.000 USDT",
+    "id": "Hadiah pengguna baru hingga 10.000 USDT",
+    "vi": "Thưởng người mới đến 10.000 USDT",
+    "th": "รางวัลผู้ใช้ใหม่สูงสุด 10,000 USDT",
+    "hi": "10,000 USDT तक नए यूज़र रिवॉर्ड",
+    "ja": "新規ユーザー特典 最大10,000 USDT",
+    "ko": "신규 회원 보상 최대 10,000 USDT",
+    "zh": "新用户奖励最高 10,000 USDT",
+    "ar": "مكافآت المستخدمين الجدد حتى 10,000 USDT",
+    "fil": "Reward sa bagong user hanggang 10,000 USDT"
    },
    "src": [
     [
@@ -283,7 +334,24 @@
    "line": {
     "uk": "Вітальний подарунок до 100 USDT у перші 7 днів + завдання в Rewards Hub",
     "ru": "Приветственный подарок до 100 USDT в первые 7 дней + задания в Rewards Hub",
-    "en": "Welcome gift up to 100 USDT in the first 7 days + Rewards Hub tasks"
+    "en": "Welcome gift up to 100 USDT in the first 7 days + Rewards Hub tasks",
+    "es": "Regalo de bienvenida hasta 100 USDT en los primeros 7 días + tareas del Rewards Hub",
+    "pt": "Presente de boas-vindas de até 100 USDT nos primeiros 7 dias + tarefas do Rewards Hub",
+    "de": "Willkommensgeschenk bis zu 100 USDT in den ersten 7 Tagen + Rewards-Hub-Aufgaben",
+    "fr": "Cadeau de bienvenue jusqu'à 100 USDT les 7 premiers jours + missions du Rewards Hub",
+    "it": "Regalo di benvenuto fino a 100 USDT nei primi 7 giorni + missioni del Rewards Hub",
+    "pl": "Prezent powitalny do 100 USDT w pierwszych 7 dniach + zadania w Rewards Hub",
+    "tr": "İlk 7 günde 100 USDT'ye kadar hoş geldin hediyesi + Rewards Hub görevleri",
+    "nl": "Welkomstcadeau tot 100 USDT in de eerste 7 dagen + Rewards Hub-taken",
+    "id": "Hadiah sambutan hingga 100 USDT di 7 hari pertama + tugas Rewards Hub",
+    "vi": "Quà chào mừng đến 100 USDT trong 7 ngày đầu + nhiệm vụ Rewards Hub",
+    "th": "ของขวัญต้อนรับสูงสุด 100 USDT ใน 7 วันแรก + ภารกิจ Rewards Hub",
+    "hi": "पहले 7 दिनों में 100 USDT तक वेलकम गिफ्ट + Rewards Hub टास्क",
+    "ja": "最初の7日間で最大100 USDTのウェルカムギフト＋Rewards Hubのタスク",
+    "ko": "첫 7일 최대 100 USDT 웰컴 선물 + Rewards Hub 미션",
+    "zh": "前 7 天最高 100 USDT 新人礼 + 奖励中心任务",
+    "ar": "هدية ترحيبية حتى 100 USDT في أول 7 أيام + مهام Rewards Hub",
+    "fil": "Welcome gift hanggang 100 USDT sa unang 7 araw + mga task sa Rewards Hub"
    },
    "src": [
     [
@@ -301,7 +369,24 @@
    "line": {
     "uk": "Бокс-сюрприз і купони новачкам після верифікації",
     "ru": "Бокс-сюрприз и купоны новичкам после верификации",
-    "en": "Mystery box and coupons for new users after verification"
+    "en": "Mystery box and coupons for new users after verification",
+    "es": "Caja sorpresa y cupones para nuevos usuarios tras verificarte",
+    "pt": "Caixa surpresa e cupons para novatos após a verificação",
+    "de": "Überraschungsbox und Gutscheine für Neukunden nach der Verifizierung",
+    "fr": "Boîte mystère et coupons pour les nouveaux après vérification",
+    "it": "Mystery box e buoni per i nuovi utenti dopo la verifica",
+    "pl": "Mystery box i kupony dla nowych po weryfikacji",
+    "tr": "Doğrulamadan sonra yeni kullanıcılara sürpriz kutu ve kuponlar",
+    "nl": "Mysterybox en vouchers voor nieuwe gebruikers na verificatie",
+    "id": "Mystery box dan voucher untuk pengguna baru setelah verifikasi",
+    "vi": "Hộp quà bí ẩn và voucher cho người mới sau khi xác minh",
+    "th": "กล่องสุ่มและคูปองสำหรับผู้ใช้ใหม่หลังยืนยันตัวตน",
+    "hi": "वेरिफ़िकेशन के बाद नए यूज़र्स को मिस्ट्री बॉक्स और कूपन",
+    "ja": "本人確認後にミステリーボックスとクーポン",
+    "ko": "인증 후 신규 회원 미스터리 박스와 쿠폰",
+    "zh": "完成认证后新用户可得盲盒和优惠券",
+    "ar": "صندوق مفاجآت وقسائم للمستخدمين الجدد بعد التحقق",
+    "fil": "Mystery box at coupon para sa bagong user pagkatapos ma-verify"
    },
    "src": []
   },
@@ -314,7 +399,24 @@
    "line": {
     "uk": "Купони новачкам і знижка на комісію",
     "ru": "Купоны новичкам и скидка на комиссию",
-    "en": "New user vouchers and a trading-fee discount"
+    "en": "New user vouchers and a trading-fee discount",
+    "es": "Cupones para nuevos usuarios y descuento en comisiones",
+    "pt": "Cupons para novatos e desconto nas taxas",
+    "de": "Gutscheine für Neukunden und Gebührenrabatt",
+    "fr": "Coupons pour les nouveaux et réduction des frais",
+    "it": "Buoni per nuovi utenti e sconto sulle commissioni",
+    "pl": "Kupony dla nowych i zniżka na prowizje",
+    "tr": "Yeni kullanıcılara kupon ve komisyon indirimi",
+    "nl": "Vouchers voor nieuwe gebruikers en korting op handelskosten",
+    "id": "Voucher pengguna baru dan diskon biaya trading",
+    "vi": "Voucher cho người mới và giảm phí giao dịch",
+    "th": "คูปองผู้ใช้ใหม่และส่วนลดค่าธรรมเนียม",
+    "hi": "नए यूज़र वाउचर और ट्रेडिंग फ़ीस में छूट",
+    "ja": "新規ユーザー向けクーポンと手数料割引",
+    "ko": "신규 회원 쿠폰과 수수료 할인",
+    "zh": "新用户代金券与手续费折扣",
+    "ar": "قسائم للمستخدمين الجدد وخصم على الرسوم",
+    "fil": "Voucher sa bagong user at diskwento sa fee"
    },
    "src": []
   },
@@ -327,7 +429,24 @@
    "line": {
     "uk": "Нагороди новачкам за завдання в Rewards Hub",
     "ru": "Награды новичкам за задания в Rewards Hub",
-    "en": "New user rewards for Rewards Hub tasks"
+    "en": "New user rewards for Rewards Hub tasks",
+    "es": "Recompensas para nuevos usuarios por tareas del Rewards Hub",
+    "pt": "Recompensas para novatos por tarefas do Rewards Hub",
+    "de": "Neukundenprämien für Aufgaben im Rewards Hub",
+    "fr": "Récompenses pour les nouveaux via les missions du Rewards Hub",
+    "it": "Premi per nuovi utenti con le missioni del Rewards Hub",
+    "pl": "Nagrody dla nowych za zadania w Rewards Hub",
+    "tr": "Rewards Hub görevleri için yeni kullanıcı ödülleri",
+    "nl": "Beloningen voor nieuwe gebruikers voor Rewards Hub-taken",
+    "id": "Hadiah pengguna baru dari tugas Rewards Hub",
+    "vi": "Thưởng người mới từ nhiệm vụ Rewards Hub",
+    "th": "รางวัลผู้ใช้ใหม่จากภารกิจใน Rewards Hub",
+    "hi": "Rewards Hub टास्क पर नए यूज़र रिवॉर्ड",
+    "ja": "Rewards Hubのタスクで新規ユーザー特典",
+    "ko": "Rewards Hub 미션 신규 회원 보상",
+    "zh": "完成奖励中心任务可得新用户奖励",
+    "ar": "مكافآت للمستخدمين الجدد مقابل مهام Rewards Hub",
+    "fil": "Reward sa bagong user para sa mga task sa Rewards Hub"
    },
    "src": []
   }
