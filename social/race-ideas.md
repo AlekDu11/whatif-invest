@@ -38,7 +38,7 @@ TEMPLATE v2 (owner 2026-11-25: «top — keep this template»): real logos in co
 - ✅ 2026-11-25 xrp xlm hbar | payment coins
 - ✅ 2026-11-25 meta nflx amzn | consumer tech
 - ✅ 2026-11-26 btc spy wti (BTC data starts 2014-09, so since Sep 2014; WTI shows a text badge — no real logo for a commodity) | Bitcoin vs stocks vs oil
-- jpm bac gs | US banks
+- ✅ 2026-11-26 jpm bac gs | US banks
 - sol avax near | L1 challengers
 - ko pep | cola war
 - coffee cocoa sugar | breakfast commodities
@@ -46,23 +46,36 @@ TEMPLATE v2 (owner 2026-11-25: «top — keep this template»): real logos in co
 - pltr crwd orcl | software growth
 - ltc bch etc | old-school forks
 - wheat corn soybeans | grains
+- ma v axp | card networks
+- xom cvx shel | oil majors
+- nvda tsm asml | AI chip supply chain
+- wmt cost tgt | big-box retail
+- sui apt sei | new L1s
+- arb op pol | Ethereum L2s
+- mcd sbux cmg | fast food
+- voo gld --since 2005-01 | stocks vs gold ETF
+- dot atom kas | interoperability vs proof-of-work
+- lly pfe | pharma duel
+- brk-b spy --since 2000-01 | Buffett vs the index
+- copper silver gold | industrial vs precious metals
 
 ## Log
 | date | ids | X URL | Telegram | views |
 |---|---|---|---|---|
-| 2026-11-17 | btc gold spy (since 2016-01) | https://x.com/WhatIfStack/status/2122690567314292871 | msg 1474 | X 16 · TG 101 (2026-11-25 18:35) |
-| 2026-11-17 | okb bnb cro (since 2020-02) | https://x.com/WhatIfStack/status/2122729649189044275 | msg 1475 | X 17 · TG 152 (2026-11-25 18:35) |
-| 2026-11-18 | btc eth sol (since 2020-04) | https://x.com/WhatIfStack/status/2123077127801298975 | msg 1479 | X 14 · TG 1.2K (2026-11-25 18:35) |
-| 2026-11-19 | nvda amd intc (since 2000-01) | https://x.com/WhatIfStack/status/2123439207024910576 | msg 1483 | X 11 · TG 1.4K (2026-11-25 18:35) |
-| 2026-11-20 18:35 | aapl msft googl (since 2004-08) | https://x.com/WhatIfStack/status/2123801362022707579 | msg 1488 | X 10 · TG 1.5K (2026-11-25 18:35) |
-| 2026-11-21 11:30 | spy qqq vt (since 2008-06) | https://x.com/WhatIfStack/status/2124072647394750506 | — | X 23 (2026-11-25 18:35) |
-| 2026-11-21 18:30 | gold silver platinum (since 2000-08) | https://x.com/WhatIfStack/status/2124163264862884319 | msg 1493 | X 10 · TG 1.3K (2026-11-25 18:35) |
-| 2026-11-22 11:30 | doge shib pepe (since 2023-05) | https://x.com/WhatIfStack/status/2124435401335042107 | — | X 15 (2026-11-25 18:35) |
-| 2026-11-22 17:35 | eth sol ada (since 2021-01) | https://x.com/WhatIfStack/status/2124525885826990369 | msg 1496 | X 11 · TG 972 (2026-11-25 18:35) |
-| 2026-11-23 11:32 | tsla byd toyota (since 2010-06) | https://x.com/WhatIfStack/status/2124798172388020641 | — | X 14 (2026-11-25 18:35) |
-| 2026-11-23 18:30 | link uni aave (since 2020-10) | https://x.com/WhatIfStack/status/2124888140607320551 | msg 1500 | X 17 · TG 677 (2026-11-25 18:35) |
-| 2026-11-24 11:29 | btc nvda (since 2019-01) | https://x.com/WhatIfStack/status/2125159914225992139 | — | X 9 (2026-11-26 11:40) |
-| 2026-11-24 18:30 | schd spy (since 2014-01) | https://x.com/WhatIfStack/status/2125250410118361290 | msg 1504 | X 20 · TG 411 (X 2026-11-26 11:40, TG 2026-11-25 18:35) |
-| 2026-11-25 11:36 | xrp xlm hbar (since 2019-09) | https://x.com/WhatIfStack/status/2125522302678815122 | — | X 19 (2026-11-26 11:40) |
-| 2026-11-25 18:33 | meta nflx amzn (since May 2012) | https://x.com/WhatIfStack/status/2125612912735920536 | msg 1508 | X 5 (2026-11-26 11:40) |
-| 2026-11-26 11:30 | btc spy wti (since 2014-09) | https://x.com/WhatIfStack/status/2125884916575748434 | — | |
+| 2026-11-17 | btc gold spy (since 2016-01) | https://x.com/WhatIfStack/status/2122690567314292871 | msg 1474 | X 17 · TG 101 (2026-11-26 18:40) |
+| 2026-11-17 | okb bnb cro (since 2020-02) | https://x.com/WhatIfStack/status/2122729649189044275 | msg 1475 | X 18 · TG 152 (2026-11-26 18:40) |
+| 2026-11-18 | btc eth sol (since 2020-04) | https://x.com/WhatIfStack/status/2123077127801298975 | msg 1479 | X 15 · TG 1.2K (2026-11-26 18:40) |
+| 2026-11-19 | nvda amd intc (since 2000-01) | https://x.com/WhatIfStack/status/2123439207024910576 | msg 1483 | X 12 · TG 1.4K (2026-11-26 18:40) |
+| 2026-11-20 18:35 | aapl msft googl (since 2004-08) | https://x.com/WhatIfStack/status/2123801362022707579 | msg 1488 | X 11 · TG 1.5K (2026-11-26 18:40) |
+| 2026-11-21 11:30 | spy qqq vt (since 2008-06) | https://x.com/WhatIfStack/status/2124072647394750506 | — | X 24 (2026-11-26 18:40) |
+| 2026-11-21 18:30 | gold silver platinum (since 2000-08) | https://x.com/WhatIfStack/status/2124163264862884319 | msg 1493 | X 11 · TG 1.4K (2026-11-26 18:40) |
+| 2026-11-22 11:30 | doge shib pepe (since 2023-05) | https://x.com/WhatIfStack/status/2124435401335042107 | — | X 16 (2026-11-26 18:40) |
+| 2026-11-22 17:35 | eth sol ada (since 2021-01) | https://x.com/WhatIfStack/status/2124525885826990369 | msg 1496 | X 12 · TG 979 (2026-11-26 18:40) |
+| 2026-11-23 11:32 | tsla byd toyota (since 2010-06) | https://x.com/WhatIfStack/status/2124798172388020641 | — | X 15 (2026-11-26 18:40) |
+| 2026-11-23 18:30 | link uni aave (since 2020-10) | https://x.com/WhatIfStack/status/2124888140607320551 | msg 1500 | X 18 · TG 682 (2026-11-26 18:40) |
+| 2026-11-24 11:29 | btc nvda (since 2019-01) | https://x.com/WhatIfStack/status/2125159914225992139 | — | X 9 (2026-11-26 18:40) |
+| 2026-11-24 18:30 | schd spy (since 2014-01) | https://x.com/WhatIfStack/status/2125250410118361290 | msg 1504 | X 20 · TG 418 (2026-11-26 18:40) |
+| 2026-11-25 11:36 | xrp xlm hbar (since 2019-09) | https://x.com/WhatIfStack/status/2125522302678815122 | — | X 20 (2026-11-26 18:40) |
+| 2026-11-25 18:33 | meta nflx amzn (since May 2012) | https://x.com/WhatIfStack/status/2125612912735920536 | msg 1508 | X 6 · TG 260 (2026-11-26 18:40) |
+| 2026-11-26 11:30 | btc spy wti (since 2014-09) | https://x.com/WhatIfStack/status/2125884916575748434 | — | X 12 (2026-11-26 18:40) |
+| 2026-11-26 18:33 | jpm bac gs (since 2000-01) | https://x.com/WhatIfStack/status/2125975547045896350 | msg 1511 | |
