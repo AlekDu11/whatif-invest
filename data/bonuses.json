@@ -65,7 +65,9 @@
        "cta": "Get it",
        "note": "Partner link. Gift certificates can’t be sold right away."
       }
-     }
+     },
+     "c": "#1a56db",
+     "a": "I"
     },
     {
      "id": "privat24",
@@ -105,7 +107,9 @@
        "КОШТ — ПриватБанк дає 150 грн за друга (до 8.04.2027)",
        "https://kosht.media/vzhe-15-bankiv-maiut-referalni-prohramy-z-bonusamy-za-rekomendatsiiu-druziam/"
       ]
-     ]
+     ],
+     "c": "#5bab3a",
+     "a": "П"
     },
     {
      "id": "monobank",
@@ -141,7 +145,9 @@
        "КОШТ — monobank збільшив бонус за друзів до 100 грн",
        "https://kosht.media/monobank-zbilshyv-vynahorodu-za-zaproshennia-druziv/"
       ]
-     ]
+     ],
+     "c": "#111111",
+     "a": "m"
     },
     {
      "id": "freedom24",
@@ -177,7 +183,9 @@
        "Capitalizator — постійна акція Freedom24 (березень 2026)",
        "https://capitalizator.ua/news/postijna-aktsiia-vid-freedom24.html"
       ]
-     ]
+     ],
+     "c": "#2fae5a",
+     "a": "F"
     }
    ],
    "tz": [
@@ -248,7 +256,9 @@
        "Telegram Wallet — умови в застосунку",
        "https://telegram.me/wallet"
       ]
-     ]
+     ],
+     "c": "#229ED9",
+     "a": "W"
     }
    ]
   }
@@ -288,7 +298,8 @@
      "Gate — official announcements («Sign up and claim up to $10,000 in welcome rewards»)",
      "https://www.gate.com/announcements/article/50947"
     ]
-   ]
+   ],
+   "logo": "/assets/xlogo/gate.webp"
   },
   {
    "id": "mexc",
@@ -323,7 +334,8 @@
      "MEXC — sign-up bonuses 2026",
      "https://www.mexc.com/crypto-pulse/article/best-crypto-exchange-sign-up-bonuses-2026-121379"
     ]
-   ]
+   ],
+   "logo": "/assets/xlogo/mxc.webp"
   },
   {
    "id": "bybit",
@@ -358,13 +370,14 @@
      "Bybit — new Rewards Hub (Mar 2026)",
      "https://www.bybit.com/en/press/post/bybit-launches-all-new-rewards-hub-reimagining-the-trading-rewards-experience-blt403968151eaab4d0"
     ]
-   ]
+   ],
+   "logo": "/assets/xlogo/bybit.webp"
   },
   {
    "id": "okx",
    "go": "okx",
    "name": "OKX",
-   "max": null,
+   "max": 810,
    "checked": "2026-11-26",
    "line": {
     "uk": "Бокс-сюрприз і купони новачкам після верифікації",
@@ -388,13 +401,19 @@
     "ar": "صندوق مفاجآت وقسائم للمستخدمين الجدد بعد التحقق",
     "fil": "Mystery box at coupon para sa bagong user pagkatapos ma-verify"
    },
-   "src": []
+   "src": [
+    [
+     "OKX — New user rewards, up to 810 USDT",
+     "https://www.okx.com/en-us/campaigns/cis-global-nub"
+    ]
+   ],
+   "logo": "/assets/xlogo/okex.webp"
   },
   {
    "id": "binance",
    "go": "binance",
    "name": "Binance",
-   "max": null,
+   "max": 150,
    "checked": "2026-11-26",
    "line": {
     "uk": "Купони новачкам і знижка на комісію",
@@ -418,13 +437,19 @@
     "ar": "قسائم للمستخدمين الجدد وخصم على الرسوم",
     "fil": "Voucher sa bagong user at diskwento sa fee"
    },
-   "src": []
+   "src": [
+    [
+     "Binance — Welcome Reward rules (up to 150 USDT)",
+     "https://www.binance.com/en/activity/user-onboarding/rules"
+    ]
+   ],
+   "logo": "/assets/xlogo/binance.webp"
   },
   {
    "id": "bingx",
    "go": "bingx",
    "name": "BingX",
-   "max": null,
+   "max": 9800,
    "checked": "2026-11-26",
    "line": {
     "uk": "Нагороди новачкам за завдання в Rewards Hub",
@@ -448,7 +473,13 @@
     "ar": "مكافآت للمستخدمين الجدد مقابل مهام Rewards Hub",
     "fil": "Reward sa bagong user para sa mga task sa Rewards Hub"
    },
-   "src": []
+   "src": [
+    [
+     "BingX — official («Join BingX, Claim 9,800+ USDT Welcome Rewards»)",
+     "https://bingx.com/en/learn/article/crypto-exchanges-with-best-bonus-for-beginners-and-vip-with-customer-support-in-taiwan"
+    ]
+   ],
+   "logo": "/assets/xlogo/bingx.webp"
   }
  ]
 }

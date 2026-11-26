@@ -1144,7 +1144,8 @@ def bonuses_page(lang, ver):
     def xcard(x):
         big = (f'<div class="bxbig">{esc(tx["upto"])} {x["max"]:,} USDT</div>'.replace(',', '\u202f') if x.get('max') else '')
         src = ' · '.join(f'<a href="{esc(u)}" target="_blank" rel="noopener">{esc(ti)}</a>' for ti, u in x.get('src', []))
-        return (f'<article class="card bon bx{" hot" if x.get("hot") else ""}"><div class="bxh"><h3>{esc(x["name"])}</h3>'
+        lg = f'<img class="bxl" src="{x["logo"]}" alt="" width="34" height="34" loading="lazy">' if x.get('logo') else ''
+        return (f'<article class="card bon bx{" hot" if x.get("hot") else ""}"><div class="bxh">{lg}<h3>{esc(x["name"])}</h3>'
                 + (f'<span class="bxrec">{esc(tx["rec"])}</span>' if x.get('hot') else '') + f'</div>{big}<p>{esc(L(x["line"]))}</p>'
                 f'<p class="bonb"><a class="btn" href="/go/{x["go"]}?from=bonuses-x&l={lang}" target="_blank" rel="sponsored noopener">{esc(t["go"])} ↗</a></p>'
                 + (f'<p class="muted" style="font-size:13px">{esc(t["src"])}: {src}</p>' if src else '') + '</article>')
@@ -3460,7 +3461,7 @@ def asset(aid, lang, ver):
         lead_top = f'<p class="lead" style="margin-top:10px">{ml}{"" if lang in ("ja", "zh") else "."}</p>'
     else:
         lead_top = dca_lead
-    body = (f'{head}{lead_top}{hot_block(lang, aid)}<div class="chartside section">{tv}{side_block(lang, aid)}</div>{qconv(lang, aid)}{coin_markets_block(lang, aid) if cr else ""}{'' if 'timeline' in tech_news else hot_more(lang, aid)}{stock_block(lang, aid)}{analysis_block(lang, aid)}{offer_card(lang, 'asset-' + aid) if cr else ''}{tg_card(lang, 'asset-' + a['cat'])}{dca_lead if cr else ""}<div class="stats sfit">{stat_cards}{lump_cards}</div>{long_block(lang, aid)}{seas_block(lang, aid)}{calc_block(lang)}{tech_news}{"" if cr else coin_markets_block(lang, aid)}'
+    body = (f'{head}{lead_top}{hot_block(lang, aid)}<div class="chartside section">{tv}{side_block(lang, aid)}</div>{qconv(lang, aid)}{coin_markets_block(lang, aid) if cr else ""}{'' if 'timeline' in tech_news else hot_more(lang, aid)}{stock_block(lang, aid)}{analysis_block(lang, aid)}{offer_card(lang, 'asset-' + aid) if cr else ''}{'' if cr else xoffer_ph(lang)}{tg_card(lang, 'asset-' + a['cat'])}{dca_lead if cr else ""}<div class="stats sfit">{stat_cards}{lump_cards}</div>{long_block(lang, aid)}{seas_block(lang, aid)}{calc_block(lang)}{tech_news}{"" if cr else coin_markets_block(lang, aid)}'
             f'<div class="cols2 section"><section class="card"><h2>{S["a_periods"].format(**fe)}</h2>{ptable}</section>'
             f'<section class="card faq"><h2>{S["faq"]}</h2>' + ''.join(f'<details><summary>{esc(q)}</summary><p>{esc(x)}</p></details>' for q, x in faq) + '</section></div>'
             + (f'<section class="section">{table_block(lang, peers, esc(KS[lang]["peers"]), interactive=False)}</section>' if (peers := stock_peers(aid)) else '') +
@@ -3932,6 +3933,10 @@ def news_row(lang, slug, m, tl, thumb=False):
 
 
 def track_block(lang, ids):
+    return _track_block(lang, ids) + xoffer_ph(lang)
+
+
+def _track_block(lang, ids):
     """«Track it on WhatIfStack» under news and articles: star + add-to-portfolio per asset, links to the watchlist, portfolio and Telegram (owner 2026-11-20)."""
     k, q = TRK[lang], PF2[lang]
     ids = [i for i in dict.fromkeys(ids or []) if i in A][:4]
@@ -4082,6 +4087,11 @@ def bon_strip(lang):
     return f'<div class="pstrip" id="pstrip" hidden data-l="{lang}"></div>' if lang in BONX and BONUS.get('exchanges') else ''
 
 
+def xoffer_ph(lang):
+    """«Exclusive offers» strip under every article/news/analysis and on asset pages (owner 2026-11-26); filled by app.js from the same JSON."""
+    return f'<div class="xoffer section" hidden data-l="{lang}"></div>' if lang in BONX and BONUS.get('exchanges') else ''
+
+
 def bonus_json(lang):
     t, C = BONX[lang], BONUS.get('countries', {})
     L = lambda d: d.get(lang) or d.get('en') or ''
@@ -4089,9 +4099,9 @@ def bonus_json(lang):
     for cc, c in C.items():
         if cc == 'world' or not c.get('tz'):
             continue
-        items = [dict(n=i['name'], h=f'/go/{i["go"]}?from=pop-{cc}&l={lang}', t=L(i['you'])) for i in sorted(c['items'], key=lambda i: -(i.get('v') or 0)) if i.get('go')]
+        items = [dict(n=i['name'], h=f'/go/{i["go"]}?from=pop-{cc}&l={lang}', t=L(i['you']), c=i.get('c'), a=i.get('a')) for i in sorted(c['items'], key=lambda i: -(i.get('v') or 0)) if i.get('go')]
         cs.append(dict(cc=cc, f=c['flag'], n=L(c['name']), z=c['tz'], i=items))
-    xs = [dict(n=x['name'], h=f'/go/{x["go"]}?from=pop&l={lang}', l=L(x['line']), m=x.get('max'), hot=bool(x.get('hot'))) for x in BONUS.get('exchanges', [])]
+    xs = [dict(n=x['name'], h=f'/go/{x["go"]}?from=pop&l={lang}', l=L(x['line']), m=x.get('max'), hot=bool(x.get('hot')), g=x.get('logo')) for x in sorted(BONUS.get('exchanges', []), key=lambda x: (not x.get('hot'), -(x.get('max') or 0)))]
     return json.dumps(dict(s=t, c=cs, x=xs, u=url(lang, 'bonuses')), ensure_ascii=False, separators=(',', ':'))
 
 

@@ -1941,24 +1941,30 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
     if(!m||(m.u&&today>m.u)) return; a.href=m.h; const b=a.querySelector('.oft b'), d=a.querySelector('.oft span'), n=a.querySelector('.oft small'), c=a.querySelector('.btn');
     if(b) b.textContent=m.t; if(d) d.textContent=m.d; if(n) n.textContent=m.note; if(c) c.textContent=m.cta; a.dataset.cc='1' }) })();
 // 🎁 «Exclusive offers» popup + rotating partner strip (owner 2026-11-26). Data: /assets/bonus-<lang>.json (bonuses.json); country by time zone.
-(function(){ const btn=document.getElementById('bonbtn'), st=document.getElementById('pstrip'); if(!btn&&!st) return;
-  const l=(btn||st).dataset.l; let D=null, P=null; let tz=''; try{ tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'' }catch(e){}
+(function(){ const btn=document.getElementById('bonbtn'), st=document.getElementById('pstrip'), xo=document.querySelector('.xoffer'); if(!btn&&!st&&!xo) return;
+  const l=(btn||st||xo).dataset.l; let D=null, P=null; let tz=''; try{ tz=Intl.DateTimeFormat().resolvedOptions().timeZone||'' }catch(e){}
   const E=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const num=n=>Number(n).toLocaleString(l==='en'?'en-US':l).replace(/,/g,' ');
   const load=()=>D?Promise.resolve(D):fetch('/assets/bonus-'+l+'.json').then(r=>r.json()).then(j=>(D=j));
   const mine=()=>D.c.find(c=>c.z.includes(tz));
+  const AV=x=>x.g?`<span class="bav"><img src="${E(x.g)}" alt="" loading="lazy"></span>`:`<span class="bav" style="background:${E(x.c||'#3a4150')}">${E(x.a||(x.n||'?')[0])}</span>`;
   function open(){ load().then(d=>{ const s=d.s, my=mine(), hot=d.x.find(x=>x.hot)||d.x[0];
     if(!P){ P=document.createElement('div'); P.className='bpop'; P.hidden=true; P.setAttribute('role','dialog'); P.setAttribute('aria-label',s.title); document.body.appendChild(P);
       P.addEventListener('click',e=>{ if(e.target===P||e.target.closest('.x')) P.hidden=true }); document.addEventListener('keydown',e=>{ if(e.key==='Escape'&&P) P.hidden=true }) }
-    const row=(n,t,h,m)=>`<div class="brow2"><div class="bn"><b>${E(n)}</b><small>${m?`${E(s.upto)} <em>${num(m)} USDT</em> · `:''}${E(t)}</small></div><a href="${E(h)}" target="_blank" rel="sponsored noopener">${E(s.open)} ›</a></div>`;
+    const row=(n,t,h,m,av)=>`<div class="brow2">${av}<div class="bn"><b>${E(n)}</b><small>${m?`${E(s.upto)} <em class="big">${num(m)} USDT</em> · `:''}${E(t)}</small></div><a href="${E(h)}" target="_blank" rel="sponsored noopener">${E(s.open)} ›</a></div>`;
     P.innerHTML=`<div class="bpw"><div class="bph"><span style="font-size:26px">🎁</span><div><h2>${E(s.title)}</h2><p>${E(s.sub)}</p></div><button class="x" type="button" aria-label="×">×</button></div>
-      <div class="bhot"><span class="gift" aria-hidden="true">🎁</span><b>${E(hot.n)}</b> <span class="bxrec">${E(s.rec)}</span><div class="big">${hot.m?E(s.upto)+' '+num(hot.m)+' USDT':E(hot.l)}</div><a class="btn" href="${E(hot.h)}" target="_blank" rel="sponsored noopener">${E(s.open)} ›</a></div>
+      <div class="bhot"><span class="gift" aria-hidden="true">🎁</span><div class="bhl">${AV(hot)}<b>${E(hot.n)}</b> <span class="bxrec">${E(s.rec)}</span></div><div class="big">${hot.m?E(s.upto)+' '+num(hot.m)+' USDT':E(hot.l)}</div><a class="btn" href="${E(hot.h)}" target="_blank" rel="sponsored noopener">${E(s.open)} ›</a></div>
       <div class="bsteps">${s.steps.map((x,i)=>`<span>${i+1}. ${E(x)}</span>`).join('')}</div>
-      ${my&&my.i.length?`<h3>${my.f} ${E(s.local)}: ${E(my.n)}</h3>`+my.i.map(i=>row(i.n,i.t,i.h)).join(''):''}
-      <h3>🪙 ${E(s.ex)}</h3>${d.x.filter(x=>x!==hot).map(x=>row(x.n,x.l,x.h,x.m)).join('')}
+      <h3>🪙 ${E(s.ex)}</h3>${d.x.filter(x=>x!==hot).map(x=>row(x.n,x.l,x.h,x.m,AV(x))).join('')}
+      ${my&&my.i.length?`<h3>${my.f} ${E(s.local)}: ${E(my.n)}</h3>`+my.i.map(i=>row(i.n,i.t,i.h,0,AV(i))).join(''):''}
       <p class="bnote">${E(s.note)}</p><a class="ball" href="${E(d.u)}">${E(s.all)} →</a></div>`;
     P.hidden=false; const c=P.querySelector('.x'); c&&c.focus() }).catch(()=>{ location.href='/'+(l==='uk'?'':l+'/')+'bonuses/' }) }
   if(btn) btn.addEventListener('click',open);
+  // «Exclusive offers» strip under posts and on asset pages: top 3 exchanges by «up to» + button that opens the popup
+  document.querySelectorAll('.xoffer').forEach(el=>{ setTimeout(()=>{
+    load().then(d=>{ const s=d.s; const top=d.x.filter(x=>x.m).slice(0,3);
+      el.innerHTML=`<span class="xt">🎁 ${E(s.title)}</span>`+top.map(x=>`<a class="xi" href="${E(x.h.replace('from=pop','from=xoffer'))}" target="_blank" rel="sponsored noopener">${AV(x)}<span>${E(x.n)}<small>${E(s.upto)} ${num(x.m)} USDT</small></span></a>`).join('')+`<button class="btn" type="button">${E(s.all)} ›</button>`;
+      el.querySelector('button').addEventListener('click',open); el.hidden=false }).catch(()=>{}) },1200) });
   if(st){ const go=()=>load().then(d=>{ const s=d.s, my=mine(); let list=d.x.map(x=>({h:x.h,t:s.strip.replace('{n}',x.n).replace('{l}',x.l)}));
       if(my) list=my.i.slice(0,2).map(i=>({h:i.h,t:i.n+': '+i.t})).concat(list);
       if(!list.length) return; let k=0; st.innerHTML=`<span class="pl">${E(s.partner)}</span><button class="pg" type="button" aria-label="${E(s.title)}">🎁</button><a target="_blank" rel="sponsored noopener"></a>`; st.querySelector('.pg').addEventListener('click',open); const a=st.querySelector('a');
