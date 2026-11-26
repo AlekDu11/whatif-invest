@@ -1,6 +1,6 @@
 ---
 title: "Boeing (BA): de 737-bouwer en zijn recordorderboek van $745 miljard"
-description: "Boeing in gewone taal: recordorders van $745 miljard, het herstel van de 737 MAX onder Kelly Ortberg, $45,9 miljard schuld en de risico's voor wie regelmatig koopt."
+description: "Boeing in gewone taal: recordorders van $745 miljard, het herstel van de 737 MAX onder Kelly Ortberg, $45,9 miljard schuld en de risico's."
 date: 2026-11-26
 kind: analysis
 ---

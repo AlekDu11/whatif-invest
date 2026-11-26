@@ -1,6 +1,6 @@
 ---
 title: "Boeing (BA) : le fabricant du 737 et son carnet de commandes record de 745 Md$"
-description: "Boeing en termes simples : 745 Md$ de commandes record, le redressement du 737 MAX sous Kelly Ortberg, 45,9 Md$ de dette et les risques pour les acheteurs réguliers."
+description: "Boeing en termes simples : 745 Md$ de commandes record, le redressement du 737 MAX sous Kelly Ortberg, 45,9 Md$ de dette et les risques."
 date: 2026-11-26
 kind: analysis
 ---

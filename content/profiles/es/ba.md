@@ -1,6 +1,6 @@
 ---
 title: "Boeing (BA): el fabricante del 737 y su cartera récord de 745.000 millones de dólares"
-description: Boeing en palabras sencillas: pedidos récord por 745.000 millones de dólares, la recuperación del 737 MAX con Kelly Ortberg, 45.900 millones de deuda y los riesgos.
+description: Boeing en palabras sencillas: pedidos récord por 745.000 millones de dólares, la recuperación del 737 MAX con Kelly Ortberg, 45.900 millones de deuda y riesgos.
 date: 2026-11-26
 kind: analysis
 ---

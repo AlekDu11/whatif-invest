@@ -1,6 +1,6 @@
 ---
 title: "Boeing (BA) stock: ang gumagawa ng 737 at ang record na $745 bilyong backlog"
-description: "Boeing sa simpleng salita: record na $745 bilyong order, ang pagbangon ng 737 MAX sa ilalim ni Kelly Ortberg, $45.9 bilyong utang at ang mga panganib sa regular na bumibili."
+description: "Boeing sa simpleng salita: record na $745 bilyong order, ang pagbangon ng 737 MAX sa ilalim ni Kelly Ortberg, $45.9 bilyong utang at mga panganib."
 date: 2026-11-26
 kind: analysis
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Boeing (BA): il produttore del 737 e il portafoglio ordini record da 745 miliardi $"
-description: "Boeing in parole semplici: ordini record per 745 miliardi $, la ripresa del 737 MAX con Kelly Ortberg, 45,9 miliardi $ di debito e i rischi per chi compra con regolarità."
+description: "Boeing in parole semplici: ordini record per 745 miliardi $, la ripresa del 737 MAX con Kelly Ortberg, 45,9 miliardi $ di debito e i rischi."
 date: 2026-11-26
 kind: analysis
 ---
