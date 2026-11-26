@@ -5222,6 +5222,9 @@ def md(text, lang):
             flush()
         if bm:
             flush(); out.append(sc_block(bm.group(1), bm.group(2).split(':'), lang)); continue
+        im = _re.fullmatch(r'!\[([^\]]*)\]\((/assets/img/[\w.-]+)\)', s)   # screenshot: ![caption](/assets/img/x.webp) (content/img/)
+        if im:
+            flush(); out.append(f'<figure class="shot"><img src="{im.group(2)}" alt="{esc(im.group(1))}" loading="lazy"><figcaption>{esc(im.group(1))}</figcaption></figure>'); continue
         h = _re.match(r'(#{2,3})\s+(.*)', s)
         if h:
             flush(); lv = len(h.group(1)); out.append(f'<h{lv}>{inline_md(h.group(2), lang)}</h{lv}>'); continue
@@ -5437,6 +5440,8 @@ def main():
     open(os.path.join(DIST, 'embed', 'price', 'index.html'), 'w', encoding='utf-8').write(embed_price_page())
     shutil.copytree(os.path.join(ROOT, 'src', 'vendor'), os.path.join(OUT, 'assets', 'vendor'), dirs_exist_ok=True)   # Lightweight Charts (Apache-2.0, TradingView)
     shutil.copytree(os.path.join(ROOT, 'social', 'launch'), os.path.join(OUT, 'assets', 'press'), ignore=shutil.ignore_patterns('*.md'))   # press kit images   # hands covers to the X composer
+    if os.path.isdir(os.path.join(ROOT, 'content', 'img')):   # article screenshots (owner's own, 2026-11-26)
+        shutil.copytree(os.path.join(ROOT, 'content', 'img'), os.path.join(OUT, 'assets', 'img'), dirs_exist_ok=True)
     if os.path.isdir(os.path.join(ROOT, 'content', 'covers')):
         shutil.copytree(os.path.join(ROOT, 'content', 'covers'), os.path.join(OUT, 'assets/covers'))
     if os.path.isdir(os.path.join(ROOT, 'src', 'og')):
