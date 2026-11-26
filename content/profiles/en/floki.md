@@ -1,6 +1,6 @@
 ---
 title: FLOKI explained: a 2021 memecoin named after Elon Musk's dog that wants to be more than a meme
-description: FLOKI in plain language: where the name comes from, its Valhalla game and other projects, how the token is used, its booms and falls, the main risks and what regular buyers should know.
+description: FLOKI in plain language: where the name comes from, the Valhalla game and other projects, what the token does, its booms and falls, and the main risks.
 date: 2026-11-26
 kind: analysis
 ---
