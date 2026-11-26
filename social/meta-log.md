@@ -75,3 +75,8 @@ Note (2026-11-24 11:4x run): Threads redirects to https://www.threads.com/accoun
 | 2026-11-25 11:5x | Threads | NOT POSTED — account checkpoint (2nd day) | — | |
 
 Note (2026-11-25 run): Threads still redirects to /accounts/suspended/ (phone number + SMS/WhatsApp code) — owner must verify the phone himself; skipped. Bluesky: video from GitHub raw by commit SHA (8071271) via the x-relay hash hand-off; "Новий пост" ref went stale once, re-find + click opened the composer; no input[type=file] in the composer — a synthetic ClipboardEvent('paste') with the File on the [contenteditable] attached the video; language set to «англійська» in the picker. Bluesky likes, posts of the last 7 days: all 0.
+
+| 2026-11-26 11:49 | Bluesky | Race video: $100/mo since Sep 2014 Bitcoin vs S&P 500 vs WTI crude oil (Bitcoin $548.8K +3,633%, S&P 500 $36.0K +145%, WTI $21.0K +43%, $14,700 in each; same as X 11:30) + link /en/btc/ (langs en) | https://bsky.app/profile/whatifstack.bsky.social/post/3n37fisn5f22l | 0 likes (2026-11-26 11:5x) |
+| 2026-11-26 11:4x | Threads | NOT POSTED — account checkpoint (3rd day) | — | |
+
+Note (2026-11-26 run): Threads still redirects to /accounts/suspended/ (phone number + SMS/WhatsApp code) — owner must verify the phone himself; skipped. Bluesky: video from GitHub raw by commit SHA (244011c) via the x-relay hash hand-off; «Новий пост» generic ref opened the composer first try; one synthetic paste on the [contenteditable] attached the video once; language «англійська». Bluesky likes/reposts, posts of the last 7 days: all 0. Two posts on the Bluesky profile 2026-11-25 16:08 («👍») and 16:14 («I just published Largest companies…», link card, langs uk) were not made by this routine.
