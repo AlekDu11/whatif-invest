@@ -1,10 +1,13 @@
 ---
-title: Pieverse (PIEVERSE) के साथ क्या हो रहा है? एक हफ़्ते में कीमत दोगुनी, नया रिकॉर्ड
-description: 22 नवंबर को PIEVERSE ने करीब $3.75–4.20 पर रिकॉर्ड बनाया, बिटकॉइन की वापसी के बीच सात दिन में 80–110% उछला। इसकी वजह और नियमित ख़रीदारों के लिए मतलब।
+title: Pieverse (PIEVERSE) के साथ क्या हो रहा है? एक दिन में 37% उछाल, फिर $4 के करीब
+description: 26 नवंबर को फ़्यूचर्स दांव बढ़ने से PIEVERSE 24 घंटे में करीब 37% उछलकर लगभग $4 पर पहुंचा, 22 नवंबर को $5 से ऊपर रिकॉर्ड के बाद। इसकी वजह और मतलब।
 date: 2026-11-22 10:30
+updated: 2026-11-26 18:50
 tags: movers, ai
 assets: pieverse, btc
 ---
+**अपडेट 26 नवंबर, 18:50 UTC:** PIEVERSE फिर तेज़ी से चल रहा है। 22 नवंबर को करीब $5.33 का रिकॉर्ड (CoinGecko) छूने और फिर फिसलने के बाद, गुरुवार को टोकन 24 घंटे में करीब 37% चढ़कर लगभग $4.00 पर पहुंच गया। इससे इसकी मार्केट वैल्यू करीब $1.1 अरब और रोज़ाना ट्रेडिंग करीब $14 करोड़ हो गई। हमें प्रोजेक्ट की कोई नई घोषणा नहीं मिली। धक्का डेरिवेटिव्स से आया: PIEVERSE फ़्यूचर्स में ओपन इंटरेस्ट नवंबर की शुरुआत के करीब $4 करोड़ से बढ़कर लगभग $20 करोड़ हो गया, और शॉर्ट सेलर्स को अपनी पोज़िशन बंद करनी पड़ी (KuCoin के ज़रिए Coinpedia)। पहले की रिपोर्टों में इस तेज़ी को कमज़ोर स्पॉट मांग के बीच फ़्यूचर्स से चलने वाली बताया गया था, और कहा गया था कि ट्रेडिंग का बड़ा हिस्सा दक्षिण कोरियाई एक्सचेंजों से आता है (CoinMarketCap, TokenPost)। 70 से ऊपर का डेली RSI ज़्यादा गर्म बाज़ार का संकेत है।
+
 Pieverse, BNB Chain का वह प्रोजेक्ट जो AI एजेंट्स के लिए पेमेंट रेल और मैसेंजर-आधारित असिस्टेंट बनाता है, ने रविवार, 22 नवंबर को एक और रिकॉर्ड बनाया। टोकन एक हफ़्ते में लगभग दोगुना हो गया है और इसकी मार्केट वैल्यू अब करीब $1 अरब है, जबकि बिटकॉइन अब भी अपने शिखर से काफ़ी नीचे ट्रेड हो रहा है।
 
 ## क्या हुआ
@@ -22,7 +25,7 @@ Pieverse अपने AI एजेंट प्रोडक्ट्स को �
 
 ## अभी के आंकड़े
 
-PIEVERSE {{price:pieverse}} पर ट्रेड हो रहा है। इसका रिकॉर्ड {{ath:pieverse}} ({{athd:pieverse}}) है, यानी यह शिखर के करीब है। 12 महीनों में टोकन {{chg1y:pieverse}} बदला है। दूसरे कॉइन्स से तुलना हमारे [ATH से दूरी वाले पेज]({lang}/ath/) पर करें।
+PIEVERSE {{price:pieverse}} पर ट्रेड हो रहा है। इसका रिकॉर्ड {{ath:pieverse}} ({{athd:pieverse}}) है। 12 महीनों में टोकन {{chg1y:pieverse}} बदला है। दूसरे कॉइन्स से तुलना हमारे [ATH से दूरी वाले पेज]({lang}/ath/) पर करें।
 
 ## नियमित ख़रीदने वालों के लिए इसका मतलब
 
@@ -30,6 +33,8 @@ PIEVERSE {{price:pieverse}} पर ट्रेड हो रहा है। �
 
 ## स्रोत
 
+- [KuCoin के ज़रिए Coinpedia — PIEVERSE की कीमत 35% उछली, ओपन इंटरेस्ट 40% बढ़ा](https://www.kucoin.com/news/flash/pieverse-price-surges-35-as-open-interest-jumps-40-can-bulls-reclaim-5-10)
+- [CoinMarketCap — Pieverse के ताज़ा अपडेट](https://coinmarketcap.com/cmc-ai/pieverse/latest-updates/)
 - [Bloomingbit — PIEVERSE jumps 83.6% in a week, hits record high despite market slump](https://en.bloomingbit.io/feed/news/124969)
 - [BitcoinWorld — Bitcoin rebounds to $60K as Pi Network climbs from record low](https://bitcoinworld.co.in/bitcoin-rebounds-pi-network-record-low/)
 - [Interactivecrypto — PIEVERSE surge and the token unlock test](https://www.interactivecrypto.com/pieverse-s-ai-fueled-surge-faces-potential-178m-token-unlock-test)

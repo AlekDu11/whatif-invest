@@ -1,10 +1,13 @@
 ---
-title: Pieverse'te (PIEVERSE) neler oluyor? Fiyat bir haftada ikiye katlanıp rekor kırdı
-description: PIEVERSE, 22 Kasım'da 3,75–4,20 dolar civarında rekor kırdı; bitcoin toparlanırken yedi günde %80–110 yükseldi. Nedenleri ve düzenli alıcılar için anlamı.
+title: Pieverse'te (PIEVERSE) neler oluyor? Bir günde %37 yükseldi, yeniden 4 dolar civarında
+description: PIEVERSE, vadeli işlem bahisleri artarken 26 Kasım'da 24 saatte yaklaşık %37 yükselip 4 dolara yaklaştı; 22 Kasım'daki 5 dolar üstü rekorun ardından.
 date: 2026-11-22 10:30
+updated: 2026-11-26 18:50
 tags: movers, ai
 assets: pieverse, btc
 ---
+**Güncelleme 26 Kasım, 18:50 UTC:** PIEVERSE yine hızlı hareket ediyor. 22 Kasım'da yaklaşık 5,33 dolarlık rekoru (CoinGecko) görüp geri çekilen token, perşembe günü 24 saatte yaklaşık %37 yükselerek 4,00 dolara yaklaştı; piyasa değeri yaklaşık 1,1 milyar dolar, günlük işlem hacmi yaklaşık 140 milyon dolar. Projeden yeni bir duyuru bulamadık. İtici güç türev piyasalardan geldi: PIEVERSE vadeli işlemlerindeki açık pozisyon Kasım başındaki yaklaşık 40 milyon dolardan kabaca 200 milyon dolara çıktı ve açığa satış yapanlar pozisyon kapatmak zorunda kaldı (KuCoin üzerinden Coinpedia). Önceki raporlar yükselişi spot talebi zayıfken vadeli işlemlerin sürüklediği bir ralli olarak tanımlamış ve işlemlerin büyük kısmının Güney Kore borsalarından geldiğini belirtmişti (CoinMarketCap, TokenPost). Günlük RSI'ın 70'in üzerinde olması piyasanın aşırı ısındığına işaret ediyor.
+
 Yapay zekâ ajanları için ödeme altyapısı ve mesajlaşma uygulamalarında çalışan asistanlar geliştiren BNB Chain projesi Pieverse, 22 Kasım Pazar günü yeni bir rekor kırdı. Token bir haftada yaklaşık iki katına çıktı ve piyasa değeri yaklaşık 1 milyar dolara ulaştı; bitcoin ise hâlâ kendi zirvesinin çok altında işlem görüyor.
 
 ## Ne oldu?
@@ -22,7 +25,7 @@ Pieverse, yapay zekâ ajanı ürünlerini öne çıkarıyor. Purr-Fect Claw ajan
 
 ## Şu anki rakamlar
 
-PIEVERSE {{price:pieverse}} seviyesinde işlem görüyor. Rekoru {{ath:pieverse}} ({{athd:pieverse}}), yani zirveye yakın seyrediyor. 12 ayda token {{chg1y:pieverse}} değişti. Diğer coinlerle [zirveden uzaklık sayfamızda]({lang}/ath/) karşılaştırın.
+PIEVERSE {{price:pieverse}} seviyesinde işlem görüyor. Rekoru {{ath:pieverse}} ({{athd:pieverse}}). 12 ayda token {{chg1y:pieverse}} değişti. Diğer coinlerle [zirveden uzaklık sayfamızda]({lang}/ath/) karşılaştırın.
 
 ## Düzenli alım yapıyorsanız bu ne anlama geliyor?
 
@@ -30,6 +33,8 @@ PIEVERSE {{price:pieverse}} seviyesinde işlem görüyor. Rekoru {{ath:pieverse}
 
 ## Kaynaklar
 
+- [KuCoin üzerinden Coinpedia — PIEVERSE fiyatı %35 yükseldi, açık pozisyon %40 arttı](https://www.kucoin.com/news/flash/pieverse-price-surges-35-as-open-interest-jumps-40-can-bulls-reclaim-5-10)
+- [CoinMarketCap — Pieverse son gelişmeler](https://coinmarketcap.com/cmc-ai/pieverse/latest-updates/)
 - [Bloomingbit — PIEVERSE piyasa düşüşüne rağmen bir haftada %83,6 yükselip rekor kırdı](https://en.bloomingbit.io/feed/news/124969)
 - [BitcoinWorld — Bitcoin 60 bin dolara toparlanırken Pi Network rekor dipten yükseliyor](https://bitcoinworld.co.in/bitcoin-rebounds-pi-network-record-low/)
 - [Interactivecrypto — PIEVERSE yükselişi ve token kilit açılımı sınavı](https://www.interactivecrypto.com/pieverse-s-ai-fueled-surge-faces-potential-178m-token-unlock-test)

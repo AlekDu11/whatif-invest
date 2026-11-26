@@ -1,10 +1,13 @@
 ---
-title: Que se passe-t-il avec Pieverse (PIEVERSE) ? Le cours double en une semaine, record
-description: PIEVERSE a touché un record vers 3,75–4,20 $ le 22 novembre, +80 à 110 % en sept jours avec le rebond du bitcoin. Les raisons et l'enjeu pour l'épargnant.
+title: Que se passe-t-il avec Pieverse (PIEVERSE) ? +37 % en un jour, de retour vers 4 $
+description: PIEVERSE a bondi d'environ 37 % en 24 heures, vers 4 $, le 26 novembre, porté par les paris sur les futures, après un record au-dessus de 5 $ le 22 novembre.
 date: 2026-11-22 10:30
+updated: 2026-11-26 18:50
 tags: movers, ai
 assets: pieverse, btc
 ---
+**Mise à jour du 26 novembre, 18:50 UTC :** PIEVERSE bouge de nouveau très vite. Après avoir touché un record d'environ 5,33 $ le 22 novembre (CoinGecko) puis reculé, le token a gagné environ 37 % en 24 heures jeudi pour approcher 4,00 $, soit une valeur de marché d'environ 1,1 milliard de dollars et environ 140 millions de dollars échangés par jour. Nous n'avons trouvé aucune nouvelle annonce du projet. L'élan est venu des produits dérivés : l'intérêt ouvert sur les contrats à terme PIEVERSE est passé d'environ 40 millions de dollars début novembre à quelque 200 millions, et les vendeurs à découvert ont été contraints de racheter (Coinpedia via KuCoin). Des articles précédents décrivaient une hausse tirée par les contrats à terme avec une demande au comptant faible, et indiquaient qu'une grande part des échanges provient de plateformes sud-coréennes (CoinMarketCap, TokenPost). Un RSI journalier au-dessus de 70 signale un marché en surchauffe.
+
 Pieverse, le projet de la BNB Chain qui construit des infrastructures de paiement et des assistants dans les messageries pour les agents d'IA, a signé un nouveau record le dimanche 22 novembre. Le token a à peu près doublé en une semaine et pèse désormais environ 1 milliard de dollars, alors que le bitcoin reste loin de son propre sommet.
 
 ## Ce qui s'est passé
@@ -22,7 +25,7 @@ Deux risques se détachent. Environ 72 % du milliard de tokens PIEVERSE ne sont 
 
 ## Les chiffres en ce moment
 
-PIEVERSE s'échange à {{price:pieverse}}. Son record est de {{ath:pieverse}} ({{athd:pieverse}}), il évolue donc près du sommet. Sur 12 mois, le token a varié de {{chg1y:pieverse}}. Comparez avec d'autres cryptos sur notre [page « depuis le record »]({lang}/ath/).
+PIEVERSE s'échange à {{price:pieverse}}. Son record est de {{ath:pieverse}} ({{athd:pieverse}}). Sur 12 mois, le token a varié de {{chg1y:pieverse}}. Comparez avec d'autres cryptos sur notre [page « depuis le record »]({lang}/ath/).
 
 ## Ce que cela signifie si vous achetez régulièrement
 
@@ -30,6 +33,8 @@ Acheter après une semaine à +100 %, c'est acheter près du point le plus cher 
 
 ## Sources
 
+- [Coinpedia via KuCoin — le cours de PIEVERSE bondit de 35 %, l'intérêt ouvert de 40 %](https://www.kucoin.com/news/flash/pieverse-price-surges-35-as-open-interest-jumps-40-can-bulls-reclaim-5-10)
+- [CoinMarketCap — dernières actualités de Pieverse](https://coinmarketcap.com/cmc-ai/pieverse/latest-updates/)
 - [Bloomingbit — PIEVERSE jumps 83.6% in a week, hits record high despite market slump](https://en.bloomingbit.io/feed/news/124969)
 - [BitcoinWorld — Bitcoin rebounds to $60K as Pi Network climbs from record low](https://bitcoinworld.co.in/bitcoin-rebounds-pi-network-record-low/)
 - [Interactivecrypto — PIEVERSE surge and the token unlock test](https://www.interactivecrypto.com/pieverse-s-ai-fueled-surge-faces-potential-178m-token-unlock-test)

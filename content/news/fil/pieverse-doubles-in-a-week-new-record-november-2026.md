@@ -1,10 +1,13 @@
 ---
-title: Ano ang nangyayari sa Pieverse (PIEVERSE)? Dumoble ang presyo sa isang linggo, bagong high
-description: Nagtala ang PIEVERSE ng record na mga $3.75–4.20 noong Nobyembre 22, tumaas nang 80–110% sa pitong araw habang bumawi ang bitcoin. Ang dahilan at ibig sabihin.
+title: Ano ang nangyayari sa Pieverse (PIEVERSE)? Tumaas nang 37% sa isang araw, malapit sa $4
+description: Tumalon nang mga 37% sa 24 oras ang PIEVERSE sa halos $4 noong Nobyembre 26 dahil sa dagsa ng futures bets, matapos ang record na lampas $5 noong Nobyembre 22.
 date: 2026-11-22 10:30
+updated: 2026-11-26 18:50
 tags: movers, ai
 assets: pieverse, btc
 ---
+**Update Nobyembre 26, 18:50 UTC:** Mabilis na namang gumagalaw ang PIEVERSE. Matapos maabot ang record na mga $5.33 noong Nobyembre 22 (CoinGecko) at bumaba ulit, tumaas ang token nang mga 37% sa loob ng 24 oras sa halos $4.00 noong Huwebes, kaya nasa mga $1.1 bilyon ang market value nito at mga $140 milyon ang arawang trading. Wala kaming nakitang bagong anunsyo mula sa proyekto. Galing sa derivatives ang tulak: lumaki ang open interest sa PIEVERSE futures mula mga $40 milyon noong unang bahagi ng Nobyembre hanggang mga $200 milyon, at napilitang magsara ng posisyon ang mga short seller (Coinpedia sa pamamagitan ng KuCoin). Ayon sa mga naunang ulat, futures ang nagtulak sa rally habang mahina ang spot demand, at malaking bahagi ng trading ay galing sa mga exchange sa South Korea (CoinMarketCap, TokenPost). Ang daily RSI na lampas 70 ay senyales ng sobrang init na merkado.
+
 Nagtala ng panibagong record noong Linggo, Nobyembre 22, ang Pieverse, ang proyekto sa BNB Chain na gumagawa ng payment rails at mga assistant na tumatakbo sa messenger para sa mga AI agent. Halos dumoble ang token sa loob ng isang linggo at nasa mga $1 bilyon na ang market value nito, habang malayo pa rin ang bitcoin sa sarili nitong peak.
 
 ## Ano ang nangyari
@@ -22,7 +25,7 @@ Dalawang panganib ang kapansin-pansin. Mga 72% ng 1 bilyong PIEVERSE token ang h
 
 ## Ang mga numero ngayon
 
-Nagte-trade ang PIEVERSE sa {{price:pieverse}}. Ang record nito ay {{ath:pieverse}} ({{athd:pieverse}}), kaya malapit ito sa tuktok. Sa loob ng 12 buwan, nagbago ang token nang {{chg1y:pieverse}}. Ikumpara sa ibang coin sa aming [page ng layo mula ATH]({lang}/ath/).
+Nagte-trade ang PIEVERSE sa {{price:pieverse}}. Ang record nito ay {{ath:pieverse}} ({{athd:pieverse}}). Sa loob ng 12 buwan, nagbago ang token nang {{chg1y:pieverse}}. Ikumpara sa ibang coin sa aming [page ng layo mula ATH]({lang}/ath/).
 
 ## Ano ang ibig sabihin nito kung regular kang bumibili
 
@@ -30,6 +33,8 @@ Ang pagbili pagkatapos ng linggong may 100% na pagtaas ay pagbili malapit sa pin
 
 ## Mga source
 
+- [Coinpedia sa pamamagitan ng KuCoin — tumaas nang 35% ang presyo ng PIEVERSE habang 40% ang dagdag sa open interest](https://www.kucoin.com/news/flash/pieverse-price-surges-35-as-open-interest-jumps-40-can-bulls-reclaim-5-10)
+- [CoinMarketCap — pinakabagong balita sa Pieverse](https://coinmarketcap.com/cmc-ai/pieverse/latest-updates/)
 - [Bloomingbit — PIEVERSE jumps 83.6% in a week, hits record high despite market slump](https://en.bloomingbit.io/feed/news/124969)
 - [BitcoinWorld — Bitcoin rebounds to $60K as Pi Network climbs from record low](https://bitcoinworld.co.in/bitcoin-rebounds-pi-network-record-low/)
 - [Interactivecrypto — PIEVERSE surge and the token unlock test](https://www.interactivecrypto.com/pieverse-s-ai-fueled-surge-faces-potential-178m-token-unlock-test)

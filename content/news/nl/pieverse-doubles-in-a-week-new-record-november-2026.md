@@ -1,10 +1,13 @@
 ---
-title: Wat is er aan de hand met Pieverse (PIEVERSE)? Koers verdubbelt in een week naar record
-description: PIEVERSE haalde op 22 november een record rond $3,75–4,20, 80–110% hoger in zeven dagen nu bitcoin herstelde. Wat erachter zit en wat dit betekent voor sparen.
+title: Wat is er aan de hand met Pieverse (PIEVERSE)? 37% hoger op één dag, weer bij $4
+description: PIEVERSE steeg op 26 november zo'n 37% in 24 uur naar bijna $4 door een golf van futuresweddenschappen, na een record boven $5 op 22 november. Wat erachter zit.
 date: 2026-11-22 10:30
+updated: 2026-11-26 18:50
 tags: movers, ai
 assets: pieverse, btc
 ---
+**Update 26 november, 18:50 UTC:** PIEVERSE beweegt weer snel. Na een record van ongeveer $5,33 op 22 november (CoinGecko) en een terugval steeg de token donderdag zo'n 37% in 24 uur naar bijna $4,00, goed voor een marktwaarde van ongeveer $1,1 miljard en zo'n $140 miljoen dagelijkse handel. We vonden geen nieuwe aankondiging van het project. De duw kwam uit de derivatenmarkt: de open interest in PIEVERSE-futures groeide van ongeveer $40 miljoen begin november naar zo'n $200 miljoen, en shortverkopers werden uit hun posities gedrukt (Coinpedia via KuCoin). Eerdere berichten beschreven de rally als gedreven door futures bij zwakke spotvraag, en meldden dat een groot deel van de handel van Zuid-Koreaanse beurzen komt (CoinMarketCap, TokenPost). Een dagelijkse RSI boven 70 wijst op een oververhitte markt.
+
 Pieverse, het project op BNB Chain dat betaalinfrastructuur en assistenten in chatapps voor AI-agents bouwt, zette op zondag 22 november opnieuw een record neer. De token is in een week ongeveer verdubbeld en heeft nu een marktwaarde van zo'n $1 miljard, terwijl bitcoin nog ver onder zijn eigen top noteert.
 
 ## Wat er gebeurde
@@ -22,7 +25,7 @@ Twee risico's springen eruit. Ongeveer 72% van de 1 miljard PIEVERSE-tokens is n
 
 ## De cijfers nu
 
-PIEVERSE noteert {{price:pieverse}}. Het record is {{ath:pieverse}} ({{athd:pieverse}}), dus de token handelt dicht bij de top. Over 12 maanden is hij {{chg1y:pieverse}} veranderd. Vergelijk met andere munten op onze [pagina "vanaf de top"]({lang}/ath/).
+PIEVERSE noteert {{price:pieverse}}. Het record is {{ath:pieverse}} ({{athd:pieverse}}). Over 12 maanden is hij {{chg1y:pieverse}} veranderd. Vergelijk met andere munten op onze [pagina "vanaf de top"]({lang}/ath/).
 
 ## Wat het betekent als je regelmatig koopt
 
@@ -30,6 +33,8 @@ Kopen na een week van +100% betekent kopen vlak bij het duurste punt van het jaa
 
 ## Bronnen
 
+- [Coinpedia via KuCoin — PIEVERSE-koers stijgt 35% terwijl open interest 40% oploopt](https://www.kucoin.com/news/flash/pieverse-price-surges-35-as-open-interest-jumps-40-can-bulls-reclaim-5-10)
+- [CoinMarketCap — laatste updates over Pieverse](https://coinmarketcap.com/cmc-ai/pieverse/latest-updates/)
 - [Bloomingbit — PIEVERSE jumps 83.6% in a week, hits record high despite market slump](https://en.bloomingbit.io/feed/news/124969)
 - [BitcoinWorld — Bitcoin rebounds to $60K as Pi Network climbs from record low](https://bitcoinworld.co.in/bitcoin-rebounds-pi-network-record-low/)
 - [Interactivecrypto — PIEVERSE surge and the token unlock test](https://www.interactivecrypto.com/pieverse-s-ai-fueled-surge-faces-potential-178m-token-unlock-test)

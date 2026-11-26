@@ -1,10 +1,13 @@
 ---
-title: Pieverse（PIEVERSE）怎么了？一周价格翻倍，再创历史新高
-description: PIEVERSE于11月22日在3.75–4.20美元附近创下新高，七天上涨80–110%。上涨原因及对定投者意味着什么。
+title: Pieverse（PIEVERSE）怎么了？一天上涨37%，重回4美元附近
+description: 11月26日，受期货押注激增推动，PIEVERSE在24小时内上涨约37%至近4美元；此前它于11月22日创下5美元以上的历史新高。上涨原因及其意义。
 date: 2026-11-22 10:30
+updated: 2026-11-26 18:50
 tags: movers, ai
 assets: pieverse, btc
 ---
+**11月26日 18:50（UTC）更新：** PIEVERSE再度剧烈波动。在11月22日触及约5.33美元的历史高点（CoinGecko）并回落之后，该代币周四在24小时内上涨约37%至近4.00美元，市值约11亿美元，日交易额约1.4亿美元。我们没有发现项目方的新公告。推动力来自衍生品：PIEVERSE期货未平仓合约从11月初的约4000万美元增至约2亿美元，空头被迫平仓（Coinpedia，经KuCoin）。此前的报道称，这轮上涨由期货主导、现货需求疲弱，且很大一部分交易来自韩国交易所（CoinMarketCap、TokenPost）。日线RSI高于70，显示市场过热。
+
 为AI智能体打造支付通道和即时通讯助手的BNB Chain项目Pieverse，于11月22日（周日）再次刷新历史纪录。该代币一周内价格几乎翻倍，市值约达10亿美元，而比特币仍远低于自身高点。
 
 ## 发生了什么
@@ -22,7 +25,7 @@ Pieverse一直在大力推进AI智能体产品。它推出了"Confidential Agent
 
 ## 当前数据
 
-PIEVERSE现价为{{price:pieverse}}。其历史最高价为{{ath:pieverse}}（{{athd:pieverse}}），目前交易价格接近高点。12个月内该代币变动了{{chg1y:pieverse}}。可在我们的[距历史高点页面]({lang}/ath/)与其他币种对比。
+PIEVERSE现价为{{price:pieverse}}。其历史最高价为{{ath:pieverse}}（{{athd:pieverse}}）。12个月内该代币变动了{{chg1y:pieverse}}。可在我们的[距历史高点页面]({lang}/ath/)与其他币种对比。
 
 ## 对定投者意味着什么
 
@@ -30,6 +33,8 @@ PIEVERSE现价为{{price:pieverse}}。其历史最高价为{{ath:pieverse}}（{{
 
 ## 资料来源
 
+- [Coinpedia（经KuCoin）— PIEVERSE价格上涨35%，未平仓合约增加40%](https://www.kucoin.com/news/flash/pieverse-price-surges-35-as-open-interest-jumps-40-can-bulls-reclaim-5-10)
+- [CoinMarketCap — Pieverse最新动态](https://coinmarketcap.com/cmc-ai/pieverse/latest-updates/)
 - [Bloomingbit — PIEVERSE jumps 83.6% in a week, hits record high despite market slump](https://en.bloomingbit.io/feed/news/124969)
 - [BitcoinWorld — Bitcoin rebounds to $60K as Pi Network climbs from record low](https://bitcoinworld.co.in/bitcoin-rebounds-pi-network-record-low/)
 - [Interactivecrypto — PIEVERSE surge and the token unlock test](https://www.interactivecrypto.com/pieverse-s-ai-fueled-surge-faces-potential-178m-token-unlock-test)

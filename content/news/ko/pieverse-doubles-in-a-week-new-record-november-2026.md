@@ -1,10 +1,13 @@
 ---
-title: Pieverse(PIEVERSE)에 무슨 일이? 일주일 만에 가격 두 배, 사상 최고가 경신
-description: PIEVERSE가 11월 22일 3.75~4.20달러 부근에서 최고가를 경신, 7일간 80~110% 올랐습니다. 상승 배경과 꾸준히 사는 투자자에게 주는 의미.
+title: Pieverse(PIEVERSE)에 무슨 일이? 하루 새 37% 급등, 다시 4달러 근처로
+description: PIEVERSE가 11월 26일 선물 베팅이 몰리며 24시간 동안 약 37% 올라 4달러에 근접했습니다. 11월 22일 5달러를 넘는 최고가 이후의 움직임과 그 의미.
 date: 2026-11-22 10:30
+updated: 2026-11-26 18:50
 tags: movers, ai
 assets: pieverse, btc
 ---
+**11월 26일 18:50(UTC) 업데이트:** PIEVERSE가 다시 크게 움직이고 있습니다. 11월 22일 약 5.33달러의 최고가(CoinGecko)를 찍은 뒤 밀렸던 토큰은 목요일 24시간 동안 약 37% 올라 4.00달러에 근접했고, 시가총액은 약 11억 달러, 하루 거래대금은 약 1억 4,000만 달러입니다. 프로젝트의 새로운 발표는 찾지 못했습니다. 상승을 이끈 것은 파생상품입니다. PIEVERSE 선물 미결제약정은 11월 초 약 4,000만 달러에서 약 2억 달러로 늘었고, 공매도 세력이 숏 스퀴즈를 당했습니다(KuCoin을 통한 Coinpedia). 앞선 보도들은 이번 랠리가 현물 수요가 약한 가운데 선물이 주도한 것이며, 거래의 상당 부분이 한국 거래소에서 나온다고 전했습니다(CoinMarketCap, TokenPost). 일간 RSI가 70을 넘어 시장이 과열됐다는 신호를 보내고 있습니다.
+
 AI 에이전트용 결제 인프라와 메신저 기반 어시스턴트를 만드는 BNB Chain 프로젝트 Pieverse가 11월 22일 일요일 또다시 최고가를 경신했습니다. 토큰 가격은 일주일 새 거의 두 배가 됐고 시가총액은 약 10억 달러에 이릅니다. 반면 비트코인은 여전히 자신의 고점을 크게 밑돌고 있습니다.
 
 ## 무슨 일이 있었나
@@ -22,7 +25,7 @@ Pieverse는 AI 에이전트 제품을 적극적으로 밀고 있습니다. 에�
 
 ## 지금 숫자로 보면
 
-PIEVERSE는 {{price:pieverse}}에 거래되고 있습니다. 최고가는 {{ath:pieverse}}({{athd:pieverse}})로, 현재 고점 부근에서 거래 중입니다. 12개월 동안 토큰 가격은 {{chg1y:pieverse}} 변했습니다. 다른 코인과의 비교는 [최고가 대비 하락률 페이지]({lang}/ath/)에서 확인하세요.
+PIEVERSE는 {{price:pieverse}}에 거래되고 있습니다. 최고가는 {{ath:pieverse}}({{athd:pieverse}})입니다. 12개월 동안 토큰 가격은 {{chg1y:pieverse}} 변했습니다. 다른 코인과의 비교는 [최고가 대비 하락률 페이지]({lang}/ath/)에서 확인하세요.
 
 ## 꾸준히 사 모으는 투자자에게 주는 의미
 
@@ -30,6 +33,8 @@ PIEVERSE는 {{price:pieverse}}에 거래되고 있습니다. 최고가는 {{ath:
 
 ## 출처
 
+- [KuCoin을 통한 Coinpedia — 미결제약정 40% 증가 속 PIEVERSE 가격 35% 급등](https://www.kucoin.com/news/flash/pieverse-price-surges-35-as-open-interest-jumps-40-can-bulls-reclaim-5-10)
+- [CoinMarketCap — Pieverse 최신 소식](https://coinmarketcap.com/cmc-ai/pieverse/latest-updates/)
 - [Bloomingbit — PIEVERSE jumps 83.6% in a week, hits record high despite market slump](https://en.bloomingbit.io/feed/news/124969)
 - [BitcoinWorld — Bitcoin rebounds to $60K as Pi Network climbs from record low](https://bitcoinworld.co.in/bitcoin-rebounds-pi-network-record-low/)
 - [Interactivecrypto — PIEVERSE surge and the token unlock test](https://www.interactivecrypto.com/pieverse-s-ai-fueled-surge-faces-potential-178m-token-unlock-test)

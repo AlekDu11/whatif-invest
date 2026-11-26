@@ -1,10 +1,13 @@
 ---
-title: ماذا يحدث مع Pieverse (PIEVERSE)؟ السعر يتضاعف في أسبوع ويسجل قمة جديدة
-description: سجّل PIEVERSE قمة قياسية قرب 3.75–4.20 دولار في 22 نوفمبر، مرتفعًا 80–110% في سبعة أيام مع ارتداد البيتكوين. ما الذي دفعه وماذا يعني لمن يشتري بانتظام.
+title: ماذا يحدث مع Pieverse (PIEVERSE)؟ ارتفاع 37% في يوم والسعر يعود قرب 4 دولارات
+description: قفز PIEVERSE نحو 37% خلال 24 ساعة إلى قرب 4 دولارات في 26 نوفمبر مع تزايد رهانات العقود الآجلة، بعد قمة فوق 5 دولارات في 22 نوفمبر. ما الذي دفعه وماذا يعني.
 date: 2026-11-22 10:30
+updated: 2026-11-26 18:50
 tags: movers, ai
 assets: pieverse, btc
 ---
+**تحديث 26 نوفمبر، 18:50 بتوقيت UTC:** يتحرك PIEVERSE بسرعة من جديد. فبعد أن لامس قمة قياسية عند نحو 5.33 دولار في 22 نوفمبر (CoinGecko) ثم تراجع، ارتفع الرمز نحو 37% خلال 24 ساعة إلى قرب 4.00 دولار يوم الخميس، لتبلغ قيمته السوقية نحو 1.1 مليار دولار وحجم تداوله اليومي نحو 140 مليون دولار. لم نجد أي إعلان جديد من المشروع. جاء الدفع من سوق المشتقات: فقد ارتفعت العقود المفتوحة في العقود الآجلة لـ PIEVERSE من نحو 40 مليون دولار في أوائل نوفمبر إلى قرابة 200 مليون دولار، واضطر البائعون على المكشوف إلى إغلاق مراكزهم (Coinpedia عبر KuCoin). ووصفت تقارير سابقة الصعود بأنه مدفوع بالعقود الآجلة مع طلب فوري ضعيف، وذكرت أن حصة كبيرة من التداول تأتي من منصات كوريا الجنوبية (CoinMarketCap، TokenPost). ويشير مؤشر القوة النسبية اليومي فوق 70 إلى سوق محمومة.
+
 سجّل Pieverse، مشروع BNB Chain الذي يبني بنية للمدفوعات ومساعدين داخل تطبيقات المراسلة لوكلاء الذكاء الاصطناعي، رقمًا قياسيًا جديدًا يوم الأحد 22 نوفمبر. فقد تضاعف سعر الرمز تقريبًا خلال أسبوع وبلغت قيمته السوقية نحو مليار دولار، في حين لا يزال البيتكوين يتداول بعيدًا جدًا عن قمته.
 
 ## ماذا حدث
@@ -22,7 +25,7 @@ assets: pieverse, btc
 
 ## الأرقام الآن
 
-يتداول PIEVERSE عند {{price:pieverse}}. رقمه القياسي هو {{ath:pieverse}} ({{athd:pieverse}})، أي أنه يتداول قرب القمة. وعلى مدى 12 شهرًا تغيّر الرمز بنسبة {{chg1y:pieverse}}. قارن مع عملات أخرى في [صفحة البعد عن القمة]({lang}/ath/).
+يتداول PIEVERSE عند {{price:pieverse}}. رقمه القياسي هو {{ath:pieverse}} ({{athd:pieverse}}). وعلى مدى 12 شهرًا تغيّر الرمز بنسبة {{chg1y:pieverse}}. قارن مع عملات أخرى في [صفحة البعد عن القمة]({lang}/ath/).
 
 ## ماذا يعني ذلك إذا كنت تشتري بانتظام
 
@@ -30,6 +33,8 @@ assets: pieverse, btc
 
 ## المصادر
 
+- [Coinpedia عبر KuCoin — سعر PIEVERSE يقفز 35% مع ارتفاع العقود المفتوحة 40%](https://www.kucoin.com/news/flash/pieverse-price-surges-35-as-open-interest-jumps-40-can-bulls-reclaim-5-10)
+- [CoinMarketCap — آخر مستجدات Pieverse](https://coinmarketcap.com/cmc-ai/pieverse/latest-updates/)
 - [Bloomingbit — PIEVERSE jumps 83.6% in a week, hits record high despite market slump](https://en.bloomingbit.io/feed/news/124969)
 - [BitcoinWorld — Bitcoin rebounds to $60K as Pi Network climbs from record low](https://bitcoinworld.co.in/bitcoin-rebounds-pi-network-record-low/)
 - [Interactivecrypto — PIEVERSE surge and the token unlock test](https://www.interactivecrypto.com/pieverse-s-ai-fueled-surge-faces-potential-178m-token-unlock-test)

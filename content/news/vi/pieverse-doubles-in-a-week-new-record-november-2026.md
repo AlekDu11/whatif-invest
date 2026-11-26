@@ -1,10 +1,13 @@
 ---
-title: Chuyện gì đang xảy ra với Pieverse (PIEVERSE)? Giá tăng gấp đôi trong tuần, lập kỷ lục mới
-description: PIEVERSE lập kỷ lục quanh 3,75–4,20 USD ngày 22/11, tăng 80–110% trong bảy ngày khi bitcoin hồi phục. Động lực tăng giá và ý nghĩa với người mua đều đặn.
+title: Chuyện gì đang xảy ra với Pieverse (PIEVERSE)? Tăng 37% trong ngày, trở lại gần 4 USD
+description: Ngày 26/11, PIEVERSE tăng khoảng 37% trong 24 giờ lên gần 4 USD khi lệnh cược hợp đồng tương lai tăng vọt, sau kỷ lục trên 5 USD ngày 22/11. Vì sao?
 date: 2026-11-22 10:30
+updated: 2026-11-26 18:50
 tags: movers, ai
 assets: pieverse, btc
 ---
+**Cập nhật 26/11, 18:50 UTC:** PIEVERSE lại biến động mạnh. Sau khi chạm kỷ lục khoảng 5,33 USD ngày 22/11 (CoinGecko) rồi giảm trở lại, token này tăng khoảng 37% trong 24 giờ lên gần 4,00 USD vào thứ Năm, đưa vốn hóa lên khoảng 1,1 tỷ USD với khối lượng giao dịch khoảng 140 triệu USD mỗi ngày. Chúng tôi không tìm thấy thông báo mới nào từ dự án. Lực đẩy đến từ phái sinh: open interest của hợp đồng tương lai PIEVERSE tăng từ khoảng 40 triệu USD đầu tháng 11 lên khoảng 200 triệu USD, và các vị thế bán khống bị ép đóng (Coinpedia qua KuCoin). Các báo cáo trước đó mô tả đợt tăng là do hợp đồng tương lai dẫn dắt trong khi nhu cầu giao ngay yếu, và cho biết phần lớn giao dịch đến từ các sàn Hàn Quốc (CoinMarketCap, TokenPost). RSI ngày trên 70 cho thấy thị trường đang quá nóng.
+
 Pieverse, dự án trên BNB Chain xây dựng hạ tầng thanh toán và trợ lý chạy trên ứng dụng nhắn tin cho các agent AI, lại lập kỷ lục vào Chủ nhật, 22/11. Token này tăng khoảng gấp đôi trong một tuần và hiện có vốn hóa khoảng 1 tỷ USD, trong khi bitcoin vẫn giao dịch thấp hơn nhiều so với đỉnh của chính nó.
 
 ## Chuyện gì đã xảy ra
@@ -22,7 +25,7 @@ Có hai rủi ro nổi bật. Khoảng 72% trong tổng số 1 tỷ token PIEVER
 
 ## Các con số hiện tại
 
-PIEVERSE đang giao dịch ở {{price:pieverse}}. Kỷ lục là {{ath:pieverse}} ({{athd:pieverse}}), nên giá đang ở gần đỉnh. Trong 12 tháng, token đã thay đổi {{chg1y:pieverse}}. So sánh với các coin khác trên [trang khoảng cách tới ATH]({lang}/ath/) của chúng tôi.
+PIEVERSE đang giao dịch ở {{price:pieverse}}. Kỷ lục là {{ath:pieverse}} ({{athd:pieverse}}). Trong 12 tháng, token đã thay đổi {{chg1y:pieverse}}. So sánh với các coin khác trên [trang khoảng cách tới ATH]({lang}/ath/) của chúng tôi.
 
 ## Ý nghĩa nếu bạn mua đều đặn
 
@@ -30,6 +33,8 @@ Mua sau một tuần tăng 100% nghĩa là mua gần điểm đắt nhất trong
 
 ## Nguồn
 
+- [Coinpedia qua KuCoin — giá PIEVERSE tăng 35% khi open interest tăng 40%](https://www.kucoin.com/news/flash/pieverse-price-surges-35-as-open-interest-jumps-40-can-bulls-reclaim-5-10)
+- [CoinMarketCap — cập nhật mới nhất về Pieverse](https://coinmarketcap.com/cmc-ai/pieverse/latest-updates/)
 - [Bloomingbit — PIEVERSE jumps 83.6% in a week, hits record high despite market slump](https://en.bloomingbit.io/feed/news/124969)
 - [BitcoinWorld — Bitcoin rebounds to $60K as Pi Network climbs from record low](https://bitcoinworld.co.in/bitcoin-rebounds-pi-network-record-low/)
 - [Interactivecrypto — PIEVERSE surge and the token unlock test](https://www.interactivecrypto.com/pieverse-s-ai-fueled-surge-faces-potential-178m-token-unlock-test)

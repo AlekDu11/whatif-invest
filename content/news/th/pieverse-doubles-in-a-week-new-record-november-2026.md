@@ -1,10 +1,13 @@
 ---
-title: เกิดอะไรขึ้นกับ Pieverse (PIEVERSE)? ราคาพุ่งเท่าตัวในสัปดาห์เดียว ทำสถิติใหม่
-description: PIEVERSE ทำสถิติใหม่แถว $3.75–4.20 เมื่อ 22 พ.ย. พุ่ง 80–110% ใน 7 วันขณะบิตคอยน์ฟื้นตัว อะไรคือแรงหนุน และมีความหมายอย่างไรกับคนที่ซื้อสม่ำเสมอ
+title: เกิดอะไรขึ้นกับ Pieverse (PIEVERSE)? พุ่ง 37% ในวันเดียว กลับมาใกล้ $4
+description: PIEVERSE พุ่งราว 37% ใน 24 ชั่วโมงขึ้นมาใกล้ $4 เมื่อ 26 พ.ย. จากแรงเก็งกำไรในสัญญาฟิวเจอร์ส หลังทำสถิติเหนือ $5 เมื่อ 22 พ.ย. แรงหนุนคืออะไร
 date: 2026-11-22 10:30
+updated: 2026-11-26 18:50
 tags: movers, ai
 assets: pieverse, btc
 ---
+**อัปเดต 26 พฤศจิกายน 18:50 UTC:** PIEVERSE กลับมาเคลื่อนไหวแรงอีกครั้ง หลังแตะสถิติสูงสุดราว $5.33 เมื่อ 22 พฤศจิกายน (CoinGecko) แล้วย่อตัวลง โทเคนก็พุ่งขึ้นราว 37% ใน 24 ชั่วโมงมาใกล้ $4.00 ในวันพฤหัสบดี ทำให้มีมูลค่าตลาดราว $1.1 พันล้าน และมูลค่าซื้อขายต่อวันราว $140 ล้าน เราไม่พบประกาศใหม่จากโปรเจกต์ แรงส่งมาจากตลาดอนุพันธ์: open interest ของสัญญาฟิวเจอร์ส PIEVERSE เพิ่มจากราว $40 ล้านช่วงต้นพฤศจิกายนเป็นราว $200 ล้าน และฝั่งที่ชอร์ตไว้ถูกบีบให้ปิดสถานะ (Coinpedia ผ่าน KuCoin) รายงานก่อนหน้านี้ระบุว่าการขึ้นรอบนี้ขับเคลื่อนด้วยฟิวเจอร์สขณะที่ความต้องการในตลาดสปอตอ่อนแอ และการซื้อขายส่วนใหญ่มาจากกระดานเทรดในเกาหลีใต้ (CoinMarketCap, TokenPost) RSI รายวันที่สูงกว่า 70 บ่งชี้ว่าตลาดร้อนแรงเกินไป
+
 Pieverse โปรเจกต์บน BNB Chain ที่สร้างระบบชำระเงินและผู้ช่วยบนแอปแชตสำหรับเอเจนต์ AI ทำสถิติสูงสุดใหม่อีกครั้งในวันอาทิตย์ที่ 22 พฤศจิกายน โทเคนนี้ขึ้นมาราวเท่าตัวในหนึ่งสัปดาห์ และมีมูลค่าตลาดราว $1 พันล้าน ขณะที่บิตคอยน์ยังซื้อขายต่ำกว่าจุดสูงสุดของตัวเองอยู่มาก
 
 ## เกิดอะไรขึ้น
@@ -22,7 +25,7 @@ Pieverse เร่งผลักดันผลิตภัณฑ์เอเ�
 
 ## ตัวเลขล่าสุด
 
-PIEVERSE ซื้อขายที่ {{price:pieverse}} สถิติสูงสุดคือ {{ath:pieverse}} ({{athd:pieverse}}) จึงซื้อขายอยู่ใกล้จุดสูงสุด ในรอบ 12 เดือนโทเคนเปลี่ยนแปลง {{chg1y:pieverse}} เทียบกับเหรียญอื่นได้ที่[หน้าระยะห่างจาก ATH]({lang}/ath/) ของเรา
+PIEVERSE ซื้อขายที่ {{price:pieverse}} สถิติสูงสุดคือ {{ath:pieverse}} ({{athd:pieverse}}) ในรอบ 12 เดือนโทเคนเปลี่ยนแปลง {{chg1y:pieverse}} เทียบกับเหรียญอื่นได้ที่[หน้าระยะห่างจาก ATH]({lang}/ath/) ของเรา
 
 ## หมายความว่าอย่างไรถ้าคุณซื้อสม่ำเสมอ
 
@@ -30,6 +33,8 @@ PIEVERSE ซื้อขายที่ {{price:pieverse}} สถิติสู
 
 ## แหล่งที่มา
 
+- [Coinpedia ผ่าน KuCoin — ราคา PIEVERSE พุ่ง 35% ขณะ open interest เพิ่ม 40%](https://www.kucoin.com/news/flash/pieverse-price-surges-35-as-open-interest-jumps-40-can-bulls-reclaim-5-10)
+- [CoinMarketCap — ความเคลื่อนไหวล่าสุดของ Pieverse](https://coinmarketcap.com/cmc-ai/pieverse/latest-updates/)
 - [Bloomingbit — PIEVERSE jumps 83.6% in a week, hits record high despite market slump](https://en.bloomingbit.io/feed/news/124969)
 - [BitcoinWorld — Bitcoin rebounds to $60K as Pi Network climbs from record low](https://bitcoinworld.co.in/bitcoin-rebounds-pi-network-record-low/)
 - [Interactivecrypto — PIEVERSE surge and the token unlock test](https://www.interactivecrypto.com/pieverse-s-ai-fueled-surge-faces-potential-178m-token-unlock-test)

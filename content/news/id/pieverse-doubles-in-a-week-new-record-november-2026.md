@@ -1,10 +1,13 @@
 ---
-title: Apa yang terjadi dengan Pieverse (PIEVERSE)? Harga berlipat dua seminggu, rekor baru
-description: PIEVERSE mencetak rekor di kisaran $3,75–4,20 pada 22 November, naik 80–110% dalam tujuh hari saat bitcoin memantul. Pemicunya dan artinya bagi pembeli rutin.
+title: Apa yang terjadi dengan Pieverse (PIEVERSE)? Naik 37% sehari, kembali dekat $4
+description: PIEVERSE melonjak sekitar 37% dalam 24 jam ke dekat $4 pada 26 November saat taruhan futures melonjak, setelah rekor di atas $5 pada 22 November.
 date: 2026-11-22 10:30
+updated: 2026-11-26 18:50
 tags: movers, ai
 assets: pieverse, btc
 ---
+**Pembaruan 26 November, 18:50 UTC:** PIEVERSE kembali bergerak cepat. Setelah menyentuh rekor sekitar $5,33 pada 22 November (CoinGecko) lalu turun, token ini naik sekitar 37% dalam 24 jam ke dekat $4,00 pada Kamis, dengan kapitalisasi pasar sekitar $1,1 miliar dan volume perdagangan harian sekitar $140 juta. Kami tidak menemukan pengumuman baru dari proyek ini. Dorongannya datang dari derivatif: open interest kontrak futures PIEVERSE naik dari sekitar $40 juta pada awal November menjadi sekitar $200 juta, dan para penjual short terpaksa menutup posisi (Coinpedia via KuCoin). Laporan sebelumnya menyebut reli ini digerakkan futures dengan permintaan spot yang lemah, dan sebagian besar perdagangan berasal dari bursa Korea Selatan (CoinMarketCap, TokenPost). RSI harian di atas 70 menandakan pasar yang terlalu panas.
+
 Pieverse, proyek di BNB Chain yang membangun jalur pembayaran dan asisten berbasis messenger untuk agen AI, kembali mencetak rekor pada Minggu, 22 November. Harga token ini kira-kira naik dua kali lipat dalam seminggu dan kapitalisasi pasarnya kini sekitar $1 miliar, sementara bitcoin masih diperdagangkan jauh di bawah puncaknya sendiri.
 
 ## Apa yang terjadi
@@ -22,7 +25,7 @@ Ada dua risiko yang menonjol. Sekitar 72% dari 1 miliar token PIEVERSE belum ber
 
 ## Angka saat ini
 
-PIEVERSE diperdagangkan di {{price:pieverse}}. Rekornya {{ath:pieverse}} ({{athd:pieverse}}), jadi harganya dekat puncak. Dalam 12 bulan token ini berubah {{chg1y:pieverse}}. Bandingkan dengan koin lain di [halaman jarak dari ATH]({lang}/ath/) kami.
+PIEVERSE diperdagangkan di {{price:pieverse}}. Rekornya {{ath:pieverse}} ({{athd:pieverse}}). Dalam 12 bulan token ini berubah {{chg1y:pieverse}}. Bandingkan dengan koin lain di [halaman jarak dari ATH]({lang}/ath/) kami.
 
 ## Artinya jika Anda membeli secara rutin
 
@@ -30,6 +33,8 @@ Membeli setelah naik 100% dalam seminggu berarti membeli di dekat titik termahal
 
 ## Sumber
 
+- [Coinpedia via KuCoin — harga PIEVERSE melonjak 35% saat open interest naik 40%](https://www.kucoin.com/news/flash/pieverse-price-surges-35-as-open-interest-jumps-40-can-bulls-reclaim-5-10)
+- [CoinMarketCap — kabar terbaru Pieverse](https://coinmarketcap.com/cmc-ai/pieverse/latest-updates/)
 - [Bloomingbit — PIEVERSE jumps 83.6% in a week, hits record high despite market slump](https://en.bloomingbit.io/feed/news/124969)
 - [BitcoinWorld — Bitcoin rebounds to $60K as Pi Network climbs from record low](https://bitcoinworld.co.in/bitcoin-rebounds-pi-network-record-low/)
 - [Interactivecrypto — PIEVERSE surge and the token unlock test](https://www.interactivecrypto.com/pieverse-s-ai-fueled-surge-faces-potential-178m-token-unlock-test)
