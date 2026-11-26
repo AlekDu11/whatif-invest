@@ -19,7 +19,7 @@ The hub /learn/ lists them by track and step; each lesson links to the next one.
 5. ✅ 2026-11-25 (how-to-set-up-a-recurring-buy, all 20 languages) How to set up a recurring buy (auto-DCA) on an exchange
 6. ✅ 2026-11-25 (how-to-withdraw-crypto-to-your-own-wallet, all 20 languages) How to withdraw crypto to your own wallet (networks, addresses, test transfer)
 7. ✅ 2026-11-26 (how-to-sell-crypto-and-withdraw-to-bank, all 20 languages) How to sell crypto and get money to your bank account
-8. Crypto fees explained: trading fee, spread, network fee
+8. ✅ 2026-11-26 (crypto-fees-explained, all 20 languages) Crypto fees explained: trading fee, spread, network fee
 
 ## safety — Safety
 1. Seed phrase: what it is and the 5 rules to keep it safe
@@ -51,12 +51,12 @@ The hub /learn/ lists them by track and step; each lesson links to the next one.
 12. ✅ 2026-11-25 (pepe-story, all 20 languages) Story: PEPE — the frog meme that became a multi-billion coin (separate deep story)
 13. ✅ 2026-11-25 (bonk-wif-solana-memecoins-story, all 20 languages) Story: BONK and WIF — how Solana memecoins took off in 2023–2024
 14. ✅ 2026-11-26 (trump-melania-memecoins-story, all 20 languages) Story: TRUMP and MELANIA — what happened to buyers of political memecoins
-15. How Binance Alpha works and why a listing there moves memecoins (link {lang}/memes/ «Just listed» block)
+15. ✅ 2026-11-26 (how-binance-alpha-works, all 20 languages) How Binance Alpha works and why a listing there moves memecoins (link {lang}/memes/ «Just listed» block)
 16. Snipers, bundlers and dev wallets: how insiders profit at launch and how to spot them (link {lang}/memes/glossary/)
 17. Why most memecoin buyers lose money: the maths of launches, slippage and fees (use the launch pulse on {lang}/memes/)
 
 ## memes — recurring (owner 2026-11-23)
-- GLOSSARY: data/glossary/en.json is the memecoin glossary (/memes/glossary/). Every run, translate it into 2 languages that do not have data/glossary/<lang>.json yet (same ids and order; natural native phrasing; keep terms like «rug pull» in Latin script where locals use them, explain them). Done: uk ru es pt (2026-11-23), de fr (2026-11-24), it pl (2026-11-24), tr nl (2026-11-24), id vi (2026-11-24), th hi (2026-11-25), ja ko (2026-11-25), zh ar (2026-11-26). A language without its own file shows English with noindex, so each translation makes a new indexable page.
+- GLOSSARY: data/glossary/en.json is the memecoin glossary (/memes/glossary/). Every run, translate it into 2 languages that do not have data/glossary/<lang>.json yet (same ids and order; natural native phrasing; keep terms like «rug pull» in Latin script where locals use them, explain them). Done: uk ru es pt (2026-11-23), de fr (2026-11-24), it pl (2026-11-24), tr nl (2026-11-24), id vi (2026-11-24), th hi (2026-11-25), ja ko (2026-11-25), zh ar (2026-11-26), fil (2026-11-26) — all 20 languages done. A language without its own file shows English with noindex, so each translation makes a new indexable page.
 - GUIDE (owner 2026-11-24): content/guide/<lang>.md is the beginner's guide in all 20 languages (done). When a feature is added or removed, update en.md and the other 19 in the same run.
 - MONTHLY (first run on or after the 2nd of each month): «Memecoin hall of fame and graveyard — <Month YYYY>»: the 5 memecoins that rose most and the 5 loudest collapses/rug pulls of the past month, dated facts with sources, «what beginners can learn», links to {lang}/memes/; category learn, track memes, in all 20 languages.
 
