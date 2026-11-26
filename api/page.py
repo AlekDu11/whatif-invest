@@ -17,6 +17,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, 'scripts'))
 import build  # noqa: E402  (loads data once per cold start, ~0.6 s)
 
+LEGACY = {'bubbles': '', 'screener': '', 'calendar': '', 'heatmap': '', 'chip': 'crypto'}   # removed tools / dropped coin
+SECTIONS = {'blog', 'news', 'converter', 'compare', 'categories', 'crypto-exchanges', 'investors', 'learn', 'guide', 'memes', 'calculators'}
 LANGS = set(build.ORDER)   # uk/en too: since 2026-11-22 their incomplete (noindex) pages are not static files either
 _VER = {}
 _404 = {}
@@ -78,7 +80,22 @@ class handler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(body)
             return
-        if lang in LANGS and 0 < len(aid) <= 80 and '/' not in aid and aid in build.A:   # ids can be non-Latin (Chinese memecoins)
+        sub = unquote((q.get('b') or [''])[0]).lower()
+        loc = None   # old URLs Google still crawls (Search Console 404 report, 2026-11-26) → closest live page, never a 404
+        if lang in LANGS and sub:
+            if aid in build.A and sub in build.SM_KINDS:      # stock metric page that left the top list → the stock page
+                loc = build.url(lang, aid)
+            elif aid in SECTIONS:                             # article / converter / compare… not in this language → the section
+                loc = build.url(lang, aid)
+        elif lang in LANGS and aid in LEGACY:
+            loc = build.url(lang, LEGACY[aid])
+        if loc:
+            self.send_response(301)
+            self.send_header('Location', loc)
+            self.send_header('CDN-Cache-Control', 'public, s-maxage=86400')
+            self.end_headers()
+            return
+        if lang in LANGS and 0 < len(aid) <= 80 and '/' not in aid and aid in build.A and not sub:   # ids can be non-Latin (Chinese memecoins)
             try:
                 build.set_numfmt(lang)
                 body = build.asset(aid, lang, ver(host)).encode('utf-8')

@@ -219,6 +219,14 @@
     {
       "source": "/:lang(en|es|pt|de|fr|it|pl|tr|nl|ru|id|vi|th|hi|ja|ko|zh|ar|fil)/:aid/",
       "destination": "/api/page?l=:lang&a=:aid"
+    },
+    {
+      "source": "/:lang(en|es|pt|de|fr|it|pl|tr|nl|ru|id|vi|th|hi|ja|ko|zh|ar|fil)/:aid/:b/",
+      "destination": "/api/page?l=:lang&a=:aid&b=:b"
+    },
+    {
+      "source": "/:aid([^/]+)/:b([^/]+)/",
+      "destination": "/api/page?l=uk&a=:aid&b=:b"
     }
   ],
   "git": {
