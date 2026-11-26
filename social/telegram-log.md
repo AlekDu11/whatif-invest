@@ -50,3 +50,4 @@ Views 2026-11-25 13:4x (Telegram shows rounded): msg 1497 = 918, 1498 = 583, 150
 Note (2026-11-25 16:45): header shows 6,988 subscribers. Caption modal rendered with the send button outside the dialog (elementFromPoint = backdrop); a real Enter key (computer key Return) in the caption editor sent it.
 | 2026-11-25 20:34 | 📰 Best of the day | auto: article "The story of BONK and WIF: how Solana memecoins took off in 2023–2024" (backup bot) | whatifstack.com/en/blog/bonk-wif-solana-memecoins-story/ | |
 | 2026-11-26 14:37 | 💵 $10 a day | auto: 5 years of $10/day: Pepe +18.4%, Dogecoin −48.1%, Shiba Inu −59.1% (backup bot) | whatifstack.com/en/compare/ | |
+| 2026-11-26 20:32 | 📰 Best of the day | auto: article "How Binance Alpha works and why a listing there moves memecoins" (backup bot) | whatifstack.com/en/blog/how-binance-alpha-works/ | |
