@@ -1,6 +1,6 @@
 ---
 title: BlackRock(BLK) 주식 쉽게 정리: 세계 최대 자산운용사
-description: BlackRock 쉽게 정리: 운용자산 15.5조 달러, 2026년 7~9월 신규 자금 2,050억 달러, iShares, Aladdin, 위험 요인과 적립식 투자자가 알아둘 점.
+description: BlackRock 쉽게 정리: iShares ETF, Aladdin, 2026년 7~9월 신규 자금 2,050억 달러, 수수료로 버는 구조, 위험 요인과 적립식 투자자가 알아둘 점.
 date: 2026-11-26
 kind: analysis
 ---

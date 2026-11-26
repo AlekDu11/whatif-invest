@@ -1,6 +1,6 @@
 ---
 title: Acciones de Blackstone (BX): el mayor inversor alternativo del mundo, explicado fácil
-description: Blackstone explicada fácil: 1,37 billones de dólares gestionados, 63.000 millones captados en julio–septiembre de 2026, inmobiliario, capital privado y riesgos.
+description: Blackstone explicada fácil: 63.000 millones captados en julio–septiembre de 2026, inmobiliario, capital privado, crédito, cómo gana y sus riesgos.
 date: 2026-11-26
 kind: analysis
 ---

@@ -1,6 +1,6 @@
 ---
 title: BlackRock (BLK) hissesi: dünyanın en büyük varlık yöneticisi, sade dille
-description: Sade dille BlackRock: 15,5 trilyon dolar yönetimde, Temmuz–Eylül 2026'da 205 milyar dolar yeni para, iShares, Aladdin, riskler ve düzenli alım.
+description: Sade dille BlackRock: iShares ETF'leri, Aladdin, Temmuz–Eylül 2026'da 205 milyar dolar yeni para, ücretlerden nasıl kazandığı, riskler ve düzenli alım.
 date: 2026-11-26
 kind: analysis
 ---

@@ -1,6 +1,6 @@
 ---
 title: Blackstone (BX) stock: ang pinakamalaking alternative investor sa mundo, sa simpleng paliwanag
-description: Blackstone sa simpleng salita: $1.37 trilyon na hawak, $63 bilyong nalikom noong Hulyo–Setyembre 2026, real estate, private equity, credit at mga panganib.
+description: Blackstone sa simpleng salita: $63 bilyong nalikom noong Hulyo–Setyembre 2026, real estate, private equity, credit, paano kumikita at mga panganib.
 date: 2026-11-26
 kind: analysis
 ---

@@ -1,6 +1,6 @@
 ---
 title: Saham Blackstone (BX): investor alternatif terbesar di dunia, dijelaskan sederhana
-description: Blackstone secara sederhana: $1,37 triliun dikelola, $63 miliar dihimpun pada Juli–September 2026, properti, private equity, kredit, dan risikonya.
+description: Blackstone secara sederhana: $63 miliar dihimpun pada Juli–September 2026, properti, private equity, kredit, cara menghasilkan uang, dan risikonya.
 date: 2026-11-26
 kind: analysis
 ---

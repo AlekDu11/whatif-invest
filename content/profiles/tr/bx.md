@@ -1,6 +1,6 @@
 ---
 title: Blackstone (BX) hissesi: dünyanın en büyük alternatif yatırımcısı, sade dille
-description: Sade dille Blackstone: 1,37 trilyon dolar yönetimde, Temmuz–Eylül 2026'da 63 milyar dolar yeni para, gayrimenkul, girişim sermayesi, kredi ve riskler.
+description: Sade dille Blackstone: Temmuz–Eylül 2026'da 63 milyar dolar yeni para, gayrimenkul, girişim sermayesi, kredi, nasıl kazandığı ve riskler.
 date: 2026-11-26
 kind: analysis
 ---

@@ -1,6 +1,6 @@
 ---
 title: Blackstone-Aktie (BX): der größte alternative Investor der Welt einfach erklärt
-description: Blackstone einfach erklärt: 1,37 Billionen Dollar verwaltet, 63 Mrd. Dollar eingesammelt im Juli–September 2026, Immobilien, Private Equity, Kredite, Risiken.
+description: Blackstone einfach erklärt: 63 Mrd. Dollar eingesammelt im Juli–September 2026, Immobilien, Private Equity, Kredite, wie es verdient, Risiken.
 date: 2026-11-26
 kind: analysis
 ---

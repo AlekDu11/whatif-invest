@@ -1,6 +1,6 @@
 ---
 title: BlackRock (BLK) stock: ang pinakamalaking asset manager sa mundo, sa simpleng paliwanag
-description: BlackRock sa simpleng salita: $15.5 trilyon na hawak, $205 bilyong bagong pera noong Hulyo–Setyembre 2026, iShares, Aladdin, panganib at regular na pagbili.
+description: BlackRock sa simpleng salita: iShares ETF, Aladdin, $205 bilyong bagong pera noong Hulyo–Setyembre 2026, paano kumikita sa fees, panganib at regular na pagbili.
 date: 2026-11-26
 kind: analysis
 ---

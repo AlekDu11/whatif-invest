@@ -1,6 +1,6 @@
 ---
 title: Acciones de BlackRock (BLK): la mayor gestora de inversiones del mundo, explicada fácil
-description: BlackRock explicada fácil: 15,5 billones de dólares gestionados, 205.000 millones de dinero nuevo en julio–septiembre de 2026, iShares, Aladdin y riesgos.
+description: BlackRock explicada fácil: ETF iShares, Aladdin, 205.000 millones de dinero nuevo en julio–septiembre de 2026, cómo gana con comisiones y sus riesgos.
 date: 2026-11-26
 kind: analysis
 ---

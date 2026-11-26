@@ -1,6 +1,6 @@
 ---
 title: Action Blackstone (BX) : le plus grand investisseur alternatif du monde, expliqué simplement
-description: Blackstone expliqué simplement : 1 370 milliards de dollars gérés, 63 milliards levés en juillet–septembre 2026, immobilier, private equity, dette, risques.
+description: Blackstone expliqué simplement : 63 milliards levés en juillet–septembre 2026, immobilier, private equity, dette, comment il gagne, risques.
 date: 2026-11-26
 kind: analysis
 ---

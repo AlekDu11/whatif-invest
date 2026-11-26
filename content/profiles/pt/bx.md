@@ -1,6 +1,6 @@
 ---
 title: Ações da Blackstone (BX): o maior investidor alternativo do mundo, sem complicação
-description: Blackstone sem complicação: US$ 1,37 trilhão sob gestão, US$ 63 bilhões captados em julho–setembro de 2026, imóveis, private equity, crédito e riscos.
+description: Blackstone sem complicação: US$ 63 bilhões captados em julho–setembro de 2026, imóveis, private equity, crédito, como ganha dinheiro e os riscos.
 date: 2026-11-26
 kind: analysis
 ---

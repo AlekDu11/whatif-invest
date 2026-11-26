@@ -1,6 +1,6 @@
 ---
 title: Action BlackRock (BLK) : le plus grand gestionnaire d'actifs du monde, expliqué simplement
-description: BlackRock expliqué simplement : 15 500 milliards de dollars gérés, 205 milliards d'argent frais en juillet–septembre 2026, iShares, Aladdin, risques.
+description: BlackRock expliqué simplement : ETF iShares, Aladdin, 205 milliards d'argent frais en juillet–septembre 2026, comment il gagne des frais, risques.
 date: 2026-11-26
 kind: analysis
 ---

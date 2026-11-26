@@ -1,6 +1,6 @@
 ---
 title: Akcje Blackstone (BX): największy inwestor alternatywny na świecie w prostych słowach
-description: Blackstone w prostych słowach: 1,37 bln dolarów w zarządzaniu, 63 mld dolarów zebranych w lipcu–wrześniu 2026, nieruchomości, private equity, kredyty, ryzyka.
+description: Blackstone w prostych słowach: 63 mld dolarów zebranych w lipcu–wrześniu 2026, nieruchomości, private equity, kredyty, jak zarabia i ryzyka.
 date: 2026-11-26
 kind: analysis
 ---

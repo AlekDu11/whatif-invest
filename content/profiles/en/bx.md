@@ -1,6 +1,6 @@
 ---
 title: Blackstone (BX) stock: the world's biggest alternative investor, explained simply
-description: Blackstone in plain language: $1.37 trillion managed, $63 billion raised in July–September 2026, real estate, private equity, credit, risks and regular buying.
+description: Blackstone in plain language: $63 billion raised in July–September 2026, real estate, private equity, credit, how it earns fees, the risks and regular buying.
 date: 2026-11-26
 kind: analysis
 ---

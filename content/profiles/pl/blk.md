@@ -1,6 +1,6 @@
 ---
 title: Akcje BlackRock (BLK): największy zarządzający aktywami na świecie w prostych słowach
-description: BlackRock w prostych słowach: 15,5 bln dolarów w zarządzaniu, 205 mld dolarów nowych pieniędzy w lipcu–wrześniu 2026, iShares, Aladdin i ryzyka.
+description: BlackRock w prostych słowach: ETF-y iShares, Aladdin, 205 mld dolarów nowych pieniędzy w lipcu–wrześniu 2026, jak zarabia na opłatach i ryzyka.
 date: 2026-11-26
 kind: analysis
 ---

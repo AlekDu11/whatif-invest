@@ -1,6 +1,6 @@
 ---
 title: BlackRock（BLK）股票通俗解读：全球最大的资产管理公司
-description: 通俗解读贝莱德BlackRock：管理资产15.5万亿美元，2026年7–9月新增资金2050亿美元，iShares、Aladdin、风险以及对定投者的意义。
+description: 通俗解读贝莱德BlackRock：iShares ETF、Aladdin、2026年7–9月新增资金2050亿美元、靠收费赚钱的方式、风险以及对定投者的意义。
 date: 2026-11-26
 kind: analysis
 ---

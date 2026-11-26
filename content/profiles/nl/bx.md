@@ -1,6 +1,6 @@
 ---
 title: Aandeel Blackstone (BX): de grootste alternatieve belegger ter wereld, eenvoudig uitgelegd
-description: Blackstone eenvoudig uitgelegd: $1,37 biljoen in beheer, $63 miljard opgehaald in juli–september 2026, vastgoed, private equity, kredieten en risico's.
+description: Blackstone eenvoudig uitgelegd: $63 miljard opgehaald in juli–september 2026, vastgoed, private equity, kredieten, hoe het verdient, risico's.
 date: 2026-11-26
 kind: analysis
 ---

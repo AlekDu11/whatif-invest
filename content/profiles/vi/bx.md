@@ -1,6 +1,6 @@
 ---
 title: Cổ phiếu Blackstone (BX): nhà đầu tư thay thế lớn nhất thế giới, giải thích dễ hiểu
-description: Blackstone dễ hiểu: quản lý 1.370 tỷ USD, huy động 63 tỷ USD trong tháng 7–9/2026, bất động sản, quỹ tư nhân, tín dụng, rủi ro và mua định kỳ.
+description: Blackstone dễ hiểu: huy động 63 tỷ USD trong tháng 7–9/2026, bất động sản, quỹ tư nhân, tín dụng, cách kiếm tiền, rủi ro và mua định kỳ.
 date: 2026-11-26
 kind: analysis
 ---

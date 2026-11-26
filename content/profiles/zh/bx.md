@@ -1,6 +1,6 @@
 ---
 title: Blackstone（BX）股票通俗解读：全球最大的另类投资公司
-description: 通俗解读黑石Blackstone：管理资产1.37万亿美元，2026年7–9月募资630亿美元，房地产、私募股权、信贷、风险以及对定投者的意义。
+description: 通俗解读黑石Blackstone：2026年7–9月募资630亿美元，房地产、私募股权、信贷、赚钱方式、风险以及对定投者的意义。
 date: 2026-11-26
 kind: analysis
 ---

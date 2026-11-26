@@ -1,6 +1,6 @@
 ---
 title: Azioni Blackstone (BX): il più grande investitore alternativo al mondo, spiegato semplice
-description: Blackstone spiegata semplice: 1.370 miliardi di dollari gestiti, 63 miliardi raccolti a luglio–settembre 2026, immobili, private equity, credito e rischi.
+description: Blackstone spiegata semplice: 63 miliardi raccolti a luglio–settembre 2026, immobili, private equity, credito, come guadagna e i rischi.
 date: 2026-11-26
 kind: analysis
 ---

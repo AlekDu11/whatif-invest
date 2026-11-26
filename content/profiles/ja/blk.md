@@ -1,6 +1,6 @@
 ---
 title: BlackRock（BLK）株：世界最大の資産運用会社をやさしく解説
-description: BlackRockをやさしく解説：運用資産15.5兆ドル、2026年7〜9月期の新規資金2,050億ドル、iShares、Aladdin、リスク、積立で買う人が知っておきたいこと。
+description: BlackRockをやさしく解説：iShares ETF、Aladdin、2026年7〜9月期の新規資金2,050億ドル、手数料で稼ぐ仕組み、リスク、積立で買う人が知っておきたいこと。
 date: 2026-11-26
 kind: analysis
 ---

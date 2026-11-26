@@ -1,6 +1,6 @@
 ---
 title: Saham BlackRock (BLK): manajer investasi terbesar di dunia, dijelaskan sederhana
-description: BlackRock secara sederhana: $15,5 triliun dikelola, $205 miliar dana baru pada Juli–September 2026, iShares, Aladdin, risiko, dan pembelian rutin.
+description: BlackRock secara sederhana: ETF iShares, Aladdin, $205 miliar dana baru pada Juli–September 2026, cara meraup biaya, risiko, dan pembelian rutin.
 date: 2026-11-26
 kind: analysis
 ---

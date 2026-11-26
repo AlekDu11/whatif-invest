@@ -1,6 +1,6 @@
 ---
 title: BlackRock-Aktie (BLK): der größte Vermögensverwalter der Welt einfach erklärt
-description: BlackRock einfach erklärt: 15,5 Billionen Dollar verwaltet, 205 Mrd. Dollar neues Geld im Juli–September 2026, iShares, Aladdin, Risiken und Sparplan.
+description: BlackRock einfach erklärt: iShares-ETFs, Aladdin, 205 Mrd. Dollar neues Geld im Juli–September 2026, wie es an Gebühren verdient, Risiken und Sparplan.
 date: 2026-11-26
 kind: analysis
 ---

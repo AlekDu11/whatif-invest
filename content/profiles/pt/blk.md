@@ -1,6 +1,6 @@
 ---
 title: Ações da BlackRock (BLK): a maior gestora de investimentos do mundo, sem complicação
-description: BlackRock sem complicação: US$ 15,5 trilhões sob gestão, US$ 205 bilhões de dinheiro novo em julho–setembro de 2026, iShares, Aladdin e os riscos.
+description: BlackRock sem complicação: ETFs iShares, Aladdin, US$ 205 bilhões de dinheiro novo em julho–setembro de 2026, como ganha com taxas e os riscos.
 date: 2026-11-26
 kind: analysis
 ---

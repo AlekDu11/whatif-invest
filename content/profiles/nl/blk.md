@@ -1,6 +1,6 @@
 ---
 title: Aandeel BlackRock (BLK): de grootste vermogensbeheerder ter wereld, eenvoudig uitgelegd
-description: BlackRock eenvoudig uitgelegd: $15,5 biljoen in beheer, $205 miljard nieuw geld in juli–september 2026, iShares, Aladdin, risico's en periodiek kopen.
+description: BlackRock eenvoudig uitgelegd: iShares-ETF's, Aladdin, $205 miljard nieuw geld in juli–september 2026, hoe het aan kosten verdient, risico's.
 date: 2026-11-26
 kind: analysis
 ---

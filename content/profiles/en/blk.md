@@ -1,6 +1,6 @@
 ---
 title: BlackRock (BLK) stock: the world's biggest money manager, explained simply
-description: BlackRock in plain language: $15.5 trillion managed, $205 billion of new money in July–September 2026, iShares, Aladdin, the risks and regular buying.
+description: BlackRock in plain language: iShares ETFs, Aladdin, $205 billion of new money in July–September 2026, how it earns fees, the risks and regular buying.
 date: 2026-11-26
 kind: analysis
 ---
