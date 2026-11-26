@@ -1,6 +1,6 @@
 ---
 title: SPX6900 (SPX) explained: a 2023 memecoin that parodies the S&P 500, 1 billion token cap
-description: SPX6900 in plain language: the "6900 > 500" joke, how the token works, the vanished developer, its 2025 peak, the main risks and what regular buyers should know.
+description: SPX6900 in plain language: the "6900 > 500" joke, how the token works, the vanished developer, its 2025 rally, the main risks and what regular buyers should know.
 date: 2026-11-26
 kind: analysis
 ---
