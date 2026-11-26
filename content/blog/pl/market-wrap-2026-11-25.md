@@ -29,7 +29,7 @@ Krypto szło za akcjami — w dół, a potem w górę. Cały rynek kryptowalut b
 - [HP Inc]({lang}/hpq/) **+11,5%** — kwartalne przychody 16,0 mld $ i zysk 0,83 $ na akcję powyżej prognoz ([nasza informacja]({lang}/news/hp-jumps-11-percent-earnings-beat-november-2026/)).
 - [Charter Communications]({lang}/chtr/) **+8,4%** i [Axon]({lang}/axon/) **+7,4%** — część przepływu do stabilniejszych spółek; nie znaleźliśmy własnego powodu.
 - [Analog Devices]({lang}/adi/) **+6,4%** i [Texas Instruments]({lang}/txn/) **+4,6%** — częściowe odbicie po wtorkowych spadkach o 17% i 9%.
-- [Deere]({lang}/de/) **+4,4%** — zyski i sprzedaż spadły mniej, niż się obawiano.
+- Deere **+4,4%** — zyski i sprzedaż spadły mniej, niż się obawiano.
 - W krypto: [Pieverse]({lang}/pieverse/) **+20,6%**, [Bitway]({lang}/btw/) **+14,8%**, [MemeCore]({lang}/m/) **+11,4%** i [Venice Token]({lang}/vvv/) **+10,2%** — bez własnych wiadomości; mniejsze monety mocniej odbiły razem z rynkiem.
 
 ## Najwięcej straciły

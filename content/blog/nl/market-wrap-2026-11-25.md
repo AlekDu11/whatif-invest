@@ -29,7 +29,7 @@ Crypto volgde de aandelen: eerst omlaag, daarna omhoog. De totale cryptomarkt wa
 - [HP Inc]({lang}/hpq/) **+11,5%** — kwartaalomzet van $16,0 miljard en winst van $0,83 per aandeel boven verwachting ([ons bericht]({lang}/news/hp-jumps-11-percent-earnings-beat-november-2026/)).
 - [Charter Communications]({lang}/chtr/) **+8,4%** en [Axon]({lang}/axon/) **+7,4%** — onderdeel van de verschuiving naar stabielere aandelen; we vonden geen eigen aanleiding.
 - [Analog Devices]({lang}/adi/) **+6,4%** en [Texas Instruments]({lang}/txn/) **+4,6%** — gedeeltelijk herstel na de dalingen van 17% en 9% op dinsdag.
-- [Deere]({lang}/de/) **+4,4%** — winst en omzet daalden minder dan gevreesd.
+- Deere **+4,4%** — winst en omzet daalden minder dan gevreesd.
 - In crypto: [Pieverse]({lang}/pieverse/) **+20,6%**, [Bitway]({lang}/btw/) **+14,8%**, [MemeCore]({lang}/m/) **+11,4%** en [Venice Token]({lang}/vvv/) **+10,2%** — zonder eigen nieuws; kleinere munten veerden met de markt harder op.
 
 ## Grootste dalers

@@ -29,7 +29,7 @@ Kripto mengikuti saham: turun lalu naik. Nilai total pasar kripto sekitar **$2,1
 - [HP Inc]({lang}/hpq/) **+11,5%** — pendapatan kuartalan $16,0 miliar dan laba $0,83 per saham melampaui perkiraan ([berita kami]({lang}/news/hp-jumps-11-percent-earnings-beat-november-2026/)).
 - [Charter Communications]({lang}/chtr/) **+8,4%** dan [Axon]({lang}/axon/) **+7,4%** — bagian dari perpindahan ke saham yang lebih stabil; kami tidak menemukan pemicu khusus.
 - [Analog Devices]({lang}/adi/) **+6,4%** dan [Texas Instruments]({lang}/txn/) **+4,6%** — pantulan sebagian setelah turun 17% dan 9% pada Selasa.
-- [Deere]({lang}/de/) **+4,4%** — laba dan penjualan turun lebih sedikit dari yang dikhawatirkan.
+- Deere **+4,4%** — laba dan penjualan turun lebih sedikit dari yang dikhawatirkan.
 - Di kripto: [Pieverse]({lang}/pieverse/) **+20,6%**, [Bitway]({lang}/btw/) **+14,8%**, [MemeCore]({lang}/m/) **+11,4%**, dan [Venice Token]({lang}/vvv/) **+10,2%** — tanpa berita khusus; koin kecil memantul lebih kuat bersama pasar.
 
 ## Penurunan terbesar

@@ -29,7 +29,7 @@ Las criptomonedas siguieron a la bolsa: abajo y después arriba. El valor total 
 - [HP Inc]({lang}/hpq/) **+11,5%**: ingresos trimestrales de $16.000 millones y beneficio de $0,83 por acción, por encima de lo previsto ([nuestra noticia]({lang}/news/hp-jumps-11-percent-earnings-beat-november-2026/)).
 - [Charter Communications]({lang}/chtr/) **+8,4%** y [Axon]({lang}/axon/) **+7,4%**: parte del giro hacia valores más estables; no encontramos un motivo propio.
 - [Analog Devices]({lang}/adi/) **+6,4%** y [Texas Instruments]({lang}/txn/) **+4,6%**: rebote parcial tras caer un 17% y un 9% el martes.
-- [Deere]({lang}/de/) **+4,4%**: beneficios y ventas bajaron menos de lo temido.
+- Deere **+4,4%**: beneficios y ventas bajaron menos de lo temido.
 - En cripto: [Pieverse]({lang}/pieverse/) **+20,6%**, [Bitway]({lang}/btw/) **+14,8%**, [MemeCore]({lang}/m/) **+11,4%** y [Venice Token]({lang}/vvv/) **+10,2%**; sin noticias propias, las monedas pequeñas rebotaron más fuerte con el mercado.
 
 ## Los que más cayeron

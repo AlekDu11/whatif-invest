@@ -29,7 +29,7 @@ Tiền số đi theo cổ phiếu: xuống rồi lên. Tổng giá trị thị t
 - [HP Inc]({lang}/hpq/) **+11,5%** — doanh thu quý 16,0 tỷ USD và lợi nhuận 0,83 USD/cổ phiếu vượt dự báo ([tin của chúng tôi]({lang}/news/hp-jumps-11-percent-earnings-beat-november-2026/)).
 - [Charter Communications]({lang}/chtr/) **+8,4%** và [Axon]({lang}/axon/) **+7,4%** — nằm trong xu hướng chuyển sang cổ phiếu ổn định hơn; chúng tôi không thấy lý do riêng.
 - [Analog Devices]({lang}/adi/) **+6,4%** và [Texas Instruments]({lang}/txn/) **+4,6%** — hồi một phần sau khi giảm 17% và 9% hôm thứ Ba.
-- [Deere]({lang}/de/) **+4,4%** — lợi nhuận và doanh số giảm ít hơn lo ngại.
+- Deere **+4,4%** — lợi nhuận và doanh số giảm ít hơn lo ngại.
 - Tiền số: [Pieverse]({lang}/pieverse/) **+20,6%**, [Bitway]({lang}/btw/) **+14,8%**, [MemeCore]({lang}/m/) **+11,4%** và [Venice Token]({lang}/vvv/) **+10,2%** — không có tin riêng; các đồng nhỏ bật mạnh hơn cùng thị trường.
 
 ## Giảm mạnh nhất
