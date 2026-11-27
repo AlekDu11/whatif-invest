@@ -22,7 +22,7 @@ The hub /learn/ lists them by track and step; each lesson links to the next one.
 8. ✅ 2026-11-26 (crypto-fees-explained, all 20 languages) Crypto fees explained: trading fee, spread, network fee
 
 ## safety — Safety
-1. Seed phrase: what it is and the 5 rules to keep it safe
+1. ✅ 2026-11-27 (seed-phrase-safety-rules, all 20 languages; front matter step: 9 so it sorts after crypto step 8 in the crypto folder — next safety lessons use step 10, 11…) Seed phrase: what it is and the 5 rules to keep it safe
 2. Two-factor authentication (2FA): how to turn it on, why SMS is weaker
 3. The most common crypto scams (fake support, giveaways, «investment managers», fake apps)
 4. Exchange vs your own wallet: who controls your coins
@@ -52,7 +52,7 @@ The hub /learn/ lists them by track and step; each lesson links to the next one.
 13. ✅ 2026-11-25 (bonk-wif-solana-memecoins-story, all 20 languages) Story: BONK and WIF — how Solana memecoins took off in 2023–2024
 14. ✅ 2026-11-26 (trump-melania-memecoins-story, all 20 languages) Story: TRUMP and MELANIA — what happened to buyers of political memecoins
 15. ✅ 2026-11-26 (how-binance-alpha-works, all 20 languages) How Binance Alpha works and why a listing there moves memecoins (link {lang}/memes/ «Just listed» block)
-16. Snipers, bundlers and dev wallets: how insiders profit at launch and how to spot them (link {lang}/memes/glossary/)
+16. ✅ 2026-11-27 (snipers-bundlers-dev-wallets, all 20 languages) Snipers, bundlers and dev wallets: how insiders profit at launch and how to spot them (link {lang}/memes/glossary/)
 17. Why most memecoin buyers lose money: the maths of launches, slippage and fees (use the launch pulse on {lang}/memes/)
 
 ## memes — recurring (owner 2026-11-23)
