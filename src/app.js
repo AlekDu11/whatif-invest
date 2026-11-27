@@ -149,6 +149,17 @@ const bs=$('#buyslot'); if(bs&&BYID[bs.dataset.id]){ const r=refFor(BYID[bs.data
     document.dispatchEvent(new Event('wi:rows'));   // live price streams pick up the rows now on screen
   }
   draw();
+  // owner 2026-11-27: sorted by 24h/price, the order went stale as live numbers arrived (−1% above +36%).
+  // Re-order the rows on screen in place (no redraw, streams untouched), at most every 5 s, never under the mouse.
+  let dirty=false, hover=false; document.addEventListener('wi:tick',()=>{ dirty=true });
+  const tw=tb.closest('.tw')||tb; tw.addEventListener('mouseenter',()=>hover=true); tw.addEventListener('mouseleave',()=>hover=false);
+  setInterval(()=>{ if(!dirty||hover||document.hidden||(sortK!=='ch'&&sortK!=='pr')) return; dirty=false;
+    [tb,$('#mt2')].filter(Boolean).forEach(body=>{ const trs=[...body.querySelectorAll('tr')].filter(r=>r.querySelector('[data-c]'));
+      if(trs.length<2) return; const val=r=>{ const a=BYID[r.querySelector('[data-c]').dataset.c]; return a?a[sortK]:null };
+      const sorted=[...trs].sort((x,y)=>{ const vx=val(x), vy=val(y); if(vx==null) return 1; if(vy==null) return -1; return (vx-vy)*sortDir });
+      if(sorted.every((r,i)=>r===trs[i])) return;
+      const nums=trs.map(r=>r.querySelector('td.n')).map(td=>td?td.textContent:'');
+      sorted.forEach((r,i)=>{ body.appendChild(r); const td=r.querySelector('td.n'); if(td) td.textContent=nums[i] }) }) },5000);
 })();
 
 /* ---------- calculator ---------- */
@@ -1735,7 +1746,9 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
   const coins=()=>{ const ids=new Set($$('[data-p],[data-c],[data-h]').map(el=>el.dataset.p||el.dataset.c||el.dataset.h));
     if(document.getElementById('hold')) try{ JSON.parse(localStorage.getItem('wi_hold')||'[]').forEach(x=>ids.add(x.id)) }catch(e){}
     return [...ids].map(i=>BYID[i]).filter(a=>a&&a.c==='crypto'&&!a.bn&&a.x).slice(0,120) };
-  const byTk={}; const put=(a,p,ch)=>{ if(!(p>0)) return; const old=a.pr; a.pr=p; if(ch!=null&&isFinite(ch)) a.ch=ch;
+  const byTk={}; const put=(a,p,ch)=>{ if(!(p>0)) return; const old=a.pr; a.pr=p;
+    if(ch!=null&&ch>5&&old&&p<old*2) ch=null;   // owner 2026-11-27: a thin exchange pair reported HONEY +1163% while the price fell — ignore absurd 24h figures
+    if(ch!=null&&isFinite(ch)) a.ch=ch;
     $$(`[data-p="${a.i}"]`).forEach(el=>{ el.textContent=fmtPrice(p); if(old&&p!==old){ el.classList.remove('flash-up','flash-dn'); void el.offsetWidth; el.classList.add(p>old?'flash-up':'flash-dn') } });
     if(ch!=null) $$(`[data-c="${a.i}"]`).forEach(el=>{ el.textContent=fmtPct(a.ch); el.classList.remove('good','bad'); el.classList.add(cls(a.ch)) });
     document.dispatchEvent(new CustomEvent('wi:tick',{detail:a})) };
