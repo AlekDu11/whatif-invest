@@ -1,11 +1,11 @@
 ---
-title: Was ist Krypto-Staking und ist es sicher?
-description: Krypto-Staking einfach erklärt: wie es funktioniert, Sperrfristen, Staking auf der Börse vs. On-Chain und die echten Risiken, bevor Sie Coins staken.
+title: "Was ist Krypto-Staking? Einfach erklärt: wie es funktioniert und wie sicher es ist"
+description: Was ist Krypto-Staking? In 4 Schritten erklärt – woher die Belohnung kommt, Sperrfristen von Tagen bis Wochen, 3 Wege zu staken und die Risiken.
 date: 2026-11-16
 category: guides
 assets: eth, sol, ada, dot, atom
 ---
-**Staking** bedeutet, Krypto-Coins zu hinterlegen, um eine Blockchain am Laufen zu halten – und dafür neue Coins als Belohnung zu erhalten. Es wird oft mit einem Sparkonto verglichen, funktioniert aber ganz anders und hat eigene Risiken.
+**Krypto-Staking** bedeutet, Coins zu hinterlegen, um eine Proof-of-Stake-Blockchain wie Ethereum oder Solana am Laufen zu halten – und dafür neue Coins als Belohnung zu erhalten. Staken können Sie auf 3 Wegen: über eine Börse, aus der eigenen Wallet oder per Liquid Staking; es wird oft mit einem Sparkonto verglichen, funktioniert aber ganz anders und hat eigene Risiken. Welche Anbieter wie viel von den Belohnungen behalten, zeigt unser [Vergleich der Staking-Anbieter](/de/blog/crypto-staking-providers-compared/).
 
 Dieser Ratgeber erklärt, wie Staking funktioniert, was eine „Sperrfrist“ ist, wie sich Staking auf einer Börse vom Staking On-Chain unterscheidet und was schiefgehen kann.
 

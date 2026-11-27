@@ -1,11 +1,11 @@
 ---
-title: Wat is crypto staking en is het veilig?
-description: Crypto staking simpel uitgelegd: hoe het werkt, lock-up periodes, staken via een exchange of on-chain, en de echte risico's voordat je coins gaat staken.
+title: Wat is crypto staking? Zo werkt het, 3 manieren om te staken en de risico's
+description: Wat is crypto staking? Uitleg in 4 stappen: waar de beloning vandaan komt, lock-ups van dagen tot weken, 3 manieren om te staken en een checklist.
 date: 2026-11-16
 category: guides
 assets: eth, sol, ada, dot, atom
 ---
-**Staking** betekent dat je cryptocoins vastzet om een blockchain draaiende te houden — en daar als beloning nieuwe coins voor krijgt. Het wordt vaak vergeleken met een spaarrekening, maar het werkt heel anders en heeft eigen risico's.
+**Crypto staking** betekent dat je cryptocoins vastzet om een proof-of-stake-blockchain zoals Ethereum of Solana draaiende te houden — en daar als beloning nieuwe coins voor krijgt. Je kunt op 3 manieren staken (via een exchange, on-chain vanuit je eigen wallet of via liquid staking), en het lijkt op een spaarrekening, maar werkt heel anders en heeft eigen risico's.
 
 Deze gids legt uit hoe staking werkt, wat een "lock-up" is, hoe staken via een exchange verschilt van staken on-chain, en wat er mis kan gaan.
 
