@@ -16,6 +16,7 @@ module.exports = {
   tgwallet: 'https://telegram.me/walt/start?startapp=ref-3-_nKDCE0BgAk',
   pumpfun: 'https://pump.fun/u/alessa',
   inzhur: 'https://www.inzhur.reit/r/xWNTFBBI5gOX4p9V175sl',
+  transfergo: 'https://trgo.co/uk/r/WhatIfStack1',   // owner 2026-11-27: TransferGo invite; promo code WhatIfStack1 gives the friend €10
   tradingview: 'https://www.tradingview.com/pricing/?share_your_love=AleksDu',
   monobank: 'https://monobank.ua/r/YkfE',
   privat24: 'https://www.privat24.ua/invite/ktwrx',

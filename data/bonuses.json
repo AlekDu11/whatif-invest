@@ -487,6 +487,125 @@
      "a": "b"
     }
    ]
+  },
+  "eu": {
+   "flag": "🇪🇺",
+   "name": {
+    "uk": "Європа",
+    "ru": "Европа",
+    "en": "Europe",
+    "de": "Europa",
+    "pl": "Europa",
+    "es": "Europa",
+    "fr": "Europe",
+    "it": "Europa",
+    "pt": "Europa",
+    "nl": "Europa",
+    "tr": "Avrupa"
+   },
+   "tz": [
+    "Europe/Warsaw",
+    "Europe/Berlin",
+    "Europe/Prague",
+    "Europe/Vienna",
+    "Europe/Bratislava",
+    "Europe/Budapest",
+    "Europe/Bucharest",
+    "Europe/Rome",
+    "Europe/Madrid",
+    "Europe/Lisbon",
+    "Europe/Paris",
+    "Europe/Brussels",
+    "Europe/Amsterdam",
+    "Europe/Luxembourg",
+    "Europe/Dublin",
+    "Europe/London",
+    "Europe/Copenhagen",
+    "Europe/Stockholm",
+    "Europe/Oslo",
+    "Europe/Helsinki",
+    "Europe/Tallinn",
+    "Europe/Riga",
+    "Europe/Vilnius",
+    "Europe/Zurich",
+    "Europe/Ljubljana",
+    "Europe/Zagreb",
+    "Europe/Podgorica",
+    "Europe/Belgrade",
+    "Europe/Sarajevo",
+    "Europe/Skopje",
+    "Europe/Sofia",
+    "Europe/Athens",
+    "Europe/Chisinau",
+    "Atlantic/Canary",
+    "Europe/Malta",
+    "Asia/Nicosia"
+   ],
+   "feat": "transfergo",
+   "items": [
+    {
+     "id": "transfergo",
+     "go": "transfergo",
+     "kind": "bank",
+     "v": 10,
+     "cur": "€",
+     "until": null,
+     "checked": "2026-11-27",
+     "name": "TransferGo",
+     "you": {
+      "uk": "€10 на перший переказ за промокодом WhatIfStack1",
+      "ru": "€10 на первый перевод по промокоду WhatIfStack1",
+      "en": "€10 on your first transfer with promo code WhatIfStack1"
+     },
+     "friend": {
+      "uk": "Той, хто запросив, отримує бонус, коли друг протягом 6 місяців надішле за кордон еквівалент £100",
+      "ru": "Пригласивший получает бонус, когда друг в течение 6 месяцев отправит за границу эквивалент £100",
+      "en": "The inviter gets a bonus once the friend sends the equivalent of £100 abroad within 6 months"
+     },
+     "need": {
+      "uk": "Зареєструватися за посиланням, ввести промокод WhatIfStack1 і зробити міжнародний переказ. Мінімальну суму показує застосунок",
+      "ru": "Зарегистрироваться по ссылке, ввести промокод WhatIfStack1 и сделать международный перевод. Минимальную сумму показывает приложение",
+      "en": "Sign up through the link, enter promo code WhatIfStack1 and make an international transfer. The app shows the minimum amount"
+     },
+     "cash": {
+      "uk": "Потрібні власні гроші на переказ. Перекази в тій самій валюті чи всередині країни не зараховуються, оплата з Revolut чи Apple Pay може не зарахуватись",
+      "ru": "Нужны свои деньги на перевод. Переводы в той же валюте или внутри страны не засчитываются, оплата с Revolut или Apple Pay может не засчитаться",
+      "en": "Needs your own money to send. Same-currency or domestic transfers don't count, and paying from Revolut or Apple Pay may not qualify"
+     },
+     "src": [
+      [
+       "TransferGo — Refer a Friend terms",
+       "https://www.transfergo.com/en/referral-terms-and-conditions"
+      ],
+      [
+       "TransferGo — запрошення",
+       "https://trgo.co/uk/r/WhatIfStack1"
+      ]
+     ],
+     "c": "#0d1f3c",
+     "a": "T",
+     "banner": {
+      "uk": {
+       "t": "€10 на перший переказ з TransferGo",
+       "d": "Перекази з Європи в Україну та ще 160+ країн. Промокод WhatIfStack1.",
+       "cta": "Отримати €10",
+       "note": "Партнерське посилання. Умови й мінімальна сума — у застосунку TransferGo."
+      },
+      "ru": {
+       "t": "€10 на первый перевод с TransferGo",
+       "d": "Переводы из Европы в Украину и ещё 160+ стран. Промокод WhatIfStack1.",
+       "cta": "Получить €10",
+       "note": "Партнёрская ссылка. Условия и минимальная сумма — в приложении TransferGo."
+      },
+      "en": {
+       "t": "€10 on your first TransferGo transfer",
+       "d": "Send money from Europe to 160+ countries. Promo code WhatIfStack1.",
+       "cta": "Get €10",
+       "note": "Partner link. Terms and the minimum amount are in the TransferGo app."
+      }
+     }
+    }
+   ]
   }
  },
  "exchanges": [
