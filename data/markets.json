@@ -12796,5 +12796,11 @@
 "yahoo": "TGTX",
 "name": "TG Therapeutics",
 "cat": "stock"
+},
+{
+"tk": "SKHY",
+"yahoo": "SKHY",
+"name": "SK hynix",
+"cat": "stock"
 }
 ]
