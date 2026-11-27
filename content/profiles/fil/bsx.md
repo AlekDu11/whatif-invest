@@ -1,6 +1,6 @@
 ---
 title: "Boston Scientific (BSX) stock: ang gumagawa ng heart device at ang $20.1 bilyong benta nito noong 2025"
-description: Boston Scientific sa simpleng salita: $20.1 bilyong benta noong 2025, Farapulse at Watchman, ang cyberattack noong 2026, mga panganib at para sa regular na bumibili.
+description: Boston Scientific sa simpleng salita: $20.1 bilyong benta noong 2025, Farapulse at Watchman, ang cyberattack noong 2026 at mga panganib sa regular na bumibili.
 date: 2026-11-27
 kind: analysis
 ---

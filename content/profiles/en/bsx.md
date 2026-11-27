@@ -1,6 +1,6 @@
 ---
 title: "Boston Scientific (BSX) stock: the heart-device maker and its $20.1 billion 2025"
-description: Boston Scientific in plain language: $20.1 billion of sales in 2025, Farapulse and Watchman heart devices, the 2026 cyberattack, the risks and what regular buyers should know.
+description: Boston Scientific in plain language: $20.1 billion of sales in 2025, the Farapulse and Watchman heart devices, the 2026 cyberattack and the risks for buyers.
 date: 2026-11-27
 kind: analysis
 ---
