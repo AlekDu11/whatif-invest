@@ -1,0 +1,294 @@
+{
+ "_doc": "Crypto + stock tax rules for private investors by country (owner 2026-11-27: own calculator + plain articles, no third-party tax apps). Per country: flag, name{lang}, cur (symbol), langs (page languages: the country's own + uk/ru/en), checked (date the rules were verified), status{lang} (optional warning shown on top, e.g. a law not yet in force), crypto/stock = {rate (0.19 = 19 % of the taxable profit), rate_user (true = the rate depends on personal income; the calculator lets the visitor set it, rate = default), hold_free_m (months after which a gain is tax-free, null = never), allow (tax-free amount per year in local currency, 0 = none), allow_kind (deduct = subtract from the gain; threshold = gains below it are tax-free, at or above it fully taxable), points{lang: [bullets]}}, deadline{lang}, src [[title, url]] official first. Never invent: when a rule is unclear, say so in status/points. Filled by the money-pages task (country research).",
+ "countries": {
+  "ua": {
+   "flag": "🇺🇦",
+   "cur": "₴",
+   "langs": [
+    "uk",
+    "ru",
+    "en"
+   ],
+   "checked": "2026-11-27",
+   "name": {
+    "uk": "Україна",
+    "ru": "Украина",
+    "en": "Ukraine",
+    "pl": "Ukraina",
+    "de": "Ukraine"
+   },
+   "status": {
+    "uk": "Закон про крипту № 10225-д Рада ухвалила 25.11.2026, але він ще не набрав чинності: нові правила планують запустити з середини 2027 року. На перехідний період закон передбачає пільгову ставку 5% ПДФО + 5% військового збору — точні умови залежать від остаточного тексту. Калькулятор рахує за загальною ставкою 23%.",
+    "ru": "Закон о крипте № 10225-д Рада приняла 25.11.2026, но он ещё не вступил в силу: новые правила планируют запустить с середины 2027 года. На переходный период закон предусматривает льготную ставку 5% НДФЛ + 5% военного сбора — точные условия зависят от окончательного текста. Калькулятор считает по общей ставке 23%.",
+    "en": "Ukraine's crypto law No. 10225-d was passed on 25.11.2026 but is not in force yet: the new rules are planned from mid-2027. For a transition period the law provides a reduced rate of 5% personal income tax + 5% military levy — exact conditions depend on the final text. The calculator uses the standard 23% rate."
+   },
+   "crypto": {
+    "rate": 0.23,
+    "hold_free_m": null,
+    "allow": 0,
+    "allow_kind": "deduct",
+    "points": {
+     "uk": [
+      "18% ПДФО + 5% військового збору = 23% з прибутку (різниці між продажем і купівлею)",
+      "ПДВ на операції з криптою не буде",
+      "Пільга на перехідний період: 5% + 5% (умови — в остаточному тексті закону)",
+      "Нові правила — орієнтовно з середини 2027 року"
+     ],
+     "ru": [
+      "18% НДФЛ + 5% военного сбора = 23% с прибыли (разницы между продажей и покупкой)",
+      "НДС на операции с криптой не будет",
+      "Льгота на переходный период: 5% + 5% (условия — в окончательном тексте закона)",
+      "Новые правила — ориентировочно с середины 2027 года"
+     ],
+     "en": [
+      "18% income tax + 5% military levy = 23% of the profit (sale minus purchase)",
+      "No VAT on crypto transactions",
+      "Transition relief: 5% + 5% (conditions in the final text of the law)",
+      "New rules expected from mid-2027"
+     ]
+    }
+   },
+   "stock": {
+    "rate": 0.23,
+    "hold_free_m": null,
+    "allow": 0,
+    "allow_kind": "deduct",
+    "points": {
+     "uk": [
+      "Інвестиційний прибуток: 18% ПДФО + 5% військового збору",
+      "Податок — з різниці між продажем і купівлею за рік, збитки зменшують прибуток",
+      "Купівля ОВДП через брокера — дохід від ОВДП не оподатковується"
+     ],
+     "ru": [
+      "Инвестиционная прибыль: 18% НДФЛ + 5% военного сбора",
+      "Налог — с разницы между продажей и покупкой за год, убытки уменьшают прибыль",
+      "Доход от ОВДП не облагается налогом"
+     ],
+     "en": [
+      "Investment profit: 18% income tax + 5% military levy",
+      "Tax is on the yearly difference between sales and purchases; losses reduce the profit",
+      "Income from Ukrainian government bonds (OVDP) is tax-free"
+     ]
+    }
+   },
+   "deadline": {
+    "uk": "Річна декларація — до 1 травня наступного року",
+    "ru": "Годовая декларация — до 1 мая следующего года",
+    "en": "Annual return — by 1 May of the following year"
+   },
+   "src": [
+    [
+     "Мінфін: Рада ухвалила закон про крипту (25.11.2026)",
+     "https://minfin.com.ua/ua/2026/11/25/186396658/"
+    ],
+    [
+     "Finance.ua: закон про легалізацію ринку криптовалют",
+     "https://news.finance.ua/ua/rada-uhvalyla-zakon-pro-lehalizaciyu-rynku-kryptovalyut"
+    ],
+    [
+     "ДПС України",
+     "https://tax.gov.ua/"
+    ]
+   ]
+  },
+  "pl": {
+   "flag": "🇵🇱",
+   "cur": "zł",
+   "langs": [
+    "pl",
+    "uk",
+    "ru",
+    "en"
+   ],
+   "checked": "2026-11-27",
+   "name": {
+    "pl": "Polska",
+    "uk": "Польща",
+    "ru": "Польша",
+    "en": "Poland",
+    "de": "Polen"
+   },
+   "crypto": {
+    "rate": 0.19,
+    "hold_free_m": null,
+    "allow": 0,
+    "allow_kind": "deduct",
+    "points": {
+     "pl": [
+      "19% od dochodu: przychód ze zbycia minus koszty",
+      "Wymiana jednej kryptowaluty na inną nie rodzi podatku",
+      "Brak kwoty wolnej — podatek od każdej złotówki zysku",
+      "Nadwyżkę kosztów przenosisz na kolejny rok"
+     ],
+     "uk": [
+      "19% з доходу: виручка від продажу мінус витрати",
+      "Обмін однієї криптовалюти на іншу податку не створює",
+      "Неоподатковуваної суми немає — податок з кожного злотого прибутку",
+      "Надлишок витрат переноситься на наступний рік"
+     ],
+     "ru": [
+      "19% с дохода: выручка от продажи минус затраты",
+      "Обмен одной криптовалюты на другую налога не создаёт",
+      "Необлагаемой суммы нет — налог с каждого злотого прибыли",
+      "Излишек затрат переносится на следующий год"
+     ],
+     "en": [
+      "19% of the income: sale proceeds minus costs",
+      "Swapping one crypto for another is not taxed",
+      "No tax-free amount — every złoty of profit is taxed",
+      "Excess costs carry over to the next year"
+     ]
+    }
+   },
+   "stock": {
+    "rate": 0.19,
+    "hold_free_m": null,
+    "allow": 0,
+    "allow_kind": "deduct",
+    "points": {
+     "pl": [
+      "19% «podatku Belki» od zysku z akcji, ETF i funduszy",
+      "Polski broker wystawia PIT-8C, zagraniczny — rozliczasz sam",
+      "Dochody powyżej 1 mln zł: dodatkowo 4% daniny solidarnościowej"
+     ],
+     "uk": [
+      "19% «податку Бельки» з прибутку від акцій, ETF і фондів",
+      "Польський брокер видає PIT-8C, з іноземним рахуєш сам",
+      "Доходи понад 1 млн злотих: додатково 4% солідарного збору"
+     ],
+     "ru": [
+      "19% «налога Белки» с прибыли от акций, ETF и фондов",
+      "Польский брокер выдаёт PIT-8C, с иностранным считаешь сам",
+      "Доходы свыше 1 млн злотых: дополнительно 4% солидарного сбора"
+     ],
+     "en": [
+      "19% «Belka tax» on gains from stocks, ETFs and funds",
+      "Polish brokers issue PIT-8C; with a foreign broker you calculate it yourself",
+      "Income above PLN 1 million: an extra 4% solidarity levy"
+     ]
+    }
+   },
+   "deadline": {
+    "pl": "PIT-38 — od 15 lutego do 30 kwietnia następnego roku (także gdy tylko kupiłeś krypto)",
+    "uk": "PIT-38 — з 15 лютого до 30 квітня наступного року (навіть якщо ти лише купував крипту)",
+    "ru": "PIT-38 — с 15 февраля по 30 апреля следующего года (даже если ты только покупал крипту)",
+    "en": "PIT-38 — from 15 February to 30 April of the following year (even if you only bought crypto)"
+   },
+   "src": [
+    [
+     "podatki.gov.pl — Rozliczenie ze sprzedaży kryptowalut",
+     "https://podatki.gov.pl/pit/rozliczenie-ze-sprzedazy-kryptowalut/"
+    ],
+    [
+     "podatki.gov.pl — PIT-38",
+     "https://www.podatki.gov.pl/twoj-e-pit/en-pit-38-za-2025-rok"
+    ]
+   ]
+  },
+  "de": {
+   "flag": "🇩🇪",
+   "cur": "€",
+   "langs": [
+    "de",
+    "uk",
+    "ru",
+    "en"
+   ],
+   "checked": "2026-11-27",
+   "name": {
+    "de": "Deutschland",
+    "uk": "Німеччина",
+    "ru": "Германия",
+    "en": "Germany",
+    "pl": "Niemcy"
+   },
+   "status": {
+    "de": "Die Bundesregierung plant, die einjährige Haltefrist für Krypto, die ab 2027 gekauft wird, abzuschaffen. Für 2026 gilt sie unverändert.",
+    "uk": "Уряд Німеччини планує скасувати пільгу «1 рік володіння» для крипти, купленої з 2027 року. У 2026 році вона діє без змін.",
+    "ru": "Правительство Германии планирует отменить льготу «1 год владения» для крипты, купленной с 2027 года. В 2026 году она действует без изменений.",
+    "en": "Germany plans to end the one-year holding exemption for crypto bought from 2027. For 2026 it still applies unchanged."
+   },
+   "crypto": {
+    "rate": 0.3,
+    "rate_user": true,
+    "hold_free_m": 12,
+    "allow": 1000,
+    "allow_kind": "threshold",
+    "points": {
+     "de": [
+      "Nach mehr als 1 Jahr Haltedauer steuerfrei",
+      "Innerhalb eines Jahres: persönlicher Einkommensteuersatz (14–45%)",
+      "Freigrenze 1.000 € pro Jahr: darunter steuerfrei, ab 1.000 € alles steuerpflichtig",
+      "Tausch Krypto gegen Krypto zählt als Verkauf"
+     ],
+     "uk": [
+      "Після понад 1 року володіння — без податку",
+      "Продаж протягом року: за особистою ставкою податку на доходи (14–45%)",
+      "Поріг 1 000 € на рік: менше — без податку, від 1 000 € — оподатковується вся сума",
+      "Обмін крипти на крипту вважається продажем"
+     ],
+     "ru": [
+      "После более чем 1 года владения — без налога",
+      "Продажа в течение года: по личной ставке подоходного налога (14–45%)",
+      "Порог 1 000 € в год: меньше — без налога, от 1 000 € — облагается вся сумма",
+      "Обмен крипты на крипту считается продажей"
+     ],
+     "en": [
+      "Tax-free after holding for more than 1 year",
+      "Sold within a year: taxed at your personal income tax rate (14–45%)",
+      "€1,000 exemption limit per year: below it tax-free, at €1,000 or more the whole gain is taxed",
+      "Swapping crypto for crypto counts as a sale"
+     ]
+    }
+   },
+   "stock": {
+    "rate": 0.26375,
+    "hold_free_m": null,
+    "allow": 1000,
+    "allow_kind": "deduct",
+    "points": {
+     "de": [
+      "Abgeltungsteuer 25% + 5,5% Soli = 26,375% (ggf. plus Kirchensteuer)",
+      "Sparer-Pauschbetrag: 1.000 € pro Person (2.000 € für Ehepaare) steuerfrei",
+      "Die Bank führt die Steuer meist automatisch ab — Freistellungsauftrag nicht vergessen"
+     ],
+     "uk": [
+      "Податок на капітал 25% + 5,5% солідарного збору = 26,375% (плюс церковний податок, якщо ти платник)",
+      "Перші 1 000 € прибутку на рік (2 000 € для подружжя) без податку",
+      "Банк зазвичай утримує податок автоматично — подай Freistellungsauftrag"
+     ],
+     "ru": [
+      "Налог на капитал 25% + 5,5% солидарного сбора = 26,375% (плюс церковный налог, если ты плательщик)",
+      "Первые 1 000 € прибыли в год (2 000 € для супругов) без налога",
+      "Банк обычно удерживает налог автоматически — подай Freistellungsauftrag"
+     ],
+     "en": [
+      "Flat capital-gains tax 25% + 5.5% solidarity surcharge = 26.375% (plus church tax if you pay it)",
+      "First €1,000 of gains a year (€2,000 for couples) tax-free",
+      "Your bank usually withholds it automatically — file a Freistellungsauftrag"
+     ]
+    }
+   },
+   "deadline": {
+    "de": "Steuererklärung (Anlage SO für Krypto, Anlage KAP für Aktien) — in der Regel bis 31. Juli des Folgejahres",
+    "uk": "Декларація (Anlage SO для крипти, Anlage KAP для акцій) — зазвичай до 31 липня наступного року",
+    "ru": "Декларация (Anlage SO для крипты, Anlage KAP для акций) — обычно до 31 июля следующего года",
+    "en": "Tax return (Anlage SO for crypto, Anlage KAP for stocks) — usually by 31 July of the following year"
+   },
+   "src": [
+    [
+     "Bundesministerium der Finanzen — Abgeltungsteuer",
+     "https://www.bundesfinanzministerium.de/Web/DE/Themen/Steuern/Steuerarten/Abgeltungssteuer/abgeltungssteuer.html"
+    ],
+    [
+     "Service Berlin — Kapitalerträge, Sparer-Pauschbetrag",
+     "https://service.berlin.de/dienstleistung/326503/pdf/"
+    ],
+    [
+     "Coin360: Germany plans to end one-year crypto exemption for new holdings (10.09.2026)",
+     "https://coin360.com/news/germany-crypto-tax-one-year-exemption"
+    ]
+   ]
+  }
+ }
+}

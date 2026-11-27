@@ -1989,3 +1989,19 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
 // «{{offer}}» box: honest countdown to the promo's end date (owner 2026-11-26)
 document.querySelectorAll('.obcnt[data-until]').forEach(el=>{ const t=new Date(el.dataset.until+'T23:59:59+02:00')-Date.now(); if(t<0){ el.closest('.offerbig').hidden=true; return }
   const d=Math.ceil(t/864e5); el.querySelector('b').textContent=d+' '+el.dataset.w });
+
+/* ---------- tax calculator (/taxes/<country>/, owner 2026-11-27): one sale, the country's rules from data/taxes.json ---------- */
+(function(){ const box=document.getElementById('taxcalc'); if(!box) return;
+  const R=JSON.parse(box.dataset.r), S=JSON.parse(box.dataset.s), cur=box.dataset.cur, g=id=>document.getElementById(id);
+  const f=v=>(Math.round(v*100)/100).toLocaleString(document.documentElement.lang||'en',{maximumFractionDigits:2})+' '+cur;
+  const cell=(l,v,c)=>`<div><small>${l}</small><b class="${c||''}">${v}</b></div>`;
+  function run(){ const r=R[g('tck').value], b=+g('tcb').value||0, s=+g('tcs').value||0, m=+g('tcm').value||0;
+    g('tcrw').hidden=!r.rate_user; if(r.rate_user&&g('tcr').value==='') g('tcr').value=Math.round(r.rate*100);
+    const rate=r.rate_user?(+g('tcr').value||0)/100:r.rate, p=s-b; let tax=0, note='';
+    if(p<=0) note=S.loss;
+    else if(r.hold_free_m&&m>r.hold_free_m) note=S.freeby.replace('{m}',r.hold_free_m);
+    else if(r.allow&&r.allow_kind==='threshold'&&p<r.allow) note=S.under.replace('{a}',f(r.allow));
+    else { const base=r.allow&&r.allow_kind==='deduct'?Math.max(0,p-r.allow):p; tax=base*rate; if(r.allow&&r.allow_kind==='deduct') note=S.deduct.replace('{a}',f(r.allow)) }
+    g('tco').innerHTML=cell(S.profit,f(p),p>=0?'good':'bad')+cell(S.tax,f(tax),tax>0?'bad':'')+cell(S.net,f(s-tax))+(note?`<div class="tcn">${note}</div>`:'') }
+  box.addEventListener('input',run); run();
+})();

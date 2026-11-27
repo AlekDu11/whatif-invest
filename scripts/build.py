@@ -68,6 +68,7 @@ from i18n_mkt import MKT, LEAD as MLEAD, FG as MFG, CALC as MCALC  # noqa: E402
 from i18n_st import ST as STX  # noqa: E402
 from i18n_xc2 import XC2  # noqa: E402
 from i18n_bonus import BON, BON_LANGS, BONX  # noqa: E402
+from i18n_tax import TAX  # noqa: E402
 from i18n_ua import UA_LANGS, UA_ASOF, OB, OBI, OBT, UA_SRC, BUYG, BUYG_SRC, OVP, OB_GO, INZ  # noqa: E402
 from i18n_bpd import BPD, IDEA as BP_IDEA  # noqa: E402
 from i18n_cmd import CMD, NAMES as CMD_NAMES, NOTE as CMD_NOTE, AB as AUTO_AB, CH as OWN_CH, CH2 as OWN_CH2  # noqa: E402
@@ -93,7 +94,7 @@ OG_LANGS = {f[:-4] for f in os.listdir(os.path.join(ROOT, 'src', 'og')) if f.end
 END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
-RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide', 'commodities', 'widgets', 'embed', 'dividends', 'average-price', 'ovdp', 'largest-companies', 'crypto-exchanges', 'partners', 'buy-stocks-ukraine', 'calculators', 'investors', 'watchlist', 'read', 'deposits-ukraine', 'bonuses'}
+RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide', 'commodities', 'widgets', 'embed', 'dividends', 'average-price', 'ovdp', 'largest-companies', 'crypto-exchanges', 'partners', 'buy-stocks-ukraine', 'calculators', 'investors', 'watchlist', 'read', 'deposits-ukraine', 'bonuses', 'taxes'}
 RESERVED |= {v[0] for v in MKTS.values()} | {'learn', 'earnings-calendar', 'world-assets', 'activities', 'editorial-policy', 'about', 'portfolios', 'privacy', 'terms', 'categories'}
 # asset ids that clash with a language folder or a section get a suffix (ko -> ko-stock, fil -> fil-crypto)
 _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
@@ -255,6 +256,11 @@ def has_page(lang, aid):
         return lang in UA_LANGS
     if aid == 'bonuses':
         return lang in BON_LANGS and bool(BONUS.get('countries'))
+    if aid == 'taxes':
+        return lang in TAX and any(lang in c['langs'] for c in TAXD.values())
+    if (aid or '').startswith('taxes/'):
+        c = TAXD.get(aid[6:])
+        return bool(c) and lang in TAX and lang in c['langs']
     if '/' in (aid or '') and aid.rsplit('/', 1)[1] in SM_KINDS:
         return lang in SM_LANGS and sm_ok(aid.rsplit('/', 1)[0], aid.rsplit('/', 1)[1])
     if aid == 'investors':
@@ -1116,6 +1122,64 @@ try:
     BONUS = json.load(open(os.path.join(ROOT, 'data', 'bonuses.json'), encoding='utf-8'))
 except (OSError, ValueError):
     BONUS = {}
+
+
+def _tax_rate(r, lang):
+    p = f'{r["rate"] * 100:.3f}'.rstrip('0').rstrip('.')
+    return ('14–45%' if r.get('rate_user') else p + '%')
+
+
+def _tax_free(r, t):
+    return f'{r["hold_free_m"]} {t["months"]}' if r.get('hold_free_m') else t['never']
+
+
+def taxes_hub(lang, ver):
+    """/taxes/ — crypto + stock taxes by country (owner 2026-11-27). Data: data/taxes.json, strings: scripts/i18n_tax.py."""
+    t = TAX[lang]
+    L = lambda d: (d or {}).get(lang) or (d or {}).get('en') or ''
+    rows = ''.join(f'<tr><td class="l"><a href="{url(lang, "taxes/" + cc)}">{c["flag"]} {esc(L(c["name"]))}</a></td>'
+                   f'<td class="num">{_tax_rate(c["crypto"], lang)}</td><td class="num">{_tax_rate(c["stock"], lang)}</td>'
+                   f'<td class="num">{_tax_free(c["crypto"], t)}</td><td><a href="{url(lang, "taxes/" + cc)}">{esc(t["open"])} →</a></td></tr>'
+                   for cc, c in sorted(TAXD.items(), key=lambda kv: L(kv[1]['name'])) if lang in c['langs'])
+    body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / {esc(t["h1"])}</nav><h1>🧾 {esc(t["h1"])}</h1><p class="lead">{esc(t["hub_lead"])}</p>'
+            f'<section class="section"><div class="tw"><table class="mt"><thead><tr><th class="l">{esc(t["country"])}</th><th class="num">{esc(t["crypto"])}</th><th class="num">{esc(t["stock"])}</th>'
+            f'<th class="num">{esc(t["free"])}</th><th></th></tr></thead><tbody>{rows}</tbody></table></div></section><p class="muted">{esc(t["note"])}</p>')
+    return shell(lang, 'taxes', t['hub_t'].format(y=UPDATED[:4]) + ' | ' + BRAND, t['hub_d'], body, {}, ver)
+
+
+def taxes_page(lang, cc, ver):
+    """/taxes/<cc>/ — rules + calculator (app.js «tax calculator» reads data-r)."""
+    t, c = TAX[lang], TAXD[cc]
+    L = lambda d: (d or {}).get(lang) or (d or {}).get('en') or ''
+    nm = L(c['name'])
+    st = f'<p class="taxst">⚠️ {esc(L(c["status"]))}</p>' if c.get('status') else ''
+    R = {k: {x: c[k].get(x) for x in ('rate', 'rate_user', 'hold_free_m', 'allow', 'allow_kind')} for k in ('crypto', 'stock')}
+    S = {k: t[k] for k in ('profit', 'tax', 'net', 'loss', 'freeby', 'under', 'deduct')}
+    calc = (f'<section class="section card taxcalc" id="taxcalc" data-r="{esc(json.dumps(R))}" data-s="{esc(json.dumps(S, ensure_ascii=False))}" data-cur="{esc(c["cur"])}">'
+            f'<h2>🧮 {esc(t["calc"])}</h2><div class="tcg"><label>{esc(t["kind"])}<select id="tck"><option value="crypto">{esc(t["crypto"])}</option><option value="stock">{esc(t["stock"])}</option></select></label>'
+            f'<label>{esc(t["buy"])}, {esc(c["cur"])}<input id="tcb" type="number" min="0" step="any" value="1000" inputmode="decimal"></label>'
+            f'<label>{esc(t["sell"])}, {esc(c["cur"])}<input id="tcs" type="number" min="0" step="any" value="1500" inputmode="decimal"></label>'
+            f'<label>{esc(t["held"])}<input id="tcm" type="number" min="0" step="1" value="6" inputmode="numeric"></label>'
+            f'<label id="tcrw" hidden>{esc(t["rate"])}<input id="tcr" type="number" min="0" max="60" step="0.5" inputmode="decimal"></label></div>'
+            f'<div class="tco" id="tco" aria-live="polite"></div></section>')
+    def block(k):
+        r = c[k]
+        return (f'<section class="section card"><h2>{"🪙" if k == "crypto" else "📈"} {esc(t[k])}: {_tax_rate(r, lang)}</h2>'
+                f'<ul>{"".join(f"<li>{esc(p)}</li>" for p in L(r.get("points")) or [])}</ul></section>')
+    src = ''.join(f'<li><a href="{esc(u)}" target="_blank" rel="noopener">{esc(x)}</a></li>' for x, u in c.get('src', []))
+    others = ' · '.join(f'<a href="{url(lang, "taxes/" + k)}">{v["flag"]} {esc(L(v["name"]))}</a>' for k, v in TAXD.items() if k != cc and lang in v['langs'])
+    dmy = '.'.join(reversed(c['checked'].split('-')))
+    body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / <a href="{url(lang, "taxes")}">{esc(t["h1"])}</a> / {esc(nm)}</nav>'
+            f'<h1>{c["flag"]} {esc(t["h"].format(c=nm))}</h1><p class="lead">{esc(t["lead"].format(c=nm))}</p>{st}{calc}{block("crypto")}{block("stock")}'
+            f'<section class="section card"><h2>📅 {esc(t["deadline"])}</h2><p>{esc(L(c.get("deadline")))}</p></section>'
+            f'<section class="section card"><h2>{esc(t["src"])}</h2><ul>{src}</ul><p class="muted">{esc(t["checked"])}: {dmy}</p></section>'
+            + (f'<p>{esc(t["other"])}: {others}</p>' if others else '') + f'<p class="muted">{esc(t["note"])}</p>')
+    css = ('<style>.taxst{border:1px solid #f5a52466;background:#f5a5240f;border-radius:12px;padding:10px 14px}.tcg{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}'
+           '.tcg label{display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--muted)}.tcg input,.tcg select{font:inherit;font-size:16px;padding:10px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--text)}'
+           '.tco{margin-top:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}.tco div{border:1px solid var(--line);border-radius:12px;padding:10px 12px}.tco small{display:block;color:var(--muted)}'
+           '.tco b{font-size:20px}.tco .tcn{grid-column:1/-1;border:0;padding:0;color:var(--muted);font-size:14px}</style>')
+    title = t['t'].format(c=nm, y=UPDATED[:4]) + ' | ' + BRAND
+    return shell(lang, 'taxes/' + cc, title, t['d'].format(c=nm, cr=_tax_rate(c['crypto'], lang), st=_tax_rate(c['stock'], lang)), css + body, {}, ver)
 
 
 def bonuses_page(lang, ver):
@@ -2464,6 +2528,7 @@ def lc_pages(lang, ver):
 
 
 XCH = _jload('exchanges.json') or {}
+TAXD = (_jload('taxes.json') or {}).get('countries', {})   # crypto + stock taxes by country (owner 2026-11-27)
 XC_PARTNER = {'binance': 'binance', 'okx': 'okx', 'kucoin': 'kucoin', 'bybit': 'bybit', 'gate': 'gate', 'bingx': 'bingx', 'mexc': 'mexc', 'kraken': 'kraken', 'hyperliquid': 'hyperliquid'}
 
 
@@ -3591,6 +3656,8 @@ def calc_hub_items(lang):
            ('compare', '⇅', TR[lang]['nav_cmp']), ('converter', '🔁', HCONV[lang])]
     if lang in OV:
         it.append(('ovdp', '🏛️', OV[lang]['nav']))
+    if lang in TAX:
+        it.append(('taxes', '🧾', TAX[lang]['h1']))
     it.append(('widgets', '🧩', EMB[lang]['nav']))
     return [x for x in it if has_page(lang, x[0])]
 
@@ -5567,6 +5634,13 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
         if has_page(lang, 'bonuses'):
             write(pre + 'bonuses/index.html', bonuses_page(lang, ver))
             extra_pages.append('bonuses')
+        if has_page(lang, 'taxes'):
+            write(pre + 'taxes/index.html', taxes_hub(lang, ver))
+            extra_pages.append('taxes')
+            for _cc in TAXD:
+                if has_page(lang, 'taxes/' + _cc):
+                    write(f'{pre}taxes/{_cc}/index.html', taxes_page(lang, _cc, ver))
+                    extra_pages.append('taxes/' + _cc)
         write(pre + 'widgets/index.html', widgets_page(lang, ver))
         if CPI['c']:
             write(pre + 'inflation/index.html', inflation_page(lang, ver))
@@ -5661,7 +5735,7 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
         for p in pages:
             full = p in A and (PROFILES.get(lang, {}).get(p) or {}).get('kind') == 'analysis' and page_ok(p, lang)
             big = p in A and p in TOPSET and page_ok(p, lang)
-            if full or big or (isinstance(p, str) and p.startswith(('blog/', 'news/'))) or p in (None, 'crypto', 'stocks', 'largest-companies', 'learn', 'guide', 'memes', 'bonuses', 'categories', 'investors'):
+            if full or big or (isinstance(p, str) and p.startswith(('blog/', 'news/'))) or p in (None, 'crypto', 'stocks', 'largest-companies', 'learn', 'guide', 'memes', 'bonuses', 'categories', 'investors', 'taxes') or (isinstance(p, str) and p.startswith('taxes/')):
                 top.append(f'<url><loc>{SITE + url(lang, p)}</loc><lastmod>{lastmod(lang, p)}</lastmod></url>')
     write('sitemap-top.xml', '\n'.join(['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'] + top[:45000] + ['</urlset>']))
     for lang, pages in per_lang.items():
