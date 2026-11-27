@@ -23,7 +23,7 @@ The hub /learn/ lists them by track and step; each lesson links to the next one.
 
 ## safety — Safety
 1. ✅ 2026-11-27 (seed-phrase-safety-rules, all 20 languages; front matter step: 9 so it sorts after crypto step 8 in the crypto folder — next safety lessons use step 10, 11…) Seed phrase: what it is and the 5 rules to keep it safe
-2. Two-factor authentication (2FA): how to turn it on, why SMS is weaker
+2. ✅ 2026-11-27 (two-factor-authentication-2fa, all 20 languages; step: 10) Two-factor authentication (2FA): how to turn it on, why SMS is weaker
 3. The most common crypto scams (fake support, giveaways, «investment managers», fake apps)
 4. Exchange vs your own wallet: who controls your coins
 5. What to do if you were scammed (first hour checklist)
@@ -53,7 +53,7 @@ The hub /learn/ lists them by track and step; each lesson links to the next one.
 14. ✅ 2026-11-26 (trump-melania-memecoins-story, all 20 languages) Story: TRUMP and MELANIA — what happened to buyers of political memecoins
 15. ✅ 2026-11-26 (how-binance-alpha-works, all 20 languages) How Binance Alpha works and why a listing there moves memecoins (link {lang}/memes/ «Just listed» block)
 16. ✅ 2026-11-27 (snipers-bundlers-dev-wallets, all 20 languages) Snipers, bundlers and dev wallets: how insiders profit at launch and how to spot them (link {lang}/memes/glossary/)
-17. Why most memecoin buyers lose money: the maths of launches, slippage and fees (use the launch pulse on {lang}/memes/)
+17. ✅ 2026-11-27 (why-most-memecoin-buyers-lose-money, all 20 languages; launch pulse was removed from /memes/, so the lesson links {lang}/memes/ and the fee/slippage maths) Why most memecoin buyers lose money: the maths of launches, slippage and fees (use the launch pulse on {lang}/memes/)
 
 ## memes — recurring (owner 2026-11-23)
 - GLOSSARY: data/glossary/en.json is the memecoin glossary (/memes/glossary/). Every run, translate it into 2 languages that do not have data/glossary/<lang>.json yet (same ids and order; natural native phrasing; keep terms like «rug pull» in Latin script where locals use them, explain them). Done: uk ru es pt (2026-11-23), de fr (2026-11-24), it pl (2026-11-24), tr nl (2026-11-24), id vi (2026-11-24), th hi (2026-11-25), ja ko (2026-11-25), zh ar (2026-11-26), fil (2026-11-26) — all 20 languages done. A language without its own file shows English with noindex, so each translation makes a new indexable page.
