@@ -1,6 +1,6 @@
 {
  "_doc": "Sign-up / invite-a-friend bonuses by country (owner 2026-11-25: «honest, sorted by country; the list will grow»). Each item: id, go (/go/<id> partner id or null), url (official page when go is null), kind (bank|invest|crypto), v (value for sorting, in the country currency; 0 = unknown), cur, until (YYYY-MM-DD or null), you/friend/need/cash = text per language, src = [title, url] official first, checked = date the terms were last checked. Never invent terms; when a term is unknown say so in the text. Country banner (owner 2026-11-26): «tz» = browser time zones of that country, «feat» = id of the item shown instead of the Telegram Wallet offer card on home + crypto pages for visitors from that country; the item needs «banner» texts per language (t, d, cta, note); it hides itself after «until». «exchanges» (owner 2026-11-26, Crypto-Bubbles-style «Exclusive offers»): crypto exchange welcome rewards shown in the header 🎁 popup, the partner strip under the header and on /bonuses/; «max» only when the exchange's own site states the «up to» figure (else null), «hot» = featured.",
- "asof": "2026-11-26",
+ "asof": "2026-11-27",
  "countries": {
   "ua": {
    "flag": "🇺🇦",
@@ -259,6 +259,232 @@
      ],
      "c": "#229ED9",
      "a": "W"
+    }
+   ]
+  },
+  "in": {
+   "flag": "🇮🇳",
+   "name": {
+    "en": "India",
+    "hi": "भारत"
+   },
+   "tz": [
+    "Asia/Kolkata",
+    "Asia/Calcutta"
+   ],
+   "feat": "binance-in",
+   "items": [
+    {
+     "id": "binance-in",
+     "go": "binance",
+     "kind": "crypto",
+     "v": 0,
+     "cur": "₹",
+     "until": null,
+     "checked": "2026-11-27",
+     "name": "Binance (Referral Lite)",
+     "you": {
+      "en": "Trading-fee rebate vouchers worth up to $100 for buying more than $50 of crypto, and up to $1,000 more for over $100 of Spot or Convert trades (Binance's own «up to» figures)",
+      "hi": "$50 से ज़्यादा की क्रिप्टो ख़रीदने पर $100 तक के ट्रेडिंग-फ़ीस रिबेट वाउचर, और $100 से ज़्यादा के Spot या Convert ट्रेड पर $1,000 तक और (Binance के अपने «तक» वाले आँकड़े)"
+     },
+     "friend": {
+      "en": "The person who invited you gets vouchers too once you complete both tasks",
+      "hi": "दोनों काम पूरे होने पर बुलाने वाले को भी वाउचर मिलते हैं"
+     },
+     "need": {
+      "en": "Sign up with a referral link, complete KYC (PAN + Aadhaar) and finish both tasks within 14 days. Deposit, card or P2P purchases count",
+      "hi": "रेफ़रल लिंक से साइन-अप, KYC (PAN + आधार) और 14 दिन के अंदर दोनों काम। डिपॉज़िट, कार्ड या P2P से ख़रीद गिनी जाती है"
+     },
+     "cash": {
+      "en": "No: these are vouchers that cut trading fees, must be redeemed within 7 days and expire 14 days after activation. You spend your own money on the trades",
+      "hi": "नहीं: ये ट्रेडिंग फ़ीस घटाने वाले वाउचर हैं, 7 दिन में रिडीम करने होते हैं और एक्टिवेशन के 14 दिन बाद ख़त्म हो जाते हैं। ट्रेड में पैसा आपका अपना लगता है"
+     },
+     "src": [
+      [
+       "Binance — Referral Lite FAQ",
+       "https://www.binance.com/en/support/faq/5e284447daa34a338a968d64f7023c73"
+      ],
+      [
+       "FIU-IND — Binance order (registration, penalty)",
+       "https://fiuindia.gov.in/pdfs/judgements/Binance_Order_10_2024.pdf"
+      ]
+     ],
+     "banner": {
+      "en": {
+       "t": "Binance: fee vouchers for new users in India",
+       "d": "FIU-IND registered exchange. Buy $50+ of crypto and trade $100+ within 14 days of sign-up to unlock trading-fee rebate vouchers.",
+       "cta": "See the terms",
+       "note": "Partner link. Vouchers, not cash; amounts are «up to» and set by Binance. Crypto is risky and gains are taxed at 30%."
+      },
+      "hi": {
+       "t": "Binance: भारत में नए यूज़र्स के लिए फ़ीस वाउचर",
+       "d": "FIU-IND रजिस्टर्ड एक्सचेंज। साइन-अप के 14 दिन में $50+ की क्रिप्टो ख़रीदें और $100+ ट्रेड करें, तो ट्रेडिंग-फ़ीस रिबेट वाउचर मिलते हैं।",
+       "cta": "शर्तें देखें",
+       "note": "पार्टनर लिंक। वाउचर नकद नहीं हैं; रकम «तक» है और Binance तय करता है। क्रिप्टो जोखिम भरा है, मुनाफ़े पर 30% टैक्स।"
+      }
+     },
+     "c": "#f0b90b",
+     "a": "B"
+    },
+    {
+     "id": "angelone",
+     "go": null,
+     "url": "https://www.angelone.in/ppc/refer-a-friend-new",
+     "kind": "invest",
+     "v": 500,
+     "cur": "₹",
+     "until": null,
+     "checked": "2026-11-27",
+     "name": "Angel One",
+     "you": {
+      "en": "Brokerage reversal of up to ₹500 in your first 30 days, plus MTF interest reversal of up to ₹500 for 30 days",
+      "hi": "पहले 30 दिनों में ₹500 तक की ब्रोकरेज वापसी, साथ में 30 दिन तक ₹500 तक के MTF ब्याज की वापसी"
+     },
+     "friend": {
+      "en": "A ₹250 voucher for the person who referred you once you open an account and trade within 60 days. Unlimited referrals",
+      "hi": "खाता खोलकर 60 दिन में ट्रेड करने पर बुलाने वाले को ₹250 का वाउचर। रेफ़रल की कोई सीमा नहीं"
+     },
+     "need": {
+      "en": "New customers only: enter the referral code when opening the account and log in to the app within 7 days of activation",
+      "hi": "सिर्फ़ नए ग्राहक: खाता खोलते समय रेफ़रल कोड डालें और एक्टिवेशन के 7 दिन में ऐप में लॉग-इन करें"
+     },
+     "cash": {
+      "en": "Partly: the brokerage refund is credited to your trading ledger, the referrer's reward is a voucher. After 30 days the standard 18% p.a. MTF rate applies",
+      "hi": "आंशिक रूप से: ब्रोकरेज वापसी ट्रेडिंग लेजर में आती है, बुलाने वाले को वाउचर मिलता है। 30 दिन बाद MTF पर सामान्य 18% सालाना ब्याज"
+     },
+     "src": [
+      [
+       "Angel One — Refer a friend",
+       "https://www.angelone.in/ppc/refer-a-friend-new"
+      ]
+     ],
+     "c": "#1b4bd8",
+     "a": "A"
+    },
+    {
+     "id": "zebpay",
+     "go": null,
+     "url": "https://zebpayhelp.freshdesk.com/support/solutions/articles/44002570538-refer-earn-invite-friends-unlock-rewards-",
+     "kind": "crypto",
+     "v": 0,
+     "cur": "₹",
+     "until": null,
+     "checked": "2026-11-27",
+     "name": "ZebPay",
+     "you": {
+      "en": "10% off trading fees on your first trade above ₹5,000",
+      "hi": "₹5,000 से ज़्यादा के पहले ट्रेड पर ट्रेडिंग फ़ीस में 10% छूट"
+     },
+     "friend": {
+      "en": "The referrer gets 5–50% of your fees on your first 3 trades (50% above ₹50,000), capped at ₹14,500 or 150 USDT a financial year",
+      "hi": "बुलाने वाले को आपके पहले 3 ट्रेड की फ़ीस का 5–50% (₹50,000 से ऊपर 50%), सीमा ₹14,500 या 150 USDT प्रति वित्त वर्ष"
+     },
+     "need": {
+      "en": "Sign up with a referral link, complete KYC and trade on QuickTrade or Exchange. The referral lasts 1 year or 3 trades",
+      "hi": "रेफ़रल लिंक से साइन-अप, KYC और QuickTrade या Exchange पर ट्रेड। रेफ़रल 1 साल या 3 ट्रेड तक चलता है"
+     },
+     "cash": {
+      "en": "No: it's a fee discount; the referrer's reward stays in the ZebPay wallet and can't be withdrawn to a bank",
+      "hi": "नहीं: यह फ़ीस में छूट है; बुलाने वाले का इनाम ZebPay वॉलेट में रहता है, बैंक में नहीं निकाल सकते"
+     },
+     "src": [
+      [
+       "ZebPay — Refer & Earn",
+       "https://zebpayhelp.freshdesk.com/support/solutions/articles/44002570538-refer-earn-invite-friends-unlock-rewards-"
+      ]
+     ],
+     "c": "#2c4bff",
+     "a": "Z"
+    }
+   ]
+  },
+  "jp": {
+   "flag": "🇯🇵",
+   "name": {
+    "en": "Japan",
+    "ja": "日本"
+   },
+   "tz": [
+    "Asia/Tokyo"
+   ],
+   "items": [
+    {
+     "id": "bitflyer",
+     "go": null,
+     "url": "https://bitflyer.com/ja-jp/static/referralprogram",
+     "kind": "crypto",
+     "v": 1500,
+     "cur": "¥",
+     "until": null,
+     "checked": "2026-11-27",
+     "name": "bitFlyer",
+     "you": {
+      "en": "¥1,500 worth of Bitcoin when you open an account via an invite",
+      "ja": "招待経由で口座を開設すると1,500円相当のビットコイン"
+     },
+     "friend": {
+      "en": "¥1,500 worth of Bitcoin for the person who invited you. No invite limit",
+      "ja": "招待した人にも1,500円相当のビットコイン。招待人数の上限なし"
+     },
+     "need": {
+      "en": "Japan residents, individuals, new to bitFlyer: sign up through the invite URL in the iOS/Android app (web sign-up doesn't count) and finish KYC within 90 days. No deposit or trade needed",
+      "ja": "日本居住の個人で新規の方：iOS/Androidアプリで招待URLから登録し（ウェブ登録は対象外）、90日以内に本人確認を完了。入金・取引は不要"
+     },
+     "cash": {
+      "en": "Paid in BTC within 24 h of KYC, not in yen. Selling it later counts as taxable income",
+      "ja": "本人確認から24時間以内にBTCで付与（円ではありません）。売却時は課税対象になります"
+     },
+     "src": [
+      [
+       "bitFlyer — 招待プログラム",
+       "https://bitflyer.com/ja-jp/static/referralprogram"
+      ],
+      [
+       "bitFlyer — FAQ",
+       "https://bitflyer.com/ja-jp/faq/referral"
+      ]
+     ],
+     "c": "#0a3c8c",
+     "a": "b"
+    },
+    {
+     "id": "bitbank",
+     "go": null,
+     "url": "https://bitbank.cc/campaign/first-deposit/",
+     "kind": "crypto",
+     "v": 1000,
+     "cur": "¥",
+     "until": null,
+     "checked": "2026-11-27",
+     "name": "bitbank",
+     "you": {
+      "en": "¥1,000 in cash after your first yen deposit of ¥10,000 or more («first deposit programme»)",
+      "ja": "初回1万円以上の日本円入金で現金1,000円（「はじめてのご入金プログラム」）"
+     },
+     "friend": {
+      "en": "No reward for a referrer: it's a welcome offer, not an invite programme",
+      "ja": "紹介者への特典はありません（招待ではなく新規向けの特典）"
+     },
+     "need": {
+      "en": "Enter on the programme page first, then make the first deposit. Accounts that already deposited are excluded; check the current deadline rules on bitbank's page",
+      "ja": "先にプログラムページでエントリーし、その後に初回入金。入金済みの口座は対象外。期限などの条件はbitbankのページで最新情報を確認"
+     },
+     "cash": {
+      "en": "Yes, credited as yen. Needs your own ¥10,000, which stays yours",
+      "ja": "はい、日本円で付与。自己資金1万円が必要（入金したお金はそのまま自分のもの）"
+     },
+     "src": [
+      [
+       "bitbank — はじめてのご入金プログラム",
+       "https://bitbank.cc/campaign/first-deposit/"
+      ],
+      [
+       "bitbank — お知らせ（常設化）",
+       "https://bitbank.cc/blog/articles/499667945"
+      ]
+     ],
+     "c": "#d6283b",
+     "a": "b"
     }
    ]
   }
