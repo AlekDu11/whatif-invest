@@ -5770,6 +5770,40 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
              'Diffbot', 'ImagesiftBot', 'Omgilibot', 'PetalBot', 'SERankingBacklinksBot', 'SE Ranking',
              'AhrefsBot', 'SemrushBot', 'MJ12bot', 'DotBot', 'DataForSeoBot', 'BLEXBot']
     nob = ''.join(f'User-agent: {b}\n' for b in NOBOT) + 'Disallow: /\n\n'
+    # llms.txt (owner 2026-11-28): a short map of the site for AI assistants and agents (llmstxt.org format)
+    nc = sum(1 for a in A.values() if a['cat'] == 'crypto'); ns = sum(1 for a in A.values() if a['cat'] == 'stock')
+    taxl = ', '.join(f'[{c["name"]["en"]}]({SITE}{url("en", "taxes/" + k)})' for k, c in TAXD.items())
+    write('llms.txt', f"""# WhatIfStack
+
+> Markets in plain language with real numbers: live prices, charts, key numbers and plain-language analyses for {nc:,} cryptocurrencies, {ns:,} stocks, ETFs, metals and commodities, in 20 languages. Data from exchanges and Yahoo Finance, updated daily (prices live in the browser). Not investment advice.
+
+Every asset has its own page: {SITE}/en/<id>/ (e.g. {SITE}/en/btc/, {SITE}/en/aapl/), Ukrainian at {SITE}/<id>/, other languages at {SITE}/<lang>/<id>/ (es pt de fr it pl tr nl ru id vi th hi ja ko zh ar fil). Pages show price, chart, market cap, 1/5/10-year returns, a «$10 a day» (DCA) calculator, description and — for the biggest assets — a full analysis with sources.
+
+## Markets
+- [Cryptocurrencies by market cap]({SITE}/en/crypto/): live table, 24h/7d, volume
+- [Stocks]({SITE}/en/stocks/) and [largest companies in the world]({SITE}/en/largest-companies/): by market cap, revenue, earnings, employees; 49 country rankings
+- [Crypto exchanges]({SITE}/en/crypto-exchanges/): ranking, volumes, proof of reserves
+- [Gainers and losers]({SITE}/en/crypto/gainers-losers/)
+- [Memecoins on DEX]({SITE}/en/memes/) with safety checks
+
+## Tools
+- [Compare any assets]({SITE}/en/compare/): «what if I had invested» across crypto, stocks and gold
+- [Calculators]({SITE}/en/calculators/): compound interest, inflation, average price, dividends, converter
+- [Crypto and stock taxes by country]({SITE}/en/taxes/) with a tax calculator: {taxl}
+- [Famous investors' portfolios]({SITE}/en/investors/) from SEC 13F filings
+- [Portfolio and watchlist]({SITE}/en/me/): free, no sign-up
+
+## Learn and news
+- [News]({SITE}/en/news/): short original briefs, «why is X up/down today»
+- [Analysis and guides]({SITE}/en/blog/): market wraps, «how to buy bitcoin in <country>», deep-dives
+- [Learn]({SITE}/en/learn/): step-by-step lessons for beginners
+- [Beginner's guide to the site]({SITE}/en/guide/)
+
+## About
+- [About and methodology]({SITE}/en/about/), [editorial policy]({SITE}/en/editorial-policy/)
+- Sitemaps: {SITE}/sitemap.xml, news: {SITE}/sitemap-news.xml
+- Contact: support@whatifstack.com
+""")
     write('robots.txt', nob + f'User-agent: *\nAllow: /\nDisallow: /go/\nDisallow: /api/\nDisallow: /stats\nSitemap: {SITE}{BASE}/sitemap.xml\nSitemap: {SITE}{BASE}/sitemap-news.xml\n')
     total = sum(len(p) for p in per_lang.values())
     print(f"built {total} pages in {len(ORDER)} languages · {len(A)} assets · data {UPDATED}")
