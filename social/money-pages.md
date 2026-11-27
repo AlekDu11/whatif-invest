@@ -32,6 +32,16 @@ Phase 1 — Bitcoin, queue (top to bottom; country: languages):
 
 Phase 2 (after phase 1): «how to buy USDT in <country>» → «best crypto exchange in <country>» → «how to buy Apple/Tesla stock from <country>» → «best broker in <country>».
 
+## Offer guides (owner 2026-11-27: «articles on our partner offers that rank in Google — that is where the first money comes from»)
+Written by the same task on EVEN days of the month (odd days = country pages above). One guide per run, in the languages listed. Honest how-to that answers the search query first; the partner is one clear option, never the only one; {{offer:<bonus item id>}} box where the offer is in data/bonuses.json; real fees/limits from official pages with the date checked.
+- [ ] TransferGo — how to send money from Poland to Ukraine (uk, ru): slug send-money-from-poland-to-ukraine — compare TransferGo, Wise, bank transfer, Western Union (fees + rate on a checked date), {{offer:transfergo}}, promo WhatIfStack1
+- [ ] TransferGo — how to send money from Germany to Ukraine (uk, ru): send-money-from-germany-to-ukraine
+- [ ] Crypto exchange sign-up bonuses explained honestly (uk, ru, en): crypto-exchange-sign-up-bonuses — what «up to 10,000 USDT» really means, tasks, risks; links /bonuses/ and our partner exchanges
+- [ ] Polymarket explained: how prediction markets work (en first, then es, pt, de… ONLY languages/countries where Polymarket is legally available — check its restricted-countries list and local regulators; where blocked, no partner link and say so): what-is-polymarket — 18+, risk of loss, not betting advice
+- [ ] Telegram Wallet: how to buy crypto inside Telegram (uk, ru, en): buy-crypto-in-telegram-wallet — {{offer:tgwallet}}
+- [ ] TransferGo — Czechia/Italy/Spain → Ukraine (uk, ru), one per run
+- [ ] Freedom24 — how to buy US stocks from Europe (uk, ru, en)
+
 ## Log
 | date | country | languages | slugs | notes |
 |---|---|---|---|---|
