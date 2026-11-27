@@ -2464,7 +2464,7 @@ def lc_pages(lang, ver):
 
 
 XCH = _jload('exchanges.json') or {}
-XC_PARTNER = {'binance': 'binance', 'okx': 'okx', 'bybit': 'bybit', 'gate': 'gate', 'bingx': 'bingx', 'mexc': 'mexc', 'kraken': 'kraken', 'hyperliquid': 'hyperliquid'}
+XC_PARTNER = {'binance': 'binance', 'okx': 'okx', 'kucoin': 'kucoin', 'bybit': 'bybit', 'gate': 'gate', 'bingx': 'bingx', 'mexc': 'mexc', 'kraken': 'kraken', 'hyperliquid': 'hyperliquid'}
 
 
 def xc_partner(name):
@@ -3844,7 +3844,8 @@ PARTNERS = {   # (name, /go/ id, tags, colour); real referral URLs are in api/_p
             ('Kraken', 'kraken', 'Spot · Stocks · Staking · US, UK & EU', '#7132F5'),
             ('Gate', 'gate', 'Spot · Futures · Altcoins', '#2354E6'),
             ('BingX', 'bingx', 'Spot · Futures · Copy trading', '#2A5BFF'),
-            ('MEXC', 'mexc', 'Spot · Futures · New listings', '#1972E2')],
+            ('MEXC', 'mexc', 'Spot · Futures · New listings', '#1972E2'),
+            ('KuCoin', 'kucoin', 'Spot · Futures · Trading bots · Earn', '#23AF91')],
     'dex': [('OKX Wallet', 'okx-wallet', 'Multichain wallet · DEX swaps', '#000000'),
             ('Hyperliquid', 'hyperliquid', 'On-chain perpetuals · Order book', '#0F3B36'),
             ('GMGN', 'gmgn', 'Memecoin trading · Wallet tracking', '#18C46B'),
@@ -3858,7 +3859,7 @@ BRK_H = {'uk': 'Брокер для акцій і ETF', 'en': 'Broker for stocks
          'vi': 'Môi giới cổ phiếu và ETF', 'th': 'โบรกเกอร์หุ้นและ ETF', 'hi': 'शेयर और ETF के लिए ब्रोकर', 'ja': '株式・ETFの証券会社',
          'ko': '주식·ETF 증권사', 'zh': '股票和 ETF 券商', 'ar': 'وسيط للأسهم وصناديق ETF', 'fil': 'Broker para sa stocks at ETF'}
 POLY = '/go/polymarket'
-XDOM = {'binance': 'binance.com', 'okx': 'okx.com', 'bybit': 'bybit.com', 'gate': 'gate.com', 'bingx': 'bingx.com', 'mexc': 'mexc.com', 'okx-wallet': 'okx.com',
+XDOM = {'binance': 'binance.com', 'okx': 'okx.com', 'kucoin': 'kucoin.com', 'bybit': 'bybit.com', 'gate': 'gate.com', 'bingx': 'bingx.com', 'mexc': 'mexc.com', 'okx-wallet': 'okx.com',
         'hyperliquid': 'hyperliquid.xyz', 'gmgn': 'gmgn.ai', 'freedom24': 'freedom24.com', 'kraken': 'kraken.com', 'fgwallet': 'fgwallet.io', 'tgwallet': 'wallet.tg'}
 
 
@@ -3883,7 +3884,7 @@ def exchanges_page(lang, ver):
                        f'<div><b>{n}</b><small>{t}</small></div><span class="btn">{e["go"]}</span></a>' for n, u, t, c in PARTNERS[k])
     x = EXT[lang]
     FEES = {'binance': ('0.10% / 0.10%', 'Auto-Invest'), 'okx': ('0.08% / 0.10%', 'Recurring Buy'), 'bybit': ('0.10% / 0.10%', 'Auto-Invest'), 'kraken': ('0.40% / 0.80%', 'Recurring Buy (1%)'), 'gate': ('0.10–0.20%', 'Auto-Invest'),
-            'bingx': ('0.10% / 0.10%', 'Recurring Buy'), 'mexc': ('0% / 0.05%', 'Spot DCA')}
+            'bingx': ('0.10% / 0.10%', 'Recurring Buy'), 'mexc': ('0% / 0.05%', 'Spot DCA'), 'kucoin': ('0.10% / 0.10%', 'Auto-Invest')}
     trows = ''.join(f'<tr><td class="l">{xlogo(u, n, c, "xl sm")}<b>{n}</b></td><td class="num">{FEES[u][0]}</td>'
                     f'<td>✓ {FEES[u][1]}</td><td class="hide-sm muted">{t}</td>'
                     f'<td><a class="btn" href="/go/{u}?from=exchanges-table&l={lang}" target="_blank" rel="sponsored nofollow noopener">{e["go"]}</a></td></tr>'

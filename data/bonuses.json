@@ -825,6 +825,32 @@
     ]
    ],
    "logo": "/assets/xlogo/bingx.webp"
+  },
+  {
+   "id": "kucoin",
+   "go": "kucoin",
+   "name": "KuCoin",
+   "max": 11000,
+   "checked": "2026-11-27",
+   "logo": "/assets/xlogo/kucoin.webp",
+   "line": {
+    "uk": "Бонуси новачкам за завдання: USDT, купони й пробні кошти на ф'ючерси",
+    "ru": "Бонусы новичкам за задания: USDT, купоны и пробные средства на фьючерсы",
+    "en": "New-user tasks: USDT, coupons and futures trial funds",
+    "es": "Tareas para nuevos usuarios: USDT, cupones y fondos de prueba de futuros",
+    "pt": "Tarefas para novatos: USDT, cupons e fundos de teste de futuros",
+    "de": "Neukunden-Aufgaben: USDT, Gutscheine und Futures-Testguthaben",
+    "fr": "Missions nouveaux : USDT, coupons et fonds d'essai futures",
+    "it": "Missioni per nuovi utenti: USDT, buoni e fondi di prova futures",
+    "pl": "Zadania dla nowych: USDT, kupony i środki testowe na kontrakty",
+    "tr": "Yeni kullanıcı görevleri: USDT, kupon ve vadeli deneme fonu"
+   },
+   "src": [
+    [
+     "KuCoin — KuRewards: Newcomer Bonus up to 11,000 USDT",
+     "https://www.kucoin.com/platform/KuRewards"
+    ]
+   ]
   }
  ]
 }
