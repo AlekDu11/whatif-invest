@@ -47,6 +47,7 @@ from i18n_calc2 import DV, AV, OV  # noqa: E402
 from i18n_ap import AP  # noqa: E402
 from i18n_home2 import HM  # noqa: E402
 from i18n_ks import KS, SECT  # noqa: E402
+from i18n_lcx import LCX  # noqa: E402
 from i18n_offer import OFFER_TGW  # noqa: E402
 from i18n_lc import LC, LC_CT  # noqa: E402
 from i18n_mem6 import MEM6  # noqa: E402
@@ -2503,15 +2504,41 @@ def lc_page(lang, tab='mcap', mkt=None, ver=None, pg=1):
     if mkt is not None and lang in LC_CT:  # country pages: search-shaped title + country-specific description (growth 2026-11-23)
         ttl = LC_CT[lang][0].format(c=cn, y=UPDATED[:4])
         desc = LC_CT[lang][1].format(c=cn, n=total, top=('、' if lang in ('ja', 'zh') else ', ').join(nm(A[i], lang) for i in top))[:300]
-    body = (f'<h1>{esc(h1)}</h1><p class="lead">{esc(t["lead"])}</p>'
+    body = (f'<h1>{esc(h1)}</h1><p class="lead">{esc(t["lead"])}</p>{lc_summary(lang, ids) if pg == 1 and tab == "mcap" else ""}'
             f'<div class="cchips lcchips"><b>{esc(t["by"])}:</b>{tabs}</div><div class="cchips lcchips"><b>{esc(t["ctry_h"])}:</b>{ctry}</div>'
             f'<section class="section"><div class="tw"><table class="mt lct"><thead>{th}</thead><tbody>{rows}</tbody></table></div>{pager(lang, path, pg, np_, total)}</section>'
             f'<p class="note">{esc(t["note"])} {UPDATED[:10]}</p>')
     ld = {"@context": "https://schema.org", "@type": "ItemList", "name": h1,
           "itemListElement": [{"@type": "ListItem", "position": k + 1, "name": nm(A[i], 'en'), "url": SITE + aurl(lang, i)} for k, i in enumerate(ids[:20])]}
-    if pg > 1:
-        return paged_path(path, pg), shell(lang, paged_path(path, pg), f'{ttl} — {pg} | {BRAND}', desc, body, {}, ver, [ld])
+    if pg > 1:   # owner 2026-11-28: deeper pages stay open for people and crawl links, but out of the index (near-duplicates)
+        return paged_path(path, pg), shell(lang, paged_path(path, pg), f'{ttl} — {pg} | {BRAND}', desc, body, {}, ver, [ld]).replace(
+            '<link rel="canonical"', '<meta name="robots" content="noindex, follow"><link rel="canonical"', 1)
     return path, shell(lang, path, f'{ttl} | {BRAND}', desc, body, {}, ver, [ld])
+
+
+def lc_summary(lang, ids):
+    """Own text for each ranking (owner 2026-11-28): total value, leader and its share, top sector, best/weakest year in the top 20."""
+    u, tpl = lc_universe(), LCX.get(lang) or LCX['en']
+    if len(ids) < 5:
+        return ''
+    tot = sum(u[i]['mcap'] for i in ids)
+    sec = {}
+    for i in ids:
+        sc = (stock_stats(A[i]) or {}).get('sec')
+        if sc:
+            n_, v_ = sec.get(sc, (0, 0))
+            sec[sc] = (n_ + 1, v_ + u[i]['mcap'])
+    out = [tpl[0].format(n=_num(len(ids), 0), tot=usd_h(tot)),
+           tpl[1].format(a1=esc(nm(A[ids[0]], lang)), v1=usd_h(u[ids[0]]['mcap']), sh=pctu(u[ids[0]]['mcap'] / tot),
+                         a2=esc(nm(A[ids[1]], lang)), v2=usd_h(u[ids[1]]['mcap']), a3=esc(nm(A[ids[2]], lang)), v3=usd_h(u[ids[2]]['mcap']))]
+    if sec:
+        bs = max(sec, key=lambda k: sec[k][1])
+        out.append(tpl[2].format(sec=esc(SECT.get(lang, SECT['en']).get(bs, bs)), ns=_num(sec[bs][0], 0), ssh=pctu(sec[bs][1] / tot)))
+    yc = [(year_chg(i), i) for i in ids[:20] if year_chg(i) is not None]
+    if len(yc) >= 5:
+        (dc, bd), (bc, bu) = min(yc), max(yc)
+        out.append(tpl[3].format(bu=esc(nm(A[bu], lang)), bc=pct(bc), bd=esc(nm(A[bd], lang)), dc=pct(dc)))
+    return f'<p class="lcx">{" ".join(out)}</p>'   # templates are plain trusted text; names escaped below
 
 
 def lc_np(tab, mkt):
@@ -5728,6 +5755,8 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
         small exchanges in the 18 extra languages."""
         if p in A:
             return not p.isascii() and lang not in ('zh', 'ja', 'ko')
+        if isinstance(p, str) and p.startswith('largest-companies/') and p.rsplit('/', 1)[-1].isdigit():
+            return True   # ranking pages 2+ are noindex (owner 2026-11-28)
         if isinstance(p, str) and p.startswith('crypto-exchanges/') and lang not in ('uk', 'en') and XTOP:
             return p.split('/')[1] not in XTOP
         return False
