@@ -1,7 +1,7 @@
 ---
 title: Fidelity dépose un ETF spot Chainlink (FLNK), les fonds bitcoin perdent des capitaux
 description: Fidelity a demandé à la SEC un ETF spot Chainlink FLNK qui détiendra du LINK sans staking, alors que les ETF bitcoin enregistrent des sorties record ce mois-ci.
-date: 2026-11-27 06:30
+date: 2026-11-27 06:26
 tags: etf, regulation, defi
 assets: link, btc, eth
 ---

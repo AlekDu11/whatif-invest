@@ -1,7 +1,7 @@
 ---
 title: Fidelity ने स्पॉट Chainlink ETF (FLNK) के लिए आवेदन किया, Bitcoin फंड्स से पैसा निकल रहा
 description: Fidelity ने SEC के पास FLNK टिकर वाले स्पॉट Chainlink ETF के लिए आवेदन किया है, जो LINK सीधे रखेगा और स्टेकिंग नहीं करेगा, ऐसे महीने में जब Bitcoin ETF से रिकॉर्ड निकासी हुई।
-date: 2026-11-27 06:30
+date: 2026-11-27 06:26
 tags: etf, regulation, defi
 assets: link, btc, eth
 ---

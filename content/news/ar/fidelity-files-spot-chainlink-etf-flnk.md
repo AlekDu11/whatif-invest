@@ -1,7 +1,7 @@
 ---
 title: فيديليتي تتقدم بطلب صندوق ETF فوري لـChainlink (FLNK) مع نزيف صناديق البيتكوين
 description: تقدمت Fidelity إلى هيئة SEC بطلب صندوق ETF فوري لـChainlink برمز FLNK يحتفظ بـLINK مباشرة دون تخزين، في شهر شهد تدفقات خارجة قياسية من صناديق البيتكوين.
-date: 2026-11-27 06:30
+date: 2026-11-27 06:26
 tags: etf, regulation, defi
 assets: link, btc, eth
 ---

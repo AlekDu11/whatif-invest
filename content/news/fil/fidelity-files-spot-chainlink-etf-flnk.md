@@ -1,7 +1,7 @@
 ---
 title: Fidelity, nag-file ng spot Chainlink ETF (FLNK) habang nauubos ang pera sa bitcoin funds
 description: Nag-file ang Fidelity sa SEC ng spot Chainlink ETF na FLNK na direktang hahawak ng LINK nang walang staking, sa buwang may record na outflow sa bitcoin ETF.
-date: 2026-11-27 06:30
+date: 2026-11-27 06:26
 tags: etf, regulation, defi
 assets: link, btc, eth
 ---

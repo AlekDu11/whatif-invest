@@ -1,7 +1,7 @@
 ---
 title: Fidelity beantragt Spot-Chainlink-ETF (FLNK), während Bitcoin-Fonds Geld verlieren
 description: Fidelity beantragt bei der SEC einen Spot-Chainlink-ETF mit Ticker FLNK, der LINK ohne Staking hält – im Monat der Rekordabflüsse aus Bitcoin-ETFs.
-date: 2026-11-27 06:30
+date: 2026-11-27 06:26
 tags: etf, regulation, defi
 assets: link, btc, eth
 ---

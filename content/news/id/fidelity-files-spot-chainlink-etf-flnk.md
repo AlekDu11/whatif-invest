@@ -1,7 +1,7 @@
 ---
 title: Fidelity ajukan ETF spot Chainlink (FLNK) saat dana keluar deras dari ETF bitcoin
 description: Fidelity mengajukan ETF spot Chainlink berkode FLNK ke SEC yang memegang LINK langsung tanpa staking, di bulan dengan arus keluar rekor dari ETF bitcoin.
-date: 2026-11-27 06:30
+date: 2026-11-27 06:26
 tags: etf, regulation, defi
 assets: link, btc, eth
 ---

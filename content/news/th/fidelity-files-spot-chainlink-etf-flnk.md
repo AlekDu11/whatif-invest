@@ -1,7 +1,7 @@
 ---
 title: Fidelity ยื่นขอ ETF Chainlink แบบ Spot (FLNK) ขณะเงินไหลออกจากกองทุน Bitcoin
 description: Fidelity ยื่นเอกสารต่อ SEC ขอเปิด ETF Chainlink แบบ Spot ตัวย่อ FLNK ถือ LINK โดยตรงและไม่ทำ staking ในเดือนที่ ETF Bitcoin มีเงินไหลออกสูงเป็นประวัติการณ์
-date: 2026-11-27 06:30
+date: 2026-11-27 06:26
 tags: etf, regulation, defi
 assets: link, btc, eth
 ---

@@ -1,7 +1,7 @@
 ---
 title: Fidelity nộp hồ sơ ETF Chainlink giao ngay (FLNK) khi quỹ Bitcoin bị rút vốn mạnh
 description: Fidelity nộp hồ sơ lên SEC cho ETF Chainlink giao ngay mã FLNK, nắm giữ trực tiếp LINK và không staking, trong tháng các ETF Bitcoin bị rút vốn kỷ lục.
-date: 2026-11-27 06:30
+date: 2026-11-27 06:26
 tags: etf, regulation, defi
 assets: link, btc, eth
 ---

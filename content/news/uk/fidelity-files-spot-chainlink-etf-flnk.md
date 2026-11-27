@@ -1,7 +1,7 @@
 ---
 title: Fidelity хоче запустити спотовий Chainlink ETF (FLNK), поки з біткоїн-фондів тікають гроші
 description: Fidelity подала до SEC заявку на спотовий Chainlink ETF з тікером FLNK — фонд триматиме LINK без стейкінгу. І це в місяць рекордних відтоків з біткоїн-ETF.
-date: 2026-11-27 06:30
+date: 2026-11-27 06:26
 tags: etf, regulation, defi
 assets: link, btc, eth
 ---

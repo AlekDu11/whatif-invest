@@ -1,7 +1,7 @@
 ---
 title: 富达申请现货Chainlink ETF（FLNK），比特币ETF资金持续流出
 description: 富达向SEC提交了代码为FLNK的现货Chainlink ETF申请，基金直接持有LINK、不参与质押；同月比特币ETF遭遇创纪录的资金流出。
-date: 2026-11-27 06:30
+date: 2026-11-27 06:26
 tags: etf, regulation, defi
 assets: link, btc, eth
 ---

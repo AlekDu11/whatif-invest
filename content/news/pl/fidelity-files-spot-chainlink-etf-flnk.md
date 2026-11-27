@@ -1,7 +1,7 @@
 ---
 title: Fidelity chce spotowego ETF-u na Chainlink (FLNK), gdy z funduszy BTC odpływa kapitał
 description: Fidelity złożył w SEC wniosek o spotowy ETF na Chainlink (ticker FLNK), trzymający LINK bez stakingu – w miesiącu rekordowych odpływów z ETF-ów na BTC.
-date: 2026-11-27 06:30
+date: 2026-11-27 06:26
 tags: etf, regulation, defi
 assets: link, btc, eth
 ---

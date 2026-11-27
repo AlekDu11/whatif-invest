@@ -1,7 +1,7 @@
 ---
 title: Fidelity pide un ETF al contado de Chainlink (FLNK) mientras huye el dinero del bitcoin
 description: Fidelity pide a la SEC un ETF al contado de Chainlink con el ticker FLNK, que tendrá LINK sin staking, en un mes de salidas récord de los ETF de bitcoin.
-date: 2026-11-27 06:30
+date: 2026-11-27 06:26
 tags: etf, regulation, defi
 assets: link, btc, eth
 ---

@@ -1,7 +1,7 @@
 ---
 title: 피델리티, 현물 체인링크 ETF 'FLNK' 신청…비트코인 ETF는 자금 유출 지속
 description: 피델리티가 티커 FLNK의 현물 체인링크 ETF를 SEC에 신청했다. LINK를 직접 보유하고 스테이킹은 하지 않는다. 비트코인 ETF에서 사상 최대 유출이 나온 달이다.
-date: 2026-11-27 06:30
+date: 2026-11-27 06:26
 tags: etf, regulation, defi
 assets: link, btc, eth
 ---

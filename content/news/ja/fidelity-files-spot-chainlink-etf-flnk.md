@@ -1,7 +1,7 @@
 ---
 title: フィデリティ、現物チェーンリンクETF「FLNK」を申請　ビットコインETFからは資金流出続く
 description: フィデリティがティッカーFLNKの現物チェーンリンクETFをSECに申請。LINKを直接保有し、ステーキングは行わない。ビットコインETFからの流出が過去最悪となった月の動きだ。
-date: 2026-11-27 06:30
+date: 2026-11-27 06:26
 tags: etf, regulation, defi
 assets: link, btc, eth
 ---

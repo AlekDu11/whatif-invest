@@ -1,7 +1,7 @@
 ---
 title: Bitcoin fonlarından para çıkarken Fidelity spot Chainlink ETF (FLNK) için başvurdu
 description: Fidelity, LINK'i stake etmeden tutacak FLNK kodlu spot Chainlink ETF için SEC'e başvurdu. Başvuru, bitcoin ETF'lerinden rekor çıkışlar yaşanan aya denk geldi.
-date: 2026-11-27 06:30
+date: 2026-11-27 06:26
 tags: etf, regulation, defi
 assets: link, btc, eth
 ---

@@ -1,7 +1,7 @@
 ---
 title: Fidelity vraagt spot-Chainlink-ETF (FLNK) aan terwijl geld uit bitcoinfondsen stroomt
 description: Fidelity vroeg bij de SEC een spot-Chainlink-ETF (ticker FLNK) aan die LINK direct aanhoudt zonder staking, in een maand van recorduitstroom uit bitcoin-ETF's.
-date: 2026-11-27 06:30
+date: 2026-11-27 06:26
 tags: etf, regulation, defi
 assets: link, btc, eth
 ---

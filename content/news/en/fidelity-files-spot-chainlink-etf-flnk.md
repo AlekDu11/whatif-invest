@@ -1,7 +1,7 @@
 ---
 title: Fidelity files for a spot Chainlink ETF (FLNK) as bitcoin funds bleed cash
 description: Fidelity filed with the SEC for a spot Chainlink ETF under the ticker FLNK, holding LINK directly with no staking, in a month of record outflows from bitcoin ETFs.
-date: 2026-11-27 06:30
+date: 2026-11-27 06:26
 tags: etf, regulation, defi
 assets: link, btc, eth
 ---
