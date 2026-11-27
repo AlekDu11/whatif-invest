@@ -39,7 +39,7 @@ TEMPLATE v2 (owner 2026-11-25: «top — keep this template»): real logos in co
 - ✅ 2026-11-25 meta nflx amzn | consumer tech
 - ✅ 2026-11-26 btc spy wti (BTC data starts 2014-09, so since Sep 2014; WTI shows a text badge — no real logo for a commodity) | Bitcoin vs stocks vs oil
 - ✅ 2026-11-26 jpm bac gs | US banks
-- sol avax near | L1 challengers
+- ✅ 2026-11-27 sol avax near | L1 challengers
 - ko pep | cola war
 - coffee cocoa sugar | breakfast commodities
 - btc eth --since 2017-08 | BTC vs ETH since ETH data start
@@ -77,5 +77,6 @@ TEMPLATE v2 (owner 2026-11-25: «top — keep this template»): real logos in co
 | 2026-11-24 18:30 | schd spy (since 2014-01) | https://x.com/WhatIfStack/status/2125250410118361290 | msg 1504 | X 20 · TG 418 (2026-11-26 18:40) |
 | 2026-11-25 11:36 | xrp xlm hbar (since 2019-09) | https://x.com/WhatIfStack/status/2125522302678815122 | — | X 20 (2026-11-26 18:40) |
 | 2026-11-25 18:33 | meta nflx amzn (since May 2012) | https://x.com/WhatIfStack/status/2125612912735920536 | msg 1508 | X 6 · TG 260 (2026-11-26 18:40) |
-| 2026-11-26 11:30 | btc spy wti (since 2014-09) | https://x.com/WhatIfStack/status/2125884916575748434 | — | X 12 (2026-11-26 18:40) |
-| 2026-11-26 18:33 | jpm bac gs (since 2000-01) | https://x.com/WhatIfStack/status/2125975547045896350 | msg 1511 | |
+| 2026-11-26 11:30 | btc spy wti (since 2014-09) | https://x.com/WhatIfStack/status/2125884916575748434 | — | X 15 (2026-11-27 11:35) |
+| 2026-11-26 18:33 | jpm bac gs (since 2000-01) | https://x.com/WhatIfStack/status/2125975547045896350 | msg 1511 | X 7 (2026-11-27 11:35) |
+| 2026-11-27 11:29 | sol avax near (since 2020-10) | https://x.com/WhatIfStack/status/2126247126342500665 | — | |
