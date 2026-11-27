@@ -1,7 +1,7 @@
 ---
 title: 铠侠与英伟达测试以SSD扩展GPU内存，铠侠股价一度大涨14%
 description: 铠侠与英伟达正在测试将SSD用作PB级GPU内存扩展。随着AI芯片股反弹，铠侠股价在东京盘中一度上涨14.5%。
-date: 2026-11-27 07:20
+date: 2026-11-27 06:23
 tags: ai, markets
 assets: nvda, sndk, mu
 ---

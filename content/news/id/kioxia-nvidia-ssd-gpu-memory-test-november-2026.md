@@ -1,7 +1,7 @@
 ---
 title: Kioxia dan Nvidia uji SSD sebagai memori GPU; saham Kioxia melonjak 14%
 description: Kioxia dan Nvidia menguji SSD sebagai perluasan memori GPU skala petabyte. Saham Kioxia melonjak hingga 14,5% di Tokyo seiring pulihnya saham chip AI.
-date: 2026-11-27 07:20
+date: 2026-11-27 06:23
 tags: ai, markets
 assets: nvda, sndk, mu
 ---

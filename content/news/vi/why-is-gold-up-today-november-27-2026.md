@@ -1,7 +1,7 @@
 ---
 title: Vì sao giá vàng tăng hôm nay? Vàng +2,7%, bạc +8% sau đáy 14 tháng
 description: Vì sao giá vàng tăng hôm nay? Ngày 27/11, vàng tương lai tăng 2,7% lên khoảng 3.662 USD, bạc tăng 8% nhờ lực bắt đáy trong phiên thưa thớt sau Lễ Tạ ơn.
-date: 2026-11-27 06:45
+date: 2026-11-27 06:20
 tags: movers, markets
 assets: gold, silver, btc
 ---

@@ -1,7 +1,7 @@
 ---
 title: Pourquoi l'or monte aujourd'hui ? L'or +2,7 %, l'argent +8 % après des plus bas de 14 mois
 description: Pourquoi l'or monte aujourd'hui ? Les contrats à terme sur l'or ont gagné 2,7 % à 3 662 $ et l'argent 8 % le 27 novembre, sur des achats après Thanksgiving.
-date: 2026-11-27 06:45
+date: 2026-11-27 06:20
 tags: movers, markets
 assets: gold, silver, btc
 ---

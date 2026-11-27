@@ -1,7 +1,7 @@
 ---
 title: Kenapa harga emas naik hari ini? Emas +2,7%, perak +8% usai titik terendah 14 bulan
 description: Kenapa harga emas naik hari ini? Kontrak berjangka emas naik 2,7% ke sekitar $3.662 dan perak 8% pada 27 November, rebound di pasar sepi usai Thanksgiving.
-date: 2026-11-27 06:45
+date: 2026-11-27 06:20
 tags: movers, markets
 assets: gold, silver, btc
 ---

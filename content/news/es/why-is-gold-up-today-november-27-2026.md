@@ -1,7 +1,7 @@
 ---
 title: ¿Por qué sube el oro hoy? El oro gana un 2,7% y la plata un 8% tras mínimos de 14 meses
 description: ¿Por qué sube el oro hoy? Los futuros del oro subieron un 2,7% hasta unos $3.662 y la plata un 8% el 27 de noviembre, con compras tras Acción de Gracias.
-date: 2026-11-27 06:45
+date: 2026-11-27 06:20
 tags: movers, markets
 assets: gold, silver, btc
 ---

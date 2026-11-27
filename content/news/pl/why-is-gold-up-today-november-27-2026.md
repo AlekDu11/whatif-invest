@@ -1,7 +1,7 @@
 ---
 title: Dlaczego złoto drożeje? Złoto +2,7%, srebro +8% po dołkach z 14 miesięcy
 description: Dlaczego złoto drożeje? 27 listopada kontrakty na złoto zyskały 2,7%, do ok. 3662 dolarów, a srebro 8% — odbicie w płytkim handlu po Święcie Dziękczynienia.
-date: 2026-11-27 06:45
+date: 2026-11-27 06:20
 tags: movers, markets
 assets: gold, silver, btc
 ---

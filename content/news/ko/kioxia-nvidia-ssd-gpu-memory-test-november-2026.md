@@ -1,7 +1,7 @@
 ---
 title: 키옥시아·엔비디아, SSD를 GPU 메모리로 시험…키옥시아 주가 14% 급등
 description: 키옥시아와 엔비디아가 SSD를 페타바이트급 GPU 메모리 확장으로 쓰는 방안을 시험 중이다. AI 반도체주 반등 속에 키옥시아 주가는 도쿄에서 장중 14.5% 뛰었다.
-date: 2026-11-27 07:20
+date: 2026-11-27 06:23
 tags: ai, markets
 assets: nvda, sndk, mu
 ---

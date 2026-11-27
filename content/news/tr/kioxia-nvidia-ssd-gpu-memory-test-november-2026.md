@@ -1,7 +1,7 @@
 ---
 title: Kioxia ve Nvidia, SSD'leri GPU belleği olarak test ediyor; Kioxia hisseleri %14 yükseldi
 description: Kioxia ve Nvidia, SSD'leri petabayt ölçekli GPU belleği uzantısı olarak test ediyor. Çip hisseleri toparlanırken Kioxia Tokyo'da %14,5'e kadar yükseldi.
-date: 2026-11-27 07:20
+date: 2026-11-27 06:23
 tags: ai, markets
 assets: nvda, sndk, mu
 ---

@@ -1,7 +1,7 @@
 ---
 title: Sinusubok ng Kioxia at Nvidia ang SSD bilang GPU memory; Kioxia stock, tumaas ng 14%
 description: Sinusubok ng Kioxia at Nvidia ang SSD bilang petabyte-scale na GPU memory. Umakyat ng hanggang 14.5% ang Kioxia sa Tokyo habang bumawi ang AI chip stocks.
-date: 2026-11-27 07:20
+date: 2026-11-27 06:23
 tags: ai, markets
 assets: nvda, sndk, mu
 ---

@@ -1,7 +1,7 @@
 ---
 title: Bakit tumataas ang ginto ngayon? Ginto +2.7%, silver +8% mula 14-buwang low
 description: Bakit tumataas ang ginto ngayon? Umakyat nang 2.7% ang gold futures sa mga $3,662 at 8% ang silver noong Nobyembre 27 sa bargain buying pagkatapos ng Thanksgiving.
-date: 2026-11-27 06:45
+date: 2026-11-27 06:20
 tags: movers, markets
 assets: gold, silver, btc
 ---

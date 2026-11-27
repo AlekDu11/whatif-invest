@@ -1,7 +1,7 @@
 ---
 title: Kioxia và Nvidia thử dùng SSD làm bộ nhớ GPU; cổ phiếu Kioxia tăng vọt 14%
 description: Kioxia và Nvidia thử nghiệm SSD làm phần mở rộng bộ nhớ GPU quy mô petabyte. Cổ phiếu Kioxia tăng tới 14,5% tại Tokyo khi nhóm chip AI phục hồi.
-date: 2026-11-27 07:20
+date: 2026-11-27 06:23
 tags: ai, markets
 assets: nvda, sndk, mu
 ---

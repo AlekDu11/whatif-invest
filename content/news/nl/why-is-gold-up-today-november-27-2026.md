@@ -1,7 +1,7 @@
 ---
 title: Waarom stijgt goud vandaag? Goud +2,7%, zilver +8% na laagste stand in 14 maanden
 description: Waarom stijgt goud vandaag? Goudfutures stegen op 27 november 2,7% tot circa $3.662 en zilver 8%, koopjesjagers na de daling, in dunne handel na Thanksgiving.
-date: 2026-11-27 06:45
+date: 2026-11-27 06:20
 tags: movers, markets
 assets: gold, silver, btc
 ---

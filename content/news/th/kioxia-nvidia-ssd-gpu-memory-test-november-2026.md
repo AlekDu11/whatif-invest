@@ -1,7 +1,7 @@
 ---
 title: Kioxia จับมือ Nvidia ทดสอบ SSD เป็นหน่วยความจำ GPU หุ้น Kioxia พุ่ง 14%
 description: Kioxia และ Nvidia ทดสอบใช้ SSD ขยายหน่วยความจำ GPU ระดับเพตะไบต์ หุ้น Kioxia ในโตเกียวพุ่งสูงสุด 14.5% ขณะที่หุ้นชิป AI ฟื้นตัว
-date: 2026-11-27 07:20
+date: 2026-11-27 06:23
 tags: ai, markets
 assets: nvda, sndk, mu
 ---

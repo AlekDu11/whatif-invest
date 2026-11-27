@@ -1,7 +1,7 @@
 ---
 title: Kioxia and Nvidia test SSDs as GPU memory; Kioxia shares jump 14%
 description: Kioxia and Nvidia are testing SSDs as a petabyte-scale extension of GPU memory. Kioxia shares jumped up to 14.5% in Tokyo as AI chip stocks rebounded.
-date: 2026-11-27 07:20
+date: 2026-11-27 06:23
 tags: ai, markets
 assets: nvda, sndk, mu
 ---

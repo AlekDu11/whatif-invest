@@ -1,7 +1,7 @@
 ---
 title: Kioxia और Nvidia कर रहे SSD को GPU मेमोरी की तरह टेस्ट; Kioxia शेयर 14% उछला
 description: Kioxia और Nvidia SSD को पेटाबाइट-स्केल GPU मेमोरी एक्सटेंशन के तौर पर टेस्ट कर रहे हैं। AI चिप शेयरों में रिकवरी के बीच टोक्यो में Kioxia का शेयर 14.5% तक चढ़ा।
-date: 2026-11-27 07:20
+date: 2026-11-27 06:23
 tags: ai, markets
 assets: nvda, sndk, mu
 ---

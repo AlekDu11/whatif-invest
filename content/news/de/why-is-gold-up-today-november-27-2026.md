@@ -1,7 +1,7 @@
 ---
 title: Warum steigt der Goldpreis heute? Gold +2,7 %, Silber +8 % nach 14-Monats-Tiefs
 description: Warum steigt der Goldpreis heute? Gold-Futures legten am 27. November um 2,7 % auf rund 3.662 $ zu, Silber um 8 % – Schnäppchenkäufe nach Thanksgiving.
-date: 2026-11-27 06:45
+date: 2026-11-27 06:20
 tags: movers, markets
 assets: gold, silver, btc
 ---

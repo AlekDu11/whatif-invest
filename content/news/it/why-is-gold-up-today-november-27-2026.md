@@ -1,7 +1,7 @@
 ---
 title: Perché l'oro sale oggi? Oro +2,7%, argento +8% dopo i minimi di 14 mesi
 description: Perché l'oro sale oggi? Il 27 novembre i future sull'oro salgono del 2,7% a circa 3.662 $ e l'argento dell'8%, acquisti sui minimi dopo il Ringraziamento.
-date: 2026-11-27 06:45
+date: 2026-11-27 06:20
 tags: movers, markets
 assets: gold, silver, btc
 ---

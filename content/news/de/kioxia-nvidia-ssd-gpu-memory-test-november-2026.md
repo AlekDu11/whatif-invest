@@ -1,7 +1,7 @@
 ---
 title: Kioxia und Nvidia testen SSDs als GPU-Speicher – Kioxia-Aktie springt um 14 %
 description: Kioxia und Nvidia testen SSDs als Erweiterung des GPU-Speichers im Petabyte-Maßstab. Die Kioxia-Aktie stieg in Tokio um bis zu 14,5 %, KI-Chips erholten sich.
-date: 2026-11-27 07:20
+date: 2026-11-27 06:23
 tags: ai, markets
 assets: nvda, sndk, mu
 ---

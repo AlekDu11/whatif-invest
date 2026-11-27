@@ -1,7 +1,7 @@
 ---
 title: Por que o ouro está subindo hoje? Ouro avança 2,7% e prata 8% após mínimas de 14 meses
 description: Por que o ouro está subindo hoje? Os futuros do ouro subiram 2,7%, a cerca de $3.662, e a prata 8% em 27 de novembro, com compras na baixa pós-feriado.
-date: 2026-11-27 06:45
+date: 2026-11-27 06:20
 tags: movers, markets
 assets: gold, silver, btc
 ---

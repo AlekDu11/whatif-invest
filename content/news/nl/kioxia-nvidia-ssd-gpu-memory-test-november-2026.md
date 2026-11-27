@@ -1,7 +1,7 @@
 ---
 title: Kioxia en Nvidia testen SSD's als GPU-geheugen; aandeel Kioxia stijgt 14%
 description: Kioxia en Nvidia testen SSD's als uitbreiding van GPU-geheugen op petabyteschaal. Kioxia steeg in Tokio tot 14,5% doordat AI-chipaandelen herstelden.
-date: 2026-11-27 07:20
+date: 2026-11-27 06:23
 tags: ai, markets
 assets: nvda, sndk, mu
 ---

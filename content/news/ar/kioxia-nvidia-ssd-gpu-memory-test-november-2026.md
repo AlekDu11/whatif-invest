@@ -1,7 +1,7 @@
 ---
 title: Kioxia وNvidia تختبران أقراص SSD كذاكرة لمعالجات GPU؛ وسهم Kioxia يقفز 14%
 description: تختبر Kioxia وNvidia استخدام أقراص SSD امتدادًا لذاكرة معالجات GPU بسعة بيتابايت. وقفز سهم Kioxia حتى 14.5% في طوكيو مع انتعاش أسهم رقائق الذكاء الاصطناعي.
-date: 2026-11-27 07:20
+date: 2026-11-27 06:23
 tags: ai, markets
 assets: nvda, sndk, mu
 ---

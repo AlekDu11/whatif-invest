@@ -1,7 +1,7 @@
 ---
 title: Altın neden yükseliyor? Altın %2,7, gümüş %8 arttı: 14 ayın dibinden tepki
 description: Altın neden yükseliyor? 27 Kasım'da altın vadelileri %2,7 artışla yaklaşık 3.662 dolara, gümüş %8 yükseldi; Şükran Günü sonrası sığ piyasada dipten alım geldi.
-date: 2026-11-27 06:45
+date: 2026-11-27 06:20
 tags: movers, markets
 assets: gold, silver, btc
 ---

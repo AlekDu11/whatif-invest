@@ -1,7 +1,7 @@
 ---
 title: Why is gold up today? Gold jumps 2.7%, silver 8% after 14-month lows
 description: Why is gold up today? Gold futures rose 2.7% to about $3,662 and silver jumped 8% on November 27, a bargain-hunting rebound in thin post-Thanksgiving trade.
-date: 2026-11-27 06:45
+date: 2026-11-27 06:20
 tags: movers, markets
 assets: gold, silver, btc
 ---

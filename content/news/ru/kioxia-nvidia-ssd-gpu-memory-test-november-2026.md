@@ -1,7 +1,7 @@
 ---
 title: Kioxia и Nvidia тестируют SSD как память для GPU — акции Kioxia взлетели на 14%
 description: Kioxia и Nvidia испытывают SSD как петабайтное расширение памяти GPU. Акции Kioxia в Токио подскочили до 14,5% на фоне отскока бумаг производителей ИИ-чипов.
-date: 2026-11-27 07:20
+date: 2026-11-27 06:23
 tags: ai, markets
 assets: nvda, sndk, mu
 ---
