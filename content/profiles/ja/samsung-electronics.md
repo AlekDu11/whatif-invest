@@ -1,5 +1,5 @@
 ---
-title: Samsung Electronics (005930)株：1四半期で107兆ウォンを稼いだメモリーの巨人
+title: "Samsung Electronics (005930)株：メモリー半導体とGalaxyスマホの巨人"
 description: Samsung Electronicsをやさしく解説：AIメモリーで四半期営業利益107.4兆ウォン、Galaxy、リスク、積立で買う人が知っておきたいこと。
 date: 2026-11-27
 kind: analysis

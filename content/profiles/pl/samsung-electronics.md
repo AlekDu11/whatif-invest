@@ -1,5 +1,5 @@
 ---
-title: Samsung Electronics (005930): gigant pamięci, który zarobił 107 bln wonów w jeden kwartał
+title: "Akcje Samsung Electronics (005930): gigant chipów pamięci i smartfonów Galaxy"
 description: Samsung Electronics w prostych słowach: 107,4 bln wonów zysku operacyjnego w kwartale dzięki pamięciom AI, Galaxy, ryzyka i rady dla regularnie kupujących.
 date: 2026-11-27
 kind: analysis

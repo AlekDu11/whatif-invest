@@ -1,5 +1,5 @@
 ---
-title: Samsung Electronics (005930) : le géant de la mémoire derrière un trimestre à 107 000 milliards de wons
+title: "Action Samsung Electronics (005930) : le géant des puces mémoire et des smartphones Galaxy"
 description: Samsung Electronics en clair : 107 400 milliards de wons de bénéfice d'exploitation en un trimestre grâce à la mémoire IA, Galaxy, risques, achat régulier.
 date: 2026-11-27
 kind: analysis

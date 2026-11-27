@@ -1,5 +1,5 @@
 ---
-title: Samsung Electronics (005930)股票：一个季度赚107万亿韩元的存储芯片巨头
+title: "Samsung Electronics (005930)股票：存储芯片与Galaxy手机巨头"
 description: 用大白话看Samsung Electronics：AI存储带来单季营业利润107.4万亿韩元，Galaxy手机，主要风险，以及定投者需要了解的事。
 date: 2026-11-27
 kind: analysis

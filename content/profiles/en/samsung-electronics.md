@@ -1,5 +1,5 @@
 ---
-title: Samsung Electronics (005930) stock: the memory giant behind a ₩107 trillion quarter
+title: "Samsung Electronics (005930) stock: the memory chip and Galaxy phone giant"
 description: Samsung Electronics in plain language: ₩107.4 trillion of operating profit in Q3 2026 from AI memory, Galaxy phones, the risks and what regular buyers face.
 date: 2026-11-27
 kind: analysis

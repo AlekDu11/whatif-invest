@@ -1,5 +1,5 @@
 ---
-title: Samsung Electronics (005930) Aktie: der Speicherriese hinter einem Quartal mit 107 Bio. ₩
+title: "Samsung Electronics (005930) Aktie: der Riese bei Speicherchips und Galaxy-Handys"
 description: Samsung Electronics einfach erklärt: 107,4 Bio. ₩ operativer Gewinn in einem Quartal dank KI-Speicher, Galaxy-Handys, Risiken und Tipps für regelmäßige Käufer.
 date: 2026-11-27
 kind: analysis

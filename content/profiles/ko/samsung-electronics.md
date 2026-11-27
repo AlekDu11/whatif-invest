@@ -1,5 +1,5 @@
 ---
-title: Samsung Electronics(삼성전자, 005930) 주식: 한 분기 107조 원을 번 메모리 거인
+title: "Samsung Electronics(삼성전자, 005930) 주식: 메모리 반도체와 갤럭시 스마트폰의 거인"
 description: 삼성전자를 쉽게 설명합니다: AI 메모리로 분기 영업이익 107조 4천억 원, 갤럭시, 위험 요인, 적립식 투자자가 알아야 할 점.
 date: 2026-11-27
 kind: analysis

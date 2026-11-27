@@ -1,5 +1,5 @@
 ---
-title: Samsung Electronics (005930): el gigante de la memoria que ganó ₩107 billones en un trimestre
+title: "Acciones de Samsung Electronics (005930): el gigante de la memoria y los móviles Galaxy"
 description: Samsung Electronics explicada fácil: ₩107,4 billones de beneficio operativo en un trimestre por la memoria para IA, Galaxy, riesgos y consejos al comprar.
 date: 2026-11-27
 kind: analysis

@@ -1,5 +1,5 @@
 ---
-title: Samsung Electronics (005930): عملاق رقائق الذاكرة وربع بأرباح 107 تريليونات وون
+title: "سهم Samsung Electronics (005930): عملاق رقائق الذاكرة وهواتف Galaxy"
 description: Samsung Electronics بكلمات بسيطة: ربح تشغيلي 107.4 تريليون وون في ربع واحد بفضل ذاكرة الذكاء الاصطناعي، وGalaxy، والمخاطر، وما يهم المشتري المنتظم.
 date: 2026-11-27
 kind: analysis

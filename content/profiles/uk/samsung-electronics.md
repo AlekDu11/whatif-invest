@@ -1,5 +1,5 @@
 ---
-title: Samsung Electronics (005930): гігант пам'яті, що заробив ₩107 трлн за квартал
+title: "Акції Samsung Electronics (005930): гігант чипів пам'яті та смартфонів Galaxy"
 description: Samsung Electronics простою мовою: ₩107,4 трлн операційного прибутку за квартал завдяки AI-пам'яті, смартфони Galaxy, ризики й що знати при регулярних покупках.
 date: 2026-11-27
 kind: analysis

@@ -1,5 +1,5 @@
 ---
-title: Samsung Electronics (005930): de geheugenreus achter een kwartaal van ₩107 biljoen
+title: "Aandeel Samsung Electronics (005930): de reus in geheugenchips en Galaxy-telefoons"
 description: Samsung Electronics in gewone taal: ₩107,4 biljoen bedrijfswinst in één kwartaal dankzij AI-geheugen, Galaxy-telefoons, de risico's en regelmatig kopen.
 date: 2026-11-27
 kind: analysis

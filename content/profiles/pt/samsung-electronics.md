@@ -1,5 +1,5 @@
 ---
-title: Samsung Electronics (005930): a gigante da memória por trás de um trimestre de ₩ 107 trilhões
+title: "Ações da Samsung Electronics (005930): a gigante dos chips de memória e dos celulares Galaxy"
 description: Samsung Electronics sem complicação: ₩ 107,4 trilhões de lucro operacional num trimestre com memória para IA, Galaxy, riscos e o que saber ao comprar sempre.
 date: 2026-11-27
 kind: analysis

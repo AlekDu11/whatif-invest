@@ -1,5 +1,5 @@
 ---
-title: Samsung Electronics (005930): il gigante delle memorie dietro un trimestre da 107 mila miliardi di won
+title: "Azioni Samsung Electronics (005930): il gigante delle memorie e degli smartphone Galaxy"
 description: Samsung Electronics in parole semplici: 107.400 miliardi di won di utile operativo in un trimestre grazie alle memorie per l'IA, Galaxy, rischi e acquisti.
 date: 2026-11-27
 kind: analysis

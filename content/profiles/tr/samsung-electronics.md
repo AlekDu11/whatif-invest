@@ -1,5 +1,5 @@
 ---
-title: Samsung Electronics (005930) hissesi: 107 trilyon wonluk çeyreğin arkasındaki bellek devi
+title: "Samsung Electronics (005930) hissesi: bellek çipi ve Galaxy telefon devi"
 description: Samsung Electronics sade dille: yapay zekâ belleğiyle bir çeyrekte 107,4 trilyon won faaliyet kârı, Galaxy, riskler ve düzenli alıcılar için bilgiler.
 date: 2026-11-27
 kind: analysis

@@ -1,5 +1,5 @@
 ---
-title: Saham Samsung Electronics (005930): raksasa memori di balik kuartal ₩107 triliun
+title: "Saham Samsung Electronics (005930): raksasa chip memori dan ponsel Galaxy"
 description: Samsung Electronics dengan bahasa sederhana: laba operasi ₩107,4 triliun dalam satu kuartal dari memori AI, ponsel Galaxy, risiko dan hal bagi pembeli rutin.
 date: 2026-11-27
 kind: analysis

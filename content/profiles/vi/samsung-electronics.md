@@ -1,5 +1,5 @@
 ---
-title: Cổ phiếu Samsung Electronics (005930): gã khổng lồ bộ nhớ đứng sau quý lãi 107 nghìn tỷ won
+title: "Cổ phiếu Samsung Electronics (005930): gã khổng lồ chip nhớ và điện thoại Galaxy"
 description: Samsung Electronics dễ hiểu: lãi hoạt động 107,4 nghìn tỷ won trong một quý nhờ bộ nhớ AI, điện thoại Galaxy, rủi ro và điều người mua định kỳ cần biết.
 date: 2026-11-27
 kind: analysis
