@@ -2005,3 +2005,15 @@ document.querySelectorAll('.obcnt[data-until]').forEach(el=>{ const t=new Date(e
     g('tco').innerHTML=cell(S.profit,f(p),p>=0?'good':'bad')+cell(S.tax,f(tax),tax>0?'bad':'')+cell(S.net,f(s-tax))+(note?`<div class="tcn">${note}</div>`:'') }
   box.addEventListener('input',run); run();
 })();
+
+// ===== partner clicks → GA4 event «partner_click» (owner 2026-11-28: see which partners bring clicks) =====
+(function(){
+  document.addEventListener('click',e=>{
+    const a=e.target.closest&&e.target.closest('a[href*="/go/"]'); if(!a) return;
+    try{
+      const u=new URL(a.getAttribute('href'),location.href); if(!u.pathname.startsWith('/go/')) return;
+      const p=u.pathname.slice(4).split('/')[0];
+      window.gtag&&window.gtag('event','partner_click',{partner:p,placement:u.searchParams.get('from')||'',page_lang:document.documentElement.lang||'',transport_type:'beacon'});
+    }catch(_){}
+  },true);
+})();
