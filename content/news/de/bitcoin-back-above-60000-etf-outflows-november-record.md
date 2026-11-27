@@ -2,9 +2,12 @@
 title: Bitcoin wieder über 60.000 Dollar – ETF-Abflüsse im November steuern auf Rekord zu
 description: Bitcoin stieg am 26. November um rund 3 % auf fast 60.850 Dollar, nachdem er unter 58.000 Dollar gefallen war; US-Spot-ETFs verloren weiter Rekordsummen.
 date: 2026-11-26 06:50
+updated: 2026-11-27 13:05
 tags: bitcoin, etf
 assets: btc, eth
 ---
+**Update 27. November, 13:05 UTC:** Bitcoin legte weiter zu und notierte am Freitag bei rund 61.700 Dollar, etwa 8 % über dem Zweijahrestief vom Mittwoch bei rund 57.300 Dollar und so hoch wie seit Montag nicht mehr; die Kryptowährung steuert auf ihren ersten Wochengewinn seit acht Wochen zu (Analytics Insight, Coinspeaker). Im November liegt sie aber noch rund 20 % im Minus, nach etwa 77.600 Dollar am 1. November. Ether gewann rund 2,3 % auf fast 1.734 Dollar. Die Erholung fiel mit einer breiteren Erleichterungsrally bei KI- und Chipaktien und dünnem Feiertagshandel zusammen; zudem teilte Binance am Donnerstag mit, die nach dem 6,3-Milliarden-Dollar-Hack im Vormonat eingeführten Auszahlungslimits vollständig aufgehoben zu haben. Die hartnäckige US-Inflation und eine wahrscheinliche Zinserhöhung der Fed auf der Sitzung am 8. und 9. Dezember bleiben die größten Belastungen; Trader beobachten den Widerstand bei rund 64.600 Dollar.
+
 Bitcoin ist am frühen Donnerstag, 26. November, wieder über 60.000 Dollar gestiegen: Der Kurs legte binnen 24 Stunden um rund 3 % zu und lag um 05:40 UTC bei fast 60.850 Dollar – einen Tag nachdem er kurz unter 58.000 Dollar gefallen war. Die Erholung kam, als die Wall Street den Großteil der frühen Tech-Verluste vom Mittwoch wieder aufholte, doch aus den US-Spot-Bitcoin-ETFs floss weiter Geld ab.
 
 ## Was passiert ist
@@ -20,6 +23,8 @@ Von crypto.news zitierte Analysten sehen einen Widerstand bei 61.500–62.000 Do
 
 ## Quellen
 
+- [Analytics Insight – Bitcoin recovers above USD 61,400, eyes first weekly gain in eight weeks](https://www.analyticsinsight.net/news/bitcoin-recovers-above-usd-61400-eyes-first-weekly-gain-in-eight-weeks-as-crypto-markets-rebound)
+- [Coinspeaker via Yahoo Finance – Bitcoin news today: BTC rebounds 8%](https://finance.yahoo.com/markets/crypto/articles/bitcoin-news-today-btc-rebounds-104410814.html)
 - [crypto.news – Bitcoin-Kurs erobert 60.000 Dollar zurück, aber ist der Boden wirklich erreicht?](https://crypto.news/bitcoin-price-prediction-btc-recovery-etf-outflows/)
 - [KuCoin – Täglicher Kryptomarkt-Bericht, 26. November 2026](https://www.kucoin.com/news/articles/crypto-daily-market-report-november-26-2026)
 - [Business Standard (Reuters) – Asiatische Aktien erholen sich, KI-Sorgen und neue US-Zölle im Hintergrund](https://www.business-standard.com/markets/news/asian-shares-bounce-as-ai-concerns-fresh-us-tariffs-lurk-in-background-126112600046_1.html)

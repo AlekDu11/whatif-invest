@@ -2,9 +2,12 @@
 title: Bitcoin kembali di atas $60.000 saat arus keluar ETF November menuju rekor
 description: Bitcoin naik sekitar 3% ke dekat $60.850 pada 26 November setelah sempat di bawah $58.000, sementara ETF bitcoin spot AS terus mencatat arus keluar rekor.
 date: 2026-11-26 06:50
+updated: 2026-11-27 13:05
 tags: bitcoin, etf
 assets: btc, eth
 ---
+**Pembaruan 27 November, 13.05 UTC:** Bitcoin terus naik dan diperdagangkan di dekat $61.700 pada Jumat, sekitar 8% di atas titik terendah dua tahun pada Rabu di dekat $57.300 dan level tertingginya sejak Senin; bitcoin berada di jalur kenaikan mingguan pertama dalam delapan minggu (Analytics Insight, Coinspeaker). Sepanjang November harganya masih turun sekitar 20%, dari kira-kira $77.600 pada 1 November. Ether naik sekitar 2,3% ke dekat $1.734. Pemulihan ini terjadi bersamaan dengan reli lega yang lebih luas di saham AI dan chip serta perdagangan libur yang sepi; Binance juga menyatakan pada Kamis bahwa pihaknya telah sepenuhnya mencabut batas penarikan yang diberlakukan setelah peretasan senilai $6,3 miliar bulan lalu. Inflasi AS yang membandel dan kemungkinan kenaikan suku bunga Fed pada rapat 8–9 Desember tetap menjadi hambatan utama, dan trader mencermati resistance di dekat $64.600.
+
 Bitcoin kembali naik di atas $60.000 pada Kamis pagi, 26 November, menguat sekitar 3% dalam 24 jam ke dekat $60.850 pada pukul 05.40 UTC, sehari setelah sempat turun di bawah $58.000. Pemulihan ini terjadi saat Wall Street menutup sebagian besar penurunan saham teknologi pada Rabu pagi, tetapi dana terus keluar dari ETF bitcoin spot AS.
 
 ## Apa yang terjadi
@@ -20,6 +23,8 @@ Analis yang dikutip crypto.news melihat resistance di sekitar $61.500–62.000 d
 
 ## Sumber
 
+- [Analytics Insight — Bitcoin pulih di atas USD 61.400, menuju kenaikan mingguan pertama dalam delapan minggu](https://www.analyticsinsight.net/news/bitcoin-recovers-above-usd-61400-eyes-first-weekly-gain-in-eight-weeks-as-crypto-markets-rebound)
+- [Coinspeaker via Yahoo Finance — Berita bitcoin hari ini: BTC memantul 8%](https://finance.yahoo.com/markets/crypto/articles/bitcoin-news-today-btc-rebounds-104410814.html)
 - [crypto.news — Harga bitcoin kembali ke $60K, tetapi apakah dasarnya benar-benar sudah terbentuk?](https://crypto.news/bitcoin-price-prediction-btc-recovery-etf-outflows/)
 - [KuCoin — Laporan harian pasar kripto, 26 November 2026](https://www.kucoin.com/news/articles/crypto-daily-market-report-november-26-2026)
 - [Business Standard (Reuters) — Saham Asia memantul di tengah kekhawatiran AI dan ancaman tarif baru AS](https://www.business-standard.com/markets/news/asian-shares-bounce-as-ai-concerns-fresh-us-tariffs-lurk-in-background-126112600046_1.html)

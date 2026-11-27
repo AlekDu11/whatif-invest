@@ -2,9 +2,12 @@
 title: Bitcoin, bumalik sa itaas ng $60,000 habang patungong rekord ang ETF outflows ng Nobyembre
 description: Umakyat ang Bitcoin nang mga 3% sa halos $60,850 noong Nobyembre 26 matapos bumaba sa ilalim ng $58,000, habang tuloy ang rekord na outflows ng US bitcoin ETF.
 date: 2026-11-26 06:50
+updated: 2026-11-27 13:05
 tags: bitcoin, etf
 assets: btc, eth
 ---
+**Update Nobyembre 27, 13:05 UTC:** Patuloy na tumaas ang Bitcoin at nag-trade sa halos $61,700 nitong Biyernes, mga 8% na mas mataas kaysa sa dalawang-taong low noong Miyerkules na malapit sa $57,300 at ang pinakamataas nito mula Lunes; papunta ito sa unang lingguhang pag-angat sa loob ng walong linggo (Analytics Insight, Coinspeaker). Bagsak pa rin ito nang mga 20% ngayong Nobyembre, mula sa humigit-kumulang $77,600 noong Nobyembre 1. Nadagdagan ang ether nang mga 2.3% sa halos $1,734. Sumabay ang pag-angat sa mas malawak na relief rally sa mga AI at chip stock at sa manipis na holiday trading; sinabi rin ng Binance noong Huwebes na tuluyan na nitong inalis ang mga limitasyon sa withdrawal na ipinatupad matapos ang $6.3 bilyong hack noong nakaraang buwan. Ang tuloy-tuloy na inflation sa US at ang malamang na pagtaas ng rate ng Fed sa pulong sa Disyembre 8–9 ang nananatiling pangunahing hadlang, at binabantayan ng mga trader ang resistance malapit sa $64,600.
+
 Bumalik ang Bitcoin sa itaas ng $60,000 nitong umaga ng Huwebes, Nobyembre 26, at tumaas nang mga 3% sa loob ng 24 oras sa halos $60,850 pagsapit ng 05:40 UTC, isang araw matapos itong panandaliang bumagsak sa ilalim ng $58,000. Dumating ang pag-angat habang nabawi ng Wall Street ang karamihan ng pagbaba ng tech stocks noong umaga ng Miyerkoles, pero patuloy na lumalabas ang pera sa mga US spot bitcoin ETF.
 
 ## Ano ang nangyari
@@ -20,6 +23,8 @@ Nakikita ng mga analyst na binanggit ng crypto.news ang resistance sa paligid ng
 
 ## Mga pinagmulan
 
+- [Analytics Insight — Bitcoin, bumawi sa itaas ng USD 61,400 at papunta sa unang lingguhang pag-angat sa walong linggo](https://www.analyticsinsight.net/news/bitcoin-recovers-above-usd-61400-eyes-first-weekly-gain-in-eight-weeks-as-crypto-markets-rebound)
+- [Coinspeaker via Yahoo Finance — Bitcoin news ngayon: BTC, bumawi nang 8%](https://finance.yahoo.com/markets/crypto/articles/bitcoin-news-today-btc-rebounds-104410814.html)
 - [crypto.news — Nabawi ng presyo ng bitcoin ang $60K, pero nasa ilalim na nga ba?](https://crypto.news/bitcoin-price-prediction-btc-recovery-etf-outflows/)
 - [KuCoin — Crypto Daily Market Report, Nobyembre 26, 2026](https://www.kucoin.com/news/articles/crypto-daily-market-report-november-26-2026)
 - [Business Standard (Reuters) — Bumawi ang mga stock sa Asya sa gitna ng pangamba sa AI at bagong taripa ng US](https://www.business-standard.com/markets/news/asian-shares-bounce-as-ai-concerns-fresh-us-tariffs-lurk-in-background-126112600046_1.html)

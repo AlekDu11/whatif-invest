@@ -2,9 +2,12 @@
 title: Bitcoin、6万ドル台を回復　11月のETF資金流出は過去最大の見通し
 description: Bitcoinは5万8000ドル割れの後、11月26日に約3%上昇して6万850ドル付近に。米国の現物ビットコインETFは過去最大の月間流出が続いた。
 date: 2026-11-26 06:50
+updated: 2026-11-27 13:05
 tags: bitcoin, etf
 assets: btc, eth
 ---
+**11月27日 13:05 UTC更新：** Bitcoinは上昇を続け、27日（金）には6万1700ドル付近で取引された。水曜日に付けた約5万7300ドルの2年ぶり安値から約8%高く、月曜日以来の高値水準で、8週間ぶりの週間上昇となる見通しだ（Analytics Insight、Coinspeaker）。それでも11月1日の約7万7600ドルからは月間で約20%安い。etherは約2.3%上昇し、1734ドル付近となった。今回の反発はAI・半導体株の幅広い買い戻しと薄商いの休暇相場に重なった。Binanceも木曜日、先月の63億ドル規模のハッキング後に導入した出金制限を全面的に解除したと発表した。根強い米国のインフレと、12月8〜9日の会合でのFRBの利上げの可能性が引き続き主な逆風で、トレーダーは6万4600ドル付近の上値抵抗を注視している。
+
 Bitcoinは11月26日（木）早朝に6万ドル台を回復し、05:40 UTC時点で24時間比約3%高の6万850ドル付近で推移した。前日には一時5万8000ドルを割り込んでいた。ウォール街が水曜朝のハイテク株の下げをほぼ取り戻したことが反発につながったが、米国の現物ビットコインETFからは資金流出が続いた。
 
 ## 何が起きたか
@@ -20,6 +23,8 @@ crypto.newsが引用するアナリストは、6万1500〜6万2000ドル付近�
 
 ## 出典
 
+- [Analytics Insight — Bitcoinが6万1400ドル台を回復、8週間ぶりの週間上昇へ](https://www.analyticsinsight.net/news/bitcoin-recovers-above-usd-61400-eyes-first-weekly-gain-in-eight-weeks-as-crypto-markets-rebound)
+- [Coinspeaker via Yahoo Finance — 今日のビットコインニュース：BTCが8%反発](https://finance.yahoo.com/markets/crypto/articles/bitcoin-news-today-btc-rebounds-104410814.html)
 - [crypto.news — Bitcoin価格が6万ドルを回復、だが本当に底打ちか](https://crypto.news/bitcoin-price-prediction-btc-recovery-etf-outflows/)
 - [KuCoin — 暗号資産デイリーマーケットレポート（2026年11月26日）](https://www.kucoin.com/news/articles/crypto-daily-market-report-november-26-2026)
 - [Business Standard (Reuters) — アジア株が反発、AIへの懸念と米国の新たな関税が影](https://www.business-standard.com/markets/news/asian-shares-bounce-as-ai-concerns-fresh-us-tariffs-lurk-in-background-126112600046_1.html)

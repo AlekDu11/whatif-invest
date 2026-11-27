@@ -2,9 +2,12 @@
 title: Біткоїн повернувся вище $60 000, а відтік з ETF у листопаді йде на рекорд
 description: 26 листопада біткоїн зріс приблизно на 3% до ~$60 850 після падіння нижче $58 000, а спотові біткоїн-ETF у США продовжили рекордний місяць відтоків.
 date: 2026-11-26 06:50
+updated: 2026-11-27 13:05
 tags: bitcoin, etf
 assets: btc, eth
 ---
+**Оновлення 27 листопада, 13:05 UTC:** біткоїн продовжив зростання й у п'ятницю торгувався біля $61 700 — приблизно на 8% вище за середовий дворічний мінімум близько $57 300 і найвище з понеділка; він іде до першого тижневого зростання за вісім тижнів (Analytics Insight, Coinspeaker). За листопад біткоїн усе ще втратив близько 20% — з приблизно $77 600 на 1 листопада. Ether додав близько 2,3%, до ~$1 734. Відскок збігся з ширшим відновленням акцій ШІ та чипмейкерів і тонкою святковою торгівлею; крім того, у четвер Binance повідомила, що повністю зняла ліміти на виведення, запроваджені після злому на $6,3 млрд минулого місяця. Головними ризиками залишаються стійка інфляція в США та ймовірне підвищення ставки ФРС на засіданні 8–9 грудня, а трейдери стежать за опором біля $64 600.
+
 У четвер, 26 листопада, біткоїн знову піднявся вище $60 000: за 24 години він подорожчав приблизно на 3% і о 05:40 UTC торгувався біля $60 850 — через день після того, як ненадовго опускався нижче $58 000. Відскок збігся з тим, що Волл-стріт відіграла більшу частину ранніх втрат техакцій у середу, але гроші й далі виходили зі спотових біткоїн-ETF у США.
 
 ## Що сталося
@@ -20,6 +23,8 @@ assets: btc, eth
 
 ## Джерела
 
+- [Analytics Insight — Bitcoin recovers above USD 61,400, eyes first weekly gain in eight weeks](https://www.analyticsinsight.net/news/bitcoin-recovers-above-usd-61400-eyes-first-weekly-gain-in-eight-weeks-as-crypto-markets-rebound)
+- [Coinspeaker via Yahoo Finance — Bitcoin news today: BTC rebounds 8%](https://finance.yahoo.com/markets/crypto/articles/bitcoin-news-today-btc-rebounds-104410814.html)
 - [crypto.news — ціна біткоїна повернулася вище $60 тис., але чи справді дно пройдене?](https://crypto.news/bitcoin-price-prediction-btc-recovery-etf-outflows/)
 - [KuCoin — щоденний звіт про крипторинок, 26 листопада 2026 року](https://www.kucoin.com/news/articles/crypto-daily-market-report-november-26-2026)
 - [Business Standard (Reuters) — азійські акції відскочили, але страхи щодо ШІ та нові мита США нікуди не зникли](https://www.business-standard.com/markets/news/asian-shares-bounce-as-ai-concerns-fresh-us-tariffs-lurk-in-background-126112600046_1.html)

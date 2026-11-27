@@ -2,9 +2,12 @@
 title: Bitcoin yeniden 60.000 doların üzerinde, ETF'lerden kasım çıkışı rekora gidiyor
 description: Bitcoin 26 Kasım'da 58.000 doların altına indikten sonra yaklaşık %3 yükselerek 60.850 dolara çıktı; ABD spot bitcoin ETF'leri rekor çıkış ayını sürdürdü.
 date: 2026-11-26 06:50
+updated: 2026-11-27 13:05
 tags: bitcoin, etf
 assets: btc, eth
 ---
+**Güncelleme 27 Kasım, 13:05 UTC:** Bitcoin yükselişini sürdürdü ve cuma günü 61.700 dolar civarında işlem gördü; bu, çarşamba günkü yaklaşık 57.300 dolarlık iki yılın en düşük seviyesinin yaklaşık %8 üzerinde ve pazartesiden bu yana en yüksek seviye. Bitcoin sekiz hafta sonra ilk haftalık kazancına doğru ilerliyor (Analytics Insight, Coinspeaker). Yine de 1 Kasım'daki yaklaşık 77.600 dolara göre kasımda hâlâ %20 civarında düşüşte. Ether yaklaşık %2,3 artışla 1.734 dolar civarına çıktı. Toparlanma, yapay zekâ ve çip hisselerindeki daha geniş bir rahatlama yükselişi ve tatil döneminin sığ işlemleriyle aynı zamana denk geldi; Binance de perşembe günü geçen ayki 6,3 milyar dolarlık hack sonrasında getirdiği çekim limitlerini tamamen kaldırdığını açıkladı. ABD'de inatçı enflasyon ve Fed'in 8–9 Aralık toplantısında olası faiz artırımı başlıca baskı unsurları olmaya devam ediyor; yatırımcılar 64.600 dolar civarındaki direnci izliyor.
+
 Bitcoin 26 Kasım Perşembe sabahı yeniden 60.000 doların üzerine çıktı: 24 saatte yaklaşık %3 yükselerek 05:40 UTC'de 60.850 dolar civarına ulaştı. Bir gün önce kısa süreliğine 58.000 doların altına inmişti. Toparlanma, Wall Street'in çarşamba günkü erken teknoloji kayıplarının büyük kısmını geri almasıyla geldi; ancak ABD'deki spot bitcoin ETF'lerinden para çıkışı sürdü.
 
 ## Ne oldu
@@ -20,6 +23,8 @@ crypto.news'in aktardığı analistler 61.500–62.000 dolar civarında direnç,
 
 ## Kaynaklar
 
+- [Analytics Insight — Bitcoin recovers above USD 61,400, eyes first weekly gain in eight weeks](https://www.analyticsinsight.net/news/bitcoin-recovers-above-usd-61400-eyes-first-weekly-gain-in-eight-weeks-as-crypto-markets-rebound)
+- [Coinspeaker via Yahoo Finance — Bitcoin news today: BTC rebounds 8%](https://finance.yahoo.com/markets/crypto/articles/bitcoin-news-today-btc-rebounds-104410814.html)
 - [crypto.news — Bitcoin fiyatı 60 bin doları geri aldı, ama dip gerçekten görüldü mü?](https://crypto.news/bitcoin-price-prediction-btc-recovery-etf-outflows/)
 - [KuCoin — Günlük kripto piyasası raporu, 26 Kasım 2026](https://www.kucoin.com/news/articles/crypto-daily-market-report-november-26-2026)
 - [Business Standard (Reuters) — Asya borsaları toparlanıyor, yapay zekâ endişeleri ve yeni ABD tarifeleri arka planda](https://www.business-standard.com/markets/news/asian-shares-bounce-as-ai-concerns-fresh-us-tariffs-lurk-in-background-126112600046_1.html)

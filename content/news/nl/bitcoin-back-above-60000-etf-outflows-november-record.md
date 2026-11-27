@@ -2,9 +2,12 @@
 title: Bitcoin weer boven 60.000 dollar, uitstroom uit ETF's in november op weg naar record
 description: Bitcoin steeg op 26 november zo'n 3% naar bijna 60.850 dollar na een dip onder 58.000, terwijl Amerikaanse spot-ETF's een recordmaand van uitstroom verlengden.
 date: 2026-11-26 06:50
+updated: 2026-11-27 13:05
 tags: bitcoin, etf
 assets: btc, eth
 ---
+**Update 27 november, 13:05 UTC:** Bitcoin bleef stijgen en noteerde vrijdag rond 61.700 dollar, zo'n 8% boven het laagste punt in twee jaar van woensdag bij circa 57.300 dollar en het hoogste niveau sinds maandag; de munt koerst af op de eerste weekwinst in acht weken (Analytics Insight, Coinspeaker). Over november staat bitcoin nog wel zo'n 20% lager, vanaf ongeveer 77.600 dollar op 1 november. Ether won circa 2,3% naar bijna 1.734 dollar. Het herstel viel samen met een bredere opluchtingsrally in AI- en chipaandelen en dunne feestdagenhandel; Binance meldde donderdag bovendien dat het de opnamelimieten volledig heeft opgeheven die na de hack van 6,3 miljard dollar vorige maand waren ingesteld. Hardnekkige Amerikaanse inflatie en een waarschijnlijke renteverhoging door de Fed op de vergadering van 8–9 december blijven de belangrijkste tegenwinden; handelaren letten op weerstand rond 64.600 dollar.
+
 Bitcoin klom donderdagochtend 26 november weer boven 60.000 dollar: de koers steeg in 24 uur ongeveer 3% naar bijna 60.850 dollar om 05:40 UTC, een dag nadat hij kort onder 58.000 dollar was gezakt. Het herstel kwam terwijl Wall Street het grootste deel van de vroege techverliezen van woensdag goedmaakte, maar er bleef geld wegstromen uit Amerikaanse spot-bitcoin-ETF's.
 
 ## Wat er gebeurde
@@ -20,6 +23,8 @@ Analisten die crypto.news citeert, zien weerstand rond 61.500–62.000 dollar en
 
 ## Bronnen
 
+- [Analytics Insight – Bitcoin recovers above USD 61,400, eyes first weekly gain in eight weeks](https://www.analyticsinsight.net/news/bitcoin-recovers-above-usd-61400-eyes-first-weekly-gain-in-eight-weeks-as-crypto-markets-rebound)
+- [Coinspeaker via Yahoo Finance – Bitcoin news today: BTC rebounds 8%](https://finance.yahoo.com/markets/crypto/articles/bitcoin-news-today-btc-rebounds-104410814.html)
 - [crypto.news – Bitcoinkoers herovert 60.000 dollar, maar is de bodem echt bereikt?](https://crypto.news/bitcoin-price-prediction-btc-recovery-etf-outflows/)
 - [KuCoin – Dagelijks cryptomarktrapport, 26 november 2026](https://www.kucoin.com/news/articles/crypto-daily-market-report-november-26-2026)
 - [Business Standard (Reuters) – Aziatische beurzen veren op, met AI-zorgen en nieuwe Amerikaanse heffingen op de achtergrond](https://www.business-standard.com/markets/news/asian-shares-bounce-as-ai-concerns-fresh-us-tariffs-lurk-in-background-126112600046_1.html)

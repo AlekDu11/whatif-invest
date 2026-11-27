@@ -2,9 +2,12 @@
 title: Bitcoin फिर $60,000 के ऊपर, नवंबर में ETF से निकासी रिकॉर्ड की ओर
 description: 26 नवंबर को $58,000 से नीचे फिसलने के बाद Bitcoin करीब 3% चढ़कर लगभग $60,850 पर पहुंचा, जबकि अमेरिकी स्पॉट bitcoin ETF से रिकॉर्ड महीने की निकासी जारी रही।
 date: 2026-11-26 06:50
+updated: 2026-11-27 13:05
 tags: bitcoin, etf
 assets: btc, eth
 ---
+**अपडेट 27 नवंबर, 13:05 UTC:** Bitcoin की तेजी जारी रही और शुक्रवार को यह करीब $61,700 पर ट्रेड हुआ, जो बुधवार के लगभग $57,300 के दो साल के निचले स्तर से करीब 8% ऊपर और सोमवार के बाद का सबसे ऊंचा स्तर है; यह आठ हफ्तों में अपनी पहली साप्ताहिक बढ़त की ओर है (Analytics Insight, Coinspeaker)। नवंबर में यह अब भी करीब 20% नीचे है, 1 नवंबर के लगभग $77,600 से। Ether करीब 2.3% बढ़कर लगभग $1,734 पर पहुंचा। यह उछाल AI और चिप शेयरों में व्यापक राहत रैली और छुट्टियों के कम कारोबार के साथ आया; Binance ने गुरुवार को यह भी कहा कि पिछले महीने के $6.3 अरब के हैक के बाद लगाई गई निकासी सीमाएं पूरी तरह हटा दी गई हैं। अमेरिका में लगातार ऊंची महंगाई और 8–9 दिसंबर की बैठक में Fed की संभावित ब्याज दर बढ़ोतरी अब भी मुख्य बाधाएं हैं, और ट्रेडर्स करीब $64,600 के रेजिस्टेंस पर नजर रख रहे हैं।
+
 गुरुवार, 26 नवंबर की सुबह Bitcoin फिर $60,000 के ऊपर लौट आया। 05:40 UTC पर यह 24 घंटे में करीब 3% बढ़कर लगभग $60,850 पर था, जबकि एक दिन पहले यह कुछ समय के लिए $58,000 से नीचे चला गया था। यह उछाल तब आया जब वॉल स्ट्रीट ने बुधवार सुबह टेक शेयरों में हुई ज्यादातर गिरावट की भरपाई कर ली, लेकिन अमेरिकी स्पॉट bitcoin ETF से पैसा निकलता रहा।
 
 ## क्या हुआ
@@ -20,6 +23,8 @@ crypto.news के हवाले से विश्लेषक $61,500–62,
 
 ## स्रोत
 
+- [Analytics Insight — Bitcoin USD 61,400 के ऊपर लौटा, आठ हफ्तों में पहली साप्ताहिक बढ़त की ओर](https://www.analyticsinsight.net/news/bitcoin-recovers-above-usd-61400-eyes-first-weekly-gain-in-eight-weeks-as-crypto-markets-rebound)
+- [Coinspeaker via Yahoo Finance — आज की bitcoin खबर: BTC 8% उछला](https://finance.yahoo.com/markets/crypto/articles/bitcoin-news-today-btc-rebounds-104410814.html)
 - [crypto.news — Bitcoin की कीमत फिर $60K पर, लेकिन क्या सच में तल बन गया है?](https://crypto.news/bitcoin-price-prediction-btc-recovery-etf-outflows/)
 - [KuCoin — क्रिप्टो दैनिक बाजार रिपोर्ट, 26 नवंबर 2026](https://www.kucoin.com/news/articles/crypto-daily-market-report-november-26-2026)
 - [Business Standard (Reuters) — AI की चिंताओं और नए अमेरिकी टैरिफ के खतरे के बीच एशियाई शेयरों में उछाल](https://www.business-standard.com/markets/news/asian-shares-bounce-as-ai-concerns-fresh-us-tariffs-lurk-in-background-126112600046_1.html)

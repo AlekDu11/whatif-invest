@@ -2,9 +2,12 @@
 title: Bitcoin volta a superar US$ 60 mil e saídas dos ETFs em novembro caminham para recorde
 description: O bitcoin subiu cerca de 3%, para perto de US$ 60.850, em 26 de novembro após cair abaixo de US$ 58 mil, e os ETFs à vista dos EUA ampliaram saídas recordes.
 date: 2026-11-26 06:50
+updated: 2026-11-27 13:05
 tags: bitcoin, etf
 assets: btc, eth
 ---
+**Atualização 27 de novembro, 13:05 UTC:** o bitcoin continuou subindo e era negociado perto de US$ 61.700 na sexta-feira, cerca de 8% acima da mínima de dois anos de quarta-feira, perto de US$ 57.300, e no maior nível desde segunda; ele caminha para o primeiro ganho semanal em oito semanas (Analytics Insight, Coinspeaker). Ainda assim, acumula queda de cerca de 20% em novembro, de aproximadamente US$ 77.600 em 1º de novembro. O ether avançou cerca de 2,3%, para perto de US$ 1.734. A alta veio junto com uma recuperação mais ampla das ações de IA e de chips e com pregão fraco de feriado; a Binance também informou na quinta-feira que retirou totalmente os limites de saque impostos após o ataque hacker de US$ 6,3 bilhões no mês passado. A inflação persistente nos EUA e uma provável alta de juros do Fed na reunião de 8 e 9 de dezembro continuam sendo os principais obstáculos, e os traders observam a resistência perto de US$ 64.600.
+
 O bitcoin voltou a superar US$ 60 mil no início da quinta-feira, 26 de novembro, com alta de cerca de 3% em 24 horas, para perto de US$ 60.850 às 05:40 UTC, um dia depois de cair brevemente abaixo de US$ 58 mil. A recuperação veio enquanto Wall Street devolvia a maior parte das perdas iniciais das empresas de tecnologia na quarta-feira, mas o dinheiro continuou saindo dos ETFs de bitcoin à vista dos EUA.
 
 ## O que aconteceu
@@ -20,6 +23,8 @@ Analistas citados pelo crypto.news veem resistência na faixa de US$ 61.500–62
 
 ## Fontes
 
+- [Analytics Insight — Bitcoin recovers above USD 61,400, eyes first weekly gain in eight weeks](https://www.analyticsinsight.net/news/bitcoin-recovers-above-usd-61400-eyes-first-weekly-gain-in-eight-weeks-as-crypto-markets-rebound)
+- [Coinspeaker via Yahoo Finance — Bitcoin news today: BTC rebounds 8%](https://finance.yahoo.com/markets/crypto/articles/bitcoin-news-today-btc-rebounds-104410814.html)
 - [crypto.news — Preço do bitcoin recupera US$ 60 mil, mas o fundo ficou mesmo para trás?](https://crypto.news/bitcoin-price-prediction-btc-recovery-etf-outflows/)
 - [KuCoin — Relatório diário do mercado cripto, 26 de novembro de 2026](https://www.kucoin.com/news/articles/crypto-daily-market-report-november-26-2026)
 - [Business Standard (Reuters) — Bolsas asiáticas sobem, com temores sobre IA e novas tarifas dos EUA ao fundo](https://www.business-standard.com/markets/news/asian-shares-bounce-as-ai-concerns-fresh-us-tariffs-lurk-in-background-126112600046_1.html)

@@ -2,9 +2,12 @@
 title: Bitcoin يعود فوق 60 ألف دولار مع توجه تدفقات الخروج من صناديق ETF لرقم قياسي في نوفمبر
 description: ارتفع Bitcoin نحو 3% إلى قرابة 60,850 دولارًا في 26 نوفمبر بعد هبوطه دون 58 ألفًا، فيما واصلت صناديق bitcoin الأمريكية الفورية شهرًا قياسيًا من التدفقات.
 date: 2026-11-26 06:50
+updated: 2026-11-27 13:05
 tags: bitcoin, etf
 assets: btc, eth
 ---
+**تحديث 27 نوفمبر، 13:05 UTC:** واصل Bitcoin ارتفاعه وجرى تداوله قرب 61,700 دولار يوم الجمعة، أي أعلى بنحو 8% من أدنى مستوى في عامين سجّله يوم الأربعاء قرب 57,300 دولار، وهو أعلى مستوى له منذ يوم الاثنين؛ ويتجه لتحقيق أول مكسب أسبوعي منذ ثمانية أسابيع (Analytics Insight وCoinspeaker). لكنه لا يزال منخفضًا بنحو 20% في نوفمبر، من قرابة 77,600 دولار في 1 نوفمبر. وارتفع ether بنحو 2.3% إلى قرابة 1,734 دولارًا. وجاء الارتداد مع موجة انتعاش أوسع في أسهم الذكاء الاصطناعي والرقائق وتداولات عطلة هادئة؛ كما أعلنت Binance يوم الخميس أنها رفعت بالكامل قيود السحب التي فرضتها بعد اختراق بقيمة 6.3 مليار دولار الشهر الماضي. ويظل التضخم الأمريكي المستمر واحتمال رفع الفيدرالي للفائدة في اجتماع 8–9 ديسمبر أبرز العوائق، فيما يراقب المتداولون مستوى المقاومة قرب 64,600 دولار.
+
 عاد Bitcoin فوق مستوى 60 ألف دولار في وقت مبكر من يوم الخميس 26 نوفمبر، مرتفعًا نحو 3% خلال 24 ساعة إلى قرابة 60,850 دولارًا عند الساعة 05:40 بتوقيت UTC، بعد يوم من هبوطه لفترة وجيزة دون 58 ألف دولار. وجاء الارتداد مع تعويض وول ستريت معظم خسائر أسهم التكنولوجيا في بداية تعاملات الأربعاء، لكن الأموال واصلت الخروج من صناديق bitcoin الفورية المتداولة في الولايات المتحدة.
 
 ## ماذا حدث
@@ -20,6 +23,8 @@ assets: btc, eth
 
 ## المصادر
 
+- [Analytics Insight — Bitcoin يتعافى فوق 61,400 دولار ويتجه لأول مكسب أسبوعي منذ ثمانية أسابيع](https://www.analyticsinsight.net/news/bitcoin-recovers-above-usd-61400-eyes-first-weekly-gain-in-eight-weeks-as-crypto-markets-rebound)
+- [Coinspeaker via Yahoo Finance — أخبار bitcoin اليوم: BTC يرتد 8%](https://finance.yahoo.com/markets/crypto/articles/bitcoin-news-today-btc-rebounds-104410814.html)
 - [crypto.news — سعر bitcoin يستعيد 60 ألف دولار، لكن هل بلغ القاع حقًا؟](https://crypto.news/bitcoin-price-prediction-btc-recovery-etf-outflows/)
 - [KuCoin — التقرير اليومي لسوق العملات المشفرة، 26 نوفمبر 2026](https://www.kucoin.com/news/articles/crypto-daily-market-report-november-26-2026)
 - [Business Standard (Reuters) — الأسهم الآسيوية ترتد وسط مخاوف الذكاء الاصطناعي ورسوم أمريكية جديدة](https://www.business-standard.com/markets/news/asian-shares-bounce-as-ai-concerns-fresh-us-tariffs-lurk-in-background-126112600046_1.html)
