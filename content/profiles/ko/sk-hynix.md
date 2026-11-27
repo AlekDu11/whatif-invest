@@ -1,5 +1,5 @@
 ---
-title: SK hynix(SK하이닉스, 000660) 주식: 영업이익률 80%의 AI 메모리 기업
+title: "SK hynix(SK하이닉스, 000660) 주식: 엔비디아 AI 칩용 HBM 메모리 기업"
 description: SK하이닉스를 쉽게 설명합니다: 엔비디아용 HBM, 분기 영업이익 83조 3천억 원, 2029년까지 찬 물량, 위험 요인과 적립식 투자.
 date: 2026-11-27
 kind: analysis

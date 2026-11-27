@@ -1,6 +1,6 @@
 ---
-title: SK hynix (000660) Aktie: der KI-Speicherhersteller mit 80 % operativer Marge
-description: SK hynix einfach erklärt: HBM-Speicher für Nvidia, Rekordgewinn von 83,3 Bio. ₩ im Quartal, Lieferungen bis 2029 gebucht, Risiken, Tipps für Sparpläne.
+title: "SK hynix (000660) Aktie: der HBM-Speicherhersteller hinter Nvidias KI-Chips"
+description: "SK hynix einfach erklärt: HBM-Speicher für Nvidia, 83,3 Bio. ₩ operativer Gewinn im 3. Quartal 2026, Lieferungen bis 2029 gebucht, Risiken, Tipps für Sparpläne."
 date: 2026-11-27
 kind: analysis
 stat: 80%

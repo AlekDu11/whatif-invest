@@ -1,6 +1,6 @@
 ---
-title: SK hynix (000660): a fabricante de memória para IA com margem de 80%
-description: SK hynix sem complicação: memória HBM para a Nvidia, lucro recorde de ₩ 83,3 trilhões num trimestre, oferta vendida até 2029, riscos e dicas para quem compra.
+title: "Ações da SK hynix (000660): a fabricante de memória HBM dos chips de IA da Nvidia"
+description: "SK hynix sem complicação: memória HBM para a Nvidia, ₩ 83,3 trilhões de lucro operacional no 3º tri de 2026, oferta vendida até 2029, riscos e dicas."
 date: 2026-11-27
 kind: analysis
 stat: 80%

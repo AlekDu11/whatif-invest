@@ -1,6 +1,6 @@
 ---
-title: SK hynix (000660): producent pamięci dla AI z 80-procentową marżą zysku
-description: SK hynix w prostych słowach: pamięci HBM dla Nvidii, rekordowe 83,3 bln wonów zysku w kwartale, podaż zarezerwowana do 2029, ryzyka i rady dla kupujących.
+title: "Akcje SK hynix (000660): producent pamięci HBM do chipów AI Nvidii"
+description: "SK hynix w prostych słowach: pamięci HBM dla Nvidii, 83,3 bln wonów zysku operacyjnego w III kwartale 2026, podaż zarezerwowana do 2029 i ryzyka."
 date: 2026-11-27
 kind: analysis
 stat: 80%

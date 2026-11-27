@@ -1,5 +1,5 @@
 ---
-title: SK hynix (000660)股票：营业利润率高达80%的AI存储芯片厂商
+title: "SK hynix (000660)股票：为Nvidia AI芯片供应HBM内存的厂商"
 description: 用大白话看SK hynix：为Nvidia供应HBM，单季营业利润83.3万亿韩元，产能已订到2029年，主要风险与定投须知。
 date: 2026-11-27
 kind: analysis

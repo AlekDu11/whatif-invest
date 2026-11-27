@@ -1,5 +1,5 @@
 ---
-title: Saham SK hynix (000660): pembuat memori AI dengan margin laba 80%
+title: "Saham SK hynix (000660): pembuat memori HBM untuk chip AI Nvidia"
 description: SK hynix dengan bahasa sederhana: memori HBM untuk Nvidia, laba kuartalan rekor ₩83,3 triliun, pasokan terpesan hingga 2029, risiko dan hal bagi pembeli rutin.
 date: 2026-11-27
 kind: analysis

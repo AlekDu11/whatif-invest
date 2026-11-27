@@ -1,5 +1,5 @@
 ---
-title: SK hynix (000660) stock: the AI memory maker with an 80% profit margin
+title: "SK hynix (000660) stock: the HBM memory maker behind Nvidia's AI chips"
 description: SK hynix in plain language: HBM memory for Nvidia, ₩83.3 trillion of operating profit in Q3 2026, supply booked to 2029, the risks and what regular buyers face.
 date: 2026-11-27
 kind: analysis

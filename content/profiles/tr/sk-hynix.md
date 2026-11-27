@@ -1,5 +1,5 @@
 ---
-title: SK hynix (000660) hissesi: %80 kâr marjıyla çalışan yapay zekâ bellek üreticisi
+title: "SK hynix (000660) hissesi: Nvidia'nın yapay zekâ çiplerine HBM bellek üreten şirket"
 description: SK hynix sade dille: Nvidia için HBM bellek, çeyrekte rekor 83,3 trilyon won kâr, 2029'a kadar rezerve arz, riskler ve düzenli alıcılar için bilgiler.
 date: 2026-11-27
 kind: analysis

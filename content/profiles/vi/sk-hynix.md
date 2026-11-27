@@ -1,5 +1,5 @@
 ---
-title: Cổ phiếu SK hynix (000660): hãng bộ nhớ AI với biên lợi nhuận 80%
+title: "Cổ phiếu SK hynix (000660): hãng sản xuất bộ nhớ HBM cho chip AI của Nvidia"
 description: SK hynix dễ hiểu: bộ nhớ HBM cho Nvidia, lãi quý kỷ lục 83,3 nghìn tỷ won, nguồn cung đã được đặt đến 2029, rủi ro và điều người mua định kỳ cần biết.
 date: 2026-11-27
 kind: analysis

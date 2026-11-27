@@ -1,6 +1,6 @@
 ---
-title: SK hynix (000660): de AI-geheugenmaker met een winstmarge van 80%
-description: SK hynix in gewone taal: HBM-geheugen voor Nvidia, een record van ₩83,3 biljoen kwartaalwinst, aanbod geboekt tot 2029, de risico's en regelmatig kopen.
+title: "Aandeel SK hynix (000660): de HBM-geheugenmaker achter de AI-chips van Nvidia"
+description: "SK hynix in gewone taal: HBM-geheugen voor Nvidia, ₩83,3 biljoen bedrijfswinst in het 3e kwartaal van 2026, aanbod geboekt tot 2029 en de risico's."
 date: 2026-11-27
 kind: analysis
 stat: 80%

@@ -1,5 +1,5 @@
 ---
-title: SK hynix (000660)株：営業利益率80%のAIメモリーメーカー
+title: "SK hynix (000660)株：NvidiaのAIチップを支えるHBMメモリーメーカー"
 description: SK hynixをやさしく解説：Nvidia向けHBM、四半期営業利益83.3兆ウォン、2029年まで埋まる供給、リスクと積立の考え方。
 date: 2026-11-27
 kind: analysis
