@@ -1978,10 +1978,10 @@ if(innerWidth<640) $$('.fcols details').forEach(d=>d.open=false);
     load().then(d=>{ const s=d.s; const top=d.x.filter(x=>x.m).slice(0,3);
       el.innerHTML=`<span class="xt">🎁 ${E(s.title)}</span>`+top.map(x=>`<a class="xi" href="${E(x.h.replace('from=pop','from=xoffer'))}" target="_blank" rel="sponsored noopener">${AV(x)}<span>${E(x.n)}<small>${E(s.upto)} ${num(x.m)} USDT</small></span></a>`).join('')+`<button class="btn" type="button">${E(s.all)} ›</button>`;
       el.querySelector('button').addEventListener('click',open); el.hidden=false }).catch(()=>{}) },1200) });
-  if(st){ const go=()=>load().then(d=>{ const s=d.s, my=mine(); let list=d.x.map(x=>({h:x.h,t:s.strip.replace('{n}',x.n).replace('{l}',x.l)}));
-      if(my) list=my.i.slice(0,2).map(i=>({h:i.h,t:i.n+': '+i.t})).concat(list);
+  if(st){ const go=()=>load().then(d=>{ const s=d.s, my=mine(); let list=d.x.map(x=>({h:x.h,v:AV(x),t:s.strip.replace('{n}',x.n).replace('{l}',x.l)}));
+      if(my) list=my.i.slice(0,2).map(i=>({h:i.h,v:AV(i),t:i.n+': '+i.t})).concat(list);
       if(!list.length) return; let k=0; st.innerHTML=`<span class="pl">${E(s.partner)}</span><button class="pg" type="button" aria-label="${E(s.title)}">🎁</button><a target="_blank" rel="sponsored noopener"></a>`; st.querySelector('.pg').addEventListener('click',open); const a=st.querySelector('a');
-      const show=()=>{ const it=list[k%list.length]; a.href=it.h; a.innerHTML=`${E(it.t)} <i>→</i>`; k++ }; show(); st.hidden=false;
+      const show=()=>{ const it=list[k%list.length]; a.href=it.h; a.innerHTML=`${it.v||''}${E(it.t)} <i>→</i>`; k++ }; show(); st.hidden=false;
       setInterval(()=>{ if(document.hidden) return; a.classList.add('fade'); setTimeout(()=>{ show(); a.classList.remove('fade') },400) },6000) }).catch(()=>{});
     ('requestIdleCallback' in window)?requestIdleCallback(go,{timeout:2500}):setTimeout(go,1200) }
 })();

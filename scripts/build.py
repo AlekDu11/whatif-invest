@@ -1198,7 +1198,8 @@ def bonuses_page(lang, ver):
         till = '.'.join(reversed(it['until'].split('-'))) if it.get('until') else t['nolimit']
         src = ' · '.join(f'<a href="{esc(u)}" target="_blank" rel="noopener">{esc(ti)}</a>' for ti, u in it.get('src', []))
         rows = ''.join(f'<tr><th>{esc(t[k])}</th><td>{esc(L(it[k]))}</td></tr>' for k in ('you', 'friend', 'need', 'cash'))
-        return (f'<article class="card bon" id="{c}-{it["id"]}"><h3>{esc(it["name"])}</h3><table class="bont">{rows}'
+        av = f'<span class="bav" style="background:{esc(it.get("c") or "#3a4150")}">{esc(it.get("a") or it["name"][0])}</span>'   # owner 2026-11-27: every offer has an avatar
+        return (f'<article class="card bon" id="{c}-{it["id"]}"><div class="bxh">{av}<h3>{esc(it["name"])}</h3></div><table class="bont">{rows}'
                 f'<tr><th>{esc(t["until"])}</th><td>{esc(till)}</td></tr></table>'
                 f'<p class="bonb">{go}{more}</p><p class="muted" style="font-size:13px">{esc(t["checked"])}: {".".join(reversed(it["checked"].split("-")))} · {esc(t["src"])}: {src}</p></article>')
     chips = ''.join(f'<a class="chip" href="#bc-{c}">{C[c]["flag"]} {esc(L(C[c]["name"]))} <small>{len(C[c]["items"])}</small></a>' for c in order)

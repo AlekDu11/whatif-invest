@@ -1153,3 +1153,5 @@ a.badge.tagc{text-decoration:none;color:inherit;border:1px solid var(--line)}a.b
 @media(max-width:900px){.lfolds{grid-template-columns:repeat(2,minmax(0,1fr))}}.lrn{scroll-margin-top:80px}
 
 .artbody figure.shot{margin:20px auto;max-width:420px;text-align:center}.artbody figure.shot img{width:100%;height:auto;border-radius:16px;border:1px solid var(--line)}.artbody figure.shot figcaption{font-size:13.5px;color:var(--muted);margin-top:8px}
+
+.pstrip a .bav{width:20px;height:20px;font-size:11px;display:inline-grid;vertical-align:-5px;margin-right:7px}.bon .bxh{display:flex;align-items:center;gap:10px}.bon .bxh h3{margin:0}.bon .bxh{margin-bottom:8px}
