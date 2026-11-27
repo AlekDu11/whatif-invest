@@ -1,10 +1,13 @@
 ---
-title: Dlaczego giełda w USA rośnie dziś? Kontrakty na Nasdaq +2%, Nvidia odbija
-description: Dlaczego giełda w USA rośnie dziś? W Black Friday, 27 listopada, kontrakty na Nasdaq zyskują ok. 2%, a Nvidia przed sesją prawie 4%, bo słabną obawy wokół AI.
+title: Dlaczego giełda w USA rośnie dziś? Nasdaq +2,3% w Black Friday, odbicie spółek chipowych
+description: Dlaczego giełda w USA rośnie dziś? W Black Friday, 27 listopada, Nasdaq zamknął się wzrostem o 2,3%, a S&P 500 o 1,6%: tydzień ok. +5%, odbicie chipów.
 date: 2026-11-27 13:00
+updated: 2026-11-27 18:30
 tags: markets, ai
-assets: qqq, spy, nvda, mu
+assets: qqq, spy, nvda, mu, sndk
 ---
+**Aktualizacja 27 listopada, 18:30 UTC:** Skrócona sesja w Black Friday zakończyła się wzrostami: Nasdaq Composite zyskał 2,3% (+543 pkt), S&P 500 1,6%, a Dow 1,2% (+594 pkt) – podaje TipRanks. Tydzień kończy się więc wzrostem o ok. 5% dla S&P 500 i Dow oraz o ok. 6% dla Nasdaq; dla Dow to najlepszy tydzień od mniej więcej 18 miesięcy. Prym wiedli producenci chipów pamięci: SanDisk w trakcie sesji zyskiwał ok. 13%, Micron 6–7%, a Broadcom i AMD 2–3%. Nvidia ominęła rajd: po wzroście o ponad 3% przed sesją zawróciła i rano traciła 1–2%, wciąż ok. 11% poniżej poniedziałkowego zamknięcia. Ciążyły jej doniesienia Financial Times o wstrzymaniu eksportu chipów do Azji Południowo-Wschodniej oraz negatywny credit watch od S&P (Yahoo Finance, StockTitan). Anthropic podrożał o ok. 10% i znów jest powyżej ceny z IPO wynoszącej 83 USD.
+
 Amerykańska giełda w Black Friday, 27 listopada, ma otworzyć się wzrostami, bo akcje producentów chipów i spółek AI odbijają po tygodniach wyprzedaży: przed otwarciem kontrakty na Nasdaq-100 zyskiwały ok. 2%, a na S&P 500 ok. 1,5–1,7%; Nvidia rosła w handlu przedsesyjnym o prawie 4%, a Micron o ok. 6% (Yahoo Finance).
 
 ## Co się stało
@@ -20,7 +23,7 @@ W USA nie ma jednego nowego impulsu. Komentatorzy mówią o odbiciu z ulgi: wąt
 
 ## Liczby w tej chwili
 
-ETF na Nasdaq-100 kosztuje {{price:qqq}} ({{chg1y:qqq}} w 12 miesięcy), a ETF na S&P 500 {{price:spy}} ({{chg1y:spy}}). Nvidia jest po {{price:nvda}} przy rekordzie {{ath:nvda}} ({{athd:nvda}}); Micron po {{price:mu}}. Zobacz naszą [stronę o AI]({lang}/ai/) i [stronę odległości od rekordu]({lang}/ath/).
+ETF na Nasdaq-100 kosztuje {{price:qqq}} ({{chg1y:qqq}} w 12 miesięcy), a ETF na S&P 500 {{price:spy}} ({{chg1y:spy}}). Nvidia jest po {{price:nvda}} przy rekordzie {{ath:nvda}} ({{athd:nvda}}); Micron po {{price:mu}}, a SanDisk po {{price:sndk}}. Zobacz naszą [stronę o AI]({lang}/ai/) i [stronę odległości od rekordu]({lang}/ath/).
 
 ## Co to oznacza, jeśli kupujesz regularnie
 
@@ -28,6 +31,8 @@ ETF na Nasdaq-100 kosztuje {{price:qqq}} ({{chg1y:qqq}} w 12 miesięcy), a ETF n
 
 ## Źródła
 
+- [TipRanks – U.S. market closes sharply higher to end volatile week on Wall Street](https://www.tipranks.com/news/u-s-market-closes-sharply-higher-to-end-volatile-week-on-wall-street)
+- [StockTitan – Stock market today live, November 27, 2026](https://www.stocktitan.net/articles/stock-market-today-live-november-27-2026)
 - [Yahoo Finance – Stock market today: Dow, S&P 500, Nasdaq futures gain as AI jitters steady](https://finance.yahoo.com/markets/live/stock-market-today-firday-november-27-dow-sp-500-nasdaq-black-friday-holiday-091152065.html)
 - [TipRanks – Stock Market Today, Nov. 27: Markets reopen for shortened Black Friday trading](https://www.tipranks.com/news/stock-market-today-nov-27-markets-reopen-for-shortened-black-friday-trading)
 - [Chip Dispatch – Chinese chip stocks post record 17.6% gain on state support pledge](https://chipdispatch.com/articles/chinese-chip-stocks-post-record-17-6-gain-on-state-support-pledge)

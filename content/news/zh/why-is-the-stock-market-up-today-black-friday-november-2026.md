@@ -1,10 +1,13 @@
 ---
-title: 美股今天为什么上涨？纳指期货涨2%，英伟达等芯片股反弹
-description: 美股今天为什么上涨？黑色星期五（11月27日），AI担忧缓解，纳斯达克期货上涨约2%，英伟达盘前涨近4%，美股将于美东时间下午1点提前收盘。
+title: 美股今天为什么上涨？黑色星期五纳指涨2.3%，芯片股反弹
+description: 美股今天为什么上涨？黑色星期五（11月27日），纳斯达克指数收涨2.3%，标普500指数涨1.6%，芯片股反弹，本周累计上涨约5%。
 date: 2026-11-27 13:00
+updated: 2026-11-27 18:30
 tags: markets, ai
-assets: qqq, spy, nvda, mu
+assets: qqq, spy, nvda, mu, sndk
 ---
+**11月27日 18:30 UTC更新：** 美股在黑色星期五的缩短交易日中收高：据TipRanks，Nasdaq综合指数上涨2.3%（543点），S&P 500上涨1.6%，道指上涨1.2%（594点）。本周S&P 500和道指累计上涨约5%，Nasdaq上涨约6%，为道指约18个月来表现最好的一周。存储芯片厂商领涨：盘中SanDisk上涨约13%，Micron上涨6%–7%，Broadcom和AMD上涨2%–3%。Nvidia则错过了这波反弹：盘前一度上涨逾3%，随后转跌，上午下跌1%–2%，仍较周一收盘价低约11%。拖累因素包括Financial Times关于暂停向东南亚出口芯片的报道，以及S&P的负面信用观察（Yahoo Finance、StockTitan）。Anthropic上涨约10%，重回83美元的IPO发行价之上。
+
 美国股市有望在11月27日黑色星期五高开，原因是芯片和AI股在连续数周遭抛售后出现反弹：开盘前纳斯达克100指数期货上涨约2%，标普500指数期货上涨约1.5–1.7%，英伟达盘前上涨近4%，美光上涨约6%（Yahoo Finance）。
 
 ## 发生了什么
@@ -20,7 +23,7 @@ assets: qqq, spy, nvda, mu
 
 ## 当前数据
 
-纳斯达克100 ETF报{{price:qqq}}（12个月{{chg1y:qqq}}），标普500 ETF报{{price:spy}}（{{chg1y:spy}}）。英伟达报{{price:nvda}}，历史最高为{{ath:nvda}}（{{athd:nvda}}）；美光报{{price:mu}}。请查看我们的[AI页面]({lang}/ai/)和[距历史高点页面]({lang}/ath/)。
+纳斯达克100 ETF报{{price:qqq}}（12个月{{chg1y:qqq}}），标普500 ETF报{{price:spy}}（{{chg1y:spy}}）。英伟达报{{price:nvda}}，历史最高为{{ath:nvda}}（{{athd:nvda}}）；美光报{{price:mu}}，SanDisk报{{price:sndk}}。请查看我们的[AI页面]({lang}/ai/)和[距历史高点页面]({lang}/ath/)。
 
 ## 对定投者意味着什么
 
@@ -28,6 +31,8 @@ assets: qqq, spy, nvda, mu
 
 ## 来源
 
+- [TipRanks — U.S. market closes sharply higher to end volatile week on Wall Street](https://www.tipranks.com/news/u-s-market-closes-sharply-higher-to-end-volatile-week-on-wall-street)
+- [StockTitan — Stock market today live, November 27, 2026](https://www.stocktitan.net/articles/stock-market-today-live-november-27-2026)
 - [Yahoo Finance — Stock market today: Dow, S&P 500, Nasdaq futures gain as AI jitters steady](https://finance.yahoo.com/markets/live/stock-market-today-firday-november-27-dow-sp-500-nasdaq-black-friday-holiday-091152065.html)
 - [TipRanks — Stock Market Today, Nov. 27: Markets reopen for shortened Black Friday trading](https://www.tipranks.com/news/stock-market-today-nov-27-markets-reopen-for-shortened-black-friday-trading)
 - [Chip Dispatch — Chinese chip stocks post record 17.6% gain on state support pledge](https://chipdispatch.com/articles/chinese-chip-stocks-post-record-17-6-gain-on-state-support-pledge)

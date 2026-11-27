@@ -1,10 +1,13 @@
 ---
-title: अमेरिकी शेयर बाजार आज क्यों चढ़ा? Nasdaq फ्यूचर्स +2%, Nvidia और चिप शेयरों में उछाल
-description: अमेरिकी शेयर बाजार आज क्यों चढ़ा? Black Friday, 27 नवंबर को AI की चिंता घटने से Nasdaq फ्यूचर्स करीब 2% और Nvidia प्रीमार्केट में लगभग 4% चढ़ा।
+title: अमेरिकी शेयर बाजार आज क्यों चढ़ा? Black Friday पर Nasdaq +2.3%, चिप शेयरों में उछाल
+description: अमेरिकी शेयर बाजार आज क्यों चढ़ा? Black Friday, 27 नवंबर को Nasdaq 2.3% और S&P 500 1.6% चढ़कर बंद हुए; चिप शेयरों में उछाल से हफ्ते में ~5% की बढ़त रही।
 date: 2026-11-27 13:00
+updated: 2026-11-27 18:30
 tags: markets, ai
-assets: qqq, spy, nvda, mu
+assets: qqq, spy, nvda, mu, sndk
 ---
+**अपडेट 27 नवंबर, 18:30 UTC:** Black Friday के छोटे सत्र में अमेरिकी बाजार बढ़त के साथ बंद हुए: TipRanks के मुताबिक Nasdaq Composite 2.3% (+543 अंक), S&P 500 1.6% और Dow 1.2% (+594 अंक) चढ़ा। इसके साथ हफ्ते में S&P 500 और Dow करीब 5% और Nasdaq करीब 6% चढ़े — यह Dow का करीब 18 महीनों में सबसे अच्छा हफ्ता रहा। मेमोरी चिप कंपनियां सबसे आगे रहीं: सत्र के दौरान SanDisk करीब 13% और Micron 6–7% चढ़े, जबकि Broadcom और AMD में 2–3% की बढ़त रही। Nvidia इस तेजी से चूक गया: प्रीमार्केट में 3% से ज्यादा चढ़ने के बाद यह पलटकर सुबह 1–2% नीचे कारोबार कर रहा था और अब भी सोमवार के बंद भाव से करीब 11% नीचे है। दक्षिण-पूर्व एशिया को चिप निर्यात रुकने पर Financial Times की रिपोर्ट और S&P की नेगेटिव क्रेडिट वॉच का दबाव रहा (Yahoo Finance, StockTitan)। Anthropic करीब 10% चढ़कर फिर से अपने $83 के IPO भाव से ऊपर आ गया।
+
 अमेरिकी शेयर बाजार Black Friday, 27 नवंबर को बढ़त के साथ खुलने की ओर है, क्योंकि हफ्तों की बिकवाली के बाद चिप और AI शेयर वापस उछल रहे हैं: बाजार खुलने से पहले Nasdaq-100 फ्यूचर्स करीब 2% और S&P 500 फ्यूचर्स करीब 1.5–1.7% ऊपर थे, जबकि प्रीमार्केट ट्रेडिंग में Nvidia लगभग 4% और Micron करीब 6% चढ़ा (Yahoo Finance)।
 
 ## क्या हुआ
@@ -20,7 +23,7 @@ assets: qqq, spy, nvda, mu
 
 ## अभी के आंकड़े
 
-Nasdaq-100 ETF {{price:qqq}} पर है (12 महीनों में {{chg1y:qqq}}) और S&P 500 ETF {{price:spy}} पर ({{chg1y:spy}})। Nvidia {{price:nvda}} पर है, जबकि उसका रिकॉर्ड {{ath:nvda}} ({{athd:nvda}}) है; Micron {{price:mu}} पर है। हमारा [AI पेज]({lang}/ai/) और [ATH से दूरी वाला पेज]({lang}/ath/) देखें।
+Nasdaq-100 ETF {{price:qqq}} पर है (12 महीनों में {{chg1y:qqq}}) और S&P 500 ETF {{price:spy}} पर ({{chg1y:spy}})। Nvidia {{price:nvda}} पर है, जबकि उसका रिकॉर्ड {{ath:nvda}} ({{athd:nvda}}) है; Micron {{price:mu}} पर और SanDisk {{price:sndk}} पर है। हमारा [AI पेज]({lang}/ai/) और [ATH से दूरी वाला पेज]({lang}/ath/) देखें।
 
 ## नियमित खरीदने वालों के लिए इसका मतलब
 
@@ -28,6 +31,8 @@ Nasdaq-100 ETF {{price:qqq}} पर है (12 महीनों में {{ch
 
 ## स्रोत
 
+- [TipRanks — U.S. market closes sharply higher to end volatile week on Wall Street](https://www.tipranks.com/news/u-s-market-closes-sharply-higher-to-end-volatile-week-on-wall-street)
+- [StockTitan — Stock market today live, November 27, 2026](https://www.stocktitan.net/articles/stock-market-today-live-november-27-2026)
 - [Yahoo Finance — Stock market today: Dow, S&P 500, Nasdaq futures gain as AI jitters steady](https://finance.yahoo.com/markets/live/stock-market-today-firday-november-27-dow-sp-500-nasdaq-black-friday-holiday-091152065.html)
 - [TipRanks — Stock Market Today, Nov. 27: Markets reopen for shortened Black Friday trading](https://www.tipranks.com/news/stock-market-today-nov-27-markets-reopen-for-shortened-black-friday-trading)
 - [Chip Dispatch — Chinese chip stocks post record 17.6% gain on state support pledge](https://chipdispatch.com/articles/chinese-chip-stocks-post-record-17-6-gain-on-state-support-pledge)

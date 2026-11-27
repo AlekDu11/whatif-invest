@@ -1,10 +1,13 @@
 ---
-title: ABD'de borsa neden yükseliyor? Nasdaq vadelileri %2 arttı, Nvidia toparlanıyor
-description: Borsa neden yükseliyor? ABD'de 27 Kasım Black Friday'de Nasdaq vadelileri %2, Nvidia piyasa öncesi %4'e yakın yükseldi; yapay zekâ endişeleri yatıştı.
+title: ABD'de borsa neden yükseliyor? Black Friday'de Nasdaq %2,3 arttı, çip hisseleri toparlandı
+description: Borsa neden yükseliyor? ABD'de 27 Kasım Black Friday'de Nasdaq %2,3, S&P 500 %1,6 yükselişle kapandı; çip hisseleri toparlanırken haftalık kazanç ~%5 oldu.
 date: 2026-11-27 13:00
+updated: 2026-11-27 18:30
 tags: markets, ai
-assets: qqq, spy, nvda, mu
+assets: qqq, spy, nvda, mu, sndk
 ---
+**Güncelleme 27 Kasım, 18:30 UTC:** Kısa Black Friday seansı yükselişle kapandı: TipRanks'e göre Nasdaq Composite %2,3 (+543 puan), S&P 500 %1,6 ve Dow %1,2 (+594 puan) yükseldi. Böylece S&P 500 ve Dow haftayı yaklaşık %5, Nasdaq ise yaklaşık %6 kazançla tamamladı; bu, Dow için yaklaşık 18 ayın en iyi haftası. Yükselişe bellek çipi üreticileri öncülük etti: seans içinde SanDisk yaklaşık %13, Micron %6–7, Broadcom ve AMD ise %2–3 yükseldi. Nvidia rallinin dışında kaldı: piyasa öncesinde %3'ün üzerinde yükseldikten sonra yön değiştirdi ve sabah saatlerinde %1–2 ekside işlem gördü; hisse hâlâ pazartesi kapanışının yaklaşık %11 altında. Financial Times'ın Güneydoğu Asya'ya çip ihracatının durdurulduğuna dair haberi ve S&P'nin negatif kredi izlemesi baskı yaptı (Yahoo Finance, StockTitan). Anthropic yaklaşık %10 yükselerek yeniden 83 $'lık halka arz fiyatının üzerine çıktı.
+
 ABD borsası 27 Kasım Black Friday'de yükselişle açılmaya hazırlanıyor, çünkü çip ve yapay zekâ hisseleri haftalardır süren satışların ardından toparlanıyor: açılış öncesinde Nasdaq-100 vadelileri yaklaşık %2, S&P 500 vadelileri yaklaşık %1,5–1,7 yükselirken Nvidia piyasa öncesi işlemlerde %4'e yakın, Micron ise yaklaşık %6 değer kazandı (Yahoo Finance).
 
 ## Ne oldu?
@@ -20,7 +23,7 @@ ABD'de tek ve yeni bir tetikleyici yok. Haberler bunu bir rahatlama yükselişi 
 
 ## Şu anki rakamlar
 
-Nasdaq-100 ETF'i {{price:qqq}} (12 ayda {{chg1y:qqq}}), S&P 500 ETF'i {{price:spy}} ({{chg1y:spy}}) seviyesinde işlem görüyor. Nvidia {{price:nvda}} seviyesinde, rekoru {{ath:nvda}} ({{athd:nvda}}); Micron ise {{price:mu}}. [Yapay zekâ sayfamıza]({lang}/ai/) ve [zirveden uzaklık sayfasına]({lang}/ath/) göz atın.
+Nasdaq-100 ETF'i {{price:qqq}} (12 ayda {{chg1y:qqq}}), S&P 500 ETF'i {{price:spy}} ({{chg1y:spy}}) seviyesinde işlem görüyor. Nvidia {{price:nvda}} seviyesinde, rekoru {{ath:nvda}} ({{athd:nvda}}); Micron {{price:mu}}, SanDisk ise {{price:sndk}}. [Yapay zekâ sayfamıza]({lang}/ai/) ve [zirveden uzaklık sayfasına]({lang}/ath/) göz atın.
 
 ## Düzenli alım yapıyorsanız bu ne anlama geliyor?
 
@@ -28,6 +31,8 @@ Nasdaq-100 ETF'i {{price:qqq}} (12 ayda {{chg1y:qqq}}), S&P 500 ETF'i {{price:sp
 
 ## Kaynaklar
 
+- [TipRanks — U.S. market closes sharply higher to end volatile week on Wall Street](https://www.tipranks.com/news/u-s-market-closes-sharply-higher-to-end-volatile-week-on-wall-street)
+- [StockTitan — Stock market today live, November 27, 2026](https://www.stocktitan.net/articles/stock-market-today-live-november-27-2026)
 - [Yahoo Finance — Stock market today: Dow, S&P 500, Nasdaq futures gain as AI jitters steady](https://finance.yahoo.com/markets/live/stock-market-today-firday-november-27-dow-sp-500-nasdaq-black-friday-holiday-091152065.html)
 - [TipRanks — Stock Market Today, Nov. 27: Markets reopen for shortened Black Friday trading](https://www.tipranks.com/news/stock-market-today-nov-27-markets-reopen-for-shortened-black-friday-trading)
 - [Chip Dispatch — Chinese chip stocks post record 17.6% gain on state support pledge](https://chipdispatch.com/articles/chinese-chip-stocks-post-record-17-6-gain-on-state-support-pledge)

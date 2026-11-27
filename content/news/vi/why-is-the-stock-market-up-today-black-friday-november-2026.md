@@ -1,10 +1,13 @@
 ---
-title: Vì sao chứng khoán Mỹ tăng hôm nay? Hợp đồng tương lai Nasdaq +2%, Nvidia bật tăng
-description: Vì sao chứng khoán Mỹ tăng hôm nay? Black Friday 27/11, hợp đồng tương lai Nasdaq tăng khoảng 2%, Nvidia tăng gần 4% trước giờ mở cửa khi lo ngại AI dịu bớt.
+title: Vì sao chứng khoán Mỹ tăng hôm nay? Nasdaq +2,3% ngày Black Friday, cổ phiếu chip hồi phục
+description: Vì sao chứng khoán Mỹ tăng hôm nay? Black Friday 27/11, Nasdaq đóng cửa tăng 2,3%, S&P 500 tăng 1,6%, khép lại tuần tăng ~5% khi cổ phiếu chip hồi phục.
 date: 2026-11-27 13:00
+updated: 2026-11-27 18:30
 tags: markets, ai
-assets: qqq, spy, nvda, mu
+assets: qqq, spy, nvda, mu, sndk
 ---
+**Cập nhật 27/11, 18:30 UTC:** Chứng khoán Mỹ đóng cửa tăng trong phiên rút ngắn ngày Black Friday: Nasdaq Composite tăng 2,3% (+543 điểm), S&P 500 tăng 1,6% và Dow tăng 1,2% (+594 điểm), theo TipRanks. Như vậy, S&P 500 và Dow tăng khoảng 5% trong tuần, Nasdaq tăng khoảng 6% — tuần tốt nhất của Dow trong khoảng 18 tháng. Các nhà sản xuất chip nhớ dẫn đầu: trong phiên, SanDisk có lúc tăng khoảng 13%, Micron tăng 6–7%, Broadcom và AMD tăng 2–3%. Nvidia đứng ngoài đà tăng: sau khi tăng hơn 3% trước giờ mở cửa, cổ phiếu đảo chiều và giảm 1–2% vào buổi sáng, vẫn thấp hơn khoảng 11% so với giá đóng cửa thứ Hai, do bài báo của Financial Times về việc ngừng xuất khẩu chip sang Đông Nam Á và việc S&P đưa vào diện theo dõi tín nhiệm tiêu cực (Yahoo Finance, StockTitan). Anthropic tăng khoảng 10%, trở lại trên giá IPO 83 USD.
+
 Thị trường chứng khoán Mỹ được dự báo mở cửa tăng trong ngày Black Friday 27/11, vì cổ phiếu chip và AI hồi phục sau nhiều tuần bị bán tháo: trước giờ mở cửa, hợp đồng tương lai Nasdaq-100 tăng khoảng 2% và hợp đồng tương lai S&P 500 tăng khoảng 1,5–1,7%, trong đó Nvidia tăng gần 4% và Micron khoảng 6% ở phiên tiền thị trường (Yahoo Finance).
 
 ## Chuyện gì đã xảy ra
@@ -20,7 +23,7 @@ Không có một chất xúc tác mới duy nhất nào tại Mỹ. Các bản t
 
 ## Các con số lúc này
 
-ETF Nasdaq-100 đang giao dịch ở {{price:qqq}} ({{chg1y:qqq}} trong 12 tháng) và ETF S&P 500 ở {{price:spy}} ({{chg1y:spy}}). Nvidia ở mức {{price:nvda}}, so với kỷ lục {{ath:nvda}} ({{athd:nvda}}); Micron ở {{price:mu}}. Xem [trang AI]({lang}/ai/) và [trang khoảng cách tới đỉnh]({lang}/ath/) của chúng tôi.
+ETF Nasdaq-100 đang giao dịch ở {{price:qqq}} ({{chg1y:qqq}} trong 12 tháng) và ETF S&P 500 ở {{price:spy}} ({{chg1y:spy}}). Nvidia ở mức {{price:nvda}}, so với kỷ lục {{ath:nvda}} ({{athd:nvda}}); Micron ở {{price:mu}} và SanDisk ở {{price:sndk}}. Xem [trang AI]({lang}/ai/) và [trang khoảng cách tới đỉnh]({lang}/ath/) của chúng tôi.
 
 ## Ý nghĩa nếu bạn mua đều đặn
 
@@ -28,6 +31,8 @@ ETF Nasdaq-100 đang giao dịch ở {{price:qqq}} ({{chg1y:qqq}} trong 12 thán
 
 ## Nguồn
 
+- [TipRanks — U.S. market closes sharply higher to end volatile week on Wall Street](https://www.tipranks.com/news/u-s-market-closes-sharply-higher-to-end-volatile-week-on-wall-street)
+- [StockTitan — Stock market today live, November 27, 2026](https://www.stocktitan.net/articles/stock-market-today-live-november-27-2026)
 - [Yahoo Finance — Stock market today: Dow, S&P 500, Nasdaq futures gain as AI jitters steady](https://finance.yahoo.com/markets/live/stock-market-today-firday-november-27-dow-sp-500-nasdaq-black-friday-holiday-091152065.html)
 - [TipRanks — Stock Market Today, Nov. 27: Markets reopen for shortened Black Friday trading](https://www.tipranks.com/news/stock-market-today-nov-27-markets-reopen-for-shortened-black-friday-trading)
 - [Chip Dispatch — Chinese chip stocks post record 17.6% gain on state support pledge](https://chipdispatch.com/articles/chinese-chip-stocks-post-record-17-6-gain-on-state-support-pledge)

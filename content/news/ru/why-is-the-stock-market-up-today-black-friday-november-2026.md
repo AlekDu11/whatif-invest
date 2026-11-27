@@ -1,10 +1,13 @@
 ---
-title: Почему растет фондовый рынок США сегодня? Фьючерсы Nasdaq +2%, Nvidia отскакивает
-description: Почему растет фондовый рынок США сегодня? В «черную пятницу» 27 ноября фьючерсы Nasdaq прибавили ~2%, Nvidia до открытия — почти 4%: страхи вокруг ИИ утихли.
+title: Почему растет фондовый рынок США сегодня? Nasdaq +2,3% в «черную пятницу», чипы отскочили
+description: Почему растет фондовый рынок США сегодня? В «черную пятницу» 27 ноября Nasdaq закрылся +2,3%, S&P 500 +1,6%: неделя ~+5%, акции чипов отскочили.
 date: 2026-11-27 13:00
+updated: 2026-11-27 18:30
 tags: markets, ai
-assets: qqq, spy, nvda, mu
+assets: qqq, spy, nvda, mu, sndk
 ---
+**Обновление 27 ноября, 18:30 UTC:** Сокращенная сессия «черной пятницы» закончилась ростом: Nasdaq Composite прибавил 2,3% (+543 пункта), S&P 500 — 1,6%, Dow — 1,2% (+594 пункта), по данным TipRanks. За неделю S&P 500 и Dow выросли примерно на 5%, Nasdaq — примерно на 6%; для Dow это лучшая неделя примерно за 18 месяцев. Лидировали производители чипов памяти: SanDisk в ходе сессии рос примерно на 13%, Micron — на 6–7%, Broadcom и AMD — на 2–3%. Nvidia ралли пропустила: после роста более чем на 3% до открытия она развернулась вниз и утром торговалась в минусе на 1–2%, все еще примерно на 11% ниже закрытия понедельника. Давили сообщение Financial Times о приостановке экспорта чипов в Юго-Восточную Азию и то, что S&P поставило кредитный рейтинг на пересмотр с негативным прогнозом (Yahoo Finance, StockTitan). Anthropic подорожала примерно на 10% и снова торгуется выше цены IPO в $83.
+
 Фондовый рынок США в «черную пятницу», 27 ноября, должен открыться ростом: акции производителей чипов и компаний ИИ отскакивают после нескольких недель распродаж. До открытия фьючерсы на Nasdaq-100 прибавляли около 2%, на S&P 500 — примерно 1,5–1,7%, а на предторговых торгах Nvidia росла почти на 4%, Micron — примерно на 6% (Yahoo Finance).
 
 ## Что произошло
@@ -20,7 +23,7 @@ assets: qqq, spy, nvda, mu
 
 ## Цифры сейчас
 
-ETF на Nasdaq-100 стоит {{price:qqq}} ({{chg1y:qqq}} за 12 месяцев), ETF на S&P 500 — {{price:spy}} ({{chg1y:spy}}). Nvidia торгуется по {{price:nvda}} при рекорде {{ath:nvda}} ({{athd:nvda}}); Micron — по {{price:mu}}. Смотрите нашу [страницу об ИИ]({lang}/ai/) и [страницу отставания от рекорда]({lang}/ath/).
+ETF на Nasdaq-100 стоит {{price:qqq}} ({{chg1y:qqq}} за 12 месяцев), ETF на S&P 500 — {{price:spy}} ({{chg1y:spy}}). Nvidia торгуется по {{price:nvda}} при рекорде {{ath:nvda}} ({{athd:nvda}}); Micron — по {{price:mu}}, SanDisk — по {{price:sndk}}. Смотрите нашу [страницу об ИИ]({lang}/ai/) и [страницу отставания от рекорда]({lang}/ath/).
 
 ## Что это значит, если покупаешь регулярно
 
@@ -28,6 +31,8 @@ $10 в день в S&P 500 в течение 5 лет — это {{dcainv:5}} в
 
 ## Источники
 
+- [TipRanks — U.S. market closes sharply higher to end volatile week on Wall Street](https://www.tipranks.com/news/u-s-market-closes-sharply-higher-to-end-volatile-week-on-wall-street)
+- [StockTitan — Stock market today live, November 27, 2026](https://www.stocktitan.net/articles/stock-market-today-live-november-27-2026)
 - [Yahoo Finance — Stock market today: Dow, S&P 500, Nasdaq futures gain as AI jitters steady](https://finance.yahoo.com/markets/live/stock-market-today-firday-november-27-dow-sp-500-nasdaq-black-friday-holiday-091152065.html)
 - [TipRanks — Stock Market Today, Nov. 27: Markets reopen for shortened Black Friday trading](https://www.tipranks.com/news/stock-market-today-nov-27-markets-reopen-for-shortened-black-friday-trading)
 - [Chip Dispatch — Chinese chip stocks post record 17.6% gain on state support pledge](https://chipdispatch.com/articles/chinese-chip-stocks-post-record-17-6-gain-on-state-support-pledge)

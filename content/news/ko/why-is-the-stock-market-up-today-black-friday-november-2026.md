@@ -1,10 +1,13 @@
 ---
-title: 미국 증시 오늘 왜 오르나? 나스닥 선물 2% 상승, Nvidia 등 반도체주 반등
-description: 미국 증시 오늘 왜 오르나? 블랙프라이데이인 11월 27일 AI 우려가 진정되며 나스닥 선물은 약 2%, Nvidia는 프리마켓에서 4% 가까이 올랐다.
+title: 미국 증시 오늘 왜 오르나? 블랙프라이데이 나스닥 2.3% 상승, 반도체주 반등
+description: 미국 증시 오늘 왜 오르나? 블랙프라이데이인 11월 27일 나스닥은 2.3%, S&P500은 1.6% 오른 채 마감했고 반도체주 반등에 주간 상승률은 약 5%를 기록했다.
 date: 2026-11-27 13:00
+updated: 2026-11-27 18:30
 tags: markets, ai
-assets: qqq, spy, nvda, mu
+assets: qqq, spy, nvda, mu, sndk
 ---
+**11월 27일 18:30 UTC 업데이트:** 블랙프라이데이 단축 거래에서 미국 증시는 상승 마감했다. TipRanks에 따르면 Nasdaq 종합지수는 2.3%(543포인트), S&P 500은 1.6%, 다우지수는 1.2%(594포인트) 올랐다. 이로써 S&P 500과 다우는 주간 약 5%, Nasdaq은 약 6% 상승했으며, 다우로서는 약 18개월 만에 최고의 한 주였다. 메모리 반도체 업체들이 상승을 이끌었다. 장중 SanDisk는 약 13%, Micron은 6~7% 올랐고 Broadcom과 AMD는 2~3% 상승했다. Nvidia는 랠리에서 소외됐다. 프리마켓에서 3% 넘게 올랐다가 하락 전환해 오전에는 1~2% 내린 채 거래됐으며, 여전히 월요일 종가보다 약 11% 낮다. 동남아시아 반도체 수출 중단에 관한 Financial Times 보도와 S&P의 부정적 크레딧 워치가 부담으로 작용했다(Yahoo Finance, StockTitan). Anthropic은 약 10% 올라 공모가 83달러를 다시 넘어섰다.
+
 미국 증시가 블랙프라이데이인 11월 27일 상승 출발할 전망이다. 몇 주간 매도세에 시달린 반도체·AI주가 반등하고 있기 때문으로, 개장 전 나스닥100 선물은 약 2%, S&P500 선물은 약 1.5~1.7% 올랐고 프리마켓에서 Nvidia는 4% 가까이, Micron은 약 6% 상승했다(Yahoo Finance).
 
 ## 무슨 일이 있었나
@@ -20,7 +23,7 @@ assets: qqq, spy, nvda, mu
 
 ## 지금의 숫자
 
-나스닥100 ETF는 {{price:qqq}}(12개월 {{chg1y:qqq}}), S&P500 ETF는 {{price:spy}}({{chg1y:spy}})에 거래되고 있다. Nvidia는 {{price:nvda}}로 사상 최고가 {{ath:nvda}}({{athd:nvda}})와 비교된다. Micron은 {{price:mu}}다. [AI 페이지]({lang}/ai/)와 [고점 대비 하락률 페이지]({lang}/ath/)도 확인해 보자.
+나스닥100 ETF는 {{price:qqq}}(12개월 {{chg1y:qqq}}), S&P500 ETF는 {{price:spy}}({{chg1y:spy}})에 거래되고 있다. Nvidia는 {{price:nvda}}로 사상 최고가 {{ath:nvda}}({{athd:nvda}})와 비교된다. Micron은 {{price:mu}}, SanDisk는 {{price:sndk}}다. [AI 페이지]({lang}/ai/)와 [고점 대비 하락률 페이지]({lang}/ath/)도 확인해 보자.
 
 ## 꾸준히 사는 사람에게 의미하는 것
 
@@ -28,6 +31,8 @@ S&P500에 하루 10달러씩 5년간 투자하면 투자금은 {{dcainv:5}}, 현
 
 ## 출처
 
+- [TipRanks — U.S. market closes sharply higher to end volatile week on Wall Street](https://www.tipranks.com/news/u-s-market-closes-sharply-higher-to-end-volatile-week-on-wall-street)
+- [StockTitan — Stock market today live, November 27, 2026](https://www.stocktitan.net/articles/stock-market-today-live-november-27-2026)
 - [Yahoo Finance — Stock market today: Dow, S&P 500, Nasdaq futures gain as AI jitters steady](https://finance.yahoo.com/markets/live/stock-market-today-firday-november-27-dow-sp-500-nasdaq-black-friday-holiday-091152065.html)
 - [TipRanks — Stock Market Today, Nov. 27: Markets reopen for shortened Black Friday trading](https://www.tipranks.com/news/stock-market-today-nov-27-markets-reopen-for-shortened-black-friday-trading)
 - [Chip Dispatch — Chinese chip stocks post record 17.6% gain on state support pledge](https://chipdispatch.com/articles/chinese-chip-stocks-post-record-17-6-gain-on-state-support-pledge)
