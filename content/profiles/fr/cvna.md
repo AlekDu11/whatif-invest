@@ -1,5 +1,5 @@
 ---
-title: "Action Carvana (CVNA) : le vendeur de voitures d'occasion en ligne et son record de 217 385 voitures par trimestre"
+title: "Action Carvana (CVNA) : le vendeur de voitures d'occasion en ligne et ses 217 385 voitures au 3e trimestre 2026"
 description: "Carvana en clair : 217 385 voitures vendues au T3 2026 (+39 %), la quasi-faillite de 2022, les risques et ce qu'il faut savoir sur l'achat régulier."
 date: 2026-11-28
 kind: analysis

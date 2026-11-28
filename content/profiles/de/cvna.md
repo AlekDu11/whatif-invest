@@ -1,5 +1,5 @@
 ---
-title: "Carvana-Aktie (CVNA): der Online-Gebrauchtwagenhändler und seine Rekordzahl von 217.385 Autos im Quartal"
+title: "Carvana-Aktie (CVNA): der Online-Gebrauchtwagenhändler und seine 217.385 Autos im dritten Quartal 2026"
 description: "Carvana einfach erklärt: 217.385 online verkaufte Gebrauchtwagen im 3. Quartal 2026 (+39 %), die Beinahe-Pleite 2022, Risiken und Tipps für Sparpläne."
 date: 2026-11-28
 kind: analysis

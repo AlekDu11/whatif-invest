@@ -1,5 +1,5 @@
 ---
-title: "Carvana (CVNA) stock: the online used-car seller and its record 217,385 cars a quarter"
+title: "Carvana (CVNA) stock: the online used-car seller and its 217,385 cars in Q3 2026"
 description: "Carvana in plain language: an online used-car dealer that sold 217,385 cars in Q3 2026 (+39%), its near-collapse in 2022 and the risks."
 date: 2026-11-28
 kind: analysis

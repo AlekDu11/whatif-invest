@@ -1,5 +1,5 @@
 ---
-title: "Carvana (CVNA) hissesi: internetten ikinci el araba satan şirket ve çeyrekte rekor 217.385 araç"
+title: "Carvana (CVNA) hissesi: internetten ikinci el araba satan şirket ve 2026 üçüncü çeyreğindeki 217.385 araç"
 description: "Carvana sade dille: 2026'nın 3. çeyreğinde 217.385 araç satışı (%39 artış), 2022'deki iflasın eşiği, riskler ve düzenli alım yapanlar için bilgiler."
 date: 2026-11-28
 kind: analysis

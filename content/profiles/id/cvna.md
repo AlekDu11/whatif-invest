@@ -1,5 +1,5 @@
 ---
-title: "Saham Carvana (CVNA): penjual mobil bekas online dan rekor 217.385 mobil per kuartal"
+title: "Saham Carvana (CVNA): penjual mobil bekas online dan 217.385 mobil pada kuartal III 2026"
 description: "Carvana dengan bahasa sederhana: menjual 217.385 mobil bekas pada kuartal III 2026 (+39%), nyaris bangkrut pada 2022, risiko dan catatan pembeli rutin."
 date: 2026-11-28
 kind: analysis

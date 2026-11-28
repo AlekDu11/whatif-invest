@@ -1,5 +1,5 @@
 ---
-title: "Cổ phiếu Carvana (CVNA): nhà bán xe cũ trực tuyến và kỷ lục 217.385 xe mỗi quý"
+title: "Cổ phiếu Carvana (CVNA): nhà bán xe cũ trực tuyến và 217.385 xe trong quý III/2026"
 description: "Carvana dễ hiểu: bán 217.385 xe cũ trong quý 3/2026 (+39%), suýt sụp đổ năm 2022, các rủi ro và điều người mua định kỳ cần biết."
 date: 2026-11-28
 kind: analysis

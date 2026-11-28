@@ -1,5 +1,5 @@
 ---
-title: "Aandeel Carvana (CVNA): de online verkoper van tweedehands auto's en zijn record van 217.385 auto's per kwartaal"
+title: "Aandeel Carvana (CVNA): de online verkoper van tweedehands auto's en zijn 217.385 auto's in het derde kwartaal van 2026"
 description: "Carvana in gewone taal: 217.385 verkochte auto's in Q3 2026 (+39%), het bijna-faillissement van 2022, de risico's en wat je moet weten over regelmatig kopen."
 date: 2026-11-28
 kind: analysis

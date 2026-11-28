@@ -1,5 +1,5 @@
 ---
-title: "Akcje Carvana (CVNA): internetowy sprzedawca używanych aut i jego rekordowe 217 385 aut w kwartale"
+title: "Akcje Carvana (CVNA): internetowy sprzedawca używanych aut i jego 217 385 aut w III kwartale 2026"
 description: "Carvana w prostych słowach: 217 385 sprzedanych aut w III kw. 2026 (+39%), bliski upadek w 2022, ryzyka i co wiedzieć o regularnych zakupach."
 date: 2026-11-28
 kind: analysis

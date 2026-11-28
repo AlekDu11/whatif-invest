@@ -1,5 +1,5 @@
 ---
-title: "Acciones de Carvana (CVNA): el vendedor online de coches usados y sus 217.385 coches récord en un trimestre"
+title: "Acciones de Carvana (CVNA): el vendedor online de coches usados y sus 217.385 coches en el tercer trimestre de 2026"
 description: "Carvana explicada fácil: vendió 217.385 coches usados online en el 3T de 2026 (+39%), casi quiebra en 2022, riesgos y qué saber si compras con regularidad."
 date: 2026-11-28
 kind: analysis

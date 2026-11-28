@@ -1,5 +1,5 @@
 ---
-title: "Carvana (CVNA) stock: ang online na nagbebenta ng second-hand na kotse at ang record nitong 217,385 kotse sa isang quarter"
+title: "Carvana (CVNA) stock: ang online na nagbebenta ng second-hand na kotse at ang 217,385 kotse nito sa Q3 2026"
 description: "Carvana sa simpleng salita: 217,385 kotseng naibenta sa Q3 2026 (+39%), ang muntik nitong pagbagsak noong 2022, mga panganib at payo sa mga regular na bumibili."
 date: 2026-11-28
 kind: analysis
