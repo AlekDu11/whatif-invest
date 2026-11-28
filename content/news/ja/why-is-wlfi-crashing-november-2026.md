@@ -1,10 +1,13 @@
 ---
-title: WLFIはなぜ暴落？World Libertyのトークン、2000万ドル分のETH売却で約40%下落
-description: WLFIが暴落した理由：トランプ一族と関係するWorld Liberty Financialのトークンが11月28日に約40%下落。準備金ウォレットが1万2121 ETHを損失覚悟で売却した。
+title: WLFIはなぜ暴落？World Libertyのトークンが50%下落、USD1も0.94ドルに
+description: WLFIが暴落した理由：World Libertyのトークンが11月28日、2000万ドル分のETH売却後に50%超下落。ステーブルコインUSD1は0.94ドルに下がり、Justin Sunは詐欺を主張。
 date: 2026-11-28 06:30
+updated: 2026-11-28 12:20
 tags: movers, defi, markets
 assets: wlfi, eth, btc
 ---
+**更新 11月28日 12:20 UTC：** 最初の記事の後、売りはさらに強まりました。WLFIは06:00 UTC前にBinanceで約0.0158ドルの過去最安値をつけ、午前遅くには約0.0196ドルで取引され、24時間で約52〜53%下落しました（crypto.news経由のCoinGlass）。1ドルを維持するはずのWorld Libertyのドル建てステーブルコインUSD1は、07:00 UTC過ぎに約0.94ドルまで下がり、その後0.99ドル超に戻りました。2025年からトークンを凍結され、プロジェクトを提訴しているWLFIの初期投資家Justin Sunは、Xで内部関係者による循環的な借り入れと詐欺を非難し、取引所にWLFIとUSD1の取引停止を求めました。ただしウォレットアドレスや取引データは示しておらず、昼までに対応した取引所はありません。WLFIの先物は約1700万ドル分が強制決済され、その約90%が値上がりに賭けたポジションでした。World Liberty Financialからの反応は確認できていません。
+
 トランプ一族と関係する暗号資産プロジェクトWorld Liberty Financialのトークン「WLFI」が、11月28日（土）未明、わずか数時間で約40%急落しました。きっかけはオンチェーン上の売却です。プロジェクトに関連する準備金ウォレットが保有するイーサを大きな損失で売り、その後WLFIのレバレッジ取引が強制決済されました。
 
 ## 何が起きたか
@@ -27,6 +30,9 @@ WLFIは{{price:wlfi}}（12カ月で{{chg1y:wlfi}}）。最高値は{{ath:wlfi}}�
 
 ## 出典
 
+- [crypto.news — Justin Sun calls for WLFI and USD1 delistings as WLFI sinks 53%](https://crypto.news/justin-sun-wlfi-usd1-delisting/)
+- [The Coin Republic — WLFI price plunges over 50% amid USD1 depeg](https://www.thecoinrepublic.com/2026/11/28/wlfi-price-plunges-over-50-amid-usd1-depeg-and-20m-ether-sale/)
+- [The Crypto Desk — Saturday, 28 November 2026](https://thecryptodesk.substack.com/p/the-crypto-desk-saturday-28-november)
 - [The Defiant — World Liberty's WLFI sinks 39% as bitcoin slips 2%](https://thedefiant.io/news/markets/world-liberty-s-wlfi-sinks-39-as-bitcoin-slips-2)
 - [KuCoin News — WLFI price drops 40% amid massive ETH sell-off](https://www.kucoin.com/news/flash/wlfi-price-plummets-40-amid-massive-eth-sell-off)
 - [Pluang / TokenPost — WLFI crashes nearly 40% after a $20M ether sale at a big loss](https://pluang.com/en/news-feed/wlfi-turun-40-persen-nilai-pasar-jatuh-1-miliar)

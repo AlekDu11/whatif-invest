@@ -1,10 +1,13 @@
 ---
-title: Pourquoi le WLFI chute-t-il ? Le jeton World Liberty plonge de 40 % après une vente d'ETH
-description: Pourquoi le WLFI chute : le jeton de World Liberty Financial, lié aux Trump, a plongé d'environ 40 % le 28 novembre après une vente de 12 121 ETH à perte.
+title: Pourquoi le WLFI chute-t-il ? Le jeton World Liberty perd 50 %, l'USD1 tombe à 0,94 $
+description: Pourquoi le WLFI chute : le jeton World Liberty a perdu plus de 50 % le 28 novembre après une vente d'ETH, l'USD1 a glissé à 0,94 $ et Justin Sun crie à la fraude.
 date: 2026-11-28 06:30
+updated: 2026-11-28 12:20
 tags: movers, defi, markets
 assets: wlfi, eth, btc
 ---
+**Mise à jour du 28 novembre, 12h20 UTC :** La chute s'est aggravée depuis notre premier article. Le WLFI a touché un plus bas historique vers 0,0158 $ sur Binance avant 06h00 UTC et s'échangeait vers 0,0196 $ en fin de matinée, soit environ 52 à 53 % de moins qu'il y a 24 heures (CoinGlass via crypto.news). Le stablecoin en dollars de World Liberty, l'USD1, censé rester à 1 $, est descendu à environ 0,94 $ peu après 07h00 UTC avant de remonter au-dessus de 0,99 $. Justin Sun, investisseur de la première heure dans le WLFI, dont les jetons sont gelés depuis 2025 et qui poursuit le projet en justice, a accusé sur X des initiés d'emprunts circulaires et de fraude, et appelé les plateformes à suspendre les échanges de WLFI et d'USD1 ; il n'a fourni ni adresses de portefeuilles ni données de transactions, et à la mi-journée aucune plateforme n'avait réagi. Environ 17 millions de dollars de contrats à terme sur le WLFI ont été liquidés, dont près de 90 % de paris à la hausse. Nous n'avons trouvé aucune réaction de World Liberty Financial.
+
 Le WLFI, jeton du projet crypto World Liberty Financial lié à la famille Trump, s'est effondré d'environ 40 % en quelques heures tôt samedi 28 novembre. Le déclencheur : une vente on-chain. Un portefeuille de réserve lié au projet a cédé son ether avec une lourde perte, puis les paris à effet de levier sur le WLFI ont été liquidés.
 
 ## Ce qui s'est passé
@@ -27,6 +30,9 @@ Quelqu'un qui a mis 10 $ par jour dans le WLFI sur la dernière année a investi
 
 ## Sources
 
+- [crypto.news — Justin Sun calls for WLFI and USD1 delistings as WLFI sinks 53%](https://crypto.news/justin-sun-wlfi-usd1-delisting/)
+- [The Coin Republic — WLFI price plunges over 50% amid USD1 depeg](https://www.thecoinrepublic.com/2026/11/28/wlfi-price-plunges-over-50-amid-usd1-depeg-and-20m-ether-sale/)
+- [The Crypto Desk — Saturday, 28 November 2026](https://thecryptodesk.substack.com/p/the-crypto-desk-saturday-28-november)
 - [The Defiant — World Liberty's WLFI sinks 39% as bitcoin slips 2%](https://thedefiant.io/news/markets/world-liberty-s-wlfi-sinks-39-as-bitcoin-slips-2)
 - [KuCoin News — WLFI price drops 40% amid massive ETH sell-off](https://www.kucoin.com/news/flash/wlfi-price-plummets-40-amid-massive-eth-sell-off)
 - [Pluang / TokenPost — WLFI crashes nearly 40% after a $20M ether sale at a big loss](https://pluang.com/en/news-feed/wlfi-turun-40-persen-nilai-pasar-jatuh-1-miliar)
