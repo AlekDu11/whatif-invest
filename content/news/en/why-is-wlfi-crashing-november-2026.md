@@ -1,10 +1,13 @@
 ---
-title: Why is WLFI crashing? World Liberty token falls about 40% after a $20M ETH sale
-description: Why is WLFI crashing? The Trump-linked World Liberty Financial token fell about 40% on November 28 after a reserve wallet sold 12,121 ETH at a $19M loss.
+title: Why is WLFI crashing? World Liberty token −50% as USD1 slips to $0.94
+description: Why is WLFI crashing? The World Liberty token fell over 50% on Nov 28 after a $20M ETH sale, its USD1 stablecoin dipped to $0.94 and Justin Sun alleged fraud.
 date: 2026-11-28 06:30
+updated: 2026-11-28 12:20
 tags: movers, defi, markets
 assets: wlfi, eth, btc
 ---
+**Update November 28, 12:20 UTC:** The sell-off deepened after our first report. WLFI fell to a record low near $0.0158 on Binance before 06:00 UTC and traded near $0.0196 by late morning, down about 52–53% in 24 hours (CoinGlass via crypto.news). World Liberty's dollar stablecoin USD1, which should stay at $1, slipped to about $0.94 just after 07:00 UTC before recovering above $0.99. Justin Sun, an early WLFI investor whose tokens have been frozen since 2025 and who is suing the project, accused insiders of circular borrowing and fraud on X and urged exchanges to halt WLFI and USD1 trading; he gave no wallet addresses or transaction data, and no exchange had acted by midday. About $17 million of WLFI futures were liquidated, roughly 90% of them bets on a rise. We found no response from World Liberty Financial.
+
 WLFI, the token of the Trump family–linked crypto project World Liberty Financial, crashed about 40% in a few hours early on Saturday, November 28. The trigger was an on-chain sale: a reserve wallet linked to the project sold its ether at a heavy loss, and leveraged bets on WLFI were wiped out.
 
 ## What happened
@@ -27,6 +30,9 @@ Someone who put $10 a day into WLFI over the last year has invested {{dcainv:1}}
 
 ## Sources
 
+- [crypto.news — Justin Sun calls for WLFI and USD1 delistings as WLFI sinks 53%](https://crypto.news/justin-sun-wlfi-usd1-delisting/)
+- [The Coin Republic — WLFI price plunges over 50% amid USD1 depeg](https://www.thecoinrepublic.com/2026/11/28/wlfi-price-plunges-over-50-amid-usd1-depeg-and-20m-ether-sale/)
+- [The Crypto Desk — Saturday, 28 November 2026](https://thecryptodesk.substack.com/p/the-crypto-desk-saturday-28-november)
 - [The Defiant — World Liberty's WLFI sinks 39% as bitcoin slips 2%](https://thedefiant.io/news/markets/world-liberty-s-wlfi-sinks-39-as-bitcoin-slips-2)
 - [KuCoin News — WLFI price drops 40% amid massive ETH sell-off](https://www.kucoin.com/news/flash/wlfi-price-plummets-40-amid-massive-eth-sell-off)
 - [Pluang / TokenPost — WLFI crashes nearly 40% after a $20M ether sale at a big loss](https://pluang.com/en/news-feed/wlfi-turun-40-persen-nilai-pasar-jatuh-1-miliar)
