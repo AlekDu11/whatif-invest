@@ -620,7 +620,7 @@ CLARITY += ('<script>window.dataLayer=window.dataLayer||[];function gtag(){dataL
             'addEventListener("load",function(){var go=function(){var t=document.createElement("script");t.async=1;t.src="https://www.googletagmanager.com/gtag/js?id=G-1Z0DV7H95K";document.head.appendChild(t)};'
             'window.requestIdleCallback?requestIdleCallback(go,{timeout:3000}):setTimeout(go,1500)})</script>')
 # Sentry error monitoring (owner, 2026-11-20; org whatifstack-hd, project whatifstack-web, EU): the tiny loader script loads the SDK only when an error happens
-CLARITY += ('<script>window.sentryOnLoad=function(){Sentry.init({ignoreErrors:["Script error.","Script error"],'   # «Script error.» = a cross-origin script (TradingView, ads, extensions) failed: no details, nothing we can fix
+CLARITY += ('<script>window.sentryOnLoad=function(){Sentry.init({ignoreErrors:["Script error.","Script error",/Transition was aborted/,/skipTransition/,/view transition/i],'   # «Script error.» = a cross-origin script (TradingView, ads, extensions) failed: no details, nothing we can fix
             'denyUrls:[/extensions\\//i,/^chrome-extension:\\/\\//i,/^moz-extension:\\/\\//i]})}</script>')
 CLARITY += '<script src="https://js-de.sentry-cdn.com/8ffd53d4b42a0cb29a938ff3f2526ba5.min.js" crossorigin="anonymous" defer></script>'
 AHREFS = ('<meta name="ahrefs-site-verification" content="f5a16ec7b7cfa87b5d531c2c5286aac58ddf73ffe836a8b623afe21b43719d5a">'
@@ -1864,8 +1864,8 @@ def side_block(lang, aid):
     if pr and len(ps) >= 6:
         lo, hi = min(ps + [pr]), max(ps + [pr])
         if hi > lo:
-            viz += (f'<div class="sviz"><div class="svh"><span>{esc(X["rng"])}</span></div><div class="srng" data-rg="{aid}" data-lo="{lo:.6g}" data-hi="{hi:.6g}">'
-                    f'<i style="left:{(pr - lo) / (hi - lo) * 100:.1f}%"></i></div><div class="svl"><span>{esc(X["lo"])} {price(lo)}</span><span>{esc(X["hi"])} {price(hi)}</span></div></div>')
+            viz += (f'<div class="sviz" title="{esc(X["rng"])}: {esc(X["mnote"])}"><div class="svh"><span>{esc(X["rng"])}</span><span>{esc(X["now"])} <b data-p="{aid}">{price(pr)}</b></span></div><div class="srng" data-rg="{aid}" data-lo="{lo:.6g}" data-hi="{hi:.6g}">'
+                    f'<i style="left:{(pr - lo) / (hi - lo) * 100:.1f}%"></i></div><div class="svl"><span>{esc(X["lo"])} {price(lo)}</span><span>{esc(X["hi"])} {price(hi)}</span></div><div class="svl"><small>{esc(X["mnote"])}</small></div></div>')
     if a['cat'] == 'crypto' and a.get('circ') and a.get('maxs') and a['maxs'] >= a['circ']:
         sh = a['circ'] / a['maxs']
         viz += (f'<div class="sviz"><div class="sbar"><i style="width:{sh * 100:.1f}%"></i></div><div class="svl"><span>{esc(X["issued"].format(p=pctu(sh)))}</span></div></div>')
@@ -2201,12 +2201,9 @@ def whale_box(lang, coin):
     bar = (f'<div class="hlbar"><i style="width:{w}%"></i></div><div class="hlcs">'
            f'<span class="up">{esc(t["longs"])} <i class="hv">{usd_h(cs["l"]) if cs else "…"}</i> · <i class="hn">{cs["nl"] if cs else "…"}</i></span>'
            f'<span class="dn">{esc(t["shorts"])} <i class="hv">{usd_h(cs["s"]) if cs else "…"}</i> · <i class="hn">{cs["ns"] if cs else "…"}</i></span></div>')
-    bg = (f'{esc(t["w_big"])}: <span class="hls {"up" if big["s"] == "L" else "dn"}">{esc(t["long"] if big["s"] == "L" else t["short"])}</span> <b>{usd_h(big["ntl"])}</b>'
-          f' · {esc(t["pnl"])} <span class="{cls(big.get("u") or 0)}">{usd_h(big.get("u"))}</span>') if big else ''
-    lab = esc(json.dumps({k: t[k] for k in ('w_big', 'long', 'short', 'pnl')}, ensure_ascii=False))
-    return (f'<aside class="card hlbox" data-hlc="{esc(coin)}" data-t="{lab}"><div class="hlbh"><b>🐋 {esc(t["w_h"].format(c=coin))}</b></div>{bar}'
-            f'<p class="hlbb">{bg}</p><p class="hlbn"{"" if nn else " hidden"}>⚠️ {esc(t["w_near"].format(n=nn))}</p>'
-            f'<a class="btn sm" href="{url(lang, "trading/hyperliquid")}">{esc(t["w_go"])} →</a></aside>')
+    return (f'<aside class="card hlbox" data-hlc="{esc(coin)}"><div class="hlbh"><a href="{url(lang, "trading/hyperliquid")}"><b>🐋 {esc(t["w_h"].format(c=coin))}</b></a></div>{bar}'
+            f'<p class="hlbcta"><a class="btn sm" href="/go/hyperliquid?from=whales-{esc(coin.lower())}&l={lang}" target="_blank" rel="sponsored noopener">{esc(t["cta"])} ↗</a>'
+            f' <small class="muted">{esc(t["aff"])}</small></p></aside>')   # owner 2026-11-28: only the long/short ratio + the Hyperliquid button
 
 
 def whale_for(lang, ids):

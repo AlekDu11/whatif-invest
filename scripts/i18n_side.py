@@ -23,3 +23,16 @@ _T = {
     'fil': ['Saklaw sa 1 taon', 'Pinakamababa', 'Pinakamataas', '{p} ng max supply ang nailabas na', '{p} mas mababa sa record'],
 }
 SIDE = {lg: dict(zip(_K, v)) for lg, v in _T.items()}
+
+# owner 2026-11-28: «how does the scale count?» — show the price now and say it is built from monthly closing prices
+_N = {
+    'en': ('Now', 'by monthly closing prices'), 'uk': ('Зараз', 'за цінами закриття місяців'), 'ru': ('Сейчас', 'по ценам закрытия месяцев'),
+    'es': ('Ahora', 'según los cierres mensuales'), 'pt': ('Agora', 'pelos fechamentos mensais'), 'de': ('Jetzt', 'nach Monatsschlusskursen'),
+    'fr': ('Maintenant', 'selon les clôtures mensuelles'), 'it': ('Ora', 'in base alle chiusure mensili'), 'pl': ('Teraz', 'wg cen zamknięcia miesięcy'),
+    'tr': ('Şimdi', 'aylık kapanış fiyatlarına göre'), 'nl': ('Nu', 'op basis van maandslotkoersen'), 'id': ('Sekarang', 'berdasarkan harga penutupan bulanan'),
+    'vi': ('Hiện tại', 'theo giá đóng cửa hằng tháng'), 'th': ('ตอนนี้', 'ตามราคาปิดรายเดือน'), 'hi': ('अभी', 'मासिक क्लोज़िंग कीमतों के आधार पर'),
+    'ja': ('現在', '月末終値ベース'), 'ko': ('현재', '월말 종가 기준'), 'zh': ('现在', '按月收盘价'), 'ar': ('الآن', 'حسب أسعار الإغلاق الشهرية'),
+    'fil': ('Ngayon', 'batay sa buwanang closing price'),
+}
+for _lg, (_a, _b) in _N.items():
+    SIDE[_lg].update(now=_a, mnote=_b)
