@@ -2082,3 +2082,15 @@ document.querySelectorAll('.obcnt[data-until]').forEach(el=>{ const t=new Date(e
     }).catch(()=>{});
   }
 })();
+
+// ===== «About» card: live marker on the 1-year range + distance to the record (owner 2026-11-28) =====
+(function(){
+  const F=window.WIF||{}, rg=[...document.querySelectorAll('[data-rg]')], fa=[...document.querySelectorAll('[data-fa]')];
+  if(!rg.length&&!fa.length) return;
+  const run=()=>{ const B=F.BYID||{};
+    rg.forEach(el=>{ const a=B[el.dataset.rg]; if(!a||!(a.pr>0)) return; const lo=+el.dataset.lo, hi=+el.dataset.hi, i=el.querySelector('i');
+      if(i&&hi>lo) i.style.left=Math.max(0,Math.min(100,(a.pr-lo)/(hi-lo)*100)).toFixed(1)+'%' });
+    fa.forEach(el=>{ const a=B[el.dataset.fa]; if(!a||!(a.pr>0)) return; const ath=+el.dataset.ath; if(a.pr>=ath) { el.hidden=true; return }
+      el.textContent=el.dataset.t.replace('{p}',F.fmtPct(1-a.pr/ath).replace('+','')) }) };
+  let t; document.addEventListener('wi:tick',()=>{ clearTimeout(t); t=setTimeout(run,800) }); run();
+})();

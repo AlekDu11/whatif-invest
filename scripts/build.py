@@ -49,6 +49,7 @@ from i18n_home2 import HM  # noqa: E402
 from i18n_ks import KS, SECT  # noqa: E402
 from i18n_lcx import LCX  # noqa: E402
 from i18n_trd import TRD  # noqa: E402
+from i18n_side import SIDE  # noqa: E402
 from i18n_offer import OFFER_TGW  # noqa: E402
 from i18n_lc import LC, LC_CT  # noqa: E402
 from i18n_mem6 import MEM6  # noqa: E402
@@ -1478,8 +1479,9 @@ def best_by(key, ids):
 
 def hl_card(lang, aid, label, key, sub):
     m = METRICS[aid]
-    return (f'<a class="card" href="{aurl(lang, aid)}"><div class="k">{esc(label)}<span>{esc(A[aid]["tk"])}</span></div>'
-            f'<div class="v {cls(m[key])}">{pct(m[key])}</div><div class="s">{esc(nm(A[aid], lang))} · {sub}</div>{spark(m["spark"], 220, 40)}</a>')
+    sub_ = sub if label == nm(A[aid], lang) else f'{esc(nm(A[aid], lang))} · {sub}'   # no name twice (owner 2026-11-28: coin avatars on the movers cards)
+    return (f'<a class="card" href="{aurl(lang, aid)}"><div class="k">{icon(A[aid])}<b>{esc(label)}</b><span>{esc(A[aid]["tk"])}</span></div>'
+            f'<div class="v {cls(m[key])}">{pct(m[key])}</div><div class="s">{sub_}</div>{spark(m["spark"], 220, 40)}</a>')
 
 
 TEN = '<em>$10</em>'
@@ -1816,14 +1818,13 @@ def side_block(lang, aid):
         rows.append(f'<div class="ir"><span>{esc(k)}</span><b>{v}</b></div>')
     if a['cat'] == 'crypto':
         ci = COININFO.get(a.get('cgid') or '', {})
-        if a.get('rank'): row('#', str(a['rank']))
-        if a.get('mcap'): row(t['mcap'], fbig(a['mcap']))
+        if a.get('mcap'): row(t['mcap'], usd_h(a['mcap']))
         if a.get('circ'): row(t['circ'], f"{fnum(a['circ'])} {esc(a['tk'])}")
         row(t['max'], f"{fnum(a['maxs'])} {esc(a['tk'])}" if a.get('maxs') else '∞')
         if a.get('ath'): row(t['ath'], f"{price(a['ath'])} <small class=\"muted\">{esc(a.get('athd') or '')}</small>")
         L = ci.get('l', {})
         for k, lab in (('web', t['web']), ('wp', t['wp']), ('exp', t['exp']), ('x', 'X'), ('tg', 'Telegram'), ('gh', t['src'])):
-            if L.get(k): links.append((L[k], lab))
+            if L.get(k): links.append((L[k], lab, k))
         ds = ci.get('ds', {})
         desc = ds.get(lang) or ds.get('en')
         dlang = lang if ds.get(lang) else 'en'
@@ -1834,7 +1835,7 @@ def side_block(lang, aid):
         if si.get('cty'): row(t['country'], esc(si['cty']))
         if si.get('emp'): row(t['emp'], f"{si['emp']:,}".replace(',', ' '))
         if si.get('mcap'): row(t['mcap'], fbig(si['mcap']))
-        if si.get('web'): links.append((si['web'], t['web']))
+        if si.get('web'): links.append((si['web'], t['web'], 'web'))
         desc = (si.get('ds') or {}).get('en')
         dlang = 'en'
     prof = PROFILES.get(lang, {}).get(aid)
@@ -1854,9 +1855,25 @@ def side_block(lang, aid):
         body = tvw('symbol-profile', dict(width='100%', height='100%', isTransparent=True, colorTheme='light', symbol=tv_symbol(a), locale=TV_LOC.get(lang, 'en')), 400)
     else:
         body = f'<p class="swhat">{esc(what)}</p>'
-    lk = ''.join(f'<a class="chip" href="{esc(u)}" target="_blank" rel="nofollow noopener">{esc(l)} ↗</a>' for u, l in links)
-    return (f'<aside class="card side"><h2>{esc(nm(a, lang))} <span class="muted">{esc(a["tk"])}</span></h2>{body}'
-            f'<button class="smore" type="button" data-less="{esc(t["less"])}" hidden>{esc(t["more"])}</button>'
+    LK_IC = {'web': '🌐', 'wp': '📄', 'exp': '🔎', 'x': '𝕏', 'tg': '✈️', 'gh': '⌨️'}
+    lk = ''.join(f'<a class="ilink" href="{esc(u)}" target="_blank" rel="nofollow noopener"><span class="ilic">{LK_IC.get(k, "↗")}</span>{esc(l)}</a>' for u, l, k in links)
+    # scales (owner 2026-11-28: «make it alive»): 1-year range with the live price, share of max supply issued, distance to the record
+    X, viz = SIDE[lang], ''
+    pr = METRICS[aid]['price']
+    ps = [v for v in (a.get('p') or [])[-13:] if v]
+    if pr and len(ps) >= 6:
+        lo, hi = min(ps + [pr]), max(ps + [pr])
+        if hi > lo:
+            viz += (f'<div class="sviz"><div class="svh"><span>{esc(X["rng"])}</span></div><div class="srng" data-rg="{aid}" data-lo="{lo:.6g}" data-hi="{hi:.6g}">'
+                    f'<i style="left:{(pr - lo) / (hi - lo) * 100:.1f}%"></i></div><div class="svl"><span>{esc(X["lo"])} {price(lo)}</span><span>{esc(X["hi"])} {price(hi)}</span></div></div>')
+    if a['cat'] == 'crypto' and a.get('circ') and a.get('maxs') and a['maxs'] >= a['circ']:
+        sh = a['circ'] / a['maxs']
+        viz += (f'<div class="sviz"><div class="sbar"><i style="width:{sh * 100:.1f}%"></i></div><div class="svl"><span>{esc(X["issued"].format(p=pctu(sh)))}</span></div></div>')
+    if a.get('ath') and pr and pr < a['ath']:
+        viz += f'<p class="storec" data-fa="{aid}" data-ath="{a["ath"]:.8g}" data-t="{esc(X["torec"])}">{esc(X["torec"].format(p=pctu(1 - pr / a["ath"])))}</p>'
+    head = f'<div class="sideh">{icon(a, True)}<div><h2>{esc(nm(a, lang))} <span class="muted">{esc(a["tk"])}</span></h2>' + (f'<span class="badge">#{a["rank"]}</span>' if a.get('rank') else '') + '</div></div>'
+    return (f'<aside class="card side">{head}{body}'
+            f'<button class="smore" type="button" data-less="{esc(t["less"])}" hidden>{esc(t["more"])}</button>{viz}'
             + (f'<div class="srows">{"".join(rows)}</div>' if rows else '') + (f'<div class="ilinks">{lk}</div>' if lk else '') + '</aside>')
 
 
@@ -2100,13 +2117,15 @@ def learn_page(lang, ver):
     trading, memecoins (folder cards on top, then each folder's lessons in order), 20 languages."""
     L = LRN[lang]
     ls = lessons(lang)
+    # owner 2026-11-28: bigger blocks, a goal of 20 lessons per folder (progress bar), lessons as numbered cards
     folders = ''.join(f'<a class="card lfold" href="#{t}"><span class="lfi">{TRACK_ICON[t]}</span><b>{esc(L[t])}</b>'
-                      f'<small class="muted">{(str(len(ls[t])) + " " + esc(L.get("nles", ""))) if ls[t] else esc(L.get("csoon", ""))}</small></a>' for t in TRACKS)
+                      f'<small class="muted">{(str(len(ls[t])) + " " + esc(L.get("nles", ""))) if ls[t] else esc(L.get("csoon", ""))}</small>'
+                      f'<span class="lprog"><i style="width:{min(100, len(ls[t]) * 5)}%"></i></span></a>' for t in TRACKS)
     secs = ''
     for t, rows in ls.items():
-        inner = ('<ol class="lsteps">' + ''.join(f'<li><a href="{url(lang, "blog/" + slug)}"><b>{esc(post_meta_title(m, lang))}</b><span class="muted">{esc(post_meta_title(dict(title=m.get("description", "")), lang))}</span></a></li>' for slug, m in rows)
+        inner = ('<ol class="lsteps lgrid">' + ''.join(f'<li><a class="lcard" href="{url(lang, "blog/" + slug)}"><span class="lnum">{k}</span><span class="ltx"><b>{esc(post_meta_title(m, lang))}</b><span class="muted">{esc(post_meta_title(dict(title=m.get("description", "")), lang))}</span></span></a></li>' for k, (slug, m) in enumerate(rows, 1))
                  + '</ol>') if rows else f'<p class="muted">🎓 {esc(L.get("csoon", ""))}</p>'
-        secs += f'<section class="section card lrn" id="{t}"><h2>{TRACK_ICON[t]} {esc(L[t])}</h2>{inner}</section>'
+        secs += f'<section class="section lrn" id="{t}"><h2><span class="lfi">{TRACK_ICON[t]}</span> {esc(L[t])} <small class="muted">{len(rows)}/20</small></h2>{inner}</section>'
     body = (f'<h1>{esc(L["h1"])}</h1><p class="lead">{esc(L["lead"])}</p><div class="lfolds">{folders}</div>{secs}<p class="muted">🎓 {esc(L["soon"])}</p>')
     return shell(lang, 'learn', f'{L["h1"]} | {BRAND}', L['lead'][:160], body, {}, ver)
 
