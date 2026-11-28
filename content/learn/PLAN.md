@@ -41,7 +41,7 @@ The hub /learn/ lists them by track and step; each lesson links to the next one.
 
 ## stocks — Stocks and ETFs
 1. ✅ 2026-11-28 (what-is-a-stock, all 20 languages) What a stock is, in plain words
-2. ETFs and index funds: the simplest way to own hundreds of companies
+2. ✅ 2026-11-28 (etfs-and-index-funds, all 20 languages) ETFs and index funds: the simplest way to own hundreds of companies
 3. How to buy your first stock or ETF (brokers by country: link {lang}/stocks-<country>/ and our broker pages)
 4. Dividends: how companies pay you
 5. What the S&P 500 is and why everyone compares to it ({lang}/spy/)
@@ -63,7 +63,7 @@ The hub /learn/ lists them by track and step; each lesson links to the next one.
 
 ## trading — Trading (owner 2026-11-28: honest, plain, most retail traders lose; link {lang}/trading/ and {lang}/trading/hyperliquid/)
 1. ✅ 2026-11-28 (trading-vs-investing, all 20 languages) Trading vs investing: the difference and why most beginners should start with investing
-2. Order types: market, limit, stop — what each button does
+2. ✅ 2026-11-28 (order-types-market-limit-stop, all 20 languages) Order types: market, limit, stop — what each button does
 3. The order book and the spread in plain words
 4. Candlestick charts: how to read one candle and a chart
 5. Support and resistance: the simplest chart idea
