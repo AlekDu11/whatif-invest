@@ -40,7 +40,7 @@ The hub /learn/ lists them by track and step; each lesson links to the next one.
 20. How to choose a safe exchange: licence, proof of reserves, history of hacks (link {lang}/crypto-exchanges/)
 
 ## stocks — Stocks and ETFs
-1. What a stock is, in plain words
+1. ✅ 2026-11-28 (what-is-a-stock, all 20 languages) What a stock is, in plain words
 2. ETFs and index funds: the simplest way to own hundreds of companies
 3. How to buy your first stock or ETF (brokers by country: link {lang}/stocks-<country>/ and our broker pages)
 4. Dividends: how companies pay you
@@ -62,7 +62,7 @@ The hub /learn/ lists them by track and step; each lesson links to the next one.
 20. A simple 2–3 ETF portfolio for beginners, step by step (examples, not advice)
 
 ## trading — Trading (owner 2026-11-28: honest, plain, most retail traders lose; link {lang}/trading/ and {lang}/trading/hyperliquid/)
-1. Trading vs investing: the difference and why most beginners should start with investing
+1. ✅ 2026-11-28 (trading-vs-investing, all 20 languages) Trading vs investing: the difference and why most beginners should start with investing
 2. Order types: market, limit, stop — what each button does
 3. The order book and the spread in plain words
 4. Candlestick charts: how to read one candle and a chart
