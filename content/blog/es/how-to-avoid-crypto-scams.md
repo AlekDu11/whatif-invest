@@ -1,11 +1,11 @@
 ---
-title: Cómo evitar estafas con criptomonedas: 12 señales de alerta
-description: Cómo evitar estafas con criptomonedas: 12 señales de alerta, de sorteos falsos y phishing a rug pulls y falso soporte, con casos reales y qué hacer si caes.
+title: "Estafas cripto: 12 señales de alerta y cómo evitar estafas con criptomonedas"
+description: "Estafas cripto: 12 señales de alerta, del falso soporte al exchange que bloquea tus fondos y pide pagar para retirar, y qué hacer si ya caíste."
 date: 2026-11-16
 category: guides
 assets: btc, eth
 ---
-**¿Cómo evitar estafas con criptomonedas?** Hoy son uno de los fraudes más caros del mundo. En su informe de 2025, el Centro de Denuncias de Delitos en Internet del FBI contabilizó unos **11.000 millones de dólares** en pérdidas relacionadas con cripto solo entre víctimas de Estados Unidos. Los analistas de blockchain de Chainalysis calcularon que las estafas recaudaron en todo el mundo unos **17.000 millones de dólares** en 2025, y que las suplantaciones de identidad fueron las que más crecieron.
+**¿Cómo evitar las estafas cripto?** Aprende las 12 señales de alerta de abajo —promesas de ganancias fijas, falso soporte, un exchange que bloquea tus fondos y te pide pagar para retirarlos— y no envíes dinero a nadie que te meta prisa. Las estafas con criptomonedas son hoy uno de los fraudes más caros del mundo. En su informe de 2025, el Centro de Denuncias de Delitos en Internet del FBI contabilizó unos **11.000 millones de dólares** en pérdidas relacionadas con cripto solo entre víctimas de Estados Unidos. Los analistas de blockchain de Chainalysis calcularon que las estafas recaudaron en todo el mundo unos **17.000 millones de dólares** en 2025, y que las suplantaciones de identidad fueron las que más crecieron.
 
 La buena noticia: casi todas las estafas muestran las mismas pocas señales de alerta. Apréndelas una vez y será mucho más difícil engañarte.
 

@@ -1,11 +1,11 @@
 ---
-title: Kripto Korku ve Açgözlülük Endeksi nedir, nasıl okunur?
-description: Kripto Korku ve Açgözlülük Endeksi neyi ölçer, 0–100 puanı nasıl oluşur ve geçmiş veriler aşırı korku ile aşırı açgözlülük okumaları hakkında ne gösteriyor.
+title: "Bitcoin korku endeksi nedir? Kripto Korku ve Açgözlülük Endeksi 0–100 nasıl okunur"
+description: "Bitcoin korku endeksi 0–100 arası tek bir sayı: 0–24 aşırı korku, 75–100 aşırı açgözlülük. 6 veri kaynağı, nasıl okunur ve geçmişte ne oldu."
 date: 2026-11-16
 category: guides
 assets: btc, eth
 ---
-**Kripto Korku ve Açgözlülük Endeksi** (Crypto Fear & Greed Index), kripto piyasasının ruh halini özetlemeye çalışan 0 ile 100 arasında tek bir sayıdır. Düşük değerler insanların korktuğunu, yüksek değerler açgözlü olduklarını gösterir.
+**Bitcoin korku endeksi**, yani **Kripto Korku ve Açgözlülük Endeksi** (Crypto Fear & Greed Index), kripto piyasasının ruh halini özetleyen 0 ile 100 arasında tek bir sayıdır ve her gün ağırlıklı olarak Bitcoin verilerinden hesaplanır. 0–24 aşırı korku, 75–100 aşırı açgözlülük demektir: düşük değerler insanların korktuğunu, yüksek değerler açgözlü olduklarını gösterir.
 
 Bugünkü değeri [ana sayfamızdaki]({lang}/) canlı göstergede görebilirsiniz. Bu rehber sayının neyden oluştuğunu, nasıl okunacağını ve geçmişteki aşırı okumalardan sonra ne olduğunu anlatıyor.
 
