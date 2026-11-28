@@ -1198,3 +1198,17 @@ a.badge.tagc{text-decoration:none;color:inherit;border:1px solid var(--line)}a.b
 .ltx{display:flex;flex-direction:column;gap:5px;min-width:0}.ltx b{font-size:15.5px;line-height:1.35}.ltx .muted{font-size:13px;line-height:1.45;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 @media(max-width:700px){.lgrid{grid-template-columns:1fr}.lfold{min-height:0}}
 .svh{display:flex;justify-content:space-between;gap:8px}.svh small{font-weight:400}.svh b{color:var(--text)}.hlbh a{color:inherit;text-decoration:none}.hlbcta{margin:10px 0 0;display:flex;align-items:center;gap:10px;flex-wrap:wrap}.svh span:last-child{white-space:nowrap}
+/* Bigger, easier type (owner 2026-11-28: «like CryptoRank — bigger and clearer»): body 16px, tables 15–16px, taller rows, bigger coin icons */
+body{font-size:16px;line-height:1.55}
+.lead{font-size:17px;line-height:1.55}
+h2{font-size:22px}
+.mt th{font-size:13.5px;padding:13px 12px}
+.mt td{font-size:15.5px;padding:14px 12px}
+.mt td.num{font-size:15px}
+.mt td.n{font-size:14px}
+.mt .ic{width:30px;height:30px}
+.tabs button{font-size:16px}
+.seg button{font-size:14px}
+.buy{font-size:13px}
+@media (min-width:1701px){.nav a,.dd summary{font-size:15px}}
+@media (max-width:640px){body{font-size:15.5px}.lead{font-size:16px}.mt td{font-size:14.5px;padding:12px 10px}.mt td.num{font-size:14px}.mt th{font-size:12.5px;padding:11px 10px}.mt .ic{width:26px;height:26px}}
