@@ -85,3 +85,8 @@ Note (2026-11-26 run): Threads still redirects to /accounts/suspended/ (phone nu
 | 2026-11-27 11:4x | Threads | NOT POSTED — account checkpoint (4th day) | — | |
 
 Note (2026-11-27 run): Threads still redirects to /accounts/suspended/ (phone number + SMS/WhatsApp code) — owner must verify the phone himself; skipped. Bluesky: video from GitHub raw by commit SHA (1974347) via the x-relay hash hand-off; generic «Новий пост» ref opened the composer first try; one synthetic paste on the [contenteditable] attached the video once; language «англійська». Bluesky likes/reposts, posts of the last 7 days: all 0.
+
+| 2026-11-28 12:49 | Bluesky | Race video: $100/mo since Aug 2017 Bitcoin vs Ethereum (Bitcoin $43.4K +288%, Ethereum $34.1K +204%, $11,200 in each; same as X 11:31) + link /en/btc/ (langs en) | https://bsky.app/profile/whatifstack.bsky.social/post/3n3egg4rltk2b | 0 likes (2026-11-28 12:5x) |
+| 2026-11-28 12:4x | Threads | NOT POSTED — account checkpoint (5th day) | — | |
+
+Note (2026-11-28 run): Threads still redirects to /accounts/suspended/ (phone number + SMS/WhatsApp code) — owner must verify the phone himself; skipped. Bluesky: video from GitHub raw by commit SHA (3af0cd8) via the x-relay hash hand-off; generic «Новий пост» ref opened the composer first try; one synthetic paste on the [contenteditable] attached the video once; language «англійська». Bluesky likes/reposts, posts of the last 7 days: 11-27 Solana/NEAR/Avalanche video 1 like, all others 0.
