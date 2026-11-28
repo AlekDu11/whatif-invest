@@ -1,11 +1,13 @@
 ---
-title: Bitcoin重回6万美元上方，11月ETF资金流出有望创纪录
-description: Bitcoin在跌破5.8万美元后，于11月26日上涨约3%至约60,850美元；美国现货比特币ETF的资金流出仍在延续，本月流出规模创纪录。
+title: 比特币在6万美元附近震荡，11月ETF净流出超50亿美元
+description: 比特币11月28日一度升至62,100美元后再度跌破6万美元，约70亿美元期权到期，11月美国比特币ETF净流出超过50亿美元。
 date: 2026-11-26 06:50
-updated: 2026-11-27 13:05
+updated: 2026-11-28 06:30
 tags: bitcoin, etf
 assets: btc, eth
 ---
+**更新 11月28日 06:30 UTC：** 比特币周六凌晨再度跌破6万美元，06:07 UTC报约59,700美元，24小时下跌约3%；此前从周五高点约62,100美元震荡至低点约58,700美元（Investing.com）。周五约70亿美元的比特币期权在Deribit到期，加密市场约4.78亿美元的杠杆仓位被清算。以太坊下跌约4.5%至约1,657美元；与特朗普有关的WLFI代币在储备钱包亏损抛售ETH后暴跌约40%（[我们的报道]({lang}/news/why-is-wlfi-crashing-november-2026/)）。美国现货比特币ETF在11月的净流出已超过50亿美元。另一方面，CryptoQuant数据显示，持有1,000–10,000枚BTC的钱包在9月30日至11月21日期间增持约121,000枚BTC，而同期价格下跌近30%。
+
 **11月27日 13:05 UTC更新：** Bitcoin继续上涨，周五在约61,700美元附近交易，较周三约57,300美元的两年低点高出约8%，为周一以来最高水平，有望录得八周来首次周线上涨（Analytics Insight、Coinspeaker）。不过与11月1日约77,600美元相比，本月仍下跌约20%。ether上涨约2.3%，至约1,734美元。此次反弹伴随着AI和芯片股更广泛的修复性上涨以及假日期间清淡的交投；币安周四还表示，已全面解除上月63亿美元黑客事件后实施的提款限制。美国通胀顽固以及美联储在12月8–9日会议上可能加息，仍是主要阻力，交易员关注约64,600美元附近的阻力位。
 
 11月26日（周四）早间，Bitcoin重回6万美元上方，截至05:40 UTC在24小时内上涨约3%，报约60,850美元，前一天它曾短暂跌破58,000美元。此次反弹发生在华尔街收复周三早盘科技股大部分跌幅之际，但资金仍在持续流出美国现货比特币ETF。
@@ -23,6 +25,7 @@ crypto.news援引的分析师认为，阻力位在61,500–62,000美元附近，
 
 ## 来源
 
+- [Investing.com — Bitcoin price today falls below $60k as whales buy dip, ETF outflows mount](https://www.investing.com/news/cryptocurrency-news/bitcoin-price-today-falls-below-60k-as-whales-buy-dip-etf-outflows-mount-5054180)
 - [Analytics Insight — Bitcoin回升至61,400美元上方，有望迎来八周来首次周线上涨](https://www.analyticsinsight.net/news/bitcoin-recovers-above-usd-61400-eyes-first-weekly-gain-in-eight-weeks-as-crypto-markets-rebound)
 - [Coinspeaker via Yahoo Finance — 今日比特币新闻：BTC反弹8%](https://finance.yahoo.com/markets/crypto/articles/bitcoin-news-today-btc-rebounds-104410814.html)
 - [crypto.news — Bitcoin价格重回6万美元，但真的见底了吗？](https://crypto.news/bitcoin-price-prediction-btc-recovery-etf-outflows/)

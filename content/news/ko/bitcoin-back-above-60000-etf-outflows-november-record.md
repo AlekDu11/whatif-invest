@@ -1,11 +1,13 @@
 ---
-title: 비트코인 6만 달러 회복…11월 ETF 자금 유출은 사상 최대 향해
-description: 비트코인은 5만8000달러 아래로 밀린 뒤 11월 26일 약 3% 올라 6만850달러 부근까지 회복했다. 미국 현물 비트코인 ETF는 사상 최대 월간 유출을 이어갔다.
+title: 비트코인 6만 달러 부근서 등락, 11월 ETF 유출 50억 달러 돌파
+description: 비트코인이 11월 28일 6만2100달러까지 오른 뒤 다시 6만 달러 아래로 내려갔다. 70억 달러 규모 옵션이 만기됐고 11월 ETF 순유출은 50억 달러를 넘었다.
 date: 2026-11-26 06:50
-updated: 2026-11-27 13:05
+updated: 2026-11-28 06:30
 tags: bitcoin, etf
 assets: btc, eth
 ---
+**업데이트 11월 28일 06:30 UTC:** 비트코인은 토요일 새벽 다시 6만 달러 아래로 내려가 06:07 UTC 기준 약 5만9700달러로 24시간 전보다 약 3% 낮았습니다. 금요일 고점 약 6만2100달러에서 저점 약 5만8700달러까지 출렁였습니다(Investing.com). 금요일 Deribit에서 약 70억 달러 규모의 비트코인 옵션이 만기됐고, 암호화폐 시장에서 약 4억7800만 달러의 레버리지 포지션이 청산됐습니다. 이더는 약 4.5% 내린 약 1657달러, 트럼프 일가와 연관된 WLFI 토큰은 준비금 지갑의 ETH 손절 매도 뒤 약 40% 폭락했습니다([관련 기사]({lang}/news/why-is-wlfi-crashing-november-2026/)). 11월 미국 비트코인 현물 ETF 순유출은 50억 달러를 넘었습니다. 반면 CryptoQuant 데이터에 따르면 1000~1만 BTC를 보유한 지갑들은 9월 30일~11월 21일 가격이 30% 가까이 떨어지는 동안 약 12만1000 BTC를 사들였습니다.
+
 **11월 27일 13:05 UTC 업데이트:** 비트코인은 상승을 이어가 27일(금) 6만1700달러 부근에서 거래됐다. 수요일 기록한 약 5만7300달러의 2년 만의 최저치보다 약 8% 높고 월요일 이후 최고 수준으로, 8주 만의 첫 주간 상승을 앞두고 있다(Analytics Insight, Coinspeaker). 다만 11월 1일 약 7만7600달러와 비교하면 이달 들어 여전히 약 20% 낮다. 이더는 약 2.3% 올라 1734달러 부근을 기록했다. 이번 반등은 AI·반도체주의 광범위한 안도 랠리, 거래가 한산한 연휴 장세와 함께 나타났다. 바이낸스도 목요일 지난달 63억 달러 규모 해킹 이후 도입한 출금 한도를 완전히 해제했다고 밝혔다. 끈질긴 미국 인플레이션과 12월 8~9일 회의에서의 연준 금리 인상 가능성이 여전히 주요 부담이며, 트레이더들은 6만4600달러 부근 저항선을 주시하고 있다.
 
 비트코인이 11월 26일(목) 새벽 다시 6만 달러 위로 올라섰다. 05:40 UTC 기준 24시간 동안 약 3% 오른 6만850달러 부근으로, 하루 전 잠시 5만8000달러 아래로 떨어졌던 데서 반등했다. 월가가 수요일 오전 기술주 하락분을 대부분 만회하면서 반등이 나왔지만, 미국 현물 비트코인 ETF에서는 자금 유출이 계속됐다.
@@ -23,6 +25,7 @@ crypto.news가 인용한 애널리스트들은 6만1500~6만2000달러 부근을
 
 ## 출처
 
+- [Investing.com — Bitcoin price today falls below $60k as whales buy dip, ETF outflows mount](https://www.investing.com/news/cryptocurrency-news/bitcoin-price-today-falls-below-60k-as-whales-buy-dip-etf-outflows-mount-5054180)
 - [Analytics Insight — 비트코인 6만1400달러 위로 회복, 8주 만의 첫 주간 상승 노려](https://www.analyticsinsight.net/news/bitcoin-recovers-above-usd-61400-eyes-first-weekly-gain-in-eight-weeks-as-crypto-markets-rebound)
 - [Coinspeaker via Yahoo Finance — 오늘의 비트코인 뉴스: BTC 8% 반등](https://finance.yahoo.com/markets/crypto/articles/bitcoin-news-today-btc-rebounds-104410814.html)
 - [crypto.news — 비트코인 가격 6만 달러 회복, 하지만 정말 바닥일까?](https://crypto.news/bitcoin-price-prediction-btc-recovery-etf-outflows/)

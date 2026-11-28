@@ -1,11 +1,13 @@
 ---
-title: Bitcoin yeniden 60.000 doların üzerinde, ETF'lerden kasım çıkışı rekora gidiyor
-description: Bitcoin 26 Kasım'da 58.000 doların altına indikten sonra yaklaşık %3 yükselerek 60.850 dolara çıktı; ABD spot bitcoin ETF'leri rekor çıkış ayını sürdürdü.
+title: Bitcoin 60.000 dolar civarında dalgalanıyor, kasımda ETF çıkışları 5 milyar doları aştı
+description: Bitcoin 28 Kasım'da 62.100 dolara çıktıktan sonra yeniden 60.000 doların altına indi; 7 milyar dolarlık opsiyon vadesi doldu, kasımda ETF çıkışı 5 milyar doları geçti.
 date: 2026-11-26 06:50
-updated: 2026-11-27 13:05
+updated: 2026-11-28 06:30
 tags: bitcoin, etf
 assets: btc, eth
 ---
+**Güncelleme 28 Kasım, 06:30 UTC:** Bitcoin cumartesi sabahı yeniden 60.000 doların altına indi ve 06:07 UTC'de 24 saatte yaklaşık %3 düşüşle 59.700 dolar civarında işlem gördü; cuma günü ~62.100 dolarlık zirve ile ~58.700 dolarlık dip arasında dalgalanmıştı (Investing.com). Cuma günü Deribit'te yaklaşık 7 milyar dolarlık bitcoin opsiyonunun vadesi doldu ve kripto piyasasında ~478 milyon dolarlık kaldıraçlı pozisyon tasfiye edildi. Ether ~%4,5 düşüşle ~1.657 dolara geriledi; Trump bağlantılı WLFI token'ı ise bir rezerv cüzdanının zararına ETH satmasının ardından ~%40 çakıldı ([haberimiz]({lang}/news/why-is-wlfi-crashing-november-2026/)). ABD spot bitcoin ETF'lerinden kasımdaki çıkış 5 milyar doları aştı. Öte yandan CryptoQuant verilerine göre 1.000–10.000 BTC tutan cüzdanlar, fiyat yaklaşık %30 düşerken 30 Eylül–21 Kasım arasında ~121.000 BTC aldı.
+
 **Güncelleme 27 Kasım, 13:05 UTC:** Bitcoin yükselişini sürdürdü ve cuma günü 61.700 dolar civarında işlem gördü; bu, çarşamba günkü yaklaşık 57.300 dolarlık iki yılın en düşük seviyesinin yaklaşık %8 üzerinde ve pazartesiden bu yana en yüksek seviye. Bitcoin sekiz hafta sonra ilk haftalık kazancına doğru ilerliyor (Analytics Insight, Coinspeaker). Yine de 1 Kasım'daki yaklaşık 77.600 dolara göre kasımda hâlâ %20 civarında düşüşte. Ether yaklaşık %2,3 artışla 1.734 dolar civarına çıktı. Toparlanma, yapay zekâ ve çip hisselerindeki daha geniş bir rahatlama yükselişi ve tatil döneminin sığ işlemleriyle aynı zamana denk geldi; Binance de perşembe günü geçen ayki 6,3 milyar dolarlık hack sonrasında getirdiği çekim limitlerini tamamen kaldırdığını açıkladı. ABD'de inatçı enflasyon ve Fed'in 8–9 Aralık toplantısında olası faiz artırımı başlıca baskı unsurları olmaya devam ediyor; yatırımcılar 64.600 dolar civarındaki direnci izliyor.
 
 Bitcoin 26 Kasım Perşembe sabahı yeniden 60.000 doların üzerine çıktı: 24 saatte yaklaşık %3 yükselerek 05:40 UTC'de 60.850 dolar civarına ulaştı. Bir gün önce kısa süreliğine 58.000 doların altına inmişti. Toparlanma, Wall Street'in çarşamba günkü erken teknoloji kayıplarının büyük kısmını geri almasıyla geldi; ancak ABD'deki spot bitcoin ETF'lerinden para çıkışı sürdü.
@@ -23,6 +25,7 @@ crypto.news'in aktardığı analistler 61.500–62.000 dolar civarında direnç,
 
 ## Kaynaklar
 
+- [Investing.com — Bitcoin price today falls below $60k as whales buy dip, ETF outflows mount](https://www.investing.com/news/cryptocurrency-news/bitcoin-price-today-falls-below-60k-as-whales-buy-dip-etf-outflows-mount-5054180)
 - [Analytics Insight — Bitcoin recovers above USD 61,400, eyes first weekly gain in eight weeks](https://www.analyticsinsight.net/news/bitcoin-recovers-above-usd-61400-eyes-first-weekly-gain-in-eight-weeks-as-crypto-markets-rebound)
 - [Coinspeaker via Yahoo Finance — Bitcoin news today: BTC rebounds 8%](https://finance.yahoo.com/markets/crypto/articles/bitcoin-news-today-btc-rebounds-104410814.html)
 - [crypto.news — Bitcoin fiyatı 60 bin doları geri aldı, ama dip gerçekten görüldü mü?](https://crypto.news/bitcoin-price-prediction-btc-recovery-etf-outflows/)

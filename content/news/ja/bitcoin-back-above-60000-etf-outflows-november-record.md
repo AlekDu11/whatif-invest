@@ -1,11 +1,13 @@
 ---
-title: Bitcoin、6万ドル台を回復　11月のETF資金流出は過去最大の見通し
-description: Bitcoinは5万8000ドル割れの後、11月26日に約3%上昇して6万850ドル付近に。米国の現物ビットコインETFは過去最大の月間流出が続いた。
+title: Bitcoin、6万ドル前後で乱高下　11月のETF資金流出は50億ドル超
+description: Bitcoinは11月28日、6万2100ドルまで上昇した後に再び6万ドルを割り込んだ。70億ドル規模のオプション満期を通過し、11月のETF流出は50億ドルを超えた。
 date: 2026-11-26 06:50
-updated: 2026-11-27 13:05
+updated: 2026-11-28 06:30
 tags: bitcoin, etf
 assets: btc, eth
 ---
+**更新 11月28日 06:30 UTC：** Bitcoinは土曜未明に再び6万ドルを割り込み、06:07 UTC時点で約5万9700ドルと24時間で約3%安。金曜の高値約6万2100ドルから安値約5万8700ドルまで振れました（Investing.com）。金曜にはDeribitで約70億ドル分のビットコインオプションが満期を迎え、暗号資産市場では約4億7800万ドルのレバレッジポジションが清算されました。イーサは約4.5%下げて約1657ドル。トランプ氏と関係するWLFIトークンは、準備金ウォレットがETHを損失で売却した後に約40%急落しました（[関連記事]({lang}/news/why-is-wlfi-crashing-november-2026/)）。米国のビットコイン現物ETFからの11月の資金流出は50億ドルを超えました。一方、CryptoQuantのデータでは、1000〜1万BTCを保有するウォレットが9月30日〜11月21日に約12万1000 BTCを買い増し、その間に価格は30%近く下落しました。
+
 **11月27日 13:05 UTC更新：** Bitcoinは上昇を続け、27日（金）には6万1700ドル付近で取引された。水曜日に付けた約5万7300ドルの2年ぶり安値から約8%高く、月曜日以来の高値水準で、8週間ぶりの週間上昇となる見通しだ（Analytics Insight、Coinspeaker）。それでも11月1日の約7万7600ドルからは月間で約20%安い。etherは約2.3%上昇し、1734ドル付近となった。今回の反発はAI・半導体株の幅広い買い戻しと薄商いの休暇相場に重なった。Binanceも木曜日、先月の63億ドル規模のハッキング後に導入した出金制限を全面的に解除したと発表した。根強い米国のインフレと、12月8〜9日の会合でのFRBの利上げの可能性が引き続き主な逆風で、トレーダーは6万4600ドル付近の上値抵抗を注視している。
 
 Bitcoinは11月26日（木）早朝に6万ドル台を回復し、05:40 UTC時点で24時間比約3%高の6万850ドル付近で推移した。前日には一時5万8000ドルを割り込んでいた。ウォール街が水曜朝のハイテク株の下げをほぼ取り戻したことが反発につながったが、米国の現物ビットコインETFからは資金流出が続いた。
@@ -23,6 +25,7 @@ crypto.newsが引用するアナリストは、6万1500〜6万2000ドル付近�
 
 ## 出典
 
+- [Investing.com — Bitcoin price today falls below $60k as whales buy dip, ETF outflows mount](https://www.investing.com/news/cryptocurrency-news/bitcoin-price-today-falls-below-60k-as-whales-buy-dip-etf-outflows-mount-5054180)
 - [Analytics Insight — Bitcoinが6万1400ドル台を回復、8週間ぶりの週間上昇へ](https://www.analyticsinsight.net/news/bitcoin-recovers-above-usd-61400-eyes-first-weekly-gain-in-eight-weeks-as-crypto-markets-rebound)
 - [Coinspeaker via Yahoo Finance — 今日のビットコインニュース：BTCが8%反発](https://finance.yahoo.com/markets/crypto/articles/bitcoin-news-today-btc-rebounds-104410814.html)
 - [crypto.news — Bitcoin価格が6万ドルを回復、だが本当に底打ちか](https://crypto.news/bitcoin-price-prediction-btc-recovery-etf-outflows/)

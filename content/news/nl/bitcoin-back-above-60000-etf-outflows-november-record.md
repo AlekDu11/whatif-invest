@@ -1,11 +1,13 @@
 ---
-title: Bitcoin weer boven 60.000 dollar, uitstroom uit ETF's in november op weg naar record
-description: Bitcoin steeg op 26 november zo'n 3% naar bijna 60.850 dollar na een dip onder 58.000, terwijl Amerikaanse spot-ETF's een recordmaand van uitstroom verlengden.
+title: Bitcoin schommelt rond $60.000, ETF-uitstroom in november boven $5 miljard
+description: Bitcoin zakte op 28 november weer onder $60.000 na een piek op $62.100; opties ter waarde van $7 miljard liepen af en de ETF-uitstroom in november passeerde $5 miljard.
 date: 2026-11-26 06:50
-updated: 2026-11-27 13:05
+updated: 2026-11-28 06:30
 tags: bitcoin, etf
 assets: btc, eth
 ---
+**Update 28 november, 06:30 UTC:** bitcoin zakte zaterdagochtend vroeg weer onder $60.000 en noteerde om 06:07 UTC rond $59.700, zo'n 3% lager op 24 uur, na een schommeling van een vrijdagtop rond $62.100 naar een dieptepunt rond $58.700 (Investing.com). Vrijdag liepen op Deribit bitcoinopties ter waarde van ongeveer $7 miljard af en werd voor circa $478 miljoen aan crypto-hefboomposities geliquideerd. Ether verloor zo'n 4,5% tot rond $1.657, en de aan Trump gelieerde WLFI-token kelderde zo'n 40% nadat een reservewallet ETH met verlies verkocht ([ons bericht]({lang}/news/why-is-wlfi-crashing-november-2026/)). De uitstroom uit Amerikaanse spot-bitcoin-ETF's in november passeerde $5 miljard. Daartegenover laten CryptoQuant-cijfers zien dat wallets met 1.000–10.000 BTC tussen 30 september en 21 november zo'n 121.000 BTC kochten, terwijl de koers bijna 30% daalde.
+
 **Update 27 november, 13:05 UTC:** Bitcoin bleef stijgen en noteerde vrijdag rond 61.700 dollar, zo'n 8% boven het laagste punt in twee jaar van woensdag bij circa 57.300 dollar en het hoogste niveau sinds maandag; de munt koerst af op de eerste weekwinst in acht weken (Analytics Insight, Coinspeaker). Over november staat bitcoin nog wel zo'n 20% lager, vanaf ongeveer 77.600 dollar op 1 november. Ether won circa 2,3% naar bijna 1.734 dollar. Het herstel viel samen met een bredere opluchtingsrally in AI- en chipaandelen en dunne feestdagenhandel; Binance meldde donderdag bovendien dat het de opnamelimieten volledig heeft opgeheven die na de hack van 6,3 miljard dollar vorige maand waren ingesteld. Hardnekkige Amerikaanse inflatie en een waarschijnlijke renteverhoging door de Fed op de vergadering van 8–9 december blijven de belangrijkste tegenwinden; handelaren letten op weerstand rond 64.600 dollar.
 
 Bitcoin klom donderdagochtend 26 november weer boven 60.000 dollar: de koers steeg in 24 uur ongeveer 3% naar bijna 60.850 dollar om 05:40 UTC, een dag nadat hij kort onder 58.000 dollar was gezakt. Het herstel kwam terwijl Wall Street het grootste deel van de vroege techverliezen van woensdag goedmaakte, maar er bleef geld wegstromen uit Amerikaanse spot-bitcoin-ETF's.
@@ -23,6 +25,7 @@ Analisten die crypto.news citeert, zien weerstand rond 61.500–62.000 dollar en
 
 ## Bronnen
 
+- [Investing.com — Bitcoin price today falls below $60k as whales buy dip, ETF outflows mount](https://www.investing.com/news/cryptocurrency-news/bitcoin-price-today-falls-below-60k-as-whales-buy-dip-etf-outflows-mount-5054180)
 - [Analytics Insight – Bitcoin recovers above USD 61,400, eyes first weekly gain in eight weeks](https://www.analyticsinsight.net/news/bitcoin-recovers-above-usd-61400-eyes-first-weekly-gain-in-eight-weeks-as-crypto-markets-rebound)
 - [Coinspeaker via Yahoo Finance – Bitcoin news today: BTC rebounds 8%](https://finance.yahoo.com/markets/crypto/articles/bitcoin-news-today-btc-rebounds-104410814.html)
 - [crypto.news – Bitcoinkoers herovert 60.000 dollar, maar is de bodem echt bereikt?](https://crypto.news/bitcoin-price-prediction-btc-recovery-etf-outflows/)

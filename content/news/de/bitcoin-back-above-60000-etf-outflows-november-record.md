@@ -1,11 +1,13 @@
 ---
-title: Bitcoin wieder über 60.000 Dollar – ETF-Abflüsse im November steuern auf Rekord zu
-description: Bitcoin stieg am 26. November um rund 3 % auf fast 60.850 Dollar, nachdem er unter 58.000 Dollar gefallen war; US-Spot-ETFs verloren weiter Rekordsummen.
+title: Bitcoin pendelt um 60.000 $, ETF-Abflüsse im November übersteigen 5 Mrd. $
+description: Bitcoin fiel am 28. November nach einem Hoch bei 62.100 $ wieder unter 60.000 $; Optionen über 7 Mrd. $ verfielen, die ETF-Abflüsse im November überstiegen 5 Mrd. $.
 date: 2026-11-26 06:50
-updated: 2026-11-27 13:05
+updated: 2026-11-28 06:30
 tags: bitcoin, etf
 assets: btc, eth
 ---
+**Update 28. November, 06:30 UTC:** Bitcoin rutschte am frühen Samstag wieder unter 60.000 $ und notierte um 06:07 UTC bei rund 59.700 $, etwa 3 % tiefer als vor 24 Stunden – nach einem Schwung vom Freitagshoch bei rund 62.100 $ bis zu einem Tief bei rund 58.700 $ (Investing.com). Am Freitag verfielen auf Deribit Bitcoin-Optionen über etwa 7 Mrd. $, rund 478 Mio. $ an gehebelten Krypto-Positionen wurden liquidiert. Ether gab rund 4,5 % auf etwa 1.657 $ nach, und der Trump-nahe Token WLFI brach um rund 40 % ein, nachdem eine Reserve-Wallet ETH mit Verlust verkauft hatte ([unsere Meldung]({lang}/news/why-is-wlfi-crashing-november-2026/)). Die Abflüsse aus US-Spot-Bitcoin-ETFs im November überstiegen 5 Mrd. $. Auf der anderen Seite zeigen CryptoQuant-Daten: Wallets mit 1.000–10.000 BTC kauften zwischen dem 30. September und dem 21. November rund 121.000 BTC, während der Kurs um fast 30 % fiel.
+
 **Update 27. November, 13:05 UTC:** Bitcoin legte weiter zu und notierte am Freitag bei rund 61.700 Dollar, etwa 8 % über dem Zweijahrestief vom Mittwoch bei rund 57.300 Dollar und so hoch wie seit Montag nicht mehr; die Kryptowährung steuert auf ihren ersten Wochengewinn seit acht Wochen zu (Analytics Insight, Coinspeaker). Im November liegt sie aber noch rund 20 % im Minus, nach etwa 77.600 Dollar am 1. November. Ether gewann rund 2,3 % auf fast 1.734 Dollar. Die Erholung fiel mit einer breiteren Erleichterungsrally bei KI- und Chipaktien und dünnem Feiertagshandel zusammen; zudem teilte Binance am Donnerstag mit, die nach dem 6,3-Milliarden-Dollar-Hack im Vormonat eingeführten Auszahlungslimits vollständig aufgehoben zu haben. Die hartnäckige US-Inflation und eine wahrscheinliche Zinserhöhung der Fed auf der Sitzung am 8. und 9. Dezember bleiben die größten Belastungen; Trader beobachten den Widerstand bei rund 64.600 Dollar.
 
 Bitcoin ist am frühen Donnerstag, 26. November, wieder über 60.000 Dollar gestiegen: Der Kurs legte binnen 24 Stunden um rund 3 % zu und lag um 05:40 UTC bei fast 60.850 Dollar – einen Tag nachdem er kurz unter 58.000 Dollar gefallen war. Die Erholung kam, als die Wall Street den Großteil der frühen Tech-Verluste vom Mittwoch wieder aufholte, doch aus den US-Spot-Bitcoin-ETFs floss weiter Geld ab.
@@ -23,6 +25,7 @@ Von crypto.news zitierte Analysten sehen einen Widerstand bei 61.500–62.000 Do
 
 ## Quellen
 
+- [Investing.com — Bitcoin price today falls below $60k as whales buy dip, ETF outflows mount](https://www.investing.com/news/cryptocurrency-news/bitcoin-price-today-falls-below-60k-as-whales-buy-dip-etf-outflows-mount-5054180)
 - [Analytics Insight – Bitcoin recovers above USD 61,400, eyes first weekly gain in eight weeks](https://www.analyticsinsight.net/news/bitcoin-recovers-above-usd-61400-eyes-first-weekly-gain-in-eight-weeks-as-crypto-markets-rebound)
 - [Coinspeaker via Yahoo Finance – Bitcoin news today: BTC rebounds 8%](https://finance.yahoo.com/markets/crypto/articles/bitcoin-news-today-btc-rebounds-104410814.html)
 - [crypto.news – Bitcoin-Kurs erobert 60.000 Dollar zurück, aber ist der Boden wirklich erreicht?](https://crypto.news/bitcoin-price-prediction-btc-recovery-etf-outflows/)
