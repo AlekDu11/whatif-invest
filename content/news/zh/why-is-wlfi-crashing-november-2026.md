@@ -2,10 +2,12 @@
 title: WLFI为什么暴跌？World Liberty代币跌50%，稳定币USD1一度跌至0.94美元
 description: WLFI为什么暴跌：World Liberty代币11月28日在抛售2000万美元ETH后跌超50%，稳定币USD1一度跌至0.94美元，Justin Sun指控项目欺诈。
 date: 2026-11-28 06:30
-updated: 2026-11-28 12:20
+updated: 2026-11-28 18:30
 tags: movers, defi, markets
 assets: wlfi, eth, btc
 ---
+**更新 11月28日 18:30 UTC：** World Liberty Financial 终于回应，并把矛头指向币安。声明称，币安的自动减仓（ADL）系统在夜间同时平掉了 WLFI 合约的多头和空头仓位，导致部分原本盈利的交易者最终亏损；项目方表示与币安的合约市场毫无关系，并请受影响用户联系币安客服。我们未找到币安的回应。约 16:00 UTC，WLFI 仍在 0.0176 美元附近，24 小时跌约 54%，WLFI 合约未平仓量减少约 58%。与特朗普相关的 TRUMP 迷因币 24 小时也下跌约 12%。
+
 **更新：11月28日 12:20 UTC：** 在我们首篇报道之后，抛售进一步加剧。WLFI在06:00 UTC前于Binance跌至约0.0158美元的历史低点，上午晚些时候在约0.0196美元附近交易，24小时内下跌约52–53%（CoinGlass，经crypto.news）。World Liberty的美元稳定币USD1本应维持在1美元，却在07:00 UTC后不久跌至约0.94美元，随后回升至0.99美元以上。WLFI早期投资者Justin Sun的代币自2025年起被冻结，目前正在起诉该项目。他在X上指控内部人士循环借贷和欺诈，并呼吁交易所暂停WLFI和USD1交易；但他没有给出钱包地址或交易数据，截至中午也没有交易所采取行动。约1,700万美元的WLFI期货被强制平仓，其中约90%是看涨押注。我们未找到World Liberty Financial的回应。
 
 与特朗普家族有关的加密项目World Liberty Financial的代币WLFI，在11月28日（周六）凌晨几小时内暴跌约40%。导火索是一笔链上抛售：与项目相关的储备钱包大幅亏损卖出所持以太坊，随后WLFI的杠杆多头被强制平仓。
@@ -38,5 +40,7 @@ WLFI现报{{price:wlfi}}（12个月{{chg1y:wlfi}}）。历史最高价为{{ath:w
 - [Pluang / TokenPost — WLFI crashes nearly 40% after a $20M ether sale at a big loss](https://pluang.com/en/news-feed/wlfi-turun-40-persen-nilai-pasar-jatuh-1-miliar)
 - [ChainCatcher — WLFI briefly fell over 40%](https://www.chaincatcher.com/en/article/2308640)
 - [Investing.com — Bitcoin falls below $60k as ETF outflows mount](https://www.investing.com/news/cryptocurrency-news/bitcoin-price-today-falls-below-60k-as-whales-buy-dip-etf-outflows-mount-5054180)
+- [cryptonews.net / Bitcoinsistemi — World Liberty Financial blames Binance auto-deleveraging](https://cryptonews.net/news/legal/33821371/)
+- [TokenPost — World Liberty Financial falls 54.30% as market breadth turns negative](https://www.tokenpost.com/news/investing/64236)
 
 *不构成投资建议。*

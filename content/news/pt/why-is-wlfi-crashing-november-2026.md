@@ -2,10 +2,12 @@
 title: Por que o WLFI está caindo? Token da World Liberty cai 50% e USD1 vai a US$ 0,94
 description: Por que o WLFI está caindo? O token da World Liberty caiu mais de 50% em 28/11 após venda de US$ 20 mi em ETH, a USD1 foi a US$ 0,94 e Justin Sun acusou fraude.
 date: 2026-11-28 06:30
-updated: 2026-11-28 12:20
+updated: 2026-11-28 18:30
 tags: movers, defi, markets
 assets: wlfi, eth, btc
 ---
+**Atualização 28 de novembro, 18:30 UTC:** A World Liberty Financial finalmente se manifestou — e apontou para a Binance. Em comunicado, disse que o sistema de desalavancagem automática da Binance fechou durante a madrugada posições compradas e vendidas em futuros de WLFI, de modo que alguns traders que estavam no lucro acabaram no prejuízo; o projeto afirma não ter papel nos mercados futuros da Binance e orientou os afetados a procurar o suporte da corretora. Não encontramos resposta da Binance. Por volta das 16:00 UTC o WLFI seguia perto de US$ 0,0176, cerca de 54% abaixo de 24 horas antes, e o interesse aberto em futuros de WLFI tinha caído cerca de 58%. A memecoin TRUMP, ligada a Trump, também perdeu cerca de 12% em 24 horas.
+
 **Atualização 28 de novembro, 12:20 UTC:** A queda se aprofundou depois da nossa primeira matéria. O WLFI chegou a uma mínima histórica perto de US$ 0,0158 na Binance antes das 06:00 UTC e era negociado perto de US$ 0,0196 no fim da manhã, cerca de 52–53% abaixo de 24 horas antes (CoinGlass via crypto.news). A stablecoin em dólar da World Liberty, a USD1, que deveria valer US$ 1, recuou para cerca de US$ 0,94 logo depois das 07:00 UTC e depois voltou para acima de US$ 0,99. Justin Sun, investidor inicial do WLFI cujos tokens estão congelados desde 2025 e que processa o projeto, acusou no X pessoas de dentro de empréstimos circulares e fraude e pediu às corretoras que suspendessem a negociação de WLFI e USD1; ele não apresentou endereços de carteira nem dados de transações, e até o meio-dia nenhuma corretora havia agido. Cerca de US$ 17 milhões em futuros de WLFI foram liquidados, perto de 90% deles apostas na alta. Não encontramos resposta da World Liberty Financial.
 
 O WLFI, token do projeto cripto World Liberty Financial, ligado à família Trump, despencou cerca de 40% em poucas horas na madrugada de sábado, 28 de novembro. O gatilho foi uma venda on-chain: uma carteira de reserva ligada ao projeto vendeu seu ether com grande prejuízo, e em seguida as apostas alavancadas em WLFI foram liquidadas.
@@ -38,5 +40,7 @@ Quem colocou US$ 10 por dia em WLFI no último ano investiu {{dcainv:1}} e hoje 
 - [Pluang / TokenPost — WLFI crashes nearly 40% after a $20M ether sale at a big loss](https://pluang.com/en/news-feed/wlfi-turun-40-persen-nilai-pasar-jatuh-1-miliar)
 - [ChainCatcher — WLFI briefly fell over 40%](https://www.chaincatcher.com/en/article/2308640)
 - [Investing.com — Bitcoin falls below $60k as ETF outflows mount](https://www.investing.com/news/cryptocurrency-news/bitcoin-price-today-falls-below-60k-as-whales-buy-dip-etf-outflows-mount-5054180)
+- [cryptonews.net / Bitcoinsistemi — World Liberty Financial blames Binance auto-deleveraging](https://cryptonews.net/news/legal/33821371/)
+- [TokenPost — World Liberty Financial falls 54.30% as market breadth turns negative](https://www.tokenpost.com/news/investing/64236)
 
 *Não é recomendação de investimento.*

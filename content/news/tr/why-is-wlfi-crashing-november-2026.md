@@ -2,10 +2,12 @@
 title: WLFI neden düşüyor? World Liberty token'ı %50 çakıldı, USD1 0,94 dolara geriledi
 description: WLFI neden düşüyor? World Liberty token'ı 28 Kasım'da 20 milyon $'lık ETH satışıyla %50'den fazla düştü, USD1 0,94 $'a indi, Justin Sun dolandırıcılık iddia etti.
 date: 2026-11-28 06:30
-updated: 2026-11-28 12:20
+updated: 2026-11-28 18:30
 tags: movers, defi, markets
 assets: wlfi, eth, btc
 ---
+**Güncelleme 28 Kasım, 18:30 UTC:** World Liberty Financial sonunda açıklama yaptı ve Binance'i işaret etti. Proje, Binance'in otomatik kaldıraç azaltma sisteminin gece boyunca WLFI vadeli işlemlerinde hem uzun hem kısa pozisyonları kapattığını, bu yüzden kârda olan bazı yatırımcıların zarara geçtiğini söyledi; Binance'in vadeli piyasalarında hiçbir rolü olmadığını belirterek etkilenen kullanıcıları Binance desteğine yönlendirdi. Binance'ten bir yanıt bulamadık. WLFI 16:00 UTC civarında hâlâ 0,0176 dolar dolayındaydı, yani 24 saatte yaklaşık %54 düşüş; WLFI vadeli işlemlerindeki açık pozisyon yaklaşık %58 azaldı. Trump'la bağlantılı TRUMP memecoin de 24 saatte yaklaşık %12 değer kaybetti.
+
 **Güncelleme 28 Kasım, 12:20 UTC:** İlk haberimizden sonra satış derinleşti. WLFI, 06:00 UTC'den önce Binance'te 0,0158 dolar civarında rekor dibi gördü ve öğleden önce 0,0196 dolar civarında işlem görüyordu; 24 saatte yaklaşık %52–53 düşüş (crypto.news üzerinden CoinGlass). World Liberty'nin 1 dolarda kalması gereken dolar stablecoin'i USD1, 07:00 UTC'den kısa süre sonra yaklaşık 0,94 dolara geriledi, ardından yeniden 0,99 doların üzerine çıktı. Token'ları 2025'ten beri dondurulmuş olan ve projeye dava açan erken dönem WLFI yatırımcısı Justin Sun, X'te içeridekileri döngüsel borçlanma ve dolandırıcılıkla suçladı ve borsaları WLFI ile USD1 işlemlerini durdurmaya çağırdı; cüzdan adresi ya da işlem verisi paylaşmadı ve öğlene kadar hiçbir borsa adım atmadı. Yaklaşık 17 milyon dolarlık WLFI vadeli pozisyonu tasfiye edildi; bunların yaklaşık %90'ı yükseliş yönlü pozisyonlardı. World Liberty Financial'dan bir açıklama bulamadık.
 
 Trump ailesiyle bağlantılı kripto projesi World Liberty Financial'ın token'ı WLFI, 28 Kasım Cumartesi sabahının erken saatlerinde birkaç saat içinde yaklaşık %40 değer kaybetti. Tetikleyici zincir üstü bir satıştı: projeyle bağlantılı bir rezerv cüzdanı elindeki ether'ı büyük zararla sattı, ardından WLFI'deki kaldıraçlı pozisyonlar tasfiye edildi.
@@ -38,5 +40,7 @@ Son bir yılda WLFI'ye günde 10 dolar koyan biri toplam {{dcainv:1}} yatırdı 
 - [Pluang / TokenPost — WLFI crashes nearly 40% after a $20M ether sale at a big loss](https://pluang.com/en/news-feed/wlfi-turun-40-persen-nilai-pasar-jatuh-1-miliar)
 - [ChainCatcher — WLFI briefly fell over 40%](https://www.chaincatcher.com/en/article/2308640)
 - [Investing.com — Bitcoin falls below $60k as ETF outflows mount](https://www.investing.com/news/cryptocurrency-news/bitcoin-price-today-falls-below-60k-as-whales-buy-dip-etf-outflows-mount-5054180)
+- [cryptonews.net / Bitcoinsistemi — World Liberty Financial blames Binance auto-deleveraging](https://cryptonews.net/news/legal/33821371/)
+- [TokenPost — World Liberty Financial falls 54.30% as market breadth turns negative](https://www.tokenpost.com/news/investing/64236)
 
 *Yatırım tavsiyesi değildir.*

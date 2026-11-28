@@ -2,10 +2,12 @@
 title: Vì sao WLFI lao dốc? Token World Liberty giảm 50%, stablecoin USD1 trượt về 0,94 USD
 description: Vì sao WLFI lao dốc: token World Liberty giảm hơn 50% ngày 28/11 sau vụ bán 20 triệu USD ETH, USD1 trượt về 0,94 USD và Justin Sun cáo buộc có gian lận.
 date: 2026-11-28 06:30
-updated: 2026-11-28 12:20
+updated: 2026-11-28 18:30
 tags: movers, defi, markets
 assets: wlfi, eth, btc
 ---
+**Cập nhật 28/11, 18:30 UTC:** World Liberty Financial cuối cùng đã lên tiếng — và chỉ vào Binance. Trong thông báo, dự án cho biết hệ thống tự động giảm đòn bẩy của Binance đã đóng cả vị thế long lẫn short hợp đồng tương lai WLFI trong đêm, khiến một số trader đang có lãi chuyển sang lỗ; WLF khẳng định không tham gia vào thị trường phái sinh của Binance và đề nghị người bị ảnh hưởng liên hệ bộ phận hỗ trợ của sàn. Chúng tôi chưa thấy Binance phản hồi. Khoảng 16:00 UTC, WLFI vẫn quanh mức 0,0176 USD, thấp hơn khoảng 54% so với 24 giờ trước, còn khối lượng hợp đồng mở WLFI giảm khoảng 58%. Memecoin TRUMP gắn với ông Trump cũng mất khoảng 12% trong 24 giờ.
+
 **Cập nhật 28/11, 12:20 UTC:** Đà bán tháo sâu thêm sau bài đầu tiên của chúng tôi. WLFI chạm đáy kỷ lục khoảng 0,0158 USD trên Binance trước 06:00 UTC và giao dịch quanh 0,0196 USD vào cuối buổi sáng, giảm khoảng 52–53% trong 24 giờ (CoinGlass qua crypto.news). Stablecoin đồng đô la của World Liberty là USD1, vốn phải giữ ở mức 1 USD, đã trượt về khoảng 0,94 USD ngay sau 07:00 UTC rồi hồi lại trên 0,99 USD. Justin Sun, nhà đầu tư sớm của WLFI có token bị đóng băng từ năm 2025 và đang kiện dự án, đã cáo buộc người trong cuộc vay vòng tròn và gian lận trên X, đồng thời kêu gọi các sàn dừng giao dịch WLFI và USD1; ông không đưa ra địa chỉ ví hay dữ liệu giao dịch nào, và đến trưa chưa sàn nào hành động. Khoảng 17 triệu USD hợp đồng tương lai WLFI bị thanh lý, khoảng 90% trong đó là lệnh đặt cược giá tăng. Chúng tôi chưa thấy phản hồi nào từ World Liberty Financial.
 
 WLFI, token của dự án tiền mã hóa World Liberty Financial có liên hệ với gia đình Trump, đã giảm khoảng 40% chỉ trong vài giờ vào rạng sáng thứ Bảy, 28/11. Nguyên nhân trực tiếp là một giao dịch on-chain: một ví dự trữ liên quan đến dự án bán số ether của mình với mức lỗ lớn, sau đó các vị thế đòn bẩy vào WLFI bị thanh lý.
@@ -38,5 +40,7 @@ Ai bỏ 10 USD mỗi ngày vào WLFI trong một năm qua đã đầu tư {{dcai
 - [Pluang / TokenPost — WLFI crashes nearly 40% after a $20M ether sale at a big loss](https://pluang.com/en/news-feed/wlfi-turun-40-persen-nilai-pasar-jatuh-1-miliar)
 - [ChainCatcher — WLFI briefly fell over 40%](https://www.chaincatcher.com/en/article/2308640)
 - [Investing.com — Bitcoin falls below $60k as ETF outflows mount](https://www.investing.com/news/cryptocurrency-news/bitcoin-price-today-falls-below-60k-as-whales-buy-dip-etf-outflows-mount-5054180)
+- [cryptonews.net / Bitcoinsistemi — World Liberty Financial blames Binance auto-deleveraging](https://cryptonews.net/news/legal/33821371/)
+- [TokenPost — World Liberty Financial falls 54.30% as market breadth turns negative](https://www.tokenpost.com/news/investing/64236)
 
 *Không phải lời khuyên đầu tư.*

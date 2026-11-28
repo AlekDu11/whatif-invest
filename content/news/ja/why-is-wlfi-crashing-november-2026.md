@@ -2,10 +2,12 @@
 title: WLFIはなぜ暴落？World Libertyのトークンが50%下落、USD1も0.94ドルに
 description: WLFIが暴落した理由：World Libertyのトークンが11月28日、2000万ドル分のETH売却後に50%超下落。ステーブルコインUSD1は0.94ドルに下がり、Justin Sunは詐欺を主張。
 date: 2026-11-28 06:30
-updated: 2026-11-28 12:20
+updated: 2026-11-28 18:30
 tags: movers, defi, markets
 assets: wlfi, eth, btc
 ---
+**更新 11月28日 18:30 UTC：** World Liberty Financialがようやく声明を出し、Binanceを名指ししました。BinanceのADL（自動ポジション縮小）が夜間にWLFI先物のロングとショートの両方を強制的に決済し、含み益のあったトレーダーの一部が損失を被ったと説明。同プロジェクトはBinanceの先物市場には一切関与していないとして、影響を受けた人にはBinanceのサポートへの問い合わせを求めました。Binance側の反応は見つかっていません。WLFIは16:00 UTCごろも約0.0176ドルと24時間で約54%安く、WLFI先物の建玉は約58%減りました。トランプ氏関連のミームコインTRUMPも24時間で約12%下落しています。
+
 **更新 11月28日 12:20 UTC：** 最初の記事の後、売りはさらに強まりました。WLFIは06:00 UTC前にBinanceで約0.0158ドルの過去最安値をつけ、午前遅くには約0.0196ドルで取引され、24時間で約52〜53%下落しました（crypto.news経由のCoinGlass）。1ドルを維持するはずのWorld Libertyのドル建てステーブルコインUSD1は、07:00 UTC過ぎに約0.94ドルまで下がり、その後0.99ドル超に戻りました。2025年からトークンを凍結され、プロジェクトを提訴しているWLFIの初期投資家Justin Sunは、Xで内部関係者による循環的な借り入れと詐欺を非難し、取引所にWLFIとUSD1の取引停止を求めました。ただしウォレットアドレスや取引データは示しておらず、昼までに対応した取引所はありません。WLFIの先物は約1700万ドル分が強制決済され、その約90%が値上がりに賭けたポジションでした。World Liberty Financialからの反応は確認できていません。
 
 トランプ一族と関係する暗号資産プロジェクトWorld Liberty Financialのトークン「WLFI」が、11月28日（土）未明、わずか数時間で約40%急落しました。きっかけはオンチェーン上の売却です。プロジェクトに関連する準備金ウォレットが保有するイーサを大きな損失で売り、その後WLFIのレバレッジ取引が強制決済されました。
@@ -38,5 +40,7 @@ WLFIは{{price:wlfi}}（12カ月で{{chg1y:wlfi}}）。最高値は{{ath:wlfi}}�
 - [Pluang / TokenPost — WLFI crashes nearly 40% after a $20M ether sale at a big loss](https://pluang.com/en/news-feed/wlfi-turun-40-persen-nilai-pasar-jatuh-1-miliar)
 - [ChainCatcher — WLFI briefly fell over 40%](https://www.chaincatcher.com/en/article/2308640)
 - [Investing.com — Bitcoin falls below $60k as ETF outflows mount](https://www.investing.com/news/cryptocurrency-news/bitcoin-price-today-falls-below-60k-as-whales-buy-dip-etf-outflows-mount-5054180)
+- [cryptonews.net / Bitcoinsistemi — World Liberty Financial blames Binance auto-deleveraging](https://cryptonews.net/news/legal/33821371/)
+- [TokenPost — World Liberty Financial falls 54.30% as market breadth turns negative](https://www.tokenpost.com/news/investing/64236)
 
 *投資助言ではありません。*

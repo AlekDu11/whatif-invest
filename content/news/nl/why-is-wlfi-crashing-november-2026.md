@@ -2,10 +2,12 @@
 title: Waarom daalt WLFI? World Liberty-token keldert 50% en USD1 zakt naar $0,94
 description: Waarom daalt WLFI? De World Liberty-token kelderde op 28 november ruim 50% na een ETH-verkoop van $20 mln, USD1 zakte naar $0,94; Justin Sun spreekt van fraude.
 date: 2026-11-28 06:30
-updated: 2026-11-28 12:20
+updated: 2026-11-28 18:30
 tags: movers, defi, markets
 assets: wlfi, eth, btc
 ---
+**Update 28 november, 18:30 UTC:** World Liberty Financial heeft nu gereageerd – en wijst naar Binance. In een verklaring zegt het project dat het automatische deleveraging-systeem van Binance 's nachts zowel long- als shortposities in WLFI-futures heeft gesloten, waardoor sommige traders die winst stonden met verlies eindigden; WLF zegt geen rol te spelen in de futuresmarkten van Binance en verwijst getroffen gebruikers naar de klantenservice van Binance. Een reactie van Binance vonden we niet. Rond 16:00 UTC stond WLFI nog rond $0,0176, zo'n 54% lager dan 24 uur eerder, en de open interest in WLFI-futures was met ongeveer 58% gedaald. Ook de aan Trump gelinkte memecoin TRUMP verloor in 24 uur ongeveer 12%.
+
 **Update 28 november, 12:20 UTC:** Na ons eerste bericht werd de verkoopgolf heviger. WLFI zakte vóór 06:00 UTC op Binance naar een recorddieptepunt van ongeveer $0,0158 en noteerde laat in de ochtend rond $0,0196, zo'n 52–53% lager dan 24 uur eerder (CoinGlass via crypto.news). De dollar-stablecoin van World Liberty, USD1, die op $1 hoort te blijven, zakte kort na 07:00 UTC naar ongeveer $0,94 en herstelde daarna tot boven $0,99. Justin Sun, een vroege WLFI-investeerder wiens tokens sinds 2025 bevroren zijn en die een rechtszaak tegen het project voert, beschuldigde insiders op X van kringleningen en fraude en riep beurzen op de handel in WLFI en USD1 stil te leggen; hij gaf geen walletadressen of transactiegegevens, en tegen het middaguur had geen enkele beurs ingegrepen. Er werd zo'n $17 miljoen aan WLFI-futures geliquideerd, voor ongeveer 90% weddenschappen op een stijging. We vonden geen reactie van World Liberty Financial.
 
 WLFI, de token van het aan de familie Trump gelieerde cryptoproject World Liberty Financial, is vroeg op zaterdag 28 november binnen een paar uur zo'n 40% gekelderd. De aanleiding was een verkoop op de blockchain: een reservewallet die aan het project gekoppeld is, verkocht zijn ether met fors verlies, waarna hefboomposities in WLFI werden geliquideerd.
@@ -38,5 +40,7 @@ Wie het afgelopen jaar elke dag $10 in WLFI stak, heeft {{dcainv:1}} ingelegd en
 - [Pluang / TokenPost — WLFI crashes nearly 40% after a $20M ether sale at a big loss](https://pluang.com/en/news-feed/wlfi-turun-40-persen-nilai-pasar-jatuh-1-miliar)
 - [ChainCatcher — WLFI briefly fell over 40%](https://www.chaincatcher.com/en/article/2308640)
 - [Investing.com — Bitcoin falls below $60k as ETF outflows mount](https://www.investing.com/news/cryptocurrency-news/bitcoin-price-today-falls-below-60k-as-whales-buy-dip-etf-outflows-mount-5054180)
+- [cryptonews.net / Bitcoinsistemi — World Liberty Financial blames Binance auto-deleveraging](https://cryptonews.net/news/legal/33821371/)
+- [TokenPost — World Liberty Financial falls 54.30% as market breadth turns negative](https://www.tokenpost.com/news/investing/64236)
 
 *Geen beleggingsadvies.*

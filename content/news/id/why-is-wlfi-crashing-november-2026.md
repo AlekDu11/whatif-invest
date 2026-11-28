@@ -2,10 +2,12 @@
 title: Kenapa WLFI anjlok? Token World Liberty −50%, stablecoin USD1 turun ke $0,94
 description: Kenapa WLFI anjlok? Token World Liberty jatuh lebih dari 50% pada 28 November usai penjualan ETH $20 juta, USD1 turun ke $0,94, Justin Sun menuding penipuan.
 date: 2026-11-28 06:30
-updated: 2026-11-28 12:20
+updated: 2026-11-28 18:30
 tags: movers, defi, markets
 assets: wlfi, eth, btc
 ---
+**Pembaruan 28 November, 18:30 UTC:** World Liberty Financial akhirnya buka suara — dan menunjuk Binance. Dalam pernyataannya, proyek itu menyebut sistem auto-deleveraging Binance menutup posisi long maupun short futures WLFI pada malam hari, sehingga sebagian trader yang sedang untung justru berakhir rugi; WLF menegaskan tidak berperan dalam pasar futures Binance dan meminta pengguna yang terdampak menghubungi layanan pelanggan Binance. Kami tidak menemukan tanggapan Binance. Sekitar pukul 16:00 UTC WLFI masih di kisaran $0,0176, turun sekitar 54% dalam 24 jam, dan open interest futures WLFI anjlok sekitar 58%. Memecoin TRUMP yang terkait Trump juga turun sekitar 12% dalam 24 jam.
+
 **Pembaruan 28 November, 12.20 UTC:** Aksi jual makin dalam setelah laporan pertama kami. WLFI menyentuh rekor terendah sekitar $0,0158 di Binance sebelum 06.00 UTC dan diperdagangkan di kisaran $0,0196 menjelang siang, turun sekitar 52–53% dalam 24 jam (CoinGlass via crypto.news). Stablecoin dolar milik World Liberty, USD1, yang seharusnya tetap $1, sempat turun ke sekitar $0,94 tak lama setelah 07.00 UTC sebelum pulih ke atas $0,99. Justin Sun, investor awal WLFI yang tokennya dibekukan sejak 2025 dan sedang menggugat proyek ini, menuduh orang dalam melakukan pinjaman berputar dan penipuan lewat X serta mendesak bursa menghentikan perdagangan WLFI dan USD1; ia tidak menyertakan alamat dompet maupun data transaksi, dan hingga siang belum ada bursa yang bertindak. Sekitar $17 juta posisi futures WLFI terlikuidasi, sekitar 90% di antaranya taruhan harga naik. Kami tidak menemukan tanggapan dari World Liberty Financial.
 
 WLFI, token proyek kripto World Liberty Financial yang terkait keluarga Trump, anjlok sekitar 40% hanya dalam beberapa jam pada Sabtu dini hari, 28 November. Pemicunya penjualan on-chain: dompet cadangan yang terkait proyek ini menjual ether-nya dengan rugi besar, lalu posisi leverage di WLFI terlikuidasi.
@@ -38,5 +40,7 @@ Orang yang menaruh $10 per hari di WLFI selama setahun terakhir sudah menginvest
 - [Pluang / TokenPost — WLFI crashes nearly 40% after a $20M ether sale at a big loss](https://pluang.com/en/news-feed/wlfi-turun-40-persen-nilai-pasar-jatuh-1-miliar)
 - [ChainCatcher — WLFI briefly fell over 40%](https://www.chaincatcher.com/en/article/2308640)
 - [Investing.com — Bitcoin falls below $60k as ETF outflows mount](https://www.investing.com/news/cryptocurrency-news/bitcoin-price-today-falls-below-60k-as-whales-buy-dip-etf-outflows-mount-5054180)
+- [cryptonews.net / Bitcoinsistemi — World Liberty Financial blames Binance auto-deleveraging](https://cryptonews.net/news/legal/33821371/)
+- [TokenPost — World Liberty Financial falls 54.30% as market breadth turns negative](https://www.tokenpost.com/news/investing/64236)
 
 *Bukan saran investasi.*

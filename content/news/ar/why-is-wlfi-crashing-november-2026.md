@@ -2,10 +2,12 @@
 title: لماذا ينهار WLFI؟ رمز World Liberty يهبط 50% والعملة المستقرة USD1 تنزلق إلى 0.94 دولار
 description: لماذا ينهار WLFI: هبط رمز World Liberty بأكثر من 50% في 28 نوفمبر بعد بيع ETH بقيمة 20 مليون دولار، وانزلقت USD1 إلى 0.94 دولار، واتّهم Justin Sun بالاحتيال.
 date: 2026-11-28 06:30
-updated: 2026-11-28 12:20
+updated: 2026-11-28 18:30
 tags: movers, defi, markets
 assets: wlfi, eth, btc
 ---
+**تحديث 28 نوفمبر، 18:30 UTC:** ردّت World Liberty Financial أخيراً، ووجّهت أصابع الاتهام إلى Binance. قال المشروع في بيان إن نظام تقليص الرافعة التلقائي لدى Binance أغلق خلال الليل مراكز الشراء والبيع معاً في عقود WLFI الآجلة، فانتهى بعض المتداولين الرابحين بخسائر، مؤكداً أنه لا دور له في أسواق العقود الآجلة لدى Binance، وداعياً المتضررين إلى التواصل مع دعم المنصة. لم نجد رداً من Binance. نحو الساعة 16:00 UTC كان WLFI لا يزال قرب 0.0176 دولار، أي أدنى بنحو 54% خلال 24 ساعة، فيما تراجعت العقود المفتوحة على WLFI بنحو 58%. كما خسرت عملة الميم TRUMP المرتبطة بترامب نحو 12% خلال 24 ساعة.
+
 **تحديث 28 نوفمبر، 12:20 UTC:** تعمّقت موجة البيع بعد تقريرنا الأول. هبط WLFI إلى أدنى مستوى تاريخي قرب 0.0158 دولار على Binance قبل 06:00 UTC، وكان يُتداول قرب 0.0196 دولار في أواخر الصباح، بانخفاض يقارب 52–53% خلال 24 ساعة (CoinGlass عبر crypto.news). أما العملة المستقرة الدولارية لـ World Liberty، USD1، التي يُفترض أن تبقى عند 1 دولار، فانزلقت إلى نحو 0.94 دولار بُعيد 07:00 UTC قبل أن تتعافى فوق 0.99 دولار. واتّهم Justin Sun، وهو من أوائل المستثمرين في WLFI ورموزه مجمّدة منذ 2025 ويقاضي المشروع، مطّلعين من الداخل على X بالاقتراض الدائري والاحتيال، ودعا المنصات إلى وقف تداول WLFI وUSD1؛ لكنه لم يقدّم عناوين محافظ أو بيانات معاملات، ولم تتخذ أي منصة إجراءً حتى الظهر. وجرت تصفية عقود آجلة على WLFI بنحو 17 مليون دولار، نحو 90% منها رهانات على الصعود. ولم نجد أي ردّ من World Liberty Financial.
 
 انهار WLFI، رمز مشروع العملات المشفرة World Liberty Financial المرتبط بعائلة ترامب، بنحو 40% خلال ساعات قليلة فجر السبت 28 نوفمبر. الشرارة كانت عملية بيع على السلسلة: محفظة احتياطية مرتبطة بالمشروع باعت ما لديها من الإيثر بخسارة كبيرة، ثم جرت تصفية الرهانات بالرافعة المالية على WLFI.
@@ -38,5 +40,7 @@ assets: wlfi, eth, btc
 - [Pluang / TokenPost — WLFI crashes nearly 40% after a $20M ether sale at a big loss](https://pluang.com/en/news-feed/wlfi-turun-40-persen-nilai-pasar-jatuh-1-miliar)
 - [ChainCatcher — WLFI briefly fell over 40%](https://www.chaincatcher.com/en/article/2308640)
 - [Investing.com — Bitcoin falls below $60k as ETF outflows mount](https://www.investing.com/news/cryptocurrency-news/bitcoin-price-today-falls-below-60k-as-whales-buy-dip-etf-outflows-mount-5054180)
+- [cryptonews.net / Bitcoinsistemi — World Liberty Financial blames Binance auto-deleveraging](https://cryptonews.net/news/legal/33821371/)
+- [TokenPost — World Liberty Financial falls 54.30% as market breadth turns negative](https://www.tokenpost.com/news/investing/64236)
 
 *ليست نصيحة استثمارية.*

@@ -2,10 +2,12 @@
 title: Why is WLFI crashing? World Liberty token −50% as USD1 slips to $0.94
 description: Why is WLFI crashing? The World Liberty token fell over 50% on Nov 28 after a $20M ETH sale, its USD1 stablecoin dipped to $0.94 and Justin Sun alleged fraud.
 date: 2026-11-28 06:30
-updated: 2026-11-28 12:20
+updated: 2026-11-28 18:30
 tags: movers, defi, markets
 assets: wlfi, eth, btc
 ---
+**Update November 28, 18:30 UTC:** World Liberty Financial has now responded — and pointed at Binance. In a statement it said Binance's automatic deleveraging system closed both long and short WLFI futures positions overnight, so some traders who were in profit ended up with losses; the project said it plays no role in Binance's futures markets and told affected users to contact Binance support. We found no reply from Binance. WLFI was still near $0.0176 around 16:00 UTC, about 54% lower in 24 hours, and open interest in WLFI futures had dropped about 58%. The Trump-linked TRUMP memecoin also lost about 12% in 24 hours.
+
 **Update November 28, 12:20 UTC:** The sell-off deepened after our first report. WLFI fell to a record low near $0.0158 on Binance before 06:00 UTC and traded near $0.0196 by late morning, down about 52–53% in 24 hours (CoinGlass via crypto.news). World Liberty's dollar stablecoin USD1, which should stay at $1, slipped to about $0.94 just after 07:00 UTC before recovering above $0.99. Justin Sun, an early WLFI investor whose tokens have been frozen since 2025 and who is suing the project, accused insiders of circular borrowing and fraud on X and urged exchanges to halt WLFI and USD1 trading; he gave no wallet addresses or transaction data, and no exchange had acted by midday. About $17 million of WLFI futures were liquidated, roughly 90% of them bets on a rise. We found no response from World Liberty Financial.
 
 WLFI, the token of the Trump family–linked crypto project World Liberty Financial, crashed about 40% in a few hours early on Saturday, November 28. The trigger was an on-chain sale: a reserve wallet linked to the project sold its ether at a heavy loss, and leveraged bets on WLFI were wiped out.
@@ -38,5 +40,7 @@ Someone who put $10 a day into WLFI over the last year has invested {{dcainv:1}}
 - [Pluang / TokenPost — WLFI crashes nearly 40% after a $20M ether sale at a big loss](https://pluang.com/en/news-feed/wlfi-turun-40-persen-nilai-pasar-jatuh-1-miliar)
 - [ChainCatcher — WLFI briefly fell over 40%](https://www.chaincatcher.com/en/article/2308640)
 - [Investing.com — Bitcoin falls below $60k as ETF outflows mount](https://www.investing.com/news/cryptocurrency-news/bitcoin-price-today-falls-below-60k-as-whales-buy-dip-etf-outflows-mount-5054180)
+- [cryptonews.net / Bitcoinsistemi — World Liberty Financial blames Binance auto-deleveraging](https://cryptonews.net/news/legal/33821371/)
+- [TokenPost — World Liberty Financial falls 54.30% as market breadth turns negative](https://www.tokenpost.com/news/investing/64236)
 
 *Not investment advice.*

@@ -2,10 +2,12 @@
 title: WLFI क्यों गिर रहा है? World Liberty टोकन −50%, स्टेबलकॉइन USD1 फिसलकर $0.94 पर
 description: WLFI क्यों गिर रहा है: ETH बिक्री के बाद World Liberty टोकन 28 नवंबर को 50% से ज़्यादा टूटा, USD1 $0.94 तक फिसला और Justin Sun ने धोखाधड़ी का आरोप लगाया।
 date: 2026-11-28 06:30
-updated: 2026-11-28 12:20
+updated: 2026-11-28 18:30
 tags: movers, defi, markets
 assets: wlfi, eth, btc
 ---
+**अपडेट 28 नवंबर, 18:30 UTC:** World Liberty Financial ने आखिरकार जवाब दिया — और उंगली Binance पर उठाई। बयान में प्रोजेक्ट ने कहा कि Binance के ऑटो-डीलीवरेजिंग सिस्टम ने रात में WLFI फ्यूचर्स की लॉन्ग और शॉर्ट दोनों पोज़िशन बंद कर दीं, जिससे मुनाफे में चल रहे कुछ ट्रेडरों को नुकसान हुआ; WLF का कहना है कि Binance के फ्यूचर्स बाज़ार में उसकी कोई भूमिका नहीं है और प्रभावित लोग Binance सपोर्ट से संपर्क करें। हमें Binance का कोई जवाब नहीं मिला। करीब 16:00 UTC पर WLFI अब भी लगभग $0.0176 पर था, यानी 24 घंटे में करीब 54% नीचे, और WLFI फ्यूचर्स का ओपन इंटरेस्ट करीब 58% घट गया। Trump से जुड़ा TRUMP मीमकॉइन भी 24 घंटे में करीब 12% गिरा।
+
 **अपडेट 28 नवंबर, 12:20 UTC:** हमारी पहली रिपोर्ट के बाद बिकवाली और गहरी हो गई। WLFI 06:00 UTC से पहले Binance पर करीब $0.0158 के रिकॉर्ड निचले स्तर तक गया और देर सुबह करीब $0.0196 पर ट्रेड हो रहा था, यानी 24 घंटे में लगभग 52–53% नीचे (crypto.news के ज़रिए CoinGlass)। World Liberty का डॉलर स्टेबलकॉइन USD1, जिसे $1 पर टिके रहना चाहिए, 07:00 UTC के कुछ ही देर बाद करीब $0.94 तक फिसला और फिर $0.99 से ऊपर लौट आया। WLFI के शुरुआती निवेशक Justin Sun, जिनके टोकन 2025 से फ्रीज़ हैं और जो प्रोजेक्ट पर मुकदमा कर रहे हैं, ने X पर अंदरूनी लोगों पर घुमावदार उधारी और धोखाधड़ी का आरोप लगाया और एक्सचेंजों से WLFI और USD1 की ट्रेडिंग रोकने की अपील की; उन्होंने कोई वॉलेट पता या ट्रांज़ैक्शन डेटा नहीं दिया, और दोपहर तक किसी एक्सचेंज ने कदम नहीं उठाया। WLFI के करीब 1.7 करोड़ डॉलर के फ्यूचर्स लिक्विडेट हुए, जिनमें लगभग 90% तेज़ी के दांव थे। हमें World Liberty Financial की ओर से कोई जवाब नहीं मिला।
 
 ट्रंप परिवार से जुड़े क्रिप्टो प्रोजेक्ट World Liberty Financial का टोकन WLFI शनिवार, 28 नवंबर की सुबह कुछ ही घंटों में करीब 40% टूट गया। वजह एक ऑन-चेन बिक्री बनी: प्रोजेक्ट से जुड़े एक रिज़र्व वॉलेट ने अपना ईथर भारी घाटे में बेच दिया, और फिर WLFI पर लगे लीवरेज वाले दांव लिक्विडेट हो गए।
@@ -38,5 +40,7 @@ WLFI का भाव {{price:wlfi}} है (12 महीने में {{chg1
 - [Pluang / TokenPost — WLFI crashes nearly 40% after a $20M ether sale at a big loss](https://pluang.com/en/news-feed/wlfi-turun-40-persen-nilai-pasar-jatuh-1-miliar)
 - [ChainCatcher — WLFI briefly fell over 40%](https://www.chaincatcher.com/en/article/2308640)
 - [Investing.com — Bitcoin falls below $60k as ETF outflows mount](https://www.investing.com/news/cryptocurrency-news/bitcoin-price-today-falls-below-60k-as-whales-buy-dip-etf-outflows-mount-5054180)
+- [cryptonews.net / Bitcoinsistemi — World Liberty Financial blames Binance auto-deleveraging](https://cryptonews.net/news/legal/33821371/)
+- [TokenPost — World Liberty Financial falls 54.30% as market breadth turns negative](https://www.tokenpost.com/news/investing/64236)
 
 *यह निवेश सलाह नहीं है।*

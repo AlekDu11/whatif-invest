@@ -2,10 +2,12 @@
 title: Чому падає WLFI? Токен World Liberty −50%, а стейблкоїн USD1 просів до $0,94
 description: Чому падає WLFI: токен World Liberty 28 листопада впав понад на 50% після продажу ETH на $20 млн, USD1 просів до $0,94, а Justin Sun заявив про шахрайство.
 date: 2026-11-28 06:30
-updated: 2026-11-28 12:20
+updated: 2026-11-28 18:30
 tags: movers, defi, markets
 assets: wlfi, eth, btc
 ---
+**Оновлення 28 листопада, 18:30 UTC:** World Liberty Financial нарешті відреагувала — і переклала відповідальність на Binance. У заяві проєкт пише, що система автоматичного зменшення плеча Binance вночі закрила і довгі, і короткі ф'ючерсні позиції по WLFI, тож частина трейдерів, які були в плюсі, отримала збитки; WLF наголошує, що не має стосунку до ф'ючерсного ринку Binance, і радить постраждалим звертатися в підтримку біржі. Відповіді Binance ми не знайшли. Близько 16:00 UTC WLFI тримався біля $0,0176 — приблизно на 54% нижче, ніж добу тому, а відкритий інтерес за ф'ючерсами WLFI скоротився приблизно на 58%. Мемкоїн TRUMP, пов'язаний із Трампом, теж втратив близько 12% за добу.
+
 **Оновлення 28 листопада, 12:20 UTC:** Після нашого першого матеріалу розпродаж поглибився. WLFI ще до 06:00 UTC опустився до рекордного мінімуму близько $0,0158 на Binance, а пізно вранці торгувався біля $0,0196 — приблизно на 52–53% нижче, ніж добу тому (CoinGlass через crypto.news). Доларовий стейблкоїн World Liberty USD1, який має триматися на рівні $1, невдовзі після 07:00 UTC просів приблизно до $0,94, а потім відновився вище $0,99. Justin Sun — ранній інвестор WLFI, чиї токени заморожені з 2025 року і який судиться з проєктом, — звинуватив в X інсайдерів у циклічному кредитуванні та шахрайстві й закликав біржі зупинити торги WLFI та USD1; адрес гаманців чи даних транзакцій він не навів, і до полудня жодна біржа нічого не зробила. Ліквідовано близько $17 млн ф'ючерсів на WLFI, приблизно 90% з них — ставки на зростання. Реакції World Liberty Financial ми не знайшли.
 
 WLFI — токен криптопроєкту World Liberty Financial, пов'язаного з родиною Трампа, — рано вранці в суботу, 28 листопада, за кілька годин обвалився приблизно на 40%. Поштовхом став продаж у блокчейні: резервний гаманець, пов'язаний із проєктом, продав свій ефір із великим збитком, а потім ліквідували кредитні ставки на WLFI.
@@ -38,5 +40,7 @@ WLFI коштує {{price:wlfi}} ({{chg1y:wlfi}} за 12 місяців). Рек
 - [Pluang / TokenPost — WLFI crashes nearly 40% after a $20M ether sale at a big loss](https://pluang.com/en/news-feed/wlfi-turun-40-persen-nilai-pasar-jatuh-1-miliar)
 - [ChainCatcher — WLFI briefly fell over 40%](https://www.chaincatcher.com/en/article/2308640)
 - [Investing.com — Bitcoin falls below $60k as ETF outflows mount](https://www.investing.com/news/cryptocurrency-news/bitcoin-price-today-falls-below-60k-as-whales-buy-dip-etf-outflows-mount-5054180)
+- [cryptonews.net / Bitcoinsistemi — World Liberty Financial blames Binance auto-deleveraging](https://cryptonews.net/news/legal/33821371/)
+- [TokenPost — World Liberty Financial falls 54.30% as market breadth turns negative](https://www.tokenpost.com/news/investing/64236)
 
 *Не є інвестиційною порадою.*

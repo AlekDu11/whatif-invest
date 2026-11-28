@@ -2,10 +2,12 @@
 title: WLFI 왜 폭락? World Liberty 토큰 50% 급락, 스테이블코인 USD1 0.94달러까지
 description: WLFI 폭락 이유: World Liberty 토큰이 11월 28일 2000만 달러 ETH 매도 뒤 50% 넘게 급락했고, USD1은 0.94달러로 밀렸으며 Justin Sun은 사기 의혹을 제기했다.
 date: 2026-11-28 06:30
-updated: 2026-11-28 12:20
+updated: 2026-11-28 18:30
 tags: movers, defi, markets
 assets: wlfi, eth, btc
 ---
+**업데이트 11월 28일 18:30 UTC:** World Liberty Financial이 마침내 입장을 내고 바이낸스를 지목했습니다. 바이낸스의 자동 디레버리징(ADL) 시스템이 밤사이 WLFI 선물의 롱·숏 포지션을 모두 청산해 수익 중이던 일부 트레이더가 손실을 봤다는 설명입니다. 프로젝트는 바이낸스 선물 시장에 아무 역할도 하지 않는다며 피해자들에게 바이낸스 고객센터에 문의하라고 안내했습니다. 바이낸스의 답변은 찾지 못했습니다. WLFI는 16:00 UTC 무렵에도 약 0.0176달러로 24시간 전보다 약 54% 낮았고, WLFI 선물 미결제약정은 약 58% 줄었습니다. 트럼프 관련 밈코인 TRUMP도 24시간 동안 약 12% 하락했습니다.
+
 **업데이트 11월 28일 12:20 UTC:** 첫 기사 이후 매도세가 더 거세졌습니다. WLFI는 06:00 UTC 전 Binance에서 약 0.0158달러로 사상 최저가를 찍었고, 오전 늦게는 약 0.0196달러에 거래되며 24시간 동안 약 52~53% 하락했습니다(crypto.news 인용 CoinGlass). 1달러를 유지해야 하는 World Liberty의 달러 스테이블코인 USD1은 07:00 UTC 직후 약 0.94달러까지 밀렸다가 0.99달러 위로 회복했습니다. 2025년부터 토큰이 동결돼 프로젝트를 상대로 소송 중인 WLFI 초기 투자자 Justin Sun은 X에서 내부자들의 순환 대출과 사기를 주장하며 거래소들에 WLFI와 USD1 거래 중단을 촉구했습니다. 다만 지갑 주소나 거래 데이터는 제시하지 않았고, 정오까지 조치한 거래소는 없었습니다. WLFI 선물 약 1700만 달러어치가 청산됐으며, 그중 약 90%가 상승 베팅이었습니다. World Liberty Financial의 입장은 찾지 못했습니다.
 
 트럼프 일가와 연관된 암호화폐 프로젝트 World Liberty Financial의 토큰 WLFI가 11월 28일(토) 새벽 몇 시간 만에 약 40% 폭락했습니다. 계기는 온체인 매도였습니다. 프로젝트와 연결된 준비금 지갑이 보유 이더를 큰 손실을 보고 팔았고, 이어 WLFI 레버리지 포지션이 강제 청산됐습니다.
@@ -38,5 +40,7 @@ WLFI는 {{price:wlfi}}에 거래되고 있습니다(12개월 {{chg1y:wlfi}}). �
 - [Pluang / TokenPost — WLFI crashes nearly 40% after a $20M ether sale at a big loss](https://pluang.com/en/news-feed/wlfi-turun-40-persen-nilai-pasar-jatuh-1-miliar)
 - [ChainCatcher — WLFI briefly fell over 40%](https://www.chaincatcher.com/en/article/2308640)
 - [Investing.com — Bitcoin falls below $60k as ETF outflows mount](https://www.investing.com/news/cryptocurrency-news/bitcoin-price-today-falls-below-60k-as-whales-buy-dip-etf-outflows-mount-5054180)
+- [cryptonews.net / Bitcoinsistemi — World Liberty Financial blames Binance auto-deleveraging](https://cryptonews.net/news/legal/33821371/)
+- [TokenPost — World Liberty Financial falls 54.30% as market breadth turns negative](https://www.tokenpost.com/news/investing/64236)
 
 *투자 조언이 아닙니다.*

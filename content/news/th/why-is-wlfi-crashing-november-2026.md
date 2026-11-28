@@ -2,10 +2,12 @@
 title: ทำไม WLFI ร่วง? โทเคน World Liberty ดิ่ง 50% ขณะ USD1 หลุดไปที่ 0.94 ดอลลาร์
 description: ทำไม WLFI ร่วง: โทเคน World Liberty ดิ่งกว่า 50% เมื่อ 28 พ.ย. หลังขาย ETH มูลค่า 20 ล้านดอลลาร์ USD1 หลุดไปที่ 0.94 ดอลลาร์ และ Justin Sun กล่าวหาว่าฉ้อโกง
 date: 2026-11-28 06:30
-updated: 2026-11-28 12:20
+updated: 2026-11-28 18:30
 tags: movers, defi, markets
 assets: wlfi, eth, btc
 ---
+**อัปเดต 28 พ.ย. 18:30 UTC:** World Liberty Financial ออกมาชี้แจงแล้ว และโยนไปที่ Binance โดยระบุว่าระบบลดเลเวอเรจอัตโนมัติของ Binance ปิดสถานะฟิวเจอร์ส WLFI ทั้งฝั่ง long และ short ในช่วงกลางคืน ทำให้เทรดเดอร์บางรายที่กำลังมีกำไรกลับขาดทุน WLF ยืนยันว่าไม่มีบทบาทใดในตลาดฟิวเจอร์สของ Binance และแนะนำให้ผู้ได้รับผลกระทบติดต่อฝ่ายบริการของกระดาน เรายังไม่พบคำตอบจาก Binance ราว 16:00 UTC WLFI ยังอยู่แถว 0.0176 ดอลลาร์ ลดลงราว 54% ใน 24 ชั่วโมง และ open interest ของฟิวเจอร์ส WLFI หดตัวราว 58% ขณะที่เหรียญมีม TRUMP ที่เชื่อมโยงกับทรัมป์ก็ร่วงราว 12% ใน 24 ชั่วโมงเช่นกัน
+
 **อัปเดต 28 พฤศจิกายน 12:20 UTC:** แรงขายรุนแรงขึ้นหลังรายงานแรกของเรา WLFI ร่วงลงไปทำจุดต่ำสุดเป็นประวัติการณ์ราว 0.0158 ดอลลาร์บน Binance ก่อนเวลา 06:00 UTC และซื้อขายอยู่ราว 0.0196 ดอลลาร์ในช่วงสาย ลดลงราว 52–53% ใน 24 ชั่วโมง (CoinGlass ผ่าน crypto.news) ส่วน USD1 สเตเบิลคอยน์ดอลลาร์ของ World Liberty ซึ่งควรอยู่ที่ 1 ดอลลาร์ หลุดลงไปราว 0.94 ดอลลาร์ไม่นานหลัง 07:00 UTC ก่อนฟื้นกลับขึ้นเหนือ 0.99 ดอลลาร์ Justin Sun นักลงทุนยุคแรกของ WLFI ที่โทเคนถูกแช่แข็งมาตั้งแต่ปี 2025 และกำลังฟ้องร้องโปรเจกต์ กล่าวหาบน X ว่าคนวงในกู้ยืมแบบวนลูปและฉ้อโกง พร้อมเรียกร้องให้กระดานเทรดระงับการซื้อขาย WLFI และ USD1 แต่ไม่ได้ให้ที่อยู่กระเป๋าหรือข้อมูลธุรกรรมใด ๆ และจนถึงเที่ยงยังไม่มีกระดานเทรดใดดำเนินการ สัญญาฟิวเจอร์ส WLFI ถูกบังคับปิดราว 17 ล้านดอลลาร์ ราว 90% เป็นการเดิมพันขาขึ้น เรายังไม่พบคำชี้แจงจาก World Liberty Financial
 
 WLFI โทเคนของโปรเจกต์คริปโต World Liberty Financial ที่เชื่อมโยงกับครอบครัวทรัมป์ ร่วงลงราว 40% ภายในไม่กี่ชั่วโมงในช่วงเช้ามืดวันเสาร์ที่ 28 พฤศจิกายน ชนวนคือการขายบนบล็อกเชน: กระเป๋าเงินสำรองที่เชื่อมโยงกับโปรเจกต์ขายอีเธอร์ออกด้วยผลขาดทุนหนัก จากนั้นสถานะเลเวอเรจใน WLFI ก็ถูกบังคับปิด
@@ -38,5 +40,7 @@ WLFI ซื้อขายที่ {{price:wlfi}} ({{chg1y:wlfi}} ใน 12 เ
 - [Pluang / TokenPost — WLFI crashes nearly 40% after a $20M ether sale at a big loss](https://pluang.com/en/news-feed/wlfi-turun-40-persen-nilai-pasar-jatuh-1-miliar)
 - [ChainCatcher — WLFI briefly fell over 40%](https://www.chaincatcher.com/en/article/2308640)
 - [Investing.com — Bitcoin falls below $60k as ETF outflows mount](https://www.investing.com/news/cryptocurrency-news/bitcoin-price-today-falls-below-60k-as-whales-buy-dip-etf-outflows-mount-5054180)
+- [cryptonews.net / Bitcoinsistemi — World Liberty Financial blames Binance auto-deleveraging](https://cryptonews.net/news/legal/33821371/)
+- [TokenPost — World Liberty Financial falls 54.30% as market breadth turns negative](https://www.tokenpost.com/news/investing/64236)
 
 *ไม่ใช่คำแนะนำการลงทุน*
