@@ -1562,7 +1562,7 @@ def home(lang, ver):
     ids = ORDERED
     n = len(A)
     hm = HM[lang]
-    title, desc = hm['title'], hm['desc'].format(n=n)
+    title, desc = f"{BRAND} — {hm['title']}", hm['desc'].format(n=n)   # brand first (owner 2026-11-28: «whatifstack» search must find the home page)
     # --- hero with quick calculator
     qopts = ''.join(f'<option value="{aid}"{" selected" if aid == "btc" else ""}>{esc(nm(A[aid], lang))} ({esc(A[aid]["tk"])})</option>' for aid in ids[:120])
     yrs = ''.join(f'<button data-y="{y}" class="{"on" if y == 5 else ""}">{y}</button>' for y in (1, 3, 5, 10))
