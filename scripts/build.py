@@ -48,6 +48,7 @@ from i18n_ap import AP  # noqa: E402
 from i18n_home2 import HM  # noqa: E402
 from i18n_ks import KS, SECT  # noqa: E402
 from i18n_lcx import LCX  # noqa: E402
+from i18n_trd import TRD  # noqa: E402
 from i18n_offer import OFFER_TGW  # noqa: E402
 from i18n_lc import LC, LC_CT  # noqa: E402
 from i18n_mem6 import MEM6  # noqa: E402
@@ -95,7 +96,7 @@ OG_LANGS = {f[:-4] for f in os.listdir(os.path.join(ROOT, 'src', 'og')) if f.end
 END = UPDATED[:7]
 END_DAY = int(UPDATED[8:10])
 PIN_ORDER = {a['id']: k for k, a in enumerate(pinned)}
-RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide', 'commodities', 'widgets', 'embed', 'dividends', 'average-price', 'ovdp', 'largest-companies', 'crypto-exchanges', 'partners', 'buy-stocks-ukraine', 'calculators', 'investors', 'watchlist', 'read', 'deposits-ukraine', 'bonuses', 'taxes'}
+RESERVED = set(ORDER) | {'assets', 'blog', 'compare', 'crypto', 'stocks', 'etfs', 'metals', 'converter', 'calendar', 'heatmap', 'news', 'bubbles', 'screener', 'habits', 'millionaire', 'compound-interest', 'inflation', 'ath', 'bitcoin-halving', 'exchanges', 'ai', 'me', 'memes', 'stocks-ukraine', 'stocks-poland', 'stocks-germany', 'world-assets', 'guide', 'commodities', 'widgets', 'embed', 'dividends', 'average-price', 'ovdp', 'largest-companies', 'crypto-exchanges', 'partners', 'buy-stocks-ukraine', 'calculators', 'investors', 'watchlist', 'read', 'deposits-ukraine', 'bonuses', 'taxes', 'trading'}
 RESERVED |= {v[0] for v in MKTS.values()} | {'learn', 'earnings-calendar', 'world-assets', 'activities', 'editorial-policy', 'about', 'portfolios', 'privacy', 'terms', 'categories'}
 # asset ids that clash with a language folder or a section get a suffix (ko -> ko-stock, fil -> fil-crypto)
 _END_I0 = (lambda s: int(s[:4]) * 12 + int(s[5:7]) - 1)(market['updated'][:7])
@@ -248,6 +249,8 @@ def has_page(lang, aid):
     if aid is None or aid == 'compare' or aid in HUBS or aid in TOOLS:
         return True
     if aid in ('ai', 'me', 'memes', 'world-assets', 'activities', 'portfolios', 'largest-companies', 'calculators', 'memes/token') or (aid or '').startswith(('portfolios/', 'largest-companies/')):
+        return True
+    if aid in ('trading', 'trading/hyperliquid', 'trading/hyperliquid/trader'):
         return True
     if aid == 'memes/glossary':
         return lang in GLOSS
@@ -762,6 +765,8 @@ def shell(lang, p, title, desc, body, cfg, ver, jsonld=()):
            + f'<details class="dd"><summary class="{"on" if stk_on else ""}">{S["ui"]["stock"]}</summary><div>'
            + f'<a href="{url(lang, "stocks")}">{esc(ALLST[lang])}</a><a href="{url(lang, "largest-companies")}">{esc(LC[lang]["nav"])}</a>'
            + f'<a href="{url(lang, "earnings-calendar")}">📅 {esc(ENAV[lang])}</a></div></details>'
+           # owner 2026-11-28: «Trading» after Crypto · Stocks (Hyperliquid whale tracker)
+           + f'<a href="{url(lang, "trading")}" class="{"on" if (p or "").startswith("trading") or sec == "trading" else ""}">{esc(TRD[lang]["nav"])}</a>'
            # owner 2026-11-22: «Exchanges» out of the top nav until the page is reworked (pages stay, linked from Tools/footer)
            + f'<a href="{url(lang, "memes")}" class="{"on" if (p or "").startswith("memes") else ""}">🐸 {esc(MEM[lang]["nav"])}</a>'
            + f'<details class="dd"><summary class="{"on" if news_on else ""}">{NW[lang]["n_nav"]}</summary><div>'
@@ -2130,6 +2135,128 @@ def gainers_page(lang, ver):
             f'<div class="glgrid"><section class="card"><h2>🚀 {esc(t["gain"])}</h2><div class="tw"><table class="mt"><thead>{head}</thead><tbody id="glup">{rows(up, "d")}</tbody></table></div></section>'
             f'<section class="card"><h2>📉 {esc(t["lose"])}</h2><div class="tw"><table class="mt"><thead>{head}</thead><tbody id="gldn">{rows(dn, "d")}</tbody></table></div></section></div>')
     return shell(lang, 'crypto/gainers-losers', f'{t["h1"]} | {BRAND}', t['d'], body, dict(glupd=t['upd']), ver)
+
+
+# ===== Trading section (owner 2026-11-28): /trading/ hub + /trading/hyperliquid/ whale tracker =====
+def _hl_load():
+    """Snapshot for the static first view: on Vercel our own live API (/api/quote?hl=1), else data/hl.json; empty -> the page fills in the browser."""
+    if os.environ.get('VERCEL') and sys.argv[0].endswith('build.py'):   # build only — api/page.py imports this module
+        try:
+            import urllib.request as _ur
+            with _ur.urlopen(_ur.Request(SITE + '/api/quote?hl=1', headers={'User-Agent': 'WhatIfStack build'}), timeout=45) as r:
+                d = json.loads(r.read().decode())
+            if d.get('tr'):
+                return d
+        except Exception as e:
+            print('hyperliquid snapshot: live API unavailable', repr(e)[:120])
+    return _jload('hl.json') or {}
+
+
+HLD = _hl_load()
+
+
+def hl_who(lang, a, nm_=None):
+    lab = nm_ or (a[:6] + '…' + a[-4:])
+    return f'<a class="hlw" href="{url(lang, "trading/hyperliquid/trader")}?a={a}" rel="nofollow">{esc(lab)}</a>'
+
+
+def hl_px(v):
+    return price(v) if v is not None else '—'
+
+
+def hl_tables(lang, d):
+    """Server-side first view; app.js «hyperliquid» re-renders the same markup from /api/quote?hl=1 every 2 minutes."""
+    t = TRD[lang]
+    side = lambda s: f'<span class="hls {"up" if s == "L" else "dn"}">{esc(t["long"] if s == "L" else t["short"])}</span>'
+    pnl = lambda v: f'<span class="{cls(v or 0)}">{usd_h(v)}</span>' if v is not None else '—'
+    coins = ''
+    for c in (d.get('coins') or [])[:8]:
+        tot = (c['l'] + c['s']) or 1
+        coins += (f'<div class="hlc"><div class="hlch"><b>{esc(c["c"])}</b><span>{hl_px(c.get("p"))} <span class="{cls(c.get("ch") or 0)}">{pct(c.get("ch"))}</span></span></div>'
+                  f'<div class="hlbar"><i style="width:{c["l"] / tot * 100:.1f}%"></i></div>'
+                  f'<div class="hlcs"><span class="up">{esc(t["longs"])} {usd_h(c["l"])} · {c["nl"]}</span><span class="dn">{esc(t["shorts"])} {usd_h(c["s"])} · {c["ns"]}</span></div></div>')
+    prow = lambda p, k: (f'<tr><td class="l n hide-sm">{k}</td><td class="l">{hl_who(lang, p["a"], p.get("nm"))}</td><td class="l"><b>{esc(p["c"])}</b></td><td>{side(p["s"])}</td>'
+                         f'<td class="num"><b>{usd_h(p["ntl"])}</b></td><td class="num hide-sm">{hl_px(p.get("e"))}</td><td class="num">{pnl(p.get("u"))}</td>'
+                         f'<td class="num hide-sm">{(str(p["lev"]) + "×") if p.get("lev") else "—"}</td><td class="num hide-sm">{hl_px(p.get("liq"))}</td>'
+                         f'<td class="num">{pctu(p["dist"]) if p.get("dist") is not None else "—"}</td></tr>')
+    ph = (f'<tr><th class="l n hide-sm">#</th><th class="l">{esc(t["trader"])}</th><th class="l">{esc(t["coin"])}</th><th>{esc(t["side"])}</th><th>{esc(t["size"])}</th>'
+          f'<th class="hide-sm">{esc(t["entry"])}</th><th>{esc(t["pnl"])}</th><th class="hide-sm">{esc(t["lev"])}</th><th class="hide-sm">{esc(t["liq"])}</th><th>{esc(t["dist"])}</th></tr>')
+    pos = ''.join(prow(p, k) for k, p in enumerate((d.get('pos') or [])[:25], 1))
+    near = ''.join(prow(p, k) for k, p in enumerate((d.get('near') or [])[:15], 1))
+    best = ''.join(f'<tr><td class="l n">{k}</td><td class="l">{hl_who(lang, r["a"], r.get("nm"))}</td><td class="num">{pnl(r.get("d"))}</td><td class="num hide-sm">{usd_h(r.get("av"))}</td></tr>'
+                   for k, r in enumerate(((d.get('best') or {}).get('d') or [])[:15], 1))
+    accts = ''.join(f'<tr><td class="l n hide-sm">{k}</td><td class="l">{hl_who(lang, r["a"], r.get("nm"))}</td><td class="num"><b>{usd_h(r.get("av"))}</b></td><td class="num">{usd_h(r.get("ntl"))}</td>'
+                    f'<td class="num hide-sm">{(str(r["lev"]) + "×") if r.get("lev") else "—"}</td><td class="num">{pnl(r.get("m"))}</td><td class="num hide-sm">{r.get("np") or 0}</td></tr>'
+                    for k, r in enumerate((d.get('tr') or [])[:25], 1))
+    return dict(coins=coins, ph=ph, pos=pos, near=near, best=best, accts=accts)
+
+
+def hl_page(lang, ver):
+    t, d = TRD[lang], HLD
+    T = hl_tables(lang, d)
+    upd = time.strftime('%Y-%m-%d %H:%M UTC', time.gmtime(d['at'] / 1000)) if d.get('at') else ''
+    meta = t['tracked'].format(n=d.get('n') or '—', v=usd_h(d.get('tot'))) if d.get('tot') else esc(t['loading'])
+    cta = f'<a class="btn" href="/go/hyperliquid?from=hl-{{p}}&l={lang}" target="_blank" rel="sponsored noopener">{esc(t["cta"])} ↗</a> <small class="muted">{esc(t["aff"])}</small>'
+    seg = lambda i, opts: f'<div class="seg" id="{i}">' + ''.join(f'<button type="button" data-k="{k}"{" class=on" if j == 0 else ""}>{esc(lb)}</button>' for j, (k, lb) in enumerate(opts)) + '</div>'
+    sec = lambda i, h, head, rows, extra='': (f'<section class="section card hlsec" id="{i}"><div class="hlhd"><h2>{h}</h2>{extra}</div>'
+                                            f'<div class="tw"><table class="mt hlt"><thead>{head}</thead><tbody>{rows}</tbody></table></div></section>')
+    faq = '<div class="faq">' + ''.join(f'<details><summary>{esc(t["q" + k])}</summary><p>{esc(t["a" + k])}</p></details>' for k in '123') + '</div>'
+    tools = ''.join(f'<a class="chip" href="{url(lang, k)}">{lb}</a>' for k, lb in (
+        ('crypto/gainers-losers', '🚀 ' + esc(GL[lang]['nav'])), ('crypto-exchanges/derivatives', '📊 ' + esc(XC[lang]['h_der'])),
+        ('memes', '🐸 ' + esc(MEM[lang]['nav'])), ('learn', '🎓 ' + esc(LRN[lang]['nav']))) if has_page(lang, k))
+    cfg = {k: t[k] for k in ('long', 'short', 'longs', 'shorts', 'm_open', 'm_add', 'm_close', 'm_liq', 'm_none', 'tracked', 'p_d', 'p_w', 'p_m', 'p_t', 'tr_none')}
+    body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / <a href="{url(lang, "trading")}">{esc(t["nav"])}</a> / {esc(t["hl_nav"])}</nav>'
+            f'<div id="hl" data-cfg="{esc(json.dumps(cfg, ensure_ascii=False))}" data-tr="{url(lang, "trading/hyperliquid/trader")}">'
+            f'<h1>🐋 {esc(t["h1"])}</h1><p class="lead">{esc(t["lead"])}</p>'
+            f'<p class="hlmeta"><span id="hlmeta">{meta}</span> · {esc(t["upd"])} <span id="hlupd">{upd}</span></p>'
+            f'<p class="hlcta">{cta.replace("{p}", "top")}</p>'
+            f'<section class="section"><h2>{esc(t["s_coins"])}</h2><div class="hlcoins" id="hlcoins">{T["coins"]}</div></section>'
+            + sec('hlpos', esc(t['s_pos']), T['ph'], T['pos'])
+            + sec('hlnear', '⚠️ ' + esc(t['s_near']), T['ph'], T['near'])
+            + f'<section class="section card hlsec"><div class="hlhd"><h2>⚡ {esc(t["s_moves"])}</h2></div><ul class="hlev" id="hlev"><li class="muted">{esc(t["m_none"])}</li></ul></section>'
+            + sec('hlbest', '🏆 ' + esc(t['s_best']), f'<tr><th class="l n">#</th><th class="l">{esc(t["trader"])}</th><th id="hlbk">{esc(t["pnl"])}</th><th class="hide-sm">{esc(t["acct"])}</th></tr>', T['best'],
+                  seg('hlper', [('d', t['p_d']), ('w', t['p_w']), ('m', t['p_m']), ('t', t['p_t'])]) + seg('hlbw', [('b', t['best']), ('w', t['worst'])]))
+            + sec('hlacc', '💼 ' + esc(t['s_top']), f'<tr><th class="l n hide-sm">#</th><th class="l">{esc(t["trader"])}</th><th>{esc(t["acct"])}</th><th>{esc(t["size"])}</th><th class="hide-sm">{esc(t["lev"])}</th><th>{esc(t["pnl"])} · {esc(t["p_m"])}</th><th class="hide-sm">#</th></tr>', T['accts'])
+            + f'<p class="warnbox">⚠️ {esc(t["risk"])}</p><p class="hlcta">{cta.replace("{p}", "bottom")}</p>'
+            f'<section class="section"><h2>FAQ</h2>{faq}</section>'
+            f'<section class="section"><h2>{esc(t["tools"])}</h2><div class="chips">{tools}</div></section>'
+            f'<p class="note">{esc(t["src"])}</p></div>')
+    ld = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": t['q' + k], "acceptedAnswer": {"@type": "Answer", "text": t['a' + k]}} for k in '123']}
+    return shell(lang, 'trading/hyperliquid', f'{t["title"]} | {BRAND}', t['d'], body, {'_sec': 'trading'}, ver, [ld])
+
+
+def hl_trader_page(lang, ver):
+    t = TRD[lang]
+    cfg = {k: t[k] for k in ('long', 'short', 'tr_none', 'entry', 'mark', 'pnl', 'liq', 'lev', 'size', 'coin', 'side', 'acct', 'p_d', 'p_w', 'p_m', 'p_t', 'dist')}
+    body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / <a href="{url(lang, "trading")}">{esc(t["nav"])}</a> / <a href="{url(lang, "trading/hyperliquid")}">{esc(t["hl_nav"])}</a> / {esc(t["tr_h1"])}</nav>'
+            f'<div id="hlu" data-cfg="{esc(json.dumps(cfg, ensure_ascii=False))}"><h1 id="hluh">🐋 {esc(t["tr_h1"])}</h1><p class="muted" id="hlua"></p>'
+            f'<div class="hlstats" id="hlus"><p class="muted">{esc(t["loading"])}</p></div>'
+            f'<section class="section card"><h2>{esc(t["tr_pos"])}</h2><div class="tw"><table class="mt hlt"><tbody id="hlup"></tbody></table></div></section>'
+            f'<section class="section card"><h2>{esc(t["tr_fills"])}</h2><div class="tw"><table class="mt hlt"><tbody id="hluf"></tbody></table></div></section>'
+            f'<p class="hlcta"><a class="btn ghost" id="hlux" href="https://app.hyperliquid.xyz/" target="_blank" rel="nofollow noopener">{esc(t["ex"])} ↗</a> '
+            f'<a class="btn" href="/go/hyperliquid?from=hl-trader&l={lang}" target="_blank" rel="sponsored noopener">{esc(t["cta"])} ↗</a> <small class="muted">{esc(t["aff"])}</small></p>'
+            f'<p class="warnbox">⚠️ {esc(t["risk"])}</p><p class="note">{esc(t["src"])}</p></div>')
+    return shell(lang, 'trading/hyperliquid/trader', f'{t["tr_h1"]} | {BRAND}', t['d'], body, {'_sec': 'trading'}, ver).replace(
+        '<link rel="canonical"', '<meta name="robots" content="noindex, follow"><link rel="canonical"', 1)
+
+
+def trading_hub(lang, ver):
+    t, d = TRD[lang], HLD
+    T = hl_tables(lang, d)
+    hl_url = url(lang, 'trading/hyperliquid')
+    cards = [('trading/hyperliquid', '🐋', t['hl_nav'], t['lead']), ('crypto/gainers-losers', '🚀', GL[lang]['nav'], GL[lang]['d']),
+             ('crypto-exchanges/derivatives', '📊', XC[lang]['h_der'], ''),
+             ('memes', '🐸', MEM[lang]['nav'], ''), ('learn', '🎓', LRN[lang]['nav'], '')]
+    grid = ''.join(f'<a class="card hcard" href="{url(lang, k)}"><span>{ic}</span><b>{esc(h)}</b>{f"<small>{esc(s[:120])}</small>" if s else ""}</a>' for k, ic, h, s in cards if k.startswith('trading/') or has_page(lang, k))
+    ph = T['ph']
+    body = (f'<nav class="crumbs"><a href="{url(lang)}">{HM[lang]["nav"]}</a> / {esc(t["nav"])}</nav>'
+            f'<h1>{esc(t["hub_h1"])}</h1><p class="lead">{esc(t["hub_lead"])}</p><div class="hgrid">{grid}</div>'
+            f'<div id="hl" data-hub="1" data-cfg="{esc(json.dumps({k: t[k] for k in ("long", "short", "longs", "shorts", "tracked", "m_open", "m_add", "m_close", "m_liq", "m_none")}, ensure_ascii=False))}" data-tr="{url(lang, "trading/hyperliquid/trader")}">'
+            f'<section class="section"><h2><a href="{hl_url}">🐋 {esc(t["s_coins"])}</a></h2><div class="hlcoins" id="hlcoins">{T["coins"]}</div></section>'
+            f'<section class="section card hlsec" id="hlpos"><div class="hlhd"><h2>{esc(t["s_pos"])}</h2><a href="{hl_url}">{esc(t["all"])} →</a></div><div class="tw"><table class="mt hlt"><thead>{ph}</thead><tbody>{T["pos"]}</tbody></table></div></section>'
+            f'<section class="section card hlsec" id="hlnear"><div class="hlhd"><h2>⚠️ {esc(t["s_near"])}</h2><a href="{hl_url}">{esc(t["all"])} →</a></div><div class="tw"><table class="mt hlt"><thead>{ph}</thead><tbody>{T["near"]}</tbody></table></div></section>'
+            f'<p class="warnbox">⚠️ {esc(t["risk"])}</p></div>')
+    return shell(lang, 'trading', f'{t["hub_h1"]} | {BRAND}', t['hub_lead'][:160], body, {'_sec': 'trading'}, ver)
 
 
 def categories_hub(lang, ver):
@@ -3670,6 +3797,7 @@ def tools_menu(lang):
              ('memes', MEM[lang]['nav']), ('categories', TG[lang]['nav']), ('bitcoin-halving', t['v_nav']), ('calculators', CH[lang][0])]
     if INVD:
         items.insert(3, ('investors', INV[lang]['nav']))
+    items.insert(1, ('trading', '🐋 ' + TRD[lang]['nav']))
     if lang == 'uk':
         items.append(('ovdp', '🇺🇦 ОВДП і акції з України'))
     return items
@@ -5692,6 +5820,10 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
             write(pre + 'editorial-policy/index.html', policy_page(lang, ver))
             extra_pages.append('editorial-policy')
         write(pre + 'crypto/gainers-losers/index.html', gainers_page(lang, ver))
+        write(pre + 'trading/index.html', trading_hub(lang, ver))
+        write(pre + 'trading/hyperliquid/index.html', hl_page(lang, ver))
+        write(pre + 'trading/hyperliquid/trader/index.html', hl_trader_page(lang, ver))
+        extra_pages += ['trading', 'trading/hyperliquid']
         extra_pages.append('crypto/gainers-losers')
         write(pre + 'earnings-calendar/index.html', earnings_page(lang, ver))
         write(pre + 'learn/index.html', learn_page(lang, ver))
@@ -5765,7 +5897,7 @@ self.addEventListener('fetch',e=>{{const r=e.request,u=new URL(r.url);if(r.metho
         for p in pages:
             full = p in A and (PROFILES.get(lang, {}).get(p) or {}).get('kind') == 'analysis' and page_ok(p, lang)
             big = p in A and p in TOPSET and page_ok(p, lang)
-            if full or big or (isinstance(p, str) and p.startswith(('blog/', 'news/'))) or p in (None, 'crypto', 'stocks', 'largest-companies', 'learn', 'guide', 'memes', 'bonuses', 'categories', 'investors', 'taxes') or (isinstance(p, str) and p.startswith('taxes/')):
+            if full or big or (isinstance(p, str) and p.startswith(('blog/', 'news/'))) or p in (None, 'crypto', 'stocks', 'largest-companies', 'learn', 'guide', 'memes', 'bonuses', 'categories', 'investors', 'taxes', 'trading', 'trading/hyperliquid') or (isinstance(p, str) and p.startswith('taxes/')):
                 top.append(f'<url><loc>{SITE + url(lang, p)}</loc><lastmod>{lastmod(lang, p)}</lastmod></url>')
     write('sitemap-top.xml', '\n'.join(['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'] + top[:45000] + ['</urlset>']))
     for lang, pages in per_lang.items():

@@ -2,6 +2,7 @@
 // Yahoo chart endpoint (1-day range, 1-minute bars incl. pre-/post-market): latest trade + previous close.
 // Outside regular US hours the price is the pre-/after-market trade (x: 1). Up to 25 symbols, CDN-cached for 30 s.
 const G = require('./_guard');
+const HL = require('./_hl');   // Hyperliquid whale tracker: ?hl=1 (snapshot) | ?hl=u&a=0x… (one trader)
 async function one(s) {
   for (const h of ['query1', 'query2']) {
     try {
@@ -60,6 +61,7 @@ module.exports = async (req, res) => {
     res.setHeader('Cache-Control', cache || 'no-store'); res.end(JSON.stringify(obj)) };
   if (G.over(req, 30, 'quote')) return send(429, { e: 'limit' });
   if ((req.query || {}).mv) return movers(req, send);
+  if ((req.query || {}).hl) return HL(req, send);
   if ((req.query || {}).gl) {   // /crypto/gainers-losers/: top 1000 by market cap with 24h and 7d change, one CDN-cached answer (5 min)
     const out = [];
     for (let pg = 1; pg <= 4; pg++) {

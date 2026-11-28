@@ -2017,3 +2017,59 @@ document.querySelectorAll('.obcnt[data-until]').forEach(el=>{ const t=new Date(e
     }catch(_){}
   },true);
 })();
+
+// ===== Hyperliquid whale tracker (owner 2026-11-28): /trading/, /trading/hyperliquid/ (+ trader page) from /api/quote?hl=… =====
+(function(){
+  const F=window.WIF||{}, X=window.WIX||{}, $=s=>document.querySelector(s);
+  const esc=X.esc||(s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]));
+  const U=v=>v==null?'—':`<span data-u="${v}">${F.fmtUsd(v)}</span>`, P=v=>v==null?'—':(X.fmtPrice?X.fmtPrice(v):'$'+v), PC=v=>F.fmtPct(v);
+  const PN=v=>v==null?'—':`<span class="${F.cls(v)}">${U(v)}</span>`;
+  const box=$('#hl');
+  if(box){
+    const C=JSON.parse(box.dataset.cfg||'{}'), TRU=box.dataset.tr, hub=!!box.dataset.hub;
+    const who=(a,n)=>`<a class="hlw" href="${TRU}?a=${a}" rel="nofollow">${esc(n||a.slice(0,6)+'…'+a.slice(-4))}</a>`;
+    const side=s=>`<span class="hls ${s==='L'?'up':'dn'}">${esc(s==='L'?C.long:C.short)}</span>`;
+    const prow=(p,k)=>`<tr><td class="l n hide-sm">${k}</td><td class="l">${who(p.a,p.nm)}</td><td class="l"><b>${esc(p.c)}</b></td><td>${side(p.s)}</td><td class="num"><b>${U(p.ntl)}</b></td>`+
+      `<td class="num hide-sm">${P(p.e)}</td><td class="num">${PN(p.u)}</td><td class="num hide-sm">${p.lev?p.lev+'×':'—'}</td><td class="num hide-sm">${P(p.liq)}</td><td class="num">${p.dist!=null?F.fmtPct(p.dist).replace('+',''):'—'}</td></tr>`;
+    let D=null, per='d', bw='b';
+    const best=()=>{ const tb=$('#hlbest tbody'); if(!tb||!D) return; const list=bw==='b'?(D.best||{})[per]:((D.worst||{})[per]||[...((D.best||{})[per]||[])].reverse());
+      tb.innerHTML=(list||[]).map((r,i)=>`<tr><td class="l n">${i+1}</td><td class="l">${who(r.a,r.nm)}</td><td class="num">${PN(r[per])}</td><td class="num hide-sm">${U(r.av)}</td></tr>`).join('') };
+    const ago=t=>{ const m=Math.round((Date.now()-t)/60000); return m<1?'<1m':m<60?m+'m':Math.round(m/60)+'h' };
+    const render=d=>{ D=d;
+      const m=$('#hlmeta'); if(m) m.innerHTML=C.tracked.replace('{n}',d.n).replace('{v}',U(d.tot));
+      const up=$('#hlupd'); if(up) up.textContent=new Date(d.at).toLocaleTimeString(X.T&&X.T.intl||undefined,{hour:'2-digit',minute:'2-digit'});
+      const cs=$('#hlcoins'); if(cs) cs.innerHTML=(d.coins||[]).slice(0,8).map(c=>{ const t=(c.l+c.s)||1;
+        return `<div class="hlc"><div class="hlch"><b>${esc(c.c)}</b><span>${P(c.p)} <span class="${F.cls(c.ch)}">${PC(c.ch)}</span></span></div><div class="hlbar"><i style="width:${(c.l/t*100).toFixed(1)}%"></i></div>`+
+        `<div class="hlcs"><span class="up">${esc(C.longs)} ${U(c.l)} · ${c.nl}</span><span class="dn">${esc(C.shorts)} ${U(c.s)} · ${c.ns}</span></div></div>` }).join('');
+      const n=hub?10:25, pt=$('#hlpos tbody'); if(pt) pt.innerHTML=(d.pos||[]).slice(0,n).map((p,i)=>prow(p,i+1)).join('');
+      const nt=$('#hlnear tbody'); if(nt) nt.innerHTML=(d.near||[]).slice(0,hub?8:15).map((p,i)=>prow(p,i+1)).join('');
+      const ev=$('#hlev'); if(ev) ev.innerHTML=(d.ev||[]).length?(d.ev||[]).slice(0,30).map(e=>{ const v={open:C.m_open,add:C.m_add,close:C.m_close,liq:C.m_liq}[e.k]||'';
+        return `<li class="hle ${e.k}"><span class="muted">${ago(e.t)}</span> ${e.k==='liq'?'💥':e.k==='open'?'🟢':e.k==='add'?'➕':'⚪'} ${who(e.a,e.nm)} ${esc(v)} ${side(e.s)} <b>${esc(e.c)}</b> ${U(e.ntl)}${e.px?' @ '+P(e.px):''}</li>` }).join('')
+        :`<li class="muted">${esc(C.m_none)}</li>`;
+      best();
+      const at=$('#hlacc tbody'); if(at) at.innerHTML=(d.tr||[]).slice(0,25).map((r,i)=>`<tr><td class="l n hide-sm">${i+1}</td><td class="l">${who(r.a,r.nm)}</td><td class="num"><b>${U(r.av)}</b></td><td class="num">${U(r.ntl)}</td>`+
+        `<td class="num hide-sm">${r.lev?r.lev+'×':'—'}</td><td class="num">${PN(r.m)}</td><td class="num hide-sm">${r.np||0}</td></tr>`).join('');
+    };
+    const segs=(id,fn)=>{ const s=$('#'+id); if(s) s.addEventListener('click',e=>{ const b=e.target.closest('button'); if(!b) return; s.querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b)); fn(b.dataset.k); best() }) };
+    segs('hlper',k=>per=k); segs('hlbw',k=>{ bw=k; const w=$('#hlper'); if(w) w.querySelectorAll('button').forEach(x=>{ if(k==='w'&&(x.dataset.k==='m'||x.dataset.k==='t')) x.hidden=true; else x.hidden=false });
+      if(k==='w'&&(per==='m'||per==='t')){ per='d'; $('#hlper').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x.dataset.k==='d')) } });
+    const load=()=>{ if(document.hidden) return; fetch('/api/quote?hl=1').then(r=>r.ok?r.json():null).then(d=>{ if(d&&d.tr) render(d) }).catch(()=>{}) };
+    load(); setInterval(load,120000); document.addEventListener('visibilitychange',()=>{ if(!document.hidden) load() });
+  }
+  const ub=$('#hlu');
+  if(ub){
+    const C=JSON.parse(ub.dataset.cfg||'{}'), a=(new URLSearchParams(location.search).get('a')||'').toLowerCase();
+    const side=s=>`<span class="hls ${s==='L'?'up':'dn'}">${esc(s==='L'?C.long:C.short)}</span>`;
+    if(!/^0x[0-9a-f]{40}$/.test(a)){ $('#hlus').innerHTML=''; return }
+    $('#hlua').textContent=a; const x=$('#hlux'); if(x) x.href='https://app.hyperliquid.xyz/explorer/address/'+a;
+    fetch('/api/quote?hl=u&a='+a).then(r=>r.ok?r.json():null).then(d=>{ if(!d) return;
+      if(d.nm){ $('#hluh').textContent='🐋 '+d.nm; document.title=d.nm+' · '+document.title }
+      const h=d.hist||{}, st=(lab,v)=>`<div class="hlst"><small>${esc(lab)}</small><b>${v}</b></div>`;
+      $('#hlus').innerHTML=st(C.acct,U(d.av))+['day','week','month','allTime'].map((k,i)=>st([C.p_d,C.p_w,C.p_m,C.p_t][i],PN((h[k]||{}).pnl))).join('');
+      $('#hlup').innerHTML=(d.pos||[]).length?`<tr><th class="l">${esc(C.coin)}</th><th>${esc(C.side)}</th><th>${esc(C.size)}</th><th class="hide-sm">${esc(C.entry)}</th><th>${esc(C.mark)}</th><th>${esc(C.pnl)}</th><th class="hide-sm">${esc(C.lev)}</th><th>${esc(C.liq)}</th></tr>`+
+        d.pos.map(p=>`<tr><td class="l"><b>${esc(p.c)}</b></td><td>${side(p.s)}</td><td class="num"><b>${U(p.ntl)}</b></td><td class="num hide-sm">${P(p.e)}</td><td class="num">${P(p.mk)}</td><td class="num">${PN(p.u)}</td><td class="num hide-sm">${p.lev?p.lev+'×':'—'}</td><td class="num">${P(p.liq)}${p.dist!=null?` <small class="muted">${F.fmtPct(p.dist).replace('+','')}</small>`:''}</td></tr>`).join('')
+        :`<tr><td class="muted">${esc(C.tr_none)}</td></tr>`;
+      $('#hluf').innerHTML=(d.fills||[]).slice(0,40).map(f=>`<tr><td class="l muted">${new Date(f.t).toLocaleString(undefined,{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'})}</td><td class="l"><b>${esc(f.c)}</b></td><td class="l">${f.liq?'💥 ':''}${esc(f.d)}</td><td class="num">${U(f.ntl)}</td><td class="num">${P(f.px)}</td><td class="num">${f.pnl?PN(f.pnl):''}</td></tr>`).join('');
+    }).catch(()=>{});
+  }
+})();

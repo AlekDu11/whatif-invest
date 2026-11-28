@@ -1155,3 +1155,19 @@ a.badge.tagc{text-decoration:none;color:inherit;border:1px solid var(--line)}a.b
 .artbody figure.shot{margin:20px auto;max-width:420px;text-align:center}.artbody figure.shot img{width:100%;height:auto;border-radius:16px;border:1px solid var(--line)}.artbody figure.shot figcaption{font-size:13.5px;color:var(--muted);margin-top:8px}
 
 .pstrip a .bav{width:20px;height:20px;font-size:11px;display:inline-grid;vertical-align:-5px;margin-right:7px}.bon .bxh{display:flex;align-items:center;gap:10px}.bon .bxh h3{margin:0}.bon .bxh{margin-bottom:8px}
+/* Hyperliquid whale tracker (2026-11-28) */
+.hlmeta{color:var(--muted);font-size:14px;margin:-4px 0 10px}.hlcta{margin:10px 0 18px}
+.hlcoins{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+@media(max-width:520px){.hlcoins{grid-template-columns:1fr 1fr;gap:8px}.hlc{padding:8px 10px}.hlch{flex-direction:column;gap:2px}.hlcs{flex-direction:column}}
+#hlua{word-break:break-all;font-family:ui-monospace,Menlo,monospace;font-size:13px}
+.hlc{background:var(--card);border:1px solid var(--line);border-radius:var(--r-sm,10px);padding:10px 12px}
+.hlch{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-size:14px}.hlch b{font-size:16px}
+.hlbar{height:8px;border-radius:5px;background:var(--bad);margin:8px 0 6px;overflow:hidden}.hlbar i{display:block;height:100%;background:var(--good)}
+.hlcs{display:flex;justify-content:space-between;gap:6px;font-size:12px;flex-wrap:wrap}.hlcs .up{color:var(--good)}.hlcs .dn{color:var(--bad)}
+.hlsec{margin-top:16px}.hlhd{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}.hlhd h2{margin:0}.hlhd .seg+.seg{margin-left:6px}
+.hlt td,.hlt th{white-space:nowrap}
+.hls{display:inline-block;font:700 12px var(--fb);padding:2px 7px;border-radius:6px}.hls.up{background:var(--good-soft);color:var(--good)}.hls.dn{background:var(--bad-soft);color:var(--bad)}
+.hlw{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px}
+.hlev{list-style:none;margin:8px 0 0;padding:0;max-height:420px;overflow:auto}.hlev li{padding:7px 2px;border-bottom:1px solid var(--line);font-size:14px}.hlev li.liq{background:var(--bad-soft)}
+.hlstats{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:12px 0}
+.hlst{background:var(--card);border:1px solid var(--line);border-radius:var(--r-sm,10px);padding:10px 12px}.hlst small{display:block;color:var(--muted)}.hlst b{font-size:18px}

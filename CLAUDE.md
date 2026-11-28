@@ -26,6 +26,8 @@ Bonuses page (owner 2026-11-25/26): /bonuses/ (uk, ru, en) = honest sign-up / in
 
 Taxes (owner 2026-11-27): /taxes/ hub + /taxes/<cc>/ — crypto + stock tax rules per country with OUR OWN calculator (no third-party tax apps): data/taxes.json (rate, rate_user, hold_free_m, allow + allow_kind deduct|threshold, points, deadline, src), strings scripts/i18n_tax.py (TAX: uk ru en pl de so far), pages in the country language + uk/ru/en; app.js «tax calculator». Started with ua, pl, de; the money-pages task adds each new country (step 4c). Partners added 2026-11-27: TransferGo (/go/transfergo, promo WhatIfStack1 = €10, «🇪🇺 Europe» bonuses group by time zone), KuCoin (/go/kucoin, up to 11,000 USDT per its KuRewards page). Money-pages task: odd days = country pages, even days = one offer guide (queue «Offer guides» in social/money-pages.md).
 
+Trading (owner 2026-11-28): top-menu «Trading» → /trading/ hub + /trading/hyperliquid/ whale tracker (all 20 languages, strings scripts/i18n_trd.py TRD) + /trading/hyperliquid/trader/?a=0x… (noindex). Data: api/_hl.js via /api/quote?hl=1 (Hyperliquid public API: leaderboard + clearinghouseState of ~180 active big wallets, CDN 2 min) and ?hl=u&a= (one wallet); whale moves/liquidations = diff with the previous run in Upstash hl:prev → list hl:ev (alerts.yml pings every 10 min). Static first view from the live API at Vercel build time (HLD, fallback data/hl.json). Partner CTA /go/hyperliquid. Home page untouched (owner).
+
 ## Principles (check every decision against them)
 1. Usefulness first — every page answers a real question ("what would I have…", "what to buy…", "what's the market doing").
 2. Speed — <1 s load, no jank, works on every device (mobile first).
