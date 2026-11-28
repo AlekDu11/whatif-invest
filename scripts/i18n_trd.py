@@ -311,3 +311,29 @@ _T = {
 TRD = {lg: dict(zip(_K, v)) for lg, v in _T.items()}
 for _lg, _v in _T.items():
     assert len(_v) == len(_K), (_lg, len(_v), len(_K))
+
+# whale box under articles, news and crypto pages + {{whales:BTC}} shortcode: title, biggest position, close to liquidation, link
+_W = {
+ 'en': ('Whales on Hyperliquid: {c}', 'Biggest position', '{n} big positions are close to liquidation', 'Follow the whales live'),
+ 'uk': ('Кити на Hyperliquid: {c}', 'Найбільша позиція', 'Великих позицій близько до ліквідації: {n}', 'Стежити за китами наживо'),
+ 'ru': ('Киты на Hyperliquid: {c}', 'Крупнейшая позиция', 'Крупных позиций близко к ликвидации: {n}', 'Следить за китами онлайн'),
+ 'es': ('Ballenas en Hyperliquid: {c}', 'Mayor posición', 'Grandes posiciones cerca de la liquidación: {n}', 'Sigue a las ballenas en vivo'),
+ 'pt': ('Baleias na Hyperliquid: {c}', 'Maior posição', 'Grandes posições perto da liquidação: {n}', 'Acompanhe as baleias ao vivo'),
+ 'de': ('Wale auf Hyperliquid: {c}', 'Größte Position', 'Große Positionen kurz vor der Liquidation: {n}', 'Wale live verfolgen'),
+ 'fr': ('Baleines sur Hyperliquid : {c}', 'Plus grosse position', 'Grosses positions proches de la liquidation : {n}', 'Suivre les baleines en direct'),
+ 'it': ('Balene su Hyperliquid: {c}', 'Posizione più grande', 'Grandi posizioni vicine alla liquidazione: {n}', 'Segui le balene in tempo reale'),
+ 'pl': ('Wieloryby na Hyperliquid: {c}', 'Największa pozycja', 'Duże pozycje blisko likwidacji: {n}', 'Śledź wieloryby na żywo'),
+ 'tr': ('Hyperliquid balinaları: {c}', 'En büyük pozisyon', 'Likidasyona yakın büyük pozisyon: {n}', 'Balinaları canlı izle'),
+ 'nl': ('Walvissen op Hyperliquid: {c}', 'Grootste positie', 'Grote posities dicht bij liquidatie: {n}', 'Volg de walvissen live'),
+ 'id': ('Paus di Hyperliquid: {c}', 'Posisi terbesar', 'Posisi besar dekat likuidasi: {n}', 'Pantau paus secara langsung'),
+ 'vi': ('Cá voi trên Hyperliquid: {c}', 'Vị thế lớn nhất', 'Vị thế lớn gần thanh lý: {n}', 'Theo dõi cá voi trực tiếp'),
+ 'th': ('วาฬบน Hyperliquid: {c}', 'โพซิชันใหญ่ที่สุด', 'โพซิชันใหญ่ที่ใกล้ล้างพอร์ต: {n}', 'ติดตามวาฬแบบสด'),
+ 'hi': ('Hyperliquid पर व्हेल: {c}', 'सबसे बड़ी पोज़िशन', 'लिक्विडेशन के करीब बड़ी पोज़िशन: {n}', 'व्हेल को लाइव फ़ॉलो करें'),
+ 'ja': ('Hyperliquidのクジラ：{c}', '最大ポジション', '清算間近の大口ポジション：{n}件', 'クジラをライブで追う'),
+ 'ko': ('Hyperliquid 고래: {c}', '최대 포지션', '청산 임박 대형 포지션: {n}개', '고래 실시간 추적'),
+ 'zh': ('Hyperliquid 巨鲸：{c}', '最大仓位', '接近强平的大额仓位：{n} 个', '实时追踪巨鲸'),
+ 'ar': ('حيتان Hyperliquid: {c}', 'أكبر مركز', 'مراكز كبيرة قريبة من التصفية: {n}', 'تابع الحيتان مباشرة'),
+ 'fil': ('Mga whale sa Hyperliquid: {c}', 'Pinakamalaking posisyon', 'Malalaking posisyon na malapit sa liquidation: {n}', 'Sundan ang mga whale nang live'),
+}
+for _lg, (_a, _b, _c, _d) in _W.items():
+    TRD[_lg].update(w_h=_a, w_big=_b, w_near=_c, w_go=_d)

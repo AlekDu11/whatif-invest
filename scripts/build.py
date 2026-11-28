@@ -2155,6 +2155,49 @@ def _hl_load():
 HLD = _hl_load()
 
 
+# whale box (owner 2026-11-28: «weave the web» — every BTC/ETH/… article, news and coin page points to the whale tracker)
+HL_K = {'PEPE': 'kPEPE', 'SHIB': 'kSHIB', 'BONK': 'kBONK', 'FLOKI': 'kFLOKI', 'LUNC': 'kLUNC', 'NEIRO': 'kNEIRO', 'DOGS': 'kDOGS'}
+HL_MAJOR = {'BTC', 'ETH', 'SOL', 'HYPE', 'XRP', 'DOGE', 'SUI', 'BNB', 'ADA', 'AVAX', 'LINK', 'LTC', 'TRX', 'DOT', 'TON', 'ZEC', 'ENA', 'AAVE', 'UNI', 'NEAR', 'APT', 'ARB', 'OP', 'WLD', 'TAO', 'kPEPE', 'kBONK', 'FARTCOIN', 'PUMP', 'XPL', 'ASTER'}
+HL_COINS = HL_MAJOR | {c['c'] for c in (HLD.get('coins') or [])} | {p['c'] for p in (HLD.get('pos') or [])}
+
+
+def hl_coin(aid):
+    """Hyperliquid perp name for one of our crypto assets, or None."""
+    a = A.get(aid)
+    if not a or a['cat'] != 'crypto':
+        return None
+    tk = (a.get('tk') or '').upper()
+    c = HL_K.get(tk, tk)
+    return c if c in HL_COINS else None
+
+
+def whale_box(lang, coin):
+    t = TRD[lang]
+    d = HLD or {}
+    cs = next((c for c in (d.get('coins') or []) if c['c'] == coin), None)
+    big = next((p for p in (d.get('pos') or []) if p['c'] == coin), None)
+    nn = sum(1 for p in (d.get('near') or []) if p['c'] == coin)
+    tot = ((cs['l'] + cs['s']) if cs else 0) or 1
+    w = f'{cs["l"] / tot * 100:.1f}' if cs else '50'
+    bar = (f'<div class="hlbar"><i style="width:{w}%"></i></div><div class="hlcs">'
+           f'<span class="up">{esc(t["longs"])} <i class="hv">{usd_h(cs["l"]) if cs else "…"}</i> · <i class="hn">{cs["nl"] if cs else "…"}</i></span>'
+           f'<span class="dn">{esc(t["shorts"])} <i class="hv">{usd_h(cs["s"]) if cs else "…"}</i> · <i class="hn">{cs["ns"] if cs else "…"}</i></span></div>')
+    bg = (f'{esc(t["w_big"])}: <span class="hls {"up" if big["s"] == "L" else "dn"}">{esc(t["long"] if big["s"] == "L" else t["short"])}</span> <b>{usd_h(big["ntl"])}</b>'
+          f' · {esc(t["pnl"])} <span class="{cls(big.get("u") or 0)}">{usd_h(big.get("u"))}</span>') if big else ''
+    lab = esc(json.dumps({k: t[k] for k in ('w_big', 'long', 'short', 'pnl')}, ensure_ascii=False))
+    return (f'<aside class="card hlbox" data-hlc="{esc(coin)}" data-t="{lab}"><div class="hlbh"><b>🐋 {esc(t["w_h"].format(c=coin))}</b></div>{bar}'
+            f'<p class="hlbb">{bg}</p><p class="hlbn"{"" if nn else " hidden"}>⚠️ {esc(t["w_near"].format(n=nn))}</p>'
+            f'<a class="btn sm" href="{url(lang, "trading/hyperliquid")}">{esc(t["w_go"])} →</a></aside>')
+
+
+def whale_for(lang, ids):
+    for i in ids or []:
+        c = hl_coin(i)
+        if c:
+            return whale_box(lang, c)
+    return ''
+
+
 def hl_who(lang, a, nm_=None):
     lab = nm_ or (a[:6] + '…' + a[-4:])
     return f'<a class="hlw" href="{url(lang, "trading/hyperliquid/trader")}?a={a}" rel="nofollow">{esc(lab)}</a>'
@@ -2464,7 +2507,7 @@ def analysis_block(lang, aid):
     return (f'<section class="section card anl"><div class="anlw"><div class="anlm"><h2>{esc(prof.get("title", ""))}</h2>'
             f'<p class="muted anld">{esc(prof.get("date", ""))}</p><div class="artbody clamp" data-more="{esc(XC[lang]["more"])}">{md(prof["body"], lang)}</div></div>'
             f'<aside class="anltoc" data-h="{esc(TOCW.get(lang, TOCW["en"]))}" hidden></aside></div></section>'
-            + track_block(lang, [aid]))   # the analysis reads like an article: same «Track it» call to action as news and articles
+            + _track_block(lang, [aid]) + xoffer_ph(lang))   # the analysis reads like an article (whale box is already higher on the coin page): same «Track it» call to action as news and articles
 
 def stock_faq(lang, aid):
     f = stock_facts(lang, aid)
@@ -3705,7 +3748,7 @@ def asset(aid, lang, ver):
         lead_top = f'<p class="lead" style="margin-top:10px">{ml}{"" if lang in ("ja", "zh") else "."}</p>'
     else:
         lead_top = dca_lead
-    body = (f'{head}{lead_top}{hot_block(lang, aid)}<div class="chartside section">{tv}{side_block(lang, aid)}</div>{qconv(lang, aid)}{coin_markets_block(lang, aid) if cr else ""}{'' if 'timeline' in tech_news else hot_more(lang, aid)}{stock_block(lang, aid)}{analysis_block(lang, aid)}{offer_card(lang, 'asset-' + aid) if cr else ''}{'' if cr else xoffer_ph(lang)}{tg_card(lang, 'asset-' + a['cat'])}{dca_lead if cr else ""}<div class="stats sfit">{stat_cards}{lump_cards}</div>{long_block(lang, aid)}{seas_block(lang, aid)}{calc_block(lang)}{tech_news}{"" if cr else coin_markets_block(lang, aid)}'
+    body = (f'{head}{lead_top}{hot_block(lang, aid)}<div class="chartside section">{tv}{side_block(lang, aid)}</div>{qconv(lang, aid)}{(whale_box(lang, hl_coin(aid)) if hl_coin(aid) else '') if cr else ''}{coin_markets_block(lang, aid) if cr else ""}{'' if 'timeline' in tech_news else hot_more(lang, aid)}{stock_block(lang, aid)}{analysis_block(lang, aid)}{offer_card(lang, 'asset-' + aid) if cr else ''}{'' if cr else xoffer_ph(lang)}{tg_card(lang, 'asset-' + a['cat'])}{dca_lead if cr else ""}<div class="stats sfit">{stat_cards}{lump_cards}</div>{long_block(lang, aid)}{seas_block(lang, aid)}{calc_block(lang)}{tech_news}{"" if cr else coin_markets_block(lang, aid)}'
             f'<div class="cols2 section"><section class="card"><h2>{S["a_periods"].format(**fe)}</h2>{ptable}</section>'
             f'<section class="card faq"><h2>{S["faq"]}</h2>' + ''.join(f'<details><summary>{esc(q)}</summary><p>{esc(x)}</p></details>' for q, x in faq) + '</section></div>'
             + (f'<section class="section">{table_block(lang, peers, esc(KS[lang]["peers"]), interactive=False)}</section>' if (peers := stock_peers(aid)) else '') +
@@ -4181,7 +4224,7 @@ def news_row(lang, slug, m, tl, thumb=False):
 
 
 def track_block(lang, ids):
-    return _track_block(lang, ids) + xoffer_ph(lang)
+    return whale_for(lang, ids) + _track_block(lang, ids) + xoffer_ph(lang)
 
 
 def _track_block(lang, ids):
@@ -5123,6 +5166,10 @@ def sc_block(kind, args, lang):
         return (f'<a class="card postcard" href="{aurl(lang, aid)}">{icon(a, True)}<div><b>{esc(nm(a, lang))}</b> <span class="badge">{esc(a["tk"])}</span>'
                 f'<div class="muted">{S["stat"].format(p=pl)}: <b class="{cls(rv)}">{pct(rv)}</b> · {S["ui"]["price"]} <b data-p="{aid}">{price(m["price"])}</b></div></div>'
                 f'<span class="calc">{S["ui"]["calc"]} →</span></a>')
+    if kind == 'whales' and args:   # {{whales:BTC}} — live Hyperliquid whale box for that coin (owner 2026-11-28)
+        c = args[0].strip()
+        c = HL_K.get(c.upper(), c.upper()) if not c.startswith('k') else c
+        return whale_box(lang, c)
     if kind == 'offer' and args:   # big honest offer box for ad landing pages (owner 2026-11-26): {{offer:<bonus item id>}}
         it = next((i for c in BONUS.get('countries', {}).values() for i in c.get('items', []) if i.get('id') == args[0]), None)
         if not it or not it.get('go'):
@@ -5433,7 +5480,7 @@ def md(text, lang):
             out.append(f'<{ltag}>' + ''.join(f'<li>{inline_md(x, lang)}</li>' for x in lst) + f'</{ltag}>'); lst = []
     for line in text.splitlines():
         s = line.strip()
-        bm = _re.fullmatch(r'\{\{(card|table|offer):([^}]*)\}\}', s)
+        bm = _re.fullmatch(r'\{\{(card|table|offer|whales):([^}]*)\}\}', s)
         if quote and not s.startswith('>'):
             out.append(f'<blockquote>{md(chr(10).join(quote), lang)}</blockquote>' if len(quote) > 1 else f'<blockquote>{inline_md(quote[0], lang)}</blockquote>'); quote.clear()
         if not s:

@@ -1171,3 +1171,5 @@ a.badge.tagc{text-decoration:none;color:inherit;border:1px solid var(--line)}a.b
 .hlev{list-style:none;margin:8px 0 0;padding:0;max-height:420px;overflow:auto}.hlev li{padding:7px 2px;border-bottom:1px solid var(--line);font-size:14px}.hlev li.liq{background:var(--bad-soft)}
 .hlstats{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin:12px 0}
 .hlst{background:var(--card);border:1px solid var(--line);border-radius:var(--r-sm,10px);padding:10px 12px}.hlst small{display:block;color:var(--muted)}.hlst b{font-size:18px}
+.hlbox{margin:18px 0;padding:14px 16px}.hlbh{margin-bottom:8px}.hlbb{margin:8px 0 4px;font-size:14px}.hlbn{margin:4px 0 10px;font-size:14px;color:var(--bad)}
+.hlcs i{font-style:normal;display:inline}.hlbox .hlcs{flex-direction:row}

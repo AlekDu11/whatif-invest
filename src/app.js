@@ -2024,6 +2024,15 @@ document.querySelectorAll('.obcnt[data-until]').forEach(el=>{ const t=new Date(e
   const esc=X.esc||(s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]));
   const U=v=>v==null?'—':`<span data-u="${v}">${F.fmtUsd(v)}</span>`, P=v=>v==null?'—':(X.fmtPrice?X.fmtPrice(v):'$'+v), PC=v=>F.fmtPct(v);
   const PN=v=>v==null?'—':`<span class="${F.cls(v)}">${U(v)}</span>`;
+  // whale boxes under articles / on coin pages: [data-hlc="BTC"] (one per coin)
+  const seen={}; const wb=[...document.querySelectorAll('[data-hlc]')].filter(b=>{ if(seen[b.dataset.hlc]){ b.remove(); return false } return seen[b.dataset.hlc]=1 });
+  const wfill=d=>wb.forEach(b=>{ const c=b.dataset.hlc, cs=(d.coins||[]).find(x=>x.c===c), big=(d.pos||[]).find(x=>x.c===c), nn=(d.near||[]).filter(x=>x.c===c).length;
+    const bar=b.querySelector('.hlbar i'), s=b.querySelector('.hlcs');
+    if(cs){ const t=(cs.l+cs.s)||1; if(bar) bar.style.width=(cs.l/t*100).toFixed(1)+'%'; if(s){ const v=s.querySelectorAll('.hv'), k=s.querySelectorAll('.hn'); if(v.length===2){ v[0].innerHTML=U(cs.l); v[1].innerHTML=U(cs.s); k[0].textContent=cs.nl; k[1].textContent=cs.ns } } }
+    const n=b.querySelector('.hlbn'); if(n){ n.hidden=!nn; n.textContent=n.textContent.replace(/\d+/,nn) }
+    const bb=b.querySelector('.hlbb'); if(bb&&big){ const T=JSON.parse(b.dataset.t||'{}');
+      bb.innerHTML=`${esc(T.w_big)}: <span class="hls ${big.s==='L'?'up':'dn'}">${esc(big.s==='L'?T.long:T.short)}</span> <b>${U(big.ntl)}</b> · ${esc(T.pnl)} ${PN(big.u)}` } });
+  if(wb.length&&!$('#hl')) fetch('/api/quote?hl=1').then(r=>r.ok?r.json():null).then(d=>{ if(d&&d.coins) wfill(d) }).catch(()=>{});
   const box=$('#hl');
   if(box){
     const C=JSON.parse(box.dataset.cfg||'{}'), TRU=box.dataset.tr, hub=!!box.dataset.hub;
@@ -2035,7 +2044,7 @@ document.querySelectorAll('.obcnt[data-until]').forEach(el=>{ const t=new Date(e
     const best=()=>{ const tb=$('#hlbest tbody'); if(!tb||!D) return; const list=bw==='b'?(D.best||{})[per]:((D.worst||{})[per]||[...((D.best||{})[per]||[])].reverse());
       tb.innerHTML=(list||[]).map((r,i)=>`<tr><td class="l n">${i+1}</td><td class="l">${who(r.a,r.nm)}</td><td class="num">${PN(r[per])}</td><td class="num hide-sm">${U(r.av)}</td></tr>`).join('') };
     const ago=t=>{ const m=Math.round((Date.now()-t)/60000); return m<1?'<1m':m<60?m+'m':Math.round(m/60)+'h' };
-    const render=d=>{ D=d;
+    const render=d=>{ D=d; wfill(d);
       const m=$('#hlmeta'); if(m) m.innerHTML=C.tracked.replace('{n}',d.n).replace('{v}',U(d.tot));
       const up=$('#hlupd'); if(up) up.textContent=new Date(d.at).toLocaleTimeString(X.T&&X.T.intl||undefined,{hour:'2-digit',minute:'2-digit'});
       const cs=$('#hlcoins'); if(cs) cs.innerHTML=(d.coins||[]).slice(0,8).map(c=>{ const t=(c.l+c.s)||1;
